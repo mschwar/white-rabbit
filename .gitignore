@@ -1,0 +1,73 @@
+# Env files
+.env
+.env.local
+.env.*.local
+*.env
+
+# Secrets
+secrets.toml
+secrets.json
+*.pem
+*.key
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+.vercel/
+build/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+.npm/
+.eslintcache
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.uv/
+*.egg-info/
+.pyc
+.coverage
+htmlcov/
+
+# uv / Poetry
+uv.lock
+poetry.lock
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.sublime-*
+
+# Local data / outputs
+outputs/
+*.sqlite3
+*.sqlite
+*.db
+logs/
+*.log
+
+# Build artifacts
+coverage/
+.turbo/
+
+# Local dev
+.localnotes
+scratch/
