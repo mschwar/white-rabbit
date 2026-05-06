@@ -25,26 +25,18 @@
   - Repository cloned to .gemini/superskills-repo.
   - ~150+ skills linked to workspace scope.
   - Workflow rule added to GEMINI.md.
-
+- **Sprint 1: Scaffold `apps/web` (Next.js) completed.**
 
 ## What's in flight
 
-Nothing. Bootstrap session ended cleanly.
+Nothing.
+
 
 ## Next concrete task — Sprint 1 (scaffold)
 
 Pick up here. Read `docs/04-roadmap.md` for full sprint scope, then:
 
-### 1. Scaffold `apps/web` (Next.js)
-
-```bash
-cd /Users/mschwar/Documents/white-rabbit/apps
-rm -rf web && npx create-next-app@latest web --typescript --app --tailwind --eslint --src-dir --import-alias "@/*" --no-turbopack
-```
-
-Verify: `cd web && npm run dev` serves at http://localhost:3000.
-
-### 2. Scaffold `apps/api` (FastAPI + uv)
+### 1. Scaffold `apps/api` (FastAPI + uv)
 
 ```bash
 cd /Users/mschwar/Documents/white-rabbit/apps
