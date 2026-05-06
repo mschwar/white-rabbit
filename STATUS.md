@@ -19,8 +19,13 @@
   - `docs/03-decisions.md` — locked decisions (4 ADRs).
   - `docs/04-roadmap.md` — Sprint 1 build slice and 90-day kill/keep gate.
   - `docs/05-reuse.md` — explicit lift list from `/Users/mschwar/Documents/proxy-lead`.
-- `.gitignore` written.
+- .gitignore written.
 - git initialized and first commit made.
+- 'superskills' (v2.5.0) installed and linked in .gemini/skills.
+  - Repository cloned to .gemini/superskills-repo.
+  - ~150+ skills linked to workspace scope.
+  - Workflow rule added to GEMINI.md.
+
 
 ## What's in flight
 
