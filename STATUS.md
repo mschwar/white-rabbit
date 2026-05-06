@@ -1,7 +1,7 @@
 # STATUS
 
-**Last updated:** 2026-05-06 by merged QA session
-**Branch:** main
+**Last updated:** 2026-05-06 by shared-password-auth session
+**Branch:** feature/shared-password-auth
 **Current sprint:** Sprint 1 (scaffold)
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
@@ -31,6 +31,7 @@
 - **Testing framework bootstrapped for Web (Vitest/Playwright) and Python (Pytest).**
 - **Sprint 1: Scout core smoke harness added.** `packages/core` orchestrator now supports injectable search/client fakes, and the API has a verified `/scout` contract test.
 - **Sprint 1: Python import path bootstraps added** so `core` resolves from local package runs and `api.main` can import the shared core package.
+- **Sprint 1: Shared-password auth gate added in `apps/web`.** Login/logout routes, session-cookie middleware, a protected home shell, and a protected Scout shell are browser-tested.
 
 ## What's in flight
 
@@ -49,7 +50,6 @@ Pick up here. Read `docs/04-roadmap.md` for full sprint scope, then:
 ### 2. Frontend implementation (Scout UI)
 - Create `/scout` page in Next.js.
 - Implement API proxy in `app/api/scout/route.ts`.
-- Add shared-password auth middleware.
 
 ## Open questions for Matt
 
@@ -60,7 +60,8 @@ Pick up here. Read `docs/04-roadmap.md` for full sprint scope, then:
 ## Known issues / risks
 
 - Pricing constants in `packages/core/core/cost.py` updated to 2026-05 estimates. Verify with real dashboard data after first few runs.
-- Core smoke harness is in place; next Sprint 1 gap is shared-password auth middleware plus the Scout UI path.
+- Core smoke harness is in place; next Sprint 1 gap is the Scout UI / API proxy path.
+- Next.js 16 warns that `middleware.ts` is deprecated in favor of `proxy.ts`; auth currently works, but a rename is a follow-up if we want to eliminate the warning.
 
 ## Session log
 
@@ -70,3 +71,4 @@ Pick up here. Read `docs/04-roadmap.md` for full sprint scope, then:
 | 2026-05-05 | api-scaffold (Opus 4.7) | Scaffolded apps/api and packages/core. Lifted and adapted code from proxy-lead. Passed health check tests. |
 | 2026-05-06 | scout-harness (gpt-5.4-mini) | Added injectable Scout smoke harnesses in core and API, fixed local import bootstraps, and verified core/API/web tests plus runtime imports. |
 | 2026-05-06 | qa (gpt-5.4-mini) | Browser-checked the homepage and docs path, captured screenshots, and found no browser-visible issues. |
+| 2026-05-06 | shared-password-auth (gpt-5.4-mini) | Added shared-password auth middleware, login/logout routes, and protected home/Scout shells. Browser-checked login, invalid-password, home, and Scout flows with screenshots. |

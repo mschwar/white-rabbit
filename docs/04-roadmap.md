@@ -13,7 +13,7 @@
    - `cost.py` (with current 2026 prices, not stale 2025 prices)
    - `search.py` (Tavily primitive)
    - `orchestrator.py` (rewritten without LangChain)
-4. Shared-password auth via Next.js middleware. Env: `WR_SHARED_PASSWORD`.
+4. Shared-password auth via Next.js middleware. Env: `WR_SHARED_PASSWORD`. Implemented in `apps/web` as login/logout routes, cookie middleware, and protected home/Scout shells.
 5. End-to-end: form in Next.js → `POST /api/scout` → FastAPI `/scout` → orchestrator → Tavily + OpenAI → leads with three scores → JSON back → render.
 6. Smoke tests: orchestrator returns valid LeadList for a known query; auth middleware rejects bad password.
 
