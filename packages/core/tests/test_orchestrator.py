@@ -104,3 +104,51 @@ def test_scout_threads_filters_through_search_and_prompt():
     assert "location: Albuquerque" in seen["prompt"]
     assert "segment: public schools" in seen["prompt"]
     assert metrics.tavily_searches == 1
+
+
+def test_scout_raises_on_missing_openai_key():
+    async def fake_search(*args, **kwargs):
+        return []
+
+    try:
+        asyncio.run(
+            scout(
+                "test query",
+                openai_key=None,
+                tavily_key="fake-tavily",
+                search_fn=fake_search,
+            )
+        )
+        assert False, "Expected OrchestratorError"
+    except Exception as exc:
+        assert "OPENAI_API_KEY not found" in str(exc)
+
+
+def test_scout_raises_on_tavily_failure():
+    class FakeSearchError(Exception):
+        pass
+
+    async def fake_search(*args, **kwargs):
+        raise FakeSearchError("Tavily API down")
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            return SimpleNamespace(
+                choices=[SimpleNamespace(message=SimpleNamespace(parsed=LeadList(leads=[])))],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+
+    try:
+        asyncio.run(
+            scout(
+                "test query",
+                openai_client=fake_client,
+                tavily_key="fake-tavily",
+                search_fn=fake_search,
+            )
+        )
+        assert False, "Expected OrchestratorError"
+    except Exception as exc:
+        assert "Tavily search failed" in str(exc)

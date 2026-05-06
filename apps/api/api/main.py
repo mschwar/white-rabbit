@@ -14,7 +14,7 @@ for candidate in (CORE_SRC, REPO_ROOT):
 
 from core.cost import RunMetrics
 from core.models import Lead
-from core.orchestrator import scout
+from core.orchestrator import scout, OrchestratorError
 
 load_dotenv()
 
@@ -41,5 +41,11 @@ async def run_scout(request: ScoutRequest):
     try:
         leads, metrics = await scout(request.query, filters=request.filters)
         return ScoutResponse(leads=leads, metrics=metrics)
+    except OrchestratorError as exc:
+        import logging
+        logging.getLogger("white_rabbit.api").error("Orchestrator error: %s", exc, exc_info=True)
+        raise HTTPException(status_code=503, detail="The search service is currently unavailable. Please try again later.")
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc))
+        import logging
+        logging.getLogger("white_rabbit.api").error("Unexpected error: %s", exc, exc_info=True)
+        raise HTTPException(status_code=500, detail="An unexpected error occurred. Please try again later.")
