@@ -1,12 +1,20 @@
-import os
+from pathlib import Path
+import sys
 from typing import Optional
-from fastapi import FastAPI, HTTPException, Header
-from pydantic import BaseModel
-from dotenv import load_dotenv
 
-from core.orchestrator import scout
-from core.models import Lead
+from dotenv import load_dotenv
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+
+REPO_ROOT = Path(__file__).resolve().parents[3]
+CORE_SRC = REPO_ROOT / "packages" / "core" / "src"
+for candidate in (CORE_SRC, REPO_ROOT):
+    if str(candidate) not in sys.path:
+        sys.path.insert(0, str(candidate))
+
 from core.cost import RunMetrics
+from core.models import Lead
+from core.orchestrator import scout
 
 load_dotenv()
 
