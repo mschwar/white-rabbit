@@ -3,6 +3,18 @@
 
 Read .gemini/superskills-repo/DEVELOPER_WORKFLOW.md to understand how to use superskills commands together effectively — parallel agents, vertical slices, quality pipeline, performance optimization, and shipping workflow.
 
+## Testing
+
+- Web unit tests: `cd apps/web && npm run test`
+- Web E2E tests: `cd apps/web && npm run test:e2e`
+- Reference: [TESTING.md](./TESTING.md)
+
+Test expectations:
+- 100% test coverage is the goal — tests make vibe coding safe.
+- When writing new functions, write a corresponding test.
+- When fixing a bug, write a regression test.
+- Never commit code that makes existing tests fail.
+
 <!-- repomap-rule -->
 ## REPOMAP.md
 
