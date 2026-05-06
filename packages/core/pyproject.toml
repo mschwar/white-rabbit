@@ -1,0 +1,21 @@
+[project]
+name = "core"
+version = "0.1.0"
+description = "White Rabbit Core Primitives"
+readme = "README.md"
+authors = [
+    { name = "Matthew Schwartz", email = "mschwar1128@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "httpx>=0.28.1",
+    "openai>=2.34.0",
+    "pandas>=3.0.2",
+    "pydantic>=2.13.3",
+    "python-dotenv>=1.2.2",
+    "tavily-python>=0.7.24",
+]
+
+[build-system]
+requires = ["uv_build>=0.10.6,<0.11.0"]
+build-backend = "uv_build"

@@ -1,15 +1,15 @@
 # STATUS
 
-**Last updated:** 2026-05-05 by bootstrap session
-**Branch:** main
-**Current sprint:** Bootstrap → Sprint 1 (scaffold)
+**Last updated:** 2026-05-05 by api-scaffold session
+**Branch:** feat/sprint-1-scaffold-api
+**Current sprint:** Sprint 1 (scaffold)
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 ## What's done
 
 - Repo created at `/Users/mschwar/Documents/white-rabbit/`.
-- Directory structure scaffolded (`docs/`, `apps/web/`, `apps/api/`, `packages/core/` with `.gitkeep` placeholders).
+- Directory structure scaffolded (`docs/`, `apps/web/`, `apps/api/`, `packages/core/`).
 - Bootstrap documentation written:
   - `AGENTS.md` — agent entry point and rules.
   - `README.md` — human intro pointing at AGENTS.md.
@@ -26,6 +26,9 @@
   - ~150+ skills linked to workspace scope.
   - Workflow rule added to GEMINI.md.
 - **Sprint 1: Scaffold `apps/web` (Next.js) completed.**
+- **Sprint 1: Scaffold `apps/api` (FastAPI + uv) completed.**
+- **Sprint 1: Core primitives (`packages/core`) lifted and adapted.**
+- **Testing framework bootstrapped for Web (Vitest/Playwright) and Python (Pytest).**
 
 ## What's in flight
 
@@ -36,34 +39,21 @@ Nothing.
 
 Pick up here. Read `docs/04-roadmap.md` for full sprint scope, then:
 
-### 1. Scaffold `apps/api` (FastAPI + uv)
+### 1. Populate `packages/core` logic (Scout slice)
+- Implement `orchestrator.py` logic (already scaffolded, needs verification with real keys).
+- Implement `search.py` (Tavily integration).
+- Verify with a smoke test.
 
-```bash
-cd /Users/mschwar/Documents/white-rabbit/apps
-rm -rf api && uv init --package api && cd api && uv add fastapi uvicorn pydantic python-dotenv httpx openai tavily-python
-```
+### 2. Frontend implementation (Scout UI)
+- Create `/scout` page in Next.js.
+- Implement API proxy in `app/api/scout/route.ts`.
+- Add shared-password auth middleware.
 
-Verify: minimal `uv run uvicorn api:app --reload` starts on http://localhost:8000.
-
-If `uv` is not installed, install it: `curl -LsSf https://astral.sh/uv/install.sh | sh`. Poetry is acceptable as fallback (see `docs/02-stack.md`).
-
-### 3. Lift code into `packages/core`
-
-Per `docs/05-reuse.md`, copy and adapt these files from `/Users/mschwar/Documents/proxy-lead/`:
-
-- `models.py` → `packages/core/models.py` (add `fit_score`, `evidence_score`, `contact_score`, `gate_passed`, `explanation` fields)
-- `tavily_validation.py` → `packages/core/search.py` (extract just the search primitive; drop validation-suite scaffolding)
-- `email_patterns.py` → `packages/core/email_patterns.py` (lift cleanly)
-- `history_store.py` → `packages/core/cost.py` (lift the pricing constants and cost calculation; **update prices to current 2026 rates** — see reuse doc)
-- `agent.py` → reference only; rewrite the orchestration in `packages/core/orchestrator.py` without LangChain (use `openai` SDK direct + `tavily-python`)
-
-Do **not** lift: `app.py`, `demo_data.py`, `results_summary.py`, `config.py`, anything Streamlit-coupled, anything PDF-related.
-
-### 4. Wire shared-password auth
+### 3. Wire shared-password auth
 
 Next.js middleware (`apps/web/src/middleware.ts`) intercepts every request, checks a session cookie set by a single `POST /login` route. Password is read from env var `WR_SHARED_PASSWORD`. Compare with `crypto.timingSafeEqual` to avoid timing attacks. See `docs/02-stack.md` for the full pattern.
 
-### 5. End-to-end smoke
+### 4. End-to-end smoke
 
 Next.js form → `POST /api/scout` → forwards to FastAPI `POST /scout` → calls `core.orchestrator.scout(query)` → returns 10–20 leads with three scores → Next.js renders.
 
@@ -81,11 +71,12 @@ Definition of done for Sprint 1:
 
 ## Known issues / risks
 
-- Pricing constants in `proxy-lead/history_store.py` are dated "as of 2025-04". Today is 2026-05. Update to current OpenAI and Tavily rates before they're used in any cost-per-usable-lead calculations. Tavily moved to credit-based pricing; OpenAI added `web_search_preview` at $10/1k calls. See `docs/05-reuse.md`.
-- No tests yet. Sprint 1 should land at least smoke tests for the orchestrator and the auth middleware before Sprint 2.
+- Pricing constants in `packages/core/core/cost.py` updated to 2026-05 estimates. Verify with real dashboard data after first few runs.
+- No tests yet for orchestrator (requires real keys). Sprint 1 should land at least smoke tests for the orchestrator and the auth middleware before Sprint 2.
 
 ## Session log
 
 | Date | Agent | Summary |
 |------|-------|---------|
 | 2026-05-05 | bootstrap (Opus 4.7) | Repo bootstrapped. All 10 priority docs written. git init + first commit. Next: Sprint 1 scaffold. |
+| 2026-05-05 | api-scaffold (Opus 4.7) | Scaffolded apps/api and packages/core. Lifted and adapted code from proxy-lead. Passed health check tests. |
