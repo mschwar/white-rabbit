@@ -6,10 +6,11 @@ from core.orchestrator import scout
 
 
 def test_scout_uses_injected_dependencies_and_returns_metrics():
-    async def fake_search(query: str, api_key=None, max_results=10):
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None):
         assert query == "K-12 IT directors in Albuquerque"
         assert api_key == "fake-tavily"
         assert max_results == 10
+        assert filters is None
         return [
             {
                 "title": "Albuquerque Public Schools technology leadership",
@@ -65,3 +66,41 @@ def test_scout_uses_injected_dependencies_and_returns_metrics():
     assert metrics.tavily_searches == 1
     assert metrics.elapsed_seconds >= 0
     assert metrics.estimated_cost_usd > 0
+
+
+def test_scout_threads_filters_through_search_and_prompt():
+    seen = {}
+
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None):
+        seen["search_query"] = query
+        seen["search_api_key"] = api_key
+        seen["search_max_results"] = max_results
+        seen["search_filters"] = filters
+        return []
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            seen["prompt"] = messages[1]["content"]
+            return SimpleNamespace(
+                choices=[SimpleNamespace(message=SimpleNamespace(parsed=LeadList(leads=[])))],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+
+    leads, metrics = asyncio.run(
+        scout(
+            "K-12 IT directors",
+            filters={"location": "Albuquerque", "segment": "public schools"},
+            openai_client=fake_client,
+            tavily_key="fake-tavily",
+            search_fn=fake_search,
+        )
+    )
+
+    assert leads == []
+    assert seen["search_query"] == "K-12 IT directors"
+    assert seen["search_filters"] == {"location": "Albuquerque", "segment": "public schools"}
+    assert "location: Albuquerque" in seen["prompt"]
+    assert "segment: public schools" in seen["prompt"]
+    assert metrics.tavily_searches == 1

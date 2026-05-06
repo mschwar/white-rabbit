@@ -1,7 +1,7 @@
 # STATUS
 
 **Last updated:** 2026-05-06 by gpt-5.4-mini
-**Branch:** feature/scout-api-proxy
+**Branch:** feature/scout-core-real-integration
 **Current sprint:** Sprint 1 (scaffold)
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
@@ -33,6 +33,7 @@
 - **Sprint 1: Python import path bootstraps added** so `core` resolves from local package runs and `api.main` can import the shared core package.
 - **Sprint 1: Shared-password auth gate added in `apps/web`.** Login/logout routes, session-cookie middleware, a protected home shell, and a protected Scout shell are browser-tested.
 - **Sprint 1: Scout UI + Next.js API proxy wired.** The `/scout` page now posts to `POST /api/scout`, proxies to FastAPI `/scout`, and renders returned leads/metrics.
+- **Sprint 1: Scout filters now propagate end-to-end.** `apps/web` already forwards the payload, and `apps/api`/`packages/core` now pass request filters into search and prompt context.
 
 ## What's in flight
 
@@ -62,6 +63,7 @@ Pick up here. Read `docs/04-roadmap.md` for full sprint scope, then:
 
 - Pricing constants in `packages/core/core/cost.py` updated to 2026-05 estimates. Verify with real dashboard data after first few runs.
 - Scout UI and API proxy are wired; the remaining gap is live end-to-end verification with actual OpenAI/Tavily keys.
+- Browser QA on 2026-05-06 confirmed the Scout page returns a visible `OPENAI_API_KEY not found` error state when the backend key is absent.
 - Next.js 16 warns that `middleware.ts` is deprecated in favor of `proxy.ts`; auth currently works, but a rename is a follow-up if we want to eliminate the warning.
 
 ## Session log
@@ -77,3 +79,5 @@ Pick up here. Read `docs/04-roadmap.md` for full sprint scope, then:
 | 2026-05-06 | merge (gpt-5.4-mini) | Merged feature/shared-password-auth into main after QA verification and pushed the merge commit. |
 | 2026-05-06 | scout-api-proxy (gpt-5.4-mini) | Added the Scout Next.js query UI, `/api/scout` proxy route, and browser-backed error-path checks. Verified with Vitest and Next.js production build; live Scout browser QA remains blocked by the unknown shared password secret. |
 | 2026-05-06 | qa (gpt-5.4-mini) | Attempted browser QA on the Scout feature branch, captured the login gate state, and updated STATUS.md to note that successful end-to-end Scout verification is still pending valid shared-password access. |
+| 2026-05-06 | scout-core-real-integration (gpt-5.4-mini) | Threaded Scout request filters through the FastAPI layer into core search/prompt context, added tests for filter propagation, and verified Python/Web test suites pass. |
+| 2026-05-06 | qa (gpt-5.4-mini) | Browser-checked the Scout login flow and submitted a live Scout run; the UI shows a visible missing-OpenAI-key error state, and the QA report was written locally. |
