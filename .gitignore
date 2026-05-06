@@ -71,3 +71,6 @@ coverage/
 # Local dev
 .localnotes
 scratch/
+.gstack/
+apps/web/playwright-report/
+apps/web/test-results/
