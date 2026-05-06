@@ -146,3 +146,14 @@ export async function submitLeadFeedback(leadId: string, label: FeedbackLabel): 
     throw new Error('Failed to submit feedback.');
   }
 }
+
+export async function closeRecipeRun(runId: string, operatorMinutes: number): Promise<void> {
+  const response = await fetch(`/api/runs/${runId}/close`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ operator_minutes: operatorMinutes }),
+  });
+  if (!response.ok) {
+    throw new Error('Failed to close run.');
+  }
+}

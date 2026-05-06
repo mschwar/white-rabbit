@@ -4,6 +4,7 @@ import { FormEvent, useState } from 'react';
 import {
   buildScoutPayload,
   buildFullPayload,
+  closeRecipeRun,
   DEFAULT_SCOUT_LOCATION,
   DEFAULT_SCOUT_QUERY,
   formatScore,
@@ -25,8 +26,11 @@ export default function ScoutWorkspace() {
   const [mode, setMode] = useState<Mode>('scout');
   const [results, setResults] = useState<ScoutResponse | null>(null);
   const [fullResult, setFullResult] = useState<FullResponse | null>(null);
+  const [operatorMinutes, setOperatorMinutes] = useState('');
+  const [closeMessage, setCloseMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -78,6 +82,7 @@ export default function ScoutWorkspace() {
         const data = (await response.json()) as FullResponse;
         setFullResult(data);
         setResults({ leads: data.leads, metrics: data.metrics });
+        setCloseMessage(null);
       }
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Search failed.';
@@ -86,6 +91,29 @@ export default function ScoutWorkspace() {
       setFullResult(null);
     } finally {
       setIsLoading(false);
+    }
+  }
+
+  async function handleCloseRun() {
+    if (!fullResult) {
+      return;
+    }
+
+    const parsed = Number.parseFloat(operatorMinutes);
+    if (!Number.isFinite(parsed) || parsed <= 0) {
+      setCloseMessage('Enter operator minutes greater than 0.');
+      return;
+    }
+
+    setIsClosing(true);
+    setCloseMessage(null);
+    try {
+      await closeRecipeRun(fullResult.run_id, parsed);
+      setCloseMessage(`Run closed with ${parsed.toFixed(1)} operator minutes.`);
+    } catch (err) {
+      setCloseMessage(err instanceof Error ? err.message : 'Failed to close run.');
+    } finally {
+      setIsClosing(false);
     }
   }
 
@@ -200,8 +228,35 @@ export default function ScoutWorkspace() {
         </div>
 
         {fullResult && (
-          <div className="rounded-2xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200">
-            Full run saved. Recipe ID: {fullResult.recipe_id} · Run ID: {fullResult.run_id}
+          <div className="space-y-3 rounded-2xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200">
+            <p>
+              Full run saved. Recipe ID: {fullResult.recipe_id} · Run ID: {fullResult.run_id}
+            </p>
+            <div className="flex flex-wrap items-end gap-3">
+              <label className="flex flex-col gap-1 text-xs uppercase tracking-[0.18em] text-emerald-100" htmlFor="operatorMinutes">
+                Operator minutes
+                <input
+                  className="w-40 rounded-2xl border border-white/10 bg-zinc-950/70 px-3 py-2 text-sm text-zinc-50 outline-none placeholder:text-zinc-500"
+                  id="operatorMinutes"
+                  inputMode="decimal"
+                  onChange={(event) => setOperatorMinutes(event.target.value)}
+                  placeholder="18.5"
+                  value={operatorMinutes}
+                />
+              </label>
+              <button
+                className="rounded-full bg-emerald-300 px-4 py-2 text-sm font-semibold text-emerald-950 transition hover:bg-emerald-200 disabled:cursor-not-allowed disabled:bg-emerald-200/60"
+                disabled={isClosing}
+                onClick={handleCloseRun}
+                type="button"
+              >
+                {isClosing ? 'Closing…' : 'Close run'}
+              </button>
+              <a className="text-sm underline decoration-emerald-300/40 underline-offset-4" href="/recipes">
+                Open recipe library
+              </a>
+            </div>
+            {closeMessage ? <p className="text-xs text-emerald-100">{closeMessage}</p> : null}
           </div>
         )}
 
