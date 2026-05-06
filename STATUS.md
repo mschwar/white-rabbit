@@ -1,7 +1,7 @@
 # STATUS
 
-**Last updated:** 2026-05-06 by merged qa session
-**Branch:** main
+**Last updated:** 2026-05-06 by gpt-5.4-mini
+**Branch:** feature/scout-api-proxy
 **Current sprint:** Sprint 1 (scaffold)
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
@@ -32,6 +32,7 @@
 - **Sprint 1: Scout core smoke harness added.** `packages/core` orchestrator now supports injectable search/client fakes, and the API has a verified `/scout` contract test.
 - **Sprint 1: Python import path bootstraps added** so `core` resolves from local package runs and `api.main` can import the shared core package.
 - **Sprint 1: Shared-password auth gate added in `apps/web`.** Login/logout routes, session-cookie middleware, a protected home shell, and a protected Scout shell are browser-tested.
+- **Sprint 1: Scout UI + Next.js API proxy wired.** The `/scout` page now posts to `POST /api/scout`, proxies to FastAPI `/scout`, and renders returned leads/metrics.
 
 ## What's in flight
 
@@ -47,9 +48,9 @@ Pick up here. Read `docs/04-roadmap.md` for full sprint scope, then:
 - Implement `search.py` (Tavily integration).
 - Verify with a smoke test.
 
-### 2. Frontend implementation (Scout UI)
-- Create `/scout` page in Next.js.
-- Implement API proxy in `app/api/scout/route.ts`.
+### 2. Scout validation
+- Verify the new `/scout` page against a live API key set and browser-QA the successful search flow.
+- Confirm the proxy returns and renders real results, not just mocked contract responses.
 
 ## Open questions for Matt
 
@@ -60,7 +61,7 @@ Pick up here. Read `docs/04-roadmap.md` for full sprint scope, then:
 ## Known issues / risks
 
 - Pricing constants in `packages/core/core/cost.py` updated to 2026-05 estimates. Verify with real dashboard data after first few runs.
-- Core smoke harness is in place; next Sprint 1 gap is the Scout UI / API proxy path.
+- Scout UI and API proxy are wired; the remaining gap is live end-to-end verification with actual OpenAI/Tavily keys.
 - Next.js 16 warns that `middleware.ts` is deprecated in favor of `proxy.ts`; auth currently works, but a rename is a follow-up if we want to eliminate the warning.
 
 ## Session log
@@ -74,3 +75,4 @@ Pick up here. Read `docs/04-roadmap.md` for full sprint scope, then:
 | 2026-05-06 | shared-password-auth (gpt-5.4-mini) | Added shared-password auth middleware, login/logout routes, and protected home/Scout shells. Browser-checked login, invalid-password, home, and Scout flows with screenshots. |
 | 2026-05-06 | qa (gpt-5.4-mini) | Browser-checked the shared-password login, sign-out, and Scout pages; tightened Scout query label spacing; updated QA docs and screenshots. |
 | 2026-05-06 | merge (gpt-5.4-mini) | Merged feature/shared-password-auth into main after QA verification and pushed the merge commit. |
+| 2026-05-06 | scout-api-proxy (gpt-5.4-mini) | Added the Scout Next.js query UI, `/api/scout` proxy route, and browser-backed error-path checks. Verified with Vitest and Next.js production build; live Scout browser QA remains blocked by the unknown shared password secret. |
