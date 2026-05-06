@@ -39,6 +39,18 @@ export type RecipeRunItem = {
   lead_count: number;
 };
 
+export type RecipeScoreboardItem = {
+  recipe_id: string;
+  recipe_name: string;
+  total_api_cost_usd: number;
+  total_leads_returned: number;
+  usable_lead_count: number;
+  total_operator_minutes: number;
+  minutes_per_usable_lead: number | null;
+  api_cost_per_usable_lead: number | null;
+  feedback_counts: Record<string, number>;
+};
+
 export type ScoutLead = {
   id?: string;
   name: string;
@@ -130,6 +142,14 @@ export async function fetchRecipeRuns(recipeId: string): Promise<RecipeRunItem[]
   const response = await fetch(`/api/recipes/${recipeId}/runs`);
   if (!response.ok) {
     throw new Error('Failed to fetch recipe runs.');
+  }
+  return response.json();
+}
+
+export async function fetchRecipeScoreboard(recipeId: string): Promise<RecipeScoreboardItem> {
+  const response = await fetch(`/api/recipes/${recipeId}/scoreboard`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch recipe scoreboard.');
   }
   return response.json();
 }
