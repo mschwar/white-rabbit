@@ -1,7 +1,7 @@
 # STATUS
 
-**Last updated:** 2026-05-05 by api-scaffold session
-**Branch:** feat/sprint-1-scaffold-api
+**Last updated:** 2026-05-06 by scout-harness session
+**Branch:** feature/scout-harness
 **Current sprint:** Sprint 1 (scaffold)
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
@@ -29,6 +29,8 @@
 - **Sprint 1: Scaffold `apps/api` (FastAPI + uv) completed.**
 - **Sprint 1: Core primitives (`packages/core`) lifted and adapted.**
 - **Testing framework bootstrapped for Web (Vitest/Playwright) and Python (Pytest).**
+- **Sprint 1: Scout core smoke harness added.** `packages/core` orchestrator now supports injectable search/client fakes, and the API has a verified `/scout` contract test.
+- **Sprint 1: Python import path bootstraps added** so `core` resolves from local package runs and `api.main` can import the shared core package.
 
 ## What's in flight
 
@@ -49,20 +51,6 @@ Pick up here. Read `docs/04-roadmap.md` for full sprint scope, then:
 - Implement API proxy in `app/api/scout/route.ts`.
 - Add shared-password auth middleware.
 
-### 3. Wire shared-password auth
-
-Next.js middleware (`apps/web/src/middleware.ts`) intercepts every request, checks a session cookie set by a single `POST /login` route. Password is read from env var `WR_SHARED_PASSWORD`. Compare with `crypto.timingSafeEqual` to avoid timing attacks. See `docs/02-stack.md` for the full pattern.
-
-### 4. End-to-end smoke
-
-Next.js form → `POST /api/scout` → forwards to FastAPI `POST /scout` → calls `core.orchestrator.scout(query)` → returns 10–20 leads with three scores → Next.js renders.
-
-Definition of done for Sprint 1:
-- Thomas can log in with the shared password from his laptop.
-- Thomas types "K-12 IT directors in Albuquerque" and sees a Scout result with Fit/Evidence/Contact per lead within 30 seconds.
-- The result includes the per-lead explanation string.
-- API and web both run with `npm run dev` and `uv run uvicorn …`. No deploy yet.
-
 ## Open questions for Matt
 
 - Commercial arrangement with Lee and Thomas (free seats / revenue share / equity / content rights). Blocks the design-partner motion. **Not blocking Sprint 1 build, but blocks public usage.**
@@ -72,7 +60,7 @@ Definition of done for Sprint 1:
 ## Known issues / risks
 
 - Pricing constants in `packages/core/core/cost.py` updated to 2026-05 estimates. Verify with real dashboard data after first few runs.
-- No tests yet for orchestrator (requires real keys). Sprint 1 should land at least smoke tests for the orchestrator and the auth middleware before Sprint 2.
+- Core smoke harness is in place; next Sprint 1 gap is shared-password auth middleware plus the Scout UI path.
 
 ## Session log
 
@@ -80,3 +68,4 @@ Definition of done for Sprint 1:
 |------|-------|---------|
 | 2026-05-05 | bootstrap (Opus 4.7) | Repo bootstrapped. All 10 priority docs written. git init + first commit. Next: Sprint 1 scaffold. |
 | 2026-05-05 | api-scaffold (Opus 4.7) | Scaffolded apps/api and packages/core. Lifted and adapted code from proxy-lead. Passed health check tests. |
+| 2026-05-06 | scout-harness (gpt-5.4-mini) | Added injectable Scout smoke harnesses in core and API, fixed local import bootstraps, and verified core/API/web tests plus runtime imports. |
