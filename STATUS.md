@@ -1,7 +1,7 @@
 # STATUS
 
-**Last updated:** 2026-05-06 by scout-harness QA session
-**Branch:** feature/scout-harness
+**Last updated:** 2026-05-06 by merged QA session
+**Branch:** main
 **Current sprint:** Sprint 1 (scaffold)
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
