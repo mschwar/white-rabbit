@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-06 by kimi-for-coding
-**Branch:** feature/scout-live-validation
-**Current sprint:** Sprint 1 (scaffold) — COMPLETE
+**Last updated:** 2026-05-06 by gpt-5.4-mini
+**Branch:** feature/sprint2-persistence-recipes
+**Current sprint:** Sprint 2 (persistence + recipes) — in progress
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -41,39 +41,32 @@
 - **Sprint 1: Core test coverage expanded.** Added tests for missing-key and Tavily-failure error paths in `packages/core/tests/test_orchestrator.py`.
 - **Sprint 1: Scout live validation completed.** Verified end-to-end with real API keys: FastAPI `/scout` returns 3-4 real leads with three scores and metrics in ~15s. Browser QA confirmed the Scout workspace renders ranked lead cards with Fit/Evidence/Contact scores, gate status, explanations, and icebreakers.
 - **Sprint 1: Environment template files created.** `.env.example` files for root, `apps/api/`, and `apps/web/` to help future developers configure API keys and secrets.
+- **Sprint 2: Postgres persistence added.** Local PostgreSQL 16 is running via Homebrew; SQLAlchemy models and Alembic migration created `recipe`, `recipe_run`, `lead`, and `lead_feedback` tables.
+- **Sprint 2: Scout vs Full split implemented.** Scout remains quick/no-storage; Full stores recipe + run metadata and returns saved IDs.
+- **Sprint 2: Five-button feedback per lead implemented.** Leads now expose usable / wrong persona / bad source / bad contact / duplicate feedback buttons.
+- **Sprint 2: Recipe library page added.** `/recipes` shows saved recipes and run history.
+- **Sprint 2: Operator-time logging added.** Full runs now expose a close-run form that records operator minutes through `/api/runs/[run_id]/close`.
+- **Sprint 2: Browser QA completed for the new slice.** Verified Full run save UI, operator-minute close flow, and recipe library rendering in the browser.
+- **Sprint 2: Tests passing.** `npm run build` and `npm test` pass in `apps/web`; `pytest tests -q` passes in `apps/api`.
 
 ## What's in flight
 
-Nothing.
+- GitHub push + merge for `feature/sprint2-persistence-recipes`.
 
+## Next concrete task — Sprint 2 wrap-up
 
-## Next concrete task — Sprint 2 (persistence + recipes)
-
-Sprint 1 is complete. The kill/keep gate clock can start. Pick up here for Sprint 2:
-
-### 1. Postgres provisioning
-- Set up Supabase/Neon/local Docker Postgres per `docs/02-stack.md` recommendation.
-- Create schema: `recipe`, `recipe_run`, `lead`, `lead_feedback` per `docs/04-roadmap.md`.
-
-### 2. Scout vs. Full distinction
-- Scout: 10–20 leads, no recipe stored.
-- Full: requires explicit confirmation with cost estimate; up to 100 leads; recipe stored on completion.
-
-### 3. Five-button feedback per lead
-- `usable` / `wrong persona` / `bad source` / `bad contact` / `duplicate`
-- Required to close out a Full run.
+- Push the feature branch.
+- Merge to `main`.
+- Update `docs/04-roadmap.md` only if scope changes are needed.
 
 ## Open questions for Matt
 
 - Commercial arrangement with Lee and Thomas (free seats / revenue share / equity / content rights). Blocks the design-partner motion. **Not blocking Sprint 1 build, but blocks public usage.**
-- Postgres host for Sprint 2 (Supabase / Neon / local Docker). Recommendation in `docs/02-stack.md` is Supabase for Sprint 2 since the demo already uses it.
 - Cost-tracking source of truth: should live API cost figures be pulled from OpenAI/Tavily dashboards, or computed locally from token/call counts? Recommendation: compute locally per-run, reconcile weekly. See `docs/05-reuse.md` note on stale 2025 prices.
 
 ## Known issues / risks
 
 - Pricing constants in `packages/core/core/cost.py` updated to 2026-05 estimates. Verify with real dashboard data after first few runs.
-- Scout UI and API proxy are wired; the remaining gap is live end-to-end verification with actual OpenAI/Tavily keys.
-- Browser QA on 2026-05-06 confirmed the Scout page returns a visible `OPENAI_API_KEY not found` error state when the backend key is absent.
 - Next.js 16 warns that `middleware.ts` is deprecated in favor of `proxy.ts`; auth currently works, but a rename is a follow-up if we want to eliminate the warning.
 
 ## Session log
