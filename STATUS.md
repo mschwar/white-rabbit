@@ -49,7 +49,7 @@ Pick up here. Read `docs/04-roadmap.md` for full sprint scope, then:
 - Verify with a smoke test.
 
 ### 2. Scout validation
-- Verify the new `/scout` page against a live API key set and browser-QA the successful search flow.
+- Verify the new `/scout` page against a live API key set and browser-QA the successful search flow once shared-password access is available.
 - Confirm the proxy returns and renders real results, not just mocked contract responses.
 
 ## Open questions for Matt
@@ -76,3 +76,4 @@ Pick up here. Read `docs/04-roadmap.md` for full sprint scope, then:
 | 2026-05-06 | qa (gpt-5.4-mini) | Browser-checked the shared-password login, sign-out, and Scout pages; tightened Scout query label spacing; updated QA docs and screenshots. |
 | 2026-05-06 | merge (gpt-5.4-mini) | Merged feature/shared-password-auth into main after QA verification and pushed the merge commit. |
 | 2026-05-06 | scout-api-proxy (gpt-5.4-mini) | Added the Scout Next.js query UI, `/api/scout` proxy route, and browser-backed error-path checks. Verified with Vitest and Next.js production build; live Scout browser QA remains blocked by the unknown shared password secret. |
+| 2026-05-06 | qa (gpt-5.4-mini) | Attempted browser QA on the Scout feature branch, captured the login gate state, and updated STATUS.md to note that successful end-to-end Scout verification is still pending valid shared-password access. |
