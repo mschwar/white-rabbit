@@ -54,3 +54,23 @@ def test_scout_endpoint_returns_scoped_payload(monkeypatch):
     assert body["leads"][0]["name"] == "Jane Smith"
     assert body["metrics"]["input_tokens"] == 123
     assert body["metrics"]["tavily_searches"] == 1
+
+
+def test_scout_endpoint_forwards_filters(monkeypatch):
+    captured = {}
+
+    async def fake_scout(query: str, **kwargs):
+        captured["query"] = query
+        captured["filters"] = kwargs.get("filters")
+        return [], RunMetrics()
+
+    monkeypatch.setattr("api.main.scout", fake_scout)
+
+    response = client.post(
+        "/scout",
+        json={"query": "K-12 IT directors in Albuquerque", "filters": {"location": "Albuquerque"}},
+    )
+
+    assert response.status_code == 200
+    assert captured["query"] == "K-12 IT directors in Albuquerque"
+    assert captured["filters"] == {"location": "Albuquerque"}

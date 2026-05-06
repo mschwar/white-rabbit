@@ -1,5 +1,6 @@
 import os
 import time
+from collections.abc import Mapping
 from typing import Any
 
 from openai import AsyncOpenAI
@@ -40,6 +41,19 @@ Include a human-readable explanation of your ranking in the 'explanation' field.
 """
 
 
+def _format_filters(filters: Mapping[str, Any] | None) -> str:
+    if not filters:
+        return ""
+
+    lines = ["Filters:"]
+    for key in sorted(filters):
+        value = filters[key]
+        if value in (None, "", []):
+            continue
+        lines.append(f"- {key}: {value}")
+    return "\n".join(lines)
+
+
 async def scout(
     query: str,
     openai_key: str | None = None,
@@ -47,6 +61,7 @@ async def scout(
     model: str = DEFAULT_MODEL,
     max_leads: int = 15,
     *,
+    filters: Mapping[str, Any] | None = None,
     search_fn=fetch_search_results,
     openai_client: Any | None = None,
 ) -> tuple[list[Lead], RunMetrics]:
@@ -63,16 +78,27 @@ async def scout(
     client = openai_client or AsyncOpenAI(api_key=api_key)
 
     try:
-        search_results = await search_fn(query, api_key=tavily_key, max_results=DEFAULT_TAVILY_RESULTS)
+        search_results = await search_fn(
+            query,
+            api_key=tavily_key,
+            max_results=DEFAULT_TAVILY_RESULTS,
+            filters=filters,
+        )
     except Exception as exc:
         raise OrchestratorError(f"Tavily search failed: {exc}") from exc
+
+    filter_context = _format_filters(filters)
+    user_message = [f"Target: {query}"]
+    if filter_context:
+        user_message.extend(["", filter_context])
+    user_message.extend(["", f"Search Results Data: {search_results}"])
 
     try:
         completion = await client.beta.chat.completions.parse(
             model=model,
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": f"Target: {query}\n\nSearch Results Data: {search_results}"},
+                {"role": "user", "content": "\n".join(user_message)},
             ],
             response_format=LeadList,
         )

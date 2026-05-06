@@ -20,22 +20,26 @@ load_dotenv()
 
 app = FastAPI(title="White Rabbit API")
 
+
 class ScoutRequest(BaseModel):
     query: str
     filters: Optional[dict] = None
+
 
 class ScoutResponse(BaseModel):
     leads: list[Lead]
     metrics: RunMetrics
 
+
 @app.get("/health")
 async def health_check():
     return {"status": "ok"}
 
+
 @app.post("/scout", response_model=ScoutResponse)
 async def run_scout(request: ScoutRequest):
     try:
-        leads, metrics = await scout(request.query)
+        leads, metrics = await scout(request.query, filters=request.filters)
         return ScoutResponse(leads=leads, metrics=metrics)
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))

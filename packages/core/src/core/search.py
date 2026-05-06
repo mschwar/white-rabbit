@@ -1,5 +1,7 @@
 import os
+from collections.abc import Mapping
 from typing import Any
+
 import httpx
 
 TAVILY_API_URL = "https://api.tavily.com"
@@ -12,19 +14,21 @@ class TavilySearchError(Exception):
 
 
 async def fetch_search_results(
-    query: str, 
-    api_key: str | None = None, 
+    query: str,
+    api_key: str | None = None,
     max_results: int = 5,
-    search_depth: str = TAVILY_SEARCH_DEPTH
+    search_depth: str = TAVILY_SEARCH_DEPTH,
+    filters: Mapping[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     """Fetch search results from Tavily."""
     key = api_key or os.environ.get("TAVILY_API_KEY")
     if not key:
         raise TavilySearchError("TAVILY_API_KEY not found in environment or arguments")
 
+    search_query = _build_search_query(query, filters)
     params = {
         "api_key": key,
-        "query": query,
+        "query": search_query,
         "max_results": max_results,
         "search_depth": search_depth,
         "include_answer": False,
@@ -48,14 +52,33 @@ async def fetch_search_results(
             raise TavilySearchError(f"Tavily search timed out after {TAVILY_TIMEOUT_SECONDS} seconds")
 
 
+def _build_search_query(query: str, filters: Mapping[str, Any] | None) -> str:
+    if not filters:
+        return query
+
+    filter_bits = []
+    for key in sorted(filters):
+        value = filters[key]
+        if value in (None, "", []):
+            continue
+        filter_bits.append(f"{key}: {value}")
+
+    if not filter_bits:
+        return query
+
+    return f"{query}\n{'; '.join(filter_bits)}"
+
+
 def _clean_results(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Sanitize results to keep context window clean."""
     cleaned = []
     for result in results:
-        cleaned.append({
-            "title": result.get("title", ""),
-            "url": result.get("url", ""),
-            "content": result.get("content", ""),
-            "score": result.get("score", 0.0),
-        })
+        cleaned.append(
+            {
+                "title": result.get("title", ""),
+                "url": result.get("url", ""),
+                "content": result.get("content", ""),
+                "score": result.get("score", 0.0),
+            }
+        )
     return cleaned
