@@ -42,6 +42,10 @@ async def run_scout(request: ScoutRequest):
         leads, metrics = await scout(request.query, filters=request.filters)
         return ScoutResponse(leads=leads, metrics=metrics)
     except OrchestratorError as exc:
-        raise HTTPException(status_code=503, detail=str(exc))
+        import logging
+        logging.getLogger("white_rabbit.api").error("Orchestrator error: %s", exc, exc_info=True)
+        raise HTTPException(status_code=503, detail="The search service is currently unavailable. Please try again later.")
     except Exception as exc:
-        raise HTTPException(status_code=500, detail=str(exc))
+        import logging
+        logging.getLogger("white_rabbit.api").error("Unexpected error: %s", exc, exc_info=True)
+        raise HTTPException(status_code=500, detail="An unexpected error occurred. Please try again later.")

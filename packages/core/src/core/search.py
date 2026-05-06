@@ -40,13 +40,12 @@ def _clean_results(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "content": result.get("content", ""),
             "score": result.get("score", 0.0),
         }
-        if raw_content := result.get("raw_content"):
-            entry["raw_content"] = raw_content
+
         cleaned.append(entry)
     return cleaned
 
 
-def fetch_search_results(
+async def fetch_search_results(
     query: str,
     api_key: str | None = None,
     max_results: int = 10,
@@ -71,8 +70,8 @@ def fetch_search_results(
     }
 
     try:
-        with httpx.Client(timeout=TAVILY_TIMEOUT_SECONDS) as client:
-            response = client.post(f"{TAVILY_API_URL}/search", json=params)
+        async with httpx.AsyncClient(timeout=TAVILY_TIMEOUT_SECONDS) as client:
+            response = await client.post(f"{TAVILY_API_URL}/search", json=params)
             response.raise_for_status()
             data = response.json()
             return _clean_results(data.get("results", []))
