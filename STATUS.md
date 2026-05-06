@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-06 by shared-password-auth session
+**Last updated:** 2026-05-06 by qa session
 **Branch:** feature/shared-password-auth
 **Current sprint:** Sprint 1 (scaffold)
 
@@ -72,3 +72,4 @@ Pick up here. Read `docs/04-roadmap.md` for full sprint scope, then:
 | 2026-05-06 | scout-harness (gpt-5.4-mini) | Added injectable Scout smoke harnesses in core and API, fixed local import bootstraps, and verified core/API/web tests plus runtime imports. |
 | 2026-05-06 | qa (gpt-5.4-mini) | Browser-checked the homepage and docs path, captured screenshots, and found no browser-visible issues. |
 | 2026-05-06 | shared-password-auth (gpt-5.4-mini) | Added shared-password auth middleware, login/logout routes, and protected home/Scout shells. Browser-checked login, invalid-password, home, and Scout flows with screenshots. |
+| 2026-05-06 | qa (gpt-5.4-mini) | Browser-checked the shared-password login, sign-out, and Scout pages; tightened Scout query label spacing; updated QA docs and screenshots. |
