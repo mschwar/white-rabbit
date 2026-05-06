@@ -16,23 +16,29 @@ export default function ScoutPage() {
         <div className="grid gap-4 md:grid-cols-3">
           <section className="rounded-3xl border border-white/10 bg-zinc-950/70 p-6 md:col-span-2">
             <p className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-400">Start a query</p>
-            <form className="mt-4 grid gap-4" action="#" method="post">
-              <label className="space-y-2 text-sm text-zinc-200">
-                <span>What are you looking for?</span>
+            <form className="mt-4 grid gap-5" action="#" method="post">
+              <div className="flex flex-col gap-3 text-sm text-zinc-200">
+                <label className="block font-medium" htmlFor="query">
+                  What are you looking for?
+                </label>
                 <input
                   className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-zinc-50 outline-none ring-0 placeholder:text-zinc-500 focus:border-emerald-400"
                   defaultValue="K-12 IT directors in Albuquerque"
+                  id="query"
                   name="query"
                 />
-              </label>
-              <label className="space-y-2 text-sm text-zinc-200">
-                <span>Where should we look?</span>
+              </div>
+              <div className="flex flex-col gap-3 text-sm text-zinc-200">
+                <label className="block font-medium" htmlFor="location">
+                  Where should we look?
+                </label>
                 <input
                   className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-zinc-50 outline-none ring-0 placeholder:text-zinc-500 focus:border-emerald-400"
                   defaultValue="New Mexico"
+                  id="location"
                   name="location"
                 />
-              </label>
+              </div>
               <button
                 className="inline-flex h-12 items-center justify-center rounded-full bg-emerald-400 px-6 text-sm font-semibold text-emerald-950 transition hover:bg-emerald-300 disabled:cursor-not-allowed disabled:bg-emerald-300/60"
                 disabled
