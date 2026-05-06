@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-06 by gpt-5.4-mini
-**Branch:** feature/sprint2-persistence-recipes
-**Current sprint:** Sprint 2 (persistence + recipes) — in progress
+**Last updated:** 2026-05-06 by Codex
+**Branch:** feature/sprint3-recipe-scoreboard
+**Current sprint:** Sprint 3 (operator scoreboard + sort controls) — in progress, pending meeting reconciliation review
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -48,26 +48,38 @@
 - **Sprint 2: Operator-time logging added.** Full runs now expose a close-run form that records operator minutes through `/api/runs/[run_id]/close`.
 - **Sprint 2: Browser QA completed for the new slice.** Verified Full run save UI, operator-minute close flow, and recipe library rendering in the browser.
 - **Sprint 2: Tests passing.** `npm run build` and `npm test` pass in `apps/web`; `pytest tests -q` passes in `apps/api`.
+- **Sprint 2 merged to `main`.** `main` and `origin/main` are at `feat(sprint2): add recipe library and operator time logging (#6)`.
+- **Sprint 3: Recipe scoreboard added locally.** `/recipes` now shows per-recipe scoreboard metrics: leads returned, usable leads, API cost spent, operator minutes, and derived minutes/cost per usable lead. This work is still uncommitted on `feature/sprint3-recipe-scoreboard`.
+- **Monroe St NE 8 meeting notes recorded.** Transcript, minutes, and executive summary live under `docs/meeting-notes/`.
+- **Build/meeting reconciliation report written.** See `docs/reports/build-meeting-reconciliation-2026-05-06.md`.
 
 ## What's in flight
 
-- GitHub push + merge for `feature/sprint2-persistence-recipes`.
+- Sprint 3 scoreboard work is uncommitted on `feature/sprint3-recipe-scoreboard`: API aggregate endpoint, Next.js proxy route, and recipe-library scoreboard UI.
+- The Monroe St NE 8 meeting adds a likely pre-scoreboard priority check: lead-generation guardrails, 10-query / 100-row sandbox caps, reset/admin behavior, export usability, and customer-data isolation boundaries.
 
-## Next concrete task — Sprint 2 wrap-up
+## Next concrete task — pre-sprint review
 
-- Push the feature branch.
-- Merge to `main`.
-- Update `docs/04-roadmap.md` only if scope changes are needed.
+- Review `docs/reports/build-meeting-reconciliation-2026-05-06.md` before starting the next implementation sprint.
+- Decide whether the Friday Lee/Thomas access target supersedes the remaining Sprint 3 order.
+- If scope changes are accepted, update `docs/04-roadmap.md` before implementation.
 
 ## Open questions for Matt
 
 - Commercial arrangement with Lee and Thomas (free seats / revenue share / equity / content rights). Blocks the design-partner motion. **Not blocking Sprint 1 build, but blocks public usage.**
 - Cost-tracking source of truth: should live API cost figures be pulled from OpenAI/Tavily dashboards, or computed locally from token/call counts? Recommendation: compute locally per-run, reconcile weekly. See `docs/05-reuse.md` note on stale 2025 prices.
+- Access boundary for the Friday guarded version: local handoff, deployed internal URL, or Matt-run sessions?
+- Whether any external customer gets direct sandbox access before the 90-day kill/keep gate. If yes, customer-data isolation needs an explicit boundary first.
+- Sandbox cap semantics: is the 10-query / 1,000-row cap per operator, per customer, per shared app, or per reset window?
+- Export target: raw CSV, Excel-style CSV, HubSpot-ready CSV, or multiple formats?
 
 ## Known issues / risks
 
 - Pricing constants in `packages/core/core/cost.py` updated to 2026-05 estimates. Verify with real dashboard data after first few runs.
 - Next.js 16 warns that `middleware.ts` is deprecated in favor of `proxy.ts`; auth currently works, but a rename is a follow-up if we want to eliminate the warning.
+- `packages/core` test isolation issue: `test_scout_raises_on_missing_openai_key` fails when `OPENAI_API_KEY` is present in the environment because it reaches OpenAI instead of exercising the missing-key branch.
+- Feedback buttons may not be fully usable after Full runs until persisted lead IDs are returned to the web UI; current core `Lead` objects do not include the database `lead.id`.
+- Current app has no server-side lead-generation prompt guardrail and no query/row usage ledger for the meeting's sandbox cap.
 
 ## Session log
 
@@ -86,3 +98,4 @@
 | 2026-05-06 | scout-live-validation (kimi-for-coding) | Completed live end-to-end Scout validation with real API keys. FastAPI returns 3-4 real leads with three scores in ~15s. Browser QA confirmed lead cards render correctly. Created `.env.example` templates. Sprint 1 complete. |
 | 2026-05-06 | qa (kimi-for-coding) | Full browser QA on Scout workspace with gstack browse. Verified login, search form, live results rendering, lead cards with three scores, and no console errors. Health score 100/100. No issues found. |
 | 2026-05-06 | qa (kimi-for-coding) | Browser-QA'd login, home, Scout, and logout flows. Auth works end-to-end. Scout form submits correctly and displays the expected missing-API-key error. Health score 95/100. QA report written to `.gstack/qa-reports/qa-report-white-rabbit-2026-05-06.md`. |
+| 2026-05-06 | build-meeting-reconciliation (Codex) | Checked current build and uncommitted Sprint 3 scoreboard work against Monroe St NE 8 meeting notes. Wrote `docs/reports/build-meeting-reconciliation-2026-05-06.md`, updated STATUS, and verified web/API checks. Core test suite has one env-isolation failure. |
