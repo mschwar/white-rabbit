@@ -14,7 +14,7 @@ for candidate in (CORE_SRC, REPO_ROOT):
 
 from core.cost import RunMetrics
 from core.models import Lead
-from core.orchestrator import scout
+from core.orchestrator import scout, OrchestratorError
 
 load_dotenv()
 
@@ -41,5 +41,7 @@ async def run_scout(request: ScoutRequest):
     try:
         leads, metrics = await scout(request.query, filters=request.filters)
         return ScoutResponse(leads=leads, metrics=metrics)
+    except OrchestratorError as exc:
+        raise HTTPException(status_code=503, detail=str(exc))
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))
