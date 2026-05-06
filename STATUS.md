@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-06 by scout-harness session
+**Last updated:** 2026-05-06 by scout-harness QA session
 **Branch:** feature/scout-harness
 **Current sprint:** Sprint 1 (scaffold)
 
@@ -69,3 +69,4 @@ Pick up here. Read `docs/04-roadmap.md` for full sprint scope, then:
 | 2026-05-05 | bootstrap (Opus 4.7) | Repo bootstrapped. All 10 priority docs written. git init + first commit. Next: Sprint 1 scaffold. |
 | 2026-05-05 | api-scaffold (Opus 4.7) | Scaffolded apps/api and packages/core. Lifted and adapted code from proxy-lead. Passed health check tests. |
 | 2026-05-06 | scout-harness (gpt-5.4-mini) | Added injectable Scout smoke harnesses in core and API, fixed local import bootstraps, and verified core/API/web tests plus runtime imports. |
+| 2026-05-06 | qa (gpt-5.4-mini) | Browser-checked the homepage and docs path, captured screenshots, and found no browser-visible issues. |
