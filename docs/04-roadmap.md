@@ -118,9 +118,9 @@ This is a sketch. Sprint 2 may refine. Refinements append a new ADR.
 
 **In scope.**
 
-- CSV / JSON ingestion of multiple queries.
-- Sequential execution with the cap structure (caps on source searches, extracted pages, LLM calls, elapsed time, estimated spend).
-- Per-batch summary.
+1. CSV / JSON ingestion of multiple queries. Shipped in `feature/sprint4-batch-bulk`.
+2. Sequential execution with the cap structure (caps on source searches, extracted pages, LLM calls, elapsed time, estimated spend). Shipped in `feature/sprint4-batch-bulk`.
+3. Per-batch summary. Shipped in `feature/sprint4-batch-bulk`.
 
 ---
 

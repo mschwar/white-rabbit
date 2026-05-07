@@ -7,6 +7,8 @@ from sqlalchemy.orm import Session
 
 from api.models import (
     Base,
+    BatchJob,
+    BatchRun,
     Lead,
     LeadFeedback,
     Recipe,
@@ -181,3 +183,88 @@ def get_recipe_scoreboard(session: Session, recipe_id: UUID) -> dict[str, Any] |
         "api_cost_per_usable_lead": (total_api_cost_usd / usable_lead_count) if usable_lead_count else None,
         "feedback_counts": feedback_counts,
     }
+
+
+def create_batch_job(
+    session: Session,
+    name: str,
+    cap_queries: int = 10,
+    cap_max_leads: int = 1000,
+    cap_max_spend_usd: float = 10.0,
+) -> BatchJob:
+    job = BatchJob(
+        name=name,
+        cap_queries=cap_queries,
+        cap_max_leads=cap_max_leads,
+        cap_max_spend_usd=cap_max_spend_usd,
+    )
+    session.add(job)
+    session.flush()
+    return job
+
+
+def create_batch_run(
+    session: Session,
+    batch_job_id: UUID,
+    query: str,
+) -> BatchRun:
+    run = BatchRun(batch_job_id=batch_job_id, query=query)
+    session.add(run)
+    session.flush()
+    return run
+
+
+def update_batch_run(
+    session: Session,
+    run_id: UUID,
+    *,
+    status: str | None = None,
+    recipe_id: UUID | None = None,
+    lead_count: int | None = None,
+    cost_usd: float | None = None,
+    error_message: str | None = None,
+) -> BatchRun | None:
+    run = session.query(BatchRun).filter(BatchRun.id == run_id).first()
+    if run is None:
+        return None
+    if status is not None:
+        run.status = status
+    if recipe_id is not None:
+        run.recipe_id = recipe_id
+    if lead_count is not None:
+        run.lead_count = lead_count
+    if cost_usd is not None:
+        run.cost_usd = cost_usd
+    if error_message is not None:
+        run.error_message = error_message
+    return run
+
+
+def close_batch_job(
+    session: Session,
+    job_id: UUID,
+    *,
+    status: str,
+    total_cost_usd: float,
+    total_leads: int,
+) -> BatchJob | None:
+    job = session.query(BatchJob).filter(BatchJob.id == job_id).first()
+    if job is None:
+        return None
+    job.status = status
+    job.ended_at = datetime.utcnow()
+    job.total_cost_usd = total_cost_usd
+    job.total_leads = total_leads
+    return job
+
+
+def get_batch_job(session: Session, job_id: UUID) -> BatchJob | None:
+    return session.query(BatchJob).filter(BatchJob.id == job_id).first()
+
+
+def get_batch_runs(session: Session, job_id: UUID) -> list[BatchRun]:
+    return session.query(BatchRun).filter(BatchRun.batch_job_id == job_id).order_by(BatchRun.started_at).all()
+
+
+def list_batch_jobs(session: Session) -> list[BatchJob]:
+    return session.query(BatchJob).order_by(BatchJob.created_at.desc()).all()
