@@ -51,6 +51,7 @@
 - **Sprint 2 merged to `main`.** `main` and `origin/main` are at `feat(sprint2): add recipe library and operator time logging (#6)`.
 - **Sprint 3: Recipe scoreboard added and QA verified.** `/recipes` now shows per-recipe scoreboard metrics: leads returned, usable leads, API cost spent, operator minutes, and derived minutes/cost per usable lead. Browser QA on `localhost:3003` confirmed the recipe list, scoreboard tiles, and run history render correctly.
 - **Sprint 3: Sort-by-score controls added and QA verified.** `/scout` now lets the operator sort by original rank, Fit, Evidence, Contact, or pass/fail gate. Browser QA on `localhost:3004` confirmed the select control and sorted lead order.
+- **Sprint 3: Sort controls re-verified in browser.** Current QA pass confirmed the selector still works on the live workspace and produced `.gstack/qa-reports/qa-report-white-rabbit-2026-05-06-sort-controls.md`.
 - **Sprint 3 merged to `main`.** The scoreboard feature, docs updates, and QA report are merged and pushed.
 - **Monroe St NE 8 meeting notes recorded.** Transcript, minutes, and executive summary live under `docs/meeting-notes/`.
 - **Build/meeting reconciliation report written.** See `docs/reports/build-meeting-reconciliation-2026-05-06.md`.
