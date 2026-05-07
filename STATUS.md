@@ -62,11 +62,11 @@
 - **Sprint 4 follow-up: Full-run lead export added.** Scout Full runs now build a downloadable CSV export with query, recipe, run metadata, scores, gate status, explanation, and validation context. Browser QA confirmed the export link renders in the live workspace.
 ## What's in flight
 
-- Sprint 4 batch/bulk is merged to `main` and the handoff is complete.
+- `feature/full-lead-export` is pushed and ready for review/merge.
 
 ## Next concrete task
 
-- Watch for any post-merge feedback, then pick up the next sprint slice from `docs/04-roadmap.md`.
+- Merge `feature/full-lead-export` to `main` after review, then pick up the next sprint slice from `docs/04-roadmap.md`.
 
 ## Open questions for Matt
     72|
