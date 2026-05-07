@@ -121,6 +121,7 @@ This is a sketch. Sprint 2 may refine. Refinements append a new ADR.
 1. CSV / JSON ingestion of multiple queries. Shipped in `feature/sprint4-batch-bulk`.
 2. Sequential execution with the cap structure (caps on source searches, extracted pages, LLM calls, elapsed time, estimated spend). Shipped in `feature/sprint4-batch-bulk`.
 3. Per-batch summary. Shipped in `feature/sprint4-batch-bulk`.
+4. Full-run lead export from the Scout workspace: downloadable CSV with query, recipe, run metadata, scores, gate status, explanation, and validation context. Shipped in `feature/full-lead-export`.
 
 ---
 

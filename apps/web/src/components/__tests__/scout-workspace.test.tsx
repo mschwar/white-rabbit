@@ -144,8 +144,6 @@ expect(screen.getAllByRole('heading', { level: 3 }).map((heading) => heading.tex
 ]);
 });
 
-
-
 test('shows guardrail guidance for a lead query that needs more detail', async () => {
   const fetchMock = vi.fn().mockResolvedValue(
     new Response(
@@ -186,6 +184,79 @@ test('shows guardrail guidance for a lead query that needs more detail', async (
   expect(screen.getByText(/add a title or role/i)).toBeDefined();
 });
 
+test('builds a CSV export from a full run', async () => {
+  const fetchMock = vi.fn((input: RequestInfo | URL) => {
+    const url = input.toString();
+
+    if (url.endsWith('/api/full')) {
+      return Promise.resolve(
+        new Response(
+          JSON.stringify({
+            run_id: 'run-1',
+            recipe_id: 'recipe-1',
+            leads: [
+              {
+                name: 'Jane Smith',
+                title: 'Director of Technology',
+                organization: 'Albuquerque Public Schools',
+                email: 'jane.smith@aps.edu',
+                email_status: 'Found',
+                source_url: 'https://aps.edu/tech',
+                confidence: 0.88,
+                why_target: 'Owns district telecom decisions',
+                icebreaker: 'I noticed APS is growing its classroom connectivity needs.',
+                fit_score: 0.91,
+                evidence_score: 0.84,
+                contact_score: 0.79,
+                gate_passed: true,
+                explanation: 'Strong district fit with current leadership evidence and usable email.',
+              },
+            ],
+            metrics: {
+              input_tokens: 123,
+              output_tokens: 45,
+              tavily_searches: 1,
+              openai_web_searches: 0,
+              elapsed_seconds: 1.23,
+              estimated_cost_usd: 0.010123,
+            },
+            query_guardrail: null,
+          }),
+          { status: 200, headers: { 'content-type': 'application/json' } },
+        ),
+      );
+    }
+
+    return Promise.resolve(new Response('not found', { status: 404 }));
+  });
+
+  vi.stubGlobal('fetch', fetchMock);
+
+  render(<ScoutWorkspace />);
+
+  fireEvent.click(screen.getByRole('button', { name: /^full$/i }));
+  fireEvent.change(screen.getByLabelText(/recipe name/i), {
+    target: { value: 'District leadership' },
+  });
+  fireEvent.change(screen.getByLabelText(/prospecting query/i), {
+    target: { value: 'K-12 IT directors in Albuquerque' },
+  });
+  fireEvent.change(screen.getByLabelText(/location/i), {
+    target: { value: 'New Mexico' },
+  });
+  fireEvent.click(screen.getByRole('button', { name: /run full search/i }));
+
+  await waitFor(() => expect(fetchMock).toHaveBeenCalledWith('/api/full', expect.any(Object)));
+  expect(await screen.findByText(/full run saved/i)).toBeDefined();
+
+  fireEvent.click(screen.getByRole('button', { name: /build lead export/i }));
+
+  expect(await screen.findByRole('link', { name: /download csv/i })).toHaveAttribute(
+    'download',
+    expect.stringMatching(/^white-rabbit-lead-export-\d{4}-\d{2}-\d{2}\.csv$/),
+  );
+  expect(screen.getByText(/includes query, recipe, run metadata, scores, gate status, explanation, and validation context/i)).toBeDefined();
+});
 
 test('shows a validation message for blank queries', async () => {
   vi.stubGlobal('fetch', vi.fn());
@@ -197,4 +268,3 @@ test('shows a validation message for blank queries', async () => {
 
   expect(await screen.findByText(/enter a query before searching/i)).toBeDefined();
 });
-
