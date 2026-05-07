@@ -16,6 +16,7 @@ for candidate in (CORE_SRC, REPO_ROOT):
 from core.cost import RunMetrics
 from core.models import Lead
 from core.orchestrator import scout, OrchestratorError
+from core.query_guardrails import QueryGuardrailResult, evaluate_query_guardrails
 
 from api.db import (
     init_db,
@@ -60,6 +61,7 @@ class FullRequest(BaseModel):
 class ScoutResponse(BaseModel):
     leads: list[Lead]
     metrics: RunMetrics
+    query_guardrail: QueryGuardrailResult | None = None
 
 
 class FullResponse(BaseModel):
@@ -67,6 +69,7 @@ class FullResponse(BaseModel):
     leads: list[Lead]
     metrics: RunMetrics
     recipe_id: UUID | None = None
+    query_guardrail: QueryGuardrailResult | None = None
 
 
 class FeedbackRequest(BaseModel):
@@ -109,6 +112,16 @@ class RecipeScoreboardOut(BaseModel):
     model_config = {"from_attributes": True}
 
 
+def _query_guardrail_or_422(query: str) -> QueryGuardrailResult:
+    guardrail = evaluate_query_guardrails(query)
+    if guardrail.status == 'blocked':
+        raise HTTPException(
+            status_code=422,
+            detail={'error': guardrail.message, 'query_guardrail': guardrail.model_dump()},
+        )
+    return guardrail
+
+
 @app.get("/health")
 async def health_check():
     return {"status": "ok"}
@@ -116,9 +129,10 @@ async def health_check():
 
 @app.post("/scout", response_model=ScoutResponse)
 async def run_scout(request: ScoutRequest):
+    guardrail = _query_guardrail_or_422(request.query)
     try:
         leads, metrics = await scout(request.query, filters=request.filters)
-        return ScoutResponse(leads=leads, metrics=metrics)
+        return ScoutResponse(leads=leads, metrics=metrics, query_guardrail=guardrail if guardrail.status != 'clear' else None)
     except OrchestratorError as exc:
         import logging
         logging.getLogger("white_rabbit.api").error("Orchestrator error: %s", exc, exc_info=True)
@@ -132,6 +146,7 @@ async def run_scout(request: ScoutRequest):
 @app.post("/full", response_model=FullResponse)
 async def run_full(request: FullRequest):
     """Run a Full query: produces a stored recipe and recipe_run."""
+    guardrail = _query_guardrail_or_422(request.query)
     try:
         leads, metrics = await scout(request.query, filters=request.filters, max_leads=100)
     except OrchestratorError as exc:
@@ -170,6 +185,7 @@ async def run_full(request: FullRequest):
             leads=leads,
             metrics=metrics,
             recipe_id=recipe.id,
+            query_guardrail=guardrail if guardrail.status != 'clear' else None,
         )
 
 
@@ -303,6 +319,29 @@ async def run_batch(request: BatchRequest):
             batch_run.status = "running"
             batch_run.started_at = datetime.utcnow()
             session.flush()
+
+            guardrail = evaluate_query_guardrails(item.query)
+            if guardrail.status == 'blocked':
+                batch_run.status = "failed"
+                batch_run.error_message = guardrail.message
+                batch_run.ended_at = datetime.utcnow()
+                update_batch_run(
+                    session,
+                    batch_run.id,
+                    status="failed",
+                    error_message=guardrail.message,
+                )
+                run_records.append(
+                    BatchRunOut(
+                        id=batch_run.id,
+                        query=item.query,
+                        status="failed",
+                        lead_count=0,
+                        cost_usd=0.0,
+                        error_message=guardrail.message,
+                    )
+                )
+                continue
 
             try:
                 leads, metrics = await scout(

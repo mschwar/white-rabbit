@@ -146,6 +146,47 @@ expect(screen.getAllByRole('heading', { level: 3 }).map((heading) => heading.tex
 
 
 
+test('shows guardrail guidance for a lead query that needs more detail', async () => {
+  const fetchMock = vi.fn().mockResolvedValue(
+    new Response(
+      JSON.stringify({
+        leads: [],
+        metrics: {
+          input_tokens: 0,
+          output_tokens: 0,
+          tavily_searches: 0,
+          openai_web_searches: 0,
+          elapsed_seconds: 0.12,
+          estimated_cost_usd: 0,
+        },
+        query_guardrail: {
+          status: 'needs_more_detail',
+          message: 'This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.',
+          suggestions: ['Add a title or role, such as director, manager, VP, or owner.'],
+          missing_criteria: ['target title or role', 'company type or vertical', 'location'],
+        },
+      }),
+      {
+        status: 200,
+        headers: { 'content-type': 'application/json' },
+      },
+    ),
+  );
+  vi.stubGlobal('fetch', fetchMock);
+
+  render(<ScoutWorkspace />);
+
+  fireEvent.change(screen.getByLabelText(/prospecting query/i), {
+    target: { value: 'IT directors' },
+  });
+  fireEvent.click(screen.getByRole('button', { name: /run scout search/i }));
+
+  await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+  expect(await screen.findByText(/query could be tighter/i)).toBeDefined();
+  expect(screen.getByText(/add a title or role/i)).toBeDefined();
+});
+
+
 test('shows a validation message for blank queries', async () => {
   vi.stubGlobal('fetch', vi.fn());
 
@@ -156,3 +197,4 @@ test('shows a validation message for blank queries', async () => {
 
   expect(await screen.findByText(/enter a query before searching/i)).toBeDefined();
 });
+

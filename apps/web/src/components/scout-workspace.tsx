@@ -29,6 +29,7 @@ export default function ScoutWorkspace() {
   const [mode, setMode] = useState<Mode>('scout');
   const [results, setResults] = useState<ScoutResponse | null>(null);
   const [fullResult, setFullResult] = useState<FullResponse | null>(null);
+  const [queryGuardrail, setQueryGuardrail] = useState<ScoutResponse['query_guardrail']>(null);
   const [operatorMinutes, setOperatorMinutes] = useState('');
   const [closeMessage, setCloseMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -54,6 +55,7 @@ export default function ScoutWorkspace() {
     setError(null);
     setResults(null);
     setFullResult(null);
+    setQueryGuardrail(null);
 
     try {
       const endpoint = mode === 'scout' ? '/api/scout' : '/api/full';
@@ -66,26 +68,43 @@ export default function ScoutWorkspace() {
       });
 
       if (!response.ok) {
+        const bodyText = await response.text();
         let message = `Search failed (${response.status}).`;
-        try {
-          const body = (await response.json()) as { error?: string; detail?: string };
-          message = body.error ?? body.detail ?? message;
-        } catch {
-          const text = await response.text();
-          if (text) {
-            message = text;
+        let guardrail: ScoutResponse['query_guardrail'] = null;
+
+        if (bodyText) {
+          try {
+            const body = JSON.parse(bodyText) as {
+              error?: string;
+              detail?: unknown;
+              query_guardrail?: ScoutResponse['query_guardrail'];
+            };
+            guardrail = body.query_guardrail ?? null;
+            if (typeof body.detail === 'string') {
+              message = body.detail;
+            } else if (body.detail && typeof body.detail === 'object') {
+              const detail = body.detail as { error?: string; detail?: unknown };
+              message = detail.error ?? message;
+            }
+            message = body.error ?? message;
+          } catch {
+            message = bodyText;
           }
         }
+
+        setQueryGuardrail(guardrail);
         throw new Error(message);
       }
 
       if (mode === 'scout') {
         const data = (await response.json()) as ScoutResponse;
         setResults(data);
+        setQueryGuardrail(data.query_guardrail ?? null);
       } else {
         const data = (await response.json()) as FullResponse;
         setFullResult(data);
-        setResults({ leads: data.leads, metrics: data.metrics });
+        setResults({ leads: data.leads, metrics: data.metrics, query_guardrail: data.query_guardrail ?? null });
+        setQueryGuardrail(data.query_guardrail ?? null);
         setCloseMessage(null);
       }
     } catch (err) {
@@ -231,6 +250,33 @@ export default function ScoutWorkspace() {
             </ul>
           </aside>
         </div>
+
+        {queryGuardrail && queryGuardrail.status !== 'clear' ? (
+          <div
+            className={`rounded-2xl border px-4 py-3 text-sm ${
+              queryGuardrail.status === 'blocked'
+                ? 'border-rose-500/30 bg-rose-500/10 text-rose-100'
+                : 'border-amber-500/30 bg-amber-500/10 text-amber-100'
+            }`}
+          >
+            <p className="font-semibold">
+              {queryGuardrail.status === 'blocked' ? 'Lead-list guardrail' : 'Query could be tighter'}
+            </p>
+            <p className="mt-1 leading-6">{queryGuardrail.message}</p>
+            {queryGuardrail.missing_criteria.length > 0 ? (
+              <p className="mt-2 text-xs uppercase tracking-[0.18em] text-current/80">
+                Missing: {queryGuardrail.missing_criteria.join(', ')}
+              </p>
+            ) : null}
+            {queryGuardrail.suggestions.length > 0 ? (
+              <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-6">
+                {queryGuardrail.suggestions.map((suggestion) => (
+                  <li key={suggestion}>{suggestion}</li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
+        ) : null}
 
         {fullResult && (
           <div className="space-y-3 rounded-2xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200">

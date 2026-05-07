@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { resolveScoutApiUrl, type ScoutRequestPayload } from '@/lib/scout';
+import { resolveScoutApiUrl, type QueryGuardrailResult, type ScoutRequestPayload } from '@/lib/scout';
 
 export const runtime = 'nodejs';
 
@@ -24,19 +24,34 @@ function parseJsonBody(body: unknown): ScoutRequestPayload {
   return filters ? { query, filters } : { query };
 }
 
-async function readErrorMessage(response: Response): Promise<string> {
+async function readErrorPayload(response: Response): Promise<Record<string, unknown>> {
   const contentType = response.headers.get('content-type') ?? '';
   if (contentType.includes('application/json')) {
     try {
-      const body = (await response.json()) as { detail?: string; error?: string };
-      return body.error ?? body.detail ?? `Scout API failed (${response.status}).`;
+      const body = (await response.json()) as {
+        error?: string;
+        detail?: unknown;
+        query_guardrail?: QueryGuardrailResult;
+      };
+
+      if (body.query_guardrail || body.error) {
+        return body as Record<string, unknown>;
+      }
+
+      if (body.detail && typeof body.detail === 'object') {
+        return body.detail as Record<string, unknown>;
+      }
+
+      if (typeof body.detail === 'string') {
+        return { error: body.detail };
+      }
     } catch {
-      return `Scout API failed (${response.status}).`;
+      return { error: `Scout API failed (${response.status}).` };
     }
   }
 
   const text = await response.text();
-  return text || `Scout API failed (${response.status}).`;
+  return { error: text || `Scout API failed (${response.status}).` };
 }
 
 export async function POST(request: NextRequest) {
@@ -66,8 +81,8 @@ export async function POST(request: NextRequest) {
   }
 
   if (!upstreamResponse.ok) {
-    const message = await readErrorMessage(upstreamResponse);
-    return NextResponse.json({ error: message }, { status: upstreamResponse.status });
+    const payload = await readErrorPayload(upstreamResponse);
+    return NextResponse.json(payload, { status: upstreamResponse.status });
   }
 
   const responseBody = await upstreamResponse.json();

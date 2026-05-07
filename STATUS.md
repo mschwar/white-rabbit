@@ -106,3 +106,4 @@
 | 2026-05-06 | merge (gpt-5.4-mini) | Merged feature/sprint3-recipe-scoreboard into `main` after browser QA, updated STATUS, and pushed `origin/main`. |
 | 2026-05-07 | sprint4-batch-bulk (gpt-5.4-mini) | Added batch jobs/runs, POST /batch, batch UI/proxy/helpers, and tests. Fixed the cap test by making the mock job reflect requested caps. Verified API tests, Next.js build, and browser QA on /batch. |
 | 2026-05-07 | qa (gpt-5.4-mini) | Re-verified the batch workspace in the browser, confirmed batch submission renders the result card and updated history, captured screenshots, and wrote the QA report. |
+| 2026-05-07 | qa (gpt-5.4-mini) | Browser-validated the lead query guardrails slice on a clean next start, confirmed valid, vague, and blank queries behave correctly, and added a regression test for plain-text API failures. |
