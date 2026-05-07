@@ -15,6 +15,11 @@ import {
   type ScoutResponse,
   type FullResponse,
 } from '@/lib/scout';
+import {
+  buildFullLeadExportCsv,
+  buildFullLeadExportFilename,
+  buildFullLeadExportRows,
+} from '@/lib/full-export';
 
 function formatElapsedSeconds(seconds: number): string {
   return `${seconds.toFixed(2)}s`;
@@ -36,6 +41,15 @@ export default function ScoutWorkspace() {
   const [isLoading, setIsLoading] = useState(false);
   const [sortMode, setSortMode] = useState<LeadSortMode>('rank');
   const [isClosing, setIsClosing] = useState(false);
+  const [leadExport, setLeadExport] = useState<{
+    filename: string;
+    csvDataUrl: string;
+    generatedAtLabel: string;
+    rowCount: number;
+  } | null>(null);
+  const [submittedQuery, setSubmittedQuery] = useState<string | null>(null);
+  const [submittedLocation, setSubmittedLocation] = useState<string | null>(null);
+  const [submittedRecipeName, setSubmittedRecipeName] = useState<string | null>(null);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -51,10 +65,18 @@ export default function ScoutWorkspace() {
       return;
     }
 
+    const submittedQuery = payload.query;
+    const submittedLocation = payload.filters?.location ?? '';
+    const submittedRecipeName = payload.recipe_name ?? payload.query;
+
     setIsLoading(true);
     setError(null);
     setResults(null);
     setFullResult(null);
+    setLeadExport(null);
+    setSubmittedQuery(null);
+    setSubmittedLocation(null);
+    setSubmittedRecipeName(null);
     setQueryGuardrail(null);
 
     try {
@@ -106,6 +128,9 @@ export default function ScoutWorkspace() {
         setResults({ leads: data.leads, metrics: data.metrics, query_guardrail: data.query_guardrail ?? null });
         setQueryGuardrail(data.query_guardrail ?? null);
         setCloseMessage(null);
+        setSubmittedQuery(submittedQuery);
+        setSubmittedLocation(submittedLocation);
+        setSubmittedRecipeName(submittedRecipeName);
       }
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Search failed.';
@@ -138,6 +163,32 @@ export default function ScoutWorkspace() {
     } finally {
       setIsClosing(false);
     }
+  }
+
+  async function handleBuildLeadExport() {
+    if (!fullResult || !displayedResults) {
+      return;
+    }
+
+    const generatedAt = new Date();
+    const exportRows = buildFullLeadExportRows({
+      query: submittedQuery ?? query,
+      location: submittedLocation ?? location,
+      recipeName: submittedRecipeName ?? (recipeName || query),
+      runId: fullResult.run_id,
+      sortMode,
+      leads: displayedLeads,
+      guardrail: fullResult.query_guardrail ?? null,
+      generatedAt,
+    });
+
+    const csv = buildFullLeadExportCsv(exportRows);
+    setLeadExport({
+      filename: buildFullLeadExportFilename(generatedAt),
+      csvDataUrl: `data:text/csv;charset=utf-8,${encodeURIComponent(csv)}`,
+      generatedAtLabel: generatedAt.toLocaleString(),
+      rowCount: exportRows.length,
+    });
   }
 
   const displayedResults = results;
@@ -303,11 +354,36 @@ export default function ScoutWorkspace() {
               >
                 {isClosing ? 'Closing…' : 'Close run'}
               </button>
+              <button
+                className="rounded-full border border-emerald-300/30 bg-white/5 px-4 py-2 text-sm font-semibold text-emerald-100 transition hover:bg-emerald-400/10"
+                onClick={handleBuildLeadExport}
+                type="button"
+              >
+                {leadExport ? 'Rebuild export' : 'Build lead export'}
+              </button>
               <a className="text-sm underline decoration-emerald-300/40 underline-offset-4" href="/recipes">
                 Open recipe library
               </a>
             </div>
             {closeMessage ? <p className="text-xs text-emerald-100">{closeMessage}</p> : null}
+            {leadExport ? (
+              <div className="rounded-2xl border border-white/10 bg-zinc-950/70 px-4 py-3 text-sm text-zinc-200">
+                <p className="font-semibold text-zinc-50">Lead export ready</p>
+                <p className="mt-1 text-zinc-300">
+                  {leadExport.rowCount} leads · generated {leadExport.generatedAtLabel}
+                </p>
+                <a
+                  className="mt-3 inline-flex rounded-full border border-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-50 transition hover:bg-white/10"
+                  download={leadExport.filename}
+                  href={leadExport.csvDataUrl}
+                >
+                  Download CSV
+                </a>
+                <p className="mt-2 text-xs leading-6 text-zinc-400">
+                  Includes query, recipe, run metadata, scores, gate status, explanation, and validation context.
+                </p>
+              </div>
+            ) : null}
           </div>
         )}
 

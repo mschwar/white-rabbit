@@ -1,8 +1,8 @@
      1|# STATUS
      2|
 **Last updated:** 2026-05-07 by Codex
-**Branch:** main
-**Current sprint:** Sprint 4 (batch/bulk) — batch workspace, API, and tests merged to main after browser QA
+**Branch:** feature/full-lead-export
+**Current sprint:** Sprint 4 follow-up — Full-run lead export on the Scout workspace
      6|
      7|> Update this file at the end of every session. It is the source of truth for "where we are."
      8|
@@ -56,16 +56,17 @@
     56|- **Sprint 3 merged to `main`.** The scoreboard feature, docs updates, and QA report are merged and pushed.
     57|- **Sprint 3: Friday recipe-review export added and QA verified.** `/recipes` now exposes a Friday export card with CSV download and printable markdown preview. Browser QA on `localhost:3005` confirmed the export builds and the review packet renders.
     58|- **Sprint 3 merged to `main`.** The Friday export feature, docs updates, and QA report are merged and pushed.
-    59|- **Sprint 4: Batch/bulk workspace and API added.** Batch jobs and runs persist in Postgres, the API exposes `POST /batch`, and the web app now has a batch page, proxy route, and batch helpers/UI.
-    60|- **Sprint 4: Batch API tests passing.** `pytest tests -q` passes in `apps/api`.
-    61|- **Sprint 4: Browser QA completed.** Logged in to the web app, opened `/batch`, submitted a batch run, and verified the result card and run summaries render correctly.
+- **Sprint 4: Batch/bulk workspace and API added.** Batch jobs and runs persist in Postgres, the API exposes `POST /batch`, and the web app now has a batch page, proxy route, and batch helpers/UI.
+- **Sprint 4: Batch API tests passing.** `pytest tests -q` passes in `apps/api`.
+- **Sprint 4: Browser QA completed.** Logged in to the web app, opened `/batch`, submitted a batch run, and verified the result card and run summaries render correctly.
+- **Sprint 4 follow-up: Full-run lead export added.** Scout Full runs now build a downloadable CSV export with query, recipe, run metadata, scores, gate status, explanation, and validation context. Browser QA confirmed the export link renders in the live workspace.
 ## What's in flight
 
-- Sprint 4 batch/bulk is merged to `main` and the handoff is complete.
+- `feature/full-lead-export` is pushed and ready for review/merge.
 
 ## Next concrete task
 
-- Watch for any post-merge feedback, then pick up the next sprint slice from `docs/04-roadmap.md`.
+- Merge `feature/full-lead-export` to `main` after review, then pick up the next sprint slice from `docs/04-roadmap.md`.
 
 ## Open questions for Matt
     72|
@@ -107,3 +108,5 @@
 | 2026-05-07 | sprint4-batch-bulk (gpt-5.4-mini) | Added batch jobs/runs, POST /batch, batch UI/proxy/helpers, and tests. Fixed the cap test by making the mock job reflect requested caps. Verified API tests, Next.js build, and browser QA on /batch. |
 | 2026-05-07 | qa (gpt-5.4-mini) | Re-verified the batch workspace in the browser, confirmed batch submission renders the result card and updated history, captured screenshots, and wrote the QA report. |
 | 2026-05-07 | qa (gpt-5.4-mini) | Browser-validated the lead query guardrails slice on a clean next start, confirmed valid, vague, and blank queries behave correctly, and added a regression test for plain-text API failures. |
+| 2026-05-07 | full-lead-export (gpt-5.4-mini) | Added Full-run CSV lead export helpers, wired the Scout workspace export button and download link, added tests, verified with Next.js build, Vitest, and browser QA, and pushed the feature branch. |
+| 2026-05-07 | qa (gpt-5.4-mini) | Browser-verified the full lead export flow on the feature branch: Scout search, Full search, export generation, run closeout, and recipe library scoreboard all rendered correctly. Captured browser screenshots and checked for console errors. |
