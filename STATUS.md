@@ -1,8 +1,8 @@
      1|# STATUS
      2|
-**Last updated:** 2026-05-07 by Codex
-**Branch:** feature/full-lead-export
-**Current sprint:** Sprint 4 follow-up — Full-run lead export on the Scout workspace
+**Last updated:** 2026-05-07 by kimi-for-coding
+**Branch:** main
+**Current sprint:** Sprint 4 complete — Sandbox caps merged
      6|
      7|> Update this file at the end of every session. It is the source of truth for "where we are."
      8|
@@ -60,6 +60,7 @@
 - **Sprint 4: Batch API tests passing.** `pytest tests -q` passes in `apps/api`.
 - **Sprint 4: Browser QA completed.** Logged in to the web app, opened `/batch`, submitted a batch run, and verified the result card and run summaries render correctly.
 - **Sprint 4 follow-up: Full-run lead export added.** Scout Full runs now build a downloadable CSV export with query, recipe, run metadata, scores, gate status, explanation, and validation context. Browser QA confirmed the export link renders in the live workspace.
+- **Sprint 4 follow-up: Sandbox caps merged.** Query/row caps (10 queries / 1000 rows) with reset and usage tracking. API enforces caps on Scout, Full, and Batch. Web UI shows quota card with reset button. Tests updated for sandbox fetch on mount.
 ## What's in flight
 
 - None. `feature/full-lead-export` has been merged to `main`.
