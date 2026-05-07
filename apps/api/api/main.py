@@ -28,6 +28,7 @@ from api.db import (
     get_recipe_runs,
     get_leads_for_run,
     add_lead_feedback,
+    get_recipe_scoreboard,
 )
 
 load_dotenv()
@@ -83,6 +84,20 @@ class RecipeRunOut(BaseModel):
     ended_at: str | None = None
     operator_minutes: float | None = None
     lead_count: int
+
+    model_config = {"from_attributes": True}
+
+
+class RecipeScoreboardOut(BaseModel):
+    recipe_id: UUID
+    recipe_name: str
+    total_api_cost_usd: float
+    total_leads_returned: int
+    usable_lead_count: int
+    total_operator_minutes: float
+    minutes_per_usable_lead: float | None = None
+    api_cost_per_usable_lead: float | None = None
+    feedback_counts: dict[str, int]
 
     model_config = {"from_attributes": True}
 
@@ -183,6 +198,15 @@ async def list_recipe_runs(recipe_id: UUID):
             )
             for r in runs
         ]
+
+
+@app.get("/recipes/{recipe_id}/scoreboard", response_model=RecipeScoreboardOut)
+async def recipe_scoreboard(recipe_id: UUID):
+    with get_db_session() as session:
+        scoreboard = get_recipe_scoreboard(session, recipe_id)
+        if not scoreboard:
+            raise HTTPException(status_code=404, detail="Recipe not found")
+        return RecipeScoreboardOut(**scoreboard)
 
 
 @app.post("/leads/{lead_id}/feedback")

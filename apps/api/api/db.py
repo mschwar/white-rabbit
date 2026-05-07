@@ -141,3 +141,43 @@ def close_recipe_run(
         run.ended_at = datetime.utcnow()
         run.operator_minutes = operator_minutes
     return run
+
+
+def get_recipe_scoreboard(session: Session, recipe_id: UUID) -> dict[str, Any] | None:
+    recipe = get_recipe_by_id(session, recipe_id)
+    if recipe is None:
+        return None
+
+    runs = get_recipe_runs(session, recipe_id=recipe_id)
+    total_api_cost_usd = 0.0
+    total_operator_minutes = 0.0
+    total_leads_returned = 0
+    usable_lead_count = 0
+    feedback_counts: dict[str, int] = {}
+
+    for run in runs:
+        total_leads_returned += run.lead_count or 0
+        if run.operator_minutes is not None:
+            total_operator_minutes += run.operator_minutes
+        total_api_cost_usd += float((run.api_cost_breakdown or {}).get("estimated_cost_usd", 0) or 0)
+
+        for lead in get_leads_for_run(session, run.id):
+            feedback = session.query(LeadFeedback).filter(LeadFeedback.lead_id == lead.id).first()
+            if feedback is None:
+                continue
+
+            feedback_counts[feedback.label] = feedback_counts.get(feedback.label, 0) + 1
+            if feedback.label == "usable":
+                usable_lead_count += 1
+
+    return {
+        "recipe_id": recipe.id,
+        "recipe_name": recipe.name,
+        "total_api_cost_usd": total_api_cost_usd,
+        "total_leads_returned": total_leads_returned,
+        "usable_lead_count": usable_lead_count,
+        "total_operator_minutes": total_operator_minutes,
+        "minutes_per_usable_lead": (total_operator_minutes / usable_lead_count) if usable_lead_count else None,
+        "api_cost_per_usable_lead": (total_api_cost_usd / usable_lead_count) if usable_lead_count else None,
+        "feedback_counts": feedback_counts,
+    }
