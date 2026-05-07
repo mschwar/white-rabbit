@@ -78,6 +78,26 @@ def test_scout_endpoint_forwards_filters(monkeypatch):
     assert captured["filters"] == {"location": "Albuquerque"}
 
 
+def test_scout_endpoint_blocks_broad_advice_queries(monkeypatch):
+    called = {"scout": False}
+
+    async def fake_scout(query: str, **kwargs):
+        called["scout"] = True
+        return [], RunMetrics()
+
+    monkeypatch.setattr("api.main.scout", fake_scout)
+
+    response = client.post("/scout", json={"query": "supply chain advice for hospitals"})
+
+    assert response.status_code == 422
+    assert called["scout"] is False
+    body = response.json()
+    detail = body["detail"]
+    assert detail["error"].startswith("White Rabbit only runs lead-generation queries")
+    assert detail["query_guardrail"]["status"] == "blocked"
+    assert detail["query_guardrail"]["missing_criteria"] == ["target people or organizations"]
+
+
 def test_recipe_scoreboard_endpoint_returns_aggregates(monkeypatch):
     captured = {}
 

@@ -19,6 +19,7 @@ export type FullResponse = {
   recipe_id: string | null;
   leads: ScoutLead[];
   metrics: ScoutRunMetrics;
+  query_guardrail?: QueryGuardrailResult | null;
 };
 
 export type RecipeItem = {
@@ -78,9 +79,17 @@ export type ScoutRunMetrics = {
   estimated_cost_usd: number;
 };
 
+export type QueryGuardrailResult = {
+  status: 'clear' | 'needs_more_detail' | 'blocked';
+  message: string;
+  suggestions: string[];
+  missing_criteria: string[];
+};
+
 export type ScoutResponse = {
   leads: ScoutLead[];
   metrics: ScoutRunMetrics;
+  query_guardrail?: QueryGuardrailResult | null;
 };
 
 export const DEFAULT_SCOUT_QUERY = 'K-12 IT directors in Albuquerque';

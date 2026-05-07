@@ -80,26 +80,46 @@ test('rejects blank scout queries before calling upstream', async () => {
   await expect(response.json()).resolves.toMatchObject({ error: 'Query is required.' });
 });
 
-test('surfaces upstream failures as proxy errors', async () => {
+test('surfaces upstream guardrail responses without losing structured hints', async () => {
   process.env.WR_API_BASE_URL = 'http://api.example:8000';
   vi.stubGlobal(
     'fetch',
     vi.fn().mockResolvedValue(
-      new Response(JSON.stringify({ detail: 'OpenAI API key missing' }), {
-        status: 500,
-        headers: { 'content-type': 'application/json' },
-      }),
+      new Response(
+        JSON.stringify({
+          error: 'White Rabbit only runs lead-generation queries.',
+          query_guardrail: {
+            status: 'blocked',
+            message: 'White Rabbit only runs lead-generation queries.',
+            suggestions: ['Try: IT directors at school districts in New Mexico'],
+            missing_criteria: ['target people or organizations'],
+          },
+        }),
+        {
+          status: 422,
+          headers: { 'content-type': 'application/json' },
+        },
+      ),
     ),
   );
 
   const request = new NextRequest('http://localhost/api/scout', {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ query: 'K-12 IT directors in Albuquerque' }),
+    body: JSON.stringify({ query: 'supply chain advice' }),
   });
 
   const response = await POST(request);
 
-  expect(response.status).toBe(500);
-  await expect(response.json()).resolves.toMatchObject({ error: 'OpenAI API key missing' });
+  expect(response.status).toBe(422);
+  await expect(response.json()).resolves.toMatchObject({
+    error: 'White Rabbit only runs lead-generation queries.',
+    query_guardrail: {
+      status: 'blocked',
+      message: 'White Rabbit only runs lead-generation queries.',
+      suggestions: ['Try: IT directors at school districts in New Mexico'],
+      missing_criteria: ['target people or organizations'],
+    },
+  });
 });
+
