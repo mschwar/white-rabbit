@@ -1,4 +1,6 @@
 from contextlib import contextmanager
+from datetime import datetime
+from types import SimpleNamespace
 
 from fastapi.testclient import TestClient
 
@@ -96,6 +98,127 @@ def test_scout_endpoint_blocks_broad_advice_queries(monkeypatch):
     assert detail["error"].startswith("White Rabbit only runs lead-generation queries")
     assert detail["query_guardrail"]["status"] == "blocked"
     assert detail["query_guardrail"]["missing_criteria"] == ["target people or organizations"]
+
+
+def test_scout_endpoint_forwards_filters(monkeypatch):
+    captured = {}
+
+    async def fake_scout(query: str, **kwargs):
+        captured["query"] = query
+        captured["filters"] = kwargs.get("filters")
+        return [], RunMetrics()
+
+    monkeypatch.setattr("api.main.scout", fake_scout)
+
+    response = client.post(
+        "/scout",
+        json={"query": "K-12 IT directors in Albuquerque", "filters": {"location": "Albuquerque"}},
+    )
+
+    assert response.status_code == 200
+    assert captured["query"] == "K-12 IT directors in Albuquerque"
+    assert captured["filters"] == {"location": "Albuquerque"}
+
+
+def test_sandbox_usage_endpoint_returns_usage(monkeypatch):
+    state = SimpleNamespace(
+        total_queries=2,
+        total_rows=18,
+        max_queries=10,
+        max_rows=1000,
+        reset_at=datetime(2026, 1, 1, 12, 0, 0),
+    )
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+
+    response = client.get("/sandbox")
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "total_queries": 2,
+        "total_rows": 18,
+        "max_queries": 10,
+        "max_rows": 1000,
+        "remaining_queries": 8,
+        "remaining_rows": 982,
+        "reset_at": "2026-01-01T12:00:00",
+    }
+
+
+def test_sandbox_reset_endpoint_clears_usage(monkeypatch):
+    state = SimpleNamespace(
+        total_queries=5,
+        total_rows=42,
+        max_queries=10,
+        max_rows=1000,
+        reset_at=datetime(2026, 1, 1, 12, 0, 0),
+    )
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
+
+    def fake_reset_sandbox_state(session):
+        state.total_queries = 0
+        state.total_rows = 0
+        state.reset_at = datetime(2026, 1, 2, 9, 30, 0)
+        return state
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+    monkeypatch.setattr("api.main.reset_sandbox_state", fake_reset_sandbox_state)
+
+    response = client.post("/sandbox/reset")
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "sandbox_usage": {
+            "total_queries": 0,
+            "total_rows": 0,
+            "max_queries": 10,
+            "max_rows": 1000,
+            "remaining_queries": 10,
+            "remaining_rows": 1000,
+            "reset_at": "2026-01-02T09:30:00",
+        }
+    }
+
+
+def test_scout_endpoint_returns_sandbox_usage_and_enforces_caps(monkeypatch):
+    state = SimpleNamespace(
+        total_queries=10,
+        total_rows=100,
+        max_queries=10,
+        max_rows=1000,
+        reset_at=datetime(2026, 1, 1, 12, 0, 0),
+    )
+    called = {"scout": False}
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
+
+    async def fake_scout(query: str, **kwargs):
+        called["scout"] = True
+        return [], RunMetrics()
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+    monkeypatch.setattr("api.main.scout", fake_scout)
+
+    response = client.post("/scout", json={"query": "K-12 IT directors in Albuquerque"})
+
+    assert response.status_code == 429
+    assert called["scout"] is False
+    detail = response.json()["detail"]
+    assert detail["error"] == "Sandbox query cap reached. Reset the sandbox before running more queries."
+    assert detail["sandbox_usage"]["total_queries"] == 10
+    assert detail["sandbox_usage"]["remaining_queries"] == 0
 
 
 def test_recipe_scoreboard_endpoint_returns_aggregates(monkeypatch):
@@ -250,16 +373,25 @@ def test_batch_endpoint_creates_job_and_runs(monkeypatch):
     monkeypatch.setattr("api.main.get_batch_runs", fake_get_batch_runs)
     monkeypatch.setattr("api.main.scout", fake_scout)
 
-    # Also mock recipe creation to avoid DB dependency
+    # Also mock recipe creation and sandbox to avoid DB dependency
     class FakeRecipe:
         id = UUID("44444444-4444-4444-4444-444444444444")
 
     class FakeRecipeRun:
         id = UUID("55555555-5555-5555-5555-555555555555")
 
+    class FakeSandboxState:
+        total_queries = 0
+        total_rows = 0
+        max_queries = 10
+        max_rows = 1000
+        reset_at = datetime(2026, 1, 1, 12, 0, 0)
+
     monkeypatch.setattr("api.main.create_recipe", lambda session, **kwargs: FakeRecipe())
     monkeypatch.setattr("api.main.create_recipe_run", lambda session, **kwargs: FakeRecipeRun())
     monkeypatch.setattr("api.main.save_leads", lambda session, run_id, leads: None)
+    monkeypatch.setattr("api.main.get_sandbox_state", lambda session: FakeSandboxState())
+    monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
 
     response = client.post(
         "/batch",

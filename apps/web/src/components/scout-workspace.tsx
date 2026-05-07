@@ -1,14 +1,16 @@
 'use client';
 
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import {
   buildScoutPayload,
   buildFullPayload,
   closeRecipeRun,
   DEFAULT_SCOUT_LOCATION,
   DEFAULT_SCOUT_QUERY,
+  fetchSandboxUsage,
   formatScore,
   LEAD_SORT_OPTIONS,
+  resetSandboxUsage,
   sortScoutLeads,
   submitLeadFeedback,
   type LeadSortMode,
@@ -35,10 +37,12 @@ export default function ScoutWorkspace() {
   const [results, setResults] = useState<ScoutResponse | null>(null);
   const [fullResult, setFullResult] = useState<FullResponse | null>(null);
   const [queryGuardrail, setQueryGuardrail] = useState<ScoutResponse['query_guardrail']>(null);
+  const [sandboxUsage, setSandboxUsage] = useState<ScoutResponse['sandbox_usage']>(null);
   const [operatorMinutes, setOperatorMinutes] = useState('');
   const [closeMessage, setCloseMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isResettingSandbox, setIsResettingSandbox] = useState(false);
   const [sortMode, setSortMode] = useState<LeadSortMode>('rank');
   const [isClosing, setIsClosing] = useState(false);
   const [leadExport, setLeadExport] = useState<{
@@ -50,6 +54,26 @@ export default function ScoutWorkspace() {
   const [submittedQuery, setSubmittedQuery] = useState<string | null>(null);
   const [submittedLocation, setSubmittedLocation] = useState<string | null>(null);
   const [submittedRecipeName, setSubmittedRecipeName] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchSandboxUsage()
+      .then(setSandboxUsage)
+      .catch(() => undefined);
+  }, []);
+
+  async function handleResetSandbox() {
+    setIsResettingSandbox(true);
+    setError(null);
+    try {
+      const usage = await resetSandboxUsage();
+      setSandboxUsage(usage);
+      setCloseMessage(null);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to reset sandbox usage.');
+    } finally {
+      setIsResettingSandbox(false);
+    }
+  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -93,6 +117,7 @@ export default function ScoutWorkspace() {
         const bodyText = await response.text();
         let message = `Search failed (${response.status}).`;
         let guardrail: ScoutResponse['query_guardrail'] = null;
+        let usage: ScoutResponse['sandbox_usage'] = null;
 
         if (bodyText) {
           try {
@@ -100,13 +125,16 @@ export default function ScoutWorkspace() {
               error?: string;
               detail?: unknown;
               query_guardrail?: ScoutResponse['query_guardrail'];
+              sandbox_usage?: ScoutResponse['sandbox_usage'];
             };
             guardrail = body.query_guardrail ?? null;
+            usage = body.sandbox_usage ?? null;
             if (typeof body.detail === 'string') {
               message = body.detail;
             } else if (body.detail && typeof body.detail === 'object') {
-              const detail = body.detail as { error?: string; detail?: unknown };
+              const detail = body.detail as { error?: string; detail?: unknown; sandbox_usage?: ScoutResponse['sandbox_usage'] };
               message = detail.error ?? message;
+              usage = detail.sandbox_usage ?? usage;
             }
             message = body.error ?? message;
           } catch {
@@ -115,6 +143,9 @@ export default function ScoutWorkspace() {
         }
 
         setQueryGuardrail(guardrail);
+        if (usage) {
+          setSandboxUsage(usage);
+        }
         throw new Error(message);
       }
 
@@ -122,11 +153,13 @@ export default function ScoutWorkspace() {
         const data = (await response.json()) as ScoutResponse;
         setResults(data);
         setQueryGuardrail(data.query_guardrail ?? null);
+        setSandboxUsage(data.sandbox_usage ?? null);
       } else {
         const data = (await response.json()) as FullResponse;
         setFullResult(data);
         setResults({ leads: data.leads, metrics: data.metrics, query_guardrail: data.query_guardrail ?? null });
         setQueryGuardrail(data.query_guardrail ?? null);
+        setSandboxUsage(data.sandbox_usage ?? null);
         setCloseMessage(null);
         setSubmittedQuery(submittedQuery);
         setSubmittedLocation(submittedLocation);
@@ -292,10 +325,46 @@ export default function ScoutWorkspace() {
           </section>
 
           <aside className="rounded-3xl border border-emerald-400/20 bg-emerald-400/10 p-6">
-            <p className="text-sm font-medium uppercase tracking-[0.18em] text-emerald-200">What's wired now</p>
-            <ul className="mt-4 space-y-3 text-sm leading-6 text-zinc-200">
+            <p className="text-sm font-medium uppercase tracking-[0.18em] text-emerald-200">Sandbox quota</p>
+            <div className="mt-4 space-y-4 text-sm text-zinc-200">
+              {sandboxUsage ? (
+                <>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <div className="rounded-2xl border border-white/10 bg-zinc-950/70 px-4 py-3">
+                      <p className="text-xs uppercase tracking-[0.16em] text-zinc-500">Queries</p>
+                      <p className="mt-1 font-semibold text-zinc-50">
+                        {sandboxUsage.total_queries}/{sandboxUsage.max_queries} used
+                      </p>
+                      <p className="text-xs text-zinc-400">{sandboxUsage.remaining_queries} remaining</p>
+                    </div>
+                    <div className="rounded-2xl border border-white/10 bg-zinc-950/70 px-4 py-3">
+                      <p className="text-xs uppercase tracking-[0.16em] text-zinc-500">Rows</p>
+                      <p className="mt-1 font-semibold text-zinc-50">
+                        {sandboxUsage.total_rows}/{sandboxUsage.max_rows} used
+                      </p>
+                      <p className="text-xs text-zinc-400">{sandboxUsage.remaining_rows} remaining</p>
+                    </div>
+                  </div>
+                  <p className="text-xs uppercase tracking-[0.18em] text-zinc-400">
+                    Resets {new Date(sandboxUsage.reset_at).toLocaleString()}
+                  </p>
+                </>
+              ) : (
+                <p className="text-zinc-300">Loading sandbox usage…</p>
+              )}
+              <button
+                className="rounded-full border border-emerald-300/30 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100 transition hover:bg-emerald-400/10 disabled:cursor-not-allowed disabled:opacity-60"
+                disabled={isResettingSandbox}
+                onClick={handleResetSandbox}
+                type="button"
+              >
+                {isResettingSandbox ? 'Resetting…' : 'Reset sandbox'}
+              </button>
+            </div>
+            <ul className="mt-6 space-y-3 text-sm leading-6 text-zinc-200">
               <li>• Next.js proxy routes at <code>/api/scout</code> and <code>/api/full</code></li>
-              <li>• FastAPI <code>POST /scout</code> and <code>POST /full</code></li>
+              <li>• FastAPI <code>POST /scout</code>, <code>POST /full</code>, and <code>GET /sandbox</code></li>
+              <li>• Sandbox reset at <code>POST /sandbox/reset</code></li>
               <li>• Recipe storage with <code>GET /recipes</code></li>
               <li>• Three-score lead cards with metrics</li>
             </ul>

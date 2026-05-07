@@ -20,6 +20,7 @@ export type FullResponse = {
   leads: ScoutLead[];
   metrics: ScoutRunMetrics;
   query_guardrail?: QueryGuardrailResult | null;
+  sandbox_usage?: SandboxUsage | null;
 };
 
 export type RecipeItem = {
@@ -86,10 +87,21 @@ export type QueryGuardrailResult = {
   missing_criteria: string[];
 };
 
+export type SandboxUsage = {
+  total_queries: number;
+  total_rows: number;
+  max_queries: number;
+  max_rows: number;
+  remaining_queries: number;
+  remaining_rows: number;
+  reset_at: string;
+};
+
 export type ScoutResponse = {
   leads: ScoutLead[];
   metrics: ScoutRunMetrics;
   query_guardrail?: QueryGuardrailResult | null;
+  sandbox_usage?: SandboxUsage | null;
 };
 
 export const DEFAULT_SCOUT_QUERY = 'K-12 IT directors in Albuquerque';
@@ -232,4 +244,24 @@ export async function closeRecipeRun(runId: string, operatorMinutes: number): Pr
   if (!response.ok) {
     throw new Error('Failed to close run.');
   }
+}
+
+export async function fetchSandboxUsage(): Promise<SandboxUsage> {
+  const response = await fetch('/api/sandbox');
+  if (!response.ok) {
+    throw new Error('Failed to fetch sandbox usage.');
+  }
+  return response.json();
+}
+
+export async function resetSandboxUsage(): Promise<SandboxUsage> {
+  const response = await fetch('/api/sandbox', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (!response.ok) {
+    throw new Error('Failed to reset sandbox usage.');
+  }
+  const body = (await response.json()) as { sandbox_usage?: SandboxUsage };
+  return body.sandbox_usage ?? (body as SandboxUsage);
 }
