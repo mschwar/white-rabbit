@@ -115,3 +115,277 @@ def test_recipe_scoreboard_endpoint_returns_aggregates(monkeypatch):
     assert body["recipe_name"] == "K-12 IT directors"
     assert body["usable_lead_count"] == 2
     assert captured["recipe_id"] == "11111111-1111-1111-1111-111111111111"
+
+
+def test_batch_endpoint_creates_job_and_runs(monkeypatch):
+    from uuid import UUID
+
+    captured = {}
+
+    @contextmanager
+    def fake_db_session():
+        class FakeSession:
+            def flush(self):
+                pass
+            def commit(self):
+                pass
+            def rollback(self):
+                pass
+            def close(self):
+                pass
+        yield FakeSession()
+
+    class FakeJob:
+        id = UUID("22222222-2222-2222-2222-222222222222")
+        name = "Test batch"
+        status = "completed"
+        cap_queries = 10
+        cap_max_leads = 1000
+        cap_max_spend_usd = 10.0
+        created_at = __import__("datetime").datetime.utcnow()
+        started_at = __import__("datetime").datetime.utcnow()
+        ended_at = __import__("datetime").datetime.utcnow()
+        total_cost_usd = 0.02
+        total_leads = 2
+
+    class FakeRun:
+        id = UUID("33333333-3333-3333-3333-333333333333")
+        query = "K-12 IT directors in Albuquerque"
+        status = "completed"
+        lead_count = 2
+        cost_usd = 0.02
+        error_message = None
+        recipe_id = UUID("44444444-4444-4444-4444-444444444444")
+        started_at = __import__("datetime").datetime.utcnow()
+        ended_at = __import__("datetime").datetime.utcnow()
+
+    def fake_create_batch_job(session, name, cap_queries, cap_max_leads, cap_max_spend_usd):
+        captured["job_name"] = name
+        return FakeJob()
+
+    def fake_create_batch_run(session, batch_job_id, query):
+        captured.setdefault("queries", []).append(query)
+        return FakeRun()
+
+    def fake_update_batch_run(session, run_id, **kwargs):
+        return FakeRun()
+
+    def fake_close_batch_job(session, job_id, status, total_cost_usd, total_leads):
+        captured["closed"] = True
+        return FakeJob()
+
+    def fake_get_batch_runs(session, job_id):
+        return [FakeRun()]
+
+    async def fake_scout(query, **kwargs):
+        return (
+            [
+                Lead(
+                    name="Jane Smith",
+                    title="Director of Technology",
+                    organization="Albuquerque Public Schools",
+                    email="jane.smith@aps.edu",
+                    email_status="Found",
+                    source_url="https://aps.edu/tech",
+                    confidence=0.88,
+                    why_target="Owns district telecom decisions",
+                    icebreaker="I noticed APS is growing its classroom connectivity needs.",
+                    fit_score=0.91,
+                    evidence_score=0.84,
+                    contact_score=0.79,
+                    gate_passed=True,
+                    explanation="Strong district fit with current leadership evidence and usable email.",
+                ),
+                Lead(
+                    name="John Doe",
+                    title="IT Manager",
+                    organization="Santa Fe Public Schools",
+                    email="john.doe@sfps.edu",
+                    email_status="Found",
+                    source_url="https://sfps.edu/tech",
+                    confidence=0.82,
+                    why_target="Manages district network infrastructure",
+                    icebreaker="I noticed SFPS is expanding its digital learning initiative.",
+                    fit_score=0.85,
+                    evidence_score=0.80,
+                    contact_score=0.75,
+                    gate_passed=True,
+                    explanation="Good fit with relevant experience.",
+                ),
+            ],
+            RunMetrics(
+                input_tokens=123,
+                output_tokens=45,
+                tavily_searches=1,
+                elapsed_seconds=1.23,
+                estimated_cost_usd=0.02,
+            ),
+        )
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.create_batch_job", fake_create_batch_job)
+    monkeypatch.setattr("api.main.create_batch_run", fake_create_batch_run)
+    monkeypatch.setattr("api.main.update_batch_run", fake_update_batch_run)
+    monkeypatch.setattr("api.main.close_batch_job", fake_close_batch_job)
+    monkeypatch.setattr("api.main.get_batch_runs", fake_get_batch_runs)
+    monkeypatch.setattr("api.main.scout", fake_scout)
+
+    # Also mock recipe creation to avoid DB dependency
+    class FakeRecipe:
+        id = UUID("44444444-4444-4444-4444-444444444444")
+
+    class FakeRecipeRun:
+        id = UUID("55555555-5555-5555-5555-555555555555")
+
+    monkeypatch.setattr("api.main.create_recipe", lambda session, **kwargs: FakeRecipe())
+    monkeypatch.setattr("api.main.create_recipe_run", lambda session, **kwargs: FakeRecipeRun())
+    monkeypatch.setattr("api.main.save_leads", lambda session, run_id, leads: None)
+
+    response = client.post(
+        "/batch",
+        json={
+            "name": "Test batch",
+            "queries": [
+                {"query": "K-12 IT directors in Albuquerque"},
+                {"query": "City IT managers in Santa Fe", "filters": {"location": "New Mexico"}},
+            ],
+            "cap_queries": 5,
+            "cap_max_leads": 100,
+            "cap_max_spend_usd": 5.0,
+        },
+    )
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["name"] == "Test batch"
+    assert body["status"] in ("completed", "completed_with_errors")
+    assert body["total_leads"] == 4
+    assert len(body["runs"]) == 2
+    assert captured["job_name"] == "Test batch"
+    assert captured["queries"] == ["K-12 IT directors in Albuquerque", "City IT managers in Santa Fe"]
+    assert captured.get("closed") is True
+
+
+def test_batch_endpoint_respects_caps(monkeypatch):
+    from uuid import UUID
+
+    captured = {}
+
+    @contextmanager
+    def fake_db_session():
+        class FakeSession:
+            def flush(self):
+                pass
+            def commit(self):
+                pass
+            def rollback(self):
+                pass
+            def close(self):
+                pass
+        yield FakeSession()
+
+    class FakeJob:
+        id = UUID("22222222-2222-2222-2222-222222222222")
+        name = "Cap test"
+        status = "completed_with_errors"
+        cap_queries = 10
+        cap_max_leads = 1
+        cap_max_spend_usd = 10.0
+        created_at = __import__("datetime").datetime.utcnow()
+        started_at = __import__("datetime").datetime.utcnow()
+        ended_at = __import__("datetime").datetime.utcnow()
+        total_cost_usd = 0.0
+        total_leads = 0
+
+    class FakeRun:
+        id = UUID("33333333-3333-3333-3333-333333333333")
+        query = "Query 1"
+        status = "failed"
+        lead_count = 0
+        cost_usd = 0.0
+        error_message = "Spend cap exceeded"
+        recipe_id = None
+        started_at = __import__("datetime").datetime.utcnow()
+        ended_at = __import__("datetime").datetime.utcnow()
+
+    def fake_create_batch_job(session, name, cap_queries, cap_max_leads, cap_max_spend_usd):
+        captured["job_caps"] = {
+            "cap_queries": cap_queries,
+            "cap_max_leads": cap_max_leads,
+            "cap_max_spend_usd": cap_max_spend_usd,
+        }
+
+        job = type("Job", (FakeJob,), {})()
+        job.cap_queries = cap_queries
+        job.cap_max_leads = cap_max_leads
+        job.cap_max_spend_usd = cap_max_spend_usd
+        return job
+
+    def fake_create_batch_run(session, batch_job_id, query):
+        return FakeRun()
+
+    def fake_update_batch_run(session, run_id, **kwargs):
+        return FakeRun()
+
+    def fake_close_batch_job(session, job_id, status, total_cost_usd, total_leads):
+        captured["closed_status"] = status
+        return FakeJob()
+
+    def fake_get_batch_runs(session, job_id):
+        return [FakeRun()]
+
+    async def fake_scout(query, **kwargs):
+        return (
+            [
+                Lead(
+                    name="Jane Smith",
+                    title="Director",
+                    organization="Test Org",
+                    email="jane@test.org",
+                    email_status="Found",
+                    source_url="https://test.org",
+                    confidence=0.9,
+                    why_target="Test",
+                    icebreaker="Test",
+                    fit_score=0.9,
+                    evidence_score=0.9,
+                    contact_score=0.9,
+                    gate_passed=True,
+                    explanation="Test",
+                ),
+            ],
+            RunMetrics(
+                input_tokens=10,
+                output_tokens=5,
+                tavily_searches=1,
+                elapsed_seconds=0.5,
+                estimated_cost_usd=0.05,
+            ),
+        )
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.create_batch_job", fake_create_batch_job)
+    monkeypatch.setattr("api.main.create_batch_run", fake_create_batch_run)
+    monkeypatch.setattr("api.main.update_batch_run", fake_update_batch_run)
+    monkeypatch.setattr("api.main.close_batch_job", fake_close_batch_job)
+    monkeypatch.setattr("api.main.get_batch_runs", fake_get_batch_runs)
+    monkeypatch.setattr("api.main.scout", fake_scout)
+    monkeypatch.setattr("api.main.create_recipe", lambda session, **kwargs: type("FakeRecipe", (), {"id": UUID("44444444-4444-4444-4444-444444444444")})())
+    monkeypatch.setattr("api.main.create_recipe_run", lambda session, **kwargs: type("FakeRecipeRun", (), {"id": UUID("55555555-5555-5555-5555-555555555555")})())
+    monkeypatch.setattr("api.main.save_leads", lambda session, run_id, leads: None)
+
+    response = client.post(
+        "/batch",
+        json={
+            "name": "Cap test",
+            "queries": [{"query": "Query 1"}],
+            "cap_max_spend_usd": 0.01,
+        },
+    )
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["status"] == "completed_with_errors"
+    assert any(r["status"] == "failed" for r in body["runs"])
+    assert body["total_leads"] == 0
+    assert body["total_cost_usd"] == 0.0
