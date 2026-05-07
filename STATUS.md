@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-06 by Codex
-**Branch:** main
-**Current sprint:** Sprint 3 (operator scoreboard + sort controls) — merged to `main`
+**Branch:** feature/sprint3-sort-controls
+**Current sprint:** Sprint 3 (operator scoreboard + sort controls) — sort controls complete on feature branch
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -50,20 +50,20 @@
 - **Sprint 2: Tests passing.** `npm run build` and `npm test` pass in `apps/web`; `pytest tests -q` passes in `apps/api`.
 - **Sprint 2 merged to `main`.** `main` and `origin/main` are at `feat(sprint2): add recipe library and operator time logging (#6)`.
 - **Sprint 3: Recipe scoreboard added and QA verified.** `/recipes` now shows per-recipe scoreboard metrics: leads returned, usable leads, API cost spent, operator minutes, and derived minutes/cost per usable lead. Browser QA on `localhost:3003` confirmed the recipe list, scoreboard tiles, and run history render correctly.
+- **Sprint 3: Sort-by-score controls added and QA verified.** `/scout` now lets the operator sort by original rank, Fit, Evidence, Contact, or pass/fail gate. Browser QA on `localhost:3004` confirmed the select control and sorted lead order.
+- **Sprint 3: Sort controls re-verified in browser.** Current QA pass confirmed the selector still works on the live workspace and produced `.gstack/qa-reports/qa-report-white-rabbit-2026-05-06-sort-controls.md`.
 - **Sprint 3 merged to `main`.** The scoreboard feature, docs updates, and QA report are merged and pushed.
 - **Monroe St NE 8 meeting notes recorded.** Transcript, minutes, and executive summary live under `docs/meeting-notes/`.
 - **Build/meeting reconciliation report written.** See `docs/reports/build-meeting-reconciliation-2026-05-06.md`.
 
 ## What's in flight
 
-- Sprint 3 scoreboard work is merged to `main`.
-- The Monroe St NE 8 meeting adds a likely pre-scoreboard priority check: lead-generation guardrails, 10-query / 100-row sandbox caps, reset/admin behavior, export usability, and customer-data isolation boundaries.
+- Sprint 3 sort controls are complete on `feature/sprint3-sort-controls`.
+- The remaining Sprint 3 item is the Friday recipe-review export.
 
-## Next concrete task — pre-sprint review
+## Next concrete task
 
-- Review `docs/reports/build-meeting-reconciliation-2026-05-06.md` before starting the next implementation sprint.
-- Decide whether the Friday Lee/Thomas access target supersedes the remaining Sprint 3 order.
-- If scope changes are accepted, update `docs/04-roadmap.md` before implementation.
+- Implement the Friday recipe-review export, then QA and document it.
 
 ## Open questions for Matt
 

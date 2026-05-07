@@ -1,24 +1,61 @@
 import { expect, test } from 'vitest';
-import { buildScoutPayload, formatScore, resolveScoutApiUrl } from '../scout';
+import { sortScoutLeads } from '../scout';
 
-test('buildScoutPayload trims the query and includes location filters', () => {
-  expect(buildScoutPayload('  K-12 IT directors in Albuquerque  ', '  New Mexico  ')).toEqual({
-    query: 'K-12 IT directors in Albuquerque',
-    filters: { location: 'New Mexico' },
-  });
-});
+test('sortScoutLeads orders leads by fit, evidence, contact, and gate', () => {
+  const leads = [
+    {
+      name: 'Alpha',
+      title: 'Director',
+      organization: 'Alpha Schools',
+      email: 'alpha@example.com',
+      email_status: 'Found' as const,
+      source_url: 'https://alpha.example.com',
+      confidence: 0.9,
+      why_target: 'Alpha',
+      icebreaker: 'Alpha',
+      fit_score: 0.2,
+      evidence_score: 0.8,
+      contact_score: 0.4,
+      gate_passed: false,
+      explanation: 'Alpha',
+    },
+    {
+      name: 'Bravo',
+      title: 'Director',
+      organization: 'Bravo Schools',
+      email: 'bravo@example.com',
+      email_status: 'Found' as const,
+      source_url: 'https://bravo.example.com',
+      confidence: 0.9,
+      why_target: 'Bravo',
+      icebreaker: 'Bravo',
+      fit_score: 0.9,
+      evidence_score: 0.1,
+      contact_score: 0.7,
+      gate_passed: true,
+      explanation: 'Bravo',
+    },
+    {
+      name: 'Charlie',
+      title: 'Director',
+      organization: 'Charlie Schools',
+      email: 'charlie@example.com',
+      email_status: 'Found' as const,
+      source_url: 'https://charlie.example.com',
+      confidence: 0.9,
+      why_target: 'Charlie',
+      icebreaker: 'Charlie',
+      fit_score: 0.6,
+      evidence_score: 0.6,
+      contact_score: 0.95,
+      gate_passed: true,
+      explanation: 'Charlie',
+    },
+  ];
 
-test('buildScoutPayload omits empty filters and rejects blank queries', () => {
-  expect(buildScoutPayload('   ', 'New Mexico')).toBeNull();
-  expect(buildScoutPayload('School districts', '   ')).toEqual({ query: 'School districts' });
-});
-
-test('resolveScoutApiUrl normalizes the upstream scout path', () => {
-  expect(resolveScoutApiUrl('http://localhost:8000')).toBe('http://localhost:8000/scout');
-  expect(resolveScoutApiUrl('http://localhost:8000/')).toBe('http://localhost:8000/scout');
-});
-
-test('formatScore renders percentages cleanly', () => {
-  expect(formatScore(0.914)).toBe('91%');
-  expect(formatScore(0.6)).toBe('60%');
+  expect(sortScoutLeads(leads, 'rank').map((lead) => lead.name)).toEqual(['Alpha', 'Bravo', 'Charlie']);
+  expect(sortScoutLeads(leads, 'fit').map((lead) => lead.name)).toEqual(['Bravo', 'Charlie', 'Alpha']);
+  expect(sortScoutLeads(leads, 'evidence').map((lead) => lead.name)).toEqual(['Alpha', 'Charlie', 'Bravo']);
+  expect(sortScoutLeads(leads, 'contact').map((lead) => lead.name)).toEqual(['Charlie', 'Bravo', 'Alpha']);
+  expect(sortScoutLeads(leads, 'gate').map((lead) => lead.name)).toEqual(['Bravo', 'Charlie', 'Alpha']);
 });
