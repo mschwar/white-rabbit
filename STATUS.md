@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-06 by Codex
-**Branch:** main
-**Current sprint:** Sprint 3 (operator scoreboard + sort controls) — merged to `main`
+**Branch:** feature/sprint3-sort-controls
+**Current sprint:** Sprint 3 (operator scoreboard + sort controls) — in progress
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -56,14 +56,12 @@
 
 ## What's in flight
 
-- Sprint 3 scoreboard work is merged to `main`.
-- The Monroe St NE 8 meeting adds a likely pre-scoreboard priority check: lead-generation guardrails, 10-query / 100-row sandbox caps, reset/admin behavior, export usability, and customer-data isolation boundaries.
+- Sprint 3 sort controls are being implemented on the Scout workspace.
+- The remaining Sprint 3 item after that is the Friday recipe-review export.
 
-## Next concrete task — pre-sprint review
+## Next concrete task
 
-- Review `docs/reports/build-meeting-reconciliation-2026-05-06.md` before starting the next implementation sprint.
-- Decide whether the Friday Lee/Thomas access target supersedes the remaining Sprint 3 order.
-- If scope changes are accepted, update `docs/04-roadmap.md` before implementation.
+- Finish and verify the lead sort controls, then update the roadmap/status docs.
 
 ## Open questions for Matt
 

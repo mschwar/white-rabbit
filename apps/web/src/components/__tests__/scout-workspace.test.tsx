@@ -3,65 +3,148 @@ import { afterEach, expect, test, vi } from 'vitest';
 import ScoutWorkspace from '../scout-workspace';
 
 afterEach(() => {
-  vi.unstubAllGlobals();
+vi.unstubAllGlobals();
 });
 
 test('submits a scout query and renders ranked results', async () => {
-  const fetchMock = vi.fn().mockResolvedValue(
-    new Response(
-      JSON.stringify({
-        leads: [
-          {
-            name: 'Jane Smith',
-            title: 'Director of Technology',
-            organization: 'Albuquerque Public Schools',
-            email: 'jane.smith@aps.edu',
-            email_status: 'Found',
-            source_url: 'https://aps.edu/tech',
-            confidence: 0.88,
-            why_target: 'Owns district telecom decisions',
-            icebreaker: 'I noticed APS is growing its classroom connectivity needs.',
-            fit_score: 0.91,
-            evidence_score: 0.84,
-            contact_score: 0.79,
-            gate_passed: true,
-            explanation: 'Strong district fit with current leadership evidence and usable email.',
-          },
-        ],
-        metrics: {
-          input_tokens: 123,
-          output_tokens: 45,
-          tavily_searches: 1,
-          openai_web_searches: 0,
-          elapsed_seconds: 1.23,
-          estimated_cost_usd: 0.010123,
-        },
-      }),
-      {
-        status: 200,
-        headers: { 'content-type': 'application/json' },
-      },
-    ),
-  );
-  vi.stubGlobal('fetch', fetchMock);
+const fetchMock = vi.fn().mockResolvedValue(
+new Response(
+JSON.stringify({
+leads: [
+{
+name: 'Jane Smith',
+title: 'Director of Technology',
+organization: 'Albuquerque Public Schools',
+email: 'jane.smith@aps.edu',
+email_status: 'Found',
+source_url: 'https://aps.edu/tech',
+confidence: 0.88,
+why_target: 'Owns district telecom decisions',
+icebreaker: 'I noticed APS is growing its classroom connectivity needs.',
+fit_score: 0.91,
+evidence_score: 0.84,
+contact_score: 0.79,
+gate_passed: true,
+explanation: 'Strong district fit with current leadership evidence and usable email.',
+},
+],
+metrics: {
+input_tokens: 123,
+output_tokens: 45,
+tavily_searches: 1,
+openai_web_searches: 0,
+elapsed_seconds: 1.23,
+estimated_cost_usd: 0.010123,
+},
+}),
+{
+status: 200,
+headers: { 'content-type': 'application/json' },
+},
+),
+);
+vi.stubGlobal('fetch', fetchMock);
 
-  render(<ScoutWorkspace />);
+render(<ScoutWorkspace />);
 
-  fireEvent.change(screen.getByLabelText(/prospecting query/i), {
-    target: { value: 'K-12 IT directors in Albuquerque' },
-  });
-  fireEvent.change(screen.getByLabelText(/location/i), {
-    target: { value: 'New Mexico' },
-  });
-  fireEvent.click(screen.getByRole('button', { name: /run scout search/i }));
-
-  await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
-  expect(screen.getByRole('heading', { name: /returned leads/i })).toBeDefined();
-  expect(await screen.findByRole('heading', { name: /jane smith/i })).toBeDefined();
-  expect(screen.getByText('91%')).toBeDefined();
-  expect(screen.getByText('84%')).toBeDefined();
-  expect(screen.getByText('79%')).toBeDefined();
+fireEvent.change(screen.getByLabelText(/prospecting query/i), {
+target: { value: 'K-12 IT directors in Albuquerque' },
 });
+fireEvent.change(screen.getByLabelText(/location/i), {
+target: { value: 'New Mexico' },
+});
+fireEvent.click(screen.getByRole('button', { name: /run scout search/i }));
+
+await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+expect(screen.getByRole('heading', { name: /returned leads/i })).toBeDefined();
+expect(await screen.findByRole('heading', { name: /jane smith/i })).toBeDefined();
+expect(screen.getByText('91%')).toBeDefined();
+expect(screen.getByText('84%')).toBeDefined();
+expect(screen.getByText('79%')).toBeDefined();
+});
+
+test('sorts scout results by score and gate state', async () => {
+const fetchMock = vi.fn().mockResolvedValue(
+new Response(
+JSON.stringify({
+leads: [
+{
+name: 'Alpha Lead',
+title: 'Director of Technology',
+organization: 'Alpha Schools',
+email: 'alpha@example.com',
+email_status: 'Found',
+source_url: 'https://alpha.example.com',
+confidence: 0.9,
+why_target: 'Alpha owns the budget',
+icebreaker: 'Alpha is expanding.',
+fit_score: 0.51,
+evidence_score: 0.72,
+contact_score: 0.61,
+gate_passed: false,
+explanation: 'Alpha lead explanation.',
+},
+{
+name: 'Bravo Lead',
+title: 'IT Director',
+organization: 'Bravo Schools',
+email: 'bravo@example.com',
+email_status: 'Found',
+source_url: 'https://bravo.example.com',
+confidence: 0.92,
+why_target: 'Bravo is a strong match',
+icebreaker: 'Bravo is modernizing.',
+fit_score: 0.84,
+evidence_score: 0.31,
+contact_score: 0.78,
+gate_passed: true,
+explanation: 'Bravo lead explanation.',
+},
+],
+metrics: {
+input_tokens: 123,
+output_tokens: 45,
+tavily_searches: 1,
+openai_web_searches: 0,
+elapsed_seconds: 1.23,
+estimated_cost_usd: 0.010123,
+},
+}),
+{
+status: 200,
+headers: { 'content-type': 'application/json' },
+},
+),
+);
+vi.stubGlobal('fetch', fetchMock);
+
+render(<ScoutWorkspace />);
+
+fireEvent.change(screen.getByLabelText(/prospecting query/i), {
+target: { value: 'K-12 IT directors in Albuquerque' },
+});
+fireEvent.click(screen.getByRole('button', { name: /run scout search/i }));
+
+await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+expect(screen.getAllByRole('heading', { level: 3 }).map((heading) => heading.textContent)).toEqual([
+'Alpha Lead',
+'Bravo Lead',
+]);
+
+fireEvent.change(screen.getByLabelText(/sort leads/i), { target: { value: 'fit' } });
+expect(screen.getAllByRole('heading', { level: 3 }).map((heading) => heading.textContent)).toEqual([
+'Bravo Lead',
+'Alpha Lead',
+]);
+
+fireEvent.change(screen.getByLabelText(/sort leads/i), { target: { value: 'gate' } });
+expect(screen.getAllByRole('heading', { level: 3 }).map((heading) => heading.textContent)).toEqual([
+'Bravo Lead',
+'Alpha Lead',
+]);
+});
+
+
 
 test('shows a validation message for blank queries', async () => {
   vi.stubGlobal('fetch', vi.fn());

@@ -130,6 +130,53 @@ export function formatScore(value: number): string {
   return `${Math.round(value * 100)}%`;
 }
 
+export type LeadSortMode = 'rank' | 'fit' | 'evidence' | 'contact' | 'gate';
+
+export const LEAD_SORT_OPTIONS: Array<{ value: LeadSortMode; label: string }> = [
+  { value: 'rank', label: 'Original rank' },
+  { value: 'fit', label: 'Fit score' },
+  { value: 'evidence', label: 'Evidence score' },
+  { value: 'contact', label: 'Contact score' },
+  { value: 'gate', label: 'Gate pass/fail' },
+];
+
+export function sortScoutLeads(leads: ScoutLead[], sortMode: LeadSortMode): ScoutLead[] {
+  return leads
+    .map((lead, index) => ({ lead, index }))
+    .sort((left, right) => {
+      if (sortMode === 'rank') {
+        return left.index - right.index;
+      }
+
+      if (sortMode === 'gate') {
+        const gateDelta = Number(right.lead.gate_passed) - Number(left.lead.gate_passed);
+        if (gateDelta !== 0) {
+          return gateDelta;
+        }
+      } else {
+        const leftScore =
+          sortMode === 'fit'
+            ? left.lead.fit_score
+            : sortMode === 'evidence'
+              ? left.lead.evidence_score
+              : left.lead.contact_score;
+        const rightScore =
+          sortMode === 'fit'
+            ? right.lead.fit_score
+            : sortMode === 'evidence'
+              ? right.lead.evidence_score
+              : right.lead.contact_score;
+        const scoreDelta = (rightScore ?? 0) - (leftScore ?? 0);
+        if (scoreDelta !== 0) {
+          return scoreDelta;
+        }
+      }
+
+      return left.index - right.index;
+    })
+    .map(({ lead }) => lead);
+}
+
 export async function fetchRecipes(): Promise<RecipeItem[]> {
   const response = await fetch('/api/recipes');
   if (!response.ok) {

@@ -8,7 +8,10 @@ import {
   DEFAULT_SCOUT_LOCATION,
   DEFAULT_SCOUT_QUERY,
   formatScore,
+  LEAD_SORT_OPTIONS,
+  sortScoutLeads,
   submitLeadFeedback,
+  type LeadSortMode,
   type ScoutResponse,
   type FullResponse,
 } from '@/lib/scout';
@@ -30,6 +33,7 @@ export default function ScoutWorkspace() {
   const [closeMessage, setCloseMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [sortMode, setSortMode] = useState<LeadSortMode>('rank');
   const [isClosing, setIsClosing] = useState(false);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -118,6 +122,7 @@ export default function ScoutWorkspace() {
   }
 
   const displayedResults = results;
+  const displayedLeads = displayedResults ? sortScoutLeads(displayedResults.leads, sortMode) : [];
 
   return (
     <main className="min-h-screen bg-zinc-950 px-6 py-10 text-zinc-50">
@@ -261,22 +266,40 @@ export default function ScoutWorkspace() {
         )}
 
         <section className="rounded-3xl border border-white/10 bg-zinc-950/70 p-6">
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-400">Results</p>
               <h2 className="mt-1 text-2xl font-semibold tracking-tight">Returned leads</h2>
             </div>
             {displayedResults ? (
-              <p className="text-sm text-zinc-400">
-                {displayedResults.leads.length} leads · {formatElapsedSeconds(displayedResults.metrics.elapsed_seconds)} · $
-                {displayedResults.metrics.estimated_cost_usd.toFixed(4)}
-              </p>
+              <div className="flex flex-col gap-2 sm:items-end">
+                <label className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-400" htmlFor="leadSortMode">
+                  Sort leads
+                </label>
+                <select
+                  className="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-zinc-50 outline-none focus:border-emerald-400"
+                  id="leadSortMode"
+                  name="leadSortMode"
+                  onChange={(event) => setSortMode(event.target.value as LeadSortMode)}
+                  value={sortMode}
+                >
+                  {LEAD_SORT_OPTIONS.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+                <p className="text-sm text-zinc-400">
+                  {displayedResults.leads.length} leads · {formatElapsedSeconds(displayedResults.metrics.elapsed_seconds)} · $
+                  {displayedResults.metrics.estimated_cost_usd.toFixed(4)}
+                </p>
+              </div>
             ) : null}
           </div>
 
           {displayedResults ? (
             <div className="mt-6 grid gap-4">
-              {displayedResults.leads.map((lead, index) => (
+              {displayedLeads.map((lead, index) => (
                 <article
                   key={`${lead.name}-${lead.organization}-${index}`}
                   className="rounded-3xl border border-white/10 bg-white/5 p-5"
