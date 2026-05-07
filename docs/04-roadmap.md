@@ -108,7 +108,7 @@ This is a sketch. Sprint 2 may refine. Refinements append a new ADR.
 
 - Per-recipe scoreboard: API cost spent, leads returned, usable count, **minutes per usable lead**, **API cost per usable lead**. Shipped in `feature/sprint3-recipe-scoreboard`.
 - Sort-by-score controls in the lead view (sort by Fit, Evidence, Contact, or pass/fail gate). Shipped in `feature/sprint3-sort-controls`.
-- Friday-of-week recipe-review export (a printable / shareable summary of the week's recipes).
+- Friday-of-week recipe-review export (a printable / shareable summary of the week's recipes). Shipped in `feature/sprint3-friday-export`.
 
 ---
 

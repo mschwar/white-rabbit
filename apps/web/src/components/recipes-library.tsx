@@ -9,6 +9,12 @@ import {
   type RecipeRunItem,
   type RecipeScoreboardItem,
 } from '@/lib/scout';
+import {
+  buildFridayRecipeReviewCsv,
+  buildFridayRecipeReviewFilename,
+  buildFridayRecipeReviewMarkdown,
+  buildFridayRecipeReviewRows,
+} from '@/lib/recipe-review';
 
 function formatCurrency(value: number): string {
   return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(value);
@@ -18,6 +24,13 @@ function formatMaybeNumber(value: number | null): string {
   return value == null ? 'n/a' : value.toFixed(2);
 }
 
+type FridayRecipeReviewExport = {
+  filename: string;
+  csvDataUrl: string;
+  markdown: string;
+  generatedAtLabel: string;
+  rowCount: number;
+};
 export default function RecipesLibrary() {
   const [recipes, setRecipes] = useState<RecipeItem[]>([]);
   const [selectedRecipeId, setSelectedRecipeId] = useState<string | null>(null);
@@ -26,6 +39,8 @@ export default function RecipesLibrary() {
   const [isLoadingRecipes, setIsLoadingRecipes] = useState(true);
   const [isLoadingRuns, setIsLoadingRuns] = useState(false);
   const [isLoadingScoreboard, setIsLoadingScoreboard] = useState(false);
+  const [isBuildingExport, setIsBuildingExport] = useState(false);
+  const [reviewExport, setReviewExport] = useState<FridayRecipeReviewExport | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const selectedRecipe = useMemo(
@@ -41,6 +56,7 @@ export default function RecipesLibrary() {
         if (!active) return;
         setRecipes(items);
         setError(null);
+        setReviewExport(null);
         if (items[0]) {
           setSelectedRecipeId(items[0].id);
         }
@@ -109,6 +125,34 @@ export default function RecipesLibrary() {
       active = false;
     };
   }, [selectedRecipeId]);
+
+  const handleBuildFridayReviewExport = async () => {
+    if (recipes.length === 0) {
+      setError('No saved recipes are available to export yet.');
+      return;
+    }
+
+    setIsBuildingExport(true);
+    try {
+      const scoreboards = await Promise.all(recipes.map((recipe) => fetchRecipeScoreboard(recipe.id)));
+      const generatedAt = new Date();
+      const rows = buildFridayRecipeReviewRows(recipes, scoreboards, generatedAt);
+      const markdown = buildFridayRecipeReviewMarkdown(rows, generatedAt);
+      const csv = buildFridayRecipeReviewCsv(rows);
+      setReviewExport({
+        filename: buildFridayRecipeReviewFilename(generatedAt),
+        csvDataUrl: `data:text/csv;charset=utf-8,${encodeURIComponent(csv)}`,
+        markdown,
+        generatedAtLabel: generatedAt.toLocaleString(),
+        rowCount: rows.length,
+      });
+      setError(null);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to build Friday review export.');
+    } finally {
+      setIsBuildingExport(false);
+    }
+  };
 
   const feedbackLabels = [
     ['usable', 'Usable'],
@@ -270,6 +314,55 @@ export default function RecipesLibrary() {
                     ))}
                   </div>
                 </div>
+
+                <section className="rounded-2xl border border-white/10 bg-zinc-950/70 p-4">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <p className="text-xs uppercase tracking-[0.18em] text-emerald-300">Friday recipe review export</p>
+                      <h3 className="mt-1 text-lg font-semibold text-zinc-50">Shareable CSV + printable preview</h3>
+                      <p className="mt-2 text-sm leading-6 text-zinc-300">
+                        Generate a Friday summary for every saved recipe with validation context, cost, and operator-time
+                        fields.
+                      </p>
+                    </div>
+                    <button
+                      className="rounded-full border border-emerald-400/30 px-4 py-2 text-sm font-medium text-emerald-100 transition hover:bg-emerald-400/10 disabled:cursor-not-allowed disabled:opacity-50"
+                      disabled={isBuildingExport || isLoadingRecipes || recipes.length === 0}
+                      onClick={handleBuildFridayReviewExport}
+                      type="button"
+                    >
+                      {isBuildingExport
+                        ? 'Building…'
+                        : reviewExport
+                          ? 'Rebuild export'
+                          : 'Build export'}
+                    </button>
+                  </div>
+
+                  {reviewExport ? (
+                    <div className="mt-4 space-y-3">
+                      <div className="flex flex-wrap items-center justify-between gap-3 text-sm text-zinc-300">
+                        <p>
+                          {reviewExport.rowCount} recipes · generated {reviewExport.generatedAtLabel}
+                        </p>
+                        <a
+                          className="rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-zinc-50 transition hover:bg-white/10"
+                          href={reviewExport.csvDataUrl}
+                          download={reviewExport.filename}
+                        >
+                          Download CSV
+                        </a>
+                      </div>
+                      <pre className="overflow-x-auto rounded-2xl border border-white/10 bg-black/30 p-4 text-xs leading-6 text-zinc-200">
+                        {reviewExport.markdown}
+                      </pre>
+                    </div>
+                  ) : (
+                    <p className="mt-4 text-sm leading-6 text-zinc-400">
+                      Click build to generate the review packet from the currently saved recipes.
+                    </p>
+                  )}
+                </section>
               </div>
             ) : (
               <p className="mt-4 text-sm leading-6 text-zinc-200">Select a recipe to see its scoreboard and runs.</p>

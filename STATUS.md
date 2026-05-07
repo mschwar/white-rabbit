@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-06 by Codex
-**Branch:** feature/sprint3-sort-controls
-**Current sprint:** Sprint 3 (operator scoreboard + sort controls) — sort controls complete on feature branch
+**Branch:** feature/sprint3-friday-export
+**Current sprint:** Sprint 3 (operator scoreboard + review export) — Friday export complete on feature branch
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -52,18 +52,19 @@
 - **Sprint 3: Recipe scoreboard added and QA verified.** `/recipes` now shows per-recipe scoreboard metrics: leads returned, usable leads, API cost spent, operator minutes, and derived minutes/cost per usable lead. Browser QA on `localhost:3003` confirmed the recipe list, scoreboard tiles, and run history render correctly.
 - **Sprint 3: Sort-by-score controls added and QA verified.** `/scout` now lets the operator sort by original rank, Fit, Evidence, Contact, or pass/fail gate. Browser QA on `localhost:3004` confirmed the select control and sorted lead order.
 - **Sprint 3: Sort controls re-verified in browser.** Current QA pass confirmed the selector still works on the live workspace and produced `.gstack/qa-reports/qa-report-white-rabbit-2026-05-06-sort-controls.md`.
+- **Sprint 3: Friday recipe-review export added and QA verified.** `/recipes` now exposes a Friday export card with CSV download and printable markdown preview. Browser QA on `localhost:3005` confirmed the export builds and the review packet renders.
 - **Sprint 3 merged to `main`.** The scoreboard feature, docs updates, and QA report are merged and pushed.
-- **Monroe St NE 8 meeting notes recorded.** Transcript, minutes, and executive summary live under `docs/meeting-notes/`.
+
 - **Build/meeting reconciliation report written.** See `docs/reports/build-meeting-reconciliation-2026-05-06.md`.
 
 ## What's in flight
 
-- Sprint 3 sort controls are complete on `feature/sprint3-sort-controls`.
-- The remaining Sprint 3 item is the Friday recipe-review export.
+- Sprint 3 Friday recipe-review export is complete on `feature/sprint3-friday-export`.
+- The branch is ready for merge or handoff.
 
 ## Next concrete task
 
-- Implement the Friday recipe-review export, then QA and document it.
+- Merge `feature/sprint3-friday-export` to `main`, then plan the Sprint 4 slice.
 
 ## Open questions for Matt
 
