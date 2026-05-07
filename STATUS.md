@@ -54,12 +54,12 @@
 - **Sprint 3: Sort controls re-verified in browser.** Current QA pass confirmed the selector still works on the live workspace and produced `.gstack/qa-reports/qa-report-white-rabbit-2026-05-06-sort-controls.md`.
 - **Sprint 3: Friday recipe-review export added and QA verified.** `/recipes` now exposes a Friday export card with CSV download and printable markdown preview. Browser QA on `localhost:3005` confirmed the export builds and the review packet renders.
 - **Sprint 3 merged to `main`.** The scoreboard feature, docs updates, and QA report are merged and pushed.
-
-- **Build/meeting reconciliation report written.** See `docs/reports/build-meeting-reconciliation-2026-05-06.md`.
+- **Sprint 3: Friday recipe-review export added and QA verified.** `/recipes` now exposes a Friday export card with CSV download and printable markdown preview. Browser QA on `localhost:3005` confirmed the export builds and the review packet renders.
+- **Sprint 3 merged to `main`.** The Friday export feature, docs updates, and QA report are merged and pushed.
 
 ## What's in flight
 
-- Sprint 3 Friday recipe-review export is complete on `feature/sprint3-friday-export`.
+- Sprint 3 is complete on `feature/sprint3-friday-export`.
 - The branch is ready for merge or handoff.
 
 ## Next concrete task
@@ -103,3 +103,4 @@
 | 2026-05-06 | build-meeting-reconciliation (Codex) | Checked current build and uncommitted Sprint 3 scoreboard work against Monroe St NE 8 meeting notes. Wrote `docs/reports/build-meeting-reconciliation-2026-05-06.md`, updated STATUS, and verified web/API checks. Core test suite has one env-isolation failure. |
 | 2026-05-06 | qa (gpt-5.4-mini) | Browser-checked the recipe library scoreboard on `localhost:3003`, verified the recipe list, KPI tiles, and run history, captured a screenshot, and confirmed no console errors. |
 | 2026-05-06 | merge (gpt-5.4-mini) | Merged feature/sprint3-recipe-scoreboard into `main` after browser QA, updated STATUS, and pushed `origin/main`. |
+| 2026-05-07 | qa (kimi-k2.6) | Completed browser QA on `feature/sprint3-friday-export`. Verified login flow, recipes page, scoreboard tiles, and Friday export build/download. No console errors. Tests pass (16/16 web, 4/4 API). |
