@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-05-06 by Codex
 **Branch:** feature/sprint3-recipe-scoreboard
-**Current sprint:** Sprint 3 (operator scoreboard + sort controls) — in progress, pending meeting reconciliation review
+**Current sprint:** Sprint 3 (operator scoreboard + sort controls) — scoreboard feature verified, pending merge to `main`
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -49,13 +49,13 @@
 - **Sprint 2: Browser QA completed for the new slice.** Verified Full run save UI, operator-minute close flow, and recipe library rendering in the browser.
 - **Sprint 2: Tests passing.** `npm run build` and `npm test` pass in `apps/web`; `pytest tests -q` passes in `apps/api`.
 - **Sprint 2 merged to `main`.** `main` and `origin/main` are at `feat(sprint2): add recipe library and operator time logging (#6)`.
-- **Sprint 3: Recipe scoreboard added locally.** `/recipes` now shows per-recipe scoreboard metrics: leads returned, usable leads, API cost spent, operator minutes, and derived minutes/cost per usable lead. This work is still uncommitted on `feature/sprint3-recipe-scoreboard`.
+- **Sprint 3: Recipe scoreboard added and QA verified.** `/recipes` now shows per-recipe scoreboard metrics: leads returned, usable leads, API cost spent, operator minutes, and derived minutes/cost per usable lead. Browser QA on `localhost:3003` confirmed the recipe list, scoreboard tiles, and run history render correctly.
 - **Monroe St NE 8 meeting notes recorded.** Transcript, minutes, and executive summary live under `docs/meeting-notes/`.
 - **Build/meeting reconciliation report written.** See `docs/reports/build-meeting-reconciliation-2026-05-06.md`.
 
 ## What's in flight
 
-- Sprint 3 scoreboard work is uncommitted on `feature/sprint3-recipe-scoreboard`: API aggregate endpoint, Next.js proxy route, and recipe-library scoreboard UI.
+- Sprint 3 scoreboard work is complete and QA verified on `feature/sprint3-recipe-scoreboard`.
 - The Monroe St NE 8 meeting adds a likely pre-scoreboard priority check: lead-generation guardrails, 10-query / 100-row sandbox caps, reset/admin behavior, export usability, and customer-data isolation boundaries.
 
 ## Next concrete task — pre-sprint review
@@ -99,3 +99,4 @@
 | 2026-05-06 | qa (kimi-for-coding) | Full browser QA on Scout workspace with gstack browse. Verified login, search form, live results rendering, lead cards with three scores, and no console errors. Health score 100/100. No issues found. |
 | 2026-05-06 | qa (kimi-for-coding) | Browser-QA'd login, home, Scout, and logout flows. Auth works end-to-end. Scout form submits correctly and displays the expected missing-API-key error. Health score 95/100. QA report written to `.gstack/qa-reports/qa-report-white-rabbit-2026-05-06.md`. |
 | 2026-05-06 | build-meeting-reconciliation (Codex) | Checked current build and uncommitted Sprint 3 scoreboard work against Monroe St NE 8 meeting notes. Wrote `docs/reports/build-meeting-reconciliation-2026-05-06.md`, updated STATUS, and verified web/API checks. Core test suite has one env-isolation failure. |
+| 2026-05-06 | qa (gpt-5.4-mini) | Browser-checked the recipe library scoreboard on `localhost:3003`, verified the recipe list, KPI tiles, and run history, captured a screenshot, and confirmed no console errors. |
