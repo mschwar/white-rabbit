@@ -1,8 +1,8 @@
      1|# STATUS
      2|
 **Last updated:** 2026-05-07 by Codex
-**Branch:** feature/sprint4-batch-bulk
-**Current sprint:** Sprint 4 (batch/bulk) — batch workspace, API, and tests complete on feature branch; browser QA re-verified batch submission
+**Branch:** main
+**Current sprint:** Sprint 4 (batch/bulk) — batch workspace, API, and tests merged to main after browser QA
      6|
      7|> Update this file at the end of every session. It is the source of truth for "where we are."
      8|
@@ -59,16 +59,15 @@
     59|- **Sprint 4: Batch/bulk workspace and API added.** Batch jobs and runs persist in Postgres, the API exposes `POST /batch`, and the web app now has a batch page, proxy route, and batch helpers/UI.
     60|- **Sprint 4: Batch API tests passing.** `pytest tests -q` passes in `apps/api`.
     61|- **Sprint 4: Browser QA completed.** Logged in to the web app, opened `/batch`, submitted a batch run, and verified the result card and run summaries render correctly.
-    62|## What's in flight
-    63|
-    64|- Sprint 4 batch/bulk is complete on `feature/sprint4-batch-bulk`.
-    65|- The branch still needs commit + push, then merge/handoff.
-    66|
-    67|## Next concrete task
-    68|
-    69|- Commit the Sprint 4 batch/bulk work, push `feature/sprint4-batch-bulk`, and open/merge the PR after final verification.
-    70|
-    71|## Open questions for Matt
+## What's in flight
+
+- Sprint 4 batch/bulk is merged to `main` and the handoff is complete.
+
+## Next concrete task
+
+- Watch for any post-merge feedback, then pick up the next sprint slice from `docs/04-roadmap.md`.
+
+## Open questions for Matt
     72|
     73|- Commercial arrangement with Lee and Thomas (free seats / revenue share / equity / content rights). Blocks the design-partner motion. **Not blocking Sprint 1 build, but blocks public usage.**
     74|- Cost-tracking source of truth: should live API cost figures be pulled from OpenAI/Tavily dashboards, or computed locally from token/call counts? Recommendation: compute locally per-run, reconcile weekly. See `docs/05-reuse.md` note on stale 2025 prices.
