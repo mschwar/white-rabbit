@@ -98,6 +98,19 @@ class BatchRun(Base):
     error_message = Column(Text, nullable=True)
 
 
+class SandboxState(Base):
+    __tablename__ = "sandbox_state"
+
+    id = Column(Integer, primary_key=True)
+    total_queries = Column(Integer, nullable=False, default=0)
+    total_rows = Column(Integer, nullable=False, default=0)
+    max_queries = Column(Integer, nullable=False, default=10)
+    max_rows = Column(Integer, nullable=False, default=1000)
+    created_at = Column(DateTime(timezone=True), nullable=False, default=datetime.utcnow)
+    updated_at = Column(DateTime(timezone=True), nullable=False, default=datetime.utcnow)
+    reset_at = Column(DateTime(timezone=True), nullable=False, default=datetime.utcnow)
+
+
 def get_engine(database_url: str | None = None):
     url = database_url or "postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit"
     return create_engine(url)

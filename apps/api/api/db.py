@@ -13,6 +13,7 @@ from api.models import (
     LeadFeedback,
     Recipe,
     RecipeRun,
+    SandboxState,
     get_engine,
     get_session_maker,
 )
@@ -268,3 +269,31 @@ def get_batch_runs(session: Session, job_id: UUID) -> list[BatchRun]:
 
 def list_batch_jobs(session: Session) -> list[BatchJob]:
     return session.query(BatchJob).order_by(BatchJob.created_at.desc()).all()
+
+
+_SANDBOX_STATE_ID = 1
+
+
+def get_sandbox_state(session: Session) -> SandboxState:
+    state = session.query(SandboxState).filter(SandboxState.id == _SANDBOX_STATE_ID).first()
+    if state is None:
+        state = SandboxState(id=_SANDBOX_STATE_ID)
+        session.add(state)
+        session.flush()
+    return state
+
+
+def reset_sandbox_state(session: Session) -> SandboxState:
+    state = get_sandbox_state(session)
+    state.total_queries = 0
+    state.total_rows = 0
+    state.reset_at = datetime.utcnow()
+    state.updated_at = datetime.utcnow()
+    return state
+
+
+def record_sandbox_rows(session: Session, rows: int) -> SandboxState:
+    state = get_sandbox_state(session)
+    state.total_rows += rows
+    state.updated_at = datetime.utcnow()
+    return state

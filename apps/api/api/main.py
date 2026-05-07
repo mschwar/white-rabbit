@@ -1,4 +1,6 @@
+from __future__ import annotations
 from pathlib import Path
+from datetime import datetime
 import sys
 from typing import Any, Optional
 from uuid import UUID
@@ -37,6 +39,9 @@ from api.db import (
     get_batch_job,
     get_batch_runs,
     list_batch_jobs,
+    get_sandbox_state,
+    reset_sandbox_state,
+    record_sandbox_rows,
 )
 
 load_dotenv()
@@ -62,6 +67,7 @@ class ScoutResponse(BaseModel):
     leads: list[Lead]
     metrics: RunMetrics
     query_guardrail: QueryGuardrailResult | None = None
+    sandbox_usage: SandboxUsageOut | None = None
 
 
 class FullResponse(BaseModel):
@@ -70,6 +76,7 @@ class FullResponse(BaseModel):
     metrics: RunMetrics
     recipe_id: UUID | None = None
     query_guardrail: QueryGuardrailResult | None = None
+    sandbox_usage: SandboxUsageOut | None = None
 
 
 class FeedbackRequest(BaseModel):
@@ -112,6 +119,62 @@ class RecipeScoreboardOut(BaseModel):
     model_config = {"from_attributes": True}
 
 
+class SandboxUsageOut(BaseModel):
+    total_queries: int
+    total_rows: int
+    max_queries: int
+    max_rows: int
+    remaining_queries: int
+    remaining_rows: int
+    reset_at: str
+
+
+class SandboxResetOut(BaseModel):
+    sandbox_usage: SandboxUsageOut
+
+
+SANDBOX_SCOUT_MAX_ROWS_PER_QUERY = 15
+SANDBOX_FULL_MAX_ROWS_PER_QUERY = 100
+SANDBOX_BATCH_MAX_ROWS_PER_QUERY = 100
+
+
+def _sandbox_usage_out(session) -> SandboxUsageOut:
+    state = get_sandbox_state(session)
+    return SandboxUsageOut(
+        total_queries=state.total_queries,
+        total_rows=state.total_rows,
+        max_queries=state.max_queries,
+        max_rows=state.max_rows,
+        remaining_queries=max(0, state.max_queries - state.total_queries),
+        remaining_rows=max(0, state.max_rows - state.total_rows),
+        reset_at=state.reset_at.isoformat(),
+    )
+
+
+def _sandbox_reserve_query_or_429(session, planned_rows: int) -> SandboxUsageOut:
+    state = get_sandbox_state(session)
+    remaining_queries = state.max_queries - state.total_queries
+    remaining_rows = state.max_rows - state.total_rows
+    if remaining_queries <= 0:
+        raise HTTPException(
+            status_code=429,
+            detail={
+                'error': 'Sandbox query cap reached. Reset the sandbox before running more queries.',
+                'sandbox_usage': _sandbox_usage_out(session).model_dump(),
+            },
+        )
+    if remaining_rows < planned_rows:
+        raise HTTPException(
+            status_code=429,
+            detail={
+                'error': 'Sandbox row cap reached. Reset the sandbox before running another lead search.',
+                'sandbox_usage': _sandbox_usage_out(session).model_dump(),
+            },
+        )
+
+    state.total_queries += 1
+    state.updated_at = datetime.utcnow()
+    return _sandbox_usage_out(session)
 def _query_guardrail_or_422(query: str) -> QueryGuardrailResult:
     guardrail = evaluate_query_guardrails(query)
     if guardrail.status == 'blocked':
@@ -130,9 +193,19 @@ async def health_check():
 @app.post("/scout", response_model=ScoutResponse)
 async def run_scout(request: ScoutRequest):
     guardrail = _query_guardrail_or_422(request.query)
+    with get_db_session() as session:
+        sandbox_usage = _sandbox_reserve_query_or_429(session, SANDBOX_SCOUT_MAX_ROWS_PER_QUERY)
     try:
         leads, metrics = await scout(request.query, filters=request.filters)
-        return ScoutResponse(leads=leads, metrics=metrics, query_guardrail=guardrail if guardrail.status != 'clear' else None)
+        with get_db_session() as session:
+            record_sandbox_rows(session, len(leads))
+            sandbox_usage = _sandbox_usage_out(session)
+        return ScoutResponse(
+            leads=leads,
+            metrics=metrics,
+            query_guardrail=guardrail if guardrail.status != 'clear' else None,
+            sandbox_usage=sandbox_usage,
+        )
     except OrchestratorError as exc:
         import logging
         logging.getLogger("white_rabbit.api").error("Orchestrator error: %s", exc, exc_info=True)
@@ -147,8 +220,13 @@ async def run_scout(request: ScoutRequest):
 async def run_full(request: FullRequest):
     """Run a Full query: produces a stored recipe and recipe_run."""
     guardrail = _query_guardrail_or_422(request.query)
+    with get_db_session() as session:
+        sandbox_usage = _sandbox_reserve_query_or_429(session, SANDBOX_FULL_MAX_ROWS_PER_QUERY)
     try:
         leads, metrics = await scout(request.query, filters=request.filters, max_leads=100)
+        with get_db_session() as session:
+            record_sandbox_rows(session, len(leads))
+            sandbox_usage = _sandbox_usage_out(session)
     except OrchestratorError as exc:
         import logging
         logging.getLogger("white_rabbit.api").error("Orchestrator error: %s", exc, exc_info=True)
@@ -186,6 +264,7 @@ async def run_full(request: FullRequest):
             metrics=metrics,
             recipe_id=recipe.id,
             query_guardrail=guardrail if guardrail.status != 'clear' else None,
+            sandbox_usage=sandbox_usage,
         )
 
 
@@ -230,6 +309,19 @@ async def recipe_scoreboard(recipe_id: UUID):
         if not scoreboard:
             raise HTTPException(status_code=404, detail="Recipe not found")
         return RecipeScoreboardOut(**scoreboard)
+
+
+@app.get("/sandbox", response_model=SandboxUsageOut)
+async def get_sandbox_usage():
+    with get_db_session() as session:
+        return _sandbox_usage_out(session)
+
+
+@app.post("/sandbox/reset", response_model=SandboxResetOut)
+async def reset_sandbox():
+    with get_db_session() as session:
+        state = reset_sandbox_state(session)
+        return SandboxResetOut(sandbox_usage=_sandbox_usage_out(session))
 
 
 @app.post("/leads/{lead_id}/feedback")
@@ -344,11 +436,36 @@ async def run_batch(request: BatchRequest):
                 continue
 
             try:
+                _sandbox_reserve_query_or_429(
+                    session,
+                    min(job.cap_max_leads, SANDBOX_BATCH_MAX_ROWS_PER_QUERY),
+                )
                 leads, metrics = await scout(
                     item.query,
                     filters=item.filters,
-                    max_leads=job.cap_max_leads,
+                    max_leads=min(job.cap_max_leads, SANDBOX_BATCH_MAX_ROWS_PER_QUERY),
                 )
+            except HTTPException as exc:
+                batch_run.status = "failed"
+                batch_run.error_message = exc.detail["error"] if isinstance(exc.detail, dict) and "error" in exc.detail else str(exc.detail)
+                batch_run.ended_at = datetime.utcnow()
+                update_batch_run(
+                    session,
+                    batch_run.id,
+                    status="failed",
+                    error_message=batch_run.error_message,
+                )
+                run_records.append(
+                    BatchRunOut(
+                        id=batch_run.id,
+                        query=item.query,
+                        status="failed",
+                        lead_count=0,
+                        cost_usd=0.0,
+                        error_message=batch_run.error_message,
+                    )
+                )
+                break
             except OrchestratorError as exc:
                 import logging
                 logging.getLogger("white_rabbit.api").error("Batch orchestrator error: %s", exc, exc_info=True)
@@ -449,6 +566,7 @@ async def run_batch(request: BatchRequest):
             )
             lead_dicts = [lead.model_dump() for lead in leads]
             save_leads(session, run.id, lead_dicts)
+            record_sandbox_rows(session, lead_count)
 
             batch_run.status = "completed"
             batch_run.recipe_id = recipe.id
