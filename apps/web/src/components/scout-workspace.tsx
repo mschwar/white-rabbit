@@ -54,6 +54,7 @@ export default function ScoutWorkspace() {
   const [submittedQuery, setSubmittedQuery] = useState<string | null>(null);
   const [submittedLocation, setSubmittedLocation] = useState<string | null>(null);
   const [submittedRecipeName, setSubmittedRecipeName] = useState<string | null>(null);
+  const [feedbackState, setFeedbackState] = useState<Record<string, string | null>>({});
 
   useEffect(() => {
     fetchSandboxUsage()
@@ -527,26 +528,35 @@ export default function ScoutWorkspace() {
                   <p className="mt-3 text-sm leading-6 text-zinc-400">{lead.why_target}</p>
                   <p className="mt-3 text-sm leading-6 text-zinc-200">{lead.icebreaker}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {(['usable', 'wrong_persona', 'bad_source', 'bad_contact', 'duplicate'] as const).map((label) => (
-                      <button
-                        key={label}
-                        onClick={async () => {
-                          if (!lead.id) {
-                            alert('No lead ID available for feedback.');
-                            return;
-                          }
-                          try {
-                            await submitLeadFeedback(lead.id, label);
-                            alert(`Feedback submitted: ${label}`);
-                          } catch {
-                            alert('Failed to submit feedback.');
-                          }
-                        }}
-                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-zinc-300 transition hover:bg-emerald-400/20 hover:text-emerald-300"
-                      >
-                        {label.replace('_', ' ')}
-                      </button>
-                    ))}
+                    {(['usable', 'wrong_persona', 'bad_source', 'bad_contact', 'duplicate'] as const).map((label) => {
+                      const leadId = lead.id;
+                      const isSubmitted = feedbackState[leadId ?? ''] === label;
+                      return (
+                        <button
+                          key={label}
+                          disabled={!leadId || isSubmitted}
+                          onClick={async () => {
+                            if (!leadId) {
+                              alert('No lead ID available for feedback.');
+                              return;
+                            }
+                            try {
+                              await submitLeadFeedback(leadId, label);
+                              setFeedbackState((prev) => ({ ...prev, [leadId]: label }));
+                            } catch {
+                              alert('Failed to submit feedback.');
+                            }
+                          }}
+                          className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
+                            isSubmitted
+                              ? 'border-emerald-400/50 bg-emerald-400/20 text-emerald-300'
+                              : 'border-white/10 bg-white/5 text-zinc-300 hover:bg-emerald-400/20 hover:text-emerald-300'
+                          } disabled:cursor-not-allowed disabled:opacity-50`}
+                        >
+                          {isSubmitted ? `✓ ${label.replace('_', ' ')}` : label.replace('_', ' ')}
+                        </button>
+                      );
+                    })}
                   </div>
                   <a
                     className="mt-4 inline-flex text-sm font-medium text-emerald-300 underline decoration-emerald-300/30 underline-offset-4"

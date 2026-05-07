@@ -256,7 +256,11 @@ async def run_full(request: FullRequest):
             },
         )
         lead_dicts = [lead.model_dump() for lead in leads]
-        save_leads(session, run.id, lead_dicts)
+        db_leads = save_leads(session, run.id, lead_dicts)
+
+        # Inject persisted lead IDs back into the response leads
+        for lead, db_lead in zip(leads, db_leads):
+            lead.id = str(db_lead.id)
 
         return FullResponse(
             run_id=run.id,
