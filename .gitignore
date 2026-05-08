@@ -9,6 +9,8 @@ secrets.toml
 secrets.json
 *.pem
 *.key
+cookies.txt
+*.cookies.txt
 
 # Node / Next.js
 node_modules/

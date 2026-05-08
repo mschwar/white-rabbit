@@ -524,7 +524,7 @@ def test_batch_endpoint_respects_caps(monkeypatch):
     monkeypatch.setattr("api.main.scout", fake_scout)
     monkeypatch.setattr("api.main.create_recipe", lambda session, **kwargs: type("FakeRecipe", (), {"id": UUID("44444444-4444-4444-4444-444444444444")})())
     monkeypatch.setattr("api.main.create_recipe_run", lambda session, **kwargs: type("FakeRecipeRun", (), {"id": UUID("55555555-5555-5555-5555-555555555555")})())
-    monkeypatch.setattr("api.main.save_leads", lambda session, run_id, leads: None)
+    monkeypatch.setattr("api.main.save_leads", lambda session, run_id, leads: [type("FakeLead", (), {"id": UUID("66666666-6666-6666-6666-666666666666")})()])
 
     response = client.post(
         "/batch",
@@ -541,3 +541,100 @@ def test_batch_endpoint_respects_caps(monkeypatch):
     assert any(r["status"] == "failed" for r in body["runs"])
     assert body["total_leads"] == 0
     assert body["total_cost_usd"] == 0.0
+
+
+def test_full_endpoint_returns_persisted_lead_ids(monkeypatch):
+    from uuid import UUID
+
+    captured = {}
+
+    @contextmanager
+    def fake_db_session():
+        class FakeSession:
+            def flush(self):
+                pass
+            def commit(self):
+                pass
+            def rollback(self):
+                pass
+            def close(self):
+                pass
+        yield FakeSession()
+
+    class FakeRecipe:
+        id = UUID("11111111-1111-1111-1111-111111111111")
+
+    class FakeRun:
+        id = UUID("22222222-2222-2222-2222-222222222222")
+
+    class FakeLead:
+        id = UUID("33333333-3333-3333-3333-333333333333")
+
+    def fake_create_recipe(session, **kwargs):
+        return FakeRecipe()
+
+    def fake_create_recipe_run(session, **kwargs):
+        return FakeRun()
+
+    def fake_save_leads(session, run_id, leads):
+        captured["saved_leads"] = leads
+        return [FakeLead()]
+
+    def fake_get_sandbox_state(session):
+        return SimpleNamespace(
+            total_queries=0,
+            total_rows=0,
+            max_queries=10,
+            max_rows=1000,
+            reset_at=datetime.utcnow(),
+        )
+
+    def fake_record_sandbox_rows(session, rows):
+        pass
+
+    async def fake_scout(query, **kwargs):
+        return (
+            [
+                Lead(
+                    name="Jane Smith",
+                    title="Director of Technology",
+                    organization="Albuquerque Public Schools",
+                    email="jane.smith@aps.edu",
+                    email_status="Found",
+                    source_url="https://aps.edu/tech",
+                    confidence=0.88,
+                    why_target="Owns district telecom decisions",
+                    icebreaker="I noticed APS is growing its classroom connectivity needs.",
+                    fit_score=0.91,
+                    evidence_score=0.84,
+                    contact_score=0.79,
+                    gate_passed=True,
+                    explanation="Strong district fit with current leadership evidence and usable email.",
+                ),
+            ],
+            RunMetrics(
+                input_tokens=123,
+                output_tokens=45,
+                tavily_searches=1,
+                elapsed_seconds=1.23,
+                estimated_cost_usd=0.010123,
+            ),
+        )
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.create_recipe", fake_create_recipe)
+    monkeypatch.setattr("api.main.create_recipe_run", fake_create_recipe_run)
+    monkeypatch.setattr("api.main.save_leads", fake_save_leads)
+    monkeypatch.setattr("api.main.get_sandbox_state", fake_get_sandbox_state)
+    monkeypatch.setattr("api.main.record_sandbox_rows", fake_record_sandbox_rows)
+    monkeypatch.setattr("api.main.scout", fake_scout)
+
+    response = client.post("/full", json={"query": "K-12 IT directors in Albuquerque"})
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["run_id"] == "22222222-2222-2222-2222-222222222222"
+    assert body["recipe_id"] == "11111111-1111-1111-1111-111111111111"
+    assert len(body["leads"]) == 1
+    assert body["leads"][0]["id"] == "33333333-3333-3333-3333-333333333333"
+    assert captured["saved_leads"][0]["name"] == "Jane Smith"

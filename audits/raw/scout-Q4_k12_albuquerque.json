@@ -1,0 +1,104 @@
+{
+  "key": "Q4_k12_albuquerque",
+  "query": "K-12 IT directors in Albuquerque",
+  "elapsed_s": 13.0,
+  "lead_count": 3,
+  "metrics": {
+    "estimated_cost_usd": 0.011395,
+    "input_tokens": 6815,
+    "output_tokens": 622,
+    "tavily_searches": 1
+  },
+  "quality_summary": {
+    "name_ok": 3,
+    "name_bad": 0,
+    "email_real": 3,
+    "email_empty": 0,
+    "email_placeholder": 0,
+    "email_malformed": 0,
+    "explanation_ok": 3,
+    "explanation_leak": 0,
+    "gate_ok": 3,
+    "gate_bad": 0
+  },
+  "leads": [
+    {
+      "name": "Scott Elder",
+      "title": "Associate, K-12 Strategic Technology Advisory Group",
+      "organization": "Albuquerque Public Schools",
+      "email": "scott.elder@aps.edu",
+      "email_status": "Deduced",
+      "source_url": "https://www.linkedin.com/in/scott-elder-6713a8266",
+      "confidence": 0.99884856,
+      "fit_score": 0.8,
+      "evidence_score": 0.9,
+      "contact_score": 0.7,
+      "gate_passed": true,
+      "why_target": "As a K-12 strategic technology advisor, Scott is positioned to influence decisions regarding VoIP and network upgrades which can enhance communication and operational efficiency in schools.",
+      "icebreaker": "Hi Scott, as the Associate at K-12 Strategic Technology Advisory Group for Albuquerque Public Schools, enhancing connectivity through a VoIP upgrade could significantly improve communication across your district's 89,000 students and staff to support their educational needs.",
+      "explanation": "Scott is closely connected to technology in K-12 education, relevant to VoIP upgrades, and has deduced contact info which makes him a high-value lead.",
+      "_audit": {
+        "name_ok": true,
+        "name_detail": "ok",
+        "email_status": "real",
+        "email_detail": "scott.elder@aps.edu",
+        "explanation_ok": true,
+        "explanation_detail": "ok",
+        "gate_consistent": true,
+        "gate_detail": "ok"
+      }
+    },
+    {
+      "name": "Thomas Ryan",
+      "title": "Executive Director of Technology",
+      "organization": "Albuquerque Public Schools",
+      "email": "thomas.ryan@aps.edu",
+      "email_status": "Deduced",
+      "source_url": "https://www.milkeneducatorawards.org/educators/view/thomas-ryan",
+      "confidence": 0.99843913,
+      "fit_score": 0.9,
+      "evidence_score": 0.9,
+      "contact_score": 0.8,
+      "gate_passed": true,
+      "why_target": "As the executive director of technology for APS, Thomas oversees critical technology initiatives and will likely consider VoIP upgrades to improve communication within schools.",
+      "icebreaker": "Hi Thomas, as the Executive Director of Technology at Albuquerque Public Schools, implementing a modern VoIP system can greatly enhance the efficiency of telecommunications for managing the district's robust tech initiatives.",
+      "explanation": "Thomas is directly involved in technology decisions for a large school district, aligns with VoIP offerings, and has usable contact information.",
+      "_audit": {
+        "name_ok": true,
+        "name_detail": "ok",
+        "email_status": "real",
+        "email_detail": "thomas.ryan@aps.edu",
+        "explanation_ok": true,
+        "explanation_detail": "ok",
+        "gate_consistent": true,
+        "gate_detail": "ok"
+      }
+    },
+    {
+      "name": "Tom Ryan",
+      "title": "Co-Founder",
+      "organization": "K-12 Strategic Technology Advisory Group",
+      "email": "tom.ryan@k12stag.com",
+      "email_status": "Deduced",
+      "source_url": "https://www.linkedin.com/in/elearntom",
+      "confidence": 0.9974491,
+      "fit_score": 0.85,
+      "evidence_score": 0.85,
+      "contact_score": 0.75,
+      "gate_passed": true,
+      "why_target": "As a co-founder of K12STAG, Tom is integral in advising schools on technology, making VoIP upgrades beneficial for enhancing education in Albuquerque.",
+      "icebreaker": "Hi Tom, as Co-Founder of K-12 Strategic Technology Advisory Group, enhancing Albuquerque's schools with a VoIP upgrade could significantly streamline communication among educators, improving overall educational outcomes.",
+      "explanation": "Tom has extensive experience in K-12 technology and decision-making, is positioned toward VoIP solutions, and has deduced contact info.",
+      "_audit": {
+        "name_ok": true,
+        "name_detail": "ok",
+        "email_status": "real",
+        "email_detail": "tom.ryan@k12stag.com",
+        "explanation_ok": true,
+        "explanation_detail": "ok",
+        "gate_consistent": true,
+        "gate_detail": "ok"
+      }
+    }
+  ]
+}
