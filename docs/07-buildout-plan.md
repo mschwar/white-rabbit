@@ -79,7 +79,7 @@ If a feature looks too big once you start: split it. Add a second `- [ ]` row to
 > Mark `- [x] (date, commit)` only after merge. Reorder only with care — dependencies are noted in each spec.
 
 ### Phase A — Infrastructure (P0, blocks everything)
-- [ ] BUILDOUT-01: Config preflight + DATABASE_URL respect + remove Ollama trap (`feat/buildout-01-config-preflight`)
+- [x] (2026-05-08, a5c5dbf) BUILDOUT-01: Config preflight + DATABASE_URL respect + remove Ollama trap (`feat/buildout-01-config-preflight`)
 - [ ] BUILDOUT-02: Add `sandbox_state` alembic migration (`feat/buildout-02-sandbox-state-migration`)
 - [ ] BUILDOUT-03: Server-side session token expiry (`feat/buildout-03-session-expiry`)
 

@@ -1,7 +1,7 @@
 # STATUS
 
-**Last updated:** 2026-05-07 by hard-audit (Claude Opus 4.7)
-**Branch:** audit/hard-audit-2026-05-07 (audit branch; main is unchanged)
+**Last updated:** 2026-05-08 by gpt-5.4-mini
+**Branch:** main
 **Current sprint:** Sprint 4 complete — Sandbox caps merged
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
@@ -81,15 +81,16 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 - **Sprint 4: Browser QA completed.** Logged in to the web app, opened `/batch`, submitted a batch run, and verified the result card and run summaries render correctly.
 - **Sprint 4 follow-up: Full-run lead export added.** Scout Full runs now build a downloadable CSV export with query, recipe, run metadata, scores, gate status, explanation, and validation context. Browser QA confirmed the export link renders in the live workspace.
 - **Sprint 4 follow-up: Sandbox caps merged.** Query/row caps (10 queries / 1000 rows) with reset and usage tracking. API enforces caps on Scout, Full, and Batch. Web UI shows quota card with reset button. Tests updated for sandbox fetch on mount. **⚠️ AUDIT REALITY:** the `sandbox_state` table has no alembic migration (audit D4-01 / D7-03); the query counter is non-atomic and bypassable under concurrent load (audit D4-04); the spend cap is checked AFTER the API call so money is already spent when the cap fires (audit D4-12).
-- **BUILDOUT-01: Config preflight + DATABASE_URL respect + remove Ollama trap.** QA signed off on `feat/buildout-01-config-preflight`. Preflight verifies env vars and OpenAI/Tavily/Postgres connectivity; `DATABASE_URL` is only required in production (hotfix committed); Ollama trap removed. Ready for merge.
+- **BUILDOUT-01: Config preflight + DATABASE_URL respect + remove Ollama trap.** QA signed off on `feat/buildout-01-config-preflight`. Preflight verifies env vars and OpenAI/Tavily/Postgres connectivity; `DATABASE_URL` is only required in production (hotfix committed); Ollama trap removed.
+- **BUILDOUT-01 QA report captured.** Browser QA notes and screenshots are saved at `.gstack/qa-reports/buildout-01-config-preflight.md` with baseline data in `.gstack/qa-reports/baseline.json`.
 
 ## What's in flight
 
-- `feat/buildout-01-config-preflight` — BUILDOUT-01: config preflight, DATABASE_URL respect, remove Ollama trap.
+- `feat/buildout-02-sandbox-state-migration` — BUILDOUT-02: add `sandbox_state` alembic migration.
 
 ## Next concrete task
 
-- Complete BUILDOUT-01 (config preflight). Then pick up BUILDOUT-02 (`sandbox_state` alembic migration). See `docs/07-buildout-plan.md`.
+- Complete BUILDOUT-02 (`sandbox_state` migration). Then pick up BUILDOUT-03 (session token expiry). See `docs/07-buildout-plan.md`.
 
 ## Open questions for Matt
 
@@ -147,4 +148,5 @@ Real known issues (post-audit):
 | 2026-05-07 | qa (gpt-5.4-mini) | Browser-validated the lead query guardrails slice on a clean next start, confirmed valid, vague, and blank queries behave correctly, and added a regression test for plain-text API failures. |
 | 2026-05-07 | full-lead-export (gpt-5.4-mini) | Added Full-run CSV lead export helpers, wired the Scout workspace export button and download link, added tests, verified with Next.js build, Vitest, and browser QA, and pushed the feature branch. |
 | 2026-05-07 | qa (gpt-5.4-mini) | Browser-verified the full lead export flow on the feature branch: Scout search, Full search, export generation, run closeout, and recipe library scoreboard all rendered correctly. Captured browser screenshots and checked for console errors. |
+| 2026-05-08 | qa (gpt-5.4-mini) | Browser QA covered login, Scout, Full, recipes, and batch on http://localhost:3000; captured screenshots; confirmed clean console; wrote `.gstack/qa-reports/buildout-01-config-preflight.md` and `.gstack/qa-reports/baseline.json`. |
 | 2026-05-07 | hard-audit (Claude Opus 4.7) | Ground-up zero-trust audit. 8 parallel sub-agents, 4 live scout queries against real OpenAI ($0.045 spent), 65 findings across 8 dimensions plus Phase 2. 2 agent errors caught and corrected. Master report at `audits/hard-audit-2026-05-07.md`; action plan at `docs/06-audit-action-plan.md`. **Conclusion: not deployable as-is. 5 confirmed P0 blockers including `OPENAI_BASE_URL` routing to local Ollama and 89% VoIP leak rate in real leads.** |
