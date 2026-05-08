@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createSessionToken, normalizeNextPath, SESSION_COOKIE_NAME } from '@/lib/auth';
+import { createSessionToken, normalizeNextPath, SESSION_COOKIE_NAME, SESSION_MAX_AGE_MS } from '@/lib/auth';
 import { matchesSharedPassword } from '@/lib/password';
 
 export const runtime = 'nodejs';
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     sameSite: 'lax',
     secure: process.env.NODE_ENV === 'production',
     path: '/',
-    maxAge: 60 * 60 * 24 * 7,
+    maxAge: SESSION_MAX_AGE_MS / 1000,
   });
 
   return response;

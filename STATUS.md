@@ -1,7 +1,7 @@
 # STATUS
 
 **Last updated:** 2026-05-08 by gpt-5.4-mini
-**Branch:** main
+**Branch:** feat/buildout-03-session-expiry
 **Current sprint:** Sprint 4 complete — Sandbox caps merged
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
@@ -84,14 +84,15 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 - **BUILDOUT-01: Config preflight + DATABASE_URL respect + remove Ollama trap.** QA signed off on `feat/buildout-01-config-preflight`. Preflight verifies env vars and OpenAI/Tavily/Postgres connectivity; `DATABASE_URL` is only required in production (hotfix committed); Ollama trap removed.
 - **BUILDOUT-01 QA report captured.** Browser QA notes and screenshots are saved at `.gstack/qa-reports/buildout-01-config-preflight.md` with baseline data in `.gstack/qa-reports/baseline.json`.
 - **BUILDOUT-02: Add `sandbox_state` alembic migration.** Merged on `feat/buildout-02-sandbox-state-migration`; the `sandbox_state` table now has a real Alembic migration and the `create_all()` fallback is gone.
+- **BUILDOUT-03: Server-side session token expiry.** Verified in tests and browser QA on the protected login / Scout flow; session tokens now expire server-side on schedule.
 
 ## What's in flight
 
-- `feat/buildout-03-session-expiry` — BUILDOUT-03: server-side session token expiry.
+- None. BUILDOUT-03 is complete and ready to merge.
 
 ## Next concrete task
 
-- Complete BUILDOUT-03 (session token expiry). Then pick up BUILDOUT-04 (strip VoIP bias; restore lost proxy-lead prompt instructions). See `docs/07-buildout-plan.md`.
+- Pick up BUILDOUT-04 (strip VoIP bias; restore lost proxy-lead prompt instructions). See `docs/07-buildout-plan.md`.
 
 ## Open questions for Matt
 

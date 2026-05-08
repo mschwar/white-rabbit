@@ -7,6 +7,8 @@ export const LOGOUT_PATH = '/api/logout';
 export const LOGIN_API_PATH = '/api/login';
 
 const SESSION_VERSION = 1;
+export const SESSION_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
+const SESSION_CLOCK_SKEW_MS = 60 * 1000;
 
 function bytesToBase64(bytes: Uint8Array): string {
   let binary = '';
@@ -85,6 +87,15 @@ export async function verifySessionToken(token: string, secret: string): Promise
     };
 
     if (parsed.v !== SESSION_VERSION || typeof parsed.iat !== 'number') {
+      return false;
+    }
+
+    const ageMs = Date.now() - parsed.iat;
+    if (ageMs > SESSION_MAX_AGE_MS) {
+      return false;
+    }
+
+    if (parsed.iat > Date.now() + SESSION_CLOCK_SKEW_MS) {
       return false;
     }
 
