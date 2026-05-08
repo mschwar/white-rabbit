@@ -25,6 +25,7 @@ def test_lead_model():
 
 
 def test_lead_field_descriptions_are_vertical_agnostic():
+    assert Lead.model_fields["name"].description == "Real person's first and last name; omit the lead if unknown"
     assert Lead.model_fields["why_target"].description == (
         "1 sentence on why this role/organization fits the user's stated query intent"
     )
@@ -38,6 +39,11 @@ def test_system_prompt_restored_lost_instructions_without_voip_bias():
     assert "Include the organization name for every lead" in SYSTEM_PROMPT
     assert "Set source_url as the URL with the strongest direct evidence" in SYSTEM_PROMPT
     assert "Never invent or guess an email." in SYSTEM_PROMPT
-    assert "VoIP" not in SYSTEM_PROMPT
+    assert "Treat the user's query intent as the only vertical signal" in SYSTEM_PROMPT
+    assert "Never use placeholders like N/A, Unknown" in SYSTEM_PROMPT
+    assert "Do not inject VoIP" in SYSTEM_PROMPT
+    assert "telecom, networking, or product-upgrade language" in SYSTEM_PROMPT
+    assert "VoIP prospect" not in SYSTEM_PROMPT
+    assert "VoIP upgrade" not in SYSTEM_PROMPT
     assert "Telecom" not in SYSTEM_PROMPT
     assert "school district / government / SMB" not in SYSTEM_PROMPT

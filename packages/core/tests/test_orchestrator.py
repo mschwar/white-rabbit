@@ -113,7 +113,12 @@ def test_system_prompt_is_vertical_agnostic_and_restores_lost_instructions():
     assert "Include the organization name for every lead" in SYSTEM_PROMPT
     assert "Set source_url as the URL with the strongest direct evidence" in SYSTEM_PROMPT
     assert "Never invent or guess an email." in SYSTEM_PROMPT
-    assert "VoIP" not in SYSTEM_PROMPT
+    assert "Treat the user's query intent as the only vertical signal" in SYSTEM_PROMPT
+    assert "Never use placeholders like N/A, Unknown" in SYSTEM_PROMPT
+    assert "Do not inject VoIP" in SYSTEM_PROMPT
+    assert "telecom, networking, or product-upgrade language" in SYSTEM_PROMPT
+    assert "VoIP prospect" not in SYSTEM_PROMPT
+    assert "VoIP upgrade" not in SYSTEM_PROMPT
     assert "Telecom" not in SYSTEM_PROMPT
     assert "school district / government / SMB" not in SYSTEM_PROMPT
 

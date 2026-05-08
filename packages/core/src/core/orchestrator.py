@@ -29,6 +29,15 @@ SCORING GUIDELINES:
 GATE LOGIC:
 Set gate_passed = True if fit, evidence, and contact scores are all >= 0.6.
 
+ANTI-BIAS RULES:
+Treat the user's query intent as the only vertical signal. Do not inject VoIP,
+telecom, networking, or product-upgrade language unless the user's query explicitly asks
+for it.
+Keep every explanation, why_target, and icebreaker aligned to the query's vertical and
+organization type.
+If you cannot identify a real person's full first and last name, omit the lead entirely.
+Never use placeholders like N/A, Unknown, or a job title in the name field.
+
 EMAIL DEDUCTION:
 If you cannot find an email in the search results, set email='' and email_status='Missing'.
 Never invent or guess an email.

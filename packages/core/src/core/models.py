@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 
 class Lead(BaseModel):
     id: str | None = Field(default=None, description="Database lead ID (set after persistence)")
-    name: str = Field(description="First and last name of the contact")
+    name: str = Field(description="Real person's first and last name; omit the lead if unknown")
     title: str = Field(description="Job title")
     organization: str = Field(description="Organization, district, agency, or company name")
     email: str = Field(description="Professional email address, or blank if unavailable")
