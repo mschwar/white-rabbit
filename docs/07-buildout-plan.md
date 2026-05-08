@@ -81,7 +81,7 @@ If a feature looks too big once you start: split it. Add a second `- [ ]` row to
 ### Phase A — Infrastructure (P0, blocks everything)
 - [x] (2026-05-08, a5c5dbf) BUILDOUT-01: Config preflight + DATABASE_URL respect + remove Ollama trap (`feat/buildout-01-config-preflight`)
 - [x] (2026-05-08, a5c5dbf) BUILDOUT-02: Add `sandbox_state` alembic migration (`feat/buildout-02-sandbox-state-migration`)
-- [x] (2026-05-08, 985a4b0) BUILDOUT-03: Server-side session token expiry (`feat/buildout-03-session-expiry`)
+- [x] (2026-05-08, 4a4cd32) BUILDOUT-03: Server-side session token expiry (`feat/buildout-03-session-expiry`)
 
 ### Phase B — Product correctness (P0, makes the product not-lying)
 - [ ] BUILDOUT-04: Strip VoIP bias; restore lost proxy-lead prompt instructions (`feat/buildout-04-vertical-agnostic-prompt`)
