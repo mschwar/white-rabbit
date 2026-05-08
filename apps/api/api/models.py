@@ -1,3 +1,4 @@
+import os
 import uuid
 from datetime import datetime
 from typing import Any
@@ -112,7 +113,11 @@ class SandboxState(Base):
 
 
 def get_engine(database_url: str | None = None):
-    url = database_url or "postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit"
+    url = database_url or os.environ.get("DATABASE_URL")
+    if not url:
+        if os.environ.get("WR_ENV") == "production":
+            raise RuntimeError("DATABASE_URL must be set in production")
+        url = "postgresql://white_rabbit:***@localhost:5432/white_rabbit"
     return create_engine(url)
 
 

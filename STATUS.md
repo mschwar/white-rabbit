@@ -81,13 +81,15 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 - **Sprint 4: Browser QA completed.** Logged in to the web app, opened `/batch`, submitted a batch run, and verified the result card and run summaries render correctly.
 - **Sprint 4 follow-up: Full-run lead export added.** Scout Full runs now build a downloadable CSV export with query, recipe, run metadata, scores, gate status, explanation, and validation context. Browser QA confirmed the export link renders in the live workspace.
 - **Sprint 4 follow-up: Sandbox caps merged.** Query/row caps (10 queries / 1000 rows) with reset and usage tracking. API enforces caps on Scout, Full, and Batch. Web UI shows quota card with reset button. Tests updated for sandbox fetch on mount. **⚠️ AUDIT REALITY:** the `sandbox_state` table has no alembic migration (audit D4-01 / D7-03); the query counter is non-atomic and bypassable under concurrent load (audit D4-04); the spend cap is checked AFTER the API call so money is already spent when the cap fires (audit D4-12).
+- **BUILDOUT-01: Config preflight + DATABASE_URL respect + remove Ollama trap.** In progress on `feat/buildout-01-config-preflight`. Addresses P0 blockers: `OPENAI_BASE_URL` Ollama trap (audit F2-05) and `get_engine()` ignoring `DATABASE_URL` (audit D4-03). Adds startup preflight verifying env vars and OpenAI/Tavily/Postgres connectivity.
+
 ## What's in flight
 
-- None. `feature/full-lead-export` has been merged to `main`.
+- `feat/buildout-01-config-preflight` — BUILDOUT-01: config preflight, DATABASE_URL respect, remove Ollama trap.
 
 ## Next concrete task
 
-- Pick up the next sprint slice from `docs/04-roadmap.md`.
+- Complete BUILDOUT-01 (config preflight). Then pick up BUILDOUT-02 (`sandbox_state` alembic migration). See `docs/07-buildout-plan.md`.
 
 ## Open questions for Matt
 

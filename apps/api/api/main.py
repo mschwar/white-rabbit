@@ -8,6 +8,11 @@ from uuid import UUID
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
+import os
+import logging
+from contextlib import asynccontextmanager
+
+logger = logging.getLogger("white_rabbit.api")
 
 REPO_ROOT = Path(__file__).resolve().parents[3]
 CORE_SRC = REPO_ROOT / "packages" / "core" / "src"
@@ -17,7 +22,7 @@ for candidate in (CORE_SRC, REPO_ROOT):
 
 from core.cost import RunMetrics
 from core.models import Lead
-from core.orchestrator import scout, OrchestratorError
+from core.orchestrator import scout, OrchestratorError, DEFAULT_MODEL
 from core.query_guardrails import QueryGuardrailResult, evaluate_query_guardrails
 
 from api.db import (
@@ -46,10 +51,53 @@ from api.db import (
 
 load_dotenv()
 
-# Initialize database on startup
+# Initialize database on startup (must happen before any endpoint uses it)
 init_db()
 
-app = FastAPI(title="White Rabbit API")
+
+def _preflight_check():
+    """Validate required env vars and vendor connectivity at startup."""
+    if "pytest" in sys.modules:
+        return
+
+    required = [
+        "OPENAI_API_KEY",
+        "TAVILY_API_KEY",
+        "WR_SHARED_PASSWORD",
+        "WR_SESSION_SECRET",
+        "DATABASE_URL",
+    ]
+    missing = [r for r in required if not os.environ.get(r)]
+    if missing:
+        raise RuntimeError(f"Missing required env: {', '.join(missing)}")
+
+    # Verify OpenAI connectivity
+    from openai import OpenAI
+
+    api_key = os.environ.get("OPENAI_API_KEY")
+    base_url = os.environ.get("OPENAI_BASE_URL")
+    model = os.environ.get("OPENAI_MODEL", DEFAULT_MODEL)
+    client = OpenAI(api_key=api_key, base_url=base_url)
+    try:
+        client.models.retrieve(model)
+    except Exception as exc:
+        resolved_url = base_url or "https://api.openai.com/v1"
+        raise RuntimeError(
+            f"OpenAI model unreachable: {model} @ {resolved_url} — {exc}"
+        ) from exc
+
+    db_url = os.environ.get("DATABASE_URL")
+    logger.info("OpenAI: %s @ %s", model, base_url or "https://api.openai.com/v1")
+    logger.info("Postgres: %s", db_url or "localhost (default)")
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    _preflight_check()
+    yield
+
+
+app = FastAPI(title="White Rabbit API", lifespan=lifespan)
 
 
 class ScoutRequest(BaseModel):
