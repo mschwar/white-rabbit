@@ -84,7 +84,7 @@ If a feature looks too big once you start: split it. Add a second `- [ ]` row to
 - [x] (2026-05-08, 4a4cd32) BUILDOUT-03: Server-side session token expiry (`feat/buildout-03-session-expiry`)
 
 ### Phase B — Product correctness (P0, makes the product not-lying)
-- [ ] BUILDOUT-04: Strip VoIP bias; restore lost proxy-lead prompt instructions (`feat/buildout-04-vertical-agnostic-prompt`)
+- [x] (2026-05-08, af4bc1c) BUILDOUT-04: Strip VoIP bias; restore lost proxy-lead prompt instructions (`feat/buildout-04-vertical-agnostic-prompt`)
 - [ ] BUILDOUT-05: Pydantic validators on Lead.name and Lead.email (`feat/buildout-05-lead-validators`)
 - [ ] BUILDOUT-06: Server-side `gate_passed` validation (`feat/buildout-06-server-gate`)
 
