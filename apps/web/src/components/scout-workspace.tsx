@@ -534,7 +534,7 @@ export default function ScoutWorkspace() {
                       return (
                         <button
                           key={label}
-                          disabled={!leadId || isSubmitted}
+                          disabled={!leadId || !!feedbackState[leadId ?? '']}
                           onClick={async () => {
                             if (!leadId) {
                               alert('No lead ID available for feedback.');
