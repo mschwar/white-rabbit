@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-08 by gpt-5.4-mini
-**Branch:** feat/buildout-04-vertical-agnostic-prompt
-**Current sprint:** BUILDOUT-04 in progress — prompt and model descriptions rewritten, tests passing locally
+**Branch:** main
+**Current sprint:** BUILDOUT-05 next — Lead validators after the BUILDOUT-04 prompt fix
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -15,7 +15,7 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 **Top 5 P0 blockers** (full list of 10 in the master report):
 
 1. **`OPENAI_BASE_URL=http://localhost:11434/v1` in `apps/api/.env`** silently routes every chat completion to local Ollama. The current main config has been broken for any environment without a local chat model installed in Ollama. Phase 2 reproduced this as 4-of-4 query failures until forced to api.openai.com.
-2. **VoIP/Telecom bias is hardcoded** into `orchestrator.py` SYSTEM_PROMPT and `models.py` Field descriptions. Live testing reproduced the failure at **89% rate** across non-VoIP queries (CISO of NY Fed Reserve Bank pitched VoIP for "regulatory compliance"; hydrogen fuel cell VP pitched VoIP for production efficiency).
+2. **Former P0 — VoIP/Telecom bias was hardcoded** into `orchestrator.py` SYSTEM_PROMPT and `models.py` Field descriptions. BUILDOUT-04 removed the bias and browser QA re-verified the fix on 2026-05-08.
 3. **`sandbox_state` table has no alembic migration.** Today's dev DB only has it because `init_db()` calls `Base.metadata.create_all()` as a parallel schema path. A clean alembic-only deploy crashes on every user-facing route.
 4. **`get_engine()` ignores `DATABASE_URL`** (apps/api/api/models.py:114–116). Production always tries hardcoded localhost.
 5. **Session tokens never expire server-side.** `verifySessionToken` decodes `iat` but never compares it to the clock.
@@ -80,6 +80,7 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 - **Sprint 4: Batch API tests passing.** `pytest tests -q` passes in `apps/api`.
 - **Sprint 4: Browser QA completed.** Logged in to the web app, opened `/batch`, submitted a batch run, and verified the result card and run summaries render correctly.
 - **Sprint 4 follow-up: Full-run lead export added.** Scout Full runs now build a downloadable CSV export with query, recipe, run metadata, scores, gate status, explanation, and validation context. Browser QA confirmed the export link renders in the live workspace.
+- **BUILDOUT-04 merged to `main`.** The prompt/model-description rewrite is on main, the old VoIP bias is removed, and browser QA re-verified finance results no longer leak VoIP/telecom language.
 - **Sprint 4 follow-up: Sandbox caps merged.** Query/row caps (10 queries / 1000 rows) with reset and usage tracking. API enforces caps on Scout, Full, and Batch. Web UI shows quota card with reset button. Tests updated for sandbox fetch on mount. **⚠️ AUDIT REALITY:** the `sandbox_state` table has no alembic migration (audit D4-01 / D7-03); the query counter is non-atomic and bypassable under concurrent load (audit D4-04); the spend cap is checked AFTER the API call so money is already spent when the cap fires (audit D4-12).
 - **BUILDOUT-01: Config preflight + DATABASE_URL respect + remove Ollama trap.** QA signed off on `feat/buildout-01-config-preflight`. Preflight verifies env vars and OpenAI/Tavily/Postgres connectivity; `DATABASE_URL` is only required in production (hotfix committed); Ollama trap removed.
 - **BUILDOUT-01 QA report captured.** Browser QA notes and screenshots are saved at `.gstack/qa-reports/buildout-01-config-preflight.md` with baseline data in `.gstack/qa-reports/baseline.json`.
@@ -88,11 +89,11 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 
 ## What's in flight
 
-- BUILDOUT-04 is in flight on `feat/buildout-04-vertical-agnostic-prompt`; prompt/model-description rewrite is implemented and tests pass locally. Awaiting QA + merge.
+- No active feature branch. BUILDOUT-05 is next.
 
 ## Next concrete task
 
-- QA BUILDOUT-04 in the browser, then mark `docs/07-buildout-plan.md` and merge on Prompt B.
+- Start BUILDOUT-05: add Pydantic validators on `Lead.name` and `Lead.email`.
 
 ## Open questions for Matt
 
@@ -113,7 +114,7 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 Real known issues (post-audit):
 
 - **P0 — `OPENAI_BASE_URL` Ollama trap** (audit F2-05). `apps/api/.env` routes all OpenAI SDK calls to local Ollama; main config has been broken for any non-local-Ollama environment.
-- **P0 — Hardcoded VoIP bias** in prompt and schema (audit D1-01, D1-02). Live testing reproduced 89% leak rate.
+- ~~**P0 — Hardcoded VoIP bias** in prompt and schema (audit D1-01, D1-02).~~ → Fixed in BUILDOUT-04 and re-verified in browser on 2026-05-08.
 - **P0 — `sandbox_state` migration missing** (audit D4-01, D7-03). Fresh deploys don't work without `Base.metadata.create_all()` fallback.
 - **P0 — `get_engine()` ignores `DATABASE_URL`** (audit D4-03). Wrong DB in production.
 - **P0 — Session tokens never expire server-side** (audit D4-02).
@@ -152,4 +153,5 @@ Real known issues (post-audit):
 | 2026-05-07 | qa (gpt-5.4-mini) | Browser-verified the full lead export flow on the feature branch: Scout search, Full search, export generation, run closeout, and recipe library scoreboard all rendered correctly. Captured browser screenshots and checked for console errors. |
 | 2026-05-08 | qa (gpt-5.4-mini) | Browser QA covered login, Scout, Full, recipes, and batch on http://localhost:3000; captured screenshots; confirmed clean console; wrote `.gstack/qa-reports/buildout-01-config-preflight.md` and `.gstack/qa-reports/baseline.json`. |
 | 2026-05-08 | docs-sync (gpt-5.4-mini) | Reconciled `docs/07-buildout-plan.md` with git history, marked BUILDOUT-02 complete, updated STATUS to point at BUILDOUT-03, and tightened AGENTS so future BUILDOUT sessions must update the checklist before finishing. |
-| 2026-05-07 | hard-audit (Claude Opus 4.7) | Ground-up zero-trust audit. 8 parallel sub-agents, 4 live scout queries against real OpenAI ($0.045 spent), 65 findings across 8 dimensions plus Phase 2. 2 agent errors caught and corrected. Master report at `audits/hard-audit-2026-05-07.md`; action plan at `docs/06-audit-action-plan.md`. **Conclusion: not deployable as-is. 5 confirmed P0 blockers including `OPENAI_BASE_URL` routing to local Ollama and 89% VoIP leak rate in real leads.** |
+| 2026-05-08 | buildout-04 (gpt-5.4-mini) | Removed the hardcoded VoIP/telecom bias from the Scout prompt and Lead schema descriptions, updated tests, marked BUILDOUT-04 complete in the buildout plan, pushed PR #13, and merged it to main after browser QA re-verified finance queries no longer leak VoIP language. |
+|| 2026-05-07 | hard-audit (Claude Opus 4.7) | Ground-up zero-trust audit. 8 parallel sub-agents, 4 live scout queries against real OpenAI ($0.045 spent), 65 findings across 8 dimensions plus Phase 2. 2 agent errors caught and corrected. Master report at `audits/hard-audit-2026-05-07.md`; action plan at `docs/06-audit-action-plan.md`. **Conclusion: not deployable as-is. 5 confirmed P0 blockers including `OPENAI_BASE_URL` routing to local Ollama and 89% VoIP leak rate in real leads.** |
