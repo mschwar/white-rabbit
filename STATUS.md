@@ -1,7 +1,7 @@
 # STATUS
 
 **Last updated:** 2026-05-08 by gpt-5.4-mini
-**Branch:** main
+**Branch:** feat/buildout-03-session-expiry
 **Current sprint:** Sprint 4 complete — Sandbox caps merged
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
