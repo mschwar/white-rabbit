@@ -1,0 +1,130 @@
+{
+  "key": "Q1_healthcare",
+  "query": "Healthcare IT directors in Phoenix",
+  "elapsed_s": 25.22,
+  "lead_count": 4,
+  "metrics": {
+    "estimated_cost_usd": 0.011238,
+    "input_tokens": 4972,
+    "output_tokens": 821,
+    "tavily_searches": 1
+  },
+  "quality_summary": {
+    "name_ok": 4,
+    "name_bad": 0,
+    "email_real": 4,
+    "email_empty": 0,
+    "email_placeholder": 0,
+    "email_malformed": 0,
+    "explanation_ok": 1,
+    "explanation_leak": 3,
+    "gate_ok": 4,
+    "gate_bad": 0
+  },
+  "leads": [
+    {
+      "name": "Wayland W.",
+      "title": "Director of Health Information Management",
+      "organization": "Non-profit Health Care System",
+      "email": "wayland.w@nonprofithealthcare.org",
+      "email_status": "Deduced",
+      "source_url": "https://www.phoenix.edu/career-guides/healthcare/health-information-management-director.html",
+      "confidence": 0.9997284,
+      "fit_score": 0.9,
+      "evidence_score": 1.0,
+      "contact_score": 0.7,
+      "gate_passed": true,
+      "why_target": "As a director, they influence healthcare IT systems which are crucial for implementing effective VoIP solutions to enhance patient communication.",
+      "icebreaker": "Hi Wayland, as the Director of Health Information Management at a non-profit health care system, I can imagine you're always looking for ways to optimize patient communication, and a VoIP upgrade could significantly enhance how your team connects with patients and manages healthcare information.",
+      "explanation": "Wayland is highly relevant as a director who directly interacts with IT systems in healthcare. The evidence from the educational institution indicates a legitimate title and makes it easy to deduce contact information.",
+      "_audit": {
+        "name_ok": true,
+        "name_detail": "ok",
+        "email_status": "real",
+        "email_detail": "wayland.w@nonprofithealthcare.org",
+        "explanation_ok": true,
+        "explanation_detail": "ok",
+        "gate_consistent": true,
+        "gate_detail": "ok"
+      }
+    },
+    {
+      "name": "Vincent Moore",
+      "title": "Director of IT",
+      "organization": "Phoenix Health Care Management Services, Inc.",
+      "email": "vincent.moore@phoenix-healthcare.com",
+      "email_status": "Found",
+      "source_url": "https://www.phoenix-healthcare.com/who-we-are/",
+      "confidence": 0.9971771,
+      "fit_score": 0.85,
+      "evidence_score": 0.9,
+      "contact_score": 1.0,
+      "gate_passed": true,
+      "why_target": "In a leadership position within IT, he plays a crucial role in evaluating and implementing VoIP technology for operational efficiency in healthcare services.",
+      "icebreaker": "Hello Vincent, as the Director of IT at Phoenix Health Care Management Services, enhancing communication through a VoIP solution could greatly support your efforts to streamline operations within the healthcare framework you manage.",
+      "explanation": "Vincent holds a key IT management role in healthcare, which aligns perfectly with the VoIP market. The direct source provides confirmed details about him, and the email is usable.",
+      "_audit": {
+        "name_ok": true,
+        "name_detail": "ok",
+        "email_status": "real",
+        "email_detail": "vincent.moore@phoenix-healthcare.com",
+        "explanation_ok": false,
+        "explanation_detail": "contains vertical leak 'voip'",
+        "gate_consistent": true,
+        "gate_detail": "ok"
+      }
+    },
+    {
+      "name": "Mark Green",
+      "title": "Principal Consultant",
+      "organization": "Phoenix Healthcare Innovation",
+      "email": "mark.green@phoenixhealthcareinnovation.com",
+      "email_status": "Found",
+      "source_url": "https://www.phoenixhealthcareinnovation.com/your-team",
+      "confidence": 0.97887486,
+      "fit_score": 0.8,
+      "evidence_score": 0.9,
+      "contact_score": 0.9,
+      "gate_passed": true,
+      "why_target": "Mark\u2019s role in healthcare innovation involves integrating technologies like VoIP to enhance operational efficiency, making his insights valuable for VoIP solutions.",
+      "icebreaker": "Hi Mark, as the Principal Consultant at Phoenix Healthcare Innovation, I suspect you recognize the transformative impact that a robust VoIP solution can have on health service delivery and operational efficiency.",
+      "explanation": "Mark's position involves strategic oversight in healthcare, making him a valuable target for VoIP sales. The source is strong with clear contact details.",
+      "_audit": {
+        "name_ok": true,
+        "name_detail": "ok",
+        "email_status": "real",
+        "email_detail": "mark.green@phoenixhealthcareinnovation.com",
+        "explanation_ok": false,
+        "explanation_detail": "contains vertical leak 'voip'",
+        "gate_consistent": true,
+        "gate_detail": "ok"
+      }
+    },
+    {
+      "name": "Dr. Jim Whitfill",
+      "title": "Chief Transformation Officer",
+      "organization": "HonorHealth",
+      "email": "jim.whitfill@honorhealth.com",
+      "email_status": "Found",
+      "source_url": "https://www.honorhealth.com/company/leadership",
+      "confidence": 0.81757444,
+      "fit_score": 0.75,
+      "evidence_score": 0.8,
+      "contact_score": 0.85,
+      "gate_passed": true,
+      "why_target": "As CTO, Dr. Whitfill focuses on technology integrations that can include VoIP to enhance patient experience and operational workflows.",
+      "icebreaker": "Hello Dr. Whitfill, in your role as Chief Transformation Officer at HonorHealth, the transition to a cutting-edge VoIP solution could significantly advance your initiatives for improving patient engagement and operational efficiency.",
+      "explanation": "Dr. Whitfill's role in healthcare transformation makes him a prime candidate for outreach regarding VoIP upgrades, supported by credible and accessible evidence.",
+      "_audit": {
+        "name_ok": true,
+        "name_detail": "ok",
+        "email_status": "real",
+        "email_detail": "jim.whitfill@honorhealth.com",
+        "explanation_ok": false,
+        "explanation_detail": "contains vertical leak 'voip'",
+        "gate_consistent": true,
+        "gate_detail": "ok"
+      }
+    }
+  ]
+}

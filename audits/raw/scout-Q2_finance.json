@@ -1,0 +1,78 @@
+{
+  "key": "Q2_finance",
+  "query": "Financial services CISOs at mid-size banks in New York",
+  "elapsed_s": 14.54,
+  "lead_count": 2,
+  "metrics": {
+    "estimated_cost_usd": 0.011106,
+    "input_tokens": 5474,
+    "output_tokens": 475,
+    "tavily_searches": 1
+  },
+  "quality_summary": {
+    "name_ok": 2,
+    "name_bad": 0,
+    "email_real": 2,
+    "email_empty": 0,
+    "email_placeholder": 0,
+    "email_malformed": 0,
+    "explanation_ok": 0,
+    "explanation_leak": 2,
+    "gate_ok": 2,
+    "gate_bad": 0
+  },
+  "leads": [
+    {
+      "name": "Khalil Jackson",
+      "title": "CISO",
+      "organization": "New York Federal Reserve Bank",
+      "email": "khalil.jackson@frb.gov",
+      "email_status": "Deduced",
+      "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+      "confidence": 0.9995308,
+      "fit_score": 0.9,
+      "evidence_score": 0.9,
+      "contact_score": 0.8,
+      "gate_passed": true,
+      "why_target": "As a CISO at one of the most critical financial institutions, Khalil oversees information security strategies ensuring regulatory compliance, making him highly receptive to VoIP solutions that enhance security and streamline operations.",
+      "icebreaker": "Hi Khalil, as the CISO for the New York Federal Reserve Bank, securing sensitive financial data while ensuring compliance with NYDFS regulations must be a top priority, and upgrading to VoIP can enhance your communication security significantly.",
+      "explanation": "Khalil Jackson is a high-value prospect as the CISO of a crucial financial institution, making him a prime target for VoIP solutions that address regulatory compliance and security needs.",
+      "_audit": {
+        "name_ok": true,
+        "name_detail": "ok",
+        "email_status": "real",
+        "email_detail": "khalil.jackson@frb.gov",
+        "explanation_ok": false,
+        "explanation_detail": "contains vertical leak 'voip'",
+        "gate_consistent": true,
+        "gate_detail": "ok"
+      }
+    },
+    {
+      "name": "Gary Delaney",
+      "title": "International CISO",
+      "organization": "BNY Mellon",
+      "email": "gary.delaney@bnymellon.com",
+      "email_status": "Deduced",
+      "source_url": "https://regtechanalyst.com/bny-mellon-enhances-cyber-leadership-with-gary-delaney-as-international-ciso/",
+      "confidence": 0.99890983,
+      "fit_score": 0.85,
+      "evidence_score": 0.9,
+      "contact_score": 0.75,
+      "gate_passed": true,
+      "why_target": "As BNY Mellon's International CISO, Gary is tasked with implementing cutting-edge cybersecurity initiatives, indicating potential interest in VoIP systems that bolster security and resilience.",
+      "icebreaker": "Hello Gary, overseeing international cybersecurity at BNY Mellon, your focus on building resilient systems aligns perfectly with how VoIP solutions can enhance your portfolio's communication security and efficiency.",
+      "explanation": "Gary Delaney's role as International CISO at BNY Mellon positions him as a high-value prospect, particularly for VoIP solutions that can secure communication channels essential in the financial services landscape.",
+      "_audit": {
+        "name_ok": true,
+        "name_detail": "ok",
+        "email_status": "real",
+        "email_detail": "gary.delaney@bnymellon.com",
+        "explanation_ok": false,
+        "explanation_detail": "contains vertical leak 'voip'",
+        "gate_consistent": true,
+        "gate_detail": "ok"
+      }
+    }
+  ]
+}

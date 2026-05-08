@@ -1,0 +1,104 @@
+{
+  "key": "Q3_manufacturing",
+  "query": "Manufacturing operations VPs in Detroit",
+  "elapsed_s": 16.6,
+  "lead_count": 3,
+  "metrics": {
+    "estimated_cost_usd": 0.011117,
+    "input_tokens": 4801,
+    "output_tokens": 662,
+    "tavily_searches": 1
+  },
+  "quality_summary": {
+    "name_ok": 3,
+    "name_bad": 0,
+    "email_real": 3,
+    "email_empty": 0,
+    "email_placeholder": 0,
+    "email_malformed": 0,
+    "explanation_ok": 0,
+    "explanation_leak": 3,
+    "gate_ok": 2,
+    "gate_bad": 1
+  },
+  "leads": [
+    {
+      "name": "Vinnie Johnson",
+      "title": "VP of Manufacturing",
+      "organization": "Piston Group",
+      "email": "vinnie.johnson@pistongroup.com",
+      "email_status": "Deduced",
+      "source_url": "https://www.degc.org/post/detroit-advances-zero-emission-vehicle-manufacturing-leadership-with-new-piston-group-facility",
+      "confidence": 0.0,
+      "fit_score": 0.9,
+      "evidence_score": 0.9,
+      "contact_score": 0.8,
+      "gate_passed": true,
+      "why_target": "As a VP of Manufacturing at Piston Group, Vinnie is involved in essential production processes where VoIP upgrades can enhance communication across multiple manufacturing facilities.",
+      "icebreaker": "Hi Vinnie, as the VP of Manufacturing at Piston Group, I can imagine that improving operational efficiency and communication in your expanding hydrogen fuel cell production must be at the forefront of your priorities\u2014upgrading to VoIP could further optimize those efforts.",
+      "explanation": "Vinnie Johnson is a key decision-maker in the manufacturing space focusing on advanced technologies like hydrogen fuel cells, which makes communication solutions like VoIP highly relevant to support operational improvements.",
+      "_audit": {
+        "name_ok": true,
+        "name_detail": "ok",
+        "email_status": "real",
+        "email_detail": "vinnie.johnson@pistongroup.com",
+        "explanation_ok": false,
+        "explanation_detail": "contains vertical leak 'voip'",
+        "gate_consistent": true,
+        "gate_detail": "ok"
+      }
+    },
+    {
+      "name": "Kevin Johnson",
+      "title": "President and CEO",
+      "organization": "Detroit Economic Growth Corporation (DEGC)",
+      "email": "kevin.johnson@degc.org",
+      "email_status": "Deduced",
+      "source_url": "https://www.degc.org/post/detroit-advances-zero-emission-vehicle-manufacturing-leadership-with-new-piston-group-facility",
+      "confidence": 0.0,
+      "fit_score": 0.8,
+      "evidence_score": 0.85,
+      "contact_score": 0.7,
+      "gate_passed": true,
+      "why_target": "As the President of DEGC, Kevin plays a crucial role in attracting business investments that could benefit from enhanced telecommunication solutions like VoIP for seamless collaboration.",
+      "icebreaker": "Hi Kevin, as the President and CEO of DEGC, your vital role in securing investments for initiatives like the Piston Group's hydrogen fuel facility is impressive\u2014upgrading to VoIP could streamline communication during these transformative projects.",
+      "explanation": "Kevin has significant influence in shaping the business landscape of Detroit, making him a valuable contact for promoting VoIP solutions to support economic growth and development initiatives.",
+      "_audit": {
+        "name_ok": true,
+        "name_detail": "ok",
+        "email_status": "real",
+        "email_detail": "kevin.johnson@degc.org",
+        "explanation_ok": false,
+        "explanation_detail": "contains vertical leak 'voip'",
+        "gate_consistent": true,
+        "gate_detail": "ok"
+      }
+    },
+    {
+      "name": "Jacqueline Burkette",
+      "title": "Plant Manager",
+      "organization": "Detroit Manufacturing Systems",
+      "email": "jacqueline.burkette@dmasna.com",
+      "email_status": "Deduced",
+      "source_url": "https://www.dmsna.com/",
+      "confidence": 0.0,
+      "fit_score": 0.7,
+      "evidence_score": 0.75,
+      "contact_score": 0.65,
+      "gate_passed": false,
+      "why_target": "As a Plant Manager, Jacqueline oversees complex assembly operations and could benefit from VoIP's reliability to coordinate teams efficiently and ensure operational excellence.",
+      "icebreaker": "Hi Jacqueline, managing complex assembly programs at Detroit Manufacturing Systems undoubtedly requires seamless communication\u2014leveraging a VoIP upgrade can significantly enhance team collaboration and efficiency across your operations.",
+      "explanation": "Jacqueline has a crucial role within manufacturing operations, but the fit and evidence scores indicate that while relevant, she may not be the primary decision-maker for VoIP solutions.",
+      "_audit": {
+        "name_ok": true,
+        "name_detail": "ok",
+        "email_status": "real",
+        "email_detail": "jacqueline.burkette@dmasna.com",
+        "explanation_ok": false,
+        "explanation_detail": "contains vertical leak 'voip'",
+        "gate_consistent": false,
+        "gate_detail": "gate_passed=False but scores (0.7, 0.75, 0.65) imply True"
+      }
+    }
+  ]
+}
