@@ -60,13 +60,18 @@ def _preflight_check():
     if "pytest" in sys.modules:
         return
 
+    env = os.environ.get("WR_ENV", "").lower()
+    _is_production = env == "production"
+
     required = [
         "OPENAI_API_KEY",
         "TAVILY_API_KEY",
         "WR_SHARED_PASSWORD",
         "WR_SESSION_SECRET",
-        "DATABASE_URL",
     ]
+    if _is_production:
+        required.append("DATABASE_URL")
+
     missing = [r for r in required if not os.environ.get(r)]
     if missing:
         raise RuntimeError(f"Missing required env: {', '.join(missing)}")
