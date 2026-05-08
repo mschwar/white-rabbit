@@ -99,7 +99,7 @@ if (Date.now() - parsed.iat > MAX_AGE_MS) {
 **Evidence (`apps/api/api/models.py:114–116`):**
 ```python
 def get_engine(database_url: str | None = None):
-    url = database_url or "postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit"
+    url = database_url or "postgresql://<dev_user>:<dev_pw>@localhost:5432/white_rabbit"
     return create_engine(url)
 ```
 
@@ -120,7 +120,7 @@ def get_engine(database_url: str | None = None):
     url = (
         database_url
         or os.environ.get("DATABASE_URL")
-        or "postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit"
+        or "postgresql://<dev_user>:<dev_pw>@localhost:5432/white_rabbit"
     )
     return create_engine(url)
 ```

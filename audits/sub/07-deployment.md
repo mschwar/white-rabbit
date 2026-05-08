@@ -73,7 +73,7 @@ The deployment story has gaps but isn't catastrophic. Real issues: a missing ale
 
 **Evidence (`apps/api/api/models.py:115`):**
 ```python
-url = database_url or "postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit"
+url = database_url or "postgresql://<dev_user>:<dev_pw>@localhost:5432/white_rabbit"
 ```
 
 **Impact:** If `DATABASE_URL` is unset, the API silently tries to connect to a local Postgres with hardcoded creds. In any non-local environment, this fails with a SQLAlchemy connection error, not a "DATABASE_URL not configured" message. Worse, the hardcoded password lives in source.
