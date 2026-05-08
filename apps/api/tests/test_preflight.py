@@ -40,6 +40,7 @@ def test_preflight_missing_env_raises(monkeypatch):
     monkeypatch.delenv("WR_SHARED_PASSWORD", raising=False)
     monkeypatch.delenv("WR_SESSION_SECRET", raising=False)
     monkeypatch.delenv("DATABASE_URL", raising=False)
+    monkeypatch.setenv("WR_ENV", "production")
     monkeypatch.setattr("sys.modules", {**sys.modules})
     fake_modules = {k: v for k, v in sys.modules.items() if k != "pytest"}
     monkeypatch.setattr("api.main.sys.modules", fake_modules)

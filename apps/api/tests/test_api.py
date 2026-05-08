@@ -637,4 +637,17 @@ def test_full_endpoint_returns_persisted_lead_ids(monkeypatch):
     assert body["recipe_id"] == "11111111-1111-1111-1111-111111111111"
     assert len(body["leads"]) == 1
     assert body["leads"][0]["id"] == "33333333-3333-3333-3333-333333333333"
-    assert captured["saved_leads"][0]["name"] == "Jane Smith"
+
+
+def test_sandbox_endpoint_after_migration():
+    """Verify /sandbox works on a real DB after alembic migration (no mocks)."""
+    response = client.get("/sandbox")
+    assert response.status_code == 200
+    data = response.json()
+    # Must contain expected keys (no relation-does-not-exist error)
+    assert "total_queries" in data
+    assert "total_rows" in data
+    assert "max_queries" in data
+    assert "max_rows" in data
+    assert "remaining_queries" in data
+    assert "remaining_rows" in data

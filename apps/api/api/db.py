@@ -27,7 +27,9 @@ def init_db(database_url: str | None = None):
     global _engine, _session_maker
     _engine = get_engine(database_url)
     _session_maker = get_session_maker(_engine)
-    Base.metadata.create_all(_engine)
+    # Alembic is the single source of truth for schema creation.
+    # Do NOT call Base.metadata.create_all() here.
+    pass
 
 
 @contextmanager
