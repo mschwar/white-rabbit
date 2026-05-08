@@ -18,9 +18,9 @@ class Lead(BaseModel):
         le=1,
         description="DEPRECATED: Confidence score from 0.0 to 1.0 based on source strength. Use scores instead.",
     )
-    why_target: str = Field(description="1 sentence on why this role is good for VoIP sales")
+    why_target: str = Field(description="1 sentence on why this role/organization fits the user's stated query intent")
     icebreaker: str = Field(
-        description="A specific 1-sentence cold email opener referencing their job title, their organization type, and one concrete reason a VoIP upgrade matters to them"
+        description="A specific 1-sentence cold email opener referencing their job title, their organization, and one concrete reason their work aligns with the query intent. No template language."
     )
     
     # New Sprint 1 fields
