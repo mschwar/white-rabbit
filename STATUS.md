@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-08 by gpt-5.4-mini
-**Branch:** main
-**Current sprint:** Sprint 4 complete — Sandbox caps merged
+**Branch:** feat/buildout-04-vertical-agnostic-prompt
+**Current sprint:** BUILDOUT-04 in progress — prompt and model descriptions rewritten, tests passing locally
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -88,11 +88,11 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 
 ## What's in flight
 
-- None. BUILDOUT-03 is complete and ready to merge.
+- BUILDOUT-04 is in flight on `feat/buildout-04-vertical-agnostic-prompt`; prompt/model-description rewrite is implemented and tests pass locally. Awaiting QA + merge.
 
 ## Next concrete task
 
-- Pick up BUILDOUT-04 (strip VoIP bias; restore lost proxy-lead prompt instructions). See `docs/07-buildout-plan.md`.
+- QA BUILDOUT-04 in the browser, then mark `docs/07-buildout-plan.md` and merge on Prompt B.
 
 ## Open questions for Matt
 

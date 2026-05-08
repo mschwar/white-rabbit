@@ -2,7 +2,7 @@ from types import SimpleNamespace
 import asyncio
 
 from core.models import Lead, LeadList
-from core.orchestrator import scout
+from core.orchestrator import SYSTEM_PROMPT, scout
 
 
 def test_scout_uses_injected_dependencies_and_returns_metrics():
@@ -42,6 +42,7 @@ def test_scout_uses_injected_dependencies_and_returns_metrics():
             assert model == "gpt-4o-mini"
             assert response_format is LeadList
             assert messages[0]["role"] == "system"
+            assert "B2B lead research assistant" in messages[0]["content"]
             assert "K-12 IT directors in Albuquerque" in messages[1]["content"]
             return SimpleNamespace(
                 choices=[SimpleNamespace(message=SimpleNamespace(parsed=LeadList(leads=[lead])))],
@@ -104,6 +105,22 @@ def test_scout_threads_filters_through_search_and_prompt():
     assert "location: Albuquerque" in seen["prompt"]
     assert "segment: public schools" in seen["prompt"]
     assert metrics.tavily_searches == 1
+
+
+def test_system_prompt_is_vertical_agnostic_and_restores_lost_instructions():
+    assert "B2B lead research assistant" in SYSTEM_PROMPT
+    assert "the user's query intent" in SYSTEM_PROMPT
+    assert "Include the organization name for every lead" in SYSTEM_PROMPT
+    assert "Set source_url as the URL with the strongest direct evidence" in SYSTEM_PROMPT
+    assert "Never invent or guess an email." in SYSTEM_PROMPT
+    assert "Treat the user's query intent as the only vertical signal" in SYSTEM_PROMPT
+    assert "Never use placeholders like N/A, Unknown" in SYSTEM_PROMPT
+    assert "Do not inject VoIP" in SYSTEM_PROMPT
+    assert "telecom, networking, or product-upgrade language" in SYSTEM_PROMPT
+    assert "VoIP prospect" not in SYSTEM_PROMPT
+    assert "VoIP upgrade" not in SYSTEM_PROMPT
+    assert "Telecom" not in SYSTEM_PROMPT
+    assert "school district / government / SMB" not in SYSTEM_PROMPT
 
 
 def test_scout_raises_on_missing_openai_key():
