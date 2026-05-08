@@ -83,14 +83,15 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 - **Sprint 4 follow-up: Sandbox caps merged.** Query/row caps (10 queries / 1000 rows) with reset and usage tracking. API enforces caps on Scout, Full, and Batch. Web UI shows quota card with reset button. Tests updated for sandbox fetch on mount. **⚠️ AUDIT REALITY:** the `sandbox_state` table has no alembic migration (audit D4-01 / D7-03); the query counter is non-atomic and bypassable under concurrent load (audit D4-04); the spend cap is checked AFTER the API call so money is already spent when the cap fires (audit D4-12).
 - **BUILDOUT-01: Config preflight + DATABASE_URL respect + remove Ollama trap.** QA signed off on `feat/buildout-01-config-preflight`. Preflight verifies env vars and OpenAI/Tavily/Postgres connectivity; `DATABASE_URL` is only required in production (hotfix committed); Ollama trap removed.
 - **BUILDOUT-01 QA report captured.** Browser QA notes and screenshots are saved at `.gstack/qa-reports/buildout-01-config-preflight.md` with baseline data in `.gstack/qa-reports/baseline.json`.
+- **BUILDOUT-02: Add `sandbox_state` alembic migration.** Merged on `feat/buildout-02-sandbox-state-migration`; the `sandbox_state` table now has a real Alembic migration and the `create_all()` fallback is gone.
 
 ## What's in flight
 
-- `feat/buildout-02-sandbox-state-migration` — BUILDOUT-02: add `sandbox_state` alembic migration.
+- `feat/buildout-03-session-expiry` — BUILDOUT-03: server-side session token expiry.
 
 ## Next concrete task
 
-- Complete BUILDOUT-02 (`sandbox_state` migration). Then pick up BUILDOUT-03 (session token expiry). See `docs/07-buildout-plan.md`.
+- Complete BUILDOUT-03 (session token expiry). Then pick up BUILDOUT-04 (strip VoIP bias; restore lost proxy-lead prompt instructions). See `docs/07-buildout-plan.md`.
 
 ## Open questions for Matt
 
@@ -149,4 +150,5 @@ Real known issues (post-audit):
 | 2026-05-07 | full-lead-export (gpt-5.4-mini) | Added Full-run CSV lead export helpers, wired the Scout workspace export button and download link, added tests, verified with Next.js build, Vitest, and browser QA, and pushed the feature branch. |
 | 2026-05-07 | qa (gpt-5.4-mini) | Browser-verified the full lead export flow on the feature branch: Scout search, Full search, export generation, run closeout, and recipe library scoreboard all rendered correctly. Captured browser screenshots and checked for console errors. |
 | 2026-05-08 | qa (gpt-5.4-mini) | Browser QA covered login, Scout, Full, recipes, and batch on http://localhost:3000; captured screenshots; confirmed clean console; wrote `.gstack/qa-reports/buildout-01-config-preflight.md` and `.gstack/qa-reports/baseline.json`. |
+| 2026-05-08 | docs-sync (gpt-5.4-mini) | Reconciled `docs/07-buildout-plan.md` with git history, marked BUILDOUT-02 complete, updated STATUS to point at BUILDOUT-03, and tightened AGENTS so future BUILDOUT sessions must update the checklist before finishing. |
 | 2026-05-07 | hard-audit (Claude Opus 4.7) | Ground-up zero-trust audit. 8 parallel sub-agents, 4 live scout queries against real OpenAI ($0.045 spent), 65 findings across 8 dimensions plus Phase 2. 2 agent errors caught and corrected. Master report at `audits/hard-audit-2026-05-07.md`; action plan at `docs/06-audit-action-plan.md`. **Conclusion: not deployable as-is. 5 confirmed P0 blockers including `OPENAI_BASE_URL` routing to local Ollama and 89% VoIP leak rate in real leads.** |

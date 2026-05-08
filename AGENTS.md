@@ -54,8 +54,9 @@ The customer offer is scoped concierge briefings fulfilled by Matt. **There is n
 2. Pick up the next task in STATUS.md (or one explicitly assigned by Matt).
 3. Do the work. Reuse before writing new code.
 4. Before ending the session, update STATUS.md: what you did, what's next, any open questions.
-5. If you made any architectural / scope / dependency decision that wasn't already in `docs/03-decisions.md`, append a new ADR entry there.
-6. Commit your changes with a clear message. Conventional commits style preferred (`feat:`, `fix:`, `docs:`, `chore:`).
+5. If the session touched `docs/07-buildout-plan.md` work, update that checklist in the same session so the next agent can pick up from the true state.
+6. If you made any architectural / scope / dependency decision that wasn't already in `docs/03-decisions.md`, append a new ADR entry there.
+7. Commit your changes with a clear message. Conventional commits style preferred (`feat:`, `fix:`, `docs:`, `chore:`).
 
 ## Useful paths
 

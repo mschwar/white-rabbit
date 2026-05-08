@@ -2,7 +2,7 @@
 
 **Source:** `audits/hard-audit-2026-05-07.md` and `docs/06-audit-action-plan.md`
 **Created:** 2026-05-07
-**Status:** Authoritative for the iterative buildout loop. Updated by the agent on every feature merge.
+**Status:** Authoritative for the iterative buildout loop. Updated by the agent on every feature merge, and the checklist must be marked before the merge is considered complete.
 
 ---
 
@@ -80,7 +80,7 @@ If a feature looks too big once you start: split it. Add a second `- [ ]` row to
 
 ### Phase A — Infrastructure (P0, blocks everything)
 - [x] (2026-05-08, a5c5dbf) BUILDOUT-01: Config preflight + DATABASE_URL respect + remove Ollama trap (`feat/buildout-01-config-preflight`)
-- [ ] BUILDOUT-02: Add `sandbox_state` alembic migration (`feat/buildout-02-sandbox-state-migration`)
+- [x] (2026-05-08, a5c5dbf) BUILDOUT-02: Add `sandbox_state` alembic migration (`feat/buildout-02-sandbox-state-migration`)
 - [ ] BUILDOUT-03: Server-side session token expiry (`feat/buildout-03-session-expiry`)
 
 ### Phase B — Product correctness (P0, makes the product not-lying)
