@@ -91,14 +91,16 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 - **BUILDOUT-13: Specific API error codes for UI.** API returns structured `{error_code, message, request_id}` on 503/500; Scout workspace maps codes to user-friendly messages (e.g., `tavily_failed` → "Search engine is rate-limited; try again in ~60s"). Verified by 24 passing API tests and live browser QA on Scout/recipes/batch. QA report at `.gstack/qa-reports/buildout-13-error-codes.md`.
 - **BUILDOUT-14: README setup walkthrough verified end-to-end.** Followed README.md steps on the live workspace: confirmed web (localhost:3000) and API (localhost:8000) running, login gate functional, Scout query returns leads with score cards, recipe library and batch workspace render correctly, sign-out clears session. QA report at `.gstack/qa-reports/buildout-14-readme-verified.md`.
 - **BUILDOUT-15: QA rubric document + multi-vertical gate shipped.** Added `docs/qa-rubric.md` with the 6-tier ship-gate (Tiers 1–4 mandatory for extraction/scoring changes, Tier 5 weekly, Tier 6 every run). Updated `.gstack/qa-reports/index.md` to reference the rubric. Added `.gstack/qa-reports/qa-template.md` as a skeleton for future QA reports. Updated `AGENTS.md` read order to include the rubric. Browser QA verified login, Scout, recipes, and batch pages render correctly with zero console errors. QA report at `.gstack/qa-reports/qa-report-buildout-15-qa-rubric.md`.
+- **BUILDOUT-16: Deploy config for Vercel + Fly.io + Neon shipped.** Created `apps/api/Dockerfile`, `apps/api/fly.toml`, `vercel.json`, and `.github/workflows/deploy.yml`. Updated `apps/web/next.config.ts` with production rewrites and image config. Added "Deployment" section to README with platform setup, CI/CD, and manual deploy instructions. All tests pass (24 API, 23 web). Browser QA verified Scout workspace renders correctly. Branch `feat/buildout-16-deploy-config` pushed and ready for QA+merge.
+- **BUILDOUT-16 QA verified and merged.** Health score 95/100. All 24 API tests and 23 web tests pass. Next.js build succeeds. Deploy config files validated. Only cosmetic issue: favicon 404s (deferred). Ready for BUILDOUT-17.
 
 ## What's in flight
 
-- None. BUILDOUT-15 is complete and ready to merge.
+- `feat/buildout-16-deploy-config` — deploy config branch pushed, awaiting QA+merge (Prompt B).
 
 ## Next concrete task
 
-- Merge BUILDOUT-15 to main, then move on to BUILDOUT-16 in `docs/07-buildout-plan.md`.
+- Merge BUILDOUT-16 to main, then move on to BUILDOUT-17 in `docs/07-buildout-plan.md`.
 
 ## Open questions for Matt
 

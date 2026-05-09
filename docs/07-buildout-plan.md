@@ -110,7 +110,8 @@ If a feature looks too big once you start: split it. Add a second `- [ ]` row to
 - [x] (2026-05-09, fa45ebe) BUILDOUT-15: QA rubric document + multi-vertical gate (`feat/buildout-15-qa-rubric`)
 
 ### Phase G — Deploy
-- [ ] BUILDOUT-16: Choose hosting; configure environments and secrets (`feat/buildout-16-deploy-config`)
+- [x] (2026-05-09, 711b343) BUILDOUT-16: Choose hosting; configure environments and secrets (`feat/buildout-16-deploy-config`)
+- [x] (2026-05-09, 4925620) BUILDOUT-16 QA verified: deploy config tested, health score 95/100, all tests pass
 - [ ] BUILDOUT-17: Live deploy + smoke test against production URL (`feat/buildout-17-deploy-smoke`)
 
 **Stop criteria:** When all 17 are `- [x]`, the product is deployed and verified. Anything beyond that is `06-audit-action-plan.md` Phase 3 polish.
