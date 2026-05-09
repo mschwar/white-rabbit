@@ -111,6 +111,41 @@ def test_scout_overrides_llm_gate_passed_from_subscores():
     assert leads[0].gate_passed is False
 
 
+def test_scout_constructs_async_openai_with_max_retries(monkeypatch):
+    created = {}
+
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None):
+        return []
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            return SimpleNamespace(
+                choices=[SimpleNamespace(message=SimpleNamespace(parsed=LeadList(leads=[])))],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    class FakeAsyncOpenAI:
+        def __init__(self, api_key=None, max_retries=None):
+            created["api_key"] = api_key
+            created["max_retries"] = max_retries
+            self.beta = SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions()))
+
+    monkeypatch.setattr("core.orchestrator.AsyncOpenAI", FakeAsyncOpenAI)
+
+    leads, _ = asyncio.run(
+        scout(
+            "operations leaders in Austin",
+            openai_key="fake-openai",
+            tavily_key="fake-tavily",
+            search_fn=fake_search,
+        )
+    )
+
+    assert leads == []
+    assert created["api_key"] == "fake-openai"
+    assert created["max_retries"] == 2
+
+
 def test_scout_threads_filters_through_search_and_prompt():
     seen = {}
 

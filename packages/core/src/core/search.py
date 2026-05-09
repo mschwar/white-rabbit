@@ -1,3 +1,4 @@
+import asyncio
 import os
 from collections.abc import Mapping
 from typing import Any
@@ -71,17 +72,23 @@ async def fetch_search_results(
 
     try:
         async with httpx.AsyncClient(timeout=TAVILY_TIMEOUT_SECONDS) as client:
-            response = await client.post(f"{TAVILY_API_URL}/search", json=params)
-            response.raise_for_status()
-            data = response.json()
-            return _clean_results(data.get("results", []))
-    except httpx.HTTPStatusError as exc:
-        raise TavilySearchError(
-            f"Tavily API error: {exc.response.status_code} - {exc.response.text}"
-        ) from exc
-    except httpx.TimeoutException as exc:
-        raise TavilySearchError(
-            f"Tavily search timed out after {TAVILY_TIMEOUT_SECONDS} seconds"
-        ) from exc
+            for attempt in range(3):
+                try:
+                    response = await client.post(f"{TAVILY_API_URL}/search", json=params)
+                    response.raise_for_status()
+                    data = response.json()
+                    return _clean_results(data.get("results", []))
+                except httpx.HTTPStatusError as exc:
+                    raise TavilySearchError(
+                        f"Tavily API error: {exc.response.status_code} - {exc.response.text}"
+                    ) from exc
+                except (httpx.TimeoutException, httpx.NetworkError) as exc:
+                    if attempt == 2:
+                        raise TavilySearchError(
+                            f"Tavily search failed after 3 attempts: {exc}"
+                        ) from exc
+                    await asyncio.sleep(0.5 * (2**attempt))
+    except TavilySearchError:
+        raise
     except Exception as exc:
         raise TavilySearchError(f"Tavily search failed: {exc}") from exc

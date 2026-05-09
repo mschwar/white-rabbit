@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-08 by gpt-5.4-mini
-**Branch:** feat/buildout-09-ui-debias
-**Current sprint:** BUILDOUT-09 complete — UI de-bias branch verified in browser and ready to merge
+**Last updated:** 2026-05-09 by gpt-5.4-mini
+**Branch:** feat/buildout-10-retries
+**Current sprint:** BUILDOUT-10 verified on the feature branch — Tavily/OpenAI retry hardening passed tests and browser QA
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -91,13 +91,12 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 
 ## What's in flight
 
-- Main is clean after BUILDOUT-09 merge.
-- BUILDOUT-09 merged to main and pushed; the branch is done.
+- feat/buildout-10-retries is active; `packages/core` retry tests pass and the branch is pushed.
+- BUILDOUT-09 docs drift is reconciled in `docs/07-buildout-plan.md`; the checklist now reflects reality.
 
 ## Next concrete task
 
-- Pick up the next roadmap item from `docs/04-roadmap.md` and update STATUS when it starts.
-- If BUILDOUT-09 needs follow-up polish, do it from a new branch.
+- Move from BUILDOUT-10 to BUILDOUT-11 in `docs/07-buildout-plan.md`.
 
 ## Open questions for Matt
 
@@ -156,8 +155,9 @@ Real known issues (post-audit):
 | 2026-05-07 | full-lead-export (gpt-5.4-mini) | Added Full-run CSV lead export helpers, wired the Scout workspace export button and download link, added tests, verified with Next.js build, Vitest, and browser QA, and pushed the feature branch. |
 | 2026-05-07 | qa (gpt-5.4-mini) | Browser-verified the full lead export flow on the feature branch: Scout search, Full search, export generation, run closeout, and recipe library scoreboard all rendered correctly. Captured browser screenshots and checked for console errors. |
 | 2026-05-08 | qa (gpt-5.4-mini) | Browser QA covered login, Scout, Full, recipes, and batch on http://localhost:3000; captured screenshots; confirmed clean console; wrote `.gstack/qa-reports/buildout-01-config-preflight.md` and `.gstack/qa-reports/baseline.json`. |
-| 2026-05-08 | docs-sync (gpt-5.4-mini) | Reconciled `docs/07-buildout-plan.md` with git history, marked BUILDOUT-02 complete, updated STATUS to point at BUILDOUT-03, and tightened AGENTS so future BUILDOUT sessions must update the checklist before finishing. |
+| 2026-05-09 | qa (gpt-5.4-mini) | Browser-checked login, Scout, recipes, and batch on localhost:3000; captured screenshots; ran core and API tests; updated STATUS and BUILDOUT-10 roadmap state; QA report saved at `.gstack/qa-reports/qa-report-white-rabbit-2026-05-09.md`. |
 | 2026-05-08 | buildout-04 (gpt-5.4-mini) | Removed the hardcoded VoIP/telecom bias from the Scout prompt and Lead schema descriptions, updated tests, marked BUILDOUT-04 complete in the buildout plan, pushed PR #13, and merged it to main after browser QA re-verified finance queries no longer leak VoIP language. |
+| 2026-05-08 | docs-sync (gpt-5.4-mini) | Reconciled `docs/07-buildout-plan.md` with git history, marked BUILDOUT-02 complete, updated STATUS to point at BUILDOUT-03, and tightened AGENTS so future BUILDOUT sessions must update the checklist before finishing. |
 | 2026-05-08 | qa (gpt-5.4-mini) | Browser QA for BUILDOUT-07 verified the protected shell, Scout workspace, recipe library, and bulk run workspace on localhost:3000; captured screenshots; ran `pytest -m integration -q` in `packages/core` and confirmed the marker skips cleanly without real API keys. |
 | 2026-05-08 | qa (gpt-5.4-mini) | Browser QA for BUILDOUT-05 verified Scout and recipe-library flows on localhost:3000, captured screenshots, confirmed clean console, and updated docs/report artifacts. |
 | 2026-05-08 | qa (gpt-5.4-mini) | Browser QA for BUILDOUT-06 verified the shared-password login, Scout results page, and Gate pass/fail sort control on localhost:3000; captured screenshots and kept the console clean. |
