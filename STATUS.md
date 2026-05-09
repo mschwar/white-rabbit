@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-05-09 by GPT-5.4
 **Branch:** main
-**Current sprint:** BUILDOUT-17 live deploy verified; production auth routing fixed
+**Current sprint:** BUILDOUT-17 complete; final production QA re-verified
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -115,6 +115,7 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 - **BUILDOUT-16: Deploy config for Vercel + Fly.io + Neon shipped.** Created `apps/api/Dockerfile`, `apps/api/fly.toml`, `vercel.json`, and `.github/workflows/deploy.yml`. Updated `apps/web/next.config.ts` with production rewrites and image config. Added "Deployment" section to README with platform setup, CI/CD, and manual deploy instructions. All tests pass (24 API, 23 web). Browser QA verified Scout workspace renders correctly. Branch `feat/buildout-16-deploy-config` pushed and ready for QA+merge.
 - **BUILDOUT-16 QA verified and merged.** Health score 95/100. All 24 API tests and 23 web tests pass. Next.js build succeeds. Deploy config files validated. Only cosmetic issue: favicon 404s (deferred). Ready for BUILDOUT-17.
 - **BUILDOUT-17: Live deploy verified in production.** Fly API `https://white-rabbit-api.fly.dev/health` returns `200 {"status":"ok"}` after the OpenAI secret fix. Vercel project config was corrected (`rootDirectory=apps/web`, framework `nextjs`, runtime env vars added) and a fresh production deploy now serves the local Next auth routes. Verified with authenticated `vercel curl`: anonymous `/scout` redirects to `/login?next=%2Fscout`, wrong-password `POST /api/login` redirects to `/login?error=1`, and correct-password `POST /api/login` sets `wr_session` and redirects to `/`. Remaining platform risk: Fly trial machines auto-stop after ~5 minutes unless billing is enabled.
+- **BUILDOUT-17: Final production browser QA completed.** Verified the live Vercel deployment at commit `f3b6a45`, confirmed Fly health and deploy status, exercised login / Scout / Full / export / feedback / closeout / logout in the browser, and saved evidence at `.gstack/qa-reports/buildout-17-production-verification.md` plus screenshots under `.gstack/qa-reports/screenshots/`.
 
 ## What's in flight
 
@@ -123,9 +124,7 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 ## Next concrete task
 
 - Add billing / a credit card to Fly.io so trial machines stop auto-shutting down after ~5 minutes.
-- Run a full browser smoke test on `https://white-rabbit-ten.vercel.app/` with screenshots: login, Scout query, Full run, recipes, feedback, logout.
-- Commit and push the `apps/web/next.config.ts` auth-routing fix so GitHub/Vercel auto-deploys keep the working behavior.
-- Once that smoke test passes, all 17 BUILDOUTs are complete and Phase 3 polish can start.
+- Start Phase 3 polish and any non-blocking cleanup from `docs/06-audit-action-plan.md`.
 
 ## Open questions for Matt
 
