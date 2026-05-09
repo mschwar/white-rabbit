@@ -56,6 +56,7 @@ Edit the three files and set at least these values:
 | `TAVILY_API_KEY` | `.env`, `apps/api/.env` | Tavily search API key |
 | `WR_SHARED_PASSWORD` | `.env`, `apps/api/.env`, `apps/web/.env.local` | One password all operators share |
 | `WR_SESSION_SECRET` | `.env`, `apps/api/.env`, `apps/web/.env.local` | Min 32 random chars for cookie signing |
+| `WR_API_INTERNAL_TOKEN` | `.env`, `apps/api/.env`, `apps/web/.env.local` | Shared server-to-server token forwarded by the Next.js proxy |
 | `DATABASE_URL` | `.env`, `apps/api/.env` | Postgres URL (see step 2) |
 
 > **Important:** Do not commit `.env` or `.env.local` files to git. They are already in `.gitignore`.
@@ -147,7 +148,7 @@ White Rabbit is configured for **Vercel** (frontend) + **Fly.io** (API) + **Neon
    - Set secrets:
      ```bash
      flyctl secrets set OPENAI_API_KEY=sk-... TAVILY_API_KEY=tvly-... \
-       WR_SHARED_PASSWORD=... WR_SESSION_SECRET=... DATABASE_URL=postgresql://... \
+       WR_SHARED_PASSWORD=... WR_SESSION_SECRET=... WR_API_INTERNAL_TOKEN=... DATABASE_URL=postgresql://... \
        --app white-rabbit-api
      ```
 
@@ -157,6 +158,7 @@ White Rabbit is configured for **Vercel** (frontend) + **Fly.io** (API) + **Neon
      - `WR_API_BASE_URL=https://white-rabbit-api.fly.dev`
      - `WR_SHARED_PASSWORD` (same as API)
      - `WR_SESSION_SECRET` (same as API, min 32 chars)
+     - `WR_API_INTERNAL_TOKEN` (same as API)
    - Vercel will auto-detect the Next.js app in `apps/web`
 
 ### CI/CD

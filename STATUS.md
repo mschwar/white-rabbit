@@ -14,7 +14,7 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F02 Backend API Boundary.
+**Next feature pointer:** F03 Guardrail rewrite for B2B scope and privacy blocking (ready).
 
 **Control docs:**
 
@@ -28,15 +28,15 @@
 **Latest handoff:**
 
 ```text
-Feature: F01 - Hide premature operator surfaces from primary navigation
-Branch: feat/f01-hide-premature-surfaces
-Status: merged_to_rebuild_branch
-What changed: Home now has only the lead-search link in the primary operator path. Scout no longer displays FastAPI/raw endpoint/storage copy, the recipe-library link, or the sandbox reset button; the usage panel remains visible without reset/internal implementation copy.
-Tests or QA run: `npm test` in apps/web (25 passed); `npm run build` in apps/web (passed with existing Next.js root-lockfile and middleware-deprecation warnings); browser smoke on localhost confirmed home and Scout surfaces for `/` and `/scout`; screenshots captured; QA report `qa-report-f01-hide-premature-surfaces-2026-05-09.md` and two new screenshots created.
-Screenshots or report: `.gstack/qa-reports/qa-report-f01-hide-premature-surfaces-2026-05-09.md`; `.gstack/qa-reports/screenshots/f01-home-after-login.png`; `.gstack/qa-reports/screenshots/f01-scout-empty-state.png`.
-Northstar reflection: F01 reduces false confidence by removing recipe/batch/admin surfaces from the red-gate operator path and refocuses the UI on single lead search before output quality is proven.
-Next pointer: Branch `feat/f01-hide-premature-surfaces` has been QA-passed and merged into `rebuild/validated-leads-loop`; next feature pointer is F02.
-Open questions: None blocking F01 QA.
+Feature: F02 - Backend API Boundary
+Branch: feat/f02-backend-api-boundary
+Status: qa_passed and merged_to_rebuild_branch
+What changed: Added a shared internal API token boundary (`WR_API_INTERNAL_TOKEN` / `x-white-rabbit-internal-token`) end to end. Every Next.js API proxy now forwards the token, FastAPI protects scout/full/batch/reset and related read endpoints with the dependency, and direct unauthenticated API calls now return 401.
+Tests or QA run: `docker compose up -d postgres`; `uv run alembic upgrade head` in `apps/api`; `uv run pytest tests/test_api.py -q` in `apps/api` (33 passed); `npm test` in `apps/web` (25 passed); `npm run build` in `apps/web` (pass); browser QA on `/scout` captured proxy evidence and tokenless API rejection evidence.
+Screenshots or report: `.gstack/qa-reports/qa-report-f02-backend-api-boundary-2026-05-09.md` (includes `.gstack/qa-reports/screenshots/f02-scout-proxy-success.png`).
+Northstar reflection: F02 aligns the backend boundary with the password-gated web auth model and blocks anonymous direct access to lead-generation endpoints.
+Next pointer: Branch `feat/f02-backend-api-boundary` is merged to `rebuild/validated-leads-loop`; next build feature is F03.
+Open questions: None blocking F02 QA.
 ```
 
 ---
@@ -102,7 +102,8 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What's done
 
-- **F01 QA complete and merged on `rebuild/validated-leads-loop` via `feat/f01-hide-premature-surfaces`.** Home primary navigation now links only to lead search, and Scout hides recipe-library links, raw endpoint/FastAPI/storage copy, and the sandbox reset button. `npm test`, `npm run build`, and browser screenshots (with QA report `qa-report-f01-hide-premature-surfaces-2026-05-09.md`) were captured. F02 is now the next feature pointer.
+- **F01 QA complete and merged on `rebuild/validated-leads-loop` via `feat/f01-hide-premature-surfaces`.** Home primary navigation now links only to lead search, and Scout hides recipe-library links, raw endpoint/FastAPI/storage copy, and the sandbox reset button. `npm test`, `npm run build`, and browser screenshots (with QA report `qa-report-f01-hide-premature-surfaces-2026-05-09.md`) were captured.
+- **F02 QA complete and merged on `rebuild/validated-leads-loop` via `feat/f02-backend-api-boundary`.** FastAPI lead/sandbox endpoints now require the internal boundary token. Next.js proxy calls to `/api/scout` are verified with auth flow and expected local-service error payload; direct POSTs to `/scout`, `/full`, `/batch`, and `/sandbox/reset` return 401 when no token is supplied. QA report: `qa-report-f02-backend-api-boundary-2026-05-09.md`.
 - **Rebuild phase gates merged.** `docs/09-rebuild-phase-gates.md` groups F00-F23 into gated waves W0-W6 and requires gate review reports before downstream waves unlock.
 - **F00 rebuild planning docs landed on `rebuild/validated-leads-loop`.** Added `docs/00-product-northstar.md`, `docs/08-agentic-buildout-plan.md`, AGENTS rebuild branch protocol, STATUS rebuild handoff, and `.gstack/qa-reports/qa-template-agentic-buildout.md`.
 - **BUILDOUT-12: Atomic sandbox cap counter added.** `_sandbox_reserve_query_or_429` now uses `get_sandbox_state_for_update()` to lock the sandbox row during cap checks, and API tests cover the concurrent 12-request cap path.
@@ -176,11 +177,15 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What's in flight
 
-- Product is in audit-red state. F01 is merged, phase gates are in place, and F02 is the next ready feature.
+- Product is in audit-red state. F01 and F02 are merged; next feature is F03 (Guardrail rewrite for B2B scope and privacy blocking) on `feat/f03-b2b-guardrails`.
 
 ## Next concrete task
 
-- Run Prompt A from `docs/08-agentic-buildout-plan.md` for **F02 - Backend API Boundary** on branch `feat/f02-backend-api-boundary`, based from `rebuild/validated-leads-loop`.
+- Run QA and handoff for **F03 - Guardrail Rewrite for B2B Scope and Privacy Blocking** on branch `feat/f03-b2b-guardrails`:
+  - checkout `feat/f03-b2b-guardrails` and pull latest
+  - run the feature QA flow defined in its feature card
+  - capture results in `.gstack/qa-reports/`
+  - update `docs/08-agentic-buildout-plan.md`, `STATUS.md`, and `docs/09-rebuild-phase-gates.md` before merging only to `rebuild/validated-leads-loop`.
 
 ## Open questions for Matt
 
@@ -189,7 +194,9 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 - Access boundary for the Friday guarded version: local handoff, deployed internal URL, or Matt-run sessions?
 - Whether any external customer gets direct sandbox access before the 90-day kill/keep gate. If yes, customer-data isolation needs an explicit boundary first.
 - Sandbox cap semantics: is the 10-query / 1,000-row cap per operator, per customer, per shared app, or per reset window?
+	- answer: it is per reset window for now.
 - Export target: raw CSV, Excel-style CSV, HubSpot-ready CSV, or multiple formats?
+	- answer: multiple formats.
 
 ## Known issues / risks
 
@@ -217,6 +224,7 @@ Real known issues (post-audit):
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-09 | f02-build (Codex) | Implemented and QA-verified backend API boundary on `feat/f02-backend-api-boundary`: FastAPI now requires `WR_API_INTERNAL_TOKEN` on `scout/full/batch/sandbox/reset` paths, Next.js proxies forward that token, API tests and web tests pass, browser proxy flow `/scout` is captured, and tokenless `POST` to all four protected endpoints returns 401. |
 | 2026-05-09 | f01-build (Codex) | Implemented F01 on `feat/f01-hide-premature-surfaces`: home now links only to lead search; Scout hides premature recipe/batch/admin copy, raw endpoint/FastAPI/storage text, recipe-library links, and sandbox reset. Verified with web tests/build and localhost browser smoke screenshots; ready for Prompt B QA/merge to `rebuild/validated-leads-loop`. |
 | 2026-05-09 | buildout-architect (Codex) | Added a gated W0-W6 implementation plan in `docs/09-rebuild-phase-gates.md` so downstream waves require evidence-backed gate review before unlocking. Used a separate worktree/branch to avoid touching in-flight F01 UI edits. |
 | 2026-05-09 | buildout-architect (Codex) | Created `rebuild/validated-leads-loop` as the rebuild integration branch; added the product northstar, agentic buildout plan, rebuild branch protocol, QA template, and STATUS handoff. Next pointer: F01 hide premature operator surfaces. |

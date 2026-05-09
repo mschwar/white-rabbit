@@ -1,9 +1,11 @@
+import os
 from contextlib import contextmanager
 from datetime import datetime
 import asyncio
 from types import SimpleNamespace
 
 import httpx
+import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy import CheckConstraint
 
@@ -13,13 +15,45 @@ from api.main import app
 from api.models import FeedbackLabel, LeadFeedback
 from api.db import get_db_session, get_recipe_scoreboard, get_sandbox_state
 
+INTERNAL_API_TOKEN_HEADER = "x-white-rabbit-internal-token"
+INTERNAL_API_TOKEN = "test-internal-token"
+
+os.environ.setdefault("WR_API_INTERNAL_TOKEN", INTERNAL_API_TOKEN)
+
 client = TestClient(app)
+client.headers.update({INTERNAL_API_TOKEN_HEADER: INTERNAL_API_TOKEN})
+public_client = TestClient(app)
 
 
 def test_health_check():
     response = client.get("/health")
     assert response.status_code == 200
     assert response.json() == {"status": "ok"}
+
+
+@pytest.mark.parametrize(
+    ("method", "path", "payload"),
+    [
+        ("post", "/scout", {"query": "K-12 IT directors in Albuquerque"}),
+        ("post", "/full", {"query": "K-12 IT directors in Albuquerque"}),
+        ("post", "/batch", {"name": "Test batch", "queries": [{"query": "K-12 IT directors in Albuquerque"}]}),
+        ("post", "/sandbox/reset", {}),
+        ("get", "/recipes", None),
+        ("get", "/recipes/11111111-1111-1111-1111-111111111111/runs", None),
+        ("get", "/recipes/11111111-1111-1111-1111-111111111111/scoreboard", None),
+        ("get", "/sandbox", None),
+        ("post", "/leads/11111111-1111-1111-1111-111111111111/feedback", {"label": "usable"}),
+        ("post", "/runs/11111111-1111-1111-1111-111111111111/close", {"operator_minutes": 10}),
+        ("get", "/batch", None),
+        ("get", "/batch/11111111-1111-1111-1111-111111111111", None),
+    ],
+)
+def test_protected_api_endpoints_require_internal_token(method, path, payload):
+    request_kwargs = {"json": payload} if payload is not None else {}
+    response = getattr(public_client, method)(path, **request_kwargs)
+
+    assert response.status_code == 401
+    assert response.json() == {"detail": "Missing or invalid internal API token."}
 
 
 def test_scout_endpoint_returns_scoped_payload(monkeypatch):
@@ -418,7 +452,11 @@ def test_sandbox_atomic_cap_is_enforced_under_concurrency(monkeypatch):
         async with httpx.AsyncClient(transport=transport, base_url="http://test") as ac:
             responses = await asyncio.gather(
                 *[
-                    ac.post("/scout", json={"query": "K-12 IT directors in Albuquerque"})
+                    ac.post(
+                        "/scout",
+                        json={"query": "K-12 IT directors in Albuquerque"},
+                        headers={INTERNAL_API_TOKEN_HEADER: INTERNAL_API_TOKEN},
+                    )
                     for _ in range(12)
                 ]
             )

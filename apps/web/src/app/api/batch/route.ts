@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { buildInternalApiRequestInit, getApiBaseUrl } from '@/lib/internal-api';
 
 export const runtime = 'nodejs';
-
-function getApiBaseUrl(): string {
-  return process.env.WR_API_BASE_URL ?? 'http://localhost:8000';
-}
 
 async function readErrorMessage(response: Response): Promise<string> {
   const contentType = response.headers.get('content-type') ?? '';
@@ -33,11 +30,13 @@ export async function POST(request: NextRequest) {
 
   let upstreamResponse: Response;
   try {
-    upstreamResponse = await fetch(apiUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
+    upstreamResponse = await fetch(
+      apiUrl,
+      buildInternalApiRequestInit('POST', {
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      }),
+    );
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unable to reach API.';
     return NextResponse.json({ error: `Unable to reach API: ${message}` }, { status: 502 });
@@ -57,10 +56,7 @@ export async function GET() {
 
   let upstreamResponse: Response;
   try {
-    upstreamResponse = await fetch(apiUrl, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-    });
+    upstreamResponse = await fetch(apiUrl, buildInternalApiRequestInit('GET'));
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unable to reach API.';
     return NextResponse.json({ error: `Unable to reach API: ${message}` }, { status: 502 });

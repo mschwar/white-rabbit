@@ -2,6 +2,8 @@ import { afterEach, expect, test, vi } from 'vitest';
 import { NextRequest } from 'next/server';
 import { POST } from './route';
 
+const INTERNAL_API_TOKEN = 'test-internal-token';
+
 const responseBody = {
   leads: [
     {
@@ -34,10 +36,12 @@ const responseBody = {
 afterEach(() => {
   vi.unstubAllGlobals();
   delete process.env.WR_API_BASE_URL;
+  delete process.env.WR_API_INTERNAL_TOKEN;
 });
 
 test('proxies a scout query to the API base url', async () => {
   process.env.WR_API_BASE_URL = 'http://api.example:8000';
+  process.env.WR_API_INTERNAL_TOKEN = INTERNAL_API_TOKEN;
   const fetchMock = vi.fn().mockResolvedValue(
     new Response(JSON.stringify(responseBody), {
       status: 200,
@@ -56,7 +60,10 @@ test('proxies a scout query to the API base url', async () => {
 
   expect(fetchMock).toHaveBeenCalledWith('http://api.example:8000/scout', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'x-white-rabbit-internal-token': INTERNAL_API_TOKEN,
+    },
     body: JSON.stringify({ query: 'K-12 IT directors in Albuquerque', filters: { location: 'New Mexico' } }),
   });
   expect(response.status).toBe(200);
@@ -82,6 +89,7 @@ test('rejects blank scout queries before calling upstream', async () => {
 
 test('surfaces upstream guardrail responses without losing structured hints', async () => {
   process.env.WR_API_BASE_URL = 'http://api.example:8000';
+  process.env.WR_API_INTERNAL_TOKEN = INTERNAL_API_TOKEN;
   vi.stubGlobal(
     'fetch',
     vi.fn().mockResolvedValue(

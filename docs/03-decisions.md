@@ -63,9 +63,22 @@ Format: ADR-NNN — Title. Date. Status: Locked / Superseded by ADR-XXX. Context
 
 ---
 
+## ADR-005 — Shared internal API token for web-to-API boundary
+
+**Date:** 2026-05-09
+**Status:** Locked
+
+**Context.** The rebuild audit found the backend endpoints could be called directly even though the UI was password-gated. The product does not need per-user auth yet, but it does need the web app and API to agree on one internal boundary so the protected routes cannot bypass the shell.
+
+**Decision.** Protect the backend boundary with a shared internal token in `WR_API_INTERNAL_TOKEN`. The Next.js proxy adds the token as `x-white-rabbit-internal-token` on protected API calls, and FastAPI rejects protected endpoints without that token. `GET /health` remains public.
+
+**Consequences.** Local and deployed environments must provision the token alongside the shared password. Direct calls to the protected backend now fail without the token, and tests must cover both allowed proxy traffic and denied direct traffic. This keeps the boundary simple until the product has a stronger reason for per-user auth or ingress-only enforcement.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-005, ADR-006, …).
+1. Pick the next ADR number (ADR-006, ADR-007, …).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.

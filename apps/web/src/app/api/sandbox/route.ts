@@ -1,10 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { buildInternalApiRequestInit, getApiBaseUrl } from '@/lib/internal-api';
 
 export const runtime = 'nodejs';
-
-function getApiBaseUrl(): string {
-  return process.env.WR_API_BASE_URL ?? 'http://localhost:8000';
-}
 
 async function readErrorMessage(response: Response): Promise<string> {
   const contentType = response.headers.get('content-type') ?? '';
@@ -34,10 +31,12 @@ async function proxyToSandbox(method: 'GET' | 'POST') {
   const path = method === 'GET' ? '/sandbox' : '/sandbox/reset';
   let upstreamResponse: Response;
   try {
-    upstreamResponse = await fetch(`${getApiBaseUrl()}${path}`, {
-      method,
-      headers: method === 'POST' ? { 'Content-Type': 'application/json' } : undefined,
-    });
+    upstreamResponse = await fetch(
+      `${getApiBaseUrl()}${path}`,
+      method === 'POST'
+        ? buildInternalApiRequestInit('POST', { headers: { 'Content-Type': 'application/json' } })
+        : buildInternalApiRequestInit('GET'),
+    );
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unable to reach API.';
     return NextResponse.json({ error: `Unable to reach API: ${message}` }, { status: 502 });

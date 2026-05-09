@@ -4,7 +4,7 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F02 Backend API Boundary.
+**Next feature pointer:** F02 Backend API Boundary (implemented_pending_qa).
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -144,7 +144,7 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | --- | --- | --- | --- | --- |
 | F00 | Northstar + buildout docs + branch protocol | merged_to_rebuild_branch | feat/f00-agentic-buildout-plan | non-UI docs verification |
 | F01 | Hide premature operator surfaces from primary navigation | merged_to_rebuild_branch | feat/f01-hide-premature-surfaces | browser |
-| F02 | Backend API boundary | ready | feat/f02-backend-api-boundary | browser + API |
+| F02 | Backend API boundary | merged_to_rebuild_branch | feat/f02-backend-api-boundary | browser + API |
 | F03 | Guardrail rewrite for B2B scope and privacy blocking | ready | feat/f03-b2b-guardrails | non-UI |
 | F04 | Query compiler / planner | blocked | feat/f04-query-compiler | non-UI |
 | F05 | Candidate model separation | blocked | feat/f05-candidate-types | non-UI |
@@ -341,7 +341,7 @@ QA passed and branch `feat/f01-hide-premature-surfaces` is merged to `rebuild/va
 
 ## F02 - Backend API Boundary
 
-Status: ready
+Status: merged_to_rebuild_branch
 Branch: feat/f02-backend-api-boundary
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -388,7 +388,7 @@ Rollback plan:
 Revert token/ingress enforcement and proxy env wiring together; verify local `/health` still works.
 
 Next-agent handoff note:
-If deployment ingress is chosen instead of an app token, document the exact platform rule and how QA verified it.
+The app-token path is in place. QA verified the web proxy succeeds (up to API-service error payload) with `WR_API_INTERNAL_TOKEN` set, and verified tokenless direct API calls to `/scout`, `/full`, `/batch`, and `/sandbox/reset` return 401. QA report: `.gstack/qa-reports/qa-report-f02-backend-api-boundary-2026-05-09.md`.
 
 ---
 
