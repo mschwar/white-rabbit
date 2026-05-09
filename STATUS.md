@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-05-08 by gpt-5.4-mini
 **Branch:** feat/buildout-09-ui-debias
-**Current sprint:** BUILDOUT-09 in progress — UI de-bias branch created and verified; awaiting Prompt B QA + merge
+**Current sprint:** BUILDOUT-09 complete — UI de-bias branch verified in browser and ready to merge
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
