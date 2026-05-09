@@ -6,19 +6,11 @@ WORKDIR /app
 # Install uv
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-# Copy dependency metadata first for layer caching
-COPY pyproject.toml uv.lock ./
-COPY packages/core/pyproject.toml packages/core/uv.lock ./packages/core/
+# Copy the entire monorepo so uv can resolve the workspace
+COPY . .
 
-# Install dependencies (editable core package)
-RUN uv sync --no-dev --frozen
-
-# Copy application code
-COPY apps/api ./apps/api
-COPY packages/core/src ./packages/core/src
-
-# Ensure local package is installed in editable mode
-RUN uv pip install -e ./packages/core
+# Install dependencies from the API package (which depends on core via path)
+RUN cd apps/api && uv sync --no-dev --frozen
 
 ENV PYTHONPATH=/app/apps/api:/app/packages/core/src
 ENV PORT=8000

@@ -7,11 +7,11 @@ const nextConfig: NextConfig = {
   },
   // Allow API proxy rewrites in production
   async rewrites() {
-    const apiBase = process.env.WR_API_BASE_URL || "http://localhost:8000";
+    const apiBase = process.env.WR_API_BASE_URL || "https://white-rabbit-api.fly.dev";
     return [
       {
         source: "/api/:path*",
-        destination: `${apiBase}/api/:path*`,
+        destination: `${apiBase}/:path*`,
       },
     ];
   },
