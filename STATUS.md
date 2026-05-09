@@ -1,7 +1,7 @@
 # STATUS
 
-**Last updated:** 2026-05-09 by Codex buildout architect
-**Branch:** rebuild/validated-leads-loop
+**Last updated:** 2026-05-09 by Codex F01 build
+**Branch:** feat/f01-hide-premature-surfaces (from rebuild/validated-leads-loop)
 **Current sprint:** Agentic-first validated-leads rebuild planning; do not ship/operator-dogfood until search is rebuilt and re-benchmarked
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
@@ -14,7 +14,7 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F01 - Hide premature operator surfaces from primary navigation.
+**Next feature pointer:** F01 QA - Hide premature operator surfaces from primary navigation.
 
 **Control docs:**
 
@@ -27,15 +27,15 @@
 **Latest handoff:**
 
 ```text
-Feature: F00 - Northstar + buildout docs + branch protocol
-Branch: rebuild/validated-leads-loop (bootstrap exception; future features use feat/fxx branches)
-Status: merged_to_rebuild_branch
-What changed: Created the northstar, buildout plan, branch protocol, and QA template.
-Tests or QA run: `git diff --check`; required-marker `rg` checks for branch, F01, reflection, and QA template markers.
-Screenshots or report: Not required for F00 because it is non-UI planning work.
-Northstar reflection: Planning directly supports natural-language query -> validated leads -> export by preventing drift.
-Next pointer: F01 - Hide premature operator surfaces from primary navigation.
-Open questions: None blocking F01-F03.
+Feature: F01 - Hide premature operator surfaces from primary navigation
+Branch: feat/f01-hide-premature-surfaces
+Status: implemented_pending_qa
+What changed: Home now has only the lead-search link in the primary operator path. Scout no longer displays FastAPI/raw endpoint/storage copy, the recipe-library link, or the sandbox reset button; the usage panel remains visible without reset/internal implementation copy.
+Tests or QA run: `npm test` in apps/web (25 passed); `npm run build` in apps/web (passed with existing Next.js root-lockfile and middleware-deprecation warnings); browser smoke on localhost confirmed home and Scout surface hiding with zero console errors.
+Screenshots or report: `.gstack/qa-reports/screenshots/f01-home-after-login.png`; `.gstack/qa-reports/screenshots/f01-scout-empty-state.png`; formal QA report still needed in Prompt B.
+Northstar reflection: F01 reduces false confidence by removing recipe/batch/admin surfaces from the red-gate operator path and refocuses the UI on single lead search before output quality is proven.
+Next pointer: Prompt B QA for F01 on `feat/f01-hide-premature-surfaces`; if QA passes, merge only into `rebuild/validated-leads-loop`. F02 remains ready after F01 lands.
+Open questions: None blocking F01 QA.
 ```
 
 ---
@@ -101,6 +101,7 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What's done
 
+- **F01 build complete on `feat/f01-hide-premature-surfaces`; pending QA/merge.** Home primary navigation now links only to lead search, and Scout hides recipe-library links, raw endpoint/FastAPI/storage copy, and the sandbox reset button. Web tests/build passed and browser smoke screenshots were captured.
 - **F00 rebuild planning docs landed on `rebuild/validated-leads-loop`.** Added `docs/00-product-northstar.md`, `docs/08-agentic-buildout-plan.md`, AGENTS rebuild branch protocol, STATUS rebuild handoff, and `.gstack/qa-reports/qa-template-agentic-buildout.md`.
 - **BUILDOUT-12: Atomic sandbox cap counter added.** `_sandbox_reserve_query_or_429` now uses `get_sandbox_state_for_update()` to lock the sandbox row during cap checks, and API tests cover the concurrent 12-request cap path.
 - Directory structure scaffolded (`docs/`, `apps/web/`, `apps/api/`, `packages/core/`).
@@ -173,11 +174,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What's in flight
 
-- Product is in audit-red state. The rebuild has a persistent integration branch and control docs; next work should use the two-prompt loop in `docs/08-agentic-buildout-plan.md`.
+- Product is in audit-red state. F01 is implemented on `feat/f01-hide-premature-surfaces` and is waiting for Prompt B QA plus merge back to `rebuild/validated-leads-loop`.
 
 ## Next concrete task
 
-- Run Prompt A from `docs/08-agentic-buildout-plan.md` for **F01 - Hide premature operator surfaces from primary navigation** on branch `feat/f01-hide-premature-surfaces`, based from `rebuild/validated-leads-loop`.
+- Run Prompt B from `docs/08-agentic-buildout-plan.md` for **F01 - Hide premature operator surfaces from primary navigation** on branch `feat/f01-hide-premature-surfaces`. QA `/` and `/scout`, write the QA report, and merge only into `rebuild/validated-leads-loop` if it passes.
 
 ## Open questions for Matt
 
@@ -214,6 +215,7 @@ Real known issues (post-audit):
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-09 | f01-build (Codex) | Implemented F01 on `feat/f01-hide-premature-surfaces`: home now links only to lead search; Scout hides premature recipe/batch/admin copy, raw endpoint/FastAPI/storage text, recipe-library links, and sandbox reset. Verified with web tests/build and localhost browser smoke screenshots; ready for Prompt B QA/merge to `rebuild/validated-leads-loop`. |
 | 2026-05-09 | buildout-architect (Codex) | Created `rebuild/validated-leads-loop` as the rebuild integration branch; added the product northstar, agentic buildout plan, rebuild branch protocol, QA template, and STATUS handoff. Next pointer: F01 hide premature operator surfaces. |
 | 2026-05-09 | zero-trust-product-audit (Codex) | Audited White Rabbit against Thomas/Lee's core lead-quality loop using Gmail benchmark attachments, Monroe transcripts, live Fly API search runs, source URL validation, Vercel/GitHub/code inspection, and Browser screenshots. Wrote `audits/zero-trust-product-audit-2026-05-09.md` plus raw outputs. Verdict: do not ship; actual search scored 1/10 with 0/18 sampled leads CRM-usable and the Arizona K-12 VoIP benchmark failing. |
 | 2026-05-09 | prod-hotfix (GPT-5.4) | Reproduced the production auth crash after password submit, traced it to 307 POST redirect semantics on `/api/login`, changed login/logout to `303`, added a login route regression test, and fixed GitHub Actions by provisioning Postgres + Alembic before API tests so the DB-backed sandbox tests pass in CI. |

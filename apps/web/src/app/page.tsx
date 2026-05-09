@@ -9,29 +9,29 @@ export default function Home() {
             White Rabbit
           </p>
           <h1 className="max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl">
-            Scout workspace is gated and ready for the next query slice.
+            Source-backed lead search for the next validated target.
           </h1>
           <p className="max-w-2xl text-base leading-7 text-zinc-300 sm:text-lg">
-            Shared-password auth is live. Use the login page to reach the protected workspace,
-            then move into the Scout page or the recipe library.
+            Start from one natural-language target, review the evidence, and keep uncertain data out
+            of the contact-ready path.
           </p>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
           <article className="rounded-3xl border border-white/10 bg-zinc-950/70 p-6">
-            <p className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-400">Current state</p>
+            <p className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-400">Operator focus</p>
             <ul className="mt-4 space-y-3 text-sm leading-6 text-zinc-200">
-              <li>• Login page posts to the shared auth endpoint.</li>
-              <li>• Middleware protects the app and API routes.</li>
-              <li>• Logout clears the session cookie.</li>
+              <li>• One lead-search path.</li>
+              <li>• Visible fit, evidence, and contact scores.</li>
+              <li>• Clear handling for missing or unsupported data.</li>
             </ul>
           </article>
 
           <article className="rounded-3xl border border-emerald-400/20 bg-emerald-400/10 p-6">
-            <p className="text-sm font-medium uppercase tracking-[0.18em] text-emerald-200">Next steps</p>
+            <p className="text-sm font-medium uppercase tracking-[0.18em] text-emerald-200">Current gate</p>
             <p className="mt-4 text-sm leading-6 text-zinc-200">
-              The next missing slice is the Scout query form and API proxy. For now, the protected
-              shell gives Thomas a place to land after login.
+              The product stays in internal evaluation until returned leads have stronger
+              field-level validation and export evidence.
             </p>
           </article>
         </div>
@@ -41,32 +41,8 @@ export default function Home() {
             className="inline-flex h-12 items-center justify-center rounded-full bg-emerald-400 px-6 text-sm font-semibold text-emerald-950 transition hover:bg-emerald-300"
             href="/scout"
           >
-            Open Scout workspace
+            Open lead search
           </Link>
-          <Link
-            className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 px-6 text-sm font-semibold text-zinc-50 transition hover:bg-white/10"
-            href="/recipes"
-          >
-            Open recipe library
-          </Link>
-          <Link
-            className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 px-6 text-sm font-semibold text-zinc-50 transition hover:bg-white/10"
-            href="/batch"
-          >
-            Open bulk run workspace
-          </Link>
-          <Link
-            className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 px-6 text-sm font-semibold text-zinc-50 transition hover:bg-white/10"
-            href="/login?next=/scout"
-          >
-            Go to login
-          </Link>
-          <a
-            className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 px-6 text-sm font-semibold text-zinc-50 transition hover:bg-white/10"
-            href="/api/logout"
-          >
-            Sign out
-          </a>
         </div>
       </section>
     </main>
