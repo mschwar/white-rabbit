@@ -136,6 +136,8 @@ Order is intentional. Early work removes false confidence and protects the bound
 
 Do not pull deferred surfaces back into primary navigation while the gate is red.
 
+Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merge one branch at a time, but the first feature of a downstream wave must stay blocked until the prior wave has an `advance` gate review report.
+
 ## Missing Feature Table
 
 | ID | Feature | Status | Branch | Verification |

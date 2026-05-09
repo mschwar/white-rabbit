@@ -1,7 +1,7 @@
 # STATUS
 
-**Last updated:** 2026-05-09 by Codex F01 QA
-**Branch:** feat/f01-hide-premature-surfaces (from rebuild/validated-leads-loop)
+**Last updated:** 2026-05-09 by Codex buildout architect
+**Branch:** rebuild/validated-leads-loop
 **Current sprint:** Agentic-first validated-leads rebuild planning; do not ship/operator-dogfood until search is rebuilt and re-benchmarked
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
@@ -20,6 +20,7 @@
 
 - `docs/00-product-northstar.md` is the anti-drift product source of truth for the rebuild.
 - `docs/08-agentic-buildout-plan.md` is the agentic missing-feature list and two-prompt loop control document.
+- `docs/09-rebuild-phase-gates.md` is the gated wave plan for milestone reviews before downstream work unlocks.
 - `.gstack/qa-reports/qa-template-agentic-buildout.md` is the QA report template for rebuild features.
 
 **Main is intentionally untouched:** the validated-leads rebuild runs on `rebuild/validated-leads-loop` so product-risky reconstruction can proceed without implying `main` is shippable or merging unvalidated feature work into the production line.
@@ -102,6 +103,7 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 ## What's done
 
 - **F01 QA complete and merged on `rebuild/validated-leads-loop` via `feat/f01-hide-premature-surfaces`.** Home primary navigation now links only to lead search, and Scout hides recipe-library links, raw endpoint/FastAPI/storage copy, and the sandbox reset button. `npm test`, `npm run build`, and browser screenshots (with QA report `qa-report-f01-hide-premature-surfaces-2026-05-09.md`) were captured. F02 is now the next feature pointer.
+- **Rebuild phase gates merged.** `docs/09-rebuild-phase-gates.md` groups F00-F23 into gated waves W0-W6 and requires gate review reports before downstream waves unlock.
 - **F00 rebuild planning docs landed on `rebuild/validated-leads-loop`.** Added `docs/00-product-northstar.md`, `docs/08-agentic-buildout-plan.md`, AGENTS rebuild branch protocol, STATUS rebuild handoff, and `.gstack/qa-reports/qa-template-agentic-buildout.md`.
 - **BUILDOUT-12: Atomic sandbox cap counter added.** `_sandbox_reserve_query_or_429` now uses `get_sandbox_state_for_update()` to lock the sandbox row during cap checks, and API tests cover the concurrent 12-request cap path.
 - Directory structure scaffolded (`docs/`, `apps/web/`, `apps/api/`, `packages/core/`).
@@ -174,11 +176,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What's in flight
 
-- Product is in audit-red state. F01 is implemented on `feat/f01-hide-premature-surfaces` and is waiting for Prompt B QA plus merge back to `rebuild/validated-leads-loop`.
+- Product is in audit-red state. F01 is merged, phase gates are in place, and F02 is the next ready feature.
 
 ## Next concrete task
 
-- Run Prompt B from `docs/08-agentic-buildout-plan.md` for **F01 - Hide premature operator surfaces from primary navigation** on branch `feat/f01-hide-premature-surfaces`. QA `/` and `/scout`, write the QA report, and merge only into `rebuild/validated-leads-loop` if it passes.
+- Run Prompt A from `docs/08-agentic-buildout-plan.md` for **F02 - Backend API Boundary** on branch `feat/f02-backend-api-boundary`, based from `rebuild/validated-leads-loop`.
 
 ## Open questions for Matt
 
@@ -216,6 +218,7 @@ Real known issues (post-audit):
 | Date | Agent | Summary |
 |------|-------|---------|
 | 2026-05-09 | f01-build (Codex) | Implemented F01 on `feat/f01-hide-premature-surfaces`: home now links only to lead search; Scout hides premature recipe/batch/admin copy, raw endpoint/FastAPI/storage text, recipe-library links, and sandbox reset. Verified with web tests/build and localhost browser smoke screenshots; ready for Prompt B QA/merge to `rebuild/validated-leads-loop`. |
+| 2026-05-09 | buildout-architect (Codex) | Added a gated W0-W6 implementation plan in `docs/09-rebuild-phase-gates.md` so downstream waves require evidence-backed gate review before unlocking. Used a separate worktree/branch to avoid touching in-flight F01 UI edits. |
 | 2026-05-09 | buildout-architect (Codex) | Created `rebuild/validated-leads-loop` as the rebuild integration branch; added the product northstar, agentic buildout plan, rebuild branch protocol, QA template, and STATUS handoff. Next pointer: F01 hide premature operator surfaces. |
 | 2026-05-09 | zero-trust-product-audit (Codex) | Audited White Rabbit against Thomas/Lee's core lead-quality loop using Gmail benchmark attachments, Monroe transcripts, live Fly API search runs, source URL validation, Vercel/GitHub/code inspection, and Browser screenshots. Wrote `audits/zero-trust-product-audit-2026-05-09.md` plus raw outputs. Verdict: do not ship; actual search scored 1/10 with 0/18 sampled leads CRM-usable and the Arizona K-12 VoIP benchmark failing. |
 | 2026-05-09 | prod-hotfix (GPT-5.4) | Reproduced the production auth crash after password submit, traced it to 307 POST redirect semantics on `/api/login`, changed login/logout to `303`, added a login route regression test, and fixed GitHub Actions by provisioning Postgres + Alembic before API tests so the DB-backed sandbox tests pass in CI. |
