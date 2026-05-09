@@ -598,7 +598,7 @@ Hard to demonstrate concurrency in a browser. Note in QA report: "atomicity vali
 
 **Estimated effort:** 1h human / 20min AI.
 
-**Status:** implemented on `feat/buildout-12-sandbox-atomicity`, verified by `uv run pytest tests -q` in `apps/api` on 2026-05-08, and browser-verified on `http://localhost:3000` (Scout reset + search, recipes, batch). Ready to merge.
+**Status:** implemented on `feat/buildout-12-sandbox-atomicity`, verified by `uv run pytest tests -q` in `apps/api` on 2026-05-08, browser-verified on `http://localhost:3000` (Scout reset + search, recipes, batch), and merged to `main`.
 
 ---
 

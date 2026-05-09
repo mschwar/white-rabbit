@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-05-08 by gpt-5.4-mini
 **Branch:** feat/buildout-12-sandbox-atomicity
-**Current sprint:** BUILDOUT-12 verified on the feature branch — sandbox cap counter now uses row-level locking, browser QA passed on Scout/recipes/batch, and the branch is ready to merge
+**Current sprint:** BUILDOUT-12 merged to main — sandbox cap counter uses row-level locking, browser QA passed on Scout/recipes/batch, and BUILDOUT-13 is next
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
