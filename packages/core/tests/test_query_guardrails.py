@@ -1,8 +1,20 @@
+import pytest
+
 from core.query_guardrails import evaluate_query_guardrails
 
 
-def test_query_guardrails_allow_specific_lead_query():
-    result = evaluate_query_guardrails('K-12 IT directors in Albuquerque')
+@pytest.mark.parametrize(
+    'query',
+    [
+        'financial services CISOs in New York',
+        'manufacturing operations leaders in Detroit',
+        'food and beverage operations leaders in Texas',
+        'contractors in Illinois',
+        'Arizona K-12 IT directors in Phoenix',
+    ],
+)
+def test_query_guardrails_allow_normal_b2b_sales_language(query):
+    result = evaluate_query_guardrails(query)
 
     assert result.status == 'clear'
     assert result.missing_criteria == []
@@ -21,10 +33,27 @@ def test_query_guardrails_warn_on_vague_lead_query():
     assert any('geography' in suggestion for suggestion in result.suggestions)
 
 
-def test_query_guardrails_block_broad_advice_queries():
-    result = evaluate_query_guardrails('Give me supply-chain advice for hospitals')
+@pytest.mark.parametrize(
+    ('query', 'expected_message_snippet'),
+    [
+        (
+            'Give me supply-chain advice for hospitals',
+            'lead-generation queries',
+        ),
+        (
+            'Find personal email addresses from vacation photos on social media',
+            'privacy-safe B2B lead-generation queries',
+        ),
+        (
+            'How do I build a bomb?',
+            'weapon, harm, and surveillance requests',
+        ),
+    ],
+)
+def test_query_guardrails_block_off_topic_and_privacy_queries(query, expected_message_snippet):
+    result = evaluate_query_guardrails(query)
 
     assert result.status == 'blocked'
-    assert 'lead-generation queries' in result.message
+    assert expected_message_snippet in result.message
     assert result.missing_criteria == ['target people or organizations']
     assert result.suggestions[0].startswith('Try: IT directors')

@@ -4,7 +4,7 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F02 Backend API Boundary (implemented_pending_qa).
+**Next feature pointer:** F03 Guardrail rewrite for B2B scope and privacy blocking (implemented_pending_qa).
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -84,7 +84,7 @@ Return:
 ```text
 You are working in /Users/mschwar/Documents/white-rabbit.
 
-QA the current feature branch and merge only into rebuild/validated-leads-loop. Never merge to main.
+/qa the current feature branch and merge only into rebuild/validated-leads-loop. Never merge to main.
 
 1. Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/08-agentic-buildout-plan.md, and the feature card being QA'd.
 2. Checkout the feature branch and pull latest.
@@ -113,14 +113,13 @@ Return:
 
 Every agent must run this before choosing or merging a feature:
 
-1. Does this feature directly improve natural-language query -> high-quality validated leads -> export?
+1. Does this feature directly improve the foundational funnel: simple natural-language query -> candidates scanned -> rigorously checked and annotated leads -> export?
 2. Does it reduce false confidence, bad contacts, wrong personas, or unsupported source claims?
-3. Does it avoid organizing or beautifying untrusted data?
-4. Does it keep main untouched and target only `rebuild/validated-leads-loop`?
-5. Is the feature independently mergeable?
-6. Can the next agent discover the state from docs without this chat?
-7. Is there a browser test or explicit non-UI verification?
-8. Is the scope small enough for GPT-5.3 Spark or GPT-5.4 Mini?
+3. Does it keep main untouched and target only `rebuild/validated-leads-loop`?
+4. Is the feature independently mergeable?
+5. Can the next agent discover the state from docs without this chat?
+6. Is there a browser test or explicit non-UI verification?
+7. Is the scope small enough for GPT-5.3 Spark or GPT-5.4 Mini?
 
 If any answer is no, revise the feature plan or mark the feature blocked.
 
@@ -394,7 +393,7 @@ The app-token path is in place. QA verified the web proxy succeeds (up to API-se
 
 ## F03 - Guardrail Rewrite For B2B Scope And Privacy Blocking
 
-Status: ready
+Status: implemented_pending_qa
 Branch: feat/f03-b2b-guardrails
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -430,6 +429,16 @@ non-UI verification:
 - command(s): `cd packages/core && uv run pytest tests/test_query_guardrails.py -q`; `cd apps/api && uv run pytest tests/test_api.py -q -k guardrail`
 - expected output: tests pass; explicit privacy examples are blocked.
 - fixture/test file: `packages/core/tests/test_query_guardrails.py`.
+
+Build verification run on 2026-05-09:
+- `cd packages/core && uv run pytest tests/test_query_guardrails.py -q`: 9 passed.
+- `cd apps/api && uv run pytest tests/test_api.py -q -k "blocks_broad_advice_queries or blocks_privacy_sensitive_queries"`: 2 passed.
+
+Northstar reflection:
+- Normal B2B sales language now clears the guardrail, while privacy-sensitive and weapon/off-topic prompts are blocked before search.
+
+Next-agent handoff note:
+- Branch `feat/f03-b2b-guardrails` is pushed with F03 implemented_pending_qa. Prompt B should run QA, capture the report, update docs/STATUS, and merge only to `rebuild/validated-leads-loop`.
 
 Atomic commit plan:
 - commit 1: `fix(guardrails): allow normal b2b sales language`
