@@ -23,10 +23,11 @@ The customer offer is scoped concierge briefings fulfilled by Matt. **There is n
 1. `STATUS.md` — what's done, what's next, what's in flight. **Always read this second.**
 2. `docs/03-decisions.md` — locked decisions. Do not re-litigate. New entries append; old entries do not change.
 3. `docs/04-roadmap.md` — current build slice, kill/keep gate, sprint scope.
-4. `docs/00-context.md` — strategic background.
-5. `docs/01-model.md` — operator model, recipes, score model, run model.
-6. `docs/02-stack.md` — Next.js + Python + Postgres layout, conventions, env vars.
-7. `docs/05-reuse.md` — explicit lift list from `/Users/mschwar/Documents/proxy-lead`.
+4. `docs/qa-rubric.md` — QA ship-gate tiers. Any change touching extraction/scoring must pass Tiers 1–4.
+5. `docs/00-context.md` — strategic background.
+6. `docs/01-model.md` — operator model, recipes, score model, run model.
+7. `docs/02-stack.md` — Next.js + Python + Postgres layout, conventions, env vars.
+8. `docs/05-reuse.md` — explicit lift list from `/Users/mschwar/Documents/proxy-lead`.
 
 ## Project rules (do not break these)
 
