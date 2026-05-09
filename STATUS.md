@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-08 by gpt-5.4-mini
-**Branch:** feat/buildout-09-ui-debias
-**Current sprint:** BUILDOUT-09 complete — UI de-bias branch verified in browser and ready to merge
+**Branch:** feat/buildout-10-retries
+**Current sprint:** BUILDOUT-10 in progress — Tavily/OpenAI retry hardening is on the feature branch
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -91,13 +91,12 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 
 ## What's in flight
 
-- Main is clean after BUILDOUT-09 merge.
-- BUILDOUT-09 merged to main and pushed; the branch is done.
+- feat/buildout-10-retries is active; `packages/core` retry tests pass and the branch is pushed.
+- BUILDOUT-09 docs drift is reconciled in `docs/07-buildout-plan.md`; the checklist now reflects reality.
 
 ## Next concrete task
 
-- Pick up the next roadmap item from `docs/04-roadmap.md` and update STATUS when it starts.
-- If BUILDOUT-09 needs follow-up polish, do it from a new branch.
+- Run Prompt B QA/merge for BUILDOUT-10, then move to BUILDOUT-11 in `docs/07-buildout-plan.md`.
 
 ## Open questions for Matt
 

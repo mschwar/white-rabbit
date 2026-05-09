@@ -92,7 +92,7 @@ async def scout(
     if not api_key and openai_client is None:
         raise OrchestratorError("OPENAI_API_KEY not found")
 
-    client = openai_client or AsyncOpenAI(api_key=api_key)
+    client = openai_client or AsyncOpenAI(api_key=api_key, max_retries=2)
 
     try:
         search_results = await search_fn(
