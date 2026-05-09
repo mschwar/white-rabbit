@@ -235,7 +235,7 @@ export default function ScoutWorkspace() {
           <p className="text-sm font-medium uppercase tracking-[0.22em] text-emerald-300">Scout / Full</p>
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">Query workspace</h1>
           <p className="max-w-3xl text-base leading-7 text-zinc-300 sm:text-lg">
-            Scout: quick preview (10–20 leads, no storage). Full: stored recipe with up to 100 leads.
+            Scout: quick preview (up to 15 leads, no storage). Full: stored recipe with up to 100 leads.
           </p>
         </div>
 
@@ -278,7 +278,7 @@ export default function ScoutWorkspace() {
                     id="recipeName"
                     name="recipeName"
                     onChange={(event) => setRecipeName(event.target.value)}
-                    placeholder="My K-12 IT director recipe"
+                    placeholder="My prospect list"
                     value={recipeName}
                   />
                 </div>
@@ -293,7 +293,7 @@ export default function ScoutWorkspace() {
                   id="query"
                   name="query"
                   onChange={(event) => setQuery(event.target.value)}
-                  placeholder="K-12 IT directors in Albuquerque"
+                  placeholder="Healthcare IT directors in Phoenix"
                   value={query}
                 />
               </div>
@@ -450,7 +450,9 @@ export default function ScoutWorkspace() {
                   Download CSV
                 </a>
                 <p className="mt-2 text-xs leading-6 text-zinc-400">
-                  Includes query, recipe, run metadata, scores, gate status, explanation, and validation context.
+                  Includes query, location, recipe name, run ID, rank, lead name/title/org/email, email status, source
+                  URL, fit/evidence/contact scores, gate status, icebreaker, why_target, explanation, and validation
+                  context.
                 </p>
               </div>
             ) : null}

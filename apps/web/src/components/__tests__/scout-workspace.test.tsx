@@ -83,6 +83,16 @@ test('submits a scout query and renders ranked results', async () => {
   expect(screen.getByText('79%')).toBeDefined();
 });
 
+test('renders the debiased scout placeholders and export description', () => {
+  render(<ScoutWorkspace />);
+
+  expect(screen.getByText(/scout: quick preview \(up to 15 leads, no storage\)\. full: stored recipe with up to 100 leads\./i)).toBeDefined();
+  expect(screen.getByPlaceholderText('Healthcare IT directors in Phoenix')).toBeDefined();
+
+  fireEvent.click(screen.getByRole('button', { name: /^full$/i }));
+  expect(screen.getByPlaceholderText('My prospect list')).toBeDefined();
+});
+
 test('sorts scout results by score and gate state', async () => {
 const fetchMock = makeFetchMock({
 leads: [
@@ -259,7 +269,11 @@ test('builds a CSV export from a full run', async () => {
     'download',
     expect.stringMatching(/^white-rabbit-lead-export-\d{4}-\d{2}-\d{2}\.csv$/),
   );
-  expect(screen.getByText(/includes query, recipe, run metadata, scores, gate status, explanation, and validation context/i)).toBeDefined();
+  expect(
+    screen.getByText(
+      /includes query, location, recipe name, run ID, rank, lead name\/title\/org\/email, email status, source URL, fit\/evidence\/contact scores, gate status, icebreaker, why_target, explanation, and validation context/i,
+    ),
+  ).toBeDefined();
 });
 
 test('shows a validation message for blank queries', async () => {
