@@ -106,7 +106,7 @@ If a feature looks too big once you start: split it. Add a second `- [ ]` row to
 - [x] (2026-05-09, 608f0eb) BUILDOUT-13: Specific API error codes for UI (`feat/buildout-13-error-codes`)
 
 ### Phase F — Documentation & process
-- [ ] BUILDOUT-14: README setup walkthrough verified end-to-end (`feat/buildout-14-readme-verified`)
+- [x] (2026-05-09, 4377e8d) BUILDOUT-14: README setup walkthrough verified end-to-end (`feat/buildout-14-readme-verified`)
 - [ ] BUILDOUT-15: QA rubric document + multi-vertical gate (`feat/buildout-15-qa-rubric`)
 
 ### Phase G — Deploy
