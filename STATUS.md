@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-08 by gpt-5.4-mini
-**Branch:** feat/buildout-11-feedback-enum
-**Current sprint:** BUILDOUT-11 QA complete on the feature branch — feedback label enum validation, DB CHECK constraint, and feedback upsert behavior are in place and verified in browser + tests
+**Branch:** feat/buildout-12-sandbox-atomicity
+**Current sprint:** BUILDOUT-12 implemented on the feature branch — sandbox cap counter now uses row-level locking and API tests pass; awaiting Prompt B browser QA + merge
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -28,7 +28,7 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 
 ## What's done
 
-- Repo created at `/Users/mschwar/Documents/white-rabbit/`.
+- **BUILDOUT-12: Atomic sandbox cap counter added.** `_sandbox_reserve_query_or_429` now uses `get_sandbox_state_for_update()` to lock the sandbox row during cap checks, and API tests cover the concurrent 12-request cap path.
 - Directory structure scaffolded (`docs/`, `apps/web/`, `apps/api/`, `packages/core/`).
 - Bootstrap documentation written:
   - `AGENTS.md` — agent entry point and rules.
@@ -91,12 +91,11 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 
 ## What's in flight
 
-- feat/buildout-11-feedback-enum is active; the feedback label enum, API validation, DB CHECK constraint, and upsert fix are committed and QA-verified on the branch.
-- BUILDOUT-11 docs drift is reconciled in `docs/07-buildout-plan.md`; the checklist now reflects reality.
+- BUILDOUT-12 is implemented on `feat/buildout-12-sandbox-atomicity` and awaiting Prompt B browser QA + merge.
 
 ## Next concrete task
 
-- Merge BUILDOUT-11, then move to BUILDOUT-12 in `docs/07-buildout-plan.md`.
+- Run Prompt B browser QA for BUILDOUT-12, then merge and move on to BUILDOUT-13 in `docs/07-buildout-plan.md`.
 
 ## Open questions for Matt
 

@@ -291,6 +291,20 @@ def get_sandbox_state(session: Session) -> SandboxState:
     return state
 
 
+def get_sandbox_state_for_update(session: Session) -> SandboxState:
+    state = (
+        session.query(SandboxState)
+        .filter(SandboxState.id == _SANDBOX_STATE_ID)
+        .with_for_update()
+        .first()
+    )
+    if state is None:
+        state = SandboxState(id=_SANDBOX_STATE_ID)
+        session.add(state)
+        session.flush()
+    return state
+
+
 def reset_sandbox_state(session: Session) -> SandboxState:
     state = get_sandbox_state(session)
     state.total_queries = 0

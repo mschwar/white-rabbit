@@ -598,6 +598,8 @@ Hard to demonstrate concurrency in a browser. Note in QA report: "atomicity vali
 
 **Estimated effort:** 1h human / 20min AI.
 
+**Status:** implemented on `feat/buildout-12-sandbox-atomicity` and verified by `uv run pytest tests -q` in `apps/api` on 2026-05-08. Awaiting Prompt B browser QA and merge.
+
 ---
 
 ### BUILDOUT-13: Specific API error codes for UI
