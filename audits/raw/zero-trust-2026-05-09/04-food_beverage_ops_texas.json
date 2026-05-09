@@ -1,0 +1,74 @@
+{
+  "ok": true,
+  "status": 200,
+  "body": {
+    "leads": [
+      {
+        "id": null,
+        "name": "Stephan Fitz",
+        "title": "Director of Food and Beverage",
+        "organization": "The Adolphus",
+        "email": "",
+        "email_status": "Missing",
+        "source_url": "https://www.hotel-online.com/news/stephan-fitz-is-appointed-as-director-of-food-and-beverage-at-the-adolphus-in-dallas-texas",
+        "confidence": 0.0,
+        "why_target": "As the Director of Food and Beverage at The Adolphus, Stephan Fitz is responsible for overseeing multiple dining experiences, making him a key decision-maker in Texas' vibrant food and beverage sector.",
+        "icebreaker": "Congratulations on your new role as Director of Food and Beverage at The Adolphus; your experience in culinary management will certainly enhance the exquisite dining options in Dallas.",
+        "fit_score": 1.0,
+        "evidence_score": 1.0,
+        "contact_score": 0.0,
+        "gate_passed": false,
+        "explanation": "This lead is highly relevant as it directly relates to the food and beverage operations in Texas, specifically in a prominent establishment."
+      },
+      {
+        "id": null,
+        "name": "Dave Hermann",
+        "title": "Director, Food & Beverage",
+        "organization": "Wildflower Country Club",
+        "email": "",
+        "email_status": "Missing",
+        "source_url": "https://www.linkedin.com/in/davehermann1",
+        "confidence": 0.0,
+        "why_target": "As the Director of Food & Beverage at Wildflower Country Club, Dave Hermann plays a significant role in managing culinary operations and enhancing the guest experience in the Texas food sector.",
+        "icebreaker": "Your leadership as the new Director of Food & Beverage at Wildflower Country Club is inspiring, and I admire your extensive background in hospitality and culinary innovation.",
+        "fit_score": 1.0,
+        "evidence_score": 1.0,
+        "contact_score": 0.0,
+        "gate_passed": false,
+        "explanation": "Dave Hermann\u2019s role in food and beverage management at a country club in Texas makes him a fitting lead for this query."
+      }
+    ],
+    "metrics": {
+      "input_tokens": 5207,
+      "output_tokens": 391,
+      "tavily_searches": 1,
+      "openai_web_searches": 0,
+      "elapsed_seconds": 16.57,
+      "estimated_cost_usd": 0.011016
+    },
+    "query_guardrail": {
+      "status": "needs_more_detail",
+      "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+      "suggestions": [
+        "Add a title or role, such as director, manager, VP, or owner.",
+        "Add a vertical or company type, such as school district, clinic, nonprofit, or SMB."
+      ],
+      "missing_criteria": [
+        "target title or role",
+        "company type or vertical"
+      ]
+    },
+    "sandbox_usage": {
+      "total_queries": 4,
+      "total_rows": 12,
+      "max_queries": 10,
+      "max_rows": 1000,
+      "remaining_queries": 6,
+      "remaining_rows": 988,
+      "reset_at": "2026-05-09T20:01:35.549910+00:00"
+    }
+  },
+  "query": "food and beverage operations leaders in Texas",
+  "slug": "food_beverage_ops_texas",
+  "elapsed_wall_seconds": 17.62
+}

@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "status": 200,
+  "body": {
+    "leads": [],
+    "metrics": {
+      "input_tokens": 2705,
+      "output_tokens": 5,
+      "tavily_searches": 1,
+      "openai_web_searches": 0,
+      "elapsed_seconds": 5.17,
+      "estimated_cost_usd": 0.010409
+    },
+    "query_guardrail": {
+      "status": "needs_more_detail",
+      "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+      "suggestions": [
+        "Add a title or role, such as director, manager, VP, or owner.",
+        "Add a vertical or company type, such as school district, clinic, nonprofit, or SMB."
+      ],
+      "missing_criteria": [
+        "target title or role",
+        "company type or vertical"
+      ]
+    },
+    "sandbox_usage": {
+      "total_queries": 2,
+      "total_rows": 0,
+      "max_queries": 10,
+      "max_rows": 1000,
+      "remaining_queries": 8,
+      "remaining_rows": 1000,
+      "reset_at": "2026-05-09T20:03:52.646424+00:00"
+    }
+  },
+  "query": "people who posted vacation photos on public social media in the last 30 days with emails",
+  "slug": "b2c_vacation_social_emails",
+  "elapsed_wall_seconds": 6.11
+}

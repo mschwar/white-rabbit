@@ -1,0 +1,14 @@
+{
+  "ok": false,
+  "status": 503,
+  "body": {
+    "detail": {
+      "error_code": "tavily_failed",
+      "message": "Tavily search failed: Tavily API error: 400 - {\"detail\":{\"error\":\"Query is too long. Max query length is 400 characters.\"}}",
+      "request_id": "b21a4967-7a52-493b-9e7b-80de24fee9df"
+    }
+  },
+  "query": "name and email and phone number for these District Approx Size Tech Decision Maker Type Mesa Public Schools 60k+ students CIO / Director of Technology; Chandler Unified School District 40k+ CTO / IT Director; Peoria Unified School District 35k+ Technology Services; Gilbert Public Schools 30k+ CTO; Deer Valley Unified School District 30k+ IT leadership; Paradise Valley Unified School District 25k+ CIO/Technology; Dysart Unified School District 24k+ Director of Technology; Maricopa Unified School District 9k+ Director of Technology",
+  "slug": "az_k12_voip_benchmark",
+  "elapsed_wall_seconds": 0.71
+}

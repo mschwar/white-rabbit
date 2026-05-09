@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "status": 200,
+  "body": {
+    "leads": [],
+    "metrics": {
+      "input_tokens": 3465,
+      "output_tokens": 5,
+      "tavily_searches": 1,
+      "openai_web_searches": 0,
+      "elapsed_seconds": 5.51,
+      "estimated_cost_usd": 0.010523
+    },
+    "query_guardrail": {
+      "status": "needs_more_detail",
+      "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+      "suggestions": [
+        "Add a title or role, such as director, manager, VP, or owner.",
+        "Add a geography, such as a city, state, or region."
+      ],
+      "missing_criteria": [
+        "target title or role",
+        "location"
+      ]
+    },
+    "sandbox_usage": {
+      "total_queries": 1,
+      "total_rows": 0,
+      "max_queries": 10,
+      "max_rows": 1000,
+      "remaining_queries": 9,
+      "remaining_rows": 1000,
+      "reset_at": "2026-05-09T20:04:21.962251+00:00"
+    }
+  },
+  "query": "Arizona K-12 VoIP telecom IT decision makers at Mesa Chandler Peoria Gilbert Deer Valley Paradise Valley Dysart Maricopa school districts",
+  "elapsed_wall_seconds": 6.57
+}

@@ -1,0 +1,74 @@
+{
+  "ok": true,
+  "status": 200,
+  "body": {
+    "leads": [
+      {
+        "id": null,
+        "name": "Sylvester Hester",
+        "title": "President and Chief Executive Officer",
+        "organization": "LM Manufacturing, LLC",
+        "email": "",
+        "email_status": "Missing",
+        "source_url": "https://michauto.org/transforming-lives-and-communities-the-impact-of-lm-manufacturing/",
+        "confidence": 0.0,
+        "why_target": "As the CEO of LM Manufacturing, a Detroit-based company, Sylvester Hester is a key leader in the local manufacturing sector.",
+        "icebreaker": "I admire your commitment to enhancing the manufacturing landscape in Detroit through LM Manufacturing's people-centric approach.",
+        "fit_score": 0.8,
+        "evidence_score": 0.85,
+        "contact_score": 0.0,
+        "gate_passed": false,
+        "explanation": "Sylvester Hester is a high-ranking executive in a manufacturing company located in Detroit, making him a strong fit for targeting manufacturing operations leaders; however, there is no email available to contact him."
+      },
+      {
+        "id": null,
+        "name": "Bruce Smith",
+        "title": "Senior Leadership",
+        "organization": "Detroit Manufacturing Systems LLC",
+        "email": "",
+        "email_status": "Missing",
+        "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
+        "confidence": 0.0,
+        "why_target": "As a senior leader at Detroit Manufacturing Systems, Bruce Smith plays a significant role in shaping manufacturing operations in the region.",
+        "icebreaker": "I appreciate your extensive leadership experience and how it contributes to operational excellence at Detroit Manufacturing Systems.",
+        "fit_score": 0.75,
+        "evidence_score": 0.7,
+        "contact_score": 0.0,
+        "gate_passed": false,
+        "explanation": "Bruce Smith is involved in leadership at a manufacturing firm in Detroit, which aligns well with the query, but there is no email available to contact him."
+      }
+    ],
+    "metrics": {
+      "input_tokens": 5747,
+      "output_tokens": 350,
+      "tavily_searches": 1,
+      "openai_web_searches": 0,
+      "elapsed_seconds": 19.42,
+      "estimated_cost_usd": 0.011072
+    },
+    "query_guardrail": {
+      "status": "needs_more_detail",
+      "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+      "suggestions": [
+        "Add a title or role, such as director, manager, VP, or owner.",
+        "Add a vertical or company type, such as school district, clinic, nonprofit, or SMB."
+      ],
+      "missing_criteria": [
+        "target title or role",
+        "company type or vertical"
+      ]
+    },
+    "sandbox_usage": {
+      "total_queries": 7,
+      "total_rows": 18,
+      "max_queries": 10,
+      "max_rows": 1000,
+      "remaining_queries": 3,
+      "remaining_rows": 982,
+      "reset_at": "2026-05-09T20:01:35.549910+00:00"
+    }
+  },
+  "query": "manufacturing operations leaders in Detroit",
+  "slug": "manufacturing_ops_detroit",
+  "elapsed_wall_seconds": 20.36
+}

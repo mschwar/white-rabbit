@@ -1,10 +1,30 @@
 # STATUS
 
-**Last updated:** 2026-05-09 by GPT-5.4
+**Last updated:** 2026-05-09 by Codex zero-trust audit
 **Branch:** main
-**Current sprint:** BUILDOUT-17 complete; production auth redirect hotfix and CI DB fix verified
+**Current sprint:** Zero-trust product audit complete; do not ship/operator-dogfood until search is rebuilt and re-benchmarked
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
+
+---
+
+## 🚨 Zero-trust product audit reality (2026-05-09)
+
+A ruthless product audit against Thomas/Lee's actual core loop found White Rabbit v2 is **not useful enough for a real sales operator yet**. Full report: [`audits/zero-trust-product-audit-2026-05-09.md`](audits/zero-trust-product-audit-2026-05-09.md). Raw live outputs: [`audits/raw/zero-trust-2026-05-09/`](audits/raw/zero-trust-2026-05-09/).
+
+**Verdict:** Do not ship. Do not put Thomas or Lee on this as a daily tool. Rebuild search validation before more feature work.
+
+**Scores:** features/functions **2/10**, UI/UX/design **3/10**, actual search **1/10**.
+
+**Fatal findings:**
+
+1. The Arizona K-12 VoIP benchmark failed twice: the full Thomas-style prompt crashed Tavily at the 400-character query limit; a compressed version returned zero leads.
+2. Across 18 returned sampled leads, **0 were CRM-usable** under the standard "salesperson can act without doing most of the research again."
+3. The shared-password UI is not the true boundary: the Fly backend endpoints were publicly callable during the audit, including `/scout`, `/full`, `/batch`, and `/sandbox/reset`.
+4. Guardrails block simple off-topic prompts but fail B2C/privacy boundary prompts, which run and return zero leads instead of refusing.
+5. Recipe library, scoreboard, Friday export, and bulk workspace are premature and should be hidden or killed until single-query search quality passes a benchmark.
+
+**Next product move:** freeze feature work, hide recipe/batch operator surfaces, put auth on the backend or restrict ingress, build a golden Arizona K-12 benchmark harness, and rebuild field-level source/contact validation.
 
 ---
 
@@ -120,12 +140,14 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What's in flight
 
-- None. BUILDOUT-17 is live in production; follow-up work is platform hardening, not deployment unblock.
+- Product is in audit-red state. No new feature work should start until the search rebuild and benchmark harness are scoped.
 
 ## Next concrete task
 
-- Add billing / a credit card to Fly.io so trial machines stop auto-shutting down after ~5 minutes.
-- Start Phase 3 polish and any non-blocking cleanup from `docs/06-audit-action-plan.md`.
+- Hide/disable recipe library, Friday review export, and bulk workspace from the operator-facing UI.
+- Add backend auth or ingress restriction so Fly API endpoints cannot be called outside the shared-password app boundary.
+- Build the Arizona K-12 VoIP golden benchmark harness and make it the first ship gate for Scout search quality.
+- Rebuild field-level validation so every returned name/title/org/email/phone has explicit source support or an explicit failed/missing status.
 
 ## Open questions for Matt
 
@@ -162,6 +184,7 @@ Real known issues (post-audit):
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-09 | zero-trust-product-audit (Codex) | Audited White Rabbit against Thomas/Lee's core lead-quality loop using Gmail benchmark attachments, Monroe transcripts, live Fly API search runs, source URL validation, Vercel/GitHub/code inspection, and Browser screenshots. Wrote `audits/zero-trust-product-audit-2026-05-09.md` plus raw outputs. Verdict: do not ship; actual search scored 1/10 with 0/18 sampled leads CRM-usable and the Arizona K-12 VoIP benchmark failing. |
 | 2026-05-09 | prod-hotfix (GPT-5.4) | Reproduced the production auth crash after password submit, traced it to 307 POST redirect semantics on `/api/login`, changed login/logout to `303`, added a login route regression test, and fixed GitHub Actions by provisioning Postgres + Alembic before API tests so the DB-backed sandbox tests pass in CI. |
 | 2026-05-09 | deploy-fix (GPT-5.4) | Fixed production auth routing by removing the web app's catch-all `/api/*` rewrite, repaired the Vercel project (`rootDirectory=apps/web`, framework set, runtime env vars added), forced a successful prod deploy, verified `/api/login` now hits Next instead of Fly, and documented that the remaining production issue is Fly trial auto-stop. |
 | 2026-05-05 | bootstrap (Opus 4.7) | Repo bootstrapped. All 10 priority docs written. git init + first commit. Next: Sprint 1 scaffold. |

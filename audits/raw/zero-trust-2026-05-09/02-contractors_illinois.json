@@ -1,0 +1,123 @@
+{
+  "ok": true,
+  "status": 200,
+  "body": {
+    "leads": [
+      {
+        "id": null,
+        "name": "Sjostrom & Sons",
+        "title": "",
+        "organization": "Sjostrom & Sons",
+        "email": "",
+        "email_status": "Missing",
+        "source_url": "https://gobridgit.com/blog/top-construction-companies-in-illinois/",
+        "confidence": 0.0,
+        "why_target": "Sjostrom & Sons is a major contractor in Illinois, specializing in healthcare and commercial projects, fitting the need for reliable contractors.",
+        "icebreaker": "I noticed that Sjostrom & Sons has a strong reputation for healthcare and institutional projects, which aligns with the growing demand for trusted contractors in Illinois.",
+        "fit_score": 0.8390101,
+        "evidence_score": 1.0,
+        "contact_score": 0.0,
+        "gate_passed": false,
+        "explanation": "Sjostrom & Sons is a well-established contractor in Illinois, but specific contact details are missing."
+      },
+      {
+        "id": null,
+        "name": "F.H. Paschen",
+        "title": "",
+        "organization": "F.H. Paschen",
+        "email": "",
+        "email_status": "Missing",
+        "source_url": "https://gobridgit.com/blog/top-construction-companies-in-illinois/",
+        "confidence": 0.0,
+        "why_target": "F.H. Paschen is an established leader in infrastructure construction, a key area for contractors in Illinois.",
+        "icebreaker": "F.H. Paschen's expertise in heavy civil construction is well recognized, which positions the firm well for the current contracting landscape in Illinois.",
+        "fit_score": 0.8390101,
+        "evidence_score": 1.0,
+        "contact_score": 0.0,
+        "gate_passed": false,
+        "explanation": "F.H. Paschen is a prominent contractor in Illinois, but no specific contact information is available."
+      },
+      {
+        "id": null,
+        "name": "Kankakee Valley Construction",
+        "title": "",
+        "organization": "Kankakee Valley Construction",
+        "email": "",
+        "email_status": "Missing",
+        "source_url": "https://ivcontractors.org/general-contractors/",
+        "confidence": 0.0,
+        "why_target": "Kankakee Valley Construction provides general contracting services and is listed under a recognized contractor association, indicating credibility.",
+        "icebreaker": "I found Kankakee Valley Construction listed with the Illinois Valley Contractors Association, highlighting your role in the local construction community.",
+        "fit_score": 0.7781275,
+        "evidence_score": 1.0,
+        "contact_score": 0.0,
+        "gate_passed": false,
+        "explanation": "Kankakee Valley Construction is part of an established contractor association, but personal contact details remain undisclosed."
+      },
+      {
+        "id": null,
+        "name": "Melissa Muskopf",
+        "title": "General Contractor",
+        "organization": "R.A. Cullinan & Son, Inc.",
+        "email": "",
+        "email_status": "Missing",
+        "source_url": "https://web.agcil.org/Active",
+        "confidence": 0.0,
+        "why_target": "Melissa Muskopf is actively involved with contractors and could provide valuable insights into the contractor landscape in Illinois.",
+        "icebreaker": "As General Contractor at R.A. Cullinan & Son, your position is central to understanding the dynamics of the contracting business in Illinois.",
+        "fit_score": 0.7715858,
+        "evidence_score": 1.0,
+        "contact_score": 0.0,
+        "gate_passed": false,
+        "explanation": "Melissa Muskopf's active involvement in contractor services could be beneficial, but no contact information is available."
+      },
+      {
+        "id": null,
+        "name": "Troy Throne",
+        "title": "",
+        "organization": "Thorne Associates, Inc.",
+        "email": "",
+        "email_status": "Missing",
+        "source_url": "https://members.chicagolandagc.org/activememberdirectory/FindStartsWith?term=T",
+        "confidence": 0.0,
+        "why_target": "Thorne Associates, Inc. operates within diverse construction sectors which could provide significant expertise for contracting needs in Illinois.",
+        "icebreaker": "I see that Thorne Associates, Inc. has a strong presence in the construction sector, making you a key player among contractors in Illinois.",
+        "fit_score": 0.76617163,
+        "evidence_score": 1.0,
+        "contact_score": 0.0,
+        "gate_passed": false,
+        "explanation": "Thorne Associates, Inc. has a commendable reputation, but specific contact details are missing."
+      }
+    ],
+    "metrics": {
+      "input_tokens": 6725,
+      "output_tokens": 803,
+      "tavily_searches": 1,
+      "openai_web_searches": 0,
+      "elapsed_seconds": 31.41,
+      "estimated_cost_usd": 0.011491
+    },
+    "query_guardrail": {
+      "status": "needs_more_detail",
+      "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+      "suggestions": [
+        "Add a vertical or company type, such as school district, clinic, nonprofit, or SMB."
+      ],
+      "missing_criteria": [
+        "company type or vertical"
+      ]
+    },
+    "sandbox_usage": {
+      "total_queries": 2,
+      "total_rows": 5,
+      "max_queries": 10,
+      "max_rows": 1000,
+      "remaining_queries": 8,
+      "remaining_rows": 995,
+      "reset_at": "2026-05-09T20:01:35.549910+00:00"
+    }
+  },
+  "query": "contractors in Illinois",
+  "slug": "contractors_illinois",
+  "elapsed_wall_seconds": 32.33
+}

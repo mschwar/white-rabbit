@@ -1,0 +1,268 @@
+[
+  {
+    "idx": 1,
+    "slug": "az_k12_voip_benchmark",
+    "status": 503,
+    "ok": false,
+    "lead_count": null,
+    "elapsed_wall_seconds": 0.71,
+    "guardrail": null,
+    "error": {
+      "error_code": "tavily_failed",
+      "message": "Tavily search failed: Tavily API error: 400 - {\"detail\":{\"error\":\"Query is too long. Max query length is 400 characters.\"}}",
+      "request_id": "b21a4967-7a52-493b-9e7b-80de24fee9df"
+    }
+  },
+  {
+    "idx": 2,
+    "slug": "contractors_illinois",
+    "status": 200,
+    "ok": true,
+    "lead_count": 5,
+    "elapsed_wall_seconds": 32.33,
+    "guardrail": {
+      "status": "needs_more_detail",
+      "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+      "suggestions": [
+        "Add a vertical or company type, such as school district, clinic, nonprofit, or SMB."
+      ],
+      "missing_criteria": [
+        "company type or vertical"
+      ]
+    },
+    "error": null
+  },
+  {
+    "idx": 3,
+    "slug": "it_directors_arizona_schools",
+    "status": 200,
+    "ok": true,
+    "lead_count": 5,
+    "elapsed_wall_seconds": 34.87,
+    "guardrail": null,
+    "error": null
+  },
+  {
+    "idx": 4,
+    "slug": "food_beverage_ops_texas",
+    "status": 200,
+    "ok": true,
+    "lead_count": 2,
+    "elapsed_wall_seconds": 17.62,
+    "guardrail": {
+      "status": "needs_more_detail",
+      "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+      "suggestions": [
+        "Add a title or role, such as director, manager, VP, or owner.",
+        "Add a vertical or company type, such as school district, clinic, nonprofit, or SMB."
+      ],
+      "missing_criteria": [
+        "target title or role",
+        "company type or vertical"
+      ]
+    },
+    "error": null
+  },
+  {
+    "idx": 5,
+    "slug": "healthcare_it_phoenix",
+    "status": 200,
+    "ok": true,
+    "lead_count": 3,
+    "elapsed_wall_seconds": 20.67,
+    "guardrail": {
+      "status": "needs_more_detail",
+      "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+      "suggestions": [
+        "Add a vertical or company type, such as school district, clinic, nonprofit, or SMB."
+      ],
+      "missing_criteria": [
+        "company type or vertical"
+      ]
+    },
+    "error": null
+  },
+  {
+    "idx": 6,
+    "slug": "financial_cisos_new_york",
+    "status": 200,
+    "ok": true,
+    "lead_count": 1,
+    "elapsed_wall_seconds": 9.63,
+    "guardrail": {
+      "status": "needs_more_detail",
+      "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+      "suggestions": [
+        "Add a title or role, such as director, manager, VP, or owner.",
+        "Add a vertical or company type, such as school district, clinic, nonprofit, or SMB."
+      ],
+      "missing_criteria": [
+        "target title or role",
+        "company type or vertical"
+      ]
+    },
+    "error": null
+  },
+  {
+    "idx": 7,
+    "slug": "manufacturing_ops_detroit",
+    "status": 200,
+    "ok": true,
+    "lead_count": 2,
+    "elapsed_wall_seconds": 20.36,
+    "guardrail": {
+      "status": "needs_more_detail",
+      "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+      "suggestions": [
+        "Add a title or role, such as director, manager, VP, or owner.",
+        "Add a vertical or company type, such as school district, clinic, nonprofit, or SMB."
+      ],
+      "missing_criteria": [
+        "target title or role",
+        "company type or vertical"
+      ]
+    },
+    "error": null
+  },
+  {
+    "idx": 8,
+    "slug": "guardrail_supply_line",
+    "status": 422,
+    "ok": false,
+    "lead_count": null,
+    "elapsed_wall_seconds": 0.19,
+    "guardrail": {
+      "status": "blocked",
+      "message": "White Rabbit only runs lead-generation queries. Reframe this around people or organizations to target instead of advice, writing, code, or general research.",
+      "suggestions": [
+        "Try: IT directors at school districts in New Mexico",
+        "Try: procurement managers at mid-market manufacturers in Texas"
+      ],
+      "missing_criteria": [
+        "target people or organizations"
+      ]
+    },
+    "error": {
+      "error": "White Rabbit only runs lead-generation queries. Reframe this around people or organizations to target instead of advice, writing, code, or general research.",
+      "query_guardrail": {
+        "status": "blocked",
+        "message": "White Rabbit only runs lead-generation queries. Reframe this around people or organizations to target instead of advice, writing, code, or general research.",
+        "suggestions": [
+          "Try: IT directors at school districts in New Mexico",
+          "Try: procurement managers at mid-market manufacturers in Texas"
+        ],
+        "missing_criteria": [
+          "target people or organizations"
+        ]
+      }
+    }
+  },
+  {
+    "idx": 9,
+    "slug": "guardrail_cold_email",
+    "status": 422,
+    "ok": false,
+    "lead_count": null,
+    "elapsed_wall_seconds": 0.16,
+    "guardrail": {
+      "status": "blocked",
+      "message": "White Rabbit only runs lead-generation queries. Reframe this around people or organizations to target instead of advice, writing, code, or general research.",
+      "suggestions": [
+        "Try: IT directors at school districts in New Mexico",
+        "Try: procurement managers at mid-market manufacturers in Texas"
+      ],
+      "missing_criteria": [
+        "target people or organizations"
+      ]
+    },
+    "error": {
+      "error": "White Rabbit only runs lead-generation queries. Reframe this around people or organizations to target instead of advice, writing, code, or general research.",
+      "query_guardrail": {
+        "status": "blocked",
+        "message": "White Rabbit only runs lead-generation queries. Reframe this around people or organizations to target instead of advice, writing, code, or general research.",
+        "suggestions": [
+          "Try: IT directors at school districts in New Mexico",
+          "Try: procurement managers at mid-market manufacturers in Texas"
+        ],
+        "missing_criteria": [
+          "target people or organizations"
+        ]
+      }
+    }
+  },
+  {
+    "idx": 10,
+    "slug": "guardrail_missile",
+    "status": 422,
+    "ok": false,
+    "lead_count": null,
+    "elapsed_wall_seconds": 0.16,
+    "guardrail": {
+      "status": "blocked",
+      "message": "White Rabbit only runs lead-generation queries. Reframe this around people or organizations to target instead of advice, writing, code, or general research.",
+      "suggestions": [
+        "Try: IT directors at school districts in New Mexico",
+        "Try: procurement managers at mid-market manufacturers in Texas"
+      ],
+      "missing_criteria": [
+        "target people or organizations"
+      ]
+    },
+    "error": {
+      "error": "White Rabbit only runs lead-generation queries. Reframe this around people or organizations to target instead of advice, writing, code, or general research.",
+      "query_guardrail": {
+        "status": "blocked",
+        "message": "White Rabbit only runs lead-generation queries. Reframe this around people or organizations to target instead of advice, writing, code, or general research.",
+        "suggestions": [
+          "Try: IT directors at school districts in New Mexico",
+          "Try: procurement managers at mid-market manufacturers in Texas"
+        ],
+        "missing_criteria": [
+          "target people or organizations"
+        ]
+      }
+    }
+  },
+  {
+    "idx": 11,
+    "slug": "b2c_refinance_corrales",
+    "status": 200,
+    "ok": true,
+    "lead_count": 0,
+    "elapsed_wall_seconds": 6.86,
+    "guardrail": {
+      "status": "needs_more_detail",
+      "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+      "suggestions": [
+        "Add a title or role, such as director, manager, VP, or owner.",
+        "Add a vertical or company type, such as school district, clinic, nonprofit, or SMB."
+      ],
+      "missing_criteria": [
+        "target title or role",
+        "company type or vertical"
+      ]
+    },
+    "error": null
+  },
+  {
+    "idx": 12,
+    "slug": "b2c_vacation_social_emails",
+    "status": 200,
+    "ok": true,
+    "lead_count": 0,
+    "elapsed_wall_seconds": 6.11,
+    "guardrail": {
+      "status": "needs_more_detail",
+      "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+      "suggestions": [
+        "Add a title or role, such as director, manager, VP, or owner.",
+        "Add a vertical or company type, such as school district, clinic, nonprofit, or SMB."
+      ],
+      "missing_criteria": [
+        "target title or role",
+        "company type or vertical"
+      ]
+    },
+    "error": null
+  }
+]

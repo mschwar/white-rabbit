@@ -1,0 +1,57 @@
+{
+  "ok": true,
+  "status": 200,
+  "body": {
+    "leads": [
+      {
+        "id": null,
+        "name": "Khalil Jackson",
+        "title": "CISO",
+        "organization": "Federal Reserve Bank of New York",
+        "email": "",
+        "email_status": "Missing",
+        "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+        "confidence": 0.0,
+        "why_target": "As CISO at the Federal Reserve Bank of New York, Khalil Jackson plays a critical role in managing cybersecurity within one of the largest financial institutions, making him highly relevant to the financial services CISO landscape in New York.",
+        "icebreaker": "I noticed your appointment as CISO at the Federal Reserve Bank of New York, and your expertise in cybersecurity for such a pivotal institution in the financial sector could greatly inform discussions about compliance and risk management.",
+        "fit_score": 1.0,
+        "evidence_score": 1.0,
+        "contact_score": 0.0,
+        "gate_passed": false,
+        "explanation": "Khalil Jackson is a relevant and high-profile CISO in the financial services sector, directly aligned with the query for financial services CISOs in New York, but lacks a usable email."
+      }
+    ],
+    "metrics": {
+      "input_tokens": 5164,
+      "output_tokens": 238,
+      "tavily_searches": 1,
+      "openai_web_searches": 0,
+      "elapsed_seconds": 8.59,
+      "estimated_cost_usd": 0.010917
+    },
+    "query_guardrail": {
+      "status": "needs_more_detail",
+      "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+      "suggestions": [
+        "Add a title or role, such as director, manager, VP, or owner.",
+        "Add a vertical or company type, such as school district, clinic, nonprofit, or SMB."
+      ],
+      "missing_criteria": [
+        "target title or role",
+        "company type or vertical"
+      ]
+    },
+    "sandbox_usage": {
+      "total_queries": 6,
+      "total_rows": 16,
+      "max_queries": 10,
+      "max_rows": 1000,
+      "remaining_queries": 4,
+      "remaining_rows": 984,
+      "reset_at": "2026-05-09T20:01:35.549910+00:00"
+    }
+  },
+  "query": "financial services CISOs in New York",
+  "slug": "financial_cisos_new_york",
+  "elapsed_wall_seconds": 9.63
+}

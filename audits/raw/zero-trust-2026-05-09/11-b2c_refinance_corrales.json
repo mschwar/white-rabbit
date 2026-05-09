@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "status": 200,
+  "body": {
+    "leads": [],
+    "metrics": {
+      "input_tokens": 8263,
+      "output_tokens": 5,
+      "tavily_searches": 1,
+      "openai_web_searches": 0,
+      "elapsed_seconds": 5.82,
+      "estimated_cost_usd": 0.011242
+    },
+    "query_guardrail": {
+      "status": "needs_more_detail",
+      "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+      "suggestions": [
+        "Add a title or role, such as director, manager, VP, or owner.",
+        "Add a vertical or company type, such as school district, clinic, nonprofit, or SMB."
+      ],
+      "missing_criteria": [
+        "target title or role",
+        "company type or vertical"
+      ]
+    },
+    "sandbox_usage": {
+      "total_queries": 1,
+      "total_rows": 0,
+      "max_queries": 10,
+      "max_rows": 1000,
+      "remaining_queries": 9,
+      "remaining_rows": 1000,
+      "reset_at": "2026-05-09T20:03:52.646424+00:00"
+    }
+  },
+  "query": "everyone who refinanced their house in Corrales in the last six months",
+  "slug": "b2c_refinance_corrales",
+  "elapsed_wall_seconds": 6.86
+}

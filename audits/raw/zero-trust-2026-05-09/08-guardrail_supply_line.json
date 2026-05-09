@@ -1,0 +1,23 @@
+{
+  "ok": false,
+  "status": 422,
+  "body": {
+    "detail": {
+      "error": "White Rabbit only runs lead-generation queries. Reframe this around people or organizations to target instead of advice, writing, code, or general research.",
+      "query_guardrail": {
+        "status": "blocked",
+        "message": "White Rabbit only runs lead-generation queries. Reframe this around people or organizations to target instead of advice, writing, code, or general research.",
+        "suggestions": [
+          "Try: IT directors at school districts in New Mexico",
+          "Try: procurement managers at mid-market manufacturers in Texas"
+        ],
+        "missing_criteria": [
+          "target people or organizations"
+        ]
+      }
+    }
+  },
+  "query": "how do I reformulate our supply line",
+  "slug": "guardrail_supply_line",
+  "elapsed_wall_seconds": 0.19
+}

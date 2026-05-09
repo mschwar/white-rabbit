@@ -1,0 +1,89 @@
+{
+  "ok": true,
+  "status": 200,
+  "body": {
+    "leads": [
+      {
+        "id": null,
+        "name": "Vincent Moore",
+        "title": "Director, IT",
+        "organization": "Phoenix Health Care Management Services, Inc",
+        "email": "",
+        "email_status": "Missing",
+        "source_url": "https://www.phoenix-healthcare.com/who-we-are/",
+        "confidence": 0.0,
+        "why_target": "As the Director of IT at Phoenix Health Care Management Services, Vincent is pivotal in overseeing healthcare technology, making him highly relevant to our search for healthcare IT directors.",
+        "icebreaker": "Hi Vincent, I came across your profile as the Director of IT at Phoenix Health Care Management Services, and I admire your role in managing technology critical to enhancing patient care in healthcare settings.",
+        "fit_score": 1.0,
+        "evidence_score": 1.0,
+        "contact_score": 0.0,
+        "gate_passed": false,
+        "explanation": "Vincent Moore directly fits the query as a healthcare IT director, though the lack of a found email limits the usability of this lead."
+      },
+      {
+        "id": null,
+        "name": "Jean Bondurant",
+        "title": "VP, Phoenix Health Care",
+        "organization": "Phoenix Health Care Management Services, Inc",
+        "email": "",
+        "email_status": "Missing",
+        "source_url": "https://www.phoenix-healthcare.com/who-we-are/",
+        "confidence": 0.0,
+        "why_target": "In her role as VP at Phoenix Health Care Management Services, Jean is involved in strategic IT initiatives crucial for healthcare, aligning with the target audience of healthcare IT directors.",
+        "icebreaker": "Hi Jean, as the VP at Phoenix Health Care Management Services, your leadership in strategic initiatives directly shapes healthcare technology, making a significant impact on patient outcomes.",
+        "fit_score": 0.8,
+        "evidence_score": 1.0,
+        "contact_score": 0.0,
+        "gate_passed": false,
+        "explanation": "Jean Bondurant's role is closely aligned with healthcare IT management; however, her contact details are not available."
+      },
+      {
+        "id": null,
+        "name": "Michael McLemore",
+        "title": "Senior Director, Networks",
+        "organization": "Phoenix Health Care Management Services, Inc",
+        "email": "",
+        "email_status": "Missing",
+        "source_url": "https://www.phoenix-healthcare.com/who-we-are/",
+        "confidence": 0.0,
+        "why_target": "As Senior Director of Networks at Phoenix Health Care, Michael's responsibilities involve overseeing IT infrastructure that supports healthcare operations, relevant to the target audience of healthcare IT directors.",
+        "icebreaker": "Hi Michael, I noticed that as Senior Director of Networks at Phoenix Health Care, you're at the forefront of implementing IT systems that optimize healthcare delivery.",
+        "fit_score": 0.8,
+        "evidence_score": 1.0,
+        "contact_score": 0.0,
+        "gate_passed": false,
+        "explanation": "Michael McLemore is involved in a leadership role that influences healthcare IT, but there's no contact information available."
+      }
+    ],
+    "metrics": {
+      "input_tokens": 5449,
+      "output_tokens": 559,
+      "tavily_searches": 1,
+      "openai_web_searches": 0,
+      "elapsed_seconds": 19.64,
+      "estimated_cost_usd": 0.011153
+    },
+    "query_guardrail": {
+      "status": "needs_more_detail",
+      "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+      "suggestions": [
+        "Add a vertical or company type, such as school district, clinic, nonprofit, or SMB."
+      ],
+      "missing_criteria": [
+        "company type or vertical"
+      ]
+    },
+    "sandbox_usage": {
+      "total_queries": 5,
+      "total_rows": 15,
+      "max_queries": 10,
+      "max_rows": 1000,
+      "remaining_queries": 5,
+      "remaining_rows": 985,
+      "reset_at": "2026-05-09T20:01:35.549910+00:00"
+    }
+  },
+  "query": "healthcare IT directors in Phoenix",
+  "slug": "healthcare_it_phoenix",
+  "elapsed_wall_seconds": 20.67
+}
