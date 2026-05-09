@@ -1,0 +1,9 @@
+node_modules
+.git
+.env
+*.pyc
+__pycache__
+.gstack
+.gemini
+.vercel
+.github
