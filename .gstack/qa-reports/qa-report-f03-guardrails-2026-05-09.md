@@ -1,5 +1,8 @@
 # QA Report — F03 Guardrail Rewrite for B2B Scope and Privacy Blocking
 
+> **Status:** Historical QA Record. This report is retained as evidence for the gate it evaluated, not as current instructions. Current product truth: `docs/00-product-northstar.md`; current state: `STATUS.md`; current rebuild execution: `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md`.
+
+
 **Feature ID:** F03
 **Feature name:** Guardrail rewrite for B2B scope and privacy blocking
 **Branch:** feat/f03-b2b-guardrails

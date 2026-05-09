@@ -1,5 +1,10 @@
 # 06 — Audit Action Plan
 
+**Status:** Superseded.
+**Superseded by:** `audits/zero-trust-product-audit-2026-05-09.md`, `docs/00-product-northstar.md`, `docs/08-agentic-buildout-plan.md`, and `docs/09-rebuild-phase-gates.md`.
+
+This plan was the remediation roadmap for the 2026-05-07 hard audit and the BUILDOUT sequence. It is historical now. Do not execute from it unless an active control doc explicitly points back here.
+
 **Source:** `audits/hard-audit-2026-05-07.md`
 **Created:** 2026-05-07
 **Status:** Authoritative for what gets fixed next. Supersedes `04-roadmap.md` for any work that overlaps.

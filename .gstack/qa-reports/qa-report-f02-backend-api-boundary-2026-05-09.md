@@ -1,5 +1,8 @@
 # QA Report — F02 Backend API Boundary
 
+> **Status:** Historical QA Record. This report is retained as evidence for the gate it evaluated, not as current instructions. Current product truth: `docs/00-product-northstar.md`; current state: `STATUS.md`; current rebuild execution: `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md`.
+
+
 **Feature ID:** F02
 **Feature name:** Backend API boundary
 **Branch:** feat/f02-backend-api-boundary

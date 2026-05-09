@@ -1,5 +1,11 @@
 # 00 — Context
 
+**Status:** Archived Reference.
+**Current product truth:** See `docs/00-product-northstar.md`.
+**Current execution plan:** See `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md`.
+
+This document preserves bootstrap strategy. It is still useful context, but any conflict with the product northstar or STATUS should be resolved in favor of the active docs.
+
 ## Why this repo exists
 
 OrgAtlas (the company) ships **White Rabbit** (the tool). The original White Rabbit, at `/Users/mschwar/Documents/proxy-lead`, was built as a Streamlit app to win the Scotty demo — a customer pitch where Lee presents and Thomas closes. The demo is good enough; that mission is done.
@@ -41,6 +47,8 @@ This is a forcing function. We don't accumulate operator-handholding debt that h
 - **Future paid customers** — who and how is undecided. That's downstream of getting Thomas using the product reliably and producing public content about it.
 
 ## Why "recipes" matter
+
+**Red-gate caveat (2026-05-09):** Recipes remain a strategic hypothesis, but recipe library, batch, Friday review, and scoreboard surfaces are hidden/internal while the validated-leads loop is red. Do not use this section to justify exposing recipe surfaces before quality gates pass.
 
 A query is one-shot. A recipe is reusable IP. The differentiation versus commodity vendors is:
 

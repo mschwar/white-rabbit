@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-09 by Codex feat/f03-b2b-guardrails
-**Branch:** feat/f03-b2b-guardrails
-**Current sprint:** Agentic-first validated-leads rebuild planning; do not ship/operator-dogfood until search is rebuilt and re-benchmarked
+**Last updated:** 2026-05-09 by Codex feat/docs-hard-audit-remediation
+**Branch:** feat/docs-hard-audit-remediation
+**Current sprint:** Documentation authority remediation on the validated-leads rebuild branch; F04 query compiler/planner remains next after this docs-only branch merges
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -21,6 +21,7 @@
 - `docs/00-product-northstar.md` is the anti-drift product source of truth for the rebuild.
 - `docs/08-agentic-buildout-plan.md` is the agentic missing-feature list and two-prompt loop control document.
 - `docs/09-rebuild-phase-gates.md` is the gated wave plan for milestone reviews before downstream work unlocks.
+- `docs/10-documentation-audit-2026-05-09.md` records the repo-wide documentation audit and remediation performed on this branch.
 - `.gstack/qa-reports/qa-template-agentic-buildout.md` is the QA report template for rebuild features.
 
 **Main is intentionally untouched:** the validated-leads rebuild runs on `rebuild/validated-leads-loop` so product-risky reconstruction can proceed without implying `main` is shippable or merging unvalidated feature work into the production line.
@@ -28,15 +29,15 @@
 **Latest handoff:**
 
 ```text
-Feature: F03 - Guardrail Rewrite for B2B Scope and Privacy Blocking
-Branch: feat/f03-b2b-guardrails
-Status: qa_passed_and_merged
-What changed: Rewrote `packages/core/src/core/query_guardrails.py` to allow normal B2B sales language and block privacy-sensitive, weapon, and off-topic prompts before search. Expanded tests to cover accepted B2B examples, vague lead warnings, and blocked privacy/off-topic cases. Added an API regression test proving privacy-sensitive prompts never reach `scout()`.
-Tests or QA run: `cd packages/core && uv run pytest tests/test_query_guardrails.py -q` (9 passed); `cd apps/api && uv run pytest tests/test_api.py -q -k "blocks_broad_advice_queries or blocks_privacy_sensitive_queries"` (2 passed).
-Screenshots or report: Non-UI verification only; no browser screenshots required.
-Northstar reflection: F03 tightens the red-state boundary without narrowing Thomas's normal B2B language, and it blocks consumer/privacy targeting before vendor search runs.
-Next pointer: Begin F04 Query compiler / planner on `feat/f04-query-compiler` and update docs before merge handoff.
-Open questions: None blocking F03 build handoff.
+Feature: Repo-wide documentation authority audit and remediation
+Branch: feat/docs-hard-audit-remediation
+Status: verification_passed_ready_to_merge
+What changed: Added ADR-006 and `docs/10-documentation-audit-2026-05-09.md`; rewrote README/TESTING/USER_GUIDE/package READMEs for red-gate rebuild reality; updated AGENTS read order; corrected docs/08 F04 pointer; added the W1 containment gate report; marked legacy planning docs, audits, QA reports, and meeting notes with explicit status banners; refreshed the QA report index.
+Tests or QA run: `cd apps/web && npm test -- --run` (25 passed); `cd packages/core && uv run pytest tests/test_query_guardrails.py -q` (9 passed); `cd apps/api && $env:DATABASE_URL='postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit'; uv run pytest tests/test_api.py -q -k "guardrail or sandbox or scout or full or batch"` (22 passed, 12 deselected); `git diff --check`; doc stale-string hygiene check.
+Screenshots or report: Documentation-only; W1 gate evidence recorded in `.gstack/qa-reports/gate-w1-red-state-containment.md`.
+Northstar reflection: This branch removes stale docs as an excuse for building off the wrong product truth. White Rabbit remains red-gated until lead validation quality passes the phase gates.
+Next pointer: Merge this docs branch to `rebuild/validated-leads-loop`, then begin F04 Query compiler / planner on `feat/f04-query-compiler`.
+Open questions: None blocking docs remediation.
 ```
 
 ---
@@ -69,9 +70,9 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 
 1. **`OPENAI_BASE_URL=http://localhost:11434/v1` in `apps/api/.env`** silently routes every chat completion to local Ollama. The current main config has been broken for any environment without a local chat model installed in Ollama. Phase 2 reproduced this as 4-of-4 query failures until forced to api.openai.com.
 2. **Former P0 — VoIP/Telecom bias was hardcoded** into `orchestrator.py` SYSTEM_PROMPT and `models.py` Field descriptions. BUILDOUT-04 removed the bias and browser QA re-verified the fix on 2026-05-08.
-3. **`sandbox_state` table has no alembic migration.** Today's dev DB only has it because `init_db()` calls `Base.metadata.create_all()` as a parallel schema path. A clean alembic-only deploy crashes on every user-facing route.
-4. **`get_engine()` ignores `DATABASE_URL`** (apps/api/api/models.py:114–116). Production always tries hardcoded localhost.
-5. **Session tokens never expire server-side.** `verifySessionToken` decodes `iat` but never compares it to the clock.
+3. **Former P0 — sandbox_state alembic migration was missing.** Today's dev DB only had it because `init_db()` called `Base.metadata.create_all()` as a parallel schema path. BUILDOUT-02 added the real Alembic migration and removed the fallback.
+4. **Former P0 — `get_engine()` ignored `DATABASE_URL`.** Production always tried hardcoded localhost. BUILDOUT-01 fixed this.
+5. **Former P0 — server-side session expiry was missing.** `verifySessionToken` decoded `iat` but did not compare it to the clock. BUILDOUT-03 fixed this.
 
 **Sprint reconciliation:** Sprints 1, 2, 4 need rework (see action plan). Sprint 3 is mostly clean.
 
@@ -102,6 +103,8 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What's done
 
+- **Documentation authority audit/remediation completed on `feat/docs-hard-audit-remediation`.** Added ADR-006, created `docs/10-documentation-audit-2026-05-09.md`, rewrote active setup/testing/operator docs for red-gate rebuild reality, bannered historical planning/audit/QA/meeting docs, fixed the QA index, and recorded the W1 containment gate.
+- **W1 red-state containment gate advanced.** `.gstack/qa-reports/gate-w1-red-state-containment.md` records F01-F03 evidence plus fresh W1 verification commands, so F04 remains ready.
 - **F01 QA complete and merged on `rebuild/validated-leads-loop` via `feat/f01-hide-premature-surfaces`.** Home primary navigation now links only to lead search, and Scout hides recipe-library links, raw endpoint/FastAPI/storage copy, and the sandbox reset button. `npm test`, `npm run build`, and browser screenshots (with QA report `qa-report-f01-hide-premature-surfaces-2026-05-09.md`) were captured.
 - **F02 QA complete and merged on `rebuild/validated-leads-loop` via `feat/f02-backend-api-boundary`.** FastAPI lead/sandbox endpoints now require the internal boundary token. Next.js proxy calls to `/api/scout` are verified with auth flow and expected local-service error payload; direct POSTs to `/scout`, `/full`, `/batch`, and `/sandbox/reset` return 401 when no token is supplied. QA report: `qa-report-f02-backend-api-boundary-2026-05-09.md`.
 - **F03 QA complete and merged on `rebuild/validated-leads-loop` via `feat/f03-b2b-guardrails`.** Guardrails now allow normal B2B sales queries while blocking consumer/privacy-sensitive, weapon, and off-topic prompts before search. `uv run pytest tests/test_query_guardrails.py -q` and API guardrail regression tests pass (`2 passed`).
@@ -178,11 +181,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. F01–F03 are merged; F04 query compiler/planner is next on `feat/f04-query-compiler`.
+- Product is in audit-red state. Documentation authority remediation is ready to merge; F01-F03 are merged; F04 query compiler/planner is next on `feat/f04-query-compiler`.
 
 ## Next concrete task
 
-- Start QA and implementation handoff for **F04 - Query compiler / planner** on branch `feat/f04-query-compiler`:
+- After merging `feat/docs-hard-audit-remediation` into `rebuild/validated-leads-loop`, start QA and implementation handoff for **F04 - Query compiler / planner** on branch `feat/f04-query-compiler`:
   - read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/08-agentic-buildout-plan.md, and F04 feature card
   - implement and run the F04 verification commands from the feature card
   - update docs/08-agentic-buildout-plan.md and STATUS.md after handoff
@@ -206,13 +209,16 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 - ~~Feedback buttons may not be fully usable after Full runs until persisted lead IDs are returned to the web UI; current core `Lead` objects do not include the database `lead.id`.~~ → Fixed in commit 76c0987 (`feat: return persisted lead IDs in Full runs`). See audit D8-01.
 - ~~Current app has no server-side lead-generation prompt guardrail and no query/row usage ledger for the meeting's sandbox cap.~~ → Both shipped: `_query_guardrail_or_422()` in apps/api/api/main.py:195/222/419 and sandbox caps in #11. See audit D8-01.
 
-Real known issues (post-audit):
+Resolved audit blockers retained for regression history:
 
-- **P0 — `OPENAI_BASE_URL` Ollama trap** (audit F2-05). `apps/api/.env` routes all OpenAI SDK calls to local Ollama; main config has been broken for any non-local-Ollama environment.
+- ~~**P0 — `OPENAI_BASE_URL` Ollama trap** (audit F2-05).~~ → Fixed in BUILDOUT-01.
 - ~~**P0 — Hardcoded VoIP bias** in prompt and schema (audit D1-01, D1-02).~~ → Fixed in BUILDOUT-04 and re-verified in browser on 2026-05-08.
-- **P0 — `sandbox_state` migration missing** (audit D4-01, D7-03). Fresh deploys don't work without `Base.metadata.create_all()` fallback.
-- **P0 — `get_engine()` ignores `DATABASE_URL`** (audit D4-03). Wrong DB in production.
-- **P0 — Session tokens never expire server-side** (audit D4-02).
+- ~~**P0 — `sandbox_state` migration missing** (audit D4-01, D7-03).~~ → Fixed in BUILDOUT-02.
+- ~~**P0 — `get_engine()` ignores `DATABASE_URL`** (audit D4-03).~~ → Fixed in BUILDOUT-01.
+- ~~**P0 — server-side session expiry missing** (audit D4-02).~~ → Fixed in BUILDOUT-03.
+
+Open residual risks:
+
 - **P0 — Zero tests verify real LLM extraction** (audit D2-01). All 46 tests use "Jane Smith" mock.
 - **P1 — Lost prompt instructions** vs proxy-lead reference (audit D5-01, D5-02).
 - **P1 — `gate_passed` LLM-controlled, not server-validated** (audit D4-07). One inconsistency observed in 9 real leads.
@@ -225,6 +231,7 @@ Real known issues (post-audit):
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-09 | docs-hard-audit-remediation (Codex) | Ran repo-wide documentation authority remediation on `feat/docs-hard-audit-remediation`: ADR-006, documentation audit report, active setup/testing/operator doc rewrites, historical banners, QA index repair, W1 gate report, and W1 verification commands. Next pointer remains F04 query compiler/planner after this docs branch merges. |
 | 2026-05-09 | f03-build (Codex) | Implemented and QA-verified F03 guardrail rewrite on `feat/f03-b2b-guardrails`: B2B sales language now clears guardrails, privacy-sensitive and weapon/off-topic prompts are blocked before search, core and API regression tests pass, and feature is merged to `rebuild/validated-leads-loop`. QA report: `qa-report-f03-guardrails-2026-05-09.md`. |
 | 2026-05-09 | f02-build (Codex) | Implemented and QA-verified backend API boundary on `feat/f02-backend-api-boundary`: FastAPI now requires `WR_API_INTERNAL_TOKEN` on `scout/full/batch/sandbox/reset` paths, Next.js proxies forward that token, API tests and web tests pass, browser proxy flow `/scout` is captured, and tokenless `POST` to all four protected endpoints returns 401. |
 | 2026-05-09 | f01-build (Codex) | Implemented F01 on `feat/f01-hide-premature-surfaces`: home now links only to lead search; Scout hides premature recipe/batch/admin copy, raw endpoint/FastAPI/storage text, recipe-library links, and sandbox reset. Verified with web tests/build and localhost browser smoke screenshots; ready for Prompt B QA/merge to `rebuild/validated-leads-loop`. |

@@ -1,5 +1,10 @@
 # 05 — Reuse Manifest
 
+**Status:** Archived Reference.
+**Current rebuild execution:** See `docs/08-agentic-buildout-plan.md`.
+
+This document records bootstrap-era copy/adapt guidance from the frozen Scotty demo. Use it for historical context before touching search/extract/score code, but do not treat its lift order or Sprint references as the active work queue.
+
 What to lift from `/Users/mschwar/Documents/proxy-lead` into `packages/core/`. Reuse is by **copy + adapt**, not by import. The two repos will drift; that's intentional (see ADR-004).
 
 ## Lift table

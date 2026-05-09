@@ -1,5 +1,8 @@
 # WHILE-RABBIT HARD AUDIT — FRONTIER AGENT PROMPT
 
+> **Status:** Historical Record. This document preserves evidence from the date it was written. Do not use it as the current work queue. Current product truth: `docs/00-product-northstar.md`; current state: `STATUS.md`; current rebuild execution: `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md`.
+
+
 **Context:** You are conducting a ground-up, zero-trust audit of the White Rabbit v2 codebase. A real user just started testing the product and immediately hit three critical failures that survived 4+ sprints of development and multiple QA passes:
 
 1. The system prompt is hard-coded for VoIP/telecom, causing hallucinated relevance for any non-VoIP query (e.g., "Healthcare IT directors in Phoenix" returned VoIP-themed explanations and icebreakers).

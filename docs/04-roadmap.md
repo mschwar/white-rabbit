@@ -1,6 +1,11 @@
 # 04 — Roadmap
 
-## Sprint 1 — Scaffold (current)
+**Status:** Superseded.
+**Superseded by:** `docs/00-product-northstar.md`, `docs/08-agentic-buildout-plan.md`, and `docs/09-rebuild-phase-gates.md`.
+
+This roadmap is a historical pre-rebuild sprint plan. Do not use it as the current work queue. It remains here to preserve the original product assumptions and sprint history.
+
+## Sprint 1 — Scaffold (historical)
 
 **Goal.** Thomas can run his first real Scout query through the new product end-to-end on his laptop.
 

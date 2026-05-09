@@ -1,8 +1,13 @@
 # 07 — Production Buildout Plan (Agentic Loop)
 
+**Status:** Superseded / completed historical buildout.
+**Superseded by:** `docs/00-product-northstar.md`, `docs/08-agentic-buildout-plan.md`, and `docs/09-rebuild-phase-gates.md`.
+
+This document records the completed main-line BUILDOUT remediation loop. It is not the current feature queue. Current rebuild work happens on `rebuild/validated-leads-loop` and follows `docs/08-agentic-buildout-plan.md`.
+
 **Source:** `audits/hard-audit-2026-05-07.md` and `docs/06-audit-action-plan.md`
 **Created:** 2026-05-07
-**Status:** Authoritative for the iterative buildout loop. Updated by the agent on every feature merge, and the checklist must be marked before the merge is considered complete.
+**Original status:** Authoritative for the iterative buildout loop. Superseded on 2026-05-09 by the validated-leads rebuild docs.
 
 ---
 

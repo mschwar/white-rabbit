@@ -1,5 +1,11 @@
 # 01 — Operator Model, Recipes, Scores, Run Model
 
+**Status:** Archived Reference with active concepts.
+**Current product truth:** See `docs/00-product-northstar.md`.
+**Current rebuild execution:** See `docs/08-agentic-buildout-plan.md`.
+
+This document describes the original operator/recipe/scoring model. Keep the strategic concepts, but defer to the product northstar for current usable-lead, validation-by-field, and red/yellow/green gate rules.
+
 ## Operator model
 
 Three operators, two distinct workflows sharing one toolset.
@@ -18,6 +24,8 @@ Building self-serve from day 1 is a forcing function. If Thomas can't run the to
 
 ## The "recipe" — the unit of work
 
+**Red-gate caveat (2026-05-09):** Recipes are internal/deferred while the product is red. The primary operator path should not expose recipe library, batch, Friday review, or scoreboard surfaces until validated-lead quality gates allow it.
+
 A **query** is one-shot. A **recipe** is reusable IP.
 
 A recipe stores:
@@ -35,6 +43,8 @@ Recipes are stored in Postgres starting Sprint 2. Sprint 1 ships Scout-only with
 If recipes reuse across customers (e.g., a recipe Thomas built for K-12 IT directors works again for a customer in K-12 SLED), the boutique model has operating leverage and the kill/keep gate likely passes. If every customer needs a custom recipe build, the boutique model is bespoke labor and the gate likely fails. **Recipe reuse is the most important hypothesis the product tests.**
 
 ## Score model
+
+**Red-gate caveat (2026-05-09):** Fit, Evidence, and Contact remain product concepts, but they must be driven by server-side field validation. Do not treat LLM-generated scores or old lead cards as product proof.
 
 Three visible per-lead scores. **Composite is a gate, not a rank.**
 

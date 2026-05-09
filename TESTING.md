@@ -1,33 +1,98 @@
-# Testing — White Rabbit
+# Testing - White Rabbit
 
-100% test coverage is the key to great vibe coding. Tests let you move fast, trust your instincts, and ship with confidence — without them, vibe coding is just yolo coding. With tests, it's a superpower.
+**Status:** Active testing reference.
 
-## Frameworks
+Use this file for command syntax. Use [`docs/qa-rubric.md`](./docs/qa-rubric.md) and [`docs/09-rebuild-phase-gates.md`](./docs/09-rebuild-phase-gates.md) for ship-gate requirements.
 
-### Web (`apps/web`)
-- **Unit/Integration:** [Vitest](https://vitest.dev/) + [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
-- **E2E:** [Playwright](https://playwright.dev/)
+## Current Baseline
 
-## Commands
+White Rabbit is in the red-gate validated-leads rebuild. Passing tests means a change is mechanically safe; it does not mean the product is ready for Thomas/Lee dogfood.
 
-### Web (`apps/web`)
+For rebuild features:
+
+- UI-visible changes require browser QA and screenshots.
+- Non-UI changes require explicit command verification.
+- Wave transitions require a gate report under `.gstack/qa-reports/`.
+
+## Web
+
 ```bash
 cd apps/web
-npm run test      # Run unit tests
-npm run test:e2e  # Run E2E tests
+npm test -- --run
+npm run build
 ```
 
-### Core integration tests (`packages/core`)
+End-to-end/browser checks use Playwright or the Codex Browser skill when the feature card requires it:
+
+```bash
+cd apps/web
+npm run test:e2e
+```
+
+## API
+
+Most API tests use FastAPI `TestClient` with mocks. Some sandbox/migration tests touch the local Postgres database.
+
+PowerShell:
+
+```powershell
+cd apps/api
+$env:DATABASE_URL='postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit'
+uv run pytest tests -q
+```
+
+macOS/Linux:
+
+```bash
+cd apps/api
+DATABASE_URL=postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit uv run pytest tests -q
+```
+
+If DB-backed tests fail with password/authentication errors, confirm Docker Postgres is running:
+
+```bash
+docker compose up -d
+docker ps
+```
+
+## Core
+
 ```bash
 cd packages/core
-pytest -m integration
+uv run pytest tests -q
 ```
 
-Integration tests hit real external APIs. They require `OPENAI_API_KEY` and `TAVILY_API_KEY`, and they may incur real usage cost.
+Integration tests hit live external APIs and may incur cost:
 
-## Conventions
+```bash
+cd packages/core
+uv run pytest tests -m integration -q
+```
 
-- **Unit tests:** Place in `__tests__` directories adjacent to the code they test. Use `.test.tsx` or `.test.ts`.
-- **E2E tests:** Place in the `e2e` directory at the app root. Use `.spec.ts`.
-- **Naming:** Match the component or module name (e.g., `page.tsx` -> `page.test.tsx`).
-- **Assertions:** Use `expect` from Vitest (globals enabled) or Playwright.
+Run live integration only when the feature card or QA rubric requires it and API keys are configured.
+
+## W1 Gate Verification
+
+For red-state containment, the current required commands are:
+
+```bash
+cd apps/web && npm test -- --run
+cd apps/api && $env:DATABASE_URL='postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit'; uv run pytest tests/test_api.py -q -k "guardrail or sandbox or scout or full or batch"
+cd packages/core && uv run pytest tests/test_query_guardrails.py -q
+```
+
+On macOS/Linux, use shell env syntax for the API command.
+
+## Reporting
+
+QA and gate reports live in `.gstack/qa-reports/`.
+
+Every report should include:
+
+- Branch and date.
+- Required tiers or gate.
+- Commands run and result.
+- Browser screenshots if UI-visible.
+- Any skipped check with a concrete reason.
+
+Do not treat old QA reports as current product proof unless the active gate docs explicitly reference them.

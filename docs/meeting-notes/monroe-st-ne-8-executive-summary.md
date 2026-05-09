@@ -1,5 +1,8 @@
 # Executive Summary: Monroe St NE 8
 
+> **Status:** Historical Record. This document preserves evidence from the date it was written. Do not use it as the current work queue. Current product truth: `docs/00-product-northstar.md`; current state: `STATUS.md`; current rebuild execution: `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md`.
+
+
 - Source audio: `/Users/mschwar/Downloads/Monroe St NE 8.m4a`
 - Duration: `00:21:26`
 - Generated: `2026-05-06`

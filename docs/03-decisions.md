@@ -76,9 +76,36 @@ Format: ADR-NNN — Title. Date. Status: Locked / Superseded by ADR-XXX. Context
 
 ---
 
+## ADR-006 — Documentation authority and archival policy
+
+**Date:** 2026-05-09
+**Status:** Locked
+
+**Context.** The repo accumulated bootstrap plans, sprint roadmaps, BUILDOUT remediation docs, QA reports, zero-trust audits, meeting notes, and rebuild control docs in a short period. Several older documents still looked like current instructions even after the validated-leads rebuild moved active work to `rebuild/validated-leads-loop`. Agents need a deterministic way to decide which document wins when docs conflict.
+
+**Decision.** Documentation authority is layered:
+
+1. This ADR log remains locked decision history. New decisions append; old entries are not rewritten.
+2. `docs/00-product-northstar.md` is the current product source of truth for product quality, usable-lead definitions, launch gates, and anti-drift rules.
+3. `STATUS.md` is the current repo state and next-handoff source of truth.
+4. `docs/08-agentic-buildout-plan.md` is the active rebuild feature queue and branch workflow.
+5. `docs/09-rebuild-phase-gates.md` is the active rebuild wave-gate process.
+6. `docs/qa-rubric.md` remains the QA tier reference unless a rebuild gate requires stricter checks.
+
+Every planning, audit, QA, meeting, or report document that is not active must carry one of these labels near the top:
+
+- `Active` — current control document.
+- `Superseded` — old plan or roadmap; keep for history, but do not execute from it.
+- `Historical Record` — evidence/report/transcript; preserve content, but do not treat as current instructions.
+- `Archived Reference` — bootstrap/reference context; link to current active docs.
+
+**Consequences.** Future agents should not infer current work from old sprints, historical QA reports, or completed BUILDOUT plans. Historical reports stay intact as evidence, but they must link to the active control docs. Documentation-only remediation may edit historical docs to add status banners and current-doc pointers, but it must not rewrite quoted evidence, transcripts, or old findings as if they were newly created.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-006, ADR-007, …).
+1. Pick the next ADR number (ADR-007, ADR-008, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.

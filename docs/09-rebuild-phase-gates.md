@@ -60,7 +60,7 @@ Matt owns the final product gate decision. Agents prepare evidence; they do not 
 | Wave | Name | Feature range | Gate result | Unlocks |
 | --- | --- | --- | --- | --- |
 | W0 | Control plane | F00 + phase-gate doc | docs complete | W1 |
-| W1 | Red-state containment | F01-F03 | red but contained | W2 |
+| W1 | Red-state containment | F01-F03 | advance on 2026-05-09 (`.gstack/qa-reports/gate-w1-red-state-containment.md`) | W2 |
 | W2 | Search planning and candidate contract | F04-F06 | typed bounded search contract | W3 |
 | W3 | Validation and ranking engine | F07-F09 | false-confidence controls | W4 |
 | W4 | Benchmarks and quality reporting | F10-F12 | quality gates measurable and passing threshold | W5 |

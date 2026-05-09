@@ -1,5 +1,8 @@
 # QA Report — BUILDOUT-17: Production verification
 
+> **Status:** Historical QA Record. This report is retained as evidence for the gate it evaluated, not as current instructions. Current product truth: `docs/00-product-northstar.md`; current state: `STATUS.md`; current rebuild execution: `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md`.
+
+
 **Date:** 2026-05-09
 **Branch:** main
 **Repo:** /Users/mschwar/Documents/white-rabbit

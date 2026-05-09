@@ -1,5 +1,8 @@
 # Build / Meeting Reconciliation Report — 2026-05-06
 
+> **Status:** Historical Record. This document preserves evidence from the date it was written. Do not use it as the current work queue. Current product truth: `docs/00-product-northstar.md`; current state: `STATUS.md`; current rebuild execution: `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md`.
+
+
 ## Scope
 
 This report checks the current `/Users/mschwar/Documents/white-rabbit` build against the Monroe St NE 8 meeting artifacts before turning the discussion into a new plan or sprint.

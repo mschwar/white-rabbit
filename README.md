@@ -1,46 +1,69 @@
 # White Rabbit v2
 
-Internal-first B2B prospecting workbench. Three operators (Matt, Thomas, Lee). Self-serve from day 1. Recipes, not lists.
+Internal-first B2B lead research tool for Matt, Thomas, and Lee.
 
-> **AI agents:** read [`AGENTS.md`](./AGENTS.md) first. Then [`STATUS.md`](./STATUS.md). Do not skip.
+> **Current state:** Red-gate validated-leads rebuild. Do not ship and do not use for Thomas/Lee daily dogfood until the benchmark gates say otherwise.
 
-> **Humans:** read [`docs/00-context.md`](./docs/00-context.md) for the why and [`docs/04-roadmap.md`](./docs/04-roadmap.md) for the plan.
+AI agents must read [`AGENTS.md`](./AGENTS.md), [`STATUS.md`](./STATUS.md), [`docs/00-product-northstar.md`](./docs/00-product-northstar.md), [`docs/08-agentic-buildout-plan.md`](./docs/08-agentic-buildout-plan.md), and [`docs/09-rebuild-phase-gates.md`](./docs/09-rebuild-phase-gates.md) before working.
 
-## What this is
+Humans should start with [`docs/00-product-northstar.md`](./docs/00-product-northstar.md) for current product truth and [`STATUS.md`](./STATUS.md) for current branch/state.
 
-White Rabbit v2 takes a natural-language prospecting query ("Healthcare IT directors in Phoenix"), runs it through web search and LLM extraction, and returns ranked leads with three visible scores (**Fit**, **Evidence**, **Contact**) and an explanation for each rank. The unit of work is a **recipe** — a saved query + filters + source mix + ranking weights + outcome stats, reusable across batches.
+## What This Is
 
-## What this is not
+White Rabbit is being rebuilt around one core loop:
 
-- **Not the Scotty demo.** The demo lives at `/Users/mschwar/Documents/proxy-lead`. Frozen.
-- **Not a SaaS yet.** No accounts, no billing. One shared password. Three operators.
-- **Not a ZoomInfo competitor on volume.** It wins on ranking, provenance, and recipe reusability — or it doesn't ship.
+```text
+natural-language B2B target
+  -> checked candidates
+  -> field-level evidence
+  -> ranked validated rows
+  -> export with validation context
+```
+
+It does not win by returning the most leads. It wins only if it returns better, more trustworthy lead data than ZoomInfo/DiscoverOrg-style lists: real people, right persona, source-backed title/org/contact data, and explicit missing/failed states.
+
+## What This Is Not
+
+- Not the frozen Scotty demo. That reference app lives outside this repo (`C:\Users\Matty\Documents\proxy-lead` in this workspace; older docs may mention `/Users/mschwar/Documents/proxy-lead`) and must not be edited.
+- Not a public SaaS. No signup, orgs, billing, or customer self-serve access.
+- Not green for Thomas/Lee daily use. The product remains red until benchmark and browser gate evidence says otherwise.
+- Not currently a recipe/batch-first workbench. Recipes, batch, scoreboards, Friday review, and sandbox reset are internal/deferred while the product is red.
+
+## Current Authority Docs
+
+When docs conflict, use this order:
+
+1. [`docs/03-decisions.md`](./docs/03-decisions.md) for locked ADR history.
+2. [`docs/00-product-northstar.md`](./docs/00-product-northstar.md) for current product truth and launch gates.
+3. [`STATUS.md`](./STATUS.md) for current repo state and next pointer.
+4. [`docs/08-agentic-buildout-plan.md`](./docs/08-agentic-buildout-plan.md) for rebuild feature sequencing.
+5. [`docs/09-rebuild-phase-gates.md`](./docs/09-rebuild-phase-gates.md) for wave-gate rules.
+6. [`docs/qa-rubric.md`](./docs/qa-rubric.md) for QA tiers.
+
+Older roadmap, BUILDOUT, audit, QA, and meeting docs are historical unless their status banner says `Active`.
 
 ## Stack
 
-Next.js (App Router, TypeScript) + FastAPI (Python) + Postgres. Frontend never holds API keys.
+- Web: Next.js 16.2.4 App Router, React 19.2.4, TypeScript, Tailwind 4.
+- API: FastAPI 0.136+, Python 3.12+, SQLAlchemy 2.0+, Alembic 1.18+.
+- Core: shared Python package for search, guardrails, scoring, and extraction primitives.
+- DB: Postgres.
+- Boundary: shared password for the app plus `WR_API_INTERNAL_TOKEN` for web-to-API calls.
 
-See [`docs/02-stack.md`](./docs/02-stack.md) for layout and conventions.
+Frontend code never holds OpenAI/Tavily keys. Third-party search/extraction calls happen in the Python service.
 
-## Getting started
+## Local Setup
 
 ### Prerequisites
 
-- macOS or Linux (Windows via WSL2 should work but is not actively tested)
 - Node.js 22+ and `npm`
-- Python 3.13+ and `uv` (https://docs.astral.sh/uv/)
-- Docker Desktop or `docker` CLI (for Postgres)
-- Git
-- API keys: [OpenAI](https://platform.openai.com/api-keys) and [Tavily](https://app.tavily.com/home)
+- Python 3.12+ and `uv`
+- Docker Desktop or compatible Docker CLI
+- OpenAI and Tavily API keys if running live search paths
 
-### 1. Clone and configure
+### 1. Configure Environment
 
-```bash
-git clone https://github.com/mschwar/homelab.git white-rabbit   # or your fork
-cd white-rabbit
-```
-
-Copy the example env files and fill in your real API keys:
+Copy env examples:
 
 ```bash
 cp .env.example .env
@@ -48,20 +71,24 @@ cp apps/api/.env.example apps/api/.env
 cp apps/web/.env.example apps/web/.env.local
 ```
 
-Edit the three files and set at least these values:
+Set these values:
 
-| Variable | File | What |
-|----------|------|------|
-| `OPENAI_API_KEY` | `.env`, `apps/api/.env` | OpenAI API key |
-| `TAVILY_API_KEY` | `.env`, `apps/api/.env` | Tavily search API key |
-| `WR_SHARED_PASSWORD` | `.env`, `apps/api/.env`, `apps/web/.env.local` | One password all operators share |
-| `WR_SESSION_SECRET` | `.env`, `apps/api/.env`, `apps/web/.env.local` | Min 32 random chars for cookie signing |
-| `WR_API_INTERNAL_TOKEN` | `.env`, `apps/api/.env`, `apps/web/.env.local` | Shared server-to-server token forwarded by the Next.js proxy |
-| `DATABASE_URL` | `.env`, `apps/api/.env` | Postgres URL (see step 2) |
+| Variable | Files | Purpose |
+| --- | --- | --- |
+| `OPENAI_API_KEY` | `.env`, `apps/api/.env` | OpenAI extraction |
+| `TAVILY_API_KEY` | `.env`, `apps/api/.env` | Web search |
+| `DATABASE_URL` | `.env`, `apps/api/.env` | Postgres connection |
+| `WR_SHARED_PASSWORD` | `.env`, `apps/api/.env`, `apps/web/.env.local` | Shared app password |
+| `WR_SESSION_SECRET` | `.env`, `apps/api/.env`, `apps/web/.env.local` | Cookie signing secret, 32+ chars |
+| `WR_API_INTERNAL_TOKEN` | `.env`, `apps/api/.env`, `apps/web/.env.local` | Server-to-server API boundary token |
 
-> **Important:** Do not commit `.env` or `.env.local` files to git. They are already in `.gitignore`.
+For Docker compose Postgres, use:
 
-> **Optional:** `OPENAI_BASE_URL` is only needed if you use a local OpenAI-compatible endpoint (e.g. Ollama at `http://localhost:11434/v1`). Leave it empty or commented out to use the real OpenAI API.
+```text
+DATABASE_URL=postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit
+```
+
+`OPENAI_BASE_URL` is optional. Leave it unset unless deliberately using a local OpenAI-compatible endpoint.
 
 ### 2. Start Postgres
 
@@ -69,14 +96,7 @@ Edit the three files and set at least these values:
 docker compose up -d
 ```
 
-This starts PostgreSQL 16 on port `5432` with user `white_rabbit` / password `white_rabbit_dev` / database `white_rabbit`.
-
-If you use your own Postgres, set `DATABASE_URL` accordingly, e.g.:
-```bash
-export DATABASE_URL="postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit"
-```
-
-### 3. Install API dependencies and run migrations
+### 3. Install API Dependencies And Migrate
 
 ```bash
 cd apps/api
@@ -84,25 +104,16 @@ uv sync
 uv run alembic upgrade head
 ```
 
-This creates all tables (`recipe`, `recipe_run`, `lead`, `lead_feedback`, `sandbox_state`, etc.).
-
-### 4. Start the API
+### 4. Start API
 
 ```bash
+cd apps/api
 uv run uvicorn api.main:app --reload --port 8000
 ```
 
-You should see startup logs including:
-```
-OpenAI: gpt-4o-mini @ https://api.openai.com/v1
-Postgres: postgresql://...
-```
+`GET /health` remains public. Lead/search/sandbox endpoints require `x-white-rabbit-internal-token`.
 
-If you see a `RuntimeError` about missing env vars or an unreachable model, check your `.env` file and API key validity.
-
-### 5. Install web dependencies and start the dev server
-
-In a **new terminal**:
+### 5. Start Web
 
 ```bash
 cd apps/web
@@ -110,122 +121,38 @@ npm install
 npm run dev
 ```
 
-The web app will be available at `http://localhost:3000`.
+Open `http://localhost:3000` and log in with `WR_SHARED_PASSWORD`.
 
-### 6. Open the app and run a Scout query
+## Running Tests
 
-1. Open `http://localhost:3000` in your browser.
-2. Log in with the `WR_SHARED_PASSWORD` you configured.
-3. Click **Scout** in the nav.
-4. Enter a query like `Healthcare IT directors in Phoenix` and click **Run Scout**.
-5. After ~15 seconds you should see lead cards with Fit / Evidence / Contact scores.
+See [`TESTING.md`](./TESTING.md) for the current command set.
 
-## Common issues
+Common checks:
 
-| Symptom | Likely cause | Fix |
-|---------|-------------|-----|
-| `RuntimeError: Missing required env: OPENAI_API_KEY` | `.env` file not copied or key not filled in | Copy `.env.example` → `.env` and set the key |
-| `OpenAI model unreachable: gpt-4o-mini @ http://localhost:11434/v1` | `OPENAI_BASE_URL` points to Ollama but Ollama is not running or does not have the model | Comment out `OPENAI_BASE_URL` in `.env` to use the real OpenAI API |
-| `connection refused` on port `5432` | Postgres is not running | Run `docker compose up -d` |
-| `alembic upgrade head` fails with `relation does not exist` | You skipped the migration step | Run `uv run alembic upgrade head` in `apps/api` |
-| Web app shows "API Error" with no leads | The API is not running on `:8000` or `WR_API_BASE_URL` in `apps/web/.env.local` is wrong | Start the API (`uvicorn api.main:app --port 8000`) and check the env var |
-| Login page loops back to itself | `WR_SESSION_SECRET` differs between `apps/api/.env` and `apps/web/.env.local` | Set the same 32+ char secret in both files and restart both servers |
+```bash
+cd apps/web && npm test -- --run
+cd apps/api && $env:DATABASE_URL='postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit'; uv run pytest tests/test_api.py -q
+cd packages/core && uv run pytest tests -q
+```
+
+On macOS/Linux, use `DATABASE_URL=... uv run pytest ...` instead of the PowerShell env assignment.
 
 ## Deployment
 
-White Rabbit is configured for **Vercel** (frontend) + **Fly.io** (API) + **Neon** (Postgres). All three offer generous free tiers.
+Deployment config exists for Vercel (web), Fly.io (API), and Neon/Postgres. The rebuild branch is not a launch signal. Production or preview deploys must still respect the red/yellow/green launch gate in `docs/00-product-northstar.md`.
 
-### Platform setup
+## Project Layout
 
-1. **Neon Postgres**
-   - Create a project at https://neon.tech
-   - Copy the connection string (looks like `postgresql://user:pass@ep-...us-east-1.aws.neon.tech/dbname`)
-   - Set it as `DATABASE_URL` in both Fly.io and local `.env` files
-
-2. **Fly.io (API)**
-   - Install `flyctl`: https://fly.io/docs/hands-on/install-flyctl/
-   - `cd apps/api && flyctl launch` (use the existing `fly.toml`)
-   - Set secrets:
-     ```bash
-     flyctl secrets set OPENAI_API_KEY=sk-... TAVILY_API_KEY=tvly-... \
-       WR_SHARED_PASSWORD=... WR_SESSION_SECRET=... WR_API_INTERNAL_TOKEN=... DATABASE_URL=postgresql://... \
-       --app white-rabbit-api
-     ```
-
-3. **Vercel (Web)**
-   - Import the repo at https://vercel.com/new
-   - Set environment variables in the Vercel dashboard:
-     - `WR_API_BASE_URL=https://white-rabbit-api.fly.dev`
-     - `WR_SHARED_PASSWORD` (same as API)
-     - `WR_SESSION_SECRET` (same as API, min 32 chars)
-     - `WR_API_INTERNAL_TOKEN` (same as API)
-   - Vercel will auto-detect the Next.js app in `apps/web`
-
-### CI/CD
-
-Pushes to `main` trigger the GitHub Actions workflow at `.github/workflows/deploy.yml`:
-1. Runs API, core, and web tests
-2. Deploys API to Fly.io
-3. Deploys web to Vercel
-
-Required repository secrets:
-- `FLY_API_TOKEN` — from `flyctl tokens create deploy`
-- `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` — from Vercel dashboard
-
-### Manual deploy (without CI)
-
-```bash
-# API
-cd apps/api
-flyctl deploy --remote-only
-
-# Web
-# Vercel deploys automatically on git push if linked, or:
-vercel --prod
-```
-
----
-
-## Testing
-
-### Python (API + Core)
-
-```bash
-cd apps/api
-uv run pytest tests -q
-```
-
-```bash
-cd packages/core
-uv run pytest tests -q
-```
-
-Integration tests (requires real API keys, costs ~$0.05 per run):
-```bash
-cd packages/core
-uv run pytest tests -m integration -q
-```
-
-### Web (Next.js)
-
-```bash
-cd apps/web
-npm test
-npm run build
-```
-
-## Project layout
-
-```
+```text
 white-rabbit/
 ├── apps/
 │   ├── api/           FastAPI + SQLAlchemy + Alembic
 │   └── web/           Next.js App Router + TypeScript
 ├── packages/
-│   └── core/          Shared Python: models, orchestrator, search, cost, guardrails
-├── docs/              Architecture decisions, roadmap, context
-├── audits/            Audit reports and action plans
-└── .gstack/           QA reports and screenshots
+│   └── core/          Shared Python primitives
+├── docs/              Current control docs plus historical records
+├── audits/            Audit evidence and raw outputs
+└── .gstack/           QA and gate reports
 ```
 
 ## License

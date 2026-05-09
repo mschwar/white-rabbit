@@ -4,7 +4,7 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F03 Guardrail rewrite for B2B scope and privacy blocking (implemented_pending_qa).
+**Next feature pointer:** F04 Query compiler / planner (ready).
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -449,13 +449,13 @@ Rollback plan:
 Revert guardrail and tests together; API falls back to previous guardrail behavior.
 
 Next-agent handoff note:
-After F03 merges, update this doc to mark F04 ready if no new guardrail blockers appear.
+F03 is merged and verified. F04 is ready after the W1 containment gate report is recorded.
 
 ---
 
 ## F04 - Query Compiler / Planner
 
-Status: blocked
+Status: ready
 Branch: feat/f04-query-compiler
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini

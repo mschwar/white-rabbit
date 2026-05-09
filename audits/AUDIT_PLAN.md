@@ -1,5 +1,8 @@
 # White Rabbit Hard Audit — Execution Plan
 
+> **Status:** Historical Record. This document preserves evidence from the date it was written. Do not use it as the current work queue. Current product truth: `docs/00-product-northstar.md`; current state: `STATUS.md`; current rebuild execution: `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md`.
+
+
 **Created:** 2026-05-07
 **Source brief:** `audits/FRONTIER_AUDIT_PROMPT.md`
 **Working directory:** `/Users/mschwar/Documents/white-rabbit`
