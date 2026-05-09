@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-08 by gpt-5.4-mini
-**Branch:** main
-**Current sprint:** BUILDOUT-05 next — Lead validators after the BUILDOUT-04 prompt fix
+**Branch:** feat/buildout-05-lead-validators
+**Current sprint:** BUILDOUT-05 in progress — Lead validators on the feature branch
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -89,11 +89,12 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 
 ## What's in flight
 
-- No active feature branch. BUILDOUT-05 is next.
+- Active feature branch: `feat/buildout-05-lead-validators`.
+- BUILDOUT-05 validators are implemented and tests are passing locally.
 
 ## Next concrete task
 
-- Start BUILDOUT-05: add Pydantic validators on `Lead.name` and `Lead.email`.
+- Run BUILDOUT-05 QA/merge once browser verification is done, then move to BUILDOUT-06.
 
 ## Open questions for Matt
 
