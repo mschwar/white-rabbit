@@ -26,6 +26,27 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 
 ---
 
+## 🚨 Production deploy reality (2026-05-09 — /qa run)
+
+A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deployed app is **fully broken end-to-end**. Health score: **18 / 100**. Full report: [`.gstack/qa-reports/qa-report-white-rabbit-ten-vercel-app-2026-05-09.md`](.gstack/qa-reports/qa-report-white-rabbit-ten-vercel-app-2026-05-09.md).
+
+**Three critical issues:**
+
+1. **`vercel.json` legacy `routes[]` shadows local Next.js auth routes.** The current `vercel.json` (restored in commit `534aee4` from BUILDOUT-16) uses Vercel v2 `builds[]` + `routes[]` which proxies *every* `/api/*` to fly, including `/api/login` and `/api/logout`. Submitting the login form lands users on a raw JSON 404 page (`{"detail":"Not Found"}`) returned by FastAPI. **No user can authenticate in production.**
+2. **fly.io backend `white-rabbit-api.fly.dev` is down.** Direct hits to `/health` and every `/api/*` path time out or return 502/503. Likely needs `flyctl status -a white-rabbit-api` + scale-up + redeploy.
+3. **Auth bypass on protected pages.** `/scout`, `/recipes`, `/batch` render fully to anonymous users. Two compounding causes: legacy `routes[]` skips Next.js middleware, and the pages are statically prerendered + edge-cached (`age: 22029` ≈ 6h on `/scout`).
+
+**Visual / mobile:** Clean. Typography, dark theme, responsive layout all good. The break is structural, not visual.
+
+**Recommended fix path** (see report appendix for full JSON):
+- Replace `vercel.json` with `framework: "nextjs"` + `rewrites[]` allowlist of fly endpoints (excludes `/api/login`, `/api/logout` so local Next routes execute).
+- Add `export const dynamic = 'force-dynamic'` to `apps/web/src/app/scout/page.tsx`, `recipes/page.tsx`, `batch/page.tsx` so middleware runs per-request.
+- Bring the fly backend back up.
+
+`vercel.json` has been edited 5× in the last 7 days (`534aee4`, `b7dbfd5`, `68d82da`, `d96cc60`, `62ec795`) chasing the SPA-fallback-vs-API-proxy tradeoff. The QA fix was deferred — choose a path before the next vercel.json edit.
+
+---
+
 ## What's done
 
 - **BUILDOUT-12: Atomic sandbox cap counter added.** `_sandbox_reserve_query_or_429` now uses `get_sandbox_state_for_update()` to lock the sandbox row during cap checks, and API tests cover the concurrent 12-request cap path.
