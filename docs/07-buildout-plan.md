@@ -91,7 +91,8 @@ If a feature looks too big once you start: split it. Add a second `- [ ]` row to
   - QA verified in browser on 2026-05-08: Scout query rendered a lead card with 70/70/0 scores, the Gate pass/fail sort selected correctly, and the console stayed clean.
 
 ### Phase C — Verification (P0, automated regression)
-- [ ] BUILDOUT-07: Real-API integration test for `scout()` (`feat/buildout-07-integration-test`)
+- [x] BUILDOUT-07: Real-API integration test for `scout()` (`feat/buildout-07-integration-test`)
+  - QA verified on 2026-05-08: browser-checked the protected shell, Scout workspace, recipe library, and bulk run workspace; `pytest -m integration -q` in `packages/core` skipped cleanly without real API keys (`5 skipped, 26 deselected`).
 
 ### Phase D — Cleanup that prevents drift
 - [ ] BUILDOUT-08: Delete `email_patterns.py` dead code (`feat/buildout-08-remove-email-patterns`)
