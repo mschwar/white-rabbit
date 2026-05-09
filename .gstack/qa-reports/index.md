@@ -5,6 +5,7 @@
 **Current gate evidence:** W1 red-state containment advanced on 2026-05-09. Product remains red-gated until the phase gates in `docs/09-rebuild-phase-gates.md` say otherwise.
 
 - [2026-05-09 — W1 red-state containment gate](gate-w1-red-state-containment.md)
+- [2026-05-09 — Documentation authority remediation](qa-report-docs-hard-audit-remediation-2026-05-09.md)
 - [2026-05-09 — F03 guardrails](qa-report-f03-guardrails-2026-05-09.md)
 - [2026-05-09 — F02 backend API boundary](qa-report-f02-backend-api-boundary-2026-05-09.md)
 - [2026-05-09 — F01 hide premature surfaces](qa-report-f01-hide-premature-surfaces-2026-05-09.md)

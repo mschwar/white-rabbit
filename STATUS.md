@@ -16,6 +16,8 @@
 
 **Next feature pointer:** F04 Query compiler / planner (ready).
 
+**Current feature branch QA status:** `feat/docs-hard-audit-remediation` re-verified as docs-only and ready to merge.
+
 **Control docs:**
 
 - `docs/00-product-northstar.md` is the anti-drift product source of truth for the rebuild.
@@ -34,7 +36,7 @@ Branch: feat/docs-hard-audit-remediation
 Status: verification_passed_ready_to_merge
 What changed: Added ADR-006 and `docs/10-documentation-audit-2026-05-09.md`; rewrote README/TESTING/USER_GUIDE/package READMEs for red-gate rebuild reality; updated AGENTS read order; corrected docs/08 F04 pointer; added the W1 containment gate report; marked legacy planning docs, audits, QA reports, and meeting notes with explicit status banners; refreshed the QA report index.
 Tests or QA run: `cd apps/web && npm test -- --run` (25 passed); `cd packages/core && uv run pytest tests/test_query_guardrails.py -q` (9 passed); `cd apps/api && $env:DATABASE_URL='postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit'; uv run pytest tests/test_api.py -q -k "guardrail or sandbox or scout or full or batch"` (22 passed, 12 deselected); `git diff --check`; doc stale-string hygiene check.
-Screenshots or report: Documentation-only; W1 gate evidence recorded in `.gstack/qa-reports/gate-w1-red-state-containment.md`.
+Screenshots or report: Documentation-only; W1 gate evidence recorded in `.gstack/qa-reports/gate-w1-red-state-containment.md`; re-QA report for this branch: `.gstack/qa-reports/qa-report-docs-hard-audit-remediation-2026-05-09.md`.
 Northstar reflection: This branch removes stale docs as an excuse for building off the wrong product truth. White Rabbit remains red-gated until lead validation quality passes the phase gates.
 Next pointer: Merge this docs branch to `rebuild/validated-leads-loop`, then begin F04 Query compiler / planner on `feat/f04-query-compiler`.
 Open questions: None blocking docs remediation.

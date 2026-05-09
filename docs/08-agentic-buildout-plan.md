@@ -5,6 +5,7 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
 **Next feature pointer:** F04 Query compiler / planner (ready).
+**Current feature QA handoff:** `feat/docs-hard-audit-remediation` has been re-verified for docs-only control-surface accuracy and is queued for merge into `rebuild/validated-leads-loop`; next build remains `feat/f04-query-compiler`.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
