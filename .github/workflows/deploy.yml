@@ -59,7 +59,9 @@ jobs:
       - name: Run web tests
         run: |
           cd apps/web
-          npm ci
+          # Work around npm optional-dependency omissions on GitHub runners
+          # that can skip Rolldown's native Linux binding and break Vitest startup.
+          npm install
           npm test
           npm run build
 
