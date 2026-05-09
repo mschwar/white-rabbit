@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-08 by gpt-5.4-mini
-**Branch:** feat/buildout-06-server-gate
-**Current sprint:** BUILDOUT-06 complete — server-side gate validation verified in browser on the feature branch
+**Branch:** feat/buildout-07-integration-test
+**Current sprint:** BUILDOUT-07 in progress — real-API integration tests for `scout()` added on the feature branch
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -89,12 +89,12 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 
 ## What's in flight
 
-- Active feature branch: `feat/buildout-06-server-gate`.
-- BUILDOUT-06 server-side gate validation is implemented and browser-verified; unit tests pass in `packages/core`, and the Scout workspace still renders cleanly after the change.
+- Active feature branch: `feat/buildout-07-integration-test`.
+- BUILDOUT-07 real-API integration tests are implemented in `packages/core/tests/test_orchestrator_integration.py`; `pytest -q` passes and `pytest -m integration` skips cleanly without real API keys.
 
 ## Next concrete task
 
-- Merge BUILDOUT-06 after QA artifacts are committed, then move to the next buildout slice.
+- Run Prompt B QA/verification for BUILDOUT-07 with real keys, capture pytest output, then mark the checklist and merge artifacts.
 
 ## Open questions for Matt
 

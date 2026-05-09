@@ -24,3 +24,8 @@ build-backend = "uv_build"
 dev = [
     "pytest>=9.0.3",
 ]
+
+[tool.pytest.ini_options]
+markers = [
+    "integration: tests that hit real external APIs and may incur cost",
+]

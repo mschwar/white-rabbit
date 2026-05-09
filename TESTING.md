@@ -17,6 +17,14 @@ npm run test      # Run unit tests
 npm run test:e2e  # Run E2E tests
 ```
 
+### Core integration tests (`packages/core`)
+```bash
+cd packages/core
+pytest -m integration
+```
+
+Integration tests hit real external APIs. They require `OPENAI_API_KEY` and `TAVILY_API_KEY`, and they may incur real usage cost.
+
 ## Conventions
 
 - **Unit tests:** Place in `__tests__` directories adjacent to the code they test. Use `.test.tsx` or `.test.ts`.
