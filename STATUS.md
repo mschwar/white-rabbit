@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-09 by kimi-k2.6
-**Branch:** feat/buildout-14-readme-verified
-**Current sprint:** BUILDOUT-14 README setup walkthrough verified end-to-end; next is BUILDOUT-15
+**Branch:** main (BUILDOUT-17 merged)
+**Current sprint:** BUILDOUT-17 deploy config merged; live deploy pending user `fly deploy`
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -93,14 +93,18 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 - **BUILDOUT-15: QA rubric document + multi-vertical gate shipped.** Added `docs/qa-rubric.md` with the 6-tier ship-gate (Tiers 1–4 mandatory for extraction/scoring changes, Tier 5 weekly, Tier 6 every run). Updated `.gstack/qa-reports/index.md` to reference the rubric. Added `.gstack/qa-reports/qa-template.md` as a skeleton for future QA reports. Updated `AGENTS.md` read order to include the rubric. Browser QA verified login, Scout, recipes, and batch pages render correctly with zero console errors. QA report at `.gstack/qa-reports/qa-report-buildout-15-qa-rubric.md`.
 - **BUILDOUT-16: Deploy config for Vercel + Fly.io + Neon shipped.** Created `apps/api/Dockerfile`, `apps/api/fly.toml`, `vercel.json`, and `.github/workflows/deploy.yml`. Updated `apps/web/next.config.ts` with production rewrites and image config. Added "Deployment" section to README with platform setup, CI/CD, and manual deploy instructions. All tests pass (24 API, 23 web). Browser QA verified Scout workspace renders correctly. Branch `feat/buildout-16-deploy-config` pushed and ready for QA+merge.
 - **BUILDOUT-16 QA verified and merged.** Health score 95/100. All 24 API tests and 23 web tests pass. Next.js build succeeds. Deploy config files validated. Only cosmetic issue: favicon 404s (deferred). Ready for BUILDOUT-17.
+- **BUILDOUT-17: Deploy config merged to main.** `fly.toml` moved to repo root, `Dockerfile` paths adjusted for monorepo context, `vercel.json` added with explicit API rewrites to Fly.io, `.dockerignore` tightened to reduce build context from 437MB. Local QA passed (24 API tests, 23 web tests, Next.js build). Production smoke test blocked because Fly.io API app `white-rabbit-api` has no deployed image yet — user needs to run `fly deploy` with the new `.dockerignore`.
 
 ## What's in flight
 
-- `feat/buildout-16-deploy-config` — deploy config branch pushed, awaiting QA+merge (Prompt B).
+- None. BUILDOUT-17 branch merged. Live deploy is the user's next step.
 
 ## Next concrete task
 
-- Merge BUILDOUT-16 to main, then move on to BUILDOUT-17 in `docs/07-buildout-plan.md`.
+- User runs `fly deploy` from repo root to deploy API to Fly.io.
+- After deploy, verify `https://white-rabbit-api.fly.dev/health` returns 200.
+- Then re-test `https://white-rabbit-ten.vercel.app/` with a Scout query.
+- Once prod smoke test passes, all 17 BUILDOUTs are complete.
 
 ## Open questions for Matt
 
