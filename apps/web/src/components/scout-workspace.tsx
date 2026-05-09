@@ -29,6 +29,23 @@ function formatElapsedSeconds(seconds: number): string {
 
 type Mode = 'scout' | 'full';
 
+function mapErrorCodeToMessage(errorCode: string | null, fallback: string): string {
+  switch (errorCode) {
+    case 'tavily_failed':
+      return 'Search engine is rate-limited; try again in ~60s';
+    case 'openai_failed':
+      return 'AI extraction service is unavailable; try again in a moment';
+    case 'llm_parse_failed':
+      return 'AI response could not be parsed; try a simpler query';
+    case 'orchestrator_error':
+      return `Search service error: ${fallback}`;
+    case 'internal_error':
+      return 'An unexpected error occurred. Please try again later.';
+    default:
+      return fallback;
+  }
+}
+
 export default function ScoutWorkspace() {
   const [query, setQuery] = useState(DEFAULT_SCOUT_QUERY);
   const [location, setLocation] = useState(DEFAULT_SCOUT_LOCATION);
@@ -119,6 +136,8 @@ export default function ScoutWorkspace() {
         let message = `Search failed (${response.status}).`;
         let guardrail: ScoutResponse['query_guardrail'] = null;
         let usage: ScoutResponse['sandbox_usage'] = null;
+        let errorCode: string | null = null;
+        let requestId: string | null = null;
 
         if (bodyText) {
           try {
@@ -127,15 +146,21 @@ export default function ScoutWorkspace() {
               detail?: unknown;
               query_guardrail?: ScoutResponse['query_guardrail'];
               sandbox_usage?: ScoutResponse['sandbox_usage'];
+              error_code?: string;
+              request_id?: string;
             };
             guardrail = body.query_guardrail ?? null;
             usage = body.sandbox_usage ?? null;
+            errorCode = body.error_code ?? null;
+            requestId = body.request_id ?? null;
             if (typeof body.detail === 'string') {
               message = body.detail;
             } else if (body.detail && typeof body.detail === 'object') {
-              const detail = body.detail as { error?: string; detail?: unknown; sandbox_usage?: ScoutResponse['sandbox_usage'] };
+              const detail = body.detail as { error?: string; detail?: unknown; sandbox_usage?: ScoutResponse['sandbox_usage']; error_code?: string; request_id?: string };
               message = detail.error ?? message;
               usage = detail.sandbox_usage ?? usage;
+              errorCode = detail.error_code ?? errorCode;
+              requestId = detail.request_id ?? requestId;
             }
             message = body.error ?? message;
           } catch {
@@ -147,7 +172,7 @@ export default function ScoutWorkspace() {
         if (usage) {
           setSandboxUsage(usage);
         }
-        throw new Error(message);
+        throw new Error(JSON.stringify({ message, errorCode, requestId }));
       }
 
       if (mode === 'scout') {
@@ -167,8 +192,22 @@ export default function ScoutWorkspace() {
         setSubmittedRecipeName(submittedRecipeName);
       }
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Search failed.';
-      setError(message);
+      let message = err instanceof Error ? err.message : 'Search failed.';
+      let errorCode: string | null = null;
+      let requestId: string | null = null;
+      try {
+        const parsed = JSON.parse(message);
+        if (parsed && typeof parsed === 'object') {
+          message = parsed.message ?? message;
+          errorCode = parsed.errorCode ?? null;
+          requestId = parsed.requestId ?? null;
+        }
+      } catch {
+        // Not JSON — keep raw message
+      }
+
+      const userMessage = mapErrorCodeToMessage(errorCode, message);
+      setError(userMessage);
       setResults(null);
       setFullResult(null);
     } finally {

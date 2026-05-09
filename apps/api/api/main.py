@@ -3,7 +3,7 @@ from pathlib import Path
 from datetime import datetime
 import sys
 from typing import Any, Optional
-from uuid import UUID
+from uuid import UUID, uuid4
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
@@ -265,11 +265,38 @@ async def run_scout(request: ScoutRequest):
     except OrchestratorError as exc:
         import logging
         logging.getLogger("white_rabbit.api").error("Orchestrator error: %s", exc, exc_info=True)
-        raise HTTPException(status_code=503, detail="The search service is currently unavailable. Please try again later.")
+        raise HTTPException(status_code=503, detail=_orchestrator_error_response(exc))
     except Exception as exc:
         import logging
         logging.getLogger("white_rabbit.api").error("Unexpected error: %s", exc, exc_info=True)
-        raise HTTPException(status_code=500, detail="An unexpected error occurred. Please try again later.")
+        raise HTTPException(status_code=500, detail=_internal_error_response(exc))
+
+
+def _resolve_error_code(exc: OrchestratorError) -> str:
+    msg = str(exc).lower()
+    if "tavily" in msg:
+        return "tavily_failed"
+    if "openai" in msg or "llm" in msg:
+        return "openai_failed"
+    if "parse" in msg or "json" in msg or "validation" in msg:
+        return "llm_parse_failed"
+    return "orchestrator_error"
+
+
+def _orchestrator_error_response(exc: OrchestratorError) -> dict:
+    return {
+        "error_code": _resolve_error_code(exc),
+        "message": str(exc),
+        "request_id": str(uuid4()),
+    }
+
+
+def _internal_error_response(exc: Exception) -> dict:
+    return {
+        "error_code": "internal_error",
+        "message": "An unexpected error occurred.",
+        "request_id": str(uuid4()),
+    }
 
 
 @app.post("/full", response_model=FullResponse)
@@ -286,11 +313,11 @@ async def run_full(request: FullRequest):
     except OrchestratorError as exc:
         import logging
         logging.getLogger("white_rabbit.api").error("Orchestrator error: %s", exc, exc_info=True)
-        raise HTTPException(status_code=503, detail="The search service is currently unavailable. Please try again later.")
+        raise HTTPException(status_code=503, detail=_orchestrator_error_response(exc))
     except Exception as exc:
         import logging
         logging.getLogger("white_rabbit.api").error("Unexpected error: %s", exc, exc_info=True)
-        raise HTTPException(status_code=500, detail="An unexpected error occurred. Please try again later.")
+        raise HTTPException(status_code=500, detail=_internal_error_response(exc))
 
     with get_db_session() as session:
         recipe = create_recipe(
@@ -529,14 +556,15 @@ async def run_batch(request: BatchRequest):
             except OrchestratorError as exc:
                 import logging
                 logging.getLogger("white_rabbit.api").error("Batch orchestrator error: %s", exc, exc_info=True)
+                err = _orchestrator_error_response(exc)
                 batch_run.status = "failed"
-                batch_run.error_message = str(exc)
+                batch_run.error_message = err["message"]
                 batch_run.ended_at = datetime.utcnow()
                 update_batch_run(
                     session,
                     batch_run.id,
                     status="failed",
-                    error_message=str(exc),
+                    error_message=err["message"],
                 )
                 run_records.append(
                     BatchRunOut(
@@ -545,21 +573,22 @@ async def run_batch(request: BatchRequest):
                         status="failed",
                         lead_count=0,
                         cost_usd=0.0,
-                        error_message=str(exc),
+                        error_message=err["message"],
                     )
                 )
                 continue
             except Exception as exc:
                 import logging
                 logging.getLogger("white_rabbit.api").error("Batch unexpected error: %s", exc, exc_info=True)
+                err = _internal_error_response(exc)
                 batch_run.status = "failed"
-                batch_run.error_message = str(exc)
+                batch_run.error_message = err["message"]
                 batch_run.ended_at = datetime.utcnow()
                 update_batch_run(
                     session,
                     batch_run.id,
                     status="failed",
-                    error_message=str(exc),
+                    error_message=err["message"],
                 )
                 run_records.append(
                     BatchRunOut(
@@ -568,7 +597,7 @@ async def run_batch(request: BatchRequest):
                         status="failed",
                         lead_count=0,
                         cost_usd=0.0,
-                        error_message=str(exc),
+                        error_message=err["message"],
                     )
                 )
                 continue
