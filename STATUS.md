@@ -14,7 +14,7 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F03 Guardrail rewrite for B2B scope and privacy blocking (implemented_pending_qa).
+**Next feature pointer:** F04 Query compiler / planner (ready).
 
 **Control docs:**
 
@@ -30,12 +30,12 @@
 ```text
 Feature: F03 - Guardrail Rewrite for B2B Scope and Privacy Blocking
 Branch: feat/f03-b2b-guardrails
-Status: implemented_pending_qa
+Status: qa_passed_and_merged
 What changed: Rewrote `packages/core/src/core/query_guardrails.py` to allow normal B2B sales language and block privacy-sensitive, weapon, and off-topic prompts before search. Expanded tests to cover accepted B2B examples, vague lead warnings, and blocked privacy/off-topic cases. Added an API regression test proving privacy-sensitive prompts never reach `scout()`.
 Tests or QA run: `cd packages/core && uv run pytest tests/test_query_guardrails.py -q` (9 passed); `cd apps/api && uv run pytest tests/test_api.py -q -k "blocks_broad_advice_queries or blocks_privacy_sensitive_queries"` (2 passed).
 Screenshots or report: Non-UI verification only; no browser screenshots required.
 Northstar reflection: F03 tightens the red-state boundary without narrowing Thomas's normal B2B language, and it blocks consumer/privacy targeting before vendor search runs.
-Next pointer: QA Prompt B should review `feat/f03-b2b-guardrails`, capture the non-UI verification in `.gstack/qa-reports/`, update `docs/08-agentic-buildout-plan.md` and `STATUS.md`, and merge only to `rebuild/validated-leads-loop`.
+Next pointer: Begin F04 Query compiler / planner on `feat/f04-query-compiler` and update docs before merge handoff.
 Open questions: None blocking F03 build handoff.
 ```
 
@@ -104,6 +104,7 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 - **F01 QA complete and merged on `rebuild/validated-leads-loop` via `feat/f01-hide-premature-surfaces`.** Home primary navigation now links only to lead search, and Scout hides recipe-library links, raw endpoint/FastAPI/storage copy, and the sandbox reset button. `npm test`, `npm run build`, and browser screenshots (with QA report `qa-report-f01-hide-premature-surfaces-2026-05-09.md`) were captured.
 - **F02 QA complete and merged on `rebuild/validated-leads-loop` via `feat/f02-backend-api-boundary`.** FastAPI lead/sandbox endpoints now require the internal boundary token. Next.js proxy calls to `/api/scout` are verified with auth flow and expected local-service error payload; direct POSTs to `/scout`, `/full`, `/batch`, and `/sandbox/reset` return 401 when no token is supplied. QA report: `qa-report-f02-backend-api-boundary-2026-05-09.md`.
+- **F03 QA complete and merged on `rebuild/validated-leads-loop` via `feat/f03-b2b-guardrails`.** Guardrails now allow normal B2B sales queries while blocking consumer/privacy-sensitive, weapon, and off-topic prompts before search. `uv run pytest tests/test_query_guardrails.py -q` and API guardrail regression tests pass (`2 passed`).
 - **Rebuild phase gates merged.** `docs/09-rebuild-phase-gates.md` groups F00-F23 into gated waves W0-W6 and requires gate review reports before downstream waves unlock.
 - **F00 rebuild planning docs landed on `rebuild/validated-leads-loop`.** Added `docs/00-product-northstar.md`, `docs/08-agentic-buildout-plan.md`, AGENTS rebuild branch protocol, STATUS rebuild handoff, and `.gstack/qa-reports/qa-template-agentic-buildout.md`.
 - **BUILDOUT-12: Atomic sandbox cap counter added.** `_sandbox_reserve_query_or_429` now uses `get_sandbox_state_for_update()` to lock the sandbox row during cap checks, and API tests cover the concurrent 12-request cap path.
@@ -175,18 +176,17 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 - **BUILDOUT-17: Final production browser QA completed.** Verified the live Vercel deployment at commit `f3b6a45`, confirmed Fly health and deploy status, exercised login / Scout / Full / export / feedback / closeout / logout in the browser, and saved evidence at `.gstack/qa-reports/buildout-17-production-verification.md` plus screenshots under `.gstack/qa-reports/screenshots/`.
 - **BUILDOUT-17 follow-up: fixed the POST-login redirect crash and unblocked CI.** Root cause of the production auth bug was `NextResponse.redirect()` returning a 307 from `POST /api/login`, which caused the browser to replay the POST against `/` and hit `405` until a manual reload. The login/logout routes now use `303` redirects, a regression test covers the login route, and `.github/workflows/deploy.yml` now starts Postgres + runs Alembic before API tests so the sandbox migration tests pass in GitHub Actions.
 
-## What's in flight
+## What’s in flight
 
-- Product is in audit-red state. F01 and F02 are merged; F03 is implemented_pending_qa on `feat/f03-b2b-guardrails`.
+- Product is in audit-red state. F01–F03 are merged; F04 query compiler/planner is next on `feat/f04-query-compiler`.
 
 ## Next concrete task
 
-- Run QA and handoff for **F03 - Guardrail Rewrite for B2B Scope and Privacy Blocking** on branch `feat/f03-b2b-guardrails`:
-  - checkout `feat/f03-b2b-guardrails` and pull latest
-  - run the feature QA flow defined in its feature card
-  - capture results in `.gstack/qa-reports/`
-  - update `docs/08-agentic-buildout-plan.md`, `docs/09-rebuild-phase-gates.md` if the wave gate needs a note, and `STATUS.md`
-  - merge only to `rebuild/validated-leads-loop` after QA passes
+- Start QA and implementation handoff for **F04 - Query compiler / planner** on branch `feat/f04-query-compiler`:
+  - read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/08-agentic-buildout-plan.md, and F04 feature card
+  - implement and run the F04 verification commands from the feature card
+  - update docs/08-agentic-buildout-plan.md and STATUS.md after handoff
+  - merge only into `rebuild/validated-leads-loop` after QA
 
 ## Open questions for Matt
 
@@ -225,7 +225,7 @@ Real known issues (post-audit):
 
 | Date | Agent | Summary |
 |------|-------|---------|
-| 2026-05-09 | f03-build (Codex) | Implemented F03 guardrail rewrite on `feat/f03-b2b-guardrails`: B2B sales language now clears guardrails, privacy-sensitive and weapon/off-topic prompts are blocked before search, core and API regression tests pass, and the branch is ready for QA handoff. |
+| 2026-05-09 | f03-build (Codex) | Implemented and QA-verified F03 guardrail rewrite on `feat/f03-b2b-guardrails`: B2B sales language now clears guardrails, privacy-sensitive and weapon/off-topic prompts are blocked before search, core and API regression tests pass, and feature is merged to `rebuild/validated-leads-loop`. QA report: `qa-report-f03-guardrails-2026-05-09.md`. |
 | 2026-05-09 | f02-build (Codex) | Implemented and QA-verified backend API boundary on `feat/f02-backend-api-boundary`: FastAPI now requires `WR_API_INTERNAL_TOKEN` on `scout/full/batch/sandbox/reset` paths, Next.js proxies forward that token, API tests and web tests pass, browser proxy flow `/scout` is captured, and tokenless `POST` to all four protected endpoints returns 401. |
 | 2026-05-09 | f01-build (Codex) | Implemented F01 on `feat/f01-hide-premature-surfaces`: home now links only to lead search; Scout hides premature recipe/batch/admin copy, raw endpoint/FastAPI/storage text, recipe-library links, and sandbox reset. Verified with web tests/build and localhost browser smoke screenshots; ready for Prompt B QA/merge to `rebuild/validated-leads-loop`. |
 | 2026-05-09 | buildout-architect (Codex) | Added a gated W0-W6 implementation plan in `docs/09-rebuild-phase-gates.md` so downstream waves require evidence-backed gate review before unlocking. Used a separate worktree/branch to avoid touching in-flight F01 UI edits. |

@@ -144,8 +144,8 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F00 | Northstar + buildout docs + branch protocol | merged_to_rebuild_branch | feat/f00-agentic-buildout-plan | non-UI docs verification |
 | F01 | Hide premature operator surfaces from primary navigation | merged_to_rebuild_branch | feat/f01-hide-premature-surfaces | browser |
 | F02 | Backend API boundary | merged_to_rebuild_branch | feat/f02-backend-api-boundary | browser + API |
-| F03 | Guardrail rewrite for B2B scope and privacy blocking | ready | feat/f03-b2b-guardrails | non-UI |
-| F04 | Query compiler / planner | blocked | feat/f04-query-compiler | non-UI |
+| F03 | Guardrail rewrite for B2B scope and privacy blocking | merged_to_rebuild_branch | feat/f03-b2b-guardrails | non-UI |
+| F04 | Query compiler / planner | ready | feat/f04-query-compiler | non-UI |
 | F05 | Candidate model separation | blocked | feat/f05-candidate-types | non-UI |
 | F06 | Field-level validation schema | blocked | feat/f06-field-validation-schema | non-UI |
 | F07 | Source validator | blocked | feat/f07-source-validator | non-UI |
@@ -393,7 +393,7 @@ The app-token path is in place. QA verified the web proxy succeeds (up to API-se
 
 ## F03 - Guardrail Rewrite For B2B Scope And Privacy Blocking
 
-Status: implemented_pending_qa
+Status: merged_to_rebuild_branch
 Branch: feat/f03-b2b-guardrails
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -426,7 +426,7 @@ Acceptance criteria:
 
 Verification:
 non-UI verification:
-- command(s): `cd packages/core && uv run pytest tests/test_query_guardrails.py -q`; `cd apps/api && uv run pytest tests/test_api.py -q -k guardrail`
+- command(s): `cd packages/core && uv run pytest tests/test_query_guardrails.py -q`; `cd apps/api && uv run pytest tests/test_api.py -q -k "blocks_broad_advice_queries or blocks_privacy_sensitive_queries"`
 - expected output: tests pass; explicit privacy examples are blocked.
 - fixture/test file: `packages/core/tests/test_query_guardrails.py`.
 
@@ -438,7 +438,7 @@ Northstar reflection:
 - Normal B2B sales language now clears the guardrail, while privacy-sensitive and weapon/off-topic prompts are blocked before search.
 
 Next-agent handoff note:
-- Branch `feat/f03-b2b-guardrails` is pushed with F03 implemented_pending_qa. Prompt B should run QA, capture the report, update docs/STATUS, and merge only to `rebuild/validated-leads-loop`.
+- Branch `feat/f03-b2b-guardrails` is QA-passed and merged to `rebuild/validated-leads-loop`. QA report: `.gstack/qa-reports/qa-report-f03-guardrails-2026-05-09.md`.
 
 Atomic commit plan:
 - commit 1: `fix(guardrails): allow normal b2b sales language`
