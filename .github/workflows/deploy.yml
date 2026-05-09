@@ -68,7 +68,6 @@ jobs:
 
   deploy-api:
     name: Deploy API to Fly.io
-    if: ${{ secrets.FLY_API_TOKEN != '' }}
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -77,8 +76,13 @@ jobs:
       - name: Set up Flyctl
         uses: superfly/flyctl-actions/setup-flyctl@master
 
-      - name: Deploy to Fly.io
-        run: flyctl deploy apps/api --remote-only
+      - name: Deploy to Fly.io when token is configured
+        run: |
+          if [ -z "$FLY_API_TOKEN" ]; then
+            echo "FLY_API_TOKEN is not configured; skipping Fly deploy."
+            exit 0
+          fi
+          flyctl deploy apps/api --remote-only
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
