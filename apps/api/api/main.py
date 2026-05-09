@@ -47,6 +47,7 @@ from api.db import (
     get_batch_runs,
     list_batch_jobs,
     get_sandbox_state,
+    get_sandbox_state_for_update,
     reset_sandbox_state,
     record_sandbox_rows,
 )
@@ -207,7 +208,7 @@ def _sandbox_usage_out(session) -> SandboxUsageOut:
 
 
 def _sandbox_reserve_query_or_429(session, planned_rows: int) -> SandboxUsageOut:
-    state = get_sandbox_state(session)
+    state = get_sandbox_state_for_update(session)
     remaining_queries = state.max_queries - state.total_queries
     remaining_rows = state.max_rows - state.total_rows
     if remaining_queries <= 0:

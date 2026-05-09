@@ -102,7 +102,7 @@ If a feature looks too big once you start: split it. Add a second `- [ ]` row to
 ### Phase E — Hardening (P1)
 - [x] BUILDOUT-10: Tavily + OpenAI retries with backoff (`feat/buildout-10-retries`) — implemented, tested, and browser-verified on localhost:3000
 - [x] BUILDOUT-11: Feedback label enum + DB CHECK (`feat/buildout-11-feedback-enum`) — browser-verified on 2026-05-08; canonical labels accept feedback and non-canonical labels are rejected
-- [ ] BUILDOUT-12: Atomic sandbox cap counter (`feat/buildout-12-sandbox-atomicity`)
+- [x] BUILDOUT-12: Atomic sandbox cap counter (`feat/buildout-12-sandbox-atomicity`)
 - [ ] BUILDOUT-13: Specific API error codes for UI (`feat/buildout-13-error-codes`)
 
 ### Phase F — Documentation & process
@@ -597,6 +597,8 @@ Hard to demonstrate concurrency in a browser. Note in QA report: "atomicity vali
 **Commit message:** `BUILDOUT-12: lock sandbox_state row during cap check`
 
 **Estimated effort:** 1h human / 20min AI.
+
+**Status:** implemented on `feat/buildout-12-sandbox-atomicity`, verified by `uv run pytest tests -q` in `apps/api` on 2026-05-08, and browser-verified on `http://localhost:3000` (Scout reset + search, recipes, batch). Ready to merge.
 
 ---
 

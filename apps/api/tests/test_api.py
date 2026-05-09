@@ -1,7 +1,9 @@
 from contextlib import contextmanager
 from datetime import datetime
+import asyncio
 from types import SimpleNamespace
 
+import httpx
 from fastapi.testclient import TestClient
 from sqlalchemy import CheckConstraint
 
@@ -9,7 +11,7 @@ from core.cost import RunMetrics
 from core.models import Lead
 from api.main import app
 from api.models import FeedbackLabel, LeadFeedback
-from api.db import get_recipe_scoreboard
+from api.db import get_db_session, get_recipe_scoreboard, get_sandbox_state
 
 client = TestClient(app)
 
@@ -66,6 +68,7 @@ def test_scout_endpoint_returns_scoped_payload(monkeypatch):
 
     monkeypatch.setattr("api.main.get_db_session", fake_db_session)
     monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+    monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
     monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
     monkeypatch.setattr("api.main.scout", fake_scout)
 
@@ -99,6 +102,7 @@ def test_scout_endpoint_forwards_filters(monkeypatch):
 
     monkeypatch.setattr("api.main.get_db_session", fake_db_session)
     monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+    monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
     monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
     monkeypatch.setattr("api.main.scout", fake_scout)
 
@@ -320,6 +324,7 @@ def test_scout_endpoint_forwards_filters(monkeypatch):
 
     monkeypatch.setattr("api.main.get_db_session", fake_db_session)
     monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+    monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
     monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
     monkeypatch.setattr("api.main.scout", fake_scout)
 
@@ -347,6 +352,7 @@ def test_sandbox_usage_endpoint_returns_usage(monkeypatch):
 
     monkeypatch.setattr("api.main.get_db_session", fake_db_session)
     monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+    monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
 
     response = client.get("/sandbox")
 
@@ -360,6 +366,77 @@ def test_sandbox_usage_endpoint_returns_usage(monkeypatch):
         "remaining_rows": 982,
         "reset_at": "2026-01-01T12:00:00",
     }
+
+
+def test_sandbox_atomic_cap_is_enforced_under_concurrency(monkeypatch):
+    with get_db_session() as session:
+        state = get_sandbox_state(session)
+        original = {
+            "total_queries": state.total_queries,
+            "total_rows": state.total_rows,
+            "max_queries": state.max_queries,
+            "max_rows": state.max_rows,
+            "reset_at": state.reset_at,
+        }
+        state.total_queries = 0
+        state.total_rows = 0
+        state.max_queries = 10
+        state.max_rows = 1000
+
+    async def fake_scout(query: str, **kwargs):
+        await asyncio.sleep(0.05)
+        return [
+            Lead(
+                name="Jane Smith",
+                title="Director of Technology",
+                organization="Albuquerque Public Schools",
+                email="jane.smith@aps.edu",
+                email_status="Found",
+                source_url="https://aps.edu/tech",
+                confidence=0.88,
+                why_target="Owns district telecom decisions",
+                icebreaker="I noticed APS is growing its classroom connectivity needs.",
+                fit_score=0.91,
+                evidence_score=0.84,
+                contact_score=0.79,
+                gate_passed=True,
+                explanation="Strong district fit with current leadership evidence and usable email.",
+            )
+        ], RunMetrics(
+            input_tokens=1,
+            output_tokens=1,
+            tavily_searches=0,
+            openai_web_searches=0,
+            elapsed_seconds=0.05,
+            estimated_cost_usd=0.0,
+        )
+
+    monkeypatch.setattr("api.main.scout", fake_scout)
+
+    async def run_requests():
+        transport = httpx.ASGITransport(app=app)
+        async with httpx.AsyncClient(transport=transport, base_url="http://test") as ac:
+            responses = await asyncio.gather(
+                *[
+                    ac.post("/scout", json={"query": "K-12 IT directors in Albuquerque"})
+                    for _ in range(12)
+                ]
+            )
+        return responses
+
+    try:
+        responses = asyncio.run(run_requests())
+        statuses = [response.status_code for response in responses]
+        assert statuses.count(200) == 10
+        assert statuses.count(429) == 2
+    finally:
+        with get_db_session() as session:
+            state = get_sandbox_state(session)
+            state.total_queries = original["total_queries"]
+            state.total_rows = original["total_rows"]
+            state.max_queries = original["max_queries"]
+            state.max_rows = original["max_rows"]
+            state.reset_at = original["reset_at"]
 
 
 def test_sandbox_reset_endpoint_clears_usage(monkeypatch):
@@ -383,6 +460,7 @@ def test_sandbox_reset_endpoint_clears_usage(monkeypatch):
 
     monkeypatch.setattr("api.main.get_db_session", fake_db_session)
     monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+    monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
     monkeypatch.setattr("api.main.reset_sandbox_state", fake_reset_sandbox_state)
 
     response = client.post("/sandbox/reset")
@@ -421,6 +499,7 @@ def test_scout_endpoint_returns_sandbox_usage_and_enforces_caps(monkeypatch):
 
     monkeypatch.setattr("api.main.get_db_session", fake_db_session)
     monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+    monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
     monkeypatch.setattr("api.main.scout", fake_scout)
 
     response = client.post("/scout", json={"query": "K-12 IT directors in Albuquerque"})
@@ -603,6 +682,7 @@ def test_batch_endpoint_creates_job_and_runs(monkeypatch):
     monkeypatch.setattr("api.main.create_recipe_run", lambda session, **kwargs: FakeRecipeRun())
     monkeypatch.setattr("api.main.save_leads", lambda session, run_id, leads: None)
     monkeypatch.setattr("api.main.get_sandbox_state", lambda session: FakeSandboxState())
+    monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: FakeSandboxState())
     monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
 
     response = client.post(
@@ -838,6 +918,7 @@ def test_full_endpoint_returns_persisted_lead_ids(monkeypatch):
     monkeypatch.setattr("api.main.create_recipe_run", fake_create_recipe_run)
     monkeypatch.setattr("api.main.save_leads", fake_save_leads)
     monkeypatch.setattr("api.main.get_sandbox_state", fake_get_sandbox_state)
+    monkeypatch.setattr("api.main.get_sandbox_state_for_update", fake_get_sandbox_state)
     monkeypatch.setattr("api.main.record_sandbox_rows", fake_record_sandbox_rows)
     monkeypatch.setattr("api.main.scout", fake_scout)
 
