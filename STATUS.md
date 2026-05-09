@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-05-08 by gpt-5.4-mini
 **Branch:** feat/buildout-07-integration-test
-**Current sprint:** BUILDOUT-07 in progress — real-API integration tests for `scout()` added on the feature branch
+**Current sprint:** BUILDOUT-07 verified — real-API integration tests for `scout()` added, browser QA completed on the protected shell and supporting pages
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -90,11 +90,11 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 ## What's in flight
 
 - Active feature branch: `feat/buildout-07-integration-test`.
-- BUILDOUT-07 real-API integration tests are implemented in `packages/core/tests/test_orchestrator_integration.py`; `pytest -q` passes and `pytest -m integration` skips cleanly without real API keys.
+- BUILDOUT-07 real-API integration tests are implemented in `packages/core/tests/test_orchestrator_integration.py`; browser QA on `localhost:3000` covered login, Scout, recipe library, and batch, and `pytest -m integration -q` skips cleanly without real API keys (`5 skipped, 26 deselected`).
 
 ## Next concrete task
 
-- Run Prompt B QA/verification for BUILDOUT-07 with real keys, capture pytest output, then mark the checklist and merge artifacts.
+- Merge `feat/buildout-07-integration-test` to `main` after the QA docs commit lands.
 
 ## Open questions for Matt
 
@@ -155,6 +155,7 @@ Real known issues (post-audit):
 | 2026-05-08 | qa (gpt-5.4-mini) | Browser QA covered login, Scout, Full, recipes, and batch on http://localhost:3000; captured screenshots; confirmed clean console; wrote `.gstack/qa-reports/buildout-01-config-preflight.md` and `.gstack/qa-reports/baseline.json`. |
 | 2026-05-08 | docs-sync (gpt-5.4-mini) | Reconciled `docs/07-buildout-plan.md` with git history, marked BUILDOUT-02 complete, updated STATUS to point at BUILDOUT-03, and tightened AGENTS so future BUILDOUT sessions must update the checklist before finishing. |
 | 2026-05-08 | buildout-04 (gpt-5.4-mini) | Removed the hardcoded VoIP/telecom bias from the Scout prompt and Lead schema descriptions, updated tests, marked BUILDOUT-04 complete in the buildout plan, pushed PR #13, and merged it to main after browser QA re-verified finance queries no longer leak VoIP language. |
+| 2026-05-08 | qa (gpt-5.4-mini) | Browser QA for BUILDOUT-07 verified the protected shell, Scout workspace, recipe library, and bulk run workspace on localhost:3000; captured screenshots; ran `pytest -m integration -q` in `packages/core` and confirmed the marker skips cleanly without real API keys. |
 | 2026-05-08 | qa (gpt-5.4-mini) | Browser QA for BUILDOUT-05 verified Scout and recipe-library flows on localhost:3000, captured screenshots, confirmed clean console, and updated docs/report artifacts. |
 | 2026-05-08 | qa (gpt-5.4-mini) | Browser QA for BUILDOUT-06 verified the shared-password login, Scout results page, and Gate pass/fail sort control on localhost:3000; captured screenshots and kept the console clean. |
 | 2026-05-07 | hard-audit (Claude Opus 4.7) | Ground-up zero-trust audit. 8 parallel sub-agents, 4 live scout queries against real OpenAI ($0.045 spent), 65 findings across 8 dimensions plus Phase 2. 2 agent errors caught and corrected. Master report at `audits/hard-audit-2026-05-07.md`; action plan at `docs/06-audit-action-plan.md`. **Conclusion: not deployable as-is. 5 confirmed P0 blockers including `OPENAI_BASE_URL` routing to local Ollama and 89% VoIP leak rate in real leads.** |
