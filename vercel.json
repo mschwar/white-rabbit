@@ -1,19 +1,34 @@
 {
-  "version": 2,
-  "builds": [
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "rewrites": [
     {
-      "src": "apps/web/package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "https://white-rabbit-api.fly.dev/api/$1"
+      "source": "/api/scout/:path*",
+      "destination": "https://white-rabbit-api.fly.dev/api/scout/:path*"
     },
     {
-      "src": "/(.*)",
-      "dest": "apps/web/$1"
+      "source": "/api/full/:path*",
+      "destination": "https://white-rabbit-api.fly.dev/api/full/:path*"
+    },
+    {
+      "source": "/api/sandbox/:path*",
+      "destination": "https://white-rabbit-api.fly.dev/api/sandbox/:path*"
+    },
+    {
+      "source": "/api/recipes/:path*",
+      "destination": "https://white-rabbit-api.fly.dev/api/recipes/:path*"
+    },
+    {
+      "source": "/api/runs/:path*",
+      "destination": "https://white-rabbit-api.fly.dev/api/runs/:path*"
+    },
+    {
+      "source": "/api/leads/:path*",
+      "destination": "https://white-rabbit-api.fly.dev/api/leads/:path*"
+    },
+    {
+      "source": "/api/batch/:path*",
+      "destination": "https://white-rabbit-api.fly.dev/api/batch/:path*"
     }
   ],
   "env": {
