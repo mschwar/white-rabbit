@@ -85,7 +85,8 @@ If a feature looks too big once you start: split it. Add a second `- [ ]` row to
 
 ### Phase B — Product correctness (P0, makes the product not-lying)
 - [x] (2026-05-08, af4bc1c) BUILDOUT-04: Strip VoIP bias; restore lost proxy-lead prompt instructions (`feat/buildout-04-vertical-agnostic-prompt`)
-- [ ] BUILDOUT-05: Pydantic validators on Lead.name and Lead.email (`feat/buildout-05-lead-validators`)
+- [x] BUILDOUT-05: Pydantic validators on Lead.name and Lead.email (`feat/buildout-05-lead-validators`)
+  - QA verified in browser on 2026-05-08: Scout query returned valid person names and non-placeholder emails; recipe library showed the saved Full run and scoreboard with no console errors.
 - [ ] BUILDOUT-06: Server-side `gate_passed` validation (`feat/buildout-06-server-gate`)
 
 ### Phase C — Verification (P0, automated regression)

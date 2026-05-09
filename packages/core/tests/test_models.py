@@ -1,3 +1,6 @@
+import pytest
+from pydantic import ValidationError
+
 from core.models import Lead
 from core.orchestrator import SYSTEM_PROMPT
 
@@ -22,6 +25,90 @@ def test_lead_model():
     lead = Lead(**lead_data)
     assert lead.name == "John Doe"
     assert lead.gate_passed is True
+
+
+@pytest.mark.parametrize("name", ["Sarah Chen", "Jean-Luc Picard", "Dr. Mary O'Brien"])
+def test_lead_accepts_real_names(name):
+    lead = Lead(
+        name=name,
+        title="IT Director",
+        organization="Test Org",
+        email="",
+        email_status="Missing",
+        source_url="https://test.org",
+        confidence=0.9,
+        why_target="Fits ICP",
+        icebreaker="Hello there",
+        fit_score=0.9,
+        evidence_score=0.8,
+        contact_score=0.7,
+        gate_passed=True,
+        explanation="High confidence lead",
+    )
+    assert lead.name == name
+
+
+@pytest.mark.parametrize("name", ["Director of Technology", "VP Engineering", "John", ""])
+def test_lead_rejects_role_names(name):
+    with pytest.raises(ValidationError, match=r"Lead\.name"):
+        Lead(
+            name=name,
+            title="IT Director",
+            organization="Test Org",
+            email="",
+            email_status="Missing",
+            source_url="https://test.org",
+            confidence=0.9,
+            why_target="Fits ICP",
+            icebreaker="Hello there",
+            fit_score=0.9,
+            evidence_score=0.8,
+            contact_score=0.7,
+            gate_passed=True,
+            explanation="High confidence lead",
+        )
+
+
+@pytest.mark.parametrize("email", ["a@b.co", "", "sarah.chen+work@example.org"])
+def test_lead_accepts_real_emails(email):
+    lead = Lead(
+        name="Sarah Chen",
+        title="IT Director",
+        organization="Test Org",
+        email=email,
+        email_status="Found" if email else "Missing",
+        source_url="https://test.org",
+        confidence=0.9,
+        why_target="Fits ICP",
+        icebreaker="Hello there",
+        fit_score=0.9,
+        evidence_score=0.8,
+        contact_score=0.7,
+        gate_passed=True,
+        explanation="High confidence lead",
+    )
+    assert lead.email == email
+
+
+@pytest.mark.parametrize("email", ["not_available@x.com", "info@x.com", "a@", "@b.co"])
+def test_lead_rejects_placeholder_or_invalid_emails(email):
+    with pytest.raises(ValidationError, match=r"Lead\.email"):
+        Lead(
+            name="Sarah Chen",
+            title="IT Director",
+            organization="Test Org",
+            email=email,
+            email_status="Found",
+            source_url="https://test.org",
+            confidence=0.9,
+            why_target="Fits ICP",
+            icebreaker="Hello there",
+            fit_score=0.9,
+            evidence_score=0.8,
+            contact_score=0.7,
+            gate_passed=True,
+            explanation="High confidence lead",
+        )
 
 
 def test_lead_field_descriptions_are_vertical_agnostic():
