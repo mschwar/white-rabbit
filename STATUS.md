@@ -87,17 +87,17 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 - **BUILDOUT-02: Add `sandbox_state` alembic migration.** Merged on `feat/buildout-02-sandbox-state-migration`; the `sandbox_state` table now has a real Alembic migration and the `create_all()` fallback is gone.
 - **BUILDOUT-03: Server-side session token expiry.** Verified in tests and browser QA on the protected login / Scout flow; session tokens now expire server-side on schedule.
 - **BUILDOUT-08: Delete `email_patterns.py` dead code.** Browser QA on 2026-05-08 verified the login gate, Scout results page, recipe library scoreboard, bulk workspace, and sign-out flow with clean console output; report saved at `.gstack/qa-reports/qa-report-white-rabbit-2026-05-08.md`.
-- **BUILDOUT-09: UI de-bias branch started.** Replaced the K-12 Albuquerque defaults with neutral Phoenix/New York placeholders in Scout and Batch, and expanded the lead-export description to match the CSV columns. Vitest and Next.js build both passed on the feature branch.
+- **BUILDOUT-09: UI de-bias branch completed and browser-verified.** Scout now opens with the neutral placeholder defaults, Batch uses the debiased starter rows, and the lead-export description matches the CSV columns. Vitest, Next.js build, and live browser QA all passed.
 
 ## What's in flight
 
-- Main is clean after BUILDOUT-08 merge.
-- BUILDOUT-09 feature work is on `feat/buildout-09-ui-debias` and ready for Prompt B QA + merge.
+- Main is clean after BUILDOUT-09 merge.
+- BUILDOUT-09 merged to main and pushed; the branch is done.
 
 ## Next concrete task
 
-- Start BUILDOUT-09 on a new feature branch.
-- Run Prompt B QA on `feat/buildout-09-ui-debias`, update the buildout checklist after merge, then land it on `main`.
+- Pick up the next roadmap item from `docs/04-roadmap.md` and update STATUS when it starts.
+- If BUILDOUT-09 needs follow-up polish, do it from a new branch.
 
 ## Open questions for Matt
 
