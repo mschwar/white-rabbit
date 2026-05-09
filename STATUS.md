@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-05-08 by gpt-5.4-mini
 **Branch:** feat/buildout-12-sandbox-atomicity
-**Current sprint:** BUILDOUT-12 implemented on the feature branch — sandbox cap counter now uses row-level locking and API tests pass; awaiting Prompt B browser QA + merge
+**Current sprint:** BUILDOUT-12 verified on the feature branch — sandbox cap counter now uses row-level locking, browser QA passed on Scout/recipes/batch, and the branch is ready to merge
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -91,11 +91,11 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 
 ## What's in flight
 
-- BUILDOUT-12 is implemented on `feat/buildout-12-sandbox-atomicity` and awaiting Prompt B browser QA + merge.
+- BUILDOUT-12 is browser-verified on `feat/buildout-12-sandbox-atomicity` and ready to merge.
 
 ## Next concrete task
 
-- Run Prompt B browser QA for BUILDOUT-12, then merge and move on to BUILDOUT-13 in `docs/07-buildout-plan.md`.
+- Merge BUILDOUT-12, then move on to BUILDOUT-13 in `docs/07-buildout-plan.md`.
 
 ## Open questions for Matt
 
