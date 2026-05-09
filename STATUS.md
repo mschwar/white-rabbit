@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-08 by gpt-5.4-mini
-**Branch:** feat/buildout-08-remove-email-patterns
-**Current sprint:** BUILDOUT-08 QA verified — deleting dead `email_patterns.py` code and syncing the docs
+**Branch:** main
+**Current sprint:** BUILDOUT-09 next — UI de-bias work pending after BUILDOUT-08 merged to main
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -90,12 +90,11 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 
 ## What's in flight
 
-- Active feature branch: `feat/buildout-08-remove-email-patterns`.
-- BUILDOUT-08 browser QA is done; merge/push artifacts and final main-branch sync remain.
+- Main is clean after BUILDOUT-08 merge.
 
 ## Next concrete task
 
-- Commit the doc updates, push the branch, merge to main, then start BUILDOUT-09.
+- Start BUILDOUT-09 on a new feature branch.
 
 ## Open questions for Matt
 
