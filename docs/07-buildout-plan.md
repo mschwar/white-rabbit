@@ -103,7 +103,7 @@ If a feature looks too big once you start: split it. Add a second `- [ ]` row to
 - [x] BUILDOUT-10: Tavily + OpenAI retries with backoff (`feat/buildout-10-retries`) — implemented, tested, and browser-verified on localhost:3000
 - [x] BUILDOUT-11: Feedback label enum + DB CHECK (`feat/buildout-11-feedback-enum`) — browser-verified on 2026-05-08; canonical labels accept feedback and non-canonical labels are rejected
 - [x] BUILDOUT-12: Atomic sandbox cap counter (`feat/buildout-12-sandbox-atomicity`)
-- [ ] BUILDOUT-13: Specific API error codes for UI (`feat/buildout-13-error-codes`)
+- [x] (2026-05-09, 608f0eb) BUILDOUT-13: Specific API error codes for UI (`feat/buildout-13-error-codes`)
 
 ### Phase F — Documentation & process
 - [ ] BUILDOUT-14: README setup walkthrough verified end-to-end (`feat/buildout-14-readme-verified`)
