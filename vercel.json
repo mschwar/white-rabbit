@@ -4,18 +4,5 @@
       "source": "/api/:path*",
       "destination": "https://white-rabbit-api.fly.dev/:path*"
     }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "https://white-rabbit-api.fly.dev/$1"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/"
-    }
   ]
 }
