@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-08 by gpt-5.4-mini
-**Branch:** feat/buildout-07-integration-test
-**Current sprint:** BUILDOUT-07 verified — real-API integration tests for `scout()` added, browser QA completed on the protected shell and supporting pages
+**Branch:** feat/buildout-08-remove-email-patterns
+**Current sprint:** BUILDOUT-08 QA verified — deleting dead `email_patterns.py` code and syncing the docs
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -86,15 +86,16 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 - **BUILDOUT-01 QA report captured.** Browser QA notes and screenshots are saved at `.gstack/qa-reports/buildout-01-config-preflight.md` with baseline data in `.gstack/qa-reports/baseline.json`.
 - **BUILDOUT-02: Add `sandbox_state` alembic migration.** Merged on `feat/buildout-02-sandbox-state-migration`; the `sandbox_state` table now has a real Alembic migration and the `create_all()` fallback is gone.
 - **BUILDOUT-03: Server-side session token expiry.** Verified in tests and browser QA on the protected login / Scout flow; session tokens now expire server-side on schedule.
+- **BUILDOUT-08: Delete `email_patterns.py` dead code.** Browser QA on 2026-05-08 verified the login gate, Scout results page, recipe library scoreboard, bulk workspace, and sign-out flow with clean console output; report saved at `.gstack/qa-reports/qa-report-white-rabbit-2026-05-08.md`.
 
 ## What's in flight
 
-- Active feature branch: `feat/buildout-07-integration-test`.
-- BUILDOUT-07 real-API integration tests are implemented in `packages/core/tests/test_orchestrator_integration.py`; browser QA on `localhost:3000` covered login, Scout, recipe library, and batch, and `pytest -m integration -q` skips cleanly without real API keys (`5 skipped, 26 deselected`).
+- Active feature branch: `feat/buildout-08-remove-email-patterns`.
+- BUILDOUT-08 browser QA is done; merge/push artifacts and final main-branch sync remain.
 
 ## Next concrete task
 
-- Merge `feat/buildout-07-integration-test` to `main` after the QA docs commit lands.
+- Commit the doc updates, push the branch, merge to main, then start BUILDOUT-09.
 
 ## Open questions for Matt
 

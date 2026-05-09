@@ -95,7 +95,8 @@ If a feature looks too big once you start: split it. Add a second `- [ ]` row to
   - QA verified on 2026-05-08: browser-checked the protected shell, Scout workspace, recipe library, and bulk run workspace; `pytest -m integration -q` in `packages/core` skipped cleanly without real API keys (`5 skipped, 26 deselected`).
 
 ### Phase D — Cleanup that prevents drift
-- [ ] BUILDOUT-08: Delete `email_patterns.py` dead code (`feat/buildout-08-remove-email-patterns`)
+- [x] (2026-05-08, 6f11d6f) BUILDOUT-08: Delete `email_patterns.py` dead code (`feat/buildout-08-remove-email-patterns`)
+  - QA verified in browser on 2026-05-08: logged in, opened Scout, recipe library, and bulk workspace; confirmed the Scout results page, saved recipes scoreboard, and batch history render cleanly with no console errors.
 - [ ] BUILDOUT-09: UI de-bias — placeholders, scout copy, export description (`feat/buildout-09-ui-debias`)
 
 ### Phase E — Hardening (P1)

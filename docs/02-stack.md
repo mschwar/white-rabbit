@@ -46,7 +46,7 @@
         │   ├── search.py
         │   ├── orchestrator.py
         │   ├── cost.py
-        │   └── email_patterns.py
+        │   └── (email_patterns.py deleted in BUILDOUT-08)
         ├── pyproject.toml
         └── tests/
 ```
