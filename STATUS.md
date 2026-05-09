@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-09 by Codex F01 build
+**Last updated:** 2026-05-09 by Codex F01 QA
 **Branch:** feat/f01-hide-premature-surfaces (from rebuild/validated-leads-loop)
 **Current sprint:** Agentic-first validated-leads rebuild planning; do not ship/operator-dogfood until search is rebuilt and re-benchmarked
 
@@ -14,7 +14,7 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F01 QA - Hide premature operator surfaces from primary navigation.
+**Next feature pointer:** F02 Backend API Boundary.
 
 **Control docs:**
 
@@ -29,12 +29,12 @@
 ```text
 Feature: F01 - Hide premature operator surfaces from primary navigation
 Branch: feat/f01-hide-premature-surfaces
-Status: implemented_pending_qa
+Status: merged_to_rebuild_branch
 What changed: Home now has only the lead-search link in the primary operator path. Scout no longer displays FastAPI/raw endpoint/storage copy, the recipe-library link, or the sandbox reset button; the usage panel remains visible without reset/internal implementation copy.
-Tests or QA run: `npm test` in apps/web (25 passed); `npm run build` in apps/web (passed with existing Next.js root-lockfile and middleware-deprecation warnings); browser smoke on localhost confirmed home and Scout surface hiding with zero console errors.
-Screenshots or report: `.gstack/qa-reports/screenshots/f01-home-after-login.png`; `.gstack/qa-reports/screenshots/f01-scout-empty-state.png`; formal QA report still needed in Prompt B.
+Tests or QA run: `npm test` in apps/web (25 passed); `npm run build` in apps/web (passed with existing Next.js root-lockfile and middleware-deprecation warnings); browser smoke on localhost confirmed home and Scout surfaces for `/` and `/scout`; screenshots captured; QA report `qa-report-f01-hide-premature-surfaces-2026-05-09.md` and two new screenshots created.
+Screenshots or report: `.gstack/qa-reports/qa-report-f01-hide-premature-surfaces-2026-05-09.md`; `.gstack/qa-reports/screenshots/f01-home-after-login.png`; `.gstack/qa-reports/screenshots/f01-scout-empty-state.png`.
 Northstar reflection: F01 reduces false confidence by removing recipe/batch/admin surfaces from the red-gate operator path and refocuses the UI on single lead search before output quality is proven.
-Next pointer: Prompt B QA for F01 on `feat/f01-hide-premature-surfaces`; if QA passes, merge only into `rebuild/validated-leads-loop`. F02 remains ready after F01 lands.
+Next pointer: Branch `feat/f01-hide-premature-surfaces` has been QA-passed and merged into `rebuild/validated-leads-loop`; next feature pointer is F02.
 Open questions: None blocking F01 QA.
 ```
 
@@ -101,7 +101,7 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What's done
 
-- **F01 build complete on `feat/f01-hide-premature-surfaces`; pending QA/merge.** Home primary navigation now links only to lead search, and Scout hides recipe-library links, raw endpoint/FastAPI/storage copy, and the sandbox reset button. Web tests/build passed and browser smoke screenshots were captured.
+- **F01 QA complete and merged on `rebuild/validated-leads-loop` via `feat/f01-hide-premature-surfaces`.** Home primary navigation now links only to lead search, and Scout hides recipe-library links, raw endpoint/FastAPI/storage copy, and the sandbox reset button. `npm test`, `npm run build`, and browser screenshots (with QA report `qa-report-f01-hide-premature-surfaces-2026-05-09.md`) were captured. F02 is now the next feature pointer.
 - **F00 rebuild planning docs landed on `rebuild/validated-leads-loop`.** Added `docs/00-product-northstar.md`, `docs/08-agentic-buildout-plan.md`, AGENTS rebuild branch protocol, STATUS rebuild handoff, and `.gstack/qa-reports/qa-template-agentic-buildout.md`.
 - **BUILDOUT-12: Atomic sandbox cap counter added.** `_sandbox_reserve_query_or_429` now uses `get_sandbox_state_for_update()` to lock the sandbox row during cap checks, and API tests cover the concurrent 12-request cap path.
 - Directory structure scaffolded (`docs/`, `apps/web/`, `apps/api/`, `packages/core/`).
