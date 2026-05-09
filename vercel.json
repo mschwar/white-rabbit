@@ -1,8 +1,22 @@
 {
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/api/:path*",
-      "destination": "https://white-rabbit-api.fly.dev/:path*"
+      "src": "apps/web/package.json",
+      "use": "@vercel/next"
     }
-  ]
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "https://white-rabbit-api.fly.dev/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/apps/web/$1"
+    }
+  ],
+  "env": {
+    "WR_API_BASE_URL": "https://white-rabbit-api.fly.dev"
+  }
 }
