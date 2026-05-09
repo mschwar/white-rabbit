@@ -104,7 +104,7 @@ export type ScoutResponse = {
   sandbox_usage?: SandboxUsage | null;
 };
 
-export const DEFAULT_SCOUT_QUERY = 'K-12 IT directors in Albuquerque';
+export const DEFAULT_SCOUT_QUERY = 'Healthcare IT directors in Phoenix';
 export const DEFAULT_SCOUT_LOCATION = 'New Mexico';
 
 export function buildScoutPayload(query: string, location: string): ScoutRequestPayload | null {

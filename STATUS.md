@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-08 by gpt-5.4-mini
-**Branch:** main
-**Current sprint:** BUILDOUT-09 next — UI de-bias work pending after BUILDOUT-08 merged to main
+**Branch:** feat/buildout-09-ui-debias
+**Current sprint:** BUILDOUT-09 complete — UI de-bias branch verified in browser and ready to merge
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -87,14 +87,17 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 - **BUILDOUT-02: Add `sandbox_state` alembic migration.** Merged on `feat/buildout-02-sandbox-state-migration`; the `sandbox_state` table now has a real Alembic migration and the `create_all()` fallback is gone.
 - **BUILDOUT-03: Server-side session token expiry.** Verified in tests and browser QA on the protected login / Scout flow; session tokens now expire server-side on schedule.
 - **BUILDOUT-08: Delete `email_patterns.py` dead code.** Browser QA on 2026-05-08 verified the login gate, Scout results page, recipe library scoreboard, bulk workspace, and sign-out flow with clean console output; report saved at `.gstack/qa-reports/qa-report-white-rabbit-2026-05-08.md`.
+- **BUILDOUT-09: UI de-bias branch started.** Replaced the K-12 Albuquerque defaults with neutral Phoenix/New York placeholders in Scout and Batch, and expanded the lead-export description to match the CSV columns. Vitest and Next.js build both passed on the feature branch.
 
 ## What's in flight
 
 - Main is clean after BUILDOUT-08 merge.
+- BUILDOUT-09 feature work is on `feat/buildout-09-ui-debias` and ready for Prompt B QA + merge.
 
 ## Next concrete task
 
 - Start BUILDOUT-09 on a new feature branch.
+- Run Prompt B QA on `feat/buildout-09-ui-debias`, update the buildout checklist after merge, then land it on `main`.
 
 ## Open questions for Matt
 

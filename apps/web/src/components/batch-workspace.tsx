@@ -13,8 +13,8 @@ import {
 export default function BatchWorkspace() {
   const [name, setName] = useState('');
   const [queries, setQueries] = useState<BatchQueryItem[]>([
-    { query: 'K-12 IT directors in Albuquerque', filters: { location: 'New Mexico' } },
-    { query: 'City IT managers in Santa Fe', filters: { location: 'New Mexico' } },
+    { query: 'Healthcare IT directors in Phoenix', filters: { location: 'Arizona' } },
+    { query: 'Financial services CISOs in New York', filters: { location: 'New York' } },
   ]);
   const [capQueries, setCapQueries] = useState(10);
   const [capMaxLeads, setCapMaxLeads] = useState(1000);
