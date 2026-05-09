@@ -130,6 +130,60 @@ The web app will be available at `http://localhost:3000`.
 | Web app shows "API Error" with no leads | The API is not running on `:8000` or `WR_API_BASE_URL` in `apps/web/.env.local` is wrong | Start the API (`uvicorn api.main:app --port 8000`) and check the env var |
 | Login page loops back to itself | `WR_SESSION_SECRET` differs between `apps/api/.env` and `apps/web/.env.local` | Set the same 32+ char secret in both files and restart both servers |
 
+## Deployment
+
+White Rabbit is configured for **Vercel** (frontend) + **Fly.io** (API) + **Neon** (Postgres). All three offer generous free tiers.
+
+### Platform setup
+
+1. **Neon Postgres**
+   - Create a project at https://neon.tech
+   - Copy the connection string (looks like `postgresql://user:pass@ep-...us-east-1.aws.neon.tech/dbname`)
+   - Set it as `DATABASE_URL` in both Fly.io and local `.env` files
+
+2. **Fly.io (API)**
+   - Install `flyctl`: https://fly.io/docs/hands-on/install-flyctl/
+   - `cd apps/api && flyctl launch` (use the existing `fly.toml`)
+   - Set secrets:
+     ```bash
+     flyctl secrets set OPENAI_API_KEY=sk-... TAVILY_API_KEY=tvly-... \
+       WR_SHARED_PASSWORD=... WR_SESSION_SECRET=... DATABASE_URL=postgresql://... \
+       --app white-rabbit-api
+     ```
+
+3. **Vercel (Web)**
+   - Import the repo at https://vercel.com/new
+   - Set environment variables in the Vercel dashboard:
+     - `WR_API_BASE_URL=https://white-rabbit-api.fly.dev`
+     - `WR_SHARED_PASSWORD` (same as API)
+     - `WR_SESSION_SECRET` (same as API, min 32 chars)
+   - Vercel will auto-detect the Next.js app in `apps/web`
+
+### CI/CD
+
+Pushes to `main` trigger the GitHub Actions workflow at `.github/workflows/deploy.yml`:
+1. Runs API, core, and web tests
+2. Deploys API to Fly.io
+3. Deploys web to Vercel
+
+Required repository secrets:
+- `FLY_API_TOKEN` — from `flyctl tokens create deploy`
+- `VERCEL_TOKEN`, `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` — from Vercel dashboard
+
+### Manual deploy (without CI)
+
+```bash
+# API
+cd apps/api
+flyctl deploy --remote-only
+
+# Web
+# Vercel deploys automatically on git push if linked, or:
+vercel --prod
+```
+
+---
+
 ## Testing
 
 ### Python (API + Core)
