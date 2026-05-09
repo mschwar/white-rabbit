@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-08 by gpt-5.4-mini
-**Branch:** feat/buildout-07-integration-test
-**Current sprint:** BUILDOUT-07 verified — real-API integration tests for `scout()` added, browser QA completed on the protected shell and supporting pages
+**Branch:** feat/buildout-08-remove-email-patterns
+**Current sprint:** BUILDOUT-08 in progress — deleting dead `email_patterns.py` code and syncing the docs
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -89,12 +89,12 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 
 ## What's in flight
 
-- Active feature branch: `feat/buildout-07-integration-test`.
-- BUILDOUT-07 real-API integration tests are implemented in `packages/core/tests/test_orchestrator_integration.py`; browser QA on `localhost:3000` covered login, Scout, recipe library, and batch, and `pytest -m integration -q` skips cleanly without real API keys (`5 skipped, 26 deselected`).
+- Active feature branch: `feat/buildout-08-remove-email-patterns`.
+- BUILDOUT-08 code change is in progress: `packages/core/src/core/email_patterns.py` has been deleted, repo references have been cleaned up, and tests/grep checks are passing.
 
 ## Next concrete task
 
-- Merge `feat/buildout-07-integration-test` to `main` after the QA docs commit lands.
+- Run Prompt B QA on BUILDOUT-08, update `docs/07-buildout-plan.md` and `STATUS.md`, then merge to `main` after browser/backend verification.
 
 ## Open questions for Matt
 

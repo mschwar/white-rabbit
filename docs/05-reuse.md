@@ -8,7 +8,7 @@ What to lift from `/Users/mschwar/Documents/proxy-lead` into `packages/core/`. R
 |---|---|---|---|
 | `models.py` | `packages/core/models.py` | Copy + extend | Add fields: `fit_score: float`, `evidence_score: float`, `contact_score: float`, `gate_passed: bool`, `explanation: str`. Keep the existing `confidence` field for now; mark deprecated. |
 | `tavily_validation.py` | `packages/core/search.py` | Lift primitive only | Extract just the Tavily call wrapper (`TAVILY_SEARCH_DEPTH`, the search invocation, error handling). Drop the validation-suite dataclasses (`TavilyValidationTarget`, `TavilyValidationResult`) — those are demo-specific. |
-| `email_patterns.py` | `packages/core/email_patterns.py` | Copy clean | Lifts cleanly. Pure functions over the Lead model. |
+| `email_patterns.py` | `packages/core/email_patterns.py` | Deferred; deleted in BUILDOUT-08 | Removed as dead code in BUILDOUT-08; see audit D5-04 for context. |
 | `history_store.py` | `packages/core/cost.py` | Adapt heavily | Lift the pricing constants and `estimate_search_cost` function. **Drop the SQLite store entirely** — Postgres replaces it (see `docs/02-stack.md`). **UPDATE THE PRICES** — see "Pricing currency" below. |
 | `agent.py` | `packages/core/orchestrator.py` | Reference only, rewrite | The current implementation is LangChain-coupled (`langchain_openai`, `langchain_community`). Rewrite using `openai` SDK and `tavily-python` direct. Preserve the prompt structure and the fallback / error-handling shape. |
 | `bulk.py` | `packages/core/batch.py` | Reference + adapt | The dataclass shape (`BulkSearchResult`, sequential processing) is the model for Full runs. Rewrite without LangChain dependencies. |
