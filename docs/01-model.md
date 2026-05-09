@@ -145,8 +145,4 @@ Why this and not API cost: in a boutique fulfillment model, operator time domina
 ## Anti-patterns to avoid
 
 - ❌ A single "confidence score" or "priority score" that hides the three components.
-- ❌ A hard "max 100 leads" cap shown to the user (it'll feel arbitrary; cap on cost+time instead).
-- ❌ Per-user authentication in Sprint 1 (over-engineering; shared password is locked per ADR-003).
-- ❌ Lifting `app.py` or `demo_data.py` from `/proxy-lead` (Streamlit-coupled, demo-coupled).
-- ❌ Adding any external customer surface before the kill/keep gate.
 - ❌ Storing API keys in the frontend.
