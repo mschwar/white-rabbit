@@ -1,11 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { resolveScoutApiUrl, type QueryGuardrailResult, type ScoutRequestPayload } from '@/lib/scout';
+import { buildInternalApiRequestInit, getApiBaseUrl } from '@/lib/internal-api';
 
 export const runtime = 'nodejs';
-
-function getApiBaseUrl(): string {
-  return process.env.WR_API_BASE_URL ?? 'http://localhost:8000';
-}
 
 function parseJsonBody(body: unknown): ScoutRequestPayload {
   if (!body || typeof body !== 'object') {
@@ -68,13 +65,13 @@ export async function POST(request: NextRequest) {
 
   let upstreamResponse: Response;
   try {
-    upstreamResponse = await fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    });
+    upstreamResponse = await fetch(
+      apiUrl,
+      buildInternalApiRequestInit('POST', {
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      }),
+    );
   } catch (error) {
     const message = error instanceof Error ? error.message : 'Unable to reach Scout API.';
     return NextResponse.json({ error: `Unable to reach Scout API: ${message}` }, { status: 502 });

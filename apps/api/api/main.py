@@ -2,11 +2,12 @@ from __future__ import annotations
 from pathlib import Path
 from datetime import datetime
 import sys
-from typing import Any, Optional
+import secrets
+from typing import Annotated, Any, Optional
 from uuid import UUID, uuid4
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException, Request
 from pydantic import BaseModel
 import os
 import logging
@@ -54,6 +55,9 @@ from api.db import (
 
 load_dotenv()
 
+INTERNAL_API_TOKEN_HEADER = "x-white-rabbit-internal-token"
+INTERNAL_API_TOKEN_ENV = "WR_API_INTERNAL_TOKEN"
+
 # Initialize database on startup (must happen before any endpoint uses it)
 init_db()
 
@@ -71,6 +75,7 @@ def _preflight_check():
         "TAVILY_API_KEY",
         "WR_SHARED_PASSWORD",
         "WR_SESSION_SECRET",
+        INTERNAL_API_TOKEN_ENV,
     ]
     if _is_production:
         required.append("DATABASE_URL")
@@ -194,6 +199,22 @@ SANDBOX_FULL_MAX_ROWS_PER_QUERY = 100
 SANDBOX_BATCH_MAX_ROWS_PER_QUERY = 100
 
 
+def require_internal_api_access(request: Request) -> None:
+    expected_token = os.environ.get(INTERNAL_API_TOKEN_ENV)
+    if not expected_token:
+        raise HTTPException(
+            status_code=500,
+            detail=f"Internal API token is not configured ({INTERNAL_API_TOKEN_ENV}).",
+        )
+
+    provided_token = request.headers.get(INTERNAL_API_TOKEN_HEADER)
+    if not provided_token or not secrets.compare_digest(provided_token, expected_token):
+        raise HTTPException(status_code=401, detail="Missing or invalid internal API token.")
+
+
+ProtectedApiAccess = Annotated[None, Depends(require_internal_api_access)]
+
+
 def _sandbox_usage_out(session) -> SandboxUsageOut:
     state = get_sandbox_state(session)
     return SandboxUsageOut(
@@ -247,7 +268,7 @@ async def health_check():
 
 
 @app.post("/scout", response_model=ScoutResponse)
-async def run_scout(request: ScoutRequest):
+async def run_scout(request: ScoutRequest, _: ProtectedApiAccess):
     guardrail = _query_guardrail_or_422(request.query)
     with get_db_session() as session:
         sandbox_usage = _sandbox_reserve_query_or_429(session, SANDBOX_SCOUT_MAX_ROWS_PER_QUERY)
@@ -300,7 +321,7 @@ def _internal_error_response(exc: Exception) -> dict:
 
 
 @app.post("/full", response_model=FullResponse)
-async def run_full(request: FullRequest):
+async def run_full(request: FullRequest, _: ProtectedApiAccess):
     """Run a Full query: produces a stored recipe and recipe_run."""
     guardrail = _query_guardrail_or_422(request.query)
     with get_db_session() as session:
@@ -356,7 +377,7 @@ async def run_full(request: FullRequest):
 
 
 @app.get("/recipes", response_model=list[RecipeOut])
-async def list_recipes():
+async def list_recipes(_: ProtectedApiAccess):
     with get_db_session() as session:
         recipes = get_recipes(session)
         return [
@@ -372,7 +393,7 @@ async def list_recipes():
 
 
 @app.get("/recipes/{recipe_id}/runs", response_model=list[RecipeRunOut])
-async def list_recipe_runs(recipe_id: UUID):
+async def list_recipe_runs(recipe_id: UUID, _: ProtectedApiAccess):
     with get_db_session() as session:
         runs = get_recipe_runs(session, recipe_id=recipe_id)
         return [
@@ -390,7 +411,7 @@ async def list_recipe_runs(recipe_id: UUID):
 
 
 @app.get("/recipes/{recipe_id}/scoreboard", response_model=RecipeScoreboardOut)
-async def recipe_scoreboard(recipe_id: UUID):
+async def recipe_scoreboard(recipe_id: UUID, _: ProtectedApiAccess):
     with get_db_session() as session:
         scoreboard = get_recipe_scoreboard(session, recipe_id)
         if not scoreboard:
@@ -399,27 +420,27 @@ async def recipe_scoreboard(recipe_id: UUID):
 
 
 @app.get("/sandbox", response_model=SandboxUsageOut)
-async def get_sandbox_usage():
+async def get_sandbox_usage(_: ProtectedApiAccess):
     with get_db_session() as session:
         return _sandbox_usage_out(session)
 
 
 @app.post("/sandbox/reset", response_model=SandboxResetOut)
-async def reset_sandbox():
+async def reset_sandbox(_: ProtectedApiAccess):
     with get_db_session() as session:
         state = reset_sandbox_state(session)
         return SandboxResetOut(sandbox_usage=_sandbox_usage_out(session))
 
 
 @app.post("/leads/{lead_id}/feedback")
-async def submit_feedback(lead_id: UUID, request: FeedbackRequest):
+async def submit_feedback(lead_id: UUID, request: FeedbackRequest, _: ProtectedApiAccess):
     with get_db_session() as session:
         add_lead_feedback(session, lead_id, request.label)
         return {"status": "ok"}
 
 
 @app.post("/runs/{run_id}/close")
-async def close_run(run_id: UUID, operator_minutes: float | None = None):
+async def close_run(run_id: UUID, _: ProtectedApiAccess, operator_minutes: float | None = None):
     with get_db_session() as session:
         run = close_recipe_run(session, run_id, operator_minutes)
         if not run:
@@ -473,7 +494,7 @@ class BatchJobOut(BaseModel):
 
 
 @app.post("/batch", response_model=BatchJobOut)
-async def run_batch(request: BatchRequest):
+async def run_batch(request: BatchRequest, _: ProtectedApiAccess):
     """Run a batch of Full queries sequentially with caps."""
     from datetime import datetime
 
@@ -707,7 +728,7 @@ async def run_batch(request: BatchRequest):
 
 
 @app.get("/batch", response_model=list[BatchJobOut])
-async def list_batch_jobs_endpoint():
+async def list_batch_jobs_endpoint(_: ProtectedApiAccess):
     with get_db_session() as session:
         jobs = list_batch_jobs(session)
         result: list[BatchJobOut] = []
@@ -746,7 +767,7 @@ async def list_batch_jobs_endpoint():
 
 
 @app.get("/batch/{job_id}", response_model=BatchJobOut)
-async def get_batch_job_endpoint(job_id: UUID):
+async def get_batch_job_endpoint(job_id: UUID, _: ProtectedApiAccess):
     with get_db_session() as session:
         job = get_batch_job(session, job_id)
         if not job:

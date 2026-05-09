@@ -14,7 +14,7 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F02 Backend API Boundary.
+**Next feature pointer:** F02 Backend API Boundary (implemented_pending_qa).
 
 **Control docs:**
 
@@ -28,15 +28,15 @@
 **Latest handoff:**
 
 ```text
-Feature: F01 - Hide premature operator surfaces from primary navigation
-Branch: feat/f01-hide-premature-surfaces
-Status: merged_to_rebuild_branch
-What changed: Home now has only the lead-search link in the primary operator path. Scout no longer displays FastAPI/raw endpoint/storage copy, the recipe-library link, or the sandbox reset button; the usage panel remains visible without reset/internal implementation copy.
-Tests or QA run: `npm test` in apps/web (25 passed); `npm run build` in apps/web (passed with existing Next.js root-lockfile and middleware-deprecation warnings); browser smoke on localhost confirmed home and Scout surfaces for `/` and `/scout`; screenshots captured; QA report `qa-report-f01-hide-premature-surfaces-2026-05-09.md` and two new screenshots created.
-Screenshots or report: `.gstack/qa-reports/qa-report-f01-hide-premature-surfaces-2026-05-09.md`; `.gstack/qa-reports/screenshots/f01-home-after-login.png`; `.gstack/qa-reports/screenshots/f01-scout-empty-state.png`.
-Northstar reflection: F01 reduces false confidence by removing recipe/batch/admin surfaces from the red-gate operator path and refocuses the UI on single lead search before output quality is proven.
-Next pointer: Branch `feat/f01-hide-premature-surfaces` has been QA-passed and merged into `rebuild/validated-leads-loop`; next feature pointer is F02.
-Open questions: None blocking F01 QA.
+Feature: F02 - Backend API Boundary
+Branch: feat/f02-backend-api-boundary
+Status: implemented_pending_qa
+What changed: Added a shared internal API token boundary (`WR_API_INTERNAL_TOKEN` / `x-white-rabbit-internal-token`) end to end. Every Next.js API proxy now forwards the token, FastAPI protects scout/full/batch/reset and related read endpoints with the dependency, and direct unauthenticated API calls now return 401 instead of bypassing the app boundary.
+Tests or QA run: `docker compose up -d postgres`; `uv run alembic upgrade head` in `apps/api`; `uv run pytest tests/test_api.py -q` in `apps/api` (33 passed); `npm test` in `apps/web` (25 passed); `npm run build` in `apps/web` (passed with existing Next.js root-lockfile and middleware-deprecation warnings).
+Screenshots or report: N/A. Non-UI feature; QA prompt should capture browser proof for Scout plus terminal/API rejection output.
+Northstar reflection: F02 closes the gap between the password-gated UI and the backend, so the rebuild cannot be called directly around the shared app boundary.
+Next pointer: Branch `feat/f02-backend-api-boundary` is pushed and waiting for Prompt B QA. After QA/merge, the next build feature is F03.
+Open questions: None blocking F02 QA.
 ```
 
 ---
@@ -176,11 +176,18 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What's in flight
 
-- Product is in audit-red state. F01 is merged, phase gates are in place, and F02 is the next ready feature.
+- Product is in audit-red state. F01 is merged, phase gates are in place, and F02 is implemented and awaiting QA on `feat/f02-backend-api-boundary`.
 
 ## Next concrete task
 
-- Run Prompt A from `docs/08-agentic-buildout-plan.md` for **F02 - Backend API Boundary** on branch `feat/f02-backend-api-boundary`, based from `rebuild/validated-leads-loop`.
+- Run Prompt B for **F02 - Backend API Boundary** on branch `feat/f02-backend-api-boundary`:
+  - checkout `feat/f02-backend-api-boundary` and pull latest
+  - run `uv run pytest tests/test_api.py -q` in `apps/api`
+  - run `npm test` and `npm run build` in `apps/web`
+  - start the local app with `WR_API_INTERNAL_TOKEN`, `WR_SHARED_PASSWORD`, `WR_SESSION_SECRET`, and `WR_API_BASE_URL`
+  - browser-verify `/scout` still works through the proxy
+  - direct-call `POST /scout`, `POST /full`, `POST /batch`, and `POST /sandbox/reset` without the token and capture the 401/403 rejection output in the QA report
+  - update docs, commit QA artifacts, merge only into `rebuild/validated-leads-loop`, and push that branch
 
 ## Open questions for Matt
 
@@ -217,6 +224,7 @@ Real known issues (post-audit):
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-09 | f02-build (Codex) | Implemented the backend API boundary on `feat/f02-backend-api-boundary`: Next.js API proxies now forward `WR_API_INTERNAL_TOKEN`, FastAPI requires the internal token on scout/full/batch/reset and related read endpoints, and the API/web test suites plus Next.js build pass. Branch is pushed and waiting for Prompt B QA. |
 | 2026-05-09 | f01-build (Codex) | Implemented F01 on `feat/f01-hide-premature-surfaces`: home now links only to lead search; Scout hides premature recipe/batch/admin copy, raw endpoint/FastAPI/storage text, recipe-library links, and sandbox reset. Verified with web tests/build and localhost browser smoke screenshots; ready for Prompt B QA/merge to `rebuild/validated-leads-loop`. |
 | 2026-05-09 | buildout-architect (Codex) | Added a gated W0-W6 implementation plan in `docs/09-rebuild-phase-gates.md` so downstream waves require evidence-backed gate review before unlocking. Used a separate worktree/branch to avoid touching in-flight F01 UI edits. |
 | 2026-05-09 | buildout-architect (Codex) | Created `rebuild/validated-leads-loop` as the rebuild integration branch; added the product northstar, agentic buildout plan, rebuild branch protocol, QA template, and STATUS handoff. Next pointer: F01 hide premature operator surfaces. |
