@@ -1,10 +1,42 @@
 # STATUS
 
-**Last updated:** 2026-05-09 by Codex zero-trust audit
-**Branch:** main
-**Current sprint:** Zero-trust product audit complete; do not ship/operator-dogfood until search is rebuilt and re-benchmarked
+**Last updated:** 2026-05-09 by Codex buildout architect
+**Branch:** rebuild/validated-leads-loop
+**Current sprint:** Agentic-first validated-leads rebuild planning; do not ship/operator-dogfood until search is rebuilt and re-benchmarked
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
+
+---
+
+## Current rebuild status (2026-05-09)
+
+**Integration branch:** `rebuild/validated-leads-loop`
+
+**Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
+
+**Next feature pointer:** F01 - Hide premature operator surfaces from primary navigation.
+
+**Control docs:**
+
+- `docs/00-product-northstar.md` is the anti-drift product source of truth for the rebuild.
+- `docs/08-agentic-buildout-plan.md` is the agentic missing-feature list and two-prompt loop control document.
+- `.gstack/qa-reports/qa-template-agentic-buildout.md` is the QA report template for rebuild features.
+
+**Main is intentionally untouched:** the validated-leads rebuild runs on `rebuild/validated-leads-loop` so product-risky reconstruction can proceed without implying `main` is shippable or merging unvalidated feature work into the production line.
+
+**Latest handoff:**
+
+```text
+Feature: F00 - Northstar + buildout docs + branch protocol
+Branch: rebuild/validated-leads-loop (bootstrap exception; future features use feat/fxx branches)
+Status: merged_to_rebuild_branch
+What changed: Created the northstar, buildout plan, branch protocol, and QA template.
+Tests or QA run: `git diff --check`; required-marker `rg` checks for branch, F01, reflection, and QA template markers.
+Screenshots or report: Not required for F00 because it is non-UI planning work.
+Northstar reflection: Planning directly supports natural-language query -> validated leads -> export by preventing drift.
+Next pointer: F01 - Hide premature operator surfaces from primary navigation.
+Open questions: None blocking F01-F03.
+```
 
 ---
 
@@ -69,6 +101,7 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What's done
 
+- **F00 rebuild planning docs landed on `rebuild/validated-leads-loop`.** Added `docs/00-product-northstar.md`, `docs/08-agentic-buildout-plan.md`, AGENTS rebuild branch protocol, STATUS rebuild handoff, and `.gstack/qa-reports/qa-template-agentic-buildout.md`.
 - **BUILDOUT-12: Atomic sandbox cap counter added.** `_sandbox_reserve_query_or_429` now uses `get_sandbox_state_for_update()` to lock the sandbox row during cap checks, and API tests cover the concurrent 12-request cap path.
 - Directory structure scaffolded (`docs/`, `apps/web/`, `apps/api/`, `packages/core/`).
 - Bootstrap documentation written:
@@ -140,14 +173,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What's in flight
 
-- Product is in audit-red state. No new feature work should start until the search rebuild and benchmark harness are scoped.
+- Product is in audit-red state. The rebuild has a persistent integration branch and control docs; next work should use the two-prompt loop in `docs/08-agentic-buildout-plan.md`.
 
 ## Next concrete task
 
-- Hide/disable recipe library, Friday review export, and bulk workspace from the operator-facing UI.
-- Add backend auth or ingress restriction so Fly API endpoints cannot be called outside the shared-password app boundary.
-- Build the Arizona K-12 VoIP golden benchmark harness and make it the first ship gate for Scout search quality.
-- Rebuild field-level validation so every returned name/title/org/email/phone has explicit source support or an explicit failed/missing status.
+- Run Prompt A from `docs/08-agentic-buildout-plan.md` for **F01 - Hide premature operator surfaces from primary navigation** on branch `feat/f01-hide-premature-surfaces`, based from `rebuild/validated-leads-loop`.
 
 ## Open questions for Matt
 
@@ -184,6 +214,7 @@ Real known issues (post-audit):
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-09 | buildout-architect (Codex) | Created `rebuild/validated-leads-loop` as the rebuild integration branch; added the product northstar, agentic buildout plan, rebuild branch protocol, QA template, and STATUS handoff. Next pointer: F01 hide premature operator surfaces. |
 | 2026-05-09 | zero-trust-product-audit (Codex) | Audited White Rabbit against Thomas/Lee's core lead-quality loop using Gmail benchmark attachments, Monroe transcripts, live Fly API search runs, source URL validation, Vercel/GitHub/code inspection, and Browser screenshots. Wrote `audits/zero-trust-product-audit-2026-05-09.md` plus raw outputs. Verdict: do not ship; actual search scored 1/10 with 0/18 sampled leads CRM-usable and the Arizona K-12 VoIP benchmark failing. |
 | 2026-05-09 | prod-hotfix (GPT-5.4) | Reproduced the production auth crash after password submit, traced it to 307 POST redirect semantics on `/api/login`, changed login/logout to `303`, added a login route regression test, and fixed GitHub Actions by provisioning Postgres + Alembic before API tests so the DB-backed sandbox tests pass in CI. |
 | 2026-05-09 | deploy-fix (GPT-5.4) | Fixed production auth routing by removing the web app's catch-all `/api/*` rewrite, repaired the Vercel project (`rootDirectory=apps/web`, framework set, runtime env vars added), forced a successful prod deploy, verified `/api/login` now hits Next instead of Fly, and documented that the remaining production issue is Fly trial auto-stop. |

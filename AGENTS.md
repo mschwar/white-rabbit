@@ -42,6 +42,18 @@ The customer offer is scoped concierge briefings fulfilled by Matt. **There is n
 9. **Three visible scores.** Fit / Evidence / Contact. Composite is a gate, not a rank.
 10. **Track operator minutes per run.** This is the headline KPI — `minutes / usable lead`. API cost is secondary.
 
+## Rebuild branch protocol
+
+For the validated-leads rebuild, always work from `rebuild/validated-leads-loop`.
+
+- Never merge feature work to `main`. Never open a PR targeting `main`.
+- Before rebuild work, read `docs/00-product-northstar.md` and `docs/08-agentic-buildout-plan.md`.
+- Pick the next `ready` feature from `docs/08-agentic-buildout-plan.md`.
+- All feature branches branch from `rebuild/validated-leads-loop` and all PRs target `rebuild/validated-leads-loop`.
+- Update `docs/08-agentic-buildout-plan.md` and `STATUS.md` before ending.
+- If a feature touches UI, browser QA and screenshots are required.
+- If a feature does not touch UI, explicit non-UI verification is required.
+
 ## Anti-drift
 
 - If `docs/03-decisions.md` and your instinct disagree, the doc wins. Surface the disagreement; don't act on it.
