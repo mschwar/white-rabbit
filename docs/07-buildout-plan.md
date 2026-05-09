@@ -107,7 +107,7 @@ If a feature looks too big once you start: split it. Add a second `- [ ]` row to
 
 ### Phase F — Documentation & process
 - [x] (2026-05-09, 4377e8d) BUILDOUT-14: README setup walkthrough verified end-to-end (`feat/buildout-14-readme-verified`)
-- [ ] BUILDOUT-15: QA rubric document + multi-vertical gate (`feat/buildout-15-qa-rubric`)
+- [x] (2026-05-09, fa45ebe) BUILDOUT-15: QA rubric document + multi-vertical gate (`feat/buildout-15-qa-rubric`)
 
 ### Phase G — Deploy
 - [ ] BUILDOUT-16: Choose hosting; configure environments and secrets (`feat/buildout-16-deploy-config`)
