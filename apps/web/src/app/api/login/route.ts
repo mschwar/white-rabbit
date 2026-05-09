@@ -26,11 +26,11 @@ export async function POST(request: NextRequest) {
     const redirectUrl = new URL('/login', request.url);
     redirectUrl.searchParams.set('error', '1');
     redirectUrl.searchParams.set('next', nextPath);
-    return NextResponse.redirect(redirectUrl);
+    return NextResponse.redirect(redirectUrl, { status: 303 });
   }
 
   const sessionSecret = requireEnv('WR_SESSION_SECRET');
-  const response = NextResponse.redirect(new URL(nextPath, request.url));
+  const response = NextResponse.redirect(new URL(nextPath, request.url), { status: 303 });
   response.cookies.set({
     name: SESSION_COOKIE_NAME,
     value: await createSessionToken(sessionSecret),

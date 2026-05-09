@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-05-09 by GPT-5.4
 **Branch:** main
-**Current sprint:** BUILDOUT-17 complete; final production QA re-verified
+**Current sprint:** BUILDOUT-17 complete; production auth redirect hotfix and CI DB fix verified
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -116,6 +116,7 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 - **BUILDOUT-16 QA verified and merged.** Health score 95/100. All 24 API tests and 23 web tests pass. Next.js build succeeds. Deploy config files validated. Only cosmetic issue: favicon 404s (deferred). Ready for BUILDOUT-17.
 - **BUILDOUT-17: Live deploy verified in production.** Fly API `https://white-rabbit-api.fly.dev/health` returns `200 {"status":"ok"}` after the OpenAI secret fix. Vercel project config was corrected (`rootDirectory=apps/web`, framework `nextjs`, runtime env vars added) and a fresh production deploy now serves the local Next auth routes. Verified with authenticated `vercel curl`: anonymous `/scout` redirects to `/login?next=%2Fscout`, wrong-password `POST /api/login` redirects to `/login?error=1`, and correct-password `POST /api/login` sets `wr_session` and redirects to `/`. Remaining platform risk: Fly trial machines auto-stop after ~5 minutes unless billing is enabled.
 - **BUILDOUT-17: Final production browser QA completed.** Verified the live Vercel deployment at commit `f3b6a45`, confirmed Fly health and deploy status, exercised login / Scout / Full / export / feedback / closeout / logout in the browser, and saved evidence at `.gstack/qa-reports/buildout-17-production-verification.md` plus screenshots under `.gstack/qa-reports/screenshots/`.
+- **BUILDOUT-17 follow-up: fixed the POST-login redirect crash and unblocked CI.** Root cause of the production auth bug was `NextResponse.redirect()` returning a 307 from `POST /api/login`, which caused the browser to replay the POST against `/` and hit `405` until a manual reload. The login/logout routes now use `303` redirects, a regression test covers the login route, and `.github/workflows/deploy.yml` now starts Postgres + runs Alembic before API tests so the sandbox migration tests pass in GitHub Actions.
 
 ## What's in flight
 
@@ -161,6 +162,7 @@ Real known issues (post-audit):
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-09 | prod-hotfix (GPT-5.4) | Reproduced the production auth crash after password submit, traced it to 307 POST redirect semantics on `/api/login`, changed login/logout to `303`, added a login route regression test, and fixed GitHub Actions by provisioning Postgres + Alembic before API tests so the DB-backed sandbox tests pass in CI. |
 | 2026-05-09 | deploy-fix (GPT-5.4) | Fixed production auth routing by removing the web app's catch-all `/api/*` rewrite, repaired the Vercel project (`rootDirectory=apps/web`, framework set, runtime env vars added), forced a successful prod deploy, verified `/api/login` now hits Next instead of Fly, and documented that the remaining production issue is Fly trial auto-stop. |
 | 2026-05-05 | bootstrap (Opus 4.7) | Repo bootstrapped. All 10 priority docs written. git init + first commit. Next: Sprint 1 scaffold. |
 | 2026-05-05 | api-scaffold (Opus 4.7) | Scaffolded apps/api and packages/core. Lifted and adapted code from proxy-lead. Passed health check tests. |

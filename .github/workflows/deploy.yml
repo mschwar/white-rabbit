@@ -1,5 +1,8 @@
 name: Deploy to Production
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 on:
   push:
     branches: [main]
@@ -8,6 +11,22 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: white_rabbit
+          POSTGRES_USER: white_rabbit
+          POSTGRES_PASSWORD: white_rabbit
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U white_rabbit -d white_rabbit"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://white_rabbit:white_rabbit@localhost:5432/white_rabbit
     steps:
       - uses: actions/checkout@v4
 
@@ -23,6 +42,7 @@ jobs:
         run: |
           cd apps/api
           uv sync --dev
+          uv run alembic upgrade head
           uv run pytest tests -q
 
       - name: Run core tests

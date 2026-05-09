@@ -4,7 +4,7 @@ import { LOGIN_PATH, SESSION_COOKIE_NAME } from '@/lib/auth';
 export const runtime = 'nodejs';
 
 export async function POST(request: NextRequest) {
-  const response = NextResponse.redirect(new URL(LOGIN_PATH, request.url));
+  const response = NextResponse.redirect(new URL(LOGIN_PATH, request.url), { status: 303 });
   response.cookies.set({
     name: SESSION_COOKIE_NAME,
     value: '',
