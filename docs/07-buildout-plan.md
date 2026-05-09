@@ -101,7 +101,7 @@ If a feature looks too big once you start: split it. Add a second `- [ ]` row to
 
 ### Phase E — Hardening (P1)
 - [x] BUILDOUT-10: Tavily + OpenAI retries with backoff (`feat/buildout-10-retries`) — implemented, tested, and browser-verified on localhost:3000
-- [ ] BUILDOUT-11: Feedback label enum + DB CHECK (`feat/buildout-11-feedback-enum`)
+- [x] BUILDOUT-11: Feedback label enum + DB CHECK (`feat/buildout-11-feedback-enum`) — browser-verified on 2026-05-08; canonical labels accept feedback and non-canonical labels are rejected
 - [ ] BUILDOUT-12: Atomic sandbox cap counter (`feat/buildout-12-sandbox-atomicity`)
 - [ ] BUILDOUT-13: Specific API error codes for UI (`feat/buildout-13-error-codes`)
 
@@ -562,6 +562,8 @@ Backend-only. Run scout normally to confirm no regression. Screenshot a successf
 **Commit message:** `BUILDOUT-11: enforce feedback label enum at API and DB layers`
 
 **Estimated effort:** 30min human / 10min AI.
+
+**Status:** done. Verified in tests and live browser QA on 2026-05-08.
 
 ---
 

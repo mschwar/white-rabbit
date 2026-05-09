@@ -25,6 +25,8 @@ from core.models import Lead
 from core.orchestrator import scout, OrchestratorError, DEFAULT_MODEL
 from core.query_guardrails import QueryGuardrailResult, evaluate_query_guardrails
 
+from api.models import FeedbackLabel
+
 from api.db import (
     init_db,
     get_db_session,
@@ -133,7 +135,7 @@ class FullResponse(BaseModel):
 
 
 class FeedbackRequest(BaseModel):
-    label: str  # usable, wrong_persona, bad_source, bad_contact, duplicate
+    label: FeedbackLabel
 
 
 class RecipeOut(BaseModel):

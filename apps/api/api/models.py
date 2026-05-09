@@ -1,10 +1,12 @@
 import os
 import uuid
 from datetime import datetime
+from enum import Enum
 from typing import Any
 
 from sqlalchemy import (
     Boolean,
+    CheckConstraint,
     Column,
     DateTime,
     Float,
@@ -19,6 +21,14 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 Base = declarative_base()
+
+
+class FeedbackLabel(str, Enum):
+    USABLE = "usable"
+    WRONG_PERSONA = "wrong_persona"
+    BAD_SOURCE = "bad_source"
+    BAD_CONTACT = "bad_contact"
+    DUPLICATE = "duplicate"
 
 
 class Recipe(Base):
@@ -62,6 +72,13 @@ class Lead(Base):
 
 class LeadFeedback(Base):
     __tablename__ = "lead_feedback"
+
+    __table_args__ = (
+        CheckConstraint(
+            "label IN ('usable', 'wrong_persona', 'bad_source', 'bad_contact', 'duplicate')",
+            name="ck_lead_feedback_label",
+        ),
+    )
 
     lead_id = Column(UUID(as_uuid=True), ForeignKey("lead.id", ondelete="CASCADE"), primary_key=True)
     label = Column(String(20), nullable=False)
