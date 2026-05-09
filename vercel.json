@@ -9,11 +9,11 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "https://white-rabbit-api.fly.dev/$1"
+      "dest": "https://white-rabbit-api.fly.dev/api/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/apps/web/$1"
+      "dest": "apps/web/$1"
     }
   ],
   "env": {
