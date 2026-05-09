@@ -100,7 +100,7 @@ If a feature looks too big once you start: split it. Add a second `- [ ]` row to
 - [x] (2026-05-08, 6907767) BUILDOUT-09: UI de-bias — placeholders, scout copy, export description (`feat/buildout-09-ui-debias`)
 
 ### Phase E — Hardening (P1)
-- [ ] BUILDOUT-10: Tavily + OpenAI retries with backoff (`feat/buildout-10-retries`)
+- [x] BUILDOUT-10: Tavily + OpenAI retries with backoff (`feat/buildout-10-retries`) — implemented, tested, and browser-verified on localhost:3000
 - [ ] BUILDOUT-11: Feedback label enum + DB CHECK (`feat/buildout-11-feedback-enum`)
 - [ ] BUILDOUT-12: Atomic sandbox cap counter (`feat/buildout-12-sandbox-atomicity`)
 - [ ] BUILDOUT-13: Specific API error codes for UI (`feat/buildout-13-error-codes`)
