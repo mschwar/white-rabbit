@@ -60,8 +60,9 @@ jobs:
         run: |
           cd apps/web
           # Work around npm optional-dependency omissions on GitHub runners
-          # that can skip Rolldown's native Linux binding and break Vitest startup.
+          # and lockfiles generated on macOS that omit Rolldown's Linux binding.
           npm install
+          npm install --no-save @rolldown/binding-linux-x64-gnu@1.0.0-rc.18
           npm test
           npm run build
 
