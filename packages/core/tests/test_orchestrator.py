@@ -69,6 +69,48 @@ def test_scout_uses_injected_dependencies_and_returns_metrics():
     assert metrics.estimated_cost_usd > 0
 
 
+def test_scout_overrides_llm_gate_passed_from_subscores():
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None):
+        return []
+
+    lead = Lead(
+        name="Jordan Lee",
+        title="VP Operations",
+        organization="Example Corp",
+        email="jordan.lee@example.com",
+        email_status="Found",
+        source_url="https://example.com/jordan",
+        confidence=0.5,
+        why_target="Relevant operations leader",
+        icebreaker="I saw your team scaling operations.",
+        fit_score=0.2,
+        evidence_score=0.1,
+        contact_score=0.3,
+        gate_passed=True,
+        explanation="The mock sets gate_passed incorrectly.",
+    )
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            return SimpleNamespace(
+                choices=[SimpleNamespace(message=SimpleNamespace(parsed=LeadList(leads=[lead])))],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+
+    leads, _ = asyncio.run(
+        scout(
+            "operations leaders in Austin",
+            openai_client=fake_client,
+            tavily_key="fake-tavily",
+            search_fn=fake_search,
+        )
+    )
+
+    assert leads[0].gate_passed is False
+
+
 def test_scout_threads_filters_through_search_and_prompt():
     seen = {}
 
@@ -117,6 +159,8 @@ def test_system_prompt_is_vertical_agnostic_and_restores_lost_instructions():
     assert "Never use placeholders like N/A, Unknown" in SYSTEM_PROMPT
     assert "Do not inject VoIP" in SYSTEM_PROMPT
     assert "telecom, networking, or product-upgrade language" in SYSTEM_PROMPT
+    assert "GATE LOGIC" not in SYSTEM_PROMPT
+    assert "server will compute" in SYSTEM_PROMPT
     assert "VoIP prospect" not in SYSTEM_PROMPT
     assert "VoIP upgrade" not in SYSTEM_PROMPT
     assert "Telecom" not in SYSTEM_PROMPT

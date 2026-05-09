@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-08 by gpt-5.4-mini
-**Branch:** feat/buildout-05-lead-validators
-**Current sprint:** BUILDOUT-05 verified — Lead validators on the feature branch
+**Branch:** feat/buildout-06-server-gate
+**Current sprint:** BUILDOUT-06 in progress — server-side gate validation on the feature branch
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -89,12 +89,12 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 
 ## What's in flight
 
-- Active feature branch: `feat/buildout-05-lead-validators`.
-- BUILDOUT-05 validators are implemented, tests are passing locally, and browser QA verified the Scout + recipe-library flows with valid lead names/emails.
+- Active feature branch: `feat/buildout-06-server-gate`.
+- BUILDOUT-06 server-side gate validation is implemented; unit tests pass in `packages/core`, and API tests still pass after the change.
 
 ## Next concrete task
 
-- Run BUILDOUT-06 next: server-side `gate_passed` validation, then merge this branch after the remaining checks are green.
+- Run browser QA for BUILDOUT-06, then update the buildout checklist and merge once the QA evidence is captured.
 
 ## Open questions for Matt
 

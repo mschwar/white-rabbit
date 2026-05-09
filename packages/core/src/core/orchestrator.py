@@ -11,6 +11,7 @@ from .search import fetch_search_results
 
 DEFAULT_MODEL = "gpt-4o-mini"
 DEFAULT_TAVILY_RESULTS = 10
+GATE_THRESHOLD = 0.6
 
 
 class OrchestratorError(Exception):
@@ -26,8 +27,9 @@ SCORING GUIDELINES:
 - evidence_score: 0.0 to 1.0. How current and direct is the source evidence?
 - contact_score: 0.0 to 1.0. How usable is the email/phone/title?
 
-GATE LOGIC:
-Set gate_passed = True if fit, evidence, and contact scores are all >= 0.6.
+GATE:
+The gate is a pass/fail summary derived from the three scores. The server will compute
+and store the final boolean.
 
 ANTI-BIAS RULES:
 Treat the user's query intent as the only vertical signal. Do not inject VoIP,
@@ -124,6 +126,13 @@ async def scout(
         leads_list = completion.choices[0].message.parsed
     except Exception as exc:  # pragma: no cover - defensive branch for SDK drift
         raise OrchestratorError(f"OpenAI response missing parsed LeadList: {exc}") from exc
+
+    for lead in leads_list.leads:
+        lead.gate_passed = (
+            lead.fit_score >= GATE_THRESHOLD
+            and lead.evidence_score >= GATE_THRESHOLD
+            and lead.contact_score >= GATE_THRESHOLD
+        )
 
     leads = leads_list.leads[:max_leads]
 
