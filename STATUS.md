@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-09 by kimi-k2.6
-**Branch:** main (BUILDOUT-17 merged)
-**Current sprint:** BUILDOUT-17 deploy config merged; live deploy pending user `fly deploy`
+**Last updated:** 2026-05-09 by GPT-5.4
+**Branch:** main
+**Current sprint:** BUILDOUT-17 live deploy verified; production auth routing fixed
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -114,18 +114,18 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 - **BUILDOUT-15: QA rubric document + multi-vertical gate shipped.** Added `docs/qa-rubric.md` with the 6-tier ship-gate (Tiers 1–4 mandatory for extraction/scoring changes, Tier 5 weekly, Tier 6 every run). Updated `.gstack/qa-reports/index.md` to reference the rubric. Added `.gstack/qa-reports/qa-template.md` as a skeleton for future QA reports. Updated `AGENTS.md` read order to include the rubric. Browser QA verified login, Scout, recipes, and batch pages render correctly with zero console errors. QA report at `.gstack/qa-reports/qa-report-buildout-15-qa-rubric.md`.
 - **BUILDOUT-16: Deploy config for Vercel + Fly.io + Neon shipped.** Created `apps/api/Dockerfile`, `apps/api/fly.toml`, `vercel.json`, and `.github/workflows/deploy.yml`. Updated `apps/web/next.config.ts` with production rewrites and image config. Added "Deployment" section to README with platform setup, CI/CD, and manual deploy instructions. All tests pass (24 API, 23 web). Browser QA verified Scout workspace renders correctly. Branch `feat/buildout-16-deploy-config` pushed and ready for QA+merge.
 - **BUILDOUT-16 QA verified and merged.** Health score 95/100. All 24 API tests and 23 web tests pass. Next.js build succeeds. Deploy config files validated. Only cosmetic issue: favicon 404s (deferred). Ready for BUILDOUT-17.
-- **BUILDOUT-17: Deploy config merged to main.** `fly.toml` moved to repo root, `Dockerfile` paths adjusted for monorepo context, `vercel.json` added with explicit API rewrites to Fly.io, `.dockerignore` tightened to reduce build context from 437MB. Local QA passed (24 API tests, 23 web tests, Next.js build). Production smoke test blocked because Fly.io API app `white-rabbit-api` has no deployed image yet — user needs to run `fly deploy` with the new `.dockerignore`.
+- **BUILDOUT-17: Live deploy verified in production.** Fly API `https://white-rabbit-api.fly.dev/health` returns `200 {"status":"ok"}` after the OpenAI secret fix. Vercel project config was corrected (`rootDirectory=apps/web`, framework `nextjs`, runtime env vars added) and a fresh production deploy now serves the local Next auth routes. Verified with authenticated `vercel curl`: anonymous `/scout` redirects to `/login?next=%2Fscout`, wrong-password `POST /api/login` redirects to `/login?error=1`, and correct-password `POST /api/login` sets `wr_session` and redirects to `/`. Remaining platform risk: Fly trial machines auto-stop after ~5 minutes unless billing is enabled.
 
 ## What's in flight
 
-- None. BUILDOUT-17 branch merged. Live deploy is the user's next step.
+- None. BUILDOUT-17 is live in production; follow-up work is platform hardening, not deployment unblock.
 
 ## Next concrete task
 
-- User runs `fly deploy` from repo root to deploy API to Fly.io.
-- After deploy, verify `https://white-rabbit-api.fly.dev/health` returns 200.
-- Then re-test `https://white-rabbit-ten.vercel.app/` with a Scout query.
-- Once prod smoke test passes, all 17 BUILDOUTs are complete.
+- Add billing / a credit card to Fly.io so trial machines stop auto-shutting down after ~5 minutes.
+- Run a full browser smoke test on `https://white-rabbit-ten.vercel.app/` with screenshots: login, Scout query, Full run, recipes, feedback, logout.
+- Commit and push the `apps/web/next.config.ts` auth-routing fix so GitHub/Vercel auto-deploys keep the working behavior.
+- Once that smoke test passes, all 17 BUILDOUTs are complete and Phase 3 polish can start.
 
 ## Open questions for Matt
 
@@ -162,6 +162,7 @@ Real known issues (post-audit):
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-09 | deploy-fix (GPT-5.4) | Fixed production auth routing by removing the web app's catch-all `/api/*` rewrite, repaired the Vercel project (`rootDirectory=apps/web`, framework set, runtime env vars added), forced a successful prod deploy, verified `/api/login` now hits Next instead of Fly, and documented that the remaining production issue is Fly trial auto-stop. |
 | 2026-05-05 | bootstrap (Opus 4.7) | Repo bootstrapped. All 10 priority docs written. git init + first commit. Next: Sprint 1 scaffold. |
 | 2026-05-05 | api-scaffold (Opus 4.7) | Scaffolded apps/api and packages/core. Lifted and adapted code from proxy-lead. Passed health check tests. |
 | 2026-05-06 | scout-harness (gpt-5.4-mini) | Added injectable Scout smoke harnesses in core and API, fixed local import bootstraps, and verified core/API/web tests plus runtime imports. |

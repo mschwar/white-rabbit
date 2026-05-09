@@ -112,9 +112,9 @@ If a feature looks too big once you start: split it. Add a second `- [ ]` row to
 ### Phase G — Deploy
 - [x] (2026-05-09, 711b343) BUILDOUT-16: Choose hosting; configure environments and secrets (`feat/buildout-16-deploy-config`)
 - [x] (2026-05-09, 4925620) BUILDOUT-16 QA verified: deploy config tested, health score 95/100, all tests pass
-- [x] (2026-05-09, 084a54e) BUILDOUT-17: Deploy config files merged; live deploy pending user `fly deploy` (`feat/buildout-17-deploy-smoke`)
+- [x] (2026-05-09, 084a54e) BUILDOUT-17: Deploy config files merged; follow-up production verification and Vercel project repair completed on 2026-05-09 (`feat/buildout-17-deploy-smoke`)
 
-**Stop criteria:** When all 17 are `- [x]`, the product is deployed and verified. Anything beyond that is `06-audit-action-plan.md` Phase 3 polish.
+**Stop criteria:** When all 17 are `- [x]`, the product is deployed and verified. As of 2026-05-09, production auth routing is fixed on `https://white-rabbit-ten.vercel.app`, the Fly API health endpoint returns 200, and the remaining blocker is Fly trial auto-stop behavior rather than deploy correctness. Anything beyond that is `06-audit-action-plan.md` Phase 3 polish.
 
 ---
 
