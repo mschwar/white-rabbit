@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-09 by kimi-k2.6
-**Branch:** feat/buildout-13-error-codes
-**Current sprint:** BUILDOUT-13 browser-verified — structured error codes in API responses and UI mapping; next is BUILDOUT-14
+**Branch:** feat/buildout-14-readme-verified
+**Current sprint:** BUILDOUT-14 README setup walkthrough verified end-to-end; next is BUILDOUT-15
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -89,14 +89,15 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 - **BUILDOUT-08: Delete `email_patterns.py` dead code.** Browser QA on 2026-05-08 verified the login gate, Scout results page, recipe library scoreboard, bulk workspace, and sign-out flow with clean console output; report saved at `.gstack/qa-reports/qa-report-white-rabbit-2026-05-08.md`.
 - **BUILDOUT-09: UI de-bias branch completed and browser-verified.** Scout now opens with the neutral placeholder defaults, Batch uses the debiased starter rows, and the lead-export description matches the CSV columns. Vitest, Next.js build, and live browser QA all passed.
 - **BUILDOUT-13: Specific API error codes for UI.** API returns structured `{error_code, message, request_id}` on 503/500; Scout workspace maps codes to user-friendly messages (e.g., `tavily_failed` → "Search engine is rate-limited; try again in ~60s"). Verified by 24 passing API tests and live browser QA on Scout/recipes/batch. QA report at `.gstack/qa-reports/buildout-13-error-codes.md`.
+- **BUILDOUT-14: README setup walkthrough verified end-to-end.** Followed README.md steps on the live workspace: confirmed web (localhost:3000) and API (localhost:8000) running, login gate functional, Scout query returns leads with score cards, recipe library and batch workspace render correctly, sign-out clears session. QA report at `.gstack/qa-reports/buildout-14-readme-verified.md`.
 
 ## What's in flight
 
-- None. BUILDOUT-13 is complete and ready to merge.
+- None. BUILDOUT-14 is complete and ready to merge.
 
 ## Next concrete task
 
-- Merge BUILDOUT-13 to main, then move on to BUILDOUT-14 in `docs/07-buildout-plan.md`.
+- Merge BUILDOUT-14 to main, then move on to BUILDOUT-15 in `docs/07-buildout-plan.md`.
 
 ## Open questions for Matt
 
