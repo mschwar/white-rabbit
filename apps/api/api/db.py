@@ -10,6 +10,7 @@ from api.models import (
     Base,
     BatchJob,
     BatchRun,
+    FeedbackLabel,
     Lead,
     LeadFeedback,
     Recipe,
@@ -110,9 +111,9 @@ def save_leads(
 def add_lead_feedback(
     session: Session,
     lead_id: UUID,
-    label: str,
+    label: FeedbackLabel,
 ) -> LeadFeedback:
-    feedback = LeadFeedback(lead_id=lead_id, label=label)
+    feedback = LeadFeedback(lead_id=lead_id, label=label.value)
     session.add(feedback)
     session.flush()
     return feedback
@@ -159,7 +160,7 @@ def get_recipe_scoreboard(session: Session, recipe_id: UUID) -> dict[str, Any] |
     total_operator_minutes = 0.0
     total_leads_returned = 0
     usable_lead_count = 0
-    feedback_counts: dict[str, int] = {}
+    feedback_counts: dict[str, int] = {label.value: 0 for label in FeedbackLabel}
 
     for run in runs:
         total_leads_returned += run.lead_count or 0
@@ -173,7 +174,7 @@ def get_recipe_scoreboard(session: Session, recipe_id: UUID) -> dict[str, Any] |
                 continue
 
             feedback_counts[feedback.label] = feedback_counts.get(feedback.label, 0) + 1
-            if feedback.label == "usable":
+            if feedback.label == FeedbackLabel.USABLE.value:
                 usable_lead_count += 1
 
     return {

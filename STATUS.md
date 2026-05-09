@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-09 by gpt-5.4-mini
-**Branch:** feat/buildout-10-retries
-**Current sprint:** BUILDOUT-10 verified on the feature branch — Tavily/OpenAI retry hardening passed tests and browser QA
+**Branch:** feat/buildout-11-feedback-enum
+**Current sprint:** BUILDOUT-11 implemented on the feature branch — feedback label enum validation and DB CHECK constraint are in place, with tests and alembic migration verified
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -91,12 +91,12 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 
 ## What's in flight
 
-- feat/buildout-10-retries is active; `packages/core` retry tests pass and the branch is pushed.
+- feat/buildout-11-feedback-enum is active; the feedback label enum, API validation, DB CHECK constraint, and regression tests are on the branch and pushed.
 - BUILDOUT-09 docs drift is reconciled in `docs/07-buildout-plan.md`; the checklist now reflects reality.
 
 ## Next concrete task
 
-- Move from BUILDOUT-10 to BUILDOUT-11 in `docs/07-buildout-plan.md`.
+- QA and merge BUILDOUT-11, then move to BUILDOUT-12 in `docs/07-buildout-plan.md`.
 
 ## Open questions for Matt
 

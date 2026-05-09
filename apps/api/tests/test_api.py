@@ -3,10 +3,13 @@ from datetime import datetime
 from types import SimpleNamespace
 
 from fastapi.testclient import TestClient
+from sqlalchemy import CheckConstraint
 
 from core.cost import RunMetrics
 from core.models import Lead
 from api.main import app
+from api.models import FeedbackLabel, LeadFeedback
+from api.db import get_recipe_scoreboard
 
 client = TestClient(app)
 
@@ -18,6 +21,18 @@ def test_health_check():
 
 
 def test_scout_endpoint_returns_scoped_payload(monkeypatch):
+    state = SimpleNamespace(
+        total_queries=0,
+        total_rows=0,
+        max_queries=10,
+        max_rows=1000,
+        reset_at=datetime(2026, 1, 1, 12, 0, 0),
+    )
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
+
     async def fake_scout(query: str, **kwargs):
         assert query == "K-12 IT directors in Albuquerque"
         return (
@@ -49,6 +64,9 @@ def test_scout_endpoint_returns_scoped_payload(monkeypatch):
             ),
         )
 
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+    monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
     monkeypatch.setattr("api.main.scout", fake_scout)
 
     response = client.post("/scout", json={"query": "K-12 IT directors in Albuquerque"})
@@ -62,12 +80,26 @@ def test_scout_endpoint_returns_scoped_payload(monkeypatch):
 
 def test_scout_endpoint_forwards_filters(monkeypatch):
     captured = {}
+    state = SimpleNamespace(
+        total_queries=0,
+        total_rows=0,
+        max_queries=10,
+        max_rows=1000,
+        reset_at=datetime(2026, 1, 1, 12, 0, 0),
+    )
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
 
     async def fake_scout(query: str, **kwargs):
         captured["query"] = query
         captured["filters"] = kwargs.get("filters")
         return [], RunMetrics()
 
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+    monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
     monkeypatch.setattr("api.main.scout", fake_scout)
 
     response = client.post(
@@ -100,14 +132,146 @@ def test_scout_endpoint_blocks_broad_advice_queries(monkeypatch):
     assert detail["query_guardrail"]["missing_criteria"] == ["target people or organizations"]
 
 
+def test_feedback_endpoint_accepts_canonical_enum_labels(monkeypatch):
+    captured = {}
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
+
+    def fake_add_lead_feedback(session, lead_id, label):
+        captured["lead_id"] = str(lead_id)
+        captured["label"] = label
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.add_lead_feedback", fake_add_lead_feedback)
+
+    response = client.post(
+        "/leads/11111111-1111-1111-1111-111111111111/feedback",
+        json={"label": "usable"},
+    )
+
+    assert response.status_code == 200
+    assert response.json() == {"status": "ok"}
+    assert captured["lead_id"] == "11111111-1111-1111-1111-111111111111"
+    assert captured["label"] == FeedbackLabel.USABLE
+
+
+def test_feedback_endpoint_rejects_noncanonical_labels(monkeypatch):
+    called = {"add_lead_feedback": False}
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
+
+    def fake_add_lead_feedback(session, lead_id, label):
+        called["add_lead_feedback"] = True
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.add_lead_feedback", fake_add_lead_feedback)
+
+    response = client.post(
+        "/leads/11111111-1111-1111-1111-111111111111/feedback",
+        json={"label": "Usable"},
+    )
+
+    assert response.status_code == 422
+    assert called["add_lead_feedback"] is False
+    body = response.json()
+    assert body["detail"][0]["loc"] == ["body", "label"]
+
+
+def test_lead_feedback_model_has_label_check_constraint():
+    constraints = [constraint for constraint in LeadFeedback.__table__.constraints if isinstance(constraint, CheckConstraint)]
+
+    assert any(constraint.name == "ck_lead_feedback_label" for constraint in constraints)
+    assert any(
+        "usable" in str(constraint.sqltext)
+        and "wrong_persona" in str(constraint.sqltext)
+        and "bad_source" in str(constraint.sqltext)
+        and "bad_contact" in str(constraint.sqltext)
+        and "duplicate" in str(constraint.sqltext)
+        for constraint in constraints
+    )
+
+
+def test_get_recipe_scoreboard_seeds_canonical_feedback_counts(monkeypatch):
+    recipe_id = "11111111-1111-1111-1111-111111111111"
+    run_id = "22222222-2222-2222-2222-222222222222"
+    lead_id = "33333333-3333-3333-3333-333333333333"
+
+    class FakeQuery:
+        def __init__(self, result):
+            self._result = result
+
+        def filter(self, *args, **kwargs):
+            return self
+
+        def first(self):
+            return self._result
+
+    class FakeSession:
+        def query(self, model):
+            if model is LeadFeedback:
+                return FakeQuery(SimpleNamespace(label=FeedbackLabel.USABLE.value))
+            raise AssertionError(f"Unexpected model queried: {model}")
+
+    monkeypatch.setattr(
+        "api.db.get_recipe_by_id",
+        lambda session, _recipe_id: SimpleNamespace(id=_recipe_id, name="K-12 IT directors"),
+    )
+    monkeypatch.setattr(
+        "api.db.get_recipe_runs",
+        lambda session, recipe_id=None: [
+            SimpleNamespace(
+                id=run_id,
+                lead_count=3,
+                operator_minutes=18.5,
+                api_cost_breakdown={"estimated_cost_usd": 0.42},
+            )
+        ],
+    )
+    monkeypatch.setattr(
+        "api.db.get_leads_for_run",
+        lambda session, _run_id: [SimpleNamespace(id=lead_id)],
+    )
+
+    scoreboard = get_recipe_scoreboard(FakeSession(), recipe_id)
+
+    assert scoreboard["feedback_counts"] == {
+        "usable": 1,
+        "wrong_persona": 0,
+        "bad_source": 0,
+        "bad_contact": 0,
+        "duplicate": 0,
+    }
+    assert scoreboard["usable_lead_count"] == 1
+    assert scoreboard["minutes_per_usable_lead"] == 18.5
+    assert scoreboard["api_cost_per_usable_lead"] == 0.42
+
+
 def test_scout_endpoint_forwards_filters(monkeypatch):
     captured = {}
+    state = SimpleNamespace(
+        total_queries=0,
+        total_rows=0,
+        max_queries=10,
+        max_rows=1000,
+        reset_at=datetime(2026, 1, 1, 12, 0, 0),
+    )
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
 
     async def fake_scout(query: str, **kwargs):
         captured["query"] = query
         captured["filters"] = kwargs.get("filters")
         return [], RunMetrics()
 
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+    monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
     monkeypatch.setattr("api.main.scout", fake_scout)
 
     response = client.post(
@@ -118,7 +282,6 @@ def test_scout_endpoint_forwards_filters(monkeypatch):
     assert response.status_code == 200
     assert captured["query"] == "K-12 IT directors in Albuquerque"
     assert captured["filters"] == {"location": "Albuquerque"}
-
 
 def test_sandbox_usage_endpoint_returns_usage(monkeypatch):
     state = SimpleNamespace(
