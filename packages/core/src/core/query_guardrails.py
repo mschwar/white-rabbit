@@ -8,8 +8,20 @@ from pydantic import BaseModel, Field
 QueryGuardrailStatus = Literal['clear', 'needs_more_detail', 'blocked']
 
 _ROLE_HINTS = (
+    'ciso',
+    'cio',
+    'cto',
+    'coo',
+    'cfo',
     'director',
     'manager',
+    'operations leader',
+    'operations leaders',
+    'operations manager',
+    'contractor',
+    'contractors',
+    'procurement manager',
+    'procurement leader',
     'vp',
     'vice president',
     'head of',
@@ -17,10 +29,14 @@ _ROLE_HINTS = (
     'founder',
     'principal',
     'chair',
-    'cto',
-    'cio',
+    'it director',
+    'technology director',
     'it leader',
     'technology leader',
+    'sales leader',
+    'sales leaders',
+    'general manager',
+    'plant manager',
 )
 
 _ORG_HINTS = (
@@ -28,6 +44,12 @@ _ORG_HINTS = (
     'k12',
     'school',
     'district',
+    'financial services',
+    'manufacturing',
+    'food and beverage',
+    'construction',
+    'contractor',
+    'contractors',
     'company',
     'org',
     'organization',
@@ -42,6 +64,14 @@ _ORG_HINTS = (
     'firm',
     'practice',
     'department',
+    'public sector',
+    'healthcare',
+    'education',
+    'telecom',
+    'logistics',
+    'retail',
+    'hospitality',
+    'energy',
 )
 
 _LOCATION_HINTS = (
@@ -91,14 +121,15 @@ _LEAD_INTENT_HINTS = (
 _OFF_TOPIC_HINTS = (
     'advice',
     'strategy',
+    'brainstorm',
     'write',
     'draft',
     'summarize',
     'summary',
     'explain',
+    'teach me',
     'code',
     'build',
-    'brainstorm',
     'general research',
     'research me',
     'help me',
@@ -108,6 +139,52 @@ _OFF_TOPIC_HINTS = (
     'compare',
     'optimize',
     'review',
+)
+
+_WEAPON_HINTS = (
+    'weapon',
+    'weapons',
+    'gun',
+    'guns',
+    'firearm',
+    'firearms',
+    'bomb',
+    'bombs',
+    'explosive',
+    'explosives',
+    'ammo',
+    'stalking',
+    'dox',
+    'doxx',
+    'hack',
+    'phish',
+)
+
+_PRIVACY_HINTS = (
+    'personal email',
+    'personal phone',
+    'cell phone',
+    'home address',
+    'private person',
+    'private people',
+    'home refinance',
+    'home mortgage',
+    'mortgage refinance',
+    'homeowner',
+    'homeowners',
+    'vacation photo',
+    'vacation photos',
+    'family',
+    'parents',
+    'kids',
+    'children',
+    'spouse',
+    'resident',
+    'residents',
+    'neighbor',
+    'neighbors',
+    'personal contact',
+    'personal contacts',
 )
 
 
@@ -123,7 +200,16 @@ def _normalize(query: str) -> str:
 
 
 def _contains_any(text: str, phrases: tuple[str, ...]) -> bool:
-    return any(phrase in text for phrase in phrases)
+    for phrase in phrases:
+        if not phrase:
+            continue
+        if len(phrase) <= 3 and phrase.isalpha():
+            if re.search(rf'(?<!\w){re.escape(phrase)}(?!\w)', text):
+                return True
+            continue
+        if phrase in text:
+            return True
+    return False
 
 
 def _has_role_target(text: str) -> bool:
@@ -146,6 +232,14 @@ def _looks_off_topic(text: str) -> bool:
     return _contains_any(text, _OFF_TOPIC_HINTS)
 
 
+def _looks_unsafe(text: str) -> bool:
+    return _contains_any(text, _WEAPON_HINTS)
+
+
+def _looks_privacy_sensitive(text: str) -> bool:
+    return _contains_any(text, _PRIVACY_HINTS)
+
+
 def evaluate_query_guardrails(query: str) -> QueryGuardrailResult:
     normalized = _normalize(query)
 
@@ -163,10 +257,33 @@ def evaluate_query_guardrails(query: str) -> QueryGuardrailResult:
     has_role_target = _has_role_target(normalized)
     has_org_target = _has_org_target(normalized)
     has_location = _has_location(normalized)
-    has_lead_intent = _has_lead_intent(normalized)
     looks_off_topic = _looks_off_topic(normalized)
+    looks_unsafe = _looks_unsafe(normalized)
+    looks_privacy_sensitive = _looks_privacy_sensitive(normalized)
 
-    if looks_off_topic and not has_lead_intent:
+    if looks_unsafe:
+        return QueryGuardrailResult(
+            status='blocked',
+            message='White Rabbit blocks weapon, harm, and surveillance requests. Reframe this around legitimate B2B lead generation.',
+            suggestions=[
+                'Try: IT directors at school districts in New Mexico',
+                'Try: procurement managers at mid-market manufacturers in Texas',
+            ],
+            missing_criteria=['target people or organizations'],
+        )
+
+    if looks_privacy_sensitive:
+        return QueryGuardrailResult(
+            status='blocked',
+            message='White Rabbit only runs privacy-safe B2B lead-generation queries. Queries aimed at private people, home/consumer targeting, or personal contact discovery are blocked before search.',
+            suggestions=[
+                'Try: IT directors at school districts in New Mexico',
+                'Try: procurement managers at mid-market manufacturers in Texas',
+            ],
+            missing_criteria=['target people or organizations'],
+        )
+
+    if looks_off_topic:
         return QueryGuardrailResult(
             status='blocked',
             message='White Rabbit only runs lead-generation queries. Reframe this around people or organizations to target instead of advice, writing, code, or general research.',

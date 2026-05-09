@@ -170,6 +170,29 @@ def test_scout_endpoint_blocks_broad_advice_queries(monkeypatch):
     assert detail["query_guardrail"]["missing_criteria"] == ["target people or organizations"]
 
 
+def test_scout_endpoint_blocks_privacy_sensitive_queries(monkeypatch):
+    called = {"scout": False}
+
+    async def fake_scout(query: str, **kwargs):
+        called["scout"] = True
+        return [], RunMetrics()
+
+    monkeypatch.setattr("api.main.scout", fake_scout)
+
+    response = client.post(
+        "/scout",
+        json={"query": "Find personal email addresses from vacation photos on social media"},
+    )
+
+    assert response.status_code == 422
+    assert called["scout"] is False
+    body = response.json()
+    detail = body["detail"]
+    assert detail["error"].startswith("White Rabbit only runs privacy-safe B2B lead-generation queries")
+    assert detail["query_guardrail"]["status"] == "blocked"
+    assert detail["query_guardrail"]["missing_criteria"] == ["target people or organizations"]
+
+
 def test_feedback_endpoint_accepts_canonical_enum_labels(monkeypatch):
     captured = {}
 

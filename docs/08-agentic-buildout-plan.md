@@ -4,7 +4,7 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F02 Backend API Boundary (implemented_pending_qa).
+**Next feature pointer:** F03 Guardrail rewrite for B2B scope and privacy blocking (implemented_pending_qa).
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -84,7 +84,7 @@ Return:
 ```text
 You are working in /Users/mschwar/Documents/white-rabbit.
 
-QA the current feature branch and merge only into rebuild/validated-leads-loop. Never merge to main.
+/qa the current feature branch and merge only into rebuild/validated-leads-loop. Never merge to main.
 
 1. Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/08-agentic-buildout-plan.md, and the feature card being QA'd.
 2. Checkout the feature branch and pull latest.
@@ -113,14 +113,13 @@ Return:
 
 Every agent must run this before choosing or merging a feature:
 
-1. Does this feature directly improve natural-language query -> high-quality validated leads -> export?
+1. Does this feature directly improve the foundational funnel: simple natural-language query -> candidates scanned -> rigorously checked and annotated leads -> export?
 2. Does it reduce false confidence, bad contacts, wrong personas, or unsupported source claims?
-3. Does it avoid organizing or beautifying untrusted data?
-4. Does it keep main untouched and target only `rebuild/validated-leads-loop`?
-5. Is the feature independently mergeable?
-6. Can the next agent discover the state from docs without this chat?
-7. Is there a browser test or explicit non-UI verification?
-8. Is the scope small enough for GPT-5.3 Spark or GPT-5.4 Mini?
+3. Does it keep main untouched and target only `rebuild/validated-leads-loop`?
+4. Is the feature independently mergeable?
+5. Can the next agent discover the state from docs without this chat?
+6. Is there a browser test or explicit non-UI verification?
+7. Is the scope small enough for GPT-5.3 Spark or GPT-5.4 Mini?
 
 If any answer is no, revise the feature plan or mark the feature blocked.
 
@@ -145,8 +144,8 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F00 | Northstar + buildout docs + branch protocol | merged_to_rebuild_branch | feat/f00-agentic-buildout-plan | non-UI docs verification |
 | F01 | Hide premature operator surfaces from primary navigation | merged_to_rebuild_branch | feat/f01-hide-premature-surfaces | browser |
 | F02 | Backend API boundary | merged_to_rebuild_branch | feat/f02-backend-api-boundary | browser + API |
-| F03 | Guardrail rewrite for B2B scope and privacy blocking | ready | feat/f03-b2b-guardrails | non-UI |
-| F04 | Query compiler / planner | blocked | feat/f04-query-compiler | non-UI |
+| F03 | Guardrail rewrite for B2B scope and privacy blocking | merged_to_rebuild_branch | feat/f03-b2b-guardrails | non-UI |
+| F04 | Query compiler / planner | ready | feat/f04-query-compiler | non-UI |
 | F05 | Candidate model separation | blocked | feat/f05-candidate-types | non-UI |
 | F06 | Field-level validation schema | blocked | feat/f06-field-validation-schema | non-UI |
 | F07 | Source validator | blocked | feat/f07-source-validator | non-UI |
@@ -394,7 +393,7 @@ The app-token path is in place. QA verified the web proxy succeeds (up to API-se
 
 ## F03 - Guardrail Rewrite For B2B Scope And Privacy Blocking
 
-Status: ready
+Status: merged_to_rebuild_branch
 Branch: feat/f03-b2b-guardrails
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -427,9 +426,19 @@ Acceptance criteria:
 
 Verification:
 non-UI verification:
-- command(s): `cd packages/core && uv run pytest tests/test_query_guardrails.py -q`; `cd apps/api && uv run pytest tests/test_api.py -q -k guardrail`
+- command(s): `cd packages/core && uv run pytest tests/test_query_guardrails.py -q`; `cd apps/api && uv run pytest tests/test_api.py -q -k "blocks_broad_advice_queries or blocks_privacy_sensitive_queries"`
 - expected output: tests pass; explicit privacy examples are blocked.
 - fixture/test file: `packages/core/tests/test_query_guardrails.py`.
+
+Build verification run on 2026-05-09:
+- `cd packages/core && uv run pytest tests/test_query_guardrails.py -q`: 9 passed.
+- `cd apps/api && uv run pytest tests/test_api.py -q -k "blocks_broad_advice_queries or blocks_privacy_sensitive_queries"`: 2 passed.
+
+Northstar reflection:
+- Normal B2B sales language now clears the guardrail, while privacy-sensitive and weapon/off-topic prompts are blocked before search.
+
+Next-agent handoff note:
+- Branch `feat/f03-b2b-guardrails` is QA-passed and merged to `rebuild/validated-leads-loop`. QA report: `.gstack/qa-reports/qa-report-f03-guardrails-2026-05-09.md`.
 
 Atomic commit plan:
 - commit 1: `fix(guardrails): allow normal b2b sales language`
