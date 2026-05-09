@@ -62,7 +62,7 @@ jobs:
           # Work around npm optional-dependency omissions on GitHub runners
           # and lockfiles generated on macOS that omit Rolldown's Linux binding.
           npm install
-          npm install --no-save @rolldown/binding-linux-x64-gnu@1.0.0-rc.18
+          npm install --no-save @rolldown/binding-linux-x64-gnu@1.0.0-rc.18 lightningcss-linux-x64-gnu@1.32.0
           npm test
           npm run build
 
