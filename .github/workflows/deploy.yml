@@ -68,6 +68,7 @@ jobs:
 
   deploy-api:
     name: Deploy API to Fly.io
+    if: ${{ secrets.FLY_API_TOKEN != '' }}
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -86,11 +87,5 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Deploy to Vercel
-        uses: vercel/action-deploy@v1
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+      - name: Vercel production deploy is handled by Git integration
+        run: echo "Vercel production deploy is triggered by the linked Vercel project for white-rabbit-ten. This workflow validates the repo; Vercel handles the live web deploy on push to main."
