@@ -10,7 +10,6 @@ import {
   fetchSandboxUsage,
   formatScore,
   LEAD_SORT_OPTIONS,
-  resetSandboxUsage,
   sortScoutLeads,
   submitLeadFeedback,
   type LeadSortMode,
@@ -59,7 +58,6 @@ export default function ScoutWorkspace() {
   const [closeMessage, setCloseMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isResettingSandbox, setIsResettingSandbox] = useState(false);
   const [sortMode, setSortMode] = useState<LeadSortMode>('rank');
   const [isClosing, setIsClosing] = useState(false);
   const [leadExport, setLeadExport] = useState<{
@@ -78,20 +76,6 @@ export default function ScoutWorkspace() {
       .then(setSandboxUsage)
       .catch(() => undefined);
   }, []);
-
-  async function handleResetSandbox() {
-    setIsResettingSandbox(true);
-    setError(null);
-    try {
-      const usage = await resetSandboxUsage();
-      setSandboxUsage(usage);
-      setCloseMessage(null);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to reset sandbox usage.');
-    } finally {
-      setIsResettingSandbox(false);
-    }
-  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -271,10 +255,10 @@ export default function ScoutWorkspace() {
     <main className="min-h-screen bg-zinc-950 px-6 py-10 text-zinc-50">
       <section className="mx-auto flex w-full max-w-6xl flex-col gap-8 rounded-[2rem] border border-white/10 bg-white/5 p-8 shadow-2xl shadow-black/20 backdrop-blur sm:p-10">
         <div className="space-y-3">
-          <p className="text-sm font-medium uppercase tracking-[0.22em] text-emerald-300">Scout / Full</p>
-          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">Query workspace</h1>
+          <p className="text-sm font-medium uppercase tracking-[0.22em] text-emerald-300">Lead search</p>
+          <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">Find source-backed prospects</h1>
           <p className="max-w-3xl text-base leading-7 text-zinc-300 sm:text-lg">
-            Scout: quick preview (up to 15 leads, no storage). Full: stored recipe with up to 100 leads.
+            Run a focused B2B target query and review returned leads with fit, evidence, and contact scores.
           </p>
         </div>
 
@@ -310,14 +294,14 @@ export default function ScoutWorkspace() {
               {mode === 'full' && (
                 <div className="flex flex-col gap-3 text-sm text-zinc-200">
                   <label className="block font-medium" htmlFor="recipeName">
-                    Recipe name
+                    Search label
                   </label>
                   <input
                     className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-zinc-50 outline-none ring-0 placeholder:text-zinc-500 focus:border-emerald-400"
                     id="recipeName"
                     name="recipeName"
                     onChange={(event) => setRecipeName(event.target.value)}
-                    placeholder="My prospect list"
+                    placeholder="Phoenix healthcare leaders"
                     value={recipeName}
                   />
                 </div>
@@ -365,7 +349,7 @@ export default function ScoutWorkspace() {
           </section>
 
           <aside className="rounded-3xl border border-emerald-400/20 bg-emerald-400/10 p-6">
-            <p className="text-sm font-medium uppercase tracking-[0.18em] text-emerald-200">Sandbox quota</p>
+            <p className="text-sm font-medium uppercase tracking-[0.18em] text-emerald-200">Search usage</p>
             <div className="mt-4 space-y-4 text-sm text-zinc-200">
               {sandboxUsage ? (
                 <>
@@ -386,28 +370,13 @@ export default function ScoutWorkspace() {
                     </div>
                   </div>
                   <p className="text-xs uppercase tracking-[0.18em] text-zinc-400">
-                    Resets {new Date(sandboxUsage.reset_at).toLocaleString()}
+                    Renews {new Date(sandboxUsage.reset_at).toLocaleString()}
                   </p>
                 </>
               ) : (
-                <p className="text-zinc-300">Loading sandbox usage…</p>
+                <p className="text-zinc-300">Loading search usage…</p>
               )}
-              <button
-                className="rounded-full border border-emerald-300/30 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-100 transition hover:bg-emerald-400/10 disabled:cursor-not-allowed disabled:opacity-60"
-                disabled={isResettingSandbox}
-                onClick={handleResetSandbox}
-                type="button"
-              >
-                {isResettingSandbox ? 'Resetting…' : 'Reset sandbox'}
-              </button>
             </div>
-            <ul className="mt-6 space-y-3 text-sm leading-6 text-zinc-200">
-              <li>• Next.js proxy routes at <code>/api/scout</code> and <code>/api/full</code></li>
-              <li>• FastAPI <code>POST /scout</code>, <code>POST /full</code>, and <code>GET /sandbox</code></li>
-              <li>• Sandbox reset at <code>POST /sandbox/reset</code></li>
-              <li>• Recipe storage with <code>GET /recipes</code></li>
-              <li>• Three-score lead cards with metrics</li>
-            </ul>
           </aside>
         </div>
 
@@ -441,7 +410,7 @@ export default function ScoutWorkspace() {
         {fullResult && (
           <div className="space-y-3 rounded-2xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200">
             <p>
-              Full run saved. Recipe ID: {fullResult.recipe_id} · Run ID: {fullResult.run_id}
+              Full run saved for internal review.
             </p>
             <div className="flex flex-wrap items-end gap-3">
               <label className="flex flex-col gap-1 text-xs uppercase tracking-[0.18em] text-emerald-100" htmlFor="operatorMinutes">
@@ -470,9 +439,6 @@ export default function ScoutWorkspace() {
               >
                 {leadExport ? 'Rebuild export' : 'Build lead export'}
               </button>
-              <a className="text-sm underline decoration-emerald-300/40 underline-offset-4" href="/recipes">
-                Open recipe library
-              </a>
             </div>
             {closeMessage ? <p className="text-xs text-emerald-100">{closeMessage}</p> : null}
             {leadExport ? (
@@ -489,9 +455,7 @@ export default function ScoutWorkspace() {
                   Download CSV
                 </a>
                 <p className="mt-2 text-xs leading-6 text-zinc-400">
-                  Includes query, location, recipe name, run ID, rank, lead name/title/org/email, email status, source
-                  URL, fit/evidence/contact scores, gate status, icebreaker, why_target, explanation, and validation
-                  context.
+                  Includes lead details, contact status, source URL, scores, gate status, rationale, and validation context.
                 </p>
               </div>
             ) : null}

@@ -4,7 +4,7 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F01 - Hide premature operator surfaces from primary navigation.
+**Next feature pointer:** F02 Backend API Boundary.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -141,7 +141,7 @@ Do not pull deferred surfaces back into primary navigation while the gate is red
 | ID | Feature | Status | Branch | Verification |
 | --- | --- | --- | --- | --- |
 | F00 | Northstar + buildout docs + branch protocol | merged_to_rebuild_branch | feat/f00-agentic-buildout-plan | non-UI docs verification |
-| F01 | Hide premature operator surfaces from primary navigation | ready | feat/f01-hide-premature-surfaces | browser |
+| F01 | Hide premature operator surfaces from primary navigation | merged_to_rebuild_branch | feat/f01-hide-premature-surfaces | browser |
 | F02 | Backend API boundary | ready | feat/f02-backend-api-boundary | browser + API |
 | F03 | Guardrail rewrite for B2B scope and privacy blocking | ready | feat/f03-b2b-guardrails | non-UI |
 | F04 | Query compiler / planner | blocked | feat/f04-query-compiler | non-UI |
@@ -276,7 +276,7 @@ F00 was bootstrapped directly on the integration branch per Matt's planning-task
 
 ## F01 - Hide Premature Operator Surfaces
 
-Status: ready
+Status: merged_to_rebuild_branch
 Branch: feat/f01-hide-premature-surfaces
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -315,6 +315,12 @@ Browser-testable:
 - steps: log in, confirm home navigation, open Scout, inspect visible text, confirm no recipe/batch/implementation-detail primary calls to action.
 - required screenshots: home after login, Scout empty state, Scout quota area without reset/internal implementation copy.
 
+Build verification run on 2026-05-09:
+- `npm test` in `apps/web`: 25 tests passed.
+- `npm run build` in `apps/web`: passed; existing Next.js warnings about root lockfile inference and `middleware.ts` deprecation remain.
+- Browser smoke on `http://localhost:3000`: logged in with local test env, confirmed home has only the lead-search link, Scout hides reset/internal endpoint/storage copy, and console errors were empty.
+- Screenshots saved: `.gstack/qa-reports/screenshots/f01-home-after-login.png`, `.gstack/qa-reports/screenshots/f01-scout-empty-state.png`.
+
 Atomic commit plan:
 - commit 1: `fix(ui): hide premature operator surfaces from primary navigation`
 - commit 2: `test(ui): update navigation and scout copy expectations`
@@ -324,7 +330,10 @@ Rollback plan:
 Revert the UI commit to restore prior navigation and Scout copy; data and endpoints remain untouched.
 
 Next-agent handoff note:
-After this lands, F02 remains ready. Do not bring hidden surfaces back until the gate is yellow or green.
+QA passed and branch `feat/f01-hide-premature-surfaces` is merged to `rebuild/validated-leads-loop`. Home now links only to lead search; Scout hides recipe-library links, raw endpoint/FastAPI/storage copy, and the sandbox reset button while keeping existing internal routes reachable. Screenshot paths:
+
+- `.gstack/qa-reports/screenshots/f01-home-after-login.png`
+- `.gstack/qa-reports/screenshots/f01-scout-empty-state.png`
 
 ---
 
