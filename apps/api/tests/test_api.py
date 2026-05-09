@@ -512,6 +512,104 @@ def test_scout_endpoint_returns_sandbox_usage_and_enforces_caps(monkeypatch):
     assert detail["sandbox_usage"]["remaining_queries"] == 0
 
 
+def test_scout_endpoint_returns_structured_error_on_orchestrator_failure(monkeypatch):
+    state = SimpleNamespace(
+        total_queries=0,
+        total_rows=0,
+        max_queries=10,
+        max_rows=1000,
+        reset_at=datetime(2026, 1, 1, 12, 0, 0),
+    )
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
+
+    async def fake_scout(query: str, **kwargs):
+        from core.orchestrator import OrchestratorError
+        raise OrchestratorError("Tavily search failed: timeout")
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+    monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
+    monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
+    monkeypatch.setattr("api.main.scout", fake_scout)
+
+    response = client.post("/scout", json={"query": "Healthcare IT directors in Phoenix"})
+
+    assert response.status_code == 503
+    body = response.json()
+    detail = body["detail"]
+    assert detail["error_code"] == "tavily_failed"
+    assert "Tavily search failed" in detail["message"]
+    assert detail["request_id"] is not None
+
+
+def test_scout_endpoint_returns_structured_error_on_openai_failure(monkeypatch):
+    state = SimpleNamespace(
+        total_queries=0,
+        total_rows=0,
+        max_queries=10,
+        max_rows=1000,
+        reset_at=datetime(2026, 1, 1, 12, 0, 0),
+    )
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
+
+    async def fake_scout(query: str, **kwargs):
+        from core.orchestrator import OrchestratorError
+        raise OrchestratorError("OpenAI API error: rate limited")
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+    monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
+    monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
+    monkeypatch.setattr("api.main.scout", fake_scout)
+
+    response = client.post("/scout", json={"query": "Healthcare IT directors in Phoenix"})
+
+    assert response.status_code == 503
+    body = response.json()
+    detail = body["detail"]
+    assert detail["error_code"] == "openai_failed"
+    assert "OpenAI API error" in detail["message"]
+    assert detail["request_id"] is not None
+
+
+def test_scout_endpoint_returns_structured_error_on_unexpected_exception(monkeypatch):
+    state = SimpleNamespace(
+        total_queries=0,
+        total_rows=0,
+        max_queries=10,
+        max_rows=1000,
+        reset_at=datetime(2026, 1, 1, 12, 0, 0),
+    )
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
+
+    async def fake_scout(query: str, **kwargs):
+        raise RuntimeError("Something exploded")
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+    monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
+    monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
+    monkeypatch.setattr("api.main.scout", fake_scout)
+
+    response = client.post("/scout", json={"query": "Healthcare IT directors in Phoenix"})
+
+    assert response.status_code == 500
+    body = response.json()
+    detail = body["detail"]
+    assert detail["error_code"] == "internal_error"
+    assert detail["message"] == "An unexpected error occurred."
+    assert detail["request_id"] is not None
+
+
 def test_recipe_scoreboard_endpoint_returns_aggregates(monkeypatch):
     captured = {}
 
