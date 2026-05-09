@@ -87,7 +87,8 @@ If a feature looks too big once you start: split it. Add a second `- [ ]` row to
 - [x] (2026-05-08, af4bc1c) BUILDOUT-04: Strip VoIP bias; restore lost proxy-lead prompt instructions (`feat/buildout-04-vertical-agnostic-prompt`)
 - [x] BUILDOUT-05: Pydantic validators on Lead.name and Lead.email (`feat/buildout-05-lead-validators`)
   - QA verified in browser on 2026-05-08: Scout query returned valid person names and non-placeholder emails; recipe library showed the saved Full run and scoreboard with no console errors.
-- [ ] BUILDOUT-06: Server-side `gate_passed` validation (`feat/buildout-06-server-gate`)
+- [x] BUILDOUT-06: Server-side `gate_passed` validation (`feat/buildout-06-server-gate`)
+  - QA verified in browser on 2026-05-08: Scout query rendered a lead card with 70/70/0 scores, the Gate pass/fail sort selected correctly, and the console stayed clean.
 
 ### Phase C — Verification (P0, automated regression)
 - [ ] BUILDOUT-07: Real-API integration test for `scout()` (`feat/buildout-07-integration-test`)
