@@ -181,6 +181,55 @@ def test_feedback_endpoint_rejects_noncanonical_labels(monkeypatch):
     assert body["detail"][0]["loc"] == ["body", "label"]
 
 
+def test_feedback_endpoint_updates_existing_feedback(monkeypatch):
+    existing_feedback = SimpleNamespace(lead_id=None, label=None)
+    captured = {}
+
+    class FakeQuery:
+        def __init__(self, result):
+            self._result = result
+
+        def filter(self, *args, **kwargs):
+            return self
+
+        def first(self):
+            return self._result
+
+    class FakeSession:
+        def __init__(self):
+            self.added = []
+            self.flushed = False
+
+        def query(self, model):
+            assert model is LeadFeedback
+            return FakeQuery(existing_feedback)
+
+        def add(self, obj):
+            self.added.append(obj)
+
+        def flush(self):
+            self.flushed = True
+
+    fake_session = FakeSession()
+
+    @contextmanager
+    def fake_db_session():
+        yield fake_session
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+
+    response = client.post(
+        "/leads/11111111-1111-1111-1111-111111111111/feedback",
+        json={"label": "wrong_persona"},
+    )
+
+    assert response.status_code == 200
+    assert response.json() == {"status": "ok"}
+    assert fake_session.added == []
+    assert fake_session.flushed is True
+    assert existing_feedback.label == FeedbackLabel.WRONG_PERSONA.value
+
+
 def test_lead_feedback_model_has_label_check_constraint():
     constraints = [constraint for constraint in LeadFeedback.__table__.constraints if isinstance(constraint, CheckConstraint)]
 

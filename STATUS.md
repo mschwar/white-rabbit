@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-09 by gpt-5.4-mini
+**Last updated:** 2026-05-08 by gpt-5.4-mini
 **Branch:** feat/buildout-11-feedback-enum
-**Current sprint:** BUILDOUT-11 implemented on the feature branch — feedback label enum validation and DB CHECK constraint are in place, with tests and alembic migration verified
+**Current sprint:** BUILDOUT-11 QA complete on the feature branch — feedback label enum validation, DB CHECK constraint, and feedback upsert behavior are in place and verified in browser + tests
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -91,12 +91,12 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 
 ## What's in flight
 
-- feat/buildout-11-feedback-enum is active; the feedback label enum, API validation, DB CHECK constraint, and regression tests are on the branch and pushed.
-- BUILDOUT-09 docs drift is reconciled in `docs/07-buildout-plan.md`; the checklist now reflects reality.
+- feat/buildout-11-feedback-enum is active; the feedback label enum, API validation, DB CHECK constraint, and upsert fix are committed and QA-verified on the branch.
+- BUILDOUT-11 docs drift is reconciled in `docs/07-buildout-plan.md`; the checklist now reflects reality.
 
 ## Next concrete task
 
-- QA and merge BUILDOUT-11, then move to BUILDOUT-12 in `docs/07-buildout-plan.md`.
+- Merge BUILDOUT-11, then move to BUILDOUT-12 in `docs/07-buildout-plan.md`.
 
 ## Open questions for Matt
 

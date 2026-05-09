@@ -113,8 +113,12 @@ def add_lead_feedback(
     lead_id: UUID,
     label: FeedbackLabel,
 ) -> LeadFeedback:
-    feedback = LeadFeedback(lead_id=lead_id, label=label.value)
-    session.add(feedback)
+    feedback = session.query(LeadFeedback).filter(LeadFeedback.lead_id == lead_id).first()
+    if feedback is None:
+        feedback = LeadFeedback(lead_id=lead_id, label=label.value)
+        session.add(feedback)
+    else:
+        feedback.label = label.value
     session.flush()
     return feedback
 
