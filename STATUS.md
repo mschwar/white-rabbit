@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-09 by Codex feat/f11-required-benchmark-suite
+**Last updated:** 2026-05-09 by Codex qa/f11-required-benchmark-suite
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** F11 Required benchmark suite implemented on `feat/f11-required-benchmark-suite` and waiting QA.
+**Current sprint:** F11 Required benchmark suite passed QA on `feat/f11-required-benchmark-suite` and merged into `rebuild/validated-leads-loop`.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,9 +14,9 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F11 Required benchmark suite (`feat/f11-required-benchmark-suite`, implemented_pending_qa).
+**Next feature pointer:** F12 Per-run quality report (`feat/f12-run-quality-report`, blocked).
 
-**Current feature branch QA status:** `feat/f11-required-benchmark-suite` has been pushed and is waiting on required non-UI QA.
+**Current feature branch QA status:** `feat/f11-required-benchmark-suite` has passed required non-UI QA and merged into `rebuild/validated-leads-loop`.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -40,13 +40,13 @@
 ```text
 Feature: F11 - Required Benchmark Suite
 Branch: feat/f11-required-benchmark-suite
-Status: implemented_pending_qa
+Status: merged_to_rebuild_branch
 What changed: Added a canonical required benchmark suite in `packages/core/src/core/benchmark_suite.py`, mirrored it in `packages/core/tests/fixtures/benchmark_suite.json`, and covered offline suite validation plus pass/fail dimension reporting in `packages/core/tests/test_benchmark_suite.py`.
 Tests or QA run:
  - `cd packages/core && uv run pytest tests/test_benchmark_suite.py -q` (3 passed)
-Screenshots or report: n/a
-Northstar reflection: This suite makes the rebuild prove coverage beyond Arizona by encoding the audit's simple B2B queries, a guardrail accept case, and a privacy rejection case without live APIs. Product remains red by `docs/00-product-northstar.md`.
-Next pointer: F12 per-run quality report remains blocked until F11 merges.
+Screenshots or report: `.gstack/qa-reports/qa-report-f11-required-benchmark-suite-2026-05-09.md`
+Northstar reflection: This suite extends quality proof beyond Arizona by encoding the required B2B coverage set plus guardrail accept/reject behavior in offline-only verification.
+Next pointer: F12 per-run quality report (`feat/f12-run-quality-report`) remains blocked until downstream merge confirmation and orchestrator gate decision for W4.
 Open questions: none blocking F11 implementation
 ```
 
@@ -192,13 +192,13 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F09 are merged to `rebuild/validated-leads-loop`; W2 and W3 are orchestrator-accepted; F11 is implemented and waiting on QA.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F10 are merged to `rebuild/validated-leads-loop`; W2 and W3 are orchestrator-accepted; F10-F11 merged and awaiting W4 gate decision.
 
 ## Next concrete task
 
-- QA **F11 - Required benchmark suite** on `feat/f11-required-benchmark-suite`:
-  - run `cd packages/core && uv run pytest tests/test_benchmark_suite.py -q`
-  - confirm the required audit queries and privacy rejection fixture still match the canonical suite payload
+- QA **F12 - Per-run quality report** on `feat/f12-run-quality-report`:
+  - run `cd packages/core && uv run pytest tests/test_quality_report.py -q`
+  - confirm report metrics include precision/contact/source quality and fake-unsupported/zero-usable signals
   - update `docs/08-agentic-buildout-plan.md` and `STATUS.md`
   - merge only into `rebuild/validated-leads-loop` after QA
 
@@ -242,6 +242,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-09 | f11-qa (Codex) | QA'd `feat/f11-required-benchmark-suite` with offline suite verification (`3 passed`), wrote `.gstack/qa-reports/qa-report-f11-required-benchmark-suite-2026-05-09.md`, updated `docs/08-agentic-buildout-plan.md` and `STATUS.md`, and merged the feature branch into `rebuild/validated-leads-loop`. |
 | 2026-05-10 | orchestrator-gate-check (Codex) | Checked the next gates after F09, accepted W2 and W3 with reports, added missing `packages/core/tests/test_scoring.py` so W3's documented command passes, and unlocked F10 while keeping the product red. |
 | 2026-05-10 | f06-qa (Codex) | QA'd `feat/f06-field-validation-schema` with required non-UI verification and merged it into `rebuild/validated-leads-loop`; wrote `.gstack/qa-reports/qa-report-f06-field-validation-schema-2026-05-10.md` and updated docs handoff/status. |
 | 2026-05-10 | f06-build (Codex) | Implemented field-level validation schema on `feat/f06-field-validation-schema`: added explicit per-field validation records to all candidate types, defaulted untouched rows to unsupported validation, and verified core model tests plus Scout/Full API serialization. |
