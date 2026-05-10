@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F15 Evidence Drawer Or Dossier (`feat/f15-evidence-drawer`, implemented_pending_qa).
-**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F14 has been re-verified on this branch (f14-qa), merged to `rebuild/validated-leads-loop`, and pointer remains `feat/f15-evidence-drawer` (implemented_pending_qa).
+**Next feature pointer:** F16 Validation Export (`feat/f16-validation-export`, blocked).
+**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F15 has been QA’d and merged to `rebuild/validated-leads-loop` on this branch; F16 remains blocked.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -157,7 +157,7 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F12 | Per-run quality report                                   | merged_to_rebuild_branch | feat/f12-run-quality-report          | non-UI                   |
 | F13 | Single search-bar UI                                     | merged_to_rebuild_branch | feat/f13-single-search-ui            | browser                  |
 | F14 | Results table with validation buckets                    | merged_to_rebuild_branch | feat/f14-validation-results-table    | browser                  |
-| F15 | Evidence drawer / dossier                                | implemented_pending_qa   | feat/f15-evidence-drawer             | browser                  |
+| F15 | Evidence drawer / dossier                                | merged_to_rebuild_branch | feat/f15-evidence-drawer             | browser                  |
 | F16 | Export rebuild with validation columns                   | blocked                  | feat/f16-validation-export           | browser + CSV            |
 | F17 | Thomas/Lee correction feedback loop                      | blocked                  | feat/f17-corrections-feedback-loop   | browser + DB             |
 | F18 | Recipe library internal-only policy                      | deferred                 | feat/f18-recipes-internal-only       | browser                  |
@@ -673,7 +673,7 @@ Rollback plan:
 Remove validator integration and keep field validation statuses unsupported.
 
 Next-agent handoff note:
-F09 is implemented_pending_qa on `feat/f09-ranking-gate`. QA should confirm the evidence-aware ranking gate and then merge only into `rebuild/validated-leads-loop`.
+F09 was merged to `rebuild/validated-leads-loop` from `feat/f09-ranking-gate`; QA confirmed the evidence-aware ranking gate and merge path.
 Latest re-run notes: `qa-report-f07-source-validator-rerun-2026-05-10.md` confirms required non-UI tests with explicit env isolation.
 
 ---
@@ -1068,7 +1068,7 @@ F15 should add drill-down evidence without changing bucket definitions.
 
 ## F15 - Evidence Drawer Or Dossier
 
-Status: implemented_pending_qa
+Status: merged_to_rebuild_branch
 Branch: feat/f15-evidence-drawer
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -1122,7 +1122,7 @@ Rollback plan:
 Revert drawer component and row action; results table remains.
 
 Next-agent handoff note:
-F16 should export the same evidence fields shown here.
+F16 should export the same evidence fields shown here; feature is blocked until gate conditions for W5 export work are explicitly reopened.
 
 ---
 
