@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-10 by Codex main-promotion
-**Branch:** rebuild/validated-leads-loop -> main
-**Current sprint:** Matt directed the validated-leads rebuild to be promoted to `main` so Thomas and Lee can use the internal app. This is an internal operator-use exception, not proof that the quality gate is green.
+**Branch:** main
+**Current sprint:** The validated-leads rebuild has been promoted to `main` so Thomas and Lee can use the internal app. This is an internal operator-use exception, not proof that the quality gate is green.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -10,7 +10,7 @@
 
 ## Current rebuild status (2026-05-10)
 
-**Integration branch:** `rebuild/validated-leads-loop` promoted to `main` by ADR-010.
+**Operator-use branch:** `main`, promoted from `rebuild/validated-leads-loop` by ADR-010.
 
 **Current gate:** Red with Matt-directed Thomas/Lee internal-use exception. Do not treat the promotion as a public launch or as evidence that the reset gates passed.
 
@@ -47,15 +47,17 @@ Prior accepted gates:
 ```text
 Feature: Promote validated-leads rebuild to main for Thomas/Lee internal use
 Branch: rebuild/validated-leads-loop -> main
-Status: verified_for_main_promotion
-What changed: Recorded ADR-010, updated the northstar launch-gate caveat, fixed env-sensitive API/core test setup, and prepared to fast-forward `main` to the rebuild state.
+Status: promoted_to_main_and_pushed
+What changed: Recorded ADR-010, updated the northstar launch-gate caveat, fixed env-sensitive API/core test setup, fast-forwarded `main` to the rebuild state, and pushed `main`.
 Tests or QA run:
  - `git diff --check`
  - `cd apps/web && npm test -- --run` (29 passed)
  - `cd apps/web && npm run build`
  - `cd apps/api && uv run pytest tests -q` (43 passed)
  - `cd packages/core && uv run pytest tests -q` (94 passed, 6 skipped)
-Screenshots or report: n/a for branch promotion unless verification finds a UI blocker.
+ - GitHub `Deploy to Production` workflow for the promotion push passed.
+ - Live smoke: Fly `/health` returned 200, `/login` returned 200, anonymous `/scout` redirected to `/login?next=%2Fscout`.
+Screenshots or report: n/a for branch promotion.
 Northstar reflection: Explicit override by Matt; this does not declare the product green, public-ready, or quality-gate accepted.
 Next pointer: Confirm the next branch model after Thomas/Lee start using the internal app.
 Open questions: Should the next implementation branch from `main`, a fresh integration branch, or the existing rebuild branch?
@@ -257,7 +259,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
-| 2026-05-10 | main-promotion (Codex) | Recorded ADR-010 for Matt-directed Thomas/Lee internal operator use, updated the northstar red-gate exception, fixed API/core tests that leaked local env vars, verified web/API/core suites, and prepared `rebuild/validated-leads-loop` for fast-forward promotion to `main`. |
+| 2026-05-10 | main-promotion (Codex) | Recorded ADR-010 for Matt-directed Thomas/Lee internal operator use, updated the northstar red-gate exception, fixed API/core tests that leaked local env vars, verified web/API/core suites, fast-forwarded `main` to `rebuild/validated-leads-loop`, pushed `main`, confirmed the GitHub production workflow passed, and smoke-checked Fly health plus the Vercel login/Scout boundary. |
 | 2026-05-10 | f19-qa (Codex) | QA'd `feat/f19-batch-internal-only` with `cd apps/web && npm test -- --run src/app/__tests__/page.test.tsx src/components/__tests__/batch-workspace.test.tsx`, `cd apps/web && npm run build`, and browser verification on `http://localhost:3000/` plus `http://localhost:3000/batch`; found that `/` already hid batch but `/batch` needed explicit internal-only framing, added that warning copy, captured `.gstack/qa-reports/screenshots/f19-01-home-no-batch-nav.png` and `.gstack/qa-reports/screenshots/f19-02-batch-internal-only.png`, wrote `.gstack/qa-reports/qa-report-f19-batch-internal-only-2026-05-10.md`, and prepared the branch for merge into `rebuild/validated-leads-loop`. |
 | 2026-05-10 | f19-build (Codex) | After promoting F19 on `rebuild/validated-leads-loop`, created and pushed `feat/f19-batch-internal-only`. No product code changes were required because batch was already hidden by F01, so the branch now carries the isolated F19 QA handoff: Prompt B should verify `/` still omits batch from primary nav and record the screenshot evidence from the card. |
 | 2026-05-10 | f19-promotion (Codex) | Matt explicitly promoted F19 only. Updated `docs/08-agentic-buildout-plan.md` and `STATUS.md` so `F19` is the sole `ready` deferred follow-on feature, with explicit instructions that Prompt A should create `feat/f19-batch-internal-only` next and Prompt B should QA only that card verification afterward. |
