@@ -6,6 +6,7 @@
 
 - [2026-05-10 — Orchestrator review of W1/F04](orchestrator-review-w1-f04-2026-05-10.md)
 - [2026-05-10 — F04 query compiler](qa-report-f04-query-compiler-2026-05-10.md)
+- [2026-05-09 — F09 ranking gate](qa-report-f09-ranking-gate-2026-05-09.md)
 - [2026-05-09 — W1 red-state containment gate](gate-w1-red-state-containment.md)
 - [2026-05-09 — Documentation authority remediation](qa-report-docs-hard-audit-remediation-2026-05-09.md)
 - [2026-05-09 — F03 guardrails](qa-report-f03-guardrails-2026-05-09.md)
