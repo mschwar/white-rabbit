@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F09 Ranking gate based on evidence (blocked).
-**Current feature QA handoff:** `feat/f08-contact-status-model` is `qa_passed` after core non-UI verification; next prompt should QA the same branch output and merge it only into `rebuild/validated-leads-loop`, then start F09.
+**Next feature pointer:** F10 Golden Arizona K-12 VoIP benchmark harness (blocked).
+**Current feature QA handoff:** `feat/f09-ranking-gate` is `implemented_pending_qa` after core non-UI verification; next prompt should QA the same branch output and merge it only into `rebuild/validated-leads-loop`, then start F10.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -150,8 +150,8 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F05 | Candidate model separation                               | merged_to_rebuild_branch  | feat/f05-candidate-types             | non-UI                   |
 | F06 | Field-level validation schema                            | merged_to_rebuild_branch   | feat/f06-field-validation-schema     | non-UI                   |
 | F07 | Source validator                                         | merged_to_rebuild_branch  | feat/f07-source-validator            | non-UI                   |
-| F08 | Contact status model                                     | implemented_pending_qa   | feat/f08-contact-status-model        | non-UI                   |
-| F09 | Ranking gate based on evidence                           | blocked                  | feat/f09-ranking-gate                | non-UI                   |
+| F08 | Contact status model                                     | merged_to_rebuild_branch | feat/f08-contact-status-model        | non-UI                   |
+| F09 | Ranking gate based on evidence                           | implemented_pending_qa   | feat/f09-ranking-gate                | non-UI                   |
 | F10 | Golden Arizona K-12 VoIP benchmark harness               | blocked                  | feat/f10-arizona-k12-benchmark       | non-UI                   |
 | F11 | Required benchmark suite                                 | blocked                  | feat/f11-required-benchmark-suite    | non-UI                   |
 | F12 | Per-run quality report                                   | blocked                  | feat/f12-run-quality-report          | non-UI                   |
@@ -673,14 +673,14 @@ Rollback plan:
 Remove validator integration and keep field validation statuses unsupported.
 
 Next-agent handoff note:
-F08 is implemented_pending_qa on `feat/f08-contact-status-model`. QA should confirm the verified_found / deduced_with_pattern_evidence contact-status path and then merge only into `rebuild/validated-leads-loop`.
+F09 is implemented_pending_qa on `feat/f09-ranking-gate`. QA should confirm the evidence-aware ranking gate and then merge only into `rebuild/validated-leads-loop`.
 Latest re-run notes: `qa-report-f07-source-validator-rerun-2026-05-10.md` confirms required non-UI tests with explicit env isolation.
 
 ---
 
 ## F08 - Contact Status Model
 
-Status: qa_passed
+Status: merged_to_rebuild_branch
 Branch: feat/f08-contact-status-model
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -735,7 +735,7 @@ F09 should use these statuses to compute contact usability and ranking gates.
 
 ## F09 - Ranking Gate Based On Evidence
 
-Status: blocked
+Status: implemented_pending_qa
 Branch: feat/f09-ranking-gate
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini

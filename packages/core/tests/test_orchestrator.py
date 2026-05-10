@@ -1,7 +1,15 @@
 from types import SimpleNamespace
 import asyncio
 
-from core.models import CandidateValidation, FieldValidationRecord, Lead, LeadList, NotFoundCandidate, OrganizationOnlyCandidate
+from core.models import (
+    CandidateValidation,
+    ContactValidationRecord,
+    FieldValidationRecord,
+    Lead,
+    LeadList,
+    NotFoundCandidate,
+    OrganizationOnlyCandidate,
+)
 from core.orchestrator import SYSTEM_PROMPT, scout
 from core.search import SearchResults
 
@@ -70,7 +78,7 @@ def test_scout_uses_injected_dependencies_and_returns_metrics():
     assert metrics.estimated_cost_usd > 0
 
 
-def test_scout_overrides_llm_gate_passed_from_subscores():
+def test_scout_rejects_gate_when_evidence_validation_is_unsupported(monkeypatch):
     async def fake_search(query: str, api_key=None, max_results=10, filters=None):
         return []
 
@@ -84,9 +92,9 @@ def test_scout_overrides_llm_gate_passed_from_subscores():
         confidence=0.5,
         why_target="Relevant operations leader",
         icebreaker="I saw your team scaling operations.",
-        fit_score=0.2,
-        evidence_score=0.1,
-        contact_score=0.3,
+        fit_score=0.9,
+        evidence_score=0.9,
+        contact_score=0.9,
         gate_passed=True,
         explanation="The mock sets gate_passed incorrectly.",
     )
@@ -100,6 +108,48 @@ def test_scout_overrides_llm_gate_passed_from_subscores():
 
     fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
 
+    async def fake_validate_candidate_source(candidate, client=None):
+        return CandidateValidation(
+            name=FieldValidationRecord(
+                status="supported",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="Validated in test.",
+            ),
+            title=FieldValidationRecord(
+                status="supported",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="Validated in test.",
+            ),
+            organization=FieldValidationRecord(
+                status="supported",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="Validated in test.",
+            ),
+            email=ContactValidationRecord(
+                status="verified_found",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="Validated in test.",
+            ),
+            phone=ContactValidationRecord(
+                status="missing",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="Validated in test.",
+            ),
+            source=FieldValidationRecord(
+                status="unsupported",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="Validated in test.",
+            ),
+        )
+
+    monkeypatch.setattr("core.orchestrator.validate_candidate_source", fake_validate_candidate_source)
+
     leads, _ = asyncio.run(
         scout(
             "operations leaders in Austin",
@@ -110,6 +160,90 @@ def test_scout_overrides_llm_gate_passed_from_subscores():
     )
 
     assert leads[0].gate_passed is False
+
+
+def test_scout_sets_gate_passed_when_scores_and_evidence_align(monkeypatch):
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None):
+        return []
+
+    lead = Lead(
+        name="Jordan Lee",
+        title="VP Operations",
+        organization="Example Corp",
+        email="jordan.lee@example.com",
+        email_status="verified_found",
+        source_url="https://example.com/jordan",
+        confidence=0.5,
+        why_target="Relevant operations leader",
+        icebreaker="I saw your team scaling operations.",
+        fit_score=0.9,
+        evidence_score=0.9,
+        contact_score=0.9,
+        gate_passed=False,
+        explanation="The mock gate should be promoted by evidence.",
+    )
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            return SimpleNamespace(
+                choices=[SimpleNamespace(message=SimpleNamespace(parsed=LeadList(leads=[lead])))],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    async def fake_validate_candidate_source(candidate, client=None):
+        return CandidateValidation(
+            name=FieldValidationRecord(
+                status="supported",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="Validated in test.",
+            ),
+            title=FieldValidationRecord(
+                status="supported",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="Validated in test.",
+            ),
+            organization=FieldValidationRecord(
+                status="supported",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="Validated in test.",
+            ),
+            email=ContactValidationRecord(
+                status="verified_found",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="Validated in test.",
+            ),
+            phone=ContactValidationRecord(
+                status="missing",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="Validated in test.",
+            ),
+            source=FieldValidationRecord(
+                status="supported",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="Validated in test.",
+            ),
+        )
+
+    fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+
+    monkeypatch.setattr("core.orchestrator.validate_candidate_source", fake_validate_candidate_source)
+
+    leads, _ = asyncio.run(
+        scout(
+            "operations leaders in Austin",
+            openai_client=fake_client,
+            tavily_key="fake-tavily",
+            search_fn=fake_search,
+        )
+    )
+
+    assert leads[0].gate_passed is True
 
 
 def test_scout_constructs_async_openai_with_max_retries(monkeypatch):

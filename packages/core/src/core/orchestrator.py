@@ -15,6 +15,7 @@ from .source_validation import SOURCE_VALIDATION_TIMEOUT_SECONDS, validate_candi
 DEFAULT_MODEL = "gpt-4o-mini"
 DEFAULT_TAVILY_RESULTS = 10
 GATE_THRESHOLD = 0.6
+EVIDENCE_GATE_CONTACT_STATUSES = {"verified_found", "deduced_with_pattern_evidence"}
 
 
 class OrchestratorError(Exception):
@@ -31,8 +32,8 @@ SCORING GUIDELINES:
 - contact_score: 0.0 to 1.0. How usable is the email/phone/title?
 
 GATE:
-The gate is a pass/fail summary derived from the three scores. The server will compute
-and store the final boolean.
+The gate is a pass/fail summary derived from the three scores and supporting validation
+evidence. The server will compute and store the final boolean.
 
 CANDIDATE CATEGORIES:
 - Set candidate_category='person_lead' for a real person with supported name, title, and organization.
@@ -85,6 +86,27 @@ def _format_filters(filters: Mapping[str, Any] | None) -> str:
             continue
         lines.append(f"- {key}: {value}")
     return "\n".join(lines)
+
+
+def _lead_passes_evidence_gate(candidate: Lead) -> bool:
+    validation = getattr(candidate, "validation", None)
+    if candidate.candidate_category != "person_lead" or validation is None:
+        return False
+
+    if any(
+        getattr(getattr(validation, field_name), "status", None) != "supported"
+        for field_name in ("name", "title", "organization", "source")
+    ):
+        return False
+
+    if getattr(getattr(validation, "email", None), "status", None) not in EVIDENCE_GATE_CONTACT_STATUSES:
+        return False
+
+    return (
+        candidate.fit_score >= GATE_THRESHOLD
+        and candidate.evidence_score >= GATE_THRESHOLD
+        and candidate.contact_score >= GATE_THRESHOLD
+    )
 
 
 async def scout(
@@ -157,11 +179,7 @@ async def scout(
     for candidate, validation in zip(leads, validations, strict=True):
         candidate.validation = validation
         if isinstance(candidate, Lead):
-            candidate.gate_passed = (
-                candidate.fit_score >= GATE_THRESHOLD
-                and candidate.evidence_score >= GATE_THRESHOLD
-                and candidate.contact_score >= GATE_THRESHOLD
-            )
+            candidate.gate_passed = _lead_passes_evidence_gate(candidate)
 
     usage = getattr(completion, "usage", None)
     metrics = RunMetrics(

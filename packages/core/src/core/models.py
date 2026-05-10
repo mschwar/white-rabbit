@@ -171,7 +171,7 @@ class Lead(CandidateBase):
     fit_score: float = Field(ge=0, le=1, description="Match between person/org and target ICP")
     evidence_score: float = Field(ge=0, le=1, description="Strength and freshness of supporting sources")
     contact_score: float = Field(ge=0, le=1, description="Usability of email/phone/title information")
-    gate_passed: bool = Field(description="True if all three scores cleared their thresholds")
+    gate_passed: bool = Field(description="True if the server-computed evidence gate cleared the thresholds")
     explanation: str = Field(description="Human-readable rationale for ranking")
 
     @field_validator("name")

@@ -63,14 +63,32 @@ def _assert_valid_email(lead: Any) -> None:
     assert EMAIL_RE.match(email), f"{lead.name!r}: malformed email {email!r}"
 
 
+def _gate_passed_from_evidence(lead: Any) -> bool:
+    validation = getattr(lead, "validation", None)
+    if validation is None:
+        return False
+
+    return (
+        getattr(lead, "candidate_category", None) == "person_lead"
+        and lead.fit_score >= 0.6
+        and lead.evidence_score >= 0.6
+        and lead.contact_score >= 0.6
+        and validation.name.status == "supported"
+        and validation.title.status == "supported"
+        and validation.organization.status == "supported"
+        and validation.source.status == "supported"
+        and validation.email.status in {"verified_found", "deduced_with_pattern_evidence"}
+    )
+
+
 def _assert_lead_quality(lead: Any, *, allow_vertical_leak: bool) -> None:
     _assert_valid_name(lead)
     _assert_valid_email(lead)
-    assert lead.gate_passed == all(
-        score >= 0.6 for score in (lead.fit_score, lead.evidence_score, lead.contact_score)
-    ), (
+    assert lead.gate_passed == _gate_passed_from_evidence(lead), (
         f"{lead.name!r}: gate_passed={lead.gate_passed} does not match "
-        f"scores=({lead.fit_score}, {lead.evidence_score}, {lead.contact_score})"
+        f"evidence=({lead.validation.name.status}, {lead.validation.title.status}, "
+        f"{lead.validation.organization.status}, {lead.validation.email.status}, "
+        f"{lead.validation.source.status}) scores=({lead.fit_score}, {lead.evidence_score}, {lead.contact_score})"
     )
     if not allow_vertical_leak:
         explanation = (lead.explanation or "").lower()
@@ -113,11 +131,11 @@ def test_scout_integration_k12_baseline_query():
     for lead in leads:
         _assert_valid_name(lead)
         _assert_valid_email(lead)
-        assert lead.gate_passed == all(
-            score >= 0.6 for score in (lead.fit_score, lead.evidence_score, lead.contact_score)
-        ), (
+        assert lead.gate_passed == _gate_passed_from_evidence(lead), (
             f"{lead.name!r}: gate_passed={lead.gate_passed} does not match "
-            f"scores=({lead.fit_score}, {lead.evidence_score}, {lead.contact_score})"
+            f"evidence=({lead.validation.name.status}, {lead.validation.title.status}, "
+            f"{lead.validation.organization.status}, {lead.validation.email.status}, "
+            f"{lead.validation.source.status}) scores=({lead.fit_score}, {lead.evidence_score}, {lead.contact_score})"
         )
 
 
