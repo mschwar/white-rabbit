@@ -3,6 +3,7 @@
 **Status:** Active control document for the May 10 product reset.
 **Created:** 2026-05-10.
 **Integration branch:** `rebuild/validated-leads-loop`.
+**Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
 **Current reset gate:** RG0 - W5 hold and reset control.
 **Next Prompt A feature:** `R00 - W5 hold report and reset control docs`.
@@ -42,13 +43,15 @@ Narrow named-account prompts may produce fewer person leads only when every requ
 
 ## Branch Workflow
 
-Do not touch `main`.
+Do not merge feature branches directly to `main`.
 
 All reset work branches from and returns to:
 
 ```text
 rebuild/validated-leads-loop
 ```
+
+`main` is the operator-use deployment line because Thomas and Lee asked to use the most recent internal version. A push to `main` is an explicit operator-use promotion from `rebuild/validated-leads-loop`; it is not evidence that a reset gate passed or that the product is yellow/green. Keep feature QA and gate advancement on `rebuild/validated-leads-loop`, then sync `main` only when Matt or the active gate plan explicitly asks for that promotion.
 
 Feature branch pattern:
 
@@ -69,7 +72,7 @@ Prompt A implements exactly one `ready` reset feature. Prompt B QA's and merges 
 ```text
 You are working in /Users/mschwar/Documents/white-rabbit.
 
-Work only on rebuild/validated-leads-loop. Do not touch main.
+Work only on rebuild/validated-leads-loop. Do not merge or target main.
 
 1. Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/12-reset-gated-implementation-plan-2026-05-10.md, docs/03-decisions.md, and docs/02-stack.md.
 2. Checkout rebuild/validated-leads-loop and pull latest with fast-forward only.
@@ -97,7 +100,7 @@ Return:
 ```text
 You are working in /Users/mschwar/Documents/white-rabbit.
 
-QA the current reset feature branch and merge only into rebuild/validated-leads-loop. Never merge to main.
+QA the current reset feature branch and merge only into rebuild/validated-leads-loop. Never merge the feature branch directly to main.
 
 1. Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/12-reset-gated-implementation-plan-2026-05-10.md, and the feature card being QA'd.
 2. Checkout the feature branch and pull latest.
@@ -111,7 +114,7 @@ QA the current reset feature branch and merge only into rebuild/validated-leads-
 10. Push the feature branch.
 11. Merge into rebuild/validated-leads-loop only.
 12. Push rebuild/validated-leads-loop.
-13. Do not open or target main.
+13. Do not open or target main. If Matt explicitly asks to update the operator-use app, sync main only after rebuild is pushed and the promotion is recorded.
 
 Return:
 - QA verdict
@@ -539,7 +542,7 @@ Assign the first implementation agent:
 ```text
 You are Prompt A for White Rabbit reset feature R00.
 
-Work in /Users/mschwar/Documents/white-rabbit on rebuild/validated-leads-loop only. Do not touch main.
+Work in /Users/mschwar/Documents/white-rabbit on rebuild/validated-leads-loop only. Do not merge or target main.
 
 Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/12-reset-gated-implementation-plan-2026-05-10.md, docs/03-decisions.md, and audits/zero-trust-codebase-audit-2026-05-10.md.
 

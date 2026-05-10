@@ -138,7 +138,7 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 **Decision.** Reset implementation is controlled by `docs/12-reset-gated-implementation-plan-2026-05-10.md`. Every reset gate requires a repo-backed evaluation/audit report before the next gate unlocks. Feature QA can prove a slice works, but only a gate audit can advance the reset. Gate reports must cite operator evidence, live or replayed benchmark results, browser evidence when UI is touched, CSV/DB readback when export or persistence is touched, and a clear decision: `advance`, `hold`, `revise`, `rollback`, or `kill`.
 
-**Consequences.** The reset will move slower than feature-only implementation, but downstream agents will not treat UI completion, test pass, or mocked fixtures as product readiness. `main` remains untouched. `rebuild/validated-leads-loop` remains the integration branch. W6 and dogfood decisions stay blocked until the reset gate evidence satisfies `docs/00-product-northstar.md`.
+**Consequences.** The reset will move slower than feature-only implementation, but downstream agents will not treat UI completion, test pass, or mocked fixtures as product readiness. Superseded by ADR-010 for operator-use promotion: `main` may be synced from `rebuild/validated-leads-loop` when Matt explicitly asks Thomas/Lee to use the latest internal version, but feature work still integrates through `rebuild/validated-leads-loop`. W6 and dogfood decisions stay blocked until the reset gate evidence satisfies `docs/00-product-northstar.md`.
 
 ---
 

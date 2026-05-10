@@ -30,7 +30,8 @@ Every feature still follows the branch workflow in `docs/08-agentic-buildout-pla
 - One feature branch.
 - One PR.
 - PR target is always `rebuild/validated-leads-loop`.
-- Never target or merge to `main`.
+- Never target or merge feature branches directly to `main`.
+- ADR-010 made `main` the operator-use deployment line. Syncing `main` from `rebuild/validated-leads-loop` is a separate explicit promotion step, not a gate pass.
 - UI features require browser QA and screenshots.
 - Non-UI features require explicit command/fixture verification.
 

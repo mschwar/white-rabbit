@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex prod-env-fix
+**Last updated:** 2026-05-10 by Codex branch-policy-reconcile
 **Branch:** main
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
@@ -42,22 +42,22 @@ Prior accepted gates:
 - `docs/10-documentation-audit-2026-05-09.md` records the repo-wide documentation audit and remediation performed on this branch.
 - `.gstack/qa-reports/qa-template-agentic-buildout.md` is the QA report template for rebuild features.
 
-**Main promotion override:** ADR-010 explicitly supersedes the prior "main untouched" operating rule for this promotion. `main` is now the operator-use deployment line, but the repo must still preserve the red-gate caveats, evidence requirements, and internal-only scope.
+**Main promotion override:** ADR-010 explicitly supersedes the prior "main untouched" operating rule for this promotion. `main` is now the operator-use deployment line, but the repo must still preserve the red-gate caveats, evidence requirements, and internal-only scope. Feature branches still merge to `rebuild/validated-leads-loop` first; `main` is synced only by explicit operator-use promotion.
 
 **Production ops item resolved:** Vercel Production now has `WR_API_INTERNAL_TOKEN`; production was redeployed, and authenticated `/api/scout` no longer returns the missing-token 502.
 
 **Latest handoff:**
 
 ```text
-Feature: Record Lee/Thomas broad-result-volume requirement
+Feature: Reconcile main/rebuild branch policy after operator-use promotion
 Branch: main -> rebuild/validated-leads-loop sync
 Status: committed_and_pushed
-What changed: Added ADR-011 and updated the northstar/reset plan so broad Scout/Full runs need more than 10 categorized results, with 10-25 preferred. R00 must cite the 3 Scout / 4 Full operator failure in the W5 hold report.
+What changed: Updated AGENTS, the reset plan, and gated buildout docs so agents understand that `main` is the Thomas/Lee operator-use line while feature work still targets `rebuild/validated-leads-loop` first.
 Tests or QA run:
  - `git diff --check`
- - `rg -n "ADR-011|operator-feedback-volume|10-25|more than 10|3 rows|Full returned 4" docs STATUS.md audits/raw/zero-trust-2026-05-10/operator-feedback-volume-2026-05-10.md`
-Screenshots or report: `audits/raw/zero-trust-2026-05-10/operator-feedback-volume-2026-05-10.md`
-Northstar reflection: This raises the product bar without relaxing validation. Low-volume broad output is now explicitly red-gate failure.
+ - `rg -n 'operator-use deployment line|feature branches directly to `main`|sync `main`|ADR-010 promoted|rebuild/validated-leads-loop first|Do not merge or target main|Never merge the feature branch directly to main' AGENTS.md docs/08-agentic-buildout-plan.md docs/09-rebuild-phase-gates.md docs/12-reset-gated-implementation-plan-2026-05-10.md STATUS.md docs/03-decisions.md`
+Screenshots or report: n/a docs-only branch policy update.
+Northstar reflection: This preserves operator access without letting `main` promotion masquerade as a quality gate pass.
 Next pointer: Assign Prompt A to R00 after this docs update is committed and pushed.
 Open questions: none blocking R00.
 ```
@@ -258,6 +258,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | branch-policy-reconcile (Codex) | Reconciled the docs after Matt confirmed Thomas/Lee asked to use the latest version and `rebuild/validated-leads-loop` was pushed to `main`: `main` is now the operator-use deployment line, while feature work still targets `rebuild/validated-leads-loop` first and only syncs to `main` by explicit promotion. |
 | 2026-05-10 | prod-env-fix-verified (Codex) | Completed the post-promotion Vercel env fix: confirmed Production has `WR_API_INTERNAL_TOKEN`, redeployed with `vercel deploy --prod --yes`, and verified an authenticated live `POST /api/scout` reaches the protected API instead of returning "Missing WR_API_INTERNAL_TOKEN." |
 | 2026-05-10 | prod-env-fix (Codex) | Investigated the live Scout error "Missing WR_API_INTERNAL_TOKEN", confirmed Vercel production lacked the web-side server env var while local API/web envs matched, added `WR_API_INTERNAL_TOKEN` to Vercel Production, and started redeploy/verification. |
 | 2026-05-10 | main-promotion (Codex) | Recorded ADR-010 for Matt-directed Thomas/Lee internal operator use, updated the northstar red-gate exception, fixed API/core tests that leaked local env vars, verified web/API/core suites, fast-forwarded `main` to `rebuild/validated-leads-loop`, pushed `main`, confirmed the GitHub production workflow passed, and smoke-checked Fly health plus the Vercel login/Scout boundary. |

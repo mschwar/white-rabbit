@@ -31,7 +31,9 @@ Treat `audits/zero-trust-codebase-audit-2026-05-10.md` and `docs/12-reset-gated-
 
 ## Branch And PR Workflow
 
-Non-negotiable branch rule: leave `main` alone.
+Non-negotiable branch rule: feature branches do not merge directly to `main`.
+
+ADR-010 promoted `rebuild/validated-leads-loop` to `main` for Thomas/Lee internal operator use. Treat `main` as the operator-use deployment line, not as proof that any reset gate passed. New feature work still targets `rebuild/validated-leads-loop`; sync `main` only when Matt or the active gate plan explicitly asks for an operator-use promotion.
 
 Use exactly one persistent integration branch:
 
@@ -50,7 +52,7 @@ Workflow for every feature after F00:
 7. QA on the feature branch.
 8. Merge only into `rebuild/validated-leads-loop`.
 9. Push `rebuild/validated-leads-loop`.
-10. Never merge to `main`. Never open a PR targeting `main`. If a tool defaults to `main`, override it.
+10. Never merge feature branches directly to `main`. Never open a PR targeting `main`. If a tool defaults to `main`, override it. Explicit operator-use promotions from `rebuild/validated-leads-loop` to `main` must be recorded.
 
 F00 bootstrap exception: this planning task creates the integration branch and lands the rebuild control docs directly on `rebuild/validated-leads-loop`. Every later feature must use the branch/PR loop above.
 
@@ -61,7 +63,7 @@ F00 bootstrap exception: this planning task creates the integration branch and l
 ```text
 You are working in /Users/mschwar/Documents/white-rabbit.
 
-Work only on the rebuild integration line. Do not touch main.
+Work only on the rebuild integration line. Do not merge or target main.
 
 1. Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, and docs/08-agentic-buildout-plan.md.
 2. Checkout rebuild/validated-leads-loop and pull latest.
@@ -89,7 +91,7 @@ Return:
 ```text
 You are working in /Users/mschwar/Documents/white-rabbit.
 
-/qa the current feature branch and merge only into rebuild/validated-leads-loop. Never merge to main.
+/qa the current feature branch and merge only into rebuild/validated-leads-loop. Never merge the feature branch directly to main.
 
 1. Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/08-agentic-buildout-plan.md, and the feature card being QA'd.
 2. Checkout the feature branch and pull latest.
@@ -103,7 +105,7 @@ You are working in /Users/mschwar/Documents/white-rabbit.
 10. Push the feature branch.
 11. Merge the feature branch into rebuild/validated-leads-loop only.
 12. Push rebuild/validated-leads-loop.
-13. Do not merge to main. Do not open a main-targeted PR.
+13. Do not merge or target main. If Matt explicitly asks to update the operator-use app, sync main only after rebuild is pushed and the promotion is recorded.
 
 Return:
 - QA verdict
@@ -120,7 +122,7 @@ Every agent must run this before choosing or merging a feature:
 
 1. Does this feature directly improve the foundational funnel: simple natural-language query -> candidates scanned -> rigorously checked and annotated leads -> export?
 2. Does it reduce false confidence, bad contacts, wrong personas, or unsupported source claims?
-3. Does it keep main untouched and target only `rebuild/validated-leads-loop`?
+3. Does it avoid direct feature merges to main and target `rebuild/validated-leads-loop` first?
 4. Is the feature independently mergeable?
 5. Can the next agent discover the state from docs without this chat?
 6. Is there a browser test or explicit non-UI verification?

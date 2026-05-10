@@ -45,9 +45,11 @@ The customer offer is scoped concierge briefings fulfilled by Matt. **There is n
 
 ## Rebuild branch protocol
 
-For the validated-leads rebuild, always work from `rebuild/validated-leads-loop`.
+For the validated-leads rebuild, feature/audit work still starts from `rebuild/validated-leads-loop`.
 
-- Never merge feature work to `main`. Never open a PR targeting `main`.
+- Never merge feature branches directly to `main`. Never open a PR targeting `main`.
+- ADR-010 promoted `rebuild/validated-leads-loop` to `main` for Thomas/Lee internal operator use. Treat `main` as the operator-use deployment line, not as proof that quality gates passed.
+- Only fast-forward/sync `main` from `rebuild/validated-leads-loop` when Matt or the active gate plan explicitly calls for an operator-use promotion.
 - Before rebuild work, read `docs/00-product-northstar.md` and `docs/08-agentic-buildout-plan.md`.
 - Pick the next `ready` feature from `docs/08-agentic-buildout-plan.md`.
 - All feature branches branch from `rebuild/validated-leads-loop` and all PRs target `rebuild/validated-leads-loop`.
