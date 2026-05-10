@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F14 Results Table With Validation Buckets (`feat/f14-validation-results-table`, blocked).
-**Current feature QA handoff:** `feat/f13-single-search-ui` is merged into `rebuild/validated-leads-loop` after this run.
+**Next feature pointer:** F14 Results Table With Validation Buckets (`feat/f14-validation-results-table`, ready).
+**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F13 is already merged into `rebuild/validated-leads-loop`.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -156,7 +156,7 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F11 | Required benchmark suite                                 | merged_to_rebuild_branch | feat/f11-required-benchmark-suite    | non-UI                   |
 | F12 | Per-run quality report                                   | merged_to_rebuild_branch | feat/f12-run-quality-report          | non-UI                   |
 | F13 | Single search-bar UI                                     | merged_to_rebuild_branch | feat/f13-single-search-ui            | browser                  |
-| F14 | Results table with validation buckets                    | blocked                  | feat/f14-validation-results-table    | browser                  |
+| F14 | Results table with validation buckets                    | ready                    | feat/f14-validation-results-table    | browser                  |
 | F15 | Evidence drawer / dossier                                | blocked                  | feat/f15-evidence-drawer             | browser                  |
 | F16 | Export rebuild with validation columns                   | blocked                  | feat/f16-validation-export           | browser + CSV            |
 | F17 | Thomas/Lee correction feedback loop                      | blocked                  | feat/f17-corrections-feedback-loop   | browser + DB             |
@@ -188,7 +188,7 @@ Feature agents may prepare gate evidence, but they must not self-unlock downstre
 - F04 unblocks after F03 merges, because the planner must share the rewritten guardrail language and privacy boundary.
 - F05-F09 unblock sequentially after F04 because they share the candidate/validation model.
 - F10-F12 unblock after F09 because benchmarks must inspect the rebuilt validation and ranking outputs, not old lead cards.
-- F13-F17 unblock after F12 because the operator UI should not organize untrusted data.
+- F13-F17 unblock only after W4 orchestrator acceptance because the operator UI should not organize untrusted data before benchmarks and quality thresholds can identify unsafe runs.
 - F18-F23 remain deferred until the launch gate is yellow or green and Matt explicitly moves one to ready.
 
 ## Handoff Format
@@ -938,10 +938,11 @@ Rollback plan:
 Remove quality report module and any API field additions.
 
 Next-agent handoff note:
-QA on `feat/f12-run-quality-report` passed (`cd packages/core && uv run pytest tests/test_quality_report.py -q`). F13 single-search UI may now build against quality-checked outputs.
+QA on `feat/f12-run-quality-report` passed. F12 alone does not unlock W5 UI work; W4 gate acceptance is required before additional operator-loop features begin. W4 was accepted on 2026-05-10 in `.gstack/qa-reports/gate-w4-benchmarks-quality.md`.
 
 Build result:
 - `cd packages/core && uv run pytest tests/test_quality_report.py -q` (2 passed)
+- W4 gate remediation: `cd packages/core && uv run pytest tests/test_quality_report.py -q` (5 passed)
 
 ---
 
@@ -1006,7 +1007,7 @@ F13 is merged to `rebuild/validated-leads-loop`. F14 should replace card-first r
 ---
 ## F14 - Results Table With Validation Buckets
 
-Status: blocked
+Status: ready
 Branch: feat/f14-validation-results-table
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini

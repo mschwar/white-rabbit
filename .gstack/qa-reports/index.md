@@ -2,8 +2,9 @@
 
 **Rubric:** `docs/qa-rubric.md` — all reports must cite the required tiers.
 
-**Current gate evidence:** W1, W2, and W3 are orchestrator-accepted. Product remains red-gated until benchmark, quality, export, and dogfood gates say otherwise.
+**Current gate evidence:** W1, W2, W3, and W4 are orchestrator-accepted. Product remains red-gated until operator-loop export and dogfood gates say otherwise.
 
+- [2026-05-10 — W4 benchmarks and quality reporting gate](gate-w4-benchmarks-quality.md)
 - [2026-05-10 — W3 validation engine gate](gate-w3-validation-engine.md)
 - [2026-05-10 — W2 search contract gate](gate-w2-search-contract.md)
 - [2026-05-10 — Orchestrator review of W1/F04](orchestrator-review-w1-f04-2026-05-10.md)

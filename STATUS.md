@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex feat/f13-single-search-ui qa
+**Last updated:** 2026-05-10 by Codex orchestrator-gate-check
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** F13 Single search-bar UI merged on `feat/f13-single-search-ui`.
+**Current sprint:** W4 benchmarks and quality reporting gate accepted; F14 is ready.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,13 +14,17 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F14 Results Table With Validation Buckets (`feat/f14-validation-results-table`, blocked).
+**Next feature pointer:** F14 Results Table With Validation Buckets (`feat/f14-validation-results-table`, ready).
 
-**Current feature branch QA status:** `feat/f13-single-search-ui` passed required browser QA, was pushed to `origin` on the feature branch, and merged into `rebuild/validated-leads-loop`.
+**Current feature branch QA status:** F13 passed required browser QA and is merged. W4 gate remediation added explicit quality threshold evaluation so zero-usable and high-noise runs fail the per-run report.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
-**Latest gate acceptance:** W2 and W3 accepted on 2026-05-10:
+**Latest gate acceptance:** W4 accepted on 2026-05-10:
+
+- W4 benchmarks and quality reporting: `.gstack/qa-reports/gate-w4-benchmarks-quality.md`
+
+Prior accepted gates:
 
 - W2 search contract: `.gstack/qa-reports/gate-w2-search-contract.md`
 - W3 validation engine: `.gstack/qa-reports/gate-w3-validation-engine.md`
@@ -38,15 +42,16 @@
 **Latest handoff:**
 
 ```text
-Feature: F13 - Single Search-Bar UI
-Branch: feat/f13-single-search-ui
-Status: merged_to_rebuild_branch
-What changed: Centered the primary UI on one natural-language lead-search input, removed the mode-selection emphasis from the primary surface, and kept the operator path focused on one query-to-results flow.
+Feature: F14 - Results Table With Validation Buckets
+Branch: feat/f14-validation-results-table
+Status: ready
+What changed: W4 was accepted after the gate command passed and the per-run quality report gained explicit quality-gate threshold evaluation for zero-usable and high-noise runs.
 Tests or QA run:
- - `cd apps/web && npm test -- src/app/__tests__/page.test.tsx src/components/__tests__/scout-workspace.test.tsx` (8 passed)
- - Browser QA on `http://localhost:3000/` captured empty, loading, and error states in the authenticated browser session
-Screenshots or report: `.gstack/qa-reports/qa-report-f13-single-search-ui-2026-05-10.md`
-Northstar reflection: The primary UI now starts from the natural-language query the operator would actually type, which matches the funnel direction in the northstar.
+ - `cd packages/core && uv run pytest tests/test_quality_report.py -q` (5 passed)
+ - `cd packages/core && uv run pytest tests/test_arizona_k12_benchmark.py tests/test_benchmark_suite.py tests/test_quality_report.py -q` (11 passed, 1 skipped)
+ - `cd packages/core && $env:OPENAI_API_KEY=$null; uv run pytest -q` (94 passed, 6 skipped)
+Screenshots or report: `.gstack/qa-reports/gate-w4-benchmarks-quality.md`
+Northstar reflection: W4 now measures whether UI-visible rows are trustworthy before additional operator-loop surfaces are built; product remains red because export and W5 browser path are incomplete.
 Next pointer: F14 Results Table With Validation Buckets (`feat/f14-validation-results-table`)
 Open questions: none blocking
 ```
@@ -194,15 +199,16 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F10 are merged to `rebuild/validated-leads-loop`; W2 and W3 are orchestrator-accepted; F12 is implemented on `feat/f12-run-quality-report` and awaiting QA.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F13 are merged to `rebuild/validated-leads-loop`; W2, W3, and W4 are orchestrator-accepted. F13 was merged before W4 acceptance because stale feature handoff text treated F12 QA as enough to start W5; the control docs now state W5 unlocks only after W4 orchestrator acceptance.
 
 ## Next concrete task
 
-- QA **F12 - Per-run quality report** on `feat/f12-run-quality-report`:
-  - run `cd packages/core && uv run pytest tests/test_quality_report.py -q`
-  - confirm report metrics include precision/contact/source quality and fake/unsupported/not-found signals
-  - update `docs/08-agentic-buildout-plan.md` and `STATUS.md`
-  - merge only into `rebuild/validated-leads-loop` after QA
+- Build **F14 - Results Table With Validation Buckets** on `feat/f14-validation-results-table`:
+  - start from `rebuild/validated-leads-loop`
+  - render usable, noisy/failed, organization-only, and not-found rows in clearly labeled groups
+  - show validation badges for field/contact/source statuses
+  - run web tests, browser QA, and capture the required screenshots
+  - merge only back into `rebuild/validated-leads-loop` after QA
 
 ## Open questions for Matt
 
@@ -244,6 +250,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | orchestrator-gate-check (Codex) | Checked W4 after F10-F12, found the feature agents had merged F13 before formal W4 acceptance, added explicit quality-report threshold failures for zero-usable/high-noise runs, passed W4 verification (`11 passed, 1 skipped`), wrote `.gstack/qa-reports/gate-w4-benchmarks-quality.md`, accepted W4, and unlocked F14 while keeping the product red. |
 | 2026-05-10 | f13-qa (Codex) | QA'd `feat/f13-single-search-ui` with `cd apps/web && npm test -- src/app/__tests__/page.test.tsx src/components/__tests__/scout-workspace.test.tsx` and browser verification on `http://localhost:3000/`; captured empty, loading, and error-state screenshots; wrote `.gstack/qa-reports/qa-report-f13-single-search-ui-2026-05-10.md`; updated `docs/08-agentic-buildout-plan.md` and `STATUS.md`; merged the branch into `rebuild/validated-leads-loop`. |
 | 2026-05-09 | f11-qa (Codex) | QA'd `feat/f11-required-benchmark-suite` with offline suite verification (`3 passed`), wrote `.gstack/qa-reports/qa-report-f11-required-benchmark-suite-2026-05-09.md`, updated `docs/08-agentic-buildout-plan.md` and `STATUS.md`, and merged the feature branch into `rebuild/validated-leads-loop`. |
 | 2026-05-10 | orchestrator-gate-check (Codex) | Checked the next gates after F09, accepted W2 and W3 with reports, added missing `packages/core/tests/test_scoring.py` so W3's documented command passes, and unlocked F10 while keeping the product red. |

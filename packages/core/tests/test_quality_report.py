@@ -152,6 +152,16 @@ def test_quality_report_counts_candidate_categories_and_validation_statuses():
     assert report.source_support_rate == 0.8
     assert report.fake_email_count == 1
     assert report.unsupported_email_count == 1
+    assert report.high_noise_count == 2
+    assert report.high_noise_rate == 0.4
+    assert report.quality_gate_passed is False
+    assert report.quality_gate_failures == (
+        "low_precision_rate",
+        "low_persona_match_rate",
+        "low_contact_quality_rate",
+        "fake_emails_present",
+        "unsupported_emails_present",
+    )
     assert report.candidate_category_counts == {
         "person_lead": 2,
         "organization_only": 1,
@@ -194,5 +204,67 @@ def test_quality_report_serializes_for_benchmark_artifacts():
     assert payload["query"] == "benchmark quality check"
     assert payload["precision_rate"] == 0.4
     assert payload["fake_email_count"] == 1
+    assert payload["high_noise_rate"] == 0.4
+    assert payload["quality_gate_passed"] is False
+    assert "fake_emails_present" in payload["quality_gate_failures"]
+    assert payload["quality_gate_thresholds"]["minimum_precision_rate"] == 0.5
     assert payload["candidate_category_counts"]["not_found"] == 1
     assert payload["validation_status_counts"]["email"]["failed"] == 1
+
+
+def test_quality_report_passes_clean_runs_against_default_gate_thresholds():
+    report = build_quality_report(
+        [
+            _lead(email_status="verified_found"),
+            _lead(
+                email_status="deduced_with_pattern_evidence",
+                validation=_validation(email_status="deduced_with_pattern_evidence"),
+            ),
+        ],
+        artifact_kind="run",
+        artifact_id="run-clean",
+        query="K-12 IT directors in Arizona",
+    )
+
+    assert report.precision_rate == 1.0
+    assert report.high_noise_count == 0
+    assert report.high_noise_rate == 0.0
+    assert report.quality_gate_passed is True
+    assert report.quality_gate_failures == ()
+
+
+def test_quality_report_fails_zero_usable_runs():
+    report = build_quality_report(
+        [_organization_only(), _not_found(), _failed()],
+        artifact_kind="run",
+        artifact_id="run-zero-usable",
+        query="K-12 IT directors in Arizona",
+    )
+
+    assert report.usable_count == 0
+    assert report.quality_gate_passed is False
+    assert "zero_usable_candidates" in report.quality_gate_failures
+
+
+def test_quality_report_fails_high_noise_runs():
+    report = build_quality_report(
+        [
+            _lead(email_status="verified_found"),
+            _organization_only(),
+            _failed(),
+        ],
+        artifact_kind="run",
+        artifact_id="run-high-noise",
+        query="K-12 IT directors in Arizona",
+        quality_gate_thresholds={
+            "minimum_precision_rate": 0.3,
+            "minimum_persona_match_rate": 0.3,
+            "minimum_contact_quality_rate": 0.3,
+            "minimum_source_support_rate": 0.3,
+        },
+    )
+
+    assert report.high_noise_count == 2
+    assert report.high_noise_rate == 0.667
+    assert report.quality_gate_passed is False
+    assert "high_noise_rate" in report.quality_gate_failures
