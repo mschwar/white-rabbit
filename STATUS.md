@@ -46,6 +46,8 @@ Prior accepted gates:
 
 **Production ops item resolved:** Vercel Production now has `WR_API_INTERNAL_TOKEN`; production was redeployed, and authenticated `/api/scout` no longer returns the missing-token 502.
 
+**Production URL note:** Use the stable production alias `https://white-rabbit-ten.vercel.app/`, not one-off deployment URLs like `https://white-rabbit-7kw7lh6ri-matts-projects-06539e54.vercel.app/`. Vercel deployment URLs are immutable snapshots; `7kw7lh6ri` was created before `WR_API_INTERNAL_TOKEN` existed in Production and can continue to show the old missing-token error even after the alias is fixed.
+
 **Latest handoff:**
 
 ```text
@@ -258,6 +260,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | stale-deployment-url-check (Codex) | Checked Matt's reported `white-rabbit-7kw7lh6ri...` URL and confirmed it is an old immutable production deployment created before the env fix. Verified the stable production alias points at the newer `white-rabbit-jcrn58h0c...` deployment and that authenticated `/api/scout` on `https://white-rabbit-ten.vercel.app/` returns 200 instead of the missing-token 502. |
 | 2026-05-10 | branch-policy-reconcile (Codex) | Reconciled the docs after Matt confirmed Thomas/Lee asked to use the latest version and `rebuild/validated-leads-loop` was pushed to `main`: `main` is now the operator-use deployment line, while feature work still targets `rebuild/validated-leads-loop` first and only syncs to `main` by explicit promotion. |
 | 2026-05-10 | prod-env-fix-verified (Codex) | Completed the post-promotion Vercel env fix: confirmed Production has `WR_API_INTERNAL_TOKEN`, redeployed with `vercel deploy --prod --yes`, and verified an authenticated live `POST /api/scout` reaches the protected API instead of returning "Missing WR_API_INTERNAL_TOKEN." |
 | 2026-05-10 | prod-env-fix (Codex) | Investigated the live Scout error "Missing WR_API_INTERNAL_TOKEN", confirmed Vercel production lacked the web-side server env var while local API/web envs matched, added `WR_API_INTERNAL_TOKEN` to Vercel Production, and started redeploy/verification. |
