@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-05-10 by Codex f17-corrections-feedback-loop
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** W5 operator loop and export gate in motion; F15 is merged, and F16 export rebuild is QA’d and merged to `rebuild/validated-leads-loop`.
+**Current sprint:** W5 operator loop and export gate in motion; F15 and F16 are merged, and F17 correction feedback loop is QA’d and merged to `rebuild/validated-leads-loop`.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,9 +14,9 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F17 Correction Feedback Loop (`feat/f17-corrections-feedback-loop`, implemented_pending_qa).
+**Next feature pointer:** F18 Recipe Library Internal-Only Policy (`feat/f18-recipes-internal-only`, deferred until the launch gate is yellow).
 
-**Current feature branch QA status:** `feat/f17-corrections-feedback-loop` has build verification, browser QA on the validation-buckets fixture route, direct API smoke checks, and screenshots/report saved under `.gstack/qa-reports/`.
+**Current feature branch QA status:** `feat/f17-corrections-feedback-loop` has build verification, browser QA on the validation-buckets fixture route, direct API smoke checks, and screenshots/report saved under `.gstack/qa-reports/`; it is merged into `rebuild/validated-leads-loop`.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -44,7 +44,7 @@ Prior accepted gates:
 ```text
 Feature: F17 - Thomas/Lee Correction Feedback Loop
 Branch: feat/f17-corrections-feedback-loop
-Status: implemented_pending_qa
+Status: merged_to_rebuild_branch
 What changed: Correction records now store lead and run identifiers as text so the validation-buckets fixture can save synthetic corrections without foreign key failures. The API, Alembic migration, web correction loop, and tests now support saving a correction against Jane Smith and exporting the review queue JSON.
 Tests or QA run:
  - `cd apps/api && uv run pytest tests/test_api.py -q` (`40 passed`)
@@ -56,7 +56,7 @@ Screenshots or report:
  - `.gstack/qa-reports/screenshots/f17-02-correction-queue-export.png`
  - `.gstack/qa-reports/qa-report-f17-correction-feedback-loop-2026-05-10.md`
 Northstar reflection: Pass; the feedback loop improves validation and the review queue instead of disappearing into generic feedback buttons.
-Next pointer: F17 is ready for merge review against `rebuild/validated-leads-loop`.
+Next pointer: F18 is deferred until the launch gate is yellow.
 Open questions: none blocking
 ```
 
@@ -207,11 +207,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F14 are merged to `rebuild/validated-leads-loop`; W2, W3, and W4 are orchestrator-accepted. `F15` and `F16` are merged to `rebuild/validated-leads-loop`; `F17` is implemented_pending_qa after browser QA on the validation-buckets fixture.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F14 are merged to `rebuild/validated-leads-loop`; W2, W3, and W4 are orchestrator-accepted. `F15`, `F16`, and `F17` are merged to `rebuild/validated-leads-loop`; the next candidate is F18, but it remains deferred until the launch gate is yellow.
 
 ## Next concrete task
 
-- Next feature pointer is `F17 Corrections Feedback Loop` (`feat/f17-corrections-feedback-loop`, implemented_pending_qa); next prompt should review the QA report and merge the branch into `rebuild/validated-leads-loop`.
+- Next feature pointer is `F18 Recipe Library Internal-Only Policy` (`feat/f18-recipes-internal-only`, deferred); no ready feature remains until the launch gate is yellow.
 
 ## Open questions for Matt
 

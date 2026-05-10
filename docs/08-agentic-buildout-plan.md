@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F17 Thomas/Lee correction feedback loop (`feat/f17-corrections-feedback-loop`, implemented_pending_qa).
-**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F15 and F16 have been QA’d and merged to `rebuild/validated-leads-loop` on this branch; F17 browser QA is complete on the validation-buckets fixture, and the correction queue export link plus screenshots are saved under `.gstack/qa-reports/screenshots/`.
+**Next feature pointer:** F18 Recipe Library Internal-Only Policy (`feat/f18-recipes-internal-only`, deferred until the launch gate is yellow).
+**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F15 and F16 have been QA’d and merged to `rebuild/validated-leads-loop` on this branch; F17 browser QA is complete on the validation-buckets fixture, the correction queue export link is verified, and the screenshots are saved under `.gstack/qa-reports/screenshots/`.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -159,7 +159,7 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F14 | Results table with validation buckets                    | merged_to_rebuild_branch | feat/f14-validation-results-table    | browser                  |
 | F15 | Evidence drawer / dossier                                | merged_to_rebuild_branch | feat/f15-evidence-drawer             | browser                  |
 | F16 | Export rebuild with validation columns                   | merged_to_rebuild_branch | feat/f16-validation-export           | browser + CSV            |
-| F17 | Thomas/Lee correction feedback loop                      | implemented_pending_qa    | feat/f17-corrections-feedback-loop   | browser + DB             |
+| F17 | Thomas/Lee correction feedback loop                      | merged_to_rebuild_branch  | feat/f17-corrections-feedback-loop   | browser + DB             |
 | F18 | Recipe library internal-only policy                      | deferred                 | feat/f18-recipes-internal-only       | browser                  |
 | F19 | Batch workspace internal-only policy                     | deferred                 | feat/f19-batch-internal-only         | browser                  |
 | F20 | Friday review export internal-only policy                | deferred                 | feat/f20-friday-review-internal-only | browser                  |
@@ -1189,7 +1189,7 @@ F17 should use exported/validated rows as the feedback target, not raw lead card
 
 ## F17 - Thomas/Lee Correction Feedback Loop
 
-Status: implemented_pending_qa
+Status: merged_to_rebuild_branch
 Branch: feat/f17-corrections-feedback-loop
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -1242,7 +1242,7 @@ Rollback plan:
 Revert correction UI/API additions; previous feedback buttons remain.
 
 Next-agent handoff note:
-F17 is QA-passed on the browser fixture route and ready for merge review against `rebuild/validated-leads-loop`. After merge, reassess red/yellow/green gate before exposing Thomas/Lee dogfood.
+F17 is QA-passed on the browser fixture route and merged into `rebuild/validated-leads-loop`. Reassess red/yellow/green gate before exposing Thomas/Lee dogfood; F18 remains deferred until the launch gate is yellow.
 
 ---
 
