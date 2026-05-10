@@ -158,6 +158,7 @@ def test_fetch_search_results_decomposes_long_arizona_prompt_into_bounded_querie
     results = asyncio.run(search.fetch_search_results(long_prompt, api_key="fake", max_results=8))
 
     assert len(results) == 8
+    assert results.tavily_searches == 8
     assert len(created_clients) == 1
     assert created_clients[0].calls == 8
     assert len(captured_queries) == 8

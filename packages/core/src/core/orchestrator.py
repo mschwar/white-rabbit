@@ -101,6 +101,7 @@ async def scout(
             max_results=DEFAULT_TAVILY_RESULTS,
             filters=filters,
         )
+        tavily_searches = getattr(search_results, "tavily_searches", 1)
     except Exception as exc:
         raise OrchestratorError(f"Tavily search failed: {exc}") from exc
 
@@ -140,7 +141,7 @@ async def scout(
     metrics = RunMetrics(
         input_tokens=getattr(usage, "prompt_tokens", 0),
         output_tokens=getattr(usage, "completion_tokens", 0),
-        tavily_searches=1,
+        tavily_searches=tavily_searches,
         elapsed_seconds=round(time.perf_counter() - start_time, 2),
     )
     metrics.estimated_cost_usd = calculate_cost(metrics)

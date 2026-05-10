@@ -3,6 +3,7 @@ import asyncio
 
 from core.models import Lead, LeadList
 from core.orchestrator import SYSTEM_PROMPT, scout
+from core.search import SearchResults
 
 
 def test_scout_uses_injected_dependencies_and_returns_metrics():
@@ -182,6 +183,31 @@ def test_scout_threads_filters_through_search_and_prompt():
     assert "location: Albuquerque" in seen["prompt"]
     assert "segment: public schools" in seen["prompt"]
     assert metrics.tavily_searches == 1
+
+
+def test_scout_counts_planned_tavily_searches_from_search_results():
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None):
+        return SearchResults([], tavily_searches=8)
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            return SimpleNamespace(
+                choices=[SimpleNamespace(message=SimpleNamespace(parsed=LeadList(leads=[])))],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+
+    _, metrics = asyncio.run(
+        scout(
+            "Arizona K-12 VoIP decision makers at Mesa, Chandler, Peoria, Gilbert, Deer Valley, Paradise Valley, Dysart, and Maricopa",
+            openai_client=fake_client,
+            tavily_key="fake-tavily",
+            search_fn=fake_search,
+        )
+    )
+
+    assert metrics.tavily_searches == 8
 
 
 def test_system_prompt_is_vertical_agnostic_and_restores_lost_instructions():

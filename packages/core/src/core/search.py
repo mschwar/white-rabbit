@@ -17,6 +17,12 @@ class TavilySearchError(Exception):
     pass
 
 
+class SearchResults(list[dict[str, Any]]):
+    def __init__(self, results: list[dict[str, Any]], tavily_searches: int) -> None:
+        super().__init__(results)
+        self.tavily_searches = tavily_searches
+
+
 def _clean_results(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Sanitize results to keep context window clean."""
     cleaned = []
@@ -106,7 +112,10 @@ async def fetch_search_results(
                         search_depth,
                     )
                 )
-            return _dedupe_results(all_results)[:max_results]
+            return SearchResults(
+                _dedupe_results(all_results)[:max_results],
+                tavily_searches=len(vendor_queries),
+            )
     except TavilySearchError:
         raise
     except Exception as exc:
