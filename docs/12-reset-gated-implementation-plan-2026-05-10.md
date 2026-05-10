@@ -109,6 +109,17 @@ Current kickoff order:
 
 If Prompt C records `hold`, `revise`, `rollback`, or `kill`, no downstream Prompt A assignment is valid until that decision is resolved.
 
+## Final Product Mockup Inspection Gate
+
+Before reset UI/export implementation starts, Matt must inspect the final product mockup artifact:
+
+- Mockup: `docs/mockups/final-product-2026-05-10/index.html`
+- Rendered screenshots: `.gstack/qa-reports/screenshots/final-product-mockups-2026-05-10/`
+
+This mockup is not production code. It is the visual contract for R10-R13: one search input, 10-25 categorized rows when the market supports it, CRM-first fields, evidence one action away, sales-first export, and no Scout/Full/product-internals ceremony in the operator path.
+
+Prompt A/B agents must not invent a different final UI direction during R10-R13 without a fresh Matt approval. Prompt C for RG4 and RG5 must compare browser screenshots against this mockup and explicitly record any intentional divergence.
+
 ## Prompt A - Build Next Reset Feature
 
 ```text

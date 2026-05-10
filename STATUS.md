@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex pre-kickoff-review
+**Last updated:** 2026-05-10 by Codex final-product-mockups
 **Branch:** main / rebuild/validated-leads-loop aligned
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
@@ -19,6 +19,8 @@
 **Next feature pointer:** Reset feature `R00 - W5 hold report and reset control docs` remains the next implementation assignment. Branch from `rebuild/validated-leads-loop` per the reset plan; that branch is currently aligned with `main`. R00 must cite the Lee/Thomas low-volume feedback in the W5 hold report.
 
 **Kickoff workflow:** Use only the Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A implements one ready feature, Prompt B QA/merges it into `rebuild/validated-leads-loop`, and Prompt C runs the gate audit. Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync.
+
+**Final product mockup gate:** Inspect `docs/mockups/final-product-2026-05-10/index.html` before assigning Prompt A implementation. R10-R13 must treat it as the visual contract unless Matt approves a different direction; RG4/RG5 Prompt C audits must compare live screenshots against it.
 
 **Current feature branch QA status:** No feature branch is awaiting QA. F19 browser QA passed, the batch route now carries explicit internal-only labeling, and F20-F23 remain deferred.
 
@@ -53,17 +55,17 @@ Prior accepted gates:
 **Latest handoff:**
 
 ```text
-Feature: Pre-kickoff reset plan hardening
+Feature: Final product mockups before reset kickoff
 Branch: main -> rebuild/validated-leads-loop sync
 Status: committed_and_pushed
-What changed: Reviewed the reset plan against the northstar/value prop and tightened kickoff to a strict Prompt A/B/C loop. Added the 24-hour product bar, Prompt C gate ownership, live-evidence rules, Value Prop Verdict, first Prompt B/C assignments, and main-promotion recommendation requirements.
+What changed: Added static final product mockups for inspection before reset implementation. The mockup locks one-search operator flow, 10-25 categorized result density, CRM-first columns, evidence one action away, sales-first export, and mobile row-card review. Wired the mockup into the reset plan as the visual contract for R10-R13 and the comparison artifact for RG4/RG5 Prompt C audits.
 Tests or QA run:
  - `git diff --check`
- - `rg -n '24-Hour Product Bar|Kickoff Workflow - Only Prompt A, Prompt B, Prompt C|Prompt C - Gate Evaluation And Audit|Live-Evidence Rule|First Prompt B Assignment|First Prompt C Assignment|Value Prop Verdict|Next Main Promotion Recommendation|Prompt C is the only prompt' docs/12-reset-gated-implementation-plan-2026-05-10.md STATUS.md`
- - `rg -n 'Gate Evaluation / Audit Prompt|gate-review prompt|unlock.*Prompt B|Prompt B.*unlock|advance from mocks|screenshots, or intentions' docs/12-reset-gated-implementation-plan-2026-05-10.md STATUS.md`
-Screenshots or report: n/a docs-only pre-kickoff hardening.
-Northstar reflection: Prevents the reset from spending the next 24 hours on UI/export polish before result volume, provenance, validation honesty, and sales-first export value are proven.
-Next pointer: Assign Prompt A to R00 after this docs update is committed and pushed.
+ - `node` Playwright static render of `docs/mockups/final-product-2026-05-10/index.html`
+ - `rg -n 'Final Product Mockup Inspection Gate|final-product-2026-05-10|visual contract|10-25 categorized' docs STATUS.md`
+Screenshots or report: `.gstack/qa-reports/screenshots/final-product-mockups-2026-05-10/`
+Northstar reflection: Gives Matt a concrete final-product target before 17 more implementation features can drift away from Lee/Thomas's value prop.
+Next pointer: Matt inspection, then assign Prompt A to R00 if the mockup direction is approved.
 Open questions: none blocking R00.
 ```
 
@@ -263,6 +265,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | final-product-mockups (Codex) | Added `docs/mockups/final-product-2026-05-10/index.html` and rendered screenshots so Matt can inspect the final intended operator product before kickoff. Wired the mockup into the reset plan as the R10-R13 visual contract and RG4/RG5 Prompt C comparison artifact. |
 | 2026-05-10 | pre-kickoff-review (Codex) | Ran a ruthless final review of the reset plan against the northstar and true value prop. Tightened `docs/12-reset-gated-implementation-plan-2026-05-10.md` to a strict Prompt A/B/C kickoff loop, added a 24-hour product bar, made Prompt C the only gate unlock/main-promotion recommender, added live-evidence rules, and wrote first Prompt B/C assignments so R00 cannot drift into another ambiguous gate bypass. |
 | 2026-05-10 | stale-deployment-url-check (Codex) | Checked Matt's reported `white-rabbit-7kw7lh6ri...` URL and confirmed it is an old immutable production deployment created before the env fix. Verified the stable production alias points at the newer `white-rabbit-jcrn58h0c...` deployment and that authenticated `/api/scout` on `https://white-rabbit-ten.vercel.app/` returns 200 instead of the missing-token 502. |
 | 2026-05-10 | branch-policy-reconcile (Codex) | Reconciled the docs after Matt confirmed Thomas/Lee asked to use the latest version and `rebuild/validated-leads-loop` was pushed to `main`: `main` is now the operator-use deployment line, while feature work still targets `rebuild/validated-leads-loop` first and only syncs to `main` by explicit promotion. |

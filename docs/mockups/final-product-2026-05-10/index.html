@@ -1,0 +1,1386 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>White Rabbit Final Product Mockups - 2026-05-10</title>
+    <style>
+      :root {
+        --bg: #0b0c0d;
+        --panel: #141617;
+        --panel-2: #191c1d;
+        --line: #2b3031;
+        --line-strong: #3a4243;
+        --text: #f4f2ec;
+        --muted: #a9aca7;
+        --quiet: #777d78;
+        --green: #b7ff63;
+        --green-soft: rgba(183, 255, 99, 0.12);
+        --cyan: #87d9ff;
+        --cyan-soft: rgba(135, 217, 255, 0.12);
+        --amber: #ffd166;
+        --amber-soft: rgba(255, 209, 102, 0.13);
+        --red: #ff8d8d;
+        --red-soft: rgba(255, 141, 141, 0.13);
+        --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --font-mono: "SF Mono", Menlo, Consolas, monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-sans);
+        letter-spacing: 0;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .shell {
+        min-height: 100vh;
+        padding: 26px;
+      }
+
+      .chrome {
+        max-width: 1440px;
+        margin: 0 auto;
+        border: 1px solid var(--line);
+        background: #101213;
+      }
+
+      .topbar {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        align-items: center;
+        min-height: 58px;
+        border-bottom: 1px solid var(--line);
+        padding: 0 22px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .mark {
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--green);
+        border-radius: 50% 50% 45% 45%;
+        position: relative;
+        flex: 0 0 auto;
+      }
+
+      .mark::before,
+      .mark::after {
+        content: "";
+        position: absolute;
+        top: -10px;
+        width: 2px;
+        height: 12px;
+        background: var(--green);
+      }
+
+      .mark::before {
+        left: 5px;
+        transform: rotate(-22deg);
+      }
+
+      .mark::after {
+        right: 5px;
+        transform: rotate(22deg);
+      }
+
+      .brand-title {
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .brand-subtitle {
+        color: var(--quiet);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .top-meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .status-dot {
+        display: inline-flex;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--green);
+      }
+
+      .tabs {
+        display: flex;
+        border-bottom: 1px solid var(--line);
+        background: #111314;
+        overflow-x: auto;
+      }
+
+      .tab {
+        border: 0;
+        border-right: 1px solid var(--line);
+        background: transparent;
+        color: var(--muted);
+        padding: 13px 18px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .tab[aria-selected="true"] {
+        color: var(--green);
+        background: rgba(183, 255, 99, 0.06);
+        box-shadow: inset 0 -2px 0 var(--green);
+      }
+
+      .view {
+        display: none;
+      }
+
+      .view.active {
+        display: block;
+      }
+
+      .workspace {
+        padding: 24px;
+      }
+
+      .search-strip {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 14px;
+        align-items: end;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 20px;
+      }
+
+      .field-label {
+        margin: 0 0 8px;
+        color: var(--quiet);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+
+      .query-input {
+        width: 100%;
+        min-height: 52px;
+        border: 1px solid var(--line-strong);
+        background: #0d0f10;
+        color: var(--text);
+        padding: 0 16px;
+        outline: 0;
+        font-size: 18px;
+      }
+
+      .query-input:focus {
+        border-color: var(--green);
+      }
+
+      .button {
+        min-height: 52px;
+        border: 1px solid var(--green);
+        background: var(--green);
+        color: #101213;
+        padding: 0 22px;
+        font-weight: 900;
+        cursor: pointer;
+        white-space: nowrap;
+      }
+
+      .button.secondary {
+        background: transparent;
+        color: var(--green);
+      }
+
+      .button.dark {
+        border-color: var(--line-strong);
+        background: #151819;
+        color: var(--text);
+      }
+
+      .metric-row {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1px;
+        margin-top: 20px;
+        border: 1px solid var(--line);
+        background: var(--line);
+      }
+
+      .metric {
+        min-height: 82px;
+        background: #111314;
+        padding: 15px;
+      }
+
+      .metric strong {
+        display: block;
+        font-size: 22px;
+        line-height: 1;
+      }
+
+      .metric span {
+        display: block;
+        margin-top: 9px;
+        color: var(--quiet);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .search-empty {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+        gap: 26px;
+        padding-top: 28px;
+      }
+
+      .copy-block h1 {
+        max-width: 700px;
+        margin: 0;
+        font-size: clamp(28px, 3vw, 42px);
+        line-height: 1.08;
+        letter-spacing: 0;
+      }
+
+      .copy-block p {
+        max-width: 650px;
+        color: var(--muted);
+        font-size: 18px;
+        line-height: 1.55;
+      }
+
+      .reference-list {
+        border: 1px solid var(--line);
+        background: var(--panel);
+      }
+
+      .reference-row {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 14px;
+        align-items: center;
+        padding: 15px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .reference-row:last-child {
+        border-bottom: 0;
+      }
+
+      .reference-row strong {
+        font-size: 14px;
+      }
+
+      .reference-row span {
+        color: var(--quiet);
+        font-size: 12px;
+      }
+
+      .kbd {
+        border: 1px solid var(--line-strong);
+        background: #0d0f10;
+        color: var(--muted);
+        padding: 4px 8px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+      }
+
+      .results-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 340px;
+        gap: 18px;
+        padding-top: 20px;
+        align-items: start;
+      }
+
+      .toolbar {
+        display: flex;
+        justify-content: space-between;
+        gap: 14px;
+        align-items: center;
+        margin-bottom: 14px;
+      }
+
+      .toolbar h1 {
+        margin: 0;
+        font-size: 22px;
+      }
+
+      .toolbar p {
+        margin: 5px 0 0;
+        color: var(--quiet);
+        font-size: 13px;
+      }
+
+      .bucket-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 14px;
+      }
+
+      .bucket {
+        border: 1px solid var(--line-strong);
+        background: #111314;
+        color: var(--muted);
+        padding: 8px 11px;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .bucket.ready {
+        border-color: rgba(183, 255, 99, 0.45);
+        color: var(--green);
+      }
+
+      .bucket.review {
+        border-color: rgba(255, 209, 102, 0.45);
+        color: var(--amber);
+      }
+
+      .bucket.org {
+        border-color: rgba(135, 217, 255, 0.45);
+        color: var(--cyan);
+      }
+
+      .table-frame {
+        border: 1px solid var(--line);
+        overflow: auto;
+        background: #101213;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 0;
+        table-layout: fixed;
+      }
+
+      th {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background: #171a1b;
+        color: var(--quiet);
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-align: left;
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--line-strong);
+        padding: 10px 9px;
+      }
+
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 10px 9px;
+        vertical-align: top;
+        font-size: 12px;
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+      }
+
+      tr:last-child td {
+        border-bottom: 0;
+      }
+
+      tr.selected {
+        background: rgba(183, 255, 99, 0.055);
+      }
+
+      .rank {
+        color: var(--quiet);
+        font-family: var(--font-mono);
+        font-size: 12px;
+      }
+
+      .org-name,
+      .lead-name {
+        font-weight: 800;
+      }
+
+      .subline {
+        margin-top: 4px;
+        color: var(--quiet);
+        font-size: 12px;
+      }
+
+      .email {
+        color: var(--green);
+        font-family: var(--font-mono);
+        font-size: 12px;
+      }
+
+      .source-link {
+        color: var(--cyan);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(135, 217, 255, 0.35);
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        border: 1px solid var(--line-strong);
+        padding: 4px 8px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .pill.ready {
+        border-color: rgba(183, 255, 99, 0.4);
+        background: var(--green-soft);
+        color: var(--green);
+      }
+
+      .pill.review {
+        border-color: rgba(255, 209, 102, 0.45);
+        background: var(--amber-soft);
+        color: var(--amber);
+      }
+
+      .pill.org {
+        border-color: rgba(135, 217, 255, 0.45);
+        background: var(--cyan-soft);
+        color: var(--cyan);
+      }
+
+      .pill.fail {
+        border-color: rgba(255, 141, 141, 0.45);
+        background: var(--red-soft);
+        color: var(--red);
+      }
+
+      .row-action {
+        border: 1px solid var(--line-strong);
+        background: #0e1011;
+        color: var(--text);
+        padding: 6px 7px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .table-frame th:nth-child(1),
+      .table-frame td:nth-child(1) {
+        width: 4%;
+      }
+
+      .table-frame th:nth-child(2),
+      .table-frame td:nth-child(2) {
+        width: 13%;
+      }
+
+      .table-frame th:nth-child(3),
+      .table-frame td:nth-child(3) {
+        width: 8%;
+      }
+
+      .table-frame th:nth-child(4),
+      .table-frame td:nth-child(4) {
+        width: 11%;
+      }
+
+      .table-frame th:nth-child(5),
+      .table-frame td:nth-child(5) {
+        width: 13%;
+      }
+
+      .table-frame th:nth-child(6),
+      .table-frame td:nth-child(6) {
+        width: 18%;
+      }
+
+      .table-frame th:nth-child(7),
+      .table-frame td:nth-child(7) {
+        width: 10%;
+      }
+
+      .table-frame th:nth-child(8),
+      .table-frame td:nth-child(8) {
+        width: 8%;
+      }
+
+      .table-frame th:nth-child(9),
+      .table-frame td:nth-child(9) {
+        width: 8%;
+      }
+
+      .table-frame th:nth-child(10),
+      .table-frame td:nth-child(10) {
+        width: 7%;
+      }
+
+      .evidence-panel {
+        position: sticky;
+        top: 18px;
+        border: 1px solid var(--line);
+        background: var(--panel);
+      }
+
+      .panel-section {
+        border-bottom: 1px solid var(--line);
+        padding: 16px;
+      }
+
+      .panel-section:last-child {
+        border-bottom: 0;
+      }
+
+      .panel-eyebrow {
+        margin: 0 0 8px;
+        color: var(--quiet);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .panel-title {
+        margin: 0;
+        font-size: 22px;
+        line-height: 1.15;
+      }
+
+      .panel-subtitle {
+        margin: 8px 0 0;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .evidence-grid {
+        display: grid;
+        gap: 9px;
+      }
+
+      .evidence-item {
+        display: grid;
+        grid-template-columns: 92px 1fr;
+        gap: 10px;
+        align-items: start;
+        border: 1px solid var(--line);
+        background: #101213;
+        padding: 10px;
+      }
+
+      .evidence-item span:first-child {
+        color: var(--quiet);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .evidence-item strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 13px;
+      }
+
+      .evidence-item small {
+        color: var(--muted);
+        line-height: 1.4;
+      }
+
+      .quote {
+        border-left: 2px solid var(--green);
+        padding-left: 12px;
+        color: var(--text);
+        line-height: 1.5;
+      }
+
+      .export-layout {
+        display: grid;
+        grid-template-columns: 380px minmax(0, 1fr);
+        gap: 20px;
+        padding-top: 20px;
+      }
+
+      .export-summary {
+        border: 1px solid var(--line);
+        background: var(--panel);
+      }
+
+      .checklist {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .checklist li {
+        display: flex;
+        gap: 10px;
+        border-bottom: 1px solid var(--line);
+        padding: 13px 16px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .checklist li:last-child {
+        border-bottom: 0;
+      }
+
+      .check {
+        color: var(--green);
+        font-weight: 900;
+      }
+
+      .csv-preview {
+        border: 1px solid var(--line);
+        background: #101213;
+        overflow: auto;
+      }
+
+      .csv-preview table {
+        min-width: 1500px;
+        table-layout: auto;
+      }
+
+      .csv-preview th,
+      .csv-preview td {
+        white-space: nowrap;
+        overflow-wrap: normal;
+      }
+
+      .csv-preview th.sales {
+        color: var(--green);
+      }
+
+      .csv-preview th.audit {
+        color: var(--quiet);
+      }
+
+      .mobile-frame {
+        max-width: 430px;
+        margin: 20px auto 0;
+        border: 1px solid var(--line);
+        background: #101213;
+      }
+
+      .mobile-frame .topbar {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        align-items: start;
+        padding: 14px;
+      }
+
+      .mobile-search {
+        padding: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .mobile-row {
+        border-bottom: 1px solid var(--line);
+        padding: 14px;
+      }
+
+      .mobile-row:last-child {
+        border-bottom: 0;
+      }
+
+      .mobile-grid {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px;
+        align-items: start;
+      }
+
+      .mobile-facts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 12px;
+      }
+
+      .fact {
+        border: 1px solid var(--line);
+        background: #0c0e0f;
+        padding: 8px;
+      }
+
+      .fact span {
+        display: block;
+        color: var(--quiet);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .fact strong {
+        display: block;
+        margin-top: 4px;
+        font-size: 12px;
+      }
+
+      @media (max-width: 980px) {
+        .shell {
+          padding: 0;
+        }
+
+        .chrome {
+          border-left: 0;
+          border-right: 0;
+        }
+
+        .topbar,
+        .search-strip,
+        .search-empty,
+        .results-layout,
+        .export-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .workspace {
+          padding: 16px;
+        }
+
+        .metric-row {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .evidence-panel {
+          position: static;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .topbar {
+          grid-template-columns: 1fr;
+          align-items: start;
+          padding: 14px;
+        }
+
+        .top-meta {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 6px;
+        }
+
+        .metric-row,
+        .mobile-facts {
+          grid-template-columns: 1fr;
+        }
+
+        .copy-block h1 {
+          font-size: 36px;
+        }
+
+        .toolbar {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .button,
+        .query-input {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="chrome" aria-label="White Rabbit final product mockup">
+        <header class="topbar">
+          <div class="brand">
+            <span class="mark" aria-hidden="true"></span>
+            <span class="brand-title">White Rabbit</span>
+            <span class="brand-subtitle">source-backed prospecting</span>
+          </div>
+          <div class="top-meta">
+            <span><span class="status-dot" aria-hidden="true"></span> Production target mockup</span>
+            <span>10-25 categorized results required</span>
+          </div>
+        </header>
+
+        <nav class="tabs" aria-label="Mockup screens">
+          <button class="tab" type="button" aria-selected="true" data-view-target="search">Search</button>
+          <button class="tab" type="button" aria-selected="false" data-view-target="results">Results + Evidence</button>
+          <button class="tab" type="button" aria-selected="false" data-view-target="export">Export</button>
+          <button class="tab" type="button" aria-selected="false" data-view-target="mobile">Mobile</button>
+        </nav>
+
+        <section class="view active" id="view-search">
+          <div class="workspace">
+            <form class="search-strip">
+              <label>
+                <p class="field-label">Target</p>
+                <input class="query-input" value="Healthcare IT directors in Phoenix" aria-label="Target query" />
+              </label>
+              <button class="button" type="button">Search</button>
+            </form>
+
+            <div class="metric-row" aria-label="Expected run quality">
+              <div class="metric"><strong>18</strong><span>Categorized rows</span></div>
+              <div class="metric"><strong>11</strong><span>CRM-ready candidates</span></div>
+              <div class="metric"><strong>4</strong><span>Need review</span></div>
+              <div class="metric"><strong>3</strong><span>Org-only / not found</span></div>
+            </div>
+
+            <div class="search-empty">
+              <div class="copy-block">
+                <h1>One search. Enough rows. Honest evidence.</h1>
+                <p>
+                  One search returns enough categorized prospects for a working sales motion, then separates
+                  CRM-ready people from review rows, organization-only rows, and true misses.
+                </p>
+                <p>
+                  The final product should feel closer to a compact analyst desk than a dashboard: no mode
+                  toggles, no quota card unless blocked, no recipe library, no batch workspace, no implementation
+                  language in the operator path.
+                </p>
+              </div>
+              <aside class="reference-list" aria-label="Operator constraints">
+                <div class="reference-row">
+                  <span class="kbd">01</span>
+                  <div><strong>Volume is value</strong><br /><span>Broad targets must produce 10-25 categorized rows.</span></div>
+                  <span class="pill ready">Gate</span>
+                </div>
+                <div class="reference-row">
+                  <span class="kbd">02</span>
+                  <div><strong>Evidence is visible</strong><br /><span>Name, title, organization, and contact status show field support.</span></div>
+                  <span class="pill ready">Gate</span>
+                </div>
+                <div class="reference-row">
+                  <span class="kbd">03</span>
+                  <div><strong>Sales fields first</strong><br /><span>Export starts with account, person, title, contact, source, and why.</span></div>
+                  <span class="pill ready">Gate</span>
+                </div>
+                <div class="reference-row">
+                  <span class="kbd">04</span>
+                  <div><strong>False confidence is blocked</strong><br /><span>No unsupported email or source can look CRM-ready.</span></div>
+                  <span class="pill review">Hold if false</span>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-results">
+          <div class="workspace">
+            <form class="search-strip">
+              <label>
+                <p class="field-label">Target</p>
+                <input class="query-input" value="Healthcare IT directors in Phoenix" aria-label="Target query" />
+              </label>
+              <button class="button secondary" type="button">Run Another Search</button>
+            </form>
+
+            <div class="results-layout">
+              <section>
+                <div class="toolbar">
+                  <div>
+                    <h1>18 categorized rows</h1>
+                    <p>11 ready · 4 review · 2 organization-only · 1 not found · 1m 42s · $0.73 estimated</p>
+                  </div>
+                  <button class="button" type="button">Export ready rows</button>
+                </div>
+
+                <div class="bucket-bar" aria-label="Validation buckets">
+                  <span class="bucket ready">Ready 11</span>
+                  <span class="bucket review">Review 4</span>
+                  <span class="bucket org">Org-only 2</span>
+                  <span class="bucket">Not found 1</span>
+                </div>
+
+                <div class="table-frame">
+                  <table aria-label="CRM-first results table">
+                    <thead>
+                      <tr>
+                        <th>Rank</th>
+                        <th>Organization</th>
+                        <th>Location</th>
+                        <th>Lead</th>
+                        <th>Title</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Source</th>
+                        <th>Status</th>
+                        <th>Open</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="selected">
+                        <td class="rank">01</td>
+                        <td><div class="org-name">Valleywise Health</div><div class="subline">Hospital system</div></td>
+                        <td>Phoenix, AZ</td>
+                        <td><div class="lead-name">Lena Ortiz</div><div class="subline">IT leadership</div></td>
+                        <td>Director, Clinical Systems</td>
+                        <td><span class="email">lena.ortiz@valleywise.example</span><div class="subline">verified</div></td>
+                        <td>(602) 555-0184<div class="subline">main + extension</div></td>
+                        <td><a class="source-link" href="#">IT leadership page</a></td>
+                        <td><span class="pill ready">Ready</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                      <tr>
+                        <td class="rank">02</td>
+                        <td><div class="org-name">Phoenix Children&apos;s</div><div class="subline">Pediatric care</div></td>
+                        <td>Phoenix, AZ</td>
+                        <td><div class="lead-name">Marcus Reed</div><div class="subline">Infrastructure owner</div></td>
+                        <td>Senior Director, Infrastructure</td>
+                        <td><span class="email">mreed@phoenixchildrens.example</span><div class="subline">pattern supported</div></td>
+                        <td>Missing<div class="subline">not CRM-ready phone</div></td>
+                        <td><a class="source-link" href="#">Technology profile</a></td>
+                        <td><span class="pill ready">Ready</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                      <tr>
+                        <td class="rank">03</td>
+                        <td><div class="org-name">HonorHealth</div><div class="subline">Healthcare network</div></td>
+                        <td>Scottsdale, AZ</td>
+                        <td><div class="lead-name">Ari Patel</div><div class="subline">Security + systems</div></td>
+                        <td>Director, Information Security</td>
+                        <td><span class="email">ari.patel@honorhealth.example</span><div class="subline">verified</div></td>
+                        <td>(480) 555-0140</td>
+                        <td><a class="source-link" href="#">Security team page</a></td>
+                        <td><span class="pill ready">Ready</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                      <tr>
+                        <td class="rank">04</td>
+                        <td><div class="org-name">Banner Health</div><div class="subline">Hospital system</div></td>
+                        <td>Phoenix, AZ</td>
+                        <td><div class="lead-name">Dana Kim</div><div class="subline">App portfolio</div></td>
+                        <td>Director, Enterprise Applications</td>
+                        <td><span class="email">dana.kim@bannerhealth.example</span><div class="subline">verified</div></td>
+                        <td>Missing</td>
+                        <td><a class="source-link" href="#">Leadership profile</a></td>
+                        <td><span class="pill ready">Ready</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                      <tr>
+                        <td class="rank">05</td>
+                        <td><div class="org-name">Dignity Health AZ</div><div class="subline">Regional care</div></td>
+                        <td>Phoenix, AZ</td>
+                        <td><div class="lead-name">Noah Alvarez</div><div class="subline">IT operations</div></td>
+                        <td>IT Operations Director</td>
+                        <td><span class="email">noah.alvarez@dignityhealth.example</span><div class="subline">pattern supported</div></td>
+                        <td>(602) 555-0117</td>
+                        <td><a class="source-link" href="#">Operations directory</a></td>
+                        <td><span class="pill ready">Ready</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                      <tr>
+                        <td class="rank">06</td>
+                        <td><div class="org-name">Abrazo Health</div><div class="subline">Acute care</div></td>
+                        <td>Phoenix, AZ</td>
+                        <td><div class="lead-name">Priya Shah</div><div class="subline">Systems owner</div></td>
+                        <td>Director, Information Systems</td>
+                        <td><span class="email">priya.shah@abrazohealth.example</span><div class="subline">verified</div></td>
+                        <td>Missing</td>
+                        <td><a class="source-link" href="#">Staff directory</a></td>
+                        <td><span class="pill ready">Ready</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                      <tr>
+                        <td class="rank">07</td>
+                        <td><div class="org-name">Terros Health</div><div class="subline">Behavioral care</div></td>
+                        <td>Phoenix, AZ</td>
+                        <td><div class="lead-name">Caleb Morris</div><div class="subline">Technology</div></td>
+                        <td>Director of Technology</td>
+                        <td><span class="email">caleb.morris@terros.example</span><div class="subline">verified</div></td>
+                        <td>(602) 555-0166</td>
+                        <td><a class="source-link" href="#">Technology page</a></td>
+                        <td><span class="pill ready">Ready</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                      <tr>
+                        <td class="rank">08</td>
+                        <td><div class="org-name">Mayo Clinic Arizona</div><div class="subline">Specialty care</div></td>
+                        <td>Phoenix, AZ</td>
+                        <td><div class="lead-name">Elise Nguyen</div><div class="subline">Clinical platforms</div></td>
+                        <td>Director, Digital Health Systems</td>
+                        <td><span class="email">elise.nguyen@mayoaz.example</span><div class="subline">verified</div></td>
+                        <td>Missing</td>
+                        <td><a class="source-link" href="#">Digital health profile</a></td>
+                        <td><span class="pill ready">Ready</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                      <tr>
+                        <td class="rank">09</td>
+                        <td><div class="org-name">Sonora Quest Labs</div><div class="subline">Diagnostics</div></td>
+                        <td>Phoenix, AZ</td>
+                        <td><div class="lead-name">Tessa Martin</div><div class="subline">Data platforms</div></td>
+                        <td>Director, Data Systems</td>
+                        <td><span class="email">tessa.martin@sonoraquest.example</span><div class="subline">pattern supported</div></td>
+                        <td>(602) 555-0131</td>
+                        <td><a class="source-link" href="#">Data team page</a></td>
+                        <td><span class="pill ready">Ready</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                      <tr>
+                        <td class="rank">10</td>
+                        <td><div class="org-name">Southwest Network</div><div class="subline">Community health</div></td>
+                        <td>Phoenix, AZ</td>
+                        <td><div class="lead-name">Owen Wright</div><div class="subline">IT services</div></td>
+                        <td>Director, IT Services</td>
+                        <td><span class="email">owen.wright@southwestnetwork.example</span><div class="subline">verified</div></td>
+                        <td>Missing</td>
+                        <td><a class="source-link" href="#">Org profile</a></td>
+                        <td><span class="pill ready">Ready</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                      <tr>
+                        <td class="rank">11</td>
+                        <td><div class="org-name">Equality Health</div><div class="subline">Care coordination</div></td>
+                        <td>Phoenix, AZ</td>
+                        <td><div class="lead-name">Mira Collins</div><div class="subline">Systems</div></td>
+                        <td>Director, Health IT</td>
+                        <td><span class="email">mira.collins@equalityhealth.example</span><div class="subline">verified</div></td>
+                        <td>(602) 555-0190</td>
+                        <td><a class="source-link" href="#">Leadership page</a></td>
+                        <td><span class="pill ready">Ready</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                      <tr>
+                        <td class="rank">12</td>
+                        <td><div class="org-name">OrthoArizona</div><div class="subline">Specialty practice</div></td>
+                        <td>Phoenix, AZ</td>
+                        <td><div class="lead-name">Samir Bell</div><div class="subline">Possible match</div></td>
+                        <td>IT Manager</td>
+                        <td>Missing<div class="subline">not CRM-ready</div></td>
+                        <td>Missing</td>
+                        <td><a class="source-link" href="#">Practice page</a></td>
+                        <td><span class="pill review">Review</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                      <tr>
+                        <td class="rank">13</td>
+                        <td><div class="org-name">Arizona Digestive Health</div><div class="subline">Specialty group</div></td>
+                        <td>Phoenix, AZ</td>
+                        <td><div class="lead-name">Renee Brooks</div><div class="subline">Needs title check</div></td>
+                        <td>Operations Director</td>
+                        <td><span class="email">renee.brooks@adh.example</span><div class="subline">unsupported title</div></td>
+                        <td>Missing</td>
+                        <td><a class="source-link" href="#">Directory</a></td>
+                        <td><span class="pill review">Review</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                      <tr>
+                        <td class="rank">14</td>
+                        <td><div class="org-name">Desert Mission Health</div><div class="subline">Community care</div></td>
+                        <td>Phoenix, AZ</td>
+                        <td><div class="lead-name">Kara Flynn</div><div class="subline">Blocked source</div></td>
+                        <td>Director, IT</td>
+                        <td>Missing</td>
+                        <td>(602) 555-0155</td>
+                        <td><a class="source-link" href="#">LinkedIn source blocked</a></td>
+                        <td><span class="pill review">Review</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                      <tr>
+                        <td class="rank">15</td>
+                        <td><div class="org-name">Mountain Park Health</div><div class="subline">Clinic network</div></td>
+                        <td>Phoenix, AZ</td>
+                        <td><div class="lead-name">Jason Hale</div><div class="subline">Role mismatch risk</div></td>
+                        <td>Facilities Director</td>
+                        <td>Missing</td>
+                        <td>Missing</td>
+                        <td><a class="source-link" href="#">Staff page</a></td>
+                        <td><span class="pill review">Review</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                      <tr>
+                        <td class="rank">16</td>
+                        <td><div class="org-name">Phoenix Health Care Management</div><div class="subline">Account found</div></td>
+                        <td>Phoenix, AZ</td>
+                        <td>None validated</td>
+                        <td>Target persona not found</td>
+                        <td>Missing</td>
+                        <td>Missing</td>
+                        <td><a class="source-link" href="#">Company page</a></td>
+                        <td><span class="pill org">Org only</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                      <tr>
+                        <td class="rank">17</td>
+                        <td><div class="org-name">Copa Health</div><div class="subline">Account found</div></td>
+                        <td>Mesa, AZ</td>
+                        <td>None validated</td>
+                        <td>Target persona not found</td>
+                        <td>Missing</td>
+                        <td>Missing</td>
+                        <td><a class="source-link" href="#">About page</a></td>
+                        <td><span class="pill org">Org only</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                      <tr>
+                        <td class="rank">18</td>
+                        <td><div class="org-name">Phoenix Area VA Health</div><div class="subline">Searched</div></td>
+                        <td>Phoenix, AZ</td>
+                        <td>None found</td>
+                        <td>No public IT owner</td>
+                        <td>Missing</td>
+                        <td>Missing</td>
+                        <td><a class="source-link" href="#">Search log</a></td>
+                        <td><span class="pill fail">Not found</span></td>
+                        <td><button class="row-action" type="button">Open</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <aside class="evidence-panel" aria-label="Evidence dossier">
+                <div class="panel-section">
+                  <p class="panel-eyebrow">Evidence dossier</p>
+                  <h2 class="panel-title">Lena Ortiz</h2>
+                  <p class="panel-subtitle">Director, Clinical Systems at Valleywise Health. Ready because name, title, organization, and email are source-supported.</p>
+                </div>
+                <div class="panel-section">
+                  <p class="panel-eyebrow">Field support</p>
+                  <div class="evidence-grid">
+                    <div class="evidence-item"><span>Name</span><div><strong>Supported</strong><small>Leadership page lists Lena Ortiz in the clinical systems group.</small></div></div>
+                    <div class="evidence-item"><span>Title</span><div><strong>Supported</strong><small>Directory title matches Director, Clinical Systems.</small></div></div>
+                    <div class="evidence-item"><span>Org</span><div><strong>Supported</strong><small>Source domain and page identify Valleywise Health.</small></div></div>
+                    <div class="evidence-item"><span>Email</span><div><strong>Verified</strong><small>Email appears on the IT leadership contact page.</small></div></div>
+                    <div class="evidence-item"><span>Phone</span><div><strong>Supported</strong><small>Main line plus extension appears in the contact block.</small></div></div>
+                  </div>
+                </div>
+                <div class="panel-section">
+                  <p class="panel-eyebrow">Why target</p>
+                  <div class="quote">Valleywise operates a Phoenix care network with clinical platform ownership. Ortiz owns systems that map directly to healthcare IT buying conversations.</div>
+                </div>
+                <div class="panel-section">
+                  <button class="button dark" type="button">Mark needs review</button>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-export">
+          <div class="workspace">
+            <form class="search-strip">
+              <label>
+                <p class="field-label">Export source run</p>
+                <input class="query-input" value="Healthcare IT directors in Phoenix - 18 categorized rows" aria-label="Export source run" />
+              </label>
+              <button class="button" type="button">Download CSV</button>
+            </form>
+
+            <div class="export-layout">
+              <aside class="export-summary">
+                <div class="panel-section">
+                  <p class="panel-eyebrow">Export rule</p>
+                  <h2 class="panel-title">Sales columns first. Audit columns later.</h2>
+                  <p class="panel-subtitle">Thomas and Lee can use the first columns immediately, while validation context still travels with the data.</p>
+                </div>
+                <ul class="checklist">
+                  <li><span class="check">✓</span><span>Ready rows sorted first, followed by review, org-only, and not-found rows.</span></li>
+                  <li><span class="check">✓</span><span>First 10 columns are CRM-useful and not run metadata.</span></li>
+                  <li><span class="check">✓</span><span>Unsupported contacts remain clearly marked; no row is flattened into false confidence.</span></li>
+                  <li><span class="check">✓</span><span>Run ID, evidence URLs, and field validation statuses remain available after sales columns.</span></li>
+                </ul>
+              </aside>
+
+              <div class="csv-preview">
+                <table aria-label="CSV preview">
+                  <thead>
+                    <tr>
+                      <th class="sales">Organization</th>
+                      <th class="sales">Location</th>
+                      <th class="sales">Lead name</th>
+                      <th class="sales">Title</th>
+                      <th class="sales">Email</th>
+                      <th class="sales">Email status</th>
+                      <th class="sales">Phone</th>
+                      <th class="sales">Source</th>
+                      <th class="sales">Why target</th>
+                      <th class="sales">Row status</th>
+                      <th class="audit">Run ID</th>
+                      <th class="audit">Evidence</th>
+                      <th class="audit">Checked at</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Valleywise Health</td>
+                      <td>Phoenix, AZ</td>
+                      <td>Lena Ortiz</td>
+                      <td>Director, Clinical Systems</td>
+                      <td>lena.ortiz@valleywise.example</td>
+                      <td>verified_found</td>
+                      <td>(602) 555-0184</td>
+                      <td>IT leadership page</td>
+                      <td>Clinical systems owner in Phoenix care network</td>
+                      <td>ready</td>
+                      <td>wr_20260510_001</td>
+                      <td>name:title:org:email supported</td>
+                      <td>2026-05-10 16:42</td>
+                    </tr>
+                    <tr>
+                      <td>Phoenix Children&apos;s</td>
+                      <td>Phoenix, AZ</td>
+                      <td>Marcus Reed</td>
+                      <td>Senior Director, Infrastructure</td>
+                      <td>mreed@phoenixchildrens.example</td>
+                      <td>deduced_with_pattern_evidence</td>
+                      <td>missing</td>
+                      <td>Technology profile</td>
+                      <td>Infrastructure owner for pediatric care network</td>
+                      <td>ready</td>
+                      <td>wr_20260510_001</td>
+                      <td>name:title:org supported, pattern email</td>
+                      <td>2026-05-10 16:42</td>
+                    </tr>
+                    <tr>
+                      <td>OrthoArizona</td>
+                      <td>Phoenix, AZ</td>
+                      <td>Samir Bell</td>
+                      <td>IT Manager</td>
+                      <td>missing</td>
+                      <td>missing</td>
+                      <td>missing</td>
+                      <td>Practice page</td>
+                      <td>Possible IT owner; contact missing</td>
+                      <td>review</td>
+                      <td>wr_20260510_001</td>
+                      <td>name:title:org supported, contact missing</td>
+                      <td>2026-05-10 16:42</td>
+                    </tr>
+                    <tr>
+                      <td>Phoenix Health Care Management</td>
+                      <td>Phoenix, AZ</td>
+                      <td></td>
+                      <td>Target persona not found</td>
+                      <td>missing</td>
+                      <td>missing</td>
+                      <td>missing</td>
+                      <td>Company page</td>
+                      <td>Account found; no validated IT owner</td>
+                      <td>organization_only</td>
+                      <td>wr_20260510_001</td>
+                      <td>org supported, person not found</td>
+                      <td>2026-05-10 16:42</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-mobile">
+          <div class="workspace">
+            <div class="toolbar">
+              <div>
+                <h1>Mobile inspection</h1>
+                <p>Same operator path, compact row cards, evidence one tap away.</p>
+              </div>
+            </div>
+            <div class="mobile-frame">
+              <div class="topbar">
+                <div class="brand"><span class="mark" aria-hidden="true"></span><span class="brand-title">White Rabbit</span></div>
+                <span class="brand-subtitle">18 categorized · 11 ready</span>
+              </div>
+              <div class="mobile-search">
+                <p class="field-label">Target</p>
+                <input class="query-input" value="Healthcare IT directors in Phoenix" />
+              </div>
+              <div class="mobile-row">
+                <div class="mobile-grid">
+                  <div>
+                    <div class="org-name">Valleywise Health</div>
+                    <div class="lead-name">Lena Ortiz</div>
+                    <div class="subline">Director, Clinical Systems</div>
+                  </div>
+                  <span class="pill ready">Ready</span>
+                </div>
+                <div class="mobile-facts">
+                  <div class="fact"><span>Email</span><strong>verified</strong></div>
+                  <div class="fact"><span>Phone</span><strong>supported</strong></div>
+                  <div class="fact"><span>Source</span><strong>leadership page</strong></div>
+                  <div class="fact"><span>Action</span><strong>open evidence</strong></div>
+                </div>
+              </div>
+              <div class="mobile-row">
+                <div class="mobile-grid">
+                  <div>
+                    <div class="org-name">Phoenix Children&apos;s</div>
+                    <div class="lead-name">Marcus Reed</div>
+                    <div class="subline">Senior Director, Infrastructure</div>
+                  </div>
+                  <span class="pill ready">Ready</span>
+                </div>
+                <div class="mobile-facts">
+                  <div class="fact"><span>Email</span><strong>pattern</strong></div>
+                  <div class="fact"><span>Phone</span><strong>missing</strong></div>
+                  <div class="fact"><span>Source</span><strong>technology profile</strong></div>
+                  <div class="fact"><span>Action</span><strong>open evidence</strong></div>
+                </div>
+              </div>
+              <div class="mobile-row">
+                <div class="mobile-grid">
+                  <div>
+                    <div class="org-name">OrthoArizona</div>
+                    <div class="lead-name">Samir Bell</div>
+                    <div class="subline">IT Manager · contact missing</div>
+                  </div>
+                  <span class="pill review">Review</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script>
+      const tabs = Array.from(document.querySelectorAll('.tab'));
+      const views = new Map(
+        Array.from(document.querySelectorAll('.view')).map((view) => [view.id.replace('view-', ''), view]),
+      );
+
+      function activate(target) {
+        for (const tab of tabs) {
+          tab.setAttribute('aria-selected', String(tab.dataset.viewTarget === target));
+        }
+        for (const [key, view] of views.entries()) {
+          view.classList.toggle('active', key === target);
+        }
+      }
+
+      for (const tab of tabs) {
+        tab.addEventListener('click', () => activate(tab.dataset.viewTarget));
+      }
+    </script>
+  </body>
+</html>
