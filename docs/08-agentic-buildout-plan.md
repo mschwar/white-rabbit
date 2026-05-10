@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F15 Evidence Drawer Or Dossier (`feat/f15-evidence-drawer`, blocked).
-**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F14 has been re-verified on this branch (f14-qa), merged to `rebuild/validated-leads-loop`, and pointer remains `feat/f15-evidence-drawer` (blocked).
+**Next feature pointer:** F15 Evidence Drawer Or Dossier (`feat/f15-evidence-drawer`, implemented_pending_qa).
+**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F14 has been re-verified on this branch (f14-qa), merged to `rebuild/validated-leads-loop`, and pointer remains `feat/f15-evidence-drawer` (implemented_pending_qa).
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -156,8 +156,8 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F11 | Required benchmark suite                                 | merged_to_rebuild_branch | feat/f11-required-benchmark-suite    | non-UI                   |
 | F12 | Per-run quality report                                   | merged_to_rebuild_branch | feat/f12-run-quality-report          | non-UI                   |
 | F13 | Single search-bar UI                                     | merged_to_rebuild_branch | feat/f13-single-search-ui            | browser                  |
-| F14 | Results table with validation buckets                    | ready                    | feat/f14-validation-results-table    | browser                  |
-| F15 | Evidence drawer / dossier                                | blocked                  | feat/f15-evidence-drawer             | browser                  |
+| F14 | Results table with validation buckets                    | merged_to_rebuild_branch | feat/f14-validation-results-table    | browser                  |
+| F15 | Evidence drawer / dossier                                | implemented_pending_qa   | feat/f15-evidence-drawer             | browser                  |
 | F16 | Export rebuild with validation columns                   | blocked                  | feat/f16-validation-export           | browser + CSV            |
 | F17 | Thomas/Lee correction feedback loop                      | blocked                  | feat/f17-corrections-feedback-loop   | browser + DB             |
 | F18 | Recipe library internal-only policy                      | deferred                 | feat/f18-recipes-internal-only       | browser                  |
@@ -1068,7 +1068,7 @@ F15 should add drill-down evidence without changing bucket definitions.
 
 ## F15 - Evidence Drawer Or Dossier
 
-Status: blocked
+Status: implemented_pending_qa
 Branch: feat/f15-evidence-drawer
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -1104,6 +1104,14 @@ Browser-testable:
 - route: primary search route from F13.
 - steps: load fixture response, open evidence for one usable and one failed/noisy row.
 - required screenshots: evidence drawer for usable row, evidence drawer for failed/noisy row.
+
+Implementation verification:
+- `cd apps/web && npm test -- --run` (13 files, 28 tests passed)
+- `cd apps/web && npm run build`
+- Browser QA on `http://localhost:3000/scout?qa=validation-buckets` after login with the shared workspace password from `apps/web/.env.local`
+- Screenshots saved:
+  - `.gstack/qa-reports/screenshots/f15-01-usable-evidence-drawer.png`
+  - `.gstack/qa-reports/screenshots/f15-02-failed-evidence-drawer.png`
 
 Atomic commit plan:
 - commit 1: `feat(ui): add field evidence drawer`
@@ -1520,4 +1528,3 @@ Revert reset UI/gating change.
 
 Next-agent handoff note:
 Do not move to ready while gate is red except as a security follow-up to F02.
-
