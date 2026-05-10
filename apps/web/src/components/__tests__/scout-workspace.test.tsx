@@ -101,6 +101,60 @@ test('renders lead-search copy without premature operator surfaces', async () =>
   expect(screen.queryByLabelText(/recipe name/i)).toBeNull();
 });
 
+test('renders the primary search shell with one natural-language input', async () => {
+  const fetchMock = makeFetchMock({
+    leads: [
+      {
+        name: 'Jane Smith',
+        title: 'Director of Technology',
+        organization: 'Albuquerque Public Schools',
+        email: 'jane.smith@aps.edu',
+        email_status: 'Found',
+        source_url: 'https://aps.edu/tech',
+        confidence: 0.88,
+        why_target: 'Owns district telecom decisions',
+        icebreaker: 'I noticed APS is growing its classroom connectivity needs.',
+        fit_score: 0.91,
+        evidence_score: 0.84,
+        contact_score: 0.79,
+        gate_passed: true,
+        explanation: 'Strong district fit with current leadership evidence and usable email.',
+      },
+    ],
+    metrics: {
+      input_tokens: 123,
+      output_tokens: 45,
+      tavily_searches: 1,
+      openai_web_searches: 0,
+      elapsed_seconds: 1.23,
+      estimated_cost_usd: 0.010123,
+    },
+  });
+  vi.stubGlobal('fetch', fetchMock);
+
+  render(<ScoutWorkspace primaryMode />);
+
+  expect(screen.getByRole('heading', { name: /find source-backed prospects/i })).toBeDefined();
+  expect(screen.getByLabelText(/lead search/i)).toBeDefined();
+  expect(screen.getByRole('button', { name: /search leads/i })).toBeDefined();
+  expect(screen.queryByRole('button', { name: /^scout$/i })).toBeNull();
+  expect(screen.queryByRole('button', { name: /^full$/i })).toBeNull();
+  expect(screen.queryByLabelText(/location/i)).toBeNull();
+  expect(screen.queryByRole('button', { name: /build lead export/i })).toBeNull();
+
+  fireEvent.change(screen.getByLabelText(/lead search/i), {
+    target: { value: 'K-12 IT directors in Albuquerque' },
+  });
+  fireEvent.click(screen.getByRole('button', { name: /search leads/i }));
+
+  await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
+  expect(fetchMock).toHaveBeenNthCalledWith(2, '/api/scout', expect.any(Object));
+  expect(
+    JSON.parse((fetchMock.mock.calls[1][1] as RequestInit).body as string),
+  ).toEqual({ query: 'K-12 IT directors in Albuquerque' });
+  expect(await screen.findByRole('heading', { name: /jane smith/i })).toBeDefined();
+});
+
 test('sorts scout results by score and gate state', async () => {
 const fetchMock = makeFetchMock({
 leads: [

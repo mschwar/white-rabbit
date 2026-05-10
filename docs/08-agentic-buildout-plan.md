@@ -947,7 +947,7 @@ Build result:
 
 ## F13 - Single Search-Bar UI
 
-Status: blocked
+Status: merged
 Branch: feat/f13-single-search-ui
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -984,6 +984,10 @@ Browser-testable:
 - steps: log in, enter a natural-language B2B query, submit, confirm loading and result/error state.
 - required screenshots: empty search state, loading state, returned state or validation error.
 
+QA result:
+- `cd apps/web && npm test -- src/app/__tests__/page.test.tsx src/components/__tests__/scout-workspace.test.tsx` (2 files, 8 tests passed)
+- Browser QA on `http://localhost:3000/` captured empty, loading, and validation-error states after login.
+
 Atomic commit plan:
 - commit 1: `feat(ui): add single natural-language lead search`
 - commit 2: `test(ui): cover primary search workflow`
@@ -996,7 +1000,6 @@ Next-agent handoff note:
 F14 should replace card-first rendering with bucketed validated results.
 
 ---
-
 ## F14 - Results Table With Validation Buckets
 
 Status: blocked
@@ -1503,3 +1506,4 @@ Revert reset UI/gating change.
 
 Next-agent handoff note:
 Do not move to ready while gate is red except as a security follow-up to F02.
+
