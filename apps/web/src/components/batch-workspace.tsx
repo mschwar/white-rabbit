@@ -135,6 +135,16 @@ export default function BatchWorkspace() {
           </p>
         </div>
 
+        <div className="rounded-3xl border border-amber-400/30 bg-amber-500/10 px-5 py-4 text-amber-100">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-amber-200">
+            Internal evaluation only
+          </p>
+          <p className="mt-2 max-w-3xl text-sm leading-6">
+            This route stays out of the primary operator flow while the launch gate is red. Use
+            it only for Matt-run internal evaluation, not for Thomas or Lee daily prospecting.
+          </p>
+        </div>
+
         {error ? (
           <div className="rounded-2xl border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">
             {error}

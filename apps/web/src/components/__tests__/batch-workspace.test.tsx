@@ -21,6 +21,10 @@ test('renders the debiased batch defaults', async () => {
 
   render(<BatchWorkspace />);
 
+  expect(screen.getByText(/internal evaluation only/i)).toBeDefined();
+  expect(
+    screen.getByText(/use it only for matt-run internal evaluation, not for thomas or lee daily prospecting/i),
+  ).toBeDefined();
   expect(screen.getByPlaceholderText('Monday prospecting sweep')).toBeDefined();
   expect(screen.getByDisplayValue('Healthcare IT directors in Phoenix')).toBeDefined();
   expect(screen.getByDisplayValue('Arizona')).toBeDefined();
