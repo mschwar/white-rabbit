@@ -7,13 +7,15 @@
 **Next feature pointer:** No additional `ready` feature is currently unlocked. F19 Batch Workspace Internal-Only Policy is merged to `rebuild/validated-leads-loop`; F20-F23 remain deferred until another explicit promotion or a launch-gate change.
 **Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F15, F16, F17, F18, and F19 are merged to `rebuild/validated-leads-loop`. There is no active follow-on feature branch because F20-F23 remain deferred.
 
+**May 10 reset overlay:** New implementation work is now controlled by `docs/12-reset-gated-implementation-plan-2026-05-10.md`. Treat this document as historical context for F00-F23 until the reset plan explicitly sends agents back here. The next active Prompt A feature is `R00 - W5 hold report and reset control docs`, not F20-F23.
+
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
 Build-loop note as of 2026-05-10: Matt explicitly promoted F18 from `deferred` so Prompt A could resume. Prompt B QA completed on `feat/f18-recipes-internal-only`, then the queue temporarily returned to `no ready feature`. Matt then explicitly promoted F19 only; Prompt B QA found the home path already hid batch, added explicit internal-only labeling to `/batch`, and merged the feature while F20-F23 stayed deferred.
 
 ## Current Reality
 
-Treat `audits/zero-trust-product-audit-2026-05-09.md` as the current product reality:
+Treat `audits/zero-trust-codebase-audit-2026-05-10.md` and `docs/12-reset-gated-implementation-plan-2026-05-10.md` as the current product reality. The older `audits/zero-trust-product-audit-2026-05-09.md` remains historical evidence:
 
 - Do not ship.
 - Do not daily-dogfood with Thomas or Lee.

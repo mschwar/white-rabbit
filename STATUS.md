@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex zero-trust-audit
-**Branch:** audit/zero-trust-2026-05-10
-**Current sprint:** Audit branch complete. The May 10 zero-trust codebase audit keeps the product red, recommends a W5 hold, blocks W6/dogfood work, and points next to `docs/11-product-reset-plan-2026-05-10.md`.
+**Last updated:** 2026-05-10 by Codex reset-plan
+**Branch:** rebuild/validated-leads-loop
+**Current sprint:** May 10 reset plan ready. The product remains red. W5 should be held, W6/dogfood is blocked, and implementation is now controlled by `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,7 +14,7 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** No additional `ready` feature is unlocked. Do not start W6 or deferred work. The next recommended action is to review the May 10 reset plan and, if accepted, write a W5 hold report before any new product implementation.
+**Next feature pointer:** Reset feature `R00 - W5 hold report and reset control docs` is ready. First branch: `feat/reset-r00-w5-hold-control`. Do not start W6 or deferred work.
 
 **Current feature branch QA status:** No feature branch is awaiting QA. F19 browser QA passed, the batch route now carries explicit internal-only labeling, and F20-F23 remain deferred.
 
@@ -23,6 +23,8 @@
 **Latest gate acceptance:** W4 accepted on 2026-05-10. The May 10 audit found no W5/W6 gate report and recommends treating W5 as held until the visible operator loop is proven:
 
 - W4 benchmarks and quality reporting: `.gstack/qa-reports/gate-w4-benchmarks-quality.md`
+
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream work unlocks.
 
 Prior accepted gates:
 
@@ -34,6 +36,7 @@ Prior accepted gates:
 - `docs/00-product-northstar.md` is the anti-drift product source of truth for the rebuild.
 - `docs/08-agentic-buildout-plan.md` is the agentic missing-feature list and two-prompt loop control document.
 - `docs/09-rebuild-phase-gates.md` is the gated wave plan for milestone reviews before downstream work unlocks.
+- `docs/12-reset-gated-implementation-plan-2026-05-10.md` is the active reset implementation queue and gate-audit contract.
 - `docs/10-documentation-audit-2026-05-09.md` records the repo-wide documentation audit and remediation performed on this branch.
 - `.gstack/qa-reports/qa-template-agentic-buildout.md` is the QA report template for rebuild features.
 
@@ -42,25 +45,20 @@ Prior accepted gates:
 **Latest handoff:**
 
 ```text
-Feature: Zero-trust codebase audit 2026-05-10
-Branch: audit/zero-trust-2026-05-10
-Status: audit_complete_pending_review
-What changed: Created repo-backed audit artifacts, raw evidence ledger, eight dimension reports, master report, reset plan, screenshots, live benchmark JSON, Full-mode CSV sample, DB readback, and this status update. Product code was not changed.
+Feature: Reset gated implementation plan 2026-05-10
+Branch: rebuild/validated-leads-loop
+Status: ready_for_prompt_a_r00
+What changed: Added active reset implementation plan with RG0-RG6 gates, required full evaluation/audit at each gate, first Prompt A assignment, ADR-009, and active-doc pointers. Product code was not changed.
 Tests or QA run:
- - `cd packages/core && uv run pytest -q` -> failed under shell OpenAI env; rerun isolated passed `94 passed, 6 skipped`
- - `cd apps/api && uv run pytest tests -q` -> failed without matching token; rerun with `WR_API_INTERNAL_TOKEN=test-internal-token` passed `43 passed`
- - `cd apps/web && npm test -- --run`
- - `cd apps/web && npm run build`
- - Browser QA on `http://localhost:3000/login`, `/scout`, evidence drawer, Full-mode export
- - Live benchmark prompts through local Next API
+ - `git diff --check`
+ - `rg -n "R00|RG0|reset-gated|gate-w5-operator-loop-export|ADR-009" docs STATUS.md`
 Screenshots or report:
  - `audits/zero-trust-codebase-audit-2026-05-10.md`
- - `audits/sub/zero-trust-2026-05-10/`
- - `audits/raw/zero-trust-2026-05-10/`
  - `docs/11-product-reset-plan-2026-05-10.md`
-Northstar reflection: Fail; live benchmarks returned 0 usable leads, manufacturing crashed, and the visible operator loop is still too noisy. The product remains red.
-Next pointer: Matt should accept/reject the reset recommendation. If accepted, next branch should write `.gstack/qa-reports/gate-w5-operator-loop-export.md` as a hold report and update control docs before implementation.
-Open questions: whether to accept the reset plan; whether to reorder export around Lee's CRM-first columns; whether to freeze all W6/deferred feature work until the reset benchmark passes.
+ - `docs/12-reset-gated-implementation-plan-2026-05-10.md`
+Northstar reflection: Pass as planning/control work; it blocks further feature drift and requires evidence before each gate advances.
+Next pointer: Assign Prompt A to R00 on `feat/reset-r00-w5-hold-control`.
+Open questions: none blocking R00.
 ```
 
 
@@ -210,11 +208,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. W5 has not been gate-reported and should be treated as held until Matt reviews the reset plan.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. W5 has not been gate-reported and should be treated as held. Reset gate RG0 is ready for R00 implementation.
 
 ## Next concrete task
 
-- Review `docs/11-product-reset-plan-2026-05-10.md`. If accepted, create a docs-only W5 hold report at `.gstack/qa-reports/gate-w5-operator-loop-export.md`, keep W6 blocked, and then implement the reset in small branches. Do not start another feature or deferred surface first.
+- Assign Prompt A to `R00 - W5 hold report and reset control docs` from `docs/12-reset-gated-implementation-plan-2026-05-10.md`. The feature branch is `feat/reset-r00-w5-hold-control`. Do not start another feature or deferred surface first.
 
 ## Open questions for Matt
 

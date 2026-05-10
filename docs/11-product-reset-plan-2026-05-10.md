@@ -1,6 +1,6 @@
 # 11 - Product Reset Plan
 
-**Status:** Recommendation from the 2026-05-10 zero-trust audit. Not an accepted ADR.
+**Status:** Accepted for gated planning. Execution is controlled by `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 **Audit:** `audits/zero-trust-codebase-audit-2026-05-10.md`
 **Current gate:** Red.
 

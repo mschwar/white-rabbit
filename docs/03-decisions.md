@@ -129,9 +129,22 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 ---
 
+## ADR-009 — Reset gates require full evaluation and audit before advancement
+
+**Date:** 2026-05-10
+**Status:** Locked
+
+**Context.** The May 10 zero-trust audit found that the rebuild accumulated implementation surface after W4 without a W5 or W6 gate report proving the visible operator loop. Matt explicitly asked for a full gated plan where every gate has a full evaluation and audit before downstream implementation proceeds.
+
+**Decision.** Reset implementation is controlled by `docs/12-reset-gated-implementation-plan-2026-05-10.md`. Every reset gate requires a repo-backed evaluation/audit report before the next gate unlocks. Feature QA can prove a slice works, but only a gate audit can advance the reset. Gate reports must cite operator evidence, live or replayed benchmark results, browser evidence when UI is touched, CSV/DB readback when export or persistence is touched, and a clear decision: `advance`, `hold`, `revise`, `rollback`, or `kill`.
+
+**Consequences.** The reset will move slower than feature-only implementation, but downstream agents will not treat UI completion, test pass, or mocked fixtures as product readiness. `main` remains untouched. `rebuild/validated-leads-loop` remains the integration branch. W6 and dogfood decisions stay blocked until the reset gate evidence satisfies `docs/00-product-northstar.md`.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-008, ADR-009, ...).
+1. Pick the next ADR number (ADR-010, ADR-011, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.
