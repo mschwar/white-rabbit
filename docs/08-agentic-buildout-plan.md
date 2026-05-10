@@ -627,7 +627,7 @@ F07 is responsible for populating this schema with source checks.
 
 ## F07 - Source Validator
 
-Status: blocked
+Status: ready_for_review
 Branch: feat/f07-source-validator
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini

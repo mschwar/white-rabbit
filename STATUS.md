@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex
-**Branch:** rebuild/validated-leads-loop
-**Current sprint:** F06 Field-level validation schema passed non-UI checks, was QA-approved and merged on `rebuild/validated-leads-loop`; next target is F07 Source validator (blocked).
+**Last updated:** 2026-05-09 by Codex
+**Branch:** feat/f07-source-validator
+**Current sprint:** F07 Source validator passed non-UI checks on `feat/f07-source-validator` and is ready for review; next target after merge is F08 Contact status model.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -16,7 +16,7 @@
 
 **Next feature pointer:** F07 Source validator (blocked).
 
-**Current feature branch QA status:** `feat/f06-field-validation-schema` passed required non-UI QA and is merged into `rebuild/validated-leads-loop`; the next implementation target remains `feat/f07-source-validator` (blocked).
+**Current feature branch QA status:** `feat/f07-source-validator` passed required non-UI QA and is ready for review; the integration branch still awaits merge before `feat/f08-contact-status-model` can start.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -33,18 +33,16 @@
 **Latest handoff:**
 
 ```text
-Feature: F06 Field-level validation schema
-Branch: feat/f06-field-validation-schema
-Status: merged_to_rebuild_branch
-What changed: Added explicit field-level validation records to every candidate type, with default unsupported records for name, title, organization, email, phone, and source; preserved the existing lead contract while making validation visible in serialized Scout and Full responses.
+Feature: F07 Source validator
+Branch: feat/f07-source-validator
+Status: ready_for_review
+What changed: Added source-evidence validation that resolves source URLs, records resolved URL / HTTP status / checked_at / matched-field notes, and populates candidate validation bundles for Scout results without changing the lead contract.
 Tests or QA run:
-- `cd packages/core && uv run pytest tests/test_models.py -q` (30 passed)
-- `cd apps/api && uv run pytest tests/test_api.py -q -k full` (2 passed, 33 deselected)
-- `cd apps/api && uv run pytest tests/test_api.py -q -k "scout or full"` (12 passed, 23 deselected)
-Screenshots or report: `.gstack/qa-reports/qa-report-f06-field-validation-schema-2026-05-10.md`.
-Northstar reflection: The schema now separates unsupported validation from implied trust so later source and contact validators can populate evidence-backed field records instead of relying on the raw lead blob.
-Next pointer: F07 Source validator (blocked).
-Open questions: None blocking F06 build.
+- `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_orchestrator.py -q` (16 passed; `OPENAI_API_KEY` cleared for the missing-key negative test)
+Screenshots or report: n/a
+Northstar reflection: Source URLs are now checked for direct support before the product treats them as evidence, which keeps later contact/status work from building on unverified page links.
+Next pointer: F08 Contact status model.
+Open questions: Merge `feat/f07-source-validator` into `rebuild/validated-leads-loop` before starting F08.
 ```
 
 ---

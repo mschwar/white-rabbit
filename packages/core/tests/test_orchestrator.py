@@ -1,7 +1,7 @@
 from types import SimpleNamespace
 import asyncio
 
-from core.models import Lead, LeadList, NotFoundCandidate, OrganizationOnlyCandidate
+from core.models import CandidateValidation, FieldValidationRecord, Lead, LeadList, NotFoundCandidate, OrganizationOnlyCandidate
 from core.orchestrator import SYSTEM_PROMPT, scout
 from core.search import SearchResults
 
@@ -250,6 +250,73 @@ def test_scout_preserves_non_person_candidate_categories():
     )
 
     assert [lead.candidate_category for lead in leads] == ["organization_only", "not_found"]
+
+
+def test_scout_applies_source_validation_to_returned_candidates(monkeypatch):
+    seen = {}
+
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None):
+        return []
+
+    lead = Lead(
+        name="Jordan Lee",
+        title="VP Operations",
+        organization="Example Corp",
+        email="jordan.lee@example.com",
+        email_status="Found",
+        source_url="https://example.com/jordan",
+        confidence=0.5,
+        why_target="Relevant operations leader",
+        icebreaker="I saw your team scaling operations.",
+        fit_score=0.8,
+        evidence_score=0.7,
+        contact_score=0.6,
+        gate_passed=True,
+        explanation="The mock lead should be validated by source checks.",
+    )
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            return SimpleNamespace(
+                choices=[SimpleNamespace(message=SimpleNamespace(parsed=LeadList(leads=[lead])))],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    async def fake_validate_candidate_source(candidate, client=None):
+        seen["candidate_name"] = candidate.name
+        seen["client_type"] = type(client).__name__ if client is not None else None
+        return CandidateValidation(
+            name=FieldValidationRecord(
+                status="supported",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="Validated in test.",
+            ),
+            source=FieldValidationRecord(
+                status="supported",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="Validated in test.",
+            ),
+        )
+
+    fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+
+    monkeypatch.setattr("core.orchestrator.validate_candidate_source", fake_validate_candidate_source)
+
+    leads, _ = asyncio.run(
+        scout(
+            "operations leaders in Austin",
+            openai_client=fake_client,
+            tavily_key="fake-tavily",
+            search_fn=fake_search,
+        )
+    )
+
+    assert seen["candidate_name"] == "Jordan Lee"
+    assert seen["client_type"] == "AsyncClient"
+    assert leads[0].validation.source.status == "supported"
+    assert leads[0].validation.name.status == "supported"
 
 
 def test_system_prompt_is_vertical_agnostic_and_restores_lost_instructions():

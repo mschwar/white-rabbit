@@ -1,13 +1,16 @@
+import asyncio
 import os
 import time
 from collections.abc import Mapping
 from typing import Any
 
+import httpx
 from openai import AsyncOpenAI
 
 from .cost import RunMetrics, calculate_cost
 from .models import Candidate, Lead, LeadList
 from .search import fetch_search_results
+from .source_validation import SOURCE_VALIDATION_TIMEOUT_SECONDS, validate_candidate_source
 
 DEFAULT_MODEL = "gpt-4o-mini"
 DEFAULT_TAVILY_RESULTS = 10
@@ -135,15 +138,24 @@ async def scout(
     except Exception as exc:  # pragma: no cover - defensive branch for SDK drift
         raise OrchestratorError(f"OpenAI response missing parsed LeadList: {exc}") from exc
 
-    for candidate in leads_list.leads:
+    leads = leads_list.leads[:max_leads]
+
+    async with httpx.AsyncClient(
+        timeout=SOURCE_VALIDATION_TIMEOUT_SECONDS,
+        follow_redirects=True,
+    ) as validation_client:
+        validations = await asyncio.gather(
+            *(validate_candidate_source(candidate, client=validation_client) for candidate in leads)
+        )
+
+    for candidate, validation in zip(leads, validations, strict=True):
+        candidate.validation = validation
         if isinstance(candidate, Lead):
             candidate.gate_passed = (
                 candidate.fit_score >= GATE_THRESHOLD
                 and candidate.evidence_score >= GATE_THRESHOLD
                 and candidate.contact_score >= GATE_THRESHOLD
             )
-
-    leads = leads_list.leads[:max_leads]
 
     usage = getattr(completion, "usage", None)
     metrics = RunMetrics(
