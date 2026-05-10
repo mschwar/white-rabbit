@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F06 Field-level validation schema (blocked).
-**Current feature QA handoff:** `feat/f05-candidate-types` passed non-UI QA and is queued for merge into `rebuild/validated-leads-loop`; the next implementation target remains `feat/f06-field-validation-schema`.
+**Next feature pointer:** F06 Field-level validation schema (implemented_pending_qa).
+**Current feature QA handoff:** `feat/f06-field-validation-schema` passed non-UI build checks and is queued for QA/merge into `rebuild/validated-leads-loop`; the next implementation target remains `feat/f07-source-validator`.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -148,7 +148,7 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F03 | Guardrail rewrite for B2B scope and privacy blocking     | merged_to_rebuild_branch | feat/f03-b2b-guardrails              | non-UI                   |
 | F04 | Query compiler / planner                                 | merged_to_rebuild_branch | feat/f04-query-compiler              | non-UI                   |
 | F05 | Candidate model separation                               | merged_to_rebuild_branch  | feat/f05-candidate-types             | non-UI                   |
-| F06 | Field-level validation schema                            | blocked                  | feat/f06-field-validation-schema     | non-UI                   |
+| F06 | Field-level validation schema                            | implemented_pending_qa   | feat/f06-field-validation-schema     | non-UI                   |
 | F07 | Source validator                                         | blocked                  | feat/f07-source-validator            | non-UI                   |
 | F08 | Contact status model                                     | blocked                  | feat/f08-contact-status-model        | non-UI                   |
 | F09 | Ranking gate based on evidence                           | blocked                  | feat/f09-ranking-gate                | non-UI                   |
@@ -605,6 +605,12 @@ non-UI verification:
 - command(s): `cd packages/core && uv run pytest tests/test_models.py -q`; `cd apps/api && uv run pytest tests/test_api.py -q -k full`
 - expected output: schema tests pass; serialization stays stable.
 - fixture/test file: `packages/core/tests/test_models.py`.
+
+Current handoff note:
+- Build checks passed: `cd packages/core && uv run pytest tests/test_models.py -q` (30 passed); `cd apps/api && uv run pytest tests/test_api.py -q -k full` (2 passed, 33 deselected); `cd apps/api && uv run pytest tests/test_api.py -q -k "scout or full"` (12 passed, 23 deselected).
+- Northstar reflection: every candidate now carries explicit field-level validation records for name, title, organization, email, phone, and source, and untouched rows default to unsupported validation instead of implied trust.
+- Feature status: `implemented_pending_qa`.
+- Next handoff: QA `feat/f06-field-validation-schema` on `rebuild/validated-leads-loop`; keep F07 blocked until this branch merges.
 
 Atomic commit plan:
 - commit 1: `feat(core): add field validation schema`

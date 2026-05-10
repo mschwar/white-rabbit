@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-05-10 by Codex
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** F05 Candidate model separation passed QA and is merged to `rebuild/validated-leads-loop`; next target is F06 Field-level validation schema (blocked).
+**Current sprint:** F06 Field-level validation schema passed build checks on `feat/f06-field-validation-schema` and is queued for QA; next target is F07 Source validator (blocked).
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,9 +14,9 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F06 Field-level validation schema (blocked).
+**Next feature pointer:** F06 Field-level validation schema (implemented_pending_qa).
 
-**Current feature branch QA status:** `feat/f05-candidate-types` passed required non-UI checks and has been merged to `rebuild/validated-leads-loop`; the next target is `feat/f06-field-validation-schema`.
+**Current feature branch QA status:** `feat/f06-field-validation-schema` passed required non-UI build checks and is queued for QA; the next implementation target remains `feat/f07-source-validator`.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -33,17 +33,18 @@
 **Latest handoff:**
 
 ```text
-Feature: F05 Candidate model separation
-Branch: feat/f05-candidate-types
-Status: merged_to_rebuild_branch; product remains red
-What changed: Split the core candidate contract into explicit person_lead, organization_only, not_found, and failed models; made person-lead validation reject company-like and role-only names; threaded candidate_category through Scout/API responses; and kept the rebuild line on `rebuild/validated-leads-loop` untouched.
+Feature: F06 Field-level validation schema
+Branch: feat/f06-field-validation-schema
+Status: implemented_pending_qa
+What changed: Added explicit field-level validation records to every candidate type, with default unsupported records for name, title, organization, email, phone, and source; preserved the existing lead contract while making validation visible in serialized Scout and Full responses.
 Tests or QA run:
-- `cd packages/core && uv run pytest tests/test_models.py -q` (25 passed)
-- `cd apps/api && uv run pytest tests/test_api.py -q -k scout` (10 passed, 25 deselected)
-Screenshots or report: `.gstack/qa-reports/qa-report-f05-candidate-model-separation-2026-05-10.md` (non-UI verification only; no browser work required for F05).
-Northstar reflection: F05 reduces false confidence by separating account-only and not-found rows from true person leads, which keeps companies from being dressed up as contacts before field validation exists.
-Next pointer: feature pointer moved to F06 Field-level validation schema (blocked); do not advance W3 yet.
-Open questions: None blocking F05.
+- `cd packages/core && uv run pytest tests/test_models.py -q` (30 passed)
+- `cd apps/api && uv run pytest tests/test_api.py -q -k full` (2 passed, 33 deselected)
+- `cd apps/api && uv run pytest tests/test_api.py -q -k "scout or full"` (12 passed, 23 deselected)
+Screenshots or report: N/A - non-UI verification only.
+Northstar reflection: The schema now separates unsupported validation from implied trust so later source and contact validators can populate evidence-backed field records instead of relying on the raw lead blob.
+Next pointer: F07 Source validator (blocked) after F06 QA/merge.
+Open questions: None blocking F06 build.
 ```
 
 ---
@@ -187,12 +188,12 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F04 are merged to `rebuild/validated-leads-loop`; F05 Candidate model separation is merged to `rebuild/validated-leads-loop`; W3 remains blocked.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F05 are merged to `rebuild/validated-leads-loop`; F06 field-level validation schema is implemented on `feat/f06-field-validation-schema` and waiting for QA/merge; W3 remains blocked.
 
 ## Next concrete task
 
-- QA **F05 - Candidate model separation** on branch `feat/f05-candidate-types` is complete and merged.
-- Current next task is `feat/f06-field-validation-schema` (blocked): candidate validation schema work is next once ready according to sequence and gate decisions.
+- QA **F06 - Field-level validation schema** on branch `feat/f06-field-validation-schema`.
+- Current next task is `feat/f06-field-validation-schema` (implemented_pending_qa): validate the new field-validation bundle and serialize it through the Scout/Full API paths.
 
 ## Open questions for Matt
 
@@ -234,6 +235,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | f06-build (Codex) | Implemented field-level validation schema on `feat/f06-field-validation-schema`: added explicit per-field validation records to all candidate types, defaulted untouched rows to unsupported validation, and verified core model tests plus Scout/Full API serialization. |
 | 2026-05-10 | f05-qa (Codex) | QA'd and merged `feat/f05-candidate-types` into `rebuild/validated-leads-loop` after required non-UI checks passed (`25` model tests, `10` scout API tests); wrote `.gstack/qa-reports/qa-report-f05-candidate-model-separation-2026-05-10.md` and updated `docs/08-agentic-buildout-plan.md` + `STATUS.md`. |
 | 2026-05-10 | f05-build (Codex) | Implemented candidate model separation on `feat/f05-candidate-types`: split person_lead from organization_only/not_found/failed rows, added company-as-person and role-only rejection, preserved candidate_category through core/API responses, and passed the required non-UI tests. Branch is pending QA/merge; W3 remains blocked. |
 | 2026-05-10 | orchestrator-review (Codex) | Reviewed F01-F04 against the northstar and gate docs, accepted W1/F04 evidence while keeping the product red, fixed F04 Tavily-search metrics, reconciled F04/F05 doc status drift, added ADR-007, and updated gate mechanics so downstream waves require orchestrator acceptance before unlock. |

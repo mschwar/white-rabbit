@@ -60,6 +60,7 @@ _EMAIL_PLACEHOLDER_PREFIXES = (
     "contact@",
 )
 _EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+FieldValidationStatus = Literal["supported", "unsupported", "missing", "failed"]
 
 
 def _has_text(value: str | None) -> bool:
@@ -71,12 +72,50 @@ def _looks_like_organization(value: str) -> bool:
     return any(re.search(pattern, lowered) for pattern in _ORGANIZATION_NAME_PATTERNS)
 
 
+class FieldValidationRecord(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    status: FieldValidationStatus = Field(
+        default="unsupported",
+        description="Whether this field is supported by evidence.",
+    )
+    source_url: str | None = Field(default=None, description="Source URL supporting the field.")
+    evidence_snippet: str | None = Field(
+        default=None,
+        description="Supporting excerpt or extracted text reference.",
+    )
+    checked_at: str | None = Field(
+        default=None,
+        description="ISO-8601 timestamp when the validation was checked.",
+    )
+    notes: str = Field(default="", description="Validation notes.")
+
+
+def _unsupported_validation_record() -> FieldValidationRecord:
+    return FieldValidationRecord(status="unsupported")
+
+
+class CandidateValidation(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    name: FieldValidationRecord = Field(default_factory=_unsupported_validation_record)
+    title: FieldValidationRecord = Field(default_factory=_unsupported_validation_record)
+    organization: FieldValidationRecord = Field(default_factory=_unsupported_validation_record)
+    email: FieldValidationRecord = Field(default_factory=_unsupported_validation_record)
+    phone: FieldValidationRecord = Field(default_factory=_unsupported_validation_record)
+    source: FieldValidationRecord = Field(default_factory=_unsupported_validation_record)
+
+
 class CandidateBase(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     id: str | None = Field(default=None, description="Database lead ID (set after persistence)")
     candidate_category: Literal["person_lead", "organization_only", "not_found", "failed"] = Field(
         description="Explicit row category."
+    )
+    validation: CandidateValidation = Field(
+        default_factory=CandidateValidation,
+        description="Field-level validation records for the candidate.",
     )
 
 

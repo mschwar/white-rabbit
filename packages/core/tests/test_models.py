@@ -1,7 +1,14 @@
 import pytest
 from pydantic import ValidationError
 
-from core.models import FailedCandidate, Lead, NotFoundCandidate, OrganizationOnlyCandidate
+from core.models import (
+    CandidateValidation,
+    FailedCandidate,
+    FieldValidationRecord,
+    Lead,
+    NotFoundCandidate,
+    OrganizationOnlyCandidate,
+)
 from core.orchestrator import SYSTEM_PROMPT
 
 
@@ -111,6 +118,106 @@ def test_lead_accepts_real_emails(email):
         explanation="High confidence lead",
     )
     assert lead.email == email
+
+
+@pytest.mark.parametrize(
+    ("candidate_factory", "kwargs"),
+    [
+        (
+            Lead,
+            {
+                "name": "Sarah Chen",
+                "title": "IT Director",
+                "organization": "Test Org",
+                "email": "sarah@test.org",
+                "email_status": "Found",
+                "source_url": "https://test.org",
+                "confidence": 0.9,
+                "why_target": "Fits ICP",
+                "icebreaker": "Hello there",
+                "fit_score": 0.9,
+                "evidence_score": 0.8,
+                "contact_score": 0.7,
+                "gate_passed": True,
+                "explanation": "High confidence lead",
+            },
+        ),
+        (
+            OrganizationOnlyCandidate,
+            {
+                "organization": "Example Corp",
+                "explanation": "The account exists, but no validated person was found.",
+            },
+        ),
+        (
+            NotFoundCandidate,
+            {
+                "searched_target": "Example Corp",
+                "explanation": "No acceptable contact was found for the target account.",
+            },
+        ),
+        (
+            FailedCandidate,
+            {
+                "searched_target": "Example Corp",
+                "failure_reason": "Source was inaccessible.",
+            },
+        ),
+    ],
+)
+def test_candidates_carry_default_validation_bundle(candidate_factory, kwargs):
+    candidate = candidate_factory(**kwargs)
+
+    assert candidate.validation.name.status == "unsupported"
+    assert candidate.validation.title.status == "unsupported"
+    assert candidate.validation.organization.status == "unsupported"
+    assert candidate.validation.email.status == "unsupported"
+    assert candidate.validation.phone.status == "unsupported"
+    assert candidate.validation.source.status == "unsupported"
+    assert candidate.validation.source.source_url is None
+    assert candidate.validation.source.checked_at is None
+
+
+def test_lead_accepts_explicit_field_validation_records():
+    validation = CandidateValidation(
+        name=FieldValidationRecord(
+            status="supported",
+            source_url="https://aps.edu/tech",
+            evidence_snippet="Jane Smith, Director of Technology",
+            checked_at="2026-05-10T12:00:00Z",
+            notes="Validated from the district staff directory.",
+        ),
+        source=FieldValidationRecord(
+            status="supported",
+            source_url="https://aps.edu/tech",
+            evidence_snippet="Directory page lists Jane Smith and her title.",
+            checked_at="2026-05-10T12:00:00Z",
+            notes="Source page directly supports the person lead.",
+        ),
+    )
+
+    lead = Lead(
+        name="Sarah Chen",
+        title="IT Director",
+        organization="Test Org",
+        email="sarah@test.org",
+        email_status="Found",
+        source_url="https://test.org",
+        confidence=0.9,
+        why_target="Fits ICP",
+        icebreaker="Hello there",
+        fit_score=0.9,
+        evidence_score=0.8,
+        contact_score=0.7,
+        gate_passed=True,
+        explanation="High confidence lead",
+        validation=validation,
+    )
+
+    assert lead.validation.name.status == "supported"
+    assert lead.validation.name.source_url == "https://aps.edu/tech"
+    assert lead.validation.name.evidence_snippet == "Jane Smith, Director of Technology"
+    assert lead.validation.source.checked_at == "2026-05-10T12:00:00Z"
 
 
 @pytest.mark.parametrize("email", ["not_available@x.com", "info@x.com", "a@", "@b.co"])

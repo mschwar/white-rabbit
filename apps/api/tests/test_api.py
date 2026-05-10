@@ -1160,6 +1160,8 @@ def test_full_endpoint_returns_persisted_lead_ids(monkeypatch):
     assert body["recipe_id"] == "11111111-1111-1111-1111-111111111111"
     assert len(body["leads"]) == 1
     assert body["leads"][0]["id"] == "33333333-3333-3333-3333-333333333333"
+    assert body["leads"][0]["validation"]["name"]["status"] == "unsupported"
+    assert body["leads"][0]["validation"]["source"]["checked_at"] is None
 
 
 def test_sandbox_endpoint_after_migration():
