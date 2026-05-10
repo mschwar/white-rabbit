@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F14 Results Table With Validation Buckets (`feat/f14-validation-results-table`, ready).
-**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F13 is already merged into `rebuild/validated-leads-loop`.
+**Next feature pointer:** F15 Evidence Drawer Or Dossier (`feat/f15-evidence-drawer`, blocked).
+**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F14 has been re-verified on this branch (f14-qa), merged to `rebuild/validated-leads-loop`, and pointer remains `feat/f15-evidence-drawer` (blocked).
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 

@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex f14-qa
+**Last updated:** 2026-05-10 by Codex f14-qa-rerun
 **Branch:** rebuild/validated-leads-loop
 **Current sprint:** W4 benchmarks and quality reporting gate accepted; F14 is merged.
 
@@ -16,7 +16,7 @@
 
 **Next feature pointer:** F15 Evidence Drawer Or Dossier (`feat/f15-evidence-drawer`, blocked).
 
-**Current feature branch QA status:** F14 passed required browser QA and is merged. The browser QA used the dev-only validation fixture route because the live search endpoint returned 500 in this local environment. W4 gate remediation added explicit quality threshold evaluation so zero-usable and high-noise runs fail the per-run report.
+**Current feature branch QA status:** F14 passed required browser QA and is merged. The browser QA used the dev-only validation fixture route because the live search endpoint returned 500 in this local environment. W4 gate remediation added explicit quality threshold evaluation so zero-usable and high-noise runs fail the per-run report. This rerun captured fresh screenshots and confirmed the same grouped validation render path.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
