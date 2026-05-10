@@ -1,12 +1,13 @@
 import pytest
 from pydantic import ValidationError
 
-from core.models import Lead
+from core.models import FailedCandidate, Lead, NotFoundCandidate, OrganizationOnlyCandidate
 from core.orchestrator import SYSTEM_PROMPT
 
 
 def test_lead_model():
     lead_data = {
+        "candidate_category": "person_lead",
         "name": "John Doe",
         "title": "IT Director",
         "organization": "Test Org",
@@ -23,6 +24,7 @@ def test_lead_model():
         "explanation": "High confidence lead",
     }
     lead = Lead(**lead_data)
+    assert lead.candidate_category == "person_lead"
     assert lead.name == "John Doe"
     assert lead.gate_passed is True
 
@@ -50,6 +52,27 @@ def test_lead_accepts_real_names(name):
 
 @pytest.mark.parametrize("name", ["Director of Technology", "VP Engineering", "John", ""])
 def test_lead_rejects_role_names(name):
+    with pytest.raises(ValidationError, match=r"Lead\.name"):
+        Lead(
+            name=name,
+            title="IT Director",
+            organization="Test Org",
+            email="",
+            email_status="Missing",
+            source_url="https://test.org",
+            confidence=0.9,
+            why_target="Fits ICP",
+            icebreaker="Hello there",
+            fit_score=0.9,
+            evidence_score=0.8,
+            contact_score=0.7,
+            gate_passed=True,
+            explanation="High confidence lead",
+        )
+
+
+@pytest.mark.parametrize("name", ["Example Corp", "Albuquerque Public Schools", "Mesa Public Schools"])
+def test_lead_rejects_organization_like_names(name):
     with pytest.raises(ValidationError, match=r"Lead\.name"):
         Lead(
             name=name,
@@ -109,6 +132,57 @@ def test_lead_rejects_placeholder_or_invalid_emails(email):
             gate_passed=True,
             explanation="High confidence lead",
         )
+
+
+def test_organization_only_candidate_can_represent_an_account_without_a_person():
+    candidate = OrganizationOnlyCandidate(
+        organization="Example Corp",
+        explanation="The account exists, but no validated person was found.",
+    )
+
+    assert candidate.candidate_category == "organization_only"
+    assert candidate.organization == "Example Corp"
+    assert candidate.explanation == "The account exists, but no validated person was found."
+
+
+def test_organization_only_candidate_rejects_fake_person_fields():
+    with pytest.raises(ValidationError):
+        OrganizationOnlyCandidate(
+            organization="Example Corp",
+            name="Jane Doe",
+            explanation="Should fail",
+        )
+
+
+def test_not_found_candidate_can_explain_a_searched_target():
+    candidate = NotFoundCandidate(
+        searched_target="Example Corp",
+        explanation="No acceptable contact was found for the target account.",
+    )
+
+    assert candidate.candidate_category == "not_found"
+    assert candidate.searched_target == "Example Corp"
+    assert candidate.explanation == "No acceptable contact was found for the target account."
+
+
+def test_not_found_candidate_rejects_fake_person_fields():
+    with pytest.raises(ValidationError):
+        NotFoundCandidate(
+            searched_target="Example Corp",
+            title="Director",
+            explanation="Should fail",
+        )
+
+
+def test_failed_candidate_records_a_reason_without_person_fields():
+    candidate = FailedCandidate(
+        searched_target="Example Corp",
+        failure_reason="Source was inaccessible.",
+    )
+
+    assert candidate.candidate_category == "failed"
+    assert candidate.searched_target == "Example Corp"
+    assert candidate.failure_reason == "Source was inaccessible."
 
 
 def test_lead_field_descriptions_are_vertical_agnostic():

@@ -6,7 +6,7 @@ from typing import Any
 from openai import AsyncOpenAI
 
 from .cost import RunMetrics, calculate_cost
-from .models import Lead, LeadList
+from .models import Candidate, Lead, LeadList
 from .search import fetch_search_results
 
 DEFAULT_MODEL = "gpt-4o-mini"
@@ -31,13 +31,20 @@ GATE:
 The gate is a pass/fail summary derived from the three scores. The server will compute
 and store the final boolean.
 
+CANDIDATE CATEGORIES:
+- Set candidate_category='person_lead' for a real person with supported name, title, and organization.
+- Set candidate_category='organization_only' when the account is found but no usable person is validated.
+- Set candidate_category='not_found' when the target was searched but no acceptable contact was found.
+- Set candidate_category='failed' when the evidence contradicts or does not support the row.
+
 ANTI-BIAS RULES:
 Treat the user's query intent as the only vertical signal. Do not inject VoIP,
 telecom, networking, or product-upgrade language unless the user's query explicitly asks
 for it.
 Keep every explanation, why_target, and icebreaker aligned to the query's vertical and
 organization type.
-If you cannot identify a real person's full first and last name, omit the lead entirely.
+If you cannot identify a real person's full first and last name, do not invent one;
+use organization_only or not_found instead of forcing a person_lead.
 Never use placeholders like N/A, Unknown, or a job title in the name field.
 
 EMAIL DEDUCTION:
@@ -81,7 +88,7 @@ async def scout(
     filters: Mapping[str, Any] | None = None,
     search_fn=fetch_search_results,
     openai_client: Any | None = None,
-) -> tuple[list[Lead], RunMetrics]:
+) -> tuple[list[Candidate], RunMetrics]:
     """Run a Scout query: search + extract + score.
 
     `search_fn` and `openai_client` are injectable for tests.
@@ -128,12 +135,13 @@ async def scout(
     except Exception as exc:  # pragma: no cover - defensive branch for SDK drift
         raise OrchestratorError(f"OpenAI response missing parsed LeadList: {exc}") from exc
 
-    for lead in leads_list.leads:
-        lead.gate_passed = (
-            lead.fit_score >= GATE_THRESHOLD
-            and lead.evidence_score >= GATE_THRESHOLD
-            and lead.contact_score >= GATE_THRESHOLD
-        )
+    for candidate in leads_list.leads:
+        if isinstance(candidate, Lead):
+            candidate.gate_passed = (
+                candidate.fit_score >= GATE_THRESHOLD
+                and candidate.evidence_score >= GATE_THRESHOLD
+                and candidate.contact_score >= GATE_THRESHOLD
+            )
 
     leads = leads_list.leads[:max_leads]
 

@@ -1,7 +1,7 @@
 from types import SimpleNamespace
 import asyncio
 
-from core.models import Lead, LeadList
+from core.models import Lead, LeadList, NotFoundCandidate, OrganizationOnlyCandidate
 from core.orchestrator import SYSTEM_PROMPT, scout
 from core.search import SearchResults
 
@@ -208,6 +208,48 @@ def test_scout_counts_planned_tavily_searches_from_search_results():
     )
 
     assert metrics.tavily_searches == 8
+
+
+def test_scout_preserves_non_person_candidate_categories():
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None):
+        return SearchResults([], tavily_searches=1)
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            return SimpleNamespace(
+                choices=[
+                    SimpleNamespace(
+                        message=SimpleNamespace(
+                            parsed=LeadList(
+                                leads=[
+                                    OrganizationOnlyCandidate(
+                                        organization="Example Corp",
+                                        explanation="The company was found, but no person was validated.",
+                                    ),
+                                    NotFoundCandidate(
+                                        searched_target="Ghost Company",
+                                        explanation="No acceptable contact was found for the target account.",
+                                    ),
+                                ]
+                            )
+                        )
+                    )
+                ],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+
+    leads, _ = asyncio.run(
+        scout(
+            "operations leaders in Austin",
+            openai_client=fake_client,
+            tavily_key="fake-tavily",
+            search_fn=fake_search,
+        )
+    )
+
+    assert [lead.candidate_category for lead in leads] == ["organization_only", "not_found"]
 
 
 def test_system_prompt_is_vertical_agnostic_and_restores_lost_instructions():

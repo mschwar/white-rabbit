@@ -22,7 +22,7 @@ for candidate in (CORE_SRC, REPO_ROOT):
         sys.path.insert(0, str(candidate))
 
 from core.cost import RunMetrics
-from core.models import Lead
+from core.models import Candidate
 from core.orchestrator import scout, OrchestratorError, DEFAULT_MODEL
 from core.query_guardrails import QueryGuardrailResult, evaluate_query_guardrails
 
@@ -125,7 +125,7 @@ class FullRequest(BaseModel):
 
 
 class ScoutResponse(BaseModel):
-    leads: list[Lead]
+    leads: list[Candidate]
     metrics: RunMetrics
     query_guardrail: QueryGuardrailResult | None = None
     sandbox_usage: SandboxUsageOut | None = None
@@ -133,7 +133,7 @@ class ScoutResponse(BaseModel):
 
 class FullResponse(BaseModel):
     run_id: UUID
-    leads: list[Lead]
+    leads: list[Candidate]
     metrics: RunMetrics
     recipe_id: UUID | None = None
     query_guardrail: QueryGuardrailResult | None = None

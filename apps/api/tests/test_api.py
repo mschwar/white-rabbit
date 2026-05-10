@@ -10,7 +10,7 @@ from fastapi.testclient import TestClient
 from sqlalchemy import CheckConstraint
 
 from core.cost import RunMetrics
-from core.models import Lead
+from core.models import Lead, NotFoundCandidate, OrganizationOnlyCandidate
 from api.main import app
 from api.models import FeedbackLabel, LeadFeedback
 from api.db import get_db_session, get_recipe_scoreboard, get_sandbox_state
@@ -111,8 +111,79 @@ def test_scout_endpoint_returns_scoped_payload(monkeypatch):
     assert response.status_code == 200
     body = response.json()
     assert body["leads"][0]["name"] == "Jane Smith"
+    assert body["leads"][0]["candidate_category"] == "person_lead"
     assert body["metrics"]["input_tokens"] == 123
     assert body["metrics"]["tavily_searches"] == 1
+
+
+def test_scout_endpoint_preserves_candidate_categories(monkeypatch):
+    state = SimpleNamespace(
+        total_queries=0,
+        total_rows=0,
+        max_queries=10,
+        max_rows=1000,
+        reset_at=datetime(2026, 1, 1, 12, 0, 0),
+    )
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
+
+    async def fake_scout(query: str, **kwargs):
+        return (
+            [
+                Lead(
+                    name="Jane Smith",
+                    title="Director of Technology",
+                    organization="Albuquerque Public Schools",
+                    email="jane.smith@aps.edu",
+                    email_status="Found",
+                    source_url="https://aps.edu/tech",
+                    confidence=0.88,
+                    why_target="Owns district telecom decisions",
+                    icebreaker="I noticed APS is growing its classroom connectivity needs.",
+                    fit_score=0.91,
+                    evidence_score=0.84,
+                    contact_score=0.79,
+                    gate_passed=True,
+                    explanation="Strong district fit with current leadership evidence and usable email.",
+                ),
+                OrganizationOnlyCandidate(
+                    organization="Example Corp",
+                    explanation="Account found, but no validated person lead.",
+                ),
+                NotFoundCandidate(
+                    searched_target="Ghost District",
+                    explanation="No acceptable contact was found for the target account.",
+                ),
+            ],
+            RunMetrics(
+                input_tokens=123,
+                output_tokens=45,
+                tavily_searches=1,
+                openai_web_searches=0,
+                elapsed_seconds=1.23,
+                estimated_cost_usd=0.010123,
+            ),
+        )
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+    monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
+    monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
+    monkeypatch.setattr("api.main.scout", fake_scout)
+
+    response = client.post("/scout", json={"query": "K-12 IT directors in Albuquerque"})
+
+    assert response.status_code == 200
+    body = response.json()
+    assert [lead["candidate_category"] for lead in body["leads"]] == [
+        "person_lead",
+        "organization_only",
+        "not_found",
+    ]
+    assert body["leads"][1]["organization"] == "Example Corp"
+    assert body["leads"][2]["searched_target"] == "Ghost District"
 
 
 def test_scout_endpoint_forwards_filters(monkeypatch):
