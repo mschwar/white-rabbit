@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-09 by Codex feat/f12-run-quality-report
+**Last updated:** 2026-05-10 by Codex feat/f12-run-quality-report
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** F12 Per-run quality report implemented on `feat/f12-run-quality-report` and pending QA.
+**Current sprint:** F12 Per-run quality report QA passed and merged on `feat/f12-run-quality-report`.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,9 +14,9 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F12 Per-run quality report (`feat/f12-run-quality-report`, implemented_pending_qa).
+**Next feature pointer:** F13 Single search-bar UI (`feat/f13-single-search-ui`, blocked).
 
-**Current feature branch QA status:** `feat/f12-run-quality-report` is implemented and awaiting required non-UI QA.
+**Current feature branch QA status:** `feat/f12-run-quality-report` passed required non-UI QA and was merged into `rebuild/validated-leads-loop`.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -40,14 +40,14 @@
 ```text
 Feature: F12 - Per-Run Quality Report
 Branch: feat/f12-run-quality-report
-Status: implemented_pending_qa
+Status: merged_to_rebuild_branch
 What changed: Added `packages/core/src/core/quality_report.py` with a serializable quality-report model and builder, plus `packages/core/tests/test_quality_report.py` covering candidate-category counts, validation-status counts, precision, persona match, contact quality, source support, fake-email count, unsupported-email count, and benchmark/run serialization.
 Tests or QA run:
  - `cd packages/core && uv run pytest tests/test_quality_report.py -q`
-Screenshots or report: n/a for this non-UI feature
-Northstar reflection: The report makes run quality explicit before any UI depends on it, and it keeps the benchmark/run artifact story on the same serializable shape.
-Next pointer: QA on `feat/f12-run-quality-report`, then F13 remains blocked until W5 opens.
-Open questions: none blocking the F12 implementation
+Screenshots or report: `.gstack/qa-reports/qa-report-f12-run-quality-report-2026-05-10.md`
+Northstar reflection: The report improves the query->export loop by surfacing explicit quality and contact/source risk signals before UI orchestration.
+Next pointer: F13 Single search-bar UI (`feat/f13-single-search-ui`) once normal rebuild scheduling resumes.
+Open questions: none blocking the F12 merge
 ```
 
 
