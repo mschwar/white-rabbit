@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-09 by Codex
+**Last updated:** 2026-05-10 by Codex orchestrator-gate-check
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** F09 Ranking gate based on evidence merged_to_rebuild_branch on `feat/f09-ranking-gate`; next target is merge only to `rebuild/validated-leads-loop`, then F10.
+**Current sprint:** W2 and W3 gates accepted by orchestrator; F10 Golden Arizona K-12 VoIP benchmark harness is now current.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,11 +14,16 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F10 Golden Arizona K-12 VoIP benchmark harness (blocked).
+**Next feature pointer:** F10 Golden Arizona K-12 VoIP benchmark harness (ready).
 
-**Current feature branch QA status:** `feat/f09-ranking-gate` is merged_to_rebuild_branch after required non-UI verification. The branch is merge-ready only into `rebuild/validated-leads-loop`.
+**Current feature branch QA status:** `feat/f09-ranking-gate` is merged_to_rebuild_branch after required non-UI verification. W3 is accepted; next feature branch is `feat/f10-arizona-k12-benchmark`.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
+
+**Latest gate acceptance:** W2 and W3 accepted on 2026-05-10:
+
+- W2 search contract: `.gstack/qa-reports/gate-w2-search-contract.md`
+- W3 validation engine: `.gstack/qa-reports/gate-w3-validation-engine.md`
 
 **Control docs:**
 
@@ -33,17 +38,20 @@
 **Latest handoff:**
 
 ```text
-Feature: F09 Ranking gate based on evidence
-Branch: feat/f09-ranking-gate
-Status: merged_to_rebuild_branch
-What changed: Added an evidence-aware ranking gate in `packages/core/src/core/orchestrator.py` that only marks person leads as gate-passed when score thresholds and field-validation evidence agree; updated the Lead model description and core tests.
+Feature: W2/W3 gate review
+Branch: rebuild/validated-leads-loop
+Status: accepted; product remains red
+What changed: Verified W2 search/candidate contract and W3 validation/ranking engine against the phase-gate criteria, added missing `packages/core/tests/test_scoring.py` so the documented W3 command exists, and unlocked only F10.
 Tests or QA run:
- - `$env:OPENAI_API_KEY=''; cd packages/core && uv run pytest -q` (76 passed, 5 skipped)
- - `$env:OPENAI_API_KEY=''; cd packages/core && uv run pytest tests/test_contact_status.py tests/test_source_validation.py tests/test_orchestrator.py tests/test_orchestrator_integration.py -q` (32 passed, 5 skipped)
-Screenshots or report: `.gstack/qa-reports/qa-report-f09-ranking-gate-2026-05-09.md`
-Northstar reflection: The gate no longer trusts score thresholds alone; unsupported source/title/org/email evidence now blocks a lead even when the model scores it highly. This reduces false confidence before results are ranked or exported.
-Next pointer: merge is complete; next ready card remains F10 but wave W3 is blocked until orchestrator acceptance is recorded in the gate report.
-Open questions: none
+ - `$env:OPENAI_API_KEY=''; cd packages/core && uv run pytest tests/test_query_planner.py tests/test_models.py -q` (32 passed)
+ - `cd apps/api && uv run pytest tests/test_api.py -q -k "scout or full"` with local Docker `DATABASE_URL` (12 passed, 23 deselected)
+ - `$env:OPENAI_API_KEY=''; cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py -q` (39 passed)
+ - `$env:OPENAI_API_KEY=''; cd packages/core && uv run pytest -q` (83 passed, 5 skipped)
+ - `git diff --check` (passed)
+Screenshots or report: `.gstack/qa-reports/gate-w2-search-contract.md`; `.gstack/qa-reports/gate-w3-validation-engine.md`
+Northstar reflection: The core contract can now represent candidate categories, field evidence, source access/support, contact statuses, and evidence-backed gate failures without pretending unsupported rows are usable. Benchmarks and quality reporting are still missing, so the product remains red.
+Next pointer: Start `feat/f10-arizona-k12-benchmark`; keep F11/F12 blocked until F10 merges and QA passes.
+Open questions: none blocking F10
 ```
 
 
@@ -188,11 +196,16 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F09 are merged to `rebuild/validated-leads-loop`; W3 remains blocked.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F09 are merged to `rebuild/validated-leads-loop`; W2 and W3 are orchestrator-accepted; F10 is ready.
 
 ## Next concrete task
 
-- W3 remains blocked by gate mechanics until an orchestrator review decision is recorded. `feat/f09-ranking-gate` is merged to `rebuild/validated-leads-loop`; next concrete task is to wait for orchestrator-accepted W3 advance and then start F10.
+- Build **F10 - Golden Arizona K-12 VoIP benchmark harness** on branch `feat/f10-arizona-k12-benchmark`:
+  - preserve the Arizona target districts and Thomas workbook annotations without treating GPT output as ground truth
+  - keep the harness offline by default; live runs must be optional behind an env flag
+  - run `cd packages/core && uv run pytest tests/test_arizona_k12_benchmark.py -q`
+  - update `docs/08-agentic-buildout-plan.md` and `STATUS.md`
+  - merge only into `rebuild/validated-leads-loop` after QA
 
 ## Open questions for Matt
 
@@ -234,6 +247,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | orchestrator-gate-check (Codex) | Checked the next gates after F09, accepted W2 and W3 with reports, added missing `packages/core/tests/test_scoring.py` so W3's documented command passes, and unlocked F10 while keeping the product red. |
 | 2026-05-10 | f06-qa (Codex) | QA'd `feat/f06-field-validation-schema` with required non-UI verification and merged it into `rebuild/validated-leads-loop`; wrote `.gstack/qa-reports/qa-report-f06-field-validation-schema-2026-05-10.md` and updated docs handoff/status. |
 | 2026-05-10 | f06-build (Codex) | Implemented field-level validation schema on `feat/f06-field-validation-schema`: added explicit per-field validation records to all candidate types, defaulted untouched rows to unsupported validation, and verified core model tests plus Scout/Full API serialization. |
 | 2026-05-10 | f05-qa (Codex) | QA'd and merged `feat/f05-candidate-types` into `rebuild/validated-leads-loop` after required non-UI checks passed (`25` model tests, `10` scout API tests); wrote `.gstack/qa-reports/qa-report-f05-candidate-model-separation-2026-05-10.md` and updated `docs/08-agentic-buildout-plan.md` + `STATUS.md`. |

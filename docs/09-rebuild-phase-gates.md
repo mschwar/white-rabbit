@@ -63,8 +63,8 @@ The designated orchestrator owns wave gate advancement. Matt owns the final prod
 | --- | --- | --- | --- | --- |
 | W0 | Control plane | F00 + phase-gate doc | docs complete | W1 |
 | W1 | Red-state containment | F01-F03 | advance on 2026-05-09; orchestrator accepted on 2026-05-10 (`.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md`) | W2 |
-| W2 | Search planning and candidate contract | F04-F06 | typed bounded search contract | W3 |
-| W3 | Validation and ranking engine | F07-F09 | false-confidence controls | W4 |
+| W2 | Search planning and candidate contract | F04-F06 | advance on 2026-05-10; orchestrator accepted (`.gstack/qa-reports/gate-w2-search-contract.md`) | W3 |
+| W3 | Validation and ranking engine | F07-F09 | advance on 2026-05-10; orchestrator accepted (`.gstack/qa-reports/gate-w3-validation-engine.md`) | W4 |
 | W4 | Benchmarks and quality reporting | F10-F12 | quality gates measurable and passing threshold | W5 |
 | W5 | Operator loop and export | F13-F16 | query-to-export browser path works with validation | W6 |
 | W6 | Feedback and dogfood decision | F17 + deferred policy review | yellow/green decision evidence | post-rebuild roadmap |

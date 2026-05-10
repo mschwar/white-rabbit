@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F10 Golden Arizona K-12 VoIP benchmark harness (blocked).
-**Current feature QA handoff:** `feat/f09-ranking-gate` is `merged_to_rebuild_branch` after core non-UI verification; next prompt can proceed from `feat/f10-arizona-k12-benchmark` only after W3 gate acceptance is recorded.
+**Next feature pointer:** F10 Golden Arizona K-12 VoIP benchmark harness (ready).
+**Current feature QA handoff:** W2 and W3 are orchestrator-accepted; next prompt can proceed from `feat/f10-arizona-k12-benchmark`.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -147,12 +147,12 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F02 | Backend API boundary                                     | merged_to_rebuild_branch | feat/f02-backend-api-boundary        | browser + API            |
 | F03 | Guardrail rewrite for B2B scope and privacy blocking     | merged_to_rebuild_branch | feat/f03-b2b-guardrails              | non-UI                   |
 | F04 | Query compiler / planner                                 | merged_to_rebuild_branch | feat/f04-query-compiler              | non-UI                   |
-| F05 | Candidate model separation                               | merged_to_rebuild_branch  | feat/f05-candidate-types             | non-UI                   |
-| F06 | Field-level validation schema                            | merged_to_rebuild_branch   | feat/f06-field-validation-schema     | non-UI                   |
-| F07 | Source validator                                         | merged_to_rebuild_branch  | feat/f07-source-validator            | non-UI                   |
+| F05 | Candidate model separation                               | merged_to_rebuild_branch | feat/f05-candidate-types             | non-UI                   |
+| F06 | Field-level validation schema                            | merged_to_rebuild_branch | feat/f06-field-validation-schema     | non-UI                   |
+| F07 | Source validator                                         | merged_to_rebuild_branch | feat/f07-source-validator            | non-UI                   |
 | F08 | Contact status model                                     | merged_to_rebuild_branch | feat/f08-contact-status-model        | non-UI                   |
 | F09 | Ranking gate based on evidence                           | merged_to_rebuild_branch | feat/f09-ranking-gate                | non-UI                   |
-| F10 | Golden Arizona K-12 VoIP benchmark harness               | blocked                  | feat/f10-arizona-k12-benchmark       | non-UI                   |
+| F10 | Golden Arizona K-12 VoIP benchmark harness               | ready                    | feat/f10-arizona-k12-benchmark       | non-UI                   |
 | F11 | Required benchmark suite                                 | blocked                  | feat/f11-required-benchmark-suite    | non-UI                   |
 | F12 | Per-run quality report                                   | blocked                  | feat/f12-run-quality-report          | non-UI                   |
 | F13 | Single search-bar UI                                     | blocked                  | feat/f13-single-search-ui            | browser                  |
@@ -788,7 +788,7 @@ QA handoff complete on 2026-05-09: gate test and core test suite passed with `OP
 
 ## F10 - Golden Arizona K-12 VoIP Benchmark Harness
 
-Status: blocked
+Status: ready
 Branch: feat/f10-arizona-k12-benchmark
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
