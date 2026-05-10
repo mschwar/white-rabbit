@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex f17-corrections-feedback-loop
+**Last updated:** 2026-05-10 by Codex build-loop-blocked-no-ready-feature
 **Branch:** rebuild/validated-leads-loop
 **Current sprint:** W5 operator loop and export gate in motion; F15 and F16 are merged, and F17 correction feedback loop is QA’d and merged to `rebuild/validated-leads-loop`.
 
@@ -14,7 +14,7 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F18 Recipe Library Internal-Only Policy (`feat/f18-recipes-internal-only`, deferred until the launch gate is yellow).
+**Next feature pointer:** No `ready` feature. F18 Recipe Library Internal-Only Policy (`feat/f18-recipes-internal-only`) remains deferred until the launch gate is yellow or Matt explicitly promotes a deferred feature to `ready`.
 
 **Current feature branch QA status:** `feat/f17-corrections-feedback-loop` has build verification, browser QA on the validation-buckets fixture route, direct API smoke checks, and screenshots/report saved under `.gstack/qa-reports/`; it is merged into `rebuild/validated-leads-loop`.
 
@@ -211,7 +211,9 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## Next concrete task
 
-- Next feature pointer is `F18 Recipe Library Internal-Only Policy` (`feat/f18-recipes-internal-only`, deferred); no ready feature remains until the launch gate is yellow.
+- No rebuild feature is currently `ready`. Before the next build prompt, Matt must either:
+  - move one deferred feature (`F18`-`F23`) to `ready`, or
+  - change the launch-gate/defer policy that is currently blocking those features.
 
 ## Open questions for Matt
 
@@ -256,6 +258,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | build-loop-blocked-no-ready-feature (Codex) | Re-read the rebuild control docs, synced `rebuild/validated-leads-loop` with `origin/rebuild/validated-leads-loop` via fast-forward pull, and confirmed there is no `ready` feature to branch or implement. Updated `STATUS.md` and `docs/08-agentic-buildout-plan.md` to make the block explicit for the next agent: F18-F23 remain deferred until Matt promotes one or the launch gate changes. |
 | 2026-05-10 | f16-export (Codex) | Built `feat/f16-validation-export` with validation-aware CSV export rows, updated the Scout workspace export flow, and added a QA-only fixture hook for `qa=validation-buckets`. Verified with `cd apps/web && npm test -- --run src/lib/__tests__/full-export.test.ts src/components/__tests__/scout-workspace.test.tsx` (`9` passed) and browser QA on `http://localhost:3000/scout?qa=validation-buckets`; screenshots saved at `.gstack/qa-reports/screenshots/f16-01-export-control.png`, `.gstack/qa-reports/screenshots/f16-02-export-ready.png`, and `.gstack/qa-reports/screenshots/f16-03-csv-content.png`. |
 | 2026-05-10 | f15-qa (Codex) | QA'd `feat/f15-evidence-drawer` with `cd apps/web && npm test -- --run` (`13` passed), `cd apps/web && npm run build`, and browser verification on `http://localhost:3000/scout?qa=validation-buckets`; captured `.gstack/qa-reports/screenshots/f15-01-usable-evidence-drawer.png` and `.gstack/qa-reports/screenshots/f15-02-failed-evidence-drawer.png`; wrote `.gstack/qa-reports/qa-report-f15-evidence-drawer-2026-05-10.md`; updated `docs/08-agentic-buildout-plan.md` and `STATUS.md`; merged the branch into `rebuild/validated-leads-loop`. |
 | 2026-05-10 | f14-qa (Codex) | QA'd `feat/f14-validation-results-table` with `cd apps/web && npm test -- --run` (`28` passed), `cd apps/web && npm run build`, and browser verification on `http://localhost:3000/?qa=validation-buckets`; captured usable, noisy/failed, and organization-only/not-found screenshots; wrote `.gstack/qa-reports/qa-report-f14-validation-results-table-2026-05-10.md`; updated `docs/08-agentic-buildout-plan.md` and `STATUS.md`; merged the branch into `rebuild/validated-leads-loop`. |

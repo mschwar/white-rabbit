@@ -4,10 +4,12 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F18 Recipe Library Internal-Only Policy (`feat/f18-recipes-internal-only`, deferred until the launch gate is yellow).
+**Next feature pointer:** No `ready` feature. F18 Recipe Library Internal-Only Policy (`feat/f18-recipes-internal-only`) remains deferred until the launch gate is yellow or Matt explicitly promotes a deferred feature to `ready`.
 **Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F15 and F16 have been QA’d and merged to `rebuild/validated-leads-loop` on this branch; F17 browser QA is complete on the validation-buckets fixture, the correction queue export link is verified, and the screenshots are saved under `.gstack/qa-reports/screenshots/`.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
+
+Build-loop note as of 2026-05-10: there is currently no feature in `ready` status. Build Prompt A is blocked until Matt promotes one deferred feature to `ready` or changes the defer policy.
 
 ## Current Reality
 
