@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F04 Query compiler / planner (implemented_pending_qa).
-**Current feature QA handoff:** `feat/f04-query-compiler` has been implemented and is queued for QA on the rebuild integration line; next build remains `feat/f05-candidate-types` once F04 merges.
+**Next feature pointer:** F05 Candidate model separation (ready after F04 QA).
+**Current feature QA handoff:** `feat/f04-query-compiler` completed required non-UI QA and is queued to merge into `rebuild/validated-leads-loop`; next build remains `feat/f05-candidate-types` once F04 merges.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -147,7 +147,7 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F02 | Backend API boundary | merged_to_rebuild_branch | feat/f02-backend-api-boundary | browser + API |
 | F03 | Guardrail rewrite for B2B scope and privacy blocking | merged_to_rebuild_branch | feat/f03-b2b-guardrails | non-UI |
 | F04 | Query compiler / planner | implemented_pending_qa | feat/f04-query-compiler | non-UI |
-| F05 | Candidate model separation | blocked | feat/f05-candidate-types | non-UI |
+| F05 | Candidate model separation | ready | feat/f05-candidate-types | non-UI |
 | F06 | Field-level validation schema | blocked | feat/f06-field-validation-schema | non-UI |
 | F07 | Source validator | blocked | feat/f07-source-validator | non-UI |
 | F08 | Contact status model | blocked | feat/f08-contact-status-model | non-UI |
@@ -502,7 +502,7 @@ Rollback plan:
 Remove planner module and revert search/orchestrator integration; old direct query path returns.
 
 Next-agent handoff note:
-F04 is implemented on `feat/f04-query-compiler`; QA should run the required package tests, confirm the long Arizona benchmark compiles into bounded named-account queries, and then merge back to `rebuild/validated-leads-loop` before F05 starts.
+F04 is implemented on `feat/f04-query-compiler`; required package tests (`5 passed`) and the long Arizona benchmark boundedness verification are complete. The feature is ready to merge into `rebuild/validated-leads-loop` and must be merged before starting F05 (`feat/f05-candidate-types`).
 
 ---
 
