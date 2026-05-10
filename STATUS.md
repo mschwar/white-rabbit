@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-09 by Codex
-**Branch:** feat/f07-source-validator
-**Current sprint:** F07 Source validator passed non-UI checks on `feat/f07-source-validator` and is ready for review; next target after merge is F08 Contact status model.
+**Last updated:** 2026-05-10 by Codex
+**Branch:** rebuild/validated-leads-loop
+**Current sprint:** F07 Source validator merged into `rebuild/validated-leads-loop` after QA; next target is F08 Contact status model.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,9 +14,9 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F07 Source validator (blocked).
+**Next feature pointer:** F08 Contact status model (blocked).
 
-**Current feature branch QA status:** `feat/f07-source-validator` passed required non-UI QA and is ready for review; the integration branch still awaits merge before `feat/f08-contact-status-model` can start.
+**Current feature branch QA status:** `feat/f07-source-validator` passed required non-UI QA and has been merged; starting `feat/f08-contact-status-model` is next.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -35,14 +35,14 @@
 ```text
 Feature: F07 Source validator
 Branch: feat/f07-source-validator
-Status: ready_for_review
-What changed: Added source-evidence validation that resolves source URLs, records resolved URL / HTTP status / checked_at / matched-field notes, and populates candidate validation bundles for Scout results without changing the lead contract.
+Status: merged_to_rebuild_branch
+What changed: Added source-evidence validation that resolves source URLs, records resolved URL / HTTP status / checked_at / matched-field notes, and populates candidate validation bundles for Scout results without changing the lead contract. Source validation now marks inaccessible sources as failed and unsupported matches as failed/unsupported per field.
 Tests or QA run:
-- `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_orchestrator.py -q` (16 passed; `OPENAI_API_KEY` cleared for the missing-key negative test)
-Screenshots or report: n/a
+ - `cd packages/core && $env:OPENAI_API_KEY='' ; uv run pytest tests/test_source_validation.py tests/test_orchestrator.py -q` (16 passed)
+Screenshots or report: `.gstack/qa-reports/qa-report-f07-source-validator-2026-05-10.md`
 Northstar reflection: Source URLs are now checked for direct support before the product treats them as evidence, which keeps later contact/status work from building on unverified page links.
 Next pointer: F08 Contact status model.
-Open questions: Merge `feat/f07-source-validator` into `rebuild/validated-leads-loop` before starting F08.
+Open questions: None blocking.
 ```
 
 ---

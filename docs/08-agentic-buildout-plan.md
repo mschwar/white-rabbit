@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F07 Source validator (blocked).
-**Current feature QA handoff:** `feat/f06-field-validation-schema` passed non-UI QA and was merged into `rebuild/validated-leads-loop`; the next implementation target remains `feat/f07-source-validator`.
+**Next feature pointer:** F08 Contact status model (blocked).
+**Current feature QA handoff:** `feat/f07-source-validator` passed non-UI QA and was merged into `rebuild/validated-leads-loop`; the next implementation target remains `feat/f08-contact-status-model`.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -149,7 +149,7 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F04 | Query compiler / planner                                 | merged_to_rebuild_branch | feat/f04-query-compiler              | non-UI                   |
 | F05 | Candidate model separation                               | merged_to_rebuild_branch  | feat/f05-candidate-types             | non-UI                   |
 | F06 | Field-level validation schema                            | merged_to_rebuild_branch   | feat/f06-field-validation-schema     | non-UI                   |
-| F07 | Source validator                                         | blocked                  | feat/f07-source-validator            | non-UI                   |
+| F07 | Source validator                                         | merged_to_rebuild_branch  | feat/f07-source-validator            | non-UI                   |
 | F08 | Contact status model                                     | blocked                  | feat/f08-contact-status-model        | non-UI                   |
 | F09 | Ranking gate based on evidence                           | blocked                  | feat/f09-ranking-gate                | non-UI                   |
 | F10 | Golden Arizona K-12 VoIP benchmark harness               | blocked                  | feat/f10-arizona-k12-benchmark       | non-UI                   |
@@ -627,7 +627,7 @@ F07 is responsible for populating this schema with source checks.
 
 ## F07 - Source Validator
 
-Status: ready_for_review
+Status: merged_to_rebuild_branch
 Branch: feat/f07-source-validator
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -673,7 +673,7 @@ Rollback plan:
 Remove validator integration and keep field validation statuses unsupported.
 
 Next-agent handoff note:
-F08 should reuse source validation evidence for contact statuses.
+F07 is merged to `rebuild/validated-leads-loop`; F08 should reuse source validation evidence for contact statuses.
 
 ---
 
