@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F05 Candidate model separation (implemented_pending_qa).
-**Current feature QA handoff:** `feat/f05-candidate-types` has the core/API contract built, required non-UI tests passed, and is waiting for QA/merge back to `rebuild/validated-leads-loop`.
+**Next feature pointer:** F06 Field-level validation schema (blocked).
+**Current feature QA handoff:** `feat/f05-candidate-types` passed non-UI QA and is queued for merge into `rebuild/validated-leads-loop`; the next implementation target remains `feat/f06-field-validation-schema`.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -147,7 +147,7 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F02 | Backend API boundary                                     | merged_to_rebuild_branch | feat/f02-backend-api-boundary        | browser + API            |
 | F03 | Guardrail rewrite for B2B scope and privacy blocking     | merged_to_rebuild_branch | feat/f03-b2b-guardrails              | non-UI                   |
 | F04 | Query compiler / planner                                 | merged_to_rebuild_branch | feat/f04-query-compiler              | non-UI                   |
-| F05 | Candidate model separation                               | implemented_pending_qa   | feat/f05-candidate-types             | non-UI                   |
+| F05 | Candidate model separation                               | merged_to_rebuild_branch  | feat/f05-candidate-types             | non-UI                   |
 | F06 | Field-level validation schema                            | blocked                  | feat/f06-field-validation-schema     | non-UI                   |
 | F07 | Source validator                                         | blocked                  | feat/f07-source-validator            | non-UI                   |
 | F08 | Contact status model                                     | blocked                  | feat/f08-contact-status-model        | non-UI                   |
@@ -512,7 +512,7 @@ F04 has completed required non-UI QA and is now merged to `rebuild/validated-lea
 
 ## F05 - Candidate Model Separation
 
-Status: implemented_pending_qa
+Status: merged_to_rebuild_branch
 Branch: feat/f05-candidate-types
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -555,9 +555,10 @@ Atomic commit plan:
 - commit 3 if needed: `docs(f05): record candidate model handoff`
 
 Current handoff note:
-- Tests passed: `cd packages/core && uv run pytest tests/test_models.py -q`; `cd apps/api && uv run pytest tests/test_api.py -q -k scout`
+- Tests passed: `cd packages/core && uv run pytest tests/test_models.py -q` (25 passed); `cd apps/api && uv run pytest tests/test_api.py -q -k scout` (10 passed, 25 deselected).
 - Northstar reflection: person leads remain strict, and organization-only / not-found / failed rows now stay visibly separate instead of masquerading as contacts.
-- Next handoff: QA this branch, then merge only into `rebuild/validated-leads-loop`; do not unlock F06 or W3 yet.
+- Feature status: `merged_to_rebuild_branch`.
+- Next handoff: `feat/f06-field-validation-schema`; no unlock to W3 until this sequence and gate reviews complete.
 
 Rollback plan:
 Revert candidate schema and API mapping together; previous Lead model returns.
