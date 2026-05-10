@@ -9,11 +9,11 @@ Open `index.html` in a browser to inspect the proposed final operator experience
 ## What This Mockup Locks
 
 - One primary search input. No Scout/Full mode switch in the operator path.
-- Broad runs must show 10-25 categorized rows when the market supports it.
+- Broad runs show high-volume tier distribution: 50-300+ categorized candidates where the market supports it, with the strict usable tier separated from everything else.
 - CRM-useful result fields come first: organization, location, lead, title, email, phone, source, and row status.
 - Evidence is always one action away and shows field-level support for name, title, organization, contact, and source.
 - Export is a sales artifact first and an audit artifact second.
-- Review, organization-only, and not-found rows stay visible without masquerading as CRM-ready leads.
+- Review, organization-only, not-found, and failed rows stay visible with concise reasons instead of masquerading as high-trust usable leads.
 - Recipe, batch, scoreboard, quota, and implementation-detail surfaces are absent from the primary path.
 
 ## Screens Included
@@ -28,9 +28,10 @@ Rendered screenshots are stored in `.gstack/qa-reports/screenshots/final-product
 ## Inspection Questions
 
 - Does this feel like something Thomas or Lee would understand without Matt explaining the product?
-- Is the row density enough for 10-25 results without becoming noisy?
+- Is the tier distribution glanceable enough for hundreds of surfaced candidates without becoming noisy?
 - Are the CRM fields front-loaded enough?
 - Is the evidence panel visible enough without stealing the whole screen?
+- Are the non-actionable blockers obvious enough to understand in seconds?
 - Should the final product keep this dark terminal-like feel, or get a quieter light/neutral treatment?
 
 ## Implementation Boundary

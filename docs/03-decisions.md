@@ -158,7 +158,7 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 ## ADR-011 — Broad Scout/Full runs need 10-25 categorized results
 
 **Date:** 2026-05-10
-**Status:** Locked
+**Status:** Superseded by ADR-012
 
 **Context.** Matt reported a 2026-05-10 call with Lee and Thomas where they said the current tool is not useful when Scout returns 3 results and Full returns 4 results. Their target for broad Scout-style prospecting is more than 10 results, with 10-25 results as the preferred working range.
 
@@ -168,9 +168,22 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 ---
 
+## ADR-012 — High-volume transparent tiering is the broad-query target
+
+**Date:** 2026-05-10
+**Status:** Locked
+
+**Context.** ADR-011 corrected the immediate failure mode where broad Scout/Full runs returned only 3-4 rows. Matt clarified afterward that 10-25 categorized results was the minimum escape velocity from that failure, not the ideal end state. The stronger product direction is to surface the full realistic picture the public web allows, then make it instantly clear why most rows are not actionable.
+
+**Decision.** For broad vertical + geography prompts, White Rabbit should move toward high-volume transparent tiering: 50-300+ categorized candidates where the market supports it, with a strict `high_trust_usable` tier preserving at least the benchmark precision bar and all other rows clearly separated as `review`, `organization_only`, `not_found`, or `failed`. Volume is useful only when every row carries grounded evidence or an explicit reason for non-actionability. The product must never create false confidence, invent fields, or let noisy candidates masquerade as CRM-ready leads.
+
+**Consequences.** Search planning, Tavily aggregation, LLM extraction, validation, metrics, UI, export, and gate audits must measure both total surfaced coverage and high-trust precision. The LLM extraction stage should become inclusive, while server-side orchestration performs rigorous tiering and annotation. The old binary pass/fail gate remains the definition of `high_trust_usable`, but it no longer decides whether a candidate is returned at all. Broad-query gates should treat 10-25 as a floor, not a success target; narrow named-account prompts may remain tighter when the target universe is genuinely small.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-012, ADR-013, ...).
+1. Pick the next ADR number (ADR-013, ADR-014, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.

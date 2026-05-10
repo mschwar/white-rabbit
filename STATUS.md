@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex final-product-mockups
+**Last updated:** 2026-05-10 by Codex high-volume-reset-contract
 **Branch:** main / rebuild/validated-leads-loop aligned
-**Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Production web now has the required internal API token after the post-promotion Vercel env fix.
+**Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,13 +14,13 @@
 
 **Current gate:** Red with Matt-directed Thomas/Lee internal-use exception. Do not treat the promotion as a public launch or as evidence that the reset gates passed.
 
-**Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets, with 10-25 as the preferred working range. Broad runs with 3-4 rows fail product value even if the rows are neatly formatted.
+**Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is high-volume transparent tiering: broad vertical + geography prompts should surface 50-300+ categorized candidates where the market supports it, while preserving a strict high-trust usable tier and explaining every non-actionable row.
 
 **Next feature pointer:** Reset feature `R00 - W5 hold report and reset control docs` remains the next implementation assignment. Branch from `rebuild/validated-leads-loop` per the reset plan; that branch is currently aligned with `main`. R00 must cite the Lee/Thomas low-volume feedback in the W5 hold report.
 
 **Kickoff workflow:** Use only the Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A implements one ready feature, Prompt B QA/merges it into `rebuild/validated-leads-loop`, and Prompt C runs the gate audit. Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync.
 
-**Final product mockup gate:** Inspect `docs/mockups/final-product-2026-05-10/index.html` before assigning Prompt A implementation. R10-R13 must treat it as the visual contract unless Matt approves a different direction; RG4/RG5 Prompt C audits must compare live screenshots against it.
+**Final product mockup gate:** Inspect `docs/mockups/final-product-2026-05-10/index.html` before assigning Prompt A implementation. R10-R13 must treat it as the visual contract for high-volume tier distribution unless Matt approves a different direction; RG4/RG5 Prompt C audits must compare live screenshots against it.
 
 **Current feature branch QA status:** No feature branch is awaiting QA. F19 browser QA passed, the batch route now carries explicit internal-only labeling, and F20-F23 remain deferred.
 
@@ -55,16 +55,16 @@ Prior accepted gates:
 **Latest handoff:**
 
 ```text
-Feature: Final product mockups before reset kickoff
+Feature: High-volume transparent tiering reset contract
 Branch: main -> rebuild/validated-leads-loop sync
 Status: committed_and_pushed
-What changed: Added static final product mockups for inspection before reset implementation. The mockup locks one-search operator flow, 10-25 categorized result density, CRM-first columns, evidence one action away, sales-first export, and mobile row-card review. Wired the mockup into the reset plan as the visual contract for R10-R13 and the comparison artifact for RG4/RG5 Prompt C audits.
+What changed: Superseded the 10-25 ideal with ADR-012 and updated the northstar/reset plan/mockups around high-volume transparent tiering. Added `docs/Orchestrator_Agent_Implementation_Brief.md` for the coding agents. The mockup now shows broad-query distribution at 186 categorized candidates with high-trust, review, organization-only, not-found, and failed tiers.
 Tests or QA run:
  - `git diff --check`
  - `node` Playwright static render of `docs/mockups/final-product-2026-05-10/index.html`
- - `rg -n 'Final Product Mockup Inspection Gate|final-product-2026-05-10|visual contract|10-25 categorized' docs STATUS.md`
+ - `rg -n 'ADR-012|high-volume transparent tiering|50-300|Orchestrator_Agent_Implementation_Brief|final-product-2026-05-10' docs STATUS.md`
 Screenshots or report: `.gstack/qa-reports/screenshots/final-product-mockups-2026-05-10/`
-Northstar reflection: Gives Matt a concrete final-product target before 17 more implementation features can drift away from Lee/Thomas's value prop.
+Northstar reflection: Prevents agents from optimizing for a small clean list when the actual value prop is the full public-web picture plus rigorous, glanceable tiering.
 Next pointer: Matt inspection, then assign Prompt A to R00 if the mockup direction is approved.
 Open questions: none blocking R00.
 ```
@@ -265,6 +265,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | high-volume-reset-contract (Codex) | Superseded the 10-25 ideal with ADR-012 high-volume transparent tiering, added `docs/Orchestrator_Agent_Implementation_Brief.md`, updated the northstar/reset plan, and revised the final product mockups to show 186 categorized candidates with high-trust/review/org-only/not-found/failed distribution. |
 | 2026-05-10 | final-product-mockups (Codex) | Added `docs/mockups/final-product-2026-05-10/index.html` and rendered screenshots so Matt can inspect the final intended operator product before kickoff. Wired the mockup into the reset plan as the R10-R13 visual contract and RG4/RG5 Prompt C comparison artifact. |
 | 2026-05-10 | pre-kickoff-review (Codex) | Ran a ruthless final review of the reset plan against the northstar and true value prop. Tightened `docs/12-reset-gated-implementation-plan-2026-05-10.md` to a strict Prompt A/B/C kickoff loop, added a 24-hour product bar, made Prompt C the only gate unlock/main-promotion recommender, added live-evidence rules, and wrote first Prompt B/C assignments so R00 cannot drift into another ambiguous gate bypass. |
 | 2026-05-10 | stale-deployment-url-check (Codex) | Checked Matt's reported `white-rabbit-7kw7lh6ri...` URL and confirmed it is an old immutable production deployment created before the env fix. Verified the stable production alias points at the newer `white-rabbit-jcrn58h0c...` deployment and that authenticated `/api/scout` on `https://white-rabbit-ten.vercel.app/` returns 200 instead of the missing-token 502. |

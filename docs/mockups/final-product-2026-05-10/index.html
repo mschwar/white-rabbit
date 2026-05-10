@@ -669,7 +669,7 @@
       }
 
       .csv-preview table {
-        min-width: 1500px;
+        min-width: 1800px;
         table-layout: auto;
       }
 
@@ -826,7 +826,7 @@
           </div>
           <div class="top-meta">
             <span><span class="status-dot" aria-hidden="true"></span> Production target mockup</span>
-            <span>10-25 categorized results required</span>
+            <span>50-300+ categorized candidates when broad</span>
           </div>
         </header>
 
@@ -848,18 +848,18 @@
             </form>
 
             <div class="metric-row" aria-label="Expected run quality">
-              <div class="metric"><strong>18</strong><span>Categorized rows</span></div>
-              <div class="metric"><strong>11</strong><span>CRM-ready candidates</span></div>
-              <div class="metric"><strong>4</strong><span>Need review</span></div>
-              <div class="metric"><strong>3</strong><span>Org-only / not found</span></div>
+              <div class="metric"><strong>186</strong><span>Categorized candidates</span></div>
+              <div class="metric"><strong>37</strong><span>High-trust usable</span></div>
+              <div class="metric"><strong>82</strong><span>Need review</span></div>
+              <div class="metric"><strong>67</strong><span>Blocked / unknown</span></div>
             </div>
 
             <div class="search-empty">
               <div class="copy-block">
-                <h1>One search. Enough rows. Honest evidence.</h1>
+                <h1>One search. Full picture. Honest evidence.</h1>
                 <p>
-                  One search returns enough categorized prospects for a working sales motion, then separates
-                  CRM-ready people from review rows, organization-only rows, and true misses.
+                  One broad search can return hundreds of categorized candidates, then separates high-trust
+                  usable people from review rows, organization-only rows, true misses, and failed evidence.
                 </p>
                 <p>
                   The final product should feel closer to a compact analyst desk than a dashboard: no mode
@@ -870,7 +870,7 @@
               <aside class="reference-list" aria-label="Operator constraints">
                 <div class="reference-row">
                   <span class="kbd">01</span>
-                  <div><strong>Volume is value</strong><br /><span>Broad targets must produce 10-25 categorized rows.</span></div>
+                  <div><strong>Volume is value</strong><br /><span>Broad targets surface the realistic public-web universe.</span></div>
                   <span class="pill ready">Gate</span>
                 </div>
                 <div class="reference-row">
@@ -885,7 +885,7 @@
                 </div>
                 <div class="reference-row">
                   <span class="kbd">04</span>
-                  <div><strong>False confidence is blocked</strong><br /><span>No unsupported email or source can look CRM-ready.</span></div>
+                  <div><strong>False confidence is blocked</strong><br /><span>Every non-actionable row says exactly what is missing.</span></div>
                   <span class="pill review">Hold if false</span>
                 </div>
               </aside>
@@ -907,17 +907,17 @@
               <section>
                 <div class="toolbar">
                   <div>
-                    <h1>18 categorized rows</h1>
-                    <p>11 ready · 4 review · 2 organization-only · 1 not found · 1m 42s · $0.73 estimated</p>
+                    <h1>186 categorized candidates</h1>
+                    <p>37 high-trust usable · 82 review · 43 organization-only · 24 not-found/failed · showing first 18 · $2.18 estimated</p>
                   </div>
-                  <button class="button" type="button">Export ready rows</button>
+                  <button class="button" type="button">Export high-trust rows</button>
                 </div>
 
                 <div class="bucket-bar" aria-label="Validation buckets">
-                  <span class="bucket ready">Ready 11</span>
-                  <span class="bucket review">Review 4</span>
-                  <span class="bucket org">Org-only 2</span>
-                  <span class="bucket">Not found 1</span>
+                  <span class="bucket ready">High trust 37</span>
+                  <span class="bucket review">Review 82</span>
+                  <span class="bucket org">Org-only 43</span>
+                  <span class="bucket">Not found / failed 24</span>
                 </div>
 
                 <div class="table-frame">
@@ -946,7 +946,7 @@
                         <td><span class="email">lena.ortiz@valleywise.example</span><div class="subline">verified</div></td>
                         <td>(602) 555-0184<div class="subline">main + extension</div></td>
                         <td><a class="source-link" href="#">IT leadership page</a></td>
-                        <td><span class="pill ready">Ready</span></td>
+                        <td><span class="pill ready">Usable</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -956,9 +956,9 @@
                         <td><div class="lead-name">Marcus Reed</div><div class="subline">Infrastructure owner</div></td>
                         <td>Senior Director, Infrastructure</td>
                         <td><span class="email">mreed@phoenixchildrens.example</span><div class="subline">pattern supported</div></td>
-                        <td>Missing<div class="subline">not CRM-ready phone</div></td>
+                        <td>Missing<div class="subline">not high-trust phone</div></td>
                         <td><a class="source-link" href="#">Technology profile</a></td>
-                        <td><span class="pill ready">Ready</span></td>
+                        <td><span class="pill ready">Usable</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -970,7 +970,7 @@
                         <td><span class="email">ari.patel@honorhealth.example</span><div class="subline">verified</div></td>
                         <td>(480) 555-0140</td>
                         <td><a class="source-link" href="#">Security team page</a></td>
-                        <td><span class="pill ready">Ready</span></td>
+                        <td><span class="pill ready">Usable</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -982,7 +982,7 @@
                         <td><span class="email">dana.kim@bannerhealth.example</span><div class="subline">verified</div></td>
                         <td>Missing</td>
                         <td><a class="source-link" href="#">Leadership profile</a></td>
-                        <td><span class="pill ready">Ready</span></td>
+                        <td><span class="pill ready">Usable</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -994,7 +994,7 @@
                         <td><span class="email">noah.alvarez@dignityhealth.example</span><div class="subline">pattern supported</div></td>
                         <td>(602) 555-0117</td>
                         <td><a class="source-link" href="#">Operations directory</a></td>
-                        <td><span class="pill ready">Ready</span></td>
+                        <td><span class="pill ready">Usable</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -1006,7 +1006,7 @@
                         <td><span class="email">priya.shah@abrazohealth.example</span><div class="subline">verified</div></td>
                         <td>Missing</td>
                         <td><a class="source-link" href="#">Staff directory</a></td>
-                        <td><span class="pill ready">Ready</span></td>
+                        <td><span class="pill ready">Usable</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -1018,7 +1018,7 @@
                         <td><span class="email">caleb.morris@terros.example</span><div class="subline">verified</div></td>
                         <td>(602) 555-0166</td>
                         <td><a class="source-link" href="#">Technology page</a></td>
-                        <td><span class="pill ready">Ready</span></td>
+                        <td><span class="pill ready">Usable</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -1030,7 +1030,7 @@
                         <td><span class="email">elise.nguyen@mayoaz.example</span><div class="subline">verified</div></td>
                         <td>Missing</td>
                         <td><a class="source-link" href="#">Digital health profile</a></td>
-                        <td><span class="pill ready">Ready</span></td>
+                        <td><span class="pill ready">Usable</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -1042,7 +1042,7 @@
                         <td><span class="email">tessa.martin@sonoraquest.example</span><div class="subline">pattern supported</div></td>
                         <td>(602) 555-0131</td>
                         <td><a class="source-link" href="#">Data team page</a></td>
-                        <td><span class="pill ready">Ready</span></td>
+                        <td><span class="pill ready">Usable</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -1054,7 +1054,7 @@
                         <td><span class="email">owen.wright@southwestnetwork.example</span><div class="subline">verified</div></td>
                         <td>Missing</td>
                         <td><a class="source-link" href="#">Org profile</a></td>
-                        <td><span class="pill ready">Ready</span></td>
+                        <td><span class="pill ready">Usable</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -1066,7 +1066,7 @@
                         <td><span class="email">mira.collins@equalityhealth.example</span><div class="subline">verified</div></td>
                         <td>(602) 555-0190</td>
                         <td><a class="source-link" href="#">Leadership page</a></td>
-                        <td><span class="pill ready">Ready</span></td>
+                        <td><span class="pill ready">Usable</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -1075,7 +1075,7 @@
                         <td>Phoenix, AZ</td>
                         <td><div class="lead-name">Samir Bell</div><div class="subline">Possible match</div></td>
                         <td>IT Manager</td>
-                        <td>Missing<div class="subline">not CRM-ready</div></td>
+                        <td>Missing<div class="subline">not high-trust</div></td>
                         <td>Missing</td>
                         <td><a class="source-link" href="#">Practice page</a></td>
                         <td><span class="pill review">Review</span></td>
@@ -1162,7 +1162,7 @@
                 <div class="panel-section">
                   <p class="panel-eyebrow">Evidence dossier</p>
                   <h2 class="panel-title">Lena Ortiz</h2>
-                  <p class="panel-subtitle">Director, Clinical Systems at Valleywise Health. Ready because name, title, organization, and email are source-supported.</p>
+                  <p class="panel-subtitle">Director, Clinical Systems at Valleywise Health. High-trust usable because name, title, organization, and email are source-supported.</p>
                 </div>
                 <div class="panel-section">
                   <p class="panel-eyebrow">Field support</p>
@@ -1191,7 +1191,7 @@
             <form class="search-strip">
               <label>
                 <p class="field-label">Export source run</p>
-                <input class="query-input" value="Healthcare IT directors in Phoenix - 18 categorized rows" aria-label="Export source run" />
+                <input class="query-input" value="Healthcare IT directors in Phoenix - 186 categorized candidates" aria-label="Export source run" />
               </label>
               <button class="button" type="button">Download CSV</button>
             </form>
@@ -1200,14 +1200,14 @@
               <aside class="export-summary">
                 <div class="panel-section">
                   <p class="panel-eyebrow">Export rule</p>
-                  <h2 class="panel-title">Sales columns first. Audit columns later.</h2>
-                  <p class="panel-subtitle">Thomas and Lee can use the first columns immediately, while validation context still travels with the data.</p>
+                  <h2 class="panel-title">High-trust first. Reasons for the rest.</h2>
+                  <p class="panel-subtitle">Thomas and Lee can use the strongest rows immediately, while every review and blocked row carries the reason it is not actionable.</p>
                 </div>
                 <ul class="checklist">
-                  <li><span class="check">✓</span><span>Ready rows sorted first, followed by review, org-only, and not-found rows.</span></li>
+                  <li><span class="check">✓</span><span>High-trust rows sorted first, followed by review, org-only, not-found, and failed rows.</span></li>
                   <li><span class="check">✓</span><span>First 10 columns are CRM-useful and not run metadata.</span></li>
                   <li><span class="check">✓</span><span>Unsupported contacts remain clearly marked; no row is flattened into false confidence.</span></li>
-                  <li><span class="check">✓</span><span>Run ID, evidence URLs, and field validation statuses remain available after sales columns.</span></li>
+                  <li><span class="check">✓</span><span>Run ID, tier, primary reason, evidence URLs, and field validation statuses remain available after sales columns.</span></li>
                 </ul>
               </aside>
 
@@ -1219,12 +1219,13 @@
                       <th class="sales">Location</th>
                       <th class="sales">Lead name</th>
                       <th class="sales">Title</th>
+                      <th class="sales">Tier</th>
+                      <th class="sales">Primary reason</th>
                       <th class="sales">Email</th>
                       <th class="sales">Email status</th>
                       <th class="sales">Phone</th>
                       <th class="sales">Source</th>
                       <th class="sales">Why target</th>
-                      <th class="sales">Row status</th>
                       <th class="audit">Run ID</th>
                       <th class="audit">Evidence</th>
                       <th class="audit">Checked at</th>
@@ -1236,12 +1237,13 @@
                       <td>Phoenix, AZ</td>
                       <td>Lena Ortiz</td>
                       <td>Director, Clinical Systems</td>
+                      <td>high_trust_usable</td>
+                      <td>Source supports name, title, organization, and email.</td>
                       <td>lena.ortiz@valleywise.example</td>
                       <td>verified_found</td>
                       <td>(602) 555-0184</td>
                       <td>IT leadership page</td>
                       <td>Clinical systems owner in Phoenix care network</td>
-                      <td>ready</td>
                       <td>wr_20260510_001</td>
                       <td>name:title:org:email supported</td>
                       <td>2026-05-10 16:42</td>
@@ -1251,12 +1253,13 @@
                       <td>Phoenix, AZ</td>
                       <td>Marcus Reed</td>
                       <td>Senior Director, Infrastructure</td>
+                      <td>high_trust_usable</td>
+                      <td>Name, title, and org are supported; email pattern is documented.</td>
                       <td>mreed@phoenixchildrens.example</td>
                       <td>deduced_with_pattern_evidence</td>
                       <td>missing</td>
                       <td>Technology profile</td>
                       <td>Infrastructure owner for pediatric care network</td>
-                      <td>ready</td>
                       <td>wr_20260510_001</td>
                       <td>name:title:org supported, pattern email</td>
                       <td>2026-05-10 16:42</td>
@@ -1266,12 +1269,13 @@
                       <td>Phoenix, AZ</td>
                       <td>Samir Bell</td>
                       <td>IT Manager</td>
+                      <td>review</td>
+                      <td>Person and title appear plausible, but contact evidence is missing.</td>
                       <td>missing</td>
                       <td>missing</td>
                       <td>missing</td>
                       <td>Practice page</td>
                       <td>Possible IT owner; contact missing</td>
-                      <td>review</td>
                       <td>wr_20260510_001</td>
                       <td>name:title:org supported, contact missing</td>
                       <td>2026-05-10 16:42</td>
@@ -1281,12 +1285,13 @@
                       <td>Phoenix, AZ</td>
                       <td></td>
                       <td>Target persona not found</td>
+                      <td>organization_only</td>
+                      <td>Organization matches the target, but no supported IT owner was found.</td>
                       <td>missing</td>
                       <td>missing</td>
                       <td>missing</td>
                       <td>Company page</td>
                       <td>Account found; no validated IT owner</td>
-                      <td>organization_only</td>
                       <td>wr_20260510_001</td>
                       <td>org supported, person not found</td>
                       <td>2026-05-10 16:42</td>
@@ -1309,7 +1314,7 @@
             <div class="mobile-frame">
               <div class="topbar">
                 <div class="brand"><span class="mark" aria-hidden="true"></span><span class="brand-title">White Rabbit</span></div>
-                <span class="brand-subtitle">18 categorized · 11 ready</span>
+                <span class="brand-subtitle">186 categorized · 37 high trust</span>
               </div>
               <div class="mobile-search">
                 <p class="field-label">Target</p>
@@ -1322,7 +1327,7 @@
                     <div class="lead-name">Lena Ortiz</div>
                     <div class="subline">Director, Clinical Systems</div>
                   </div>
-                  <span class="pill ready">Ready</span>
+                  <span class="pill ready">Usable</span>
                 </div>
                 <div class="mobile-facts">
                   <div class="fact"><span>Email</span><strong>verified</strong></div>
@@ -1338,7 +1343,7 @@
                     <div class="lead-name">Marcus Reed</div>
                     <div class="subline">Senior Director, Infrastructure</div>
                   </div>
-                  <span class="pill ready">Ready</span>
+                  <span class="pill ready">Usable</span>
                 </div>
                 <div class="mobile-facts">
                   <div class="fact"><span>Email</span><strong>pattern</strong></div>

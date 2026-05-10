@@ -33,7 +33,7 @@ The next 24 hours are not for building a cleaner-looking version of the same fai
 
 ```text
 Thomas or Lee enters a real sales target
--> White Rabbit finds enough relevant accounts/people to be worth the click
+-> White Rabbit surfaces the realistic public-web candidate universe
 -> every row is categorized honestly
 -> source evidence explains why the row is safe or unsafe
 -> the useful rows export in a sales-first format
@@ -41,16 +41,24 @@ Thomas or Lee enters a real sales target
 
 Hard fail conditions:
 
-- broad Scout/Full prompts return fewer than 10 categorized rows without proving the market is smaller,
+- broad Scout/Full prompts return fewer than 50 categorized candidates after high-volume mode lands, or fewer than 10 before it lands, without proving the market is smaller,
 - person rows cannot show source-supported name, title, organization, and contact status,
 - the UI or export makes noisy/failed rows look CRM-ready,
 - an agent advances a gate from tests, mocks, screenshots, or docs without current live/replay evidence tied to operator prompts.
 
 Do not start UI simplification, export polish, correction review, recipe, batch, scoreboard, or dogfood work until Prompt C has advanced the preceding data-quality gates. If a feature does not move the product toward result volume, provenance, validation honesty, or sales-first export, it is out of scope for this reset.
 
-## Operator Volume Requirement
+## High-Volume Transparency Requirement
 
-Lee and Thomas reported on 2026-05-10 that current Scout/Full output is not useful when Scout returns 3 rows and Full returns 4 rows. For broad targets, White Rabbit must return more than 10 categorized results and should aim for 10-25 results. Quality still wins over filler, but "few clean rows" is not enough product value for the operator workflow.
+Lee and Thomas reported on 2026-05-10 that current Scout/Full output is not useful when Scout returns 3 rows and Full returns 4 rows. ADR-011 set 10-25 categorized rows as the first escape from that failure. ADR-012 supersedes that as the ideal target: for broad vertical + geography prompts, White Rabbit should surface 50-300+ categorized candidates where the market supports it.
+
+High volume is acceptable only because the product must make the distribution instantly understandable:
+
+- `high_trust_usable` rows remain strict and high precision.
+- `review` rows are plausible but limited.
+- `organization_only`, `not_found`, and `failed` rows explain the blocker instead of disappearing.
+- Every row gets a grounded `primary_filter_reason`.
+- The operator can answer in seconds: how many real decision-makers are findable, and what blocks the rest?
 
 This requirement applies to:
 
@@ -60,7 +68,7 @@ This requirement applies to:
 - CSV export ordering and row counts,
 - every reset gate decision from RG1 onward.
 
-Narrow named-account prompts may produce fewer person leads only when every requested account is represented as `person_lead`, `organization_only`, `not_found`, or `failed`. Broad vertical/persona prompts that return fewer than 10 categorized results must be marked `hold` unless the gate report proves the market itself is smaller.
+Narrow named-account prompts may produce fewer person leads only when every requested account is represented as `high_trust_usable`, `review`, `organization_only`, `not_found`, or `failed`. Broad vertical/persona prompts that return fewer than 50 categorized candidates after the high-volume path lands must be marked `hold` unless the gate report proves the market itself is smaller.
 
 ## Branch Workflow
 
@@ -116,7 +124,7 @@ Before reset UI/export implementation starts, Matt must inspect the final produc
 - Mockup: `docs/mockups/final-product-2026-05-10/index.html`
 - Rendered screenshots: `.gstack/qa-reports/screenshots/final-product-mockups-2026-05-10/`
 
-This mockup is not production code. It is the visual contract for R10-R13: one search input, 10-25 categorized rows when the market supports it, CRM-first fields, evidence one action away, sales-first export, and no Scout/Full/product-internals ceremony in the operator path.
+This mockup is not production code. It is the visual contract for R10-R13: one search input, high-volume tier distribution, CRM-first fields, evidence one action away, sales-first export, and no Scout/Full/product-internals ceremony in the operator path.
 
 Prompt A/B agents must not invent a different final UI direction during R10-R13 without a fresh Matt approval. Prompt C for RG4 and RG5 must compare browser screenshots against this mockup and explicitly record any intentional divergence.
 
@@ -263,12 +271,12 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R01 | Operator evidence fixture pack | blocked | `feat/reset-r01-operator-evidence-fixtures` | non-UI fixture audit |
 | R02 | Golden benchmark replay harness | blocked | `feat/reset-r02-benchmark-replay-harness` | core tests |
 | R03 | Live benchmark runner and quality summary | blocked | `feat/reset-r03-live-benchmark-runner` | core/API + saved raw outputs |
-| R04 | Target-account coverage planner | blocked | `feat/reset-r04-target-account-coverage` | core tests |
+| R04 | High-volume query planner and search aggregation | blocked | `feat/reset-r04-high-volume-search` | core tests |
 | R05 | Source collection and snapshot store | blocked | `feat/reset-r05-source-collection-store` | core tests + raw source fixtures |
 | R06 | Not-found and organization-only coverage writer | blocked | `feat/reset-r06-nonperson-coverage` | core tests |
-| R07 | Candidate parse salvage and failed-row recovery | blocked | `feat/reset-r07-parse-salvage` | core/API tests |
-| R08 | Field validator and duplicate/conflict resolver | blocked | `feat/reset-r08-validation-conflicts` | core tests |
-| R09 | Score semantics and gate language reset | blocked | `feat/reset-r09-score-semantics` | core + web tests |
+| R07 | Inclusive extraction prompt and candidate parse salvage | blocked | `feat/reset-r07-inclusive-extraction` | core/API tests |
+| R08 | Tiering engine, field validator, and conflict resolver | blocked | `feat/reset-r08-tier-validation-conflicts` | core tests |
+| R09 | Tier summary, score semantics, and reason language reset | blocked | `feat/reset-r09-tier-summary-semantics` | core + web tests |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | blocked | `feat/reset-r12-evidence-dossier-review` | browser |
@@ -329,8 +337,8 @@ Implementation requirements:
 
 - Preserve source IDs and private-evidence summaries without dumping private content.
 - Add replay fixtures for Thomas Arizona K-12, Lee commodity buyers, healthcare IT Phoenix, finance CISOs New York, manufacturing ops Detroit, and B2C/private refusal.
-- Benchmark output must classify every expected target as `person_lead`, `organization_only`, `not_found`, or `failed`.
-- Broad benchmark output must track categorized row count, person-lead count, usable-row count, and whether the run met the 10-25 target range.
+- Benchmark output must classify every expected target into `high_trust_usable`, `review`, `organization_only`, `not_found`, or `failed`, while preserving candidate category where needed.
+- Broad benchmark output must track total categorized candidate count, tier distribution, person-lead count, high-trust usable count, review count, and whether the run met the high-volume floor.
 - Live runner must save JSON, HTTP status, elapsed time, estimated cost, and quality summary.
 
 Required feature verification:
@@ -346,7 +354,7 @@ RG1 full evaluation/audit:
 - Run live benchmarks if local keys/services are available and spend cap allows.
 - If live benchmarks are not run, record the exact blocker and do not unlock RG2 unless the live runner itself is proven executable once credentials/services are restored.
 - Confirm Thomas prompt covers all 8 target accounts.
-- Confirm broad Lee/Thomas-style prompts do not pass the gate with only 3-4 returned rows.
+- Confirm broad Lee/Thomas-style prompts do not pass the gate with only 3-4 returned rows and are ready to measure high-volume tier distribution.
 - Confirm manufacturing role-as-name is represented as failed, not a 503.
 - Confirm B2C/private query blocks before search.
 - Save raw outputs under `audits/raw/reset-2026-05-10/rg1/`.
@@ -367,12 +375,16 @@ Features:
 - R06 - Not-found and organization-only coverage writer.
 
 Goal:
-Stop dropping named accounts and stop forcing unknown targets into person rows.
+Increase raw search/source coverage without turning unsupported candidates into false confidence.
 
 Implementation requirements:
 
+- Follow `docs/Orchestrator_Agent_Implementation_Brief.md`.
 - Named-account prompts preserve each account as a coverage obligation.
-- Simple vertical prompts still produce enough bounded vendor queries to support 10-25 categorized results where the market supports it.
+- Simple vertical prompts produce enough bounded vendor queries and client-side aggregation to support 50-300+ categorized candidates where the market supports it.
+- `scout()` exposes safe volume controls such as `max_results` and optional `aggressive_breadth`.
+- Tavily's per-call cap is handled with multi-query planning, aggregation, and deduplication.
+- Role synonyms and light geographic/vertical expansion are used only when the query is broad.
 - Source collection stores enough evidence for replay and audit.
 - Missing or personless targets become explicit `not_found` or `organization_only` rows.
 
@@ -386,7 +398,7 @@ git diff --check
 RG2 full evaluation/audit:
 
 - Re-run Thomas Arizona prompt and verify 8 account coverage.
-- Re-run broad Scout/Full benchmark prompts and verify the planner does not artificially starve result volume below 10.
+- Re-run broad Scout/Full benchmark prompts and verify the planner does not artificially starve raw source volume.
 - Inspect raw collected sources for at least 3 target accounts.
 - Confirm no vendor query exceeds Tavily's limit.
 - Confirm adjacent/filler accounts are flagged or excluded.
@@ -395,14 +407,15 @@ Advance criteria:
 
 - All Thomas target accounts appear in output categories.
 - Source artifacts are sufficient for a reviewer to reproduce why each target passed, failed, or was not found.
+- Broad prompts produce enough unique raw hits to support high-volume tiering, or the report proves the public web/source universe is smaller.
 
 ## RG3 - Validation, Conflict, And Gate Semantics
 
 Features:
 
-- R07 - Candidate parse salvage and failed-row recovery.
-- R08 - Field validator and duplicate/conflict resolver.
-- R09 - Score semantics and gate language reset.
+- R07 - Inclusive extraction prompt and candidate parse salvage.
+- R08 - Tiering engine, field validator, and conflict resolver.
+- R09 - Tier summary, score semantics, and reason language reset.
 
 Goal:
 Make false confidence hard to display.
@@ -410,9 +423,13 @@ Make false confidence hard to display.
 Implementation requirements:
 
 - One invalid LLM candidate cannot crash the whole query.
+- LLM extraction is inclusive; it does not pre-filter plausible candidates simply because evidence is incomplete.
+- The old evidence gate remains the definition of `high_trust_usable`, not the only return path.
+- Every candidate receives `tier`, `primary_filter_reason`, and detailed grounded reasons where available.
 - Conflicting person/organization claims are flagged.
 - Contact status cannot be verified from inaccessible or unsupported sources.
 - Fit/Evidence/Contact language is hidden, renamed, or recalibrated so non-usable rows do not look strong.
+- Run metrics or response metadata expose tier distribution.
 
 Required feature verification:
 
@@ -433,6 +450,7 @@ Advance criteria:
 
 - Bad candidates degrade into explicit failed/noisy rows.
 - Gate language and UI score semantics no longer create false confidence.
+- High-trust usable precision is preserved while review/org-only/not-found/failed candidates remain visible and explained.
 
 ## RG4 - Sales-First Operator UI
 
@@ -450,7 +468,7 @@ Implementation requirements:
 - Primary screen is one search input and one command.
 - No Scout/Full toggle in the operator path.
 - No quota card unless near cap or blocked.
-- Results review comfortably handles 10-25 categorized rows without turning into a noisy dashboard.
+- Results review comfortably handles 50-300+ categorized candidates through tier distribution, filtering, and dense CRM-first review without turning into a noisy dashboard.
 - Results table starts with organization, location, lead name, title, email, phone, source, and why target.
 - Evidence/dossier panel is available without burying CRM fields.
 - Feedback/correction controls move behind review mode.
@@ -467,7 +485,7 @@ RG4 full evaluation/audit:
 
 - Browser QA on desktop and mobile.
 - Screenshot empty, loading, results, evidence dossier, and blocked query states.
-- Verify the results page remains usable with 10-25 categorized rows.
+- Verify the results page remains usable with high-volume tier distribution and at least a 50+ row fixture or live run.
 - Compare against v1 proxy-lead reference read-only.
 - Check current UI against Lee/Thomas workflow notes.
 
@@ -475,6 +493,7 @@ Advance criteria:
 
 - A reviewer can run query -> inspect rows -> open evidence without seeing implementation modes.
 - UI is simpler than the May 10 screenshots and does not hide critical CRM fields.
+- It is clear at a glance why most surfaced candidates are not immediately actionable.
 
 ## RG5 - Sales-First Export And Persistence
 
@@ -493,6 +512,7 @@ Implementation requirements:
 - CRM-facing columns come before audit/run metadata.
 - Validation context remains in the export.
 - DB readback matches UI rows and CSV rows.
+- Export can include all tiers while sorting high-trust usable rows first and keeping non-actionable reasons visible.
 
 Required feature verification:
 
@@ -510,6 +530,7 @@ RG5 full evaluation/audit:
 - Query Postgres for run and lead rows.
 - Confirm row counts match UI, CSV, and DB.
 - Confirm broad benchmark exports do not contain only 3-4 rows unless the gate report proves the market is smaller.
+- Confirm high-volume exports preserve tier and `primary_filter_reason`.
 - Confirm first 10 CSV columns are sales-useful without audit metadata.
 
 Advance criteria:
@@ -547,7 +568,7 @@ RG6 full evaluation/audit:
 - Re-run the full live benchmark suite if services/keys are available.
 - Re-run browser query-to-export on desktop and mobile.
 - Inspect generated CSV and DB readback.
-- Confirm broad Thomas/Lee-style prompts consistently return 10-25 categorized results, not 3-4 row trickles.
+- Confirm broad Thomas/Lee-style prompts consistently return high-volume categorized output where the market supports it, not 3-4 row trickles.
 - Evaluate red/yellow/green criteria line by line.
 - Write final decision report.
 
@@ -615,7 +636,7 @@ Implement only R00 - W5 hold report and reset control docs on branch feat/reset-
 
 Required output:
 - .gstack/qa-reports/gate-w5-operator-loop-export.md with decision hold
-- report cites 2026-05-10 Lee/Thomas feedback: Scout returned 3 rows, Full returned 4 rows, and the operator target is more than 10 results with 10-25 preferred
+- report cites 2026-05-10 Lee/Thomas feedback: Scout returned 3 rows and Full returned 4 rows; 10-25 was the first escape from that failure, but ADR-012 now targets high-volume transparent tiering
 - docs/08-agentic-buildout-plan.md pointer to docs/12 as active reset queue
 - STATUS.md updated to show W5 held, W6 blocked, and RG0 pending audit
 - git diff --check passing
@@ -638,7 +659,7 @@ Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/12-reset-gated-imp
 
 Required checks:
 - git diff --check
-- rg -n "RG0|R00|W5 hold|reset-gated|gate-w5-operator-loop-export|10-25|3 rows|4 rows" docs STATUS.md .gstack/qa-reports audits/raw/zero-trust-2026-05-10
+- rg -n "RG0|R00|W5 hold|reset-gated|gate-w5-operator-loop-export|ADR-012|high-volume|3 rows|4 rows" docs STATUS.md .gstack/qa-reports audits/raw/zero-trust-2026-05-10
 - confirm product code was not changed
 
 If QA passes, write the QA report, update STATUS.md, merge the feature branch into rebuild/validated-leads-loop, push rebuild/validated-leads-loop, and stop. Do not unlock R01. Do not sync main.
