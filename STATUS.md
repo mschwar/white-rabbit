@@ -1,7 +1,7 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex branch-policy-reconcile
-**Branch:** main
+**Last updated:** 2026-05-10 by Codex pre-kickoff-review
+**Branch:** main / rebuild/validated-leads-loop aligned
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
@@ -17,6 +17,8 @@
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets, with 10-25 as the preferred working range. Broad runs with 3-4 rows fail product value even if the rows are neatly formatted.
 
 **Next feature pointer:** Reset feature `R00 - W5 hold report and reset control docs` remains the next implementation assignment. Branch from `rebuild/validated-leads-loop` per the reset plan; that branch is currently aligned with `main`. R00 must cite the Lee/Thomas low-volume feedback in the W5 hold report.
+
+**Kickoff workflow:** Use only the Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A implements one ready feature, Prompt B QA/merges it into `rebuild/validated-leads-loop`, and Prompt C runs the gate audit. Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync.
 
 **Current feature branch QA status:** No feature branch is awaiting QA. F19 browser QA passed, the batch route now carries explicit internal-only labeling, and F20-F23 remain deferred.
 
@@ -51,15 +53,16 @@ Prior accepted gates:
 **Latest handoff:**
 
 ```text
-Feature: Reconcile main/rebuild branch policy after operator-use promotion
+Feature: Pre-kickoff reset plan hardening
 Branch: main -> rebuild/validated-leads-loop sync
 Status: committed_and_pushed
-What changed: Updated AGENTS, the reset plan, and gated buildout docs so agents understand that `main` is the Thomas/Lee operator-use line while feature work still targets `rebuild/validated-leads-loop` first.
+What changed: Reviewed the reset plan against the northstar/value prop and tightened kickoff to a strict Prompt A/B/C loop. Added the 24-hour product bar, Prompt C gate ownership, live-evidence rules, Value Prop Verdict, first Prompt B/C assignments, and main-promotion recommendation requirements.
 Tests or QA run:
  - `git diff --check`
- - `rg -n 'operator-use deployment line|feature branches directly to `main`|sync `main`|ADR-010 promoted|rebuild/validated-leads-loop first|Do not merge or target main|Never merge the feature branch directly to main' AGENTS.md docs/08-agentic-buildout-plan.md docs/09-rebuild-phase-gates.md docs/12-reset-gated-implementation-plan-2026-05-10.md STATUS.md docs/03-decisions.md`
-Screenshots or report: n/a docs-only branch policy update.
-Northstar reflection: This preserves operator access without letting `main` promotion masquerade as a quality gate pass.
+ - `rg -n '24-Hour Product Bar|Kickoff Workflow - Only Prompt A, Prompt B, Prompt C|Prompt C - Gate Evaluation And Audit|Live-Evidence Rule|First Prompt B Assignment|First Prompt C Assignment|Value Prop Verdict|Next Main Promotion Recommendation|Prompt C is the only prompt' docs/12-reset-gated-implementation-plan-2026-05-10.md STATUS.md`
+ - `rg -n 'Gate Evaluation / Audit Prompt|gate-review prompt|unlock.*Prompt B|Prompt B.*unlock|advance from mocks|screenshots, or intentions' docs/12-reset-gated-implementation-plan-2026-05-10.md STATUS.md`
+Screenshots or report: n/a docs-only pre-kickoff hardening.
+Northstar reflection: Prevents the reset from spending the next 24 hours on UI/export polish before result volume, provenance, validation honesty, and sales-first export value are proven.
 Next pointer: Assign Prompt A to R00 after this docs update is committed and pushed.
 Open questions: none blocking R00.
 ```
@@ -260,6 +263,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | pre-kickoff-review (Codex) | Ran a ruthless final review of the reset plan against the northstar and true value prop. Tightened `docs/12-reset-gated-implementation-plan-2026-05-10.md` to a strict Prompt A/B/C kickoff loop, added a 24-hour product bar, made Prompt C the only gate unlock/main-promotion recommender, added live-evidence rules, and wrote first Prompt B/C assignments so R00 cannot drift into another ambiguous gate bypass. |
 | 2026-05-10 | stale-deployment-url-check (Codex) | Checked Matt's reported `white-rabbit-7kw7lh6ri...` URL and confirmed it is an old immutable production deployment created before the env fix. Verified the stable production alias points at the newer `white-rabbit-jcrn58h0c...` deployment and that authenticated `/api/scout` on `https://white-rabbit-ten.vercel.app/` returns 200 instead of the missing-token 502. |
 | 2026-05-10 | branch-policy-reconcile (Codex) | Reconciled the docs after Matt confirmed Thomas/Lee asked to use the latest version and `rebuild/validated-leads-loop` was pushed to `main`: `main` is now the operator-use deployment line, while feature work still targets `rebuild/validated-leads-loop` first and only syncs to `main` by explicit promotion. |
 | 2026-05-10 | prod-env-fix-verified (Codex) | Completed the post-promotion Vercel env fix: confirmed Production has `WR_API_INTERNAL_TOKEN`, redeployed with `vercel deploy --prod --yes`, and verified an authenticated live `POST /api/scout` reaches the protected API instead of returning "Missing WR_API_INTERNAL_TOKEN." |

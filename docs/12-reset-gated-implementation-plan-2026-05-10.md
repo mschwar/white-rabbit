@@ -27,6 +27,27 @@ operator prompt
 
 Gate reviewers must assume the app, docs, test fixtures, and prior gate claims are untrusted until they are proven against live code, saved artifacts, and the Thomas/Lee evidence set.
 
+## 24-Hour Product Bar
+
+The next 24 hours are not for building a cleaner-looking version of the same failed product. The only value proposition that matters is:
+
+```text
+Thomas or Lee enters a real sales target
+-> White Rabbit finds enough relevant accounts/people to be worth the click
+-> every row is categorized honestly
+-> source evidence explains why the row is safe or unsafe
+-> the useful rows export in a sales-first format
+```
+
+Hard fail conditions:
+
+- broad Scout/Full prompts return fewer than 10 categorized rows without proving the market is smaller,
+- person rows cannot show source-supported name, title, organization, and contact status,
+- the UI or export makes noisy/failed rows look CRM-ready,
+- an agent advances a gate from tests, mocks, screenshots, or docs without current live/replay evidence tied to operator prompts.
+
+Do not start UI simplification, export polish, correction review, recipe, batch, scoreboard, or dogfood work until Prompt C has advanced the preceding data-quality gates. If a feature does not move the product toward result volume, provenance, validation honesty, or sales-first export, it is out of scope for this reset.
+
 ## Operator Volume Requirement
 
 Lee and Thomas reported on 2026-05-10 that current Scout/Full output is not useful when Scout returns 3 rows and Full returns 4 rows. For broad targets, White Rabbit must return more than 10 categorized results and should aim for 10-25 results. Quality still wins over filler, but "few clean rows" is not enough product value for the operator workflow.
@@ -65,7 +86,28 @@ Gate review branch pattern:
 audit/reset-rgN-short-name
 ```
 
-Prompt A implements exactly one `ready` reset feature. Prompt B QA's and merges that feature into `rebuild/validated-leads-loop`. A gate-review prompt then runs the full evaluation/audit for that gate. The next gate unlocks only when the gate report records `advance` and `STATUS.md` is updated.
+## Kickoff Workflow - Only Prompt A, Prompt B, Prompt C
+
+Use only this loop:
+
+```text
+Prompt A: implement exactly one ready reset feature on a feature branch
+Prompt B: QA that feature, write the QA report, and merge only to rebuild/validated-leads-loop
+Prompt C: run the gate evaluation/audit after every feature in that gate has merged
+```
+
+Prompt A never merges. Prompt B never unlocks the next gate. Prompt C is the only prompt that can record `advance`, update the next ready feature, or recommend an operator-use sync to `main`.
+
+Current kickoff order:
+
+```text
+1. Prompt A -> R00
+2. Prompt B -> QA/merge R00 into rebuild/validated-leads-loop
+3. Prompt C -> RG0 gate audit
+4. If and only if Prompt C records advance -> Prompt A -> R01
+```
+
+If Prompt C records `hold`, `revise`, `rollback`, or `kill`, no downstream Prompt A assignment is valid until that decision is resolved.
 
 ## Prompt A - Build Next Reset Feature
 
@@ -125,32 +167,40 @@ Return:
 - whether the current reset gate is ready for full evaluation/audit
 ```
 
-## Gate Evaluation / Audit Prompt
+## Prompt C - Gate Evaluation And Audit
 
 Run this after all features in a reset gate have merged.
 
 ```text
 You are working in /Users/mschwar/Documents/white-rabbit.
 
-Run a full zero-trust evaluation and audit for the current reset gate. This is review/report work unless the gate doc explicitly requires a small docs/status update. Do not edit product code.
+You are Prompt C. Run a full zero-trust evaluation and audit for the current reset gate. This is review/report work unless the gate doc explicitly requires a small docs/status update. Do not edit product code.
 
 1. Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/12-reset-gated-implementation-plan-2026-05-10.md, audits/zero-trust-codebase-audit-2026-05-10.md, and the relevant reset feature QA reports.
 2. Checkout rebuild/validated-leads-loop and pull latest.
 3. Create an audit branch using audit/reset-rgN-short-name.
 4. Run every required gate command and browser/live check listed in the gate card.
-5. Use the true north-star evidence set: Monroe 7/8, Thomas Gmail thread IDs, Lee Gmail thread IDs, saved workbook/PDF artifacts where available, v1 proxy-lead read-only reference, current code, current UI, and current live outputs.
+5. Use the true north-star evidence set: Monroe 7/8, Thomas Gmail thread IDs, Lee Gmail thread IDs, saved workbook/PDF artifacts where available, v1 proxy-lead read-only reference, current code, current UI, current live outputs, and the 2026-05-10 Lee/Thomas volume feedback.
 6. Save raw outputs under audits/raw/reset-2026-05-10/rgN/.
 7. Write the gate report under audits/gates/reset-2026-05-10/rgN-short-name.md.
-8. The gate report must include: Decision, Evidence Used, Commands Run, Live Results, Screenshots/Artifacts, Findings, What Worked, What Did Not Work, New Gaps Found, Recommended Scope Change For Next Gate.
+8. The gate report must include: Decision, Value Prop Verdict, Evidence Used, Commands Run, Live Results, Screenshots/Artifacts, Findings, What Worked, What Did Not Work, New Gaps Found, Recommended Scope Change For Next Gate, Next Main Promotion Recommendation, and Next Prompt A Assignment.
 9. Update docs/12-reset-gated-implementation-plan-2026-05-10.md and STATUS.md only if the gate decision is clear.
-10. Commit and push the audit branch.
+10. If and only if the decision is advance, mark the next gate's first feature ready. Otherwise leave all downstream features blocked.
+11. Commit and push the audit branch.
 
 Return:
 - gate decision: advance / hold / revise / rollback / kill
 - report path
 - raw artifact path
+- whether main should be synced for operator use now, later, or not at all
 - exact next Prompt A assignment if advance
 ```
+
+## Live-Evidence Rule
+
+RG0 may advance on repo evidence because it is a control-plane hold gate. RG1 may advance on replay evidence only if the live runner is created and the report documents exactly why live runs were or were not executed.
+
+From RG2 onward, no product gate may advance without current live evidence under the `$5` cap. If API keys, services, auth, or deployment are unavailable, Prompt C must record `hold` with the exact blocker instead of advancing from mocks, fixtures, screenshots, or intentions.
 
 ## Gate Decision Semantics
 
@@ -283,6 +333,7 @@ RG1 full evaluation/audit:
 
 - Run replay benchmarks.
 - Run live benchmarks if local keys/services are available and spend cap allows.
+- If live benchmarks are not run, record the exact blocker and do not unlock RG2 unless the live runner itself is proven executable once credentials/services are restored.
 - Confirm Thomas prompt covers all 8 target accounts.
 - Confirm broad Lee/Thomas-style prompts do not pass the gate with only 3-4 returned rows.
 - Confirm manufacturing role-as-name is represented as failed, not a 503.
@@ -293,7 +344,8 @@ Advance criteria:
 
 - Harness can fail bad output.
 - Benchmarks are reproducible without live keys.
-- Live path is documented when keys are available.
+- Live runner is executable, or the only blocker is documented environment/service access outside product code.
+- Prompt C can identify which exact broad prompts will be used to prove RG2 result volume.
 
 ## RG2 - Search Coverage And Source Collection
 
@@ -527,11 +579,13 @@ Every gate report must include:
 ## Commands Run
 ## Live Results
 ## Screenshots And Artifacts
+## Value Prop Verdict
 ## Findings
 ## What Worked
 ## What Did Not Work
 ## New Gaps Found
 ## Recommended Scope Change For Next Gate
+## Next Main Promotion Recommendation
 ## Next Prompt A Assignment
 ```
 
@@ -555,6 +609,50 @@ Required output:
 - STATUS.md updated to show W5 held, W6 blocked, and RG0 pending audit
 - git diff --check passing
 - rg verification from the R00 card
+- exact Prompt B handoff for R00 QA
 
 Commit and push the feature branch. Do not merge.
+```
+
+## First Prompt B Assignment
+
+Assign the second agent only after Prompt A pushes `feat/reset-r00-w5-hold-control`:
+
+```text
+You are Prompt B for White Rabbit reset feature R00.
+
+Work in /Users/mschwar/Documents/white-rabbit. QA only feat/reset-r00-w5-hold-control and merge only into rebuild/validated-leads-loop. Do not merge or target main.
+
+Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/12-reset-gated-implementation-plan-2026-05-10.md, and .gstack/qa-reports/gate-w5-operator-loop-export.md.
+
+Required checks:
+- git diff --check
+- rg -n "RG0|R00|W5 hold|reset-gated|gate-w5-operator-loop-export|10-25|3 rows|4 rows" docs STATUS.md .gstack/qa-reports audits/raw/zero-trust-2026-05-10
+- confirm product code was not changed
+
+If QA passes, write the QA report, update STATUS.md, merge the feature branch into rebuild/validated-leads-loop, push rebuild/validated-leads-loop, and stop. Do not unlock R01. Do not sync main.
+```
+
+## First Prompt C Assignment
+
+Assign the third agent only after Prompt B merges R00 into `rebuild/validated-leads-loop`:
+
+```text
+You are Prompt C for reset gate RG0.
+
+Work in /Users/mschwar/Documents/white-rabbit. Run the RG0 gate evaluation and audit. Do not edit product code.
+
+Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/12-reset-gated-implementation-plan-2026-05-10.md, audits/zero-trust-codebase-audit-2026-05-10.md, audits/raw/zero-trust-2026-05-10/operator-feedback-volume-2026-05-10.md, and .gstack/qa-reports/gate-w5-operator-loop-export.md.
+
+Create audit/reset-rg0-w5-hold from rebuild/validated-leads-loop.
+
+Required output:
+- audits/gates/reset-2026-05-10/rg0-w5-hold.md
+- audits/raw/reset-2026-05-10/rg0/ with command output and cited evidence notes
+- decision: advance / hold / revise / rollback / kill
+- Value Prop Verdict that explicitly says whether the current product gives Thomas/Lee enough result volume, evidence, and export value
+- Next Main Promotion Recommendation
+- if and only if advance: mark R01 ready and provide the exact next Prompt A assignment
+
+Commit and push the audit branch. Do not sync main unless Matt explicitly asks after seeing the gate decision.
 ```
