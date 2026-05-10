@@ -10,8 +10,11 @@ from api.models import (
     Base,
     BatchJob,
     BatchRun,
+    CorrectionField,
+    CorrectionLabel,
     FeedbackLabel,
     Lead,
+    LeadCorrection,
     LeadFeedback,
     Recipe,
     RecipeRun,
@@ -123,6 +126,32 @@ def add_lead_feedback(
     return feedback
 
 
+def add_lead_correction(
+    session: Session,
+    lead_id: str,
+    run_id: str,
+    query: str,
+    label: CorrectionLabel,
+    field_name: CorrectionField,
+    previous_value: str | None = None,
+    corrected_value: str | None = None,
+    notes: str | None = None,
+) -> LeadCorrection:
+    correction = LeadCorrection(
+        lead_id=lead_id,
+        run_id=run_id,
+        query=query,
+        label=label.value,
+        field_name=field_name.value,
+        previous_value=previous_value,
+        corrected_value=corrected_value,
+        notes=notes,
+    )
+    session.add(correction)
+    session.flush()
+    return correction
+
+
 def get_recipes(session: Session) -> list[Recipe]:
     return session.query(Recipe).order_by(Recipe.created_at.desc()).all()
 
@@ -140,6 +169,15 @@ def get_recipe_runs(session: Session, recipe_id: UUID | None = None) -> list[Rec
 
 def get_leads_for_run(session: Session, run_id: UUID) -> list[Lead]:
     return session.query(Lead).filter(Lead.run_id == run_id).order_by(Lead.rank).all()
+
+
+def get_corrections_for_run(session: Session, run_id: str) -> list[LeadCorrection]:
+    return (
+        session.query(LeadCorrection)
+        .filter(LeadCorrection.run_id == run_id)
+        .order_by(LeadCorrection.created_at.desc(), LeadCorrection.id.desc())
+        .all()
+    )
 
 
 def close_recipe_run(

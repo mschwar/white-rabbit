@@ -12,7 +12,7 @@ from sqlalchemy import CheckConstraint
 from core.cost import RunMetrics
 from core.models import Lead, NotFoundCandidate, OrganizationOnlyCandidate
 from api.main import app
-from api.models import FeedbackLabel, LeadFeedback
+from api.models import CorrectionField, CorrectionLabel, FeedbackLabel, LeadCorrection, LeadFeedback
 from api.db import get_db_session, get_recipe_scoreboard, get_sandbox_state
 
 INTERNAL_API_TOKEN_HEADER = "x-white-rabbit-internal-token"
@@ -43,6 +43,17 @@ def test_health_check():
         ("get", "/recipes/11111111-1111-1111-1111-111111111111/scoreboard", None),
         ("get", "/sandbox", None),
         ("post", "/leads/11111111-1111-1111-1111-111111111111/feedback", {"label": "usable"}),
+        (
+            "post",
+            "/leads/qa-usable-1/corrections",
+            {
+                "run_id": "qa-validation-buckets-run",
+                "query": "K-12 IT directors in Albuquerque",
+                "label": "wrong_persona",
+                "field_name": "title",
+            },
+        ),
+        ("get", "/runs/qa-validation-buckets-run/corrections", None),
         ("post", "/runs/11111111-1111-1111-1111-111111111111/close", {"operator_minutes": 10}),
         ("get", "/batch", None),
         ("get", "/batch/11111111-1111-1111-1111-111111111111", None),
@@ -362,6 +373,102 @@ def test_feedback_endpoint_updates_existing_feedback(monkeypatch):
     assert existing_feedback.label == FeedbackLabel.WRONG_PERSONA.value
 
 
+def test_correction_endpoint_accepts_canonical_payload(monkeypatch):
+    captured = {}
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
+
+    def fake_add_lead_correction(session, lead_id, run_id, query, label, field_name, previous_value=None, corrected_value=None, notes=None):
+        captured["lead_id"] = str(lead_id)
+        captured["run_id"] = str(run_id)
+        captured["query"] = query
+        captured["label"] = label
+        captured["field_name"] = field_name
+        captured["previous_value"] = previous_value
+        captured["corrected_value"] = corrected_value
+        captured["notes"] = notes
+        return SimpleNamespace(
+            id="44444444-4444-4444-4444-444444444444",
+            lead_id=lead_id,
+            run_id=run_id,
+            query=query,
+            label=label.value,
+            field_name=field_name.value,
+            previous_value=previous_value,
+            corrected_value=corrected_value,
+            notes=notes,
+            created_at=datetime(2026, 5, 10, 12, 0, 0),
+        )
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.add_lead_correction", fake_add_lead_correction)
+
+    response = client.post(
+        "/leads/qa-usable-1/corrections",
+        json={
+            "run_id": "qa-validation-buckets-run",
+            "query": "K-12 IT directors in Albuquerque",
+            "label": "corrected_field",
+            "field_name": "title",
+            "previous_value": "Director of Technology",
+            "corrected_value": "Director of IT",
+            "notes": "Title was updated after a better source was found.",
+        },
+    )
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["label"] == "corrected_field"
+    assert body["field_name"] == "title"
+    assert body["query"] == "K-12 IT directors in Albuquerque"
+    assert captured["lead_id"] == "qa-usable-1"
+    assert captured["run_id"] == "qa-validation-buckets-run"
+    assert captured["label"] == CorrectionLabel.CORRECTED_FIELD
+    assert captured["field_name"] == CorrectionField.TITLE
+    assert captured["previous_value"] == "Director of Technology"
+    assert captured["corrected_value"] == "Director of IT"
+    assert captured["notes"] == "Title was updated after a better source was found."
+
+
+def test_run_corrections_endpoint_returns_review_queue(monkeypatch):
+    run_id = "qa-validation-buckets-run"
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr(
+        "api.main.get_corrections_for_run",
+        lambda session, _run_id: [
+            SimpleNamespace(
+                id="44444444-4444-4444-4444-444444444444",
+                lead_id="qa-usable-1",
+                run_id=_run_id,
+                query="K-12 IT directors in Albuquerque",
+                label=CorrectionLabel.WRONG_PERSONA.value,
+                field_name=CorrectionField.TITLE.value,
+                previous_value="Director of Technology",
+                corrected_value="Director of IT",
+                notes="Corrected title after source review.",
+                created_at=datetime(2026, 5, 10, 12, 0, 0),
+            )
+        ],
+    )
+
+    response = client.get(f"/runs/{run_id}/corrections")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert len(body) == 1
+    assert body[0]["run_id"] == run_id
+    assert body[0]["label"] == "wrong_persona"
+    assert body[0]["field_name"] == "title"
+    assert body[0]["notes"] == "Corrected title after source review."
+
+
 def test_lead_feedback_model_has_label_check_constraint():
     constraints = [constraint for constraint in LeadFeedback.__table__.constraints if isinstance(constraint, CheckConstraint)]
 
@@ -372,6 +479,30 @@ def test_lead_feedback_model_has_label_check_constraint():
         and "bad_source" in str(constraint.sqltext)
         and "bad_contact" in str(constraint.sqltext)
         and "duplicate" in str(constraint.sqltext)
+        for constraint in constraints
+    )
+
+
+def test_lead_correction_model_has_constraints():
+    constraints = [constraint for constraint in LeadCorrection.__table__.constraints if isinstance(constraint, CheckConstraint)]
+
+    assert any(constraint.name == "ck_lead_correction_label" for constraint in constraints)
+    assert any(constraint.name == "ck_lead_correction_field_name" for constraint in constraints)
+    assert any(
+        "corrected_field" in str(constraint.sqltext)
+        and "wrong_persona" in str(constraint.sqltext)
+        and "bad_source" in str(constraint.sqltext)
+        and "bad_contact" in str(constraint.sqltext)
+        and "duplicate" in str(constraint.sqltext)
+        for constraint in constraints
+    )
+    assert any(
+        "name" in str(constraint.sqltext)
+        and "title" in str(constraint.sqltext)
+        and "organization" in str(constraint.sqltext)
+        and "email" in str(constraint.sqltext)
+        and "phone" in str(constraint.sqltext)
+        and "source" in str(constraint.sqltext)
         for constraint in constraints
     )
 

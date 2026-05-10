@@ -31,6 +31,24 @@ class FeedbackLabel(str, Enum):
     DUPLICATE = "duplicate"
 
 
+class CorrectionLabel(str, Enum):
+    USABLE = "usable"
+    WRONG_PERSONA = "wrong_persona"
+    BAD_SOURCE = "bad_source"
+    BAD_CONTACT = "bad_contact"
+    DUPLICATE = "duplicate"
+    CORRECTED_FIELD = "corrected_field"
+
+
+class CorrectionField(str, Enum):
+    NAME = "name"
+    TITLE = "title"
+    ORGANIZATION = "organization"
+    EMAIL = "email"
+    PHONE = "phone"
+    SOURCE = "source"
+
+
 class Recipe(Base):
     __tablename__ = "recipe"
 
@@ -82,6 +100,33 @@ class LeadFeedback(Base):
 
     lead_id = Column(UUID(as_uuid=True), ForeignKey("lead.id", ondelete="CASCADE"), primary_key=True)
     label = Column(String(20), nullable=False)
+    created_at = Column(DateTime(timezone=True), nullable=False, default=datetime.utcnow)
+
+
+class LeadCorrection(Base):
+    __tablename__ = "lead_correction"
+
+    __table_args__ = (
+        CheckConstraint(
+            "label IN ('usable', 'wrong_persona', 'bad_source', 'bad_contact', 'duplicate', 'corrected_field')",
+            name="ck_lead_correction_label",
+        ),
+        CheckConstraint(
+            "field_name IN ('name', 'title', 'organization', 'email', 'phone', 'source')",
+            name="ck_lead_correction_field_name",
+        ),
+    )
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    # Store synthetic fixture IDs and real UUID strings alike.
+    lead_id = Column(Text, nullable=False)
+    run_id = Column(Text, nullable=False)
+    query = Column(Text, nullable=False)
+    label = Column(String(20), nullable=False)
+    field_name = Column(String(32), nullable=False)
+    previous_value = Column(Text, nullable=True)
+    corrected_value = Column(Text, nullable=True)
+    notes = Column(Text, nullable=True)
     created_at = Column(DateTime(timezone=True), nullable=False, default=datetime.utcnow)
 
 

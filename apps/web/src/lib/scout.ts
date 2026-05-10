@@ -396,6 +396,71 @@ export async function submitLeadFeedback(leadId: string, label: FeedbackLabel): 
   }
 }
 
+export type CorrectionLabel = FeedbackLabel | 'corrected_field';
+
+export type CorrectionField = 'name' | 'title' | 'organization' | 'email' | 'phone' | 'source';
+
+export const CORRECTION_LABEL_OPTIONS: Array<{ value: CorrectionLabel; label: string }> = [
+  { value: 'wrong_persona', label: 'Wrong persona' },
+  { value: 'bad_contact', label: 'Bad contact' },
+  { value: 'bad_source', label: 'Bad source' },
+  { value: 'duplicate', label: 'Duplicate' },
+  { value: 'corrected_field', label: 'Corrected field' },
+  { value: 'usable', label: 'Usable' },
+];
+
+export const CORRECTION_FIELD_OPTIONS: Array<{ value: CorrectionField; label: string }> = [
+  { value: 'name', label: 'Name' },
+  { value: 'title', label: 'Title' },
+  { value: 'organization', label: 'Organization' },
+  { value: 'email', label: 'Email' },
+  { value: 'phone', label: 'Phone' },
+  { value: 'source', label: 'Source' },
+];
+
+export type LeadCorrectionRequest = {
+  run_id: string;
+  query: string;
+  label: CorrectionLabel;
+  field_name: CorrectionField;
+  previous_value?: string;
+  corrected_value?: string;
+  notes?: string;
+};
+
+export type LeadCorrectionRecord = {
+  id: string;
+  lead_id: string;
+  run_id: string;
+  query: string;
+  label: CorrectionLabel;
+  field_name: CorrectionField;
+  previous_value: string | null;
+  corrected_value: string | null;
+  notes: string | null;
+  created_at: string;
+};
+
+export async function submitLeadCorrection(leadId: string, payload: LeadCorrectionRequest): Promise<LeadCorrectionRecord> {
+  const response = await fetch(`/api/leads/${leadId}/corrections`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  if (!response.ok) {
+    throw new Error('Failed to submit correction.');
+  }
+  return response.json();
+}
+
+export async function fetchRunCorrections(runId: string): Promise<LeadCorrectionRecord[]> {
+  const response = await fetch(`/api/runs/${runId}/corrections`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch correction queue.');
+  }
+  return response.json();
+}
+
 export async function closeRecipeRun(runId: string, operatorMinutes: number): Promise<void> {
   const response = await fetch(`/api/runs/${runId}/close`, {
     method: 'POST',

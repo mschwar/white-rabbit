@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F17 Thomas/Lee correction feedback loop (`feat/f17-corrections-feedback-loop`, blocked).
-**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F15 and F16 have been QA’d and merged to `rebuild/validated-leads-loop` on this branch; F16 passes the export validation flow, and F17 remains blocked until a new gate decision updates scope.
+**Next feature pointer:** F17 Thomas/Lee correction feedback loop (`feat/f17-corrections-feedback-loop`, implemented_pending_qa).
+**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F15 and F16 have been QA’d and merged to `rebuild/validated-leads-loop` on this branch; F17 browser QA is complete on the validation-buckets fixture, and the correction queue export link plus screenshots are saved under `.gstack/qa-reports/screenshots/`.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -159,7 +159,7 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F14 | Results table with validation buckets                    | merged_to_rebuild_branch | feat/f14-validation-results-table    | browser                  |
 | F15 | Evidence drawer / dossier                                | merged_to_rebuild_branch | feat/f15-evidence-drawer             | browser                  |
 | F16 | Export rebuild with validation columns                   | merged_to_rebuild_branch | feat/f16-validation-export           | browser + CSV            |
-| F17 | Thomas/Lee correction feedback loop                      | blocked                  | feat/f17-corrections-feedback-loop   | browser + DB             |
+| F17 | Thomas/Lee correction feedback loop                      | implemented_pending_qa    | feat/f17-corrections-feedback-loop   | browser + DB             |
 | F18 | Recipe library internal-only policy                      | deferred                 | feat/f18-recipes-internal-only       | browser                  |
 | F19 | Batch workspace internal-only policy                     | deferred                 | feat/f19-batch-internal-only         | browser                  |
 | F20 | Friday review export internal-only policy                | deferred                 | feat/f20-friday-review-internal-only | browser                  |
@@ -1189,7 +1189,7 @@ F17 should use exported/validated rows as the feedback target, not raw lead card
 
 ## F17 - Thomas/Lee Correction Feedback Loop
 
-Status: blocked
+Status: implemented_pending_qa
 Branch: feat/f17-corrections-feedback-loop
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -1226,6 +1226,13 @@ Browser-testable:
 - steps: submit a correction on a fixture row, verify API/storage or fixture queue record.
 - required screenshots: correction control, submitted state, QA evidence of stored correction.
 
+Build verification run on 2026-05-10:
+- `cd apps/api && uv run pytest tests/test_api.py -q` (`40 passed`)
+- `cd apps/web && npm test -- --run src/components/__tests__/scout-workspace.test.tsx` (`8 passed`)
+- Browser QA on `http://localhost:3000/scout?qa=validation-buckets` after login with the shared password from `apps/web/.env.local`
+- Direct API smoke check: `POST /leads/qa-usable-1/corrections` and `GET /runs/qa-validation-buckets-run/corrections` returned `200 OK`
+- Screenshots: `.gstack/qa-reports/screenshots/f17-01-correction-drawer.png`, `.gstack/qa-reports/screenshots/f17-02-correction-queue-export.png`
+
 Atomic commit plan:
 - commit 1: `feat(feedback): capture field-level operator corrections`
 - commit 2: `test(feedback): store corrections for benchmark review`
@@ -1235,7 +1242,7 @@ Rollback plan:
 Revert correction UI/API additions; previous feedback buttons remain.
 
 Next-agent handoff note:
-After F17 and QA pass, reassess red/yellow/green gate before exposing Thomas/Lee dogfood.
+F17 is QA-passed on the browser fixture route and ready for merge review against `rebuild/validated-leads-loop`. After merge, reassess red/yellow/green gate before exposing Thomas/Lee dogfood.
 
 ---
 

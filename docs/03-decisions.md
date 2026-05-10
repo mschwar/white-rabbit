@@ -116,6 +116,19 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 ---
 
+## ADR-008 — Correction feedback stores identifiers as text for synthetic and real rows
+
+**Date:** 2026-05-10
+**Status:** Locked
+
+**Context.** The correction feedback loop must work on the live validation-buckets browser fixture as well as on real persisted runs. The fixture uses synthetic string identifiers, while the stored review queue also needs to accept real UUID-shaped IDs from saved leads and runs. A UUID-only foreign key schema blocked browser QA and made the review queue too narrow for the benchmark loop.
+
+**Decision.** Store correction `lead_id` and `run_id` values as text in `lead_correction` so the API can accept synthetic fixture IDs and real UUID strings without foreign key failures. Use the correction queue as a review artifact keyed by identifiers rather than as a hard relational join boundary. If a later need appears for analytics joins to persisted leads or runs, add optional linkage columns in a future migration instead of reintroducing UUID-only constraints on the primary queue record.
+
+**Consequences.** Browser QA can save corrections against fixture rows, the queue export can include synthetic IDs, and the queue remains usable for benchmark review. The tradeoff is that correction rows no longer enforce referential integrity against `lead` and `recipe_run` at the database layer. That is acceptable for this internal feedback loop because the queue's job is to preserve operator corrections first and resolve relationships later if needed.
+
+---
+
 ## How to add a new ADR
 
 1. Pick the next ADR number (ADR-008, ADR-009, ...).

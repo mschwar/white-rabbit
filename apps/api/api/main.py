@@ -26,7 +26,7 @@ from core.models import Candidate
 from core.orchestrator import scout, OrchestratorError, DEFAULT_MODEL
 from core.query_guardrails import QueryGuardrailResult, evaluate_query_guardrails
 
-from api.models import FeedbackLabel
+from api.models import CorrectionField, CorrectionLabel, FeedbackLabel
 
 from api.db import (
     init_db,
@@ -39,6 +39,7 @@ from api.db import (
     get_recipe_runs,
     get_leads_for_run,
     add_lead_feedback,
+    add_lead_correction,
     get_recipe_scoreboard,
     create_batch_job,
     create_batch_run,
@@ -51,6 +52,7 @@ from api.db import (
     get_sandbox_state_for_update,
     reset_sandbox_state,
     record_sandbox_rows,
+    get_corrections_for_run,
 )
 
 load_dotenv()
@@ -142,6 +144,31 @@ class FullResponse(BaseModel):
 
 class FeedbackRequest(BaseModel):
     label: FeedbackLabel
+
+
+class CorrectionRequest(BaseModel):
+    run_id: str
+    query: str
+    label: CorrectionLabel
+    field_name: CorrectionField
+    previous_value: Optional[str] = None
+    corrected_value: Optional[str] = None
+    notes: Optional[str] = None
+
+
+class CorrectionOut(BaseModel):
+    id: UUID
+    lead_id: str
+    run_id: str
+    query: str
+    label: CorrectionLabel
+    field_name: CorrectionField
+    previous_value: str | None = None
+    corrected_value: str | None = None
+    notes: str | None = None
+    created_at: str
+
+    model_config = {"from_attributes": True}
 
 
 class RecipeOut(BaseModel):
@@ -437,6 +464,55 @@ async def submit_feedback(lead_id: UUID, request: FeedbackRequest, _: ProtectedA
     with get_db_session() as session:
         add_lead_feedback(session, lead_id, request.label)
         return {"status": "ok"}
+
+
+@app.post("/leads/{lead_id}/corrections", response_model=CorrectionOut)
+async def submit_correction(lead_id: str, request: CorrectionRequest, _: ProtectedApiAccess):
+    with get_db_session() as session:
+        correction = add_lead_correction(
+            session,
+            lead_id=lead_id,
+            run_id=request.run_id,
+            query=request.query,
+            label=request.label,
+            field_name=request.field_name,
+            previous_value=request.previous_value,
+            corrected_value=request.corrected_value,
+            notes=request.notes,
+        )
+        return CorrectionOut(
+            id=correction.id,
+            lead_id=correction.lead_id,
+            run_id=correction.run_id,
+            query=correction.query,
+            label=CorrectionLabel(correction.label),
+            field_name=CorrectionField(correction.field_name),
+            previous_value=correction.previous_value,
+            corrected_value=correction.corrected_value,
+            notes=correction.notes,
+            created_at=correction.created_at.isoformat(),
+        )
+
+
+@app.get("/runs/{run_id}/corrections", response_model=list[CorrectionOut])
+async def run_corrections(run_id: str, _: ProtectedApiAccess):
+    with get_db_session() as session:
+        corrections = get_corrections_for_run(session, run_id)
+        return [
+            CorrectionOut(
+                id=correction.id,
+                lead_id=correction.lead_id,
+                run_id=correction.run_id,
+                query=correction.query,
+                label=CorrectionLabel(correction.label),
+                field_name=CorrectionField(correction.field_name),
+                previous_value=correction.previous_value,
+                corrected_value=correction.corrected_value,
+                notes=correction.notes,
+                created_at=correction.created_at.isoformat(),
+            )
+            for correction in corrections
+        ]
 
 
 @app.post("/runs/{run_id}/close")

@@ -13,8 +13,14 @@ import {
   isPersonLead,
   getValidationBucket,
   sortScoutResultRows,
+  CORRECTION_FIELD_OPTIONS,
+  CORRECTION_LABEL_OPTIONS,
+  fetchRunCorrections,
   submitLeadFeedback,
+  submitLeadCorrection,
   type CandidateValidation,
+  type CorrectionField,
+  type CorrectionLabel,
   type FeedbackLabel,
   type LeadSortMode,
   type ContactStatus,
@@ -144,6 +150,86 @@ function getEvidenceRowSummary(row: ScoutResultRow): string {
   return `${row.failure_reason} ${row.explanation}`.trim();
 }
 
+function getCorrectionDefaultField(row: ScoutResultRow): CorrectionField {
+  if (isPersonLead(row)) {
+    return 'title';
+  }
+
+  if (row.candidate_category === 'organization_only') {
+    return 'organization';
+  }
+
+  if (row.candidate_category === 'not_found') {
+    return 'organization';
+  }
+
+  return 'source';
+}
+
+function getCorrectionFieldValue(row: ScoutResultRow, fieldName: CorrectionField): string {
+  if (isPersonLead(row)) {
+    switch (fieldName) {
+      case 'name':
+        return row.name;
+      case 'title':
+        return row.title;
+      case 'organization':
+        return row.organization;
+      case 'email':
+        return row.email;
+      case 'phone':
+        return '';
+      case 'source':
+        return row.source_url;
+    }
+  }
+
+  if (row.candidate_category === 'organization_only') {
+    switch (fieldName) {
+      case 'name':
+        return row.organization;
+      case 'title':
+        return row.explanation;
+      case 'organization':
+        return row.organization;
+      case 'email':
+        return 'missing';
+      case 'phone':
+        return 'missing';
+      case 'source':
+        return row.source_url ?? '';
+    }
+  }
+
+  if (row.candidate_category === 'not_found') {
+    switch (fieldName) {
+      case 'name':
+      case 'title':
+        return row.searched_target;
+      case 'organization':
+        return row.organization ?? row.searched_target;
+      case 'email':
+      case 'phone':
+        return 'missing';
+      case 'source':
+        return row.source_url ?? '';
+    }
+  }
+
+  switch (fieldName) {
+    case 'name':
+    case 'title':
+      return row.searched_target;
+    case 'organization':
+      return row.organization ?? row.searched_target;
+      case 'email':
+      case 'phone':
+        return '';
+      case 'source':
+        return row.source_url ?? '';
+  }
+}
+
 function getEvidenceValidation(row: ScoutResultRow): CandidateValidation {
   if (row.validation) {
     return row.validation;
@@ -219,15 +305,42 @@ function renderEvidenceField(
 
 function ScoutEvidenceDrawer({
   row,
+  runId,
+  query,
   onClose,
 }: {
   row: ScoutResultRow | null;
+  runId: string | null;
+  query: string | null;
   onClose: () => void;
 }) {
+  const [correctionLabel, setCorrectionLabel] = useState<CorrectionLabel>('wrong_persona');
+  const [correctionField, setCorrectionField] = useState<CorrectionField>(row ? getCorrectionDefaultField(row) : 'title');
+  const [correctionPreviousValue, setCorrectionPreviousValue] = useState('');
+  const [correctionCorrectedValue, setCorrectionCorrectedValue] = useState('');
+  const [correctionNotes, setCorrectionNotes] = useState('');
+  const [correctionMessage, setCorrectionMessage] = useState<string | null>(null);
+  const [isSubmittingCorrection, setIsSubmittingCorrection] = useState(false);
+  const [isLoadingQueue, setIsLoadingQueue] = useState(false);
+  const [correctionExport, setCorrectionExport] = useState<{
+    filename: string;
+    dataUrl: string;
+    rowCount: number;
+  } | null>(null);
+
   useEffect(() => {
     if (!row) {
       return undefined;
     }
+
+    const defaultField = getCorrectionDefaultField(row);
+    setCorrectionLabel('wrong_persona');
+    setCorrectionField(defaultField);
+    setCorrectionPreviousValue(getCorrectionFieldValue(row, defaultField));
+    setCorrectionCorrectedValue('');
+    setCorrectionNotes('');
+    setCorrectionMessage(null);
+    setCorrectionExport(null);
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -239,11 +352,21 @@ function ScoutEvidenceDrawer({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose, row]);
 
+  useEffect(() => {
+    if (!row) {
+      return;
+    }
+
+    setCorrectionPreviousValue(getCorrectionFieldValue(row, correctionField));
+  }, [correctionField, row]);
+
   if (!row) {
     return null;
   }
 
-  const validation = getEvidenceValidation(row);
+  const currentRow = row;
+
+  const validation = getEvidenceValidation(currentRow);
   const fields = [
     { label: 'Name', record: validation.name },
     { label: 'Title', record: validation.title },
@@ -252,6 +375,65 @@ function ScoutEvidenceDrawer({
     { label: 'Phone', record: validation.phone },
     { label: 'Source', record: validation.source },
   ] as const;
+
+  async function refreshCorrectionQueueExport(prefixMessage?: string) {
+    if (!runId) {
+      setCorrectionMessage('Run Full to export the correction queue.');
+      return;
+    }
+
+    setIsLoadingQueue(true);
+    setCorrectionMessage(null);
+    try {
+      const queue = await fetchRunCorrections(runId);
+      const json = JSON.stringify(queue, null, 2);
+      setCorrectionExport({
+        filename: `white-rabbit-corrections-${runId}.json`,
+        dataUrl: `data:application/json;charset=utf-8,${encodeURIComponent(json)}`,
+        rowCount: queue.length,
+      });
+      const queueMessage =
+        queue.length > 0
+          ? `Loaded ${queue.length} correction${queue.length === 1 ? '' : 's'} from the review queue.`
+          : 'Review queue is empty.';
+      setCorrectionMessage(prefixMessage ? `${prefixMessage} ${queueMessage}` : queueMessage);
+    } catch (error) {
+      setCorrectionMessage(error instanceof Error ? error.message : 'Failed to fetch correction queue.');
+    } finally {
+      setIsLoadingQueue(false);
+    }
+  }
+
+  async function handleSubmitCorrection(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (!currentRow.id || !runId || !query) {
+      setCorrectionMessage('Run a Full search first so this correction is tied to a saved run.');
+      return;
+    }
+
+    setIsSubmittingCorrection(true);
+    setCorrectionMessage(null);
+    try {
+      const correction = await submitLeadCorrection(currentRow.id, {
+        run_id: runId,
+        query,
+        label: correctionLabel,
+        field_name: correctionField,
+        previous_value: correctionPreviousValue.trim() || undefined,
+        corrected_value: correctionCorrectedValue.trim() || undefined,
+        notes: correctionNotes.trim() || undefined,
+      });
+
+      setCorrectionCorrectedValue('');
+      setCorrectionNotes('');
+      await refreshCorrectionQueueExport(`Saved ${correction.label.replaceAll('_', ' ')} correction for ${correction.field_name}.`);
+    } catch (error) {
+      setCorrectionMessage(error instanceof Error ? error.message : 'Failed to save correction.');
+    } finally {
+      setIsSubmittingCorrection(false);
+    }
+  }
 
   return (
     <div
@@ -297,6 +479,124 @@ function ScoutEvidenceDrawer({
 
           <div className="grid gap-4 md:grid-cols-2">
             {fields.map(({ label, record }) => renderEvidenceField(label, record))}
+          </div>
+
+          <div className="mt-6 rounded-3xl border border-white/10 bg-white/5 p-5">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">Correction loop</p>
+                <h4 className="mt-2 text-lg font-semibold text-zinc-50">Record a field-level correction</h4>
+                <p className="mt-1 text-sm leading-6 text-zinc-400">
+                  Save the operator correction against this Full run, then export the queue as JSON for benchmark review.
+                </p>
+              </div>
+              {runId ? (
+                <button
+                  className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-200 transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-60"
+                  disabled={isLoadingQueue}
+                  onClick={() => {
+                    void refreshCorrectionQueueExport();
+                  }}
+                  type="button"
+                >
+                  {isLoadingQueue ? 'Loading queue…' : 'Download review queue'}
+                </button>
+              ) : null}
+            </div>
+
+            {runId && query ? (
+              <form className="mt-4 grid gap-4" onSubmit={handleSubmitCorrection}>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <label className="flex flex-col gap-2 text-sm text-zinc-200" htmlFor="correctionLabel">
+                    Correction type
+                    <select
+                      className="rounded-2xl border border-white/10 bg-zinc-950/70 px-4 py-3 text-zinc-50 outline-none focus:border-emerald-400"
+                      id="correctionLabel"
+                      onChange={(event) => setCorrectionLabel(event.target.value as CorrectionLabel)}
+                      value={correctionLabel}
+                    >
+                      {CORRECTION_LABEL_OPTIONS.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                  <label className="flex flex-col gap-2 text-sm text-zinc-200" htmlFor="correctionField">
+                    Corrected field
+                    <select
+                      className="rounded-2xl border border-white/10 bg-zinc-950/70 px-4 py-3 text-zinc-50 outline-none focus:border-emerald-400"
+                      id="correctionField"
+                      onChange={(event) => setCorrectionField(event.target.value as CorrectionField)}
+                      value={correctionField}
+                    >
+                      {CORRECTION_FIELD_OPTIONS.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                </div>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <label className="flex flex-col gap-2 text-sm text-zinc-200" htmlFor="correctionPreviousValue">
+                    Previous value
+                    <input
+                      className="rounded-2xl border border-white/10 bg-zinc-950/70 px-4 py-3 text-zinc-50 outline-none placeholder:text-zinc-500 focus:border-emerald-400"
+                      id="correctionPreviousValue"
+                      onChange={(event) => setCorrectionPreviousValue(event.target.value)}
+                      placeholder="Value before correction"
+                      value={correctionPreviousValue}
+                    />
+                  </label>
+                  <label className="flex flex-col gap-2 text-sm text-zinc-200" htmlFor="correctionCorrectedValue">
+                    Corrected value
+                    <input
+                      className="rounded-2xl border border-white/10 bg-zinc-950/70 px-4 py-3 text-zinc-50 outline-none placeholder:text-zinc-500 focus:border-emerald-400"
+                      id="correctionCorrectedValue"
+                      onChange={(event) => setCorrectionCorrectedValue(event.target.value)}
+                      placeholder="Value after correction"
+                      value={correctionCorrectedValue}
+                    />
+                  </label>
+                </div>
+                <label className="flex flex-col gap-2 text-sm text-zinc-200" htmlFor="correctionNotes">
+                  Notes
+                  <textarea
+                    className="min-h-28 rounded-2xl border border-white/10 bg-zinc-950/70 px-4 py-3 text-zinc-50 outline-none placeholder:text-zinc-500 focus:border-emerald-400"
+                    id="correctionNotes"
+                    onChange={(event) => setCorrectionNotes(event.target.value)}
+                    placeholder="Why this row needs to be corrected"
+                    value={correctionNotes}
+                  />
+                </label>
+
+                <div className="flex flex-wrap items-center gap-3">
+                  <button
+                    className="rounded-full bg-emerald-400 px-4 py-2 text-sm font-semibold text-emerald-950 transition hover:bg-emerald-300 disabled:cursor-not-allowed disabled:bg-emerald-300/60"
+                    disabled={isSubmittingCorrection}
+                    type="submit"
+                  >
+                    {isSubmittingCorrection ? 'Saving…' : 'Save correction'}
+                  </button>
+                  {correctionExport ? (
+                    <a
+                      className="rounded-full border border-emerald-300/30 bg-white/5 px-4 py-2 text-sm font-semibold text-emerald-100 transition hover:bg-emerald-400/10"
+                      download={correctionExport.filename}
+                      href={correctionExport.dataUrl}
+                    >
+                      Download review queue JSON
+                    </a>
+                  ) : null}
+                </div>
+              </form>
+            ) : (
+              <p className="mt-4 text-sm leading-6 text-zinc-400">
+                Run Full first so corrections are stored against a saved run and query snapshot.
+              </p>
+            )}
+
+            {correctionMessage ? <p className="mt-4 text-sm leading-6 text-emerald-200">{correctionMessage}</p> : null}
           </div>
         </div>
       </div>
@@ -923,7 +1223,12 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
           )}
         </section>
       </section>
-      <ScoutEvidenceDrawer onClose={() => setSelectedEvidenceRow(null)} row={selectedEvidenceRow} />
+      <ScoutEvidenceDrawer
+        onClose={() => setSelectedEvidenceRow(null)}
+        query={submittedQuery ?? query}
+        runId={fullResult?.run_id ?? null}
+        row={selectedEvidenceRow}
+      />
     </main>
   );
 }

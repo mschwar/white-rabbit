@@ -422,7 +422,7 @@ test('builds a CSV export from a full run', async () => {
       return Promise.resolve(
         new Response(
           JSON.stringify({
-            run_id: 'run-1',
+            run_id: 'qa-validation-buckets-run',
             recipe_id: 'recipe-1',
             leads: [
               {
@@ -502,4 +502,150 @@ test('shows a validation message for blank queries', async () => {
   fireEvent.click(screen.getByRole('button', { name: /run scout search/i }));
 
   expect(await screen.findByText(/enter a query before searching/i)).toBeDefined();
+});
+
+test('captures a correction and exposes the review queue export from the evidence drawer', async () => {
+  const correctionRecord = {
+    id: '44444444-4444-4444-4444-444444444444',
+    lead_id: 'qa-usable-1',
+    run_id: 'qa-validation-buckets-run',
+    query: 'K-12 IT directors in Albuquerque',
+    label: 'corrected_field',
+    field_name: 'title',
+    previous_value: 'Director of Technology',
+    corrected_value: 'Director of IT',
+    notes: 'Title was updated after a better source was found.',
+    created_at: '2026-05-10T12:00:00Z',
+  };
+  const fetchMock = vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+    const url = input.toString();
+    if (url.endsWith('/api/sandbox')) {
+      return Promise.resolve(
+        new Response(
+          JSON.stringify({
+            total_queries: 0,
+            total_rows: 0,
+            max_queries: 10,
+            max_rows: 1000,
+            remaining_queries: 10,
+            remaining_rows: 1000,
+            reset_at: new Date().toISOString(),
+          }),
+          { status: 200, headers: { 'content-type': 'application/json' } },
+        ),
+      );
+    }
+
+    if (url.endsWith('/api/full')) {
+      return Promise.resolve(
+        new Response(
+          JSON.stringify({
+            run_id: 'qa-validation-buckets-run',
+            recipe_id: 'recipe-1',
+            leads: [
+              {
+                id: 'qa-usable-1',
+                name: 'Jane Smith',
+                title: 'Director of Technology',
+                organization: 'Albuquerque Public Schools',
+                email: 'jane.smith@aps.edu',
+                email_status: 'Found',
+                source_url: 'https://aps.edu/tech',
+                confidence: 0.88,
+                why_target: 'Owns district telecom decisions',
+                icebreaker: 'I noticed APS is growing its classroom connectivity needs.',
+                fit_score: 0.91,
+                evidence_score: 0.84,
+                contact_score: 0.79,
+                gate_passed: true,
+                explanation: 'Strong district fit with current leadership evidence and usable email.',
+                validation: makeValidation(),
+              },
+            ],
+            metrics: {
+              input_tokens: 123,
+              output_tokens: 45,
+              tavily_searches: 1,
+              openai_web_searches: 0,
+              elapsed_seconds: 1.23,
+              estimated_cost_usd: 0.010123,
+            },
+            query_guardrail: null,
+          }),
+          { status: 200, headers: { 'content-type': 'application/json' } },
+        ),
+      );
+    }
+
+    if (url.endsWith('/api/leads/qa-usable-1/corrections') && init?.method === 'POST') {
+      const body = JSON.parse(String(init.body ?? '{}'));
+      correctionRecord.label = body.label;
+      correctionRecord.field_name = body.field_name;
+      correctionRecord.previous_value = body.previous_value;
+      correctionRecord.corrected_value = body.corrected_value;
+      correctionRecord.notes = body.notes;
+      return Promise.resolve(
+        new Response(JSON.stringify(correctionRecord), {
+          status: 200,
+          headers: { 'content-type': 'application/json' },
+        }),
+      );
+    }
+
+    if (url.endsWith('/api/runs/qa-validation-buckets-run/corrections')) {
+      return Promise.resolve(
+        new Response(JSON.stringify([correctionRecord]), {
+          status: 200,
+          headers: { 'content-type': 'application/json' },
+        }),
+      );
+    }
+
+    return Promise.resolve(new Response('not found', { status: 404 }));
+  });
+
+  vi.stubGlobal('fetch', fetchMock);
+
+  render(<ScoutWorkspace />);
+
+  fireEvent.click(screen.getByRole('button', { name: /^full$/i }));
+  fireEvent.change(screen.getByLabelText(/search label/i), {
+    target: { value: 'District leadership' },
+  });
+  fireEvent.change(screen.getByLabelText(/prospecting query/i), {
+    target: { value: 'K-12 IT directors in Albuquerque' },
+  });
+  fireEvent.change(screen.getByLabelText(/location/i), {
+    target: { value: 'New Mexico' },
+  });
+  fireEvent.click(screen.getByRole('button', { name: /run full search/i }));
+
+  await waitFor(() => expect(fetchMock).toHaveBeenCalledWith('/api/full', expect.any(Object)));
+  fireEvent.click(await screen.findByRole('button', { name: /view evidence for jane smith/i }));
+
+  const drawer = await screen.findByRole('dialog', { name: /jane smith/i });
+  fireEvent.change(within(drawer).getByLabelText(/correction type/i), { target: { value: 'corrected_field' } });
+  fireEvent.change(within(drawer).getByLabelText(/corrected field/i), { target: { value: 'title' } });
+  fireEvent.change(within(drawer).getByLabelText(/previous value/i), {
+    target: { value: 'Director of Technology' },
+  });
+  fireEvent.change(within(drawer).getByLabelText(/corrected value/i), {
+    target: { value: 'Director of IT' },
+  });
+  fireEvent.change(within(drawer).getByLabelText(/notes/i), {
+    target: { value: 'Title was updated after a better source was found.' },
+  });
+  fireEvent.click(within(drawer).getByRole('button', { name: /save correction/i }));
+
+  await waitFor(() =>
+    expect(fetchMock).toHaveBeenCalledWith(
+      '/api/leads/qa-usable-1/corrections',
+      expect.objectContaining({ method: 'POST' }),
+    ),
+  );
+  expect(await within(drawer).findByRole('link', { name: /download review queue json/i })).toHaveAttribute(
+    'download',
+    'white-rabbit-corrections-qa-validation-buckets-run.json',
+  );
+  expect(await within(drawer).findByText(/loaded 1 correction from the review queue/i)).toBeDefined();
 });
