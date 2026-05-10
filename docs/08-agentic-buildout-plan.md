@@ -4,12 +4,12 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F18 Recipe Library Internal-Only Policy (`feat/f18-recipes-internal-only`) was explicitly promoted on 2026-05-10 and is now `implemented_pending_qa`.
-**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F15 and F16 have been QA’d and merged to `rebuild/validated-leads-loop`; F17 browser QA is complete on the validation-buckets fixture, and F18 now adds explicit internal-only labeling on `/recipes` while keeping recipes out of the primary operator path. Prompt B should QA `feat/f18-recipes-internal-only` with browser screenshots on `/` and `/recipes`.
+**Next feature pointer:** No `ready` feature is currently unlocked. F18 is QA-passed and ready to merge into `rebuild/validated-leads-loop`; F19-F23 remain deferred until Matt explicitly promotes the next internal-only surface or the launch gate changes.
+**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F15, F16, and F17 are already merged to `rebuild/validated-leads-loop`; F18 passed Prompt B with browser screenshots on `/` and `/recipes`, confirming that recipes stay out of the primary operator path while `/recipes` is explicitly labeled for internal evaluation only.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
-Build-loop note as of 2026-05-10: Matt explicitly promoted F18 from `deferred` so Prompt A could resume. The next queued step is Prompt B QA on `feat/f18-recipes-internal-only`.
+Build-loop note as of 2026-05-10: Matt explicitly promoted F18 from `deferred` so Prompt A could resume. Prompt B QA is now complete on `feat/f18-recipes-internal-only`; after merge, the queue returns to `no ready feature` until another deferred feature is explicitly promoted.
 
 ## Current Reality
 
@@ -162,7 +162,7 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F15 | Evidence drawer / dossier                                | merged_to_rebuild_branch | feat/f15-evidence-drawer             | browser                  |
 | F16 | Export rebuild with validation columns                   | merged_to_rebuild_branch | feat/f16-validation-export           | browser + CSV            |
 | F17 | Thomas/Lee correction feedback loop                      | merged_to_rebuild_branch  | feat/f17-corrections-feedback-loop   | browser + DB             |
-| F18 | Recipe library internal-only policy                      | implemented_pending_qa   | feat/f18-recipes-internal-only       | browser                  |
+| F18 | Recipe library internal-only policy                      | merged_to_rebuild_branch | feat/f18-recipes-internal-only       | browser                  |
 | F19 | Batch workspace internal-only policy                     | deferred                 | feat/f19-batch-internal-only         | browser                  |
 | F20 | Friday review export internal-only policy                | deferred                 | feat/f20-friday-review-internal-only | browser                  |
 | F21 | Scoreboards internal-only policy                         | deferred                 | feat/f21-scoreboards-internal-only   | browser                  |
@@ -1250,7 +1250,7 @@ F17 is QA-passed on the browser fixture route and merged into `rebuild/validated
 
 ## F18 - Recipe Library Internal-Only Policy
 
-Status: implemented_pending_qa
+Status: merged_to_rebuild_branch
 Branch: feat/f18-recipes-internal-only
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -1296,9 +1296,15 @@ Revert route/nav policy change.
 Current handoff note:
 - Matt explicitly promoted F18 on 2026-05-10 to unblock the build loop without changing the broader red-gate defer policy for F19-F23.
 - Implementation on `feat/f18-recipes-internal-only` adds explicit internal-only labeling to `/recipes` while leaving recipes absent from the primary `/` lead-search path.
-- Build verification: `cd apps/web && npm test -- --run src/components/__tests__/recipes-library.test.tsx src/app/__tests__/page.test.tsx`
-- Feature status: `implemented_pending_qa`.
-- Next handoff: Prompt B should browser-QA `/` and `/recipes`, capture screenshots, and confirm the recipe route reads as an internal evaluation surface rather than an operator-facing product area.
+- QA verification:
+  - `cd apps/web && npm test -- --run src/components/__tests__/recipes-library.test.tsx src/app/__tests__/page.test.tsx`
+  - `cd apps/web && npm run build`
+  - Browser QA on `http://localhost:3000/` and `http://localhost:3000/recipes`
+- QA evidence:
+  - report: `.gstack/qa-reports/qa-report-f18-recipes-internal-only-2026-05-10.md`
+  - screenshots: `.gstack/qa-reports/screenshots/f18-01-home-no-recipe-nav.png`, `.gstack/qa-reports/screenshots/f18-02-recipes-internal-only.png`
+- Feature status: `merged_to_rebuild_branch`.
+- Next handoff: No `ready` feature remains. Keep F19-F23 deferred unless Matt explicitly promotes another deferred feature or changes the red-gate defer policy.
 
 Next-agent handoff note:
 Keep F19-F23 deferred unless Matt explicitly promotes another deferred feature or changes the red-gate defer policy.
