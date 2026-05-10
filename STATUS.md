@@ -16,7 +16,7 @@
 
 **Next feature pointer:** F08 Contact status model (blocked).
 
-**Current feature branch QA status:** `feat/f07-source-validator` passed required non-UI QA and has been merged; starting `feat/f08-contact-status-model` is next.
+**Current feature branch QA status:** `feat/f07-source-validator` passed required non-UI QA and has been merged; re-run verification has been completed on this branch with explicit `OPENAI_API_KEY=''` for deterministic negative-key behavior. Starting `feat/f08-contact-status-model` is next.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -38,12 +38,14 @@ Branch: feat/f07-source-validator
 Status: merged_to_rebuild_branch
 What changed: Added source-evidence validation that resolves source URLs, records resolved URL / HTTP status / checked_at / matched-field notes, and populates candidate validation bundles for Scout results without changing the lead contract. Source validation now marks inaccessible sources as failed and unsupported matches as failed/unsupported per field.
 Tests or QA run:
- - `cd packages/core && $env:OPENAI_API_KEY='' ; uv run pytest tests/test_source_validation.py tests/test_orchestrator.py -q` (16 passed)
-Screenshots or report: `.gstack/qa-reports/qa-report-f07-source-validator-2026-05-10.md`
+ - `cd packages/core && uv run pytest tests/test_source_validation.py -q` (6 passed)
+ - `$env:OPENAI_API_KEY='' ; cd packages/core ; uv run pytest tests/test_source_validation.py tests/test_orchestrator.py -q` (16 passed)
+Screenshots or report: `.gstack/qa-reports/qa-report-f07-source-validator-rerun-2026-05-10.md`
 Northstar reflection: Source URLs are now checked for direct support before the product treats them as evidence, which keeps later contact/status work from building on unverified page links.
 Next pointer: F08 Contact status model.
-Open questions: None blocking.
+Open questions: Should we enforce `OPENAI_API_KEY=''` in this project test command sequence to avoid host-environment contamination of negative-key test paths?
 ```
+
 
 ---
 

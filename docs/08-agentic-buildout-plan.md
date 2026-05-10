@@ -5,7 +5,7 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
 **Next feature pointer:** F08 Contact status model (blocked).
-**Current feature QA handoff:** `feat/f07-source-validator` passed non-UI QA and was merged into `rebuild/validated-leads-loop`; the next implementation target remains `feat/f08-contact-status-model`.
+**Current feature QA handoff:** `feat/f07-source-validator` passed non-UI QA and was merged into `rebuild/validated-leads-loop`; re-verification was completed with `OPENAI_API_KEY=''` to keep the negative-key path deterministic, and the next implementation target remains `feat/f08-contact-status-model`.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -674,6 +674,7 @@ Remove validator integration and keep field validation statuses unsupported.
 
 Next-agent handoff note:
 F07 is merged to `rebuild/validated-leads-loop`; F08 should reuse source validation evidence for contact statuses.
+Latest re-run notes: `qa-report-f07-source-validator-rerun-2026-05-10.md` confirms required non-UI tests with explicit env isolation.
 
 ---
 
