@@ -155,9 +155,22 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 ---
 
+## ADR-011 — Broad Scout/Full runs need 10-25 categorized results
+
+**Date:** 2026-05-10
+**Status:** Locked
+
+**Context.** Matt reported a 2026-05-10 call with Lee and Thomas where they said the current tool is not useful when Scout returns 3 results and Full returns 4 results. Their target for broad Scout-style prospecting is more than 10 results, with 10-25 results as the preferred working range.
+
+**Decision.** Broad Scout/Full-style prompts must produce enough categorized output to create sales value: more than 10 categorized results, targeting 10-25 results where the market supports it. Precision and evidence remain mandatory, but "only a few clean rows" is not an acceptable pass condition for broad prospecting. Narrow named-account prompts may return fewer person leads only when every requested account is explicitly represented as `person_lead`, `organization_only`, `not_found`, or `failed`.
+
+**Consequences.** Reset gates cannot advance on quality alone if the product starves the operator with 3-4 rows for a broad market. Benchmarks, planner logic, UI review, export checks, and dogfood decisions must track row volume alongside precision and evidence. Agents should treat low-volume broad runs as `hold` unless the report proves the target universe itself is smaller.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-011, ADR-012, ...).
+1. Pick the next ADR number (ADR-012, ADR-013, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.

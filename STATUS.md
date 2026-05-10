@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex main-promotion
+**Last updated:** 2026-05-10 by Codex volume-feedback
 **Branch:** main
-**Current sprint:** The validated-leads rebuild has been promoted to `main` so Thomas and Lee can use the internal app. This is an internal operator-use exception, not proof that the quality gate is green.
+**Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,7 +14,9 @@
 
 **Current gate:** Red with Matt-directed Thomas/Lee internal-use exception. Do not treat the promotion as a public launch or as evidence that the reset gates passed.
 
-**Next feature pointer:** No new feature was started in this promotion session. Before the next implementation session, Matt should confirm whether reset work continues from `main`, from a fresh integration branch, or from `rebuild/validated-leads-loop`.
+**Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets, with 10-25 as the preferred working range. Broad runs with 3-4 rows fail product value even if the rows are neatly formatted.
+
+**Next feature pointer:** Reset feature `R00 - W5 hold report and reset control docs` remains the next implementation assignment. Branch from `rebuild/validated-leads-loop` per the reset plan; that branch is currently aligned with `main`. R00 must cite the Lee/Thomas low-volume feedback in the W5 hold report.
 
 **Current feature branch QA status:** No feature branch is awaiting QA. F19 browser QA passed, the batch route now carries explicit internal-only labeling, and F20-F23 remain deferred.
 
@@ -42,25 +44,22 @@ Prior accepted gates:
 
 **Main promotion override:** ADR-010 explicitly supersedes the prior "main untouched" operating rule for this promotion. `main` is now the operator-use deployment line, but the repo must still preserve the red-gate caveats, evidence requirements, and internal-only scope.
 
+**Open production ops item:** The previous Vercel env fix added `WR_API_INTERNAL_TOKEN` to production and still needs redeploy/authenticated Scout verification if that has not already been completed outside this repo.
+
 **Latest handoff:**
 
 ```text
-Feature: Promote validated-leads rebuild to main for Thomas/Lee internal use
-Branch: rebuild/validated-leads-loop -> main
-Status: promoted_to_main_and_pushed
-What changed: Recorded ADR-010, updated the northstar launch-gate caveat, fixed env-sensitive API/core test setup, fast-forwarded `main` to the rebuild state, and pushed `main`.
+Feature: Record Lee/Thomas broad-result-volume requirement
+Branch: main -> rebuild/validated-leads-loop sync
+Status: committed_and_pushed
+What changed: Added ADR-011 and updated the northstar/reset plan so broad Scout/Full runs need more than 10 categorized results, with 10-25 preferred. R00 must cite the 3 Scout / 4 Full operator failure in the W5 hold report.
 Tests or QA run:
  - `git diff --check`
- - `cd apps/web && npm test -- --run` (29 passed)
- - `cd apps/web && npm run build`
- - `cd apps/api && uv run pytest tests -q` (43 passed)
- - `cd packages/core && uv run pytest tests -q` (94 passed, 6 skipped)
- - GitHub `Deploy to Production` workflow for the promotion push passed.
- - Live smoke: Fly `/health` returned 200, `/login` returned 200, anonymous `/scout` redirected to `/login?next=%2Fscout`.
-Screenshots or report: n/a for branch promotion.
-Northstar reflection: Explicit override by Matt; this does not declare the product green, public-ready, or quality-gate accepted.
-Next pointer: Confirm the next branch model after Thomas/Lee start using the internal app.
-Open questions: Should the next implementation branch from `main`, a fresh integration branch, or the existing rebuild branch?
+ - `rg -n "ADR-011|operator-feedback-volume|10-25|more than 10|3 rows|Full returned 4" docs STATUS.md audits/raw/zero-trust-2026-05-10/operator-feedback-volume-2026-05-10.md`
+Screenshots or report: `audits/raw/zero-trust-2026-05-10/operator-feedback-volume-2026-05-10.md`
+Northstar reflection: This raises the product bar without relaxing validation. Low-volume broad output is now explicitly red-gate failure.
+Next pointer: Assign Prompt A to R00 after this docs update is committed and pushed.
+Open questions: none blocking R00.
 ```
 
 
@@ -259,6 +258,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | prod-env-fix (Codex) | Investigated the live Scout error "Missing WR_API_INTERNAL_TOKEN", confirmed Vercel production lacked the web-side server env var while local API/web envs matched, added `WR_API_INTERNAL_TOKEN` to Vercel Production, and started redeploy/verification. |
 | 2026-05-10 | main-promotion (Codex) | Recorded ADR-010 for Matt-directed Thomas/Lee internal operator use, updated the northstar red-gate exception, fixed API/core tests that leaked local env vars, verified web/API/core suites, fast-forwarded `main` to `rebuild/validated-leads-loop`, pushed `main`, confirmed the GitHub production workflow passed, and smoke-checked Fly health plus the Vercel login/Scout boundary. |
 | 2026-05-10 | f19-qa (Codex) | QA'd `feat/f19-batch-internal-only` with `cd apps/web && npm test -- --run src/app/__tests__/page.test.tsx src/components/__tests__/batch-workspace.test.tsx`, `cd apps/web && npm run build`, and browser verification on `http://localhost:3000/` plus `http://localhost:3000/batch`; found that `/` already hid batch but `/batch` needed explicit internal-only framing, added that warning copy, captured `.gstack/qa-reports/screenshots/f19-01-home-no-batch-nav.png` and `.gstack/qa-reports/screenshots/f19-02-batch-internal-only.png`, wrote `.gstack/qa-reports/qa-report-f19-batch-internal-only-2026-05-10.md`, and prepared the branch for merge into `rebuild/validated-leads-loop`. |
 | 2026-05-10 | f19-build (Codex) | After promoting F19 on `rebuild/validated-leads-loop`, created and pushed `feat/f19-batch-internal-only`. No product code changes were required because batch was already hidden by F01, so the branch now carries the isolated F19 QA handoff: Prompt B should verify `/` still omits batch from primary nav and record the screenshot evidence from the card. |

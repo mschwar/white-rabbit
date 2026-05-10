@@ -18,12 +18,27 @@ Feature completion is not enough. Test pass is not enough. Browser render is not
 ```text
 operator prompt
 -> target/account coverage
+-> enough categorized results to create sales value
 -> field-validated rows
 -> evidence review
 -> sales-first export
 ```
 
 Gate reviewers must assume the app, docs, test fixtures, and prior gate claims are untrusted until they are proven against live code, saved artifacts, and the Thomas/Lee evidence set.
+
+## Operator Volume Requirement
+
+Lee and Thomas reported on 2026-05-10 that current Scout/Full output is not useful when Scout returns 3 rows and Full returns 4 rows. For broad targets, White Rabbit must return more than 10 categorized results and should aim for 10-25 results. Quality still wins over filler, but "few clean rows" is not enough product value for the operator workflow.
+
+This requirement applies to:
+
+- benchmark fixtures and live benchmark summaries,
+- search coverage planning,
+- UI result review,
+- CSV export ordering and row counts,
+- every reset gate decision from RG1 onward.
+
+Narrow named-account prompts may produce fewer person leads only when every requested account is represented as `person_lead`, `organization_only`, `not_found`, or `failed`. Broad vertical/persona prompts that return fewer than 10 categorized results must be marked `hold` unless the gate report proves the market itself is smaller.
 
 ## Branch Workflow
 
@@ -152,6 +167,7 @@ Required baseline evidence:
 
 - `audits/zero-trust-codebase-audit-2026-05-10.md`
 - `audits/raw/zero-trust-2026-05-10/evidence-ledger.md`
+- `audits/raw/zero-trust-2026-05-10/operator-feedback-volume-2026-05-10.md`
 - `audits/raw/zero-trust-2026-05-10/live/`
 - `audits/raw/zero-trust-2026-05-10/screenshots/`
 - `docs/00-product-northstar.md`
@@ -250,6 +266,7 @@ Implementation requirements:
 - Preserve source IDs and private-evidence summaries without dumping private content.
 - Add replay fixtures for Thomas Arizona K-12, Lee commodity buyers, healthcare IT Phoenix, finance CISOs New York, manufacturing ops Detroit, and B2C/private refusal.
 - Benchmark output must classify every expected target as `person_lead`, `organization_only`, `not_found`, or `failed`.
+- Broad benchmark output must track categorized row count, person-lead count, usable-row count, and whether the run met the 10-25 target range.
 - Live runner must save JSON, HTTP status, elapsed time, estimated cost, and quality summary.
 
 Required feature verification:
@@ -264,6 +281,7 @@ RG1 full evaluation/audit:
 - Run replay benchmarks.
 - Run live benchmarks if local keys/services are available and spend cap allows.
 - Confirm Thomas prompt covers all 8 target accounts.
+- Confirm broad Lee/Thomas-style prompts do not pass the gate with only 3-4 returned rows.
 - Confirm manufacturing role-as-name is represented as failed, not a 503.
 - Confirm B2C/private query blocks before search.
 - Save raw outputs under `audits/raw/reset-2026-05-10/rg1/`.
@@ -288,7 +306,7 @@ Stop dropping named accounts and stop forcing unknown targets into person rows.
 Implementation requirements:
 
 - Named-account prompts preserve each account as a coverage obligation.
-- Simple vertical prompts still produce bounded vendor queries.
+- Simple vertical prompts still produce enough bounded vendor queries to support 10-25 categorized results where the market supports it.
 - Source collection stores enough evidence for replay and audit.
 - Missing or personless targets become explicit `not_found` or `organization_only` rows.
 
@@ -302,6 +320,7 @@ git diff --check
 RG2 full evaluation/audit:
 
 - Re-run Thomas Arizona prompt and verify 8 account coverage.
+- Re-run broad Scout/Full benchmark prompts and verify the planner does not artificially starve result volume below 10.
 - Inspect raw collected sources for at least 3 target accounts.
 - Confirm no vendor query exceeds Tavily's limit.
 - Confirm adjacent/filler accounts are flagged or excluded.
@@ -365,6 +384,7 @@ Implementation requirements:
 - Primary screen is one search input and one command.
 - No Scout/Full toggle in the operator path.
 - No quota card unless near cap or blocked.
+- Results review comfortably handles 10-25 categorized rows without turning into a noisy dashboard.
 - Results table starts with organization, location, lead name, title, email, phone, source, and why target.
 - Evidence/dossier panel is available without burying CRM fields.
 - Feedback/correction controls move behind review mode.
@@ -381,6 +401,7 @@ RG4 full evaluation/audit:
 
 - Browser QA on desktop and mobile.
 - Screenshot empty, loading, results, evidence dossier, and blocked query states.
+- Verify the results page remains usable with 10-25 categorized rows.
 - Compare against v1 proxy-lead reference read-only.
 - Check current UI against Lee/Thomas workflow notes.
 
@@ -422,6 +443,7 @@ RG5 full evaluation/audit:
 - Download CSV and inspect first 5 lines.
 - Query Postgres for run and lead rows.
 - Confirm row counts match UI, CSV, and DB.
+- Confirm broad benchmark exports do not contain only 3-4 rows unless the gate report proves the market is smaller.
 - Confirm first 10 CSV columns are sales-useful without audit metadata.
 
 Advance criteria:
@@ -459,6 +481,7 @@ RG6 full evaluation/audit:
 - Re-run the full live benchmark suite if services/keys are available.
 - Re-run browser query-to-export on desktop and mobile.
 - Inspect generated CSV and DB readback.
+- Confirm broad Thomas/Lee-style prompts consistently return 10-25 categorized results, not 3-4 row trickles.
 - Evaluate red/yellow/green criteria line by line.
 - Write final decision report.
 
@@ -524,6 +547,7 @@ Implement only R00 - W5 hold report and reset control docs on branch feat/reset-
 
 Required output:
 - .gstack/qa-reports/gate-w5-operator-loop-export.md with decision hold
+- report cites 2026-05-10 Lee/Thomas feedback: Scout returned 3 rows, Full returned 4 rows, and the operator target is more than 10 results with 10-25 preferred
 - docs/08-agentic-buildout-plan.md pointer to docs/12 as active reset queue
 - STATUS.md updated to show W5 held, W6 blocked, and RG0 pending audit
 - git diff --check passing

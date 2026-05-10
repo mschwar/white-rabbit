@@ -8,7 +8,7 @@ This document supersedes older optimistic "works" claims when product quality is
 
 ## One-Sentence Product Definition
 
-White Rabbit is an internal-first B2B lead research tool that turns a natural-language sales target into a small, exportable list of field-validated leads with transparent evidence.
+White Rabbit is an internal-first B2B lead research tool that turns a natural-language sales target into a useful, exportable list of field-validated leads with transparent evidence.
 
 ## Core Loop
 
@@ -26,7 +26,9 @@ Everything in the product either improves this loop or stays out of the operator
 
 White Rabbit does not win by returning more leads than ZoomInfo, DiscoverOrg, Apollo, or generic GPT research. It wins by returning better data: real scraped and cross-validated contacts, clear source support, explicit missing/failure states, and exports that do not make SDRs or AEs waste time on bad dials, bouncebacks, guessed domains, fake emails, wrong personas, or unsupported claims.
 
-Low volume is acceptable. Noisy raw candidates are acceptable only when they are checked, visibly annotated, and clearly separated from usable leads. Bad data shown confidently is worse than no data.
+Volume is part of value. For a broad Scout/Full target where the market can support it, the product should return more than 10 categorized results and should aim for 10-25 results. Returning 3-4 rows for a broad sales target is a product failure even if the rows are formatted cleanly. Narrow named-account prompts may return fewer person leads only when every target account is represented as `person_lead`, `organization_only`, `not_found`, or `failed`.
+
+Noisy raw candidates are acceptable only when they are checked, visibly annotated, and clearly separated from usable leads. Bad data shown confidently is worse than no data.
 
 ## Target User
 
@@ -150,6 +152,7 @@ Current state: red.
 Red if any of these are true:
 
 - Any golden benchmark returns zero leads or crashes.
+- Any broad Scout/Full benchmark returns fewer than 10 categorized results without a source-backed reason that the target market is smaller.
 - Backend lead-search endpoints are callable outside the intended app boundary.
 - B2C/privacy-sensitive queries are not explicitly blocked.
 - Any sampled row contains a fake, guessed, unsupported, or mismatched email without a failed/deduced label.
@@ -163,6 +166,7 @@ Allowed users in red by default: Matt and agents only. ADR-010 records a 2026-05
 Yellow requires all of these:
 
 - Arizona K-12 VoIP benchmark returns at least 6 of 8 target districts with either a correct named technology/IT/telecom decision maker or an explicit `not_found` reason.
+- Broad Scout/Full benchmarks return more than 10 categorized results, with a target range of 10-25 results where the market supports it.
 - At least 50% of sampled returned person rows are right persona and source-backed.
 - Contact status is one of verified, deduced-with-evidence, missing, failed, or unsupported. No unsupported "Found" emails.
 - Backend API boundary is protected or ingress-restricted.
@@ -176,6 +180,7 @@ Allowed users in yellow: Matt only, with benchmark evidence captured in repo doc
 Green requires all of these:
 
 - At least 70% sampled precision on right persona, organization, and source support across the required benchmark suite.
+- Broad Thomas/Lee Scout-style prompts consistently return 10-25 categorized results, not 3-4 row trickles.
 - At least 50% of usable rows have verified or explicitly deduced contacts.
 - Zero fake or unsupported emails in sampled output.
 - Query-to-export can be completed in under 5 minutes without Matt explaining the UI.
