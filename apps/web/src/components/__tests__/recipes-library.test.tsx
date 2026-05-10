@@ -79,6 +79,10 @@ test('loads recipes, scoreboard, and shows the selected recipe runs', async () =
   render(<RecipesLibrary />);
 
   expect(await screen.findByRole('heading', { name: /recipe library/i })).toBeDefined();
+  expect(await screen.findByText(/internal evaluation only/i)).toBeDefined();
+  expect(
+    await screen.findByText(/not for Thomas or Lee daily prospecting/i),
+  ).toBeDefined();
   expect(await screen.findByRole('button', { name: /k-12 it directors/i })).toBeDefined();
   expect(await screen.findByText(/usable leads/i)).toBeDefined();
   expect(await screen.findByText(/minutes \/ usable lead/i)).toBeDefined();
@@ -193,6 +197,7 @@ test('builds the Friday review export for all recipes', async () => {
   render(<RecipesLibrary />);
 
   expect(await screen.findByRole('heading', { name: /recipe library/i })).toBeDefined();
+  expect(await screen.findByText(/internal evaluation only/i)).toBeDefined();
   expect(await screen.findByRole('button', { name: /k-12 it directors/i })).toBeDefined();
   expect(await screen.findByText(/usable leads/i)).toBeDefined();
   expect(await screen.findByText(/minutes \/ usable lead/i)).toBeDefined();
