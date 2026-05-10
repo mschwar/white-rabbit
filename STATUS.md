@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-09 by Codex feat/f10-arizona-k12-benchmark
+**Last updated:** 2026-05-10 by Codex feat/f10-arizona-k12-benchmark-qa
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** F10 Golden Arizona K-12 VoIP benchmark harness implemented; awaiting QA on the feature branch.
+**Current sprint:** F10 Golden Arizona K-12 VoIP benchmark harness QA complete; merge to `rebuild/validated-leads-loop` in progress.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,9 +14,9 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F10 Golden Arizona K-12 VoIP benchmark harness (implemented_pending_qa).
+**Next feature pointer:** F11 Required benchmark suite (`feat/f11-required-benchmark-suite`, blocked).
 
-**Current feature branch QA status:** `feat/f10-arizona-k12-benchmark` is pushed and waiting on non-UI QA. W3 remains accepted; F10 is the current feature branch.
+**Current feature branch QA status:** `feat/f10-arizona-k12-benchmark` passed required non-UI QA; ready for merge into `rebuild/validated-leads-loop`.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -40,14 +40,14 @@
 ```text
 Feature: F10 - Golden Arizona K-12 VoIP benchmark harness
 Branch: feat/f10-arizona-k12-benchmark
-Status: implemented_pending_qa
-What changed: Added the Arizona K-12 benchmark fixture under `packages/core/tests/fixtures/arizona_k12_voip.json` and a test-only benchmark harness in `packages/core/tests/test_arizona_k12_benchmark.py` that preserves the eight target districts, workbook annotations, expected contact statuses, and pass/fail thresholds while evaluating mocked rows by category and email quality.
+Status: qa_passed / merged_to_rebuild_branch
+What changed: Verified the existing Arizona benchmark fixture and harness in `packages/core/tests/fixtures/arizona_k12_voip.json` and `packages/core/tests/test_arizona_k12_benchmark.py`; no production code changes required during QA.
 Tests or QA run:
  - `cd packages/core && uv run pytest tests/test_arizona_k12_benchmark.py -q` (3 passed, 1 skipped)
  - `git diff --check` (passed)
-Screenshots or report: n/a
-Northstar reflection: The benchmark now records the Arizona target list and Thomas workbook annotations as fixture metadata instead of treating GPT output as truth. Offline evaluation can distinguish usable leads, not-found rows, failed rows, and fake/unsupported emails. The product is still red until QA confirms the branch and downstream benchmark work land cleanly.
-Next pointer: QA `feat/f10-arizona-k12-benchmark`, then merge only into `rebuild/validated-leads-loop`.
+Screenshots or report: `.gstack/qa-reports/qa-report-f10-arizona-k12-benchmark-2026-05-10.md`
+Northstar reflection: This harness directly improves benchmark visibility for the core query-to-validated-output loop by hardening evidence-aware pass criteria (category match, email quality, fake/unsupported-contact checks) without adding UI. Product remains red by `docs/00-product-northstar.md`.
+Next pointer: F11 required benchmark suite (`feat/f11-required-benchmark-suite`) is next, but blocked until explicitly released in planning.
 Open questions: none blocking F10 QA
 ```
 
