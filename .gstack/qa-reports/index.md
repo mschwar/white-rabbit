@@ -7,6 +7,7 @@
 - [2026-05-10 — W3 validation engine gate](gate-w3-validation-engine.md)
 - [2026-05-10 — W2 search contract gate](gate-w2-search-contract.md)
 - [2026-05-10 — Orchestrator review of W1/F04](orchestrator-review-w1-f04-2026-05-10.md)
+- [2026-05-10 — F13 single search-bar UI](qa-report-f13-single-search-ui-2026-05-10.md)
 - [2026-05-10 — F08 contact status model](qa-report-f08-contact-status-model-2026-05-10.md)
 - [2026-05-10 — F07 source validator](qa-report-f07-source-validator-rerun-2026-05-10.md)
 - [2026-05-10 — F06 field validation schema](qa-report-f06-field-validation-schema-2026-05-10.md)

@@ -28,6 +28,10 @@ function formatElapsedSeconds(seconds: number): string {
 
 type Mode = 'scout' | 'full';
 
+type ScoutWorkspaceProps = {
+  primaryMode?: boolean;
+};
+
 function mapErrorCodeToMessage(errorCode: string | null, fallback: string): string {
   switch (errorCode) {
     case 'tavily_failed':
@@ -45,9 +49,9 @@ function mapErrorCodeToMessage(errorCode: string | null, fallback: string): stri
   }
 }
 
-export default function ScoutWorkspace() {
+export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspaceProps) {
   const [query, setQuery] = useState(DEFAULT_SCOUT_QUERY);
-  const [location, setLocation] = useState(DEFAULT_SCOUT_LOCATION);
+  const [location, setLocation] = useState(primaryMode ? '' : DEFAULT_SCOUT_LOCATION);
   const [recipeName, setRecipeName] = useState('');
   const [mode, setMode] = useState<Mode>('scout');
   const [results, setResults] = useState<ScoutResponse | null>(null);
@@ -70,6 +74,7 @@ export default function ScoutWorkspace() {
   const [submittedLocation, setSubmittedLocation] = useState<string | null>(null);
   const [submittedRecipeName, setSubmittedRecipeName] = useState<string | null>(null);
   const [feedbackState, setFeedbackState] = useState<Record<string, string | null>>({});
+  const queryLabel = primaryMode ? 'Lead search' : 'Prospecting query';
 
   useEffect(() => {
     fetchSandboxUsage()
@@ -80,7 +85,7 @@ export default function ScoutWorkspace() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const payload = mode === 'scout'
+    const payload = primaryMode || mode === 'scout'
       ? buildScoutPayload(query, location)
       : buildFullPayload(query, location, recipeName);
 
@@ -264,34 +269,38 @@ export default function ScoutWorkspace() {
 
         <div className="grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
           <section className="rounded-3xl border border-white/10 bg-zinc-950/70 p-6">
-            <p className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-400">Start a query</p>
+            <p className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-400">
+              {primaryMode ? 'Start a lead search' : 'Start a query'}
+            </p>
             <form className="mt-4 grid gap-5" onSubmit={handleSubmit}>
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  onClick={() => setMode('scout')}
-                  className={`flex-1 rounded-full px-4 py-2 text-sm font-semibold transition ${
-                    mode === 'scout'
-                      ? 'bg-emerald-400 text-emerald-950'
-                      : 'bg-white/5 text-zinc-300 hover:bg-white/10'
-                  }`}
-                >
-                  Scout
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setMode('full')}
-                  className={`flex-1 rounded-full px-4 py-2 text-sm font-semibold transition ${
-                    mode === 'full'
-                      ? 'bg-emerald-400 text-emerald-950'
-                      : 'bg-white/5 text-zinc-300 hover:bg-white/10'
-                  }`}
-                >
-                  Full
-                </button>
-              </div>
+              {!primaryMode && (
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setMode('scout')}
+                    className={`flex-1 rounded-full px-4 py-2 text-sm font-semibold transition ${
+                      mode === 'scout'
+                        ? 'bg-emerald-400 text-emerald-950'
+                        : 'bg-white/5 text-zinc-300 hover:bg-white/10'
+                    }`}
+                  >
+                    Scout
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setMode('full')}
+                    className={`flex-1 rounded-full px-4 py-2 text-sm font-semibold transition ${
+                      mode === 'full'
+                        ? 'bg-emerald-400 text-emerald-950'
+                        : 'bg-white/5 text-zinc-300 hover:bg-white/10'
+                    }`}
+                  >
+                    Full
+                  </button>
+                </div>
+              )}
 
-              {mode === 'full' && (
+              {!primaryMode && mode === 'full' && (
                 <div className="flex flex-col gap-3 text-sm text-zinc-200">
                   <label className="block font-medium" htmlFor="recipeName">
                     Search label
@@ -309,7 +318,7 @@ export default function ScoutWorkspace() {
 
               <div className="flex flex-col gap-3 text-sm text-zinc-200">
                 <label className="block font-medium" htmlFor="query">
-                  Prospecting query
+                  {queryLabel}
                 </label>
                 <input
                   className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-zinc-50 outline-none ring-0 placeholder:text-zinc-500 focus:border-emerald-400"
@@ -320,19 +329,21 @@ export default function ScoutWorkspace() {
                   value={query}
                 />
               </div>
-              <div className="flex flex-col gap-3 text-sm text-zinc-200">
-                <label className="block font-medium" htmlFor="location">
-                  Location / filter
-                </label>
-                <input
-                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-zinc-50 outline-none ring-0 placeholder:text-zinc-500 focus:border-emerald-400"
-                  id="location"
-                  name="location"
-                  onChange={(event) => setLocation(event.target.value)}
-                  placeholder="New Mexico"
-                  value={location}
-                />
-              </div>
+              {!primaryMode && (
+                <div className="flex flex-col gap-3 text-sm text-zinc-200">
+                  <label className="block font-medium" htmlFor="location">
+                    Location / filter
+                  </label>
+                  <input
+                    className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-zinc-50 outline-none ring-0 placeholder:text-zinc-500 focus:border-emerald-400"
+                    id="location"
+                    name="location"
+                    onChange={(event) => setLocation(event.target.value)}
+                    placeholder="New Mexico"
+                    value={location}
+                  />
+                </div>
+              )}
               {error ? (
                 <p className="rounded-2xl border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-200">
                   {error}
@@ -343,7 +354,13 @@ export default function ScoutWorkspace() {
                 disabled={isLoading}
                 type="submit"
               >
-                {isLoading ? 'Searching…' : mode === 'scout' ? 'Run Scout search' : 'Run Full search'}
+                {isLoading
+                  ? 'Searching…'
+                  : primaryMode
+                    ? 'Search leads'
+                    : mode === 'scout'
+                      ? 'Run Scout search'
+                      : 'Run Full search'}
               </button>
             </form>
           </section>
@@ -407,7 +424,7 @@ export default function ScoutWorkspace() {
           </div>
         ) : null}
 
-        {fullResult && (
+        {!primaryMode && fullResult && (
           <div className="space-y-3 rounded-2xl border border-emerald-400/30 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200">
             <p>
               Full run saved for internal review.

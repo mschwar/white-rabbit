@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F13 Single search-bar UI (`feat/f13-single-search-ui`, blocked).
-**Current feature QA handoff:** `feat/f12-run-quality-report` is QA-passed and merged into `rebuild/validated-leads-loop` after this run.
+**Next feature pointer:** F14 Results Table With Validation Buckets (`feat/f14-validation-results-table`, blocked).
+**Current feature QA handoff:** `feat/f13-single-search-ui` is merged into `rebuild/validated-leads-loop` after this run.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -152,10 +152,10 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F07 | Source validator                                         | merged_to_rebuild_branch | feat/f07-source-validator            | non-UI                   |
 | F08 | Contact status model                                     | merged_to_rebuild_branch | feat/f08-contact-status-model        | non-UI                   |
 | F09 | Ranking gate based on evidence                           | merged_to_rebuild_branch | feat/f09-ranking-gate                | non-UI                   |
-| F10 | Golden Arizona K-12 VoIP benchmark harness               | merged_to_rebuild_branch   | feat/f10-arizona-k12-benchmark       | non-UI                   |
-| F11 | Required benchmark suite                                 | merged_to_rebuild_branch  | feat/f11-required-benchmark-suite    | non-UI                   |
-| F12 | Per-run quality report                                   | merged_to_rebuild_branch  | feat/f12-run-quality-report          | non-UI                   |
-| F13 | Single search-bar UI                                     | blocked                  | feat/f13-single-search-ui            | browser                  |
+| F10 | Golden Arizona K-12 VoIP benchmark harness               | merged_to_rebuild_branch | feat/f10-arizona-k12-benchmark       | non-UI                   |
+| F11 | Required benchmark suite                                 | merged_to_rebuild_branch | feat/f11-required-benchmark-suite    | non-UI                   |
+| F12 | Per-run quality report                                   | merged_to_rebuild_branch | feat/f12-run-quality-report          | non-UI                   |
+| F13 | Single search-bar UI                                     | merged_to_rebuild_branch | feat/f13-single-search-ui            | browser                  |
 | F14 | Results table with validation buckets                    | blocked                  | feat/f14-validation-results-table    | browser                  |
 | F15 | Evidence drawer / dossier                                | blocked                  | feat/f15-evidence-drawer             | browser                  |
 | F16 | Export rebuild with validation columns                   | blocked                  | feat/f16-validation-export           | browser + CSV            |
@@ -947,7 +947,7 @@ Build result:
 
 ## F13 - Single Search-Bar UI
 
-Status: blocked
+Status: merged_to_rebuild_branch
 Branch: feat/f13-single-search-ui
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -984,6 +984,14 @@ Browser-testable:
 - steps: log in, enter a natural-language B2B query, submit, confirm loading and result/error state.
 - required screenshots: empty search state, loading state, returned state or validation error.
 
+QA result:
+- `cd apps/web && npm test -- src/app/__tests__/page.test.tsx src/components/__tests__/scout-workspace.test.tsx` (2 files, 8 tests passed)
+- Browser QA on `http://localhost:3000/` captured empty, loading, and error states in the authenticated browser session.
+- Screenshots saved:
+  - `.gstack/qa-reports/screenshots/f13-01-empty-state.png`
+  - `.gstack/qa-reports/screenshots/f13-02-loading-state.png`
+  - `.gstack/qa-reports/screenshots/f13-03-final-state.png`
+
 Atomic commit plan:
 - commit 1: `feat(ui): add single natural-language lead search`
 - commit 2: `test(ui): cover primary search workflow`
@@ -993,10 +1001,9 @@ Rollback plan:
 Revert UI component/page changes; hidden internal routes remain available.
 
 Next-agent handoff note:
-F14 should replace card-first rendering with bucketed validated results.
+F13 is merged to `rebuild/validated-leads-loop`. F14 should replace card-first rendering with bucketed validated results. QA report: `.gstack/qa-reports/qa-report-f13-single-search-ui-2026-05-10.md`.
 
 ---
-
 ## F14 - Results Table With Validation Buckets
 
 Status: blocked
@@ -1503,3 +1510,5 @@ Revert reset UI/gating change.
 
 Next-agent handoff note:
 Do not move to ready while gate is red except as a security follow-up to F02.
+
+

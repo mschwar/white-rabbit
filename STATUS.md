@@ -1,22 +1,22 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex feat/f12-run-quality-report
+**Last updated:** 2026-05-10 by Codex feat/f13-single-search-ui qa
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** F12 Per-run quality report QA passed and merged on `feat/f12-run-quality-report`.
+**Current sprint:** F13 Single search-bar UI merged on `feat/f13-single-search-ui`.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 ---
 
-## Current rebuild status (2026-05-09)
+## Current rebuild status (2026-05-10)
 
 **Integration branch:** `rebuild/validated-leads-loop`
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F13 Single search-bar UI (`feat/f13-single-search-ui`, blocked).
+**Next feature pointer:** F14 Results Table With Validation Buckets (`feat/f14-validation-results-table`, blocked).
 
-**Current feature branch QA status:** `feat/f12-run-quality-report` passed required non-UI QA and was merged into `rebuild/validated-leads-loop`.
+**Current feature branch QA status:** `feat/f13-single-search-ui` passed required browser QA, was pushed to `origin` on the feature branch, and merged into `rebuild/validated-leads-loop`.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -38,16 +38,17 @@
 **Latest handoff:**
 
 ```text
-Feature: F12 - Per-Run Quality Report
-Branch: feat/f12-run-quality-report
+Feature: F13 - Single Search-Bar UI
+Branch: feat/f13-single-search-ui
 Status: merged_to_rebuild_branch
-What changed: Added `packages/core/src/core/quality_report.py` with a serializable quality-report model and builder, plus `packages/core/tests/test_quality_report.py` covering candidate-category counts, validation-status counts, precision, persona match, contact quality, source support, fake-email count, unsupported-email count, and benchmark/run serialization.
+What changed: Centered the primary UI on one natural-language lead-search input, removed the mode-selection emphasis from the primary surface, and kept the operator path focused on one query-to-results flow.
 Tests or QA run:
- - `cd packages/core && uv run pytest tests/test_quality_report.py -q`
-Screenshots or report: `.gstack/qa-reports/qa-report-f12-run-quality-report-2026-05-10.md`
-Northstar reflection: The report improves the query->export loop by surfacing explicit quality and contact/source risk signals before UI orchestration.
-Next pointer: F13 Single search-bar UI (`feat/f13-single-search-ui`) once normal rebuild scheduling resumes.
-Open questions: none blocking the F12 merge
+ - `cd apps/web && npm test -- src/app/__tests__/page.test.tsx src/components/__tests__/scout-workspace.test.tsx` (8 passed)
+ - Browser QA on `http://localhost:3000/` captured empty, loading, and error states in the authenticated browser session
+Screenshots or report: `.gstack/qa-reports/qa-report-f13-single-search-ui-2026-05-10.md`
+Northstar reflection: The primary UI now starts from the natural-language query the operator would actually type, which matches the funnel direction in the northstar.
+Next pointer: F14 Results Table With Validation Buckets (`feat/f14-validation-results-table`)
+Open questions: none blocking
 ```
 
 
@@ -119,6 +120,7 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 - **F01 QA complete and merged on `rebuild/validated-leads-loop` via `feat/f01-hide-premature-surfaces`.** Home primary navigation now links only to lead search, and Scout hides recipe-library links, raw endpoint/FastAPI/storage copy, and the sandbox reset button. `npm test`, `npm run build`, and browser screenshots (with QA report `qa-report-f01-hide-premature-surfaces-2026-05-09.md`) were captured.
 - **F02 QA complete and merged on `rebuild/validated-leads-loop` via `feat/f02-backend-api-boundary`.** FastAPI lead/sandbox endpoints now require the internal boundary token. Next.js proxy calls to `/api/scout` are verified with auth flow and expected local-service error payload; direct POSTs to `/scout`, `/full`, `/batch`, and `/sandbox/reset` return 401 when no token is supplied. QA report: `qa-report-f02-backend-api-boundary-2026-05-09.md`.
 - **F03 QA complete and merged on `rebuild/validated-leads-loop` via `feat/f03-b2b-guardrails`.** Guardrails now allow normal B2B sales queries while blocking consumer/privacy-sensitive, weapon, and off-topic prompts before search. `uv run pytest tests/test_query_guardrails.py -q` and API guardrail regression tests pass (`2 passed`).
+- **F13 QA complete on `feat/f13-single-search-ui`.** The root route now renders the primary lead-search workspace with one natural-language input, Scout/Full mode toggles hidden from the primary screen, and the shared workspace component can render in primary mode. Browser QA on `/` captured empty, loading, and validation-error states.
 - **Rebuild phase gates merged.** `docs/09-rebuild-phase-gates.md` groups F00-F23 into gated waves W0-W6 and requires gate review reports before downstream waves unlock.
 - **F00 rebuild planning docs landed on `rebuild/validated-leads-loop`.** Added `docs/00-product-northstar.md`, `docs/08-agentic-buildout-plan.md`, AGENTS rebuild branch protocol, STATUS rebuild handoff, and `.gstack/qa-reports/qa-template-agentic-buildout.md`.
 - **BUILDOUT-12: Atomic sandbox cap counter added.** `_sandbox_reserve_query_or_429` now uses `get_sandbox_state_for_update()` to lock the sandbox row during cap checks, and API tests cover the concurrent 12-request cap path.
@@ -242,6 +244,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | f13-qa (Codex) | QA'd `feat/f13-single-search-ui` with `cd apps/web && npm test -- src/app/__tests__/page.test.tsx src/components/__tests__/scout-workspace.test.tsx` and browser verification on `http://localhost:3000/`; captured empty, loading, and error-state screenshots; wrote `.gstack/qa-reports/qa-report-f13-single-search-ui-2026-05-10.md`; updated `docs/08-agentic-buildout-plan.md` and `STATUS.md`; merged the branch into `rebuild/validated-leads-loop`. |
 | 2026-05-09 | f11-qa (Codex) | QA'd `feat/f11-required-benchmark-suite` with offline suite verification (`3 passed`), wrote `.gstack/qa-reports/qa-report-f11-required-benchmark-suite-2026-05-09.md`, updated `docs/08-agentic-buildout-plan.md` and `STATUS.md`, and merged the feature branch into `rebuild/validated-leads-loop`. |
 | 2026-05-10 | orchestrator-gate-check (Codex) | Checked the next gates after F09, accepted W2 and W3 with reports, added missing `packages/core/tests/test_scoring.py` so W3's documented command passes, and unlocked F10 while keeping the product red. |
 | 2026-05-10 | f06-qa (Codex) | QA'd `feat/f06-field-validation-schema` with required non-UI verification and merged it into `rebuild/validated-leads-loop`; wrote `.gstack/qa-reports/qa-report-f06-field-validation-schema-2026-05-10.md` and updated docs handoff/status. |
@@ -289,3 +292,6 @@ Open residual risks:
 | 2026-05-08 | qa (gpt-5.4-mini) | Browser QA for BUILDOUT-05 verified Scout and recipe-library flows on localhost:3000, captured screenshots, confirmed clean console, and updated docs/report artifacts. |
 | 2026-05-08 | qa (gpt-5.4-mini) | Browser QA for BUILDOUT-06 verified the shared-password login, Scout results page, and Gate pass/fail sort control on localhost:3000; captured screenshots and kept the console clean. |
 | 2026-05-07 | hard-audit (Claude Opus 4.7) | Ground-up zero-trust audit. 8 parallel sub-agents, 4 live scout queries against real OpenAI ($0.045 spent), 65 findings across 8 dimensions plus Phase 2. 2 agent errors caught and corrected. Master report at `audits/hard-audit-2026-05-07.md`; action plan at `docs/06-audit-action-plan.md`. **Conclusion: not deployable as-is. 5 confirmed P0 blockers including `OPENAI_BASE_URL` routing to local Ollama and 89% VoIP leak rate in real leads.** |
+
+
+
