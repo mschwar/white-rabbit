@@ -1,14 +1,14 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex
+**Last updated:** 2026-05-09 by Codex
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** F09 Ranking gate based on evidence implemented_pending_qa on `feat/f09-ranking-gate`; next target is merge only to `rebuild/validated-leads-loop`, then F10.
+**Current sprint:** F09 Ranking gate based on evidence merged_to_rebuild_branch on `feat/f09-ranking-gate`; next target is merge only to `rebuild/validated-leads-loop`, then F10.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 ---
 
-## Current rebuild status (2026-05-10)
+## Current rebuild status (2026-05-09)
 
 **Integration branch:** `rebuild/validated-leads-loop`
 
@@ -16,7 +16,7 @@
 
 **Next feature pointer:** F10 Golden Arizona K-12 VoIP benchmark harness (blocked).
 
-**Current feature branch QA status:** `feat/f09-ranking-gate` is implemented_pending_qa after required non-UI verification. The branch is merge-ready only into `rebuild/validated-leads-loop`.
+**Current feature branch QA status:** `feat/f09-ranking-gate` is merged_to_rebuild_branch after required non-UI verification. The branch is merge-ready only into `rebuild/validated-leads-loop`.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -35,13 +35,14 @@
 ```text
 Feature: F09 Ranking gate based on evidence
 Branch: feat/f09-ranking-gate
-Status: implemented_pending_qa
+Status: merged_to_rebuild_branch
 What changed: Added an evidence-aware ranking gate in `packages/core/src/core/orchestrator.py` that only marks person leads as gate-passed when score thresholds and field-validation evidence agree; updated the Lead model description and core tests.
 Tests or QA run:
+ - `$env:OPENAI_API_KEY=''; cd packages/core && uv run pytest -q` (76 passed, 5 skipped)
  - `$env:OPENAI_API_KEY=''; cd packages/core && uv run pytest tests/test_contact_status.py tests/test_source_validation.py tests/test_orchestrator.py tests/test_orchestrator_integration.py -q` (32 passed, 5 skipped)
-Screenshots or report: n/a
-Northstar reflection: The gate no longer trusts score thresholds alone; unsupported source/title/org/email evidence now blocks a lead even when the model scores it highly.
-Next pointer: QA F09 on `feat/f09-ranking-gate`, then merge to `rebuild/validated-leads-loop` and start F10.
+Screenshots or report: `.gstack/qa-reports/qa-report-f09-ranking-gate-2026-05-09.md`
+Northstar reflection: The gate no longer trusts score thresholds alone; unsupported source/title/org/email evidence now blocks a lead even when the model scores it highly. This reduces false confidence before results are ranked or exported.
+Next pointer: merge is complete; next ready card remains F10 but wave W3 is blocked until orchestrator acceptance is recorded in the gate report.
 Open questions: none
 ```
 
@@ -187,11 +188,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F08 are merged to `rebuild/validated-leads-loop`; F09 is implemented_pending_qa on `feat/f09-ranking-gate`; W3 remains blocked.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F09 are merged to `rebuild/validated-leads-loop`; W3 remains blocked.
 
 ## Next concrete task
 
-- QA **F09 - Ranking gate based on evidence** on `feat/f09-ranking-gate`, then merge to `rebuild/validated-leads-loop` and start F10 after the merge lands.
+- W3 remains blocked by gate mechanics until an orchestrator review decision is recorded. `feat/f09-ranking-gate` is merged to `rebuild/validated-leads-loop`; next concrete task is to wait for orchestrator-accepted W3 advance and then start F10.
 
 ## Open questions for Matt
 
