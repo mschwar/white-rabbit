@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F10 Golden Arizona K-12 VoIP benchmark harness (ready).
-**Current feature QA handoff:** W2 and W3 are orchestrator-accepted; next prompt can proceed from `feat/f10-arizona-k12-benchmark`.
+**Next feature pointer:** F11 Required benchmark suite (blocked).
+**Current feature QA handoff:** `feat/f10-arizona-k12-benchmark` passed required non-UI QA and is queued for merge to `rebuild/validated-leads-loop` only.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -152,7 +152,7 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F07 | Source validator                                         | merged_to_rebuild_branch | feat/f07-source-validator            | non-UI                   |
 | F08 | Contact status model                                     | merged_to_rebuild_branch | feat/f08-contact-status-model        | non-UI                   |
 | F09 | Ranking gate based on evidence                           | merged_to_rebuild_branch | feat/f09-ranking-gate                | non-UI                   |
-| F10 | Golden Arizona K-12 VoIP benchmark harness               | ready                    | feat/f10-arizona-k12-benchmark       | non-UI                   |
+| F10 | Golden Arizona K-12 VoIP benchmark harness               | merged_to_rebuild_branch   | feat/f10-arizona-k12-benchmark       | non-UI                   |
 | F11 | Required benchmark suite                                 | blocked                  | feat/f11-required-benchmark-suite    | non-UI                   |
 | F12 | Per-run quality report                                   | blocked                  | feat/f12-run-quality-report          | non-UI                   |
 | F13 | Single search-bar UI                                     | blocked                  | feat/f13-single-search-ui            | browser                  |
@@ -788,7 +788,7 @@ QA handoff complete on 2026-05-09: gate test and core test suite passed with `OP
 
 ## F10 - Golden Arizona K-12 VoIP Benchmark Harness
 
-Status: ready
+Status: merged_to_rebuild_branch
 Branch: feat/f10-arizona-k12-benchmark
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -834,7 +834,7 @@ Rollback plan:
 Remove benchmark fixture and tests; production code remains untouched.
 
 Next-agent handoff note:
-F11 should extend this harness rather than creating a parallel evaluation path.
+F11 should extend this harness rather than creating a parallel evaluation path. QA should run the offline benchmark command first; live verification is optional behind `RUN_LIVE=1` with real OpenAI and Tavily keys.
 
 ---
 

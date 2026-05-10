@@ -1,0 +1,94 @@
+{
+  "benchmark_id": "az_k12_voip",
+  "source": "Thomas workbook annotations preserved; GPT output is not ground truth.",
+  "query": "name and email and phone number for these District Approx Size Tech Decision Maker Type Mesa Public Schools 60k+ students CIO / Director of Technology; Chandler Unified School District 40k+ CTO / IT Director; Peoria Unified School District 35k+ Technology Services; Gilbert Public Schools 30k+ CTO; Deer Valley Unified School District 30k+ IT leadership; Paradise Valley Unified School District 25k+ CIO/Technology; Dysart Unified School District 24k+ Director of Technology; Maricopa Unified School District 9k+ Director of Technology",
+  "target_districts": [
+    "Mesa",
+    "Chandler",
+    "Peoria",
+    "Gilbert",
+    "Deer Valley",
+    "Paradise Valley",
+    "Dysart",
+    "Maricopa"
+  ],
+  "thresholds": {
+    "minimum_hit_count": 6,
+    "maximum_fake_emails": 0,
+    "maximum_unsupported_emails": 0
+  },
+  "cases": [
+    {
+      "district": "Mesa",
+      "organization": "Mesa Public Schools",
+      "approx_size": "60k+ students",
+      "target_role": "CIO / Director of Technology",
+      "workbook_annotation": "in CRM",
+      "expected_category": "person_lead",
+      "expected_contact_status": "verified_found"
+    },
+    {
+      "district": "Chandler",
+      "organization": "Chandler Unified School District",
+      "approx_size": "40k+ students",
+      "target_role": "CTO / IT Director",
+      "workbook_annotation": "added to CRM where known",
+      "expected_category": "person_lead",
+      "expected_contact_status": "deduced_with_pattern_evidence"
+    },
+    {
+      "district": "Peoria",
+      "organization": "Peoria Unified School District",
+      "approx_size": "35k+ students",
+      "target_role": "Technology Services",
+      "workbook_annotation": "failed email",
+      "expected_category": "failed",
+      "expected_contact_status": "failed"
+    },
+    {
+      "district": "Gilbert",
+      "organization": "Gilbert Public Schools",
+      "approx_size": "30k+ students",
+      "target_role": "CTO",
+      "workbook_annotation": "not-correct contact",
+      "expected_category": "not_found",
+      "expected_contact_status": "missing"
+    },
+    {
+      "district": "Deer Valley",
+      "organization": "Deer Valley Unified School District",
+      "approx_size": "30k+ students",
+      "target_role": "IT leadership",
+      "workbook_annotation": "in CRM",
+      "expected_category": "person_lead",
+      "expected_contact_status": "verified_found"
+    },
+    {
+      "district": "Paradise Valley",
+      "organization": "Paradise Valley Unified School District",
+      "approx_size": "25k+ students",
+      "target_role": "CIO/Technology",
+      "workbook_annotation": "added to CRM where known",
+      "expected_category": "person_lead",
+      "expected_contact_status": "deduced_with_pattern_evidence"
+    },
+    {
+      "district": "Dysart",
+      "organization": "Dysart Unified School District",
+      "approx_size": "24k+ students",
+      "target_role": "Director of Technology",
+      "workbook_annotation": "failed email",
+      "expected_category": "failed",
+      "expected_contact_status": "failed"
+    },
+    {
+      "district": "Maricopa",
+      "organization": "Maricopa Unified School District",
+      "approx_size": "9k+ students",
+      "target_role": "Director of Technology",
+      "workbook_annotation": "not-correct contact",
+      "expected_category": "not_found",
+      "expected_contact_status": "missing"
+    }
+  ]
+}
