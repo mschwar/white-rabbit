@@ -947,7 +947,7 @@ Build result:
 
 ## F13 - Single Search-Bar UI
 
-Status: merged
+Status: qa-passed
 Branch: feat/f13-single-search-ui
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -1506,4 +1506,6 @@ Revert reset UI/gating change.
 
 Next-agent handoff note:
 Do not move to ready while gate is red except as a security follow-up to F02.
+
+
 
