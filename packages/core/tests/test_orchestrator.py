@@ -26,7 +26,7 @@ def test_scout_uses_injected_dependencies_and_returns_metrics():
         title="Director of Technology",
         organization="Albuquerque Public Schools",
         email="jane.smith@aps.edu",
-        email_status="Found",
+        email_status="verified_found",
         source_url="https://aps.edu/tech",
         confidence=0.88,
         why_target="Owns district telecom decisions",
@@ -79,7 +79,7 @@ def test_scout_overrides_llm_gate_passed_from_subscores():
         title="VP Operations",
         organization="Example Corp",
         email="jordan.lee@example.com",
-        email_status="Found",
+        email_status="verified_found",
         source_url="https://example.com/jordan",
         confidence=0.5,
         why_target="Relevant operations leader",
@@ -263,7 +263,7 @@ def test_scout_applies_source_validation_to_returned_candidates(monkeypatch):
         title="VP Operations",
         organization="Example Corp",
         email="jordan.lee@example.com",
-        email_status="Found",
+        email_status="verified_found",
         source_url="https://example.com/jordan",
         confidence=0.5,
         why_target="Relevant operations leader",
@@ -324,7 +324,9 @@ def test_system_prompt_is_vertical_agnostic_and_restores_lost_instructions():
     assert "the user's query intent" in SYSTEM_PROMPT
     assert "Include the organization name for every lead" in SYSTEM_PROMPT
     assert "Set source_url as the URL with the strongest direct evidence" in SYSTEM_PROMPT
-    assert "Never invent or guess an email." in SYSTEM_PROMPT
+    assert "verified_found" in SYSTEM_PROMPT
+    assert "deduced_with_pattern_evidence" in SYSTEM_PROMPT
+    assert "old Found/Deduced labels" in SYSTEM_PROMPT
     assert "Treat the user's query intent as the only vertical signal" in SYSTEM_PROMPT
     assert "Never use placeholders like N/A, Unknown" in SYSTEM_PROMPT
     assert "Do not inject VoIP" in SYSTEM_PROMPT

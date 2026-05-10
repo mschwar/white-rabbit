@@ -35,7 +35,7 @@ def _make_lead(*, source_url: str = "https://example.com/source") -> Lead:
         title="Director of Technology",
         organization="Albuquerque Public Schools",
         email="jane.smith@aps.edu",
-        email_status="Found",
+        email_status="verified_found",
         source_url=source_url,
         confidence=0.9,
         why_target="Fits the district technology ICP.",
@@ -48,7 +48,7 @@ def _make_lead(*, source_url: str = "https://example.com/source") -> Lead:
     )
 
 
-def test_validate_candidate_source_marks_supported_fields_from_page_content():
+def test_validate_candidate_source_marks_verified_found_fields_from_page_content():
     candidate = _make_lead()
     client = FakeClient(
         FakeResponse(
@@ -68,7 +68,7 @@ def test_validate_candidate_source_marks_supported_fields_from_page_content():
     assert validation.name.status == "supported"
     assert validation.title.status == "supported"
     assert validation.organization.status == "supported"
-    assert validation.email.status == "supported"
+    assert validation.email.status == "verified_found"
     assert validation.phone.status == "missing"
     assert validation.source.checked_at.endswith("Z")
     assert "http_status=200" in validation.source.notes

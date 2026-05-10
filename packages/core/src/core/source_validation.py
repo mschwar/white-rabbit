@@ -7,9 +7,10 @@ from typing import Any
 
 import httpx
 
-from .models import Candidate, CandidateValidation, FieldValidationRecord
+from .models import Candidate, CandidateValidation, ContactValidationRecord, FieldValidationRecord
 
 SOURCE_VALIDATION_TIMEOUT_SECONDS = 10.0
+_SUPPORTED_SOURCE_FIELD_STATUSES = {"supported", "verified_found"}
 
 _HTML_TAG_RE = re.compile(r"<[^>]+>")
 _WHITESPACE_RE = re.compile(r"\s+")
@@ -72,6 +73,28 @@ def _field_record_for_missing_source(
     )
 
 
+def _contact_record_for_missing_source(
+    field_name: str,
+    field_value: Any,
+    *,
+    checked_at: str,
+) -> ContactValidationRecord:
+    if _has_text(field_value):
+        return ContactValidationRecord(
+            status="failed",
+            source_url=None,
+            checked_at=checked_at,
+            notes=f"Could not validate {field_name} because source_url was not provided.",
+        )
+
+    return ContactValidationRecord(
+        status="missing",
+        source_url=None,
+        checked_at=checked_at,
+        notes=f"{field_name} is not present on the candidate.",
+    )
+
+
 def _field_record_for_access_failure(
     field_name: str,
     field_value: Any,
@@ -88,6 +111,29 @@ def _field_record_for_access_failure(
         field_note = f"{field_name} is not present on the candidate. {note}"
 
     return FieldValidationRecord(
+        status=status,
+        source_url=source_url,
+        checked_at=checked_at,
+        notes=field_note,
+    )
+
+
+def _contact_record_for_access_failure(
+    field_name: str,
+    field_value: Any,
+    *,
+    source_url: str,
+    checked_at: str,
+    note: str,
+) -> ContactValidationRecord:
+    if _has_text(field_value):
+        status = "failed"
+        field_note = note
+    else:
+        status = "missing"
+        field_note = f"{field_name} is not present on the candidate. {note}"
+
+    return ContactValidationRecord(
         status=status,
         source_url=source_url,
         checked_at=checked_at,
@@ -138,6 +184,49 @@ def _field_record_from_source_text(
     )
 
 
+def _contact_record_from_source_text(
+    field_name: str,
+    field_value: Any,
+    *,
+    source_url: str,
+    checked_at: str,
+    source_text: str,
+) -> tuple[ContactValidationRecord, str | None]:
+    if not _has_text(field_value):
+        return (
+            ContactValidationRecord(
+                status="missing",
+                source_url=source_url,
+                checked_at=checked_at,
+                notes=f"{field_name} is not present on the candidate.",
+            ),
+            None,
+        )
+
+    snippet = _find_evidence_snippet(source_text, field_value)
+    if snippet:
+        return (
+            ContactValidationRecord(
+                status="verified_found",
+                source_url=source_url,
+                evidence_snippet=snippet,
+                checked_at=checked_at,
+                notes=f"Direct text support found for {field_name}.",
+            ),
+            snippet,
+        )
+
+    return (
+        ContactValidationRecord(
+            status="unsupported",
+            source_url=source_url,
+            checked_at=checked_at,
+            notes=f"No direct text support found for {field_name}.",
+        ),
+        None,
+    )
+
+
 def _candidate_field_values(candidate: Candidate) -> dict[str, Any]:
     return {
         "name": getattr(candidate, "name", None),
@@ -156,8 +245,8 @@ def _build_missing_source_validation(candidate: Candidate, *, checked_at: str) -
         organization=_field_record_for_missing_source(
             "organization", field_values["organization"], checked_at=checked_at
         ),
-        email=_field_record_for_missing_source("email", field_values["email"], checked_at=checked_at),
-        phone=_field_record_for_missing_source("phone", field_values["phone"], checked_at=checked_at),
+        email=_contact_record_for_missing_source("email", field_values["email"], checked_at=checked_at),
+        phone=_contact_record_for_missing_source("phone", field_values["phone"], checked_at=checked_at),
         source=FieldValidationRecord(
             status="missing",
             source_url=None,
@@ -183,8 +272,8 @@ def _build_access_failure_validation(
         organization=_field_record_for_access_failure(
             "organization", field_values["organization"], source_url=source_url, checked_at=checked_at, note=note
         ),
-        email=_field_record_for_access_failure("email", field_values["email"], source_url=source_url, checked_at=checked_at, note=note),
-        phone=_field_record_for_access_failure("phone", field_values["phone"], source_url=source_url, checked_at=checked_at, note=note),
+        email=_contact_record_for_access_failure("email", field_values["email"], source_url=source_url, checked_at=checked_at, note=note),
+        phone=_contact_record_for_access_failure("phone", field_values["phone"], source_url=source_url, checked_at=checked_at, note=note),
         source=FieldValidationRecord(
             status="failed",
             source_url=source_url,
@@ -208,15 +297,24 @@ def _build_source_text_validation(
     best_snippet: str | None = None
 
     for field_name in ("name", "title", "organization", "email", "phone"):
-        record, snippet = _field_record_from_source_text(
-            field_name,
-            field_values[field_name],
-            source_url=resolved_url,
-            checked_at=checked_at,
-            source_text=source_text,
-        )
+        if field_name in {"email", "phone"}:
+            record, snippet = _contact_record_from_source_text(
+                field_name,
+                field_values[field_name],
+                source_url=resolved_url,
+                checked_at=checked_at,
+                source_text=source_text,
+            )
+        else:
+            record, snippet = _field_record_from_source_text(
+                field_name,
+                field_values[field_name],
+                source_url=resolved_url,
+                checked_at=checked_at,
+                source_text=source_text,
+            )
         field_records[field_name] = record
-        if record.status == "supported":
+        if record.status in _SUPPORTED_SOURCE_FIELD_STATUSES:
             supported_fields.append(field_name)
             if best_snippet is None:
                 best_snippet = snippet

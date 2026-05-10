@@ -51,8 +51,14 @@ use organization_only or not_found instead of forcing a person_lead.
 Never use placeholders like N/A, Unknown, or a job title in the name field.
 
 EMAIL DEDUCTION:
-If you cannot find an email in the search results, set email='' and email_status='Missing'.
-Never invent or guess an email.
+Use email_status values from this contact-status set:
+- verified_found: the email appears directly in the evidence.
+- deduced_with_pattern_evidence: the email is inferred from a verified domain or email pattern and you say why.
+- missing: no email is present in the evidence.
+- failed: the evidence contradicts the email or shows it is wrong, stale, bounced, or inaccessible.
+- unsupported: the evidence does not justify a contact status yet.
+If you cannot find an email in the search results, set email='' and email_status='missing'.
+Never invent or guess an email, and never use the old Found/Deduced labels.
 
 CONTENT:
 Include the organization name for every lead. If you cannot find a clear organization,

@@ -61,6 +61,19 @@ _EMAIL_PLACEHOLDER_PREFIXES = (
 )
 _EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 FieldValidationStatus = Literal["supported", "unsupported", "missing", "failed"]
+ContactStatus = Literal[
+    "verified_found",
+    "deduced_with_pattern_evidence",
+    "missing",
+    "failed",
+    "unsupported",
+]
+
+_LEGACY_CONTACT_STATUS_ALIASES = {
+    "Found": "verified_found",
+    "Deduced": "deduced_with_pattern_evidence",
+    "Missing": "missing",
+}
 
 
 def _has_text(value: str | None) -> bool:
@@ -91,8 +104,19 @@ class FieldValidationRecord(BaseModel):
     notes: str = Field(default="", description="Validation notes.")
 
 
+class ContactValidationRecord(FieldValidationRecord):
+    status: ContactStatus = Field(
+        default="unsupported",
+        description="Whether this contact field is verified_found, deduced_with_pattern_evidence, missing, failed, or unsupported.",
+    )
+
+
 def _unsupported_validation_record() -> FieldValidationRecord:
     return FieldValidationRecord(status="unsupported")
+
+
+def _unsupported_contact_validation_record() -> ContactValidationRecord:
+    return ContactValidationRecord(status="unsupported")
 
 
 class CandidateValidation(BaseModel):
@@ -101,8 +125,8 @@ class CandidateValidation(BaseModel):
     name: FieldValidationRecord = Field(default_factory=_unsupported_validation_record)
     title: FieldValidationRecord = Field(default_factory=_unsupported_validation_record)
     organization: FieldValidationRecord = Field(default_factory=_unsupported_validation_record)
-    email: FieldValidationRecord = Field(default_factory=_unsupported_validation_record)
-    phone: FieldValidationRecord = Field(default_factory=_unsupported_validation_record)
+    email: ContactValidationRecord = Field(default_factory=_unsupported_contact_validation_record)
+    phone: ContactValidationRecord = Field(default_factory=_unsupported_contact_validation_record)
     source: FieldValidationRecord = Field(default_factory=_unsupported_validation_record)
 
 
@@ -128,9 +152,9 @@ class Lead(CandidateBase):
     title: str = Field(description="Job title")
     organization: str = Field(description="Organization, district, agency, or company name")
     email: str = Field(description="Professional email address, or blank if unavailable")
-    email_status: Literal["Found", "Deduced", "Missing"] = Field(
-        default="Missing",
-        description="Email evidence status: Found, Deduced, or Missing",
+    email_status: ContactStatus = Field(
+        default="unsupported",
+        description="Email contact status: verified_found, deduced_with_pattern_evidence, missing, failed, or unsupported",
     )
     source_url: str = Field(description="Best source URL supporting the contact, title, or email")
     confidence: float = Field(
@@ -188,6 +212,13 @@ class Lead(CandidateBase):
         if not _EMAIL_RE.match(value):
             raise ValueError("Lead.email must be a valid email address or blank.")
 
+        return value
+
+    @field_validator("email_status", mode="before")
+    @classmethod
+    def normalize_email_status(cls, value: str) -> str:
+        if isinstance(value, str):
+            return _LEGACY_CONTACT_STATUS_ALIASES.get(value, value)
         return value
 
     @model_validator(mode="after")
