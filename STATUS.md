@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex f19-qa
-**Branch:** rebuild/validated-leads-loop
-**Current sprint:** W5 operator loop and export gate remains in motion; F15, F16, F17, F18, and F19 are merged to `rebuild/validated-leads-loop`, and no additional deferred internal-only follow-on feature is unlocked.
+**Last updated:** 2026-05-10 by Codex zero-trust-audit
+**Branch:** audit/zero-trust-2026-05-10
+**Current sprint:** Audit branch complete. The May 10 zero-trust codebase audit keeps the product red, recommends a W5 hold, blocks W6/dogfood work, and points next to `docs/11-product-reset-plan-2026-05-10.md`.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,13 +14,13 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** No additional `ready` feature is unlocked. F19 Batch Workspace Internal-Only Policy is now merged to `rebuild/validated-leads-loop`. F20-F23 remain deferred until Matt explicitly promotes another feature or the launch gate changes.
+**Next feature pointer:** No additional `ready` feature is unlocked. Do not start W6 or deferred work. The next recommended action is to review the May 10 reset plan and, if accepted, write a W5 hold report before any new product implementation.
 
 **Current feature branch QA status:** No feature branch is awaiting QA. F19 browser QA passed, the batch route now carries explicit internal-only labeling, and F20-F23 remain deferred.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
-**Latest gate acceptance:** W4 accepted on 2026-05-10:
+**Latest gate acceptance:** W4 accepted on 2026-05-10. The May 10 audit found no W5/W6 gate report and recommends treating W5 as held until the visible operator loop is proven:
 
 - W4 benchmarks and quality reporting: `.gstack/qa-reports/gate-w4-benchmarks-quality.md`
 
@@ -42,21 +42,25 @@ Prior accepted gates:
 **Latest handoff:**
 
 ```text
-Feature: F19 - Batch Workspace Internal-Only Policy
-Branch: feat/f19-batch-internal-only
-Status: merged_to_rebuild_branch
-What changed: Prompt B QA found `/` already hid batch from primary navigation but `/batch` still presented as a normal operator workspace. The branch now adds explicit internal-only warning copy to `/batch`, keeps batch absent from the primary operator path, and records the QA evidence before merge to `rebuild/validated-leads-loop`.
+Feature: Zero-trust codebase audit 2026-05-10
+Branch: audit/zero-trust-2026-05-10
+Status: audit_complete_pending_review
+What changed: Created repo-backed audit artifacts, raw evidence ledger, eight dimension reports, master report, reset plan, screenshots, live benchmark JSON, Full-mode CSV sample, DB readback, and this status update. Product code was not changed.
 Tests or QA run:
- - `cd apps/web && npm test -- --run src/app/__tests__/page.test.tsx src/components/__tests__/batch-workspace.test.tsx`
+ - `cd packages/core && uv run pytest -q` -> failed under shell OpenAI env; rerun isolated passed `94 passed, 6 skipped`
+ - `cd apps/api && uv run pytest tests -q` -> failed without matching token; rerun with `WR_API_INTERNAL_TOKEN=test-internal-token` passed `43 passed`
+ - `cd apps/web && npm test -- --run`
  - `cd apps/web && npm run build`
- - Browser QA on `http://localhost:3000/` and `http://localhost:3000/batch`
+ - Browser QA on `http://localhost:3000/login`, `/scout`, evidence drawer, Full-mode export
+ - Live benchmark prompts through local Next API
 Screenshots or report:
- - `.gstack/qa-reports/qa-report-f19-batch-internal-only-2026-05-10.md`
- - `.gstack/qa-reports/screenshots/f19-01-home-no-batch-nav.png`
- - `.gstack/qa-reports/screenshots/f19-02-batch-internal-only.png`
-Northstar reflection: Pass; this keeps batch out of the red-gate operator path and makes the remaining route explicitly internal-only instead of silently available like a normal operator surface.
-Next pointer: No `ready` feature remains. Keep F20-F23 deferred unless Matt explicitly promotes another deferred feature or changes the red-gate defer policy.
-Open questions: none blocking
+ - `audits/zero-trust-codebase-audit-2026-05-10.md`
+ - `audits/sub/zero-trust-2026-05-10/`
+ - `audits/raw/zero-trust-2026-05-10/`
+ - `docs/11-product-reset-plan-2026-05-10.md`
+Northstar reflection: Fail; live benchmarks returned 0 usable leads, manufacturing crashed, and the visible operator loop is still too noisy. The product remains red.
+Next pointer: Matt should accept/reject the reset recommendation. If accepted, next branch should write `.gstack/qa-reports/gate-w5-operator-loop-export.md` as a hold report and update control docs before implementation.
+Open questions: whether to accept the reset plan; whether to reorder export around Lee's CRM-first columns; whether to freeze all W6/deferred feature work until the reset benchmark passes.
 ```
 
 
@@ -206,11 +210,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F14 are merged to `rebuild/validated-leads-loop`; W2, W3, and W4 are orchestrator-accepted. `F15`, `F16`, `F17`, `F18`, and `F19` are merged to `rebuild/validated-leads-loop`; all later deferred surfaces remain locked.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. W5 has not been gate-reported and should be treated as held until Matt reviews the reset plan.
 
 ## Next concrete task
 
-- No `ready` feature remains. Keep F20-F23 deferred unless Matt explicitly promotes another deferred feature or changes the red-gate defer policy.
+- Review `docs/11-product-reset-plan-2026-05-10.md`. If accepted, create a docs-only W5 hold report at `.gstack/qa-reports/gate-w5-operator-loop-export.md`, keep W6 blocked, and then implement the reset in small branches. Do not start another feature or deferred surface first.
 
 ## Open questions for Matt
 
