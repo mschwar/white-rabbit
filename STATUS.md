@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex volume-feedback
+**Last updated:** 2026-05-10 by Codex prod-env-fix
 **Branch:** main
-**Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful.
+**Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -44,7 +44,7 @@ Prior accepted gates:
 
 **Main promotion override:** ADR-010 explicitly supersedes the prior "main untouched" operating rule for this promotion. `main` is now the operator-use deployment line, but the repo must still preserve the red-gate caveats, evidence requirements, and internal-only scope.
 
-**Open production ops item:** The previous Vercel env fix added `WR_API_INTERNAL_TOKEN` to production and still needs redeploy/authenticated Scout verification if that has not already been completed outside this repo.
+**Production ops item resolved:** Vercel Production now has `WR_API_INTERNAL_TOKEN`; production was redeployed, and authenticated `/api/scout` no longer returns the missing-token 502.
 
 **Latest handoff:**
 
@@ -258,6 +258,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | prod-env-fix-verified (Codex) | Completed the post-promotion Vercel env fix: confirmed Production has `WR_API_INTERNAL_TOKEN`, redeployed with `vercel deploy --prod --yes`, and verified an authenticated live `POST /api/scout` reaches the protected API instead of returning "Missing WR_API_INTERNAL_TOKEN." |
 | 2026-05-10 | prod-env-fix (Codex) | Investigated the live Scout error "Missing WR_API_INTERNAL_TOKEN", confirmed Vercel production lacked the web-side server env var while local API/web envs matched, added `WR_API_INTERNAL_TOKEN` to Vercel Production, and started redeploy/verification. |
 | 2026-05-10 | main-promotion (Codex) | Recorded ADR-010 for Matt-directed Thomas/Lee internal operator use, updated the northstar red-gate exception, fixed API/core tests that leaked local env vars, verified web/API/core suites, fast-forwarded `main` to `rebuild/validated-leads-loop`, pushed `main`, confirmed the GitHub production workflow passed, and smoke-checked Fly health plus the Vercel login/Scout boundary. |
 | 2026-05-10 | f19-qa (Codex) | QA'd `feat/f19-batch-internal-only` with `cd apps/web && npm test -- --run src/app/__tests__/page.test.tsx src/components/__tests__/batch-workspace.test.tsx`, `cd apps/web && npm run build`, and browser verification on `http://localhost:3000/` plus `http://localhost:3000/batch`; found that `/` already hid batch but `/batch` needed explicit internal-only framing, added that warning copy, captured `.gstack/qa-reports/screenshots/f19-01-home-no-batch-nav.png` and `.gstack/qa-reports/screenshots/f19-02-batch-internal-only.png`, wrote `.gstack/qa-reports/qa-report-f19-batch-internal-only-2026-05-10.md`, and prepared the branch for merge into `rebuild/validated-leads-loop`. |
