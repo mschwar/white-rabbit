@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex f14-qa-rerun
+**Last updated:** 2026-05-10 by Codex f15-qa
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** W4 benchmarks and quality reporting gate accepted; F14 is merged.
+**Current sprint:** W4 benchmarks and quality reporting gate accepted; F15 is merged, F16 is blocked behind next export work.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,9 +14,9 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F15 Evidence Drawer Or Dossier (`feat/f15-evidence-drawer`, blocked).
+**Next feature pointer:** F16 Validation Export Rebuild (`feat/f16-validation-export`, blocked).
 
-**Current feature branch QA status:** F14 passed required browser QA and is merged. The browser QA used the dev-only validation fixture route because the live search endpoint returned 500 in this local environment. W4 gate remediation added explicit quality threshold evaluation so zero-usable and high-noise runs fail the per-run report. This rerun captured fresh screenshots and confirmed the same grouped validation render path.
+**Current feature branch QA status:** `feat/f15-evidence-drawer` has passed QA and is merged to `rebuild/validated-leads-loop`. The drawer opens from validation rows, shows field-level status/source URL/checked_at/notes/evidence snippet, and passed browser verification on the local fixture route with shared-password login on localhost.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -42,17 +42,17 @@ Prior accepted gates:
 **Latest handoff:**
 
 ```text
-Feature: F14 - Results Table With Validation Buckets
-Branch: feat/f14-validation-results-table
+Feature: F15 - Evidence Drawer Or Dossier
+Branch: feat/f15-evidence-drawer
 Status: merged_to_rebuild_branch
-What changed: Replaced the card-first Scout results with a validation-bucketed table that groups usable, noisy/failed, organization-only, and not-found rows and shows field/contact/source badges.
+What changed: Added a right-side evidence drawer from validation rows. The drawer shows field-level source support for name, title, organization, email, phone, and source, with status, source URL, checked_at, notes, and evidence snippet per field.
 Tests or QA run:
- - `cd apps/web && npm test -- --run` (28 passed)
+ - `cd apps/web && npm test -- --run` (13 files, 28 tests passed)
  - `cd apps/web && npm run build`
- - browser QA on `http://localhost:3000/?qa=validation-buckets`
-Screenshots or report: `.gstack/qa-reports/screenshots/f14-01-usable-group.png`, `.gstack/qa-reports/screenshots/f14-02-noisy-failed-group.png`, `.gstack/qa-reports/screenshots/f14-03-organization-not-found-group.png`, `.gstack/qa-reports/qa-report-f14-validation-results-table-2026-05-10.md`
-Northstar reflection: Pass; the UI now separates trust buckets instead of implying every returned row is CRM-ready.
-Next pointer: F15 Evidence Drawer Or Dossier (`feat/f15-evidence-drawer`)
+ - browser QA on `http://localhost:3000/scout?qa=validation-buckets` after login with the shared password from `apps/web/.env.local`
+Screenshots or report: `.gstack/qa-reports/qa-report-f15-evidence-drawer-2026-05-10.md`
+Northstar reflection: Pass; the UI now exposes field-level evidence without changing the validation buckets or widening the operator surface.
+Next pointer: QA + prepare `feat/f16-validation-export` (blocked by plan) after orbiting next-doc updates.
 Open questions: none blocking
 ```
 
@@ -126,6 +126,10 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 - **F02 QA complete and merged on `rebuild/validated-leads-loop` via `feat/f02-backend-api-boundary`.** FastAPI lead/sandbox endpoints now require the internal boundary token. Next.js proxy calls to `/api/scout` are verified with auth flow and expected local-service error payload; direct POSTs to `/scout`, `/full`, `/batch`, and `/sandbox/reset` return 401 when no token is supplied. QA report: `qa-report-f02-backend-api-boundary-2026-05-09.md`.
 - **F03 QA complete and merged on `rebuild/validated-leads-loop` via `feat/f03-b2b-guardrails`.** Guardrails now allow normal B2B sales queries while blocking consumer/privacy-sensitive, weapon, and off-topic prompts before search. `uv run pytest tests/test_query_guardrails.py -q` and API guardrail regression tests pass (`2 passed`).
 - **F13 QA complete on `feat/f13-single-search-ui`.** The root route now renders the primary lead-search workspace with one natural-language input, Scout/Full mode toggles hidden from the primary screen, and the shared workspace component can render in primary mode. Browser QA on `/` captured empty, loading, and validation-error states.
+- **F15 is merged to `rebuild/validated-leads-loop` from `feat/f15-evidence-drawer`.** The results table now exposes a right-side evidence drawer per row with field-level status, source URL, checked_at, notes, and evidence snippet for usable and failed/noisy rows. Vitest, Next.js build, and browser QA on the local validation fixture all passed; screenshot pair saved at:
+  - `.gstack/qa-reports/screenshots/f15-01-usable-evidence-drawer.png`
+  - `.gstack/qa-reports/screenshots/f15-02-failed-evidence-drawer.png`
+  - QA report: `.gstack/qa-reports/qa-report-f15-evidence-drawer-2026-05-10.md`
 - **Rebuild phase gates merged.** `docs/09-rebuild-phase-gates.md` groups F00-F23 into gated waves W0-W6 and requires gate review reports before downstream waves unlock.
 - **F00 rebuild planning docs landed on `rebuild/validated-leads-loop`.** Added `docs/00-product-northstar.md`, `docs/08-agentic-buildout-plan.md`, AGENTS rebuild branch protocol, STATUS rebuild handoff, and `.gstack/qa-reports/qa-template-agentic-buildout.md`.
 - **BUILDOUT-12: Atomic sandbox cap counter added.** `_sandbox_reserve_query_or_429` now uses `get_sandbox_state_for_update()` to lock the sandbox row during cap checks, and API tests cover the concurrent 12-request cap path.
@@ -199,16 +203,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F13 are merged to `rebuild/validated-leads-loop`; W2, W3, and W4 are orchestrator-accepted. F13 was merged before W4 acceptance because stale feature handoff text treated F12 QA as enough to start W5; the control docs now state W5 unlocks only after W4 orchestrator acceptance.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F14 are merged to `rebuild/validated-leads-loop`; W2, W3, and W4 are orchestrator-accepted. `F15` is merged to `rebuild/validated-leads-loop`; `F16` remains blocked.
 
 ## Next concrete task
 
-- Build **F15 - Evidence Drawer Or Dossier** on `feat/f15-evidence-drawer`:
-  - start from `rebuild/validated-leads-loop`
-  - add drill-down evidence without changing bucket definitions
-  - show source support for name, title, organization, email, and phone
-  - run web tests, browser QA, and capture the required screenshots
-  - merge only back into `rebuild/validated-leads-loop` after QA
+- Next feature pointer is `F16 Validation Export Rebuild` (`feat/f16-validation-export`), currently blocked pending gate/reopen criteria in docs.
 
 ## Open questions for Matt
 
@@ -253,6 +252,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | f15-qa (Codex) | QA'd `feat/f15-evidence-drawer` with `cd apps/web && npm test -- --run` (`13` passed), `cd apps/web && npm run build`, and browser verification on `http://localhost:3000/scout?qa=validation-buckets`; captured `.gstack/qa-reports/screenshots/f15-01-usable-evidence-drawer.png` and `.gstack/qa-reports/screenshots/f15-02-failed-evidence-drawer.png`; wrote `.gstack/qa-reports/qa-report-f15-evidence-drawer-2026-05-10.md`; updated `docs/08-agentic-buildout-plan.md` and `STATUS.md`; merged the branch into `rebuild/validated-leads-loop`. |
 | 2026-05-10 | f14-qa (Codex) | QA'd `feat/f14-validation-results-table` with `cd apps/web && npm test -- --run` (`28` passed), `cd apps/web && npm run build`, and browser verification on `http://localhost:3000/?qa=validation-buckets`; captured usable, noisy/failed, and organization-only/not-found screenshots; wrote `.gstack/qa-reports/qa-report-f14-validation-results-table-2026-05-10.md`; updated `docs/08-agentic-buildout-plan.md` and `STATUS.md`; merged the branch into `rebuild/validated-leads-loop`. |
 | 2026-05-10 | orchestrator-gate-check (Codex) | Checked W4 after F10-F12, found the feature agents had merged F13 before formal W4 acceptance, added explicit quality-report threshold failures for zero-usable/high-noise runs, passed W4 verification (`11 passed, 1 skipped`), wrote `.gstack/qa-reports/gate-w4-benchmarks-quality.md`, accepted W4, and unlocked F14 while keeping the product red. |
 | 2026-05-10 | f13-qa (Codex) | QA'd `feat/f13-single-search-ui` with `cd apps/web && npm test -- src/app/__tests__/page.test.tsx src/components/__tests__/scout-workspace.test.tsx` and browser verification on `http://localhost:3000/`; captured empty, loading, and error-state screenshots; wrote `.gstack/qa-reports/qa-report-f13-single-search-ui-2026-05-10.md`; updated `docs/08-agentic-buildout-plan.md` and `STATUS.md`; merged the branch into `rebuild/validated-leads-loop`. |
@@ -303,5 +303,3 @@ Open residual risks:
 | 2026-05-08 | qa (gpt-5.4-mini) | Browser QA for BUILDOUT-05 verified Scout and recipe-library flows on localhost:3000, captured screenshots, confirmed clean console, and updated docs/report artifacts. |
 | 2026-05-08 | qa (gpt-5.4-mini) | Browser QA for BUILDOUT-06 verified the shared-password login, Scout results page, and Gate pass/fail sort control on localhost:3000; captured screenshots and kept the console clean. |
 | 2026-05-07 | hard-audit (Claude Opus 4.7) | Ground-up zero-trust audit. 8 parallel sub-agents, 4 live scout queries against real OpenAI ($0.045 spent), 65 findings across 8 dimensions plus Phase 2. 2 agent errors caught and corrected. Master report at `audits/hard-audit-2026-05-07.md`; action plan at `docs/06-audit-action-plan.md`. **Conclusion: not deployable as-is. 5 confirmed P0 blockers including `OPENAI_BASE_URL` routing to local Ollama and 89% VoIP leak rate in real leads.** |
-
-

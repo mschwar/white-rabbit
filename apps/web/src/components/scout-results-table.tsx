@@ -38,6 +38,7 @@ const FEEDBACK_LABELS: FeedbackLabel[] = ['usable', 'wrong_persona', 'bad_source
 type ScoutResultsTableProps = {
   rows: ScoutResultRow[];
   feedbackState: Record<string, string | null>;
+  onOpenEvidence: (row: ScoutResultRow) => void;
   onSubmitFeedback: (leadId: string, label: FeedbackLabel) => Promise<void>;
 };
 
@@ -178,7 +179,7 @@ function renderFeedbackButtons(
   );
 }
 
-export default function ScoutResultsTable({ rows, feedbackState, onSubmitFeedback }: ScoutResultsTableProps) {
+export default function ScoutResultsTable({ rows, feedbackState, onOpenEvidence, onSubmitFeedback }: ScoutResultsTableProps) {
   const groupedRows = VALIDATION_BUCKETS.reduce(
     (acc, bucket) => {
       acc[bucket.key] = [];
@@ -335,6 +336,14 @@ export default function ScoutResultsTable({ rows, feedbackState, onSubmitFeedbac
                                   {note}
                                 </p>
                               ))}
+                              <button
+                                aria-label={`View evidence for ${getIdentity(row)}`}
+                                className="inline-flex rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-100 transition hover:border-emerald-300/40 hover:bg-emerald-300/15 hover:text-emerald-50"
+                                onClick={() => onOpenEvidence(row)}
+                                type="button"
+                              >
+                                View evidence
+                              </button>
                             </div>
                           </td>
                           <td className="align-top rounded-r-3xl px-3 py-4">

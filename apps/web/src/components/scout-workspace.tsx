@@ -11,12 +11,14 @@ import {
   fetchSandboxUsage,
   LEAD_SORT_OPTIONS,
   isPersonLead,
+  getValidationBucket,
   sortScoutResultRows,
   submitLeadFeedback,
   type CandidateValidation,
   type FeedbackLabel,
   type LeadSortMode,
   type ContactStatus,
+  type ScoutResultRow,
   type ScoutResponse,
   type ValidationStatus,
   type FullResponse,
@@ -88,6 +90,218 @@ function makeValidation(overrides: ValidationOverrides = {}): CandidateValidatio
     phone: contact(overrides.phone ?? 'missing', 'phone'),
     source: field(overrides.source ?? 'supported', 'source'),
   };
+}
+
+function formatEvidenceStatusLabel(status: string): string {
+  switch (status) {
+    case 'verified_found':
+      return 'verified found';
+    case 'deduced_with_pattern_evidence':
+      return 'deduced with pattern evidence';
+    default:
+      return status.replaceAll('_', ' ');
+  }
+}
+
+const EVIDENCE_STATUS_TONES: Record<string, string> = {
+  supported: 'border-emerald-400/20 bg-emerald-400/10 text-emerald-100',
+  verified_found: 'border-emerald-400/20 bg-emerald-400/10 text-emerald-100',
+  deduced_with_pattern_evidence: 'border-cyan-400/20 bg-cyan-400/10 text-cyan-100',
+  missing: 'border-amber-400/20 bg-amber-400/10 text-amber-100',
+  unsupported: 'border-zinc-400/20 bg-zinc-400/10 text-zinc-100',
+  failed: 'border-rose-400/20 bg-rose-400/10 text-rose-100',
+};
+
+function evidenceTone(status: string): string {
+  return EVIDENCE_STATUS_TONES[status] ?? EVIDENCE_STATUS_TONES.unsupported;
+}
+
+function getEvidenceRowIdentity(row: ScoutResultRow): string {
+  if (row.candidate_category === 'organization_only') {
+    return row.organization ?? '—';
+  }
+
+  if (row.candidate_category === 'not_found' || row.candidate_category === 'failed') {
+    return row.searched_target ?? '—';
+  }
+
+  return row.name;
+}
+
+function getEvidenceRowSummary(row: ScoutResultRow): string {
+  if (isPersonLead(row)) {
+    return row.title;
+  }
+
+  if (row.candidate_category === 'organization_only') {
+    return row.explanation;
+  }
+
+  if (row.candidate_category === 'not_found') {
+    return `${row.organization ?? row.searched_target} was searched, but no acceptable contact was found.`;
+  }
+
+  return `${row.failure_reason} ${row.explanation}`.trim();
+}
+
+function getEvidenceValidation(row: ScoutResultRow): CandidateValidation {
+  if (row.validation) {
+    return row.validation;
+  }
+
+  const sourceUrl = 'source_url' in row ? row.source_url ?? null : null;
+  const notes = sourceUrl
+    ? 'Field-level validation was not captured for this row.'
+    : 'No source URL was captured for this row.';
+  const record = {
+    status: 'unsupported' as const,
+    source_url: sourceUrl,
+    evidence_snippet: null,
+    checked_at: null,
+    notes,
+  };
+
+  return {
+    name: record,
+    title: record,
+    organization: record,
+    email: record,
+    phone: record,
+    source: record,
+  };
+}
+
+function renderEvidenceField(
+  label: string,
+  record: CandidateValidation[keyof CandidateValidation],
+) {
+  return (
+    <article key={label} className={`rounded-3xl border p-4 ${evidenceTone(record.status)}`}>
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-sm font-semibold text-zinc-50">{label}</p>
+          <p className="mt-1 text-xs uppercase tracking-[0.18em] text-current/80">Status</p>
+        </div>
+        <span className="rounded-full border px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.16em]">
+          {formatEvidenceStatusLabel(record.status)}
+        </span>
+      </div>
+
+      <dl className="mt-4 space-y-3 text-sm text-zinc-200">
+        <div className="space-y-1">
+          <dt className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">Source URL</dt>
+          <dd className="break-all leading-6 text-zinc-100">
+            {record.source_url ? (
+              <a className="text-emerald-300 underline decoration-emerald-300/30 underline-offset-4" href={record.source_url} rel="noreferrer" target="_blank">
+                {record.source_url}
+              </a>
+            ) : (
+              <span className="text-zinc-500">No source URL captured</span>
+            )}
+          </dd>
+        </div>
+        <div className="space-y-1">
+          <dt className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">Checked at</dt>
+          <dd className="leading-6 text-zinc-100">{record.checked_at ?? '—'}</dd>
+        </div>
+        <div className="space-y-1">
+          <dt className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">Notes</dt>
+          <dd className="leading-6 text-zinc-100">{record.notes || '—'}</dd>
+        </div>
+        <div className="space-y-1">
+          <dt className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">Evidence snippet</dt>
+          <dd className="leading-6 text-zinc-100">{record.evidence_snippet || '—'}</dd>
+        </div>
+      </dl>
+    </article>
+  );
+}
+
+function ScoutEvidenceDrawer({
+  row,
+  onClose,
+}: {
+  row: ScoutResultRow | null;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    if (!row) {
+      return undefined;
+    }
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose, row]);
+
+  if (!row) {
+    return null;
+  }
+
+  const validation = getEvidenceValidation(row);
+  const fields = [
+    { label: 'Name', record: validation.name },
+    { label: 'Title', record: validation.title },
+    { label: 'Organization', record: validation.organization },
+    { label: 'Email', record: validation.email },
+    { label: 'Phone', record: validation.phone },
+    { label: 'Source', record: validation.source },
+  ] as const;
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-stretch justify-end bg-black/70 p-4 backdrop-blur-sm sm:p-6"
+      onClick={onClose}
+    >
+      <div
+        aria-describedby="evidence-drawer-summary"
+        aria-labelledby="evidence-drawer-title"
+        aria-modal="true"
+        className="flex h-full w-full max-w-3xl flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-950 shadow-2xl shadow-black/60"
+        onClick={(event) => event.stopPropagation()}
+        role="dialog"
+      >
+        <div className="flex items-start justify-between gap-4 border-b border-white/10 p-6">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">Evidence drawer</p>
+            <h3 id="evidence-drawer-title" className="mt-2 text-2xl font-semibold tracking-tight text-zinc-50">
+              {getEvidenceRowIdentity(row)}
+            </h3>
+            <p id="evidence-drawer-summary" className="mt-2 text-sm leading-6 text-zinc-400">
+              {getEvidenceRowSummary(row)}
+            </p>
+          </div>
+          <button
+            className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-zinc-200 transition hover:bg-white/10"
+            onClick={onClose}
+            type="button"
+          >
+            Close
+          </button>
+        </div>
+
+        <div className="flex-1 overflow-y-auto p-6">
+          <div className="mb-4 flex flex-wrap items-center gap-2">
+            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-200">
+              {row.candidate_category ?? 'person_lead'}
+            </span>
+            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-200">
+              {getValidationBucket(row)}
+            </span>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {fields.map(({ label, record }) => renderEvidenceField(label, record))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 const QA_VALIDATION_BUCKETS_FIXTURE: ScoutResponse = {
@@ -215,6 +429,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
     generatedAtLabel: string;
     rowCount: number;
   } | null>(null);
+  const [selectedEvidenceRow, setSelectedEvidenceRow] = useState<ScoutResultRow | null>(null);
   const [submittedQuery, setSubmittedQuery] = useState<string | null>(null);
   const [submittedLocation, setSubmittedLocation] = useState<string | null>(null);
   const [submittedRecipeName, setSubmittedRecipeName] = useState<string | null>(null);
@@ -250,6 +465,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
     setResults(null);
     setFullResult(null);
     setLeadExport(null);
+    setSelectedEvidenceRow(null);
     setSubmittedQuery(null);
     setSubmittedLocation(null);
     setSubmittedRecipeName(null);
@@ -382,6 +598,10 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
   async function handleLeadFeedback(leadId: string, label: FeedbackLabel) {
     await submitLeadFeedback(leadId, label);
     setFeedbackState((prev) => ({ ...prev, [leadId]: label }));
+  }
+
+  function handleOpenEvidence(row: ScoutResultRow) {
+    setSelectedEvidenceRow(row);
   }
 
   async function handleBuildLeadExport() {
@@ -672,6 +892,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
           {displayedResults ? (
             <ScoutResultsTable
               feedbackState={feedbackState}
+              onOpenEvidence={handleOpenEvidence}
               onSubmitFeedback={handleLeadFeedback}
               rows={displayedRows}
             />
@@ -682,6 +903,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
           )}
         </section>
       </section>
+      <ScoutEvidenceDrawer onClose={() => setSelectedEvidenceRow(null)} row={selectedEvidenceRow} />
     </main>
   );
 }
