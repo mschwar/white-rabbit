@@ -1,9 +1,12 @@
 import asyncio
 import os
+from math import ceil
 from collections.abc import Mapping
 from typing import Any
 
 import httpx
+
+from .query_planner import compile_query_plan
 
 TAVILY_API_URL = "https://api.tavily.com"
 TAVILY_SEARCH_DEPTH = "advanced"
@@ -12,23 +15,6 @@ TAVILY_TIMEOUT_SECONDS = 30
 
 class TavilySearchError(Exception):
     pass
-
-
-def _build_search_query(query: str, filters: Mapping[str, Any] | None) -> str:
-    if not filters:
-        return query
-
-    filter_bits = []
-    for key in sorted(filters):
-        value = filters[key]
-        if value in (None, "", []):
-            continue
-        filter_bits.append(f"{key}: {value}")
-
-    if not filter_bits:
-        return query
-
-    return f"{query}\n{'; '.join(filter_bits)}"
 
 
 def _clean_results(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -46,6 +32,51 @@ def _clean_results(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return cleaned
 
 
+def _dedupe_results(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    seen: set[tuple[str, str]] = set()
+    deduped: list[dict[str, Any]] = []
+    for result in results:
+        key = (result.get("url", ""), result.get("title", ""))
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append(result)
+    return deduped
+
+
+async def _fetch_single_search_results(
+    client: httpx.AsyncClient,
+    search_query: str,
+    api_key: str,
+    max_results: int,
+    search_depth: str,
+) -> list[dict[str, Any]]:
+    params = {
+        "api_key": api_key,
+        "query": search_query,
+        "max_results": max_results,
+        "search_depth": search_depth,
+        "include_answer": False,
+        "include_raw_content": False,
+        "include_images": False,
+    }
+
+    for attempt in range(3):
+        try:
+            response = await client.post(f"{TAVILY_API_URL}/search", json=params)
+            response.raise_for_status()
+            data = response.json()
+            return _clean_results(data.get("results", []))
+        except httpx.HTTPStatusError as exc:
+            raise TavilySearchError(
+                f"Tavily API error: {exc.response.status_code} - {exc.response.text}"
+            ) from exc
+        except (httpx.TimeoutException, httpx.NetworkError) as exc:
+            if attempt == 2:
+                raise TavilySearchError(f"Tavily search failed after 3 attempts: {exc}") from exc
+            await asyncio.sleep(0.5 * (2**attempt))
+
+
 async def fetch_search_results(
     query: str,
     api_key: str | None = None,
@@ -58,36 +89,24 @@ async def fetch_search_results(
     if not key:
         raise TavilySearchError("TAVILY_API_KEY not found in environment or arguments")
 
-    search_query = _build_search_query(query, filters)
-
-    params = {
-        "api_key": key,
-        "query": search_query,
-        "max_results": max_results,
-        "search_depth": search_depth,
-        "include_answer": False,
-        "include_raw_content": False,
-        "include_images": False,
-    }
+    plan = compile_query_plan(query, filters=filters)
+    vendor_queries = plan.vendor_queries or [query]
+    per_query_max_results = max(1, ceil(max_results / len(vendor_queries)))
 
     try:
         async with httpx.AsyncClient(timeout=TAVILY_TIMEOUT_SECONDS) as client:
-            for attempt in range(3):
-                try:
-                    response = await client.post(f"{TAVILY_API_URL}/search", json=params)
-                    response.raise_for_status()
-                    data = response.json()
-                    return _clean_results(data.get("results", []))
-                except httpx.HTTPStatusError as exc:
-                    raise TavilySearchError(
-                        f"Tavily API error: {exc.response.status_code} - {exc.response.text}"
-                    ) from exc
-                except (httpx.TimeoutException, httpx.NetworkError) as exc:
-                    if attempt == 2:
-                        raise TavilySearchError(
-                            f"Tavily search failed after 3 attempts: {exc}"
-                        ) from exc
-                    await asyncio.sleep(0.5 * (2**attempt))
+            all_results: list[dict[str, Any]] = []
+            for search_query in vendor_queries:
+                all_results.extend(
+                    await _fetch_single_search_results(
+                        client,
+                        search_query,
+                        key,
+                        per_query_max_results,
+                        search_depth,
+                    )
+                )
+            return _dedupe_results(all_results)[:max_results]
     except TavilySearchError:
         raise
     except Exception as exc:

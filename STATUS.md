@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-09 by Codex feat/docs-hard-audit-remediation
-**Branch:** feat/docs-hard-audit-remediation
-**Current sprint:** Documentation authority remediation on the validated-leads rebuild branch; F04 query compiler/planner remains next after this docs-only branch merges
+**Last updated:** 2026-05-09 by Codex feat/f04-query-compiler
+**Branch:** feat/f04-query-compiler
+**Current sprint:** F04 query compiler/planner on the validated-leads rebuild branch; F05 remains blocked until F04 QA passes and merges
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,9 +14,9 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F04 Query compiler / planner (ready).
+**Next feature pointer:** F04 Query compiler / planner (implemented_pending_qa).
 
-**Current feature branch QA status:** `feat/docs-hard-audit-remediation` re-verified as docs-only and ready to merge.
+**Current feature branch QA status:** `feat/f04-query-compiler` is implemented and waiting on non-UI QA before merge.
 
 **Control docs:**
 
@@ -31,15 +31,15 @@
 **Latest handoff:**
 
 ```text
-Feature: Repo-wide documentation authority audit and remediation
-Branch: feat/docs-hard-audit-remediation
-Status: verification_passed_ready_to_merge
-What changed: Added ADR-006 and `docs/10-documentation-audit-2026-05-09.md`; rewrote README/TESTING/USER_GUIDE/package READMEs for red-gate rebuild reality; updated AGENTS read order; corrected docs/08 F04 pointer; added the W1 containment gate report; marked legacy planning docs, audits, QA reports, and meeting notes with explicit status banners; refreshed the QA report index.
-Tests or QA run: `cd apps/web && npm test -- --run` (25 passed); `cd packages/core && uv run pytest tests/test_query_guardrails.py -q` (9 passed); `cd apps/api && $env:DATABASE_URL='postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit'; uv run pytest tests/test_api.py -q -k "guardrail or sandbox or scout or full or batch"` (22 passed, 12 deselected); `git diff --check`; doc stale-string hygiene check.
-Screenshots or report: Documentation-only; W1 gate evidence recorded in `.gstack/qa-reports/gate-w1-red-state-containment.md`; re-QA report for this branch: `.gstack/qa-reports/qa-report-docs-hard-audit-remediation-2026-05-09.md`.
-Northstar reflection: This branch removes stale docs as an excuse for building off the wrong product truth. White Rabbit remains red-gated until lead validation quality passes the phase gates.
-Next pointer: Merge this docs branch to `rebuild/validated-leads-loop`, then begin F04 Query compiler / planner on `feat/f04-query-compiler`.
-Open questions: None blocking docs remediation.
+Feature: F04 Query compiler / planner
+Branch: feat/f04-query-compiler
+Status: implemented_pending_qa
+What changed: Added `packages/core/src/core/query_planner.py`; rewired Tavily search to compile vendor-safe queries before dispatch; added planner tests plus a long Arizona prompt decomposition test.
+Tests or QA run: `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py -q` (5 passed).
+Screenshots or report: Non-UI feature; QA evidence is the pytest run above.
+Northstar reflection: This change reduces the risk of sending Thomas's full benchmark prompt directly to Tavily and keeps the search path under the 400-character vendor limit while preserving named-account decomposition.
+Next pointer: QA `feat/f04-query-compiler`, then merge it to `rebuild/validated-leads-loop` and start F05 Candidate model separation.
+Open questions: None blocking F04 QA.
 ```
 
 ---
@@ -187,10 +187,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## Next concrete task
 
-- After merging `feat/docs-hard-audit-remediation` into `rebuild/validated-leads-loop`, start QA and implementation handoff for **F04 - Query compiler / planner** on branch `feat/f04-query-compiler`:
-  - read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/08-agentic-buildout-plan.md, and F04 feature card
-  - implement and run the F04 verification commands from the feature card
-  - update docs/08-agentic-buildout-plan.md and STATUS.md after handoff
+- QA and merge **F04 - Query compiler / planner** on branch `feat/f04-query-compiler`:
+  - read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/08-agentic-buildout-plan.md, and the F04 feature card
+  - run `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py -q`
+  - verify the long Arizona benchmark compiles into bounded named-account queries under the Tavily limit
+  - update docs/08-agentic-buildout-plan.md and STATUS.md with the QA verdict
   - merge only into `rebuild/validated-leads-loop` after QA
 
 ## Open questions for Matt
@@ -233,6 +234,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-09 | f04-build (Codex) | Implemented F04 query compiler/planner on `feat/f04-query-compiler`: added `packages/core/src/core/query_planner.py`, rewired Tavily search to compile bounded vendor queries, added planner and long-AZ decomposition tests, and verified `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py -q` (5 passed). |
 | 2026-05-09 | docs-hard-audit-remediation (Codex) | Ran repo-wide documentation authority remediation on `feat/docs-hard-audit-remediation`: ADR-006, documentation audit report, active setup/testing/operator doc rewrites, historical banners, QA index repair, W1 gate report, and W1 verification commands. Next pointer remains F04 query compiler/planner after this docs branch merges. |
 | 2026-05-09 | f03-build (Codex) | Implemented and QA-verified F03 guardrail rewrite on `feat/f03-b2b-guardrails`: B2B sales language now clears guardrails, privacy-sensitive and weapon/off-topic prompts are blocked before search, core and API regression tests pass, and feature is merged to `rebuild/validated-leads-loop`. QA report: `qa-report-f03-guardrails-2026-05-09.md`. |
 | 2026-05-09 | f02-build (Codex) | Implemented and QA-verified backend API boundary on `feat/f02-backend-api-boundary`: FastAPI now requires `WR_API_INTERNAL_TOKEN` on `scout/full/batch/sandbox/reset` paths, Next.js proxies forward that token, API tests and web tests pass, browser proxy flow `/scout` is captured, and tokenless `POST` to all four protected endpoints returns 401. |
