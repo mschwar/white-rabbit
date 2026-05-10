@@ -2,8 +2,10 @@
 
 **Rubric:** `docs/qa-rubric.md` — all reports must cite the required tiers.
 
-**Current gate evidence:** W1 red-state containment advanced on 2026-05-09. Product remains red-gated until the phase gates in `docs/09-rebuild-phase-gates.md` say otherwise.
+**Current gate evidence:** W1 red-state containment advanced on 2026-05-09 and was orchestrator-accepted on 2026-05-10. Product remains red-gated until the phase gates in `docs/09-rebuild-phase-gates.md` say otherwise.
 
+- [2026-05-10 — Orchestrator review of W1/F04](orchestrator-review-w1-f04-2026-05-10.md)
+- [2026-05-10 — F04 query compiler](qa-report-f04-query-compiler-2026-05-10.md)
 - [2026-05-09 — W1 red-state containment gate](gate-w1-red-state-containment.md)
 - [2026-05-09 — Documentation authority remediation](qa-report-docs-hard-audit-remediation-2026-05-09.md)
 - [2026-05-09 — F03 guardrails](qa-report-f03-guardrails-2026-05-09.md)

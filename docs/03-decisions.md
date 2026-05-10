@@ -103,9 +103,22 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 ---
 
+## ADR-007 — Wave gate advancement requires orchestrator acceptance
+
+**Date:** 2026-05-10
+**Status:** Locked
+
+**Context.** The phase-gate document required gate reports before downstream waves unlocked, but it also told agents to update next-wave statuses and push accepted-looking gate decisions themselves. That left no explicit pause for the designated orchestrator before agents moved from one wave to the next.
+
+**Decision.** Feature agents may prepare gate evidence and recommend `advance`, `hold`, `revise`, or `rollback`, but downstream waves unlock only after an orchestrator acceptance record exists in the gate report and `STATUS.md`. If acceptance is unavailable in the same session, the next wave remains blocked and the report is marked pending orchestrator review.
+
+**Consequences.** The rebuild remains slower but auditable. Agents cannot self-advance through milestone gates just because tests pass. The current orchestrator may retroactively accept prior gate movement after reviewing evidence, but future downstream unlocks require the acceptance record before implementation starts.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-007, ADR-008, ...).
+1. Pick the next ADR number (ADR-008, ADR-009, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.

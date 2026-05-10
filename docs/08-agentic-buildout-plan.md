@@ -136,36 +136,36 @@ Order is intentional. Early work removes false confidence and protects the bound
 
 Do not pull deferred surfaces back into primary navigation while the gate is red.
 
-Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merge one branch at a time, but the first feature of a downstream wave must stay blocked until the prior wave has an `advance` gate review report.
+Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merge one branch at a time, but the first feature of a downstream wave must stay blocked until the prior wave has an orchestrator-accepted `advance` gate review report.
 
 ## Missing Feature Table
 
-| ID | Feature | Status | Branch | Verification |
-| --- | --- | --- | --- | --- |
-| F00 | Northstar + buildout docs + branch protocol | merged_to_rebuild_branch | feat/f00-agentic-buildout-plan | non-UI docs verification |
-| F01 | Hide premature operator surfaces from primary navigation | merged_to_rebuild_branch | feat/f01-hide-premature-surfaces | browser |
-| F02 | Backend API boundary | merged_to_rebuild_branch | feat/f02-backend-api-boundary | browser + API |
-| F03 | Guardrail rewrite for B2B scope and privacy blocking | merged_to_rebuild_branch | feat/f03-b2b-guardrails | non-UI |
-| F04 | Query compiler / planner | implemented_pending_qa | feat/f04-query-compiler | non-UI |
-| F05 | Candidate model separation | ready | feat/f05-candidate-types | non-UI |
-| F06 | Field-level validation schema | blocked | feat/f06-field-validation-schema | non-UI |
-| F07 | Source validator | blocked | feat/f07-source-validator | non-UI |
-| F08 | Contact status model | blocked | feat/f08-contact-status-model | non-UI |
-| F09 | Ranking gate based on evidence | blocked | feat/f09-ranking-gate | non-UI |
-| F10 | Golden Arizona K-12 VoIP benchmark harness | blocked | feat/f10-arizona-k12-benchmark | non-UI |
-| F11 | Required benchmark suite | blocked | feat/f11-required-benchmark-suite | non-UI |
-| F12 | Per-run quality report | blocked | feat/f12-run-quality-report | non-UI |
-| F13 | Single search-bar UI | blocked | feat/f13-single-search-ui | browser |
-| F14 | Results table with validation buckets | blocked | feat/f14-validation-results-table | browser |
-| F15 | Evidence drawer / dossier | blocked | feat/f15-evidence-drawer | browser |
-| F16 | Export rebuild with validation columns | blocked | feat/f16-validation-export | browser + CSV |
-| F17 | Thomas/Lee correction feedback loop | blocked | feat/f17-corrections-feedback-loop | browser + DB |
-| F18 | Recipe library internal-only policy | deferred | feat/f18-recipes-internal-only | browser |
-| F19 | Batch workspace internal-only policy | deferred | feat/f19-batch-internal-only | browser |
-| F20 | Friday review export internal-only policy | deferred | feat/f20-friday-review-internal-only | browser |
-| F21 | Scoreboards internal-only policy | deferred | feat/f21-scoreboards-internal-only | browser |
-| F22 | Operator minutes internal capture | deferred | feat/f22-operator-minutes-internal | browser |
-| F23 | Sandbox reset internal-only policy | deferred | feat/f23-sandbox-reset-internal | browser |
+| ID  | Feature                                                  | Status                   | Branch                               | Verification             |
+| --- | -------------------------------------------------------- | ------------------------ | ------------------------------------ | ------------------------ |
+| F00 | Northstar + buildout docs + branch protocol              | merged_to_rebuild_branch | feat/f00-agentic-buildout-plan       | non-UI docs verification |
+| F01 | Hide premature operator surfaces from primary navigation | merged_to_rebuild_branch | feat/f01-hide-premature-surfaces     | browser                  |
+| F02 | Backend API boundary                                     | merged_to_rebuild_branch | feat/f02-backend-api-boundary        | browser + API            |
+| F03 | Guardrail rewrite for B2B scope and privacy blocking     | merged_to_rebuild_branch | feat/f03-b2b-guardrails              | non-UI                   |
+| F04 | Query compiler / planner                                 | merged_to_rebuild_branch | feat/f04-query-compiler              | non-UI                   |
+| F05 | Candidate model separation                               | ready                    | feat/f05-candidate-types             | non-UI                   |
+| F06 | Field-level validation schema                            | blocked                  | feat/f06-field-validation-schema     | non-UI                   |
+| F07 | Source validator                                         | blocked                  | feat/f07-source-validator            | non-UI                   |
+| F08 | Contact status model                                     | blocked                  | feat/f08-contact-status-model        | non-UI                   |
+| F09 | Ranking gate based on evidence                           | blocked                  | feat/f09-ranking-gate                | non-UI                   |
+| F10 | Golden Arizona K-12 VoIP benchmark harness               | blocked                  | feat/f10-arizona-k12-benchmark       | non-UI                   |
+| F11 | Required benchmark suite                                 | blocked                  | feat/f11-required-benchmark-suite    | non-UI                   |
+| F12 | Per-run quality report                                   | blocked                  | feat/f12-run-quality-report          | non-UI                   |
+| F13 | Single search-bar UI                                     | blocked                  | feat/f13-single-search-ui            | browser                  |
+| F14 | Results table with validation buckets                    | blocked                  | feat/f14-validation-results-table    | browser                  |
+| F15 | Evidence drawer / dossier                                | blocked                  | feat/f15-evidence-drawer             | browser                  |
+| F16 | Export rebuild with validation columns                   | blocked                  | feat/f16-validation-export           | browser + CSV            |
+| F17 | Thomas/Lee correction feedback loop                      | blocked                  | feat/f17-corrections-feedback-loop   | browser + DB             |
+| F18 | Recipe library internal-only policy                      | deferred                 | feat/f18-recipes-internal-only       | browser                  |
+| F19 | Batch workspace internal-only policy                     | deferred                 | feat/f19-batch-internal-only         | browser                  |
+| F20 | Friday review export internal-only policy                | deferred                 | feat/f20-friday-review-internal-only | browser                  |
+| F21 | Scoreboards internal-only policy                         | deferred                 | feat/f21-scoreboards-internal-only   | browser                  |
+| F22 | Operator minutes internal capture                        | deferred                 | feat/f22-operator-minutes-internal   | browser                  |
+| F23 | Sandbox reset internal-only policy                       | deferred                 | feat/f23-sandbox-reset-internal      | browser                  |
 
 ## Status Rules
 
@@ -178,6 +178,10 @@ Use only these statuses:
 - `qa_failed`: QA found a blocker; same feature branch must be fixed.
 - `merged_to_rebuild_branch`: QA passed and feature branch merged into `rebuild/validated-leads-loop`.
 - `deferred`: intentionally out of the red-gate operator path.
+
+## Gate Advancement Rules
+
+Feature agents may prepare gate evidence, but they must not self-unlock downstream waves. A downstream wave is unlocked only when its gate report records an orchestrator acceptance decision and `STATUS.md` reflects that acceptance.
 
 ## Unblocking Rules
 
@@ -502,13 +506,13 @@ Rollback plan:
 Remove planner module and revert search/orchestrator integration; old direct query path returns.
 
 Next-agent handoff note:
-F04 has completed required non-UI QA (`5 passed`) and is now merged to `rebuild/validated-leads-loop`; begin `feat/f05-candidate-types` next.
+F04 has completed required non-UI QA and is now merged to `rebuild/validated-leads-loop`. Orchestrator review on 2026-05-10 also fixed decomposed Tavily search-count metrics and accepted F05 as ready; begin `feat/f05-candidate-types` next.
 
 ---
 
 ## F05 - Candidate Model Separation
 
-Status: blocked
+Status: ready
 Branch: feat/f05-candidate-types
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini

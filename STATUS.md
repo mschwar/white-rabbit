@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex feat/f04-query-compiler
+**Last updated:** 2026-05-10 by Codex orchestrator-review
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** F04 query compiler/planner merged and handed off; F05 Candidate model separation is now current.
+**Current sprint:** Orchestrator review accepted W1/F04 evidence, repaired gate governance, and kept F05 Candidate model separation current.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,9 +14,11 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F05 Candidate model separation (ready after F04 merge).
+**Next feature pointer:** F05 Candidate model separation (ready after F04 merge and orchestrator review).
 
 **Current feature branch QA status:** `feat/f04-query-compiler` QA passed and merged into `rebuild/validated-leads-loop`; next feature is `feat/f05-candidate-types`.
+
+**Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
 **Control docs:**
 
@@ -31,21 +33,19 @@
 **Latest handoff:**
 
 ```text
-Feature: F04 Query compiler / planner
-Branch: feat/f04-query-compiler
-Status: merged_to_rebuild_branch
-What changed: No implementation changes in this QA session; validated existing F04 planner and search changes against test and benchmark checks.
+Feature: Orchestrator review of W1 gate and F04 merge
+Branch: rebuild/validated-leads-loop
+Status: accepted; product remains red
+What changed: Reviewed F01-F04 evidence against the northstar, reconciled F04/F05 status drift in docs/08, added ADR-007 for orchestrator gate acceptance, updated docs/09 gate mechanics, and fixed F04 Tavily-search metrics so decomposed searches count actual vendor calls.
 Tests or QA run:
-- `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py -q` (5 passed).
-- Arizona benchmark compile verification script:
-  - named-account plan count: 8
-  - vendor query count: 8
-  - max query length: 86 / limit 380
-  - each compiled query contains Arizona + named-account + domain/persona terms
-Screenshots or report: `.gstack/qa-reports/qa-report-f04-query-compiler-2026-05-10.md`
-Northstar reflection: This change de-risks the Arizona benchmark by preventing overlong prompts from reaching Tavily while preserving named-account intent and geographic/domain filters.
-Next pointer: Start `feat/f05-candidate-types` and keep benchmark evidence in place.
-Open questions: None blocking F04 merge.
+- `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py tests/test_query_guardrails.py tests/test_orchestrator.py -q` (22 passed).
+- `cd apps/web && npm test -- --run` (25 passed).
+- `cd apps/api && uv run pytest tests/test_api.py -q -k "guardrail or sandbox or scout or full or batch"` with local Docker `DATABASE_URL` (22 passed, 12 deselected).
+- `git diff --check` (no whitespace errors; Windows CRLF warnings only).
+Screenshots or report: `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md`
+Northstar reflection: W1 and F04 reduce containment and query-planning failures, but the product remains red until candidate categories, field validation, contact status, evidence-backed ranking, benchmarks, and validation export are implemented and gated.
+Next pointer: Start `feat/f05-candidate-types`; do not unlock W3 until F04-F06 pass an orchestrator-accepted W2 gate report.
+Open questions: None blocking F05.
 ```
 
 ---
@@ -189,7 +189,7 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F03 and F04 are merged to `rebuild/validated-leads-loop`; F05 is now ready.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F03 and F04 are merged to `rebuild/validated-leads-loop`; orchestrator review accepted the W1 advance and F04 merge; F05 is now ready.
 
 ## Next concrete task
 
@@ -239,6 +239,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | orchestrator-review (Codex) | Reviewed F01-F04 against the northstar and gate docs, accepted W1/F04 evidence while keeping the product red, fixed F04 Tavily-search metrics, reconciled F04/F05 doc status drift, added ADR-007, and updated gate mechanics so downstream waves require orchestrator acceptance before unlock. |
 | 2026-05-10 | f04-qa (Codex) | QA'd `feat/f04-query-compiler` with required tests (`5 passed`) and long-Arizona bounded-query verification (`8` named-account queries, max length `86/380`), wrote `.gstack/qa-reports/qa-report-f04-query-compiler-2026-05-10.md`, and updated `docs/08-agentic-buildout-plan.md` plus `STATUS.md` for merge handoff. |
 | 2026-05-09 | f04-build (Codex) | Implemented F04 query compiler/planner on `feat/f04-query-compiler`: added `packages/core/src/core/query_planner.py`, rewired Tavily search to compile bounded vendor queries, added planner and long-AZ decomposition tests, and verified `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py -q` (5 passed). |
 | 2026-05-09 | docs-hard-audit-remediation (Codex) | Ran repo-wide documentation authority remediation on `feat/docs-hard-audit-remediation`: ADR-006, documentation audit report, active setup/testing/operator doc rewrites, historical banners, QA index repair, W1 gate report, and W1 verification commands. Next pointer remains F04 query compiler/planner after this docs branch merges. |

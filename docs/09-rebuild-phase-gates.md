@@ -5,7 +5,7 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Companion docs:** `docs/00-product-northstar.md`, `docs/08-agentic-buildout-plan.md`, `docs/qa-rubric.md`.
 
-This document groups the feature cards in `docs/08-agentic-buildout-plan.md` into implementation waves. The two-prompt feature loop still runs one feature branch at a time, but each wave ends with an explicit gate review before the next wave is unlocked.
+This document groups the feature cards in `docs/08-agentic-buildout-plan.md` into implementation waves. The two-prompt feature loop still runs one feature branch at a time, but each wave ends with an explicit gate review and orchestrator acceptance before the next wave is unlocked.
 
 ## Why Gates Exist
 
@@ -42,32 +42,34 @@ The gate review branch must:
 
 - Run the gate's required verification.
 - Write a gate review report under `.gstack/qa-reports/`.
-- Update `docs/08-agentic-buildout-plan.md` statuses only for the next wave being unlocked.
-- Update `STATUS.md` with the gate decision.
-- Commit and push to `rebuild/validated-leads-loop`.
+- Record a recommended gate decision.
+- Stop with the next wave still blocked unless the designated orchestrator is the one performing the review or has explicitly accepted the recommendation.
+- After orchestrator acceptance, update `docs/08-agentic-buildout-plan.md` statuses only for the next wave being unlocked.
+- After orchestrator acceptance, update `STATUS.md` with the gate decision and acceptance record.
+- Commit and push accepted gate changes to `rebuild/validated-leads-loop`.
 
-Gate decisions:
+Gate recommendations and accepted decisions:
 
 - `advance`: criteria met; unlock the first ready feature of the next wave.
 - `hold`: criteria not met; keep next wave blocked and add remediation notes.
 - `revise`: criteria exposed wrong sequencing; update docs before more implementation.
 - `rollback`: a merged feature caused material regression; revert or repair before advancing.
 
-Matt owns the final product gate decision. Agents prepare evidence; they do not declare yellow/green dogfood readiness by vibes.
+The designated orchestrator owns wave gate advancement. Matt owns the final product gate decision. Agents prepare evidence; they do not unlock downstream waves or declare yellow/green dogfood readiness by vibes.
 
 ## Wave Overview
 
 | Wave | Name | Feature range | Gate result | Unlocks |
 | --- | --- | --- | --- | --- |
 | W0 | Control plane | F00 + phase-gate doc | docs complete | W1 |
-| W1 | Red-state containment | F01-F03 | advance on 2026-05-09 (`.gstack/qa-reports/gate-w1-red-state-containment.md`) | W2 |
+| W1 | Red-state containment | F01-F03 | advance on 2026-05-09; orchestrator accepted on 2026-05-10 (`.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md`) | W2 |
 | W2 | Search planning and candidate contract | F04-F06 | typed bounded search contract | W3 |
 | W3 | Validation and ranking engine | F07-F09 | false-confidence controls | W4 |
 | W4 | Benchmarks and quality reporting | F10-F12 | quality gates measurable and passing threshold | W5 |
 | W5 | Operator loop and export | F13-F16 | query-to-export browser path works with validation | W6 |
 | W6 | Feedback and dogfood decision | F17 + deferred policy review | yellow/green decision evidence | post-rebuild roadmap |
 
-No wave may unlock only because all previous features are merged. It unlocks when the gate review passes.
+No wave may unlock only because all previous features are merged. It unlocks when the gate review passes and the designated orchestrator accepts the decision.
 
 ## W0 - Control Plane
 
@@ -434,19 +436,28 @@ Hold examples:
 
 When a wave gate advances:
 
-1. Update `docs/08-agentic-buildout-plan.md` so the first feature in the next wave has `Status: ready`.
-2. Keep later features in that wave blocked unless they are truly independent and safe to parallelize.
-3. Update the feature table in `docs/08-agentic-buildout-plan.md`.
-4. Update `STATUS.md` with the gate report path, decision, next feature pointer, and current red/yellow/green gate.
-5. Commit with a message like `docs(gate): advance to wave 2 search contract`.
+1. Record orchestrator acceptance in the gate report and `STATUS.md`.
+2. Update `docs/08-agentic-buildout-plan.md` so the first feature in the next wave has `Status: ready`.
+3. Keep later features in that wave blocked unless they are truly independent and safe to parallelize.
+4. Update the feature table in `docs/08-agentic-buildout-plan.md`.
+5. Update `STATUS.md` with the gate report path, decision, next feature pointer, and current red/yellow/green gate.
+6. Commit with a message like `docs(gate): advance to wave 2 search contract`.
+
+When an agent prepares a gate recommendation but cannot get orchestrator acceptance in the same session:
+
+1. Leave the next wave blocked.
+2. Set the gate report decision to a recommendation, not final advancement.
+3. Update `STATUS.md` with "pending orchestrator review" and the next review pointer.
+4. Do not start the first downstream feature.
 
 When a wave gate holds:
 
 1. Keep the next wave blocked.
-2. Add remediation bullets to the gate report.
-3. Add or adjust feature cards only if the current sequence cannot satisfy the gate.
-4. Update `STATUS.md` with the hold decision and next remediation pointer.
-5. Do not continue into downstream UI or export work to "make progress."
+2. Keep all features in the next wave blocked.
+3. Add remediation bullets to the gate report.
+4. Add or adjust feature cards only if the current sequence cannot satisfy the gate.
+5. Update `STATUS.md` with the hold decision and next remediation pointer.
+6. Do not continue into downstream UI or export work to "make progress."
 
 ## Gate Report Template
 
@@ -458,7 +469,9 @@ Use `.gstack/qa-reports/qa-template-agentic-buildout.md` for feature QA. For wav
 **Branch:**
 **Integration branch:** rebuild/validated-leads-loop
 **Date:**
-**Decision:** advance / hold / revise / rollback
+**Prepared recommendation:** advance / hold / revise / rollback
+**Orchestrator decision:** advance / hold / revise / rollback / pending
+**Orchestrator acceptance:** name/date or pending
 **Current product gate:** red / yellow / green
 
 ## Features Included
@@ -490,6 +503,7 @@ Use `.gstack/qa-reports/qa-template-agentic-buildout.md` for feature QA. For wav
 ## Agent Rules
 
 - Do not unlock a downstream wave inside a normal feature branch.
+- Do not unlock a downstream wave from a gate branch without an orchestrator acceptance record.
 - Do not mark the product yellow or green without a gate review report.
 - Do not build UI for data contracts that do not exist yet.
 - Do not create broad "wave implementation" branches. Waves are gates; features remain atomic.
