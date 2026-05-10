@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex build-loop-blocked-no-ready-feature
+**Last updated:** 2026-05-10 by Codex f19-promotion
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** W5 operator loop and export gate remains in motion; F15, F16, F17, and F18 are merged to `rebuild/validated-leads-loop`, and the queue remains blocked waiting on Matt to promote the next deferred internal-only feature.
+**Current sprint:** W5 operator loop and export gate remains in motion; F15, F16, F17, and F18 are merged to `rebuild/validated-leads-loop`, and Matt has now promoted F19 as the only ready deferred internal-only follow-on feature.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,9 +14,9 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** No `ready` feature is currently unlocked. F18 Recipe Library Internal-Only Policy is QA-passed and merged; F19-F23 remain deferred until Matt explicitly promotes the next feature or the launch gate changes.
+**Next feature pointer:** F19 Batch Workspace Internal-Only Policy is now `ready`. Prompt A should create `feat/f19-batch-internal-only` from `rebuild/validated-leads-loop`. F20-F23 remain deferred until Matt explicitly promotes another feature or the launch gate changes.
 
-**Current feature branch QA status:** No feature branch is currently awaiting QA. `feat/f18-recipes-internal-only` passed Prompt B browser QA on `/` and `/recipes` and is merged into `rebuild/validated-leads-loop`.
+**Current feature branch QA status:** No feature branch is awaiting QA yet. The next required step is Prompt A on F19 only; Prompt B should QA only `feat/f19-batch-internal-only` against its card verification after that branch is created and pushed.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -42,20 +42,16 @@ Prior accepted gates:
 **Latest handoff:**
 
 ```text
-Feature: F18 - Recipe Library Internal-Only Policy
-Branch: feat/f18-recipes-internal-only
-Status: merged_to_rebuild_branch
-What changed: Matt explicitly promoted F18 so the rebuild loop could continue without changing the broader red-gate defer policy. The `/recipes` surface now carries explicit internal-only evaluation labeling while recipes remain absent from the primary `/` lead-search path, and Prompt B QA has now verified both routes.
+Feature: F19 - Batch Workspace Internal-Only Policy
+Branch: feat/f19-batch-internal-only
+Status: ready
+What changed: Matt explicitly promoted exactly one deferred follow-on feature so the rebuild loop can resume without changing the broader red-gate defer policy. F19 is now the only ready internal-only card; F20-F23 stay deferred.
 Tests or QA run:
- - `cd apps/web && npm test -- --run src/components/__tests__/recipes-library.test.tsx src/app/__tests__/page.test.tsx`
- - `cd apps/web && npm run build`
- - Browser QA on `http://localhost:3000/` and `http://localhost:3000/recipes`
+ - none yet; this is the promotion step only
 Screenshots or report:
- - `.gstack/qa-reports/qa-report-f18-recipes-internal-only-2026-05-10.md`
- - `.gstack/qa-reports/screenshots/f18-01-home-no-recipe-nav.png`
- - `.gstack/qa-reports/screenshots/f18-02-recipes-internal-only.png`
-Northstar reflection: Pass; this tightens a red-state internal surface without reopening recipes in the operator flow or touching search/extraction.
-Next pointer: No `ready` feature remains. Keep F19-F23 deferred unless Matt explicitly promotes the next internal-only surface.
+ - none yet; Prompt B should capture the F19 browser evidence after Prompt A pushes the branch
+Northstar reflection: Pass; this keeps scope narrow and continues the red-state policy work one internal-only surface at a time instead of reopening broader operator surfaces.
+Next pointer: Run Prompt A for F19 only, create `feat/f19-batch-internal-only`, then have Prompt B QA only that feature against its card verification.
 Open questions: none blocking
 ```
 
@@ -206,11 +202,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F14 are merged to `rebuild/validated-leads-loop`; W2, W3, and W4 are orchestrator-accepted. `F15`, `F16`, `F17`, and `F18` are merged to `rebuild/validated-leads-loop`; no downstream deferred feature is promoted yet.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F14 are merged to `rebuild/validated-leads-loop`; W2, W3, and W4 are orchestrator-accepted. `F15`, `F16`, `F17`, and `F18` are merged to `rebuild/validated-leads-loop`; `F19` is now promoted to `ready` and all later deferred surfaces remain locked.
 
 ## Next concrete task
 
-- Wait for Matt to promote the next deferred internal-only feature from F19-F23 or change the red-gate defer policy; there is no `ready` feature to branch or QA right now.
+- Run Prompt A for `F19` only on `feat/f19-batch-internal-only`, then run Prompt B QA only against the F19 card verification. Keep F20-F23 deferred.
 
 ## Open questions for Matt
 
@@ -255,6 +251,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | f19-promotion (Codex) | Matt explicitly promoted F19 only. Updated `docs/08-agentic-buildout-plan.md` and `STATUS.md` so `F19` is the sole `ready` deferred follow-on feature, with explicit instructions that Prompt A should create `feat/f19-batch-internal-only` next and Prompt B should QA only that card verification afterward. |
 | 2026-05-10 | build-loop-blocked-no-ready-feature (Codex) | Re-read AGENTS plus the active rebuild docs, fast-forward checked `rebuild/validated-leads-loop` against `origin/rebuild/validated-leads-loop`, and revalidated that no feature card is currently `ready`. F19-F23 remain intentionally `deferred`, so no feature branch was created and the next build prompt needs Matt to explicitly promote one deferred internal-only feature or change the red-gate policy first. |
 | 2026-05-10 | f18-qa (Codex) | QA'd `feat/f18-recipes-internal-only` with `cd apps/web && npm test -- --run src/components/__tests__/recipes-library.test.tsx src/app/__tests__/page.test.tsx`, `cd apps/web && npm run build`, and browser verification on `http://localhost:3000/` plus `http://localhost:3000/recipes`; confirmed `/` still has no recipe navigation, confirmed `/recipes` is explicitly labeled internal evaluation only, captured `.gstack/qa-reports/screenshots/f18-01-home-no-recipe-nav.png` and `.gstack/qa-reports/screenshots/f18-02-recipes-internal-only.png`, wrote `.gstack/qa-reports/qa-report-f18-recipes-internal-only-2026-05-10.md`, and prepared the branch for merge into `rebuild/validated-leads-loop`. |
 | 2026-05-10 | f16-export (Codex) | Built `feat/f16-validation-export` with validation-aware CSV export rows, updated the Scout workspace export flow, and added a QA-only fixture hook for `qa=validation-buckets`. Verified with `cd apps/web && npm test -- --run src/lib/__tests__/full-export.test.ts src/components/__tests__/scout-workspace.test.tsx` (`9` passed) and browser QA on `http://localhost:3000/scout?qa=validation-buckets`; screenshots saved at `.gstack/qa-reports/screenshots/f16-01-export-control.png`, `.gstack/qa-reports/screenshots/f16-02-export-ready.png`, and `.gstack/qa-reports/screenshots/f16-03-csv-content.png`. |
