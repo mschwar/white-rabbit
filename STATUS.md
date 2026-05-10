@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex build-loop-blocked-no-ready-feature
+**Last updated:** 2026-05-10 by Codex feat-f18-recipes-internal-only
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** W5 operator loop and export gate in motion; F15 and F16 are merged, and F17 correction feedback loop is QA’d and merged to `rebuild/validated-leads-loop`.
+**Current sprint:** W5 operator loop and export gate in motion; F15, F16, and F17 are merged, and F18 recipe internal-only labeling is now implemented on `feat/f18-recipes-internal-only` pending QA.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,9 +14,9 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** No `ready` feature. F18 Recipe Library Internal-Only Policy (`feat/f18-recipes-internal-only`) remains deferred until the launch gate is yellow or Matt explicitly promotes a deferred feature to `ready`.
+**Next feature pointer:** F18 Recipe Library Internal-Only Policy (`feat/f18-recipes-internal-only`) was explicitly promoted on 2026-05-10 and is now `implemented_pending_qa`.
 
-**Current feature branch QA status:** `feat/f17-corrections-feedback-loop` has build verification, browser QA on the validation-buckets fixture route, direct API smoke checks, and screenshots/report saved under `.gstack/qa-reports/`; it is merged into `rebuild/validated-leads-loop`.
+**Current feature branch QA status:** `feat/f18-recipes-internal-only` has build verification and is awaiting Prompt B browser QA on `/` and `/recipes`. `feat/f17-corrections-feedback-loop` is already QA’d and merged into `rebuild/validated-leads-loop`.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -42,21 +42,16 @@ Prior accepted gates:
 **Latest handoff:**
 
 ```text
-Feature: F17 - Thomas/Lee Correction Feedback Loop
-Branch: feat/f17-corrections-feedback-loop
-Status: merged_to_rebuild_branch
-What changed: Correction records now store lead and run identifiers as text so the validation-buckets fixture can save synthetic corrections without foreign key failures. The API, Alembic migration, web correction loop, and tests now support saving a correction against Jane Smith and exporting the review queue JSON.
+Feature: F18 - Recipe Library Internal-Only Policy
+Branch: feat/f18-recipes-internal-only
+Status: implemented_pending_qa
+What changed: Matt explicitly promoted F18 so the rebuild loop could continue without changing the broader red-gate defer policy. The `/recipes` surface now carries explicit internal-only evaluation labeling while recipes remain absent from the primary `/` lead-search path.
 Tests or QA run:
- - `cd apps/api && uv run pytest tests/test_api.py -q` (`40 passed`)
- - `cd apps/web && npm test -- --run src/components/__tests__/scout-workspace.test.tsx` (`8 passed`)
- - Direct API smoke checks against `POST /leads/qa-usable-1/corrections` and `GET /runs/qa-validation-buckets-run/corrections` returned `200 OK`
- - Browser QA on `http://localhost:3000/scout?qa=validation-buckets` after login with the shared password from `apps/web/.env.local`
+ - `cd apps/web && npm test -- --run src/components/__tests__/recipes-library.test.tsx src/app/__tests__/page.test.tsx`
 Screenshots or report:
- - `.gstack/qa-reports/screenshots/f17-01-correction-drawer.png`
- - `.gstack/qa-reports/screenshots/f17-02-correction-queue-export.png`
- - `.gstack/qa-reports/qa-report-f17-correction-feedback-loop-2026-05-10.md`
-Northstar reflection: Pass; the feedback loop improves validation and the review queue instead of disappearing into generic feedback buttons.
-Next pointer: F18 is deferred until the launch gate is yellow.
+ - pending Prompt B browser QA on `/` and `/recipes`
+Northstar reflection: Pass; this tightens a red-state internal surface without reopening recipes in the operator flow or touching search/extraction.
+Next pointer: Run Prompt B against `feat/f18-recipes-internal-only`, then decide whether F19 stays deferred or another deferred feature should be explicitly promoted.
 Open questions: none blocking
 ```
 
@@ -207,13 +202,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F14 are merged to `rebuild/validated-leads-loop`; W2, W3, and W4 are orchestrator-accepted. `F15`, `F16`, and `F17` are merged to `rebuild/validated-leads-loop`; the next candidate is F18, but it remains deferred until the launch gate is yellow.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F14 are merged to `rebuild/validated-leads-loop`; W2, W3, and W4 are orchestrator-accepted. `F15`, `F16`, and `F17` are merged to `rebuild/validated-leads-loop`; `F18` is now implemented on its feature branch and waiting for QA.
 
 ## Next concrete task
 
-- No rebuild feature is currently `ready`. Before the next build prompt, Matt must either:
-  - move one deferred feature (`F18`-`F23`) to `ready`, or
-  - change the launch-gate/defer policy that is currently blocking those features.
+- Run Prompt B on `feat/f18-recipes-internal-only` and merge only into `rebuild/validated-leads-loop` if browser QA confirms `/recipes` is clearly internal-only and `/` still excludes recipe navigation.
 
 ## Open questions for Matt
 
