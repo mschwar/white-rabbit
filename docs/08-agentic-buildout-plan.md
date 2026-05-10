@@ -5,7 +5,7 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
 **Next feature pointer:** F11 Required benchmark suite (blocked).
-**Current feature QA handoff:** `feat/f10-arizona-k12-benchmark` passed required non-UI QA and is queued for merge to `rebuild/validated-leads-loop` only.
+**Current feature QA handoff:** `feat/f10-arizona-k12-benchmark` passed required non-UI QA and has been merged to `rebuild/validated-leads-loop`.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 

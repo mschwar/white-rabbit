@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-05-10 by Codex feat/f10-arizona-k12-benchmark-qa
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** F10 Golden Arizona K-12 VoIP benchmark harness QA complete; merge to `rebuild/validated-leads-loop` in progress.
+**Current sprint:** F10 Golden Arizona K-12 VoIP benchmark harness QA complete and merged to `rebuild/validated-leads-loop`.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -16,7 +16,7 @@
 
 **Next feature pointer:** F11 Required benchmark suite (`feat/f11-required-benchmark-suite`, blocked).
 
-**Current feature branch QA status:** `feat/f10-arizona-k12-benchmark` passed required non-UI QA; ready for merge into `rebuild/validated-leads-loop`.
+**Current feature branch QA status:** `feat/f10-arizona-k12-benchmark` passed required non-UI QA and is merged to `rebuild/validated-leads-loop`.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
