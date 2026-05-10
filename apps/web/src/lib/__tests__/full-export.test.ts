@@ -1,31 +1,150 @@
 import { expect, test } from 'vitest';
 import { buildFullLeadExportCsv, buildFullLeadExportFilename, buildFullLeadExportRows } from '../full-export';
+import type { CandidateValidation, ScoutResultRow } from '../scout';
 
-test('builds a lead export csv with validation context and metadata', () => {
-  const rows = buildFullLeadExportRows({
+function makeValidation(statuses: {
+  name?: CandidateValidation['name']['status'];
+  title?: CandidateValidation['title']['status'];
+  organization?: CandidateValidation['organization']['status'];
+  email?: CandidateValidation['email']['status'];
+  phone?: CandidateValidation['phone']['status'];
+  source?: CandidateValidation['source']['status'];
+} = {}): CandidateValidation {
+  const field = (status: CandidateValidation['name']['status'], label: string) => ({
+    status,
+    source_url: `https://validation.example.com/${label}`,
+    evidence_snippet: `${label} ${status} evidence`,
+    checked_at: '2026-05-10T12:00:00Z',
+    notes: `${label} ${status} notes`,
+  });
+
+  const contact = (status: CandidateValidation['email']['status'], label: string) => ({
+    status,
+    source_url: `https://validation.example.com/${label}`,
+    evidence_snippet: `${label} ${status} evidence`,
+    checked_at: '2026-05-10T12:00:00Z',
+    notes: `${label} ${status} notes`,
+  });
+
+  return {
+    name: field(statuses.name ?? 'supported', 'name'),
+    title: field(statuses.title ?? 'supported', 'title'),
+    organization: field(statuses.organization ?? 'supported', 'organization'),
+    email: contact(statuses.email ?? 'verified_found', 'email'),
+    phone: contact(statuses.phone ?? 'missing', 'phone'),
+    source: field(statuses.source ?? 'supported', 'source'),
+  };
+}
+
+function parseCsv(csv: string): Array<Record<string, string>> {
+  const [headerLine, ...lines] = csv.trim().split('\n');
+  const headers = headerLine.split(',');
+
+  return lines.map((line) => {
+    const values = line.split(',');
+    return Object.fromEntries(headers.map((header, index) => [header, values[index] ?? '']));
+  });
+}
+
+test('builds a validation export csv with candidate categories and validation notes', () => {
+  const rows: ScoutResultRow[] = [
+    {
+      candidate_category: 'person_lead',
+      name: 'Jane Smith',
+      title: 'Director of Technology',
+      organization: 'Albuquerque Public Schools',
+      email: 'jane.smith@aps.edu',
+      email_status: 'Found',
+      source_url: 'https://aps.edu/jane-smith',
+      confidence: 0.92,
+      why_target: 'Strong district fit with current leadership evidence and usable email.',
+      icebreaker: 'Mentioned in a district technology initiative note.',
+      fit_score: 0.91,
+      evidence_score: 0.84,
+      contact_score: 0.79,
+      gate_passed: true,
+      explanation: 'Strong district fit with current leadership evidence and usable email.',
+      validation: makeValidation(),
+    },
+    {
+      candidate_category: 'person_lead',
+      name: 'Noisy Lead',
+      title: 'Director of Operations',
+      organization: 'Noisy Schools',
+      email: 'noisy@example.com',
+      email_status: 'Found',
+      source_url: 'https://noisy.example.com',
+      confidence: 0.44,
+      why_target: 'Weak fit',
+      icebreaker: 'Weak fit',
+      fit_score: 0.31,
+      evidence_score: 0.24,
+      contact_score: 0.2,
+      gate_passed: false,
+      explanation: 'Person lead that did not clear the gate.',
+      validation: makeValidation({
+        name: 'supported',
+        title: 'supported',
+        organization: 'supported',
+        email: 'failed',
+        phone: 'missing',
+        source: 'supported',
+      }),
+    },
+    {
+      candidate_category: 'organization_only',
+      organization: 'Example Corp',
+      source_url: 'https://example.com',
+      explanation: 'Organization-only row.',
+      validation: makeValidation({
+        name: 'unsupported',
+        title: 'unsupported',
+        organization: 'supported',
+        email: 'missing',
+        phone: 'missing',
+        source: 'supported',
+      }),
+    },
+    {
+      candidate_category: 'not_found',
+      searched_target: 'Ghost District',
+      organization: 'Ghost District',
+      source_url: 'https://ghost.example.com',
+      explanation: 'No acceptable contact was found.',
+      validation: makeValidation({
+        name: 'unsupported',
+        title: 'unsupported',
+        organization: 'unsupported',
+        email: 'missing',
+        phone: 'missing',
+        source: 'supported',
+      }),
+    },
+    {
+      candidate_category: 'failed',
+      searched_target: 'Broken District',
+      failure_reason: 'Source was inaccessible.',
+      organization: 'Broken District',
+      source_url: 'https://broken.example.com',
+      explanation: 'The candidate could not be trusted.',
+      validation: makeValidation({
+        name: 'unsupported',
+        title: 'unsupported',
+        organization: 'unsupported',
+        email: 'failed',
+        phone: 'failed',
+        source: 'failed',
+      }),
+    },
+  ];
+
+  const exportRows = buildFullLeadExportRows({
     query: 'K-12 IT directors in Albuquerque',
     location: 'New Mexico',
     recipeName: 'District leadership',
     runId: 'run-1',
     sortMode: 'fit',
-    leads: [
-      {
-        name: 'Jane Smith',
-        title: 'Director of Technology',
-        organization: 'Albuquerque Public Schools',
-        email: 'jane.smith@aps.edu',
-        email_status: 'Found',
-        source_url: 'https://aps.edu/tech',
-        confidence: 0.88,
-        why_target: 'Owns district telecom decisions',
-        icebreaker: 'I noticed APS is growing its classroom connectivity needs.',
-        fit_score: 0.91,
-        evidence_score: 0.84,
-        contact_score: 0.79,
-        gate_passed: true,
-        explanation: 'Strong district fit with current leadership evidence and usable email.',
-      },
-    ],
+    rows,
     guardrail: {
       status: 'clear',
       message: 'Query guardrail clear.',
@@ -35,17 +154,61 @@ test('builds a lead export csv with validation context and metadata', () => {
     generatedAt: new Date('2026-05-06T12:34:56.000Z'),
   });
 
-  expect(rows).toHaveLength(1);
-  expect(rows[0].recipeName).toBe('District leadership');
-  expect(rows[0].validationContext).toContain('Query guardrail clear.');
-  expect(rows[0].validationContext).toContain('Sort mode: fit.');
-  expect(rows[0].validationContext).toContain('Validated from source https://aps.edu/tech.');
+  expect(exportRows).toHaveLength(5);
+  expect(exportRows[0].candidateCategory).toBe('person_lead');
+  expect(exportRows[0].usableCandidate).toBe('yes');
+  expect(exportRows[0].leadName).toBe('Jane Smith');
+  expect(exportRows[0].email).toBe('jane.smith@aps.edu');
+  expect(exportRows[0].emailStatus).toBe('verified_found');
+  expect(exportRows[0].phone).toBe('');
+  expect(exportRows[0].phoneStatus).toBe('missing');
+  expect(exportRows[0].rankingGate).toBe('usable');
+  expect(exportRows[0].sourceAccessStatus).toBe('supported');
+  expect(exportRows[0].validationNotes).toContain('Bucket: usable');
+  expect(exportRows[0].validationNotes).toContain('Field statuses: name=supported; title=supported; organization=supported; email=verified_found; phone=missing; source=supported');
+  expect(exportRows[0].checkedAt).toBe('2026-05-10T12:00:00Z');
 
-  const csv = buildFullLeadExportCsv(rows);
-  expect(csv).toContain('generated_at,sort_mode,recipe_name,query,location,run_id,rank,name,title,organization,email,email_status,source_url,fit_score,evidence_score,contact_score,gate_passed,why_target,explanation,icebreaker,validation_context');
-  expect(csv).toContain('District leadership');
-  expect(csv).toContain('Jane Smith');
-  expect(csv).toContain('yes');
+  expect(exportRows[1].usableCandidate).toBe('no');
+  expect(exportRows[1].email).toBe('');
+  expect(exportRows[1].emailStatus).toBe('failed');
+  expect(exportRows[1].rankingGate).toBe('noisy_failed');
+  expect(exportRows[1].fitScore).toBe('0.31');
+
+  expect(exportRows[2].candidateCategory).toBe('organization_only');
+  expect(exportRows[2].leadName).toBe('');
+  expect(exportRows[2].title).toBe('');
+  expect(exportRows[2].email).toBe('');
+  expect(exportRows[2].emailStatus).toBe('missing');
+  expect(exportRows[2].rankingGate).toBe('organization_only');
+
+  expect(exportRows[3].candidateCategory).toBe('not_found');
+  expect(exportRows[3].organization).toBe('Ghost District');
+  expect(exportRows[3].rankingGate).toBe('not_found');
+
+  expect(exportRows[4].candidateCategory).toBe('failed');
+  expect(exportRows[4].usableCandidate).toBe('no');
+  expect(exportRows[4].emailStatus).toBe('failed');
+  expect(exportRows[4].rankingGate).toBe('noisy_failed');
+  expect(exportRows[4].validationNotes).toContain('Failure: Source was inaccessible.');
+
+  const csv = buildFullLeadExportCsv(exportRows);
+  const parsed = parseCsv(csv);
+
+  expect(csv).toContain(
+    'generated_at,sort_mode,recipe_name,query,location,run_id,rank,candidate_category,usable_candidate,lead_name,title,organization,email,email_status,phone,phone_status,fit_score,evidence_score,contact_score,ranking_gate,source_name_url,source_title_url,source_org_url,source_email_url,source_phone_url,source_access_status,validation_notes,checked_at',
+  );
+  expect(parsed).toHaveLength(5);
+  expect(parsed[0].candidate_category).toBe('person_lead');
+  expect(parsed[0].lead_name).toBe('Jane Smith');
+  expect(parsed[0].email).toBe('jane.smith@aps.edu');
+  expect(parsed[0].phone).toBe('');
+  expect(parsed[2].candidate_category).toBe('organization_only');
+  expect(parsed[2].lead_name).toBe('');
+  expect(parsed[2].email_status).toBe('missing');
+  expect(parsed[2].ranking_gate).toBe('organization_only');
+  expect(parsed[4].candidate_category).toBe('failed');
+  expect(parsed[4].email).toBe('');
+  expect(parsed[4].validation_notes).toContain('Failure: Source was inaccessible.');
 });
 
 test('builds a stable lead export filename', () => {

@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F16 Validation Export (`feat/f16-validation-export`, blocked).
-**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F15 has been QA’d and merged to `rebuild/validated-leads-loop` on this branch; F16 remains blocked.
+**Next feature pointer:** F16 Validation Export (`feat/f16-validation-export`, implemented_pending_qa).
+**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F15 has been QA’d and merged to `rebuild/validated-leads-loop` on this branch; F16 export rebuild is built, browser-verified on the fixture route, and waiting for merge.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -158,7 +158,7 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F13 | Single search-bar UI                                     | merged_to_rebuild_branch | feat/f13-single-search-ui            | browser                  |
 | F14 | Results table with validation buckets                    | merged_to_rebuild_branch | feat/f14-validation-results-table    | browser                  |
 | F15 | Evidence drawer / dossier                                | merged_to_rebuild_branch | feat/f15-evidence-drawer             | browser                  |
-| F16 | Export rebuild with validation columns                   | blocked                  | feat/f16-validation-export           | browser + CSV            |
+| F16 | Export rebuild with validation columns                   | implemented_pending_qa   | feat/f16-validation-export           | browser + CSV            |
 | F17 | Thomas/Lee correction feedback loop                      | blocked                  | feat/f17-corrections-feedback-loop   | browser + DB             |
 | F18 | Recipe library internal-only policy                      | deferred                 | feat/f18-recipes-internal-only       | browser                  |
 | F19 | Batch workspace internal-only policy                     | deferred                 | feat/f19-batch-internal-only         | browser                  |
@@ -1128,7 +1128,7 @@ F16 should export the same evidence fields shown here; feature is blocked until 
 
 ## F16 - Export Rebuild With Validation Columns
 
-Status: blocked
+Status: implemented_pending_qa
 Branch: feat/f16-validation-export
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -1164,6 +1164,15 @@ Browser-testable:
 - route: primary search/results route.
 - steps: run or load fixture results, build export, open/inspect CSV content.
 - required screenshots: export control, export ready state, CSV content or QA report excerpt.
+
+Build result:
+- `cd apps/web && npm test -- --run src/lib/__tests__/full-export.test.ts src/components/__tests__/scout-workspace.test.tsx` (2 files, 9 tests passed)
+- Browser QA on `http://localhost:3000/scout?qa=validation-buckets` after login with the shared password from `apps/web/.env.local`
+- Screenshots saved:
+  - `.gstack/qa-reports/screenshots/f16-01-export-control.png`
+  - `.gstack/qa-reports/screenshots/f16-02-export-ready.png`
+  - `.gstack/qa-reports/screenshots/f16-03-csv-content.png`
+- CSV header now includes the required validation columns and the fixture export emitted 5 rows.
 
 Atomic commit plan:
 - commit 1: `feat(export): include field validation columns`

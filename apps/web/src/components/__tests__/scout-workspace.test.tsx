@@ -480,7 +480,7 @@ test('builds a CSV export from a full run', async () => {
   expect(await screen.findByText(/full run saved for internal review/i)).toBeDefined();
   expect(screen.queryByRole('link', { name: /open recipe library/i })).toBeNull();
 
-  fireEvent.click(screen.getByRole('button', { name: /build lead export/i }));
+  fireEvent.click(screen.getByRole('button', { name: /build validation export/i }));
 
   expect(await screen.findByRole('link', { name: /download csv/i })).toHaveAttribute(
     'download',
@@ -488,7 +488,7 @@ test('builds a CSV export from a full run', async () => {
   );
   expect(
     screen.getByText(
-      /includes lead details, contact status, source URL, scores, gate status, rationale, and validation context/i,
+      /includes candidate category, usable flags, field and contact statuses, source support, scores, gate status, and validation notes/i,
     ),
   ).toBeDefined();
 });

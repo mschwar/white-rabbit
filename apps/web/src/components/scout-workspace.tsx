@@ -442,6 +442,12 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
       .catch(() => undefined);
   }, []);
 
+  useEffect(() => {
+    if (process.env.NODE_ENV !== 'production' && window.location.search.includes('qa=validation-buckets')) {
+      setMode('full');
+    }
+  }, []);
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -473,7 +479,22 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
 
     try {
       if (process.env.NODE_ENV !== 'production' && window.location.search.includes('qa=validation-buckets')) {
+        const fixtureResult: FullResponse = {
+          run_id: 'qa-validation-buckets-run',
+          recipe_id: 'qa-validation-buckets-recipe',
+          leads: QA_VALIDATION_BUCKETS_FIXTURE.leads,
+          metrics: QA_VALIDATION_BUCKETS_FIXTURE.metrics,
+          query_guardrail: null,
+          sandbox_usage: null,
+        };
+
         setResults(QA_VALIDATION_BUCKETS_FIXTURE);
+        if (!primaryMode && mode === 'full') {
+          setFullResult(fixtureResult);
+          setSubmittedQuery(submittedQuery);
+          setSubmittedLocation(submittedLocation);
+          setSubmittedRecipeName(submittedRecipeName);
+        }
         setQueryGuardrail(null);
         setSandboxUsage(null);
         return;
@@ -616,7 +637,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
       recipeName: submittedRecipeName ?? (recipeName || query),
       runId: fullResult.run_id,
       sortMode,
-      leads: displayedLeads,
+      rows: displayedRows,
       guardrail: fullResult.query_guardrail ?? null,
       generatedAt,
     });
@@ -632,7 +653,6 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
 
   const displayedResults = results;
   const displayedRows = displayedResults ? sortScoutResultRows(displayedResults.leads, sortMode) : [];
-  const displayedLeads = displayedRows.filter(isPersonLead);
 
   return (
     <main className="min-h-screen bg-zinc-950 px-6 py-10 text-zinc-50">
@@ -832,15 +852,15 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                 onClick={handleBuildLeadExport}
                 type="button"
               >
-                {leadExport ? 'Rebuild export' : 'Build lead export'}
+                {leadExport ? 'Rebuild validation export' : 'Build validation export'}
               </button>
             </div>
             {closeMessage ? <p className="text-xs text-emerald-100">{closeMessage}</p> : null}
             {leadExport ? (
               <div className="rounded-2xl border border-white/10 bg-zinc-950/70 px-4 py-3 text-sm text-zinc-200">
-                <p className="font-semibold text-zinc-50">Lead export ready</p>
+                <p className="font-semibold text-zinc-50">Validation export ready</p>
                 <p className="mt-1 text-zinc-300">
-                  {leadExport.rowCount} leads · generated {leadExport.generatedAtLabel}
+                  {leadExport.rowCount} row{leadExport.rowCount === 1 ? '' : 's'} · generated {leadExport.generatedAtLabel}
                 </p>
                 <a
                   className="mt-3 inline-flex rounded-full border border-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-50 transition hover:bg-white/10"
@@ -850,7 +870,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                   Download CSV
                 </a>
                 <p className="mt-2 text-xs leading-6 text-zinc-400">
-                  Includes lead details, contact status, source URL, scores, gate status, rationale, and validation context.
+                  Includes candidate category, usable flags, field and contact statuses, source support, scores, gate status, and validation notes.
                 </p>
               </div>
             ) : null}

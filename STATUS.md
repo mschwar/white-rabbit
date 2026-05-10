@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex f15-qa
+**Last updated:** 2026-05-10 by Codex f16-export
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** W4 benchmarks and quality reporting gate accepted; F15 is merged, F16 is blocked behind next export work.
+**Current sprint:** W5 operator loop and export gate in motion; F15 is merged, and F16 export rebuild is built and browser-verified, waiting for merge.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,9 +14,9 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F16 Validation Export Rebuild (`feat/f16-validation-export`, blocked).
+**Next feature pointer:** F16 Validation Export Rebuild (`feat/f16-validation-export`, implemented_pending_qa).
 
-**Current feature branch QA status:** `feat/f15-evidence-drawer` has passed QA and is merged to `rebuild/validated-leads-loop`. The drawer opens from validation rows, shows field-level status/source URL/checked_at/notes/evidence snippet, and passed browser verification on the local fixture route with shared-password login on localhost.
+**Current feature branch QA status:** `feat/f16-validation-export` has build verification and browser QA on the local fixture route. The export now includes validation columns, candidate categories, and a CSV row set saved under `.gstack/qa-reports/screenshots/`.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -42,17 +42,19 @@ Prior accepted gates:
 **Latest handoff:**
 
 ```text
-Feature: F15 - Evidence Drawer Or Dossier
-Branch: feat/f15-evidence-drawer
-Status: merged_to_rebuild_branch
-What changed: Added a right-side evidence drawer from validation rows. The drawer shows field-level source support for name, title, organization, email, phone, and source, with status, source URL, checked_at, notes, and evidence snippet per field.
+Feature: F16 - Export Rebuild With Validation Columns
+Branch: feat/f16-validation-export
+Status: implemented_pending_qa
+What changed: Rebuilt the export helper and Scout workspace export flow so the CSV now carries candidate category, usable_candidate, lead_name, title, organization, email and contact statuses, per-field source URLs, source access status, validation notes, and checked_at. The export now includes all displayed rows, not just person leads, and the QA fixture populates full-run state on the validation-buckets route.
 Tests or QA run:
- - `cd apps/web && npm test -- --run` (13 files, 28 tests passed)
- - `cd apps/web && npm run build`
- - browser QA on `http://localhost:3000/scout?qa=validation-buckets` after login with the shared password from `apps/web/.env.local`
-Screenshots or report: `.gstack/qa-reports/qa-report-f15-evidence-drawer-2026-05-10.md`
-Northstar reflection: Pass; the UI now exposes field-level evidence without changing the validation buckets or widening the operator surface.
-Next pointer: QA + prepare `feat/f16-validation-export` (blocked by plan) after orbiting next-doc updates.
+ - `cd apps/web && npm test -- --run src/lib/__tests__/full-export.test.ts src/components/__tests__/scout-workspace.test.tsx` (9 tests passed)
+ - Browser QA on `http://localhost:3000/scout?qa=validation-buckets` after login with the shared password from `apps/web/.env.local`
+Screenshots or report:
+ - `.gstack/qa-reports/screenshots/f16-01-export-control.png`
+ - `.gstack/qa-reports/screenshots/f16-02-export-ready.png`
+ - `.gstack/qa-reports/screenshots/f16-03-csv-content.png`
+Northstar reflection: Pass; the export now preserves validation context and no longer flattens organization-only, not-found, or failed rows into clean lead cards.
+Next pointer: QA/merge `feat/f16-validation-export` into `rebuild/validated-leads-loop`; then F17 remains blocked until F16 lands.
 Open questions: none blocking
 ```
 
@@ -203,11 +205,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F14 are merged to `rebuild/validated-leads-loop`; W2, W3, and W4 are orchestrator-accepted. `F15` is merged to `rebuild/validated-leads-loop`; `F16` remains blocked.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F14 are merged to `rebuild/validated-leads-loop`; W2, W3, and W4 are orchestrator-accepted. `F15` is merged to `rebuild/validated-leads-loop`; `F16` is implemented and waiting for merge.
 
 ## Next concrete task
 
-- Next feature pointer is `F16 Validation Export Rebuild` (`feat/f16-validation-export`), currently blocked pending gate/reopen criteria in docs.
+- Next feature pointer is `F16 Validation Export Rebuild` (`feat/f16-validation-export`, implemented_pending_qa) and the next prompt should QA/merge it into `rebuild/validated-leads-loop`.
 
 ## Open questions for Matt
 
@@ -252,6 +254,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | f16-export (Codex) | Built `feat/f16-validation-export` with validation-aware CSV export rows, updated the Scout workspace export flow, and added a QA-only fixture hook for `qa=validation-buckets`. Verified with `cd apps/web && npm test -- --run src/lib/__tests__/full-export.test.ts src/components/__tests__/scout-workspace.test.tsx` (`9` passed) and browser QA on `http://localhost:3000/scout?qa=validation-buckets`; screenshots saved at `.gstack/qa-reports/screenshots/f16-01-export-control.png`, `.gstack/qa-reports/screenshots/f16-02-export-ready.png`, and `.gstack/qa-reports/screenshots/f16-03-csv-content.png`. |
 | 2026-05-10 | f15-qa (Codex) | QA'd `feat/f15-evidence-drawer` with `cd apps/web && npm test -- --run` (`13` passed), `cd apps/web && npm run build`, and browser verification on `http://localhost:3000/scout?qa=validation-buckets`; captured `.gstack/qa-reports/screenshots/f15-01-usable-evidence-drawer.png` and `.gstack/qa-reports/screenshots/f15-02-failed-evidence-drawer.png`; wrote `.gstack/qa-reports/qa-report-f15-evidence-drawer-2026-05-10.md`; updated `docs/08-agentic-buildout-plan.md` and `STATUS.md`; merged the branch into `rebuild/validated-leads-loop`. |
 | 2026-05-10 | f14-qa (Codex) | QA'd `feat/f14-validation-results-table` with `cd apps/web && npm test -- --run` (`28` passed), `cd apps/web && npm run build`, and browser verification on `http://localhost:3000/?qa=validation-buckets`; captured usable, noisy/failed, and organization-only/not-found screenshots; wrote `.gstack/qa-reports/qa-report-f14-validation-results-table-2026-05-10.md`; updated `docs/08-agentic-buildout-plan.md` and `STATUS.md`; merged the branch into `rebuild/validated-leads-loop`. |
 | 2026-05-10 | orchestrator-gate-check (Codex) | Checked W4 after F10-F12, found the feature agents had merged F13 before formal W4 acceptance, added explicit quality-report threshold failures for zero-usable/high-noise runs, passed W4 verification (`11 passed, 1 skipped`), wrote `.gstack/qa-reports/gate-w4-benchmarks-quality.md`, accepted W4, and unlocked F14 while keeping the product red. |
