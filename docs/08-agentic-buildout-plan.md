@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F12 Per-run quality report (blocked).
-**Current feature QA handoff:** `feat/f11-required-benchmark-suite` passed non-UI QA and merged into `rebuild/validated-leads-loop`; next build target is `feat/f12-run-quality-report`.
+**Next feature pointer:** F13 Single search-bar UI (`feat/f13-single-search-ui`, blocked).
+**Current feature QA handoff:** `feat/f12-run-quality-report` is QA-passed and merged into `rebuild/validated-leads-loop` after this run.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -154,7 +154,7 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F09 | Ranking gate based on evidence                           | merged_to_rebuild_branch | feat/f09-ranking-gate                | non-UI                   |
 | F10 | Golden Arizona K-12 VoIP benchmark harness               | merged_to_rebuild_branch   | feat/f10-arizona-k12-benchmark       | non-UI                   |
 | F11 | Required benchmark suite                                 | merged_to_rebuild_branch  | feat/f11-required-benchmark-suite    | non-UI                   |
-| F12 | Per-run quality report                                   | blocked                  | feat/f12-run-quality-report          | non-UI                   |
+| F12 | Per-run quality report                                   | merged_to_rebuild_branch  | feat/f12-run-quality-report          | non-UI                   |
 | F13 | Single search-bar UI                                     | blocked                  | feat/f13-single-search-ui            | browser                  |
 | F14 | Results table with validation buckets                    | blocked                  | feat/f14-validation-results-table    | browser                  |
 | F15 | Evidence drawer / dossier                                | blocked                  | feat/f15-evidence-drawer             | browser                  |
@@ -892,7 +892,7 @@ F12 should generate metrics from this suite and from live runs using the same de
 
 ## F12 - Per-Run Quality Report
 
-Status: blocked
+Status: merged_to_rebuild_branch
 Branch: feat/f12-run-quality-report
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -938,7 +938,10 @@ Rollback plan:
 Remove quality report module and any API field additions.
 
 Next-agent handoff note:
-F13 can now build UI against quality-checked outputs.
+QA on `feat/f12-run-quality-report` passed (`cd packages/core && uv run pytest tests/test_quality_report.py -q`). F13 single-search UI may now build against quality-checked outputs.
+
+Build result:
+- `cd packages/core && uv run pytest tests/test_quality_report.py -q` (2 passed)
 
 ---
 
