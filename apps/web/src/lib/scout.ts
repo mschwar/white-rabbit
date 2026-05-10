@@ -14,10 +14,43 @@ export type FullRequestPayload = {
   recipe_name?: string;
 };
 
+export type ValidationStatus = 'supported' | 'unsupported' | 'missing' | 'failed';
+
+export type ContactStatus = 'verified_found' | 'deduced_with_pattern_evidence' | 'missing' | 'failed' | 'unsupported';
+
+export type ValidationBucket = 'usable' | 'noisy_failed' | 'organization_only' | 'not_found';
+
+export const VALIDATION_BUCKETS: Array<{
+  key: ValidationBucket;
+  label: string;
+  description: string;
+}> = [
+  {
+    key: 'usable',
+    label: 'Usable',
+    description: 'Person leads with evidence-backed name, title, organization, and usable contact details.',
+  },
+  {
+    key: 'noisy_failed',
+    label: 'Noisy / failed',
+    description: 'Person rows that did not clear the gate or were rejected because the evidence was weak.',
+  },
+  {
+    key: 'organization_only',
+    label: 'Organization-only',
+    description: 'The account was found, but no validated person was available to treat as CRM-ready.',
+  },
+  {
+    key: 'not_found',
+    label: 'Not found',
+    description: 'The target was searched, but no acceptable contact was found.',
+  },
+];
+
 export type FullResponse = {
   run_id: string;
   recipe_id: string | null;
-  leads: ScoutLead[];
+  leads: ScoutResultRow[];
   metrics: ScoutRunMetrics;
   query_guardrail?: QueryGuardrailResult | null;
   sandbox_usage?: SandboxUsage | null;
@@ -55,6 +88,8 @@ export type RecipeScoreboardItem = {
 
 export type ScoutLead = {
   id?: string;
+  candidate_category?: 'person_lead';
+  validation?: CandidateValidation;
   name: string;
   title: string;
   organization: string;
@@ -70,6 +105,63 @@ export type ScoutLead = {
   gate_passed: boolean;
   explanation: string;
 };
+
+export type FieldValidationRecord = {
+  status: ValidationStatus;
+  source_url: string | null;
+  evidence_snippet: string | null;
+  checked_at: string | null;
+  notes: string;
+};
+
+export type ContactValidationRecord = {
+  status: ContactStatus;
+  source_url: string | null;
+  evidence_snippet: string | null;
+  checked_at: string | null;
+  notes: string;
+};
+
+export type CandidateValidation = {
+  name: FieldValidationRecord;
+  title: FieldValidationRecord;
+  organization: FieldValidationRecord;
+  email: ContactValidationRecord;
+  phone: ContactValidationRecord;
+  source: FieldValidationRecord;
+};
+
+export type OrganizationOnlyResultRow = {
+  id?: string;
+  candidate_category: 'organization_only';
+  organization: string;
+  source_url?: string | null;
+  explanation: string;
+  validation?: CandidateValidation;
+};
+
+export type NotFoundResultRow = {
+  id?: string;
+  candidate_category: 'not_found';
+  searched_target: string;
+  organization?: string | null;
+  source_url?: string | null;
+  explanation: string;
+  validation?: CandidateValidation;
+};
+
+export type FailedResultRow = {
+  id?: string;
+  candidate_category: 'failed';
+  searched_target: string;
+  failure_reason: string;
+  organization?: string | null;
+  source_url?: string | null;
+  explanation: string;
+  validation?: CandidateValidation;
+};
+
+export type ScoutResultRow = ScoutLead | OrganizationOnlyResultRow | NotFoundResultRow | FailedResultRow;
 
 export type ScoutRunMetrics = {
   input_tokens: number;
@@ -98,7 +190,7 @@ export type SandboxUsage = {
 };
 
 export type ScoutResponse = {
-  leads: ScoutLead[];
+  leads: ScoutResultRow[];
   metrics: ScoutRunMetrics;
   query_guardrail?: QueryGuardrailResult | null;
   sandbox_usage?: SandboxUsage | null;
@@ -196,6 +288,75 @@ export function sortScoutLeads(leads: ScoutLead[], sortMode: LeadSortMode): Scou
       return left.index - right.index;
     })
     .map(({ lead }) => lead);
+}
+
+const VALIDATION_BUCKET_ORDER: Record<ValidationBucket, number> = {
+  usable: 0,
+  noisy_failed: 1,
+  organization_only: 2,
+  not_found: 3,
+};
+
+export function isPersonLead(row: ScoutResultRow): row is ScoutLead {
+  return row.candidate_category === undefined || row.candidate_category === 'person_lead';
+}
+
+export function getValidationBucket(row: ScoutResultRow): ValidationBucket {
+  if (row.candidate_category === 'organization_only') {
+    return 'organization_only';
+  }
+
+  if (row.candidate_category === 'not_found') {
+    return 'not_found';
+  }
+
+  if (row.candidate_category === 'failed') {
+    return 'noisy_failed';
+  }
+
+  return 'gate_passed' in row && row.gate_passed ? 'usable' : 'noisy_failed';
+}
+
+function getResultRowScore(row: ScoutResultRow, sortMode: LeadSortMode): number {
+  if (sortMode === 'fit') {
+    return 'fit_score' in row ? row.fit_score ?? 0 : 0;
+  }
+
+  if (sortMode === 'evidence') {
+    return 'evidence_score' in row ? row.evidence_score ?? 0 : 0;
+  }
+
+  if (sortMode === 'contact') {
+    return 'contact_score' in row ? row.contact_score ?? 0 : 0;
+  }
+
+  if (sortMode === 'gate') {
+    return 'gate_passed' in row && row.gate_passed ? 1 : 0;
+  }
+
+  return 0;
+}
+
+export function sortScoutResultRows(rows: ScoutResultRow[], sortMode: LeadSortMode): ScoutResultRow[] {
+  return rows
+    .map((row, index) => ({ row, index }))
+    .sort((left, right) => {
+      const bucketDelta =
+        VALIDATION_BUCKET_ORDER[getValidationBucket(left.row)] - VALIDATION_BUCKET_ORDER[getValidationBucket(right.row)];
+      if (bucketDelta !== 0) {
+        return bucketDelta;
+      }
+
+      if (sortMode !== 'rank') {
+        const scoreDelta = getResultRowScore(right.row, sortMode) - getResultRowScore(left.row, sortMode);
+        if (scoreDelta !== 0) {
+          return scoreDelta;
+        }
+      }
+
+      return left.index - right.index;
+    })
+    .map(({ row }) => row);
 }
 
 export async function fetchRecipes(): Promise<RecipeItem[]> {

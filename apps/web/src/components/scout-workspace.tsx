@@ -1,6 +1,7 @@
 'use client';
 
 import { FormEvent, useEffect, useState } from 'react';
+import ScoutResultsTable from '@/components/scout-results-table';
 import {
   buildScoutPayload,
   buildFullPayload,
@@ -8,12 +9,16 @@ import {
   DEFAULT_SCOUT_LOCATION,
   DEFAULT_SCOUT_QUERY,
   fetchSandboxUsage,
-  formatScore,
   LEAD_SORT_OPTIONS,
-  sortScoutLeads,
+  isPersonLead,
+  sortScoutResultRows,
   submitLeadFeedback,
+  type CandidateValidation,
+  type FeedbackLabel,
   type LeadSortMode,
+  type ContactStatus,
   type ScoutResponse,
+  type ValidationStatus,
   type FullResponse,
 } from '@/lib/scout';
 import {
@@ -48,6 +53,146 @@ function mapErrorCodeToMessage(errorCode: string | null, fallback: string): stri
       return fallback;
   }
 }
+
+type ValidationOverrides = {
+  name?: ValidationStatus;
+  title?: ValidationStatus;
+  organization?: ValidationStatus;
+  email?: ContactStatus;
+  phone?: ContactStatus;
+  source?: ValidationStatus;
+};
+
+function makeValidation(overrides: ValidationOverrides = {}): CandidateValidation {
+  const field = (status: ValidationStatus, label: string) => ({
+    status,
+    source_url: `https://validation.example.com/${label}`,
+    evidence_snippet: `${label} ${status} evidence`,
+    checked_at: '2026-05-10T12:00:00Z',
+    notes: `${label} ${status} notes`,
+  });
+
+  const contact = (status: ContactStatus, label: string) => ({
+    status,
+    source_url: `https://validation.example.com/${label}`,
+    evidence_snippet: `${label} ${status} evidence`,
+    checked_at: '2026-05-10T12:00:00Z',
+    notes: `${label} ${status} notes`,
+  });
+
+  return {
+    name: field(overrides.name ?? 'supported', 'name'),
+    title: field(overrides.title ?? 'supported', 'title'),
+    organization: field(overrides.organization ?? 'supported', 'organization'),
+    email: contact(overrides.email ?? 'verified_found', 'email'),
+    phone: contact(overrides.phone ?? 'missing', 'phone'),
+    source: field(overrides.source ?? 'supported', 'source'),
+  };
+}
+
+const QA_VALIDATION_BUCKETS_FIXTURE: ScoutResponse = {
+  leads: [
+    {
+      id: 'qa-usable-1',
+      candidate_category: 'person_lead',
+      name: 'Jane Smith',
+      title: 'Director of Technology',
+      organization: 'Albuquerque Public Schools',
+      email: 'jane.smith@aps.edu',
+      email_status: 'Found',
+      source_url: 'https://aps.edu/jane-smith',
+      confidence: 0.92,
+      why_target: 'Strong district fit with current leadership evidence and usable email.',
+      icebreaker: 'Mentioned in a district technology initiative note.',
+      fit_score: 0.91,
+      evidence_score: 0.84,
+      contact_score: 0.79,
+      gate_passed: true,
+      explanation: 'Strong district fit with current leadership evidence and usable email.',
+      validation: makeValidation(),
+    },
+    {
+      id: 'qa-noisy-1',
+      candidate_category: 'person_lead',
+      name: 'Noisy Lead',
+      title: 'Director of Operations',
+      organization: 'Noisy Schools',
+      email: 'noisy@example.com',
+      email_status: 'Found',
+      source_url: 'https://noisy.example.com',
+      confidence: 0.44,
+      why_target: 'Weak fit',
+      icebreaker: 'Weak fit',
+      fit_score: 0.31,
+      evidence_score: 0.24,
+      contact_score: 0.2,
+      gate_passed: false,
+      explanation: 'Person lead that did not clear the gate.',
+      validation: makeValidation({
+        name: 'supported',
+        title: 'supported',
+        organization: 'supported',
+        email: 'verified_found',
+        phone: 'missing',
+        source: 'supported',
+      }),
+    },
+    {
+      candidate_category: 'organization_only',
+      organization: 'Example Corp',
+      source_url: 'https://example.com',
+      explanation: 'Organization-only row.',
+      validation: makeValidation({
+        name: 'unsupported',
+        title: 'unsupported',
+        organization: 'supported',
+        email: 'missing',
+        phone: 'missing',
+        source: 'supported',
+      }),
+    },
+    {
+      candidate_category: 'not_found',
+      searched_target: 'Ghost District',
+      organization: 'Ghost District',
+      source_url: 'https://ghost.example.com',
+      explanation: 'No acceptable contact was found.',
+      validation: makeValidation({
+        name: 'unsupported',
+        title: 'unsupported',
+        organization: 'unsupported',
+        email: 'missing',
+        phone: 'missing',
+        source: 'supported',
+      }),
+    },
+    {
+      candidate_category: 'failed',
+      searched_target: 'Broken District',
+      failure_reason: 'Source was inaccessible.',
+      organization: 'Broken District',
+      source_url: 'https://broken.example.com',
+      explanation: 'The candidate could not be trusted.',
+      validation: makeValidation({
+        name: 'unsupported',
+        title: 'unsupported',
+        organization: 'unsupported',
+        email: 'failed',
+        phone: 'failed',
+        source: 'failed',
+      }),
+    },
+  ],
+  metrics: {
+    input_tokens: 820,
+    output_tokens: 420,
+    tavily_searches: 3,
+    elapsed_seconds: 9.84,
+    estimated_cost_usd: 0.1234,
+  },
+  query_guardrail: null,
+  sandbox_usage: null,
+};
 
 export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspaceProps) {
   const [query, setQuery] = useState(DEFAULT_SCOUT_QUERY);
@@ -111,6 +256,13 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
     setQueryGuardrail(null);
 
     try {
+      if (process.env.NODE_ENV !== 'production' && window.location.search.includes('qa=validation-buckets')) {
+        setResults(QA_VALIDATION_BUCKETS_FIXTURE);
+        setQueryGuardrail(null);
+        setSandboxUsage(null);
+        return;
+      }
+
       const endpoint = mode === 'scout' ? '/api/scout' : '/api/full';
       const response = await fetch(endpoint, {
         method: 'POST',
@@ -227,6 +379,11 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
     }
   }
 
+  async function handleLeadFeedback(leadId: string, label: FeedbackLabel) {
+    await submitLeadFeedback(leadId, label);
+    setFeedbackState((prev) => ({ ...prev, [leadId]: label }));
+  }
+
   async function handleBuildLeadExport() {
     if (!fullResult || !displayedResults) {
       return;
@@ -254,7 +411,8 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
   }
 
   const displayedResults = results;
-  const displayedLeads = displayedResults ? sortScoutLeads(displayedResults.leads, sortMode) : [];
+  const displayedRows = displayedResults ? sortScoutResultRows(displayedResults.leads, sortMode) : [];
+  const displayedLeads = displayedRows.filter(isPersonLead);
 
   return (
     <main className="min-h-screen bg-zinc-950 px-6 py-10 text-zinc-50">
@@ -263,7 +421,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
           <p className="text-sm font-medium uppercase tracking-[0.22em] text-emerald-300">Lead search</p>
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">Find source-backed prospects</h1>
           <p className="max-w-3xl text-base leading-7 text-zinc-300 sm:text-lg">
-            Run a focused B2B target query and review returned leads with fit, evidence, and contact scores.
+            Run a focused B2B target query and review returned rows with validation buckets, fit, evidence, and contact scores.
           </p>
         </div>
 
@@ -483,12 +641,12 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-400">Results</p>
-              <h2 className="mt-1 text-2xl font-semibold tracking-tight">Returned leads</h2>
+              <h2 className="mt-1 text-2xl font-semibold tracking-tight">Validation buckets</h2>
             </div>
             {displayedResults ? (
               <div className="flex flex-col gap-2 sm:items-end">
                 <label className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-400" htmlFor="leadSortMode">
-                  Sort leads
+                  Sort results
                 </label>
                 <select
                   className="rounded-2xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-zinc-50 outline-none focus:border-emerald-400"
@@ -504,7 +662,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                   ))}
                 </select>
                 <p className="text-sm text-zinc-400">
-                  {displayedResults.leads.length} leads · {formatElapsedSeconds(displayedResults.metrics.elapsed_seconds)} · $
+                  {displayedResults.leads.length} rows · {formatElapsedSeconds(displayedResults.metrics.elapsed_seconds)} · $
                   {displayedResults.metrics.estimated_cost_usd.toFixed(4)}
                 </p>
               </div>
@@ -512,88 +670,14 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
           </div>
 
           {displayedResults ? (
-            <div className="mt-6 grid gap-4">
-              {displayedLeads.map((lead, index) => (
-                <article
-                  key={`${lead.name}-${lead.organization}-${index}`}
-                  className="rounded-3xl border border-white/10 bg-white/5 p-5"
-                >
-                  <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-                    <div className="space-y-2">
-                      <p className="text-xs font-medium uppercase tracking-[0.18em] text-zinc-400">
-                        Rank {index + 1} {lead.gate_passed ? '· gate passed' : '· review'}
-                      </p>
-                      <h3 className="text-xl font-semibold text-zinc-50">{lead.name}</h3>
-                      <p className="text-sm text-zinc-300">
-                        {lead.title} · {lead.organization}
-                      </p>
-                      <p className="text-sm text-emerald-300">{lead.email_status}: {lead.email || 'No email found'}</p>
-                    </div>
-
-                    <div className="grid gap-2 text-sm text-zinc-300 sm:grid-cols-3 lg:min-w-[20rem]">
-                      <div className="rounded-2xl border border-white/10 bg-zinc-950/70 px-3 py-2">
-                        <p className="text-xs uppercase tracking-[0.16em] text-zinc-500">Fit</p>
-                        <p className="mt-1 font-semibold text-zinc-50">{formatScore(lead.fit_score)}</p>
-                      </div>
-                      <div className="rounded-2xl border border-white/10 bg-zinc-950/70 px-3 py-2">
-                        <p className="text-xs uppercase tracking-[0.16em] text-zinc-500">Evidence</p>
-                        <p className="mt-1 font-semibold text-zinc-50">{formatScore(lead.evidence_score)}</p>
-                      </div>
-                      <div className="rounded-2xl border border-white/10 bg-zinc-950/70 px-3 py-2">
-                        <p className="text-xs uppercase tracking-[0.16em] text-zinc-500">Contact</p>
-                        <p className="mt-1 font-semibold text-zinc-50">{formatScore(lead.contact_score)}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <p className="mt-4 text-sm leading-6 text-zinc-300">{lead.explanation}</p>
-                  <p className="mt-3 text-sm leading-6 text-zinc-400">{lead.why_target}</p>
-                  <p className="mt-3 text-sm leading-6 text-zinc-200">{lead.icebreaker}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {(['usable', 'wrong_persona', 'bad_source', 'bad_contact', 'duplicate'] as const).map((label) => {
-                      const leadId = lead.id;
-                      const isSubmitted = feedbackState[leadId ?? ''] === label;
-                      return (
-                        <button
-                          key={label}
-                          disabled={!leadId || !!feedbackState[leadId ?? '']}
-                          onClick={async () => {
-                            if (!leadId) {
-                              alert('No lead ID available for feedback.');
-                              return;
-                            }
-                            try {
-                              await submitLeadFeedback(leadId, label);
-                              setFeedbackState((prev) => ({ ...prev, [leadId]: label }));
-                            } catch {
-                              alert('Failed to submit feedback.');
-                            }
-                          }}
-                          className={`rounded-full border px-3 py-1 text-xs font-medium transition ${
-                            isSubmitted
-                              ? 'border-emerald-400/50 bg-emerald-400/20 text-emerald-300'
-                              : 'border-white/10 bg-white/5 text-zinc-300 hover:bg-emerald-400/20 hover:text-emerald-300'
-                          } disabled:cursor-not-allowed disabled:opacity-50`}
-                        >
-                          {isSubmitted ? `✓ ${label.replace('_', ' ')}` : label.replace('_', ' ')}
-                        </button>
-                      );
-                    })}
-                  </div>
-                  <a
-                    className="mt-4 inline-flex text-sm font-medium text-emerald-300 underline decoration-emerald-300/30 underline-offset-4"
-                    href={lead.source_url}
-                    rel="noreferrer"
-                    target="_blank"
-                  >
-                    View source
-                  </a>
-                </article>
-              ))}
-            </div>
+            <ScoutResultsTable
+              feedbackState={feedbackState}
+              onSubmitFeedback={handleLeadFeedback}
+              rows={displayedRows}
+            />
           ) : (
             <p className="mt-6 text-sm leading-6 text-zinc-400">
-              Run a query to see ranked leads, score breakdowns, and metrics here.
+              Run a query to see validation buckets, score breakdowns, and source checks here.
             </p>
           )}
         </section>

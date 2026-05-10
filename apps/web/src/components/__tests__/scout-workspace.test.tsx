@@ -1,9 +1,9 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react';
 import { afterEach, expect, test, vi } from 'vitest';
 import ScoutWorkspace from '../scout-workspace';
 
 afterEach(() => {
-vi.unstubAllGlobals();
+  vi.unstubAllGlobals();
 });
 
 function makeFetchMock(scoutResponse: object) {
@@ -34,10 +34,45 @@ function makeFetchMock(scoutResponse: object) {
   });
 }
 
-test('submits a scout query and renders ranked results', async () => {
+function makeValidation(statuses: {
+  name?: string;
+  title?: string;
+  organization?: string;
+  email?: string;
+  phone?: string;
+  source?: string;
+} = {}) {
+  const field = (status: string, label: string) => ({
+    status,
+    source_url: `https://validation.example.com/${label}`,
+    evidence_snippet: `${label} ${status} evidence`,
+    checked_at: '2026-05-10T12:00:00Z',
+    notes: `${label} ${status} notes`,
+  });
+
+  const contact = (status: string, label: string) => ({
+    status,
+    source_url: `https://validation.example.com/${label}`,
+    evidence_snippet: `${label} ${status} evidence`,
+    checked_at: '2026-05-10T12:00:00Z',
+    notes: `${label} ${status} notes`,
+  });
+
+  return {
+    name: field(statuses.name ?? 'supported', 'name'),
+    title: field(statuses.title ?? 'supported', 'title'),
+    organization: field(statuses.organization ?? 'supported', 'organization'),
+    email: contact(statuses.email ?? 'verified_found', 'email'),
+    phone: contact(statuses.phone ?? 'missing', 'phone'),
+    source: field(statuses.source ?? 'supported', 'source'),
+  };
+}
+
+test('renders validation buckets and badges for mixed scout results', async () => {
   const fetchMock = makeFetchMock({
     leads: [
       {
+        candidate_category: 'person_lead',
         name: 'Jane Smith',
         title: 'Director of Technology',
         organization: 'Albuquerque Public Schools',
@@ -52,6 +87,77 @@ test('submits a scout query and renders ranked results', async () => {
         contact_score: 0.79,
         gate_passed: true,
         explanation: 'Strong district fit with current leadership evidence and usable email.',
+        validation: makeValidation(),
+      },
+      {
+        candidate_category: 'person_lead',
+        name: 'Noisy Lead',
+        title: 'Director of Operations',
+        organization: 'Noisy Schools',
+        email: 'noisy@example.com',
+        email_status: 'Found',
+        source_url: 'https://noisy.example.com',
+        confidence: 0.44,
+        why_target: 'Weak fit',
+        icebreaker: 'Weak fit',
+        fit_score: 0.31,
+        evidence_score: 0.24,
+        contact_score: 0.2,
+        gate_passed: false,
+        explanation: 'Person lead that did not clear the gate.',
+        validation: makeValidation({
+          name: 'supported',
+          title: 'supported',
+          organization: 'supported',
+          email: 'supported',
+          phone: 'missing',
+          source: 'supported',
+        }),
+      },
+      {
+        candidate_category: 'organization_only',
+        organization: 'Example Corp',
+        source_url: 'https://example.com',
+        explanation: 'Organization-only row.',
+        validation: makeValidation({
+          name: 'unsupported',
+          title: 'unsupported',
+          organization: 'supported',
+          email: 'missing',
+          phone: 'missing',
+          source: 'supported',
+        }),
+      },
+      {
+        candidate_category: 'not_found',
+        searched_target: 'Ghost District',
+        organization: 'Ghost District',
+        source_url: 'https://ghost.example.com',
+        explanation: 'No acceptable contact was found.',
+        validation: makeValidation({
+          name: 'unsupported',
+          title: 'unsupported',
+          organization: 'unsupported',
+          email: 'missing',
+          phone: 'missing',
+          source: 'supported',
+        }),
+      },
+      {
+        candidate_category: 'failed',
+        searched_target: 'Broken District',
+        failure_reason: 'Source was inaccessible.',
+        organization: 'Broken District',
+        source_url: 'https://broken.example.com',
+        explanation: 'The candidate could not be trusted.',
+        validation: makeValidation({
+          name: 'unsupported',
+          title: 'unsupported',
+          organization: 'unsupported',
+          email: 'failed',
+          phone: 'failed',
+          source: 'failed',
+        }),
       },
     ],
     metrics: {
@@ -76,11 +182,46 @@ test('submits a scout query and renders ranked results', async () => {
   fireEvent.click(screen.getByRole('button', { name: /run scout search/i }));
 
   await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
-  expect(screen.getByRole('heading', { name: /returned leads/i })).toBeDefined();
-  expect(await screen.findByRole('heading', { name: /jane smith/i })).toBeDefined();
-  expect(screen.getByText('91%')).toBeDefined();
-  expect(screen.getByText('84%')).toBeDefined();
-  expect(screen.getByText('79%')).toBeDefined();
+  expect(screen.getByRole('heading', { name: /validation buckets/i })).toBeDefined();
+
+  const usableTable = screen.getByRole('table', { name: /usable results/i });
+  const noisyTable = screen.getByRole('table', { name: /noisy \/ failed results/i });
+  const organizationOnlyTable = screen.getByRole('table', { name: /organization-only results/i });
+  const notFoundTable = screen.getByRole('table', { name: /not found results/i });
+
+  expect(within(usableTable).getByText('Jane Smith')).toBeDefined();
+  expect(
+    within(usableTable).getByText((_, element) => {
+      const text = element?.textContent?.replace(/\s+/g, '').toLowerCase() ?? '';
+      return element?.tagName === 'SPAN' && text === 'namesupported';
+    }),
+  ).toBeDefined();
+  expect(
+    within(usableTable).getByText((_, element) => {
+      const text = element?.textContent?.replace(/\s+/g, '').toLowerCase() ?? '';
+      return element?.tagName === 'SPAN' && text === 'emailverified';
+    }),
+  ).toBeDefined();
+  expect(
+    within(usableTable).getByText((_, element) => {
+      const text = element?.textContent?.replace(/\s+/g, '').toLowerCase() ?? '';
+      return element?.tagName === 'SPAN' && text === 'sourcesupported';
+    }),
+  ).toBeDefined();
+
+  expect(within(noisyTable).getByText('Noisy Lead')).toBeDefined();
+  expect(
+    within(organizationOnlyTable).getByText((_, element) => {
+      return element?.tagName === 'P' && element.className.includes('text-lg') && element.textContent === 'Example Corp';
+    }),
+  ).toBeDefined();
+  expect(
+    within(notFoundTable).getByText((_, element) => {
+      return element?.tagName === 'P' && element.className.includes('text-lg') && element.textContent === 'Ghost District';
+    }),
+  ).toBeDefined();
+  expect(screen.getAllByText(/source was inaccessible/i).length).toBeGreaterThan(0);
+  expect(screen.getAllByText(/the candidate could not be trusted/i).length).toBeGreaterThan(0);
 });
 
 test('renders lead-search copy without premature operator surfaces', async () => {
@@ -152,13 +293,15 @@ test('renders the primary search shell with one natural-language input', async (
   expect(
     JSON.parse((fetchMock.mock.calls[1][1] as RequestInit).body as string),
   ).toEqual({ query: 'K-12 IT directors in Albuquerque' });
-  expect(await screen.findByRole('heading', { name: /jane smith/i })).toBeDefined();
+  const usableTable = await screen.findByRole('table', { name: /usable results/i });
+  expect(within(usableTable).getByText('Jane Smith')).toBeDefined();
 });
 
 test('sorts scout results by score and gate state', async () => {
 const fetchMock = makeFetchMock({
 leads: [
 {
+candidate_category: 'person_lead',
 name: 'Alpha Lead',
 title: 'Director of Technology',
 organization: 'Alpha Schools',
@@ -171,10 +314,12 @@ icebreaker: 'Alpha is expanding.',
 fit_score: 0.51,
 evidence_score: 0.72,
 contact_score: 0.61,
-gate_passed: false,
+gate_passed: true,
 explanation: 'Alpha lead explanation.',
+validation: makeValidation({ email: 'verified_found', phone: 'missing', source: 'supported' }),
 },
 {
+candidate_category: 'person_lead',
 name: 'Bravo Lead',
 title: 'IT Director',
 organization: 'Bravo Schools',
@@ -189,6 +334,7 @@ evidence_score: 0.31,
 contact_score: 0.78,
 gate_passed: true,
 explanation: 'Bravo lead explanation.',
+validation: makeValidation({ email: 'verified_found', phone: 'missing', source: 'supported' }),
 },
 ],
 metrics: {
@@ -210,22 +356,15 @@ target: { value: 'K-12 IT directors in Albuquerque' },
 fireEvent.click(screen.getByRole('button', { name: /run scout search/i }));
 
 await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
-expect(screen.getAllByRole('heading', { level: 3 }).map((heading) => heading.textContent)).toEqual([
-'Alpha Lead',
-'Bravo Lead',
-]);
+const usableTable = await screen.findByRole('table', { name: /usable results/i });
+let alphaLead = within(usableTable).getByText('Alpha Lead');
+let bravoLead = within(usableTable).getByText('Bravo Lead');
+expect(alphaLead.compareDocumentPosition(bravoLead) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
 
-fireEvent.change(screen.getByLabelText(/sort leads/i), { target: { value: 'fit' } });
-expect(screen.getAllByRole('heading', { level: 3 }).map((heading) => heading.textContent)).toEqual([
-'Bravo Lead',
-'Alpha Lead',
-]);
-
-fireEvent.change(screen.getByLabelText(/sort leads/i), { target: { value: 'gate' } });
-expect(screen.getAllByRole('heading', { level: 3 }).map((heading) => heading.textContent)).toEqual([
-'Bravo Lead',
-'Alpha Lead',
-]);
+fireEvent.change(screen.getByLabelText(/sort results/i), { target: { value: 'fit' } });
+alphaLead = within(usableTable).getByText('Alpha Lead');
+bravoLead = within(usableTable).getByText('Bravo Lead');
+expect(bravoLead.compareDocumentPosition(alphaLead) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
 });
 
 test('shows guardrail guidance for a lead query that needs more detail', async () => {

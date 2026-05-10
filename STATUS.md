@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex orchestrator-gate-check
+**Last updated:** 2026-05-10 by Codex f14-qa
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** W4 benchmarks and quality reporting gate accepted; F14 is ready.
+**Current sprint:** W4 benchmarks and quality reporting gate accepted; F14 is merged.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,9 +14,9 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F14 Results Table With Validation Buckets (`feat/f14-validation-results-table`, ready).
+**Next feature pointer:** F15 Evidence Drawer Or Dossier (`feat/f15-evidence-drawer`, blocked).
 
-**Current feature branch QA status:** F13 passed required browser QA and is merged. W4 gate remediation added explicit quality threshold evaluation so zero-usable and high-noise runs fail the per-run report.
+**Current feature branch QA status:** F14 passed required browser QA and is merged. The browser QA used the dev-only validation fixture route because the live search endpoint returned 500 in this local environment. W4 gate remediation added explicit quality threshold evaluation so zero-usable and high-noise runs fail the per-run report.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -44,15 +44,15 @@ Prior accepted gates:
 ```text
 Feature: F14 - Results Table With Validation Buckets
 Branch: feat/f14-validation-results-table
-Status: ready
-What changed: W4 was accepted after the gate command passed and the per-run quality report gained explicit quality-gate threshold evaluation for zero-usable and high-noise runs.
+Status: merged_to_rebuild_branch
+What changed: Replaced the card-first Scout results with a validation-bucketed table that groups usable, noisy/failed, organization-only, and not-found rows and shows field/contact/source badges.
 Tests or QA run:
- - `cd packages/core && uv run pytest tests/test_quality_report.py -q` (5 passed)
- - `cd packages/core && uv run pytest tests/test_arizona_k12_benchmark.py tests/test_benchmark_suite.py tests/test_quality_report.py -q` (11 passed, 1 skipped)
- - `cd packages/core && $env:OPENAI_API_KEY=$null; uv run pytest -q` (94 passed, 6 skipped)
-Screenshots or report: `.gstack/qa-reports/gate-w4-benchmarks-quality.md`
-Northstar reflection: W4 now measures whether UI-visible rows are trustworthy before additional operator-loop surfaces are built; product remains red because export and W5 browser path are incomplete.
-Next pointer: F14 Results Table With Validation Buckets (`feat/f14-validation-results-table`)
+ - `cd apps/web && npm test -- --run` (28 passed)
+ - `cd apps/web && npm run build`
+ - browser QA on `http://localhost:3000/?qa=validation-buckets`
+Screenshots or report: `.gstack/qa-reports/screenshots/f14-01-usable-group.png`, `.gstack/qa-reports/screenshots/f14-02-noisy-failed-group.png`, `.gstack/qa-reports/screenshots/f14-03-organization-not-found-group.png`, `.gstack/qa-reports/qa-report-f14-validation-results-table-2026-05-10.md`
+Northstar reflection: Pass; the UI now separates trust buckets instead of implying every returned row is CRM-ready.
+Next pointer: F15 Evidence Drawer Or Dossier (`feat/f15-evidence-drawer`)
 Open questions: none blocking
 ```
 
@@ -203,18 +203,21 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## Next concrete task
 
-- Build **F14 - Results Table With Validation Buckets** on `feat/f14-validation-results-table`:
+- Build **F15 - Evidence Drawer Or Dossier** on `feat/f15-evidence-drawer`:
   - start from `rebuild/validated-leads-loop`
-  - render usable, noisy/failed, organization-only, and not-found rows in clearly labeled groups
-  - show validation badges for field/contact/source statuses
+  - add drill-down evidence without changing bucket definitions
+  - show source support for name, title, organization, email, and phone
   - run web tests, browser QA, and capture the required screenshots
   - merge only back into `rebuild/validated-leads-loop` after QA
 
 ## Open questions for Matt
 
 - Commercial arrangement with Lee and Thomas (free seats / revenue share / equity / content rights). Blocks the design-partner motion. **Not blocking Sprint 1 build, but blocks public usage.**
+	- Answer: not relevant.
 - Cost-tracking source of truth: should live API cost figures be pulled from OpenAI/Tavily dashboards, or computed locally from token/call counts? Recommendation: compute locally per-run, reconcile weekly. See `docs/05-reuse.md` note on stale 2025 prices.
+	- Both. Only should be viewable internally.
 - Access boundary for the Friday guarded version: local handoff, deployed internal URL, or Matt-run sessions?
+	- answer: deployed internal URL
 - Whether any external customer gets direct sandbox access before the 90-day kill/keep gate. If yes, customer-data isolation needs an explicit boundary first.
 - Sandbox cap semantics: is the 10-query / 1,000-row cap per operator, per customer, per shared app, or per reset window?
 	- answer: it is per reset window for now.
@@ -250,6 +253,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | f14-qa (Codex) | QA'd `feat/f14-validation-results-table` with `cd apps/web && npm test -- --run` (`28` passed), `cd apps/web && npm run build`, and browser verification on `http://localhost:3000/?qa=validation-buckets`; captured usable, noisy/failed, and organization-only/not-found screenshots; wrote `.gstack/qa-reports/qa-report-f14-validation-results-table-2026-05-10.md`; updated `docs/08-agentic-buildout-plan.md` and `STATUS.md`; merged the branch into `rebuild/validated-leads-loop`. |
 | 2026-05-10 | orchestrator-gate-check (Codex) | Checked W4 after F10-F12, found the feature agents had merged F13 before formal W4 acceptance, added explicit quality-report threshold failures for zero-usable/high-noise runs, passed W4 verification (`11 passed, 1 skipped`), wrote `.gstack/qa-reports/gate-w4-benchmarks-quality.md`, accepted W4, and unlocked F14 while keeping the product red. |
 | 2026-05-10 | f13-qa (Codex) | QA'd `feat/f13-single-search-ui` with `cd apps/web && npm test -- src/app/__tests__/page.test.tsx src/components/__tests__/scout-workspace.test.tsx` and browser verification on `http://localhost:3000/`; captured empty, loading, and error-state screenshots; wrote `.gstack/qa-reports/qa-report-f13-single-search-ui-2026-05-10.md`; updated `docs/08-agentic-buildout-plan.md` and `STATUS.md`; merged the branch into `rebuild/validated-leads-loop`. |
 | 2026-05-09 | f11-qa (Codex) | QA'd `feat/f11-required-benchmark-suite` with offline suite verification (`3 passed`), wrote `.gstack/qa-reports/qa-report-f11-required-benchmark-suite-2026-05-09.md`, updated `docs/08-agentic-buildout-plan.md` and `STATUS.md`, and merged the feature branch into `rebuild/validated-leads-loop`. |
@@ -299,6 +303,5 @@ Open residual risks:
 | 2026-05-08 | qa (gpt-5.4-mini) | Browser QA for BUILDOUT-05 verified Scout and recipe-library flows on localhost:3000, captured screenshots, confirmed clean console, and updated docs/report artifacts. |
 | 2026-05-08 | qa (gpt-5.4-mini) | Browser QA for BUILDOUT-06 verified the shared-password login, Scout results page, and Gate pass/fail sort control on localhost:3000; captured screenshots and kept the console clean. |
 | 2026-05-07 | hard-audit (Claude Opus 4.7) | Ground-up zero-trust audit. 8 parallel sub-agents, 4 live scout queries against real OpenAI ($0.045 spent), 65 findings across 8 dimensions plus Phase 2. 2 agent errors caught and corrected. Master report at `audits/hard-audit-2026-05-07.md`; action plan at `docs/06-audit-action-plan.md`. **Conclusion: not deployable as-is. 5 confirmed P0 blockers including `OPENAI_BASE_URL` routing to local Ollama and 89% VoIP leak rate in real leads.** |
-
 
 

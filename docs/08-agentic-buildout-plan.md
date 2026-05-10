@@ -1007,7 +1007,7 @@ F13 is merged to `rebuild/validated-leads-loop`. F14 should replace card-first r
 ---
 ## F14 - Results Table With Validation Buckets
 
-Status: ready
+Status: merged_to_rebuild_branch
 Branch: feat/f14-validation-results-table
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -1043,6 +1043,15 @@ Browser-testable:
 - route: primary search route from F13.
 - steps: use mocked or fixture-backed response with all candidate categories; verify grouping and badges.
 - required screenshots: usable group, noisy/failed group, organization-only/not-found group.
+
+QA result:
+- `cd apps/web && npm test -- --run` (13 files, 28 tests passed)
+- `cd apps/web && npm run build`
+- Browser QA on `http://localhost:3000/?qa=validation-buckets` captured the required grouped states in the authenticated browser session.
+- Screenshots saved:
+  - `.gstack/qa-reports/screenshots/f14-01-usable-group.png`
+  - `.gstack/qa-reports/screenshots/f14-02-noisy-failed-group.png`
+  - `.gstack/qa-reports/screenshots/f14-03-organization-not-found-group.png`
 
 Atomic commit plan:
 - commit 1: `feat(ui): render validation-bucketed results table`
@@ -1511,5 +1520,4 @@ Revert reset UI/gating change.
 
 Next-agent handoff note:
 Do not move to ready while gate is red except as a security follow-up to F02.
-
 
