@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-09 by Codex qa/f11-required-benchmark-suite
+**Last updated:** 2026-05-09 by Codex feat/f12-run-quality-report
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** F11 Required benchmark suite passed QA on `feat/f11-required-benchmark-suite` and merged into `rebuild/validated-leads-loop`.
+**Current sprint:** F12 Per-run quality report implemented on `feat/f12-run-quality-report` and pending QA.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,9 +14,9 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F12 Per-run quality report (`feat/f12-run-quality-report`, blocked).
+**Next feature pointer:** F12 Per-run quality report (`feat/f12-run-quality-report`, implemented_pending_qa).
 
-**Current feature branch QA status:** `feat/f11-required-benchmark-suite` has passed required non-UI QA and merged into `rebuild/validated-leads-loop`.
+**Current feature branch QA status:** `feat/f12-run-quality-report` is implemented and awaiting required non-UI QA.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -38,16 +38,16 @@
 **Latest handoff:**
 
 ```text
-Feature: F11 - Required Benchmark Suite
-Branch: feat/f11-required-benchmark-suite
-Status: merged_to_rebuild_branch
-What changed: Added a canonical required benchmark suite in `packages/core/src/core/benchmark_suite.py`, mirrored it in `packages/core/tests/fixtures/benchmark_suite.json`, and covered offline suite validation plus pass/fail dimension reporting in `packages/core/tests/test_benchmark_suite.py`.
+Feature: F12 - Per-Run Quality Report
+Branch: feat/f12-run-quality-report
+Status: implemented_pending_qa
+What changed: Added `packages/core/src/core/quality_report.py` with a serializable quality-report model and builder, plus `packages/core/tests/test_quality_report.py` covering candidate-category counts, validation-status counts, precision, persona match, contact quality, source support, fake-email count, unsupported-email count, and benchmark/run serialization.
 Tests or QA run:
- - `cd packages/core && uv run pytest tests/test_benchmark_suite.py -q` (3 passed)
-Screenshots or report: `.gstack/qa-reports/qa-report-f11-required-benchmark-suite-2026-05-09.md`
-Northstar reflection: This suite extends quality proof beyond Arizona by encoding the required B2B coverage set plus guardrail accept/reject behavior in offline-only verification.
-Next pointer: F12 per-run quality report (`feat/f12-run-quality-report`) remains blocked until downstream merge confirmation and orchestrator gate decision for W4.
-Open questions: none blocking F11 implementation
+ - `cd packages/core && uv run pytest tests/test_quality_report.py -q`
+Screenshots or report: n/a for this non-UI feature
+Northstar reflection: The report makes run quality explicit before any UI depends on it, and it keeps the benchmark/run artifact story on the same serializable shape.
+Next pointer: QA on `feat/f12-run-quality-report`, then F13 remains blocked until W5 opens.
+Open questions: none blocking the F12 implementation
 ```
 
 
@@ -192,13 +192,13 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F10 are merged to `rebuild/validated-leads-loop`; W2 and W3 are orchestrator-accepted; F10-F11 merged and awaiting W4 gate decision.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F10 are merged to `rebuild/validated-leads-loop`; W2 and W3 are orchestrator-accepted; F12 is implemented on `feat/f12-run-quality-report` and awaiting QA.
 
 ## Next concrete task
 
 - QA **F12 - Per-run quality report** on `feat/f12-run-quality-report`:
   - run `cd packages/core && uv run pytest tests/test_quality_report.py -q`
-  - confirm report metrics include precision/contact/source quality and fake-unsupported/zero-usable signals
+  - confirm report metrics include precision/contact/source quality and fake/unsupported/not-found signals
   - update `docs/08-agentic-buildout-plan.md` and `STATUS.md`
   - merge only into `rebuild/validated-leads-loop` after QA
 

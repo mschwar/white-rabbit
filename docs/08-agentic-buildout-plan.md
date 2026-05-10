@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F12 Per-run quality report (blocked).
-**Current feature QA handoff:** `feat/f11-required-benchmark-suite` passed non-UI QA and merged into `rebuild/validated-leads-loop`; next build target is `feat/f12-run-quality-report`.
+**Next feature pointer:** F12 Per-run quality report (`feat/f12-run-quality-report`, implemented_pending_qa).
+**Current feature QA handoff:** `feat/f12-run-quality-report` is built and waiting on QA after `feat/f11-required-benchmark-suite` merged into `rebuild/validated-leads-loop`.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -892,7 +892,7 @@ F12 should generate metrics from this suite and from live runs using the same de
 
 ## F12 - Per-Run Quality Report
 
-Status: blocked
+Status: implemented_pending_qa
 Branch: feat/f12-run-quality-report
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -938,7 +938,10 @@ Rollback plan:
 Remove quality report module and any API field additions.
 
 Next-agent handoff note:
-F13 can now build UI against quality-checked outputs.
+QA `feat/f12-run-quality-report` with `cd packages/core && uv run pytest tests/test_quality_report.py -q`. After QA merges, F13 can build UI against quality-checked outputs.
+
+Build result:
+- `cd packages/core && uv run pytest tests/test_quality_report.py -q` (2 passed)
 
 ---
 
