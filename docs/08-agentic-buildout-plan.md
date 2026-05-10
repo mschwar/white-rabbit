@@ -4,7 +4,7 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** No `ready` feature is currently unlocked. F18 is QA-passed and ready to merge into `rebuild/validated-leads-loop`; F19-F23 remain deferred until Matt explicitly promotes the next internal-only surface or the launch gate changes.
+**Next feature pointer:** No `ready` feature is currently unlocked. F18 is the most recently completed internal-only surface; F19-F23 remain deferred until Matt explicitly promotes the next internal-only surface or the launch gate changes.
 **Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F15, F16, and F17 are already merged to `rebuild/validated-leads-loop`; F18 passed Prompt B with browser screenshots on `/` and `/recipes`, confirming that recipes stay out of the primary operator path while `/recipes` is explicitly labeled for internal evaluation only.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
