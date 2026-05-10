@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F08 Contact status model (implemented_pending_qa).
-**Current feature QA handoff:** `feat/f08-contact-status-model` is `implemented_pending_qa` after core non-UI verification; the next prompt should QA the same branch and merge it only into `rebuild/validated-leads-loop`.
+**Next feature pointer:** F09 Ranking gate based on evidence (blocked).
+**Current feature QA handoff:** `feat/f08-contact-status-model` is `qa_passed` after core non-UI verification; next prompt should QA the same branch output and merge it only into `rebuild/validated-leads-loop`, then start F09.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -680,7 +680,7 @@ Latest re-run notes: `qa-report-f07-source-validator-rerun-2026-05-10.md` confir
 
 ## F08 - Contact Status Model
 
-Status: implemented_pending_qa
+Status: qa_passed
 Branch: feat/f08-contact-status-model
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini

@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-05-10 by Codex
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** F08 Contact status model implemented_pending_qa on `feat/f08-contact-status-model`; next target is QA and merge back to `rebuild/validated-leads-loop`.
+**Current sprint:** F08 Contact status model qa_passed on `feat/f08-contact-status-model`; next target is merge only to `rebuild/validated-leads-loop`, then F09.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,9 +14,9 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F08 Contact status model (implemented_pending_qa).
+**Next feature pointer:** F09 Ranking Gate Based On Evidence (blocked).
 
-**Current feature branch QA status:** `feat/f08-contact-status-model` is implemented_pending_qa after required non-UI verification. The branch is ready for the QA prompt that will validate contact-status semantics and merge only back to `rebuild/validated-leads-loop`.
+**Current feature branch QA status:** `feat/f08-contact-status-model` is qa_passed after required non-UI verification. The branch is merge-ready only into `rebuild/validated-leads-loop`.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -35,14 +35,14 @@
 ```text
 Feature: F08 Contact status model
 Branch: feat/f08-contact-status-model
-Status: implemented_pending_qa
+Status: qa_passed
 What changed: Added explicit contact-status modeling in core. Lead.email_status now normalizes legacy Found/Deduced/Missing values into verified_found / deduced_with_pattern_evidence / missing / failed / unsupported, candidate email/phone validation records now use the contact-status enum, and source validation reports verified_found for directly supported contact fields.
 Tests or QA run:
  - `$env:OPENAI_API_KEY=''; cd packages/core && uv run pytest tests/test_models.py tests/test_contact_status.py tests/test_source_validation.py tests/test_orchestrator.py -q` (61 passed)
 Screenshots or report: n/a
 Northstar reflection: The product can now distinguish direct contact evidence from inferred or absent contact evidence instead of collapsing everything into Found/Deduced/Missing.
-Next pointer: QA prompt for `feat/f08-contact-status-model`.
-Open questions: Should we expose phone status on the lead row itself, or is the validation bundle enough until later contact work?
+Next pointer: F09 Ranking Gate Based On Evidence (`feat/f09-ranking-gate`), blocked.
+Open questions: none
 ```
 
 
