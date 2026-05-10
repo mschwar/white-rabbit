@@ -1,8 +1,8 @@
 # STATUS
 
 **Last updated:** 2026-05-10 by Codex feat/f04-query-compiler
-**Branch:** feat/f04-query-compiler
-**Current sprint:** F04 query compiler/planner QA complete on feature branch; merge to `rebuild/validated-leads-loop` before F05 candidate model starts.
+**Branch:** rebuild/validated-leads-loop
+**Current sprint:** F04 query compiler/planner merged and handed off; F05 Candidate model separation is now current.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -16,7 +16,7 @@
 
 **Next feature pointer:** F05 Candidate model separation (ready after F04 merge).
 
-**Current feature branch QA status:** `feat/f04-query-compiler` completed required tests and long Arizona benchmark boundedness verification; merge to `rebuild/validated-leads-loop` is ready.
+**Current feature branch QA status:** `feat/f04-query-compiler` QA passed and merged into `rebuild/validated-leads-loop`; next feature is `feat/f05-candidate-types`.
 
 **Control docs:**
 
@@ -33,7 +33,7 @@
 ```text
 Feature: F04 Query compiler / planner
 Branch: feat/f04-query-compiler
-Status: qa_passed_pending_merge
+Status: merged_to_rebuild_branch
 What changed: No implementation changes in this QA session; validated existing F04 planner and search changes against test and benchmark checks.
 Tests or QA run:
 - `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py -q` (5 passed).
@@ -44,7 +44,7 @@ Tests or QA run:
   - each compiled query contains Arizona + named-account + domain/persona terms
 Screenshots or report: `.gstack/qa-reports/qa-report-f04-query-compiler-2026-05-10.md`
 Northstar reflection: This change de-risks the Arizona benchmark by preventing overlong prompts from reaching Tavily while preserving named-account intent and geographic/domain filters.
-Next pointer: Merge `feat/f04-query-compiler` into `rebuild/validated-leads-loop`, then start F05 candidate model separation.
+Next pointer: Start `feat/f05-candidate-types` and keep benchmark evidence in place.
 Open questions: None blocking F04 merge.
 ```
 
@@ -189,14 +189,13 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F03 and F04 are in place on `rebuild/validated-leads-loop`, and F04 QA is complete waiting on merge. F05 is ready after merge.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F03 and F04 are merged to `rebuild/validated-leads-loop`; F05 is now ready.
 
 ## Next concrete task
 
-- Merge **F04 - Query compiler / planner** on branch `feat/f04-query-compiler`:
-  - read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/08-agentic-buildout-plan.md, and the F04 feature card
-  - run `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py -q`
-  - verify the long Arizona benchmark compiles into bounded named-account queries under the Tavily limit
+- Build **F05 - Candidate model separation** on branch `feat/f05-candidate-types` after F04 is merged:
+  - read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/08-agentic-buildout-plan.md, and the F05 feature card
+  - run the required non-UI tests and verification from the feature card
   - update docs/08-agentic-buildout-plan.md and STATUS.md with the QA verdict
   - merge only into `rebuild/validated-leads-loop` after QA
 

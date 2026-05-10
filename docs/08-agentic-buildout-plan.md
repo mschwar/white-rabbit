@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F05 Candidate model separation (ready after F04 QA).
-**Current feature QA handoff:** `feat/f04-query-compiler` completed required non-UI QA and is queued to merge into `rebuild/validated-leads-loop`; next build remains `feat/f05-candidate-types` once F04 merges.
+**Next feature pointer:** F05 Candidate model separation (ready).
+**Current feature QA handoff:** `feat/f04-query-compiler` completed required non-UI QA and has been merged to `rebuild/validated-leads-loop`; next build remains `feat/f05-candidate-types`.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -456,7 +456,7 @@ F03 is merged and verified. F04 is ready after the W1 containment gate report is
 
 ## F04 - Query Compiler / Planner
 
-Status: implemented_pending_qa
+Status: merged_to_rebuild_branch
 Branch: feat/f04-query-compiler
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -502,7 +502,7 @@ Rollback plan:
 Remove planner module and revert search/orchestrator integration; old direct query path returns.
 
 Next-agent handoff note:
-F04 is implemented on `feat/f04-query-compiler`; required package tests (`5 passed`) and the long Arizona benchmark boundedness verification are complete. The feature is ready to merge into `rebuild/validated-leads-loop` and must be merged before starting F05 (`feat/f05-candidate-types`).
+F04 has completed required non-UI QA (`5 passed`) and is now merged to `rebuild/validated-leads-loop`; begin `feat/f05-candidate-types` next.
 
 ---
 
