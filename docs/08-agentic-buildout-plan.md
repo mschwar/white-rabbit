@@ -4,12 +4,12 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F19 Batch Workspace Internal-Only Policy is now `ready`. Matt explicitly promoted exactly one deferred surface on 2026-05-10 so Prompt A can resume on `feat/f19-batch-internal-only`; F20-F23 remain deferred until another explicit promotion or a launch-gate change.
-**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F15, F16, F17, and F18 are merged to `rebuild/validated-leads-loop`. F19 is now the only promoted internal-only follow-on feature and should be branched next; do not QA or unlock F20-F23 in the same pass.
+**Next feature pointer:** No additional `ready` feature is currently unlocked. F19 Batch Workspace Internal-Only Policy is now `implemented_pending_qa` on `feat/f19-batch-internal-only`; F20-F23 remain deferred until another explicit promotion or a launch-gate change.
+**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F15, F16, F17, and F18 are merged to `rebuild/validated-leads-loop`. F19 is now the only active follow-on feature branch and Prompt B should QA only `feat/f19-batch-internal-only` against its card verification on `/`.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
-Build-loop note as of 2026-05-10: Matt explicitly promoted F18 from `deferred` so Prompt A could resume. Prompt B QA completed on `feat/f18-recipes-internal-only`, then the queue temporarily returned to `no ready feature`. Matt has now explicitly promoted F19 only, so Prompt A should create `feat/f19-batch-internal-only` next and leave F20-F23 deferred.
+Build-loop note as of 2026-05-10: Matt explicitly promoted F18 from `deferred` so Prompt A could resume. Prompt B QA completed on `feat/f18-recipes-internal-only`, then the queue temporarily returned to `no ready feature`. Matt then explicitly promoted F19 only, and Prompt A has now created `feat/f19-batch-internal-only`; Prompt B should QA only that branch while F20-F23 stay deferred.
 
 ## Current Reality
 
@@ -163,7 +163,7 @@ Phase gates are defined in `docs/09-rebuild-phase-gates.md`. Features still merg
 | F16 | Export rebuild with validation columns                   | merged_to_rebuild_branch | feat/f16-validation-export           | browser + CSV            |
 | F17 | Thomas/Lee correction feedback loop                      | merged_to_rebuild_branch  | feat/f17-corrections-feedback-loop   | browser + DB             |
 | F18 | Recipe library internal-only policy                      | merged_to_rebuild_branch | feat/f18-recipes-internal-only       | browser                  |
-| F19 | Batch workspace internal-only policy                     | ready                    | feat/f19-batch-internal-only         | browser                  |
+| F19 | Batch workspace internal-only policy                     | implemented_pending_qa   | feat/f19-batch-internal-only         | browser                  |
 | F20 | Friday review export internal-only policy                | deferred                 | feat/f20-friday-review-internal-only | browser                  |
 | F21 | Scoreboards internal-only policy                         | deferred                 | feat/f21-scoreboards-internal-only   | browser                  |
 | F22 | Operator minutes internal capture                        | deferred                 | feat/f22-operator-minutes-internal   | browser                  |
@@ -1313,7 +1313,7 @@ Keep F19-F23 deferred unless Matt explicitly promotes another deferred feature o
 
 ## F19 - Batch Workspace Internal-Only Policy
 
-Status: ready
+Status: implemented_pending_qa
 Branch: feat/f19-batch-internal-only
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
@@ -1357,7 +1357,7 @@ Rollback plan:
 Revert route/nav policy change.
 
 Next-agent handoff note:
-Matt explicitly promoted F19 on 2026-05-10. Prompt A should create `feat/f19-batch-internal-only` from `rebuild/validated-leads-loop`, verify the existing batch-hidden state against this card, and leave F20-F23 deferred.
+Prompt A created `feat/f19-batch-internal-only` on 2026-05-10. No additional product code was needed because F01 already removed batch from the primary nav; Prompt B should QA only this card by confirming `/` still hides batch and recording the required screenshot evidence. Leave F20-F23 deferred.
 
 ---
 
