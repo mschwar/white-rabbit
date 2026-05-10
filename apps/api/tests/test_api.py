@@ -11,14 +11,15 @@ from sqlalchemy import CheckConstraint
 
 from core.cost import RunMetrics
 from core.models import Lead, NotFoundCandidate, OrganizationOnlyCandidate
-from api.main import app
-from api.models import CorrectionField, CorrectionLabel, FeedbackLabel, LeadCorrection, LeadFeedback
-from api.db import get_db_session, get_recipe_scoreboard, get_sandbox_state
 
 INTERNAL_API_TOKEN_HEADER = "x-white-rabbit-internal-token"
 INTERNAL_API_TOKEN = "test-internal-token"
 
-os.environ.setdefault("WR_API_INTERNAL_TOKEN", INTERNAL_API_TOKEN)
+os.environ["WR_API_INTERNAL_TOKEN"] = INTERNAL_API_TOKEN
+
+from api.main import app
+from api.models import CorrectionField, CorrectionLabel, FeedbackLabel, LeadCorrection, LeadFeedback
+from api.db import get_db_session, get_recipe_scoreboard, get_sandbox_state
 
 client = TestClient(app)
 client.headers.update({INTERNAL_API_TOKEN_HEADER: INTERNAL_API_TOKEN})

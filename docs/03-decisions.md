@@ -142,9 +142,22 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 ---
 
+## ADR-010 — Promote rebuild branch to main for internal operator use
+
+**Date:** 2026-05-10
+**Status:** Locked
+
+**Context.** The active rebuild docs previously kept `main` untouched and blocked Thomas/Lee dogfood until the reset gates proved the visible operator loop. Matt explicitly directed the team to merge `rebuild/validated-leads-loop` to `main` because Thomas and Lee want to use the current internal tool.
+
+**Decision.** Promote `rebuild/validated-leads-loop` to `main` and allow Thomas and Lee to use the internal deployment under Matt's direction. This is a manual operator-use promotion, not a claim that the quality gate is green or that the reset audit evidence passed. The product remains internal-only, password-gated, and not a public self-serve SaaS.
+
+**Consequences.** `main` becomes the operator-use deployment line for the current rebuild state. Future agents must not infer that all red/yellow/green quality criteria were satisfied simply because the rebuild is on `main`. Generated leads still require evidence review, and follow-up work should preserve visible provenance, validation status, and export context.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-010, ADR-011, ...).
+1. Pick the next ADR number (ADR-011, ADR-012, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.

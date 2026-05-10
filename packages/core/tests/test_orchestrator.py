@@ -473,7 +473,9 @@ def test_system_prompt_is_vertical_agnostic_and_restores_lost_instructions():
     assert "school district / government / SMB" not in SYSTEM_PROMPT
 
 
-def test_scout_raises_on_missing_openai_key():
+def test_scout_raises_on_missing_openai_key(monkeypatch):
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+
     async def fake_search(*args, **kwargs):
         return []
 

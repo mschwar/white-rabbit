@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex reset-plan
-**Branch:** rebuild/validated-leads-loop
-**Current sprint:** May 10 reset plan ready. The product remains red. W5 should be held, W6/dogfood is blocked, and implementation is now controlled by `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
+**Last updated:** 2026-05-10 by Codex main-promotion
+**Branch:** rebuild/validated-leads-loop -> main
+**Current sprint:** Matt directed the validated-leads rebuild to be promoted to `main` so Thomas and Lee can use the internal app. This is an internal operator-use exception, not proof that the quality gate is green.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -10,11 +10,11 @@
 
 ## Current rebuild status (2026-05-10)
 
-**Integration branch:** `rebuild/validated-leads-loop`
+**Integration branch:** `rebuild/validated-leads-loop` promoted to `main` by ADR-010.
 
-**Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
+**Current gate:** Red with Matt-directed Thomas/Lee internal-use exception. Do not treat the promotion as a public launch or as evidence that the reset gates passed.
 
-**Next feature pointer:** Reset feature `R00 - W5 hold report and reset control docs` is ready. First branch: `feat/reset-r00-w5-hold-control`. Do not start W6 or deferred work.
+**Next feature pointer:** No new feature was started in this promotion session. Before the next implementation session, Matt should confirm whether reset work continues from `main`, from a fresh integration branch, or from `rebuild/validated-leads-loop`.
 
 **Current feature branch QA status:** No feature branch is awaiting QA. F19 browser QA passed, the batch route now carries explicit internal-only labeling, and F20-F23 remain deferred.
 
@@ -40,25 +40,25 @@ Prior accepted gates:
 - `docs/10-documentation-audit-2026-05-09.md` records the repo-wide documentation audit and remediation performed on this branch.
 - `.gstack/qa-reports/qa-template-agentic-buildout.md` is the QA report template for rebuild features.
 
-**Main is intentionally untouched:** the validated-leads rebuild runs on `rebuild/validated-leads-loop` so product-risky reconstruction can proceed without implying `main` is shippable or merging unvalidated feature work into the production line.
+**Main promotion override:** ADR-010 explicitly supersedes the prior "main untouched" operating rule for this promotion. `main` is now the operator-use deployment line, but the repo must still preserve the red-gate caveats, evidence requirements, and internal-only scope.
 
 **Latest handoff:**
 
 ```text
-Feature: Reset gated implementation plan 2026-05-10
-Branch: rebuild/validated-leads-loop
-Status: ready_for_prompt_a_r00
-What changed: Added active reset implementation plan with RG0-RG6 gates, required full evaluation/audit at each gate, first Prompt A assignment, ADR-009, and active-doc pointers. Product code was not changed.
+Feature: Promote validated-leads rebuild to main for Thomas/Lee internal use
+Branch: rebuild/validated-leads-loop -> main
+Status: verified_for_main_promotion
+What changed: Recorded ADR-010, updated the northstar launch-gate caveat, fixed env-sensitive API/core test setup, and prepared to fast-forward `main` to the rebuild state.
 Tests or QA run:
  - `git diff --check`
- - `rg -n "R00|RG0|reset-gated|gate-w5-operator-loop-export|ADR-009" docs STATUS.md`
-Screenshots or report:
- - `audits/zero-trust-codebase-audit-2026-05-10.md`
- - `docs/11-product-reset-plan-2026-05-10.md`
- - `docs/12-reset-gated-implementation-plan-2026-05-10.md`
-Northstar reflection: Pass as planning/control work; it blocks further feature drift and requires evidence before each gate advances.
-Next pointer: Assign Prompt A to R00 on `feat/reset-r00-w5-hold-control`.
-Open questions: none blocking R00.
+ - `cd apps/web && npm test -- --run` (29 passed)
+ - `cd apps/web && npm run build`
+ - `cd apps/api && uv run pytest tests -q` (43 passed)
+ - `cd packages/core && uv run pytest tests -q` (94 passed, 6 skipped)
+Screenshots or report: n/a for branch promotion unless verification finds a UI blocker.
+Northstar reflection: Explicit override by Matt; this does not declare the product green, public-ready, or quality-gate accepted.
+Next pointer: Confirm the next branch model after Thomas/Lee start using the internal app.
+Open questions: Should the next implementation branch from `main`, a fresh integration branch, or the existing rebuild branch?
 ```
 
 
@@ -257,6 +257,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | main-promotion (Codex) | Recorded ADR-010 for Matt-directed Thomas/Lee internal operator use, updated the northstar red-gate exception, fixed API/core tests that leaked local env vars, verified web/API/core suites, and prepared `rebuild/validated-leads-loop` for fast-forward promotion to `main`. |
 | 2026-05-10 | f19-qa (Codex) | QA'd `feat/f19-batch-internal-only` with `cd apps/web && npm test -- --run src/app/__tests__/page.test.tsx src/components/__tests__/batch-workspace.test.tsx`, `cd apps/web && npm run build`, and browser verification on `http://localhost:3000/` plus `http://localhost:3000/batch`; found that `/` already hid batch but `/batch` needed explicit internal-only framing, added that warning copy, captured `.gstack/qa-reports/screenshots/f19-01-home-no-batch-nav.png` and `.gstack/qa-reports/screenshots/f19-02-batch-internal-only.png`, wrote `.gstack/qa-reports/qa-report-f19-batch-internal-only-2026-05-10.md`, and prepared the branch for merge into `rebuild/validated-leads-loop`. |
 | 2026-05-10 | f19-build (Codex) | After promoting F19 on `rebuild/validated-leads-loop`, created and pushed `feat/f19-batch-internal-only`. No product code changes were required because batch was already hidden by F01, so the branch now carries the isolated F19 QA handoff: Prompt B should verify `/` still omits batch from primary nav and record the screenshot evidence from the card. |
 | 2026-05-10 | f19-promotion (Codex) | Matt explicitly promoted F19 only. Updated `docs/08-agentic-buildout-plan.md` and `STATUS.md` so `F19` is the sole `ready` deferred follow-on feature, with explicit instructions that Prompt A should create `feat/f19-batch-internal-only` next and Prompt B should QA only that card verification afterward. |

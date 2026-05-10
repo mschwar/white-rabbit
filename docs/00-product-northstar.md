@@ -2,7 +2,7 @@
 
 **Status:** Active anti-drift source of truth for the validated-leads rebuild.
 **Created:** 2026-05-09.
-**Current launch gate:** Red.
+**Current launch gate:** Red with Matt-directed internal operator-use exception. See ADR-010.
 
 This document supersedes older optimistic "works" claims when product quality is in question. Treat the 2026-05-09 zero-trust audit as the current product reality until the benchmark suite proves otherwise.
 
@@ -156,7 +156,7 @@ Red if any of these are true:
 - Export lacks validation context.
 - Operator UI organizes, beautifies, or scales untrusted data before the single-query loop works.
 
-Allowed users in red: Matt and agents only. Do not daily-dogfood with Thomas or Lee.
+Allowed users in red by default: Matt and agents only. ADR-010 records a 2026-05-10 Matt-directed exception that permits Thomas and Lee to use the internal deployment without treating the product as green or public-ready.
 
 ### Yellow - Matt-Only Internal Evaluation
 
