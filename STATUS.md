@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex feat/f10-arizona-k12-benchmark-qa
+**Last updated:** 2026-05-09 by Codex feat/f11-required-benchmark-suite
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** F10 Golden Arizona K-12 VoIP benchmark harness QA complete and merged to `rebuild/validated-leads-loop`.
+**Current sprint:** F11 Required benchmark suite implemented on `feat/f11-required-benchmark-suite` and waiting QA.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,9 +14,9 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F11 Required benchmark suite (`feat/f11-required-benchmark-suite`, blocked).
+**Next feature pointer:** F11 Required benchmark suite (`feat/f11-required-benchmark-suite`, implemented_pending_qa).
 
-**Current feature branch QA status:** `feat/f10-arizona-k12-benchmark` passed required non-UI QA and is merged to `rebuild/validated-leads-loop`.
+**Current feature branch QA status:** `feat/f11-required-benchmark-suite` has been pushed and is waiting on required non-UI QA.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -38,17 +38,16 @@
 **Latest handoff:**
 
 ```text
-Feature: F10 - Golden Arizona K-12 VoIP benchmark harness
-Branch: feat/f10-arizona-k12-benchmark
-Status: qa_passed / merged_to_rebuild_branch
-What changed: Verified the existing Arizona benchmark fixture and harness in `packages/core/tests/fixtures/arizona_k12_voip.json` and `packages/core/tests/test_arizona_k12_benchmark.py`; no production code changes required during QA.
+Feature: F11 - Required Benchmark Suite
+Branch: feat/f11-required-benchmark-suite
+Status: implemented_pending_qa
+What changed: Added a canonical required benchmark suite in `packages/core/src/core/benchmark_suite.py`, mirrored it in `packages/core/tests/fixtures/benchmark_suite.json`, and covered offline suite validation plus pass/fail dimension reporting in `packages/core/tests/test_benchmark_suite.py`.
 Tests or QA run:
- - `cd packages/core && uv run pytest tests/test_arizona_k12_benchmark.py -q` (3 passed, 1 skipped)
- - `git diff --check` (passed)
-Screenshots or report: `.gstack/qa-reports/qa-report-f10-arizona-k12-benchmark-2026-05-10.md`
-Northstar reflection: This harness directly improves benchmark visibility for the core query-to-validated-output loop by hardening evidence-aware pass criteria (category match, email quality, fake/unsupported-contact checks) without adding UI. Product remains red by `docs/00-product-northstar.md`.
-Next pointer: F11 required benchmark suite (`feat/f11-required-benchmark-suite`) is next, but blocked until explicitly released in planning.
-Open questions: none blocking F10 QA
+ - `cd packages/core && uv run pytest tests/test_benchmark_suite.py -q` (3 passed)
+Screenshots or report: n/a
+Northstar reflection: This suite makes the rebuild prove coverage beyond Arizona by encoding the audit's simple B2B queries, a guardrail accept case, and a privacy rejection case without live APIs. Product remains red by `docs/00-product-northstar.md`.
+Next pointer: F12 per-run quality report remains blocked until F11 merges.
+Open questions: none blocking F11 implementation
 ```
 
 
@@ -193,13 +192,13 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F09 are merged to `rebuild/validated-leads-loop`; W2 and W3 are orchestrator-accepted; F10 is implemented and waiting on QA.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F09 are merged to `rebuild/validated-leads-loop`; W2 and W3 are orchestrator-accepted; F11 is implemented and waiting on QA.
 
 ## Next concrete task
 
-- QA **F10 - Golden Arizona K-12 VoIP benchmark harness** on `feat/f10-arizona-k12-benchmark`:
-  - run `cd packages/core && uv run pytest tests/test_arizona_k12_benchmark.py -q`
-  - if live validation is needed, set `RUN_LIVE=1` and provide `OPENAI_API_KEY` and `TAVILY_API_KEY`
+- QA **F11 - Required benchmark suite** on `feat/f11-required-benchmark-suite`:
+  - run `cd packages/core && uv run pytest tests/test_benchmark_suite.py -q`
+  - confirm the required audit queries and privacy rejection fixture still match the canonical suite payload
   - update `docs/08-agentic-buildout-plan.md` and `STATUS.md`
   - merge only into `rebuild/validated-leads-loop` after QA
 

@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** F11 Required benchmark suite (blocked).
-**Current feature QA handoff:** `feat/f10-arizona-k12-benchmark` passed required non-UI QA and has been merged to `rebuild/validated-leads-loop`.
+**Next feature pointer:** F11 Required benchmark suite (implemented_pending_qa).
+**Current feature QA handoff:** `feat/f11-required-benchmark-suite` implemented the required benchmark suite and is awaiting offline QA before merge.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
@@ -840,7 +840,7 @@ F11 should extend this harness rather than creating a parallel evaluation path. 
 
 ## F11 - Required Benchmark Suite
 
-Status: blocked
+Status: implemented_pending_qa
 Branch: feat/f11-required-benchmark-suite
 PR target: rebuild/validated-leads-loop
 Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
