@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-05-10 by Codex
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** F06 Field-level validation schema passed build checks on `feat/f06-field-validation-schema` and is queued for QA; next target is F07 Source validator (blocked).
+**Current sprint:** F06 Field-level validation schema passed non-UI checks, was QA-approved and merged on `rebuild/validated-leads-loop`; next target is F07 Source validator (blocked).
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,9 +14,9 @@
 
 **Current gate:** Red. Do not ship. Do not daily-dogfood with Thomas or Lee.
 
-**Next feature pointer:** F06 Field-level validation schema (implemented_pending_qa).
+**Next feature pointer:** F07 Source validator (blocked).
 
-**Current feature branch QA status:** `feat/f06-field-validation-schema` passed required non-UI build checks and is queued for QA; the next implementation target remains `feat/f07-source-validator`.
+**Current feature branch QA status:** `feat/f06-field-validation-schema` passed required non-UI QA and is merged into `rebuild/validated-leads-loop`; the next implementation target remains `feat/f07-source-validator` (blocked).
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -35,15 +35,15 @@
 ```text
 Feature: F06 Field-level validation schema
 Branch: feat/f06-field-validation-schema
-Status: implemented_pending_qa
+Status: merged_to_rebuild_branch
 What changed: Added explicit field-level validation records to every candidate type, with default unsupported records for name, title, organization, email, phone, and source; preserved the existing lead contract while making validation visible in serialized Scout and Full responses.
 Tests or QA run:
 - `cd packages/core && uv run pytest tests/test_models.py -q` (30 passed)
 - `cd apps/api && uv run pytest tests/test_api.py -q -k full` (2 passed, 33 deselected)
 - `cd apps/api && uv run pytest tests/test_api.py -q -k "scout or full"` (12 passed, 23 deselected)
-Screenshots or report: N/A - non-UI verification only.
+Screenshots or report: `.gstack/qa-reports/qa-report-f06-field-validation-schema-2026-05-10.md`.
 Northstar reflection: The schema now separates unsupported validation from implied trust so later source and contact validators can populate evidence-backed field records instead of relying on the raw lead blob.
-Next pointer: F07 Source validator (blocked) after F06 QA/merge.
+Next pointer: F07 Source validator (blocked).
 Open questions: None blocking F06 build.
 ```
 
@@ -188,12 +188,12 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F05 are merged to `rebuild/validated-leads-loop`; F06 field-level validation schema is implemented on `feat/f06-field-validation-schema` and waiting for QA/merge; W3 remains blocked.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F06 are merged to `rebuild/validated-leads-loop`; W3 remains blocked.
 
 ## Next concrete task
 
-- QA **F06 - Field-level validation schema** on branch `feat/f06-field-validation-schema`.
-- Current next task is `feat/f06-field-validation-schema` (implemented_pending_qa): validate the new field-validation bundle and serialize it through the Scout/Full API paths.
+- QA **F06 - Field-level validation schema** completed on `rebuild/validated-leads-loop`.
+- Current next task is `feat/f07-source-validator` (blocked): source validator non-UI work is next after this QA handoff and W2 merge.
 
 ## Open questions for Matt
 
@@ -235,6 +235,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | f06-qa (Codex) | QA'd `feat/f06-field-validation-schema` with required non-UI verification and merged it into `rebuild/validated-leads-loop`; wrote `.gstack/qa-reports/qa-report-f06-field-validation-schema-2026-05-10.md` and updated docs handoff/status. |
 | 2026-05-10 | f06-build (Codex) | Implemented field-level validation schema on `feat/f06-field-validation-schema`: added explicit per-field validation records to all candidate types, defaulted untouched rows to unsupported validation, and verified core model tests plus Scout/Full API serialization. |
 | 2026-05-10 | f05-qa (Codex) | QA'd and merged `feat/f05-candidate-types` into `rebuild/validated-leads-loop` after required non-UI checks passed (`25` model tests, `10` scout API tests); wrote `.gstack/qa-reports/qa-report-f05-candidate-model-separation-2026-05-10.md` and updated `docs/08-agentic-buildout-plan.md` + `STATUS.md`. |
 | 2026-05-10 | f05-build (Codex) | Implemented candidate model separation on `feat/f05-candidate-types`: split person_lead from organization_only/not_found/failed rows, added company-as-person and role-only rejection, preserved candidate_category through core/API responses, and passed the required non-UI tests. Branch is pending QA/merge; W3 remains blocked. |
