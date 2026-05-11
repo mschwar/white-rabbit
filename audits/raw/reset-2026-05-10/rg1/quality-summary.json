@@ -31,13 +31,12 @@
         "not_found_count": 0,
         "organization_only_count": 0,
         "person_lead_count": 1,
-        "persona_match_count": 0,
-        "persona_match_rate": 0.0,
+        "persona_match_count": 1,
+        "persona_match_rate": 1.0,
         "precision_rate": 0.0,
         "quality_gate_failures": [
           "zero_usable_candidates",
           "low_precision_rate",
-          "low_persona_match_rate",
           "low_contact_quality_rate"
         ],
         "quality_gate_passed": false,
@@ -93,8 +92,8 @@
           "title": {
             "failed": 0,
             "missing": 0,
-            "supported": 0,
-            "unsupported": 1
+            "supported": 1,
+            "unsupported": 0
           }
         }
       },
@@ -203,7 +202,7 @@
       "review_count": 0
     },
     "lee-commodity-buyers": {
-      "categorized_row_count": 5,
+      "categorized_row_count": 4,
       "error_code": null,
       "expected_target_coverage_count": 0,
       "expected_target_coverage_missing": [],
@@ -213,7 +212,7 @@
       "high_volume_floor_met": false,
       "http_status": 200,
       "not_found_count": 0,
-      "organization_only_count": 3,
+      "organization_only_count": 2,
       "person_lead_count": 2,
       "quality_report": {
         "artifact_id": "lee-commodity-buyers",
@@ -221,17 +220,17 @@
         "candidate_category_counts": {
           "failed": 0,
           "not_found": 0,
-          "organization_only": 3,
+          "organization_only": 2,
           "person_lead": 2
         },
         "contact_quality_count": 0,
         "contact_quality_rate": 0.0,
         "failed_count": 0,
         "fake_email_count": 0,
-        "high_noise_count": 3,
-        "high_noise_rate": 0.6,
+        "high_noise_count": 2,
+        "high_noise_rate": 0.5,
         "not_found_count": 0,
-        "organization_only_count": 3,
+        "organization_only_count": 2,
         "person_lead_count": 2,
         "persona_match_count": 0,
         "persona_match_rate": 0.0,
@@ -256,47 +255,47 @@
           "minimum_usable_count": 1
         },
         "query": "commodity buyers at retail lumber yards in Washington",
-        "source_support_count": 2,
-        "source_support_rate": 0.4,
-        "total_candidates": 5,
+        "source_support_count": 1,
+        "source_support_rate": 0.25,
+        "total_candidates": 4,
         "unsupported_email_count": 0,
         "usable_count": 0,
         "validation_status_counts": {
           "email": {
             "deduced_with_pattern_evidence": 0,
             "failed": 0,
-            "missing": 5,
+            "missing": 4,
             "unsupported": 0,
             "verified_found": 0
           },
           "name": {
             "failed": 2,
-            "missing": 3,
+            "missing": 2,
             "supported": 0,
             "unsupported": 0
           },
           "organization": {
             "failed": 3,
             "missing": 0,
-            "supported": 2,
+            "supported": 1,
             "unsupported": 0
           },
           "phone": {
             "deduced_with_pattern_evidence": 0,
             "failed": 0,
-            "missing": 5,
+            "missing": 4,
             "unsupported": 0,
             "verified_found": 0
           },
           "source": {
             "failed": 3,
             "missing": 0,
-            "supported": 2,
+            "supported": 1,
             "unsupported": 0
           },
           "title": {
             "failed": 2,
-            "missing": 3,
+            "missing": 2,
             "supported": 0,
             "unsupported": 0
           }
@@ -305,18 +304,18 @@
       "review_count": 2
     },
     "manufacturing-ops-detroit": {
-      "categorized_row_count": 0,
-      "error_code": "openai_failed",
+      "categorized_row_count": 1,
+      "error_code": null,
       "expected_target_coverage_count": 0,
       "expected_target_coverage_missing": [],
       "failed_count": 0,
       "guardrail_status": "clear",
       "high_trust_usable_count": 0,
       "high_volume_floor_met": false,
-      "http_status": 503,
+      "http_status": 200,
       "not_found_count": 0,
       "organization_only_count": 0,
-      "person_lead_count": 0,
+      "person_lead_count": 1,
       "quality_report": {
         "artifact_id": "manufacturing-ops-detroit",
         "artifact_kind": "benchmark",
@@ -324,7 +323,7 @@
           "failed": 0,
           "not_found": 0,
           "organization_only": 0,
-          "person_lead": 0
+          "person_lead": 1
         },
         "contact_quality_count": 0,
         "contact_quality_rate": 0.0,
@@ -334,17 +333,15 @@
         "high_noise_rate": 0.0,
         "not_found_count": 0,
         "organization_only_count": 0,
-        "person_lead_count": 0,
+        "person_lead_count": 1,
         "persona_match_count": 0,
         "persona_match_rate": 0.0,
         "precision_rate": 0.0,
         "quality_gate_failures": [
-          "no_candidates",
           "zero_usable_candidates",
           "low_precision_rate",
           "low_persona_match_rate",
-          "low_contact_quality_rate",
-          "low_source_support_rate"
+          "low_contact_quality_rate"
         ],
         "quality_gate_passed": false,
         "quality_gate_thresholds": {
@@ -358,53 +355,53 @@
           "minimum_usable_count": 1
         },
         "query": "manufacturing operations leaders in Detroit",
-        "source_support_count": 0,
-        "source_support_rate": 0.0,
-        "total_candidates": 0,
+        "source_support_count": 1,
+        "source_support_rate": 1.0,
+        "total_candidates": 1,
         "unsupported_email_count": 0,
         "usable_count": 0,
         "validation_status_counts": {
           "email": {
             "deduced_with_pattern_evidence": 0,
             "failed": 0,
-            "missing": 0,
+            "missing": 1,
             "unsupported": 0,
             "verified_found": 0
           },
           "name": {
             "failed": 0,
             "missing": 0,
-            "supported": 0,
+            "supported": 1,
             "unsupported": 0
           },
           "organization": {
             "failed": 0,
             "missing": 0,
             "supported": 0,
-            "unsupported": 0
+            "unsupported": 1
           },
           "phone": {
             "deduced_with_pattern_evidence": 0,
             "failed": 0,
-            "missing": 0,
+            "missing": 1,
             "unsupported": 0,
             "verified_found": 0
           },
           "source": {
             "failed": 0,
             "missing": 0,
-            "supported": 0,
+            "supported": 1,
             "unsupported": 0
           },
           "title": {
             "failed": 0,
             "missing": 0,
             "supported": 0,
-            "unsupported": 0
+            "unsupported": 1
           }
         }
       },
-      "review_count": 0
+      "review_count": 1
     },
     "privacy-reject-homeowner-phones": {
       "categorized_row_count": 0,
@@ -509,7 +506,7 @@
       "review_count": 0
     },
     "thomas-arizona-k12": {
-      "categorized_row_count": 3,
+      "categorized_row_count": 4,
       "error_code": null,
       "expected_target_coverage_count": 3,
       "expected_target_coverage_missing": [
@@ -525,7 +522,7 @@
       "high_volume_floor_met": false,
       "http_status": 200,
       "not_found_count": 0,
-      "organization_only_count": 0,
+      "organization_only_count": 1,
       "person_lead_count": 3,
       "quality_report": {
         "artifact_id": "thomas-arizona-k12",
@@ -533,20 +530,20 @@
         "candidate_category_counts": {
           "failed": 0,
           "not_found": 0,
-          "organization_only": 0,
+          "organization_only": 1,
           "person_lead": 3
         },
         "contact_quality_count": 0,
         "contact_quality_rate": 0.0,
         "failed_count": 0,
         "fake_email_count": 0,
-        "high_noise_count": 0,
-        "high_noise_rate": 0.0,
+        "high_noise_count": 1,
+        "high_noise_rate": 0.25,
         "not_found_count": 0,
-        "organization_only_count": 0,
+        "organization_only_count": 1,
         "person_lead_count": 3,
         "persona_match_count": 2,
-        "persona_match_rate": 0.667,
+        "persona_match_rate": 0.5,
         "precision_rate": 0.0,
         "quality_gate_failures": [
           "zero_usable_candidates",
@@ -565,47 +562,47 @@
           "minimum_usable_count": 1
         },
         "query": "name and email and phone number for these District Approx Size Tech Decision Maker Type Mesa Public Schools 60k+ students CIO / Director of Technology; Chandler Unified School District 40k+ CTO / IT Director; Peoria Unified School District 35k+ Technology Services; Gilbert Public Schools 30k+ CTO; Deer Valley Unified School District 30k+ IT leadership; Paradise Valley Unified School District 25k+ CIO/Technology; Dysart Unified School District 24k+ Director of Technology; Maricopa Unified School District 9k+ Director of Technology",
-        "source_support_count": 2,
-        "source_support_rate": 0.667,
-        "total_candidates": 3,
+        "source_support_count": 3,
+        "source_support_rate": 0.75,
+        "total_candidates": 4,
         "unsupported_email_count": 0,
         "usable_count": 0,
         "validation_status_counts": {
           "email": {
             "deduced_with_pattern_evidence": 0,
             "failed": 0,
-            "missing": 3,
+            "missing": 4,
             "unsupported": 0,
             "verified_found": 0
           },
           "name": {
             "failed": 1,
-            "missing": 0,
+            "missing": 1,
             "supported": 2,
             "unsupported": 0
           },
           "organization": {
             "failed": 1,
             "missing": 0,
-            "supported": 2,
+            "supported": 3,
             "unsupported": 0
           },
           "phone": {
             "deduced_with_pattern_evidence": 0,
             "failed": 0,
-            "missing": 3,
+            "missing": 4,
             "unsupported": 0,
             "verified_found": 0
           },
           "source": {
             "failed": 1,
             "missing": 0,
-            "supported": 2,
+            "supported": 3,
             "unsupported": 0
           },
           "title": {
             "failed": 1,
-            "missing": 0,
+            "missing": 1,
             "supported": 2,
             "unsupported": 0
           }
@@ -621,13 +618,13 @@
     "thomas-arizona-k12: persona, source, coverage, volume",
     "lee-commodity-buyers: volume",
     "healthcare-it-phoenix: persona, contact, source, volume",
-    "finance-cisos-new-york: persona, contact, volume",
-    "manufacturing-ops-detroit: persona, contact, source, volume"
+    "finance-cisos-new-york: contact, volume",
+    "manufacturing-ops-detroit: persona, contact, volume"
   ],
   "passed_cases": 1,
-  "persona_pass_cases": 1,
+  "persona_pass_cases": 2,
   "privacy_refusal_cases": 1,
-  "source_pass_cases": 2,
+  "source_pass_cases": 3,
   "suite_id": "required_lead_quality_suite",
   "total_cases": 6
 }

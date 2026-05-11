@@ -8,10 +8,10 @@
       "email": "",
       "email_status": "missing",
       "evidence_score": 1.0,
-      "explanation": "David Sanders is a strong fit as he is the Chief Technology Officer for a large school district, validating his relevance as a decision-maker in educational technology.",
-      "fit_score": 1.0,
+      "explanation": "David Sanders is the right contact at Mesa Public Schools with relevant decision-making authority and a current role, but contact information is missing.",
+      "fit_score": 0.95,
       "gate_passed": false,
-      "icebreaker": "With your extensive experience as CTO of Mesa Public Schools, I am eager to discuss how innovative educational technology can enhance student outcomes.",
+      "icebreaker": "Hi David, your work as the Chief Technology Officer at Mesa Public Schools aligns perfectly with emerging technologies set to redefine education.",
       "id": null,
       "name": "David Sanders",
       "organization": "Mesa Public Schools",
@@ -19,49 +19,49 @@
       "title": "Chief Technology Officer",
       "validation": {
         "email": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": null,
           "notes": "email is not present on the candidate.",
           "source_url": "https://www.linkedin.com/in/dbsanders67",
           "status": "missing"
         },
         "name": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": "...etDfd(); window.pemTracking = getDfd(); window.appRedirectCompleted = getDfd(); David Sanders - Mesa Public Schools | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@t...",
           "notes": "Direct text support found for name.",
           "source_url": "https://www.linkedin.com/in/dbsanders67",
           "status": "supported"
         },
         "organization": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": "...pemTracking = getDfd(); window.appRedirectCompleted = getDfd(); David Sanders - Mesa Public Schools | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"review...",
           "notes": "Direct text support found for organization.",
           "source_url": "https://www.linkedin.com/in/dbsanders67",
           "status": "supported"
         },
         "phone": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": null,
           "notes": "phone is not present on the candidate.",
           "source_url": "https://www.linkedin.com/in/dbsanders67",
           "status": "missing"
         },
         "source": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": "...etDfd(); window.pemTracking = getDfd(); window.appRedirectCompleted = getDfd(); David Sanders - Mesa Public Schools | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@t...",
           "notes": "http_status=200 resolved_url=https://www.linkedin.com/in/dbsanders67 matched_fields=name,title,organization",
           "source_url": "https://www.linkedin.com/in/dbsanders67",
           "status": "supported"
         },
         "title": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": "...a.org/FollowAction\",\"name\":\"Follows\",\"userInteractionCount\":442},\"description\":\"Chief Technology Officer for Mesa Public Schools. With over 25 years of experience in the\u2026\"}]} Skip to m...",
           "notes": "Direct text support found for title.",
           "source_url": "https://www.linkedin.com/in/dbsanders67",
           "status": "supported"
         }
       },
-      "why_target": "David's role as CTO aligns perfectly with the technology decision-maker needs for large school districts."
+      "why_target": "As the Chief Technology Officer, David oversees the technology direction which is critical for enhancing educational experiences."
     },
     {
       "candidate_category": "person_lead",
@@ -70,10 +70,10 @@
       "email": "",
       "email_status": "missing",
       "evidence_score": 1.0,
-      "explanation": "Michelle Coots is a suitable match as she holds the position of Technology Director at a significant school district, validating her influence in tech decisions.",
-      "fit_score": 1.0,
+      "explanation": "Michelle Coots is a key decision-maker at Deer Valley USD in technology, but her contact information is lacking.",
+      "fit_score": 0.9,
       "gate_passed": false,
-      "icebreaker": "Congratulations on your recent recognition as Technology Director of the Year by AZTEA; it's evidence of your dedication to advancing technology in education.",
+      "icebreaker": "Hi Michelle, congratulations on being recognized as the Technology Director of the Year for Deer Valley Unified School District; your leadership is crucial for driving educational technology forward.",
       "id": null,
       "name": "Michelle Coots",
       "organization": "Deer Valley Unified School District",
@@ -81,49 +81,100 @@
       "title": "Technology Director",
       "validation": {
         "email": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": null,
           "notes": "email is not present on the candidate.",
           "source_url": "https://www.linkedin.com/posts/michelle-coots-az_aztea-dvusd-edtech-activity-7291279232905723904-90cU",
           "status": "missing"
         },
         "name": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": "...ing = getDfd(); window.appRedirectCompleted = getDfd(); #aztea #dvusd #edtech | Michelle Coots | 22 comments {\"@context\":\"http://schema.org\",\"@type\":\"SocialMediaPosting\",\"@id...",
           "notes": "Direct text support found for name.",
           "source_url": "https://www.linkedin.com/posts/michelle-coots-az_aztea-dvusd-edtech-activity-7291279232905723904-90cU",
           "status": "supported"
         },
         "organization": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": "...01T02:20:34.512Z\",\"headline\":\"It was an honor to be recognized this week at the Deer Valley Unified School District (DVUSD) Governing Board meeting for receiving the Technology Director of the Ye...",
           "notes": "Direct text support found for organization.",
           "source_url": "https://www.linkedin.com/posts/michelle-coots-az_aztea-dvusd-edtech-activity-7291279232905723904-90cU",
           "status": "supported"
         },
         "phone": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": null,
           "notes": "phone is not present on the candidate.",
           "source_url": "https://www.linkedin.com/posts/michelle-coots-az_aztea-dvusd-edtech-activity-7291279232905723904-90cU",
           "status": "missing"
         },
         "source": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": "...ing = getDfd(); window.appRedirectCompleted = getDfd(); #aztea #dvusd #edtech | Michelle Coots | 22 comments {\"@context\":\"http://schema.org\",\"@type\":\"SocialMediaPosting\",\"@id...",
           "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/michelle-coots-az_aztea-dvusd-edtech-activity-7291279232905723904-90cU matched_fields=name,title,organization",
           "source_url": "https://www.linkedin.com/posts/michelle-coots-az_aztea-dvusd-edtech-activity-7291279232905723904-90cU",
           "status": "supported"
         },
         "title": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": "...alley Unified School District (DVUSD) Governing Board meeting for receiving the Technology Director of the Year award from the Arizona Technology in Education Association (AZTEA)....",
           "notes": "Direct text support found for title.",
           "source_url": "https://www.linkedin.com/posts/michelle-coots-az_aztea-dvusd-edtech-activity-7291279232905723904-90cU",
           "status": "supported"
         }
       },
-      "why_target": "As the Technology Director at Deer Valley Unified School District, Michelle is a key decision-maker in educational technology implementations."
+      "why_target": "As Technology Director, Michelle leads initiatives that enhance technology integration in schools, directly impacting educational outcomes."
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Peoria Public Schools is a relevant organization, but no specific decision-maker was confirmed.",
+      "id": null,
+      "organization": "Peoria Public Schools",
+      "source_url": "https://www.peoriapublicschools.org/page/technology",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T03:33:16Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.peoriapublicschools.org/page/technology",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T03:33:16Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.peoriapublicschools.org/page/technology",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T03:33:16Z",
+          "evidence_snippet": "Technology | Peoria Public Schools @media (max-width:1023px){#h2 [data-testid=\"small-utilities-bar\"] .utility-bar-...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.peoriapublicschools.org/page/technology",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T03:33:16Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.peoriapublicschools.org/page/technology",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T03:33:16Z",
+          "evidence_snippet": "Technology | Peoria Public Schools @media (max-width:1023px){#h2 [data-testid=\"small-utilities-bar\"] .utility-bar-...",
+          "notes": "http_status=200 resolved_url=https://www.peoriapublicschools.org/page/technology matched_fields=organization",
+          "source_url": "https://www.peoriapublicschools.org/page/technology",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T03:33:16Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.peoriapublicschools.org/page/technology",
+          "status": "missing"
+        }
+      }
     },
     {
       "candidate_category": "person_lead",
@@ -132,10 +183,10 @@
       "email": "",
       "email_status": "missing",
       "evidence_score": 1.0,
-      "explanation": "Scott Haase is validated as the Director of Technology at Gilbert Public Schools, a significant role relevant to educational technology.",
-      "fit_score": 1.0,
+      "explanation": "Scott Haase is a validated contact at Gilbert Public Schools with a relevant title but lacks email and phone details.",
+      "fit_score": 0.85,
       "gate_passed": false,
-      "icebreaker": "As Director of Technology Infrastructure and Cybersecurity at Gilbert Public Schools, your expertise in IT infrastructure is crucial for educational systems today.",
+      "icebreaker": "Hi Scott, your leadership in technology infrastructure at Gilbert Public Schools is essential as districts seek to innovate and improve educational access.",
       "id": null,
       "name": "Scott Haase",
       "organization": "Gilbert Public Schools",
@@ -143,57 +194,57 @@
       "title": "Director of Technology Infrastructure and Cybersecurity",
       "validation": {
         "email": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": null,
           "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
           "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
           "status": "missing"
         },
         "name": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": null,
           "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
           "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
           "status": "failed"
         },
         "organization": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": null,
           "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
           "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
           "status": "failed"
         },
         "phone": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": null,
           "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
           "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
           "status": "missing"
         },
         "source": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": null,
           "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
           "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
           "status": "failed"
         },
         "title": {
-          "checked_at": "2026-05-11T03:21:41Z",
+          "checked_at": "2026-05-11T03:33:16Z",
           "evidence_snippet": null,
           "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
           "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
           "status": "failed"
         }
       },
-      "why_target": "Scott's role in Gilbert Public Schools focuses on cyber infrastructure, making him integral to technology decisions in education."
+      "why_target": "Scott's role oversees critical technology frameworks, making him a vital liaison for educational technology decisions."
     }
   ],
   "metrics": {
-    "elapsed_seconds": 28.61,
-    "estimated_cost_usd": 0.082016,
+    "elapsed_seconds": 30.27,
+    "estimated_cost_usd": 0.082146,
     "input_tokens": 8039,
     "openai_web_searches": 0,
-    "output_tokens": 1351,
+    "output_tokens": 1567,
     "tavily_searches": 8
   },
   "mode": "scout",
@@ -209,14 +260,14 @@
       "Add a geography, such as a city, state, or region."
     ]
   },
-  "runner_elapsed_seconds": 28.649,
+  "runner_elapsed_seconds": 30.294,
   "sandbox_usage": {
     "max_queries": 10,
     "max_rows": 1000,
     "remaining_queries": 9,
-    "remaining_rows": 997,
-    "reset_at": "2026-05-11T03:21:14.060825-06:00",
+    "remaining_rows": 996,
+    "reset_at": "2026-05-11T03:32:48.004118-06:00",
     "total_queries": 1,
-    "total_rows": 3
+    "total_rows": 4
   }
 }

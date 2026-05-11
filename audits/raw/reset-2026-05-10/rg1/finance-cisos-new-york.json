@@ -3,86 +3,86 @@
   "leads": [
     {
       "candidate_category": "person_lead",
-      "confidence": 0.0,
+      "confidence": 1.0,
       "contact_score": 0.0,
       "email": "",
       "email_status": "missing",
-      "evidence_score": 0.9995308,
-      "explanation": "This lead is directly relevant as Khalil Jackson holds a high-level position at a key financial institution in New York, making him a targeted contact.",
+      "evidence_score": 1.0,
+      "explanation": "Khalil Jackson is a recognized leader in cybersecurity for the financial industry, making him a key contact for firms seeking to strengthen their information security.",
       "fit_score": 1.0,
       "gate_passed": false,
-      "icebreaker": "As Chief Information Security Officer at the Federal Reserve Bank of New York, your leadership in protecting critical systems and data aligns with the pressing cybersecurity needs in the financial services industry.",
+      "icebreaker": "I admire your leadership as CISO at the Federal Reserve Bank of New York, especially given the critical role you play in safeguarding the nation's financial systems in such a dynamic environment.",
       "id": null,
       "name": "Khalil Jackson",
-      "organization": "New York Federal Reserve Bank",
+      "organization": "Federal Reserve Bank of New York",
       "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
-      "title": "Chief Information Security Officer (CISO)",
+      "title": "Chief Information Security Officer",
       "validation": {
         "email": {
-          "checked_at": "2026-05-11T03:22:45Z",
+          "checked_at": "2026-05-11T03:34:06Z",
           "evidence_snippet": null,
           "notes": "email is not present on the candidate.",
           "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
           "status": "missing"
         },
         "name": {
-          "checked_at": "2026-05-11T03:22:45Z",
+          "checked_at": "2026-05-11T03:34:06Z",
           "evidence_snippet": "Khalil Jackson, CISO, New York Federal Reserve Bank, Joins FAIR Institute Board hsjQuery = win...",
           "notes": "Direct text support found for name.",
           "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
           "status": "supported"
         },
         "organization": {
-          "checked_at": "2026-05-11T03:22:45Z",
-          "evidence_snippet": "Khalil Jackson, CISO, New York Federal Reserve Bank, Joins FAIR Institute Board hsjQuery = window['jQuery']; a.cta_button{-moz-box-...",
+          "checked_at": "2026-05-11T03:34:06Z",
+          "evidence_snippet": "...Officer to the FAIR Institute Board of Directors : Khalil Jackson, CISO at the Federal Reserve Bank of New York. Khalil\u2019s deep experience will enrich our mission of research and education in...",
           "notes": "Direct text support found for organization.",
           "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
           "status": "supported"
         },
         "phone": {
-          "checked_at": "2026-05-11T03:22:45Z",
+          "checked_at": "2026-05-11T03:34:06Z",
           "evidence_snippet": null,
           "notes": "phone is not present on the candidate.",
           "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
           "status": "missing"
         },
         "source": {
-          "checked_at": "2026-05-11T03:22:45Z",
+          "checked_at": "2026-05-11T03:34:06Z",
           "evidence_snippet": "Khalil Jackson, CISO, New York Federal Reserve Bank, Joins FAIR Institute Board hsjQuery = win...",
-          "notes": "http_status=200 resolved_url=https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board matched_fields=name,organization",
+          "notes": "http_status=200 resolved_url=https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board matched_fields=name,title,organization",
           "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
           "status": "supported"
         },
         "title": {
-          "checked_at": "2026-05-11T03:22:45Z",
-          "evidence_snippet": null,
-          "notes": "No direct text support found for title.",
+          "checked_at": "2026-05-11T03:34:06Z",
+          "evidence_snippet": "...cola (Nick) Sanna I am delighted to announce the appointment of a distinguished Chief Information Security Officer to the FAIR Institute Board of Directors : Khalil Jackson, CISO at the Federal...",
+          "notes": "Direct text support found for title.",
           "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
-          "status": "unsupported"
+          "status": "supported"
         }
       },
-      "why_target": "Khalil Jackson's role as CISO at the Federal Reserve Bank of New York makes him a pivotal decision-maker in cybersecurity for the financial sector."
+      "why_target": "As CISO at the Federal Reserve Bank of New York, Khalil Jackson is pivotal in ensuring the security of critical financial systems, aligning perfectly with the search for finance CISOs in the financial services industry."
     }
   ],
   "metrics": {
-    "elapsed_seconds": 12.03,
-    "estimated_cost_usd": 0.011463,
+    "elapsed_seconds": 11.04,
+    "estimated_cost_usd": 0.011464,
     "input_tokens": 7477,
     "openai_web_searches": 0,
-    "output_tokens": 569,
+    "output_tokens": 571,
     "tavily_searches": 1
   },
   "mode": "scout",
   "prompt_label": "Finance CISOs in New York",
   "query": "finance CISOs at financial services firms in New York",
   "query_guardrail": null,
-  "runner_elapsed_seconds": 12.06,
+  "runner_elapsed_seconds": 11.059,
   "sandbox_usage": {
     "max_queries": 10,
     "max_rows": 1000,
     "remaining_queries": 6,
     "remaining_rows": 991,
-    "reset_at": "2026-05-11T03:21:14.060825-06:00",
+    "reset_at": "2026-05-11T03:32:48.004118-06:00",
     "total_queries": 4,
     "total_rows": 9
   }
