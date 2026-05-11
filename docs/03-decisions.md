@@ -259,9 +259,30 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 ---
 
+## ADR-019 — Source-assisted research compiler is the next value path
+
+**Date:** 2026-05-11
+**Status:** Locked
+
+**Context.** The post-R09C RG3 Tavily re-run remained held: live benchmarks still produced `0` high-trust usable rows and `0` contact-quality passes despite high-volume source and evidence-acquisition work. Matt then pointed back to Lee's April "NM IT for school districts" email thread. That thread shows the real commercial proof point: a human plus basic chatbot/Codex workflow produced a source-backed New Mexico school-district IT workbook with verified public emails, manual-lookup rows, source URLs, verification notes, and outreach/export artifacts. Thomas asked for the output, and that proof point helped drive live sales/demo momentum. The successful pattern was not fully autonomous broad Scout search; it was targeted public-source research compiled into an honest workbook.
+
+**Decision.** Keep RG3 active, but pivot the next remediation from autonomous broad-search patching to a source-assisted research compiler path. The April New Mexico school-district IT package becomes the manual-oracle benchmark. Add `R09D-R09H` before any RG3 advance decision:
+
+- `R09D - April NM evidence fixture and manual-oracle replay`
+- `R09E - K-12 source map and public roster collector`
+- `R09F - Source-assisted lead compiler`
+- `R09G - Research-workbook tiering and export semantics`
+- `R09H - Manual-oracle proof replay gate packet`
+
+The product may still use autonomous search, Tavily, browser automation, expensive models, and multi-agent verification, but the launch wedge is source-assisted public-web research that beats the human+chatbot baseline on speed, evidence, categorization, and export honesty. Missing contact information may remain valuable as a `manual_lookup` or `review` row when name, title, organization, source, and next action are clear. Missing, unsupported, inaccessible, guessed, or conflicting contacts must still never be marked CRM-ready.
+
+**Consequences.** No downstream RG4 UI, export polish, dogfood, or `main` promotion is unlocked by the post-R09C hold. The next valid Prompt A is R09D after this control-plane patch lands. Prompt C must not re-run RG3 until R09D-R09H have merged. The gate should judge whether White Rabbit can reproduce or improve the April New Mexico source-backed workbook, not whether the current autonomous Scout path can magically produce CRM-ready contacts from broad generic web search. High-volume transparent tiering remains a future/product-scale target, but it no longer overrides the nearer proof point: source-assisted research workbooks with verified rows, manual-lookup rows, not-found rows, and auditable evidence.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-018, ADR-019, ...).
+1. Pick the next ADR number (ADR-020, ADR-021, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.

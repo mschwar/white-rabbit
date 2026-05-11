@@ -5,10 +5,10 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B and R09C are now merged to `rebuild/validated-leads-loop`; RG3 remains held until a fresh Prompt C re-audits the gate.
-**Next Prompt A feature:** None. No new feature is ready while RG3 awaits Prompt C.
-**Current Prompt B handoff:** None. R09C Prompt B QA is complete and merged to `rebuild/validated-leads-loop`.
-**Current Prompt C handoff:** Audit RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop`. Confirm R07-R09C are merged, run the RG3 full evaluation/audit below, and update `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`. Do not unlock RG4, refreshed mockups, R10-R12, R13-R15, export work, dogfood, or `main` unless Prompt C records `advance`.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B and R09C are merged to `rebuild/validated-leads-loop`; the post-R09C live re-run remained held, and Matt accepted a source-assisted remediation pivot based on Lee's April New Mexico school-district IT evidence.
+**Next Prompt A feature:** R09D - April NM evidence fixture and manual-oracle replay.
+**Current Prompt B handoff:** None. R09D has not started.
+**Current Prompt C handoff:** None. Do not rerun RG3 Prompt C until R09D-R09H are complete and merged.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -44,6 +44,7 @@ Thomas or Lee enters a real sales target
 Hard fail conditions:
 
 - broad Scout/Full prompts return fewer than 50 categorized candidates after high-volume mode lands, or fewer than 10 before it lands, without proving the market is smaller,
+- the source-assisted/manual-oracle replay cannot reproduce the April New Mexico school-district IT workbook structure with verified-contact, manual-lookup, not-found, source URL, and blocker-note rows,
 - person rows cannot show source-supported name, title, organization, and contact status,
 - the UI or export makes noisy/failed rows look CRM-ready,
 - an agent advances a gate from tests, mocks, screenshots, or docs without current live/replay evidence tied to operator prompts.
@@ -71,6 +72,25 @@ This requirement applies to:
 - every reset gate decision from RG1 onward.
 
 Narrow named-account prompts may produce fewer person leads only when every requested account is represented as `high_trust_usable`, `review`, `organization_only`, `not_found`, or `failed`. Broad vertical/persona prompts that return fewer than 50 categorized candidates after the high-volume path lands must be marked `hold` unless the gate report proves the market itself is smaller.
+
+## Source-Assisted Research Compiler Pivot
+
+ADR-019 adds the current RG3 remediation pivot. The live autonomous Scout path is not yet producing CRM-ready value, but Lee's April 2026 "NM IT for school districts" package proves a stronger near-term shape: human plus chatbot/Codex plus public sources can produce a useful school-district IT workbook with verified contacts, manual-lookup rows, source URLs, verification notes, and outreach/export artifacts.
+
+The reset now treats that April package as the manual-oracle benchmark. The next remediation slice must prove White Rabbit can reproduce or improve the workbook pattern:
+
+```text
+operator target
+-> public rosters / staff pages / PDFs / source URLs / seed files
+-> structured extraction
+-> field validation and blocker labeling
+-> verified-contact rows + manual-lookup rows + not-found rows
+-> sales-first export
+```
+
+This does not weaken validation. Missing, unsupported, inaccessible, guessed, or conflicting contacts still cannot become `high_trust_usable` / `READY`. The difference is that source-supported person rows with missing direct contact are preserved as useful `manual_lookup` or `review` rows instead of disappearing or being treated as total product failure.
+
+R09D-R09H are the only valid post-R09C remediation path. Prompt C for RG3 is blocked until they are complete.
 
 ## Branch Workflow
 
@@ -189,7 +209,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG0 | W5 Hold And Control Reset | R00 | gate_advanced | `audits/gates/reset-2026-05-10/rg0-w5-hold.md` |
 | RG1 | Operator Benchmark Harness | R01-R03 | gate_advanced | `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md` |
 | RG2 | Search Coverage And Source Collection | R04-R06 | gate_advanced | `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md` |
-| RG3 | Validation, Conflict, And Gate Semantics | R07-R09C | in_progress / gate_hold | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
+| RG3 | Validation, Conflict, And Gate Semantics | R07-R09H | in_progress / gate_hold | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
 | RG4 | Sales-First Operator UI | R10-R12 | blocked | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
 | RG5 | Sales-First Export And Persistence | R13-R14 | blocked | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
 | RG6 | Dogfood / Kill Decision | R15 | blocked | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md` |
@@ -211,6 +231,11 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R09A | Live value recovery and benchmark funnel diagnosis | merged_to_rebuild_branch | `feat/reset-r09a-live-value-recovery` | core/API + live/replay benchmark artifacts |
 | R09B | Contact and evidence acquisition pass | merged_to_rebuild_branch | `feat/reset-r09b-contact-evidence-acquisition` | core/API + live/replay contact evidence artifacts |
 | R09C | Deep multi-source evidence acquisition and tier calibration | merged_to_rebuild_branch | `feat/reset-r09c-deep-multisource-evidence-tier-calibration` | core/API + live/replay evidence/tier calibration artifacts |
+| R09D | April NM evidence fixture and manual-oracle replay | ready | `feat/reset-r09d-april-nm-manual-oracle` | core tests + sanitized evidence fixtures |
+| R09E | K-12 source map and public roster collector | blocked | `feat/reset-r09e-k12-source-map-roster-collector` | core tests + source-map replay |
+| R09F | Source-assisted lead compiler | blocked | `feat/reset-r09f-source-assisted-lead-compiler` | core/API tests + replay artifacts |
+| R09G | Research-workbook tiering and export semantics | blocked | `feat/reset-r09g-research-workbook-tiering` | core/web or export tests as applicable |
+| R09H | Manual-oracle proof replay gate packet | blocked | `feat/reset-r09h-manual-oracle-proof-packet` | replay + live/source-assisted artifacts |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | blocked | `feat/reset-r12-evidence-dossier-review` | browser |
@@ -353,6 +378,11 @@ Features:
 - R09A - Live value recovery and benchmark funnel diagnosis.
 - R09B - Contact and evidence acquisition pass.
 - R09C - Deep multi-source evidence acquisition and tier calibration.
+- R09D - April NM evidence fixture and manual-oracle replay.
+- R09E - K-12 source map and public roster collector.
+- R09F - Source-assisted lead compiler.
+- R09G - Research-workbook tiering and export semantics.
+- R09H - Manual-oracle proof replay gate packet.
 
 Goal:
 Make false confidence hard to display.
@@ -512,9 +542,43 @@ R09C Prompt A implementation handoff:
 - Prompt B QA: passed. Report: `.gstack/qa-reports/qa-report-r09c-deep-multisource-evidence-tier-calibration-2026-05-11.md`.
 - Prompt B verification: required R09C core suite (`76 passed`), API suite (`45 passed`, existing datetime warnings), `git diff --check`, and replay artifact inspection for `audits/raw/reset-2026-05-10/r09c/replay/deep-contact-evidence-pass.json` plus `quality-summary.json`.
 - Prompt B evidence summary: deeper multi-source evidence can promote promising rows only when public-web corroboration finds a direct person contact, keeps missing-contact rows in `review`, downgrades stale/conflicting rows to `failed`, and exposes contact acquisition plus high-trust yield in theme summaries without relaxing READY/high-trust precision.
-- Exact Prompt C handoff: Audit RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop`. Confirm R07-R09C are merged, run the RG3 full evaluation/audit below, and update `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`. Do not unlock RG4, refreshed mockups, R10-R12, R13-R15, export work, dogfood, or `main` unless Prompt C records `advance`.
+- Exact Prompt C handoff: Superseded by ADR-019. Do not run Prompt C from this R09C handoff. The post-R09C live re-run recorded `hold`, and Matt accepted the source-assisted remediation pivot below.
 
-R09C Prompt A draft for final instruction fill-in:
+Post-R09C source-assisted remediation:
+
+- Branch: `audit/reset-rg3-tavily-rerun`.
+- Decision: `hold`.
+- Report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`.
+- Raw evidence note: `audits/raw/reset-2026-05-10/april-nm-school-district-it-evidence-note.md`.
+- Reason: R09C improved deep evidence semantics, but live value still did not meet the operator loop. The product still produced `0` high-trust usable rows and `0` contact-quality passes in the Tavily-credit RG3 run. Lee's April New Mexico school-district IT package shows the stronger product path: source-assisted public research compiled into verified-contact, manual-lookup, not-found, and exportable rows.
+- Queue consequence: RG3 remains `in_progress / gate_hold`. R09D is the single next ready feature. R09E-R09H remain blocked. RG4, refreshed mockups, R10-R12, export work, dogfood, and `main` promotion remain blocked.
+
+R09D scope:
+
+- Create sanitized April New Mexico school-district IT fixtures from the evidence note, not from private email bodies.
+- Represent the manual-oracle benchmark with at least:
+  - 10 verified-contact rows from the April public-email CSV shape.
+  - 7 manual-lookup rows from the April missing-email CSV shape.
+  - source URL, title, organization, contact status, verification note, and expected tier for every row.
+- Add an offline replay comparator that can measure whether current/future output reproduces the useful workbook structure: verified contacts, manual-lookup rows, source URLs, blocker notes, and sales-first fields.
+- Make current product failure measurable without requiring live services.
+- Do not alter product behavior, search, extraction, tiering, API, UI, export, persistence, or `main`.
+
+R09D non-goals:
+
+- No live benchmark remediation.
+- No source collector implementation beyond fixture/replay harness setup.
+- No UI/mockup/export changes.
+- No relaxation of high-trust / READY semantics.
+- No dumping private email or message bodies into repo artifacts.
+
+R09D required verification:
+
+- Targeted core replay/fixture tests added for the manual-oracle comparator.
+- `git diff --check`.
+- Privacy/scope review confirming no full private email bodies or unrelated product-code changes landed.
+
+R09D Prompt A assignment:
 
 ```text
 You are Prompt A for the White Rabbit reset queue.
@@ -532,36 +596,59 @@ First prove current state:
 
 Resolve the next feature from STATUS.md and the reset feature table:
 - choose exactly one feature marked ready
-- confirm it is `R09C - Deep multi-source evidence acquisition and tier calibration`
-- use branch `feat/reset-r09c-deep-multisource-evidence-tier-calibration`
+- confirm it is `R09D - April NM evidence fixture and manual-oracle replay`
+- use branch `feat/reset-r09d-april-nm-manual-oracle`
 - if zero or multiple features are ready, stop and report the ambiguity
 - if the selected feature branch already exists with unmerged work, resume that branch instead of recreating or duplicating it
 
-Implement only R09C:
-- materially improve contact quality and tier usefulness on promising review rows
-- preserve the strict `high_trust_usable` definition
-- keep missing, unsupported, inaccessible, conflicting, or guessed contacts non-CRM-ready
-- preserve explicit READY blockers and evidence traceability
+Implement only R09D:
+- create sanitized April New Mexico school-district IT manual-oracle fixtures
+- add replay/comparison coverage that measures whether White Rabbit can reproduce the useful workbook structure
+- preserve privacy by summarizing private evidence and storing only sanitized fixture data
+- keep this as a non-behavior fixture/harness slice unless the codebase requires a tiny parser/helper to support the replay
 - do not touch RG4, mockups, R10-R12, export work, persistence, dogfood, or main promotion
 
-Insert Matt's separate R09C high-level implementation instructions here before assigning this prompt.
-
 Required verification:
-- `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py tests/test_coverage.py tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py tests/test_live_benchmark_runner.py tests/test_quality_report.py -q`
-- `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`
+- targeted core replay/fixture tests added for R09D
 - `git diff --check`
 
 Required output:
 - feature ID/name selected and why it was valid
 - branch used
-- implementation matching only R09C
-- saved artifacts under `audits/raw/reset-2026-05-10/r09c/` and `.gstack/qa-reports/`
+- implementation matching only R09D
+- saved sanitized fixtures/artifacts under `audits/raw/reset-2026-05-10/r09d/` or `packages/core/tests/fixtures/`
 - STATUS.md and docs/12 updated with the feature status and exact Prompt B handoff
 - atomic conventional commit
 - pushed feature branch
 
-Do not merge. Do not trigger Prompt C. Do not change queue readiness beyond R09C's own status and Prompt B handoff. Do not sync main.
+Do not merge. Do not trigger Prompt C. Do not change queue readiness beyond R09D's own status and Prompt B handoff. Do not sync main.
 ```
+
+R09E expected scope after R09D passes:
+
+- Build a K-12 source map and roster-first collector, starting with New Mexico.
+- Prefer official education-agency rosters, district websites, staff directories, technology pages, board/agenda PDFs, contact pages, and public source families that can be audited.
+- Record source family, access status, source reputation signal, crawl/extraction method, and source coverage gaps.
+- Do not depend on generic Tavily breadth as the first discovery move for known public-sector verticals.
+
+R09F expected scope after R09E passes:
+
+- Add a source-assisted compiler path that can accept source URLs, source packs, pasted search/chatbot output, or seed CSV rows.
+- Convert those inputs into canonical candidate rows with field-level evidence, dedupe, source IDs, contact status, and blocker notes.
+- Preserve the strict READY/high-trust contract while making `review` and `manual_lookup` rows useful.
+
+R09G expected scope after R09F passes:
+
+- Align research-workbook tiers with operator value: `READY_WITH_CONTACT`, `REVIEW`, `MANUAL_LOOKUP`, `ORG_ONLY`, `NOT_FOUND`, and `FAILED` as appropriate for UI/export labels.
+- Keep internal compatibility with existing tier models where possible, but stop treating source-supported missing-contact rows as total failure.
+- Ensure sales-first export semantics can preserve usable rows, manual-lookup rows, not-found rows, source URLs, and validation/audit columns without false confidence.
+
+R09H expected scope after R09G passes:
+
+- Produce the manual-oracle proof replay gate packet.
+- Run offline replay against the April New Mexico fixture.
+- Run live/source-assisted checks if services and keys are available; money/credits are not the limiting factor, but every claim must stay source-backed.
+- Recommend `advance`, `hold`, `revise`, or `kill` for RG3 based on whether White Rabbit beats the human+chatbot workbook baseline.
 
 RG3 full evaluation/audit:
 
@@ -573,7 +660,8 @@ RG3 full evaluation/audit:
 - Confirm the live quality summary reports benchmark funnel drop-offs and treats privacy refusals separately from no-candidate product failures.
 - Confirm contact/evidence acquisition produces source-backed contact status or explicit READY blockers for promising person/review rows.
 - Confirm live runner timeout behavior records partial-failure artifacts cleanly.
-- Confirm both R09B and R09C are merged before any RG3 Prompt C re-audit begins.
+- Confirm R09D-R09H are merged before any RG3 Prompt C re-audit begins.
+- Replay the April New Mexico manual-oracle benchmark and confirm the product can reproduce or improve the workbook structure: verified contacts, manual-lookup rows, source URLs, blocker notes, and sales-first fields.
 
 Advance criteria:
 
@@ -583,7 +671,8 @@ Advance criteria:
 - At least one required live benchmark produces nonzero `high_trust_usable` output without unsupported contacts.
 - Broad-query categorized output materially improves from the RG3 hold baseline or the gate report proves the public-web market is smaller.
 - At least one required live benchmark produces nonzero contact-quality passes, or the gate report proves source-backed public contact evidence is unavailable for the benchmark set and recommends a product-positioning/vendor decision instead of pretending the current loop is CRM-ready.
-- RG4, refreshed mockups, R10-R12, export work, and any `main` promotion remain blocked until both R09B and R09C are complete and a future RG3 Prompt C records `advance`.
+- April New Mexico manual-oracle replay reproduces or improves the source-assisted workbook pattern with zero unsupported contacts marked CRM-ready.
+- RG4, refreshed mockups, R10-R12, export work, and any `main` promotion remain blocked until R09D-R09H are complete and a future RG3 Prompt C records `advance`.
 
 ## RG4 - Sales-First Operator UI
 
