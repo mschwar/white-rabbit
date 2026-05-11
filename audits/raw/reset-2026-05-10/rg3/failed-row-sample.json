@@ -1,0 +1,322 @@
+[
+  {
+    "searched_target": "finance CISOs at financial services firms in New York",
+    "name": null,
+    "organization": "BNY Mellon",
+    "title": null,
+    "tier": "failed",
+    "reason": "Contact details are absent; retention of information without means to connect.",
+    "explanation": "Gary Delaney is recognized in his CISO position but lacks accessible email and phone contact information, limiting outreach opportunities.",
+    "validation": {
+      "name": "missing",
+      "title": "missing",
+      "organization": "supported",
+      "email": "missing",
+      "source": "supported"
+    }
+  },
+  {
+    "searched_target": "finance CISOs at financial services firms in New York",
+    "name": null,
+    "organization": "FS-ISAC",
+    "title": null,
+    "tier": "failed",
+    "reason": "No email or phone available; valid professional acknowledgment but limited outreach capability.",
+    "explanation": "While John Denning is listed as CISO at a recognized organization, no direct contact details are provided.",
+    "validation": {
+      "name": "missing",
+      "title": "missing",
+      "organization": "supported",
+      "email": "missing",
+      "source": "supported"
+    }
+  },
+  {
+    "searched_target": "finance CISOs at financial services firms in New York",
+    "name": null,
+    "organization": "S&P Global",
+    "title": null,
+    "tier": "failed",
+    "reason": "Absence of accurate contact details despite valid occupational recognition.",
+    "explanation": "Dustin is noted for his role but lacks any direct email or phone contact information, preventing outreach.",
+    "validation": {
+      "name": "missing",
+      "title": "missing",
+      "organization": "failed",
+      "email": "missing",
+      "source": "failed"
+    }
+  },
+  {
+    "searched_target": "Banner Health",
+    "name": null,
+    "organization": "Banner Health",
+    "title": null,
+    "tier": "failed",
+    "reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+    "explanation": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+    "validation": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "source": "failed"
+    }
+  },
+  {
+    "searched_target": "Banner Health",
+    "name": null,
+    "organization": "Banner Health",
+    "title": null,
+    "tier": "failed",
+    "reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/zack-pearce",
+    "explanation": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/zack-pearce",
+    "validation": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "source": "failed"
+    }
+  },
+  {
+    "searched_target": "CommonSpirit Health",
+    "name": null,
+    "organization": "CommonSpirit Health",
+    "title": null,
+    "tier": "failed",
+    "reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/sivakumar-talluri",
+    "explanation": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/sivakumar-talluri",
+    "validation": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "source": "failed"
+    }
+  },
+  {
+    "searched_target": "Phoenix Children's Hospital",
+    "name": null,
+    "organization": "Phoenix Children's Hospital",
+    "title": null,
+    "tier": "failed",
+    "reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/marna-witmer-0a91114",
+    "explanation": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/marna-witmer-0a91114",
+    "validation": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "source": "failed"
+    }
+  },
+  {
+    "searched_target": "Banner Health",
+    "name": null,
+    "organization": "Banner Health",
+    "title": null,
+    "tier": "failed",
+    "reason": "Source could not validate the person row: http_status=403 resolved_url=https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+    "explanation": "Source could not validate the person row: http_status=403 resolved_url=https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+    "validation": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "source": "failed"
+    }
+  },
+  {
+    "searched_target": "ProBuild Holdings",
+    "name": null,
+    "organization": "ProBuild Holdings",
+    "title": null,
+    "tier": "failed",
+    "reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+    "explanation": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+    "validation": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "source": "failed"
+    }
+  },
+  {
+    "searched_target": "Alpinewëst Resources",
+    "name": null,
+    "organization": "Alpinewëst Resources",
+    "title": null,
+    "tier": "failed",
+    "reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+    "explanation": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+    "validation": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "source": "failed"
+    }
+  },
+  {
+    "searched_target": "84 Lumber Company",
+    "name": null,
+    "organization": "84 Lumber Company",
+    "title": null,
+    "tier": "failed",
+    "reason": "Source could not validate the person row: http_status=999 resolved_url=https://kr.linkedin.com/in/kevin-franz-7b620727a",
+    "explanation": "Source could not validate the person row: http_status=999 resolved_url=https://kr.linkedin.com/in/kevin-franz-7b620727a",
+    "validation": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "source": "failed"
+    }
+  },
+  {
+    "searched_target": "TransPak",
+    "name": null,
+    "organization": "TransPak",
+    "title": null,
+    "tier": "failed",
+    "reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/ron-liebelt-18b27032",
+    "explanation": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/ron-liebelt-18b27032",
+    "validation": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "source": "failed"
+    }
+  },
+  {
+    "searched_target": "retail lumber yards procurement manager washington",
+    "name": null,
+    "organization": "Capital Lumber",
+    "title": null,
+    "tier": "failed",
+    "reason": "No individuals were identified.",
+    "explanation": "The evidence lacked specific individuals, making it impossible to connect with decision-makers.",
+    "validation": {
+      "name": "missing",
+      "title": "missing",
+      "organization": "failed",
+      "email": "missing",
+      "source": "failed"
+    }
+  },
+  {
+    "searched_target": "Detroit Manufacturing Systems",
+    "name": null,
+    "organization": "Detroit Manufacturing Systems",
+    "title": null,
+    "tier": "failed",
+    "reason": "Source could not validate the person row: http_status=403 resolved_url=https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+    "explanation": "Source could not validate the person row: http_status=403 resolved_url=https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+    "validation": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "source": "failed"
+    }
+  },
+  {
+    "searched_target": "Detroit Manufacturing Systems",
+    "name": null,
+    "organization": "Detroit Manufacturing Systems",
+    "title": null,
+    "tier": "failed",
+    "reason": "Source could not validate the person row: http_status=403 resolved_url=https://www.dmsna.com/our-story/",
+    "explanation": "Source could not validate the person row: http_status=403 resolved_url=https://www.dmsna.com/our-story/",
+    "validation": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "source": "failed"
+    }
+  },
+  {
+    "searched_target": "manufacturing operations leaders in Detroit",
+    "name": null,
+    "organization": null,
+    "title": null,
+    "tier": "failed",
+    "reason": "No contacts found relevant to manufacturing operations leaders in Detroit.",
+    "explanation": "No identifiable individuals or organizations matched the target search criteria.",
+    "validation": {
+      "name": "missing",
+      "title": "missing",
+      "organization": "missing",
+      "email": "missing",
+      "source": "missing"
+    }
+  },
+  {
+    "searched_target": "Peoria Unified School District",
+    "name": null,
+    "organization": "Peoria Unified School District",
+    "title": null,
+    "tier": "failed",
+    "reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+    "explanation": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+    "validation": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "source": "failed"
+    }
+  },
+  {
+    "searched_target": "Deer Valley Unified School District",
+    "name": null,
+    "organization": "Deer Valley Unified School District",
+    "title": null,
+    "tier": "failed",
+    "reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/brian-boone-74447541",
+    "explanation": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/brian-boone-74447541",
+    "validation": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "source": "failed"
+    }
+  },
+  {
+    "searched_target": "Gilbert Public Schools",
+    "name": null,
+    "organization": "Gilbert Public Schools",
+    "title": null,
+    "tier": "failed",
+    "reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+    "explanation": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+    "validation": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "source": "failed"
+    }
+  },
+  {
+    "searched_target": "Maricopa Unified School District",
+    "name": null,
+    "organization": "Maricopa Unified School District",
+    "title": null,
+    "tier": "failed",
+    "reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+    "explanation": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+    "validation": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "source": "failed"
+    }
+  }
+]

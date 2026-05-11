@@ -1,0 +1,607 @@
+{
+  "benchmark_id": "healthcare-it-phoenix",
+  "leads": [
+    {
+      "candidate_category": "failed",
+      "explanation": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+      "failure_reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+      "id": null,
+      "organization": "Banner Health",
+      "primary_filter_reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+      "searched_target": "Banner Health",
+      "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/zack-pearce",
+      "failure_reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/zack-pearce",
+      "id": null,
+      "organization": "Banner Health",
+      "primary_filter_reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/zack-pearce",
+      "searched_target": "Banner Health",
+      "source_url": "https://www.linkedin.com/in/zack-pearce",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/zack-pearce",
+          "source_url": "https://www.linkedin.com/in/zack-pearce",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/zack-pearce",
+          "source_url": "https://www.linkedin.com/in/zack-pearce",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/zack-pearce",
+          "source_url": "https://www.linkedin.com/in/zack-pearce",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/zack-pearce",
+          "source_url": "https://www.linkedin.com/in/zack-pearce",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/zack-pearce",
+          "source_url": "https://www.linkedin.com/in/zack-pearce",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/zack-pearce",
+          "source_url": "https://www.linkedin.com/in/zack-pearce",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.97903574,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.55,
+      "explanation": "Theodore Fotias is a relevant IT decision-maker, yet no email has been sourced.",
+      "fit_score": 0.97903574,
+      "gate_passed": false,
+      "icebreaker": "Your role at Phoenix Children's Hospital must present unique challenges and opportunities in IT management!",
+      "id": null,
+      "name": "Theodore Fotias",
+      "organization": "Phoenix Children's Hospital",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://www.linkedin.com/in/theodore-fotias-595a4b34",
+      "tier": "review",
+      "title": "IT Director",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/theodore-fotias-595a4b34",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": "...etDfd(); window.pemTracking = getDfd(); window.appRedirectCompleted = getDfd(); Theodore Fotias - Phoenix Children's Hospital | LinkedIn {\"@context\":\"http://schema.org\",\"@grap...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.linkedin.com/in/theodore-fotias-595a4b34",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": "...mTracking = getDfd(); window.appRedirectCompleted = getDfd(); Theodore Fotias - Phoenix Children's Hospital | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"review...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/in/theodore-fotias-595a4b34",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/theodore-fotias-595a4b34",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": "...etDfd(); window.pemTracking = getDfd(); window.appRedirectCompleted = getDfd(); Theodore Fotias - Phoenix Children's Hospital | LinkedIn {\"@context\":\"http://schema.org\",\"@grap...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/in/theodore-fotias-595a4b34 matched_fields=name,organization",
+          "source_url": "https://www.linkedin.com/in/theodore-fotias-595a4b34",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for title.",
+          "source_url": "https://www.linkedin.com/in/theodore-fotias-595a4b34",
+          "status": "unsupported"
+        }
+      },
+      "why_target": "Theodore Fotias manages IT operations at a leading children's healthcare provider, positioning him as a key player in healthcare IT innovation in Phoenix."
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/sivakumar-talluri",
+      "failure_reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/sivakumar-talluri",
+      "id": null,
+      "organization": "CommonSpirit Health",
+      "primary_filter_reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/sivakumar-talluri",
+      "searched_target": "CommonSpirit Health",
+      "source_url": "https://www.linkedin.com/in/sivakumar-talluri",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/sivakumar-talluri",
+          "source_url": "https://www.linkedin.com/in/sivakumar-talluri",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/sivakumar-talluri",
+          "source_url": "https://www.linkedin.com/in/sivakumar-talluri",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/sivakumar-talluri",
+          "source_url": "https://www.linkedin.com/in/sivakumar-talluri",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/sivakumar-talluri",
+          "source_url": "https://www.linkedin.com/in/sivakumar-talluri",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/sivakumar-talluri",
+          "source_url": "https://www.linkedin.com/in/sivakumar-talluri",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/sivakumar-talluri",
+          "source_url": "https://www.linkedin.com/in/sivakumar-talluri",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/marna-witmer-0a91114",
+      "failure_reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/marna-witmer-0a91114",
+      "id": null,
+      "organization": "Phoenix Children's Hospital",
+      "primary_filter_reason": "Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/marna-witmer-0a91114",
+      "searched_target": "Phoenix Children's Hospital",
+      "source_url": "https://www.linkedin.com/in/marna-witmer-0a91114",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/marna-witmer-0a91114",
+          "source_url": "https://www.linkedin.com/in/marna-witmer-0a91114",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/marna-witmer-0a91114",
+          "source_url": "https://www.linkedin.com/in/marna-witmer-0a91114",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/marna-witmer-0a91114",
+          "source_url": "https://www.linkedin.com/in/marna-witmer-0a91114",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/marna-witmer-0a91114",
+          "source_url": "https://www.linkedin.com/in/marna-witmer-0a91114",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/marna-witmer-0a91114",
+          "source_url": "https://www.linkedin.com/in/marna-witmer-0a91114",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/marna-witmer-0a91114",
+          "source_url": "https://www.linkedin.com/in/marna-witmer-0a91114",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.9998579,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.55,
+      "explanation": "Fred Frederick is confirmed in a decision-making role, but contact information is not provided.",
+      "fit_score": 0.9998579,
+      "gate_passed": false,
+      "icebreaker": "Your extensive experience in IT management, especially within healthcare, must bring a wealth of knowledge to NaphCare!",
+      "id": null,
+      "name": "Fred Frederick",
+      "organization": "NaphCare, Inc.",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://www.linkedin.com/in/fred-frederick-78b4b532",
+      "tier": "review",
+      "title": "IT Director",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/fred-frederick-78b4b532",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": "...etDfd(); window.pemTracking = getDfd(); window.appRedirectCompleted = getDfd(); Fred Frederick - NaphCare, Inc. | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@type\":...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.linkedin.com/in/fred-frederick-78b4b532",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": "...emTracking = getDfd(); window.appRedirectCompleted = getDfd(); Fred Frederick - NaphCare, Inc. | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"review...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/in/fred-frederick-78b4b532",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/fred-frederick-78b4b532",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": "...etDfd(); window.pemTracking = getDfd(); window.appRedirectCompleted = getDfd(); Fred Frederick - NaphCare, Inc. | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@type\":...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/in/fred-frederick-78b4b532 matched_fields=name,organization",
+          "source_url": "https://www.linkedin.com/in/fred-frederick-78b4b532",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for title.",
+          "source_url": "https://www.linkedin.com/in/fred-frederick-78b4b532",
+          "status": "unsupported"
+        }
+      },
+      "why_target": "Fred Frederick specializes in managing IT operations within a healthcare setting, contributing to significant healthcare IT improvements."
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "The data indicates Banner Health as an organization with relevant positions, but lacks information on a specific lead.",
+      "id": null,
+      "organization": "Banner Health",
+      "primary_filter_reason": "The data indicates Banner Health as an organization with relevant positions, but lacks information on a specific lead.",
+      "source_url": "https://www.linkedin.com/jobs/director-of-informatics-jobs-greater-phoenix-area",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-informatics-jobs-greater-phoenix-area",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-informatics-jobs-greater-phoenix-area",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": "...onths ago Medical Director Care Coordination Medical Director Care Coordination Banner Health Phoenix, AZ Be an early applicant 2 hours ago Medical Director - Primary Care M...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-informatics-jobs-greater-phoenix-area",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-informatics-jobs-greater-phoenix-area",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": "...onths ago Medical Director Care Coordination Medical Director Care Coordination Banner Health Phoenix, AZ Be an early applicant 2 hours ago Medical Director - Primary Care M...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/jobs/director-of-informatics-jobs-greater-phoenix-area matched_fields=organization",
+          "source_url": "https://www.linkedin.com/jobs/director-of-informatics-jobs-greater-phoenix-area",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-informatics-jobs-greater-phoenix-area",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Identified as a key organization in the healthcare sector but without specific personnel details.",
+      "id": null,
+      "organization": "Phoenix Children's Hospital",
+      "primary_filter_reason": "Identified as a key organization in the healthcare sector but without specific personnel details.",
+      "source_url": "https://www.linkedin.com/jobs/director-of-informatics-jobs-greater-phoenix-area",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-informatics-jobs-greater-phoenix-area",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-informatics-jobs-greater-phoenix-area",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-informatics-jobs-greater-phoenix-area",
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-informatics-jobs-greater-phoenix-area",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/jobs/director-of-informatics-jobs-greater-phoenix-area matched_fields=none",
+          "source_url": "https://www.linkedin.com/jobs/director-of-informatics-jobs-greater-phoenix-area",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-informatics-jobs-greater-phoenix-area",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.9532751,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.9532751,
+      "explanation": "Kevin Rhode is a recognized executive but lacks available contact information.",
+      "fit_score": 0.9532751,
+      "gate_passed": false,
+      "icebreaker": "Your extensive experience in IT and leadership at DMG is quite inspiring in improving healthcare outcomes!",
+      "id": null,
+      "name": "Kevin Rhode",
+      "organization": "District Medical Group",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://www.dmgaz.org/executives/",
+      "tier": "review",
+      "title": "CIO",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.dmgaz.org/executives/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": "...r for the Law Review and earned multiple CALI Excellence for the Future Awards. Kevin Rhode, CHCIO, CPHIMS, PMP Chief Information Officer Kevin Rhode, CHCIO, CPHIMS, PMP b...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.dmgaz.org/executives/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": "...mgaz.org/executives/#website\",\"url\":\"https://www.dmgaz.org/executives/\",\"name\":\"District Medical Group\",\"headline\":\"Providing Excellence in Patient Care, Medical Education, Research...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.dmgaz.org/executives/",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.dmgaz.org/executives/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": "...r for the Law Review and earned multiple CALI Excellence for the Future Awards. Kevin Rhode, CHCIO, CPHIMS, PMP Chief Information Officer Kevin Rhode, CHCIO, CPHIMS, PMP b...",
+          "notes": "http_status=200 resolved_url=https://www.dmgaz.org/executives/ matched_fields=name,title,organization",
+          "source_url": "https://www.dmgaz.org/executives/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": "...eview and earned multiple CALI Excellence for the Future Awards. Kevin Rhode, CHCIO, CPHIMS, PMP Chief Information Officer Kevin Rhode, CHCIO, CPHIMS, PMP brings m...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.dmgaz.org/executives/",
+          "status": "supported"
+        }
+      },
+      "why_target": "As the Chief Information Officer at DMG, Kevin Rhode is pivotal in leading healthcare IT strategies in Phoenix."
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Source could not validate the person row: http_status=403 resolved_url=https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+      "failure_reason": "Source could not validate the person row: http_status=403 resolved_url=https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+      "id": null,
+      "organization": "Banner Health",
+      "primary_filter_reason": "Source could not validate the person row: http_status=403 resolved_url=https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+      "searched_target": "Banner Health",
+      "source_url": "https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+          "source_url": "https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+          "source_url": "https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+          "source_url": "https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+          "source_url": "https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+          "source_url": "https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:49:10Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+          "source_url": "https://www.bannerhealth.com/newsroom/press-releases/banner-health-names-new-chief-technology-officer",
+          "status": "failed"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 82.98,
+    "estimated_cost_usd": 0.06436,
+    "input_tokens": 21900,
+    "openai_web_searches": 0,
+    "output_tokens": 1791,
+    "tavily_searches": 6,
+    "tier_distribution": {
+      "failed": 5,
+      "high_trust_usable": 0,
+      "not_found": 0,
+      "organization_only": 2,
+      "review": 3
+    }
+  },
+  "mode": "scout",
+  "prompt_label": "Healthcare IT directors in Phoenix",
+  "query": "healthcare IT directors in Phoenix",
+  "query_guardrail": null,
+  "runner_elapsed_seconds": 83.011,
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 7,
+    "remaining_rows": 974,
+    "reset_at": "2026-05-11T06:45:47.067181-06:00",
+    "total_queries": 3,
+    "total_rows": 26
+  }
+}

@@ -1,0 +1,455 @@
+{
+  "benchmark_id": "finance-cisos-new-york",
+  "leads": [
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.0,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Khalil Jackson was identified as the CISO at the New York Federal Reserve Bank, and the source provides specific details about his role and relevance to the financial sector.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "I admire your leadership role at the New York Federal Reserve Bank, particularly in advancing cybersecurity across the financial industry.",
+      "id": null,
+      "name": "Khalil Jackson",
+      "organization": "New York Federal Reserve Bank",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+      "tier": "review",
+      "title": "CISO",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "Khalil Jackson, CISO, New York Federal Reserve Bank, Joins FAIR Institute Board hsjQuery = win...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "Khalil Jackson, CISO, New York Federal Reserve Bank, Joins FAIR Institute Board hsjQuery = window['jQuery']; a.cta_button{-moz-box-...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "Khalil Jackson, CISO, New York Federal Reserve Bank, Joins FAIR Institute Board hsjQuery = win...",
+          "notes": "http_status=200 resolved_url=https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board matched_fields=name,title,organization",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "Khalil Jackson, CISO, New York Federal Reserve Bank, Joins FAIR Institute Board hsjQuery = window['j...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "supported"
+        }
+      },
+      "why_target": "To connect with Khalil regarding his extensive knowledge in cybersecurity strategies at one of the most pivotal financial institutions in the U.S."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.0,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.9,
+      "explanation": "Tod Mitchinson\u2019s role at New York Life is relevant to financial services, but there is no email or contact information available.",
+      "fit_score": 0.9,
+      "gate_passed": false,
+      "icebreaker": "Your experience as CISO at New York Life positions you uniquely to drive innovative security measures in a competitive landscape.",
+      "id": null,
+      "name": "Tod Mitchinson",
+      "organization": "New York Life",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+      "tier": "review",
+      "title": "VP, Chief Information Security Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "...cer Tomas Maldonado National Football League Chief Information Security Officer Tod Mitchinson New York Life VP, Chief Information Security Officer Lauren Rosenblatt Public S...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "...ontent is driven By CISOs, For CISOs\u00ae. Governing Body Co-Chairs Reshma Budhwani New York Life VP, Chief Technology Security Officer Read More Steve Grossman National Basketb...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "...cer Tomas Maldonado National Football League Chief Information Security Officer Tod Mitchinson New York Life VP, Chief Information Security Officer Lauren Rosenblatt Public S...",
+          "notes": "http_status=200 resolved_url=https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362 matched_fields=name,title,organization",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "...Football League Chief Information Security Officer Tod Mitchinson New York Life VP, Chief Information Security Officer Lauren Rosenblatt Public Service Enterprise Group Inc VP, Chief Information Sec...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "supported"
+        }
+      },
+      "why_target": "Reaching out to Tod can provide insights into cybersecurity strategies shaping the financial sector at New York Life."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.0,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.9,
+      "explanation": "Kylie is identified as a CISO but lacks direct contact information to reach out effectively.",
+      "fit_score": 0.9,
+      "gate_passed": false,
+      "icebreaker": "Your role as CISO at Sumitomo Mitsui highlights the critical intersection of banking and modern cybersecurity challenges.",
+      "id": null,
+      "name": "Kylie Watson",
+      "organization": "Sumitomo Mitsui Banking Corporation",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+      "tier": "review",
+      "title": "CISO",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "...latt Public Service Enterprise Group Inc VP, Chief Information Security Officer Kylie Watson Sumitomo Mitsui Banking Corporation CISO Read More Teresa Zielinski GE Vernova...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "...ervice Enterprise Group Inc VP, Chief Information Security Officer Kylie Watson Sumitomo Mitsui Banking Corporation CISO Read More Teresa Zielinski GE Vernova VP, Global CISO Agenda February 4, 2...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "...latt Public Service Enterprise Group Inc VP, Chief Information Security Officer Kylie Watson Sumitomo Mitsui Banking Corporation CISO Read More Teresa Zielinski GE Vernova...",
+          "notes": "http_status=200 resolved_url=https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362 matched_fields=name,title,organization",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "2025 New York CISO Inner Circle var dataLayer = window.dataLayer = window.dataLayer || []; window....",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "supported"
+        }
+      },
+      "why_target": "Kylie's leadership in cybersecurity at Sumitomo Mitsui Banking Corporation could lead to valuable discussions on risk management in financial services."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.0,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.9,
+      "explanation": "While Lauren is established in a cybersecurity role, concrete contact details are missing for outreach.",
+      "fit_score": 0.9,
+      "gate_passed": false,
+      "icebreaker": "Your leadership role in cybersecurity at Public Service Enterprise Group shows the importance of integrated risk strategies in financial operations.",
+      "id": null,
+      "name": "Lauren Rosenblatt",
+      "organization": "Public Service Enterprise Group Inc",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+      "tier": "review",
+      "title": "VP, Chief Information Security Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "...ity Officer Tod Mitchinson New York Life VP, Chief Information Security Officer Lauren Rosenblatt Public Service Enterprise Group Inc VP, Chief Information Security Officer Kyli...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "...tchinson New York Life VP, Chief Information Security Officer Lauren Rosenblatt Public Service Enterprise Group Inc VP, Chief Information Security Officer Kylie Watson Sumitomo Mitsui Banking Cor...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "...ity Officer Tod Mitchinson New York Life VP, Chief Information Security Officer Lauren Rosenblatt Public Service Enterprise Group Inc VP, Chief Information Security Officer Kyli...",
+          "notes": "http_status=200 resolved_url=https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362 matched_fields=name,title,organization",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "...Football League Chief Information Security Officer Tod Mitchinson New York Life VP, Chief Information Security Officer Lauren Rosenblatt Public Service Enterprise Group Inc VP, Chief Information Sec...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "supported"
+        }
+      },
+      "why_target": "Lauren's experience can offer insights into the cybersecurity landscape in a utility that intersects with financial institutions."
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Gary Delaney is recognized in his CISO position but lacks accessible email and phone contact information, limiting outreach opportunities.",
+      "failure_reason": "Contact details are absent; retention of information without means to connect.",
+      "id": null,
+      "organization": "BNY Mellon",
+      "primary_filter_reason": "Contact details are absent; retention of information without means to connect.",
+      "searched_target": "finance CISOs at financial services firms in New York",
+      "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "BNY Mellon Appoints Gary Delaney as International Chief Information Security Officer | BNY...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "BNY Mellon Appoints Gary Delaney as International Chief Information Security Officer | BNY...",
+          "notes": "http_status=200 resolved_url=https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html matched_fields=organization",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "While John Denning is listed as CISO at a recognized organization, no direct contact details are provided.",
+      "failure_reason": "No email or phone available; valid professional acknowledgment but limited outreach capability.",
+      "id": null,
+      "organization": "FS-ISAC",
+      "primary_filter_reason": "No email or phone available; valid professional acknowledgment but limited outreach capability.",
+      "searched_target": "finance CISOs at financial services firms in New York",
+      "source_url": "https://www.fsisac.com/newsroom/pr-bank-of-america-executive-joins-fs-isac-as-chief-information-security-officer",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/newsroom/pr-bank-of-america-executive-joins-fs-isac-as-chief-information-security-officer",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/newsroom/pr-bank-of-america-executive-joins-fs-isac-as-chief-information-security-officer",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "Bank of America Executive Joins FS-ISAC as Chief Information Security Officer [ \"SITE_PAGE\", \"LANDING_PAGE\", \"BLOG_POST...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.fsisac.com/newsroom/pr-bank-of-america-executive-joins-fs-isac-as-chief-information-security-officer",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/newsroom/pr-bank-of-america-executive-joins-fs-isac-as-chief-information-security-officer",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": "Bank of America Executive Joins FS-ISAC as Chief Information Security Officer [ \"SITE_PAGE\", \"LANDING_PAGE\", \"BLOG_POST...",
+          "notes": "http_status=200 resolved_url=https://www.fsisac.com/newsroom/pr-bank-of-america-executive-joins-fs-isac-as-chief-information-security-officer matched_fields=organization",
+          "source_url": "https://www.fsisac.com/newsroom/pr-bank-of-america-executive-joins-fs-isac-as-chief-information-security-officer",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/newsroom/pr-bank-of-america-executive-joins-fs-isac-as-chief-information-security-officer",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Dustin is noted for his role but lacks any direct email or phone contact information, preventing outreach.",
+      "failure_reason": "Absence of accurate contact details despite valid occupational recognition.",
+      "id": null,
+      "organization": "S&P Global",
+      "primary_filter_reason": "Absence of accurate contact details despite valid occupational recognition.",
+      "searched_target": "finance CISOs at financial services firms in New York",
+      "source_url": "https://cybermagazine.com/top10/top-10-cisos-in-the-us",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://cybermagazine.com/top10/top-10-cisos-in-the-us",
+          "source_url": "https://cybermagazine.com/top10/top-10-cisos-in-the-us",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://cybermagazine.com/top10/top-10-cisos-in-the-us",
+          "source_url": "https://cybermagazine.com/top10/top-10-cisos-in-the-us",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://cybermagazine.com/top10/top-10-cisos-in-the-us",
+          "source_url": "https://cybermagazine.com/top10/top-10-cisos-in-the-us",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://cybermagazine.com/top10/top-10-cisos-in-the-us",
+          "source_url": "https://cybermagazine.com/top10/top-10-cisos-in-the-us",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://cybermagazine.com/top10/top-10-cisos-in-the-us",
+          "source_url": "https://cybermagazine.com/top10/top-10-cisos-in-the-us",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:50:22Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://cybermagazine.com/top10/top-10-cisos-in-the-us",
+          "source_url": "https://cybermagazine.com/top10/top-10-cisos-in-the-us",
+          "status": "missing"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 69.13,
+    "estimated_cost_usd": 0.064147,
+    "input_tokens": 22081,
+    "openai_web_searches": 0,
+    "output_tokens": 1391,
+    "tavily_searches": 6,
+    "tier_distribution": {
+      "failed": 3,
+      "high_trust_usable": 0,
+      "not_found": 0,
+      "organization_only": 0,
+      "review": 4
+    }
+  },
+  "mode": "scout",
+  "prompt_label": "Finance CISOs in New York",
+  "query": "finance CISOs at financial services firms in New York",
+  "query_guardrail": null,
+  "runner_elapsed_seconds": 69.154,
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 6,
+    "remaining_rows": 967,
+    "reset_at": "2026-05-11T06:45:47.067181-06:00",
+    "total_queries": 4,
+    "total_rows": 33
+  }
+}

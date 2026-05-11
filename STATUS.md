@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-11 by Codex design-direction-fold-in
+**Last updated:** 2026-05-11 by Codex rg3-gate-audit
 **Branch:** rebuild/validated-leads-loop
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
@@ -8,7 +8,7 @@
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt C should audit RG3 - Validation, Conflict, And Gate Semantics. R09 is merged to `rebuild/validated-leads-loop`. Do not unlock RG4 or sync `main` unless Prompt C records an advance and Matt explicitly asks for an operator-use promotion.
+**Next pointer:** RG3 Prompt C audit recorded `hold` on `audit/reset-rg3-validation-semantics`. Do not unlock RG4, start the `DESIGN.md` mockup preflight, or sync `main` unless Matt explicitly accepts the hold/remediation path and assigns the next RG3 remediation.
 
 **Design direction handoff:** `DESIGN.md` is now captured as the future RG4 visual direction authority. It does not unlock RG4. If RG3 Prompt C advances, the next assignment is a refreshed mockup/design preflight from `DESIGN.md`, not production R10 code. R10-R12 remain blocked until Matt approves refreshed mockups.
 
@@ -24,25 +24,26 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** None. R09 is the final RG3 feature and is merged; RG3 is ready for Prompt C audit. Do not unlock RG4 or sync `main`.
+**Next feature pointer:** None. R09 is the final RG3 feature and is merged, but RG3 is held after Prompt C audit. Do not unlock RG4 or sync `main`.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
 **Final product mockup gate:** `DESIGN.md` is the future RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains the product-structure reference. Before R10 starts, a design/mockup agent must produce refreshed Empty, Loading, Results, Evidence Review, Low Signal, and Mobile Review mockups from `DESIGN.md`; Matt must approve those mockups before production UI implementation.
 
-**Current feature branch QA status:** R07, R08, and R09 are merged to `rebuild/validated-leads-loop`. RG3 is ready for Prompt C audit.
+**Current feature branch QA status:** R07, R08, and R09 are merged to `rebuild/validated-leads-loop`. RG3 Prompt C audit is complete with decision `hold`; downstream work remains blocked.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
-**Latest gate acceptance:** W4 accepted on 2026-05-10. W5 remains explicitly held on `rebuild/validated-leads-loop`; RG0 advanced on 2026-05-10 as a control-plane reset audit; RG1 advanced on 2026-05-10 as a benchmark-harness audit; RG2 advanced on 2026-05-11 as a search/source coverage audit; and W6 remains blocked until the visible operator loop is proven:
+**Latest gate acceptance:** W4 accepted on 2026-05-10. W5 remains explicitly held on `rebuild/validated-leads-loop`; RG0 advanced on 2026-05-10 as a control-plane reset audit; RG1 advanced on 2026-05-10 as a benchmark-harness audit; RG2 advanced on 2026-05-11 as a search/source coverage audit; RG3 held on 2026-05-11 as a validation/value audit; and W6 remains blocked until the visible operator loop is proven:
 
 - W4 benchmarks and quality reporting: `.gstack/qa-reports/gate-w4-benchmarks-quality.md`
 - W5 operator loop export hold report: `.gstack/qa-reports/gate-w5-operator-loop-export.md`
 - RG0 control reset gate report: `audits/gates/reset-2026-05-10/rg0-w5-hold.md`
 - RG1 benchmark harness gate report: `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`
 - RG2 search/source coverage gate report: `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`
+- RG3 validation semantics hold report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is ready for Prompt C audit; and RG4 remains blocked.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is held via `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`; and RG4 remains blocked.
 
 Prior accepted gates:
 
@@ -93,6 +94,22 @@ Status: `docs_only_ready_for_rg3_prompt_c`
 What changed: Captured the May 11 design direction as future RG4 input only: deep navy instrument chassis, paper-white evidence table, brand leads once then product speaks, and rabbit/icon quarantine until an approved vector exists. Updated the reset plan and ADRs so RG3 Prompt C cites `DESIGN.md` as future RG4 input, and RG4 requires refreshed mockups plus Matt approval before R10 can start.
 Tests or QA run: docs-only hygiene; no product code changed.
 Next design pointer: If RG3 Prompt C advances, hand the refreshed-mockup prompt from the final response to a design/mockup agent before assigning R10.
+
+RG3 Prompt C audit:
+
+Branch: `audit/reset-rg3-validation-semantics`
+Status: `gate_hold`
+What happened: Prompt C confirmed R07-R09 are merged and RG3 had not already advanced, ran required core/API verification plus web regression/build checks, started the local API with inherited Ollama-routed OpenAI env vars cleared, and ran the live Scout benchmark suite against `http://127.0.0.1:8013`.
+Decision: `hold`
+Why: RG3 semantics improved, but the live product still fails the operator-value bar. Manufacturing no longer 503s and missing/unsupported contacts are not labeled CRM-ready, but broad live prompts returned only 7-10 categorized rows, the suite produced 0 high-trust usable leads, and contact quality was 0 across the benchmark set.
+Tests or QA run:
+- `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py -q` (`48 passed`)
+- `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`43 passed`, existing datetime warnings)
+- `cd apps/web && npm test -- --run` (`13 test files / 30 tests passed`)
+- `cd apps/web && npm run build` (passed; existing Next.js workspace-root and middleware deprecation warnings)
+- `cd packages/core && uv run python -m core.live_benchmark_runner --api-base-url http://127.0.0.1:8013 --output-dir ../../audits/raw/reset-2026-05-10/rg3/live --mode scout --api-token [redacted]` (completed; 1/6 cases passed, 5/6 failed product-quality checks)
+Artifacts: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`, `audits/raw/reset-2026-05-10/rg3/`.
+Next pointer: No Prompt A assignment is valid yet. Matt should accept or adjust the RG3 remediation scope before another agent starts work. R10-R12 and the refreshed `DESIGN.md` mockup preflight remain blocked until a future Prompt C records RG3 `advance`.
 
 Previous handoff:
 
