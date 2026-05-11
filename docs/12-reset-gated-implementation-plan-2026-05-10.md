@@ -6,8 +6,8 @@
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
 **Current reset gate:** RG1 - Operator Benchmark Harness.
-**Next Prompt A feature:** `R03 - Live benchmark runner and quality summary` on `feat/reset-r03-live-benchmark-runner`.
-**Current Prompt B handoff:** None. No feature branch currently awaits Prompt B QA.
+**Next Prompt A feature:** None. Prompt B must resolve `R03` before any further Prompt A assignment.
+**Current Prompt B handoff:** QA `R03 - Live benchmark runner and quality summary` on `feat/reset-r03-live-benchmark-runner`. Re-run `cd packages/core && uv run pytest tests/test_arizona_k12_benchmark.py tests/test_benchmark_suite.py tests/test_quality_report.py tests/test_live_benchmark_runner.py -q`, then start the local API with `cd apps/api && env -u OPENAI_BASE_URL -u OPENAI_API_KEY uv run uvicorn api.main:app --port 8000`, run `export WR_API_INTERNAL_TOKEN="$(awk -F= '/^WR_API_INTERNAL_TOKEN=/{print $2}' apps/api/.env)"; cd packages/core && uv run python -m core.live_benchmark_runner --api-base-url http://127.0.0.1:8000 --output-dir ../../audits/raw/reset-2026-05-10/rg1`, verify `audits/raw/reset-2026-05-10/rg1/quality-summary.json` plus the per-case JSON/HTTP artifacts, and merge only into `rebuild/validated-leads-loop` if QA passes.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -193,7 +193,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R00 | W5 hold report and reset control docs | merged | `feat/reset-r00-w5-hold-control` | non-UI docs + gate evidence |
 | R01 | Operator evidence fixture pack | merged | `feat/reset-r01-operator-evidence-fixtures` | non-UI fixture audit |
 | R02 | Golden benchmark replay harness | merged | `feat/reset-r02-benchmark-replay-harness` | core tests |
-| R03 | Live benchmark runner and quality summary | ready | `feat/reset-r03-live-benchmark-runner` | core/API + saved raw outputs |
+| R03 | Live benchmark runner and quality summary | implemented_pending_qa | `feat/reset-r03-live-benchmark-runner` | core/API + saved raw outputs |
 | R04 | High-volume query planner and search aggregation | blocked | `feat/reset-r04-high-volume-search` | core tests |
 | R05 | Source collection and snapshot store | blocked | `feat/reset-r05-source-collection-store` | core tests + raw source fixtures |
 | R06 | Not-found and organization-only coverage writer | blocked | `feat/reset-r06-nonperson-coverage` | core tests |

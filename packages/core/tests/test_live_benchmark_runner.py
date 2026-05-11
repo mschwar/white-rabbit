@@ -1,0 +1,165 @@
+from __future__ import annotations
+
+import asyncio
+import json
+from pathlib import Path
+
+import httpx
+
+from core.benchmark_suite import build_operator_evidence_fixture_pack, build_saved_benchmark_observations
+from core.live_benchmark_runner import run_live_benchmark_suite
+from core.models import CandidateValidation, ContactValidationRecord, FieldValidationRecord, Lead
+
+
+def _field(status: str = "supported") -> FieldValidationRecord:
+    return FieldValidationRecord(
+        status=status,
+        source_url="https://example.com/source",
+        evidence_snippet=f"evidence {status}",
+        checked_at="2026-05-10T12:00:00Z",
+        notes=f"notes {status}",
+    )
+
+
+def _contact(status: str = "verified_found") -> ContactValidationRecord:
+    return ContactValidationRecord(
+        status=status,
+        source_url="https://example.com/contact",
+        evidence_snippet=f"contact {status}",
+        checked_at="2026-05-10T12:00:00Z",
+        notes=f"contact {status}",
+    )
+
+
+def _lead_payload() -> dict:
+    lead = Lead(
+        name="Jane Smith",
+        title="Director of Technology",
+        organization="Mesa Public Schools",
+        email="jane.smith@mesa.example",
+        email_status="verified_found",
+        source_url="https://example.com/mesa",
+        confidence=0.95,
+        why_target="Matches the district technology leadership target.",
+        icebreaker="Your district technology leadership role aligns with this outreach.",
+        fit_score=0.95,
+        evidence_score=0.9,
+        contact_score=0.9,
+        gate_passed=True,
+        explanation="Strong fit with supported source evidence.",
+        validation=CandidateValidation(
+            name=_field(),
+            title=_field(),
+            organization=_field(),
+            email=_contact(),
+            phone=_contact("missing"),
+            source=_field(),
+        ),
+    )
+    return lead.model_dump(mode="json")
+
+
+def test_build_saved_benchmark_observations_reads_saved_runner_artifacts(tmp_path: Path):
+    fixture_pack = build_operator_evidence_fixture_pack()
+    cases = tuple(case for case in fixture_pack.cases if case.benchmark_id in {"thomas-arizona-k12", "privacy-reject-homeowner-phones"})
+    trimmed_pack = type(fixture_pack)(pack_id=fixture_pack.pack_id, source=fixture_pack.source, cases=cases)
+
+    (tmp_path / "thomas-arizona-k12.json").write_text(
+        json.dumps(
+            {
+                "benchmark_id": "thomas-arizona-k12",
+                "query": cases[0].query,
+                "leads": [_lead_payload()],
+                "metrics": {"estimated_cost_usd": 0.12, "elapsed_seconds": 1.5},
+            }
+        ),
+        encoding="utf-8",
+    )
+    (tmp_path / "thomas-arizona-k12.http").write_text("200\n", encoding="utf-8")
+    (tmp_path / "privacy-reject-homeowner-phones.json").write_text(
+        json.dumps(
+            {
+                "benchmark_id": "privacy-reject-homeowner-phones",
+                "query": cases[1].query,
+                "error": "Blocked by privacy guardrail.",
+                "query_guardrail": {"status": "blocked", "message": "Blocked by privacy guardrail."},
+                "leads": [],
+            }
+        ),
+        encoding="utf-8",
+    )
+    (tmp_path / "privacy-reject-homeowner-phones.http").write_text("422\n", encoding="utf-8")
+
+    observations = build_saved_benchmark_observations(tmp_path, fixture_pack=trimmed_pack)
+
+    assert observations["thomas-arizona-k12"].http_status == 200
+    assert observations["thomas-arizona-k12"].categorized_row_count == 1
+    assert observations["privacy-reject-homeowner-phones"].http_status == 422
+    assert observations["privacy-reject-homeowner-phones"].guardrail_status == "blocked"
+    assert observations["privacy-reject-homeowner-phones"].privacy_refusal is True
+
+
+def test_run_live_benchmark_suite_saves_raw_outputs_and_quality_summary(tmp_path: Path):
+    fixture_pack = build_operator_evidence_fixture_pack()
+    cases = tuple(case for case in fixture_pack.cases if case.benchmark_id in {"thomas-arizona-k12", "privacy-reject-homeowner-phones"})
+    trimmed_pack = type(fixture_pack)(pack_id=fixture_pack.pack_id, source=fixture_pack.source, cases=cases)
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/sandbox/reset":
+            return httpx.Response(200, json={"sandbox_usage": {"total_queries": 0, "total_rows": 0}})
+        query = json.loads(request.content.decode("utf-8"))["query"]
+        if query == cases[0].query:
+            return httpx.Response(
+                200,
+                json={
+                    "leads": [_lead_payload()],
+                    "metrics": {
+                        "input_tokens": 100,
+                        "output_tokens": 50,
+                        "tavily_searches": 1,
+                        "openai_web_searches": 0,
+                        "elapsed_seconds": 1.23,
+                        "estimated_cost_usd": 0.015,
+                    },
+                    "query_guardrail": {"status": "needs_more_detail", "message": "Needs account detail."},
+                },
+            )
+        return httpx.Response(
+            422,
+            json={
+                "detail": {
+                    "error": "Blocked by privacy guardrail.",
+                    "query_guardrail": {"status": "blocked", "message": "Blocked by privacy guardrail."},
+                }
+            },
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    try:
+        summary = asyncio.run(
+            run_live_benchmark_suite(
+                api_base_url="http://white-rabbit.test",
+                api_token="test-token",
+                fixture_pack=trimmed_pack,
+                output_root=tmp_path,
+                client=client,
+            )
+        )
+    finally:
+        asyncio.run(client.aclose())
+
+    assert summary.output_root == tmp_path
+    assert (tmp_path / "thomas-arizona-k12.json").exists()
+    assert (tmp_path / "thomas-arizona-k12.http").read_text(encoding="utf-8").strip() == "200"
+    assert (tmp_path / "privacy-reject-homeowner-phones.http").read_text(encoding="utf-8").strip() == "422"
+
+    saved_payload = json.loads((tmp_path / "thomas-arizona-k12.json").read_text(encoding="utf-8"))
+    assert saved_payload["mode"] == "scout"
+    assert saved_payload["metrics"]["estimated_cost_usd"] == 0.015
+    assert "runner_elapsed_seconds" in saved_payload
+
+    quality_summary = json.loads((tmp_path / "quality-summary.json").read_text(encoding="utf-8"))
+    assert quality_summary["total_cases"] == 2
+    assert quality_summary["case_summaries"]["thomas-arizona-k12"]["http_status"] == 200
+    assert quality_summary["case_summaries"]["privacy-reject-homeowner-phones"]["http_status"] == 422
+    assert quality_summary["case_summaries"]["privacy-reject-homeowner-phones"]["guardrail_status"] == "blocked"

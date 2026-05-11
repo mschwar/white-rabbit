@@ -220,6 +220,13 @@ def _artifact_http_status(case: OperatorFixtureCase, *, repo_root: Path | None =
     return None
 
 
+def _payload_guardrail_status(payload: Mapping[str, Any], query: str) -> QueryGuardrailStatus:
+    query_guardrail = payload.get("query_guardrail")
+    if isinstance(query_guardrail, Mapping) and isinstance(query_guardrail.get("status"), str):
+        return str(query_guardrail.get("status"))
+    return evaluate_query_guardrails(query).status
+
+
 def _row_supports_target(candidate: Any, target: str) -> bool:
     lowered_target = target.lower()
     haystacks = (
@@ -238,6 +245,65 @@ def _parse_replay_candidates(payload: Mapping[str, Any]) -> list[Any]:
     return LeadList.model_validate({"leads": leads}).leads
 
 
+def _build_observation_from_payload(
+    case: OperatorFixtureCase,
+    payload: Mapping[str, Any],
+    *,
+    http_status: int | None = None,
+) -> ReplayBenchmarkObservation:
+    candidates = _parse_replay_candidates(payload)
+    quality_report = build_quality_report(
+        candidates,
+        artifact_kind="benchmark",
+        artifact_id=case.benchmark_id,
+        query=case.query,
+    )
+    thresholds = quality_report.quality_gate_thresholds
+    guardrail_status = _payload_guardrail_status(payload, case.query)
+    privacy_refusal = (
+        case.theme == "privacy_rejection"
+        and guardrail_status == "blocked"
+        and not candidates
+        and isinstance(payload.get("error"), str)
+    )
+
+    return ReplayBenchmarkObservation(
+        benchmark_id=case.benchmark_id,
+        guardrail_status=guardrail_status,
+        persona_pass=quality_report.persona_match_rate >= thresholds["minimum_persona_match_rate"],
+        contact_pass=(
+            quality_report.contact_quality_rate >= thresholds["minimum_contact_quality_rate"]
+            and quality_report.fake_email_count <= thresholds["maximum_fake_email_count"]
+            and quality_report.unsupported_email_count <= thresholds["maximum_unsupported_email_count"]
+            and quality_report.total_candidates > 0
+        ),
+        source_pass=(
+            quality_report.source_support_rate >= thresholds["minimum_source_support_rate"]
+            and quality_report.total_candidates > 0
+        ),
+        privacy_refusal=privacy_refusal,
+        categorized_row_count=quality_report.total_candidates,
+        person_lead_count=quality_report.person_lead_count,
+        high_trust_usable_count=quality_report.usable_count,
+        review_count=quality_report.person_lead_count - quality_report.usable_count,
+        organization_only_count=quality_report.organization_only_count,
+        not_found_count=quality_report.not_found_count,
+        failed_count=quality_report.failed_count,
+        expected_target_coverage_count=sum(
+            1 for target in case.expected_target_coverage if any(_row_supports_target(candidate, target) for candidate in candidates)
+        ),
+        expected_target_coverage_missing=tuple(
+            target
+            for target in case.expected_target_coverage
+            if not any(_row_supports_target(candidate, target) for candidate in candidates)
+        ),
+        high_volume_floor_met=quality_report.total_candidates >= case.expected_min_categorized_rows,
+        http_status=http_status,
+        error_code=payload.get("error_code") if isinstance(payload.get("error_code"), str) else None,
+        quality_report=quality_report,
+    )
+
+
 def build_replay_benchmark_observations(
     fixture_pack: OperatorEvidenceFixturePack | None = None,
     *,
@@ -248,62 +314,28 @@ def build_replay_benchmark_observations(
 
     for case in fixture_pack.cases:
         payload = _artifact_payload(case, repo_root=repo_root)
-        candidates = _parse_replay_candidates(payload)
-        quality_report = build_quality_report(
-            candidates,
-            artifact_kind="benchmark",
-            artifact_id=case.benchmark_id,
-            query=case.query,
-        )
-        thresholds = quality_report.quality_gate_thresholds
-        query_guardrail = payload.get("query_guardrail")
-        guardrail_status = (
-            str(query_guardrail.get("status"))
-            if isinstance(query_guardrail, Mapping) and isinstance(query_guardrail.get("status"), str)
-            else evaluate_query_guardrails(case.query).status
-        )
-        privacy_refusal = (
-            case.theme == "privacy_rejection"
-            and guardrail_status == "blocked"
-            and not candidates
-            and isinstance(payload.get("error"), str)
+        observations[case.benchmark_id] = _build_observation_from_payload(
+            case,
+            payload,
+            http_status=_artifact_http_status(case, repo_root=repo_root),
         )
 
-        observations[case.benchmark_id] = ReplayBenchmarkObservation(
-            benchmark_id=case.benchmark_id,
-            guardrail_status=guardrail_status,
-            persona_pass=quality_report.persona_match_rate >= thresholds["minimum_persona_match_rate"],
-            contact_pass=(
-                quality_report.contact_quality_rate >= thresholds["minimum_contact_quality_rate"]
-                and quality_report.fake_email_count <= thresholds["maximum_fake_email_count"]
-                and quality_report.unsupported_email_count <= thresholds["maximum_unsupported_email_count"]
-                and quality_report.total_candidates > 0
-            ),
-            source_pass=(
-                quality_report.source_support_rate >= thresholds["minimum_source_support_rate"]
-                and quality_report.total_candidates > 0
-            ),
-            privacy_refusal=privacy_refusal,
-            categorized_row_count=quality_report.total_candidates,
-            person_lead_count=quality_report.person_lead_count,
-            high_trust_usable_count=quality_report.usable_count,
-            review_count=quality_report.person_lead_count - quality_report.usable_count,
-            organization_only_count=quality_report.organization_only_count,
-            not_found_count=quality_report.not_found_count,
-            failed_count=quality_report.failed_count,
-            expected_target_coverage_count=sum(
-                1 for target in case.expected_target_coverage if any(_row_supports_target(candidate, target) for candidate in candidates)
-            ),
-            expected_target_coverage_missing=tuple(
-                target
-                for target in case.expected_target_coverage
-                if not any(_row_supports_target(candidate, target) for candidate in candidates)
-            ),
-            high_volume_floor_met=quality_report.total_candidates >= case.expected_min_categorized_rows,
-            http_status=_artifact_http_status(case, repo_root=repo_root),
-            error_code=payload.get("error_code") if isinstance(payload.get("error_code"), str) else None,
-            quality_report=quality_report,
-        )
+    return observations
+
+
+def build_saved_benchmark_observations(
+    output_root: Path,
+    fixture_pack: OperatorEvidenceFixturePack | None = None,
+) -> dict[str, ReplayBenchmarkObservation]:
+    fixture_pack = fixture_pack or build_operator_evidence_fixture_pack()
+    observations: dict[str, ReplayBenchmarkObservation] = {}
+
+    for case in fixture_pack.cases:
+        payload_path = output_root / f"{case.benchmark_id}.json"
+        status_path = output_root / f"{case.benchmark_id}.http"
+        payload = json.loads(payload_path.read_text(encoding="utf-8"))
+        http_status = int(status_path.read_text(encoding="utf-8").strip()) if status_path.exists() else None
+        observations[case.benchmark_id] = _build_observation_from_payload(case, payload, http_status=http_status)
 
     return observations
 
@@ -560,8 +592,10 @@ def build_operator_evidence_fixture_pack() -> OperatorEvidenceFixturePack:
     )
 
 
-def build_required_benchmark_suite() -> BenchmarkSuite:
-    fixture_pack = build_operator_evidence_fixture_pack()
+def build_required_benchmark_suite(
+    fixture_pack: OperatorEvidenceFixturePack | None = None,
+) -> BenchmarkSuite:
+    fixture_pack = fixture_pack or build_operator_evidence_fixture_pack()
     return BenchmarkSuite(
         suite_id="required_lead_quality_suite",
         source="Operator evidence fixture pack plus privacy guardrail fixture; private evidence stays as IDs and summaries.",
