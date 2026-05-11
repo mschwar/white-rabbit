@@ -6,6 +6,12 @@
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
+**Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. No product code, reset gate, or active feature status changed.
+
+**Next pointer:** Reset work is Prompt A for `R04 - High-volume query planner and search aggregation` on `feat/reset-r04-high-volume-search`. RG1 has advanced and its audit branch has been merged into `rebuild/validated-leads-loop`.
+
+**Open question:** If these become production brand assets, replace the upscaled raster crops with a clean vector or native high-resolution source when available.
+
 ---
 
 ## Current rebuild status (2026-05-10)
