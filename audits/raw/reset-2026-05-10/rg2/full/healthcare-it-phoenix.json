@@ -1,0 +1,215 @@
+{
+  "benchmark_id": "healthcare-it-phoenix",
+  "leads": [
+    {
+      "candidate_category": "person_lead",
+      "confidence": 1.0,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Jon Cook is a highly relevant contact as the IT Director at Banner Health in Phoenix, fitting the profile of healthcare IT directors the user is looking for.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "Hi Jon, your role as IT Director at Banner Health caught my attention, especially your efforts in driving quality and efficiency in healthcare IT in Phoenix.",
+      "id": "1802d863-85fa-4e28-90bc-bf2c3922797d",
+      "name": "Jon Cook",
+      "organization": "Banner Health",
+      "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+      "title": "IT Director",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "failed"
+        }
+      },
+      "why_target": "As the IT Director at Banner Health, Jon Cook is directly involved in improving healthcare technology solutions, aligning with the search for healthcare IT directors in Phoenix."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 1.0,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Mary Fox is another strong lead, serving as IT Director at Banner Health, a key healthcare organization in Phoenix.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "Hello Mary, I was impressed by your work as IT Director for Clinical Applications at Banner Health, particularly in advancing clinical IT solutions in our healthcare landscape.",
+      "id": "9824da4a-c68e-47d8-a705-ac18358aadd7",
+      "name": "Mary Fox",
+      "organization": "Banner Health",
+      "source_url": "https://www.linkedin.com/in/mary-f-fox",
+      "title": "IT Director, IT Clinical Applications",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/mary-f-fox",
+          "source_url": "https://www.linkedin.com/in/mary-f-fox",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/mary-f-fox",
+          "source_url": "https://www.linkedin.com/in/mary-f-fox",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/mary-f-fox",
+          "source_url": "https://www.linkedin.com/in/mary-f-fox",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/mary-f-fox",
+          "source_url": "https://www.linkedin.com/in/mary-f-fox",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/mary-f-fox",
+          "source_url": "https://www.linkedin.com/in/mary-f-fox",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/mary-f-fox",
+          "source_url": "https://www.linkedin.com/in/mary-f-fox",
+          "status": "failed"
+        }
+      },
+      "why_target": "As the IT Director for clinical applications at Banner Health, Mary Fox plays a crucial role in transforming healthcare IT solutions in Phoenix."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 1.0,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Fred Frederick leads IT at NaphCare, adding valuable insight into healthcare IT in Phoenix, making him a relevant contact.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "Hi Fred, your role as IT Director at NaphCare, Inc. particularly caught my eye due to your strategic influence on healthcare technology solutions in Phoenix.",
+      "id": "e745d583-c19a-451e-bf33-3a7950d053ca",
+      "name": "Fred Frederick",
+      "organization": "NaphCare, Inc.",
+      "source_url": "https://www.linkedin.com/in/fred-frederick-78b4b532",
+      "title": "IT Director",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/fred-frederick-78b4b532",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": "...etDfd(); window.pemTracking = getDfd(); window.appRedirectCompleted = getDfd(); Fred Frederick - NaphCare, Inc. | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@type\":...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.linkedin.com/in/fred-frederick-78b4b532",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": "...emTracking = getDfd(); window.appRedirectCompleted = getDfd(); Fred Frederick - NaphCare, Inc. | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"review...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/in/fred-frederick-78b4b532",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/fred-frederick-78b4b532",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": "...etDfd(); window.pemTracking = getDfd(); window.appRedirectCompleted = getDfd(); Fred Frederick - NaphCare, Inc. | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@type\":...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/in/fred-frederick-78b4b532 matched_fields=name,organization",
+          "source_url": "https://www.linkedin.com/in/fred-frederick-78b4b532",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:31:23Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for title.",
+          "source_url": "https://www.linkedin.com/in/fred-frederick-78b4b532",
+          "status": "unsupported"
+        }
+      },
+      "why_target": "Fred Frederick is the IT Director at NaphCare, a company within healthcare that aligns with the needs of IT leadership in healthcare."
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 52.54,
+    "estimated_cost_usd": 0.066202,
+    "input_tokens": 36238,
+    "openai_web_searches": 0,
+    "output_tokens": 1277,
+    "tavily_searches": 6
+  },
+  "mode": "full",
+  "prompt_label": "Healthcare IT directors in Phoenix",
+  "query": "healthcare IT directors in Phoenix",
+  "query_guardrail": null,
+  "recipe_id": "41598fa6-f875-4b86-ad74-4632ab1dfda4",
+  "run_id": "56df86c4-7d04-47e9-8074-3e71786c6af0",
+  "runner_elapsed_seconds": 52.56,
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 7,
+    "remaining_rows": 984,
+    "reset_at": "2026-05-11T05:27:53.622892-06:00",
+    "total_queries": 3,
+    "total_rows": 16
+  }
+}

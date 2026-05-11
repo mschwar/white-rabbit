@@ -1,0 +1,160 @@
+{
+  "benchmark_id": "lee-commodity-buyers",
+  "leads": [
+    {
+      "candidate_category": "person_lead",
+      "confidence": 1.0,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Will Preston is a strong match as he is a Senior Commodity Buyer at a leading lumber company in Washington, making him directly relevant to your query.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "Hi Will, I noticed that as a Senior Commodity Buyer at ProBuild Holdings, your role in sourcing materials directly aligns with the needs of retail lumber yards in Washington.",
+      "id": null,
+      "name": "Will Preston",
+      "organization": "ProBuild Holdings",
+      "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+      "title": "Senior Commodity Buyer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:24:17Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:24:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:24:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:24:17Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:24:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:24:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "failed"
+        }
+      },
+      "why_target": "As Senior Commodity Buyer at ProBuild Holdings, Will is directly involved in purchasing lumber materials, aligning with your interest in commodity buyers at retail lumber yards."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 1.0,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Dan R. is relevant as a Commodities Broker at a company dealing in lumber, which fits your target of commodity buyers in retail lumber yards.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "Hi Dan, your role as a Commodities Broker at Alpinew\u00ebst Resources caught my attention, particularly given your experience in sourcing materials that align with the needs of retail lumber yards in Washington.",
+      "id": null,
+      "name": "Dan R.",
+      "organization": "Alpinew\u00ebst Resources",
+      "source_url": "https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+      "title": "Commodities Broker",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:24:17Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "source_url": "https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:24:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "source_url": "https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:24:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "source_url": "https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:24:17Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "source_url": "https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:24:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "source_url": "https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:24:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "source_url": "https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "status": "failed"
+        }
+      },
+      "why_target": "As a Commodities Broker dealing in various lumber products, Dan plays a vital role in sourcing materials relevant to retail lumber yards in Washington."
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 83.88,
+    "estimated_cost_usd": 0.064874,
+    "input_tokens": 28883,
+    "openai_web_searches": 0,
+    "output_tokens": 903,
+    "tavily_searches": 6
+  },
+  "mode": "scout",
+  "prompt_label": "Lee commodity buyers prompt",
+  "query": "commodity buyers at retail lumber yards in Washington",
+  "query_guardrail": {
+    "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+    "missing_criteria": [
+      "target title or role"
+    ],
+    "status": "needs_more_detail",
+    "suggestions": [
+      "Add a title or role, such as director, manager, VP, or owner."
+    ]
+  },
+  "runner_elapsed_seconds": 83.902,
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 8,
+    "remaining_rows": 990,
+    "reset_at": "2026-05-11T05:21:26.478143-06:00",
+    "total_queries": 2,
+    "total_rows": 10
+  }
+}

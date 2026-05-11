@@ -1,0 +1,254 @@
+{
+  "benchmark_id": "healthcare-it-phoenix",
+  "leads": [
+    {
+      "candidate_category": "person_lead",
+      "confidence": 1.0,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Jon Cook is a validated contact with a strong alignment to the role sought; however, there is no available email.",
+      "fit_score": 0.9999646,
+      "gate_passed": false,
+      "icebreaker": "As the IT Director at Banner Health, Jon, your leadership in driving quality and efficiency in healthcare technology could greatly benefit our initiatives.",
+      "id": null,
+      "name": "Jon Cook",
+      "organization": "Banner Health",
+      "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+      "title": "IT Director",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+          "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+          "status": "failed"
+        }
+      },
+      "why_target": "Jon's position as an IT Director at Banner Health aligns him perfectly with your interest in healthcare IT directors in Phoenix."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 1.0,
+      "contact_score": 1.0,
+      "email": "mary.fox@bannerhealth.com",
+      "email_status": "verified_found",
+      "evidence_score": 1.0,
+      "explanation": "Mary Fox is a validated contact with a strong match to the target persona of healthcare IT directors in Phoenix, with verified email contact.",
+      "fit_score": 0.99947256,
+      "gate_passed": false,
+      "icebreaker": "Mary, I admire your leadership role in IT Clinical Applications at Banner Health and how it must impact patient care and operational efficiencies.",
+      "id": null,
+      "name": "Mary Fox",
+      "organization": "Banner Health",
+      "source_url": "https://www.linkedin.com/in/mary-f-fox",
+      "title": "IT Director, IT Clinical Applications",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/mary-f-fox",
+          "source_url": "https://www.linkedin.com/in/mary-f-fox",
+          "status": "failed"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/mary-f-fox",
+          "source_url": "https://www.linkedin.com/in/mary-f-fox",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/mary-f-fox",
+          "source_url": "https://www.linkedin.com/in/mary-f-fox",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/mary-f-fox",
+          "source_url": "https://www.linkedin.com/in/mary-f-fox",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/mary-f-fox",
+          "source_url": "https://www.linkedin.com/in/mary-f-fox",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/mary-f-fox",
+          "source_url": "https://www.linkedin.com/in/mary-f-fox",
+          "status": "failed"
+        }
+      },
+      "why_target": "Mary's role as IT Director for Clinical Applications at Banner Health illustrates her influence in healthcare IT in Phoenix."
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "The jobs listed here indicate the presence of IT leadership roles in healthcare, but no individuals were identified.",
+      "id": null,
+      "organization": "Director Of Informatics Jobs in Greater Phoenix Area",
+      "source_url": "https://www.linkedin.com/jobs/director-of-it-jobs-phoenix-az",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-it-jobs-phoenix-az",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-it-jobs-phoenix-az",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-it-jobs-phoenix-az",
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-it-jobs-phoenix-az",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/jobs/director-of-it-jobs-phoenix-az matched_fields=none",
+          "source_url": "https://www.linkedin.com/jobs/director-of-it-jobs-phoenix-az",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-it-jobs-phoenix-az",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "not_found",
+      "explanation": "No acceptable contacts were found for the searched target, indicating a gap in sourcing IT directors in healthcare for the Phoenix area.",
+      "id": null,
+      "organization": "",
+      "searched_target": "healthcare IT directors in Phoenix",
+      "source_url": null,
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "source_url was not provided.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:25:17Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 58.9,
+    "estimated_cost_usd": 0.064011,
+    "input_tokens": 21391,
+    "openai_web_searches": 0,
+    "output_tokens": 1337,
+    "tavily_searches": 6
+  },
+  "mode": "scout",
+  "prompt_label": "Healthcare IT directors in Phoenix",
+  "query": "healthcare IT directors in Phoenix",
+  "query_guardrail": null,
+  "runner_elapsed_seconds": 58.931,
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 7,
+    "remaining_rows": 986,
+    "reset_at": "2026-05-11T05:21:26.478143-06:00",
+    "total_queries": 3,
+    "total_rows": 14
+  }
+}

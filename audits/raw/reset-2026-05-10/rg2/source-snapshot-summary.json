@@ -1,0 +1,245 @@
+[
+  {
+    "benchmark_id": "thomas-arizona-k12",
+    "broad_query": false,
+    "first_five_sources": [
+      {
+        "rank": 1,
+        "title": "David Sanders - Chief Technology Officer at Mesa Public Schools",
+        "url": "https://www.linkedin.com/in/dbsanders67",
+        "vendor_query": "Mesa Public Schools it director director of technology cio cto director decision maker school district public schools technology it Arizona K-12"
+      },
+      {
+        "rank": 2,
+        "title": "Arizona CIO/CTO Forum-2022 - Govtech Events",
+        "url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2022",
+        "vendor_query": "Mesa Public Schools it director director of technology cio cto director decision maker school district public schools technology it Arizona K-12"
+      },
+      {
+        "rank": 3,
+        "title": "John Stanford - Technology Director at Red Mesa School District",
+        "url": "https://www.linkedin.com/in/john-stanford-325aa34a",
+        "vendor_query": "Mesa Public Schools it director director of technology cio cto director decision maker school district public schools technology it Arizona K-12"
+      },
+      {
+        "rank": 4,
+        "title": "Sasha L. - Education Program Management | Learning and ...",
+        "url": "https://www.linkedin.com/in/litzenberger11",
+        "vendor_query": "Mesa Public Schools it director director of technology cio cto director decision maker school district public schools technology it Arizona K-12"
+      },
+      {
+        "rank": 5,
+        "title": "David Sanders Email & Phone Number | Mesa Public Schools Chief ...",
+        "url": "https://rocketreach.co/david-sanders-email_13537132",
+        "vendor_query": "Mesa Public Schools it director director of technology cio cto director decision maker school district public schools technology it Arizona K-12"
+      }
+    ],
+    "max_vendor_query_length": 164,
+    "named_accounts": [
+      "Mesa Public Schools",
+      "Chandler Unified School District",
+      "Peoria Unified School District",
+      "Gilbert Public Schools",
+      "Deer Valley Unified School District",
+      "Paradise Valley Unified School District",
+      "Dysart Unified School District",
+      "Maricopa Unified School District"
+    ],
+    "requested_max_results": 100,
+    "returned_source_count": 98,
+    "target_source_hits": {
+      "Chandler Unified School District": 14,
+      "Deer Valley Unified School District": 13,
+      "Dysart Unified School District": 17,
+      "Gilbert Public Schools": 20,
+      "Maricopa Unified School District": 20,
+      "Mesa Public Schools": 17,
+      "Paradise Valley Unified School District": 15,
+      "Peoria Unified School District": 14
+    },
+    "tavily_searches": 8,
+    "theme": "named_account",
+    "vendor_queries_over_400": [],
+    "vendor_query_count": 8
+  },
+  {
+    "benchmark_id": "lee-commodity-buyers",
+    "broad_query": true,
+    "first_five_sources": [
+      {
+        "rank": 1,
+        "title": "Specialty Forest Products | Quality Lumber",
+        "url": "https://specialtyforest.com/",
+        "vendor_query": "commodity buyers at retail lumber yards in Washington"
+      },
+      {
+        "rank": 2,
+        "title": "Will Preston - Senior Commodity Buyer at ProBuild Holdings - LinkedIn",
+        "url": "https://www.linkedin.com/in/will-preston-a3549342",
+        "vendor_query": "commodity buyers at retail lumber yards in Washington"
+      },
+      {
+        "rank": 3,
+        "title": "UVLA Sponsors \u2014 Umpqua Valley Lumber Association",
+        "url": "https://www.uvla.net/sponsors",
+        "vendor_query": "commodity buyers at retail lumber yards in Washington"
+      },
+      {
+        "rank": 4,
+        "title": "Dan R. - Commodities Broker | LinkedIn",
+        "url": "https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+        "vendor_query": "commodity buyers at retail lumber yards in Washington"
+      },
+      {
+        "rank": 5,
+        "title": "Graham WA Lumber Yard - Builders FirstSource",
+        "url": "https://www.bldr.com/location/graham-wa-lumber-yard/GRAHWAYD",
+        "vendor_query": "commodity buyers at retail lumber yards in Washington"
+      }
+    ],
+    "max_vendor_query_length": 57,
+    "named_accounts": [],
+    "requested_max_results": 100,
+    "returned_source_count": 90,
+    "target_source_hits": {},
+    "tavily_searches": 6,
+    "theme": "broad_b2b",
+    "vendor_queries_over_400": [],
+    "vendor_query_count": 6
+  },
+  {
+    "benchmark_id": "healthcare-it-phoenix",
+    "broad_query": true,
+    "first_five_sources": [
+      {
+        "rank": 1,
+        "title": "Jon Cook - IT Director | Banner Health | Driving Quality and Efficiency",
+        "url": "https://www.linkedin.com/in/jon-cook-57a83899",
+        "vendor_query": "healthcare IT directors in Phoenix"
+      },
+      {
+        "rank": 2,
+        "title": "43 Director Of Informatics jobs in Greater Phoenix Area",
+        "url": "https://www.linkedin.com/jobs/director-of-informatics-jobs-greater-phoenix-area",
+        "vendor_query": "healthcare IT directors in Phoenix"
+      },
+      {
+        "rank": 3,
+        "title": "[PDF] DIRECTORY - The Hertel Report",
+        "url": "https://www.thehertelreport.com/wp-content/uploads/2019/01/Phoenix-Final-Printed-Directory.pdf",
+        "vendor_query": "healthcare IT directors in Phoenix"
+      },
+      {
+        "rank": 4,
+        "title": "Health Information Management Director Career Guide",
+        "url": "https://www.phoenix.edu/career-guides/healthcare/health-information-management-director.html",
+        "vendor_query": "healthcare IT directors in Phoenix"
+      },
+      {
+        "rank": 5,
+        "title": "Open Positions in Director/Management - Career Opportunities @ Phoenix Children's",
+        "url": "https://careers.phoenixchildrens.com/Positions/Director%7CManagement-jobs",
+        "vendor_query": "healthcare IT directors in Phoenix"
+      }
+    ],
+    "max_vendor_query_length": 55,
+    "named_accounts": [],
+    "requested_max_results": 100,
+    "returned_source_count": 75,
+    "target_source_hits": {},
+    "tavily_searches": 6,
+    "theme": "broad_b2b",
+    "vendor_queries_over_400": [],
+    "vendor_query_count": 6
+  },
+  {
+    "benchmark_id": "finance-cisos-new-york",
+    "broad_query": true,
+    "first_five_sources": [
+      {
+        "rank": 1,
+        "title": "Chief Information Security Officer (CISO) Jobs in New York, NY",
+        "url": "https://www.theladders.com/jobs/chief-information-security-officer-ciso-jobs,new-york-ny",
+        "vendor_query": "finance CISOs at financial services firms in New York"
+      },
+      {
+        "rank": 2,
+        "title": "NYDFS and Finding Your CISO - Twinstate Blog",
+        "url": "https://blog.twinstate.com/nydfs-and-finding-your-ciso",
+        "vendor_query": "finance CISOs at financial services firms in New York"
+      },
+      {
+        "rank": 3,
+        "title": "New York's Top 10 Most Followed Chief Information Security Officer ...",
+        "url": "https://cxojunction.com/myblog/new-york-top-10-most-followed-chief-information-security-officer-cisos-on-linkedin/",
+        "vendor_query": "finance CISOs at financial services firms in New York"
+      },
+      {
+        "rank": 4,
+        "title": "Client List \u2013 CIO CISO NYC | NCS Madison",
+        "url": "https://ncsmadison.com/cio-ciso-nyc/client-list/",
+        "vendor_query": "finance CISOs at financial services firms in New York"
+      },
+      {
+        "rank": 5,
+        "title": "2025 New York CISO Community Inner Circle",
+        "url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+        "vendor_query": "finance CISOs at financial services firms in New York"
+      }
+    ],
+    "max_vendor_query_length": 68,
+    "named_accounts": [],
+    "requested_max_results": 100,
+    "returned_source_count": 73,
+    "target_source_hits": {},
+    "tavily_searches": 6,
+    "theme": "broad_b2b",
+    "vendor_queries_over_400": [],
+    "vendor_query_count": 6
+  },
+  {
+    "benchmark_id": "manufacturing-ops-detroit",
+    "broad_query": true,
+    "first_five_sources": [
+      {
+        "rank": 1,
+        "title": "Detroit Manufacturing Systems (DMS) - The heart of DMS: Serving the needs of our customers, employees, and community.",
+        "url": "https://www.linkedin.com/company/detroit-manufacturing-systems",
+        "vendor_query": "manufacturing operations leaders in Detroit"
+      },
+      {
+        "rank": 2,
+        "title": "Chief Manufacturing Officer at Leading Manufacturing Firm, Detroit, MI",
+        "url": "https://www.jrgpartners.com/jobs/chief-manufacturing-officer-at-leading-manufacturing-firm-detroit-mi/",
+        "vendor_query": "manufacturing operations leaders in Detroit"
+      },
+      {
+        "rank": 3,
+        "title": "Top Manufacturing Companies in Detroit | Glassdoor",
+        "url": "https://www.glassdoor.com/Explore/top-manufacturing-companies-detroit_IS.4,17_ISEC10015_IL.28,35_IM236.htm",
+        "vendor_query": "manufacturing operations leaders in Detroit"
+      },
+      {
+        "rank": 4,
+        "title": "Top Manufacturing Companies in Detroit - Apr 2026 Rankings - Clutch",
+        "url": "https://clutch.co/logistics/manufacturing-companies/detroit",
+        "vendor_query": "manufacturing operations leaders in Detroit"
+      },
+      {
+        "rank": 5,
+        "title": "Advanced Manufacturing Detroit - Detroit Regional Partnership",
+        "url": "https://www.detroitregionalpartnership.com/advanced-manufacturing-detroit/",
+        "vendor_query": "manufacturing operations leaders in Detroit"
+      }
+    ],
+    "max_vendor_query_length": 49,
+    "named_accounts": [],
+    "requested_max_results": 100,
+    "returned_source_count": 90,
+    "target_source_hits": {},
+    "tavily_searches": 6,
+    "theme": "broad_b2b",
+    "vendor_queries_over_400": [],
+    "vendor_query_count": 6
+  }
+]
