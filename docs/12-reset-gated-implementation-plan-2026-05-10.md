@@ -5,9 +5,9 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B and R09C are merged to `rebuild/validated-leads-loop`; the post-R09C live re-run remained held, and Matt accepted a source-assisted remediation pivot based on Lee's April New Mexico school-district IT evidence. R09D, R09E, and R09F passed QA and are merged to `rebuild/validated-leads-loop`.
-**Next Prompt A feature:** `R09G - Research-workbook tiering and export semantics` on `feat/reset-r09g-research-workbook-tiering`.
-**Current Prompt B handoff:** None. R09F passed Prompt B QA; R09G is the next same-gate Prompt A assignment. Keep R09H/RG4/R10-R12/export/dogfood/main blocked.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B and R09C are merged to `rebuild/validated-leads-loop`; the post-R09C live re-run remained held, and Matt accepted a source-assisted remediation pivot based on Lee's April New Mexico school-district IT evidence. R09D, R09E, and R09F passed QA and are merged to `rebuild/validated-leads-loop`; R09G is implemented pending Prompt B QA.
+**Next Prompt A feature:** None. R09G is implemented pending Prompt B QA; R09H remains blocked until R09G passes QA and merges.
+**Current Prompt B handoff:** QA `R09G - Research-workbook tiering and export semantics` on `feat/reset-r09g-research-workbook-tiering`. Keep R09H/RG4/R10-R12/export/dogfood/main blocked unless Prompt B passes and merges R09G to `rebuild/validated-leads-loop`.
 **Current Prompt C handoff:** None. Do not rerun RG3 Prompt C until R09D-R09H are complete and merged.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
@@ -234,7 +234,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R09D | April NM evidence fixture and manual-oracle replay | merged_to_rebuild_branch | `feat/reset-r09d-april-nm-manual-oracle` | core tests + sanitized evidence fixtures |
 | R09E | K-12 source map and public roster collector | passed_prompt_b_qa | `feat/reset-r09e-k12-source-map-roster-collector` | core tests + source-map replay |
 | R09F | Source-assisted lead compiler | passed_prompt_b_qa | `feat/reset-r09f-source-assisted-lead-compiler` | core/API tests + replay artifacts |
-| R09G | Research-workbook tiering and export semantics | ready | `feat/reset-r09g-research-workbook-tiering` | core/web or export tests as applicable |
+| R09G | Research-workbook tiering and export semantics | implemented_pending_qa | `feat/reset-r09g-research-workbook-tiering` | core/web or export tests as applicable |
 | R09H | Manual-oracle proof replay gate packet | blocked | `feat/reset-r09h-manual-oracle-proof-packet` | replay + live/source-assisted artifacts |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
@@ -687,6 +687,17 @@ R09G expected scope after R09F passes:
 - Align research-workbook tiers with operator value: `READY_WITH_CONTACT`, `REVIEW`, `MANUAL_LOOKUP`, `ORG_ONLY`, `NOT_FOUND`, and `FAILED` as appropriate for UI/export labels.
 - Keep internal compatibility with existing tier models where possible, but stop treating source-supported missing-contact rows as total failure.
 - Ensure sales-first export semantics can preserve usable rows, manual-lookup rows, not-found rows, source URLs, and validation/audit columns without false confidence.
+
+R09G Prompt A result:
+
+- Branch: `feat/reset-r09g-research-workbook-tiering`.
+- Status: `implemented_pending_qa`.
+- Implemented only the R09G research-workbook tier/export semantics slice: `packages/core/src/core/research_workbook.py`, `packages/core/tests/test_research_workbook.py`, and `audits/raw/reset-2026-05-10/r09g/research-workbook-replay.json`.
+- Change summary: added a workbook semantics layer on top of R09F compiler rows. It maps source-assisted rows into `READY_WITH_CONTACT`, `REVIEW`, `MANUAL_LOOKUP`, `ORG_ONLY`, `NOT_FOUND`, and `FAILED`; builds sales-first CSV-ready rows with query/run/rank, CRM-ready flag, person/account/contact fields, source URL columns, validation notes, blocker notes, next action, source IDs/family/reputation, input method, and checked timestamp; preserves manual-lookup and not-found rows without marking them CRM-ready; and tracks/downgrades any claimed-ready row that lacks supported contact evidence.
+- Verification run by Prompt A: `cd packages/core && uv run pytest tests/test_research_workbook.py -q` (`3 passed`); `cd packages/core && uv run pytest tests/test_research_workbook.py tests/test_source_assisted_compiler.py tests/test_manual_oracle.py tests/test_k12_source_map.py -q` (`15 passed`); `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py -q` (`21 passed`); R09G replay artifact generated and validated as JSON.
+- Evidence artifact: `audits/raw/reset-2026-05-10/r09g/research-workbook-replay.json`, reporting 17 workbook rows, 10 `READY_WITH_CONTACT` rows, 7 `MANUAL_LOOKUP` rows, no downgraded ready rows for the April replay, export headers with sales-first fields and validation/audit/source columns, source URLs preserved, and `passes=true`.
+- Prompt A scope note: no UI, API endpoint, persistence, R09H proof packet, Prompt C, RG4, R10-R12, dogfood, or `main` changes.
+- Exact Prompt B handoff: QA `feat/reset-r09g-research-workbook-tiering`; verify the branch contains only R09G scope; rerun `cd packages/core && uv run pytest tests/test_research_workbook.py tests/test_source_assisted_compiler.py tests/test_manual_oracle.py tests/test_k12_source_map.py -q`, `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py -q`, and `git diff --check`; inspect `audits/raw/reset-2026-05-10/r09g/research-workbook-replay.json`; confirm it reports 17 workbook rows, 10 `READY_WITH_CONTACT` rows, 7 `MANUAL_LOOKUP` rows, zero downgraded ready rows for the April replay, export headers with sales-first fields plus validation/audit/source columns, source URLs preserved for name/title/organization/email where available, manual-lookup rows kept non-CRM-ready with next actions, and synthetic claimed-ready rows without contact support downgraded by tests. Confirm no UI, API endpoint, persistence, R09H proof packet, Prompt C, RG4, R10-R12, dogfood, or `main` sync scope landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R09H `ready`, and keep RG4/R10-R12/export/dogfood/main blocked.
 
 R09H expected scope after R09G passes:
 
