@@ -6,8 +6,8 @@
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
 **Current reset gate:** RG1 - Operator Benchmark Harness.
-**Next Prompt A feature:** `R03 - Live benchmark runner and quality summary` on `feat/reset-r03-live-benchmark-runner`.
-**Current Prompt B handoff:** None. No feature branch currently awaits Prompt B QA.
+**Next Prompt A feature:** None. Prompt C must resolve RG1 before any further Prompt A assignment.
+**Current Prompt C handoff:** Audit `RG1 - Operator Benchmark Harness` now that `R01`, `R02`, and `R03` are merged into `rebuild/validated-leads-loop`. Reuse the saved live artifacts in `audits/raw/reset-2026-05-10/rg1/`, confirm the runner remains executable against the protected local API path, and decide `advance`, `hold`, `revise`, `rollback`, or `kill` without unlocking RG2 unless the gate evidence explicitly supports it.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -179,7 +179,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | Gate | Name | Feature range | Status | Required report |
 | --- | --- | --- | --- | --- |
 | RG0 | W5 Hold And Control Reset | R00 | gate_advanced | `audits/gates/reset-2026-05-10/rg0-w5-hold.md` |
-| RG1 | Operator Benchmark Harness | R01-R03 | in_progress | `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md` |
+| RG1 | Operator Benchmark Harness | R01-R03 | gate_pending_audit | `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md` |
 | RG2 | Search Coverage And Source Collection | R04-R06 | blocked | `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md` |
 | RG3 | Validation, Conflict, And Gate Semantics | R07-R09 | blocked | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
 | RG4 | Sales-First Operator UI | R10-R12 | blocked | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
@@ -193,7 +193,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R00 | W5 hold report and reset control docs | merged | `feat/reset-r00-w5-hold-control` | non-UI docs + gate evidence |
 | R01 | Operator evidence fixture pack | merged | `feat/reset-r01-operator-evidence-fixtures` | non-UI fixture audit |
 | R02 | Golden benchmark replay harness | merged | `feat/reset-r02-benchmark-replay-harness` | core tests |
-| R03 | Live benchmark runner and quality summary | ready | `feat/reset-r03-live-benchmark-runner` | core/API + saved raw outputs |
+| R03 | Live benchmark runner and quality summary | merged_to_rebuild_branch | `feat/reset-r03-live-benchmark-runner` | core/API + saved raw outputs |
 | R04 | High-volume query planner and search aggregation | blocked | `feat/reset-r04-high-volume-search` | core tests |
 | R05 | Source collection and snapshot store | blocked | `feat/reset-r05-source-collection-store` | core tests + raw source fixtures |
 | R06 | Not-found and organization-only coverage writer | blocked | `feat/reset-r06-nonperson-coverage` | core tests |

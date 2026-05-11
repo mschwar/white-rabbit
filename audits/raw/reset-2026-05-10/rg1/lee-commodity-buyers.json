@@ -1,0 +1,262 @@
+{
+  "benchmark_id": "lee-commodity-buyers",
+  "leads": [
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.99,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Will Preston is directly responsible for buying commodities at ProBuild, making him highly relevant to your search for commodity buyers in retail lumber yards.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "As a Senior Commodity Buyer at ProBuild Holdings, your expertise in sourcing quality lumber products would be invaluable in discussing effective supply chain strategies for retail lumber yards in Washington.",
+      "id": null,
+      "name": "Will Preston",
+      "organization": "ProBuild Holdings",
+      "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+      "title": "Senior Commodity Buyer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "failed"
+        }
+      },
+      "why_target": "Will Preston\u2019s role as a Senior Commodity Buyer at ProBuild Holdings positions him as a key decision maker in selecting lumber products for retail operations in Washington."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.99,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Jackson Fish is directly involved in trading lumber, making him relevant for discussions about commodity procurement for retail lumber yards.",
+      "fit_score": 0.9,
+      "gate_passed": false,
+      "icebreaker": "As a Commodity Trader at Sherwood Lumber, your focus on sourcing and trading lumber products could greatly enhance retail operations in the Pacific Northwest.",
+      "id": null,
+      "name": "Jackson Fish",
+      "organization": "Sherwood Lumber",
+      "source_url": "https://www.linkedin.com/in/jackson-fish-b16804177",
+      "title": "Commodity Trader",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/jackson-fish-b16804177",
+          "source_url": "https://www.linkedin.com/in/jackson-fish-b16804177",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jackson-fish-b16804177",
+          "source_url": "https://www.linkedin.com/in/jackson-fish-b16804177",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jackson-fish-b16804177",
+          "source_url": "https://www.linkedin.com/in/jackson-fish-b16804177",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/jackson-fish-b16804177",
+          "source_url": "https://www.linkedin.com/in/jackson-fish-b16804177",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jackson-fish-b16804177",
+          "source_url": "https://www.linkedin.com/in/jackson-fish-b16804177",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jackson-fish-b16804177",
+          "source_url": "https://www.linkedin.com/in/jackson-fish-b16804177",
+          "status": "failed"
+        }
+      },
+      "why_target": "Jackson Fish's position as a Commodity Trader at Sherwood Lumber aligns with the needs of retail lumber yards in Washington to procure high-quality lumber commodities."
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Stewart Lumber is a notable retail lumber yard known for quality sourcing, though no specific buyer is referenced.",
+      "id": null,
+      "organization": "Stewart Lumber",
+      "source_url": "https://steveforestco.com/",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. fetch_error=ConnectError: [Errno 8] nodename nor servname provided, or not known",
+          "source_url": "https://steveforestco.com/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. fetch_error=ConnectError: [Errno 8] nodename nor servname provided, or not known",
+          "source_url": "https://steveforestco.com/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "fetch_error=ConnectError: [Errno 8] nodename nor servname provided, or not known",
+          "source_url": "https://steveforestco.com/",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. fetch_error=ConnectError: [Errno 8] nodename nor servname provided, or not known",
+          "source_url": "https://steveforestco.com/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "fetch_error=ConnectError: [Errno 8] nodename nor servname provided, or not known",
+          "source_url": "https://steveforestco.com/",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. fetch_error=ConnectError: [Errno 8] nodename nor servname provided, or not known",
+          "source_url": "https://steveforestco.com/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Builders FirstSource is a significant retail lumber supplier, but lacks individual contact information.",
+      "id": null,
+      "organization": "Builders FirstSource",
+      "source_url": "https://www.bldr.com/location/graham-wa-lumber-yard/GRAHWAYD",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.bldr.com/location/graham-wa-lumber-yard/GRAHWAYD",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.bldr.com/location/graham-wa-lumber-yard/GRAHWAYD",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": "Graham WA Lumber Yard | Builders FirstSource function OptanonWrapper() { } (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gt...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.bldr.com/location/graham-wa-lumber-yard/GRAHWAYD",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.bldr.com/location/graham-wa-lumber-yard/GRAHWAYD",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": "Graham WA Lumber Yard | Builders FirstSource function OptanonWrapper() { } (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gt...",
+          "notes": "http_status=200 resolved_url=https://www.bldr.com/location/graham-wa-lumber-yard/GRAHWAYD matched_fields=organization",
+          "source_url": "https://www.bldr.com/location/graham-wa-lumber-yard/GRAHWAYD",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T03:33:46Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.bldr.com/location/graham-wa-lumber-yard/GRAHWAYD",
+          "status": "missing"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 29.24,
+    "estimated_cost_usd": 0.012123,
+    "input_tokens": 8211,
+    "openai_web_searches": 0,
+    "output_tokens": 1486,
+    "tavily_searches": 1
+  },
+  "mode": "scout",
+  "prompt_label": "Lee commodity buyers prompt",
+  "query": "commodity buyers at retail lumber yards in Washington",
+  "query_guardrail": {
+    "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+    "missing_criteria": [
+      "target title or role"
+    ],
+    "status": "needs_more_detail",
+    "suggestions": [
+      "Add a title or role, such as director, manager, VP, or owner."
+    ]
+  },
+  "runner_elapsed_seconds": 29.25,
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 8,
+    "remaining_rows": 992,
+    "reset_at": "2026-05-11T03:32:48.004118-06:00",
+    "total_queries": 2,
+    "total_rows": 8
+  }
+}
