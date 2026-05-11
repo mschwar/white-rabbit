@@ -4,86 +4,210 @@
     {
       "candidate_category": "person_lead",
       "confidence": 1.0,
-      "contact_score": 0.0,
+      "contact_score": 0.5,
       "email": "",
       "email_status": "missing",
-      "evidence_score": 1.0,
-      "explanation": "Khalil Jackson is a recognized leader in cybersecurity for the financial industry, making him a key contact for firms seeking to strengthen their information security.",
-      "fit_score": 1.0,
+      "evidence_score": 0.8,
+      "explanation": "Bob Brown is identified as the CISO of the Federal Home Loan Bank of New York, fitting the query for financial services CISOs in New York, although no email or phone was found.",
+      "fit_score": 0.9,
       "gate_passed": false,
-      "icebreaker": "I admire your leadership as CISO at the Federal Reserve Bank of New York, especially given the critical role you play in safeguarding the nation's financial systems in such a dynamic environment.",
+      "icebreaker": "Hi Bob, as the CISO at the Federal Home Loan Bank of New York, your leadership in managing cybersecurity compliance resonates with the growing regulatory landscape in our industry.",
       "id": null,
-      "name": "Khalil Jackson",
-      "organization": "Federal Reserve Bank of New York",
-      "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
-      "title": "Chief Information Security Officer",
+      "name": "Bob Brown",
+      "organization": "Federal Home Loan Bank of New York",
+      "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+      "title": "CISO",
       "validation": {
         "email": {
-          "checked_at": "2026-05-11T03:34:06Z",
+          "checked_at": "2026-05-11T03:55:57Z",
           "evidence_snippet": null,
           "notes": "email is not present on the candidate.",
-          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
           "status": "missing"
         },
         "name": {
-          "checked_at": "2026-05-11T03:34:06Z",
-          "evidence_snippet": "Khalil Jackson, CISO, New York Federal Reserve Bank, Joins FAIR Institute Board hsjQuery = win...",
+          "checked_at": "2026-05-11T03:55:57Z",
+          "evidence_snippet": "...p \u2014 Optimizing Cybersecurity in a Dynamic World Beth Miller Field CISO Mimecast Bob Brown CISO Federal Home Loan Bank of New York Anthony Candeias CISO WW International...",
           "notes": "Direct text support found for name.",
-          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
           "status": "supported"
         },
         "organization": {
-          "checked_at": "2026-05-11T03:34:06Z",
-          "evidence_snippet": "...Officer to the FAIR Institute Board of Directors : Khalil Jackson, CISO at the Federal Reserve Bank of New York. Khalil\u2019s deep experience will enrich our mission of research and education in...",
+          "checked_at": "2026-05-11T03:55:57Z",
+          "evidence_snippet": "...Cybersecurity in a Dynamic World Beth Miller Field CISO Mimecast Bob Brown CISO Federal Home Loan Bank of New York Anthony Candeias CISO WW International Davin Darnt CISO Americas Louis Vuitton...",
           "notes": "Direct text support found for organization.",
-          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
           "status": "supported"
         },
         "phone": {
-          "checked_at": "2026-05-11T03:34:06Z",
+          "checked_at": "2026-05-11T03:55:57Z",
           "evidence_snippet": null,
           "notes": "phone is not present on the candidate.",
-          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
           "status": "missing"
         },
         "source": {
-          "checked_at": "2026-05-11T03:34:06Z",
-          "evidence_snippet": "Khalil Jackson, CISO, New York Federal Reserve Bank, Joins FAIR Institute Board hsjQuery = win...",
-          "notes": "http_status=200 resolved_url=https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board matched_fields=name,title,organization",
-          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "checked_at": "2026-05-11T03:55:57Z",
+          "evidence_snippet": "...p \u2014 Optimizing Cybersecurity in a Dynamic World Beth Miller Field CISO Mimecast Bob Brown CISO Federal Home Loan Bank of New York Anthony Candeias CISO WW International...",
+          "notes": "http_status=200 resolved_url=https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367 matched_fields=name,title,organization",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
           "status": "supported"
         },
         "title": {
-          "checked_at": "2026-05-11T03:34:06Z",
-          "evidence_snippet": "...cola (Nick) Sanna I am delighted to announce the appointment of a distinguished Chief Information Security Officer to the FAIR Institute Board of Directors : Khalil Jackson, CISO at the Federal...",
+          "checked_at": "2026-05-11T03:55:57Z",
+          "evidence_snippet": "2025 New York CISO Community Inner Circle var dataLayer = window.dataLayer = window.dataLayer || [...",
           "notes": "Direct text support found for title.",
-          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
           "status": "supported"
         }
       },
-      "why_target": "As CISO at the Federal Reserve Bank of New York, Khalil Jackson is pivotal in ensuring the security of critical financial systems, aligning perfectly with the search for finance CISOs in the financial services industry."
+      "why_target": "As the CISO of the Federal Home Loan Bank, Bob is well-positioned to address cybersecurity concerns in the financial services sector in New York."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 1.0,
+      "contact_score": 0.5,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.8,
+      "explanation": "Katie Watson is confirmed as CISO of Sumitomo Mitsui Banking Corporation, aligning with the search for financial services CISOs in New York, but no email or phone was verified.",
+      "fit_score": 0.88,
+      "gate_passed": false,
+      "icebreaker": "Hi Katie, your role as CISO at Sumitomo Mitsui Banking Corporation positions you at the forefront of cybersecurity innovation in financial services, an area we deeply value.",
+      "id": null,
+      "name": "Katie Watson",
+      "organization": "Sumitomo Mitsui Banking Corporation",
+      "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+      "title": "CISO",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T03:55:57Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T03:55:57Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for name.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T03:55:57Z",
+          "evidence_snippet": "...onstruction Chief Information Security Officer and Privacy Officer Kylie Watson Sumitomo Mitsui Banking Corporation CISO Read More Teresa Zielinski GE Vernova VP, Global CISO Agenda August 12, 20...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T03:55:57Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T03:55:57Z",
+          "evidence_snippet": "2025 New York CISO Community Inner Circle var dataLayer = window.dataLayer = window.dataLayer || [...",
+          "notes": "http_status=200 resolved_url=https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367 matched_fields=title,organization",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T03:55:57Z",
+          "evidence_snippet": "2025 New York CISO Community Inner Circle var dataLayer = window.dataLayer = window.dataLayer || [...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "supported"
+        }
+      },
+      "why_target": "As the CISO of Sumitomo Mitsui Banking Corporation, Katie is influential in steering security practices in New York's financial services industry."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 1.0,
+      "contact_score": 0.5,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.8,
+      "explanation": "Tod Mitchinson serves as the CISO of New York Life, matching the query for financial services CISOs in New York, though no email or phone information was found.",
+      "fit_score": 0.9,
+      "gate_passed": false,
+      "icebreaker": "Hi Tod, as CISO at New York Life, your perspective on cybersecurity challenges in financial services is invaluable, especially as regulations evolve.",
+      "id": null,
+      "name": "Tod Mitchinson",
+      "organization": "New York Life",
+      "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+      "title": "CISO",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T03:55:57Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T03:55:57Z",
+          "evidence_snippet": "...cer Tomas Maldonado National Football League Chief Information Security Officer Tod Mitchinson New York Life VP, Chief Information Security Officer Lauren Dana Rosenblatt Pub...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T03:55:57Z",
+          "evidence_snippet": "...ontent is driven By CISOs, For CISOs\u00ae. Governing Body Co-Chairs Reshma Budhwani New York Life VP, Chief Technology Security Officer Read More Steve Grossman National Basketb...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T03:55:57Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T03:55:57Z",
+          "evidence_snippet": "...cer Tomas Maldonado National Football League Chief Information Security Officer Tod Mitchinson New York Life VP, Chief Information Security Officer Lauren Dana Rosenblatt Pub...",
+          "notes": "http_status=200 resolved_url=https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367 matched_fields=name,title,organization",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T03:55:57Z",
+          "evidence_snippet": "2025 New York CISO Community Inner Circle var dataLayer = window.dataLayer = window.dataLayer || [...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "supported"
+        }
+      },
+      "why_target": "Tod's role as CISO at New York Life places him at a pivotal point in enhancing the security posture of a major player in the financial services sector."
     }
   ],
   "metrics": {
-    "elapsed_seconds": 11.04,
-    "estimated_cost_usd": 0.011464,
-    "input_tokens": 7477,
+    "elapsed_seconds": 27.22,
+    "estimated_cost_usd": 0.012008,
+    "input_tokens": 7605,
     "openai_web_searches": 0,
-    "output_tokens": 571,
+    "output_tokens": 1445,
     "tavily_searches": 1
   },
   "mode": "scout",
   "prompt_label": "Finance CISOs in New York",
   "query": "finance CISOs at financial services firms in New York",
   "query_guardrail": null,
-  "runner_elapsed_seconds": 11.059,
+  "runner_elapsed_seconds": 27.24,
   "sandbox_usage": {
     "max_queries": 10,
     "max_rows": 1000,
     "remaining_queries": 6,
-    "remaining_rows": 991,
-    "reset_at": "2026-05-11T03:32:48.004118-06:00",
+    "remaining_rows": 984,
+    "reset_at": "2026-05-11T03:53:26.188245-06:00",
     "total_queries": 4,
-    "total_rows": 9
+    "total_rows": 16
   }
 }

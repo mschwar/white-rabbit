@@ -3,248 +3,533 @@
   "leads": [
     {
       "candidate_category": "person_lead",
-      "confidence": 1.0,
+      "confidence": 0.0,
       "contact_score": 0.0,
       "email": "",
       "email_status": "missing",
       "evidence_score": 1.0,
-      "explanation": "David Sanders is the right contact at Mesa Public Schools with relevant decision-making authority and a current role, but contact information is missing.",
-      "fit_score": 0.95,
+      "explanation": "The lead is identified as the Chief Technology Officer at Mesa Public Schools, but there's no available contact information.",
+      "fit_score": 1.0,
       "gate_passed": false,
-      "icebreaker": "Hi David, your work as the Chief Technology Officer at Mesa Public Schools aligns perfectly with emerging technologies set to redefine education.",
+      "icebreaker": "Hi David, as the Chief Technology Officer at Mesa Public Schools, your leadership in leveraging technology for educational success aligns perfectly with our offerings.",
       "id": null,
       "name": "David Sanders",
       "organization": "Mesa Public Schools",
-      "source_url": "https://www.linkedin.com/in/dbsanders67",
+      "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
       "title": "Chief Technology Officer",
       "validation": {
         "email": {
-          "checked_at": "2026-05-11T03:33:16Z",
+          "checked_at": "2026-05-11T03:54:46Z",
           "evidence_snippet": null,
           "notes": "email is not present on the candidate.",
-          "source_url": "https://www.linkedin.com/in/dbsanders67",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
           "status": "missing"
         },
         "name": {
-          "checked_at": "2026-05-11T03:33:16Z",
-          "evidence_snippet": "...etDfd(); window.pemTracking = getDfd(); window.appRedirectCompleted = getDfd(); David Sanders - Mesa Public Schools | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@t...",
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": "...Amy Remfrey Director Information Technology Phoenix Union High School District David Sanders Chief Technology Officer Mesa Public Schools Mike Treguboff Director of Technol...",
           "notes": "Direct text support found for name.",
-          "source_url": "https://www.linkedin.com/in/dbsanders67",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
           "status": "supported"
         },
         "organization": {
-          "checked_at": "2026-05-11T03:33:16Z",
-          "evidence_snippet": "...pemTracking = getDfd(); window.appRedirectCompleted = getDfd(); David Sanders - Mesa Public Schools | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"review...",
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": "...ology Phoenix Union High School District David Sanders Chief Technology Officer Mesa Public Schools Mike Treguboff Director of Technology Operations Peoria Unified School District...",
           "notes": "Direct text support found for organization.",
-          "source_url": "https://www.linkedin.com/in/dbsanders67",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
           "status": "supported"
         },
         "phone": {
-          "checked_at": "2026-05-11T03:33:16Z",
+          "checked_at": "2026-05-11T03:54:46Z",
           "evidence_snippet": null,
           "notes": "phone is not present on the candidate.",
-          "source_url": "https://www.linkedin.com/in/dbsanders67",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
           "status": "missing"
         },
         "source": {
-          "checked_at": "2026-05-11T03:33:16Z",
-          "evidence_snippet": "...etDfd(); window.pemTracking = getDfd(); window.appRedirectCompleted = getDfd(); David Sanders - Mesa Public Schools | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@t...",
-          "notes": "http_status=200 resolved_url=https://www.linkedin.com/in/dbsanders67 matched_fields=name,title,organization",
-          "source_url": "https://www.linkedin.com/in/dbsanders67",
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": "...Amy Remfrey Director Information Technology Phoenix Union High School District David Sanders Chief Technology Officer Mesa Public Schools Mike Treguboff Director of Technol...",
+          "notes": "http_status=200 resolved_url=https://events.govtech.com/Arizona-CIO-CTO-Forum-2024 matched_fields=name,title,organization",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
           "status": "supported"
         },
         "title": {
-          "checked_at": "2026-05-11T03:33:16Z",
-          "evidence_snippet": "...a.org/FollowAction\",\"name\":\"Follows\",\"userInteractionCount\":442},\"description\":\"Chief Technology Officer for Mesa Public Schools. With over 25 years of experience in the\u2026\"}]} Skip to m...",
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": "...irector Information Technology Phoenix Union High School District David Sanders Chief Technology Officer Mesa Public Schools Mike Treguboff Director of Technology Operations Peoria Uni...",
           "notes": "Direct text support found for title.",
-          "source_url": "https://www.linkedin.com/in/dbsanders67",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
           "status": "supported"
         }
       },
-      "why_target": "As the Chief Technology Officer, David oversees the technology direction which is critical for enhancing educational experiences."
+      "why_target": "The Chief Technology Officer at Mesa Public Schools is crucial for implementing educational technology strategies."
     },
     {
       "candidate_category": "person_lead",
-      "confidence": 1.0,
+      "confidence": 0.0,
       "contact_score": 0.0,
       "email": "",
       "email_status": "missing",
       "evidence_score": 1.0,
-      "explanation": "Michelle Coots is a key decision-maker at Deer Valley USD in technology, but her contact information is lacking.",
-      "fit_score": 0.9,
+      "explanation": "This candidate is identified as the CIO at Deer Valley Unified School District, but contact details are unavailable.",
+      "fit_score": 1.0,
       "gate_passed": false,
-      "icebreaker": "Hi Michelle, congratulations on being recognized as the Technology Director of the Year for Deer Valley Unified School District; your leadership is crucial for driving educational technology forward.",
+      "icebreaker": "Hi Brian, your role as Chief Information Officer at Deer Valley Unified School District positions you perfectly to influence transformative technology solutions in education.",
       "id": null,
-      "name": "Michelle Coots",
+      "name": "Brian Boone",
       "organization": "Deer Valley Unified School District",
-      "source_url": "https://www.linkedin.com/posts/michelle-coots-az_aztea-dvusd-edtech-activity-7291279232905723904-90cU",
-      "title": "Technology Director",
+      "source_url": "https://www.dvusd.org/departments/information-services-and-technology",
+      "title": "Chief Information Officer",
       "validation": {
         "email": {
-          "checked_at": "2026-05-11T03:33:16Z",
+          "checked_at": "2026-05-11T03:54:46Z",
           "evidence_snippet": null,
           "notes": "email is not present on the candidate.",
-          "source_url": "https://www.linkedin.com/posts/michelle-coots-az_aztea-dvusd-edtech-activity-7291279232905723904-90cU",
+          "source_url": "https://www.dvusd.org/departments/information-services-and-technology",
           "status": "missing"
         },
         "name": {
-          "checked_at": "2026-05-11T03:33:16Z",
-          "evidence_snippet": "...ing = getDfd(); window.appRedirectCompleted = getDfd(); #aztea #dvusd #edtech | Michelle Coots | 22 comments {\"@context\":\"http://schema.org\",\"@type\":\"SocialMediaPosting\",\"@id...",
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": "...ing and enhance operational efficiency. Parent Tech Support Department Contacts Brian Boone 602-467-5152 Chief Information Officer CeAnn Ruta 602-467-5152 Secretary Domini...",
           "notes": "Direct text support found for name.",
-          "source_url": "https://www.linkedin.com/posts/michelle-coots-az_aztea-dvusd-edtech-activity-7291279232905723904-90cU",
+          "source_url": "https://www.dvusd.org/departments/information-services-and-technology",
           "status": "supported"
         },
         "organization": {
-          "checked_at": "2026-05-11T03:33:16Z",
-          "evidence_snippet": "...01T02:20:34.512Z\",\"headline\":\"It was an honor to be recognized this week at the Deer Valley Unified School District (DVUSD) Governing Board meeting for receiving the Technology Director of the Ye...",
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": "Information Services and Technology (IS&T) - Deer Valley Unified School District dataLayer = [{ 'schoolDomain': 'www.dvusd.org' }]; dataLayer.push({'measurement...",
           "notes": "Direct text support found for organization.",
-          "source_url": "https://www.linkedin.com/posts/michelle-coots-az_aztea-dvusd-edtech-activity-7291279232905723904-90cU",
+          "source_url": "https://www.dvusd.org/departments/information-services-and-technology",
           "status": "supported"
         },
         "phone": {
-          "checked_at": "2026-05-11T03:33:16Z",
+          "checked_at": "2026-05-11T03:54:46Z",
           "evidence_snippet": null,
           "notes": "phone is not present on the candidate.",
-          "source_url": "https://www.linkedin.com/posts/michelle-coots-az_aztea-dvusd-edtech-activity-7291279232905723904-90cU",
+          "source_url": "https://www.dvusd.org/departments/information-services-and-technology",
           "status": "missing"
         },
         "source": {
-          "checked_at": "2026-05-11T03:33:16Z",
-          "evidence_snippet": "...ing = getDfd(); window.appRedirectCompleted = getDfd(); #aztea #dvusd #edtech | Michelle Coots | 22 comments {\"@context\":\"http://schema.org\",\"@type\":\"SocialMediaPosting\",\"@id...",
-          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/michelle-coots-az_aztea-dvusd-edtech-activity-7291279232905723904-90cU matched_fields=name,title,organization",
-          "source_url": "https://www.linkedin.com/posts/michelle-coots-az_aztea-dvusd-edtech-activity-7291279232905723904-90cU",
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": "...ing and enhance operational efficiency. Parent Tech Support Department Contacts Brian Boone 602-467-5152 Chief Information Officer CeAnn Ruta 602-467-5152 Secretary Domini...",
+          "notes": "http_status=200 resolved_url=https://www.dvusd.org/departments/information-services-and-technology matched_fields=name,title,organization",
+          "source_url": "https://www.dvusd.org/departments/information-services-and-technology",
           "status": "supported"
         },
         "title": {
-          "checked_at": "2026-05-11T03:33:16Z",
-          "evidence_snippet": "...alley Unified School District (DVUSD) Governing Board meeting for receiving the Technology Director of the Year award from the Arizona Technology in Education Association (AZTEA)....",
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": "...al efficiency. Parent Tech Support Department Contacts Brian Boone 602-467-5152 Chief Information Officer CeAnn Ruta 602-467-5152 Secretary Dominic Avila 602-467-5140 Network & Infrastr...",
           "notes": "Direct text support found for title.",
-          "source_url": "https://www.linkedin.com/posts/michelle-coots-az_aztea-dvusd-edtech-activity-7291279232905723904-90cU",
+          "source_url": "https://www.dvusd.org/departments/information-services-and-technology",
           "status": "supported"
         }
       },
-      "why_target": "As Technology Director, Michelle leads initiatives that enhance technology integration in schools, directly impacting educational outcomes."
+      "why_target": "As the Chief Information Officer at Deer Valley Unified School District, Brian plays a pivotal role in technology decision-making and resource allocation."
     },
     {
-      "candidate_category": "organization_only",
-      "explanation": "Peoria Public Schools is a relevant organization, but no specific decision-maker was confirmed.",
+      "candidate_category": "person_lead",
+      "confidence": 0.0,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Contact details are not provided for Dr. Dan Courson but he is confirmed as the acting superintendent.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "Hi Dr. Courson, your role as acting superintendent at Paradise Valley Unified School District is crucial in shaping educational transformations through technology.",
       "id": null,
-      "organization": "Peoria Public Schools",
-      "source_url": "https://www.peoriapublicschools.org/page/technology",
+      "name": "Dr. Dan Courson",
+      "organization": "Paradise Valley Unified School District",
+      "source_url": "https://www.pvschools.net/our-district/newsroom/news-details/~board/pvschools-news/post/update-on-pvschools-news-details/~board/pvschools-news/post/update-on-pvschools-district-leadership",
+      "title": "Acting Superintendent",
       "validation": {
         "email": {
-          "checked_at": "2026-05-11T03:33:16Z",
+          "checked_at": "2026-05-11T03:54:46Z",
           "evidence_snippet": null,
-          "notes": "email is not present on the candidate.",
-          "source_url": "https://www.peoriapublicschools.org/page/technology",
+          "notes": "email is not present on the candidate. http_status=404 resolved_url=https://www.pvschools.net/our-district/newsroom/news-details/~board/pvschools-news/post/update-on-pvschools-news-details/~board/pvschools-news/post/update-on-pvschools-district-leadership",
+          "source_url": "https://www.pvschools.net/our-district/newsroom/news-details/~board/pvschools-news/post/update-on-pvschools-news-details/~board/pvschools-news/post/update-on-pvschools-district-leadership",
           "status": "missing"
         },
         "name": {
-          "checked_at": "2026-05-11T03:33:16Z",
+          "checked_at": "2026-05-11T03:54:46Z",
           "evidence_snippet": null,
-          "notes": "name is not present on the candidate.",
-          "source_url": "https://www.peoriapublicschools.org/page/technology",
-          "status": "missing"
+          "notes": "http_status=404 resolved_url=https://www.pvschools.net/our-district/newsroom/news-details/~board/pvschools-news/post/update-on-pvschools-news-details/~board/pvschools-news/post/update-on-pvschools-district-leadership",
+          "source_url": "https://www.pvschools.net/our-district/newsroom/news-details/~board/pvschools-news/post/update-on-pvschools-news-details/~board/pvschools-news/post/update-on-pvschools-district-leadership",
+          "status": "failed"
         },
         "organization": {
-          "checked_at": "2026-05-11T03:33:16Z",
-          "evidence_snippet": "Technology | Peoria Public Schools @media (max-width:1023px){#h2 [data-testid=\"small-utilities-bar\"] .utility-bar-...",
-          "notes": "Direct text support found for organization.",
-          "source_url": "https://www.peoriapublicschools.org/page/technology",
-          "status": "supported"
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "http_status=404 resolved_url=https://www.pvschools.net/our-district/newsroom/news-details/~board/pvschools-news/post/update-on-pvschools-news-details/~board/pvschools-news/post/update-on-pvschools-district-leadership",
+          "source_url": "https://www.pvschools.net/our-district/newsroom/news-details/~board/pvschools-news/post/update-on-pvschools-news-details/~board/pvschools-news/post/update-on-pvschools-district-leadership",
+          "status": "failed"
         },
         "phone": {
-          "checked_at": "2026-05-11T03:33:16Z",
+          "checked_at": "2026-05-11T03:54:46Z",
           "evidence_snippet": null,
-          "notes": "phone is not present on the candidate.",
-          "source_url": "https://www.peoriapublicschools.org/page/technology",
+          "notes": "phone is not present on the candidate. http_status=404 resolved_url=https://www.pvschools.net/our-district/newsroom/news-details/~board/pvschools-news/post/update-on-pvschools-news-details/~board/pvschools-news/post/update-on-pvschools-district-leadership",
+          "source_url": "https://www.pvschools.net/our-district/newsroom/news-details/~board/pvschools-news/post/update-on-pvschools-news-details/~board/pvschools-news/post/update-on-pvschools-district-leadership",
           "status": "missing"
         },
         "source": {
-          "checked_at": "2026-05-11T03:33:16Z",
-          "evidence_snippet": "Technology | Peoria Public Schools @media (max-width:1023px){#h2 [data-testid=\"small-utilities-bar\"] .utility-bar-...",
-          "notes": "http_status=200 resolved_url=https://www.peoriapublicschools.org/page/technology matched_fields=organization",
-          "source_url": "https://www.peoriapublicschools.org/page/technology",
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "http_status=404 resolved_url=https://www.pvschools.net/our-district/newsroom/news-details/~board/pvschools-news/post/update-on-pvschools-news-details/~board/pvschools-news/post/update-on-pvschools-district-leadership",
+          "source_url": "https://www.pvschools.net/our-district/newsroom/news-details/~board/pvschools-news/post/update-on-pvschools-news-details/~board/pvschools-news/post/update-on-pvschools-district-leadership",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "http_status=404 resolved_url=https://www.pvschools.net/our-district/newsroom/news-details/~board/pvschools-news/post/update-on-pvschools-news-details/~board/pvschools-news/post/update-on-pvschools-district-leadership",
+          "source_url": "https://www.pvschools.net/our-district/newsroom/news-details/~board/pvschools-news/post/update-on-pvschools-news-details/~board/pvschools-news/post/update-on-pvschools-district-leadership",
+          "status": "failed"
+        }
+      },
+      "why_target": "Dr. Dan Courson\u2019s leadership role in the Paradise Valley Unified School District makes him a key decision-maker in educational technology procurement."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.0,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "This candidate is the Director at Chandler Unified School District, but no contact information is available.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "Hi Colleen, as the Director of Technology Services at Chandler Unified School District, your insights into educational technology are invaluable for enhancing student learning experiences.",
+      "id": null,
+      "name": "Colleen Flannery",
+      "organization": "Chandler Unified School District",
+      "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+      "title": "Director",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": "...icer Yuma Union High School District #70 and Yuma Elementary School District #1 Colleen Flannery Director Technology Services Chandler Unified School District Diana Hawari Chie...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": "...or hands-on activities. Shaun Creighton , Director of Instructional Technology, Chandler Unified School District Melissa Lundquist , Instructional Technology Specialist, Chandler Unified Schoo...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": "...icer Yuma Union High School District #70 and Yuma Elementary School District #1 Colleen Flannery Director Technology Services Chandler Unified School District Diana Hawari Chie...",
+          "notes": "http_status=200 resolved_url=https://events.govtech.com/Arizona-CIO-CTO-Forum-2024 matched_fields=name,title,organization",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
           "status": "supported"
         },
         "title": {
-          "checked_at": "2026-05-11T03:33:16Z",
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": "...zing learning and preparing students for the future. Emily Marshall , Assistant Director of Education Technology, Vail School District From Breach to Triumph: A Cyber R...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "supported"
+        }
+      },
+      "why_target": "Colleen Flannery's role as the Director of Technology Services at Chandler Unified School District positions her as a key player in technological advancements in education."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.0,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Jon Castelhano is identified as the CTO at Gilbert Public Schools, but contact details are not available.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "Hi Jon, your position as Chief Technology Officer at Gilbert Public Schools uniquely positions you to influence educational technology strategies that enhance learning environments.",
+      "id": null,
+      "name": "Jon Castelhano",
+      "organization": "Gilbert Public Schools",
+      "source_url": "https://www.linkedin.com/in/joncastelhano",
+      "title": "Chief Technology Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "failed"
+        }
+      },
+      "why_target": "Jon Castelhano as the Chief Technology Officer at Gilbert Public Schools plays a vital role in integrating technology into the educational framework."
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "No acceptable contact was found for Chandler Unified School District.",
+      "failure_reason": "No suitable contact information found.",
+      "id": null,
+      "organization": null,
+      "searched_target": "Chandler Unified School District",
+      "source_url": null,
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "source_url was not provided.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "title": {
+          "checked_at": "2026-05-11T03:54:46Z",
           "evidence_snippet": null,
           "notes": "title is not present on the candidate.",
-          "source_url": "https://www.peoriapublicschools.org/page/technology",
+          "source_url": null,
           "status": "missing"
         }
       }
     },
     {
-      "candidate_category": "person_lead",
-      "confidence": 1.0,
-      "contact_score": 0.0,
-      "email": "",
-      "email_status": "missing",
-      "evidence_score": 1.0,
-      "explanation": "Scott Haase is a validated contact at Gilbert Public Schools with a relevant title but lacks email and phone details.",
-      "fit_score": 0.85,
-      "gate_passed": false,
-      "icebreaker": "Hi Scott, your leadership in technology infrastructure at Gilbert Public Schools is essential as districts seek to innovate and improve educational access.",
+      "candidate_category": "failed",
+      "explanation": "No acceptable contact was found for Peoria Unified School District.",
+      "failure_reason": "No suitable contact information found.",
       "id": null,
-      "name": "Scott Haase",
-      "organization": "Gilbert Public Schools",
-      "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
-      "title": "Director of Technology Infrastructure and Cybersecurity",
+      "organization": null,
+      "searched_target": "Peoria Unified School District",
+      "source_url": null,
       "validation": {
         "email": {
-          "checked_at": "2026-05-11T03:33:16Z",
+          "checked_at": "2026-05-11T03:54:46Z",
           "evidence_snippet": null,
-          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
-          "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
+          "notes": "email is not present on the candidate.",
+          "source_url": null,
           "status": "missing"
         },
         "name": {
-          "checked_at": "2026-05-11T03:33:16Z",
+          "checked_at": "2026-05-11T03:54:46Z",
           "evidence_snippet": null,
-          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
-          "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
-          "status": "failed"
+          "notes": "name is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
         },
         "organization": {
-          "checked_at": "2026-05-11T03:33:16Z",
+          "checked_at": "2026-05-11T03:54:46Z",
           "evidence_snippet": null,
-          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
-          "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
-          "status": "failed"
+          "notes": "organization is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
         },
         "phone": {
-          "checked_at": "2026-05-11T03:33:16Z",
+          "checked_at": "2026-05-11T03:54:46Z",
           "evidence_snippet": null,
-          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
-          "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
+          "notes": "phone is not present on the candidate.",
+          "source_url": null,
           "status": "missing"
         },
         "source": {
-          "checked_at": "2026-05-11T03:33:16Z",
+          "checked_at": "2026-05-11T03:54:46Z",
           "evidence_snippet": null,
-          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
-          "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
-          "status": "failed"
+          "notes": "source_url was not provided.",
+          "source_url": null,
+          "status": "missing"
         },
         "title": {
-          "checked_at": "2026-05-11T03:33:16Z",
+          "checked_at": "2026-05-11T03:54:46Z",
           "evidence_snippet": null,
-          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
-          "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
-          "status": "failed"
+          "notes": "title is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
         }
-      },
-      "why_target": "Scott's role oversees critical technology frameworks, making him a vital liaison for educational technology decisions."
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "No acceptable contact was found for Gilbert Public Schools.",
+      "failure_reason": "No suitable contact information found.",
+      "id": null,
+      "organization": null,
+      "searched_target": "Gilbert Public Schools",
+      "source_url": null,
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "source_url was not provided.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "title": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "No acceptable contact was found for Dysart Unified School District.",
+      "failure_reason": "No suitable contact information found.",
+      "id": null,
+      "organization": null,
+      "searched_target": "Dysart Unified School District",
+      "source_url": null,
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "source_url was not provided.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "title": {
+          "checked_at": "2026-05-11T03:54:46Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        }
+      }
     }
   ],
   "metrics": {
-    "elapsed_seconds": 30.27,
-    "estimated_cost_usd": 0.082146,
-    "input_tokens": 8039,
+    "elapsed_seconds": 82.48,
+    "estimated_cost_usd": 0.082805,
+    "input_tokens": 6467,
     "openai_web_searches": 0,
-    "output_tokens": 1567,
+    "output_tokens": 3058,
     "tavily_searches": 8
   },
   "mode": "scout",
@@ -260,14 +545,14 @@
       "Add a geography, such as a city, state, or region."
     ]
   },
-  "runner_elapsed_seconds": 30.294,
+  "runner_elapsed_seconds": 82.503,
   "sandbox_usage": {
     "max_queries": 10,
     "max_rows": 1000,
     "remaining_queries": 9,
-    "remaining_rows": 996,
-    "reset_at": "2026-05-11T03:32:48.004118-06:00",
+    "remaining_rows": 991,
+    "reset_at": "2026-05-11T03:53:26.188245-06:00",
     "total_queries": 1,
-    "total_rows": 4
+    "total_rows": 9
   }
 }

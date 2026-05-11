@@ -1,89 +1,10 @@
 {
   "benchmark_id": "manufacturing-ops-detroit",
-  "leads": [
-    {
-      "candidate_category": "person_lead",
-      "confidence": 0.0,
-      "contact_score": 0.5,
-      "email": "",
-      "email_status": "missing",
-      "evidence_score": 0.9,
-      "explanation": "Bruce Smith is identified as the Chief Manufacturing Officer at a relevant Detroit manufacturing firm, showcasing direct alignment with the user's interest in manufacturing operations leaders.",
-      "fit_score": 1.0,
-      "gate_passed": false,
-      "icebreaker": "Hi Bruce, as the Chief Manufacturing Officer at Detroit Manufacturing Systems, your efforts in driving manufacturing excellence directly impact the advanced production landscape in Detroit.",
-      "id": null,
-      "name": "Bruce Smith",
-      "organization": "Detroit Manufacturing Systems LLC",
-      "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
-      "title": "Chief Manufacturing Officer",
-      "validation": {
-        "email": {
-          "checked_at": "2026-05-11T03:34:24Z",
-          "evidence_snippet": null,
-          "notes": "email is not present on the candidate.",
-          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
-          "status": "missing"
-        },
-        "name": {
-          "checked_at": "2026-05-11T03:34:24Z",
-          "evidence_snippet": "...etDfd(); window.pemTracking = getDfd(); window.appRedirectCompleted = getDfd(); Bruce Smith - Voltava | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@type\":\"WebPag...",
-          "notes": "Direct text support found for name.",
-          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
-          "status": "supported"
-        },
-        "organization": {
-          "checked_at": "2026-05-11T03:34:24Z",
-          "evidence_snippet": null,
-          "notes": "No direct text support found for organization.",
-          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
-          "status": "unsupported"
-        },
-        "phone": {
-          "checked_at": "2026-05-11T03:34:24Z",
-          "evidence_snippet": null,
-          "notes": "phone is not present on the candidate.",
-          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
-          "status": "missing"
-        },
-        "source": {
-          "checked_at": "2026-05-11T03:34:24Z",
-          "evidence_snippet": "...etDfd(); window.pemTracking = getDfd(); window.appRedirectCompleted = getDfd(); Bruce Smith - Voltava | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@type\":\"WebPag...",
-          "notes": "http_status=200 resolved_url=https://www.linkedin.com/in/bruce-smith-6b2aa95 matched_fields=name",
-          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
-          "status": "supported"
-        },
-        "title": {
-          "checked_at": "2026-05-11T03:34:24Z",
-          "evidence_snippet": null,
-          "notes": "No direct text support found for title.",
-          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
-          "status": "unsupported"
-        }
-      },
-      "why_target": "Bruce's leadership in manufacturing at Detroit Manufacturing Systems is pivotal for operational excellence in the industry's regional hub."
-    }
-  ],
-  "metrics": {
-    "elapsed_seconds": 18.43,
-    "estimated_cost_usd": 0.01141,
-    "input_tokens": 7023,
-    "openai_web_searches": 0,
-    "output_tokens": 594,
-    "tavily_searches": 1
-  },
+  "error": "OpenAI extraction failed: 40 validation errors for LeadList\nleads.0.function-after[validate_person_candidate(), Lead].name\n  Value error, Lead.name must be a person's name, not a role or title. [type=value_error, input_value='Chief Manufacturing Officer', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error\nleads.0.function-after[validate_organization_only_candidate(), OrganizationOnlyCandidate].name\n  Extra inputs are not permitted [type=extra_forbidden, input_value='Chief Manufacturing Officer', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_organization_only_candidate(), OrganizationOnlyCandidate].title\n  Extra inputs are not permitted [type=extra_forbidden, input_value='Chief Manufacturing Officer', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_organization_only_candidate(), OrganizationOnlyCandidate].email\n  Extra inputs are not permitted [type=extra_forbidden, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_organization_only_candidate(), OrganizationOnlyCandidate].email_status\n  Extra inputs are not permitted [type=extra_forbidden, input_value='missing', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_organization_only_candidate(), OrganizationOnlyCandidate].confidence\n  Extra inputs are not permitted [type=extra_forbidden, input_value=0.99994814, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_organization_only_candidate(), OrganizationOnlyCandidate].why_target\n  Extra inputs are not permitted [type=extra_forbidden, input_value='A Chief Manufacturing Of...roit manufacturing hub.', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_organization_only_candidate(), OrganizationOnlyCandidate].icebreaker\n  Extra inputs are not permitted [type=extra_forbidden, input_value=\"As the Chief Manufacturi...t manufacturing sector.\", input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_organization_only_candidate(), OrganizationOnlyCandidate].fit_score\n  Extra inputs are not permitted [type=extra_forbidden, input_value=1.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_organization_only_candidate(), OrganizationOnlyCandidate].evidence_score\n  Extra inputs are not permitted [type=extra_forbidden, input_value=1.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_organization_only_candidate(), OrganizationOnlyCandidate].contact_score\n  Extra inputs are not permitted [type=extra_forbidden, input_value=0.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_organization_only_candidate(), OrganizationOnlyCandidate].gate_passed\n  Extra inputs are not permitted [type=extra_forbidden, input_value=True, input_type=bool]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_organization_only_candidate(), OrganizationOnlyCandidate].candidate_category\n  Input should be 'organization_only' [type=literal_error, input_value='person_lead', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/literal_error\nleads.0.function-after[validate_not_found_candidate(), NotFoundCandidate].name\n  Extra inputs are not permitted [type=extra_forbidden, input_value='Chief Manufacturing Officer', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_not_found_candidate(), NotFoundCandidate].title\n  Extra inputs are not permitted [type=extra_forbidden, input_value='Chief Manufacturing Officer', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_not_found_candidate(), NotFoundCandidate].email\n  Extra inputs are not permitted [type=extra_forbidden, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_not_found_candidate(), NotFoundCandidate].email_status\n  Extra inputs are not permitted [type=extra_forbidden, input_value='missing', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_not_found_candidate(), NotFoundCandidate].confidence\n  Extra inputs are not permitted [type=extra_forbidden, input_value=0.99994814, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_not_found_candidate(), NotFoundCandidate].why_target\n  Extra inputs are not permitted [type=extra_forbidden, input_value='A Chief Manufacturing Of...roit manufacturing hub.', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_not_found_candidate(), NotFoundCandidate].icebreaker\n  Extra inputs are not permitted [type=extra_forbidden, input_value=\"As the Chief Manufacturi...t manufacturing sector.\", input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_not_found_candidate(), NotFoundCandidate].fit_score\n  Extra inputs are not permitted [type=extra_forbidden, input_value=1.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_not_found_candidate(), NotFoundCandidate].evidence_score\n  Extra inputs are not permitted [type=extra_forbidden, input_value=1.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_not_found_candidate(), NotFoundCandidate].contact_score\n  Extra inputs are not permitted [type=extra_forbidden, input_value=0.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_not_found_candidate(), NotFoundCandidate].gate_passed\n  Extra inputs are not permitted [type=extra_forbidden, input_value=True, input_type=bool]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_not_found_candidate(), NotFoundCandidate].candidate_category\n  Input should be 'not_found' [type=literal_error, input_value='person_lead', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/literal_error\nleads.0.function-after[validate_not_found_candidate(), NotFoundCandidate].searched_target\n  Field required [type=missing, input_value={'id': None, 'candidate_c...rom a reliable source.'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nleads.0.function-after[validate_failed_candidate(), FailedCandidate].name\n  Extra inputs are not permitted [type=extra_forbidden, input_value='Chief Manufacturing Officer', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_failed_candidate(), FailedCandidate].title\n  Extra inputs are not permitted [type=extra_forbidden, input_value='Chief Manufacturing Officer', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_failed_candidate(), FailedCandidate].email\n  Extra inputs are not permitted [type=extra_forbidden, input_value='', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_failed_candidate(), FailedCandidate].email_status\n  Extra inputs are not permitted [type=extra_forbidden, input_value='missing', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_failed_candidate(), FailedCandidate].confidence\n  Extra inputs are not permitted [type=extra_forbidden, input_value=0.99994814, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_failed_candidate(), FailedCandidate].why_target\n  Extra inputs are not permitted [type=extra_forbidden, input_value='A Chief Manufacturing Of...roit manufacturing hub.', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_failed_candidate(), FailedCandidate].icebreaker\n  Extra inputs are not permitted [type=extra_forbidden, input_value=\"As the Chief Manufacturi...t manufacturing sector.\", input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_failed_candidate(), FailedCandidate].fit_score\n  Extra inputs are not permitted [type=extra_forbidden, input_value=1.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_failed_candidate(), FailedCandidate].evidence_score\n  Extra inputs are not permitted [type=extra_forbidden, input_value=1.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_failed_candidate(), FailedCandidate].contact_score\n  Extra inputs are not permitted [type=extra_forbidden, input_value=0.0, input_type=float]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_failed_candidate(), FailedCandidate].gate_passed\n  Extra inputs are not permitted [type=extra_forbidden, input_value=True, input_type=bool]\n    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden\nleads.0.function-after[validate_failed_candidate(), FailedCandidate].candidate_category\n  Input should be 'failed' [type=literal_error, input_value='person_lead', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/literal_error\nleads.0.function-after[validate_failed_candidate(), FailedCandidate].searched_target\n  Field required [type=missing, input_value={'id': None, 'candidate_c...rom a reliable source.'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nleads.0.function-after[validate_failed_candidate(), FailedCandidate].failure_reason\n  Field required [type=missing, input_value={'id': None, 'candidate_c...rom a reliable source.'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing",
+  "error_code": "openai_failed",
+  "leads": [],
   "mode": "scout",
   "prompt_label": "Manufacturing operations leaders in Detroit",
   "query": "manufacturing operations leaders in Detroit",
-  "query_guardrail": null,
-  "runner_elapsed_seconds": 18.45,
-  "sandbox_usage": {
-    "max_queries": 10,
-    "max_rows": 1000,
-    "remaining_queries": 5,
-    "remaining_rows": 990,
-    "reset_at": "2026-05-11T03:32:48.004118-06:00",
-    "total_queries": 5,
-    "total_rows": 10
-  }
+  "runner_elapsed_seconds": 32.069
 }
