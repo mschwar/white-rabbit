@@ -6,7 +6,7 @@
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
 **Current reset gate:** RG1 - Operator Benchmark Harness.
-**Next Prompt A feature:** None. `R01 - Operator evidence fixture pack` is merged into `rebuild/validated-leads-loop`, and this Prompt B session does not unlock `R02` or any downstream reset feature.
+**Next Prompt A feature:** `R02 - Golden benchmark replay harness` on `feat/reset-r02-benchmark-replay-harness`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -104,7 +104,7 @@ Prompt B: QA that feature, write the QA report, and merge only to rebuild/valida
 Prompt C: run the gate evaluation/audit after every feature in that gate has merged
 ```
 
-Prompt A never merges. Prompt B never unlocks the next gate. Prompt C is the only prompt that can record `advance`, update the next ready feature, or recommend an operator-use sync to `main`.
+Prompt A never merges. Prompt B never unlocks the next gate. Prompt B may unlock the next feature inside the same in-progress gate after QA passes and the prior feature is merged. Prompt C is the only prompt that can record a gate-level `advance` or recommend an operator-use sync to `main`.
 
 Current kickoff order is resolved dynamically from `STATUS.md` and the reset feature/gate tables below.
 
@@ -113,13 +113,14 @@ Do not use a hard-coded feature prompt from an earlier chat turn. Before every a
 ```text
 1. Prompt A -> the single feature currently marked ready
 2. Prompt B -> the single feature branch currently waiting for QA
-3. Prompt C -> the current gate only after all features in that gate are merged
-4. If and only if Prompt C records advance -> the next gate's first feature becomes ready
+3. If the current gate has another feature -> Prompt A on that next same-gate feature
+4. If all features in the current gate are merged -> Prompt C on the current gate
+5. If and only if Prompt C records advance -> the next gate's first feature becomes ready
 ```
 
 If Prompt C records `hold`, `revise`, `rollback`, or `kill`, no downstream Prompt A assignment is valid until that decision is resolved.
 
-If there are zero ready features, multiple ready features, a dirty working tree on the integration branch, or an already-started feature branch for the same feature, the agent must stop and report the ambiguity instead of starting duplicate work.
+If there are zero ready features, multiple ready features, a dirty working tree on the integration branch, or an already-started feature branch for the same feature, the agent must stop and report the ambiguity instead of starting duplicate work. Ignored local editor files such as `.obsidian/` do not count as dirty state.
 
 ## Final Product Mockup Inspection Gate
 
@@ -174,7 +175,7 @@ QA the current reset feature branch and merge only into rebuild/validated-leads-
 5. If non-UI, run the explicit verification from the feature card and capture output.
 6. Check for northstar drift and overbuild. Fix only in-scope issues or mark QA failed.
 7. Write a QA report under .gstack/qa-reports/.
-8. Update docs/12-reset-gated-implementation-plan-2026-05-10.md and STATUS.md.
+8. Update docs/12-reset-gated-implementation-plan-2026-05-10.md and STATUS.md. If QA passes and this was not the last feature in the current gate, mark the next feature in the same gate `ready`. If this was the last feature in the current gate, mark the gate ready for Prompt C audit and do not unlock any downstream gate.
 9. Commit QA/docs/fixes atomically.
 10. Push the feature branch.
 11. Merge into rebuild/validated-leads-loop only.
@@ -274,7 +275,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | --- | --- | --- | --- | --- |
 | R00 | W5 hold report and reset control docs | merged | `feat/reset-r00-w5-hold-control` | non-UI docs + gate evidence |
 | R01 | Operator evidence fixture pack | merged | `feat/reset-r01-operator-evidence-fixtures` | non-UI fixture audit |
-| R02 | Golden benchmark replay harness | blocked | `feat/reset-r02-benchmark-replay-harness` | core tests |
+| R02 | Golden benchmark replay harness | ready | `feat/reset-r02-benchmark-replay-harness` | core tests |
 | R03 | Live benchmark runner and quality summary | blocked | `feat/reset-r03-live-benchmark-runner` | core/API + saved raw outputs |
 | R04 | High-volume query planner and search aggregation | blocked | `feat/reset-r04-high-volume-search` | core tests |
 | R05 | Source collection and snapshot store | blocked | `feat/reset-r05-source-collection-store` | core tests + raw source fixtures |
@@ -663,7 +664,7 @@ Required output:
 - atomic conventional commit
 - pushed feature branch
 
-Do not merge. Do not unlock the next feature or gate. Do not sync main.
+Do not merge. Do not change queue readiness beyond the selected feature's own status and Prompt B handoff. Do not sync main.
 ```
 
 ## Reusable Copy-Paste Prompt B
@@ -696,13 +697,15 @@ Required checks:
 If QA passes:
 - write the QA report under .gstack/qa-reports/
 - update STATUS.md and docs/12
+- if this was not the last feature in the current gate, mark the next same-gate feature `ready`
+- if this was the last feature in the current gate, mark the gate ready for Prompt C audit and leave downstream gates blocked
 - commit QA/docs/fixes atomically if needed
 - push the feature branch
 - merge the feature branch into rebuild/validated-leads-loop only
 - push rebuild/validated-leads-loop
 - stop
 
-Do not unlock the next feature or gate. Do not sync main.
+Do not unlock the next gate. Do not sync main.
 ```
 
 ## Reusable Copy-Paste Prompt C
