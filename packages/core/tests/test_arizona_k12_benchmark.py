@@ -10,6 +10,7 @@ from typing import Any, Mapping
 
 import pytest
 
+from core.benchmark_suite import build_operator_evidence_fixture_pack
 from core.orchestrator import scout
 
 FIXTURE_PATH = Path(__file__).with_name("fixtures") / "arizona_k12_voip.json"
@@ -265,6 +266,23 @@ def test_arizona_benchmark_fixture_lists_the_target_districts_and_annotations():
     } <= statuses
     for district in fixture["target_districts"]:
         assert district in fixture["query"]
+
+
+def test_arizona_benchmark_fixture_aligns_with_operator_evidence_pack():
+    fixture = _load_fixture()
+    operator_pack = build_operator_evidence_fixture_pack()
+    arizona_case = next(case for case in operator_pack.cases if case.benchmark_id == "thomas-arizona-k12")
+
+    assert arizona_case.expected_target_coverage == tuple(
+        case["organization"] for case in fixture["cases"]
+    )
+    assert arizona_case.expected_min_categorized_rows == len(fixture["cases"])
+    assert {reference.source_id for reference in arizona_case.evidence_references} == {
+        "GMAIL-THOMAS-01",
+        "GMAIL-THOMAS-02",
+        "GMAIL-THOMAS-03",
+        "WB-AZ-01",
+    }
 
 
 def test_arizona_benchmark_harness_passes_on_mocked_rows_without_fake_emails():

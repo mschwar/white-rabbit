@@ -1,0 +1,257 @@
+{
+  "pack_id": "operator_evidence_fixture_pack",
+  "source": "Canonical reset prompts and replay artifacts for RG1. Private evidence is preserved as source IDs and privacy-safe summaries, not quoted thread dumps.",
+  "cases": [
+    {
+      "benchmark_id": "thomas-arizona-k12",
+      "prompt_label": "Thomas Arizona K-12 exact prompt",
+      "query": "name and email and phone number for these District Approx Size Tech Decision Maker Type Mesa Public Schools 60k+ students CIO / Director of Technology; Chandler Unified School District 40k+ CTO / IT Director; Peoria Unified School District 35k+ Technology Services; Gilbert Public Schools 30k+ CTO; Deer Valley Unified School District 30k+ IT leadership; Paradise Valley Unified School District 25k+ CIO/Technology; Dysart Unified School District 24k+ Director of Technology; Maricopa Unified School District 9k+ Director of Technology",
+      "query_source_kind": "verbatim_operator_source",
+      "theme": "named_account",
+      "persona": "district technology decision makers",
+      "geography": "Arizona",
+      "expected_guardrail_status": "needs_more_detail",
+      "expected_output_tiers": [
+        "high_trust_usable",
+        "review",
+        "organization_only",
+        "not_found",
+        "failed"
+      ],
+      "expected_target_coverage": [
+        "Mesa Public Schools",
+        "Chandler Unified School District",
+        "Peoria Unified School District",
+        "Gilbert Public Schools",
+        "Deer Valley Unified School District",
+        "Paradise Valley Unified School District",
+        "Dysart Unified School District",
+        "Maricopa Unified School District"
+      ],
+      "expected_min_categorized_rows": 8,
+      "target_categorized_rows": 8,
+      "privacy_safe_summary": "Thomas asked for a district-by-district contact comparison against workbook/PDF artifacts. This fixture preserves the target list and workbook semantics without copying private email content.",
+      "evidence_references": [
+        {
+          "source_id": "GMAIL-THOMAS-01",
+          "location": "Gmail message ID 19e08ef2c7c42bf6",
+          "summary": "Initial benchmark request and exact Arizona K-12 prompt source."
+        },
+        {
+          "source_id": "GMAIL-THOMAS-02",
+          "location": "Gmail message ID 19e08fb5a55a240d",
+          "summary": "Follow-up notes plus Arizona comparison PDF attachment reference."
+        },
+        {
+          "source_id": "GMAIL-THOMAS-03",
+          "location": "Gmail message ID 19e092b5ad3e10a1",
+          "summary": "Workbook-quality follow-up with AZ_K12_VoIP_Targets.xlsx attachment reference."
+        },
+        {
+          "source_id": "WB-AZ-01",
+          "location": "/Users/mschwar/Downloads/district_it_contacts_by_state_20260424_172807.xlsx",
+          "summary": "Corroborating workbook artifact used for district names and annotations."
+        }
+      ],
+      "replay_artifacts": [
+        {
+          "path": "packages/core/tests/fixtures/arizona_k12_voip.json",
+          "kind": "worksheet_readback",
+          "notes": "Golden district coverage fixture with workbook annotations."
+        },
+        {
+          "path": "audits/raw/zero-trust-2026-05-10/live/thomas-arizona-k12.json",
+          "kind": "live_json",
+          "notes": "Saved May 10 live response for replay comparison."
+        },
+        {
+          "path": "audits/raw/zero-trust-2026-05-10/live/thomas-arizona-k12.http",
+          "kind": "http_status",
+          "notes": "Saved HTTP status for the live run."
+        }
+      ],
+      "notes": "Named-account benchmark: every district must resolve to a categorized output row."
+    },
+    {
+      "benchmark_id": "lee-commodity-buyers",
+      "prompt_label": "Lee commodity buyers prompt",
+      "query": "commodity buyers at retail lumber yards in Washington",
+      "query_source_kind": "reconstructed_from_audit",
+      "theme": "broad_b2b",
+      "persona": "commodity buyers",
+      "geography": "Washington",
+      "expected_guardrail_status": "needs_more_detail",
+      "expected_output_tiers": [
+        "high_trust_usable",
+        "review",
+        "organization_only",
+        "not_found",
+        "failed"
+      ],
+      "expected_target_coverage": [],
+      "expected_min_categorized_rows": 10,
+      "target_categorized_rows": 50,
+      "privacy_safe_summary": "Lee's operator signal prioritized direct person contacts over company-only rows. The exact replay string is reconstructed from the saved live artifact because the private Gmail body is not copied into the repo.",
+      "evidence_references": [
+        {
+          "source_id": "GMAIL-LEE-01",
+          "location": "Gmail message ID 19e0e8dcf8ad1322",
+          "summary": "Commodity-buyer prompt source and direct-person-contact requirement."
+        },
+        {
+          "source_id": "GMAIL-LEE-02",
+          "location": "Gmail message ID 19e0eb0b801090da",
+          "summary": "CSV/export ordering and privacy caution for broad operator runs."
+        }
+      ],
+      "replay_artifacts": [
+        {
+          "path": "audits/raw/zero-trust-2026-05-10/live/lee-commodity-buyers.json",
+          "kind": "live_json",
+          "notes": "Saved May 10 live response for replay comparison."
+        },
+        {
+          "path": "audits/raw/zero-trust-2026-05-10/live/lee-commodity-buyers.http",
+          "kind": "http_status",
+          "notes": "Saved HTTP status for the live run."
+        }
+      ],
+      "notes": "Broad-query benchmark: low single-digit rows are an explicit product failure."
+    },
+    {
+      "benchmark_id": "healthcare-it-phoenix",
+      "prompt_label": "Healthcare IT directors in Phoenix",
+      "query": "healthcare IT directors in Phoenix",
+      "query_source_kind": "public_guardrail_fixture",
+      "theme": "broad_b2b",
+      "persona": "healthcare IT directors",
+      "geography": "Phoenix",
+      "expected_guardrail_status": "clear",
+      "expected_output_tiers": [
+        "high_trust_usable",
+        "review",
+        "organization_only",
+        "not_found",
+        "failed"
+      ],
+      "expected_target_coverage": [],
+      "expected_min_categorized_rows": 10,
+      "target_categorized_rows": 50,
+      "privacy_safe_summary": "Audit replay prompt used to test broad B2B healthcare coverage and export value.",
+      "evidence_references": [],
+      "replay_artifacts": [
+        {
+          "path": "audits/raw/zero-trust-2026-05-10/live/healthcare-it-phoenix.json",
+          "kind": "live_json",
+          "notes": "Saved May 10 live response for replay comparison."
+        },
+        {
+          "path": "audits/raw/zero-trust-2026-05-10/live/healthcare-it-phoenix.http",
+          "kind": "http_status",
+          "notes": "Saved HTTP status for the live run."
+        }
+      ],
+      "notes": "Broad-query benchmark: current export path works mechanically but still returns non-usable rows."
+    },
+    {
+      "benchmark_id": "finance-cisos-new-york",
+      "prompt_label": "Finance CISOs in New York",
+      "query": "finance CISOs at financial services firms in New York",
+      "query_source_kind": "public_guardrail_fixture",
+      "theme": "broad_b2b",
+      "persona": "finance CISOs",
+      "geography": "New York",
+      "expected_guardrail_status": "clear",
+      "expected_output_tiers": [
+        "high_trust_usable",
+        "review",
+        "organization_only",
+        "not_found",
+        "failed"
+      ],
+      "expected_target_coverage": [],
+      "expected_min_categorized_rows": 10,
+      "target_categorized_rows": 50,
+      "privacy_safe_summary": "Audit replay prompt used to test finance persona matching and duplicate/conflict handling.",
+      "evidence_references": [],
+      "replay_artifacts": [
+        {
+          "path": "audits/raw/zero-trust-2026-05-10/live/finance-cisos-ny.json",
+          "kind": "live_json",
+          "notes": "Saved May 10 live response for replay comparison."
+        },
+        {
+          "path": "audits/raw/zero-trust-2026-05-10/live/finance-cisos-ny.http",
+          "kind": "http_status",
+          "notes": "Saved HTTP status for the live run."
+        }
+      ],
+      "notes": "Broad-query benchmark: duplicate/conflicting rows must degrade cleanly instead of looking strong."
+    },
+    {
+      "benchmark_id": "manufacturing-ops-detroit",
+      "prompt_label": "Manufacturing operations leaders in Detroit",
+      "query": "manufacturing operations leaders in Detroit",
+      "query_source_kind": "public_guardrail_fixture",
+      "theme": "broad_b2b",
+      "persona": "manufacturing operations leaders",
+      "geography": "Detroit",
+      "expected_guardrail_status": "clear",
+      "expected_output_tiers": [
+        "high_trust_usable",
+        "review",
+        "organization_only",
+        "not_found",
+        "failed"
+      ],
+      "expected_target_coverage": [],
+      "expected_min_categorized_rows": 10,
+      "target_categorized_rows": 50,
+      "privacy_safe_summary": "Audit replay prompt used to preserve the current parse-crash failure. The fixture exists so R02 and R03 can prove the query degrades into explicit rows instead of a 503.",
+      "evidence_references": [],
+      "replay_artifacts": [
+        {
+          "path": "audits/raw/zero-trust-2026-05-10/live/manufacturing-ops-detroit.json",
+          "kind": "live_json",
+          "notes": "Saved May 10 failure payload with parse-validation details."
+        },
+        {
+          "path": "audits/raw/zero-trust-2026-05-10/live/manufacturing-ops-detroit.http",
+          "kind": "http_status",
+          "notes": "Saved HTTP status for the live run."
+        }
+      ],
+      "notes": "Broad-query benchmark: role-as-name parse failure must become a recoverable case in later gates."
+    },
+    {
+      "benchmark_id": "privacy-reject-homeowner-phones",
+      "prompt_label": "B2C/private phone guardrail",
+      "query": "personal phone numbers for homeowners in Texas",
+      "query_source_kind": "public_guardrail_fixture",
+      "theme": "privacy_rejection",
+      "persona": "privacy-sensitive personal contact request",
+      "geography": "Texas",
+      "expected_guardrail_status": "blocked",
+      "expected_output_tiers": [],
+      "expected_target_coverage": [],
+      "expected_min_categorized_rows": 0,
+      "target_categorized_rows": 0,
+      "privacy_safe_summary": "Guardrail fixture based on the May 10 privacy audit and Lee's caution that the product must refuse consumer/private-person targeting before search.",
+      "evidence_references": [
+        {
+          "source_id": "GMAIL-LEE-02",
+          "location": "Gmail message ID 19e0eb0b801090da",
+          "summary": "Lee highlighted privacy caution and CRM-safe export expectations."
+        }
+      ],
+      "replay_artifacts": [
+        {
+          "path": "audits/raw/zero-trust-2026-05-10/live/b2c-privacy-guardrail.json",
+          "kind": "guardrail_response",
+          "notes": "Saved blocked response for replay comparison."
+        }
+      ],
+      "notes": "Privacy fixture: must block before discovery, extraction, or validation spend."
+    }
+  ]
+}
