@@ -1,5 +1,7 @@
 # QA Report - Agentic Buildout Feature
 
+**Template status:** Historical F00-F23 QA template. For current reset work, use Prompt B and the feature card in `docs/12-reset-gated-implementation-plan-2026-05-10.md`; reuse this structure only when it does not conflict with the reset plan.
+
 **Feature ID:** FXX
 **Feature name:** 
 **Branch:** feat/fxx-short-slug

@@ -194,9 +194,22 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 ---
 
+## ADR-014 — Reset plan is the active execution authority
+
+**Date:** 2026-05-10
+**Status:** Locked
+
+**Context.** ADR-006 correctly established a documentation authority model before the May 10 reset existed. After R01 QA, the repo still had several top-level surfaces routing agents to the historical `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` flow. That caused Prompt A to stop even though the reset loop should have continued to R02 inside RG1.
+
+**Decision.** While the May 10 reset is active, `docs/12-reset-gated-implementation-plan-2026-05-10.md` is the active execution authority for feature selection, Prompt A/B/C copy, reset gate state, and next-feature readiness. `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` remain historical context for F00-F23 and W0-W6, but agents must not execute from them unless `docs/12` explicitly sends them back.
+
+**Consequences.** AGENTS.md, STATUS.md, archived reference banners, historical QA reports, and future gate reports must point to `docs/12` for active reset execution. Prompt B may unlock the next feature inside the same in-progress reset gate after QA passes; only Prompt C can advance a reset gate or unlock the first feature in the next gate.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-014, ADR-015, ...).
+1. Pick the next ADR number (ADR-015, ADR-016, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.

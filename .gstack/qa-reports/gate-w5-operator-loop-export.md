@@ -1,5 +1,7 @@
 # Gate Review - W5 Operator Loop Export
 
+**Historical supersession note (2026-05-10):** This W5 hold report remains valid evidence for why W5/W6 could not advance directly. Current reset execution is no longer selected from this report. Use `STATUS.md` and `docs/12-reset-gated-implementation-plan-2026-05-10.md`; RG0 has advanced, RG1 is in progress, R01 is merged, and R02 is the next ready feature.
+
 **Branch:** `feat/reset-r00-w5-hold-control`
 **Integration branch:** `rebuild/validated-leads-loop`
 **Date:** 2026-05-10

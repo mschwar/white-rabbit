@@ -23,12 +23,13 @@ The customer offer is scoped concierge briefings fulfilled by Matt. **There is n
 1. `STATUS.md` — what's done, what's next, what's in flight. **Always read this second.**
 2. `docs/03-decisions.md` — locked decisions. Do not re-litigate. New entries append; old entries do not change.
 3. `docs/00-product-northstar.md` — current product truth, launch gate, usable-lead definition, anti-drift rules.
-4. `docs/08-agentic-buildout-plan.md` — active rebuild feature queue, branch workflow, next feature pointer.
-5. `docs/09-rebuild-phase-gates.md` — active rebuild wave gates and required gate reports.
-6. `docs/qa-rubric.md` — QA ship-gate tiers. Any change touching extraction/scoring must pass Tiers 1–4 unless a rebuild gate is stricter.
-7. `docs/02-stack.md` — current Next.js + Python + Postgres layout, conventions, env vars.
-8. `docs/00-context.md`, `docs/01-model.md`, `docs/05-reuse.md` — strategic and bootstrap reference. Check their status banners before treating them as active instructions.
-9. `docs/04-roadmap.md`, `docs/06-audit-action-plan.md`, `docs/07-buildout-plan.md` — historical/superseded plans. Do not execute from these unless the current active docs explicitly say to.
+4. `docs/12-reset-gated-implementation-plan-2026-05-10.md` — active reset queue, reusable Prompt A/B/C loop, gate statuses, and next feature pointer.
+5. `docs/08-agentic-buildout-plan.md` — historical F00-F23 feature queue overlaid by the reset plan. Do not execute from it unless `docs/12` explicitly sends you back.
+6. `docs/09-rebuild-phase-gates.md` — historical W0-W6 wave plan overlaid by the reset plan. Do not execute W5/W6 from it.
+7. `docs/qa-rubric.md` — QA ship-gate tiers. Any change touching extraction/scoring must pass Tiers 1–4 unless a reset gate is stricter.
+8. `docs/02-stack.md` — current Next.js + Python + Postgres layout, conventions, env vars.
+9. `docs/00-context.md`, `docs/01-model.md`, `docs/05-reuse.md` — strategic and bootstrap reference. Check their status banners before treating them as active instructions.
+10. `docs/04-roadmap.md`, `docs/06-audit-action-plan.md`, `docs/07-buildout-plan.md` — historical/superseded plans. Do not execute from these unless the current active docs explicitly say to.
 
 ## Project rules (do not break these)
 
@@ -36,7 +37,7 @@ The customer offer is scoped concierge briefings fulfilled by Matt. **There is n
 2. **Locked decisions in `docs/03-decisions.md` are locked.** If you disagree, surface it to Matt — do not silently change them.
 3. **Demo is frozen.** Never edit anything in the external `proxy-lead` repo.
 4. **Reuse before rewriting.** Before writing new search/extract/score code, check `docs/05-reuse.md`.
-5. **No scope creep.** The active rebuild feature or gate in `docs/08-agentic-buildout-plan.md` / `docs/09-rebuild-phase-gates.md` is the work. New ideas → propose, don't ship.
+5. **No scope creep.** The active reset feature or gate in `docs/12-reset-gated-implementation-plan-2026-05-10.md` is the work. New ideas → propose, don't ship.
 6. **No external self-serve features.** No signup, no per-user accounts, no billing, no public landing pages until the kill/keep gate passes.
 7. **Frontend never holds API keys.** All Tavily / OpenAI / search-vendor calls happen in the Python service.
 8. **Recipes are internal while red.** Recipes remain strategically important, but recipe library / batch / Friday review surfaces stay out of the primary operator path until the launch gate allows them.
@@ -50,10 +51,10 @@ For the validated-leads rebuild, feature/audit work still starts from `rebuild/v
 - Never merge feature branches directly to `main`. Never open a PR targeting `main`.
 - ADR-010 promoted `rebuild/validated-leads-loop` to `main` for Thomas/Lee internal operator use. Treat `main` as the operator-use deployment line, not as proof that quality gates passed.
 - Only fast-forward/sync `main` from `rebuild/validated-leads-loop` when Matt or the active gate plan explicitly calls for an operator-use promotion.
-- Before rebuild work, read `docs/00-product-northstar.md` and `docs/08-agentic-buildout-plan.md`.
-- Pick the next `ready` feature from `docs/08-agentic-buildout-plan.md`.
+- Before rebuild work, read `docs/00-product-northstar.md` and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
+- Pick the next `ready` reset feature from `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 - All feature branches branch from `rebuild/validated-leads-loop` and all PRs target `rebuild/validated-leads-loop`.
-- Update `docs/08-agentic-buildout-plan.md` and `STATUS.md` before ending.
+- Update `docs/12-reset-gated-implementation-plan-2026-05-10.md` and `STATUS.md` before ending. Update `docs/08-agentic-buildout-plan.md` only if the reset plan explicitly calls for it.
 - If a feature touches UI, browser QA and screenshots are required.
 - If a feature does not touch UI, explicit non-UI verification is required.
 
@@ -61,17 +62,17 @@ For the validated-leads rebuild, feature/audit work still starts from `rebuild/v
 
 - If `docs/03-decisions.md` and your instinct disagree, the doc wins. Surface the disagreement; don't act on it.
 - If STATUS.md is stale or contradicts code, fix STATUS.md to match reality and note it in your update.
-- If a scope question is ambiguous, default to the smaller scope. The rebuild queue is small on purpose.
-- If you're tempted to "just also add X," resist. Add X as an explicit future candidate in `docs/08-agentic-buildout-plan.md` or as an open question in `STATUS.md`; do not revive the legacy roadmap.
+- If a scope question is ambiguous, default to the smaller scope. The reset queue is small on purpose.
+- If you're tempted to "just also add X," resist. Add X as an explicit future candidate or open question in `STATUS.md`; do not revive the legacy roadmap.
 
 ## Session protocol
 
 1. Read AGENTS.md, STATUS.md, and the most recent decision in `docs/03-decisions.md`.
-2. Read `docs/00-product-northstar.md`, `docs/08-agentic-buildout-plan.md`, and `docs/09-rebuild-phase-gates.md` before selecting rebuild work.
-3. Pick up the next task in STATUS.md (or one explicitly assigned by Matt). For rebuild work, the next task must match the next `ready` feature or gate in `docs/08-agentic-buildout-plan.md` / `docs/09-rebuild-phase-gates.md`.
+2. Read `docs/00-product-northstar.md`, `docs/12-reset-gated-implementation-plan-2026-05-10.md`, and `docs/13-pipeline-orchestrator-contract-2026.md` before selecting reset work.
+3. Pick up the next task in STATUS.md (or one explicitly assigned by Matt). For reset work, the next task must match the next `ready` feature or current gate in `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 4. Do the work. Reuse before writing new code.
 5. Before ending the session, update STATUS.md: what you did, what's next, any open questions.
-6. If the session touched `docs/07-buildout-plan.md` work, update that checklist in the same session so the next agent can pick up from the true state. For current rebuild work, prefer `docs/08-agentic-buildout-plan.md` and gate reports instead.
+6. If the session touched `docs/07-buildout-plan.md` work, update that checklist in the same session so the next agent can pick up from the true state. For current reset work, prefer `docs/12-reset-gated-implementation-plan-2026-05-10.md` and gate reports instead.
 7. If you made any architectural / scope / dependency / documentation-authority decision that wasn't already in `docs/03-decisions.md`, append a new ADR entry there.
 8. Commit your changes with a clear message. Conventional commits style preferred (`feat:`, `fix:`, `docs:`, `chore:`).
 

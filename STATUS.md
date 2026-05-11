@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex reset-queue-unblock
+**Last updated:** 2026-05-10 by Codex frontier-control-plane-audit
 **Branch:** rebuild/validated-leads-loop
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
@@ -24,7 +24,7 @@
 
 **Current feature branch QA status:** No feature branch is awaiting QA. `feat/reset-r01-operator-evidence-fixtures` passed Prompt B QA and is merged into `rebuild/validated-leads-loop`. R02 is ready for the next Prompt A. F20-F23 remain deferred.
 
-**Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
+**Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
 **Latest gate acceptance:** W4 accepted on 2026-05-10. W5 remains explicitly held on `rebuild/validated-leads-loop`; RG0 advanced on 2026-05-10 as a control-plane reset audit, and W6 remains blocked until the visible operator loop is proven:
 
@@ -42,12 +42,12 @@ Prior accepted gates:
 **Control docs:**
 
 - `docs/00-product-northstar.md` is the anti-drift product source of truth for the rebuild.
-- `docs/08-agentic-buildout-plan.md` is the agentic missing-feature list and two-prompt loop control document.
-- `docs/09-rebuild-phase-gates.md` is the gated wave plan for milestone reviews before downstream work unlocks.
-- `docs/12-reset-gated-implementation-plan-2026-05-10.md` is the active reset implementation queue and gate-audit contract.
+- `docs/12-reset-gated-implementation-plan-2026-05-10.md` is the active reset implementation queue, reusable Prompt A/B/C authority, and gate-audit contract.
+- `docs/08-agentic-buildout-plan.md` is historical F00-F23 context overlaid by the reset plan.
+- `docs/09-rebuild-phase-gates.md` is historical W0-W6 context overlaid by the reset plan.
 - `docs/13-pipeline-orchestrator-contract-2026.md` is the live-demo pipeline/output contract sourced from Matt's spreadsheet artifacts.
 - `docs/10-documentation-audit-2026-05-09.md` records the repo-wide documentation audit and remediation performed on this branch.
-- `.gstack/qa-reports/qa-template-agentic-buildout.md` is the QA report template for rebuild features.
+- `.gstack/qa-reports/qa-template-agentic-buildout.md` is a historical F00-F23 QA template; current reset QA follows Prompt B in `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
 **Main promotion override:** ADR-010 explicitly supersedes the prior "main untouched" operating rule for this promotion. `main` is now the operator-use deployment line, but the repo must still preserve the red-gate caveats, evidence requirements, and internal-only scope. Feature branches still merge to `rebuild/validated-leads-loop` first; `main` is synced only by explicit operator-use promotion.
 
@@ -57,15 +57,16 @@ Prior accepted gates:
 
 **Latest handoff:**
 
-Feature: Reset queue unblock after R01 QA
+Feature: Frontier control-plane audit and hardening
 Branch: `rebuild/validated-leads-loop`
-Status: `control_docs_updated`
-What changed: Corrected the A/B/C queue semantics after R01 QA. Prompt B still cannot unlock the next gate, but it can mark the next feature inside the same in-progress gate ready after a successful QA merge. Updated the reset plan and STATUS so R02 is ready, R03 remains blocked, and local `.obsidian/` editor metadata is ignored instead of making the integration branch look dirty.
+Status: `control_docs_hardened`
+What changed: Audited the top-level documentation surface, reset control plane, and tracked QA logs after Prompt A correctly stopped on ambiguous state. Hardened AGENTS, ADRs, archived doc banners, historical QA notes, and the active reset plan so every current surface points agents to `docs/12-reset-gated-implementation-plan-2026-05-10.md`. Added `audits/control-plane-frontier-audit-2026-05-10.md` to record the missed orchestration bugs and fixes.
 Tests or QA run:
 - `git diff --check`
-- `rg -n "R02 \\| Golden benchmark replay harness \\| ready|Next feature pointer.*R02|Prompt B may unlock the next feature|\\.obsidian/" STATUS.md docs/12-reset-gated-implementation-plan-2026-05-10.md .gitignore`
-Screenshots or report: none; docs-only queue fix.
-Northstar reflection: Keeps the reset loop moving through RG1 without skipping the required RG1 gate audit or unlocking downstream gates.
+- stale-authority grep across `AGENTS.md`, `STATUS.md`, `docs/`, `.gstack/`, and `audits/`; remaining stale strings are limited to locked ADR history, historical evidence, or the audit report itself.
+- positive authority grep for `docs/12-reset-gated-implementation-plan-2026-05-10.md`, `R02 - Golden benchmark replay harness`, reusable Prompt A/B/C copy, and `.obsidian/`.
+Screenshots or report: `audits/control-plane-frontier-audit-2026-05-10.md`; no browser QA because product code/UI did not change.
+Northstar reflection: This fixes the operating-system failure that allowed agents to loop stale feature/QA instructions before product work resumed. It does not claim product readiness; the product remains red until RG1+ evidence proves the operator loop.
 Next pointer: Assign Prompt A. It should resolve `R02 - Golden benchmark replay harness` on `feat/reset-r02-benchmark-replay-harness`.
 Open questions: none blocking R02.
 
@@ -267,6 +268,7 @@ Open residual risks:
 |------|-------|---------|
 | 2026-05-10 | reset-queue-unblock (Codex) | Fixed the post-R01 queue state: Prompt B may unlock the next feature inside the same gate, R02 is ready, R03 remains blocked, and `.obsidian/` is ignored so local editor metadata does not dirty the integration branch. |
 | 2026-05-10 | prompt-loop-fix (Codex) | Replaced stale hard-coded R00/RG0 copy-paste prompts with reusable A/B/C prompts that resolve the next feature, QA branch, and gate from current repo state, with stop rules for duplicate or ambiguous assignments. |
+| 2026-05-10 | frontier-control-plane-audit (Codex) | Audited and hardened the remaining authority surfaces: AGENTS, ADRs, docs/08, docs/09, docs/12 prompt authority, archived doc banners, tracked QA-log supersession notes, and the control-plane audit report. R02 remains the next Prompt A feature. |
 | 2026-05-10 | mockup-copy-tightening (Codex) | Tightened only the final mockup copy: removed top tagline, pipeline-stage row, and principle list from the first screen; rewrote low-signal guidance into a concrete diagnosis plus exact broadening suggestions. |
 | 2026-05-10 | live-demo-pipeline-mockups (Codex) | Read Matt's CSV/XLSX pipeline artifacts, added ADR-013 and `docs/13-pipeline-orchestrator-contract-2026.md`, updated the orchestrator brief/reset docs, and rebuilt the mockups for live-demo copy, 50-500+ transparent tiering, filters, evidence actions, mobile review, and low-signal state. |
 | 2026-05-10 | high-volume-reset-contract (Codex) | Superseded the 10-25 ideal with ADR-012 high-volume transparent tiering, added `docs/Orchestrator_Agent_Implementation_Brief.md`, updated the northstar/reset plan, and revised the final product mockups to show 186 categorized candidates with high-trust/review/org-only/not-found/failed distribution. |

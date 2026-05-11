@@ -1,5 +1,7 @@
 # QA Report - Reset Feature
 
+**Historical supersession note (2026-05-10):** This report accurately records the R01 Prompt B verdict at the time it was written. A later control-plane correction (`ab90c32`) clarified that Prompt B may unlock the next feature inside the same in-progress reset gate after QA passes. Current authority is `STATUS.md` plus `docs/12-reset-gated-implementation-plan-2026-05-10.md`: R01 is merged, R02 is ready, and R03 remains blocked.
+
 **Feature ID:** R01
 **Feature name:** Operator evidence fixture pack
 **Branch:** feat/reset-r01-operator-evidence-fixtures

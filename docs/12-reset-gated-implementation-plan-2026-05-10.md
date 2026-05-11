@@ -133,93 +133,9 @@ This mockup is not production code. It is the visual contract for R10-R13: one s
 
 Prompt A/B agents must not invent a different final UI direction during R10-R13 without a fresh Matt approval. Prompt C for RG4 and RG5 must compare browser screenshots against this mockup and explicitly record any intentional divergence. Live-demo UI copy must not mention internal people, agent prompts, gates, sprint labels, or implementation machinery.
 
-## Prompt A - Build Next Reset Feature
+## Copy-Paste Prompt Authority
 
-```text
-You are working in /Users/mschwar/Documents/white-rabbit.
-
-Work only on rebuild/validated-leads-loop. Do not merge or target main.
-
-1. Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/12-reset-gated-implementation-plan-2026-05-10.md, docs/03-decisions.md, and docs/02-stack.md.
-2. Checkout rebuild/validated-leads-loop and pull latest with fast-forward only.
-3. Pick the next reset feature whose status is ready in docs/12-reset-gated-implementation-plan-2026-05-10.md.
-4. Create its feature branch from rebuild/validated-leads-loop using the branch name in the feature card.
-5. Implement only that feature. No opportunistic refactors. No adjacent reset features.
-6. Run the feature's required verification.
-7. Update docs/12-reset-gated-implementation-plan-2026-05-10.md and STATUS.md with status, tests, and next handoff.
-8. Commit atomically with a conventional commit message.
-9. Push the feature branch.
-10. Do not merge. Do not target main.
-
-Return:
-- reset feature ID/name
-- branch
-- commits
-- tests run
-- files changed
-- current status
-- exact QA instructions for Prompt B
-```
-
-## Prompt B - QA And Merge Reset Feature
-
-```text
-You are working in /Users/mschwar/Documents/white-rabbit.
-
-QA the current reset feature branch and merge only into rebuild/validated-leads-loop. Never merge the feature branch directly to main.
-
-1. Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/12-reset-gated-implementation-plan-2026-05-10.md, and the feature card being QA'd.
-2. Checkout the feature branch and pull latest.
-3. Run the required tests.
-4. If UI-visible, run browser QA, save screenshots under .gstack/qa-reports/screenshots/.
-5. If non-UI, run the explicit verification from the feature card and capture output.
-6. Check for northstar drift and overbuild. Fix only in-scope issues or mark QA failed.
-7. Write a QA report under .gstack/qa-reports/.
-8. Update docs/12-reset-gated-implementation-plan-2026-05-10.md and STATUS.md. If QA passes and this was not the last feature in the current gate, mark the next feature in the same gate `ready`. If this was the last feature in the current gate, mark the gate ready for Prompt C audit and do not unlock any downstream gate.
-9. Commit QA/docs/fixes atomically.
-10. Push the feature branch.
-11. Merge into rebuild/validated-leads-loop only.
-12. Push rebuild/validated-leads-loop.
-13. Do not open or target main. If Matt explicitly asks to update the operator-use app, sync main only after rebuild is pushed and the promotion is recorded.
-
-Return:
-- QA verdict
-- report/screenshots path
-- tests run
-- commits
-- merge target confirmation
-- whether the current reset gate is ready for full evaluation/audit
-```
-
-## Prompt C - Gate Evaluation And Audit
-
-Run this after all features in a reset gate have merged.
-
-```text
-You are working in /Users/mschwar/Documents/white-rabbit.
-
-You are Prompt C. Run a full zero-trust evaluation and audit for the current reset gate. This is review/report work unless the gate doc explicitly requires a small docs/status update. Do not edit product code.
-
-1. Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/12-reset-gated-implementation-plan-2026-05-10.md, audits/zero-trust-codebase-audit-2026-05-10.md, and the relevant reset feature QA reports.
-2. Read docs/13-pipeline-orchestrator-contract-2026.md for live-demo copy, pipeline stage names, and output contract expectations.
-3. Checkout rebuild/validated-leads-loop and pull latest.
-4. Create an audit branch using audit/reset-rgN-short-name.
-5. Run every required gate command and browser/live check listed in the gate card.
-6. Use the true north-star evidence set: Monroe 7/8, Thomas Gmail thread IDs, Lee Gmail thread IDs, saved workbook/PDF artifacts where available, v1 proxy-lead read-only reference, current code, current UI, current live outputs, and the 2026-05-10 Lee/Thomas volume feedback.
-7. Save raw outputs under audits/raw/reset-2026-05-10/rgN/.
-8. Write the gate report under audits/gates/reset-2026-05-10/rgN-short-name.md.
-9. The gate report must include: Decision, Value Prop Verdict, Evidence Used, Commands Run, Live Results, Screenshots/Artifacts, Findings, What Worked, What Did Not Work, New Gaps Found, Recommended Scope Change For Next Gate, Next Main Promotion Recommendation, and Next Prompt A Assignment.
-10. Update docs/12-reset-gated-implementation-plan-2026-05-10.md and STATUS.md only if the gate decision is clear.
-11. If and only if the decision is advance, mark the next gate's first feature ready. Otherwise leave all downstream features blocked.
-12. Commit and push the audit branch.
-
-Return:
-- gate decision: advance / hold / revise / rollback / kill
-- report path
-- raw artifact path
-- whether main should be synced for operator use now, later, or not at all
-- exact next Prompt A assignment if advance
-```
+The only active Prompt A/B/C text is in the reusable copy-paste section below. Do not copy older chat prompts or historical F00-F23 prompt blocks.
 
 ## Live-Evidence Rule
 
