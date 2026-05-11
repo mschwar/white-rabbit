@@ -7,6 +7,11 @@ from typing import Any
 import httpx
 
 from .query_planner import QueryPlan, compile_query_plan
+from .source_collection import (
+    SourceCollectionSnapshot,
+    SourceSnapshotStore,
+    build_source_collection_snapshot,
+)
 
 TAVILY_API_URL = "https://api.tavily.com"
 TAVILY_SEARCH_DEPTH = "advanced"
@@ -24,10 +29,12 @@ class SearchResults(list[dict[str, Any]]):
         results: list[dict[str, Any]],
         tavily_searches: int,
         query_plan: QueryPlan | None = None,
+        source_collection: SourceCollectionSnapshot | None = None,
     ) -> None:
         super().__init__(results)
         self.tavily_searches = tavily_searches
         self.query_plan = query_plan
+        self.source_collection = source_collection
 
 
 def _clean_results(results: list[dict[str, Any]], *, vendor_query: str) -> list[dict[str, Any]]:
@@ -107,6 +114,7 @@ async def fetch_search_results(
     search_depth: str = TAVILY_SEARCH_DEPTH,
     filters: Mapping[str, Any] | None = None,
     aggressive_breadth: bool = False,
+    source_snapshot_store: SourceSnapshotStore | None = None,
 ) -> list[dict[str, Any]]:
     """Fetch search results from Tavily via direct HTTP API."""
     key = api_key or os.environ.get("TAVILY_API_KEY")
@@ -138,10 +146,22 @@ async def fetch_search_results(
                         search_depth,
                     )
                 )
+            deduped_results = _dedupe_results(all_results)[:max_results]
+            source_collection = build_source_collection_snapshot(
+                query=query,
+                results=deduped_results,
+                requested_max_results=max_results,
+                tavily_searches=len(vendor_queries),
+                search_depth=search_depth,
+                query_plan=plan,
+            )
+            if source_snapshot_store is not None:
+                source_snapshot_store.save(source_collection)
             return SearchResults(
-                _dedupe_results(all_results)[:max_results],
+                deduped_results,
                 tavily_searches=len(vendor_queries),
                 query_plan=plan,
+                source_collection=source_collection,
             )
     except TavilySearchError:
         raise
