@@ -5,9 +5,9 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B and R09C are merged to `rebuild/validated-leads-loop`; the post-R09C live re-run remained held, and Matt accepted a source-assisted remediation pivot based on Lee's April New Mexico school-district IT evidence. R09D, R09E, R09F, and R09G passed QA and are merged to `rebuild/validated-leads-loop`; R09H is ready.
-**Next Prompt A feature:** `R09H - Manual-oracle proof replay gate packet` on `feat/reset-r09h-manual-oracle-proof-packet`.
-**Current Prompt B handoff:** None. R09G passed Prompt B QA; R09H is the next same-gate Prompt A assignment. Keep RG4/R10-R12/export/dogfood/main blocked.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B and R09C are merged to `rebuild/validated-leads-loop`; the post-R09C live re-run remained held, and Matt accepted a source-assisted remediation pivot based on Lee's April New Mexico school-district IT evidence. R09D, R09E, R09F, and R09G passed QA and are merged to `rebuild/validated-leads-loop`; R09H is implemented pending Prompt B QA.
+**Next Prompt A feature:** None. R09H is waiting for Prompt B QA on `feat/reset-r09h-manual-oracle-proof-packet`.
+**Current Prompt B handoff:** QA `feat/reset-r09h-manual-oracle-proof-packet`; verify only R09H scope, rerun the R09H/replay/workbook suites plus source-validation/contact-status checks and `git diff --check`, inspect the R09H packet artifacts, and merge only to `rebuild/validated-leads-loop` if QA passes. Keep RG4/R10-R12/export/dogfood/main blocked.
 **Current Prompt C handoff:** None. Do not rerun RG3 Prompt C until R09D-R09H are complete and merged.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
@@ -235,7 +235,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R09E | K-12 source map and public roster collector | passed_prompt_b_qa | `feat/reset-r09e-k12-source-map-roster-collector` | core tests + source-map replay |
 | R09F | Source-assisted lead compiler | passed_prompt_b_qa | `feat/reset-r09f-source-assisted-lead-compiler` | core/API tests + replay artifacts |
 | R09G | Research-workbook tiering and export semantics | passed_prompt_b_qa | `feat/reset-r09g-research-workbook-tiering` | core/web or export tests as applicable |
-| R09H | Manual-oracle proof replay gate packet | ready | `feat/reset-r09h-manual-oracle-proof-packet` | replay + live/source-assisted artifacts |
+| R09H | Manual-oracle proof replay gate packet | implemented_pending_qa | `feat/reset-r09h-manual-oracle-proof-packet` | replay + live/source-assisted artifacts |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | blocked | `feat/reset-r12-evidence-dossier-review` | browser |
@@ -709,6 +709,18 @@ R09H expected scope after R09G passes:
 - Run offline replay against the April New Mexico fixture.
 - Run live/source-assisted checks if services and keys are available; money/credits are not the limiting factor, but every claim must stay source-backed.
 - Recommend `advance`, `hold`, `revise`, or `kill` for RG3 based on whether White Rabbit beats the human+chatbot workbook baseline.
+
+R09H Prompt A result:
+
+- Branch: `feat/reset-r09h-manual-oracle-proof-packet`.
+- Status: `implemented_pending_qa`.
+- Implemented only the R09H manual-oracle proof replay gate packet: `packages/core/src/core/manual_oracle_proof_packet.py`, `packages/core/tests/test_manual_oracle_proof_packet.py`, and `audits/raw/reset-2026-05-10/r09h/manual-oracle-proof-packet.{json,md}`.
+- Change summary: added a proof-packet builder that composes the R09D manual-oracle replay, R09F source-assisted compiler, and R09G research workbook into a single gate packet. The packet records manual-oracle structure reproduction, source-assisted compiler counts, workbook tier counts, unsupported CRM-ready safety checks, manual-lookup non-CRM-ready checks, private-contact redaction, latest saved live evidence counts, and Prompt C handoff constraints.
+- Verification run by Prompt A: `cd packages/core && uv run pytest tests/test_manual_oracle_proof_packet.py -q` (`3 passed`); `cd packages/core && uv run pytest tests/test_manual_oracle_proof_packet.py tests/test_research_workbook.py tests/test_source_assisted_compiler.py tests/test_manual_oracle.py tests/test_k12_source_map.py -q` (`18 passed`); `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py -q` (`21 passed`); `curl --max-time 5 -s -o /tmp/white-rabbit-api-health-r09h.json -w "%{http_code}\n" http://127.0.0.1:8000/health` returned `000`.
+- Evidence artifacts: `audits/raw/reset-2026-05-10/r09h/manual-oracle-proof-packet.json`; `audits/raw/reset-2026-05-10/r09h/manual-oracle-proof-packet.md`.
+- Packet evidence summary: the R09H packet reports 17 observed manual-oracle rows, 10 verified-contact rows, 7 manual-lookup rows, 17 source-assisted compiler rows, zero generic blocked source URLs, 17 workbook rows, 10 `READY_WITH_CONTACT` rows, 7 `MANUAL_LOOKUP` rows, zero unsupported CRM-ready rows, zero manual-lookup CRM-ready rows, and private contact values redacted. Credentials are present in `apps/api/.env`, but no local API responded on `/health` during R09H artifact generation; the packet therefore preserves latest saved live evidence as zero high-trust/contact-quality output and leaves fresh full-suite live evidence to Prompt C after QA/merge.
+- Prompt A scope note: no product API, UI, persistence, export surface, Prompt C, RG4, refreshed mockups, R10-R12, dogfood, or `main` changes.
+- Exact Prompt B handoff: QA `feat/reset-r09h-manual-oracle-proof-packet`; verify the branch contains only R09H scope; rerun `cd packages/core && uv run pytest tests/test_manual_oracle_proof_packet.py tests/test_research_workbook.py tests/test_source_assisted_compiler.py tests/test_manual_oracle.py tests/test_k12_source_map.py -q`, `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py -q`, and `git diff --check`; inspect `audits/raw/reset-2026-05-10/r09h/manual-oracle-proof-packet.json` and `.md`; confirm the packet reports 17 observed rows, 10 verified-contact rows, 7 manual-lookup rows, 17 source-assisted compiler rows, zero generic blocked source URLs, 17 workbook rows, 10 `READY_WITH_CONTACT` rows, 7 `MANUAL_LOOKUP` rows, zero unsupported CRM-ready rows, zero manual-lookup CRM-ready rows, private contact values redacted, and Prompt C handoff constraints that keep RG4/refreshed mockups/R10-R12/export/dogfood/main blocked. Confirm live/source-assisted status records credentials present, API health `000`, no fresh live benchmark run, and latest saved live evidence still at zero high-trust/contact-quality output; do not treat R09H as a Prompt C gate advance. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R09H `merged_to_rebuild_branch`, and hand off Prompt C for RG3 audit from current integration state while keeping downstream blocked unless Prompt C records `advance`.
 
 RG3 full evaluation/audit:
 
