@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-11 by Codex Prompt A R09A
+**Last updated:** 2026-05-11 by Codex Prompt B R09A
 **Branch:** feat/reset-r09a-live-value-recovery
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
@@ -8,7 +8,7 @@
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt B QA for `R09A - Live value recovery and benchmark funnel diagnosis` on `feat/reset-r09a-live-value-recovery`. Prompt A implemented R09A only and pushed the feature branch. Do not unlock RG4, start the `DESIGN.md` mockup preflight, merge to `main`, or sync `main`.
+**Next pointer:** Prompt C audit for RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop` after the R09A merge. R09A passed Prompt B QA and should be treated as the final RG3 feature. Do not unlock RG4, start the `DESIGN.md` mockup preflight, merge to `main`, or sync `main`.
 
 **Design direction handoff:** `DESIGN.md` is now captured as the future RG4 visual direction authority. It does not unlock RG4. If RG3 Prompt C advances, the next assignment is a refreshed mockup/design preflight from `DESIGN.md`, not production R10 code. R10-R12 remain blocked until Matt approves refreshed mockups.
 
@@ -24,13 +24,13 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** Prompt B QA for R09A - Live value recovery and benchmark funnel diagnosis. This is an accepted RG3 remediation slice, not a new gate and not RG4. Do not unlock RG4 or sync `main`.
+**Next feature pointer:** No Prompt A or Prompt B feature is ready. R09A passed Prompt B QA and is the last RG3 remediation feature, so the next valid assignment is Prompt C audit for RG3 on `rebuild/validated-leads-loop`. This remains RG3, not RG4. Do not unlock RG4 or sync `main`.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
 **Final product mockup gate:** `DESIGN.md` is the future RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains the product-structure reference. Before R10 starts, a design/mockup agent must produce refreshed Empty, Loading, Results, Evidence Review, Low Signal, and Mobile Review mockups from `DESIGN.md`; Matt must approve those mockups before production UI implementation.
 
-**Current feature branch QA status:** R07, R08, and R09 are merged to `rebuild/validated-leads-loop`. RG3 Prompt C audit is complete with decision `hold`, and Matt accepted the hold/remediation path. R09A is implemented on `feat/reset-r09a-live-value-recovery` and waiting for Prompt B QA. Downstream RG4 work remains blocked.
+**Current feature branch QA status:** R07, R08, R09, and R09A are merged or being merged to `rebuild/validated-leads-loop`. RG3 Prompt C audit is complete with decision `hold`, Matt accepted the hold/remediation path, and R09A passed Prompt B QA on `feat/reset-r09a-live-value-recovery`. Downstream RG4 work remains blocked until a new RG3 Prompt C records `advance`.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -43,7 +43,7 @@
 - RG2 search/source coverage gate report: `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`
 - RG3 validation semantics hold report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is in accepted-hold remediation with R09A waiting for Prompt B QA; and RG4 remains blocked.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is ready for Prompt C audit after R09A Prompt B QA; and RG4 remains blocked.
 
 Prior accepted gates:
 
@@ -71,7 +71,7 @@ Prior accepted gates:
 
 Feature: R09A - Live value recovery and benchmark funnel diagnosis
 Branch: `feat/reset-r09a-live-value-recovery`
-Status: `implemented_pending_qa`
+Status: `passed_prompt_b_qa`
 Why it exists: RG3 Prompt C held because broad live runs returned only 7-10 categorized rows, produced 0 high-trust usable leads, and produced 0 contact-quality passes across the suite. Matt accepted the hold and asked for the remediation slice.
 Scope: Add or repair benchmark funnel observability from raw vendor hits through contact-quality passes; fix broad-query floor semantics so the active 50-500+ target is not confused with the older 10-row escape-velocity floor; treat privacy refusal as an expected pass; diagnose and repair the source-to-candidate-to-tier choke point without lowering the READY/high-trust gate or inventing contacts; normalize failed/not-found reason language so null person rows cannot imply hidden usable leads.
 What changed: Prompt A added benchmark funnel counts/notes to run metrics and live/replay quality summaries; changed broad Scout/Full API execution to use high-volume breadth; added broad source-gap rows as explicit failed/non-CRM-ready rows instead of silently dropping unmatched sources; distinguished the old escape floor from the active 50+ broad target; treated expected privacy refusals as expected refusals with no quality-report failure; and normalized failed/org-only/not-found reason language.
@@ -79,10 +79,12 @@ Tests or QA run:
 - `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py tests/test_coverage.py tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py tests/test_live_benchmark_runner.py tests/test_quality_report.py -q` (`70 passed`)
 - `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`45 passed`, existing datetime deprecation warnings)
 - `cd packages/core && uv run pytest -m integration -q` (`6 skipped`, no live integration credentials used)
-Artifacts: `.gstack/qa-reports/r09a-live-value-recovery-note-2026-05-11.md`; `audits/raw/reset-2026-05-10/r09a/replay/quality-summary.json`; `audits/raw/reset-2026-05-10/r09a/replay/lee-commodity-buyers.json`; `audits/raw/reset-2026-05-10/r09a/replay/privacy-reject-homeowner-phones.json`.
-Prompt B handoff: QA `feat/reset-r09a-live-value-recovery`; rerun the feature-card commands plus `git diff --check`; inspect the R09A replay artifacts for `funnel_counts`, active target-volume semantics, and `quality_status=expected_privacy_refusal`; verify broad Scout/Full high-volume settings do not mark missing/unsupported contacts as CRM-ready; confirm failed source-gap rows cannot imply hidden usable leads; run live benchmarks if credentials/services are available under the reset spend cap; write the Prompt B QA report; if passing, merge only into `rebuild/validated-leads-loop` and leave RG4, refreshed mockups, export work, dogfood, `main`, and downstream readiness blocked.
-Next pointer: Prompt B for R09A.
-Open questions: Prompt B should decide whether to spend live API budget now or record a precise live-run blocker; Prompt A used deterministic replay evidence only.
+- `git diff --check origin/rebuild/validated-leads-loop...HEAD` (passed)
+- Prompt B live Scout run against `http://127.0.0.1:8014` with inherited Ollama routing cleared and `apps/api/.env` loaded: all six artifacts captured; broad live cases returned 50 categorized rows, privacy case returned expected 422 refusal, high-trust usable rows and contact-quality passes remain `0`.
+Artifacts: `.gstack/qa-reports/r09a-live-value-recovery-note-2026-05-11.md`; `.gstack/qa-reports/qa-report-r09a-live-value-recovery-2026-05-11.md`; `audits/raw/reset-2026-05-10/r09a/replay/quality-summary.json`; `audits/raw/reset-2026-05-10/r09a/live-prompt-b/quality-summary.json`.
+Prompt C handoff: Audit RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop` after R09A merges. Confirm R07-R09A are merged, rerun the RG3 full evaluation/audit from `docs/12-reset-gated-implementation-plan-2026-05-10.md`, and write/update `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`. R09A recovered broad categorized volume and funnel observability, but live contact quality and high-trust usable output remain zero, so RG3 must not advance from feature QA alone.
+Next pointer: Prompt C for RG3.
+Open questions: Prompt C must decide whether R09A's broad-volume recovery is enough to advance despite zero contact-quality passes, or whether RG3 remains held for contact/value recovery.
 
 Feature: R09 - Tier summary, score semantics, and reason language reset
 Branch: `feat/reset-r09-tier-summary-semantics`
@@ -338,6 +340,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-11 | prompt-b-r09a-live-value-recovery (Codex) | QA-passed `R09A - Live value recovery and benchmark funnel diagnosis` on `feat/reset-r09a-live-value-recovery`: verified `git diff --check`, required core/API suites, replay artifact semantics, missing-contact safety, failed source-gap language, and live Scout artifacts for all six benchmark cases. Broad live cases now return 50 categorized rows and privacy refusal is expected, but contact-quality passes and high-trust usable rows remain zero. Report saved at `.gstack/qa-reports/qa-report-r09a-live-value-recovery-2026-05-11.md`; RG3 is ready for Prompt C audit after merge. |
 | 2026-05-11 | prompt-a-r09a-live-value-recovery (Codex) | Implemented `R09A - Live value recovery and benchmark funnel diagnosis` on `feat/reset-r09a-live-value-recovery`: added funnel counts/notes, broad Scout/Full high-volume execution, broad source-gap failed rows, active 50+ volume semantics, expected privacy-refusal handling, and safer failed/org-only/not-found reason language. Verified required core/API checks plus skipped integration marker; branch is pending Prompt B QA and merge. |
 | 2026-05-11 | rg3-remediation-slice (Codex) | Landed Matt's accepted RG3 hold into the reset control plane and created `R09A - Live value recovery and benchmark funnel diagnosis` as the single ready Prompt A feature. RG4, refreshed `DESIGN.md` mockups, R10-R12, export, dogfood, and `main` sync remain blocked until a future RG3 Prompt C records `advance`. |
 | 2026-05-11 | design-direction-fold-in (Codex) | Folded `DESIGN.md` from `codex/design-vision-2026-05-11` into the reset control plane as future RG4 visual direction only. Added ADR-015 and updated `docs/12` so RG3 Prompt C cites the design doc as future RG4 input, but R10-R12 stay blocked until a refreshed mockup pass is approved by Matt. |

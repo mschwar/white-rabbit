@@ -5,9 +5,9 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, accepted hold with R09A remediation active.
-**Next Prompt A feature:** None. R09A is implemented and waiting for Prompt B QA.
-**Current Prompt B handoff:** QA `feat/reset-r09a-live-value-recovery`; rerun the R09A feature-card commands plus `git diff --check`; inspect `.gstack/qa-reports/r09a-live-value-recovery-note-2026-05-11.md` and `audits/raw/reset-2026-05-10/r09a/replay/quality-summary.json` for funnel counts, active target-volume semantics, missing/unsupported contact safety, failed-row reason language, and `quality_status=expected_privacy_refusal`; run live benchmarks if credentials/services are available under the reset spend cap; if passing, merge only into `rebuild/validated-leads-loop`. Do not unlock RG4 or touch `main`.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, ready for Prompt C audit after R09A Prompt B QA.
+**Next Prompt A feature:** None. R09A is the last RG3 feature and has passed Prompt B QA.
+**Current Prompt B handoff:** None. R09A passed Prompt B QA on `feat/reset-r09a-live-value-recovery`; after merge, run Prompt C for RG3 on `rebuild/validated-leads-loop`. Do not unlock RG4 or touch `main`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -186,7 +186,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG0 | W5 Hold And Control Reset | R00 | gate_advanced | `audits/gates/reset-2026-05-10/rg0-w5-hold.md` |
 | RG1 | Operator Benchmark Harness | R01-R03 | gate_advanced | `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md` |
 | RG2 | Search Coverage And Source Collection | R04-R06 | gate_advanced | `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md` |
-| RG3 | Validation, Conflict, And Gate Semantics | R07-R09A | in_progress | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
+| RG3 | Validation, Conflict, And Gate Semantics | R07-R09A | gate_pending_audit | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
 | RG4 | Sales-First Operator UI | R10-R12 | blocked | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
 | RG5 | Sales-First Export And Persistence | R13-R14 | blocked | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
 | RG6 | Dogfood / Kill Decision | R15 | blocked | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md` |
@@ -205,7 +205,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R07 | Inclusive extraction prompt and candidate parse salvage | merged_to_rebuild_branch | `feat/reset-r07-inclusive-extraction` | core/API tests |
 | R08 | Tiering engine, field validator, and conflict resolver | merged_to_rebuild_branch | `feat/reset-r08-tier-validation-conflicts` | core tests |
 | R09 | Tier summary, score semantics, and reason language reset | merged_to_rebuild_branch | `feat/reset-r09-tier-summary-semantics` | core + web tests |
-| R09A | Live value recovery and benchmark funnel diagnosis | implemented_pending_qa | `feat/reset-r09a-live-value-recovery` | core/API + live/replay benchmark artifacts |
+| R09A | Live value recovery and benchmark funnel diagnosis | merged_to_rebuild_branch | `feat/reset-r09a-live-value-recovery` | core/API + live/replay benchmark artifacts |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | blocked | `feat/reset-r12-evidence-dossier-review` | browser |
@@ -396,14 +396,17 @@ R09A expected evidence:
 - Explicit proof that missing/unsupported contacts are still not marked CRM-ready.
 - Explicit proof that the B2C/privacy guardrail case is handled as an expected refusal.
 
-R09A Prompt A implementation handoff:
+R09A Prompt B QA handoff:
 
 - Branch: `feat/reset-r09a-live-value-recovery`.
-- Status: `implemented_pending_qa`.
+- Status: `merged_to_rebuild_branch`.
 - Prompt A change summary: broad Scout/Full now use high-volume breadth; run metrics and benchmark summaries expose funnel counts/notes; unmatched broad source hits become explicit failed source-gap rows; active broad-volume summaries distinguish the 10-row escape floor from the 50+ target; expected privacy refusals produce `quality_status=expected_privacy_refusal`; failed/org-only/not-found reasons no longer imply hidden usable leads.
 - Prompt A verification: `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py tests/test_coverage.py tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py tests/test_live_benchmark_runner.py tests/test_quality_report.py -q` (`70 passed`); `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`45 passed`, existing datetime deprecation warnings); `cd packages/core && uv run pytest -m integration -q` (`6 skipped`, no live integration credentials used).
 - Evidence artifacts: `.gstack/qa-reports/r09a-live-value-recovery-note-2026-05-11.md` and `audits/raw/reset-2026-05-10/r09a/replay/`.
-- Exact Prompt B handoff: QA `feat/reset-r09a-live-value-recovery`; rerun the feature-card commands plus `git diff --check`; inspect the R09A replay artifacts for `funnel_counts`, active target-volume semantics, and `quality_status=expected_privacy_refusal`; verify broad Scout/Full high-volume settings do not mark missing/unsupported contacts as CRM-ready; confirm failed source-gap rows cannot imply hidden usable leads; run live benchmarks if credentials/services are available under the reset spend cap; write the Prompt B QA report; if passing, merge only into `rebuild/validated-leads-loop` and leave RG4, refreshed mockups, export work, dogfood, `main`, and downstream readiness blocked.
+- Prompt B QA: passed. Report: `.gstack/qa-reports/qa-report-r09a-live-value-recovery-2026-05-11.md`.
+- Prompt B verification: required core R09A suite (`70 passed`), API suite (`45 passed`, existing datetime warnings), `git diff --check`, replay artifact inspection, and live Scout artifacts for all six benchmark cases under `audits/raw/reset-2026-05-10/r09a/live-prompt-b/`.
+- Prompt B evidence summary: broad live cases now return 50 categorized rows and privacy refusal is handled as expected, but high-trust usable rows and contact-quality passes remain `0` across the live suite. This is enough to merge R09A as a remediation/diagnostic slice, not enough to advance RG3 without Prompt C.
+- Exact Prompt C handoff: Audit RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop`. Confirm R07-R09A are merged, run the RG3 full evaluation/audit below, and write/update `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`. Do not unlock RG4, refreshed mockups, export work, dogfood, `main`, or downstream readiness unless Prompt C records an `advance`.
 
 RG3 full evaluation/audit:
 
