@@ -293,9 +293,28 @@ The product may still use autonomous search, Tavily, browser automation, expensi
 
 ---
 
+## ADR-021 — Accepted post-R09I hold requires bounded live runtime before another RG3 audit
+
+**Date:** 2026-05-11
+**Status:** Locked
+
+**Context.** The post-R09I RG3 Prompt C audit held. R09I proved one important runtime boundary: a clean API process can now answer `/health` as process liveness. The rest of the live operator loop is still not trustworthy evidence. `/readiness` can time out and block the app, the live benchmark runner can die during sandbox reset with an unhandled `httpx.ReadTimeout`, and a direct `/scout` run timed out on the first Thomas benchmark with zero returned rows. The offline source-assisted manual-oracle replay still passes, but the live service boundary does not yet prove either the autonomous Scout path or the source-assisted workbook path.
+
+**Decision.** Keep RG3 in `gate_hold` and insert three ordered remediation slices before the next RG3 Prompt C audit:
+
+- `R09J - Bounded readiness diagnostics`
+- `R09K - Live runner timeout containment`
+- `R09L - Live source-assisted product proof`
+
+Only R09J is ready at first. R09K remains blocked until R09J passes Prompt B and merges. R09L remains blocked until R09K passes Prompt B and merges. Prompt C for RG3 must not rerun until R09J-R09L are merged. These slices are runtime and live-proof remediation inside RG3, not a new gate.
+
+**Consequences.** The reset loop now attacks the remaining ambiguity in order: first make dependency readiness bounded and diagnostic, then make benchmark execution complete and artifact-preserving under timeouts, then prove the source-assisted workbook value path through the live API/service boundary. RG4, refreshed mockups, R10-R12, export polish, persistence, dogfood, and `main` promotion remain blocked. The new slices cannot pass by relaxing high-trust/READY semantics, inventing contacts, hiding runtime failures, or converting offline replay success into live product claims without current service-boundary evidence.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-021, ADR-022, ...).
+1. Pick the next ADR number (ADR-022, ADR-023, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.

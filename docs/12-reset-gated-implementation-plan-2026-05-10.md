@@ -5,10 +5,10 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, gate_hold after the post-R09I Prompt C audit. R09D-R09I are merged to `rebuild/validated-leads-loop`, and the post-R09I audit recorded `hold`: `/health` can now prove process liveness on a fresh API process, but `/readiness` can still time out and block the app, the live runner still cannot complete the current benchmark suite, and the direct `/scout` product path timed out on the first Thomas benchmark. The source-assisted manual-oracle replay still passes offline, but the current live operator loop does not prove result volume, evidence quality, contact-quality passes, or export value.
-**Next Prompt A feature:** None. R09I is the last same-gate feature.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, gate_hold accepted after the post-R09I Prompt C audit. R09D-R09I are merged to `rebuild/validated-leads-loop`, and the post-R09I audit recorded `hold`: `/health` can now prove process liveness on a fresh API process, but `/readiness` can still time out and block the app, the live runner still cannot complete the current benchmark suite, and the direct `/scout` product path timed out on the first Thomas benchmark. Matt accepted the hold and authorized ordered same-gate remediation slices R09J-R09L.
+**Next Prompt A feature:** R09J - Bounded readiness diagnostics on `feat/reset-r09j-bounded-readiness-diagnostics`.
 **Current Prompt B handoff:** None.
-**Current Prompt C handoff:** None until Matt accepts or revises the post-R09I hold. Keep RG4/refreshed mockups/R10-R12/export/dogfood/main blocked unless a future Prompt C records `advance`.
+**Current Prompt C handoff:** None. Do not rerun RG3 Prompt C until R09J, R09K, and R09L pass Prompt B and merge. Keep RG4/refreshed mockups/R10-R12/export/dogfood/main blocked unless a future Prompt C records `advance`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -90,7 +90,7 @@ operator target
 
 This does not weaken validation. Missing, unsupported, inaccessible, guessed, or conflicting contacts still cannot become `high_trust_usable` / `READY`. The difference is that source-supported person rows with missing direct contact are preserved as useful `manual_lookup` or `review` rows instead of disappearing or being treated as total product failure.
 
-R09D-R09H proved the offline workbook path but did not prove live startup. ADR-020 adds R09I as the only valid post-R09H remediation path. Prompt C for RG3 is blocked until R09I is complete and merged.
+R09D-R09H proved the offline workbook path but did not prove live startup. ADR-020 added R09I to prove API liveness and live-harness startup evidence. The post-R09I audit proved `/health` process liveness but not bounded readiness, live-runner completion, or live source-assisted product value. ADR-021 adds R09J-R09L as the ordered same-gate remediation path before the next RG3 Prompt C audit.
 
 ## Branch Workflow
 
@@ -209,7 +209,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG0 | W5 Hold And Control Reset | R00 | gate_advanced | `audits/gates/reset-2026-05-10/rg0-w5-hold.md` |
 | RG1 | Operator Benchmark Harness | R01-R03 | gate_advanced | `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md` |
 | RG2 | Search Coverage And Source Collection | R04-R06 | gate_advanced | `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md` |
-| RG3 | Validation, Conflict, And Gate Semantics | R07-R09I | gate_hold | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
+| RG3 | Validation, Conflict, And Gate Semantics | R07-R09L | gate_hold | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
 | RG4 | Sales-First Operator UI | R10-R12 | blocked | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
 | RG5 | Sales-First Export And Persistence | R13-R14 | blocked | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
 | RG6 | Dogfood / Kill Decision | R15 | blocked | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md` |
@@ -237,6 +237,9 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R09G | Research-workbook tiering and export semantics | merged_to_rebuild_branch | `feat/reset-r09g-research-workbook-tiering` | core/web or export tests as applicable |
 | R09H | Manual-oracle proof replay gate packet | merged_to_rebuild_branch | `feat/reset-r09h-manual-oracle-proof-packet` | replay + live/source-assisted artifacts |
 | R09I | API startup and live proof harness | merged_to_rebuild_branch | `feat/reset-r09i-api-startup-live-proof` | API tests + live harness artifacts |
+| R09J | Bounded readiness diagnostics | ready | `feat/reset-r09j-bounded-readiness-diagnostics` | API tests + readiness probe artifacts |
+| R09K | Live runner timeout containment | blocked | `feat/reset-r09k-live-runner-timeout-containment` | core/API tests + complete timeout artifacts |
+| R09L | Live source-assisted product proof | blocked | `feat/reset-r09l-live-source-assisted-proof` | API/core tests + live source-assisted proof artifacts |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | blocked | `feat/reset-r12-evidence-dossier-review` | browser |
@@ -385,6 +388,9 @@ Features:
 - R09G - Research-workbook tiering and export semantics.
 - R09H - Manual-oracle proof replay gate packet.
 - R09I - API startup and live proof harness.
+- R09J - Bounded readiness diagnostics.
+- R09K - Live runner timeout containment.
+- R09L - Live source-assisted product proof.
 
 Goal:
 Make false confidence hard to display.
@@ -743,7 +749,7 @@ Accepted post-R09H hold and R09I remediation:
 - Decision: Matt accepted the RG3 hold and authorized a narrow same-gate remediation.
 - New feature: `R09I - API startup and live proof harness`.
 - Branch: `feat/reset-r09i-api-startup-live-proof`.
-- Status: `ready`.
+- Status: `merged_to_rebuild_branch` after Prompt B QA; this historical section is superseded by the post-R09I hold and R09J-R09L remediation below.
 - Why it exists: The offline source-assisted workbook proof passes, but future RG3 audits cannot distinguish product-value failure from runtime failure while the local API can stay in startup and `/health` can return `000` without actionable diagnostics.
 - Scope:
   - Split process liveness from dependency readiness so `/health` proves the API process can answer without blocking on vendor, DB, or long preflight work.
@@ -795,7 +801,89 @@ Post-R09I Prompt C result:
 - Report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`.
 - Raw notes: `audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/evidence-notes.md`; command outputs, live attempts, startup artifacts, and replay artifacts under `audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/`.
 - Reason: R09I improved process-liveness proof: a clean API process answered `/health` and the startup probe captured `health_ok=true`. RG3 still cannot advance because `/readiness` timed out, the live runner timed out on sandbox reset with an unhandled `httpx.ReadTimeout`, and the direct `/scout` attempt timed out on the first Thomas Arizona K-12 benchmark with zero returned rows. The current live product path therefore does not prove result volume, evidence quality, contact-quality passes, or export value. The April New Mexico source-assisted replay still passes offline with 17 workbook rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, sales-first export fields, and zero unsupported CRM-ready rows.
-- Queue consequence: RG3 remains `gate_hold`. No Prompt A, Prompt B, or Prompt C assignment is valid until Matt accepts the hold and assigns another same-gate remediation or revises the plan. RG4, refreshed mockups, R10-R12, export, dogfood, and `main` promotion remain blocked.
+- Queue consequence: RG3 remains `gate_hold`. Matt accepted this hold on 2026-05-11 and authorized ordered same-gate remediation slices R09J-R09L. RG4, refreshed mockups, R10-R12, export, dogfood, and `main` promotion remain blocked.
+
+Accepted post-R09I hold and R09J-R09L remediation:
+
+- Date accepted: 2026-05-11.
+- Decision: keep RG3 in `gate_hold` and add three ordered same-gate remediation slices. Only R09J is ready. R09K is blocked until R09J merges. R09L is blocked until R09K merges. Do not rerun RG3 Prompt C until all three are merged.
+- Why this split exists: the post-R09I hold exposed three different failure modes that should not be bundled into one oversized feature. `/readiness` must become bounded and diagnostic; the live runner must complete and preserve artifacts even when reset/product calls time out; and the source-assisted workbook value path must be proven through the live service boundary instead of only through offline replay.
+
+R09J scope - Bounded readiness diagnostics:
+
+- Branch: `feat/reset-r09j-bounded-readiness-diagnostics`.
+- Status: `ready`.
+- Goal: make `/readiness` fast, bounded, and actionable without weakening `/health` process liveness or pretending unavailable dependencies are healthy.
+- Requirements:
+  - `/readiness` must not block behind OpenAI, Tavily, Postgres, sandbox reset, or long application startup work.
+  - Dependency checks must use explicit short timeouts, cancellation/containment, and a total response budget.
+  - The readiness payload must report process, config, database, OpenAI, Tavily, and any sandbox/dependency readiness separately with redacted env presence and actionable status/reason fields.
+  - `/health` remains process-only liveness and must not call vendors or the database.
+  - If a dependency is unavailable, readiness reports `degraded` or `unavailable` with reason; it must not hide the failure as success.
+  - Write R09J probe artifacts under `audits/raw/reset-2026-05-10/r09j/`, including health/readiness HTTP captures, timing, env-key presence without values, and timeout/dependency status.
+- Non-goals:
+  - No lead-quality logic, prompt/model changes, source-assisted compiler changes, Scout/search tuning, workbook/export semantics, UI, persistence, dogfood, RG4/R10-R12, Prompt C audit, or `main` promotion.
+- Required verification:
+  - `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`
+  - Add focused API tests proving `/health` does not invoke readiness dependencies and `/readiness` returns within the configured budget when dependencies are missing, slow, or misconfigured.
+  - Capture a manual readiness probe against a local API process and save artifacts under `audits/raw/reset-2026-05-10/r09j/`.
+  - `git diff --check`
+- Exact Prompt A assignment:
+
+```text
+Implement R09J - Bounded readiness diagnostics on feat/reset-r09j-bounded-readiness-diagnostics.
+
+Keep scope to API readiness diagnostics and bounded dependency checks. Do not change lead-quality logic, prompts, search behavior, source-assisted compiler behavior, workbook/export semantics, UI, persistence, dogfood, RG4/R10-R12, Prompt C, or main promotion.
+
+The output must make future Prompt C audits able to answer:
+- does /health answer as process-only liveness without DB/vendor calls?
+- does /readiness always return within a bounded budget?
+- which dependency is ready, degraded, unavailable, or misconfigured?
+- are secrets redacted while env-key presence is visible?
+- where are the raw health/readiness timing artifacts?
+
+Before ending, update STATUS.md and docs/12 with the Prompt B handoff, write R09J raw artifacts under audits/raw/reset-2026-05-10/r09j/, commit, and push the feature branch only.
+```
+
+R09K scope - Live runner timeout containment:
+
+- Branch: `feat/reset-r09k-live-runner-timeout-containment`.
+- Status: `blocked` until R09J passes Prompt B and merges.
+- Goal: make the live benchmark runner finish with complete artifacts even when sandbox reset, readiness, health-after-timeout, or product-path requests time out.
+- Requirements:
+  - Wrap sandbox reset, startup checks, readiness checks, benchmark requests, and health-after-timeout probes in explicit timeouts with structured error handling.
+  - No unhandled `httpx.ReadTimeout` or equivalent exception may abort the suite without writing a quality summary.
+  - Every benchmark case must get an artifact row even when the runner cannot call the product path.
+  - Timeout artifacts must distinguish `readiness_timeout`, `sandbox_reset_timeout`, `runner_timeout`, `api_startup_failed`, `product_request_timeout`, and `privacy_refusal_expected` where applicable.
+  - The quality summary must include enough data to tell runtime failure from product-value failure.
+- Non-goals:
+  - No search/result-quality tuning, no source-assisted product endpoint, no UI/export/persistence/dogfood/RG4/R10-R12/main work.
+- Required verification:
+  - `cd packages/core && uv run pytest tests/test_live_benchmark_runner.py -q`
+  - `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`
+  - Add or update tests that simulate sandbox reset timeout, product request timeout, and readiness timeout while still producing complete artifacts.
+  - Save timeout-containment artifacts under `audits/raw/reset-2026-05-10/r09k/`.
+  - `git diff --check`
+
+R09L scope - Live source-assisted product proof:
+
+- Branch: `feat/reset-r09l-live-source-assisted-proof`.
+- Status: `blocked` until R09K passes Prompt B and merges.
+- Goal: prove the April New Mexico source-assisted workbook path through a live API/service boundary, not just offline module replay.
+- Requirements:
+  - Add the smallest internal API or service-boundary harness needed to run the source-assisted compiler/research-workbook path from sanitized target/source-map inputs.
+  - The path must be protected by existing internal token semantics if exposed over HTTP.
+  - It must produce live artifacts showing workbook rows, tier counts, source URLs, blocker notes, sales-first fields, and zero unsupported CRM-ready rows.
+  - It must preserve the offline manual-oracle replay contract: 17 observed workbook rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, source URLs/provenance, and no private contact values beyond sanitized fixture data.
+  - If the live service cannot reproduce the offline proof, it must fail with actionable artifacts rather than silently passing.
+- Non-goals:
+  - No public UI, no production export surface, no design/RG4/R10-R12 work, no autonomous Scout quality tuning beyond what is needed to prove the source-assisted path, no dogfood packet, and no `main` promotion.
+- Required verification:
+  - `cd packages/core && uv run pytest tests/test_manual_oracle_proof_packet.py tests/test_research_workbook.py tests/test_source_assisted_compiler.py tests/test_manual_oracle.py tests/test_k12_source_map.py -q`
+  - `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`
+  - Add focused tests for the live/service-boundary source-assisted path.
+  - Save live proof artifacts under `audits/raw/reset-2026-05-10/r09l/`.
+  - `git diff --check`
 
 RG3 full evaluation/audit:
 
@@ -807,7 +895,7 @@ RG3 full evaluation/audit:
 - Confirm the live quality summary reports benchmark funnel drop-offs and treats privacy refusals separately from no-candidate product failures.
 - Confirm contact/evidence acquisition produces source-backed contact status or explicit READY blockers for promising person/review rows.
 - Confirm live runner timeout behavior records partial-failure artifacts cleanly.
-- Confirm R09D-R09I are merged before any RG3 Prompt C re-audit begins.
+- Confirm R09D-R09L are merged before any RG3 Prompt C re-audit begins.
 - Replay the April New Mexico manual-oracle benchmark and confirm the product can reproduce or improve the workbook structure: verified contacts, manual-lookup rows, source URLs, blocker notes, and sales-first fields.
 
 Advance criteria:
@@ -819,7 +907,7 @@ Advance criteria:
 - Broad-query categorized output materially improves from the RG3 hold baseline or the gate report proves the public-web market is smaller.
 - At least one required live benchmark produces nonzero contact-quality passes, or the gate report proves source-backed public contact evidence is unavailable for the benchmark set and recommends a product-positioning/vendor decision instead of pretending the current loop is CRM-ready.
 - April New Mexico manual-oracle replay reproduces or improves the source-assisted workbook pattern with zero unsupported contacts marked CRM-ready.
-- RG4, refreshed mockups, R10-R12, export work, and any `main` promotion remain blocked until R09D-R09I are complete and a future RG3 Prompt C records `advance`.
+- RG4, refreshed mockups, R10-R12, export work, and any `main` promotion remain blocked until R09D-R09L are complete and a future RG3 Prompt C records `advance`.
 
 ## RG4 - Sales-First Operator UI
 
