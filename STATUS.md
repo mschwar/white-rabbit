@@ -1,14 +1,14 @@
 # STATUS
 
-**Last updated:** 2026-05-11 by Codex prompt-c-rg2-audit
-**Branch:** rebuild/validated-leads-loop
+**Last updated:** 2026-05-11 by Codex prompt-a-r07-inclusive-extraction
+**Branch:** feat/reset-r07-inclusive-extraction
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt A should run R07 - Inclusive extraction prompt and candidate parse salvage. Do not start R08.
+**Next pointer:** Prompt B should QA R07 - Inclusive extraction prompt and candidate parse salvage on `feat/reset-r07-inclusive-extraction`. Do not start R08.
 
 **Open question:** If these become production brand assets, replace the upscaled raster crops with a clean vector or native high-resolution source when available.
 
@@ -22,13 +22,13 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** R07 is ready after the RG2 search/source coverage gate advanced. Do not start R08 until R07 Prompt B QA passes and merges.
+**Next feature pointer:** R07 is implemented pending Prompt B QA on `feat/reset-r07-inclusive-extraction`. Do not start R08 until R07 Prompt B QA passes and merges.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
 **Final product mockup gate:** Inspect `docs/mockups/final-product-2026-05-10/index.html` before assigning Prompt A implementation. R10-R13 must treat it as the visual contract for live-demo high-volume tier distribution unless Matt approves a different direction; RG4/RG5 Prompt C audits must compare live screenshots against it.
 
-**Current feature branch QA status:** No feature branch is waiting for QA. `feat/reset-r06-nonperson-coverage` passed Prompt B QA and is merged to `rebuild/validated-leads-loop`; RG2 advanced via Prompt C, so R07 is the next ready feature.
+**Current feature branch QA status:** `feat/reset-r07-inclusive-extraction` is waiting for Prompt B QA. R07 implements inclusive extraction parsing and candidate salvage; R08 remains blocked until R07 passes QA and merges to `rebuild/validated-leads-loop`.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -65,21 +65,18 @@ Prior accepted gates:
 
 **Latest handoff:**
 
-Gate: RG2 - Search Coverage And Source Collection
-Branch: `audit/reset-rg2-search-source-coverage`
-Status: `gate_advanced`
-What changed: Prompt C ran live Scout and Full benchmark evidence plus direct source-snapshot collection. RG2 advanced because the search/source layer now represents all 8 Thomas Arizona K-12 target accounts and produces 73-90 deduped raw sources for each broad benchmark prompt with bounded Tavily queries. The product remains red: broad operator-facing Scout/Full output still returns low single-digit rows or 503s, every non-privacy benchmark has 0 high-trust usable rows, and sales-first export value remains unproven.
+Feature: R07 - Inclusive extraction prompt and candidate parse salvage
+Branch: `feat/reset-r07-inclusive-extraction`
+Status: `implemented_pending_qa`
+What changed: The orchestrator now asks OpenAI for an inclusive loose candidate list, then converts each extracted candidate into strict White Rabbit rows one at a time. Valid person leads survive, invalid person rows degrade into explicit `failed` candidates instead of crashing the whole query, and invalid/generic emails are stripped to blank contact with `email_status="failed"` so they cannot look verified. The system prompt now instructs extraction to keep plausible partial candidates visible instead of pre-filtering to perfect rows.
 Tests or QA run:
-- `git diff --check` (passed)
-- `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py tests/test_benchmark_suite.py -q` (`18 passed`)
-- Live Scout benchmark saved under `audits/raw/reset-2026-05-10/rg2/scout/`
-- Live Full benchmark saved under `audits/raw/reset-2026-05-10/rg2/full/`
-- Source snapshots saved at `audits/raw/reset-2026-05-10/rg2/source-snapshots.jsonl` and `audits/raw/reset-2026-05-10/rg2/source-snapshot-summary.json`
-Screenshots or report: non-UI gate; no browser screenshots required. Gate report: `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`.
-Northstar reflection: RG2 improves target/source coverage only. It does not make the current product valuable enough for the operator loop because final result volume, contact evidence, and export value still fail. The next gate must convert raw source coverage into honest categorized output without false confidence.
-Exact Prompt A handoff: Run R07 - Inclusive extraction prompt and candidate parse salvage from `rebuild/validated-leads-loop` on branch `feat/reset-r07-inclusive-extraction`. Do not start R08 until Prompt B QA passes and merges R07.
-Next pointer: Prompt A for R07. Do not start R08.
-Open questions: RG3 must prove parse failures degrade into failed/review rows and broad raw source hits survive into visible categories without CRM-ready false confidence.
+- `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py -q` (`43 passed`)
+- `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`43 passed`, existing datetime deprecation warnings)
+Screenshots or report: non-UI feature; no browser screenshots required for Prompt A.
+Northstar reflection: R07 reduces false-confidence crashes without expanding scope into R08 tiering or conflict resolution. It keeps unsupported or malformed extraction output visible as failed/non-ready rows and preserves the strict evidence gate for `gate_passed`.
+Exact Prompt B handoff: QA R07 on `feat/reset-r07-inclusive-extraction`. Run `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py -q`, run `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`, run `git diff --check`, confirm scope is limited to inclusive extraction and parse salvage, write the QA report, then merge only to `rebuild/validated-leads-loop` if QA passes. Do not start R08 until R07 Prompt B QA passes and merges.
+Next pointer: Prompt B for R07. Do not start R08.
+Open questions: Prompt B should inspect whether the loose extraction schema is sufficient for live OpenAI structured outputs before merging; R08 still owns tiering, conflict resolution, and field-validator semantics.
 
 
 ---
@@ -228,11 +225,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. R00-R06 are merged; RG2 advanced as a search/source coverage gate; RG3 is in progress with R07 ready; W5 remains held; W6 remains blocked.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. R00-R06 are merged; RG2 advanced as a search/source coverage gate; RG3 is in progress with R07 implemented pending QA; W5 remains held; W6 remains blocked.
 
 ## Next concrete task
 
-- Run Prompt A for R07 - Inclusive extraction prompt and candidate parse salvage from `rebuild/validated-leads-loop`. Do not start R08 until Prompt B QA passes and merges R07.
+- Run Prompt B for R07 - Inclusive extraction prompt and candidate parse salvage on `feat/reset-r07-inclusive-extraction`. Do not start R08 until Prompt B QA passes and merges R07.
 
 ## Open questions for Matt
 

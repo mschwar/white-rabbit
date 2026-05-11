@@ -4,13 +4,14 @@ import asyncio
 from core.models import (
     CandidateValidation,
     ContactValidationRecord,
+    FailedCandidate,
     FieldValidationRecord,
     Lead,
     LeadList,
     NotFoundCandidate,
     OrganizationOnlyCandidate,
 )
-from core.orchestrator import SYSTEM_PROMPT, scout
+from core.orchestrator import ExtractedCandidate, ExtractedLeadList, SYSTEM_PROMPT, scout
 from core.query_planner import QueryPlan
 from core.search import SearchResults
 from core.source_collection import CollectedSource, SourceCollectionSnapshot
@@ -51,7 +52,7 @@ def test_scout_uses_injected_dependencies_and_returns_metrics():
     class FakeCompletions:
         async def parse(self, model, messages, response_format):
             assert model == "gpt-4o-mini"
-            assert response_format is LeadList
+            assert response_format is ExtractedLeadList
             assert messages[0]["role"] == "system"
             assert "B2B lead research assistant" in messages[0]["content"]
             assert "K-12 IT directors in Albuquerque" in messages[1]["content"]
@@ -558,6 +559,141 @@ def test_scout_applies_source_validation_to_returned_candidates(monkeypatch):
     assert leads[0].validation.name.status == "supported"
 
 
+def test_scout_salvages_invalid_extraction_candidates_as_failed_rows(monkeypatch):
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None):
+        return SearchResults([], tavily_searches=1)
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            return SimpleNamespace(
+                choices=[
+                    SimpleNamespace(
+                        message=SimpleNamespace(
+                            parsed=ExtractedLeadList(
+                                leads=[
+                                    ExtractedCandidate(
+                                        candidate_category="person_lead",
+                                        name="Jane Smith",
+                                        title="Director of Technology",
+                                        organization="Albuquerque Public Schools",
+                                        email="",
+                                        email_status="missing",
+                                        source_url="https://aps.edu/tech",
+                                        confidence=0.8,
+                                        why_target="Fits the public school technology target.",
+                                        icebreaker="I saw your team supports district technology services.",
+                                        fit_score=0.8,
+                                        evidence_score=0.7,
+                                        contact_score=0.0,
+                                        gate_passed=False,
+                                        explanation="Good persona fit, but no email was found.",
+                                    ),
+                                    ExtractedCandidate(
+                                        candidate_category="person_lead",
+                                        name="IT Director",
+                                        title="IT Director",
+                                        organization="Mesa Public Schools",
+                                        source_url="https://mpsaz.org/technology",
+                                        why_target="A role page appears relevant.",
+                                        icebreaker="I saw the district technology team is public.",
+                                        fit_score=0.6,
+                                        evidence_score=0.5,
+                                        contact_score=0.0,
+                                        gate_passed=False,
+                                        explanation="Role page, not a named person.",
+                                    ),
+                                ]
+                            )
+                        )
+                    )
+                ],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    async def fake_validate_candidate_source(candidate, client=None):
+        return CandidateValidation()
+
+    fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+    monkeypatch.setattr("core.orchestrator.validate_candidate_source", fake_validate_candidate_source)
+
+    leads, _ = asyncio.run(
+        scout(
+            "Arizona K-12 technology decision makers",
+            openai_client=fake_client,
+            tavily_key="fake-tavily",
+            search_fn=fake_search,
+        )
+    )
+
+    assert [lead.candidate_category for lead in leads] == ["person_lead", "failed"]
+    assert leads[0].name == "Jane Smith"
+    assert leads[0].email == ""
+    assert leads[0].email_status == "missing"
+    assert isinstance(leads[1], FailedCandidate)
+    assert leads[1].searched_target == "Mesa Public Schools"
+    assert "person's name" in leads[1].failure_reason
+
+
+def test_scout_sanitizes_invalid_extracted_email_without_dropping_person_candidate(monkeypatch):
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None):
+        return SearchResults([], tavily_searches=1)
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            return SimpleNamespace(
+                choices=[
+                    SimpleNamespace(
+                        message=SimpleNamespace(
+                            parsed=ExtractedLeadList(
+                                leads=[
+                                    ExtractedCandidate(
+                                        candidate_category="person_lead",
+                                        name="Jordan Lee",
+                                        title="VP Operations",
+                                        organization="Example Corp",
+                                        email="info@example.com",
+                                        email_status="verified_found",
+                                        source_url="https://example.com/team/jordan-lee",
+                                        confidence=0.7,
+                                        why_target="Fits the operations leader target.",
+                                        icebreaker="I saw your operations team is expanding.",
+                                        fit_score=0.8,
+                                        evidence_score=0.7,
+                                        contact_score=0.6,
+                                        gate_passed=True,
+                                        explanation="Person looks relevant, but contact is generic.",
+                                    )
+                                ]
+                            )
+                        )
+                    )
+                ],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    async def fake_validate_candidate_source(candidate, client=None):
+        return CandidateValidation()
+
+    fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+    monkeypatch.setattr("core.orchestrator.validate_candidate_source", fake_validate_candidate_source)
+
+    leads, _ = asyncio.run(
+        scout(
+            "operations leaders in Austin",
+            openai_client=fake_client,
+            tavily_key="fake-tavily",
+            search_fn=fake_search,
+        )
+    )
+
+    assert len(leads) == 1
+    assert isinstance(leads[0], Lead)
+    assert leads[0].email == ""
+    assert leads[0].email_status == "failed"
+    assert leads[0].contact_score == 0.0
+    assert leads[0].gate_passed is False
+
+
 def test_system_prompt_is_vertical_agnostic_and_restores_lost_instructions():
     assert "B2B lead research assistant" in SYSTEM_PROMPT
     assert "the user's query intent" in SYSTEM_PROMPT
@@ -570,6 +706,9 @@ def test_system_prompt_is_vertical_agnostic_and_restores_lost_instructions():
     assert "Never use placeholders like N/A, Unknown" in SYSTEM_PROMPT
     assert "Do not inject VoIP" in SYSTEM_PROMPT
     assert "telecom, networking, or product-upgrade language" in SYSTEM_PROMPT
+    assert "Return every plausible candidate" in SYSTEM_PROMPT
+    assert "do not pre-filter" in SYSTEM_PROMPT
+    assert "failed with a" in SYSTEM_PROMPT
     assert "GATE LOGIC" not in SYSTEM_PROMPT
     assert "server will compute" in SYSTEM_PROMPT
     assert "VoIP prospect" not in SYSTEM_PROMPT
