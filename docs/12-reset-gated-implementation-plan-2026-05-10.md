@@ -5,10 +5,10 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, accepted post-R09A hold; R09B remediation is complete and Prompt C audit is pending.
-**Next Prompt A feature:** None. R09B is merged and the current gate is waiting for Prompt C audit.
-**Current Prompt B handoff:** None. R09B has already passed QA and should merge only to `rebuild/validated-leads-loop`.
-**Current Prompt C handoff:** Audit `RG3 - Validation, Conflict, And Gate Semantics` on `rebuild/validated-leads-loop`; confirm R07-R09B are merged, rerun the gate evaluation/audit, and write `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`. Do not unlock RG4 from feature QA alone.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B is complete, but RG3 remains held because R09B + R09C together form the accepted remediation slice before any future Prompt C re-audit.
+**Next Prompt A feature:** R09C - Deep multi-source evidence acquisition and tier calibration.
+**Current Prompt B handoff:** None. R09B is merged to `rebuild/validated-leads-loop`; R09C is now the single ready feature.
+**Current Prompt C handoff:** None. Do not trigger Prompt C for RG3 after R09B. RG3 Prompt C remains blocked until both R09B and R09C are merged, and only that future Prompt C may decide whether RG3 advances.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -189,7 +189,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG0 | W5 Hold And Control Reset | R00 | gate_advanced | `audits/gates/reset-2026-05-10/rg0-w5-hold.md` |
 | RG1 | Operator Benchmark Harness | R01-R03 | gate_advanced | `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md` |
 | RG2 | Search Coverage And Source Collection | R04-R06 | gate_advanced | `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md` |
-| RG3 | Validation, Conflict, And Gate Semantics | R07-R09B | in_progress | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
+| RG3 | Validation, Conflict, And Gate Semantics | R07-R09C | in_progress / gate_hold | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
 | RG4 | Sales-First Operator UI | R10-R12 | blocked | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
 | RG5 | Sales-First Export And Persistence | R13-R14 | blocked | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
 | RG6 | Dogfood / Kill Decision | R15 | blocked | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md` |
@@ -210,6 +210,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R09 | Tier summary, score semantics, and reason language reset | merged_to_rebuild_branch | `feat/reset-r09-tier-summary-semantics` | core + web tests |
 | R09A | Live value recovery and benchmark funnel diagnosis | merged_to_rebuild_branch | `feat/reset-r09a-live-value-recovery` | core/API + live/replay benchmark artifacts |
 | R09B | Contact and evidence acquisition pass | merged_to_rebuild_branch | `feat/reset-r09b-contact-evidence-acquisition` | core/API + live/replay contact evidence artifacts |
+| R09C | Deep multi-source evidence acquisition and tier calibration | ready | `feat/reset-r09c-deep-multisource-evidence-tier-calibration` | core/API + live/replay evidence/tier calibration artifacts |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | blocked | `feat/reset-r12-evidence-dossier-review` | browser |
@@ -351,6 +352,7 @@ Features:
 - R09 - Tier summary, score semantics, and reason language reset.
 - R09A - Live value recovery and benchmark funnel diagnosis.
 - R09B - Contact and evidence acquisition pass.
+- R09C - Deep multi-source evidence acquisition and tier calibration.
 
 Goal:
 Make false confidence hard to display.
@@ -465,6 +467,98 @@ R09B Prompt A implementation handoff:
 - Evidence artifacts: `.gstack/qa-reports/r09b-contact-evidence-acquisition-note-2026-05-11.md`; `audits/raw/reset-2026-05-10/r09b/replay/contact-evidence-pass.json`; `audits/raw/reset-2026-05-10/r09b/replay/quality-summary.json`; `audits/raw/reset-2026-05-10/r09b/replay/runner-timeout-partial.json`.
 - Exact Prompt B handoff: QA `feat/reset-r09b-contact-evidence-acquisition`; verify the branch contains only R09B scope, rerun the required R09B core/API suites plus `git diff --check`, inspect `audits/raw/reset-2026-05-10/r09b/replay/quality-summary.json`, confirm no unsupported/missing/inaccessible/guessed contacts become CRM-ready, confirm direct email and explicit domain-pattern evidence are the only promotion paths, confirm READY blockers are reported for missing-contact and organization-only rows, confirm runner timeouts produce partial artifacts, and confirm no RG4/UI/export/main-sync scope creep landed. If QA passes, merge only to `rebuild/validated-leads-loop` and hand off Prompt C for RG3 re-audit; do not unlock RG4 from feature QA alone.
 
+Accepted post-R09B hold extension and R09C remediation:
+
+R09B completed the first contact/evidence remediation pass, but Matt directed that RG3 must remain `in_progress / gate_hold` and must not run Prompt C yet. R09B + R09C together now define the accepted RG3 remediation slice. R09C exists to materially improve contact quality and tier usefulness on promising review rows without relaxing the `high_trust_usable` definition.
+
+R09C scope:
+
+- Deepen evidence acquisition for promising `review` rows using multiple public-web source types and corroboration paths, while preserving strict source support and explicit failure labeling.
+- Improve contact-quality recovery only when multiple grounded sources or stronger field support justify it. Missing, unsupported, inaccessible, conflicting, or guessed contacts must remain non-CRM-ready.
+- Recalibrate tier usefulness for promising rows so `review` becomes more operationally useful without letting weak evidence masquerade as `high_trust_usable`.
+- Preserve explicit READY blockers and evidence traceability for every promising row touched by the deeper pass.
+- Produce live/replay artifacts that show whether the deeper pass materially improves contact quality and tier usefulness on promising rows.
+
+R09C non-goals:
+
+- No Prompt C gate advance work, RG4 work, refreshed mockup unlock, R10-R12, export work, persistence work, dogfood packet work, or `main` promotion.
+- No relaxation of the `high_trust_usable` definition.
+- No UI-only compensation for weak contact evidence.
+- No paid contact-source integration unless Matt explicitly changes product strategy later.
+
+R09C required verification:
+
+```bash
+cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py tests/test_coverage.py tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py tests/test_live_benchmark_runner.py tests/test_quality_report.py -q
+cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q
+git diff --check
+```
+
+R09C expected evidence:
+
+- Saved replay or live benchmark artifacts under `audits/raw/reset-2026-05-10/r09c/`.
+- A QA note explaining which deeper multi-source evidence paths were added, which promising rows improved, which blockers remain, and why the change does not relax READY/high-trust precision.
+- Explicit proof that missing, unsupported, inaccessible, conflicting, or guessed contacts are still not marked CRM-ready.
+- Explicit proof that tier changes on promising rows are evidence-backed and do not overstate confidence.
+
+R09C Prompt A implementation handoff:
+
+- Branch: `feat/reset-r09c-deep-multisource-evidence-tier-calibration`.
+- Status: `ready`.
+- Prompt A change summary: Pending Matt's separate high-level R09C instructions. This feature is the single ready assignment, but no agent should start from ad hoc paraphrase once those instructions are provided.
+- Prompt A verification: run the required R09C core/API suites and `git diff --check`.
+- Evidence artifacts: save under `audits/raw/reset-2026-05-10/r09c/` and `.gstack/qa-reports/`.
+- Exact Prompt B handoff: If QA passes, merge only to `rebuild/validated-leads-loop`, keep RG3 as `in_progress / gate_hold`, and hand off the future RG3 Prompt C only after confirming both R09B and R09C are merged. Do not unlock RG4, refreshed mockups, R10-R12, R13-R15, export work, or `main` from feature QA alone.
+
+R09C Prompt A draft for final instruction fill-in:
+
+```text
+You are Prompt A for the White Rabbit reset queue.
+
+Work in /Users/mschwar/Documents/white-rabbit. Use rebuild/validated-leads-loop as the integration branch. Do not merge or target main.
+
+First prove current state:
+- read AGENTS.md
+- read STATUS.md
+- read docs/00-product-northstar.md
+- read docs/12-reset-gated-implementation-plan-2026-05-10.md
+- read docs/03-decisions.md
+- read docs/02-stack.md
+- run git status --short --branch
+
+Resolve the next feature from STATUS.md and the reset feature table:
+- choose exactly one feature marked ready
+- confirm it is `R09C - Deep multi-source evidence acquisition and tier calibration`
+- use branch `feat/reset-r09c-deep-multisource-evidence-tier-calibration`
+- if zero or multiple features are ready, stop and report the ambiguity
+- if the selected feature branch already exists with unmerged work, resume that branch instead of recreating or duplicating it
+
+Implement only R09C:
+- materially improve contact quality and tier usefulness on promising review rows
+- preserve the strict `high_trust_usable` definition
+- keep missing, unsupported, inaccessible, conflicting, or guessed contacts non-CRM-ready
+- preserve explicit READY blockers and evidence traceability
+- do not touch RG4, mockups, R10-R12, export work, persistence, dogfood, or main promotion
+
+Insert Matt's separate R09C high-level implementation instructions here before assigning this prompt.
+
+Required verification:
+- `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py tests/test_coverage.py tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py tests/test_live_benchmark_runner.py tests/test_quality_report.py -q`
+- `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`
+- `git diff --check`
+
+Required output:
+- feature ID/name selected and why it was valid
+- branch used
+- implementation matching only R09C
+- saved artifacts under `audits/raw/reset-2026-05-10/r09c/` and `.gstack/qa-reports/`
+- STATUS.md and docs/12 updated with the feature status and exact Prompt B handoff
+- atomic conventional commit
+- pushed feature branch
+
+Do not merge. Do not trigger Prompt C. Do not change queue readiness beyond R09C's own status and Prompt B handoff. Do not sync main.
+```
+
 RG3 full evaluation/audit:
 
 - Re-run manufacturing benchmark and confirm no 503 parse crash.
@@ -475,6 +569,7 @@ RG3 full evaluation/audit:
 - Confirm the live quality summary reports benchmark funnel drop-offs and treats privacy refusals separately from no-candidate product failures.
 - Confirm contact/evidence acquisition produces source-backed contact status or explicit READY blockers for promising person/review rows.
 - Confirm live runner timeout behavior records partial-failure artifacts cleanly.
+- Confirm both R09B and R09C are merged before any RG3 Prompt C re-audit begins.
 
 Advance criteria:
 
@@ -484,6 +579,7 @@ Advance criteria:
 - At least one required live benchmark produces nonzero `high_trust_usable` output without unsupported contacts.
 - Broad-query categorized output materially improves from the RG3 hold baseline or the gate report proves the public-web market is smaller.
 - At least one required live benchmark produces nonzero contact-quality passes, or the gate report proves source-backed public contact evidence is unavailable for the benchmark set and recommends a product-positioning/vendor decision instead of pretending the current loop is CRM-ready.
+- RG4, refreshed mockups, R10-R12, export work, and any `main` promotion remain blocked until both R09B and R09C are complete and a future RG3 Prompt C records `advance`.
 
 ## RG4 - Sales-First Operator UI
 

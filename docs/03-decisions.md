@@ -246,6 +246,19 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 ---
 
+## ADR-018 — RG3 remediation expands to R09B plus R09C before any new gate audit
+
+**Date:** 2026-05-11
+**Status:** Locked
+
+**Context.** R09B completed the first contact/evidence remediation pass inside the accepted RG3 hold. Matt explicitly directed that RG3 must not run Prompt C after R09B and that a second remediation feature is required inside the same gate before any re-audit. The purpose of the added feature is to improve contact quality and tier usefulness on promising rows without weakening the strict `high_trust_usable` contract.
+
+**Decision.** Keep RG3 in `in_progress / gate_hold` after R09B and insert `R09C - Deep multi-source evidence acquisition and tier calibration` as the single ready feature. Treat R09B plus R09C together as the accepted RG3 remediation slice. Do not unlock RG4, refreshed mockups, R10-R12, export work, dogfood work, or any `main` promotion until both R09B and R09C are complete and a future RG3 Prompt C records `advance`.
+
+**Consequences.** Prompt C is explicitly blocked after R09B. Prompt A has exactly one valid next assignment: R09C. R09C may improve evidence acquisition depth, corroboration, and tier usefulness for promising rows, but it cannot pass by relaxing the `high_trust_usable` definition, inventing contacts, compensating with UI/export work, or treating unsupported evidence as support.
+
+---
+
 ## How to add a new ADR
 
 1. Pick the next ADR number (ADR-018, ADR-019, ...).
