@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-11 by Codex prompt-c-rg2-audit
+**Last updated:** 2026-05-11 by Codex prompt-b-r07-qa
 **Branch:** rebuild/validated-leads-loop
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
@@ -8,7 +8,7 @@
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt A should run R07 - Inclusive extraction prompt and candidate parse salvage. Do not start R08.
+**Next pointer:** Prompt A should implement R08 - Tiering engine, field validator, and conflict resolver on `feat/reset-r08-tier-validation-conflicts`. Do not start R09.
 
 **Open question:** If these become production brand assets, replace the upscaled raster crops with a clean vector or native high-resolution source when available.
 
@@ -22,13 +22,13 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** R07 is ready after the RG2 search/source coverage gate advanced. Do not start R08 until R07 Prompt B QA passes and merges.
+**Next feature pointer:** R08 is ready for Prompt A on `feat/reset-r08-tier-validation-conflicts`. Do not start R09 until R08 Prompt B QA passes and merges.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
 **Final product mockup gate:** Inspect `docs/mockups/final-product-2026-05-10/index.html` before assigning Prompt A implementation. R10-R13 must treat it as the visual contract for live-demo high-volume tier distribution unless Matt approves a different direction; RG4/RG5 Prompt C audits must compare live screenshots against it.
 
-**Current feature branch QA status:** No feature branch is waiting for QA. `feat/reset-r06-nonperson-coverage` passed Prompt B QA and is merged to `rebuild/validated-leads-loop`; RG2 advanced via Prompt C, so R07 is the next ready feature.
+**Current feature branch QA status:** No feature branch is waiting for Prompt B QA. R07 passed Prompt B QA and is merged to `rebuild/validated-leads-loop`; R08 is the next ready same-gate feature.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -40,7 +40,7 @@
 - RG1 benchmark harness gate report: `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`
 - RG2 search/source coverage gate report: `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is in progress; and R07 is ready.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is in progress; and R08 is ready.
 
 Prior accepted gates:
 
@@ -65,21 +65,19 @@ Prior accepted gates:
 
 **Latest handoff:**
 
-Gate: RG2 - Search Coverage And Source Collection
-Branch: `audit/reset-rg2-search-source-coverage`
-Status: `gate_advanced`
-What changed: Prompt C ran live Scout and Full benchmark evidence plus direct source-snapshot collection. RG2 advanced because the search/source layer now represents all 8 Thomas Arizona K-12 target accounts and produces 73-90 deduped raw sources for each broad benchmark prompt with bounded Tavily queries. The product remains red: broad operator-facing Scout/Full output still returns low single-digit rows or 503s, every non-privacy benchmark has 0 high-trust usable rows, and sales-first export value remains unproven.
+Feature: R08 - Tiering engine, field validator, and conflict resolver
+Branch: `feat/reset-r08-tier-validation-conflicts`
+Status: `ready`
+What changed: R07 passed Prompt B QA and merged to `rebuild/validated-leads-loop`. The orchestrator now uses inclusive extraction plus parse salvage so malformed LLM rows degrade into explicit failed candidates instead of crashing the query, while invalid contacts are stripped and marked failed.
 Tests or QA run:
 - `git diff --check` (passed)
-- `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py tests/test_benchmark_suite.py -q` (`18 passed`)
-- Live Scout benchmark saved under `audits/raw/reset-2026-05-10/rg2/scout/`
-- Live Full benchmark saved under `audits/raw/reset-2026-05-10/rg2/full/`
-- Source snapshots saved at `audits/raw/reset-2026-05-10/rg2/source-snapshots.jsonl` and `audits/raw/reset-2026-05-10/rg2/source-snapshot-summary.json`
-Screenshots or report: non-UI gate; no browser screenshots required. Gate report: `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`.
-Northstar reflection: RG2 improves target/source coverage only. It does not make the current product valuable enough for the operator loop because final result volume, contact evidence, and export value still fail. The next gate must convert raw source coverage into honest categorized output without false confidence.
-Exact Prompt A handoff: Run R07 - Inclusive extraction prompt and candidate parse salvage from `rebuild/validated-leads-loop` on branch `feat/reset-r07-inclusive-extraction`. Do not start R08 until Prompt B QA passes and merges R07.
-Next pointer: Prompt A for R07. Do not start R08.
-Open questions: RG3 must prove parse failures degrade into failed/review rows and broad raw source hits survive into visible categories without CRM-ready false confidence.
+- `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py -q` (`43 passed`)
+- `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`43 passed`, 50 existing datetime deprecation warnings)
+Screenshots or report: non-UI QA report saved at `.gstack/qa-reports/qa-report-r07-inclusive-extraction-2026-05-11.md`; no browser screenshots required.
+Northstar reflection: R07 reduces false-confidence crashes without expanding scope into R08 tiering or conflict resolution. It keeps unsupported or malformed extraction output visible as failed/non-ready rows and preserves the strict evidence gate for `gate_passed`.
+Exact Prompt A handoff: Implement only R08 on `feat/reset-r08-tier-validation-conflicts`. Add tiering engine, field-validator semantics, and conflict resolver per RG3. Run `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py -q`, run `git diff --check`, update `STATUS.md` and `docs/12-reset-gated-implementation-plan-2026-05-10.md`, and leave R09 blocked until R08 Prompt B QA passes and merges.
+Next pointer: Prompt A for R08. Do not start R09.
+Open questions: None for R08 kickoff; RG3 still requires R08, R09, and Prompt C audit before any gate advancement.
 
 
 ---
@@ -228,11 +226,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. R00-R06 are merged; RG2 advanced as a search/source coverage gate; RG3 is in progress with R07 ready; W5 remains held; W6 remains blocked.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. R00-R07 are merged; RG2 advanced as a search/source coverage gate; RG3 is in progress with R08 ready; W5 remains held; W6 remains blocked.
 
 ## Next concrete task
 
-- Run Prompt A for R07 - Inclusive extraction prompt and candidate parse salvage from `rebuild/validated-leads-loop`. Do not start R08 until Prompt B QA passes and merges R07.
+- Run Prompt A for R08 - Tiering engine, field validator, and conflict resolver on `feat/reset-r08-tier-validation-conflicts`. Do not start R09 until R08 Prompt B QA passes and merges.
 
 ## Open questions for Matt
 
@@ -277,6 +275,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-11 | prompt-b-r07-qa (Codex) | QA-passed `R07 - Inclusive extraction prompt and candidate parse salvage` on `feat/reset-r07-inclusive-extraction`: verified `git diff --check`, the required core extraction/scoring/source-validation suite, full API tests, non-UI scope, northstar drift, and that no R08/R09 tier/conflict/score-language work landed. Report saved at `.gstack/qa-reports/qa-report-r07-inclusive-extraction-2026-05-11.md`. R08 is the next same-gate feature after the R07 merge lands; RG4 remains blocked. |
 | 2026-05-11 | prompt-c-rg2-audit (Codex) | Ran the RG2 search/source coverage gate audit on `audit/reset-rg2-search-source-coverage`: live Scout/Full benchmarks plus direct source snapshots showed all 8 Thomas Arizona K-12 accounts represented and 73-90 deduped raw sources for broad prompts, while final product output remains low-volume with 0 high-trust usable rows. RG2 advanced as a source-coverage gate, product remains red, and R07 is now the next ready Prompt A feature. |
 | 2026-05-11 | prompt-b-r06-qa (Codex) | QA-passed `R06 - Not-found and organization-only coverage writer` on `feat/reset-r06-nonperson-coverage`: verified the required RG2 core suite, `git diff --check`, focused coverage/orchestrator regressions, northstar drift, and scope boundaries. Report saved at `.gstack/qa-reports/qa-report-r06-nonperson-coverage-2026-05-11.md`. R06 is the last RG2 feature, so RG2 is ready for Prompt C audit after merge; RG3 remains blocked. |
 | 2026-05-11 | prompt-a-r06-nonperson-coverage (Codex) | Implemented `R06 - Not-found and organization-only coverage writer` on `feat/reset-r06-nonperson-coverage`: added a core coverage writer that appends explicit `organization_only` rows for uncovered named-account obligations with collected source support and `not_found` rows when no source coverage exists, without duplicating existing account rows or changing person-lead scoring/gating. Verified core coverage/orchestrator tests plus the required RG2 core suite; branch is pending Prompt B QA and merge. |
