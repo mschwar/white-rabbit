@@ -4,10 +4,10 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** The active reset queue lives in `docs/12-reset-gated-implementation-plan-2026-05-10.md`. Do not pick F20-F23 from this document while RG0 is in control. R00 is merged to `rebuild/validated-leads-loop`; everything downstream remains blocked until the reset gate advances.
-**Current feature QA handoff:** No feature branch is awaiting QA. Prompt C must audit RG0 next. Do not unlock R01 or target `main` from this document.
+**Next feature pointer:** The active reset queue lives in `docs/12-reset-gated-implementation-plan-2026-05-10.md`. RG0 has advanced on control-plane evidence only. `R01 - Operator evidence fixture pack` is now the next valid reset feature.
+**Current feature QA handoff:** No feature branch is awaiting QA. Use `feat/reset-r01-operator-evidence-fixtures` as the next Prompt A branch. Do not target `main` from this document.
 
-**May 10 reset overlay:** New implementation work is now controlled by `docs/12-reset-gated-implementation-plan-2026-05-10.md`. Treat this document as historical context for F00-F23 until the reset plan explicitly sends agents back here. The active reset queue is RG0/R00, not F20-F23.
+**May 10 reset overlay:** New implementation work is now controlled by `docs/12-reset-gated-implementation-plan-2026-05-10.md`. Treat this document as historical context for F00-F23 until the reset plan explicitly sends agents back here. The active reset queue is RG1/R01, not F20-F23.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 
