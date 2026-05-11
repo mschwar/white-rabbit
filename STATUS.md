@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-11 by Codex prompt-b-r07-qa
+**Last updated:** 2026-05-11 by Codex prompt-b-r08-qa
 **Branch:** rebuild/validated-leads-loop
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
@@ -8,7 +8,7 @@
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt A should implement R08 - Tiering engine, field validator, and conflict resolver on `feat/reset-r08-tier-validation-conflicts`. Do not start R09.
+**Next pointer:** Prompt A should implement R09 - Tier summary, score semantics, and reason language reset on `feat/reset-r09-tier-summary-semantics`. Do not unlock RG4 or sync `main`.
 
 **Open question:** If these become production brand assets, replace the upscaled raster crops with a clean vector or native high-resolution source when available.
 
@@ -22,13 +22,13 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** R08 is ready for Prompt A on `feat/reset-r08-tier-validation-conflicts`. Do not start R09 until R08 Prompt B QA passes and merges.
+**Next feature pointer:** R09 - Tier summary, score semantics, and reason language reset is the next same-gate Prompt A feature. Do not unlock RG4 or sync `main`.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
 **Final product mockup gate:** Inspect `docs/mockups/final-product-2026-05-10/index.html` before assigning Prompt A implementation. R10-R13 must treat it as the visual contract for live-demo high-volume tier distribution unless Matt approves a different direction; RG4/RG5 Prompt C audits must compare live screenshots against it.
 
-**Current feature branch QA status:** No feature branch is waiting for Prompt B QA. R07 passed Prompt B QA and is merged to `rebuild/validated-leads-loop`; R08 is the next ready same-gate feature.
+**Current feature branch QA status:** R08 passed Prompt B QA on `feat/reset-r08-tier-validation-conflicts` and is merged to `rebuild/validated-leads-loop`. R07 is merged; R09 is ready as the next same-gate feature.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -40,7 +40,7 @@
 - RG1 benchmark harness gate report: `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`
 - RG2 search/source coverage gate report: `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is in progress; and R08 is ready.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is in progress; R08 passed Prompt B QA and is merged; and R09 is the next ready same-gate feature.
 
 Prior accepted gates:
 
@@ -67,17 +67,17 @@ Prior accepted gates:
 
 Feature: R08 - Tiering engine, field validator, and conflict resolver
 Branch: `feat/reset-r08-tier-validation-conflicts`
-Status: `ready`
-What changed: R07 passed Prompt B QA and merged to `rebuild/validated-leads-loop`. The orchestrator now uses inclusive extraction plus parse salvage so malformed LLM rows degrade into explicit failed candidates instead of crashing the query, while invalid contacts are stripped and marked failed.
+Status: `passed_prompt_b_qa`
+What changed: Prompt A implemented R08 only, and Prompt B verified it. Candidates now carry server-computed `tier` and `primary_filter_reason`; person rows can become `high_trust_usable`, `review`, or explicit `failed` rows after validation; inaccessible sources and failed core field validation downgrade unsafe person rows to `FailedCandidate`; person/account conflicts are flagged and downgraded; validated contact status is synchronized back onto person rows so unsupported, missing, or failed contact evidence cannot remain CRM-ready; and run metrics now expose `tier_distribution`.
 Tests or QA run:
 - `git diff --check` (passed)
-- `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py -q` (`43 passed`)
-- `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`43 passed`, 50 existing datetime deprecation warnings)
-Screenshots or report: non-UI QA report saved at `.gstack/qa-reports/qa-report-r07-inclusive-extraction-2026-05-11.md`; no browser screenshots required.
-Northstar reflection: R07 reduces false-confidence crashes without expanding scope into R08 tiering or conflict resolution. It keeps unsupported or malformed extraction output visible as failed/non-ready rows and preserves the strict evidence gate for `gate_passed`.
-Exact Prompt A handoff: Implement only R08 on `feat/reset-r08-tier-validation-conflicts`. Add tiering engine, field-validator semantics, and conflict resolver per RG3. Run `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py -q`, run `git diff --check`, update `STATUS.md` and `docs/12-reset-gated-implementation-plan-2026-05-10.md`, and leave R09 blocked until R08 Prompt B QA passes and merges.
-Next pointer: Prompt A for R08. Do not start R09.
-Open questions: None for R08 kickoff; RG3 still requires R08, R09, and Prompt C audit before any gate advancement.
+- `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py -q` (`46 passed in 0.37s`)
+- `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`43 passed in 0.85s`, 50 existing datetime deprecation warnings)
+Screenshots or report: non-UI implementation; no browser screenshots required. Prompt B QA report saved at `.gstack/qa-reports/qa-report-r08-tier-validation-conflicts-2026-05-11.md`.
+Northstar reflection: R08 keeps the binary evidence gate as the only `high_trust_usable` path while keeping review/org-only/not-found/failed rows visible with grounded primary reasons. It reduces false confidence by preventing unsupported contact evidence and inaccessible sources from appearing CRM-ready.
+Exact Prompt A handoff: Implement R09 on `feat/reset-r09-tier-summary-semantics`. Keep scope to tier summary, score semantics, and reason language reset; do not start RG4, do not unlock the next gate, and do not touch `main`.
+Next pointer: Prompt A for R09.
+Open questions: None for R09 kickoff; RG3 still requires R09 and Prompt C audit before any gate advancement.
 
 
 ---
@@ -226,11 +226,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. R00-R07 are merged; RG2 advanced as a search/source coverage gate; RG3 is in progress with R08 ready; W5 remains held; W6 remains blocked.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. R00-R08 are merged; RG2 advanced as a search/source coverage gate; RG3 is in progress with R09 ready next; W5 remains held; W6 remains blocked.
 
 ## Next concrete task
 
-- Run Prompt A for R08 - Tiering engine, field validator, and conflict resolver on `feat/reset-r08-tier-validation-conflicts`. Do not start R09 until R08 Prompt B QA passes and merges.
+- Run Prompt A for R09 - Tier summary, score semantics, and reason language reset on `feat/reset-r09-tier-summary-semantics`. Do not unlock RG4 or sync `main`.
 
 ## Open questions for Matt
 
@@ -275,6 +275,8 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-11 | prompt-b-r08-qa (Codex) | QA-passed `R08 - Tiering engine, field validator, and conflict resolver` on `feat/reset-r08-tier-validation-conflicts`: verified `git diff --check`, the required core validation/contact/scoring/orchestrator suite, full API tests, non-UI scope, northstar drift, and that no R09 score-language, UI, export, persistence, or gate-audit work landed. Report saved at `.gstack/qa-reports/qa-report-r08-tier-validation-conflicts-2026-05-11.md`. R09 is the next same-gate feature; RG4 remains blocked. |
+| 2026-05-11 | prompt-a-r08 (Codex) | Implemented `R08 - Tiering engine, field validator, and conflict resolver` on `feat/reset-r08-tier-validation-conflicts`: added server-computed candidate tiers and primary filter reasons, synchronized contact status from field validation, downgraded inaccessible-source and person/account conflict rows to explicit failed candidates, and exposed run-level tier distribution metrics. Verified the required R08 core suite, full API tests, and `git diff --check`; branch is pending Prompt B QA and merge. |
 | 2026-05-11 | prompt-b-r07-qa (Codex) | QA-passed `R07 - Inclusive extraction prompt and candidate parse salvage` on `feat/reset-r07-inclusive-extraction`: verified `git diff --check`, the required core extraction/scoring/source-validation suite, full API tests, non-UI scope, northstar drift, and that no R08/R09 tier/conflict/score-language work landed. Report saved at `.gstack/qa-reports/qa-report-r07-inclusive-extraction-2026-05-11.md`. R08 is the next same-gate feature after the R07 merge lands; RG4 remains blocked. |
 | 2026-05-11 | prompt-c-rg2-audit (Codex) | Ran the RG2 search/source coverage gate audit on `audit/reset-rg2-search-source-coverage`: live Scout/Full benchmarks plus direct source snapshots showed all 8 Thomas Arizona K-12 accounts represented and 73-90 deduped raw sources for broad prompts, while final product output remains low-volume with 0 high-trust usable rows. RG2 advanced as a source-coverage gate, product remains red, and R07 is now the next ready Prompt A feature. |
 | 2026-05-11 | prompt-b-r06-qa (Codex) | QA-passed `R06 - Not-found and organization-only coverage writer` on `feat/reset-r06-nonperson-coverage`: verified the required RG2 core suite, `git diff --check`, focused coverage/orchestrator regressions, northstar drift, and scope boundaries. Report saved at `.gstack/qa-reports/qa-report-r06-nonperson-coverage-2026-05-11.md`. R06 is the last RG2 feature, so RG2 is ready for Prompt C audit after merge; RG3 remains blocked. |

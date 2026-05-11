@@ -17,7 +17,7 @@ from core.search import SearchResults
 from core.source_collection import CollectedSource, SourceCollectionSnapshot
 
 
-def test_scout_uses_injected_dependencies_and_returns_metrics():
+def test_scout_uses_injected_dependencies_and_returns_metrics(monkeypatch):
     async def fake_search(query: str, api_key=None, max_results=10, filters=None):
         assert query == "K-12 IT directors in Albuquerque"
         assert api_key == "fake-tavily"
@@ -62,6 +62,18 @@ def test_scout_uses_injected_dependencies_and_returns_metrics():
             )
 
     fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+
+    async def fake_validate_candidate_source(candidate, client=None):
+        return CandidateValidation(
+            name=FieldValidationRecord(status="supported"),
+            title=FieldValidationRecord(status="supported"),
+            organization=FieldValidationRecord(status="supported"),
+            email=ContactValidationRecord(status="verified_found"),
+            phone=ContactValidationRecord(status="missing"),
+            source=FieldValidationRecord(status="supported"),
+        )
+
+    monkeypatch.setattr("core.orchestrator.validate_candidate_source", fake_validate_candidate_source)
 
     leads, metrics = asyncio.run(
         scout(
@@ -247,6 +259,8 @@ def test_scout_sets_gate_passed_when_scores_and_evidence_align(monkeypatch):
     )
 
     assert leads[0].gate_passed is True
+    assert leads[0].tier == "high_trust_usable"
+    assert "Evidence gate passed" in leads[0].primary_filter_reason
 
 
 def test_scout_constructs_async_openai_with_max_retries(monkeypatch):
@@ -630,6 +644,8 @@ def test_scout_salvages_invalid_extraction_candidates_as_failed_rows(monkeypatch
     assert leads[0].email == ""
     assert leads[0].email_status == "missing"
     assert isinstance(leads[1], FailedCandidate)
+    assert leads[1].tier == "failed"
+    assert leads[1].primary_filter_reason
     assert leads[1].searched_target == "Mesa Public Schools"
     assert "person's name" in leads[1].failure_reason
 
@@ -692,6 +708,142 @@ def test_scout_sanitizes_invalid_extracted_email_without_dropping_person_candida
     assert leads[0].email_status == "failed"
     assert leads[0].contact_score == 0.0
     assert leads[0].gate_passed is False
+    assert leads[0].tier == "review"
+    assert "Contact is failed" in leads[0].primary_filter_reason
+
+
+def test_scout_downgrades_inaccessible_person_source_to_failed_candidate(monkeypatch):
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None):
+        return SearchResults([], tavily_searches=1)
+
+    lead = Lead(
+        name="Jordan Lee",
+        title="VP Operations",
+        organization="Example Corp",
+        email="jordan.lee@example.com",
+        email_status="verified_found",
+        source_url="https://example.com/jordan",
+        confidence=0.8,
+        why_target="Fits the operations leader target.",
+        icebreaker="I saw your operations team is expanding.",
+        fit_score=0.9,
+        evidence_score=0.9,
+        contact_score=0.9,
+        gate_passed=True,
+        explanation="The source later fails validation.",
+    )
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            return SimpleNamespace(
+                choices=[SimpleNamespace(message=SimpleNamespace(parsed=LeadList(leads=[lead])))],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    async def fake_validate_candidate_source(candidate, client=None):
+        return CandidateValidation(
+            name=FieldValidationRecord(
+                status="failed",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="http_status=403 resolved_url=https://example.com/jordan",
+            ),
+            title=FieldValidationRecord(
+                status="failed",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="http_status=403 resolved_url=https://example.com/jordan",
+            ),
+            organization=FieldValidationRecord(
+                status="failed",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="http_status=403 resolved_url=https://example.com/jordan",
+            ),
+            email=ContactValidationRecord(
+                status="failed",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="http_status=403 resolved_url=https://example.com/jordan",
+            ),
+            source=FieldValidationRecord(
+                status="failed",
+                source_url=candidate.source_url,
+                checked_at="2026-05-10T12:00:00Z",
+                notes="http_status=403 resolved_url=https://example.com/jordan",
+            ),
+        )
+
+    fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+    monkeypatch.setattr("core.orchestrator.validate_candidate_source", fake_validate_candidate_source)
+
+    leads, metrics = asyncio.run(
+        scout(
+            "operations leaders in Austin",
+            openai_client=fake_client,
+            tavily_key="fake-tavily",
+            search_fn=fake_search,
+        )
+    )
+
+    assert isinstance(leads[0], FailedCandidate)
+    assert leads[0].tier == "failed"
+    assert "Source could not validate" in leads[0].failure_reason
+    assert metrics.tier_distribution["failed"] == 1
+
+
+def test_scout_flags_person_organization_conflicts(monkeypatch):
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None):
+        return SearchResults([], tavily_searches=1)
+
+    lead = Lead(
+        name="Jordan Lee",
+        title="VP Operations",
+        organization="Jordan Lee",
+        email="jordan.lee@example.com",
+        email_status="verified_found",
+        source_url="https://example.com/jordan",
+        confidence=0.8,
+        why_target="Fits the operations leader target.",
+        icebreaker="I saw your operations team is expanding.",
+        fit_score=0.9,
+        evidence_score=0.9,
+        contact_score=0.9,
+        gate_passed=True,
+        explanation="The person and account conflict.",
+    )
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            return SimpleNamespace(
+                choices=[SimpleNamespace(message=SimpleNamespace(parsed=LeadList(leads=[lead])))],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    async def fake_validate_candidate_source(candidate, client=None):
+        return CandidateValidation(
+            name=FieldValidationRecord(status="supported"),
+            title=FieldValidationRecord(status="supported"),
+            organization=FieldValidationRecord(status="supported"),
+            email=ContactValidationRecord(status="verified_found"),
+            source=FieldValidationRecord(status="supported"),
+        )
+
+    fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+    monkeypatch.setattr("core.orchestrator.validate_candidate_source", fake_validate_candidate_source)
+
+    leads, _ = asyncio.run(
+        scout(
+            "operations leaders in Austin",
+            openai_client=fake_client,
+            tavily_key="fake-tavily",
+            search_fn=fake_search,
+        )
+    )
+
+    assert isinstance(leads[0], FailedCandidate)
+    assert leads[0].tier == "failed"
+    assert "Person and organization claims conflict" in leads[0].primary_filter_reason
 
 
 def test_system_prompt_is_vertical_agnostic_and_restores_lost_instructions():
