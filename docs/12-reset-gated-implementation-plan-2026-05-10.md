@@ -6,7 +6,7 @@
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
 **Current reset gate:** RG1 - Operator Benchmark Harness.
-**Next Prompt A feature:** None. `R01 - Operator evidence fixture pack` is implemented on `feat/reset-r01-operator-evidence-fixtures` and awaits Prompt B QA.
+**Next Prompt A feature:** None. `R01 - Operator evidence fixture pack` is merged into `rebuild/validated-leads-loop`, and this Prompt B session does not unlock `R02` or any downstream reset feature.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -273,7 +273,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | ID | Feature | Status | Branch | Verification |
 | --- | --- | --- | --- | --- |
 | R00 | W5 hold report and reset control docs | merged | `feat/reset-r00-w5-hold-control` | non-UI docs + gate evidence |
-| R01 | Operator evidence fixture pack | implemented_pending_qa | `feat/reset-r01-operator-evidence-fixtures` | non-UI fixture audit |
+| R01 | Operator evidence fixture pack | merged | `feat/reset-r01-operator-evidence-fixtures` | non-UI fixture audit |
 | R02 | Golden benchmark replay harness | blocked | `feat/reset-r02-benchmark-replay-harness` | core tests |
 | R03 | Live benchmark runner and quality summary | blocked | `feat/reset-r03-live-benchmark-runner` | core/API + saved raw outputs |
 | R04 | High-volume query planner and search aggregation | blocked | `feat/reset-r04-high-volume-search` | core tests |

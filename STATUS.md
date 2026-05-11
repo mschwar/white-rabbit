@@ -1,7 +1,7 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex Prompt A R01 plus prompt-loop-fix merge
-**Branch:** feat/reset-r01-operator-evidence-fixtures
+**Last updated:** 2026-05-10 by Codex Prompt B R01 QA + merge
+**Branch:** rebuild/validated-leads-loop
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
@@ -16,13 +16,13 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** `R01 - Operator evidence fixture pack` is implemented and awaiting Prompt B QA on `feat/reset-r01-operator-evidence-fixtures`. RG1 remains in progress; no downstream Prompt A work is valid until R01 is QA'd and merged.
+**Next feature pointer:** None unlocked by Prompt B. `R01 - Operator evidence fixture pack` is QA-passed and merged into `rebuild/validated-leads-loop`, but this session does not unlock `R02` or any downstream reset work.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs. Prompt C advanced RG0 and is the only prompt that can unlock the next gate or recommend a `main` operator-use sync.
 
 **Final product mockup gate:** Inspect `docs/mockups/final-product-2026-05-10/index.html` before assigning Prompt A implementation. R10-R13 must treat it as the visual contract for live-demo high-volume tier distribution unless Matt approves a different direction; RG4/RG5 Prompt C audits must compare live screenshots against it.
 
-**Current feature branch QA status:** `feat/reset-r01-operator-evidence-fixtures` is awaiting Prompt B QA. R00 QA passed and RG0 is now advanced on audit. F20-F23 remain deferred. Do not start R02 until R01 is QA'd and merged.
+**Current feature branch QA status:** No feature branch is awaiting QA. `feat/reset-r01-operator-evidence-fixtures` passed Prompt B QA and is merged into `rebuild/validated-leads-loop`. F20-F23 remain deferred. Do not start R02 from this Prompt B session.
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
@@ -32,7 +32,7 @@
 - W5 operator loop export hold report: `.gstack/qa-reports/gate-w5-operator-loop-export.md`
 - RG0 control reset gate report: `audits/gates/reset-2026-05-10/rg0-w5-hold.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream work unlocks. RG0 is now advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is in progress and R01 is the only ready feature.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream work unlocks. RG0 is now advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 remains in progress, R01 is merged, and no downstream reset feature is unlocked by this Prompt B session.
 
 Prior accepted gates:
 
@@ -58,17 +58,19 @@ Prior accepted gates:
 **Latest handoff:**
 
 Feature: `R01 - Operator evidence fixture pack`
-Branch: `feat/reset-r01-operator-evidence-fixtures`
-Status: `implemented_pending_qa`
-What changed: Added a canonical operator evidence fixture pack to `packages/core` for the six active RG1 prompts, preserved private evidence as source IDs plus privacy-safe summaries, wired the required benchmark suite to those reset cases, refreshed the benchmark JSON fixtures, and linked the Arizona golden fixture back to the operator evidence pack so R02/R03 can consume one canonical prompt/evidence surface. Also merged the reusable Prompt A/B/C control-doc fix so this feature branch no longer carries stale R00/RG0 copy-paste prompts.
+Branch: `rebuild/validated-leads-loop` via `feat/reset-r01-operator-evidence-fixtures`
+Status: `merged`
+What changed: Added a canonical operator evidence fixture pack to `packages/core` for the six active RG1 prompts, preserved private evidence as source IDs plus privacy-safe summaries, wired the required benchmark suite to those reset cases, refreshed the benchmark JSON fixtures, linked the Arizona golden fixture back to the operator evidence pack so R02/R03 can consume one canonical prompt/evidence surface, and retained the reusable Prompt A/B/C control-doc fix so this feature no longer carries stale R00/RG0 copy-paste prompts.
 Tests or QA run:
 - `cd packages/core && uv run pytest tests/test_arizona_k12_benchmark.py tests/test_benchmark_suite.py tests/test_quality_report.py -q`
-- `git diff --check`
+- `git diff --check rebuild/validated-leads-loop...feat/reset-r01-operator-evidence-fixtures`
+- `python3 - <<'PY' ... operator_evidence_fixture_pack.json summary ... PY`
+- `git diff --name-only rebuild/validated-leads-loop...feat/reset-r01-operator-evidence-fixtures`
 - `rg -n "First Prompt|You are Prompt A for White Rabbit reset feature R00|You are Prompt B for White Rabbit reset feature R00|You are Prompt C for reset gate RG0|Assign the first implementation agent|Assign the second agent only after" docs/12-reset-gated-implementation-plan-2026-05-10.md`
 - `rg -n "Reusable Copy-Paste Prompt A|Reusable Copy-Paste Prompt B|Reusable Copy-Paste Prompt C|single feature currently marked ready|already advanced|duplicate work" docs/12-reset-gated-implementation-plan-2026-05-10.md STATUS.md`
-Screenshots or report: none; R01 is non-UI.
+Screenshots or report: `.gstack/qa-reports/qa-report-r01-operator-evidence-fixtures-2026-05-10.md`; R01 is non-UI.
 Northstar reflection: This stays in the reset evidence layer. It does not change search, validation, or UI behavior. It gives the next gates a canonical, audit-backed set of replay prompts and artifacts so benchmark work stops depending on scattered audit docs.
-Next pointer: Prompt B should QA `feat/reset-r01-operator-evidence-fixtures`, confirm the fixture pack matches the JSON fixtures and RG1 prompt list, and merge only into `rebuild/validated-leads-loop` if it passes.
+Next pointer: No downstream reset feature is unlocked by this Prompt B session. Resolve the next move from the active reset plan instead of starting `R02` automatically.
 Open questions: The raw Thomas and Lee prompts currently resolve to `needs_more_detail` under the present guardrail function. R01 records that current behavior in the fixture pack rather than silently upgrading it.
 
 
@@ -218,11 +220,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. R00 is now QA-passed and merged; W5 remains held; W6 remains blocked; RG0 is pending Prompt C audit.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. R00 and R01 are merged; W5 remains held; W6 remains blocked; RG1 remains in progress.
 
 ## Next concrete task
 
-- Assign Prompt C to audit RG0 on `rebuild/validated-leads-loop`. Do not start R01, W6 work, or any deferred surface before Prompt C records the gate decision.
+- No downstream reset feature or gate is unlocked by this Prompt B session. Do not start `R02`, `W6`, or any deferred surface from this handoff alone.
 
 ## Open questions for Matt
 

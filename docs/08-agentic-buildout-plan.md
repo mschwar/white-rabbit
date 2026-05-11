@@ -4,8 +4,8 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** The active reset queue lives in `docs/12-reset-gated-implementation-plan-2026-05-10.md`. RG0 has advanced on control-plane evidence only. `R01 - Operator evidence fixture pack` is now the next valid reset feature.
-**Current feature QA handoff:** `feat/reset-r01-operator-evidence-fixtures` is awaiting Prompt B QA on the active reset queue. Do not target `main` from this document.
+**Next feature pointer:** The active reset queue lives in `docs/12-reset-gated-implementation-plan-2026-05-10.md`. RG0 has advanced on control-plane evidence only. `R01 - Operator evidence fixture pack` is now merged, and this Prompt B session does not unlock `R02`.
+**Current feature QA handoff:** No feature branch is awaiting QA on the active reset queue. Do not target `main` from this document.
 
 **May 10 reset overlay:** New implementation work is now controlled by `docs/12-reset-gated-implementation-plan-2026-05-10.md`. Treat this document as historical context for F00-F23 until the reset plan explicitly sends agents back here. The active reset queue is RG1/R01, not F20-F23.
 
