@@ -59,4 +59,3 @@ Carry-forward blockers:
 - Current live output has 0 high-trust usable leads in the non-privacy cases.
 - Manufacturing role-as-name still returns a 503 instead of a recoverable failed row; R07/RG3 must fix this before validation semantics can advance.
 - Export value remains unproven by RG1 because the live runner exercises Scout mode only; RG5 must inspect UI, CSV, and DB readback.
-
