@@ -83,9 +83,9 @@ W5 cannot advance while the product still behaves like a cleaner wrapper around 
 
 - Added this W5 hold report with explicit `hold` decision.
 - Updated `docs/08-agentic-buildout-plan.md` to point future agents at `docs/12-reset-gated-implementation-plan-2026-05-10.md` as the active reset queue.
-- Updated `docs/12-reset-gated-implementation-plan-2026-05-10.md` to keep all downstream reset work blocked; Prompt B later merged R00 and left RG0 pending Prompt C audit.
-- Updated `STATUS.md` to show W5 held, W6 blocked, and RG0 pending Prompt C audit.
+- Updated `docs/12-reset-gated-implementation-plan-2026-05-10.md` to keep all downstream reset work blocked and to hand R00 to Prompt B for QA/merge.
+- Updated `STATUS.md` to show W5 held, W6 blocked, and RG0 pending Prompt B merge plus Prompt C audit.
 
 ## Next Pointer
 
-R00 is now QA-passed and merged to `rebuild/validated-leads-loop`. Prompt C should audit RG0 next. R01 stays blocked until Prompt C records an RG0 `advance`.
+R00 is ready for Prompt B QA on `feat/reset-r00-w5-hold-control`. R01 stays blocked, W6 stays blocked, and RG0 stays pending until Prompt B merges R00 and Prompt C records an RG0 `advance`.
