@@ -5,9 +5,9 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, gate_hold accepted after the post-R09I Prompt C audit. R09D-R09I are merged to `rebuild/validated-leads-loop`, and the post-R09I audit recorded `hold`: `/health` can now prove process liveness on a fresh API process, but `/readiness` can still time out and block the app, the live runner still cannot complete the current benchmark suite, and the direct `/scout` product path timed out on the first Thomas benchmark. Matt accepted the hold and authorized ordered same-gate remediation slices R09J-R09L. R09J is now implemented_pending_qa on `feat/reset-r09j-bounded-readiness-diagnostics`; R09K and R09L remain blocked until R09J passes Prompt B and merges.
-**Next Prompt A feature:** None until R09J passes Prompt B and merges.
-**Current Prompt B handoff:** R09J - Bounded readiness diagnostics on `feat/reset-r09j-bounded-readiness-diagnostics`.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, gate_hold accepted after the post-R09I Prompt C audit. R09D-R09I are merged to `rebuild/validated-leads-loop`, and the post-R09I audit recorded `hold`: `/health` can now prove process liveness on a fresh API process, but `/readiness` can still time out and block the app, the live runner still cannot complete the current benchmark suite, and the direct `/scout` product path timed out on the first Thomas benchmark. Matt accepted the hold and authorized ordered same-gate remediation slices R09J-R09L. R09J has passed Prompt B QA and merged to `rebuild/validated-leads-loop`; R09K is ready on `feat/reset-r09k-live-runner-timeout-containment`; R09L remains blocked until R09K passes Prompt B and merges.
+**Next Prompt A feature:** R09K - Live runner timeout containment on `feat/reset-r09k-live-runner-timeout-containment`.
+**Current Prompt B handoff:** None. R09K is the next Prompt A feature.
 **Current Prompt C handoff:** None. Do not rerun RG3 Prompt C until R09J, R09K, and R09L pass Prompt B and merge. Keep RG4/refreshed mockups/R10-R12/export/dogfood/main blocked unless a future Prompt C records `advance`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
@@ -237,8 +237,8 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R09G | Research-workbook tiering and export semantics | merged_to_rebuild_branch | `feat/reset-r09g-research-workbook-tiering` | core/web or export tests as applicable |
 | R09H | Manual-oracle proof replay gate packet | merged_to_rebuild_branch | `feat/reset-r09h-manual-oracle-proof-packet` | replay + live/source-assisted artifacts |
 | R09I | API startup and live proof harness | merged_to_rebuild_branch | `feat/reset-r09i-api-startup-live-proof` | API tests + live harness artifacts |
-| R09J | Bounded readiness diagnostics | implemented_pending_qa | `feat/reset-r09j-bounded-readiness-diagnostics` | API tests + readiness probe artifacts |
-| R09K | Live runner timeout containment | blocked | `feat/reset-r09k-live-runner-timeout-containment` | core/API tests + complete timeout artifacts |
+| R09J | Bounded readiness diagnostics | merged_to_rebuild_branch | `feat/reset-r09j-bounded-readiness-diagnostics` | API tests + readiness probe artifacts |
+| R09K | Live runner timeout containment | ready | `feat/reset-r09k-live-runner-timeout-containment` | core/API tests + complete timeout artifacts |
 | R09L | Live source-assisted product proof | blocked | `feat/reset-r09l-live-source-assisted-proof` | API/core tests + live source-assisted proof artifacts |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
@@ -677,7 +677,7 @@ R09F expected scope after R09E passes:
 R09F Prompt A result:
 
 - Branch: `feat/reset-r09f-source-assisted-lead-compiler`.
-- Status: `implemented_pending_qa`.
+- Status: `merged_to_rebuild_branch`.
 - Implemented only the R09F source-assisted compiler slice: `packages/core/src/core/source_assisted_compiler.py`, `packages/core/tests/test_source_assisted_compiler.py`, a small `ManualOracleRow` metadata extension in `packages/core/src/core/manual_oracle.py`, and `audits/raw/reset-2026-05-10/r09f/source-assisted-compiler-replay.json`.
 - Change summary: added a compiler path for source URLs, source packs, pasted search/chatbot output, seed CSV rows, the R09D manual-oracle fixture, and the R09E source map. The compiler emits canonical candidate rows with deterministic source/candidate IDs, source family/reputation metadata, field evidence for name/title/organization/email/source, contact status, blocker notes, next action, dedupe reporting, and strict downgrades so missing/unsupported contacts cannot remain `high_trust_usable`.
 - Verification run by Prompt A: `cd packages/core && uv run pytest tests/test_source_assisted_compiler.py tests/test_manual_oracle.py tests/test_k12_source_map.py -q` (`12 passed`); `cd packages/core && uv run pytest tests/test_source_validation.py -q` (`6 passed`); `cd packages/core && uv run pytest tests/test_contact_status.py -vv -s` (`15 passed`); `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`45 passed`, existing datetime deprecation warnings); `git diff --check -- STATUS.md docs/12-reset-gated-implementation-plan-2026-05-10.md packages/core/src/core/manual_oracle.py` (passed); `git diff --cached --check` (passed after staging the R09F files); replay artifact generated and validated as JSON.
@@ -812,7 +812,7 @@ Accepted post-R09I hold and R09J-R09L remediation:
 R09J scope - Bounded readiness diagnostics:
 
 - Branch: `feat/reset-r09j-bounded-readiness-diagnostics`.
-- Status: `implemented_pending_qa`.
+- Status: `merged_to_rebuild_branch`.
 - Goal: make `/readiness` fast, bounded, and actionable without weakening `/health` process liveness or pretending unavailable dependencies are healthy.
 - Requirements:
   - `/readiness` must not block behind OpenAI, Tavily, Postgres, sandbox reset, or long application startup work.
