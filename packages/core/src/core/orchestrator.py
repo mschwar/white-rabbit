@@ -1,6 +1,7 @@
 import asyncio
 import os
 import time
+from collections import Counter
 from collections.abc import Mapping
 from typing import Any
 
@@ -32,6 +33,7 @@ MAX_TAVILY_RESULTS = 500
 GATE_THRESHOLD = 0.6
 EVIDENCE_GATE_CONTACT_STATUSES = {"verified_found", "deduced_with_pattern_evidence"}
 CONTACT_STATUSES = EVIDENCE_GATE_CONTACT_STATUSES | {"missing", "failed", "unsupported"}
+OUTPUT_TIERS = ("high_trust_usable", "review", "organization_only", "not_found", "failed")
 LEGACY_CONTACT_STATUS_ALIASES = {
     "Found": "verified_found",
     "Deduced": "deduced_with_pattern_evidence",
@@ -379,6 +381,120 @@ def _lead_passes_evidence_gate(candidate: Lead) -> bool:
     )
 
 
+def _validation_status(candidate: Candidate, field_name: str) -> str:
+    validation = getattr(candidate, "validation", None)
+    record = getattr(validation, field_name, None)
+    return getattr(record, "status", "unsupported")
+
+
+def _validation_note(candidate: Candidate, field_name: str) -> str:
+    validation = getattr(candidate, "validation", None)
+    record = getattr(validation, field_name, None)
+    return getattr(record, "notes", "") or ""
+
+
+def _failed_from_conflicting_lead(candidate: Lead, *, reason: str) -> FailedCandidate:
+    return FailedCandidate(
+        searched_target=candidate.organization or candidate.name,
+        failure_reason=reason,
+        organization=candidate.organization,
+        source_url=candidate.source_url,
+        explanation=reason,
+        validation=candidate.validation,
+        tier="failed",
+        primary_filter_reason=reason,
+    )
+
+
+def _sync_contact_fields_from_validation(candidate: Lead) -> None:
+    email_status = _validation_status(candidate, "email")
+    if candidate.email_status == "failed" and not candidate.email and email_status in {"missing", "unsupported"}:
+        email_status = "failed"
+    elif candidate.email_status == "missing" and not candidate.email and email_status == "unsupported":
+        email_status = "missing"
+    if email_status in CONTACT_STATUSES:
+        candidate.email_status = email_status
+
+    if email_status not in EVIDENCE_GATE_CONTACT_STATUSES:
+        candidate.email = ""
+        candidate.contact_score = min(candidate.contact_score, 0.4)
+
+    if email_status in {"failed", "unsupported", "missing"}:
+        candidate.gate_passed = False
+
+
+def _conflict_reason(candidate: Lead) -> str | None:
+    source_status = _validation_status(candidate, "source")
+    if source_status in {"failed", "missing"}:
+        return f"Source could not validate the person row: {_validation_note(candidate, 'source')}"
+
+    for field_name in ("name", "title", "organization"):
+        status = _validation_status(candidate, field_name)
+        if status == "failed":
+            return f"{field_name} failed field validation: {_validation_note(candidate, field_name)}"
+
+    name = candidate.name.strip().lower()
+    organization = candidate.organization.strip().lower()
+    if name == organization or name in organization or organization in name:
+        return "Person and organization claims conflict; the name is not distinct from the account."
+
+    return None
+
+
+def _tier_person_lead(candidate: Lead) -> Lead | FailedCandidate:
+    _sync_contact_fields_from_validation(candidate)
+    conflict_reason = _conflict_reason(candidate)
+    if conflict_reason is not None:
+        return _failed_from_conflicting_lead(candidate, reason=conflict_reason)
+
+    candidate.gate_passed = _lead_passes_evidence_gate(candidate)
+    if candidate.gate_passed:
+        candidate.tier = "high_trust_usable"
+        candidate.primary_filter_reason = "Evidence gate passed with supported person, organization, source, and usable contact."
+        return candidate
+
+    email_status = candidate.email_status
+    if email_status not in EVIDENCE_GATE_CONTACT_STATUSES:
+        candidate.primary_filter_reason = f"Contact is {email_status}; row needs review before CRM use."
+    elif any(_validation_status(candidate, field_name) != "supported" for field_name in ("name", "title", "organization")):
+        candidate.primary_filter_reason = "Name, title, or organization lacks direct source support."
+    elif _validation_status(candidate, "source") != "supported":
+        candidate.primary_filter_reason = "Source does not provide enough direct support."
+    else:
+        candidate.primary_filter_reason = "Scores or validation strength did not clear the high-trust evidence gate."
+
+    candidate.tier = "review"
+    return candidate
+
+
+def _tier_nonperson_candidate(candidate: Candidate) -> Candidate:
+    if isinstance(candidate, OrganizationOnlyCandidate):
+        candidate.tier = "organization_only"
+        candidate.primary_filter_reason = candidate.explanation or "Organization was found, but no validated person was ready."
+    elif isinstance(candidate, NotFoundCandidate):
+        candidate.tier = "not_found"
+        candidate.primary_filter_reason = candidate.explanation or "Target was searched, but no acceptable contact was found."
+    elif isinstance(candidate, FailedCandidate):
+        candidate.tier = "failed"
+        candidate.primary_filter_reason = candidate.failure_reason
+    return candidate
+
+
+def _apply_tiering_and_conflict_resolution(candidates: list[Candidate]) -> list[Candidate]:
+    tiered: list[Candidate] = []
+    for candidate in candidates:
+        if isinstance(candidate, Lead):
+            tiered.append(_tier_person_lead(candidate))
+        else:
+            tiered.append(_tier_nonperson_candidate(candidate))
+    return tiered
+
+
+def _tier_distribution(candidates: list[Candidate]) -> dict[str, int]:
+    counts = Counter(getattr(candidate, "tier", "review") for candidate in candidates)
+    return {tier: counts.get(tier, 0) for tier in OUTPUT_TIERS}
+
+
 def _resolve_max_results(max_leads: int, max_results: int | None, *, aggressive_breadth: bool) -> int:
     if max_results is not None:
         resolved = max_results
@@ -475,8 +591,7 @@ async def scout(
 
     for candidate, validation in zip(leads, validations, strict=True):
         candidate.validation = validation
-        if isinstance(candidate, Lead):
-            candidate.gate_passed = _lead_passes_evidence_gate(candidate)
+    leads = _apply_tiering_and_conflict_resolution(leads)
 
     usage = getattr(completion, "usage", None)
     metrics = RunMetrics(
@@ -484,6 +599,7 @@ async def scout(
         output_tokens=getattr(usage, "completion_tokens", 0),
         tavily_searches=tavily_searches,
         elapsed_seconds=round(time.perf_counter() - start_time, 2),
+        tier_distribution=_tier_distribution(leads),
     )
     metrics.estimated_cost_usd = calculate_cost(metrics)
 

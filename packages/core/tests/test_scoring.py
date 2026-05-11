@@ -111,6 +111,13 @@ def test_evidence_gate_blocks_fake_or_unsupported_contacts():
     assert _lead_passes_evidence_gate(missing_contact) is False
 
 
+def test_evidence_gate_is_not_the_only_return_tier():
+    review_lead = _lead(validation=_validation(email_status="missing"), contact_score=0.0)
+
+    assert _lead_passes_evidence_gate(review_lead) is False
+    assert review_lead.candidate_category == "person_lead"
+
+
 def test_non_person_candidates_are_not_passable_person_leads():
     organization_only = OrganizationOnlyCandidate(
         organization="Example Corp",

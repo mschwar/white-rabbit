@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
 # Pricing as of 2026-05
@@ -20,6 +20,7 @@ class RunMetrics:
     openai_web_searches: int = 0
     elapsed_seconds: float = 0.0
     estimated_cost_usd: float = 0.0
+    tier_distribution: dict[str, int] = field(default_factory=dict)
 
 
 def calculate_cost(metrics: RunMetrics) -> float:
