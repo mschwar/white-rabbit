@@ -1,7 +1,7 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex Prompt C RG0
-**Branch:** audit/reset-rg0-w5-hold
+**Last updated:** 2026-05-10 by Codex prompt-loop-fix
+**Branch:** rebuild/validated-leads-loop; main is not synced after RG0
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
@@ -18,7 +18,7 @@
 
 **Next feature pointer:** `R01 - Operator evidence fixture pack` is now the next valid reset feature. RG0 advanced on control-plane evidence only; the product remains red and RG1 now owns the next implementation queue.
 
-**Kickoff workflow:** Use only the Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A implements one ready feature, Prompt B QA/merges it into `rebuild/validated-leads-loop`, and Prompt C runs the gate audit. Prompt C advanced RG0 and is the only prompt that can unlock the next gate or recommend a `main` operator-use sync.
+**Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs. Prompt C advanced RG0 and is the only prompt that can unlock the next gate or recommend a `main` operator-use sync.
 
 **Final product mockup gate:** Inspect `docs/mockups/final-product-2026-05-10/index.html` before assigning Prompt A implementation. R10-R13 must treat it as the visual contract for live-demo high-volume tier distribution unless Matt approves a different direction; RG4/RG5 Prompt C audits must compare live screenshots against it.
 
@@ -57,37 +57,18 @@ Prior accepted gates:
 
 **Latest handoff:**
 
-Feature: `R00 - W5 hold report and reset control docs`
-Branch: `feat/reset-r00-w5-hold-control`
-Status: `qa_passed_merged_to_rebuild`
-What changed: Added the W5 hold report, cited the May 10 audit plus live JSON/CSV/screenshot evidence, redirected `docs/08-agentic-buildout-plan.md` to `docs/12-reset-gated-implementation-plan-2026-05-10.md` as the active reset queue, updated reset control/status docs so W5 is held and W6 is blocked, and recorded Prompt B QA plus merge readiness.
+Feature: Prompt loop fix for reusable A/B/C assignments
+Branch: `rebuild/validated-leads-loop`
+Status: `control_docs_updated`
+What changed: Replaced the stale hard-coded R00/RG0 copy-paste prompts in `docs/12-reset-gated-implementation-plan-2026-05-10.md` with reusable Prompt A/B/C prompts that resolve the current feature, QA branch, and gate from repo state. Added explicit stop rules for zero/multiple ready features, already-merged features, already-advanced gates, and duplicate feature branches.
 Tests or QA run:
 - `git diff --check`
-- `rg -n "RG0|R00|W5 hold|reset-gated|gate-w5-operator-loop-export|ADR-013|high-volume|3 rows|4 rows" docs STATUS.md .gstack/qa-reports audits/raw/zero-trust-2026-05-10`
-- `git diff --name-only rebuild/validated-leads-loop...feat/reset-r00-w5-hold-control`
-- `git diff --name-only rebuild/validated-leads-loop...feat/reset-r00-w5-hold-control -- 'apps/**' 'packages/**'`
-Screenshots or report: `.gstack/qa-reports/gate-w5-operator-loop-export.md`, `.gstack/qa-reports/qa-r00-w5-hold-control-2026-05-10.md`
-Northstar reflection: This is a control-plane hold, not product polish. It keeps the repo from mistaking W5-era surfaces for proof that the operator loop works and anchors the next work on transparent-volume evidence instead of low-row output.
-Next pointer: RG0 has now advanced. R01 is the next valid Prompt A branch and W6 remains blocked.
-Open questions: none for R00. Downstream reset work remains blocked by product gates, not by missing control-plane docs.
-
-Prompt C handoff:
-
-```text
-You are Prompt C for White Rabbit reset gate RG0.
-
-Work in /Users/mschwar/Documents/white-rabbit. Audit RG0 only on rebuild/validated-leads-loop. Do not edit product code. Do not target main.
-
-Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/12-reset-gated-implementation-plan-2026-05-10.md, audits/zero-trust-codebase-audit-2026-05-10.md, audits/raw/zero-trust-2026-05-10/operator-feedback-volume-2026-05-10.md, and the R00 QA reports.
-
-Required checks:
-- confirm `.gstack/qa-reports/gate-w5-operator-loop-export.md` exists and records `hold`
-- confirm `docs/08-agentic-buildout-plan.md`, `docs/12-reset-gated-implementation-plan-2026-05-10.md`, and `STATUS.md` keep R01 blocked pending RG0
-- confirm R00 introduced no product-code changes
-- summarize from May 10 evidence why W5 cannot advance
-
-If RG0 passes, record whether the gate decision is `advance`, `hold`, `revise`, `rollback`, or `kill`, write the gate report, update docs/status only if the decision is clear, and stop. Do not unlock R01 unless the gate report records `advance`. Do not sync main.
-```
+- `rg -n "First Prompt|You are Prompt A for White Rabbit reset feature R00|You are Prompt B for White Rabbit reset feature R00|You are Prompt C for reset gate RG0|Assign the first implementation agent|Assign the second agent only after" docs/12-reset-gated-implementation-plan-2026-05-10.md`
+- `rg -n "Reusable Copy-Paste Prompt A|Reusable Copy-Paste Prompt B|Reusable Copy-Paste Prompt C|single feature currently marked ready|already advanced|duplicate work" docs/12-reset-gated-implementation-plan-2026-05-10.md STATUS.md`
+Screenshots or report: none; docs-only control-plane fix.
+Northstar reflection: Prevents repeated R00/RG0 loops and forces every agent to prove current state before acting.
+Next pointer: R01 is the next valid Prompt A feature. A dirty `feat/reset-r01-operator-evidence-fixtures` branch may already be in progress in the active checkout; do not start a second R01 branch unless that work is intentionally abandoned.
+Open questions: whether the existing dirty R01 branch belongs to the active Prompt A agent or should be reset by Matt.
 
 
 ---
@@ -285,6 +266,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | prompt-loop-fix (Codex) | Replaced stale hard-coded R00/RG0 copy-paste prompts with reusable A/B/C prompts that resolve the next feature, QA branch, and gate from current repo state, with stop rules for duplicate or ambiguous assignments. |
 | 2026-05-10 | mockup-copy-tightening (Codex) | Tightened only the final mockup copy: removed top tagline, pipeline-stage row, and principle list from the first screen; rewrote low-signal guidance into a concrete diagnosis plus exact broadening suggestions. |
 | 2026-05-10 | live-demo-pipeline-mockups (Codex) | Read Matt's CSV/XLSX pipeline artifacts, added ADR-013 and `docs/13-pipeline-orchestrator-contract-2026.md`, updated the orchestrator brief/reset docs, and rebuilt the mockups for live-demo copy, 50-500+ transparent tiering, filters, evidence actions, mobile review, and low-signal state. |
 | 2026-05-10 | high-volume-reset-contract (Codex) | Superseded the 10-25 ideal with ADR-012 high-volume transparent tiering, added `docs/Orchestrator_Agent_Implementation_Brief.md`, updated the northstar/reset plan, and revised the final product mockups to show 186 categorized candidates with high-trust/review/org-only/not-found/failed distribution. |
