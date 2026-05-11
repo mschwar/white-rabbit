@@ -1,0 +1,47 @@
+{
+  "status": "draft",
+  "source_image": "/Users/mschwar/Documents/ChatGPT Image May 10, 2026, 10_00_49 PM.png",
+  "template_asset": "docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png",
+  "brand": {
+    "company": "OrgAtlas",
+    "product": "White Rabbit",
+    "wordmark": "WhiteRabbit",
+    "tagline": "Find. Verify. Understand. Connect.",
+    "support_line": "Intelligence that moves you forward.",
+    "keywords": [
+      "intelligent",
+      "technical",
+      "structured",
+      "enterprise",
+      "trustworthy"
+    ]
+  },
+  "color": {
+    "primary": "#001028",
+    "accent": "#002F70",
+    "highlight": "#005ECF",
+    "ui_tint": "#B2DBFE",
+    "neutral": "#CDD0D4",
+    "paper": "#FFFFFF",
+    "paper_warm": "#FFFEFE",
+    "line": "#D6DDE8",
+    "text_muted": "#5E6A7A"
+  },
+  "assets": {
+    "search_light": "apps/web/public/brand/white-rabbit-search-light.png",
+    "search_dark": "apps/web/public/brand/white-rabbit-search-dark.png",
+    "rabbit_mark": "apps/web/public/brand/white-rabbit-rabbit-mark.png",
+    "top_half_template": "docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png"
+  },
+  "operator_buckets": [
+    "READY",
+    "REVIEW",
+    "ORG-ONLY",
+    "NOT FOUND"
+  ],
+  "guardrails": [
+    "Do not add public self-serve product surfaces from this schema.",
+    "Do not make untrusted or noisy rows feel CRM-ready.",
+    "Do not implement R10-R13 UI from this schema until the active reset gate unlocks UI work."
+  ]
+}

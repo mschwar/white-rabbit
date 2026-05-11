@@ -1,12 +1,12 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex prompt-a-r04-high-volume-search
+**Last updated:** 2026-05-10 by Codex brand-schema-top-half
 **Branch:** feat/reset-r04-high-volume-search
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
-**Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. No product code, reset gate, or active feature status changed.
+**Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
 **Next pointer:** Prompt B QA for `R04 - High-volume query planner and search aggregation` on `feat/reset-r04-high-volume-search`. Do not start R05/R06 until Prompt B passes, merges R04 into `rebuild/validated-leads-loop`, and updates the same-gate queue.
 
