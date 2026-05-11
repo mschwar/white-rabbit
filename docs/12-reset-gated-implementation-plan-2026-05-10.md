@@ -6,8 +6,8 @@
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
 **Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, accepted post-R09A hold with R09B remediation active.
-**Next Prompt A feature:** R09B - Contact and evidence acquisition pass.
-**Current Prompt B handoff:** None. R09B is the single ready remediation feature after Matt accepted the post-R09A RG3 hold. Do not unlock RG4, refreshed mockups, R10-R12, export work, dogfood, or `main` until a future RG3 Prompt C records `advance`.
+**Next Prompt A feature:** None. R09B is implemented and waiting for Prompt B QA/merge.
+**Current Prompt B handoff:** QA `feat/reset-r09b-contact-evidence-acquisition`; verify the branch contains only R09B scope, rerun the required R09B core/API suites plus `git diff --check`, inspect `audits/raw/reset-2026-05-10/r09b/replay/quality-summary.json`, confirm no unsupported/missing/inaccessible/guessed contacts become CRM-ready, confirm direct email and explicit domain-pattern evidence are the only promotion paths, confirm READY blockers are reported for missing-contact and organization-only rows, confirm runner timeouts produce partial artifacts, and confirm no RG4/UI/export/main-sync scope creep landed. If QA passes, merge only to `rebuild/validated-leads-loop` and hand off Prompt C for RG3 re-audit; do not unlock RG4 from feature QA alone.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -208,7 +208,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R08 | Tiering engine, field validator, and conflict resolver | merged_to_rebuild_branch | `feat/reset-r08-tier-validation-conflicts` | core tests |
 | R09 | Tier summary, score semantics, and reason language reset | merged_to_rebuild_branch | `feat/reset-r09-tier-summary-semantics` | core + web tests |
 | R09A | Live value recovery and benchmark funnel diagnosis | merged_to_rebuild_branch | `feat/reset-r09a-live-value-recovery` | core/API + live/replay benchmark artifacts |
-| R09B | Contact and evidence acquisition pass | ready | `feat/reset-r09b-contact-evidence-acquisition` | core/API + live/replay contact evidence artifacts |
+| R09B | Contact and evidence acquisition pass | waiting_prompt_b_qa | `feat/reset-r09b-contact-evidence-acquisition` | core/API + live/replay contact evidence artifacts |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | blocked | `feat/reset-r12-evidence-dossier-review` | browser |
@@ -454,6 +454,15 @@ R09B expected evidence:
 - A QA note explaining which evidence-acquisition path was added, which READY blockers remain, and why the change does not relax high-trust precision.
 - Explicit proof that missing, unsupported, inaccessible, guessed, or failed contacts are still not marked CRM-ready.
 - Explicit proof that at least one benchmark has nonzero contact-quality passes, or a source-backed explanation that public evidence was unavailable.
+
+R09B Prompt A implementation handoff:
+
+- Branch: `feat/reset-r09b-contact-evidence-acquisition`.
+- Status: `waiting_prompt_b_qa`.
+- Prompt A change summary: added a bounded targeted contact-evidence pass after first validation and before tiering; it searches up to 8 promising review/person or organization-only rows, promotes direct person emails only from source-backed public snippets, allows `deduced_with_pattern_evidence` only from explicit organization-domain pattern evidence, keeps organization-only rows non-CRM-ready, adds READY-blocker reporting to quality payloads, and makes live benchmark timeouts write partial artifacts instead of aborting the suite.
+- Prompt A verification: required R09B core suite (`74 passed`); API suite (`45 passed`, existing datetime deprecation warnings).
+- Evidence artifacts: `.gstack/qa-reports/r09b-contact-evidence-acquisition-note-2026-05-11.md`; `audits/raw/reset-2026-05-10/r09b/replay/contact-evidence-pass.json`; `audits/raw/reset-2026-05-10/r09b/replay/quality-summary.json`; `audits/raw/reset-2026-05-10/r09b/replay/runner-timeout-partial.json`.
+- Exact Prompt B handoff: QA `feat/reset-r09b-contact-evidence-acquisition`; verify the branch contains only R09B scope, rerun the required R09B core/API suites plus `git diff --check`, inspect `audits/raw/reset-2026-05-10/r09b/replay/quality-summary.json`, confirm no unsupported/missing/inaccessible/guessed contacts become CRM-ready, confirm direct email and explicit domain-pattern evidence are the only promotion paths, confirm READY blockers are reported for missing-contact and organization-only rows, confirm runner timeouts produce partial artifacts, and confirm no RG4/UI/export/main-sync scope creep landed. If QA passes, merge only to `rebuild/validated-leads-loop` and hand off Prompt C for RG3 re-audit; do not unlock RG4 from feature QA alone.
 
 RG3 full evaluation/audit:
 

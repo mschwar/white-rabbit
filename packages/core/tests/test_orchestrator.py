@@ -263,6 +263,147 @@ def test_scout_sets_gate_passed_when_scores_and_evidence_align(monkeypatch):
     assert leads[0].primary_filter_reason.startswith("READY:")
 
 
+def test_scout_runs_targeted_contact_evidence_pass_before_tiering(monkeypatch):
+    search_calls = []
+
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None):
+        search_calls.append({"query": query, "max_results": max_results})
+        if len(search_calls) == 1:
+            return SearchResults([], tavily_searches=1)
+        return SearchResults(
+            [
+                {
+                    "title": "Example Corp leadership team",
+                    "url": "https://example.com/team",
+                    "content": "Jordan Lee VP Operations at Example Corp can be reached at jordan.lee@example.com.",
+                    "score": 0.94,
+                }
+            ],
+            tavily_searches=1,
+        )
+
+    lead = Lead(
+        name="Jordan Lee",
+        title="VP Operations",
+        organization="Example Corp",
+        email="",
+        email_status="missing",
+        source_url="https://example.com/jordan",
+        confidence=0.5,
+        why_target="Relevant operations leader",
+        icebreaker="I saw your operations team scaling.",
+        fit_score=0.9,
+        evidence_score=0.9,
+        contact_score=0.1,
+        gate_passed=False,
+        explanation="The first pass had identity support but no contact.",
+    )
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            return SimpleNamespace(
+                choices=[SimpleNamespace(message=SimpleNamespace(parsed=LeadList(leads=[lead])))],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    async def fake_validate_candidate_source(candidate, client=None):
+        return CandidateValidation(
+            name=FieldValidationRecord(status="supported", checked_at="2026-05-10T12:00:00Z"),
+            title=FieldValidationRecord(status="supported", checked_at="2026-05-10T12:00:00Z"),
+            organization=FieldValidationRecord(status="supported", checked_at="2026-05-10T12:00:00Z"),
+            email=ContactValidationRecord(status="missing", checked_at="2026-05-10T12:00:00Z"),
+            source=FieldValidationRecord(status="supported", checked_at="2026-05-10T12:00:00Z"),
+        )
+
+    fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+    monkeypatch.setattr("core.orchestrator.validate_candidate_source", fake_validate_candidate_source)
+
+    leads, metrics = asyncio.run(
+        scout(
+            "operations leaders in Austin",
+            openai_client=fake_client,
+            tavily_key="fake-tavily",
+            search_fn=fake_search,
+        )
+    )
+
+    assert len(search_calls) == 2
+    assert search_calls[1]["max_results"] == 5
+    assert '"Jordan Lee"' in search_calls[1]["query"]
+    assert leads[0].email == "jordan.lee@example.com"
+    assert leads[0].email_status == "verified_found"
+    assert leads[0].validation.email.source_url == "https://example.com/team"
+    assert leads[0].tier == "high_trust_usable"
+    assert metrics.tavily_searches == 2
+    assert any("Contact evidence pass searched 1 promising rows" in note for note in metrics.funnel_notes)
+
+
+def test_scout_deduces_contact_only_from_explicit_domain_pattern(monkeypatch):
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None):
+        if query == "operations leaders in Austin":
+            return SearchResults([], tavily_searches=1)
+        return SearchResults(
+            [
+                {
+                    "title": "Example Corp contact format",
+                    "url": "https://example.com/contact",
+                    "content": "Example Corp staff email format is first.last@example.com for the operations team.",
+                    "score": 0.91,
+                }
+            ],
+            tavily_searches=1,
+        )
+
+    lead = Lead(
+        name="Jordan Lee",
+        title="VP Operations",
+        organization="Example Corp",
+        email="",
+        email_status="missing",
+        source_url="https://example.com/jordan",
+        confidence=0.5,
+        why_target="Relevant operations leader",
+        icebreaker="I saw your operations team scaling.",
+        fit_score=0.9,
+        evidence_score=0.9,
+        contact_score=0.1,
+        gate_passed=False,
+        explanation="The first pass had identity support but no contact.",
+    )
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            return SimpleNamespace(
+                choices=[SimpleNamespace(message=SimpleNamespace(parsed=LeadList(leads=[lead])))],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    async def fake_validate_candidate_source(candidate, client=None):
+        return CandidateValidation(
+            name=FieldValidationRecord(status="supported", checked_at="2026-05-10T12:00:00Z"),
+            title=FieldValidationRecord(status="supported", checked_at="2026-05-10T12:00:00Z"),
+            organization=FieldValidationRecord(status="supported", checked_at="2026-05-10T12:00:00Z"),
+            email=ContactValidationRecord(status="missing", checked_at="2026-05-10T12:00:00Z"),
+            source=FieldValidationRecord(status="supported", checked_at="2026-05-10T12:00:00Z"),
+        )
+
+    fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+    monkeypatch.setattr("core.orchestrator.validate_candidate_source", fake_validate_candidate_source)
+
+    leads, _ = asyncio.run(
+        scout(
+            "operations leaders in Austin",
+            openai_client=fake_client,
+            tavily_key="fake-tavily",
+            search_fn=fake_search,
+        )
+    )
+
+    assert leads[0].email == "jordan.lee@example.com"
+    assert leads[0].email_status == "deduced_with_pattern_evidence"
+    assert leads[0].tier == "high_trust_usable"
+
+
 def test_scout_constructs_async_openai_with_max_retries(monkeypatch):
     created = {}
 
@@ -612,7 +753,7 @@ def test_scout_appends_nonperson_coverage_for_missing_named_accounts(monkeypatch
         )
     )
 
-    assert metrics.tavily_searches == 2
+    assert metrics.tavily_searches == 4
     assert [lead.candidate_category for lead in leads] == ["not_found", "organization_only"]
     assert leads[0].searched_target == "Mesa Public Schools"
     assert leads[1].organization == "Chandler Unified School District"

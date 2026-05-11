@@ -212,6 +212,58 @@ def test_quality_report_serializes_for_benchmark_artifacts():
     assert payload["validation_status_counts"]["email"]["failed"] == 1
 
 
+def test_quality_report_reports_ready_blockers_for_non_crm_ready_rows():
+    missing_contact = _lead(
+        email_status="missing",
+        validation=_validation(email_status="missing"),
+        gate_passed=False,
+    )
+    missing_contact.tier = "review"
+    missing_contact.primary_filter_reason = "REVIEW: contact is missing; row is not CRM-ready."
+
+    unsupported_pattern = _lead(
+        email_status="unsupported",
+        validation=_validation(email_status="unsupported"),
+        gate_passed=False,
+    )
+    unsupported_pattern.tier = "review"
+    unsupported_pattern.primary_filter_reason = "REVIEW: contact is unsupported; row is not CRM-ready."
+
+    unsupported_title = _lead(
+        email_status="verified_found",
+        validation=_validation(title_status="unsupported", email_status="verified_found"),
+        gate_passed=False,
+    )
+    unsupported_title.tier = "review"
+    unsupported_title.primary_filter_reason = "REVIEW: name, title, or organization lacks direct source support."
+
+    report = build_quality_report(
+        [
+            missing_contact,
+            unsupported_pattern,
+            unsupported_title,
+            _organization_only(),
+        ],
+        artifact_kind="benchmark",
+        artifact_id="ready-blocker-check",
+        query="operations leaders in Austin",
+    )
+
+    assert report.ready_blocker_counts == {
+        "no_contact_source": 1,
+        "no_validated_domain_pattern": 1,
+        "title_unsupported": 1,
+        "organization_only": 1,
+    }
+    assert [entry["blocker"] for entry in report.candidate_ready_blockers] == [
+        "no_contact_source",
+        "no_validated_domain_pattern",
+        "title_unsupported",
+        "organization_only",
+    ]
+    assert report.to_payload()["candidate_ready_blockers"][0]["reason"].startswith("REVIEW:")
+
+
 def test_quality_report_passes_clean_runs_against_default_gate_thresholds():
     report = build_quality_report(
         [

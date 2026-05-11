@@ -188,5 +188,46 @@ def test_run_live_benchmark_suite_saves_raw_outputs_and_quality_summary(tmp_path
     assert quality_summary["case_summaries"]["privacy-reject-homeowner-phones"]["http_status"] == 422
     assert quality_summary["case_summaries"]["privacy-reject-homeowner-phones"]["guardrail_status"] == "blocked"
     assert quality_summary["case_summaries"]["privacy-reject-homeowner-phones"]["quality_status"] == "expected_privacy_refusal"
+    assert quality_summary["case_summaries"]["privacy-reject-homeowner-phones"]["ready_blocker_counts"] == {
+        "privacy_refusal": 1
+    }
     assert quality_summary["case_summaries"]["privacy-reject-homeowner-phones"]["quality_report"] is None
     assert quality_summary["case_summaries"]["privacy-reject-homeowner-phones"]["volume_floor_status"] == "expected_privacy_refusal"
+
+
+def test_run_live_benchmark_suite_writes_partial_artifacts_on_timeout(tmp_path: Path):
+    fixture_pack = build_operator_evidence_fixture_pack()
+    cases = tuple(case for case in fixture_pack.cases if case.benchmark_id == "healthcare-it-phoenix")
+    trimmed_pack = type(fixture_pack)(pack_id=fixture_pack.pack_id, source=fixture_pack.source, cases=cases)
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/sandbox/reset":
+            return httpx.Response(200, json={"sandbox_usage": {"total_queries": 0, "total_rows": 0}})
+        raise httpx.TimeoutException("case timed out", request=request)
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    try:
+        summary = asyncio.run(
+            run_live_benchmark_suite(
+                api_base_url="http://white-rabbit.test",
+                api_token="test-token",
+                fixture_pack=trimmed_pack,
+                output_root=tmp_path,
+                client=client,
+            )
+        )
+    finally:
+        asyncio.run(client.aclose())
+
+    assert summary.case_results[0].status_code == 599
+    assert (tmp_path / "healthcare-it-phoenix.http").read_text(encoding="utf-8").strip() == "599"
+    saved_payload = json.loads((tmp_path / "healthcare-it-phoenix.json").read_text(encoding="utf-8"))
+    assert saved_payload["error_code"] == "runner_timeout"
+    assert saved_payload["partial_artifact"] is True
+    assert saved_payload["leads"] == []
+
+    quality_summary = json.loads((tmp_path / "quality-summary.json").read_text(encoding="utf-8"))
+    case_summary = quality_summary["case_summaries"]["healthcare-it-phoenix"]
+    assert case_summary["http_status"] == 599
+    assert case_summary["error_code"] == "runner_timeout"
+    assert case_summary["quality_report"]["total_candidates"] == 0

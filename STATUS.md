@@ -1,14 +1,14 @@
 # STATUS
 
-**Last updated:** 2026-05-11 by Codex rg3-r09b-remediation-slice
-**Branch:** rebuild/validated-leads-loop
+**Last updated:** 2026-05-11 by Codex prompt-a-r09b-contact-evidence
+**Branch:** feat/reset-r09b-contact-evidence-acquisition
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt A for `R09B - Contact and evidence acquisition pass` on `feat/reset-r09b-contact-evidence-acquisition`. RG3 remains held after the R09A Prompt C re-audit, Matt accepted the hold, and R09B is now the single ready remediation feature. Do not unlock RG4, start/merge the `DESIGN.md` mockup preflight, or sync `main`.
+**Next pointer:** Prompt B for `R09B - Contact and evidence acquisition pass` on `feat/reset-r09b-contact-evidence-acquisition`. RG3 remains held after the R09A Prompt C re-audit, and R09B is now implemented but not QA-merged. Do not unlock RG4, start/merge the `DESIGN.md` mockup preflight, or sync `main`.
 
 **Design direction handoff:** `DESIGN.md` is now captured as the future RG4 visual direction authority. A refreshed RG4 mockup/design preflight exists on `codex/rg4-design-preflight-2026-05-11` at commit `5c5a10f`, with six rendered screens under `docs/mockups/rg4-design-preflight-2026-05-11/` on that branch. It is an unmerged inspection artifact only; it does not unlock RG4. R10-R12 remain blocked until a future RG3 Prompt C advances and Matt approves the refreshed mockups for production implementation.
 
@@ -24,13 +24,13 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** R09B - Contact and evidence acquisition pass. This is an accepted RG3 remediation slice, not a new gate and not RG4. Do not unlock RG4 or sync `main`.
+**Next feature pointer:** No Prompt A feature is ready. R09B - Contact and evidence acquisition pass is waiting for Prompt B QA/merge. This is an accepted RG3 remediation slice, not a new gate and not RG4. Do not unlock RG4 or sync `main`.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
 **Final product mockup gate:** `DESIGN.md` is the future RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains the product-structure reference. A preflight artifact exists on `codex/rg4-design-preflight-2026-05-11`, but it remains unmerged and non-unlocking while RG3 is held. Matt must approve refreshed mockups after RG3 advances before production UI implementation.
 
-**Current feature branch QA status:** R07, R08, R09, and R09A are merged to `rebuild/validated-leads-loop`. The post-R09A RG3 Prompt C re-audit is complete and accepted with decision `hold`: R09A recovered broad categorized volume and funnel observability, but every evaluated live benchmark still has 0 high-trust usable rows and 0 contact-quality passes. No feature branch is waiting for QA. R09B is the only ready Prompt A feature; downstream RG4 work remains blocked until a future RG3 Prompt C records `advance`.
+**Current feature branch QA status:** R07, R08, R09, and R09A are merged to `rebuild/validated-leads-loop`. The post-R09A RG3 Prompt C re-audit is complete and accepted with decision `hold`: R09A recovered broad categorized volume and funnel observability, but every evaluated live benchmark still has 0 high-trust usable rows and 0 contact-quality passes. R09B is implemented on `feat/reset-r09b-contact-evidence-acquisition` and is the only feature branch waiting for Prompt B QA/merge. No Prompt A feature is ready; downstream RG4 work remains blocked until a future RG3 Prompt C records `advance`.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -43,7 +43,7 @@
 - RG2 search/source coverage gate report: `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`
 - RG3 validation semantics hold report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is in accepted-hold remediation with R09B ready; and RG4 remains blocked.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is in accepted-hold remediation with R09B waiting for Prompt B QA/merge; and RG4 remains blocked.
 
 Prior accepted gates:
 
@@ -71,13 +71,18 @@ Prior accepted gates:
 
 Feature: R09B - Contact and evidence acquisition pass
 Branch: `feat/reset-r09b-contact-evidence-acquisition`
-Status: `ready`
+Status: `waiting_prompt_b_qa`
 Why it exists: The post-R09A RG3 Prompt C re-audit held because R09A recovered broad volume but the complete live suite still had 0 high-trust usable rows and 0 contact-quality passes. Matt accepted the hold and asked to create R09B.
 Scope: Add a second targeted public-web evidence pass for promising `review` person rows and organization rows where the first pass found plausible target fit but no CRM-ready contact evidence; search only for source-backed contact evidence such as direct staff pages, leadership/team pages, department pages, board/agenda PDFs, contact pages, source snippets, and explicit organization-domain email pattern evidence; add READY-blocker reporting for no contact source, no validated domain pattern, source inaccessible, title unsupported, persona mismatch, organization-only, conflicting evidence, and privacy refusal; improve live benchmark runner timeout/partial-artifact behavior.
 Non-goals: No UI redesign, RG4, mockup merge, export polish, persistence, dogfood, paid contact-source integration, `main` sync, or lowering of the high-trust gate.
 Required verification: `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py tests/test_coverage.py tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py tests/test_live_benchmark_runner.py tests/test_quality_report.py -q`; `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`; `git diff --check`; saved replay or live benchmark artifacts under `audits/raw/reset-2026-05-10/r09b/`.
-Prompt B handoff after implementation: QA `feat/reset-r09b-contact-evidence-acquisition`; verify no unsupported/missing/inaccessible/guessed contacts become CRM-ready, at least one benchmark has nonzero contact-quality passes or a source-backed impossibility explanation, READY blockers are reported, runner timeouts produce partial artifacts, and no RG4/UI/export/main-sync scope creep landed.
-Next pointer: Prompt A for R09B.
+What changed: Prompt A added a bounded targeted contact-evidence pass after first validation and before tiering; it searches up to 8 promising review/person or organization-only rows, promotes direct person emails only from source-backed public snippets, allows `deduced_with_pattern_evidence` only from explicit organization-domain pattern evidence, keeps organization-only rows non-CRM-ready, adds READY-blocker reporting to quality payloads, and makes live benchmark timeouts write partial artifacts instead of aborting the suite.
+Tests or QA run:
+- `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py tests/test_coverage.py tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py tests/test_live_benchmark_runner.py tests/test_quality_report.py -q` (`74 passed`)
+- `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`45 passed`, existing datetime deprecation warnings)
+Artifacts: `.gstack/qa-reports/r09b-contact-evidence-acquisition-note-2026-05-11.md`; `audits/raw/reset-2026-05-10/r09b/replay/contact-evidence-pass.json`; `audits/raw/reset-2026-05-10/r09b/replay/quality-summary.json`; `audits/raw/reset-2026-05-10/r09b/replay/runner-timeout-partial.json`.
+Exact Prompt B handoff: QA `feat/reset-r09b-contact-evidence-acquisition`; verify the branch contains only R09B scope, rerun the required R09B core/API suites plus `git diff --check`, inspect `audits/raw/reset-2026-05-10/r09b/replay/quality-summary.json`, confirm no unsupported/missing/inaccessible/guessed contacts become CRM-ready, confirm direct email and explicit domain-pattern evidence are the only promotion paths, confirm READY blockers are reported for missing-contact and organization-only rows, confirm runner timeouts produce partial artifacts, and confirm no RG4/UI/export/main-sync scope creep landed. If QA passes, merge only to `rebuild/validated-leads-loop` and hand off Prompt C for RG3 re-audit; do not unlock RG4 from feature QA alone.
+Next pointer: Prompt B for R09B.
 Open questions: None. If R09B still yields 0 contact-quality passes after a real evidence-acquisition pass, Prompt C should force a product-positioning/vendor decision instead of pretending the current loop is CRM-ready.
 
 Feature: R09A - Live value recovery and benchmark funnel diagnosis
@@ -352,6 +357,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-11 | prompt-a-r09b-contact-evidence (Codex) | Implemented `R09B - Contact and evidence acquisition pass` on `feat/reset-r09b-contact-evidence-acquisition`: added a bounded targeted contact-evidence pass, source-backed direct-email and explicit-domain-pattern promotion only, READY-blocker reporting, and timeout partial artifacts. Verified required core/API suites; replay artifacts and QA note are saved under `audits/raw/reset-2026-05-10/r09b/replay/` and `.gstack/qa-reports/r09b-contact-evidence-acquisition-note-2026-05-11.md`. Branch is pending Prompt B QA/merge only; RG4, export, dogfood, and `main` remain blocked. |
 | 2026-05-11 | rg3-r09b-remediation-slice (Codex) | Landed Matt's accepted post-R09A RG3 hold into the reset control plane and created `R09B - Contact and evidence acquisition pass` as the single ready Prompt A feature. Recorded the RG4 design preflight branch as an unmerged inspection artifact only; RG4, R10-R12, export, dogfood, and `main` sync remain blocked until a future RG3 Prompt C records `advance`. |
 | 2026-05-11 | prompt-b-r09a-live-value-recovery (Codex) | QA-passed `R09A - Live value recovery and benchmark funnel diagnosis` on `feat/reset-r09a-live-value-recovery`: verified `git diff --check`, required core/API suites, replay artifact semantics, missing-contact safety, failed source-gap language, and live Scout artifacts for all six benchmark cases. Broad live cases now return 50 categorized rows and privacy refusal is expected, but contact-quality passes and high-trust usable rows remain zero. Report saved at `.gstack/qa-reports/qa-report-r09a-live-value-recovery-2026-05-11.md`; RG3 is ready for Prompt C audit after merge. |
 | 2026-05-11 | prompt-a-r09a-live-value-recovery (Codex) | Implemented `R09A - Live value recovery and benchmark funnel diagnosis` on `feat/reset-r09a-live-value-recovery`: added funnel counts/notes, broad Scout/Full high-volume execution, broad source-gap failed rows, active 50+ volume semantics, expected privacy-refusal handling, and safer failed/org-only/not-found reason language. Verified required core/API checks plus skipped integration marker; branch is pending Prompt B QA and merge. |

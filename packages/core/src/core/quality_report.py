@@ -7,6 +7,16 @@ from typing import Any, Literal, Mapping, Sequence
 from .models import Candidate, Lead
 
 QualityArtifactKind = Literal["run", "benchmark"]
+ReadyBlocker = Literal[
+    "no_contact_source",
+    "no_validated_domain_pattern",
+    "source_inaccessible",
+    "title_unsupported",
+    "persona_mismatch",
+    "organization_only",
+    "conflicting_evidence",
+    "privacy_refusal",
+]
 
 _PERSONAL_FIELD_STATUSES = ("supported", "unsupported", "missing", "failed")
 _CONTACT_STATUSES = (
@@ -78,6 +88,8 @@ class QualityReport:
     quality_gate_thresholds: dict[str, int | float] = field(default_factory=dict)
     candidate_category_counts: dict[str, int] = field(default_factory=dict)
     validation_status_counts: dict[str, dict[str, int]] = field(default_factory=dict)
+    ready_blocker_counts: dict[str, int] = field(default_factory=dict)
+    candidate_ready_blockers: list[dict[str, Any]] = field(default_factory=list)
 
     def to_payload(self) -> dict[str, Any]:
         return {
@@ -108,6 +120,8 @@ class QualityReport:
             "validation_status_counts": {
                 field_name: dict(counts) for field_name, counts in self.validation_status_counts.items()
             },
+            "ready_blocker_counts": dict(self.ready_blocker_counts),
+            "candidate_ready_blockers": [dict(blocker) for blocker in self.candidate_ready_blockers],
         }
 
 
@@ -148,6 +162,58 @@ def _evaluate_quality_gate(
     return not failures, tuple(failures)
 
 
+def _record_notes(candidate: Candidate, field_name: str) -> str:
+    return getattr(getattr(candidate.validation, field_name), "notes", "") or ""
+
+
+def _ready_blocker_for_candidate(candidate: Candidate) -> ReadyBlocker | None:
+    if getattr(candidate, "tier", None) == "high_trust_usable":
+        return None
+
+    reason = getattr(candidate, "primary_filter_reason", "") or ""
+    reason_lower = reason.lower()
+    if "conflict" in reason_lower or "contradict" in reason_lower:
+        return "conflicting_evidence"
+
+    if candidate.candidate_category == "organization_only":
+        return "organization_only"
+
+    if candidate.validation.source.status in {"failed", "missing"}:
+        return "source_inaccessible"
+
+    if isinstance(candidate, Lead):
+        if candidate.validation.title.status in {"unsupported", "missing", "failed"}:
+            return "title_unsupported"
+        if (
+            candidate.validation.name.status == "failed"
+            or candidate.validation.organization.status == "failed"
+            or "persona" in reason_lower
+        ):
+            return "persona_mismatch"
+        if candidate.validation.email.status == "missing":
+            return "no_contact_source"
+        if candidate.validation.email.status == "unsupported":
+            return "no_validated_domain_pattern"
+        if candidate.validation.email.status == "failed":
+            return "conflicting_evidence"
+
+    if candidate.candidate_category == "not_found":
+        return "no_contact_source"
+
+    if candidate.candidate_category == "failed":
+        notes = " ".join(
+            _record_notes(candidate, field_name)
+            for field_name in ("source", "name", "title", "organization", "email")
+        ).lower()
+        if "http_status=403" in notes or "http_status=404" in notes or "fetch_error" in notes:
+            return "source_inaccessible"
+        if "title" in reason_lower:
+            return "title_unsupported"
+        return "conflicting_evidence"
+
+    return None
+
+
 def build_quality_report(
     candidates: Sequence[Candidate],
     *,
@@ -170,8 +236,10 @@ def build_quality_report(
     fake_email_count = 0
     unsupported_email_count = 0
     high_noise_count = 0
+    ready_blocker_counter: Counter[str] = Counter()
+    candidate_ready_blockers: list[dict[str, Any]] = []
 
-    for candidate in candidates:
+    for index, candidate in enumerate(candidates):
         category = candidate.candidate_category
         if category not in category_counts:
             category_counts[category] = 0
@@ -211,6 +279,19 @@ def build_quality_report(
             source_support_count += 1
         if category in {"organization_only", "failed"} or validation.email.status in {"failed", "unsupported"}:
             high_noise_count += 1
+
+        ready_blocker = _ready_blocker_for_candidate(candidate)
+        if ready_blocker is not None:
+            ready_blocker_counter[ready_blocker] += 1
+            candidate_ready_blockers.append(
+                {
+                    "index": index,
+                    "candidate_category": candidate.candidate_category,
+                    "tier": getattr(candidate, "tier", None),
+                    "blocker": ready_blocker,
+                    "reason": getattr(candidate, "primary_filter_reason", "") or getattr(candidate, "explanation", ""),
+                }
+            )
 
     total_candidates = len(candidates)
     high_noise_rate = _rate(high_noise_count, total_candidates)
@@ -262,4 +343,6 @@ def build_quality_report(
         validation_status_counts={
             field_name: dict(counts) for field_name, counts in validation_status_counts.items()
         },
+        ready_blocker_counts=dict(ready_blocker_counter),
+        candidate_ready_blockers=candidate_ready_blockers,
     )

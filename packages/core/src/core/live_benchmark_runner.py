@@ -113,26 +113,55 @@ async def _run_case(
     status_path = output_root / f"{case.benchmark_id}.http"
 
     start = time.perf_counter()
-    response = await client.post(
-        f"{api_base_url.rstrip('/')}{route}",
-        headers={"x-white-rabbit-internal-token": api_token},
-        json=request_body,
-    )
-    elapsed_seconds = round(time.perf_counter() - start, 3)
     try:
-        payload = response.json()
-    except ValueError:
-        payload = {"error": response.text}
-
-    normalized_payload = _normalize_response_payload(case, response.status_code, payload, elapsed_seconds)
+        response = await client.post(
+            f"{api_base_url.rstrip('/')}{route}",
+            headers={"x-white-rabbit-internal-token": api_token},
+            json=request_body,
+        )
+        elapsed_seconds = round(time.perf_counter() - start, 3)
+        try:
+            payload = response.json()
+        except ValueError:
+            payload = {"error": response.text}
+        status_code = response.status_code
+        normalized_payload = _normalize_response_payload(case, status_code, payload, elapsed_seconds)
+    except httpx.TimeoutException as exc:
+        elapsed_seconds = round(time.perf_counter() - start, 3)
+        status_code = 599
+        normalized_payload = {
+            "benchmark_id": case.benchmark_id,
+            "prompt_label": case.prompt_label,
+            "query": case.query,
+            "mode": mode,
+            "runner_elapsed_seconds": elapsed_seconds,
+            "leads": [],
+            "error": f"Runner timeout: {exc}",
+            "error_code": "runner_timeout",
+            "partial_artifact": True,
+        }
+    except httpx.RequestError as exc:
+        elapsed_seconds = round(time.perf_counter() - start, 3)
+        status_code = 599
+        normalized_payload = {
+            "benchmark_id": case.benchmark_id,
+            "prompt_label": case.prompt_label,
+            "query": case.query,
+            "mode": mode,
+            "runner_elapsed_seconds": elapsed_seconds,
+            "leads": [],
+            "error": f"Runner request error: {exc}",
+            "error_code": "runner_request_error",
+            "partial_artifact": True,
+        }
     normalized_payload["mode"] = mode
     response_path.write_text(json.dumps(normalized_payload, indent=2, sort_keys=True), encoding="utf-8")
-    status_path.write_text(f"{response.status_code}\n", encoding="utf-8")
+    status_path.write_text(f"{status_code}\n", encoding="utf-8")
 
     return LiveBenchmarkCaseResult(
         benchmark_id=case.benchmark_id,
         mode=mode,
-        status_code=response.status_code,
+        status_code=status_code,
         response_path=response_path,
         status_path=status_path,
         elapsed_seconds=elapsed_seconds,
@@ -216,6 +245,18 @@ async def run_live_benchmark_suite(
                 "error_code": observation.error_code,
                 "quality_status": (
                     "expected_privacy_refusal" if observation.privacy_refusal else "evaluated"
+                ),
+                "ready_blocker_counts": (
+                    {"privacy_refusal": 1}
+                    if observation.privacy_refusal
+                    else observation.quality_report.ready_blocker_counts
+                    if observation.quality_report is not None
+                    else {}
+                ),
+                "candidate_ready_blockers": (
+                    []
+                    if observation.privacy_refusal or observation.quality_report is None
+                    else observation.quality_report.candidate_ready_blockers
                 ),
                 "quality_report": (
                     observation.quality_report.to_payload() if observation.quality_report is not None else None

@@ -9,6 +9,7 @@ import httpx
 from openai import AsyncOpenAI
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
+from .contact_evidence import acquire_contact_evidence
 from .coverage import (
     query_plan_from_search_results,
     source_collection_from_search_results,
@@ -704,6 +705,14 @@ async def scout(
 
     for candidate, validation in zip(leads, validations, strict=True):
         candidate.validation = validation
+
+    contact_evidence_stats = await acquire_contact_evidence(
+        leads,
+        query=query,
+        search_fn=search_fn,
+        tavily_key=tavily_key,
+        filters=filters,
+    )
     leads = _apply_tiering_and_conflict_resolution(leads)
     funnel_counts = _build_funnel_counts(
         search_results=search_results,
@@ -715,12 +724,23 @@ async def scout(
     metrics = RunMetrics(
         input_tokens=getattr(usage, "prompt_tokens", 0),
         output_tokens=getattr(usage, "completion_tokens", 0),
-        tavily_searches=tavily_searches,
+        tavily_searches=tavily_searches + contact_evidence_stats.tavily_searches,
         elapsed_seconds=round(time.perf_counter() - start_time, 2),
         tier_distribution=_tier_distribution(leads),
         funnel_counts=funnel_counts,
         funnel_notes=_build_funnel_notes(funnel_counts, max_leads=max_leads),
     )
+    if contact_evidence_stats.searched_candidates:
+        metrics.funnel_notes.append(
+            "Contact evidence pass searched "
+            f"{contact_evidence_stats.searched_candidates} promising rows and acquired "
+            f"{contact_evidence_stats.acquired_contacts} source-backed contacts."
+        )
+    if contact_evidence_stats.searched_organizations:
+        metrics.funnel_notes.append(
+            "Contact evidence pass checked "
+            f"{contact_evidence_stats.searched_organizations} organization-only rows for staff/contact sources."
+        )
     metrics.estimated_cost_usd = calculate_cost(metrics)
 
     return leads, metrics
