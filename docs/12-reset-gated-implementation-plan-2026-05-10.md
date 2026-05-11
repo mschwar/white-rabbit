@@ -5,9 +5,9 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B and R09C are merged to `rebuild/validated-leads-loop`; the post-R09C live re-run remained held, and Matt accepted a source-assisted remediation pivot based on Lee's April New Mexico school-district IT evidence. R09D is implemented on its feature branch and pending Prompt B QA.
-**Next Prompt A feature:** None while R09D is `implemented_pending_qa`.
-**Current Prompt B handoff:** QA `feat/reset-r09d-april-nm-manual-oracle` for R09D. Required checks: `cd packages/core && uv run pytest tests/test_manual_oracle.py -q`; `git diff --check`; privacy/scope review confirming no private email bodies or unrelated product-code/UI/API/search/export changes landed.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B and R09C are merged to `rebuild/validated-leads-loop`; the post-R09C live re-run remained held, and Matt accepted a source-assisted remediation pivot based on Lee's April New Mexico school-district IT evidence. R09D QA passed and merged to `rebuild/validated-leads-loop`; R09E is now ready.
+**Next Prompt A feature:** `feat/reset-r09e-k12-source-map-roster-collector` for R09E.
+**Current Prompt B handoff:** None. R09D is complete. Prompt A must implement R09E before Prompt B has a new branch to QA.
 **Current Prompt C handoff:** None. Do not rerun RG3 Prompt C until R09D-R09H are complete and merged.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
@@ -231,8 +231,8 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R09A | Live value recovery and benchmark funnel diagnosis | merged_to_rebuild_branch | `feat/reset-r09a-live-value-recovery` | core/API + live/replay benchmark artifacts |
 | R09B | Contact and evidence acquisition pass | merged_to_rebuild_branch | `feat/reset-r09b-contact-evidence-acquisition` | core/API + live/replay contact evidence artifacts |
 | R09C | Deep multi-source evidence acquisition and tier calibration | merged_to_rebuild_branch | `feat/reset-r09c-deep-multisource-evidence-tier-calibration` | core/API + live/replay evidence/tier calibration artifacts |
-| R09D | April NM evidence fixture and manual-oracle replay | implemented_pending_qa | `feat/reset-r09d-april-nm-manual-oracle` | core tests + sanitized evidence fixtures |
-| R09E | K-12 source map and public roster collector | blocked | `feat/reset-r09e-k12-source-map-roster-collector` | core tests + source-map replay |
+| R09D | April NM evidence fixture and manual-oracle replay | merged_to_rebuild_branch | `feat/reset-r09d-april-nm-manual-oracle` | core tests + sanitized evidence fixtures |
+| R09E | K-12 source map and public roster collector | ready | `feat/reset-r09e-k12-source-map-roster-collector` | core tests + source-map replay |
 | R09F | Source-assisted lead compiler | blocked | `feat/reset-r09f-source-assisted-lead-compiler` | core/API tests + replay artifacts |
 | R09G | Research-workbook tiering and export semantics | blocked | `feat/reset-r09g-research-workbook-tiering` | core/web or export tests as applicable |
 | R09H | Manual-oracle proof replay gate packet | blocked | `feat/reset-r09h-manual-oracle-proof-packet` | replay + live/source-assisted artifacts |
@@ -551,7 +551,7 @@ Post-R09C source-assisted remediation:
 - Report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`.
 - Raw evidence note: `audits/raw/reset-2026-05-10/april-nm-school-district-it-evidence-note.md`.
 - Reason: R09C improved deep evidence semantics, but live value still did not meet the operator loop. The product still produced `0` high-trust usable rows and `0` contact-quality passes in the Tavily-credit RG3 run. Lee's April New Mexico school-district IT package shows the stronger product path: source-assisted public research compiled into verified-contact, manual-lookup, not-found, and exportable rows.
-- Queue consequence: RG3 remains `in_progress / gate_hold`. R09D is the single next ready feature. R09E-R09H remain blocked. RG4, refreshed mockups, R10-R12, export work, dogfood, and `main` promotion remain blocked.
+- Queue consequence: RG3 remains `in_progress / gate_hold`. R09E is the single next ready feature. R09F-R09H remain blocked. RG4, refreshed mockups, R10-R12, export work, dogfood, and `main` promotion remain blocked.
 
 R09D scope:
 
@@ -581,47 +581,19 @@ R09D required verification:
 R09D Prompt A result:
 
 - Branch: `feat/reset-r09d-april-nm-manual-oracle`.
-- Status: `implemented_pending_qa`.
+- Status: `merged_to_rebuild_branch`.
 - Implemented only the fixture/replay harness slice: `packages/core/src/core/manual_oracle.py`, `packages/core/tests/fixtures/april_nm_manual_oracle.json`, `packages/core/tests/test_manual_oracle.py`, and `audits/raw/reset-2026-05-10/r09d/manual-oracle-current-failure-replay.json`.
 - Verification run by Prompt A: `cd packages/core && uv run pytest tests/test_manual_oracle.py -q` (`5 passed`).
+- Prompt B QA: `git diff --check 31a2b6518ec85babb20e2e73b933c30274fe13d2^ 31a2b6518ec85babb20e2e73b933c30274fe13d2` (clean), `cd packages/core && uv run pytest tests/test_manual_oracle.py -q` (`5 passed`), northstar drift review, and privacy/scope review passed.
 - Prompt A scope note: no product behavior, search, extraction, tiering, API, UI, export, persistence, dogfood, Prompt C, RG4, or `main` changes.
 
-R09D Prompt B handoff:
+R09D Prompt B result:
 
-```text
-You are Prompt B for the White Rabbit reset queue.
-
-Work in /Users/mschwar/Documents/white-rabbit. QA the current reset feature branch and merge only into rebuild/validated-leads-loop. Do not merge or target main.
-
-Selected feature branch: feat/reset-r09d-april-nm-manual-oracle
-Selected feature: R09D - April NM evidence fixture and manual-oracle replay
-
-First prove current state:
-- read AGENTS.md
-- read STATUS.md
-- read docs/00-product-northstar.md
-- read docs/12-reset-gated-implementation-plan-2026-05-10.md
-- identify R09D as the single feature branch currently waiting for QA from STATUS.md, docs/12, and pushed branch state
-- run git status --short --branch
-
-Required checks:
-- git diff --check
-- cd packages/core && uv run pytest tests/test_manual_oracle.py -q
-- privacy/scope review confirming the branch stores sanitized fixture data only, does not copy private email bodies, and does not alter product behavior, search, extraction, tiering, API, UI, export, persistence, dogfood, RG4, or main.
-- northstar drift check against docs/00-product-northstar.md
-
-If QA passes:
-- write the QA report under .gstack/qa-reports/
-- update STATUS.md and docs/12
-- mark R09D merged_to_rebuild_branch after merge and mark R09E ready as the next same-gate feature; keep R09F-R09H blocked until their predecessor passes, and keep RG4/R10-R12/export/dogfood/main blocked
-- commit QA/docs/fixes atomically if needed
-- push the feature branch
-- merge the feature branch into rebuild/validated-leads-loop only
-- push rebuild/validated-leads-loop
-- stop
-
-Do not unlock the next gate. Do not trigger Prompt C. Do not sync main.
-```
+- Status: `merged_to_rebuild_branch`.
+- QA report: `.gstack/qa-reports/qa-report-r09d-april-nm-manual-oracle-2026-05-11.md`.
+- Checks passed: `git diff --check 31a2b6518ec85babb20e2e73b933c30274fe13d2^ 31a2b6518ec85babb20e2e73b933c30274fe13d2`; `cd packages/core && uv run pytest tests/test_manual_oracle.py -q` (`5 passed`); northstar drift review; privacy/scope review.
+- Merge: `feat/reset-r09d-april-nm-manual-oracle` was fast-forwarded into `rebuild/validated-leads-loop`.
+- Queue consequence: R09E is now ready; R09F-R09H remain blocked until their predecessors pass; RG4/R10-R12/export/dogfood/main remain blocked.
 
 R09D Prompt A assignment:
 
