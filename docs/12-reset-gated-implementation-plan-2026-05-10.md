@@ -5,9 +5,9 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, ready for Prompt C audit after R09 merge.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, ready for Prompt C audit.
 **Next Prompt A feature:** None. RG4 remains blocked until Prompt C records an RG3 `advance`.
-**Current Prompt B handoff:** None. R09 passed Prompt B QA on `feat/reset-r09-tier-summary-semantics`; after the merge to `rebuild/validated-leads-loop`, Prompt C should audit RG3. Do not unlock RG4 or touch `main`.
+**Current Prompt B handoff:** None. R09 passed Prompt B QA on `feat/reset-r09-tier-summary-semantics` and is merged to `rebuild/validated-leads-loop`; Prompt C should audit RG3. Do not unlock RG4 or touch `main`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 

@@ -8,7 +8,7 @@
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt C should audit RG3 - Validation, Conflict, And Gate Semantics after R09 is merged to `rebuild/validated-leads-loop`. Do not unlock RG4 or sync `main` unless Prompt C records an advance and Matt explicitly asks for an operator-use promotion.
+**Next pointer:** Prompt C should audit RG3 - Validation, Conflict, And Gate Semantics. R09 is merged to `rebuild/validated-leads-loop`. Do not unlock RG4 or sync `main` unless Prompt C records an advance and Matt explicitly asks for an operator-use promotion.
 
 **Open question:** If these become production brand assets, replace the upscaled raster crops with a clean vector or native high-resolution source when available.
 
@@ -22,13 +22,13 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** None. R09 is the final RG3 feature and passed Prompt B QA; RG3 is ready for Prompt C audit after the R09 merge lands. Do not unlock RG4 or sync `main`.
+**Next feature pointer:** None. R09 is the final RG3 feature and is merged; RG3 is ready for Prompt C audit. Do not unlock RG4 or sync `main`.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
 **Final product mockup gate:** Inspect `docs/mockups/final-product-2026-05-10/index.html` before assigning Prompt A implementation. R10-R13 must treat it as the visual contract for live-demo high-volume tier distribution unless Matt approves a different direction; RG4/RG5 Prompt C audits must compare live screenshots against it.
 
-**Current feature branch QA status:** R07 and R08 are merged to `rebuild/validated-leads-loop`. R09 passed Prompt B QA on `feat/reset-r09-tier-summary-semantics`; after the merge, RG3 is ready for Prompt C audit.
+**Current feature branch QA status:** R07, R08, and R09 are merged to `rebuild/validated-leads-loop`. RG3 is ready for Prompt C audit.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -40,7 +40,7 @@
 - RG1 benchmark harness gate report: `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`
 - RG2 search/source coverage gate report: `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is ready for Prompt C audit after R09's merge; and RG4 remains blocked.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is ready for Prompt C audit; and RG4 remains blocked.
 
 Prior accepted gates:
 
@@ -78,7 +78,7 @@ Tests or QA run:
 - Playwright browser QA on `http://localhost:3007/scout?qa=validation-buckets` (desktop and mobile fixture tier summary rendered with READY, REVIEW, ORG-ONLY, and NOT FOUND rows)
 Screenshots or report: `.gstack/qa-reports/qa-report-r09-tier-summary-semantics-2026-05-11.md`, `.gstack/qa-reports/screenshots/r09-prompt-b-desktop.png`, and `.gstack/qa-reports/screenshots/r09-prompt-b-mobile.png`. No UI redesign, RG4 work, export rewrite, or `main` sync was done.
 Northstar reflection: R09 reduces false confidence by making READY depend on validation-backed tiering while keeping review, organization-only, not-found, and failed rows visible with explicit reasons and tier counts.
-Exact Prompt C handoff: Audit RG3 - Validation, Conflict, And Gate Semantics after R09 is merged to `rebuild/validated-leads-loop`. Confirm R07-R09 are merged, run the RG3 full evaluation/audit from `docs/12-reset-gated-implementation-plan-2026-05-10.md`, and write `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`. Do not unlock RG4 unless Prompt C records an `advance`; do not sync `main`.
+Exact Prompt C handoff: Audit RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop`. Confirm R07-R09 are merged, run the RG3 full evaluation/audit from `docs/12-reset-gated-implementation-plan-2026-05-10.md`, and write `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`. Do not unlock RG4 unless Prompt C records an `advance`; do not sync `main`.
 Next pointer: Prompt C for RG3.
 Open questions: Local browser API startup is still affected by an existing Ollama-routed OpenAI env mismatch (`gpt-4o-mini` not available at `http://localhost:11434/v1`); this did not block API tests or fixture browser QA, but Prompt C should use the intended live/replay environment for gate evidence.
 
@@ -245,11 +245,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. R00-R09 are merged or passing Prompt B merge; RG2 advanced as a search/source coverage gate; RG3 is ready for Prompt C audit after the R09 merge; W5 remains held; W6 remains blocked.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. R00-R09 are merged; RG2 advanced as a search/source coverage gate; RG3 is ready for Prompt C audit; W5 remains held; W6 remains blocked.
 
 ## Next concrete task
 
-- Run Prompt C for RG3 - Validation, Conflict, And Gate Semantics after the R09 merge lands on `rebuild/validated-leads-loop`. Do not unlock RG4 or sync `main`.
+- Run Prompt C for RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop`. Do not unlock RG4 or sync `main`.
 
 ## Open questions for Matt
 
