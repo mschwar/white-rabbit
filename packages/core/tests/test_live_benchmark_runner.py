@@ -182,7 +182,15 @@ def test_run_live_benchmark_suite_saves_raw_outputs_and_quality_summary(tmp_path
         "person_rows": 1,
         "high_trust_usable_rows": 1,
         "contact_quality_passes": 1,
+        "contact_evidence_candidates_searched": 0,
+        "contact_evidence_searches": 0,
+        "contact_evidence_contacts_acquired": 0,
+        "contact_evidence_field_corroborations": 0,
+        "contact_evidence_conflicting_signals": 0,
+        "contact_evidence_review_to_high_trust": 0,
     }
+    assert quality_summary["theme_summaries"]["named_account"]["contact_quality_passes"] == 1
+    assert quality_summary["theme_summaries"]["named_account"]["high_trust_usable_yield"] == 1.0
     assert quality_summary["case_summaries"]["thomas-arizona-k12"]["minimum_escape_rows"] == 8
     assert quality_summary["case_summaries"]["thomas-arizona-k12"]["target_categorized_rows"] == 8
     assert quality_summary["case_summaries"]["privacy-reject-homeowner-phones"]["http_status"] == 422

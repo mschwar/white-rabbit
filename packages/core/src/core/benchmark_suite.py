@@ -261,6 +261,25 @@ def _empty_quality_counts() -> dict[str, int]:
     }
 
 
+def _empty_funnel_counts() -> dict[str, int]:
+    return {
+        "raw_vendor_hits": 0,
+        "deduped_sources": 0,
+        "source_snapshots": 0,
+        "extracted_candidates": 0,
+        "categorized_rows": 0,
+        "person_rows": 0,
+        "high_trust_usable_rows": 0,
+        "contact_quality_passes": 0,
+        "contact_evidence_candidates_searched": 0,
+        "contact_evidence_searches": 0,
+        "contact_evidence_contacts_acquired": 0,
+        "contact_evidence_field_corroborations": 0,
+        "contact_evidence_conflicting_signals": 0,
+        "contact_evidence_review_to_high_trust": 0,
+    }
+
+
 def _payload_funnel_counts(
     payload: Mapping[str, Any],
     *,
@@ -269,17 +288,12 @@ def _payload_funnel_counts(
     metrics = payload.get("metrics")
     if isinstance(metrics, Mapping) and isinstance(metrics.get("funnel_counts"), Mapping):
         return {
-            "raw_vendor_hits": int(metrics["funnel_counts"].get("raw_vendor_hits", 0) or 0),
-            "deduped_sources": int(metrics["funnel_counts"].get("deduped_sources", 0) or 0),
-            "source_snapshots": int(metrics["funnel_counts"].get("source_snapshots", 0) or 0),
-            "extracted_candidates": int(metrics["funnel_counts"].get("extracted_candidates", 0) or 0),
-            "categorized_rows": int(metrics["funnel_counts"].get("categorized_rows", 0) or 0),
-            "person_rows": int(metrics["funnel_counts"].get("person_rows", 0) or 0),
-            "high_trust_usable_rows": int(metrics["funnel_counts"].get("high_trust_usable_rows", 0) or 0),
-            "contact_quality_passes": int(metrics["funnel_counts"].get("contact_quality_passes", 0) or 0),
+            key: int(metrics["funnel_counts"].get(key, 0) or 0)
+            for key in _empty_funnel_counts()
         }
 
-    return {
+    counts = _empty_funnel_counts()
+    counts.update({
         "raw_vendor_hits": 0,
         "deduped_sources": 0,
         "source_snapshots": 0,
@@ -288,7 +302,8 @@ def _payload_funnel_counts(
         "person_rows": quality_counts["person_lead_count"],
         "high_trust_usable_rows": quality_counts["usable_count"],
         "contact_quality_passes": quality_counts["contact_quality_count"],
-    }
+    })
+    return counts
 
 
 def _volume_floor_status(

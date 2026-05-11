@@ -5,9 +5,9 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B is complete, but RG3 remains held because R09B + R09C together form the accepted remediation slice before any future Prompt C re-audit.
-**Next Prompt A feature:** R09C - Deep multi-source evidence acquisition and tier calibration.
-**Current Prompt B handoff:** None. R09B is merged to `rebuild/validated-leads-loop`; R09C is now the single ready feature.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B is complete and R09C is implemented on a feature branch awaiting Prompt B QA; RG3 remains held until R09C merges and a future Prompt C re-audits the gate.
+**Next Prompt A feature:** None. R09C is already implemented and waiting for Prompt B QA.
+**Current Prompt B handoff:** QA `feat/reset-r09c-deep-multisource-evidence-tier-calibration`. Do not merge to `main`; if QA passes, merge only to `rebuild/validated-leads-loop` and keep RG3 held for future Prompt C.
 **Current Prompt C handoff:** None. Do not trigger Prompt C for RG3 after R09B. RG3 Prompt C remains blocked until both R09B and R09C are merged, and only that future Prompt C may decide whether RG3 advances.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
@@ -210,7 +210,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R09 | Tier summary, score semantics, and reason language reset | merged_to_rebuild_branch | `feat/reset-r09-tier-summary-semantics` | core + web tests |
 | R09A | Live value recovery and benchmark funnel diagnosis | merged_to_rebuild_branch | `feat/reset-r09a-live-value-recovery` | core/API + live/replay benchmark artifacts |
 | R09B | Contact and evidence acquisition pass | merged_to_rebuild_branch | `feat/reset-r09b-contact-evidence-acquisition` | core/API + live/replay contact evidence artifacts |
-| R09C | Deep multi-source evidence acquisition and tier calibration | ready | `feat/reset-r09c-deep-multisource-evidence-tier-calibration` | core/API + live/replay evidence/tier calibration artifacts |
+| R09C | Deep multi-source evidence acquisition and tier calibration | waiting_prompt_b_qa | `feat/reset-r09c-deep-multisource-evidence-tier-calibration` | core/API + live/replay evidence/tier calibration artifacts |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | blocked | `feat/reset-r12-evidence-dossier-review` | browser |
@@ -504,11 +504,11 @@ R09C expected evidence:
 R09C Prompt A implementation handoff:
 
 - Branch: `feat/reset-r09c-deep-multisource-evidence-tier-calibration`.
-- Status: `ready`.
-- Prompt A change summary: Pending Matt's separate high-level R09C instructions. This feature is the single ready assignment, but no agent should start from ad hoc paraphrase once those instructions are provided.
-- Prompt A verification: run the required R09C core/API suites and `git diff --check`.
-- Evidence artifacts: save under `audits/raw/reset-2026-05-10/r09c/` and `.gstack/qa-reports/`.
-- Exact Prompt B handoff: If QA passes, merge only to `rebuild/validated-leads-loop`, keep RG3 as `in_progress / gate_hold`, and hand off the future RG3 Prompt C only after confirming both R09B and R09C are merged. Do not unlock RG4, refreshed mockups, R10-R12, R13-R15, export work, or `main` from feature QA alone.
+- Status: `waiting_prompt_b_qa`.
+- Prompt A change summary: Extended the R09B pass into a bounded multi-hop public-web contact/evidence pass across exact person/org, source-domain, staff/directory/team, department, board/agenda/PDF, contact/email-format, and news/press paths. Added page-type detection, lightweight cross-source corroboration/conflict tracking, stricter contact-quality counting so failed/non-person rows do not inflate contact passes, sharper review reasons for deep-contact misses, and benchmark observability for contact-evidence searches, contacts acquired, conflicts, and review-to-high-trust movement by case/theme.
+- Prompt A verification: required R09C core suite (`76 passed`); API suite (`45 passed`, existing datetime deprecation warnings); integration marker run (`6 skipped`, no live integration credentials used); `git diff --check` passed.
+- Evidence artifacts: `.gstack/qa-reports/r09c-deep-multisource-evidence-tier-calibration-note-2026-05-11.md`; `audits/raw/reset-2026-05-10/r09c/replay/deep-contact-evidence-pass.json`; `audits/raw/reset-2026-05-10/r09c/replay/quality-summary.json`.
+- Exact Prompt B handoff: QA `feat/reset-r09c-deep-multisource-evidence-tier-calibration`; verify the branch contains only R09C scope, rerun the required R09C core/API suites plus `git diff --check`, inspect the R09C replay artifacts, confirm missing/unsupported/inaccessible/conflicting/guessed contacts do not become CRM-ready, confirm contact-quality counts do not include failed/non-person rows, confirm theme-level benchmark summaries expose contact acquisition success and high-trust yield, and confirm no RG4/UI/export/persistence/dogfood/main-sync scope landed. If QA passes, merge only to `rebuild/validated-leads-loop`; keep RG3 in `in_progress / gate_hold` and hand off a future RG3 Prompt C only after confirming both R09B and R09C are merged. Do not unlock RG4, refreshed mockups, R10-R12, R13-R15, export work, or `main` from feature QA alone.
 
 R09C Prompt A draft for final instruction fill-in:
 

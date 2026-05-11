@@ -268,7 +268,7 @@ def build_quality_report(
         elif category == "failed":
             failed_count += 1
 
-        if validation.email.status in _USABLE_CONTACT_STATUSES:
+        if isinstance(candidate, Lead) and validation.email.status in _USABLE_CONTACT_STATUSES:
             contact_quality_count += 1
         elif validation.email.status == "failed":
             fake_email_count += 1

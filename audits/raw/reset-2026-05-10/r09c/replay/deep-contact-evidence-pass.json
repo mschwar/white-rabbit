@@ -1,0 +1,220 @@
+{
+  "feature": "R09C - Deep multi-source evidence acquisition and tier calibration",
+  "leads": [
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.8,
+      "contact_score": 0.9,
+      "email": "jordan.lee@example.com",
+      "email_status": "verified_found",
+      "evidence_score": 0.9,
+      "explanation": "Identity was supported before the deeper contact pass; contact was missing.",
+      "fit_score": 0.9,
+      "gate_passed": true,
+      "icebreaker": "I saw your VP Operations role at Example Corp in public source evidence.",
+      "id": null,
+      "name": "Jordan Lee",
+      "organization": "Example Corp",
+      "primary_filter_reason": "READY: supported person, organization, source, and usable contact cleared the evidence gate.",
+      "source_url": "https://examplecorp.example/profile/jordan-lee",
+      "tier": "high_trust_usable",
+      "title": "VP Operations",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "Example Corp staff directory Jordan Lee VP Operations at Example Corp email jordan.lee@example.com. https://examplecorp.example/staff",
+          "notes": "Direct person email found in targeted public-web evidence pass on a staff_directory source; corroborating_sources=1.",
+          "source_url": "https://examplecorp.example/staff",
+          "status": "verified_found"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "supported"
+        }
+      },
+      "why_target": "VP Operations at Example Corp matches the operations-leader target."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.8,
+      "contact_score": 0.1,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.9,
+      "explanation": "Identity was supported before the deeper contact pass; contact was missing.",
+      "fit_score": 0.9,
+      "gate_passed": false,
+      "icebreaker": "I saw your Director of Operations role at Acme Manufacturing in public source evidence.",
+      "id": null,
+      "name": "Taylor Chen",
+      "organization": "Acme Manufacturing",
+      "primary_filter_reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+      "source_url": "https://acmemanufacturing.example/profile/taylor-chen",
+      "tier": "review",
+      "title": "Director of Operations",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "Deep contact pass searched page_types=leadership_team; corroborating_sources=1; no direct person email or explicit domain pattern found.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "supported"
+        }
+      },
+      "why_target": "Director of Operations at Acme Manufacturing matches the operations-leader target."
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence:  cross_check_conflicts=Possible stale role signal on https://northstarparts.example/archive.",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence:  cross_check_conflicts=Possible stale role signal on https://northstarparts.example/archive.",
+      "id": null,
+      "organization": "Northstar Parts",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence:  cross_check_conflicts=Possible stale role signal on https://northstarparts.example/archive.",
+      "searched_target": "Northstar Parts",
+      "source_url": "https://northstarparts.example/profile/morgan-ray",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "Northstar Parts leadership archive Morgan Ray is the former Head of Operations at Northstar Parts. Contact morgan.ray@northstarparts.example. https://northstarparts.example/archive",
+          "notes": "Direct person email found in targeted public-web evidence pass on a leadership_team source; corroborating_sources=1.",
+          "source_url": "https://northstarparts.example/archive",
+          "status": "verified_found"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": " cross_check_conflicts=Possible stale role signal on https://northstarparts.example/archive.",
+          "source_url": null,
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "supported"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "estimated_cost_usd": 0.080045,
+    "funnel_counts": {
+      "categorized_rows": 3,
+      "contact_evidence_candidates_searched": 3,
+      "contact_evidence_conflicting_signals": 1,
+      "contact_evidence_contacts_acquired": 2,
+      "contact_evidence_field_corroborations": 3,
+      "contact_evidence_review_to_high_trust": 1,
+      "contact_evidence_searches": 7,
+      "contact_quality_passes": 1,
+      "deduped_sources": 0,
+      "extracted_candidates": 3,
+      "high_trust_usable_rows": 1,
+      "person_rows": 2,
+      "raw_vendor_hits": 0,
+      "source_snapshots": 0
+    },
+    "funnel_notes": [
+      "Deep contact evidence pass searched 3 promising rows and acquired 2 source-backed contacts; 1 rows gained enough contact evidence to clear the READY gate.",
+      "Deep contact evidence pass observed 3 field corroborations and 1 conflicting signals across public-web sources."
+    ],
+    "tavily_searches": 8,
+    "tier_distribution": {
+      "failed": 1,
+      "high_trust_usable": 1,
+      "not_found": 0,
+      "organization_only": 0,
+      "review": 1
+    }
+  },
+  "scenario": "deterministic replay fixture covering review-to-ready, review blocker, and conflict downgrade"
+}

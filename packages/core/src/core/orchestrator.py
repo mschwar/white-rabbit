@@ -9,7 +9,7 @@ import httpx
 from openai import AsyncOpenAI
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
-from .contact_evidence import acquire_contact_evidence
+from .contact_evidence import ContactEvidenceStats, acquire_contact_evidence
 from .coverage import (
     query_plan_from_search_results,
     source_collection_from_search_results,
@@ -461,6 +461,9 @@ def _conflict_reason(candidate: Lead) -> str | None:
     source_status = _validation_status(candidate, "source")
     if source_status in {"failed", "missing"}:
         return f"Source could not validate the person row: {_validation_note(candidate, 'source')}"
+    source_notes = _validation_note(candidate, "source").lower()
+    if "cross_check_conflicts=" in source_notes:
+        return f"Cross-source verification found conflicting evidence: {_validation_note(candidate, 'source')}"
 
     for field_name in ("name", "title", "organization"):
         status = _validation_status(candidate, field_name)
@@ -490,9 +493,25 @@ def _tier_person_lead(candidate: Lead) -> Lead | FailedCandidate:
 
     email_status = candidate.email_status
     if email_status not in EVIDENCE_GATE_CONTACT_STATUSES:
-        candidate.primary_filter_reason = f"REVIEW: contact is {email_status}; row is not CRM-ready."
+        email_note = _validation_note(candidate, "email")
+        if "Deep contact pass searched" in email_note:
+            candidate.primary_filter_reason = (
+                f"REVIEW: contact is {email_status}; deeper public-web pass did not find a direct email "
+                "or explicit domain-pattern source."
+            )
+        else:
+            candidate.primary_filter_reason = f"REVIEW: contact is {email_status}; row is not CRM-ready."
     elif any(_validation_status(candidate, field_name) != "supported" for field_name in ("name", "title", "organization")):
-        candidate.primary_filter_reason = "REVIEW: name, title, or organization lacks direct source support."
+        unsupported_fields = [
+            field_name
+            for field_name in ("name", "title", "organization")
+            if _validation_status(candidate, field_name) != "supported"
+        ]
+        candidate.primary_filter_reason = (
+            "REVIEW: "
+            + ", ".join(unsupported_fields)
+            + " lacks direct source support; contact evidence alone is not enough for READY."
+        )
     elif _validation_status(candidate, "source") != "supported":
         candidate.primary_filter_reason = "REVIEW: source does not provide enough direct support."
     else:
@@ -546,7 +565,8 @@ def _contact_quality_pass_count(candidates: list[Candidate]) -> int:
     return sum(
         1
         for candidate in candidates
-        if _validation_status(candidate, "email") in EVIDENCE_GATE_CONTACT_STATUSES
+        if isinstance(candidate, Lead)
+        and _validation_status(candidate, "email") in EVIDENCE_GATE_CONTACT_STATUSES
     )
 
 
@@ -555,6 +575,7 @@ def _build_funnel_counts(
     search_results: Any,
     extracted_candidate_count: int,
     categorized_rows: list[Candidate],
+    contact_evidence_stats: ContactEvidenceStats | None = None,
 ) -> dict[str, int]:
     source_collection = source_collection_from_search_results(search_results)
     raw_vendor_hits = int(getattr(search_results, "raw_result_count", len(search_results)))
@@ -566,7 +587,7 @@ def _build_funnel_counts(
     )
     tier_counts = _tier_distribution(categorized_rows)
 
-    return {
+    counts = {
         "raw_vendor_hits": raw_vendor_hits,
         "deduped_sources": deduped_sources,
         "source_snapshots": source_snapshots,
@@ -576,6 +597,18 @@ def _build_funnel_counts(
         "high_trust_usable_rows": tier_counts["high_trust_usable"],
         "contact_quality_passes": _contact_quality_pass_count(categorized_rows),
     }
+    if contact_evidence_stats is not None:
+        counts.update(
+            {
+                "contact_evidence_candidates_searched": contact_evidence_stats.searched_candidates,
+                "contact_evidence_searches": contact_evidence_stats.tavily_searches,
+                "contact_evidence_contacts_acquired": contact_evidence_stats.acquired_contacts,
+                "contact_evidence_field_corroborations": contact_evidence_stats.field_corroborations,
+                "contact_evidence_conflicting_signals": contact_evidence_stats.conflicting_signals,
+                "contact_evidence_review_to_high_trust": contact_evidence_stats.review_to_high_trust_candidates,
+            }
+        )
+    return counts
 
 
 def _build_funnel_notes(funnel_counts: dict[str, int], *, max_leads: int) -> list[str]:
@@ -718,6 +751,7 @@ async def scout(
         search_results=search_results,
         extracted_candidate_count=extracted_candidate_count,
         categorized_rows=leads,
+        contact_evidence_stats=contact_evidence_stats,
     )
 
     usage = getattr(completion, "usage", None)
@@ -732,9 +766,16 @@ async def scout(
     )
     if contact_evidence_stats.searched_candidates:
         metrics.funnel_notes.append(
-            "Contact evidence pass searched "
+            "Deep contact evidence pass searched "
             f"{contact_evidence_stats.searched_candidates} promising rows and acquired "
-            f"{contact_evidence_stats.acquired_contacts} source-backed contacts."
+            f"{contact_evidence_stats.acquired_contacts} source-backed contacts; "
+            f"{contact_evidence_stats.review_to_high_trust_candidates} rows gained enough contact evidence "
+            "to clear the READY gate."
+        )
+        metrics.funnel_notes.append(
+            "Deep contact evidence pass observed "
+            f"{contact_evidence_stats.field_corroborations} field corroborations and "
+            f"{contact_evidence_stats.conflicting_signals} conflicting signals across public-web sources."
         )
     if contact_evidence_stats.searched_organizations:
         metrics.funnel_notes.append(

@@ -26,6 +26,12 @@ _REPO_ROOT = Path(__file__).resolve().parents[4]
 _DEFAULT_OUTPUT_ROOT = _REPO_ROOT / "audits" / "raw" / "reset-2026-05-10" / "rg1"
 
 
+def _rate(numerator: int, denominator: int) -> float:
+    if denominator <= 0:
+        return 0.0
+    return round(numerator / denominator, 3)
+
+
 @dataclass(frozen=True, slots=True)
 class LiveBenchmarkCaseResult:
     benchmark_id: str
@@ -210,6 +216,48 @@ async def run_live_benchmark_suite(
     observations = build_saved_benchmark_observations(output_root, fixture_pack=fixture_pack)
     suite = build_required_benchmark_suite(fixture_pack=fixture_pack)
     suite_report = evaluate_required_benchmark_suite(suite, observations)
+    theme_summaries: dict[str, dict[str, Any]] = {}
+    for case in fixture_pack.cases:
+        observation = observations[case.benchmark_id]
+        summary = theme_summaries.setdefault(
+            case.theme,
+            {
+                "case_count": 0,
+                "categorized_rows": 0,
+                "person_rows": 0,
+                "high_trust_usable_rows": 0,
+                "contact_quality_passes": 0,
+                "contact_evidence_candidates_searched": 0,
+                "contact_evidence_contacts_acquired": 0,
+                "contact_evidence_review_to_high_trust": 0,
+            },
+        )
+        funnel_counts = observation.funnel_counts or {}
+        summary["case_count"] += 1
+        summary["categorized_rows"] += observation.categorized_row_count
+        summary["person_rows"] += observation.person_lead_count
+        summary["high_trust_usable_rows"] += observation.high_trust_usable_count
+        summary["contact_quality_passes"] += int(funnel_counts.get("contact_quality_passes", 0) or 0)
+        summary["contact_evidence_candidates_searched"] += int(
+            funnel_counts.get("contact_evidence_candidates_searched", 0) or 0
+        )
+        summary["contact_evidence_contacts_acquired"] += int(
+            funnel_counts.get("contact_evidence_contacts_acquired", 0) or 0
+        )
+        summary["contact_evidence_review_to_high_trust"] += int(
+            funnel_counts.get("contact_evidence_review_to_high_trust", 0) or 0
+        )
+    for summary in theme_summaries.values():
+        summary["contact_quality_rate"] = _rate(summary["contact_quality_passes"], summary["categorized_rows"])
+        summary["high_trust_usable_yield"] = _rate(summary["high_trust_usable_rows"], summary["categorized_rows"])
+        summary["contact_acquisition_success_rate"] = _rate(
+            summary["contact_evidence_contacts_acquired"],
+            summary["contact_evidence_candidates_searched"],
+        )
+        summary["review_to_high_trust_rate"] = _rate(
+            summary["contact_evidence_review_to_high_trust"],
+            summary["contact_evidence_candidates_searched"],
+        )
     suite_payload = {
         "suite_id": suite_report.suite_id,
         "total_cases": suite_report.total_cases,
@@ -221,6 +269,7 @@ async def run_live_benchmark_suite(
         "privacy_refusal_cases": suite_report.privacy_refusal_cases,
         "guardrail_mismatches": list(suite_report.guardrail_mismatches),
         "observation_mismatches": list(suite_report.observation_mismatches),
+        "theme_summaries": theme_summaries,
         "case_summaries": {
             benchmark_id: {
                 "http_status": observation.http_status,
