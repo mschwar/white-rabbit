@@ -106,16 +106,20 @@ Prompt C: run the gate evaluation/audit after every feature in that gate has mer
 
 Prompt A never merges. Prompt B never unlocks the next gate. Prompt C is the only prompt that can record `advance`, update the next ready feature, or recommend an operator-use sync to `main`.
 
-Current kickoff order:
+Current kickoff order is resolved dynamically from `STATUS.md` and the reset feature/gate tables below.
+
+Do not use a hard-coded feature prompt from an earlier chat turn. Before every assignment, the agent must prove the current state from the repo:
 
 ```text
-1. Prompt A -> R00
-2. Prompt B -> QA/merge R00 into rebuild/validated-leads-loop
-3. Prompt C -> RG0 gate audit
-4. If and only if Prompt C records advance -> Prompt A -> R01
+1. Prompt A -> the single feature currently marked ready
+2. Prompt B -> the single feature branch currently waiting for QA
+3. Prompt C -> the current gate only after all features in that gate are merged
+4. If and only if Prompt C records advance -> the next gate's first feature becomes ready
 ```
 
 If Prompt C records `hold`, `revise`, `rollback`, or `kill`, no downstream Prompt A assignment is valid until that decision is resolved.
+
+If there are zero ready features, multiple ready features, a dirty working tree on the integration branch, or an already-started feature branch for the same feature, the agent must stop and report the ambiguity instead of starting duplicate work.
 
 ## Final Product Mockup Inspection Gate
 
@@ -622,70 +626,117 @@ Every gate report must include:
 ## Next Prompt A Assignment
 ```
 
-## First Prompt A Assignment
+## Reusable Copy-Paste Prompt A
 
-Assign the first implementation agent:
+Use this exact prompt for every implementation feature. The agent must resolve the next feature from the current repo state instead of receiving a hard-coded feature ID.
 
 ```text
-You are Prompt A for White Rabbit reset feature R00.
+You are Prompt A for the White Rabbit reset queue.
 
-Work in /Users/mschwar/Documents/white-rabbit on rebuild/validated-leads-loop only. Do not merge or target main.
+Work in /Users/mschwar/Documents/white-rabbit. Use rebuild/validated-leads-loop as the integration branch. Do not merge or target main.
 
-Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/12-reset-gated-implementation-plan-2026-05-10.md, docs/03-decisions.md, and audits/zero-trust-codebase-audit-2026-05-10.md.
+First prove current state:
+- read AGENTS.md
+- read STATUS.md
+- read docs/00-product-northstar.md
+- read docs/12-reset-gated-implementation-plan-2026-05-10.md
+- read docs/03-decisions.md
+- read docs/02-stack.md
+- run git status --short --branch
 
-Implement only R00 - W5 hold report and reset control docs on branch feat/reset-r00-w5-hold-control.
+Resolve the next feature from STATUS.md and the reset feature table:
+- choose exactly one feature marked ready
+- do not choose any feature already marked merged
+- do not choose any feature in a blocked gate
+- if zero or multiple features are ready, stop and report the ambiguity
+- if the selected feature branch already exists with unmerged work, resume that branch instead of recreating or duplicating it
+
+Implement only that selected feature on the branch named in its feature card.
 
 Required output:
-- .gstack/qa-reports/gate-w5-operator-loop-export.md with decision hold
-- report cites 2026-05-10 Lee/Thomas feedback: Scout returned 3 rows and Full returned 4 rows; 10-25 was the first escape from that failure, but ADR-013 now targets live-demo high-volume transparent tiering
-- docs/08-agentic-buildout-plan.md pointer to docs/12 as active reset queue
-- STATUS.md updated to show W5 held, W6 blocked, and RG0 pending audit
+- feature ID/name selected and why it was valid
+- branch used
+- implementation matching only that feature card
+- required verification from the feature card
 - git diff --check passing
-- rg verification from the R00 card
-- exact Prompt B handoff for R00 QA
+- STATUS.md and docs/12 updated with the feature status and exact Prompt B handoff
+- atomic conventional commit
+- pushed feature branch
 
-Commit and push the feature branch. Do not merge.
+Do not merge. Do not unlock the next feature or gate. Do not sync main.
 ```
 
-## First Prompt B Assignment
+## Reusable Copy-Paste Prompt B
 
-Assign the second agent only after Prompt A pushes `feat/reset-r00-w5-hold-control`:
+Use this exact prompt after Prompt A has pushed the current feature branch. The QA agent must resolve the feature branch from repo state and must not QA an already-merged feature.
 
 ```text
-You are Prompt B for White Rabbit reset feature R00.
+You are Prompt B for the White Rabbit reset queue.
 
-Work in /Users/mschwar/Documents/white-rabbit. QA only feat/reset-r00-w5-hold-control and merge only into rebuild/validated-leads-loop. Do not merge or target main.
+Work in /Users/mschwar/Documents/white-rabbit. QA the current reset feature branch and merge only into rebuild/validated-leads-loop. Do not merge or target main.
 
-Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/12-reset-gated-implementation-plan-2026-05-10.md, and .gstack/qa-reports/gate-w5-operator-loop-export.md.
+First prove current state:
+- read AGENTS.md
+- read STATUS.md
+- read docs/00-product-northstar.md
+- read docs/12-reset-gated-implementation-plan-2026-05-10.md
+- identify the single feature branch currently waiting for QA from STATUS.md, docs/12, and the pushed branch state
+- run git status --short --branch
+
+If there is no feature branch waiting for QA, more than one plausible feature branch, or the feature is already marked merged, stop and report the ambiguity.
 
 Required checks:
 - git diff --check
-- rg -n "RG0|R00|W5 hold|reset-gated|gate-w5-operator-loop-export|ADR-013|high-volume|3 rows|4 rows" docs STATUS.md .gstack/qa-reports audits/raw/zero-trust-2026-05-10
-- confirm product code was not changed
+- every verification command in the selected feature card
+- if UI-visible, browser QA plus screenshots under .gstack/qa-reports/screenshots/
+- if non-UI, explicit non-UI verification output
+- northstar drift check against docs/00-product-northstar.md
+- scope check proving no adjacent reset feature was implemented
 
-If QA passes, write the QA report, update STATUS.md, merge the feature branch into rebuild/validated-leads-loop, push rebuild/validated-leads-loop, and stop. Do not unlock R01. Do not sync main.
+If QA passes:
+- write the QA report under .gstack/qa-reports/
+- update STATUS.md and docs/12
+- commit QA/docs/fixes atomically if needed
+- push the feature branch
+- merge the feature branch into rebuild/validated-leads-loop only
+- push rebuild/validated-leads-loop
+- stop
+
+Do not unlock the next feature or gate. Do not sync main.
 ```
 
-## First Prompt C Assignment
+## Reusable Copy-Paste Prompt C
 
-Assign the third agent only after Prompt B merges R00 into `rebuild/validated-leads-loop`:
+Use this exact prompt only after Prompt B has merged every feature in the current gate into `rebuild/validated-leads-loop`.
 
 ```text
-You are Prompt C for reset gate RG0.
+You are Prompt C for the White Rabbit reset queue.
 
-Work in /Users/mschwar/Documents/white-rabbit. Run the RG0 gate evaluation and audit. Do not edit product code.
+Work in /Users/mschwar/Documents/white-rabbit. Run the current reset gate evaluation and audit. This is review/report work unless the gate decision requires small docs/status updates. Do not edit product code.
 
-Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/12-reset-gated-implementation-plan-2026-05-10.md, audits/zero-trust-codebase-audit-2026-05-10.md, audits/raw/zero-trust-2026-05-10/operator-feedback-volume-2026-05-10.md, and .gstack/qa-reports/gate-w5-operator-loop-export.md.
+First prove current state:
+- read AGENTS.md
+- read STATUS.md
+- read docs/00-product-northstar.md
+- read docs/12-reset-gated-implementation-plan-2026-05-10.md
+- read docs/13-pipeline-orchestrator-contract-2026.md
+- read audits/zero-trust-codebase-audit-2026-05-10.md
+- identify the current in_progress reset gate from the gate table
+- confirm every feature in that gate is merged before auditing the gate
+- confirm the gate has not already advanced
+- run git status --short --branch
 
-Create audit/reset-rg0-w5-hold from rebuild/validated-leads-loop.
+If the current gate is not ready for audit, or if it has already advanced, stop and report the exact blocker. Do not rerun a completed gate.
+
+Create an audit branch from rebuild/validated-leads-loop using audit/reset-rgN-short-name.
 
 Required output:
-- audits/gates/reset-2026-05-10/rg0-w5-hold.md
-- audits/raw/reset-2026-05-10/rg0/ with command output and cited evidence notes
+- audits/gates/reset-2026-05-10/rgN-short-name.md
+- audits/raw/reset-2026-05-10/rgN/ with command output and cited evidence notes
 - decision: advance / hold / revise / rollback / kill
-- Value Prop Verdict that explicitly says whether the current product gives Thomas/Lee enough result volume, evidence, and export value
+- Value Prop Verdict that explicitly says whether the current product gives enough result volume, evidence, and export value for the operator loop
 - Next Main Promotion Recommendation
-- if and only if advance: mark R01 ready and provide the exact next Prompt A assignment
+- if and only if advance: mark the next gate's first feature ready and provide the exact next Prompt A assignment
 
 Commit and push the audit branch. Do not sync main unless Matt explicitly asks after seeing the gate decision.
 ```

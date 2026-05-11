@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex Prompt A R01
+**Last updated:** 2026-05-10 by Codex Prompt A R01 plus prompt-loop-fix merge
 **Branch:** feat/reset-r01-operator-evidence-fixtures
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
@@ -18,7 +18,7 @@
 
 **Next feature pointer:** `R01 - Operator evidence fixture pack` is implemented and awaiting Prompt B QA on `feat/reset-r01-operator-evidence-fixtures`. RG1 remains in progress; no downstream Prompt A work is valid until R01 is QA'd and merged.
 
-**Kickoff workflow:** Use only the Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A implements one ready feature, Prompt B QA/merges it into `rebuild/validated-leads-loop`, and Prompt C runs the gate audit. Prompt C advanced RG0 and is the only prompt that can unlock the next gate or recommend a `main` operator-use sync.
+**Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs. Prompt C advanced RG0 and is the only prompt that can unlock the next gate or recommend a `main` operator-use sync.
 
 **Final product mockup gate:** Inspect `docs/mockups/final-product-2026-05-10/index.html` before assigning Prompt A implementation. R10-R13 must treat it as the visual contract for live-demo high-volume tier distribution unless Matt approves a different direction; RG4/RG5 Prompt C audits must compare live screenshots against it.
 
@@ -60,10 +60,12 @@ Prior accepted gates:
 Feature: `R01 - Operator evidence fixture pack`
 Branch: `feat/reset-r01-operator-evidence-fixtures`
 Status: `implemented_pending_qa`
-What changed: Added a canonical operator evidence fixture pack to `packages/core` for the six active RG1 prompts, preserved private evidence as source IDs plus privacy-safe summaries, wired the required benchmark suite to those reset cases, refreshed the benchmark JSON fixtures, and linked the Arizona golden fixture back to the operator evidence pack so R02/R03 can consume one canonical prompt/evidence surface.
+What changed: Added a canonical operator evidence fixture pack to `packages/core` for the six active RG1 prompts, preserved private evidence as source IDs plus privacy-safe summaries, wired the required benchmark suite to those reset cases, refreshed the benchmark JSON fixtures, and linked the Arizona golden fixture back to the operator evidence pack so R02/R03 can consume one canonical prompt/evidence surface. Also merged the reusable Prompt A/B/C control-doc fix so this feature branch no longer carries stale R00/RG0 copy-paste prompts.
 Tests or QA run:
 - `cd packages/core && uv run pytest tests/test_arizona_k12_benchmark.py tests/test_benchmark_suite.py tests/test_quality_report.py -q`
 - `git diff --check`
+- `rg -n "First Prompt|You are Prompt A for White Rabbit reset feature R00|You are Prompt B for White Rabbit reset feature R00|You are Prompt C for reset gate RG0|Assign the first implementation agent|Assign the second agent only after" docs/12-reset-gated-implementation-plan-2026-05-10.md`
+- `rg -n "Reusable Copy-Paste Prompt A|Reusable Copy-Paste Prompt B|Reusable Copy-Paste Prompt C|single feature currently marked ready|already advanced|duplicate work" docs/12-reset-gated-implementation-plan-2026-05-10.md STATUS.md`
 Screenshots or report: none; R01 is non-UI.
 Northstar reflection: This stays in the reset evidence layer. It does not change search, validation, or UI behavior. It gives the next gates a canonical, audit-backed set of replay prompts and artifacts so benchmark work stops depending on scattered audit docs.
 Next pointer: Prompt B should QA `feat/reset-r01-operator-evidence-fixtures`, confirm the fixture pack matches the JSON fixtures and RG1 prompt list, and merge only into `rebuild/validated-leads-loop` if it passes.
@@ -265,6 +267,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | prompt-loop-fix (Codex) | Replaced stale hard-coded R00/RG0 copy-paste prompts with reusable A/B/C prompts that resolve the next feature, QA branch, and gate from current repo state, with stop rules for duplicate or ambiguous assignments. |
 | 2026-05-10 | mockup-copy-tightening (Codex) | Tightened only the final mockup copy: removed top tagline, pipeline-stage row, and principle list from the first screen; rewrote low-signal guidance into a concrete diagnosis plus exact broadening suggestions. |
 | 2026-05-10 | live-demo-pipeline-mockups (Codex) | Read Matt's CSV/XLSX pipeline artifacts, added ADR-013 and `docs/13-pipeline-orchestrator-contract-2026.md`, updated the orchestrator brief/reset docs, and rebuilt the mockups for live-demo copy, 50-500+ transparent tiering, filters, evidence actions, mobile review, and low-signal state. |
 | 2026-05-10 | high-volume-reset-contract (Codex) | Superseded the 10-25 ideal with ADR-012 high-volume transparent tiering, added `docs/Orchestrator_Agent_Implementation_Brief.md`, updated the northstar/reset plan, and revised the final product mockups to show 186 categorized candidates with high-trust/review/org-only/not-found/failed distribution. |
