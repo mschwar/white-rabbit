@@ -1,14 +1,14 @@
 # STATUS
 
-**Last updated:** 2026-05-11 by Codex Prompt B R09A
-**Branch:** feat/reset-r09a-live-value-recovery
+**Last updated:** 2026-05-11 by Codex Prompt C RG3 R09A re-audit
+**Branch:** audit/reset-rg3-r09a-value-audit
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt C audit for RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop` after the R09A merge. R09A passed Prompt B QA and should be treated as the final RG3 feature. Do not unlock RG4, start the `DESIGN.md` mockup preflight, merge to `main`, or sync `main`.
+**Next pointer:** RG3 remains held after the R09A Prompt C re-audit. Do not unlock RG4, start the `DESIGN.md` mockup preflight, merge this audit branch to `rebuild/validated-leads-loop`, merge to `main`, or sync `main` unless Matt explicitly accepts the hold/remediation path.
 
 **Design direction handoff:** `DESIGN.md` is now captured as the future RG4 visual direction authority. It does not unlock RG4. If RG3 Prompt C advances, the next assignment is a refreshed mockup/design preflight from `DESIGN.md`, not production R10 code. R10-R12 remain blocked until Matt approves refreshed mockups.
 
@@ -24,13 +24,13 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** No Prompt A or Prompt B feature is ready. R09A passed Prompt B QA and is the last RG3 remediation feature, so the next valid assignment is Prompt C audit for RG3 on `rebuild/validated-leads-loop`. This remains RG3, not RG4. Do not unlock RG4 or sync `main`.
+**Next feature pointer:** No Prompt A or Prompt B feature is ready. RG3 Prompt C re-audit after R09A recorded decision `hold`: broad volume recovered for most broad prompts, but live high-trust usable rows and contact-quality passes remain zero. No downstream work is valid until Matt accepts or adjusts the next RG3 remediation scope. This remains RG3, not RG4. Do not unlock RG4 or sync `main`.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
 **Final product mockup gate:** `DESIGN.md` is the future RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains the product-structure reference. Before R10 starts, a design/mockup agent must produce refreshed Empty, Loading, Results, Evidence Review, Low Signal, and Mobile Review mockups from `DESIGN.md`; Matt must approve those mockups before production UI implementation.
 
-**Current feature branch QA status:** R07, R08, R09, and R09A are merged or being merged to `rebuild/validated-leads-loop`. RG3 Prompt C audit is complete with decision `hold`, Matt accepted the hold/remediation path, and R09A passed Prompt B QA on `feat/reset-r09a-live-value-recovery`. Downstream RG4 work remains blocked until a new RG3 Prompt C records `advance`.
+**Current feature branch QA status:** R07, R08, R09, and R09A are merged to `rebuild/validated-leads-loop`. The post-R09A RG3 Prompt C re-audit is complete on `audit/reset-rg3-r09a-value-audit` with decision `hold`: R09A recovered broad categorized volume and funnel observability, but every evaluated live benchmark still has 0 high-trust usable rows and 0 contact-quality passes. Downstream RG4 work remains blocked until a future RG3 Prompt C records `advance`.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -43,7 +43,7 @@
 - RG2 search/source coverage gate report: `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`
 - RG3 validation semantics hold report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is ready for Prompt C audit after R09A Prompt B QA; and RG4 remains blocked.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is held after the post-R09A Prompt C re-audit; and RG4 remains blocked.
 
 Prior accepted gates:
 
@@ -83,8 +83,9 @@ Tests or QA run:
 - Prompt B live Scout run against `http://127.0.0.1:8014` with inherited Ollama routing cleared and `apps/api/.env` loaded: all six artifacts captured; broad live cases returned 50 categorized rows, privacy case returned expected 422 refusal, high-trust usable rows and contact-quality passes remain `0`.
 Artifacts: `.gstack/qa-reports/r09a-live-value-recovery-note-2026-05-11.md`; `.gstack/qa-reports/qa-report-r09a-live-value-recovery-2026-05-11.md`; `audits/raw/reset-2026-05-10/r09a/replay/quality-summary.json`; `audits/raw/reset-2026-05-10/r09a/live-prompt-b/quality-summary.json`.
 Prompt C handoff: Audit RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop` after R09A merges. Confirm R07-R09A are merged, rerun the RG3 full evaluation/audit from `docs/12-reset-gated-implementation-plan-2026-05-10.md`, and write/update `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`. R09A recovered broad categorized volume and funnel observability, but live contact quality and high-trust usable output remain zero, so RG3 must not advance from feature QA alone.
-Next pointer: Prompt C for RG3.
-Open questions: Prompt C must decide whether R09A's broad-volume recovery is enough to advance despite zero contact-quality passes, or whether RG3 remains held for contact/value recovery.
+Prompt C result: `hold` on `audit/reset-rg3-r09a-value-audit`. The gate did not advance because the complete R09A live suite still has 0 high-trust usable rows and 0 contact-quality passes across evaluated cases, and the current Prompt C re-run timed out after the first case. The audit report is `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`; raw notes are under `audits/raw/reset-2026-05-10/rg3/`.
+Next pointer: no Prompt A/B feature is ready. Matt must accept or revise the next RG3 remediation scope before more reset work starts.
+Open questions: What level of contact/value recovery should the next RG3 remediation target before RG4 mockup preflight can begin?
 
 Feature: R09 - Tier summary, score semantics, and reason language reset
 Branch: `feat/reset-r09-tier-summary-semantics`
