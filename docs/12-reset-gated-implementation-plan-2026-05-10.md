@@ -5,9 +5,9 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in progress.
-**Next Prompt A feature:** None while R09 awaits Prompt B QA.
-**Current Prompt B handoff:** QA R09 - Tier summary, score semantics, and reason language reset on branch `feat/reset-r09-tier-summary-semantics`. Run the R09 core/API/web verification, write the Prompt B QA report, and merge only to `rebuild/validated-leads-loop` if it passes. Do not unlock RG4 or touch `main`.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, ready for Prompt C audit after R09 merge.
+**Next Prompt A feature:** None. RG4 remains blocked until Prompt C records an RG3 `advance`.
+**Current Prompt B handoff:** None. R09 passed Prompt B QA on `feat/reset-r09-tier-summary-semantics`; after the merge to `rebuild/validated-leads-loop`, Prompt C should audit RG3. Do not unlock RG4 or touch `main`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -181,7 +181,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG0 | W5 Hold And Control Reset | R00 | gate_advanced | `audits/gates/reset-2026-05-10/rg0-w5-hold.md` |
 | RG1 | Operator Benchmark Harness | R01-R03 | gate_advanced | `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md` |
 | RG2 | Search Coverage And Source Collection | R04-R06 | gate_advanced | `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md` |
-| RG3 | Validation, Conflict, And Gate Semantics | R07-R09 | in_progress | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
+| RG3 | Validation, Conflict, And Gate Semantics | R07-R09 | gate_pending_audit | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
 | RG4 | Sales-First Operator UI | R10-R12 | blocked | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
 | RG5 | Sales-First Export And Persistence | R13-R14 | blocked | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
 | RG6 | Dogfood / Kill Decision | R15 | blocked | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md` |
@@ -199,7 +199,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R06 | Not-found and organization-only coverage writer | merged_to_rebuild_branch | `feat/reset-r06-nonperson-coverage` | core tests |
 | R07 | Inclusive extraction prompt and candidate parse salvage | merged_to_rebuild_branch | `feat/reset-r07-inclusive-extraction` | core/API tests |
 | R08 | Tiering engine, field validator, and conflict resolver | merged_to_rebuild_branch | `feat/reset-r08-tier-validation-conflicts` | core tests |
-| R09 | Tier summary, score semantics, and reason language reset | implemented_pending_qa | `feat/reset-r09-tier-summary-semantics` | core + web tests |
+| R09 | Tier summary, score semantics, and reason language reset | merged_to_rebuild_branch | `feat/reset-r09-tier-summary-semantics` | core + web tests |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | blocked | `feat/reset-r12-evidence-dossier-review` | browser |
