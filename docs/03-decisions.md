@@ -207,9 +207,22 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 ---
 
+## ADR-015 — Design direction is captured but cannot unlock UI implementation
+
+**Date:** 2026-05-11
+**Status:** Locked
+
+**Context.** A parallel design audit produced a new direction on `codex/design-vision-2026-05-11`: deep navy instrument chassis plus paper-white evidence table, with the rule "The brand leads once. Then the product speaks." The reset is still in RG3, and RG4 UI work remains blocked until the data-quality gate advances.
+
+**Decision.** Add `DESIGN.md` as the future visual direction authority for RG4, but treat it as planning input only. The May 10 mockup remains the product-structure reference, not the final visual direction. If RG3 advances, the next assignment is a refreshed mockup/design preflight from `DESIGN.md`, not production R10 implementation. R10-R12 stay blocked until Matt approves the refreshed mockups. The rabbit/icon problem remains quarantined until an approved vector exists.
+
+**Consequences.** Design direction can be reviewed and used to brief future mockup agents without contaminating RG3 evidence or unlocking UI work early. Prompt C for RG3 must cite `DESIGN.md` only as future RG4 input. Prompt A/B agents must not implement a new visual system, production logo, or RG4 UI until the reset plan explicitly marks that work ready after mockup approval.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-015, ADR-016, ...).
+1. Pick the next ADR number (ADR-016, ADR-017, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.

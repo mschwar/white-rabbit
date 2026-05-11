@@ -6,7 +6,7 @@
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
 **Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, ready for Prompt C audit.
-**Next Prompt A feature:** None. RG4 remains blocked until Prompt C records an RG3 `advance`.
+**Next Prompt A feature:** None. RG4 remains blocked until Prompt C records an RG3 `advance`, a refreshed mockup pass is produced from `DESIGN.md`, and Matt approves that refreshed mockup.
 **Current Prompt B handoff:** None. R09 passed Prompt B QA on `feat/reset-r09-tier-summary-semantics` and is merged to `rebuild/validated-leads-loop`; Prompt C should audit RG3. Do not unlock RG4 or touch `main`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
@@ -123,16 +123,21 @@ If Prompt C records `hold`, `revise`, `rollback`, or `kill`, no downstream Promp
 
 If there are zero ready features, multiple ready features, a dirty working tree on the integration branch, or an already-started feature branch for the same feature, the agent must stop and report the ambiguity instead of starting duplicate work. Ignored local editor files such as `.obsidian/` do not count as dirty state.
 
-## Final Product Mockup Inspection Gate
+## Final Product Mockup And Design Preflight Gate
 
-Before reset UI/export implementation starts, Matt must inspect the final product mockup artifact:
+Before reset UI/export implementation starts, Matt must inspect the final product mockup artifacts and approve the active visual direction.
 
-- Mockup: `docs/mockups/final-product-2026-05-10/index.html`
-- Rendered screenshots: `.gstack/qa-reports/screenshots/final-product-mockups-2026-05-10/`
+- Visual direction authority: `DESIGN.md`.
+- Product-structure reference: `docs/mockups/final-product-2026-05-10/index.html`.
+- Existing rendered screenshots: `.gstack/qa-reports/screenshots/final-product-mockups-2026-05-10/`.
 
-This mockup is not production code. It is the visual contract for R10-R13: one search input, high-volume tier distribution, CRM-first fields, evidence one action away, sales-first export, and no Scout/Full/product-internals ceremony in the operator path.
+`DESIGN.md` is the future RG4 visual direction: deep navy instrument chassis, paper-white evidence table, restrained operator copy, and quarantined rabbit/icon handling until an approved vector exists. It is not production code and does not unlock RG4 by itself.
 
-Prompt A/B agents must not invent a different final UI direction during R10-R13 without a fresh Matt approval. Prompt C for RG4 and RG5 must compare browser screenshots against this mockup and explicitly record any intentional divergence. Live-demo UI copy must not mention internal people, agent prompts, gates, sprint labels, or implementation machinery.
+The May 10 mockup remains useful for product structure only: one search input, high-volume tier distribution, CRM-first fields, evidence one action away, sales-first export, and no Scout/Full/product-internals ceremony in the operator path.
+
+If RG3 Prompt C records `advance`, it must not mark R10 ready directly. Instead, it must assign a refreshed mockup/design preflight using `DESIGN.md`. That mockup pass must produce Empty, Loading, Results, Evidence Review, Low Signal, and Mobile Review artifacts for Matt inspection. R10-R12 remain blocked until Matt approves the refreshed mockups.
+
+Prompt A/B agents must not invent a different final UI direction during R10-R12 without fresh Matt approval. Prompt C for RG4 and RG5 must compare browser screenshots against the approved refreshed mockups and explicitly record any intentional divergence. Live-demo UI copy must not mention internal people, agent prompts, gates, sprint labels, or implementation machinery.
 
 ## Copy-Paste Prompt Authority
 
@@ -385,6 +390,14 @@ Features:
 
 Goal:
 Restore the calm v1 operator shape without restoring v1 implementation.
+
+Design preflight:
+
+- `DESIGN.md` is the visual direction authority for RG4.
+- The May 10 mockup remains the product-structure reference, not the final visual direction.
+- Before R10 starts, a design/mockup agent must produce refreshed Empty, Loading, Results, Evidence Review, Low Signal, and Mobile Review mockups from `DESIGN.md`.
+- Matt must approve the refreshed mockups before R10 can be marked `ready`.
+- The rabbit/icon problem stays quarantined: use a placeholder or approved existing asset only until an approved vector mark exists; do not create an ad hoc CSS rabbit, generated mascot, or competing mark in production UI.
 
 Implementation requirements:
 
@@ -640,6 +653,7 @@ First prove current state:
 - read docs/00-product-northstar.md
 - read docs/12-reset-gated-implementation-plan-2026-05-10.md
 - read docs/13-pipeline-orchestrator-contract-2026.md
+- read DESIGN.md if present; treat it as future RG4 visual direction only, not as evidence that the current data-quality gate passed
 - read audits/zero-trust-codebase-audit-2026-05-10.md
 - identify the current in_progress reset gate from the gate table
 - confirm every feature in that gate is merged before auditing the gate
@@ -656,7 +670,8 @@ Required output:
 - decision: advance / hold / revise / rollback / kill
 - Value Prop Verdict that explicitly says whether the current product gives enough result volume, evidence, and export value for the operator loop
 - Next Main Promotion Recommendation
-- if and only if advance: mark the next gate's first feature ready and provide the exact next Prompt A assignment
+- if and only if advance: unlock the next valid assignment from the integration branch and state whether that assignment is a Prompt A feature or a design/mockup preflight
+- if the current gate is RG3 and the decision is advance: do not mark R10 ready; assign the refreshed mockup/design preflight from DESIGN.md and leave R10-R12 blocked until Matt approves the refreshed mockups
 
 Commit and push the audit branch.
 

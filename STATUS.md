@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-11 by Codex prompt-b-r09-qa
+**Last updated:** 2026-05-11 by Codex design-direction-fold-in
 **Branch:** rebuild/validated-leads-loop
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
@@ -9,6 +9,8 @@
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
 **Next pointer:** Prompt C should audit RG3 - Validation, Conflict, And Gate Semantics. R09 is merged to `rebuild/validated-leads-loop`. Do not unlock RG4 or sync `main` unless Prompt C records an advance and Matt explicitly asks for an operator-use promotion.
+
+**Design direction handoff:** `DESIGN.md` is now captured as the future RG4 visual direction authority. It does not unlock RG4. If RG3 Prompt C advances, the next assignment is a refreshed mockup/design preflight from `DESIGN.md`, not production R10 code. R10-R12 remain blocked until Matt approves refreshed mockups.
 
 **Open question:** If these become production brand assets, replace the upscaled raster crops with a clean vector or native high-resolution source when available.
 
@@ -26,7 +28,7 @@
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
-**Final product mockup gate:** Inspect `docs/mockups/final-product-2026-05-10/index.html` before assigning Prompt A implementation. R10-R13 must treat it as the visual contract for live-demo high-volume tier distribution unless Matt approves a different direction; RG4/RG5 Prompt C audits must compare live screenshots against it.
+**Final product mockup gate:** `DESIGN.md` is the future RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains the product-structure reference. Before R10 starts, a design/mockup agent must produce refreshed Empty, Loading, Results, Evidence Review, Low Signal, and Mobile Review mockups from `DESIGN.md`; Matt must approve those mockups before production UI implementation.
 
 **Current feature branch QA status:** R07, R08, and R09 are merged to `rebuild/validated-leads-loop`. RG3 is ready for Prompt C audit.
 
@@ -54,6 +56,7 @@ Prior accepted gates:
 - `docs/08-agentic-buildout-plan.md` is historical F00-F23 context overlaid by the reset plan.
 - `docs/09-rebuild-phase-gates.md` is historical W0-W6 context overlaid by the reset plan.
 - `docs/13-pipeline-orchestrator-contract-2026.md` is the live-demo pipeline/output contract sourced from Matt's spreadsheet artifacts.
+- `DESIGN.md` is the future RG4 visual direction authority; it is not production UI implementation and does not unlock RG4 by itself.
 - `docs/10-documentation-audit-2026-05-09.md` records the repo-wide documentation audit and remediation performed on this branch.
 - `.gstack/qa-reports/qa-template-agentic-buildout.md` is a historical F00-F23 QA template; current reset QA follows Prompt B in `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -81,6 +84,15 @@ Northstar reflection: R09 reduces false confidence by making READY depend on val
 Exact Prompt C handoff: Audit RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop`. Confirm R07-R09 are merged, run the RG3 full evaluation/audit from `docs/12-reset-gated-implementation-plan-2026-05-10.md`, and write `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`. Do not unlock RG4 unless Prompt C records an `advance`; do not sync `main`.
 Next pointer: Prompt C for RG3.
 Open questions: Local browser API startup is still affected by an existing Ollama-routed OpenAI env mismatch (`gpt-4o-mini` not available at `http://localhost:11434/v1`); this did not block API tests or fixture browser QA, but Prompt C should use the intended live/replay environment for gate evidence.
+
+Design fold-in:
+
+Artifact: `DESIGN.md`
+Branch: `codex/fold-design-direction`
+Status: `docs_only_ready_for_rg3_prompt_c`
+What changed: Captured the May 11 design direction as future RG4 input only: deep navy instrument chassis, paper-white evidence table, brand leads once then product speaks, and rabbit/icon quarantine until an approved vector exists. Updated the reset plan and ADRs so RG3 Prompt C cites `DESIGN.md` as future RG4 input, and RG4 requires refreshed mockups plus Matt approval before R10 can start.
+Tests or QA run: docs-only hygiene; no product code changed.
+Next design pointer: If RG3 Prompt C advances, hand the refreshed-mockup prompt from the final response to a design/mockup agent before assigning R10.
 
 Previous handoff:
 
@@ -294,6 +306,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-11 | design-direction-fold-in (Codex) | Folded `DESIGN.md` from `codex/design-vision-2026-05-11` into the reset control plane as future RG4 visual direction only. Added ADR-015 and updated `docs/12` so RG3 Prompt C cites the design doc as future RG4 input, but R10-R12 stay blocked until a refreshed mockup pass is approved by Matt. |
 | 2026-05-11 | prompt-b-r09-qa (Codex) | QA-passed `R09 - Tier summary, score semantics, and reason language reset` on `feat/reset-r09-tier-summary-semantics`: verified `git diff --check`, the required core/API suite, web tests/build, browser fixture screenshots, northstar drift, and that no R10-R14, RG4, export, persistence, or `main` work landed. Report saved at `.gstack/qa-reports/qa-report-r09-tier-summary-semantics-2026-05-11.md`. R09 is the last RG3 feature, so RG3 is ready for Prompt C audit after merge; RG4 remains blocked. |
 | 2026-05-11 | prompt-a-r09-implementation (Codex) | Implemented `R09 - Tier summary, score semantics, and reason language reset` on `feat/reset-r09-tier-summary-semantics`: capped evidence/contact signals from field validation, reset READY/REVIEW primary reason language, typed web tier metadata, and added tier distribution summary/copy updates without starting RG4 UI work. Verified required core/API/web tests and `git diff --check`; branch is pending Prompt B QA and merge. |
 | 2026-05-11 | prompt-b-r08-qa (Codex) | QA-passed `R08 - Tiering engine, field validator, and conflict resolver` on `feat/reset-r08-tier-validation-conflicts`: verified `git diff --check`, the required core validation/contact/scoring/orchestrator suite, full API tests, non-UI scope, northstar drift, and that no R09 score-language, UI, export, persistence, or gate-audit work landed. Report saved at `.gstack/qa-reports/qa-report-r08-tier-validation-conflicts-2026-05-11.md`. R09 is the next same-gate feature; RG4 remains blocked. |
