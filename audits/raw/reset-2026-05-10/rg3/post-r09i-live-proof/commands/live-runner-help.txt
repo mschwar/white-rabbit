@@ -1,0 +1,27 @@
+usage: live_benchmark_runner.py [-h] [--api-base-url API_BASE_URL]
+                                [--output-dir OUTPUT_DIR]
+                                [--mode {scout,full}] [--no-reset-sandbox]
+                                [--api-token API_TOKEN]
+                                [--startup-timeout-seconds STARTUP_TIMEOUT_SECONDS]
+                                [--skip-startup-check]
+
+Run the White Rabbit RG1 live benchmark suite.
+
+options:
+  -h, --help            show this help message and exit
+  --api-base-url API_BASE_URL
+  --output-dir OUTPUT_DIR
+                        Directory for per-benchmark JSON/HTTP artifacts and
+                        the quality summary.
+  --mode {scout,full}
+  --no-reset-sandbox    Skip the protected sandbox reset before running the
+                        suite.
+  --api-token API_TOKEN
+                        Internal API token. Defaults to WR_API_INTERNAL_TOKEN.
+  --startup-timeout-seconds STARTUP_TIMEOUT_SECONDS
+                        Seconds to wait for /health before writing startup-
+                        failure artifacts.
+  --skip-startup-check  Skip /health and /readiness startup diagnostics before
+                        running cases.
+
+exit=0

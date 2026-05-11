@@ -5,10 +5,10 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, gate_hold accepted. R09D-R09H passed QA and are merged to `rebuild/validated-leads-loop`, and the post-R09H Prompt C re-audit recorded `hold`: the source-assisted manual-oracle replay passes, but current live API evidence is unavailable because the API did not reach health during startup, and the latest complete saved live suite still has zero high-trust usable rows and zero contact-quality passes. Matt accepted the hold and authorized R09I. R09I passed Prompt B QA on its feature branch and is ready to merge.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, gate_hold after the post-R09I Prompt C audit. R09D-R09I are merged to `rebuild/validated-leads-loop`, and the post-R09I audit recorded `hold`: `/health` can now prove process liveness on a fresh API process, but `/readiness` can still time out and block the app, the live runner still cannot complete the current benchmark suite, and the direct `/scout` product path timed out on the first Thomas benchmark. The source-assisted manual-oracle replay still passes offline, but the current live operator loop does not prove result volume, evidence quality, contact-quality passes, or export value.
 **Next Prompt A feature:** None. R09I is the last same-gate feature.
-**Current Prompt B handoff:** None. R09I has completed Prompt B QA. Merge only to `rebuild/validated-leads-loop`, then run Prompt C from the integration branch.
-**Current Prompt C handoff:** Audit RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop` after R09I merges. Keep RG4/refreshed mockups/R10-R12/export/dogfood/main blocked unless the audit records `advance`.
+**Current Prompt B handoff:** None.
+**Current Prompt C handoff:** None until Matt accepts or revises the post-R09I hold. Keep RG4/refreshed mockups/R10-R12/export/dogfood/main blocked unless a future Prompt C records `advance`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -779,7 +779,7 @@ Before ending, update STATUS.md and docs/12 with the Prompt B handoff, write any
 R09I Prompt B QA handoff:
 
 - Branch: `feat/reset-r09i-api-startup-live-proof`.
-- Status: `waiting_for_prompt_b_qa`.
+- Status: `merged_to_rebuild_branch`.
 - Prompt A change summary: API startup no longer runs DB/vendor preflight before `/health`; `/health` is process liveness only; `/readiness` reports config, database, OpenAI, and Tavily readiness with redacted env presence and actionable status; the live benchmark runner waits for `/health`, captures readiness diagnostics, writes startup artifacts, and emits per-case `api_startup_failed` / HTTP 599 artifacts when health never answers.
 - Prompt A verification:
   - `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`48 passed`, existing datetime deprecation warnings)
@@ -787,6 +787,15 @@ R09I Prompt B QA handoff:
   - `cd packages/core && WR_API_INTERNAL_TOKEN=test-internal-token uv run python -m core.live_benchmark_runner --api-base-url http://127.0.0.1:8999 --api-token test-internal-token --output-dir ../../audits/raw/reset-2026-05-10/r09i/startup-failure-probe --startup-timeout-seconds 0.2` (wrote startup-failure and per-case artifacts)
 - Artifacts: `audits/raw/reset-2026-05-10/r09i/startup-failure-probe/`.
 - Exact Prompt B handoff: QA `feat/reset-r09i-api-startup-live-proof`; verify the branch contains only R09I startup/readiness diagnostics and live-harness reliability scope; rerun `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`, `cd packages/core && uv run pytest tests/test_live_benchmark_runner.py -q`, and `git diff --check`; inspect `audits/raw/reset-2026-05-10/r09i/startup-failure-probe/startup/startup-failure.json`, `startup/startup-diagnostics.json`, `startup/health.http`, per-case `*.http`/`*.json`, and `quality-summary.json`; confirm `/health` responds without DB/vendor readiness, `/readiness` reports DB/config/vendor readiness without secret values, startup failures write actionable artifacts with port/env-presence/timeout details, and failed startup marks every case `api_startup_failed` with HTTP 599 instead of ambiguous `000`-only evidence. Confirm no lead-quality logic, prompts, source-assisted compiler behavior, workbook/export semantics, UI, persistence, dogfood, RG4/R10-R12, or `main` promotion landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R09I `merged_to_rebuild_branch`, and hand off Prompt C for RG3 from current integration state while keeping downstream blocked unless Prompt C records `advance`.
+
+Post-R09I Prompt C result:
+
+- Branch: `audit/reset-rg3-live-proof`.
+- Decision: `hold`.
+- Report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`.
+- Raw notes: `audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/evidence-notes.md`; command outputs, live attempts, startup artifacts, and replay artifacts under `audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/`.
+- Reason: R09I improved process-liveness proof: a clean API process answered `/health` and the startup probe captured `health_ok=true`. RG3 still cannot advance because `/readiness` timed out, the live runner timed out on sandbox reset with an unhandled `httpx.ReadTimeout`, and the direct `/scout` attempt timed out on the first Thomas Arizona K-12 benchmark with zero returned rows. The current live product path therefore does not prove result volume, evidence quality, contact-quality passes, or export value. The April New Mexico source-assisted replay still passes offline with 17 workbook rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, sales-first export fields, and zero unsupported CRM-ready rows.
+- Queue consequence: RG3 remains `gate_hold`. No Prompt A, Prompt B, or Prompt C assignment is valid until Matt accepts the hold and assigns another same-gate remediation or revises the plan. RG4, refreshed mockups, R10-R12, export, dogfood, and `main` promotion remain blocked.
 
 RG3 full evaluation/audit:
 

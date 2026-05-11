@@ -1,6 +1,6 @@
 # Reset Gate Review - RG3 Validation, Conflict, And Gate Semantics
 
-**Branch:** `audit/reset-rg3-manual-oracle`
+**Branch:** `audit/reset-rg3-live-proof`
 **Integration branch:** `rebuild/validated-leads-loop`
 **Date:** 2026-05-11
 **Decision:** hold
@@ -9,20 +9,19 @@
 ## Evidence Used
 
 - Current reset docs: `AGENTS.md`, `STATUS.md`, `docs/00-product-northstar.md`, `docs/12-reset-gated-implementation-plan-2026-05-10.md`, `docs/13-pipeline-orchestrator-contract-2026.md`, and `docs/03-decisions.md`.
-- `DESIGN.md` was read only as future RG4 visual direction. It is not evidence that the current data-quality gate passed.
+- `DESIGN.md` was read only as future RG4 visual direction. It is not evidence that the RG3 data-quality gate passed.
 - Baseline audit: `audits/zero-trust-codebase-audit-2026-05-10.md`.
-- Current branch proof: `audit/reset-rg3-manual-oracle` at `a4dc4e9`, matching `origin/rebuild/validated-leads-loop`.
-- Feature merge proof: every RG3 feature branch from R07 through R09H is an ancestor of `origin/rebuild/validated-leads-loop`.
-- Current replay proof: `audits/raw/reset-2026-05-10/rg3/replay-r09h-reaudit/manual-oracle-proof-packet.json`.
-- Current raw command and health evidence: `audits/raw/reset-2026-05-10/rg3/commands/`.
-- Cited evidence notes: `audits/raw/reset-2026-05-10/rg3/evidence-notes-r09h-reaudit.md`.
+- Current branch proof: `audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/commands/state-proof.md`.
+- Post-R09I evidence notes: `audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/evidence-notes.md`.
+- Current manual-oracle replay packet: `audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/replay/manual-oracle-proof-packet.json`.
+- Current live-runner attempts and API logs under `audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/`.
 - Prior complete live suite after R09A: `audits/raw/reset-2026-05-10/r09a/live-prompt-b/quality-summary.json`.
-- Prior RG3 live hold baseline: `audits/raw/reset-2026-05-10/rg3/live/quality-summary.json`.
 
 ## Commands Run
 
 ```bash
 git fetch origin --prune
+git switch -c audit/reset-rg3-live-proof origin/rebuild/validated-leads-loop
 git status --short --branch
 git merge-base --is-ancestor origin/feat/reset-r07-inclusive-extraction origin/rebuild/validated-leads-loop
 git merge-base --is-ancestor origin/feat/reset-r08-tier-validation-conflicts origin/rebuild/validated-leads-loop
@@ -35,112 +34,120 @@ git merge-base --is-ancestor origin/feat/reset-r09e-k12-source-map-roster-collec
 git merge-base --is-ancestor origin/feat/reset-r09f-source-assisted-lead-compiler origin/rebuild/validated-leads-loop
 git merge-base --is-ancestor origin/feat/reset-r09g-research-workbook-tiering origin/rebuild/validated-leads-loop
 git merge-base --is-ancestor origin/feat/reset-r09h-manual-oracle-proof-packet origin/rebuild/validated-leads-loop
+git merge-base --is-ancestor origin/feat/reset-r09i-api-startup-live-proof origin/rebuild/validated-leads-loop
 git diff --check
+cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py tests/test_coverage.py tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py tests/test_live_benchmark_runner.py tests/test_quality_report.py -q
 cd packages/core && uv run pytest tests/test_manual_oracle_proof_packet.py tests/test_research_workbook.py tests/test_source_assisted_compiler.py tests/test_manual_oracle.py tests/test_k12_source_map.py -q
-cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py -q
-cd packages/core && uv run pytest tests/test_query_planner.py -q
-cd packages/core && uv run pytest tests/test_search.py -q
-cd packages/core && uv run pytest tests/test_coverage.py -q
-cd packages/core && uv run pytest tests/test_scoring.py -q
 cd packages/core && uv run pytest tests/test_live_benchmark_runner.py -q
-cd packages/core && uv run pytest tests/test_quality_report.py -q
-cd packages/core && uv run python -c "...write_r09h_proof_packet_artifacts(...)..."
 cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q
-cd apps/api && env -u OPENAI_BASE_URL -u OPENAI_API_KEY -u TAVILY_API_KEY uv run uvicorn api.main:app --host 127.0.0.1 --port 8016
-curl --max-time 5 http://127.0.0.1:8016/health
+cd packages/core && uv run python -m core.live_benchmark_runner --help
+cd packages/core && uv run python -c "...write_r09h_proof_packet_artifacts(...)..."
+cd apps/api && env -u OPENAI_BASE_URL -u OPENAI_API_KEY -u TAVILY_API_KEY -u WR_API_INTERNAL_TOKEN uv run uvicorn api.main:app --host 127.0.0.1 --port 8017
+curl --max-time 5 http://127.0.0.1:8017/health
+curl --max-time 8 http://127.0.0.1:8017/readiness
+cd packages/core && source ../../apps/api/.env && unset OPENAI_BASE_URL && uv run python -m core.live_benchmark_runner --api-base-url http://127.0.0.1:8017 --output-dir ../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live --mode scout --startup-timeout-seconds 20
+cd apps/api && env -u OPENAI_BASE_URL -u OPENAI_API_KEY -u TAVILY_API_KEY -u WR_API_INTERNAL_TOKEN uv run uvicorn api.main:app --host 127.0.0.1 --port 8018
+cd packages/core && source ../../apps/api/.env && unset OPENAI_BASE_URL && uv run python -m core.live_benchmark_runner --api-base-url http://127.0.0.1:8018 --output-dir ../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live-clean --mode scout --startup-timeout-seconds 30
+cd apps/api && env -u OPENAI_BASE_URL -u OPENAI_API_KEY -u TAVILY_API_KEY -u WR_API_INTERNAL_TOKEN uv run uvicorn api.main:app --host 127.0.0.1 --port 8019
+cd packages/core && source ../../apps/api/.env && unset OPENAI_BASE_URL && uv run python -m core.live_benchmark_runner --api-base-url http://127.0.0.1:8019 --output-dir ../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live-skip-startup --mode scout --skip-startup-check --no-reset-sandbox
+curl --max-time 5 http://127.0.0.1:8019/health
 ```
 
-Bounded verification note:
-
-- Passing outputs are saved under `audits/raw/reset-2026-05-10/rg3/commands/`.
-- The combined core suite, `tests/test_orchestrator.py` collection/import, and full API suite did not complete inside bounded runs. The API verbose run progressed through `test_scout_endpoint_returns_structured_error_on_orchestrator_failure` before timing out.
-- The local API process reached `Waiting for application startup` but never reached startup completion during the audit window; `/health` returned HTTP `000` both before and after the additional startup wait.
+Command outputs are saved under `audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/commands/`.
 
 ## Live Results
 
-No fresh RG3 live benchmark suite completed in this audit. The current API did not become healthy, so running `core.live_benchmark_runner` would not have produced a valid product run.
+No fresh complete RG3 live benchmark suite completed in this audit.
 
-Current API startup evidence:
+R09I did improve one blocker: on a clean API process, `/health` can answer as process liveness without waiting for dependency readiness. The clean startup probe on port 8018 recorded one successful health attempt in `0.007s`.
 
-| Check | Result | Evidence |
+The full live proof path is still not reliable enough to advance RG3:
+
+| Attempt | Result | Evidence |
 | --- | --- | --- |
-| Start API on `127.0.0.1:8016` with inherited `OPENAI_BASE_URL` cleared | Did not complete startup | `audits/raw/reset-2026-05-10/rg3/commands/api-server-r09h-reaudit.txt` |
-| `/health` after initial wait | `000` | `audits/raw/reset-2026-05-10/rg3/commands/api-health-r09h-reaudit.txt` |
-| `/health` after additional startup wait | `000` | `audits/raw/reset-2026-05-10/rg3/commands/api-health-after-startup-wait-r09h-reaudit.txt` |
+| Direct API check on 8017 | `/health` returned 200 after startup, but `/readiness` timed out after 8 seconds | `commands/api-health-readiness-8017-after-startup.txt` |
+| Live runner on 8017 after the timed-out readiness call | Startup probe failed all health attempts and wrote `api_startup_failed` / HTTP 599 artifacts for all six cases | `live/quality-summary.json` |
+| Clean live runner on 8018 | `/health` passed, `/readiness` was recorded as `unavailable`, then sandbox reset timed out with an unhandled `httpx.ReadTimeout` | `live-clean/startup/startup-diagnostics.json`, `commands/live-benchmark-runner-8018-clean.txt` |
+| Direct product-path run on 8019 with startup and sandbox reset skipped | First benchmark, `thomas-arizona-k12`, timed out after 120 seconds with `error_code=runner_timeout`; no returned rows | `live-skip-startup/thomas-arizona-k12.json` |
+| Health after the 8019 product-path timeout | `/health` timed out with HTTP `000` | `commands/api-health-8019-after-runner-timeout.txt` |
 
-Latest complete saved live suite after high-volume remediation, from R09A:
+Current post-R09I live summary from the 8017 runner:
 
-| Benchmark | HTTP | Categorized rows | Person rows | READY / high trust | Contact-quality passes | Review | Org-only | Not found | Failed | Volume status |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Thomas Arizona K-12 | 200 | 12 | 3 | 0 | 0 | 3 | 3 | 2 | 4 | minimum_met |
-| Lee commodity buyers | 200 | 50 | 2 | 0 | 0 | 2 | 2 | 0 | 46 | target_met |
-| Healthcare IT Phoenix | 200 | 50 | 3 | 0 | 0 | 3 | 1 | 1 | 45 | target_met |
-| Finance CISOs New York | 200 | 50 | 7 | 0 | 0 | 7 | 8 | 0 | 35 | target_met |
-| Manufacturing ops Detroit | 200 | 50 | 1 | 0 | 0 | 1 | 1 | 2 | 46 | target_met |
-| B2C private phone guardrail | 422 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | expected_privacy_refusal |
+| Benchmark | HTTP | Error | Categorized rows | Person rows | READY / high trust | Contact-quality passes |
+| --- | ---: | --- | ---: | ---: | ---: | ---: |
+| Thomas Arizona K-12 | 599 | `api_startup_failed` | 0 | 0 | 0 | 0 |
+| Lee commodity buyers | 599 | `api_startup_failed` | 0 | 0 | 0 | 0 |
+| Healthcare IT Phoenix | 599 | `api_startup_failed` | 0 | 0 | 0 | 0 |
+| Finance CISOs New York | 599 | `api_startup_failed` | 0 | 0 | 0 | 0 |
+| Manufacturing ops Detroit | 599 | `api_startup_failed` | 0 | 0 | 0 | 0 |
+| B2C private phone guardrail | 599 | `api_startup_failed` | 0 | 0 | 0 | n/a |
 
-R09D-R09H did not include product API/UI/export integration work, so this audit cannot treat the source-assisted replay as a replacement for current live operator-loop evidence.
+The prior complete R09A live suite still remains the latest complete case-level suite with actual non-privacy product responses. It had improved broad volume in several broad cases, but it still had `0` high-trust usable rows and `0` contact-quality passes across evaluated cases.
 
 ## Screenshots And Artifacts
 
-No new screenshots were required because RG3 is a data-quality and semantics gate, not a UI implementation gate.
+No screenshots were required because RG3 is a data-quality/runtime gate, not a UI implementation gate.
 
 Raw artifacts:
 
-- `audits/raw/reset-2026-05-10/rg3/evidence-notes-r09h-reaudit.md`
-- `audits/raw/reset-2026-05-10/rg3/replay-r09h-reaudit/manual-oracle-proof-packet.json`
-- `audits/raw/reset-2026-05-10/rg3/replay-r09h-reaudit/manual-oracle-proof-packet.md`
-- `audits/raw/reset-2026-05-10/rg3/commands/`
-- `audits/raw/reset-2026-05-10/r09a/live-prompt-b/quality-summary.json`
+- `audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/evidence-notes.md`
+- `audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/commands/`
+- `audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/quality-summary.json`
+- `audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live-clean/startup/`
+- `audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live-skip-startup/thomas-arizona-k12.json`
+- `audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/replay/manual-oracle-proof-packet.json`
 
 ## Value Prop Verdict
 
-The current product does **not** give enough result volume, evidence, and export value for the operator loop.
+The current product does **not** give enough result volume, evidence, or export value for the operator loop.
 
-The source-assisted replay now gives a credible offline workbook proof for the April New Mexico school-district IT pattern: 17 rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, preserved source URLs, sales-first workbook headers, and zero unsupported CRM-ready rows. That is real progress against the near-term wedge.
+Result volume is not proven in the current live product path: the complete post-R09I runner produced only startup-failure artifacts, and the isolated `/scout` attempt timed out on the first Thomas benchmark without returning rows.
 
-But the gate cannot advance because the current live product loop is not proven. The API did not reach health during this audit, no fresh live benchmark suite completed, and the latest complete live suite still has zero high-trust usable rows plus zero contact-quality passes across evaluated cases. Export value is also only proven in replay/workbook semantics, not as a current query-to-export operator path.
+Evidence quality is split. The source-assisted replay is strong offline evidence for the April New Mexico workbook pattern: 17 rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, 18 sources, sales-first export fields, and zero unsupported CRM-ready rows. But current live benchmark evidence still does not prove source-backed contacts, field support, or READY blockers through the operator path.
+
+Export value is proven only in replay/workbook semantics, not in a current query-to-export operator flow. A salesperson still cannot rely on the current live product to produce a usable result set and export without rerunning or debugging the system.
 
 ## Findings
 
-1. **Hold blocker - current live evidence is unavailable.** The reset plan requires current live evidence from RG2 onward. The API stayed at application startup and `/health` returned `000`, so RG3 cannot advance.
-2. **Hold blocker - latest complete live suite still has zero CRM-ready value.** R09A's complete saved live suite has 0 high-trust usable rows and 0 contact-quality passes across evaluated cases.
-3. **Pass - source-assisted manual-oracle replay works offline.** The R09H replay packet passes and reproduces the April New Mexico workbook structure: verified-contact rows, manual-lookup rows, source URLs, blocker/next-action semantics, sales-first export fields, and no unsupported CRM-ready contacts.
-4. **Pass - broad saved live volume improved after R09A.** Lee, healthcare, finance, and manufacturing reached 50 categorized rows in the latest complete saved live suite. Thomas Arizona reached only 12 rows.
-5. **Hold concern - runtime/import reliability is still not clean.** Bounded combined core/API runs timed out around orchestrator import or API startup paths. Focused non-orchestrator checks passed, but the current product path still cannot be treated as runtime-proven.
-6. **No downstream unlock.** RG4, the refreshed `DESIGN.md` mockup/design preflight, R10-R12, export work, dogfood, and `main` promotion remain blocked unless a future Prompt C records `advance`.
+1. **Hold blocker - live runner still cannot produce a complete current RG3 suite.** Post-R09I attempts either produced `api_startup_failed` artifacts, timed out on sandbox reset, or timed out on the first `/scout` benchmark.
+2. **Hold blocker - readiness can still stall runtime.** `/readiness` timed out and appears to block later health/product requests on the same single-worker process. That means the readiness diagnostics are not yet safe enough as a gate-audit dependency.
+3. **Hold blocker - product endpoint runtime is not bounded.** With startup checks and sandbox reset skipped, the Thomas Arizona K-12 `/scout` case timed out after 120 seconds and left `/health` timing out afterward.
+4. **Pass - R09I improved process-liveness visibility.** On a clean process, `/health` answered `200` and the runner captured a successful health startup probe before readiness failed.
+5. **Pass - regression tests and replay checks pass.** Core RG3 semantic suite passed (`78 passed`), API suite passed (`48 passed`), live-runner unit tests passed (`5 passed`), and the manual-oracle replay suite passed (`18 passed`).
+6. **Pass - source-assisted manual-oracle replay still works offline.** The replay packet reproduces the April New Mexico structure with verified-contact rows, manual-lookup rows, source URLs, blocker/next-action semantics, sales-first export fields, and no unsupported CRM-ready rows.
+7. **No downstream unlock.** RG4, refreshed `DESIGN.md` mockup/design preflight, R10-R12, export work, dogfood, and `main` promotion remain blocked because this decision is `hold`.
 
 ## What Worked
 
+- Current git ancestry proves R07-R09I are merged into `origin/rebuild/validated-leads-loop`.
 - `git diff --check` passed before audit edits.
-- Current git ancestry proves R07-R09H are merged into `origin/rebuild/validated-leads-loop`.
-- Core replay suite passed: `18 passed`.
-- Source validation/contact status suite passed: `21 passed`.
-- Individual core query/search/coverage/scoring/live-runner/quality-report checks passed.
-- R09H replay packet passed and regenerated under the current RG3 raw audit folder.
+- API unit tests now cover the R09I health/readiness behavior and pass.
+- The live benchmark runner writes structured startup-failure artifacts when its startup probe cannot reach `/health`.
+- Manual-oracle replay and workbook export semantics remain intact.
 
 ## What Did Not Work
 
-- The local API did not reach health, so no fresh live benchmark suite could run.
-- Combined core/API verification was not cleanly bounded; several broader runs timed out rather than producing a full pass/fail result.
-- The source-assisted workbook path is still replay/artifact proof, not a live operator query-to-export path.
-- Prior complete live evidence remains at zero high-trust/contact-quality output.
+- `/readiness` did not return a bounded actionable payload in live audit conditions; it timed out.
+- The live benchmark runner does not handle sandbox reset `ReadTimeout` as a suite-level partial artifact; it exits with a traceback.
+- The direct `/scout` live path can still time out on the first benchmark and leave the API unresponsive to `/health`.
+- No current live benchmark produced nonzero high-trust usable rows, nonzero contact-quality passes, or exportable operator value.
 
 ## New Gaps Found
 
-- RG3 now has a split proof state: source-assisted replay is strong, but live runtime is not currently auditable.
-- Before another RG3 advance attempt, the team needs a bounded live verification path that either starts the API reliably or records a structured startup/preflight failure without unbounded waits.
-- The next value proof should connect the source-assisted compiler/workbook path to a live operator path or explicitly decide that RG3's next remediation is runtime/integration rather than more offline replay.
+- R09I separated health from readiness at the contract level, but readiness checks still perform blocking work that can stall the API process.
+- The live runner's startup-failure path is structured, but its post-startup setup path is not fully protected against timeouts.
+- The source-assisted replay path needs a live operator-runnable API or CLI flow before it can count as current product evidence for RG3.
+- The gate table/status text had stale R09I handoff language after the branch was merged; this audit branch updates the docs to match the live git state.
 
 ## Recommended Scope Change For Next Gate
 
 Keep RG3 held. Do not start RG4 mockups, R10-R12 UI work, export polish, dogfood, or a `main` sync.
 
-If Matt accepts this hold and wants another remediation, keep it inside RG3. The most valuable next scope is a narrow live integration/reliability slice that proves the source-assisted workbook path through an operator-runnable API or CLI flow, with bounded startup checks, saved live artifacts, and no relaxation of READY/high-trust contact rules.
+If Matt accepts this hold and wants another remediation, keep it inside RG3 and make it a narrow runtime/live-proof slice. The scope should be: bound `/readiness` so it cannot block `/health`, wrap sandbox reset and first-case runner timeouts into complete suite artifacts, and prove either a live source-assisted operator path or a current Scout benchmark path returns rows without relaxing READY/high-trust contact rules.
 
 ## Next Main Promotion Recommendation
 
-Do not sync `main`. The decision is `hold`, and `main` should not receive another operator-use promotion unless Matt explicitly asks after seeing this gate decision.
+Do not sync `main`. The decision is `hold`; the operator-use branch should not receive another promotion unless Matt explicitly asks after seeing this gate decision.
 
 ## Next Prompt A Assignment
 

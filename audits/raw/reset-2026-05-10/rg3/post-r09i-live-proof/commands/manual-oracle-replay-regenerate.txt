@@ -1,0 +1,3 @@
+{'json': PosixPath('../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/replay/manual-oracle-proof-packet.json'), 'markdown': PosixPath('../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/replay/manual-oracle-proof-packet.md')}
+
+exit=0

@@ -1,0 +1,9 @@
+## health initial
+curl: (7) Failed to connect to 127.0.0.1 port 8017 after 0 ms: Couldn't connect to server
+
+HTTP_STATUS=000
+
+## readiness initial
+curl: (7) Failed to connect to 127.0.0.1 port 8017 after 0 ms: Couldn't connect to server
+
+HTTP_STATUS=000

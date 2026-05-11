@@ -1,0 +1,4 @@
+## health after skip-startup timeout
+curl: (28) Operation timed out after 5001 milliseconds with 0 bytes received
+
+HTTP_STATUS=000
