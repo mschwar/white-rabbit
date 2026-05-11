@@ -4,10 +4,10 @@
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** No additional `ready` feature is currently unlocked. F19 Batch Workspace Internal-Only Policy is merged to `rebuild/validated-leads-loop`; F20-F23 remain deferred until another explicit promotion or a launch-gate change.
-**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F15, F16, F17, F18, and F19 are merged to `rebuild/validated-leads-loop`. There is no active follow-on feature branch because F20-F23 remain deferred.
+**Next feature pointer:** The active reset queue lives in `docs/12-reset-gated-implementation-plan-2026-05-10.md`. Do not pick F20-F23 from this document while RG0 is in control. R00 is the current reset feature branch and everything downstream remains blocked until the reset gate advances.
+**Current feature QA handoff:** `feat/reset-r00-w5-hold-control` is the active reset feature branch. Prompt B must QA only R00, merge only into `rebuild/validated-leads-loop`, and stop without unlocking R01 or targeting `main`.
 
-**May 10 reset overlay:** New implementation work is now controlled by `docs/12-reset-gated-implementation-plan-2026-05-10.md`. Treat this document as historical context for F00-F23 until the reset plan explicitly sends agents back here. The next active Prompt A feature is `R00 - W5 hold report and reset control docs`, not F20-F23.
+**May 10 reset overlay:** New implementation work is now controlled by `docs/12-reset-gated-implementation-plan-2026-05-10.md`. Treat this document as historical context for F00-F23 until the reset plan explicitly sends agents back here. The active reset queue is RG0/R00, not F20-F23.
 
 This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
 

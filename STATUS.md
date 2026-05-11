@@ -1,7 +1,7 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex mockup-copy-tightening
-**Branch:** main / rebuild/validated-leads-loop aligned
+**Last updated:** 2026-05-10 by Codex R00 W5 hold control
+**Branch:** feat/reset-r00-w5-hold-control (from rebuild/validated-leads-loop; do not target main)
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
@@ -16,7 +16,7 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** Reset feature `R00 - W5 hold report and reset control docs` remains the next implementation assignment. Branch from `rebuild/validated-leads-loop` per the reset plan; that branch is currently aligned with `main`. R00 must cite the Lee/Thomas low-volume feedback in the W5 hold report.
+**Next feature pointer:** Prompt A for `R00 - W5 hold report and reset control docs` is complete on `feat/reset-r00-w5-hold-control`. Prompt B must QA only that branch, merge only to `rebuild/validated-leads-loop`, and stop. R01 stays blocked unless Prompt C advances RG0.
 
 **Kickoff workflow:** Use only the Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A implements one ready feature, Prompt B QA/merges it into `rebuild/validated-leads-loop`, and Prompt C runs the gate audit. Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync.
 
@@ -26,11 +26,12 @@
 
 **Latest orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepts the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the gate bypass: the gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. ADR-007 and `docs/09-rebuild-phase-gates.md` now require orchestrator acceptance before future downstream wave unlocks.
 
-**Latest gate acceptance:** W4 accepted on 2026-05-10. The May 10 audit found no W5/W6 gate report and recommends treating W5 as held until the visible operator loop is proven:
+**Latest gate acceptance:** W4 accepted on 2026-05-10. W5 is now explicitly held on the feature branch pending QA and RG0 audit; W6 remains blocked until the visible operator loop is proven:
 
 - W4 benchmarks and quality reporting: `.gstack/qa-reports/gate-w4-benchmarks-quality.md`
+- W5 operator loop export hold report: `.gstack/qa-reports/gate-w5-operator-loop-export.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream work unlocks.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream work unlocks. RG0 is pending Prompt C audit; do not unlock R01 from Prompt A or Prompt B work alone.
 
 Prior accepted gates:
 
@@ -56,18 +57,34 @@ Prior accepted gates:
 **Latest handoff:**
 
 ```text
-Feature: Live-demo mockup copy tightening
-Branch: main -> rebuild/validated-leads-loop sync
-Status: committed_and_pushed
-What changed: Tightened only the visible mockup copy. Removed the first-screen evidence-backed/volume tagline, pipeline-stage row, and principle list. Rewrote the low-signal guidance to diagnose the narrow-query failure and provide exact broadening moves that should improve recall.
+Feature: R00 - W5 hold report and reset control docs
+Branch: feat/reset-r00-w5-hold-control
+Status: implemented_pending_qa
+What changed: Added the W5 hold report, cited the May 10 audit plus live JSON/CSV/screenshot evidence, redirected `docs/08-agentic-buildout-plan.md` to `docs/12-reset-gated-implementation-plan-2026-05-10.md` as the active reset queue, and updated reset control/status docs so W5 is held, W6 is blocked, and RG0 remains pending audit.
 Tests or QA run:
  - `git diff --check`
- - `node` Playwright static render of `docs/mockups/final-product-2026-05-10/index.html`
- - `rg -n 'Evidence-backed search|50-500\\+ candidates|Discover|Extract|Verify|Synthesize|Volume is visible|Evidence is visible|Sales fields first|False confidence|Find the list' docs/mockups/final-product-2026-05-10/index.html`
-Screenshots or report: `.gstack/qa-reports/screenshots/final-product-mockups-2026-05-10/`
-Northstar reflection: Keeps the demo quieter while preserving source-backed categorization and making low-signal advice trust-preserving instead of generic.
-Next pointer: Matt inspection, then assign Prompt A to R00 if the mockup direction is approved.
-Open questions: none blocking R00.
+ - `rg -n "RG0|R00|W5 hold|reset-gated|gate-w5-operator-loop-export" docs STATUS.md .gstack/qa-reports`
+Screenshots or report: `.gstack/qa-reports/gate-w5-operator-loop-export.md`
+Northstar reflection: This is a control-plane hold, not product polish. It keeps the repo from mistaking W5-era surfaces for proof that the operator loop works and anchors the next work on transparent-volume evidence instead of low-row output.
+Next pointer: Prompt B QA on `feat/reset-r00-w5-hold-control`, then Prompt C audit for RG0. W6 stays blocked and R01 stays blocked unless Prompt C records `advance`.
+Open questions: none for R00. Downstream reset work remains blocked by gate process, not by missing implementation notes.
+
+Prompt B handoff:
+
+```text
+You are Prompt B for White Rabbit reset feature R00.
+
+Work in /Users/mschwar/Documents/white-rabbit. QA only feat/reset-r00-w5-hold-control and merge only into rebuild/validated-leads-loop. Do not merge or target main.
+
+Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/12-reset-gated-implementation-plan-2026-05-10.md, and .gstack/qa-reports/gate-w5-operator-loop-export.md.
+
+Required checks:
+- git diff --check
+- rg -n "RG0|R00|W5 hold|reset-gated|gate-w5-operator-loop-export|ADR-013|high-volume|3 rows|4 rows" docs STATUS.md .gstack/qa-reports audits/raw/zero-trust-2026-05-10
+- confirm product code was not changed
+
+If QA passes, write the QA report, update STATUS.md, merge the feature branch into rebuild/validated-leads-loop, push rebuild/validated-leads-loop, and stop. Do not unlock R01. Do not sync main.
+```
 ```
 
 
@@ -217,11 +234,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. W5 has not been gate-reported and should be treated as held. Reset gate RG0 is ready for R00 implementation.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. W5 is now documented as held on `feat/reset-r00-w5-hold-control`; W6 remains blocked; RG0 is pending Prompt B QA and Prompt C audit.
 
 ## Next concrete task
 
-- Assign Prompt A to `R00 - W5 hold report and reset control docs` from `docs/12-reset-gated-implementation-plan-2026-05-10.md`. The feature branch is `feat/reset-r00-w5-hold-control`. Do not start another feature or deferred surface first.
+- Assign Prompt B to QA `feat/reset-r00-w5-hold-control` and merge only into `rebuild/validated-leads-loop` if the control-doc checks pass. Do not start R01, W6 work, or any deferred surface before Prompt C audits RG0.
 
 ## Open questions for Matt
 
