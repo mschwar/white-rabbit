@@ -1,9 +1,13 @@
 from __future__ import annotations
 
+import json
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Any, Literal, Mapping
 
+from core.models import Lead, LeadList
 from core.query_guardrails import QueryGuardrailStatus, evaluate_query_guardrails
+from core.quality_report import QualityReport, build_quality_report
 
 BenchmarkTheme = Literal["named_account", "broad_b2b", "privacy_rejection"]
 BenchmarkDimension = Literal["persona", "contact", "source", "privacy_refusal"]
@@ -166,6 +170,142 @@ class BenchmarkSuiteReport:
     privacy_refusal_cases: int
     guardrail_mismatches: tuple[str, ...] = ()
     observation_mismatches: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True, slots=True)
+class ReplayBenchmarkObservation:
+    benchmark_id: str
+    guardrail_status: QueryGuardrailStatus
+    persona_pass: bool
+    contact_pass: bool
+    source_pass: bool
+    privacy_refusal: bool
+    categorized_row_count: int
+    person_lead_count: int
+    high_trust_usable_count: int
+    review_count: int
+    organization_only_count: int
+    not_found_count: int
+    failed_count: int
+    expected_target_coverage_count: int = 0
+    expected_target_coverage_missing: tuple[str, ...] = ()
+    high_volume_floor_met: bool = False
+    http_status: int | None = None
+    error_code: str | None = None
+    quality_report: QualityReport | None = None
+
+
+_REPO_ROOT = Path(__file__).resolve().parents[4]
+
+
+def _resolve_repo_path(path: str, *, repo_root: Path | None = None) -> Path:
+    return (repo_root or _REPO_ROOT) / path
+
+
+def _artifact_payload(case: OperatorFixtureCase, *, repo_root: Path | None = None) -> dict[str, Any]:
+    for artifact in case.replay_artifacts:
+        if artifact.kind in {"live_json", "guardrail_response"}:
+            payload_path = _resolve_repo_path(artifact.path, repo_root=repo_root)
+            return json.loads(payload_path.read_text(encoding="utf-8"))
+    return {}
+
+
+def _artifact_http_status(case: OperatorFixtureCase, *, repo_root: Path | None = None) -> int | None:
+    for artifact in case.replay_artifacts:
+        if artifact.kind == "http_status":
+            status_path = _resolve_repo_path(artifact.path, repo_root=repo_root)
+            raw = status_path.read_text(encoding="utf-8").strip()
+            if raw:
+                return int(raw)
+    return None
+
+
+def _row_supports_target(candidate: Any, target: str) -> bool:
+    lowered_target = target.lower()
+    haystacks = (
+        getattr(candidate, "organization", None),
+        getattr(candidate, "name", None),
+        getattr(candidate, "searched_target", None),
+        getattr(candidate, "failure_reason", None),
+    )
+    return any(isinstance(value, str) and lowered_target in value.lower() for value in haystacks)
+
+
+def _parse_replay_candidates(payload: Mapping[str, Any]) -> list[Any]:
+    leads = payload.get("leads")
+    if not isinstance(leads, list):
+        return []
+    return LeadList.model_validate({"leads": leads}).leads
+
+
+def build_replay_benchmark_observations(
+    fixture_pack: OperatorEvidenceFixturePack | None = None,
+    *,
+    repo_root: Path | None = None,
+) -> dict[str, BenchmarkObservation]:
+    fixture_pack = fixture_pack or build_operator_evidence_fixture_pack()
+    observations: dict[str, BenchmarkObservation] = {}
+
+    for case in fixture_pack.cases:
+        payload = _artifact_payload(case, repo_root=repo_root)
+        candidates = _parse_replay_candidates(payload)
+        quality_report = build_quality_report(
+            candidates,
+            artifact_kind="benchmark",
+            artifact_id=case.benchmark_id,
+            query=case.query,
+        )
+        thresholds = quality_report.quality_gate_thresholds
+        query_guardrail = payload.get("query_guardrail")
+        guardrail_status = (
+            str(query_guardrail.get("status"))
+            if isinstance(query_guardrail, Mapping) and isinstance(query_guardrail.get("status"), str)
+            else evaluate_query_guardrails(case.query).status
+        )
+        privacy_refusal = (
+            case.theme == "privacy_rejection"
+            and guardrail_status == "blocked"
+            and not candidates
+            and isinstance(payload.get("error"), str)
+        )
+
+        observations[case.benchmark_id] = ReplayBenchmarkObservation(
+            benchmark_id=case.benchmark_id,
+            guardrail_status=guardrail_status,
+            persona_pass=quality_report.persona_match_rate >= thresholds["minimum_persona_match_rate"],
+            contact_pass=(
+                quality_report.contact_quality_rate >= thresholds["minimum_contact_quality_rate"]
+                and quality_report.fake_email_count <= thresholds["maximum_fake_email_count"]
+                and quality_report.unsupported_email_count <= thresholds["maximum_unsupported_email_count"]
+                and quality_report.total_candidates > 0
+            ),
+            source_pass=(
+                quality_report.source_support_rate >= thresholds["minimum_source_support_rate"]
+                and quality_report.total_candidates > 0
+            ),
+            privacy_refusal=privacy_refusal,
+            categorized_row_count=quality_report.total_candidates,
+            person_lead_count=quality_report.person_lead_count,
+            high_trust_usable_count=quality_report.usable_count,
+            review_count=quality_report.person_lead_count - quality_report.usable_count,
+            organization_only_count=quality_report.organization_only_count,
+            not_found_count=quality_report.not_found_count,
+            failed_count=quality_report.failed_count,
+            expected_target_coverage_count=sum(
+                1 for target in case.expected_target_coverage if any(_row_supports_target(candidate, target) for candidate in candidates)
+            ),
+            expected_target_coverage_missing=tuple(
+                target
+                for target in case.expected_target_coverage
+                if not any(_row_supports_target(candidate, target) for candidate in candidates)
+            ),
+            high_volume_floor_met=quality_report.total_candidates >= case.expected_min_categorized_rows,
+            http_status=_artifact_http_status(case, repo_root=repo_root),
+            error_code=payload.get("error_code") if isinstance(payload.get("error_code"), str) else None,
+            quality_report=quality_report,
+        )
+
+    return observations
 
 
 def build_operator_evidence_fixture_pack() -> OperatorEvidenceFixturePack:
@@ -493,6 +633,10 @@ def evaluate_required_benchmark_suite(
             case_mismatches.append("source")
         if observation.privacy_refusal != case.expected_privacy_refusal:
             case_mismatches.append("privacy_refusal")
+        if getattr(observation, "expected_target_coverage_missing", ()):
+            case_mismatches.append("coverage")
+        if getattr(observation, "high_volume_floor_met", True) is False:
+            case_mismatches.append("volume")
 
         persona_pass_cases += int(observation.persona_pass)
         contact_pass_cases += int(observation.contact_pass)
