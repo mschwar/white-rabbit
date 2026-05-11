@@ -5,9 +5,9 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, held after Prompt C audit.
-**Next Prompt A feature:** None. RG4 remains blocked until a future Prompt C records an RG3 `advance`, a refreshed mockup pass is produced from `DESIGN.md`, and Matt approves that refreshed mockup.
-**Current Prompt B handoff:** None. R09 passed Prompt B QA on `feat/reset-r09-tier-summary-semantics` and is merged to `rebuild/validated-leads-loop`; RG3 Prompt C recorded `hold` in `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`. Do not unlock RG4 or touch `main`.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, accepted hold with R09A remediation active.
+**Next Prompt A feature:** R09A - Live value recovery and benchmark funnel diagnosis.
+**Current Prompt B handoff:** None. R09 passed Prompt B QA and RG3 Prompt C recorded `hold` in `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`; Matt accepted the hold, so R09A is the single ready remediation feature. Do not unlock RG4 or touch `main`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -186,7 +186,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG0 | W5 Hold And Control Reset | R00 | gate_advanced | `audits/gates/reset-2026-05-10/rg0-w5-hold.md` |
 | RG1 | Operator Benchmark Harness | R01-R03 | gate_advanced | `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md` |
 | RG2 | Search Coverage And Source Collection | R04-R06 | gate_advanced | `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md` |
-| RG3 | Validation, Conflict, And Gate Semantics | R07-R09 | gate_hold | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
+| RG3 | Validation, Conflict, And Gate Semantics | R07-R09A | in_progress | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
 | RG4 | Sales-First Operator UI | R10-R12 | blocked | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
 | RG5 | Sales-First Export And Persistence | R13-R14 | blocked | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
 | RG6 | Dogfood / Kill Decision | R15 | blocked | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md` |
@@ -205,6 +205,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R07 | Inclusive extraction prompt and candidate parse salvage | merged_to_rebuild_branch | `feat/reset-r07-inclusive-extraction` | core/API tests |
 | R08 | Tiering engine, field validator, and conflict resolver | merged_to_rebuild_branch | `feat/reset-r08-tier-validation-conflicts` | core tests |
 | R09 | Tier summary, score semantics, and reason language reset | merged_to_rebuild_branch | `feat/reset-r09-tier-summary-semantics` | core + web tests |
+| R09A | Live value recovery and benchmark funnel diagnosis | ready | `feat/reset-r09a-live-value-recovery` | core/API + live/replay benchmark artifacts |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | blocked | `feat/reset-r12-evidence-dossier-review` | browser |
@@ -344,6 +345,7 @@ Features:
 - R07 - Inclusive extraction prompt and candidate parse salvage.
 - R08 - Tiering engine, field validator, and conflict resolver.
 - R09 - Tier summary, score semantics, and reason language reset.
+- R09A - Live value recovery and benchmark funnel diagnosis.
 
 Goal:
 Make false confidence hard to display.
@@ -367,18 +369,49 @@ cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q
 git diff --check
 ```
 
+Accepted hold and R09A remediation:
+
+RG3 Prompt C recorded `hold` on 2026-05-11. Matt accepted the hold state instead of treating it as a queue blocker. R09A is the only valid remediation feature before RG3 can be re-audited. It must not start RG4, mockups, R10, export polish, persistence, dogfood, or a `main` sync.
+
+R09A scope:
+
+- Add or repair benchmark funnel observability so every live/replay case can show the drop-off path: raw vendor hits, deduped sources, source snapshots, extracted candidates, categorized rows, person rows, `high_trust_usable` rows, and contact-quality passes.
+- Fix the active broad-query floor semantics in the live quality summary. The report must distinguish the old 10-row escape-velocity floor from the current 50-500+ broad-query target, and privacy-refusal cases must pass as expected refusals instead of failing because they returned no candidates.
+- Diagnose and repair the source-to-candidate-to-tier choke point that caused RG3 live runs to return only 7-10 categorized rows despite the high-volume source path. Do not satisfy this by lowering the `high_trust_usable` gate or inventing contacts.
+- Improve contact/value recovery only when evidence supports it: verified contact, source-backed domain pattern, or explicit missing/unsupported status. Unsupported, inaccessible, guessed, or missing contacts must remain non-CRM-ready.
+- Normalize failed-row and not-found reason language so a row with null name/title cannot imply a hidden usable lead or stale narrative certainty.
+
+R09A required verification:
+
+```bash
+cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py tests/test_coverage.py tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py tests/test_live_benchmark_runner.py tests/test_quality_report.py -q
+cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q
+git diff --check
+```
+
+R09A expected evidence:
+
+- Saved replay or live benchmark artifacts showing the new funnel fields.
+- A short QA note explaining the identified choke point and why the fix increases value without relaxing READY/high-trust precision.
+- Explicit proof that missing/unsupported contacts are still not marked CRM-ready.
+- Explicit proof that the B2C/privacy guardrail case is handled as an expected refusal.
+
 RG3 full evaluation/audit:
 
 - Re-run manufacturing benchmark and confirm no 503 parse crash.
 - Sample 10 returned person rows across benchmarks and inspect validation field support.
 - Confirm duplicate/conflict cases fail or are downgraded.
 - Confirm no row with missing/unsupported contact is labeled CRM-ready.
+- Confirm broad live benchmarks no longer produce only 7-10 categorized rows unless source evidence proves the market itself is smaller.
+- Confirm the live quality summary reports benchmark funnel drop-offs and treats privacy refusals separately from no-candidate product failures.
 
 Advance criteria:
 
 - Bad candidates degrade into explicit failed/noisy rows.
 - Gate language and UI score semantics no longer create false confidence.
 - High-trust usable precision is preserved while review/org-only/not-found/failed candidates remain visible and explained.
+- At least one required live benchmark produces nonzero `high_trust_usable` output without unsupported contacts.
+- Broad-query categorized output materially improves from the RG3 hold baseline or the gate report proves the public-web market is smaller.
 
 ## RG4 - Sales-First Operator UI
 

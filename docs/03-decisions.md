@@ -220,9 +220,22 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 ---
 
+## ADR-016 — Accepted RG3 hold requires a narrow live-value remediation slice
+
+**Date:** 2026-05-11
+**Status:** Locked
+
+**Context.** RG3 Prompt C held after live benchmark evidence showed the product had safer validation semantics but still failed the operator-value bar: broad runs returned only 7-10 categorized rows, the suite produced 0 high-trust usable leads, and contact-quality passes were 0. Matt accepted the hold instead of advancing RG4 or treating the hold as an unresolved queue blocker.
+
+**Decision.** Keep RG3 active and insert one remediation feature before any design or UI work: `R09A - Live value recovery and benchmark funnel diagnosis`. R09A must diagnose and repair the source-to-candidate-to-tier funnel, fix benchmark floor semantics, preserve strict READY/high-trust precision, keep unsupported contacts non-CRM-ready, and normalize failed/not-found reasons. RG4, refreshed mockups, R10-R12, export work, dogfood, and `main` sync remain blocked until a future RG3 Prompt C records `advance`.
+
+**Consequences.** Prompt A now has exactly one valid next feature, and the A/B loop can resume without reopening downstream scope. The remediation is allowed to touch search/extraction/tiering/quality-report code only where it directly improves live value or proves the exact choke point. Agents must not satisfy R09A by lowering validation strictness, inventing contacts, or making UI/export work compensate for weak data.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-016, ADR-017, ...).
+1. Pick the next ADR number (ADR-017, ADR-018, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.
