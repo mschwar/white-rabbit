@@ -1,0 +1,648 @@
+{
+  "case_summaries": {
+    "finance-cisos-new-york": {
+      "categorized_row_count": 50,
+      "error_code": null,
+      "escape_velocity_floor_met": true,
+      "expected_target_coverage_count": 0,
+      "expected_target_coverage_missing": [],
+      "failed_count": 41,
+      "funnel_counts": {
+        "categorized_rows": 50,
+        "contact_quality_passes": 0,
+        "deduped_sources": 163,
+        "extracted_candidates": 11,
+        "high_trust_usable_rows": 0,
+        "person_rows": 7,
+        "raw_vendor_hits": 240,
+        "source_snapshots": 163
+      },
+      "guardrail_status": "clear",
+      "high_trust_usable_count": 0,
+      "high_volume_floor_met": true,
+      "http_status": 200,
+      "minimum_escape_rows": 10,
+      "not_found_count": 1,
+      "organization_only_count": 1,
+      "person_lead_count": 7,
+      "privacy_refusal": false,
+      "quality_report": {
+        "artifact_id": "finance-cisos-new-york",
+        "artifact_kind": "benchmark",
+        "candidate_category_counts": {
+          "failed": 41,
+          "not_found": 1,
+          "organization_only": 1,
+          "person_lead": 7
+        },
+        "contact_quality_count": 0,
+        "contact_quality_rate": 0.0,
+        "failed_count": 41,
+        "fake_email_count": 0,
+        "high_noise_count": 42,
+        "high_noise_rate": 0.84,
+        "not_found_count": 1,
+        "organization_only_count": 1,
+        "person_lead_count": 7,
+        "persona_match_count": 6,
+        "persona_match_rate": 0.12,
+        "precision_rate": 0.0,
+        "quality_gate_failures": [
+          "zero_usable_candidates",
+          "low_precision_rate",
+          "low_persona_match_rate",
+          "low_contact_quality_rate",
+          "low_source_support_rate",
+          "high_noise_rate"
+        ],
+        "quality_gate_passed": false,
+        "quality_gate_thresholds": {
+          "maximum_fake_email_count": 0,
+          "maximum_high_noise_rate": 0.4,
+          "maximum_unsupported_email_count": 0,
+          "minimum_contact_quality_rate": 0.5,
+          "minimum_persona_match_rate": 0.5,
+          "minimum_precision_rate": 0.5,
+          "minimum_source_support_rate": 0.5,
+          "minimum_usable_count": 1
+        },
+        "query": "finance CISOs at financial services firms in New York",
+        "source_support_count": 8,
+        "source_support_rate": 0.16,
+        "total_candidates": 50,
+        "unsupported_email_count": 0,
+        "usable_count": 0,
+        "validation_status_counts": {
+          "email": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 50,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "name": {
+            "failed": 2,
+            "missing": 41,
+            "supported": 6,
+            "unsupported": 1
+          },
+          "organization": {
+            "failed": 2,
+            "missing": 40,
+            "supported": 7,
+            "unsupported": 1
+          },
+          "phone": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 50,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "source": {
+            "failed": 10,
+            "missing": 1,
+            "supported": 8,
+            "unsupported": 31
+          },
+          "title": {
+            "failed": 2,
+            "missing": 41,
+            "supported": 7,
+            "unsupported": 0
+          }
+        }
+      },
+      "quality_status": "evaluated",
+      "review_count": 7,
+      "target_categorized_rows": 50,
+      "target_volume_floor_met": true,
+      "volume_floor_status": "target_met"
+    },
+    "healthcare-it-phoenix": {
+      "categorized_row_count": 50,
+      "error_code": null,
+      "escape_velocity_floor_met": true,
+      "expected_target_coverage_count": 0,
+      "expected_target_coverage_missing": [],
+      "failed_count": 46,
+      "funnel_counts": {
+        "categorized_rows": 50,
+        "contact_quality_passes": 0,
+        "deduped_sources": 160,
+        "extracted_candidates": 10,
+        "high_trust_usable_rows": 0,
+        "person_rows": 3,
+        "raw_vendor_hits": 240,
+        "source_snapshots": 160
+      },
+      "guardrail_status": "clear",
+      "high_trust_usable_count": 0,
+      "high_volume_floor_met": true,
+      "http_status": 200,
+      "minimum_escape_rows": 10,
+      "not_found_count": 0,
+      "organization_only_count": 1,
+      "person_lead_count": 3,
+      "privacy_refusal": false,
+      "quality_report": {
+        "artifact_id": "healthcare-it-phoenix",
+        "artifact_kind": "benchmark",
+        "candidate_category_counts": {
+          "failed": 46,
+          "not_found": 0,
+          "organization_only": 1,
+          "person_lead": 3
+        },
+        "contact_quality_count": 0,
+        "contact_quality_rate": 0.0,
+        "failed_count": 46,
+        "fake_email_count": 0,
+        "high_noise_count": 48,
+        "high_noise_rate": 0.96,
+        "not_found_count": 0,
+        "organization_only_count": 1,
+        "person_lead_count": 3,
+        "persona_match_count": 1,
+        "persona_match_rate": 0.02,
+        "precision_rate": 0.0,
+        "quality_gate_failures": [
+          "zero_usable_candidates",
+          "low_precision_rate",
+          "low_persona_match_rate",
+          "low_contact_quality_rate",
+          "low_source_support_rate",
+          "unsupported_emails_present",
+          "high_noise_rate"
+        ],
+        "quality_gate_passed": false,
+        "quality_gate_thresholds": {
+          "maximum_fake_email_count": 0,
+          "maximum_high_noise_rate": 0.4,
+          "maximum_unsupported_email_count": 0,
+          "minimum_contact_quality_rate": 0.5,
+          "minimum_persona_match_rate": 0.5,
+          "minimum_precision_rate": 0.5,
+          "minimum_source_support_rate": 0.5,
+          "minimum_usable_count": 1
+        },
+        "query": "healthcare IT directors in Phoenix",
+        "source_support_count": 3,
+        "source_support_rate": 0.06,
+        "total_candidates": 50,
+        "unsupported_email_count": 1,
+        "usable_count": 0,
+        "validation_status_counts": {
+          "email": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 49,
+            "unsupported": 1,
+            "verified_found": 0
+          },
+          "name": {
+            "failed": 4,
+            "missing": 43,
+            "supported": 2,
+            "unsupported": 1
+          },
+          "organization": {
+            "failed": 5,
+            "missing": 40,
+            "supported": 3,
+            "unsupported": 2
+          },
+          "phone": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 50,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "source": {
+            "failed": 17,
+            "missing": 0,
+            "supported": 3,
+            "unsupported": 30
+          },
+          "title": {
+            "failed": 4,
+            "missing": 43,
+            "supported": 2,
+            "unsupported": 1
+          }
+        }
+      },
+      "quality_status": "evaluated",
+      "review_count": 3,
+      "target_categorized_rows": 50,
+      "target_volume_floor_met": true,
+      "volume_floor_status": "target_met"
+    },
+    "lee-commodity-buyers": {
+      "categorized_row_count": 50,
+      "error_code": null,
+      "escape_velocity_floor_met": true,
+      "expected_target_coverage_count": 0,
+      "expected_target_coverage_missing": [],
+      "failed_count": 45,
+      "funnel_counts": {
+        "categorized_rows": 50,
+        "contact_quality_passes": 0,
+        "deduped_sources": 195,
+        "extracted_candidates": 5,
+        "high_trust_usable_rows": 0,
+        "person_rows": 3,
+        "raw_vendor_hits": 240,
+        "source_snapshots": 195
+      },
+      "guardrail_status": "needs_more_detail",
+      "high_trust_usable_count": 0,
+      "high_volume_floor_met": true,
+      "http_status": 200,
+      "minimum_escape_rows": 10,
+      "not_found_count": 1,
+      "organization_only_count": 1,
+      "person_lead_count": 3,
+      "privacy_refusal": false,
+      "quality_report": {
+        "artifact_id": "lee-commodity-buyers",
+        "artifact_kind": "benchmark",
+        "candidate_category_counts": {
+          "failed": 45,
+          "not_found": 1,
+          "organization_only": 1,
+          "person_lead": 3
+        },
+        "contact_quality_count": 0,
+        "contact_quality_rate": 0.0,
+        "failed_count": 45,
+        "fake_email_count": 0,
+        "high_noise_count": 46,
+        "high_noise_rate": 0.92,
+        "not_found_count": 1,
+        "organization_only_count": 1,
+        "person_lead_count": 3,
+        "persona_match_count": 0,
+        "persona_match_rate": 0.0,
+        "precision_rate": 0.0,
+        "quality_gate_failures": [
+          "zero_usable_candidates",
+          "low_precision_rate",
+          "low_persona_match_rate",
+          "low_contact_quality_rate",
+          "low_source_support_rate",
+          "high_noise_rate"
+        ],
+        "quality_gate_passed": false,
+        "quality_gate_thresholds": {
+          "maximum_fake_email_count": 0,
+          "maximum_high_noise_rate": 0.4,
+          "maximum_unsupported_email_count": 0,
+          "minimum_contact_quality_rate": 0.5,
+          "minimum_persona_match_rate": 0.5,
+          "minimum_precision_rate": 0.5,
+          "minimum_source_support_rate": 0.5,
+          "minimum_usable_count": 1
+        },
+        "query": "commodity buyers at retail lumber yards in Washington",
+        "source_support_count": 3,
+        "source_support_rate": 0.06,
+        "total_candidates": 50,
+        "unsupported_email_count": 0,
+        "usable_count": 0,
+        "validation_status_counts": {
+          "email": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 50,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "name": {
+            "failed": 0,
+            "missing": 47,
+            "supported": 3,
+            "unsupported": 0
+          },
+          "organization": {
+            "failed": 1,
+            "missing": 46,
+            "supported": 3,
+            "unsupported": 0
+          },
+          "phone": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 50,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "source": {
+            "failed": 15,
+            "missing": 1,
+            "supported": 3,
+            "unsupported": 31
+          },
+          "title": {
+            "failed": 0,
+            "missing": 47,
+            "supported": 0,
+            "unsupported": 3
+          }
+        }
+      },
+      "quality_status": "evaluated",
+      "review_count": 3,
+      "target_categorized_rows": 50,
+      "target_volume_floor_met": true,
+      "volume_floor_status": "target_met"
+    },
+    "manufacturing-ops-detroit": {
+      "categorized_row_count": 50,
+      "error_code": null,
+      "escape_velocity_floor_met": true,
+      "expected_target_coverage_count": 0,
+      "expected_target_coverage_missing": [],
+      "failed_count": 47,
+      "funnel_counts": {
+        "categorized_rows": 50,
+        "contact_quality_passes": 0,
+        "deduped_sources": 155,
+        "extracted_candidates": 7,
+        "high_trust_usable_rows": 0,
+        "person_rows": 1,
+        "raw_vendor_hits": 227,
+        "source_snapshots": 155
+      },
+      "guardrail_status": "clear",
+      "high_trust_usable_count": 0,
+      "high_volume_floor_met": true,
+      "http_status": 200,
+      "minimum_escape_rows": 10,
+      "not_found_count": 1,
+      "organization_only_count": 1,
+      "person_lead_count": 1,
+      "privacy_refusal": false,
+      "quality_report": {
+        "artifact_id": "manufacturing-ops-detroit",
+        "artifact_kind": "benchmark",
+        "candidate_category_counts": {
+          "failed": 47,
+          "not_found": 1,
+          "organization_only": 1,
+          "person_lead": 1
+        },
+        "contact_quality_count": 0,
+        "contact_quality_rate": 0.0,
+        "failed_count": 47,
+        "fake_email_count": 0,
+        "high_noise_count": 48,
+        "high_noise_rate": 0.96,
+        "not_found_count": 1,
+        "organization_only_count": 1,
+        "person_lead_count": 1,
+        "persona_match_count": 1,
+        "persona_match_rate": 0.02,
+        "precision_rate": 0.0,
+        "quality_gate_failures": [
+          "zero_usable_candidates",
+          "low_precision_rate",
+          "low_persona_match_rate",
+          "low_contact_quality_rate",
+          "low_source_support_rate",
+          "high_noise_rate"
+        ],
+        "quality_gate_passed": false,
+        "quality_gate_thresholds": {
+          "maximum_fake_email_count": 0,
+          "maximum_high_noise_rate": 0.4,
+          "maximum_unsupported_email_count": 0,
+          "minimum_contact_quality_rate": 0.5,
+          "minimum_persona_match_rate": 0.5,
+          "minimum_precision_rate": 0.5,
+          "minimum_source_support_rate": 0.5,
+          "minimum_usable_count": 1
+        },
+        "query": "manufacturing operations leaders in Detroit",
+        "source_support_count": 1,
+        "source_support_rate": 0.02,
+        "total_candidates": 50,
+        "unsupported_email_count": 0,
+        "usable_count": 0,
+        "validation_status_counts": {
+          "email": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 50,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "name": {
+            "failed": 3,
+            "missing": 46,
+            "supported": 1,
+            "unsupported": 0
+          },
+          "organization": {
+            "failed": 4,
+            "missing": 45,
+            "supported": 1,
+            "unsupported": 0
+          },
+          "phone": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 50,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "source": {
+            "failed": 30,
+            "missing": 2,
+            "supported": 1,
+            "unsupported": 17
+          },
+          "title": {
+            "failed": 3,
+            "missing": 46,
+            "supported": 1,
+            "unsupported": 0
+          }
+        }
+      },
+      "quality_status": "evaluated",
+      "review_count": 1,
+      "target_categorized_rows": 50,
+      "target_volume_floor_met": true,
+      "volume_floor_status": "target_met"
+    },
+    "privacy-reject-homeowner-phones": {
+      "categorized_row_count": 0,
+      "error_code": null,
+      "escape_velocity_floor_met": true,
+      "expected_target_coverage_count": 0,
+      "expected_target_coverage_missing": [],
+      "failed_count": 0,
+      "funnel_counts": {
+        "categorized_rows": 0,
+        "contact_quality_passes": 0,
+        "deduped_sources": 0,
+        "extracted_candidates": 0,
+        "high_trust_usable_rows": 0,
+        "person_rows": 0,
+        "raw_vendor_hits": 0,
+        "source_snapshots": 0
+      },
+      "guardrail_status": "blocked",
+      "high_trust_usable_count": 0,
+      "high_volume_floor_met": true,
+      "http_status": 422,
+      "minimum_escape_rows": 0,
+      "not_found_count": 0,
+      "organization_only_count": 0,
+      "person_lead_count": 0,
+      "privacy_refusal": true,
+      "quality_report": null,
+      "quality_status": "expected_privacy_refusal",
+      "review_count": 0,
+      "target_categorized_rows": 0,
+      "target_volume_floor_met": true,
+      "volume_floor_status": "expected_privacy_refusal"
+    },
+    "thomas-arizona-k12": {
+      "categorized_row_count": 10,
+      "error_code": null,
+      "escape_velocity_floor_met": true,
+      "expected_target_coverage_count": 8,
+      "expected_target_coverage_missing": [],
+      "failed_count": 4,
+      "funnel_counts": {
+        "categorized_rows": 10,
+        "contact_quality_passes": 0,
+        "deduped_sources": 50,
+        "extracted_candidates": 9,
+        "high_trust_usable_rows": 0,
+        "person_rows": 2,
+        "raw_vendor_hits": 56,
+        "source_snapshots": 50
+      },
+      "guardrail_status": "needs_more_detail",
+      "high_trust_usable_count": 0,
+      "high_volume_floor_met": true,
+      "http_status": 200,
+      "minimum_escape_rows": 8,
+      "not_found_count": 3,
+      "organization_only_count": 1,
+      "person_lead_count": 2,
+      "privacy_refusal": false,
+      "quality_report": {
+        "artifact_id": "thomas-arizona-k12",
+        "artifact_kind": "benchmark",
+        "candidate_category_counts": {
+          "failed": 4,
+          "not_found": 3,
+          "organization_only": 1,
+          "person_lead": 2
+        },
+        "contact_quality_count": 0,
+        "contact_quality_rate": 0.0,
+        "failed_count": 4,
+        "fake_email_count": 0,
+        "high_noise_count": 6,
+        "high_noise_rate": 0.6,
+        "not_found_count": 3,
+        "organization_only_count": 1,
+        "person_lead_count": 2,
+        "persona_match_count": 2,
+        "persona_match_rate": 0.2,
+        "precision_rate": 0.0,
+        "quality_gate_failures": [
+          "zero_usable_candidates",
+          "low_precision_rate",
+          "low_persona_match_rate",
+          "low_contact_quality_rate",
+          "low_source_support_rate",
+          "unsupported_emails_present",
+          "high_noise_rate"
+        ],
+        "quality_gate_passed": false,
+        "quality_gate_thresholds": {
+          "maximum_fake_email_count": 0,
+          "maximum_high_noise_rate": 0.4,
+          "maximum_unsupported_email_count": 0,
+          "minimum_contact_quality_rate": 0.5,
+          "minimum_persona_match_rate": 0.5,
+          "minimum_precision_rate": 0.5,
+          "minimum_source_support_rate": 0.5,
+          "minimum_usable_count": 1
+        },
+        "query": "name and email and phone number for these District Approx Size Tech Decision Maker Type Mesa Public Schools 60k+ students CIO / Director of Technology; Chandler Unified School District 40k+ CTO / IT Director; Peoria Unified School District 35k+ Technology Services; Gilbert Public Schools 30k+ CTO; Deer Valley Unified School District 30k+ IT leadership; Paradise Valley Unified School District 25k+ CIO/Technology; Dysart Unified School District 24k+ Director of Technology; Maricopa Unified School District 9k+ Director of Technology",
+        "source_support_count": 3,
+        "source_support_rate": 0.3,
+        "total_candidates": 10,
+        "unsupported_email_count": 1,
+        "usable_count": 0,
+        "validation_status_counts": {
+          "email": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 9,
+            "unsupported": 1,
+            "verified_found": 0
+          },
+          "name": {
+            "failed": 4,
+            "missing": 4,
+            "supported": 2,
+            "unsupported": 0
+          },
+          "organization": {
+            "failed": 7,
+            "missing": 0,
+            "supported": 3,
+            "unsupported": 0
+          },
+          "phone": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 10,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "source": {
+            "failed": 4,
+            "missing": 3,
+            "supported": 3,
+            "unsupported": 0
+          },
+          "title": {
+            "failed": 4,
+            "missing": 4,
+            "supported": 2,
+            "unsupported": 0
+          }
+        }
+      },
+      "quality_status": "evaluated",
+      "review_count": 2,
+      "target_categorized_rows": 8,
+      "target_volume_floor_met": true,
+      "volume_floor_status": "minimum_met"
+    }
+  },
+  "contact_pass_cases": 0,
+  "failed_cases": 3,
+  "guardrail_mismatches": [],
+  "observation_mismatches": [
+    "healthcare-it-phoenix: persona, contact, source",
+    "finance-cisos-new-york: persona, contact, source",
+    "manufacturing-ops-detroit: persona, contact, source"
+  ],
+  "passed_cases": 3,
+  "persona_pass_cases": 0,
+  "privacy_refusal_cases": 1,
+  "source_pass_cases": 0,
+  "suite_id": "required_lead_quality_suite",
+  "total_cases": 6
+}

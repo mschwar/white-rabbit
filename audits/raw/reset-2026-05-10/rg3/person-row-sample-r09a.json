@@ -1,0 +1,302 @@
+[
+  {
+    "benchmark_id": "finance-cisos-new-york",
+    "name": "Khalil Jackson",
+    "title": "CISO",
+    "organization": "Federal Reserve Bank of New York",
+    "email": "",
+    "email_status": "missing",
+    "phone": null,
+    "candidate_category": "person_lead",
+    "tier": "review",
+    "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "gate_passed": false,
+    "fit_score": 1.0,
+    "evidence_score": 1.0,
+    "contact_score": 0.0,
+    "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+    "validation_statuses": {
+      "name": "supported",
+      "title": "supported",
+      "organization": "supported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    },
+    "validation_notes": {
+      "email": "email is not present on the candidate.",
+      "phone": "phone is not present on the candidate.",
+      "source": "http_status=200 resolved_url=https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board matched_fields=name,title,organization"
+    }
+  },
+  {
+    "benchmark_id": "finance-cisos-new-york",
+    "name": "Bob Brown",
+    "title": "CISO",
+    "organization": "Federal Home Loan Bank of New York",
+    "email": "",
+    "email_status": "missing",
+    "phone": null,
+    "candidate_category": "person_lead",
+    "tier": "review",
+    "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "gate_passed": false,
+    "fit_score": 1.0,
+    "evidence_score": 1.0,
+    "contact_score": 0.0,
+    "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+    "validation_statuses": {
+      "name": "supported",
+      "title": "supported",
+      "organization": "supported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    },
+    "validation_notes": {
+      "email": "email is not present on the candidate.",
+      "phone": "phone is not present on the candidate.",
+      "source": "http_status=200 resolved_url=https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362 matched_fields=name,title,organization"
+    }
+  },
+  {
+    "benchmark_id": "finance-cisos-new-york",
+    "name": "Tod Mitchinson",
+    "title": "CISO",
+    "organization": "New York Life",
+    "email": "",
+    "email_status": "missing",
+    "phone": null,
+    "candidate_category": "person_lead",
+    "tier": "review",
+    "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "gate_passed": false,
+    "fit_score": 1.0,
+    "evidence_score": 1.0,
+    "contact_score": 0.0,
+    "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+    "validation_statuses": {
+      "name": "supported",
+      "title": "supported",
+      "organization": "supported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    },
+    "validation_notes": {
+      "email": "email is not present on the candidate.",
+      "phone": "phone is not present on the candidate.",
+      "source": "http_status=200 resolved_url=https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362 matched_fields=name,title,organization"
+    }
+  },
+  {
+    "benchmark_id": "healthcare-it-phoenix",
+    "name": "Jordan Harstad",
+    "title": "IT Director",
+    "organization": "Tenet Healthcare",
+    "email": "",
+    "email_status": "unsupported",
+    "phone": null,
+    "candidate_category": "person_lead",
+    "tier": "review",
+    "primary_filter_reason": "REVIEW: contact is unsupported; row is not CRM-ready.",
+    "gate_passed": false,
+    "fit_score": 1.0,
+    "evidence_score": 1.0,
+    "contact_score": 0.2,
+    "source_url": "https://rocketreach.co/jordan-harstad-email_49850663",
+    "validation_statuses": {
+      "name": "supported",
+      "title": "supported",
+      "organization": "supported",
+      "email": "unsupported",
+      "phone": "missing",
+      "source": "supported"
+    },
+    "validation_notes": {
+      "email": "No direct text support found for email.",
+      "phone": "phone is not present on the candidate.",
+      "source": "http_status=200 resolved_url=https://rocketreach.co/jordan-harstad-email_49850663 matched_fields=name,title,organization"
+    }
+  },
+  {
+    "benchmark_id": "healthcare-it-phoenix",
+    "name": "Jim Hall",
+    "title": "Healthcare Technology Manager",
+    "organization": "Mountain Park Health Center",
+    "email": "",
+    "email_status": "missing",
+    "phone": null,
+    "candidate_category": "person_lead",
+    "tier": "review",
+    "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "gate_passed": false,
+    "fit_score": 1.0,
+    "evidence_score": 0.55,
+    "contact_score": 0.0,
+    "source_url": "https://www.linkedin.com/in/jimhall",
+    "validation_statuses": {
+      "name": "supported",
+      "title": "unsupported",
+      "organization": "supported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    },
+    "validation_notes": {
+      "email": "email is not present on the candidate.",
+      "phone": "phone is not present on the candidate.",
+      "source": "http_status=200 resolved_url=https://www.linkedin.com/in/jimhall matched_fields=name,organization"
+    }
+  },
+  {
+    "benchmark_id": "lee-commodity-buyers",
+    "name": "Eric Feiro",
+    "title": "Log Buyer",
+    "organization": "NWH Hardwood Lumber Manufacturing & Distribution",
+    "email": "",
+    "email_status": "missing",
+    "phone": null,
+    "candidate_category": "person_lead",
+    "tier": "review",
+    "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "gate_passed": false,
+    "fit_score": 0.9,
+    "evidence_score": 0.55,
+    "contact_score": 0.0,
+    "source_url": "https://nwh.com/sell-your-timber/",
+    "validation_statuses": {
+      "name": "supported",
+      "title": "unsupported",
+      "organization": "supported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    },
+    "validation_notes": {
+      "email": "email is not present on the candidate.",
+      "phone": "phone is not present on the candidate.",
+      "source": "http_status=200 resolved_url=https://nwh.com/sell-your-timber/ matched_fields=name,organization"
+    }
+  },
+  {
+    "benchmark_id": "lee-commodity-buyers",
+    "name": "Jeremy Martin",
+    "title": "Log Buyer",
+    "organization": "NWH Hardwood Lumber Manufacturing & Distribution",
+    "email": "",
+    "email_status": "missing",
+    "phone": null,
+    "candidate_category": "person_lead",
+    "tier": "review",
+    "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "gate_passed": false,
+    "fit_score": 0.9,
+    "evidence_score": 0.55,
+    "contact_score": 0.0,
+    "source_url": "https://nwh.com/sell-your-timber/",
+    "validation_statuses": {
+      "name": "supported",
+      "title": "unsupported",
+      "organization": "supported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    },
+    "validation_notes": {
+      "email": "email is not present on the candidate.",
+      "phone": "phone is not present on the candidate.",
+      "source": "http_status=200 resolved_url=https://nwh.com/sell-your-timber/ matched_fields=name,organization"
+    }
+  },
+  {
+    "benchmark_id": "manufacturing-ops-detroit",
+    "name": "Benjamin Meachem",
+    "title": "Chief Operating Officer",
+    "organization": "Detroit Manufacturing Systems",
+    "email": "",
+    "email_status": "missing",
+    "phone": null,
+    "candidate_category": "person_lead",
+    "tier": "review",
+    "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "gate_passed": false,
+    "fit_score": 0.85,
+    "evidence_score": 0.8,
+    "contact_score": 0.0,
+    "source_url": "https://rocketreach.co/detroit-manufacturing-systems-dms-management_b793ca50c208bf47",
+    "validation_statuses": {
+      "name": "supported",
+      "title": "supported",
+      "organization": "supported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    },
+    "validation_notes": {
+      "email": "email is not present on the candidate.",
+      "phone": "phone is not present on the candidate.",
+      "source": "http_status=200 resolved_url=https://rocketreach.co/detroit-manufacturing-systems-dms-management_b793ca50c208bf47 matched_fields=name,title,organization"
+    }
+  },
+  {
+    "benchmark_id": "thomas-arizona-k12",
+    "name": "David Sanders",
+    "title": "Chief Technology Officer",
+    "organization": "Mesa Public Schools",
+    "email": "",
+    "email_status": "unsupported",
+    "phone": null,
+    "candidate_category": "person_lead",
+    "tier": "review",
+    "primary_filter_reason": "REVIEW: contact is unsupported; row is not CRM-ready.",
+    "gate_passed": false,
+    "fit_score": 1.0,
+    "evidence_score": 1.0,
+    "contact_score": 0.2,
+    "source_url": "https://rocketreach.co/david-sanders-email_13537132",
+    "validation_statuses": {
+      "name": "supported",
+      "title": "supported",
+      "organization": "supported",
+      "email": "unsupported",
+      "phone": "missing",
+      "source": "supported"
+    },
+    "validation_notes": {
+      "email": "No direct text support found for email.",
+      "phone": "phone is not present on the candidate.",
+      "source": "http_status=200 resolved_url=https://rocketreach.co/david-sanders-email_13537132 matched_fields=name,title,organization"
+    }
+  },
+  {
+    "benchmark_id": "thomas-arizona-k12",
+    "name": "Diana Hawari",
+    "title": "Chief Information Officer",
+    "organization": "Dysart Unified School District",
+    "email": "",
+    "email_status": "missing",
+    "phone": null,
+    "candidate_category": "person_lead",
+    "tier": "review",
+    "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "gate_passed": false,
+    "fit_score": 0.9,
+    "evidence_score": 0.8,
+    "contact_score": 0.35,
+    "source_url": "https://www.cosn.org/person/diana-hawari",
+    "validation_statuses": {
+      "name": "supported",
+      "title": "supported",
+      "organization": "supported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    },
+    "validation_notes": {
+      "email": "email is not present on the candidate.",
+      "phone": "phone is not present on the candidate.",
+      "source": "http_status=200 resolved_url=https://www.cosn.org/person/diana-hawari/ matched_fields=name,title,organization"
+    }
+  }
+]

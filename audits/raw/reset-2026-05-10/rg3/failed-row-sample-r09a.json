@@ -1,0 +1,282 @@
+[
+  {
+    "benchmark_id": "finance-cisos-new-york",
+    "name": null,
+    "title": null,
+    "organization": "Vista Equity Partners",
+    "email": null,
+    "email_status": null,
+    "phone": null,
+    "candidate_category": "failed",
+    "tier": "failed",
+    "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://www.vistaequitypartners.com/about/team/josh-stabiner/",
+    "gate_passed": null,
+    "source_url": "https://www.vistaequitypartners.com/about/team/josh-stabiner/",
+    "validation_statuses": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "phone": "missing",
+      "source": "failed"
+    },
+    "validation_notes": {
+      "name": "http_status=403 resolved_url=https://www.vistaequitypartners.com/about/team/josh-stabiner/",
+      "title": "http_status=403 resolved_url=https://www.vistaequitypartners.com/about/team/josh-stabiner/",
+      "organization": "http_status=403 resolved_url=https://www.vistaequitypartners.com/about/team/josh-stabiner/",
+      "source": "http_status=403 resolved_url=https://www.vistaequitypartners.com/about/team/josh-stabiner/"
+    }
+  },
+  {
+    "benchmark_id": "finance-cisos-new-york",
+    "name": null,
+    "title": null,
+    "organization": "Citi",
+    "email": null,
+    "email_status": null,
+    "phone": null,
+    "candidate_category": "failed",
+    "tier": "failed",
+    "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/michael-keaton-7773b892",
+    "gate_passed": null,
+    "source_url": "https://www.linkedin.com/in/michael-keaton-7773b892",
+    "validation_statuses": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "phone": "missing",
+      "source": "failed"
+    },
+    "validation_notes": {
+      "name": "http_status=999 resolved_url=https://www.linkedin.com/in/michael-keaton-7773b892",
+      "title": "http_status=999 resolved_url=https://www.linkedin.com/in/michael-keaton-7773b892",
+      "organization": "http_status=999 resolved_url=https://www.linkedin.com/in/michael-keaton-7773b892",
+      "source": "http_status=999 resolved_url=https://www.linkedin.com/in/michael-keaton-7773b892"
+    }
+  },
+  {
+    "benchmark_id": "healthcare-it-phoenix",
+    "name": null,
+    "title": null,
+    "organization": "Banner Health",
+    "email": null,
+    "email_status": null,
+    "phone": null,
+    "candidate_category": "failed",
+    "tier": "failed",
+    "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+    "gate_passed": null,
+    "source_url": "https://www.linkedin.com/in/jon-cook-57a83899",
+    "validation_statuses": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "phone": "missing",
+      "source": "failed"
+    },
+    "validation_notes": {
+      "name": "http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+      "title": "http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+      "organization": "http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899",
+      "source": "http_status=999 resolved_url=https://www.linkedin.com/in/jon-cook-57a83899"
+    }
+  },
+  {
+    "benchmark_id": "healthcare-it-phoenix",
+    "name": null,
+    "title": null,
+    "organization": "Banner Health",
+    "email": null,
+    "email_status": null,
+    "phone": null,
+    "candidate_category": "failed",
+    "tier": "failed",
+    "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/mary-f-fox",
+    "gate_passed": null,
+    "source_url": "https://www.linkedin.com/in/mary-f-fox",
+    "validation_statuses": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "phone": "missing",
+      "source": "failed"
+    },
+    "validation_notes": {
+      "name": "http_status=999 resolved_url=https://www.linkedin.com/in/mary-f-fox",
+      "title": "http_status=999 resolved_url=https://www.linkedin.com/in/mary-f-fox",
+      "organization": "http_status=999 resolved_url=https://www.linkedin.com/in/mary-f-fox",
+      "source": "http_status=999 resolved_url=https://www.linkedin.com/in/mary-f-fox"
+    }
+  },
+  {
+    "benchmark_id": "lee-commodity-buyers",
+    "name": null,
+    "title": null,
+    "organization": null,
+    "email": null,
+    "email_status": null,
+    "phone": null,
+    "candidate_category": "failed",
+    "tier": "failed",
+    "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+    "gate_passed": null,
+    "source_url": "https://limbacklumber.com/commodities-pricing/",
+    "validation_statuses": {
+      "name": "missing",
+      "title": "missing",
+      "organization": "missing",
+      "email": "missing",
+      "phone": "missing",
+      "source": "unsupported"
+    },
+    "validation_notes": {
+      "name": "name is not present on the candidate.",
+      "title": "title is not present on the candidate.",
+      "organization": "organization is not present on the candidate.",
+      "source": "http_status=200 resolved_url=https://limbacklumber.com/commodities-pricing/ matched_fields=none"
+    }
+  },
+  {
+    "benchmark_id": "lee-commodity-buyers",
+    "name": null,
+    "title": null,
+    "organization": null,
+    "email": null,
+    "email_status": null,
+    "phone": null,
+    "candidate_category": "failed",
+    "tier": "failed",
+    "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+    "gate_passed": null,
+    "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+    "validation_statuses": {
+      "name": "missing",
+      "title": "missing",
+      "organization": "missing",
+      "email": "missing",
+      "phone": "missing",
+      "source": "failed"
+    },
+    "validation_notes": {
+      "name": "name is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+      "title": "title is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+      "organization": "organization is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+      "source": "http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342"
+    }
+  },
+  {
+    "benchmark_id": "manufacturing-ops-detroit",
+    "name": null,
+    "title": null,
+    "organization": "Detroit Manufacturing Systems",
+    "email": null,
+    "email_status": null,
+    "phone": null,
+    "candidate_category": "failed",
+    "tier": "failed",
+    "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith/",
+    "gate_passed": null,
+    "source_url": "https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith/",
+    "validation_statuses": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "phone": "missing",
+      "source": "failed"
+    },
+    "validation_notes": {
+      "name": "http_status=403 resolved_url=https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith/",
+      "title": "http_status=403 resolved_url=https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith/",
+      "organization": "http_status=403 resolved_url=https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith/",
+      "source": "http_status=403 resolved_url=https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith/"
+    }
+  },
+  {
+    "benchmark_id": "manufacturing-ops-detroit",
+    "name": null,
+    "title": null,
+    "organization": "LM Manufacturing, LLC",
+    "email": null,
+    "email_status": null,
+    "phone": null,
+    "candidate_category": "failed",
+    "tier": "failed",
+    "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://www.detroitchamber.com/transforming-lives-and-communities-the-impact-of-lm-manufacturing/",
+    "gate_passed": null,
+    "source_url": "https://www.detroitchamber.com/transforming-lives-and-communities-the-impact-of-lm-manufacturing/",
+    "validation_statuses": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "phone": "missing",
+      "source": "failed"
+    },
+    "validation_notes": {
+      "name": "http_status=403 resolved_url=https://www.detroitchamber.com/transforming-lives-and-communities-the-impact-of-lm-manufacturing/",
+      "title": "http_status=403 resolved_url=https://www.detroitchamber.com/transforming-lives-and-communities-the-impact-of-lm-manufacturing/",
+      "organization": "http_status=403 resolved_url=https://www.detroitchamber.com/transforming-lives-and-communities-the-impact-of-lm-manufacturing/",
+      "source": "http_status=403 resolved_url=https://www.detroitchamber.com/transforming-lives-and-communities-the-impact-of-lm-manufacturing/"
+    }
+  },
+  {
+    "benchmark_id": "thomas-arizona-k12",
+    "name": null,
+    "title": null,
+    "organization": "Peoria Unified School District",
+    "email": null,
+    "email_status": null,
+    "phone": null,
+    "candidate_category": "failed",
+    "tier": "failed",
+    "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+    "gate_passed": null,
+    "source_url": "https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+    "validation_statuses": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "phone": "missing",
+      "source": "failed"
+    },
+    "validation_notes": {
+      "name": "http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+      "title": "http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+      "organization": "http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+      "source": "http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408"
+    }
+  },
+  {
+    "benchmark_id": "thomas-arizona-k12",
+    "name": null,
+    "title": null,
+    "organization": "Gilbert Public Schools",
+    "email": null,
+    "email_status": null,
+    "phone": null,
+    "candidate_category": "failed",
+    "tier": "failed",
+    "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+    "gate_passed": null,
+    "source_url": "https://www.linkedin.com/in/joncastelhano",
+    "validation_statuses": {
+      "name": "failed",
+      "title": "failed",
+      "organization": "failed",
+      "email": "missing",
+      "phone": "missing",
+      "source": "failed"
+    },
+    "validation_notes": {
+      "name": "http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+      "title": "http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+      "organization": "http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+      "source": "http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano"
+    }
+  }
+]

@@ -1,0 +1,138 @@
+{
+  "benchmark_id": "manufacturing-ops-detroit",
+  "query": "manufacturing operations leaders in Detroit",
+  "http_status": 200,
+  "runner_elapsed_seconds": 73.398,
+  "metrics": {
+    "elapsed_seconds": 73.38,
+    "estimated_cost_usd": 0.129535,
+    "funnel_counts": {
+      "categorized_rows": 50,
+      "contact_quality_passes": 0,
+      "deduped_sources": 155,
+      "extracted_candidates": 7,
+      "high_trust_usable_rows": 0,
+      "person_rows": 1,
+      "raw_vendor_hits": 227,
+      "source_snapshots": 155
+    },
+    "funnel_notes": [
+      "Deduped 227 raw vendor hits to 155 unique sources.",
+      "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+      "No returned row has verified or source-backed deduced contact evidence."
+    ],
+    "input_tokens": 58997,
+    "openai_web_searches": 0,
+    "output_tokens": 1142,
+    "tavily_searches": 12,
+    "tier_distribution": {
+      "failed": 47,
+      "high_trust_usable": 0,
+      "not_found": 1,
+      "organization_only": 1,
+      "review": 1
+    }
+  },
+  "row_counts": {
+    "total": 50,
+    "person_leads": 1,
+    "review": 1,
+    "high_trust_usable": 0,
+    "organization_only": 1,
+    "not_found": 1,
+    "failed": 47
+  },
+  "person_rows": [
+    {
+      "name": "Benjamin Meachem",
+      "title": "Chief Operating Officer",
+      "organization": "Detroit Manufacturing Systems",
+      "email_status": "missing",
+      "phone": null,
+      "tier": "review",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "gate_passed": false,
+      "source_url": "https://rocketreach.co/detroit-manufacturing-systems-dms-management_b793ca50c208bf47",
+      "validation_statuses": {
+        "name": "supported",
+        "title": "supported",
+        "organization": "supported",
+        "email": "missing",
+        "phone": "missing",
+        "source": "supported"
+      }
+    }
+  ],
+  "failed_examples": [
+    {
+      "name": null,
+      "title": null,
+      "organization": "Detroit Manufacturing Systems",
+      "tier": "failed",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith/",
+      "source_url": "https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith/",
+      "validation_statuses": {
+        "name": "failed",
+        "title": "failed",
+        "organization": "failed",
+        "source": "failed"
+      }
+    },
+    {
+      "name": null,
+      "title": null,
+      "organization": "LM Manufacturing, LLC",
+      "tier": "failed",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://www.detroitchamber.com/transforming-lives-and-communities-the-impact-of-lm-manufacturing/",
+      "source_url": "https://www.detroitchamber.com/transforming-lives-and-communities-the-impact-of-lm-manufacturing/",
+      "validation_statuses": {
+        "name": "failed",
+        "title": "failed",
+        "organization": "failed",
+        "source": "failed"
+      }
+    },
+    {
+      "name": null,
+      "title": null,
+      "organization": "Detroit Manufacturing Systems LLC",
+      "tier": "failed",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/michael-ondayko-10aba81a",
+      "source_url": "https://www.linkedin.com/in/michael-ondayko-10aba81a",
+      "validation_statuses": {
+        "name": "failed",
+        "title": "failed",
+        "organization": "failed",
+        "source": "failed"
+      }
+    },
+    {
+      "name": null,
+      "title": null,
+      "organization": null,
+      "tier": "failed",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. No decision-makers provided.",
+      "source_url": null,
+      "validation_statuses": {
+        "name": "missing",
+        "title": "missing",
+        "organization": "missing",
+        "source": "missing"
+      }
+    },
+    {
+      "name": null,
+      "title": null,
+      "organization": null,
+      "tier": "failed",
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "source_url": "https://www.indeed.com/q-manufacturing-operations-manager-l-detroit,-mi-jobs.html",
+      "validation_statuses": {
+        "name": "missing",
+        "title": "missing",
+        "organization": "missing",
+        "source": "failed"
+      }
+    }
+  ]
+}

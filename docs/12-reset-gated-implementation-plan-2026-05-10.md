@@ -5,9 +5,9 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, ready for Prompt C audit after R09A Prompt B QA.
-**Next Prompt A feature:** None. R09A is the last RG3 feature and has passed Prompt B QA.
-**Current Prompt B handoff:** None. R09A passed Prompt B QA on `feat/reset-r09a-live-value-recovery`; after merge, run Prompt C for RG3 on `rebuild/validated-leads-loop`. Do not unlock RG4 or touch `main`.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, held by the R09A Prompt C re-audit.
+**Next Prompt A feature:** None. The R09A re-audit records `hold`, so no downstream Prompt A or RG4 design/mockup preflight is unlocked until Matt accepts or changes the remediation scope.
+**Current Prompt B handoff:** None. R09A is merged and re-audited; do not unlock RG4, start mockups, or touch `main`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -186,7 +186,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG0 | W5 Hold And Control Reset | R00 | gate_advanced | `audits/gates/reset-2026-05-10/rg0-w5-hold.md` |
 | RG1 | Operator Benchmark Harness | R01-R03 | gate_advanced | `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md` |
 | RG2 | Search Coverage And Source Collection | R04-R06 | gate_advanced | `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md` |
-| RG3 | Validation, Conflict, And Gate Semantics | R07-R09A | gate_pending_audit | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
+| RG3 | Validation, Conflict, And Gate Semantics | R07-R09A | gate_hold | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
 | RG4 | Sales-First Operator UI | R10-R12 | blocked | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
 | RG5 | Sales-First Export And Persistence | R13-R14 | blocked | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
 | RG6 | Dogfood / Kill Decision | R15 | blocked | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md` |
@@ -407,6 +407,15 @@ R09A Prompt B QA handoff:
 - Prompt B verification: required core R09A suite (`70 passed`), API suite (`45 passed`, existing datetime warnings), `git diff --check`, replay artifact inspection, and live Scout artifacts for all six benchmark cases under `audits/raw/reset-2026-05-10/r09a/live-prompt-b/`.
 - Prompt B evidence summary: broad live cases now return 50 categorized rows and privacy refusal is handled as expected, but high-trust usable rows and contact-quality passes remain `0` across the live suite. This is enough to merge R09A as a remediation/diagnostic slice, not enough to advance RG3 without Prompt C.
 - Exact Prompt C handoff: Audit RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop`. Confirm R07-R09A are merged, run the RG3 full evaluation/audit below, and write/update `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`. Do not unlock RG4, refreshed mockups, export work, dogfood, `main`, or downstream readiness unless Prompt C records an `advance`.
+
+R09A Prompt C re-audit:
+
+- Branch: `audit/reset-rg3-validation-semantics-r09a`.
+- Decision: `hold`.
+- Report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`.
+- Fresh live evidence: `audits/raw/reset-2026-05-10/rg3/live-r09a/`.
+- Summary: R09A recovered broad volume and funnel observability. Lee, healthcare, finance, and manufacturing live Scout cases now return 50 categorized rows, and privacy refusal is correctly handled as expected. RG3 still cannot advance because every evaluated live benchmark has `high_trust_usable_count=0` and `contact_quality_passes=0`.
+- Next valid assignment: none until Matt accepts this hold or changes the remediation scope. If accepted, the next remediation should stay inside RG3 and focus on contact/value recovery plus failed-row state language. Do not start RG4 design preflight or R10-R12 from this hold.
 
 RG3 full evaluation/audit:
 

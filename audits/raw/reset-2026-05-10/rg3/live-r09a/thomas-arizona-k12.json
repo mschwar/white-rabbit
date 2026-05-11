@@ -1,0 +1,621 @@
+{
+  "benchmark_id": "thomas-arizona-k12",
+  "leads": [
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.9997154,
+      "contact_score": 0.2,
+      "email": "",
+      "email_status": "unsupported",
+      "evidence_score": 1.0,
+      "explanation": "David Sanders is confirmed as the Chief Technology Officer with associated contact details.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "I admire your ongoing efforts to enhance technology within the expansive Mesa Public Schools, especially seeing the student-focused initiatives you lead.",
+      "id": null,
+      "name": "David Sanders",
+      "organization": "Mesa Public Schools",
+      "primary_filter_reason": "REVIEW: contact is unsupported; row is not CRM-ready.",
+      "source_url": "https://rocketreach.co/david-sanders-email_13537132",
+      "tier": "review",
+      "title": "Chief Technology Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for email.",
+          "source_url": "https://rocketreach.co/david-sanders-email_13537132",
+          "status": "unsupported"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": "David Sanders Email & Phone Number | Mesa Public Schools Chief Technology Officer Contact Inf...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://rocketreach.co/david-sanders-email_13537132",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": "David Sanders Email & Phone Number | Mesa Public Schools Chief Technology Officer Contact Information if (!window.RR_INIT_STORE) { windo...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://rocketreach.co/david-sanders-email_13537132",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://rocketreach.co/david-sanders-email_13537132",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": "David Sanders Email & Phone Number | Mesa Public Schools Chief Technology Officer Contact Inf...",
+          "notes": "http_status=200 resolved_url=https://rocketreach.co/david-sanders-email_13537132 matched_fields=name,title,organization",
+          "source_url": "https://rocketreach.co/david-sanders-email_13537132",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": "David Sanders Email & Phone Number | Mesa Public Schools Chief Technology Officer Contact Information if (!window.RR_INIT_STORE) { window.RR_INIT_STORE = {}; } w...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://rocketreach.co/david-sanders-email_13537132",
+          "status": "supported"
+        }
+      },
+      "why_target": "As the Chief Technology Officer at Mesa Public Schools, your leadership in technology integration aligns with our interests in advancing educational tech solutions."
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+      "id": null,
+      "organization": "Peoria Unified School District",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+      "searched_target": "Peoria Unified School District",
+      "source_url": "https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "source_url": "https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "source_url": "https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "source_url": "https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "source_url": "https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "source_url": "https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "source_url": "https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+      "id": null,
+      "organization": "Gilbert Public Schools",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+      "searched_target": "Gilbert Public Schools",
+      "source_url": "https://www.linkedin.com/in/joncastelhano",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/brian-boone-74447541",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/brian-boone-74447541",
+      "id": null,
+      "organization": "Deer Valley Unified School District",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/brian-boone-74447541",
+      "searched_target": "Deer Valley Unified School District",
+      "source_url": "https://www.linkedin.com/in/brian-boone-74447541",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/brian-boone-74447541",
+          "source_url": "https://www.linkedin.com/in/brian-boone-74447541",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/brian-boone-74447541",
+          "source_url": "https://www.linkedin.com/in/brian-boone-74447541",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/brian-boone-74447541",
+          "source_url": "https://www.linkedin.com/in/brian-boone-74447541",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/brian-boone-74447541",
+          "source_url": "https://www.linkedin.com/in/brian-boone-74447541",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/brian-boone-74447541",
+          "source_url": "https://www.linkedin.com/in/brian-boone-74447541",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/brian-boone-74447541",
+          "source_url": "https://www.linkedin.com/in/brian-boone-74447541",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.9777139,
+      "contact_score": 0.35,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.8,
+      "explanation": "Diana's email is not found, but her phone has been confirmed.",
+      "fit_score": 0.9,
+      "gate_passed": false,
+      "icebreaker": "Your work to ensure safe and secure access to information for students is not just impressive, but essential for today's educational landscape.",
+      "id": null,
+      "name": "Diana Hawari",
+      "organization": "Dysart Unified School District",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://www.cosn.org/person/diana-hawari",
+      "tier": "review",
+      "title": "Chief Information Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.cosn.org/person/diana-hawari/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": "Diana Hawari | CoSN :where(.wp-block-button__link){border-radius:9999px;box-shadow:none;padd...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.cosn.org/person/diana-hawari/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": "...ve Resource Center Membership FAQs Diana Hawari CETL\u00ae Chief Information Officer Dysart Unified School District (AZ) Home People Diana Hawari googletag.cmd.push(function() { googletag.display...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.cosn.org/person/diana-hawari/",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.cosn.org/person/diana-hawari/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": "Diana Hawari | CoSN :where(.wp-block-button__link){border-radius:9999px;box-shadow:none;padd...",
+          "notes": "http_status=200 resolved_url=https://www.cosn.org/person/diana-hawari/ matched_fields=name,title,organization",
+          "source_url": "https://www.cosn.org/person/diana-hawari/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": "...r Spotlight Member Exclusive Resource Center Membership FAQs Diana Hawari CETL\u00ae Chief Information Officer Dysart Unified School District (AZ) Home People Diana Hawari googletag.cmd.push...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.cosn.org/person/diana-hawari/",
+          "status": "supported"
+        }
+      },
+      "why_target": "As CIO at Dysart Unified School District, you play a pivotal role in overseeing the implementation of technology across the district."
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+      "id": null,
+      "organization": "Maricopa Unified School District",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+      "searched_target": "Maricopa Unified School District",
+      "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "not_found",
+      "explanation": "No relevant candidates were found for Chandler Unified School District within the search results.",
+      "id": null,
+      "organization": "Chandler Unified School District",
+      "primary_filter_reason": "NOT FOUND: searched target, but no acceptable contact was validated. No relevant candidates were found for Chandler Unified School District within the search results.",
+      "searched_target": "Chandler Unified School District",
+      "source_url": null,
+      "tier": "not_found",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "Could not validate organization because source_url was not provided.",
+          "source_url": null,
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "source_url was not provided.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "not_found",
+      "explanation": "No relevant candidates were found for Peoria Unified School District within the search results.",
+      "id": null,
+      "organization": "Peoria Unified School District",
+      "primary_filter_reason": "NOT FOUND: searched target, but no acceptable contact was validated. No relevant candidates were found for Peoria Unified School District within the search results.",
+      "searched_target": "Peoria Unified School District",
+      "source_url": null,
+      "tier": "not_found",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "Could not validate organization because source_url was not provided.",
+          "source_url": null,
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "source_url was not provided.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "not_found",
+      "explanation": "No relevant candidates were found for Gilbert Public Schools within the search results.",
+      "id": null,
+      "organization": "Gilbert Public Schools",
+      "primary_filter_reason": "NOT FOUND: searched target, but no acceptable contact was validated. No relevant candidates were found for Gilbert Public Schools within the search results.",
+      "searched_target": "Gilbert Public Schools",
+      "source_url": null,
+      "tier": "not_found",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "Could not validate organization because source_url was not provided.",
+          "source_url": null,
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "source_url was not provided.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Source coverage was found for Paradise Valley Unified School District, but no usable person lead was validated from the collected results.",
+      "id": null,
+      "organization": "Paradise Valley Unified School District",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Source coverage was found for Paradise Valley Unified School District, but no usable person lead was validated from the collected results.",
+      "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2017.html",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2017.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2017.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": "...r a social good and leaving a positive digital footprint. Cori Araza , Teacher, Paradise Valley Unified School District Karen Mensing , Technology Integration Facilitator, Paradise Valley Unified Sch...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2017.html",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2017.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": "...r a social good and leaving a positive digital footprint. Cori Araza , Teacher, Paradise Valley Unified School District Karen Mensing , Technology Integration Facilitator, Paradise Valley Unified Sch...",
+          "notes": "http_status=200 resolved_url=https://events.govtech.com/Arizona-CIO-CTO-Forum-2017.html matched_fields=organization",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2017.html",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:53:49Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2017.html",
+          "status": "missing"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 62.02,
+    "estimated_cost_usd": 0.085126,
+    "funnel_counts": {
+      "categorized_rows": 10,
+      "contact_quality_passes": 0,
+      "deduped_sources": 50,
+      "extracted_candidates": 9,
+      "high_trust_usable_rows": 0,
+      "person_rows": 2,
+      "raw_vendor_hits": 56,
+      "source_snapshots": 50
+    },
+    "funnel_notes": [
+      "Deduped 56 raw vendor hits to 50 unique sources.",
+      "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+      "No returned row has verified or source-backed deduced contact evidence."
+    ],
+    "input_tokens": 28228,
+    "openai_web_searches": 0,
+    "output_tokens": 1487,
+    "tavily_searches": 8,
+    "tier_distribution": {
+      "failed": 4,
+      "high_trust_usable": 0,
+      "not_found": 3,
+      "organization_only": 1,
+      "review": 2
+    }
+  },
+  "mode": "scout",
+  "prompt_label": "Thomas Arizona K-12 exact prompt",
+  "query": "name and email and phone number for these District Approx Size Tech Decision Maker Type Mesa Public Schools 60k+ students CIO / Director of Technology; Chandler Unified School District 40k+ CTO / IT Director; Peoria Unified School District 35k+ Technology Services; Gilbert Public Schools 30k+ CTO; Deer Valley Unified School District 30k+ IT leadership; Paradise Valley Unified School District 25k+ CIO/Technology; Dysart Unified School District 24k+ Director of Technology; Maricopa Unified School District 9k+ Director of Technology",
+  "query_guardrail": {
+    "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+    "missing_criteria": [
+      "location"
+    ],
+    "status": "needs_more_detail",
+    "suggestions": [
+      "Add a geography, such as a city, state, or region."
+    ]
+  },
+  "runner_elapsed_seconds": 62.046,
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 9,
+    "remaining_rows": 990,
+    "reset_at": "2026-05-11T07:52:49.529066-06:00",
+    "total_queries": 1,
+    "total_rows": 10
+  }
+}
