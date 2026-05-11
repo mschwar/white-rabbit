@@ -36,3 +36,36 @@ def test_compile_query_plan_preserves_simple_query_intent_and_filters():
     assert plan.vendor_queries[0].startswith("IT directors at school districts")
     assert "location: Albuquerque" in plan.vendor_queries[0]
     assert "segment: public schools" in plan.vendor_queries[0]
+
+
+def test_compile_query_plan_expands_broad_query_for_high_volume_results():
+    plan = compile_query_plan(
+        "healthcare IT directors in Phoenix",
+        max_results=50,
+    )
+
+    assert plan.broad_query is True
+    assert len(plan.vendor_queries) >= 6
+    assert all(len(query) <= SAFE_VENDOR_QUERY_LENGTH for query in plan.vendor_queries)
+    assert any("Director of Technology" in query for query in plan.vendor_queries)
+    assert any("hospitals" in query for query in plan.vendor_queries)
+    assert all("Phoenix" in query or "phoenix" in query for query in plan.vendor_queries)
+
+
+def test_compile_query_plan_aggressive_breadth_adds_more_bounded_queries():
+    normal_plan = compile_query_plan(
+        "commodity buyers at retail lumber yards in Washington",
+        max_results=50,
+    )
+    aggressive_plan = compile_query_plan(
+        "commodity buyers at retail lumber yards in Washington",
+        max_results=240,
+        aggressive_breadth=True,
+    )
+
+    assert normal_plan.broad_query is True
+    assert aggressive_plan.broad_query is True
+    assert aggressive_plan.aggressive_breadth is True
+    assert len(aggressive_plan.vendor_queries) > len(normal_plan.vendor_queries)
+    assert len(aggressive_plan.vendor_queries) >= 12
+    assert all(len(query) <= SAFE_VENDOR_QUERY_LENGTH for query in aggressive_plan.vendor_queries)

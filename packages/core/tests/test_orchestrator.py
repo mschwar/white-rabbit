@@ -18,7 +18,7 @@ def test_scout_uses_injected_dependencies_and_returns_metrics():
     async def fake_search(query: str, api_key=None, max_results=10, filters=None):
         assert query == "K-12 IT directors in Albuquerque"
         assert api_key == "fake-tavily"
-        assert max_results == 10
+        assert max_results == 50
         assert filters is None
         return [
             {
@@ -342,6 +342,38 @@ def test_scout_counts_planned_tavily_searches_from_search_results():
     )
 
     assert metrics.tavily_searches == 8
+
+
+def test_scout_exposes_safe_volume_controls_to_search():
+    seen = {}
+
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None, aggressive_breadth=False):
+        seen["max_results"] = max_results
+        seen["aggressive_breadth"] = aggressive_breadth
+        return SearchResults([], tavily_searches=12)
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            return SimpleNamespace(
+                choices=[SimpleNamespace(message=SimpleNamespace(parsed=LeadList(leads=[])))],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+
+    _, metrics = asyncio.run(
+        scout(
+            "commodity buyers at retail lumber yards in Washington",
+            max_results=240,
+            aggressive_breadth=True,
+            openai_client=fake_client,
+            tavily_key="fake-tavily",
+            search_fn=fake_search,
+        )
+    )
+
+    assert seen == {"max_results": 240, "aggressive_breadth": True}
+    assert metrics.tavily_searches == 12
 
 
 def test_scout_preserves_non_person_candidate_categories():

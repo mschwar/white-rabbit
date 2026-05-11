@@ -1,14 +1,14 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex rg1-audit-merge-fix
-**Branch:** rebuild/validated-leads-loop
+**Last updated:** 2026-05-10 by Codex prompt-b-r04-qa
+**Branch:** feat/reset-r04-high-volume-search
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
-**Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. No product code, reset gate, or active feature status changed.
+**Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Reset work is Prompt A for `R04 - High-volume query planner and search aggregation` on `feat/reset-r04-high-volume-search`. RG1 has advanced and its audit branch has been merged into `rebuild/validated-leads-loop`.
+**Next pointer:** Prompt A for `R05 - Source collection and snapshot store` on `feat/reset-r05-source-collection-store`. Do not start R06 or RG3.
 
 **Open question:** If these become production brand assets, replace the upscaled raster crops with a clean vector or native high-resolution source when available.
 
@@ -22,13 +22,13 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** `R04 - High-volume query planner and search aggregation` is ready for Prompt A on `rebuild/validated-leads-loop`. RG1 advanced as a harness gate only; the product remains red.
+**Next feature pointer:** `R04 - High-volume query planner and search aggregation` passed Prompt B QA on `feat/reset-r04-high-volume-search` and is merged to `rebuild/validated-leads-loop`; the next same-gate feature is `R05 - Source collection and snapshot store`. RG1 advanced as a harness gate only; the product remains red.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
 **Final product mockup gate:** Inspect `docs/mockups/final-product-2026-05-10/index.html` before assigning Prompt A implementation. R10-R13 must treat it as the visual contract for live-demo high-volume tier distribution unless Matt approves a different direction; RG4/RG5 Prompt C audits must compare live screenshots against it.
 
-**Current feature branch QA status:** No feature branch is awaiting QA. `feat/reset-r03-live-benchmark-runner` passed Prompt B QA and is merged into `rebuild/validated-leads-loop`. RG1 Prompt C advanced and unlocked only R04. F20-F23 remain deferred.
+**Current feature branch QA status:** `feat/reset-r04-high-volume-search` passed Prompt B QA and is merged to `rebuild/validated-leads-loop`. No other reset feature branch should be QA'd. R05 is the next ready same-gate feature; R06 remains blocked.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -39,7 +39,7 @@
 - RG0 control reset gate report: `audits/gates/reset-2026-05-10/rg0-w5-hold.md`
 - RG1 benchmark harness gate report: `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is now `in_progress`; and R04 is ready for Prompt A.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is now `in_progress`; and R04 passed Prompt B QA without unlocking RG3.
 
 Prior accepted gates:
 
@@ -64,21 +64,19 @@ Prior accepted gates:
 
 **Latest handoff:**
 
-Gate: RG1 - Operator Benchmark Harness
-Branch: `audit/reset-rg1-benchmark-harness`
-Status: `gate_advanced`
-What changed: Prompt C verified RG1 readiness, confirmed R01-R03 are merged into `rebuild/validated-leads-loop`, confirmed RG1 had not already advanced, re-ran replay benchmarks, re-ran the live benchmark runner against the protected local API path, saved fresh raw artifacts under `audits/raw/reset-2026-05-10/rg1/`, and wrote `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`. The decision is `advance` only for the harness gate; the current product remains red and does not yet provide enough result volume, evidence quality, or export value. Follow-up fix: the RG1 audit branch was fast-forward merged into `rebuild/validated-leads-loop` so Prompt A can legally resolve R04 from the integration branch, and the Prompt C instructions now require advance decisions to merge the audit branch back into the integration branch before the next Prompt A.
+Feature: R04 - High-volume query planner and search aggregation
+Branch: `feat/reset-r04-high-volume-search`
+Status: `merged_to_rebuild_branch`
+What changed: Prompt A implemented the single ready RG2 feature. The query planner now preserves the full Arizona K-12 named accounts as coverage obligations, expands broad vertical/persona/geography prompts into multiple bounded vendor queries, supports normal and aggressive breadth, and keeps every generated vendor query under the safe Tavily length. Search now fans out across planned vendor queries, caps each Tavily call at 20 results, aggregates and dedupes client-side, and preserves `vendor_query` / `matched_vendor_queries` metadata for provenance. `scout()` now exposes safe raw-volume controls with defaults of 50 raw search results for Scout-style runs and up to 100 for Full-style runs, without changing the strict evidence gate or downstream tier semantics.
 Tests or QA run:
-- `cd packages/core && uv run pytest tests/test_arizona_k12_benchmark.py tests/test_benchmark_suite.py tests/test_quality_report.py -q`
-- `cd packages/core && uv run python -m core.live_benchmark_runner --help`
-- `cd apps/api && uv run alembic upgrade head`
-- `cd apps/api && env -u OPENAI_BASE_URL -u OPENAI_API_KEY uv run uvicorn api.main:app --port 8000`
-- `export WR_API_INTERNAL_TOKEN="$(awk -F= '/^WR_API_INTERNAL_TOKEN=/{print $2}' apps/api/.env)"; cd packages/core && uv run python -m core.live_benchmark_runner --api-base-url http://127.0.0.1:8000 --output-dir ../../audits/raw/reset-2026-05-10/rg1`
-- `git diff --check`
-Screenshots or report: non-UI feature; live raw outputs saved under `audits/raw/reset-2026-05-10/rg1/` and no browser screenshots required.
-Northstar reflection: RG1 now has current live saved evidence against the protected API boundary instead of replay-only evidence. The rerun remains red: Arizona returned 9 categorized rows, covered 7 of 8 named targets, and produced 0 high-trust usable rows; Lee broad-query volume returned 2 categorized rows; healthcare returned 2; finance returned 3; manufacturing still returned `503 openai_failed`; and the privacy guardrail still blocked correctly before search.
-Next pointer: Prompt A only. Implement `R04 - High-volume query planner and search aggregation` on `feat/reset-r04-high-volume-search` from `rebuild/validated-leads-loop`. Do not start R05/R06 until Prompt B QA passes and merges R04.
-Open questions: local shells that export `OPENAI_API_KEY=ollama` or `OPENAI_BASE_URL=http://localhost:11434/v1` still poison API startup preflight unless the runner is launched through `env -u OPENAI_BASE_URL -u OPENAI_API_KEY ...`.
+- `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py tests/test_benchmark_suite.py -q` (`16 passed`)
+- `cd packages/core && uv run pytest tests/test_orchestrator.py -q` (`12 passed`)
+- `cd packages/core && uv run pytest tests -q` (`106 passed, 6 skipped`)
+- `git diff --check` (`passed`)
+Screenshots or report: non-UI feature; no browser screenshots required. Prompt B QA report: `.gstack/qa-reports/qa-report-r04-high-volume-search-2026-05-10.md`.
+Northstar reflection: R04 increases raw search/source coverage only. It does not loosen `high_trust_usable`, invent contacts, add UI/export surfaces, or implement R05/R06/R07 tiering semantics. Live categorized output can still remain red until downstream source collection, non-person coverage rows, inclusive extraction, and tier validation land.
+Next pointer: Prompt A may start `R05 - Source collection and snapshot store`. Do not start R06 or RG3.
+Open questions: Live Tavily smoke was not required for this non-UI feature QA; RG2 Prompt C must run or explicitly block on live evidence under the `$5` cap before advancing the gate.
 
 
 ---
@@ -227,11 +225,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. R00-R03 are merged; RG1 advanced as a harness gate; RG2 is in progress with R04 ready; W5 remains held; W6 remains blocked.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. R00-R03 are merged; RG1 advanced as a harness gate; RG2 is in progress with R04 passing Prompt B QA; W5 remains held; W6 remains blocked.
 
 ## Next concrete task
 
-- Assign Prompt A. Implement `R04 - High-volume query planner and search aggregation` on `feat/reset-r04-high-volume-search` from `rebuild/validated-leads-loop`. Use `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md` and the saved RG1 live artifacts as the baseline. Do not start R05/R06 until Prompt B QA passes and merges R04.
+- Assign Prompt A for `R05 - Source collection and snapshot store` on `feat/reset-r05-source-collection-store`. Do not start R06 or RG3.
 
 ## Open questions for Matt
 
@@ -276,6 +274,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | prompt-a-r04-high-volume-search (Codex) | Implemented `R04 - High-volume query planner and search aggregation` on `feat/reset-r04-high-volume-search`: full Arizona K-12 account coverage planning, broad-query vendor-query fanout, normal/aggressive breadth controls, Tavily per-call cap handling, client-side aggregation/dedupe with matched-query provenance, and `scout()` raw-result controls. Verified required R04 tests plus adjacent/all core tests; branch is pending Prompt B QA and merge. |
 | 2026-05-10 | rg1-audit-merge-fix (Codex) | Fast-forward merged `audit/reset-rg1-benchmark-harness` into `rebuild/validated-leads-loop` so the RG1 advance and R04-ready state are visible to Prompt A. Updated Prompt C instructions to require merging accepted gate-advance audit branches back into the integration branch before the next Prompt A. |
 | 2026-05-10 | prompt-b-r03-live-benchmark-runner (Codex) | QA-passed and merged `R03 - Live benchmark runner and quality summary` into `rebuild/validated-leads-loop`, wrote `.gstack/qa-reports/qa-report-r03-live-benchmark-runner-2026-05-10.md`, reran the protected local API benchmark suite, refreshed `audits/raw/reset-2026-05-10/rg1/` to current live evidence, and marked RG1 as gate-pending-audit with Prompt C as the next pointer. |
 | 2026-05-10 | prompt-a-r03-live-benchmark-runner (Codex) | Implemented `R03 - Live benchmark runner and quality summary` on `feat/reset-r03-live-benchmark-runner`: added the executable runner plus CLI path, saved-artifact observation parsing, automatic sandbox reset before suite execution, targeted runner tests, and live RG1 artifacts under `audits/raw/reset-2026-05-10/rg1/`. |
