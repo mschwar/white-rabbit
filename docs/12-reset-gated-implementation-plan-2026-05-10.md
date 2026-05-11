@@ -105,7 +105,7 @@ Prompt B: QA that feature, write the QA report, and merge only to rebuild/valida
 Prompt C: run the gate evaluation/audit after every feature in that gate has merged
 ```
 
-Prompt A never merges. Prompt B never unlocks the next gate. Prompt B may unlock the next feature inside the same in-progress gate after QA passes and the prior feature is merged. Prompt C is the only prompt that can record a gate-level `advance` or recommend an operator-use sync to `main`.
+Prompt A never merges. Prompt B never unlocks the next gate. Prompt B may unlock the next feature inside the same in-progress gate after QA passes and the prior feature is merged. Prompt C is the only prompt that can record a gate-level `advance` or recommend an operator-use sync to `main`. A Prompt C `advance` is not active for the next Prompt A until the audit branch has been merged back into `rebuild/validated-leads-loop` and pushed.
 
 Current kickoff order is resolved dynamically from `STATUS.md` and the reset feature/gate tables below.
 
@@ -116,7 +116,7 @@ Do not use a hard-coded feature prompt from an earlier chat turn. Before every a
 2. Prompt B -> the single feature branch currently waiting for QA
 3. If the current gate has another feature -> Prompt A on that next same-gate feature
 4. If all features in the current gate are merged -> Prompt C on the current gate
-5. If and only if Prompt C records advance -> the next gate's first feature becomes ready
+5. If and only if Prompt C records advance and merges the audit branch to the integration branch -> the next gate's first feature becomes ready
 ```
 
 If Prompt C records `hold`, `revise`, `rollback`, or `kill`, no downstream Prompt A assignment is valid until that decision is resolved.
@@ -658,5 +658,15 @@ Required output:
 - Next Main Promotion Recommendation
 - if and only if advance: mark the next gate's first feature ready and provide the exact next Prompt A assignment
 
-Commit and push the audit branch. Do not sync main unless Matt explicitly asks after seeing the gate decision.
+Commit and push the audit branch.
+
+If and only if the gate decision is `advance`:
+- checkout rebuild/validated-leads-loop
+- fast-forward merge the audit branch into rebuild/validated-leads-loop
+- push rebuild/validated-leads-loop
+- verify Prompt A can now resolve the next ready feature from the integration branch
+
+If the gate decision is `hold`, `revise`, `rollback`, or `kill`, do not merge the audit branch into rebuild/validated-leads-loop unless Matt explicitly accepts that decision state afterward.
+
+Do not sync main unless Matt explicitly asks after seeing the gate decision.
 ```

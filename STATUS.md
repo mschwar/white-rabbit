@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex prompt-c-rg1-benchmark-harness
+**Last updated:** 2026-05-10 by Codex rg1-audit-merge-fix
 **Branch:** rebuild/validated-leads-loop
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
@@ -61,7 +61,7 @@ Prior accepted gates:
 Gate: RG1 - Operator Benchmark Harness
 Branch: `audit/reset-rg1-benchmark-harness`
 Status: `gate_advanced`
-What changed: Prompt C verified RG1 readiness, confirmed R01-R03 are merged into `rebuild/validated-leads-loop`, confirmed RG1 had not already advanced, re-ran replay benchmarks, re-ran the live benchmark runner against the protected local API path, saved fresh raw artifacts under `audits/raw/reset-2026-05-10/rg1/`, and wrote `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`. The decision is `advance` only for the harness gate; the current product remains red and does not yet provide enough result volume, evidence quality, or export value.
+What changed: Prompt C verified RG1 readiness, confirmed R01-R03 are merged into `rebuild/validated-leads-loop`, confirmed RG1 had not already advanced, re-ran replay benchmarks, re-ran the live benchmark runner against the protected local API path, saved fresh raw artifacts under `audits/raw/reset-2026-05-10/rg1/`, and wrote `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`. The decision is `advance` only for the harness gate; the current product remains red and does not yet provide enough result volume, evidence quality, or export value. Follow-up fix: the RG1 audit branch was fast-forward merged into `rebuild/validated-leads-loop` so Prompt A can legally resolve R04 from the integration branch, and the Prompt C instructions now require advance decisions to merge the audit branch back into the integration branch before the next Prompt A.
 Tests or QA run:
 - `cd packages/core && uv run pytest tests/test_arizona_k12_benchmark.py tests/test_benchmark_suite.py tests/test_quality_report.py -q`
 - `cd packages/core && uv run python -m core.live_benchmark_runner --help`
@@ -270,6 +270,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | rg1-audit-merge-fix (Codex) | Fast-forward merged `audit/reset-rg1-benchmark-harness` into `rebuild/validated-leads-loop` so the RG1 advance and R04-ready state are visible to Prompt A. Updated Prompt C instructions to require merging accepted gate-advance audit branches back into the integration branch before the next Prompt A. |
 | 2026-05-10 | prompt-b-r03-live-benchmark-runner (Codex) | QA-passed and merged `R03 - Live benchmark runner and quality summary` into `rebuild/validated-leads-loop`, wrote `.gstack/qa-reports/qa-report-r03-live-benchmark-runner-2026-05-10.md`, reran the protected local API benchmark suite, refreshed `audits/raw/reset-2026-05-10/rg1/` to current live evidence, and marked RG1 as gate-pending-audit with Prompt C as the next pointer. |
 | 2026-05-10 | prompt-a-r03-live-benchmark-runner (Codex) | Implemented `R03 - Live benchmark runner and quality summary` on `feat/reset-r03-live-benchmark-runner`: added the executable runner plus CLI path, saved-artifact observation parsing, automatic sandbox reset before suite execution, targeted runner tests, and live RG1 artifacts under `audits/raw/reset-2026-05-10/rg1/`. |
 | 2026-05-10 | prompt-b-r02-benchmark-replay-harness (Codex) | QA-passed and merged `R02 - Golden benchmark replay harness` into `rebuild/validated-leads-loop`, wrote `.gstack/qa-reports/qa-report-r02-benchmark-replay-harness-2026-05-10.md`, confirmed replay-harness scope stayed inside `packages/core` plus reset control docs, and marked `R03 - Live benchmark runner and quality summary` as the next same-gate ready feature. |
