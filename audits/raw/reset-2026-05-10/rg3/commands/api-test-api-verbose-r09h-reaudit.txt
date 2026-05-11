@@ -1,0 +1,43 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.6, pytest-9.0.3, pluggy-1.6.0 -- /Users/mschwar/Documents/white-rabbit/apps/api/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/mschwar/Documents/white-rabbit/apps/api
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collecting ... collected 42 items
+
+tests/test_api.py::test_health_check PASSED
+tests/test_api.py::test_protected_api_endpoints_require_internal_token[post-/scout-payload0] PASSED
+tests/test_api.py::test_protected_api_endpoints_require_internal_token[post-/full-payload1] PASSED
+tests/test_api.py::test_protected_api_endpoints_require_internal_token[post-/batch-payload2] PASSED
+tests/test_api.py::test_protected_api_endpoints_require_internal_token[post-/sandbox/reset-payload3] PASSED
+tests/test_api.py::test_protected_api_endpoints_require_internal_token[get-/recipes-None] PASSED
+tests/test_api.py::test_protected_api_endpoints_require_internal_token[get-/recipes/11111111-1111-1111-1111-111111111111/runs-None] PASSED
+tests/test_api.py::test_protected_api_endpoints_require_internal_token[get-/recipes/11111111-1111-1111-1111-111111111111/scoreboard-None] PASSED
+tests/test_api.py::test_protected_api_endpoints_require_internal_token[get-/sandbox-None] PASSED
+tests/test_api.py::test_protected_api_endpoints_require_internal_token[post-/leads/11111111-1111-1111-1111-111111111111/feedback-payload8] PASSED
+tests/test_api.py::test_protected_api_endpoints_require_internal_token[post-/leads/qa-usable-1/corrections-payload9] PASSED
+tests/test_api.py::test_protected_api_endpoints_require_internal_token[get-/runs/qa-validation-buckets-run/corrections-None] PASSED
+tests/test_api.py::test_protected_api_endpoints_require_internal_token[post-/runs/11111111-1111-1111-1111-111111111111/close-payload11] PASSED
+tests/test_api.py::test_protected_api_endpoints_require_internal_token[get-/batch-None] PASSED
+tests/test_api.py::test_protected_api_endpoints_require_internal_token[get-/batch/11111111-1111-1111-1111-111111111111-None] PASSED
+tests/test_api.py::test_scout_endpoint_returns_scoped_payload PASSED
+tests/test_api.py::test_scout_endpoint_preserves_candidate_categories PASSED
+tests/test_api.py::test_scout_endpoint_forwards_filters PASSED
+tests/test_api.py::test_scout_endpoint_uses_high_volume_settings_for_broad_queries PASSED
+tests/test_api.py::test_scout_endpoint_keeps_named_account_queries_on_narrow_settings PASSED
+tests/test_api.py::test_scout_endpoint_blocks_broad_advice_queries PASSED
+tests/test_api.py::test_scout_endpoint_blocks_privacy_sensitive_queries PASSED
+tests/test_api.py::test_feedback_endpoint_accepts_canonical_enum_labels PASSED
+tests/test_api.py::test_feedback_endpoint_rejects_noncanonical_labels PASSED
+tests/test_api.py::test_feedback_endpoint_updates_existing_feedback PASSED
+tests/test_api.py::test_correction_endpoint_accepts_canonical_payload PASSED
+tests/test_api.py::test_run_corrections_endpoint_returns_review_queue PASSED
+tests/test_api.py::test_lead_feedback_model_has_label_check_constraint PASSED
+tests/test_api.py::test_lead_correction_model_has_constraints PASSED
+tests/test_api.py::test_get_recipe_scoreboard_seeds_canonical_feedback_counts PASSED
+tests/test_api.py::test_sandbox_usage_endpoint_returns_usage PASSED
+tests/test_api.py::test_sandbox_atomic_cap_is_enforced_under_concurrency PASSED
+tests/test_api.py::test_sandbox_reset_endpoint_clears_usage PASSED
+tests/test_api.py::test_scout_endpoint_returns_sandbox_usage_and_enforces_caps PASSED
+tests/test_api.py::test_scout_endpoint_returns_structured_error_on_orchestrator_failure

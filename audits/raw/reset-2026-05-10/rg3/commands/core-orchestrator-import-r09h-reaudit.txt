@@ -1,0 +1,1 @@
+TIMEOUT: `cd packages/core && timeout 30 uv run python -X faulthandler -c 'import core.orchestrator; print("imported core.orchestrator")'` exited 124 before stdout.

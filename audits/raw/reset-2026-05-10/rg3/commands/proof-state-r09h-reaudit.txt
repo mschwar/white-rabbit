@@ -1,0 +1,18 @@
+Mon May 11 22:05:58 UTC 2026
+## audit/reset-rg3-manual-oracle...origin/rebuild/validated-leads-loop
+?? audits/raw/reset-2026-05-10/rg3/commands/core-tests-r09h-reaudit.txt
+?? audits/raw/reset-2026-05-10/rg3/commands/git-diff-check-r09h-reaudit.txt
+?? audits/raw/reset-2026-05-10/rg3/commands/proof-state-r09h-reaudit.txt
+a4dc4e9
+a4dc4e9
+feat/reset-r07-inclusive-extraction merged into origin/rebuild/validated-leads-loop
+feat/reset-r08-tier-validation-conflicts merged into origin/rebuild/validated-leads-loop
+feat/reset-r09-tier-summary-semantics merged into origin/rebuild/validated-leads-loop
+feat/reset-r09a-live-value-recovery merged into origin/rebuild/validated-leads-loop
+feat/reset-r09b-contact-evidence-acquisition merged into origin/rebuild/validated-leads-loop
+feat/reset-r09c-deep-multisource-evidence-tier-calibration merged into origin/rebuild/validated-leads-loop
+feat/reset-r09d-april-nm-manual-oracle merged into origin/rebuild/validated-leads-loop
+feat/reset-r09e-k12-source-map-roster-collector merged into origin/rebuild/validated-leads-loop
+feat/reset-r09f-source-assisted-lead-compiler merged into origin/rebuild/validated-leads-loop
+feat/reset-r09g-research-workbook-tiering merged into origin/rebuild/validated-leads-loop
+feat/reset-r09h-manual-oracle-proof-packet merged into origin/rebuild/validated-leads-loop

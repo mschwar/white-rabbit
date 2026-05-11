@@ -5,10 +5,10 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, ready_for_prompt_c_audit / gate_hold. R09B and R09C are merged to `rebuild/validated-leads-loop`; the post-R09C live re-run remained held, and Matt accepted a source-assisted remediation pivot based on Lee's April New Mexico school-district IT evidence. R09D, R09E, R09F, R09G, and R09H passed QA and are merged to `rebuild/validated-leads-loop`.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, gate_hold. R09D-R09H passed QA and are merged to `rebuild/validated-leads-loop`, and the post-R09H Prompt C re-audit recorded `hold`: the source-assisted manual-oracle replay passes, but current live API evidence is unavailable because the API did not reach health during startup, and the latest complete saved live suite still has zero high-trust usable rows and zero contact-quality passes.
 **Next Prompt A feature:** None. R09H was the last same-gate feature.
 **Current Prompt B handoff:** None. No feature branch is waiting for QA.
-**Current Prompt C handoff:** Audit RG3 on `rebuild/validated-leads-loop`; confirm R09D-R09H are merged, run the RG3 full evaluation/audit below, write/update `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`, and keep RG4/R10-R12/export/dogfood/main blocked unless Prompt C records `advance`.
+**Current Prompt C handoff:** None. RG3 is held until Matt accepts the hold and either assigns another same-gate remediation or revises the reset plan. Keep RG4/refreshed mockups/R10-R12/export/dogfood/main blocked.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -209,7 +209,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG0 | W5 Hold And Control Reset | R00 | gate_advanced | `audits/gates/reset-2026-05-10/rg0-w5-hold.md` |
 | RG1 | Operator Benchmark Harness | R01-R03 | gate_advanced | `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md` |
 | RG2 | Search Coverage And Source Collection | R04-R06 | gate_advanced | `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md` |
-| RG3 | Validation, Conflict, And Gate Semantics | R07-R09H | ready_for_prompt_c_audit / gate_hold | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
+| RG3 | Validation, Conflict, And Gate Semantics | R07-R09H | gate_hold | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
 | RG4 | Sales-First Operator UI | R10-R12 | blocked | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
 | RG5 | Sales-First Export And Persistence | R13-R14 | blocked | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
 | RG6 | Dogfood / Kill Decision | R15 | blocked | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md` |
@@ -725,6 +725,15 @@ R09H Prompt A result:
 - Prompt B verification: `git diff --check` (passed); `cd packages/core && uv run pytest tests/test_manual_oracle_proof_packet.py tests/test_research_workbook.py tests/test_source_assisted_compiler.py tests/test_manual_oracle.py tests/test_k12_source_map.py -q` (`18 passed`); `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py -q` (`21 passed`); regenerated proof-packet payload matched `audits/raw/reset-2026-05-10/r09h/manual-oracle-proof-packet.json`.
 - Prompt B evidence summary: the R09H packet reports 17 observed manual-oracle rows, 10 verified-contact rows, 7 manual-lookup rows, 17 source-assisted compiler rows, zero generic blocked source URLs, 17 workbook rows, 10 `READY_WITH_CONTACT` rows, 7 `MANUAL_LOOKUP` rows, zero unsupported CRM-ready rows, zero manual-lookup CRM-ready rows, private contact values redacted, credentials present, API health `000`, no fresh live benchmark run, and latest saved live evidence still at zero high-trust/contact-quality output.
 - Prompt B result: QA passed. R09H is the last same-gate feature; merge only to `rebuild/validated-leads-loop`, mark RG3 `ready_for_prompt_c_audit / gate_hold`, and keep RG4/refreshed mockups/R10-R12/export/dogfood/main blocked unless Prompt C records `advance`.
+
+Post-R09H Prompt C result:
+
+- Branch: `audit/reset-rg3-manual-oracle`.
+- Decision: `hold`.
+- Report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`.
+- Raw notes: `audits/raw/reset-2026-05-10/rg3/evidence-notes-r09h-reaudit.md`; command outputs and health checks under `audits/raw/reset-2026-05-10/rg3/commands/`; replay packet under `audits/raw/reset-2026-05-10/rg3/replay-r09h-reaudit/`.
+- Reason: The source-assisted manual-oracle replay now passes offline with 17 workbook rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, sales-first export fields, and zero unsupported CRM-ready rows. RG3 still cannot advance because current live evidence is unavailable: the local API stayed in application startup, `/health` returned `000`, and no fresh live benchmark suite completed. The latest complete saved live suite still has zero high-trust usable rows and zero contact-quality passes.
+- Queue consequence: RG3 remains `gate_hold`. No Prompt A, Prompt B, or Prompt C assignment is valid until Matt accepts the hold and assigns another same-gate remediation or revises the plan. RG4, refreshed mockups, R10-R12, export, dogfood, and `main` promotion remain blocked.
 
 RG3 full evaluation/audit:
 
