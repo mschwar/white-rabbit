@@ -6,8 +6,8 @@
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
 **Current reset gate:** RG2 - Search Coverage And Source Collection.
-**Next Prompt A feature:** None. R04 is implemented and awaiting Prompt B QA.
-**Current Prompt B handoff:** QA `R04 - High-volume query planner and search aggregation` on `feat/reset-r04-high-volume-search`. Required checks: `git diff --check`; `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py tests/test_benchmark_suite.py -q`; non-UI scope/northstar review proving only query planning, search aggregation, dedupe/provenance metadata, and `scout()` raw-volume controls changed. If QA passes, write the QA report, merge only to `rebuild/validated-leads-loop`, and then mark R05 ready. Do not start R05/R06 from this Prompt A branch.
+**Next Prompt A feature:** R05 - Source collection and snapshot store on `feat/reset-r05-source-collection-store`.
+**Current Prompt B handoff:** None. R04 passed Prompt B QA in `.gstack/qa-reports/qa-report-r04-high-volume-search-2026-05-10.md` and is merged only into `rebuild/validated-leads-loop`. Prompt A may start R05. Do not start R06 or unlock RG3.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -194,8 +194,8 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R01 | Operator evidence fixture pack | merged | `feat/reset-r01-operator-evidence-fixtures` | non-UI fixture audit |
 | R02 | Golden benchmark replay harness | merged | `feat/reset-r02-benchmark-replay-harness` | core tests |
 | R03 | Live benchmark runner and quality summary | merged_to_rebuild_branch | `feat/reset-r03-live-benchmark-runner` | core/API + saved raw outputs |
-| R04 | High-volume query planner and search aggregation | implemented_pending_qa | `feat/reset-r04-high-volume-search` | core tests |
-| R05 | Source collection and snapshot store | blocked | `feat/reset-r05-source-collection-store` | core tests + raw source fixtures |
+| R04 | High-volume query planner and search aggregation | merged_to_rebuild_branch | `feat/reset-r04-high-volume-search` | core tests |
+| R05 | Source collection and snapshot store | ready | `feat/reset-r05-source-collection-store` | core tests + raw source fixtures |
 | R06 | Not-found and organization-only coverage writer | blocked | `feat/reset-r06-nonperson-coverage` | core tests |
 | R07 | Inclusive extraction prompt and candidate parse salvage | blocked | `feat/reset-r07-inclusive-extraction` | core/API tests |
 | R08 | Tiering engine, field validator, and conflict resolver | blocked | `feat/reset-r08-tier-validation-conflicts` | core tests |
