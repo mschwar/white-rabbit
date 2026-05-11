@@ -1,15 +1,18 @@
 from __future__ import annotations
 from pathlib import Path
 from datetime import datetime
+import os
 import sys
 import secrets
 from typing import Annotated, Any, Optional
 from uuid import UUID, uuid4
 
+# Keep API import/startup deterministic; White Rabbit does not use Pydantic plugins.
+os.environ.setdefault("PYDANTIC_DISABLE_PLUGINS", "__all__")
+
 from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException, Request
 from pydantic import BaseModel
-import os
 import logging
 from contextlib import asynccontextmanager
 
@@ -23,7 +26,6 @@ for candidate in (CORE_SRC, REPO_ROOT):
 
 from core.cost import RunMetrics
 from core.models import Candidate
-from core.orchestrator import scout, OrchestratorError, DEFAULT_MODEL
 from core.query_guardrails import QueryGuardrailResult, evaluate_query_guardrails
 from core.query_planner import compile_query_plan
 
@@ -60,9 +62,13 @@ load_dotenv()
 
 INTERNAL_API_TOKEN_HEADER = "x-white-rabbit-internal-token"
 INTERNAL_API_TOKEN_ENV = "WR_API_INTERNAL_TOKEN"
+DEFAULT_MODEL = "gpt-4o-mini"
 
-# Initialize database on startup (must happen before any endpoint uses it)
-init_db()
+
+async def scout(*args, **kwargs):
+    from core.orchestrator import scout as orchestrator_scout
+
+    return await orchestrator_scout(*args, **kwargs)
 
 
 def _preflight_check():
@@ -109,6 +115,7 @@ def _preflight_check():
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    init_db()
     _preflight_check()
     yield
 
@@ -342,17 +349,23 @@ async def run_scout(request: ScoutRequest, _: ProtectedApiAccess):
             query_guardrail=guardrail if guardrail.status != 'clear' else None,
             sandbox_usage=sandbox_usage,
         )
-    except OrchestratorError as exc:
-        import logging
-        logging.getLogger("white_rabbit.api").error("Orchestrator error: %s", exc, exc_info=True)
-        raise HTTPException(status_code=503, detail=_orchestrator_error_response(exc))
     except Exception as exc:
         import logging
+        if _is_orchestrator_error(exc):
+            logging.getLogger("white_rabbit.api").error("Orchestrator error: %s", exc, exc_info=True)
+            raise HTTPException(status_code=503, detail=_orchestrator_error_response(exc))
         logging.getLogger("white_rabbit.api").error("Unexpected error: %s", exc, exc_info=True)
         raise HTTPException(status_code=500, detail=_internal_error_response(exc))
 
 
-def _resolve_error_code(exc: OrchestratorError) -> str:
+def _is_orchestrator_error(exc: Exception) -> bool:
+    return (
+        exc.__class__.__name__ == "OrchestratorError"
+        and exc.__class__.__module__ == "core.orchestrator"
+    )
+
+
+def _resolve_error_code(exc: Exception) -> str:
     msg = str(exc).lower()
     if "tavily" in msg:
         return "tavily_failed"
@@ -363,7 +376,7 @@ def _resolve_error_code(exc: OrchestratorError) -> str:
     return "orchestrator_error"
 
 
-def _orchestrator_error_response(exc: OrchestratorError) -> dict:
+def _orchestrator_error_response(exc: Exception) -> dict:
     return {
         "error_code": _resolve_error_code(exc),
         "message": str(exc),
@@ -397,12 +410,11 @@ async def run_full(request: FullRequest, _: ProtectedApiAccess):
         with get_db_session() as session:
             record_sandbox_rows(session, len(leads))
             sandbox_usage = _sandbox_usage_out(session)
-    except OrchestratorError as exc:
-        import logging
-        logging.getLogger("white_rabbit.api").error("Orchestrator error: %s", exc, exc_info=True)
-        raise HTTPException(status_code=503, detail=_orchestrator_error_response(exc))
     except Exception as exc:
         import logging
+        if _is_orchestrator_error(exc):
+            logging.getLogger("white_rabbit.api").error("Orchestrator error: %s", exc, exc_info=True)
+            raise HTTPException(status_code=503, detail=_orchestrator_error_response(exc))
         logging.getLogger("white_rabbit.api").error("Unexpected error: %s", exc, exc_info=True)
         raise HTTPException(status_code=500, detail=_internal_error_response(exc))
 
@@ -689,32 +701,35 @@ async def run_batch(request: BatchRequest, _: ProtectedApiAccess):
                     )
                 )
                 break
-            except OrchestratorError as exc:
-                import logging
-                logging.getLogger("white_rabbit.api").error("Batch orchestrator error: %s", exc, exc_info=True)
-                err = _orchestrator_error_response(exc)
-                batch_run.status = "failed"
-                batch_run.error_message = err["message"]
-                batch_run.ended_at = datetime.utcnow()
-                update_batch_run(
-                    session,
-                    batch_run.id,
-                    status="failed",
-                    error_message=err["message"],
-                )
-                run_records.append(
-                    BatchRunOut(
-                        id=batch_run.id,
-                        query=item.query,
-                        status="failed",
-                        lead_count=0,
-                        cost_usd=0.0,
-                        error_message=err["message"],
-                    )
-                )
-                continue
             except Exception as exc:
                 import logging
+                if _is_orchestrator_error(exc):
+                    logging.getLogger("white_rabbit.api").error(
+                        "Batch orchestrator error: %s",
+                        exc,
+                        exc_info=True,
+                    )
+                    err = _orchestrator_error_response(exc)
+                    batch_run.status = "failed"
+                    batch_run.error_message = err["message"]
+                    batch_run.ended_at = datetime.utcnow()
+                    update_batch_run(
+                        session,
+                        batch_run.id,
+                        status="failed",
+                        error_message=err["message"],
+                    )
+                    run_records.append(
+                        BatchRunOut(
+                            id=batch_run.id,
+                            query=item.query,
+                            status="failed",
+                            lead_count=0,
+                            cost_usd=0.0,
+                            error_message=err["message"],
+                        )
+                    )
+                    continue
                 logging.getLogger("white_rabbit.api").error("Batch unexpected error: %s", exc, exc_info=True)
                 err = _internal_error_response(exc)
                 batch_run.status = "failed"

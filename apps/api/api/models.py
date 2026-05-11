@@ -4,6 +4,9 @@ from datetime import datetime
 from enum import Enum
 from typing import Any
 
+# The API uses SQLAlchemy's pure-Python path; optional C extensions slow local startup.
+os.environ.setdefault("DISABLE_SQLALCHEMY_CEXT_RUNTIME", "1")
+
 from sqlalchemy import (
     Boolean,
     CheckConstraint,
@@ -15,9 +18,9 @@ from sqlalchemy import (
     JSON,
     String,
     Text,
+    Uuid,
     create_engine,
 )
-from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import declarative_base, sessionmaker
 
 Base = declarative_base()
@@ -52,7 +55,7 @@ class CorrectionField(str, Enum):
 class Recipe(Base):
     __tablename__ = "recipe"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    id = Column(Uuid(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = Column(Text, nullable=False)
     query = Column(Text, nullable=False)
     filters = Column(JSON, default=dict)
@@ -65,8 +68,8 @@ class Recipe(Base):
 class RecipeRun(Base):
     __tablename__ = "recipe_run"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    recipe_id = Column(UUID(as_uuid=True), ForeignKey("recipe.id", ondelete="CASCADE"), nullable=True)
+    id = Column(Uuid(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    recipe_id = Column(Uuid(as_uuid=True), ForeignKey("recipe.id", ondelete="CASCADE"), nullable=True)
     mode = Column(String(10), nullable=False)  # 'scout' or 'full'
     started_at = Column(DateTime(timezone=True), nullable=False, default=datetime.utcnow)
     ended_at = Column(DateTime(timezone=True), nullable=True)
@@ -78,8 +81,8 @@ class RecipeRun(Base):
 class Lead(Base):
     __tablename__ = "lead"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    run_id = Column(UUID(as_uuid=True), ForeignKey("recipe_run.id", ondelete="CASCADE"), nullable=False)
+    id = Column(Uuid(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    run_id = Column(Uuid(as_uuid=True), ForeignKey("recipe_run.id", ondelete="CASCADE"), nullable=False)
     data = Column(JSON, nullable=False)
     fit_score = Column(Float, nullable=True)
     evidence_score = Column(Float, nullable=True)
@@ -98,7 +101,7 @@ class LeadFeedback(Base):
         ),
     )
 
-    lead_id = Column(UUID(as_uuid=True), ForeignKey("lead.id", ondelete="CASCADE"), primary_key=True)
+    lead_id = Column(Uuid(as_uuid=True), ForeignKey("lead.id", ondelete="CASCADE"), primary_key=True)
     label = Column(String(20), nullable=False)
     created_at = Column(DateTime(timezone=True), nullable=False, default=datetime.utcnow)
 
@@ -117,7 +120,7 @@ class LeadCorrection(Base):
         ),
     )
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    id = Column(Uuid(as_uuid=True), primary_key=True, default=uuid.uuid4)
     # Store synthetic fixture IDs and real UUID strings alike.
     lead_id = Column(Text, nullable=False)
     run_id = Column(Text, nullable=False)
@@ -133,7 +136,7 @@ class LeadCorrection(Base):
 class BatchJob(Base):
     __tablename__ = "batch_job"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    id = Column(Uuid(as_uuid=True), primary_key=True, default=uuid.uuid4)
     name = Column(Text, nullable=False)
     status = Column(String(20), nullable=False, default="pending")  # pending, running, completed, failed
     cap_queries = Column(Integer, nullable=False, default=10)
@@ -149,9 +152,9 @@ class BatchJob(Base):
 class BatchRun(Base):
     __tablename__ = "batch_run"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    batch_job_id = Column(UUID(as_uuid=True), ForeignKey("batch_job.id", ondelete="CASCADE"), nullable=False)
-    recipe_id = Column(UUID(as_uuid=True), ForeignKey("recipe.id", ondelete="SET NULL"), nullable=True)
+    id = Column(Uuid(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    batch_job_id = Column(Uuid(as_uuid=True), ForeignKey("batch_job.id", ondelete="CASCADE"), nullable=False)
+    recipe_id = Column(Uuid(as_uuid=True), ForeignKey("recipe.id", ondelete="SET NULL"), nullable=True)
     query = Column(Text, nullable=False)
     status = Column(String(20), nullable=False, default="pending")  # pending, running, completed, failed
     started_at = Column(DateTime(timezone=True), nullable=True)
