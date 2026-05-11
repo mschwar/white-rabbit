@@ -5,9 +5,9 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG2 - Search Coverage And Source Collection, ready for Prompt C audit after the R06 merge to `rebuild/validated-leads-loop`.
+**Current reset gate:** RG2 - Search Coverage And Source Collection, ready for Prompt C audit.
 **Next Prompt A feature:** None. R06 passed Prompt B QA; RG3 remains blocked.
-**Current Prompt B handoff:** None. R06 passed Prompt B QA on `feat/reset-r06-nonperson-coverage`; after merge to `rebuild/validated-leads-loop`, run Prompt C for RG2 and do not unlock RG3 unless the gate audit records and merges an accepted advance decision.
+**Current Prompt B handoff:** None. R06 passed Prompt B QA and is merged to `rebuild/validated-leads-loop`; run Prompt C for RG2 and do not unlock RG3 unless the gate audit records and merges an accepted advance decision.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -196,7 +196,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R03 | Live benchmark runner and quality summary | merged_to_rebuild_branch | `feat/reset-r03-live-benchmark-runner` | core/API + saved raw outputs |
 | R04 | High-volume query planner and search aggregation | merged_to_rebuild_branch | `feat/reset-r04-high-volume-search` | core tests |
 | R05 | Source collection and snapshot store | merged_to_rebuild_branch | `feat/reset-r05-source-collection-store` | core tests + raw source fixtures |
-| R06 | Not-found and organization-only coverage writer | qa_passed_pending_merge | `feat/reset-r06-nonperson-coverage` | core tests |
+| R06 | Not-found and organization-only coverage writer | merged_to_rebuild_branch | `feat/reset-r06-nonperson-coverage` | core tests |
 | R07 | Inclusive extraction prompt and candidate parse salvage | blocked | `feat/reset-r07-inclusive-extraction` | core/API tests |
 | R08 | Tiering engine, field validator, and conflict resolver | blocked | `feat/reset-r08-tier-validation-conflicts` | core tests |
 | R09 | Tier summary, score semantics, and reason language reset | blocked | `feat/reset-r09-tier-summary-semantics` | core + web tests |
