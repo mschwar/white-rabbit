@@ -6,11 +6,12 @@ from typing import Any
 
 import httpx
 
-from .query_planner import compile_query_plan
+from .query_planner import QueryPlan, compile_query_plan
 
 TAVILY_API_URL = "https://api.tavily.com"
 TAVILY_SEARCH_DEPTH = "advanced"
 TAVILY_TIMEOUT_SECONDS = 30
+TAVILY_MAX_RESULTS_PER_QUERY = 20
 
 
 class TavilySearchError(Exception):
@@ -18,12 +19,18 @@ class TavilySearchError(Exception):
 
 
 class SearchResults(list[dict[str, Any]]):
-    def __init__(self, results: list[dict[str, Any]], tavily_searches: int) -> None:
+    def __init__(
+        self,
+        results: list[dict[str, Any]],
+        tavily_searches: int,
+        query_plan: QueryPlan | None = None,
+    ) -> None:
         super().__init__(results)
         self.tavily_searches = tavily_searches
+        self.query_plan = query_plan
 
 
-def _clean_results(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def _clean_results(results: list[dict[str, Any]], *, vendor_query: str) -> list[dict[str, Any]]:
     """Sanitize results to keep context window clean."""
     cleaned = []
     for result in results:
@@ -32,20 +39,30 @@ def _clean_results(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
             "url": result.get("url", ""),
             "content": result.get("content", ""),
             "score": result.get("score", 0.0),
+            "vendor_query": vendor_query,
+            "matched_vendor_queries": [vendor_query],
         }
 
         cleaned.append(entry)
     return cleaned
 
 
+def _normalize_url(value: str) -> str:
+    return value.split("#", 1)[0].rstrip("/").lower()
+
+
 def _dedupe_results(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    seen: set[tuple[str, str]] = set()
+    seen: dict[tuple[str, str], dict[str, Any]] = {}
     deduped: list[dict[str, Any]] = []
     for result in results:
-        key = (result.get("url", ""), result.get("title", ""))
+        key = (_normalize_url(str(result.get("url", ""))), str(result.get("title", "")).strip().lower())
         if key in seen:
+            existing = seen[key]
+            for query in result.get("matched_vendor_queries", []):
+                if query not in existing["matched_vendor_queries"]:
+                    existing["matched_vendor_queries"].append(query)
             continue
-        seen.add(key)
+        seen[key] = result
         deduped.append(result)
     return deduped
 
@@ -72,7 +89,7 @@ async def _fetch_single_search_results(
             response = await client.post(f"{TAVILY_API_URL}/search", json=params)
             response.raise_for_status()
             data = response.json()
-            return _clean_results(data.get("results", []))
+            return _clean_results(data.get("results", []), vendor_query=search_query)
         except httpx.HTTPStatusError as exc:
             raise TavilySearchError(
                 f"Tavily API error: {exc.response.status_code} - {exc.response.text}"
@@ -89,15 +106,24 @@ async def fetch_search_results(
     max_results: int = 10,
     search_depth: str = TAVILY_SEARCH_DEPTH,
     filters: Mapping[str, Any] | None = None,
+    aggressive_breadth: bool = False,
 ) -> list[dict[str, Any]]:
     """Fetch search results from Tavily via direct HTTP API."""
     key = api_key or os.environ.get("TAVILY_API_KEY")
     if not key:
         raise TavilySearchError("TAVILY_API_KEY not found in environment or arguments")
 
-    plan = compile_query_plan(query, filters=filters)
+    plan = compile_query_plan(
+        query,
+        filters=filters,
+        max_results=max_results,
+        aggressive_breadth=aggressive_breadth,
+    )
     vendor_queries = plan.vendor_queries or [query]
-    per_query_max_results = max(1, ceil(max_results / len(vendor_queries)))
+    per_query_max_results = min(
+        TAVILY_MAX_RESULTS_PER_QUERY,
+        max(1, ceil(max_results / len(vendor_queries))),
+    )
 
     try:
         async with httpx.AsyncClient(timeout=TAVILY_TIMEOUT_SECONDS) as client:
@@ -115,6 +141,7 @@ async def fetch_search_results(
             return SearchResults(
                 _dedupe_results(all_results)[:max_results],
                 tavily_searches=len(vendor_queries),
+                query_plan=plan,
             )
     except TavilySearchError:
         raise

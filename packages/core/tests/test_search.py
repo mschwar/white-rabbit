@@ -78,7 +78,14 @@ def test_fetch_search_results_retries_once_after_timeout(monkeypatch):
     results = asyncio.run(search.fetch_search_results('Healthcare IT directors in Phoenix', api_key='fake'))
 
     assert results == [
-        {'title': 'Lead 1', 'url': 'https://example.com/1', 'content': 'content 1', 'score': 0.9},
+        {
+            'title': 'Lead 1',
+            'url': 'https://example.com/1',
+            'content': 'content 1',
+            'score': 0.9,
+            'vendor_query': 'Healthcare IT directors in Phoenix',
+            'matched_vendor_queries': ['Healthcare IT directors in Phoenix'],
+        },
     ]
     assert len(created_clients) == 1
     assert created_clients[0].calls == 2
@@ -165,3 +172,92 @@ def test_fetch_search_results_decomposes_long_arizona_prompt_into_bounded_querie
     assert all(len(query) <= 400 for query in captured_queries)
     for account in ARIZONA_K12_TARGET_ACCOUNTS:
         assert any(account.lower() in query.lower() for query in captured_queries)
+
+
+def test_fetch_search_results_aggregates_broad_queries_under_vendor_cap(monkeypatch):
+    created_clients: list[FakeAsyncClient] = []
+    captured_payloads: list[dict[str, object]] = []
+
+    class CapturingFakeAsyncClient(FakeAsyncClient):
+        async def post(self, url: str, json: dict[str, object]):
+            captured_payloads.append(json)
+            return await super().post(url, json)
+
+    outcomes = [
+        FakeResponse(
+            [
+                {
+                    "title": f"Lead {index}",
+                    "url": f"https://example.com/{index}",
+                    "content": f"content {index}",
+                    "score": 0.9,
+                }
+            ]
+        )
+        for index in range(6)
+    ]
+
+    def fake_async_client(timeout: float | None = None) -> CapturingFakeAsyncClient:
+        return CapturingFakeAsyncClient(outcomes, created_clients, timeout=timeout)
+
+    monkeypatch.setattr(search.httpx, "AsyncClient", fake_async_client)
+
+    results = asyncio.run(
+        search.fetch_search_results(
+            "healthcare IT directors in Phoenix",
+            api_key="fake",
+            max_results=50,
+        )
+    )
+
+    assert len(results) == 6
+    assert results.tavily_searches == 6
+    assert len(captured_payloads) == 6
+    assert all(payload["max_results"] <= search.TAVILY_MAX_RESULTS_PER_QUERY for payload in captured_payloads)
+    assert all(len(str(payload["query"])) <= 400 for payload in captured_payloads)
+
+
+def test_fetch_search_results_dedupes_by_url_and_preserves_matched_queries(monkeypatch):
+    created_clients: list[FakeAsyncClient] = []
+    outcomes = [
+        FakeResponse(
+            [
+                {
+                    "title": "Shared Lead",
+                    "url": "https://example.com/shared/",
+                    "content": "content 1",
+                    "score": 0.9,
+                }
+            ]
+        ),
+        FakeResponse(
+            [
+                {
+                    "title": "Shared Lead",
+                    "url": "https://example.com/shared#bio",
+                    "content": "content 2",
+                    "score": 0.8,
+                }
+            ]
+        ),
+        FakeResponse([]),
+        FakeResponse([]),
+        FakeResponse([]),
+        FakeResponse([]),
+    ]
+
+    def fake_async_client(timeout: float | None = None) -> FakeAsyncClient:
+        return FakeAsyncClient(outcomes, created_clients, timeout=timeout)
+
+    monkeypatch.setattr(search.httpx, "AsyncClient", fake_async_client)
+
+    results = asyncio.run(
+        search.fetch_search_results(
+            "healthcare IT directors in Phoenix",
+            api_key="fake",
+            max_results=50,
+        )
+    )
+
+    assert len(results) == 1
+    assert len(results[0]["matched_vendor_queries"]) == 2

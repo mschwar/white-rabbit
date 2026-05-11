@@ -13,7 +13,9 @@ from .search import fetch_search_results
 from .source_validation import SOURCE_VALIDATION_TIMEOUT_SECONDS, validate_candidate_source
 
 DEFAULT_MODEL = "gpt-4o-mini"
-DEFAULT_TAVILY_RESULTS = 10
+DEFAULT_TAVILY_RESULTS = 50
+DEFAULT_FULL_TAVILY_RESULTS = 100
+MAX_TAVILY_RESULTS = 500
 GATE_THRESHOLD = 0.6
 EVIDENCE_GATE_CONTACT_STATUSES = {"verified_found", "deduced_with_pattern_evidence"}
 
@@ -109,13 +111,32 @@ def _lead_passes_evidence_gate(candidate: Lead) -> bool:
     )
 
 
+def _resolve_max_results(max_leads: int, max_results: int | None, *, aggressive_breadth: bool) -> int:
+    if max_results is not None:
+        resolved = max_results
+    elif aggressive_breadth:
+        resolved = max(DEFAULT_FULL_TAVILY_RESULTS, max_leads)
+    elif max_leads > DEFAULT_TAVILY_RESULTS:
+        resolved = min(DEFAULT_FULL_TAVILY_RESULTS, max_leads)
+    else:
+        resolved = DEFAULT_TAVILY_RESULTS
+
+    if resolved < 1:
+        raise OrchestratorError("max_results must be at least 1")
+    if resolved > MAX_TAVILY_RESULTS:
+        raise OrchestratorError(f"max_results must be {MAX_TAVILY_RESULTS} or less")
+    return resolved
+
+
 async def scout(
     query: str,
     openai_key: str | None = None,
     tavily_key: str | None = None,
     model: str = DEFAULT_MODEL,
     max_leads: int = 15,
+    max_results: int | None = None,
     *,
+    aggressive_breadth: bool = False,
     filters: Mapping[str, Any] | None = None,
     search_fn=fetch_search_results,
     openai_client: Any | None = None,
@@ -131,14 +152,21 @@ async def scout(
         raise OrchestratorError("OPENAI_API_KEY not found")
 
     client = openai_client or AsyncOpenAI(api_key=api_key, max_retries=2)
+    search_max_results = _resolve_max_results(
+        max_leads,
+        max_results,
+        aggressive_breadth=aggressive_breadth,
+    )
 
     try:
-        search_results = await search_fn(
-            query,
-            api_key=tavily_key,
-            max_results=DEFAULT_TAVILY_RESULTS,
-            filters=filters,
-        )
+        search_kwargs: dict[str, Any] = {
+            "api_key": tavily_key,
+            "max_results": search_max_results,
+            "filters": filters,
+        }
+        if aggressive_breadth:
+            search_kwargs["aggressive_breadth"] = True
+        search_results = await search_fn(query, **search_kwargs)
         tavily_searches = getattr(search_results, "tavily_searches", 1)
     except Exception as exc:
         raise OrchestratorError(f"Tavily search failed: {exc}") from exc
