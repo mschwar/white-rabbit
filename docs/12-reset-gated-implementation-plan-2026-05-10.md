@@ -5,9 +5,9 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B and R09C are merged to `rebuild/validated-leads-loop`; the post-R09C live re-run remained held, and Matt accepted a source-assisted remediation pivot based on Lee's April New Mexico school-district IT evidence. R09D QA passed and merged to `rebuild/validated-leads-loop`; R09E is now ready.
-**Next Prompt A feature:** `feat/reset-r09e-k12-source-map-roster-collector` for R09E.
-**Current Prompt B handoff:** None. R09D is complete. Prompt A must implement R09E before Prompt B has a new branch to QA.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B and R09C are merged to `rebuild/validated-leads-loop`; the post-R09C live re-run remained held, and Matt accepted a source-assisted remediation pivot based on Lee's April New Mexico school-district IT evidence. R09D QA passed and merged to `rebuild/validated-leads-loop`; R09E Prompt A is implemented and waiting for Prompt B QA.
+**Next Prompt A feature:** None. R09F remains blocked until R09E passes Prompt B QA and merges.
+**Current Prompt B handoff:** QA `feat/reset-r09e-k12-source-map-roster-collector` for R09E.
 **Current Prompt C handoff:** None. Do not rerun RG3 Prompt C until R09D-R09H are complete and merged.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
@@ -232,7 +232,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R09B | Contact and evidence acquisition pass | merged_to_rebuild_branch | `feat/reset-r09b-contact-evidence-acquisition` | core/API + live/replay contact evidence artifacts |
 | R09C | Deep multi-source evidence acquisition and tier calibration | merged_to_rebuild_branch | `feat/reset-r09c-deep-multisource-evidence-tier-calibration` | core/API + live/replay evidence/tier calibration artifacts |
 | R09D | April NM evidence fixture and manual-oracle replay | merged_to_rebuild_branch | `feat/reset-r09d-april-nm-manual-oracle` | core tests + sanitized evidence fixtures |
-| R09E | K-12 source map and public roster collector | ready | `feat/reset-r09e-k12-source-map-roster-collector` | core tests + source-map replay |
+| R09E | K-12 source map and public roster collector | implemented_prompt_a_waiting_prompt_b | `feat/reset-r09e-k12-source-map-roster-collector` | core tests + source-map replay |
 | R09F | Source-assisted lead compiler | blocked | `feat/reset-r09f-source-assisted-lead-compiler` | core/API tests + replay artifacts |
 | R09G | Research-workbook tiering and export semantics | blocked | `feat/reset-r09g-research-workbook-tiering` | core/web or export tests as applicable |
 | R09H | Manual-oracle proof replay gate packet | blocked | `feat/reset-r09h-manual-oracle-proof-packet` | replay + live/source-assisted artifacts |
@@ -641,12 +641,23 @@ Required output:
 Do not merge. Do not trigger Prompt C. Do not change queue readiness beyond R09D's own status and Prompt B handoff. Do not sync main.
 ```
 
-R09E expected scope after R09D passes:
+R09E scope:
 
 - Build a K-12 source map and roster-first collector, starting with New Mexico.
 - Prefer official education-agency rosters, district websites, staff directories, technology pages, board/agenda PDFs, contact pages, and public source families that can be audited.
 - Record source family, access status, source reputation signal, crawl/extraction method, and source coverage gaps.
 - Do not depend on generic Tavily breadth as the first discovery move for known public-sector verticals.
+
+R09E Prompt A result:
+
+- Branch: `feat/reset-r09e-k12-source-map-roster-collector`.
+- Status: `implemented_prompt_a_waiting_prompt_b`.
+- Implemented only the R09E source-map/collector slice: `packages/core/src/core/k12_source_map.py`, `packages/core/tests/fixtures/nm_k12_source_map.json`, `packages/core/tests/test_k12_source_map.py`, and `audits/raw/reset-2026-05-10/r09e/source-map-replay.json`.
+- Change summary: added a New Mexico K-12 source-map fixture with official state education-agency directory seeds, official district homepage/staff/contact seeds, and privacy-safe R09D manual-oracle seed gaps; added a roster-first collector that emits auditable source seeds with source family, access status, reputation signal, crawl method, extraction method, supports fields, and deterministic seed IDs; added a replay summary that proves the source map avoids generic search families and records coverage gaps.
+- Verification run by Prompt A: `packages/core/.venv/bin/python -m py_compile packages/core/src/core/k12_source_map.py packages/core/tests/test_k12_source_map.py` (passed); direct execution of the three targeted R09E test functions from `packages/core/tests/test_k12_source_map.py` (passed); replay-artifact tie-out confirmed `audits/raw/reset-2026-05-10/r09e/source-map-replay.json` matches `replay_k12_source_map().to_payload()`.
+- Verification limitation: `cd packages/core && uv run pytest tests/test_k12_source_map.py -q` and `git diff --check` were attempted, but this checkout showed local hangs before test collection / while Git read the unrelated tracked worktree/index. Prompt B must rerun both commands from a refreshed checkout or after resolving the local index/read issue.
+- Prompt A scope note: no R09F compiler, extraction, tiering, API, UI, export, persistence, dogfood, Prompt C, RG4, or `main` changes.
+- Exact Prompt B handoff: QA `feat/reset-r09e-k12-source-map-roster-collector`; verify the branch contains only R09E scope, rerun `cd packages/core && uv run pytest tests/test_k12_source_map.py -q`, rerun `git diff --check`, inspect `packages/core/tests/fixtures/nm_k12_source_map.json` and `audits/raw/reset-2026-05-10/r09e/source-map-replay.json`, confirm the collector is roster-first and does not use generic Tavily/search families as the first move, confirm every seed records source family/access status/reputation/crawl method/extraction method/coverage gaps, confirm sanitized R09D manual-lookup rows remain privacy-safe gaps rather than private email dumps, and confirm no R09F compiler/extraction/tiering/API/UI/export/persistence/dogfood/main-sync scope landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R09F `ready`, and keep R09G-R09H/RG4/R10-R12/export/dogfood/main blocked.
 
 R09F expected scope after R09E passes:
 

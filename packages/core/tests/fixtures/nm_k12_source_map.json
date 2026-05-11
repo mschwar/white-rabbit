@@ -1,0 +1,318 @@
+{
+  "map_id": "nm_k12_source_map_r09e",
+  "state": "NM",
+  "vertical": "K-12 school district IT / technology leadership",
+  "source_authority_note": "Roster-first source map for R09E. Start with official New Mexico Public Education Department directories and official district pages before generic web breadth. URLs are public-source seeds only; no private email bodies are copied.",
+  "districts": [
+    {
+      "district_id": "nm-ped",
+      "name": "New Mexico Public Education Department",
+      "state": "NM",
+      "manual_oracle_row_ids": [],
+      "expected_source_families": [
+        "state_education_agency_roster",
+        "state_public_school_directory"
+      ],
+      "coverage_gaps": [
+        "State directory can establish district universe and official websites, but district-level person extraction still requires district pages or PDFs."
+      ],
+      "sources": [
+        {
+          "family_id": "nm-ped-school-directory",
+          "source_family": "state_education_agency_roster",
+          "priority": 1,
+          "url": "https://web.ped.nm.gov/bureaus/constituent-services/school-directory/",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_state_agency",
+          "crawl_method": "fetch_html",
+          "extraction_method": "directory_link_and_table_parse",
+          "supports": [
+            "district universe",
+            "official school directory",
+            "public-sector source family"
+          ],
+          "notes": "Official state education-agency directory seed."
+        },
+        {
+          "family_id": "nm-ped-public-schools-directory",
+          "source_family": "state_public_school_directory",
+          "priority": 2,
+          "url": "https://web.ped.nm.gov/new-mexico-public-schools-directory/",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_state_agency",
+          "crawl_method": "fetch_html",
+          "extraction_method": "directory_link_parse",
+          "supports": [
+            "district and charter directory",
+            "official website references"
+          ],
+          "notes": "Official state directory fallback for roster discovery."
+        }
+      ]
+    },
+    {
+      "district_id": "albuquerque-public-schools",
+      "name": "Albuquerque Public Schools",
+      "state": "NM",
+      "manual_oracle_row_ids": [
+        "verified_01"
+      ],
+      "expected_source_families": [
+        "district_official_homepage",
+        "district_staff_directory"
+      ],
+      "coverage_gaps": [],
+      "sources": [
+        {
+          "family_id": "aps-home",
+          "source_family": "district_official_homepage",
+          "priority": 10,
+          "url": "https://www.aps.edu/",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "homepage_navigation_discovery",
+          "supports": [
+            "district identity",
+            "navigation to staff/contact pages"
+          ],
+          "notes": "Manual-oracle public-email row retained this official district source URL."
+        },
+        {
+          "family_id": "aps-directory",
+          "source_family": "district_staff_directory",
+          "priority": 11,
+          "url": "https://www.aps.edu/@@search?SearchableText=technology",
+          "access_status": "public_search_page",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "staff_directory_search_result_parse",
+          "supports": [
+            "technology staff candidates",
+            "person/title/source discovery"
+          ],
+          "notes": "Roster-first candidate discovery path before generic search."
+        }
+      ]
+    },
+    {
+      "district_id": "rio-rancho-public-schools",
+      "name": "Rio Rancho Public Schools",
+      "state": "NM",
+      "manual_oracle_row_ids": [
+        "verified_02"
+      ],
+      "expected_source_families": [
+        "district_official_homepage",
+        "district_staff_directory"
+      ],
+      "coverage_gaps": [],
+      "sources": [
+        {
+          "family_id": "rrps-home",
+          "source_family": "district_official_homepage",
+          "priority": 10,
+          "url": "https://www.rrps.net/",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "homepage_navigation_discovery",
+          "supports": [
+            "district identity",
+            "navigation to staff/contact pages"
+          ],
+          "notes": "Manual-oracle public-email row retained this official district source URL."
+        },
+        {
+          "family_id": "rrps-staff",
+          "source_family": "district_staff_directory",
+          "priority": 11,
+          "url": "https://www.rrps.net/apps/staff/",
+          "access_status": "public_html_or_search",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "staff_directory_parse",
+          "supports": [
+            "staff roster",
+            "person/title/contact candidate discovery"
+          ],
+          "notes": "Common district staff-directory route used as an auditable first pass."
+        }
+      ]
+    },
+    {
+      "district_id": "los-alamos-public-schools",
+      "name": "Los Alamos Public Schools",
+      "state": "NM",
+      "manual_oracle_row_ids": [
+        "verified_03"
+      ],
+      "expected_source_families": [
+        "district_official_homepage",
+        "district_contact_page"
+      ],
+      "coverage_gaps": [],
+      "sources": [
+        {
+          "family_id": "laps-home",
+          "source_family": "district_official_homepage",
+          "priority": 10,
+          "url": "https://www.laschools.net/",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "homepage_navigation_discovery",
+          "supports": [
+            "district identity",
+            "navigation to departments"
+          ],
+          "notes": "Manual-oracle public-email row retained this official district source URL."
+        },
+        {
+          "family_id": "laps-contact",
+          "source_family": "district_contact_page",
+          "priority": 12,
+          "url": "https://www.laschools.net/page/contact-us",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "contact_page_parse",
+          "supports": [
+            "district contact route",
+            "manual lookup next action"
+          ],
+          "notes": "Contact page seed for public-source manual lookup."
+        }
+      ]
+    },
+    {
+      "district_id": "hobbs-municipal-schools",
+      "name": "Hobbs Municipal Schools",
+      "state": "NM",
+      "manual_oracle_row_ids": [
+        "verified_04"
+      ],
+      "expected_source_families": [
+        "district_official_homepage",
+        "district_staff_directory"
+      ],
+      "coverage_gaps": [],
+      "sources": [
+        {
+          "family_id": "hobbs-home",
+          "source_family": "district_official_homepage",
+          "priority": 10,
+          "url": "https://www.hobbsschools.net/",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "homepage_navigation_discovery",
+          "supports": [
+            "district identity",
+            "navigation to staff/contact pages"
+          ],
+          "notes": "Manual-oracle public-email row retained this official district source URL."
+        },
+        {
+          "family_id": "hobbs-staff",
+          "source_family": "district_staff_directory",
+          "priority": 11,
+          "url": "https://www.hobbsschools.net/apps/staff/",
+          "access_status": "public_html_or_search",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "staff_directory_parse",
+          "supports": [
+            "staff roster",
+            "person/title/contact candidate discovery"
+          ],
+          "notes": "Roster-first candidate discovery path before generic search."
+        }
+      ]
+    },
+    {
+      "district_id": "farmington-municipal-schools",
+      "name": "Farmington Municipal Schools",
+      "state": "NM",
+      "manual_oracle_row_ids": [
+        "verified_05"
+      ],
+      "expected_source_families": [
+        "district_official_homepage",
+        "district_contact_page"
+      ],
+      "coverage_gaps": [],
+      "sources": [
+        {
+          "family_id": "farmington-home",
+          "source_family": "district_official_homepage",
+          "priority": 10,
+          "url": "https://www.fmsk12.net/",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "homepage_navigation_discovery",
+          "supports": [
+            "district identity",
+            "navigation to departments"
+          ],
+          "notes": "Manual-oracle public-email row retained this official district source URL."
+        },
+        {
+          "family_id": "farmington-contact",
+          "source_family": "district_contact_page",
+          "priority": 12,
+          "url": "https://www.fmsk12.net/apps/contact/",
+          "access_status": "public_html_or_form",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "contact_page_parse",
+          "supports": [
+            "contact route",
+            "manual lookup next action"
+          ],
+          "notes": "Contact route seed for public-source manual lookup."
+        }
+      ]
+    },
+    {
+      "district_id": "manual-lookup-sanitized-april-nm",
+      "name": "Sanitized April NM manual-lookup rows",
+      "state": "NM",
+      "manual_oracle_row_ids": [
+        "manual_lookup_01",
+        "manual_lookup_02",
+        "manual_lookup_03",
+        "manual_lookup_04",
+        "manual_lookup_05",
+        "manual_lookup_06",
+        "manual_lookup_07"
+      ],
+      "expected_source_families": [
+        "manual_oracle_seed"
+      ],
+      "coverage_gaps": [
+        "R09D intentionally redacted exact district/source identifiers for these rows; R09F must accept seed rows or operator-provided source packs to resolve them without private email dumps.",
+        "Direct public emails were missing in the April workbook shape; preserve as manual_lookup until a source page supports contact evidence."
+      ],
+      "sources": [
+        {
+          "family_id": "manual-oracle-redacted-seed-pack",
+          "source_family": "manual_oracle_seed",
+          "priority": 20,
+          "url": "packages/core/tests/fixtures/april_nm_manual_oracle.json",
+          "access_status": "repo_fixture_redacted_public_source_summary",
+          "source_reputation_signal": "official_public_document",
+          "crawl_method": "load_repo_fixture",
+          "extraction_method": "manual_oracle_row_replay",
+          "supports": [
+            "manual lookup row count",
+            "blocker-note preservation",
+            "next-action preservation"
+          ],
+          "notes": "Privacy-safe bridge from R09D; does not expose full private email bodies."
+        }
+      ]
+    }
+  ]
+}

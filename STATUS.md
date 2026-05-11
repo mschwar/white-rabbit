@@ -1,14 +1,14 @@
 # STATUS
 
-**Last updated:** 2026-05-11 by Codex prompt-b-r09d-manual-oracle
-**Branch:** feat/reset-r09d-april-nm-manual-oracle
-**Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. The post-R09C RG3 live re-run stayed held, and Matt accepted a source-assisted remediation pivot based on Lee's April New Mexico school-district IT evidence. R09D QA passed on its feature branch and R09E is now the next same-gate feature; the value target remains proving White Rabbit can reproduce or improve the April source-backed research workbook pattern.
+**Last updated:** 2026-05-11 by Codex prompt-a-r09e-k12-source-map
+**Branch:** feat/reset-r09e-k12-source-map-roster-collector
+**Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. The post-R09C RG3 live re-run stayed held, and Matt accepted a source-assisted remediation pivot based on Lee's April New Mexico school-district IT evidence. R09E Prompt A implemented the K-12 source-map and roster-first collector slice; Prompt B QA is now the next same-gate action. The value target remains proving White Rabbit can reproduce or improve the April source-backed research workbook pattern.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt A for `R09E - K-12 source map and public roster collector` on `feat/reset-r09e-k12-source-map-roster-collector`. R09D is merged to `rebuild/validated-leads-loop`. R09F-R09H remain blocked until their predecessors pass. RG4, the `DESIGN.md` mockup preflight, R10-R12, export work, dogfood, and any `main` promotion remain blocked.
+**Next pointer:** Prompt B for `R09E - K-12 source map and public roster collector` on `feat/reset-r09e-k12-source-map-roster-collector`. R09D is merged to `rebuild/validated-leads-loop`. R09F-R09H remain blocked until their predecessors pass. RG4, the `DESIGN.md` mockup preflight, R10-R12, export work, dogfood, and any `main` promotion remain blocked.
 
 **Design direction handoff:** `DESIGN.md` is now captured as the future RG4 visual direction authority. A refreshed RG4 mockup/design preflight exists on `codex/rg4-design-preflight-2026-05-11` at commit `5c5a10f`, with six rendered screens under `docs/mockups/rg4-design-preflight-2026-05-11/` on that branch. It is an unmerged inspection artifact only; it does not unlock RG4. R10-R12 remain blocked until a future RG3 Prompt C advances and Matt approves the refreshed mockups for production implementation.
 
@@ -24,13 +24,13 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** Prompt A should now implement `R09E - K-12 source map and public roster collector` on `feat/reset-r09e-k12-source-map-roster-collector`. R09D is merged; R09F-R09H remain blocked until the preceding same-gate features pass QA/merge. This remains an RG3 remediation gate state, not RG4. Do not unlock RG4 or sync `main`.
+**Next feature pointer:** Prompt B should now QA `R09E - K-12 source map and public roster collector` on `feat/reset-r09e-k12-source-map-roster-collector`. R09D is merged; R09F-R09H remain blocked until the preceding same-gate features pass QA/merge. This remains an RG3 remediation gate state, not RG4. Do not unlock RG4 or sync `main`.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
 **Final product mockup gate:** `DESIGN.md` is the future RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains the product-structure reference. A preflight artifact exists on `codex/rg4-design-preflight-2026-05-11`, but it remains unmerged and non-unlocking while RG3 is held. Matt must approve refreshed mockups after RG3 advances before production UI implementation.
 
-**Current feature branch QA status:** R07, R08, R09, R09A, R09B, and R09C are merged to `rebuild/validated-leads-loop`. R09D QA-passed and merged to `rebuild/validated-leads-loop`; R09E is now the next same-gate feature. The post-R09C live re-run held with `0` high-trust usable rows and `0` contact-quality passes. ADR-019 supersedes the old "run Prompt C next" handoff: R09D-R09H remain the accepted source-assisted remediation slice before any RG3 re-audit, but R09D is complete and R09E is now the active follow-on. Downstream RG4 work remains blocked.
+**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, and R09D are merged to `rebuild/validated-leads-loop`. R09E Prompt A is implemented on `feat/reset-r09e-k12-source-map-roster-collector` and is waiting for Prompt B QA. The post-R09C live re-run held with `0` high-trust usable rows and `0` contact-quality passes. ADR-019 supersedes the old "run Prompt C next" handoff: R09D-R09H remain the accepted source-assisted remediation slice before any RG3 re-audit, but R09F-R09H remain blocked until predecessors pass. Downstream RG4 work remains blocked.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -43,7 +43,7 @@
 - RG2 search/source coverage gate report: `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`
 - RG3 validation semantics hold report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 remains `in_progress / gate_hold` with R09D merged to `rebuild/validated-leads-loop`, R09E ready, and R09F-R09H blocked; and RG4 remains blocked.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 remains `in_progress / gate_hold` with R09D merged to `rebuild/validated-leads-loop`, R09E waiting for Prompt B QA, and R09F-R09H blocked; and RG4 remains blocked.
 
 Prior accepted gates:
 
@@ -68,6 +68,21 @@ Prior accepted gates:
 **Production URL note:** Use the stable production alias `https://white-rabbit-ten.vercel.app/`, not one-off deployment URLs like `https://white-rabbit-7kw7lh6ri-matts-projects-06539e54.vercel.app/`. Vercel deployment URLs are immutable snapshots; `7kw7lh6ri` was created before `WR_API_INTERNAL_TOKEN` existed in Production and can continue to show the old missing-token error even after the alias is fixed.
 
 **Latest handoff:**
+
+Feature: R09E - K-12 source map and public roster collector
+Branch: `feat/reset-r09e-k12-source-map-roster-collector`
+Status: `implemented_prompt_a_waiting_prompt_b`
+Why it exists: R09D made the April New Mexico school-district IT manual-oracle workbook measurable. R09E starts the source-assisted remediation path by replacing generic breadth as the first discovery move for public-sector K-12 targets with an auditable roster-first source map.
+Scope: Build a K-12 source map and roster-first collector, starting with New Mexico; prefer official education-agency rosters, district websites, staff directories, technology pages, board/agenda PDFs, contact pages, and public source families that can be audited; record source family, access status, source reputation signal, crawl/extraction method, and source coverage gaps; do not depend on generic Tavily breadth as the first discovery move for known public-sector verticals.
+Non-goals: No source-assisted lead compiler, extraction/tiering remediation, API/UI/export/persistence/dogfood work, Prompt C, RG4 unlock, R09F readiness change, or `main` sync.
+What changed: Added `core.k12_source_map` with a New Mexico source-map loader, roster-first source collector, and replay summary; added the `nm_k12_source_map.json` fixture covering official state education-agency directory seeds, official district homepage/staff/contact seeds, and privacy-safe R09D manual-oracle seed gaps; added targeted R09E tests; saved the source-map replay artifact at `audits/raw/reset-2026-05-10/r09e/source-map-replay.json`.
+Verification run by Prompt A:
+- `packages/core/.venv/bin/python -m py_compile packages/core/src/core/k12_source_map.py packages/core/tests/test_k12_source_map.py` (passed)
+- Direct execution of the three targeted R09E test functions from `packages/core/tests/test_k12_source_map.py` (passed)
+- `packages/core/.venv/bin/python` replay-artifact tie-out confirmed `audits/raw/reset-2026-05-10/r09e/source-map-replay.json` matches `replay_k12_source_map().to_payload()`
+- `git diff --check` was attempted but blocked by a local git index/read hang in this checkout; Prompt B must rerun it after refreshing the checkout/index.
+Exact Prompt B handoff: QA `feat/reset-r09e-k12-source-map-roster-collector`; verify the branch contains only R09E scope, rerun `cd packages/core && uv run pytest tests/test_k12_source_map.py -q`, rerun `git diff --check`, inspect `packages/core/tests/fixtures/nm_k12_source_map.json` and `audits/raw/reset-2026-05-10/r09e/source-map-replay.json`, confirm the collector is roster-first and does not use generic Tavily/search families as the first move, confirm every seed records source family/access status/reputation/crawl method/extraction method/coverage gaps, confirm sanitized R09D manual-lookup rows remain privacy-safe gaps rather than private email dumps, and confirm no R09F compiler/extraction/tiering/API/UI/export/persistence/dogfood/main-sync scope landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R09F `ready`, and keep R09G-R09H/RG4/R10-R12/export/dogfood/main blocked.
+Open questions: Prompt B should investigate the local git/pytest import slowness observed during Prompt A before treating the standard command suite as blocked in the integration checkout.
 
 Feature: R09D - April NM evidence fixture and manual-oracle replay
 Branch: `feat/reset-r09d-april-nm-manual-oracle`
