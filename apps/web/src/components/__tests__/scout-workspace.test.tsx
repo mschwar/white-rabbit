@@ -73,6 +73,8 @@ test('renders validation buckets and badges for mixed scout results', async () =
     leads: [
       {
         candidate_category: 'person_lead',
+        tier: 'high_trust_usable',
+        primary_filter_reason: 'READY: supported person, organization, source, and usable contact cleared the evidence gate.',
         name: 'Jane Smith',
         title: 'Director of Technology',
         organization: 'Albuquerque Public Schools',
@@ -91,6 +93,8 @@ test('renders validation buckets and badges for mixed scout results', async () =
       },
       {
         candidate_category: 'person_lead',
+        tier: 'review',
+        primary_filter_reason: 'REVIEW: contact is missing; row is not CRM-ready.',
         name: 'Noisy Lead',
         title: 'Director of Operations',
         organization: 'Noisy Schools',
@@ -116,6 +120,8 @@ test('renders validation buckets and badges for mixed scout results', async () =
       },
       {
         candidate_category: 'organization_only',
+        tier: 'organization_only',
+        primary_filter_reason: 'Organization was found, but no validated person was ready.',
         organization: 'Example Corp',
         source_url: 'https://example.com',
         explanation: 'Organization-only row.',
@@ -130,6 +136,8 @@ test('renders validation buckets and badges for mixed scout results', async () =
       },
       {
         candidate_category: 'not_found',
+        tier: 'not_found',
+        primary_filter_reason: 'Target was searched, but no acceptable contact was found.',
         searched_target: 'Ghost District',
         organization: 'Ghost District',
         source_url: 'https://ghost.example.com',
@@ -145,6 +153,8 @@ test('renders validation buckets and badges for mixed scout results', async () =
       },
       {
         candidate_category: 'failed',
+        tier: 'failed',
+        primary_filter_reason: 'Source was inaccessible.',
         searched_target: 'Broken District',
         failure_reason: 'Source was inaccessible.',
         organization: 'Broken District',
@@ -167,6 +177,13 @@ test('renders validation buckets and badges for mixed scout results', async () =
       openai_web_searches: 0,
       elapsed_seconds: 1.23,
       estimated_cost_usd: 0.010123,
+      tier_distribution: {
+        high_trust_usable: 1,
+        review: 1,
+        organization_only: 1,
+        not_found: 1,
+        failed: 1,
+      },
     },
   });
   vi.stubGlobal('fetch', fetchMock);
@@ -182,11 +199,15 @@ test('renders validation buckets and badges for mixed scout results', async () =
   fireEvent.click(screen.getByRole('button', { name: /run scout search/i }));
 
   await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
-  expect(screen.getByRole('heading', { name: /validation buckets/i })).toBeDefined();
+  expect(screen.getByRole('heading', { name: /tier summary/i })).toBeDefined();
+  expect(screen.getAllByText('READY').length).toBeGreaterThan(0);
+  expect(screen.getAllByText('REVIEW').length).toBeGreaterThan(0);
+  expect(screen.getAllByText('ORG-ONLY').length).toBeGreaterThan(0);
+  expect(screen.getAllByText('NOT FOUND').length).toBeGreaterThan(0);
 
-  const usableTable = screen.getByRole('table', { name: /usable results/i });
-  const noisyTable = screen.getByRole('table', { name: /noisy \/ failed results/i });
-  const organizationOnlyTable = screen.getByRole('table', { name: /organization-only results/i });
+  const usableTable = screen.getByRole('table', { name: /ready results/i });
+  const noisyTable = screen.getByRole('table', { name: /review results/i });
+  const organizationOnlyTable = screen.getByRole('table', { name: /org-only results/i });
   const notFoundTable = screen.getByRole('table', { name: /not found results/i });
 
   expect(within(usableTable).getByText('Jane Smith')).toBeDefined();
@@ -221,6 +242,7 @@ test('renders validation buckets and badges for mixed scout results', async () =
     }),
   ).toBeDefined();
   expect(screen.getAllByText(/source was inaccessible/i).length).toBeGreaterThan(0);
+  expect(screen.getAllByText(/contact is missing; row is not crm-ready/i).length).toBeGreaterThan(0);
   expect(screen.getAllByText(/the candidate could not be trusted/i).length).toBeGreaterThan(0);
 
   fireEvent.click(within(usableTable).getByRole('button', { name: /view evidence for jane smith/i }));
@@ -308,11 +330,11 @@ test('renders the primary search shell with one natural-language input', async (
   expect(
     JSON.parse((fetchMock.mock.calls[1][1] as RequestInit).body as string),
   ).toEqual({ query: 'K-12 IT directors in Albuquerque' });
-  const usableTable = await screen.findByRole('table', { name: /usable results/i });
+  const usableTable = await screen.findByRole('table', { name: /ready results/i });
   expect(within(usableTable).getByText('Jane Smith')).toBeDefined();
 });
 
-test('sorts scout results by score and gate state', async () => {
+test('sorts scout results by validation signal and ready tier state', async () => {
 const fetchMock = makeFetchMock({
 leads: [
 {
@@ -371,7 +393,7 @@ target: { value: 'K-12 IT directors in Albuquerque' },
 fireEvent.click(screen.getByRole('button', { name: /run scout search/i }));
 
 await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
-const usableTable = await screen.findByRole('table', { name: /usable results/i });
+const usableTable = await screen.findByRole('table', { name: /ready results/i });
 let alphaLead = within(usableTable).getByText('Alpha Lead');
 let bravoLead = within(usableTable).getByText('Bravo Lead');
 expect(alphaLead.compareDocumentPosition(bravoLead) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
@@ -488,7 +510,7 @@ test('builds a CSV export from a full run', async () => {
   );
   expect(
     screen.getByText(
-      /includes candidate category, usable flags, field and contact statuses, source support, scores, gate status, and validation notes/i,
+      /includes candidate category, readiness tier, field and contact statuses, source support, validation signals, gate status, and validation notes/i,
     ),
   ).toBeDefined();
 });

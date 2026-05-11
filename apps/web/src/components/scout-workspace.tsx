@@ -5,6 +5,7 @@ import ScoutResultsTable from '@/components/scout-results-table';
 import {
   buildScoutPayload,
   buildFullPayload,
+  buildTierDistribution,
   closeRecipeRun,
   DEFAULT_SCOUT_LOCATION,
   DEFAULT_SCOUT_QUERY,
@@ -13,6 +14,8 @@ import {
   isPersonLead,
   getValidationBucket,
   sortScoutResultRows,
+  OUTPUT_TIERS,
+  TIER_LABELS,
   CORRECTION_FIELD_OPTIONS,
   CORRECTION_LABEL_OPTIONS,
   fetchRunCorrections,
@@ -609,6 +612,8 @@ const QA_VALIDATION_BUCKETS_FIXTURE: ScoutResponse = {
     {
       id: 'qa-usable-1',
       candidate_category: 'person_lead',
+      tier: 'high_trust_usable',
+      primary_filter_reason: 'READY: supported person, organization, source, and usable contact cleared the evidence gate.',
       name: 'Jane Smith',
       title: 'Director of Technology',
       organization: 'Albuquerque Public Schools',
@@ -628,6 +633,8 @@ const QA_VALIDATION_BUCKETS_FIXTURE: ScoutResponse = {
     {
       id: 'qa-noisy-1',
       candidate_category: 'person_lead',
+      tier: 'review',
+      primary_filter_reason: 'REVIEW: contact is missing; row is not CRM-ready.',
       name: 'Noisy Lead',
       title: 'Director of Operations',
       organization: 'Noisy Schools',
@@ -653,6 +660,8 @@ const QA_VALIDATION_BUCKETS_FIXTURE: ScoutResponse = {
     },
     {
       candidate_category: 'organization_only',
+      tier: 'organization_only',
+      primary_filter_reason: 'Organization was found, but no validated person was ready.',
       organization: 'Example Corp',
       source_url: 'https://example.com',
       explanation: 'Organization-only row.',
@@ -667,6 +676,8 @@ const QA_VALIDATION_BUCKETS_FIXTURE: ScoutResponse = {
     },
     {
       candidate_category: 'not_found',
+      tier: 'not_found',
+      primary_filter_reason: 'Target was searched, but no acceptable contact was found.',
       searched_target: 'Ghost District',
       organization: 'Ghost District',
       source_url: 'https://ghost.example.com',
@@ -682,6 +693,8 @@ const QA_VALIDATION_BUCKETS_FIXTURE: ScoutResponse = {
     },
     {
       candidate_category: 'failed',
+      tier: 'failed',
+      primary_filter_reason: 'Source was inaccessible.',
       searched_target: 'Broken District',
       failure_reason: 'Source was inaccessible.',
       organization: 'Broken District',
@@ -703,6 +716,13 @@ const QA_VALIDATION_BUCKETS_FIXTURE: ScoutResponse = {
     tavily_searches: 3,
     elapsed_seconds: 9.84,
     estimated_cost_usd: 0.1234,
+    tier_distribution: {
+      high_trust_usable: 1,
+      review: 1,
+      organization_only: 1,
+      not_found: 1,
+      failed: 1,
+    },
   },
   query_guardrail: null,
   sandbox_usage: null,
@@ -953,6 +973,9 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
 
   const displayedResults = results;
   const displayedRows = displayedResults ? sortScoutResultRows(displayedResults.leads, sortMode) : [];
+  const tierDistribution = displayedResults
+    ? buildTierDistribution(displayedResults.leads, displayedResults.metrics.tier_distribution)
+    : null;
 
   return (
     <main className="min-h-screen bg-zinc-950 px-6 py-10 text-zinc-50">
@@ -961,7 +984,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
           <p className="text-sm font-medium uppercase tracking-[0.22em] text-emerald-300">Lead search</p>
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">Find source-backed prospects</h1>
           <p className="max-w-3xl text-base leading-7 text-zinc-300 sm:text-lg">
-            Run a focused B2B target query and review returned rows with validation buckets, fit, evidence, and contact scores.
+            Run a focused B2B target query and review returned rows by readiness tier, evidence support, and contact readiness.
           </p>
         </div>
 
@@ -1170,7 +1193,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                   Download CSV
                 </a>
                 <p className="mt-2 text-xs leading-6 text-zinc-400">
-                  Includes candidate category, usable flags, field and contact statuses, source support, scores, gate status, and validation notes.
+                  Includes candidate category, readiness tier, field and contact statuses, source support, validation signals, gate status, and validation notes.
                 </p>
               </div>
             ) : null}
@@ -1181,7 +1204,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-400">Results</p>
-              <h2 className="mt-1 text-2xl font-semibold tracking-tight">Validation buckets</h2>
+              <h2 className="mt-1 text-2xl font-semibold tracking-tight">Tier summary</h2>
             </div>
             {displayedResults ? (
               <div className="flex flex-col gap-2 sm:items-end">
@@ -1209,6 +1232,17 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
             ) : null}
           </div>
 
+          {tierDistribution ? (
+            <div className="mt-5 grid gap-3 sm:grid-cols-5">
+              {OUTPUT_TIERS.map((tier) => (
+                <div key={tier} className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">{TIER_LABELS[tier]}</p>
+                  <p className="mt-2 text-2xl font-semibold text-zinc-50">{tierDistribution[tier]}</p>
+                </div>
+              ))}
+            </div>
+          ) : null}
+
           {displayedResults ? (
             <ScoutResultsTable
               feedbackState={feedbackState}
@@ -1218,7 +1252,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
             />
           ) : (
             <p className="mt-6 text-sm leading-6 text-zinc-400">
-              Run a query to see validation buckets, score breakdowns, and source checks here.
+              Run a query to see readiness tiers, validation signals, and source checks here.
             </p>
           )}
         </section>

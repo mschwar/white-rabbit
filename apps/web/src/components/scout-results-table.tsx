@@ -4,8 +4,10 @@ import {
   type FeedbackLabel,
   type ScoutResultRow,
   type ValidationBucket,
+  TIER_LABELS,
   VALIDATION_BUCKETS,
   formatScore,
+  getOutputTier,
   getValidationBucket,
   isPersonLead,
 } from '@/lib/scout';
@@ -129,15 +131,16 @@ function getValidationSourceUrl(row: ScoutResultRow): string | null {
 }
 
 function getNotes(row: ScoutResultRow): string[] {
+  const reason = row.primary_filter_reason;
   if (isPersonLead(row)) {
-    return [row.why_target, row.explanation, row.icebreaker];
+    return [reason, row.why_target, row.explanation, row.icebreaker].filter(Boolean) as string[];
   }
 
   if (row.candidate_category === 'failed') {
-    return [row.failure_reason, row.explanation];
+    return [reason, row.failure_reason, row.explanation].filter(Boolean) as string[];
   }
 
-  return [row.explanation];
+  return [reason, row.explanation].filter(Boolean) as string[];
 }
 
 function renderFeedbackButtons(
@@ -240,7 +243,7 @@ export default function ScoutResultsTable({ rows, feedbackState, onOpenEvidence,
                       <th className="px-3 py-2">Identity</th>
                       <th className="px-3 py-2">Context</th>
                       <th className="px-3 py-2">Validation</th>
-                      <th className="px-3 py-2">Scores</th>
+                      <th className="px-3 py-2">Signals</th>
                       <th className="px-3 py-2">Source / notes</th>
                       <th className="px-3 py-2">Feedback</th>
                     </tr>
@@ -248,6 +251,7 @@ export default function ScoutResultsTable({ rows, feedbackState, onOpenEvidence,
                   <tbody>
                     {items.map(({ row, rank }) => {
                       const rowBucket = getValidationBucket(row);
+                      const rowTier = getOutputTier(row);
                       const sourceUrl = getValidationSourceUrl(row);
                       const validation = row.validation;
                       return (
@@ -262,7 +266,7 @@ export default function ScoutResultsTable({ rows, feedbackState, onOpenEvidence,
                                   Rank {rank}
                                 </span>
                                 <span className="rounded-full border border-white/10 bg-white/5 px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-zinc-200">
-                                  {bucketLabel(rowBucket)}
+                                  {TIER_LABELS[rowTier] ?? bucketLabel(rowBucket)}
                                 </span>
                               </div>
                               <p className="text-lg font-semibold text-zinc-50">{getIdentity(row)}</p>
@@ -295,22 +299,22 @@ export default function ScoutResultsTable({ rows, feedbackState, onOpenEvidence,
                             {isPersonLead(row) ? (
                               <div className="flex flex-wrap gap-2 text-sm text-zinc-200">
                                 <span className="rounded-full border border-white/10 bg-zinc-950/70 px-3 py-1">
-                                  Fit {formatScore(row.fit_score)}
+                                  Fit signal {formatScore(row.fit_score)}
                                 </span>
                                 <span className="rounded-full border border-white/10 bg-zinc-950/70 px-3 py-1">
-                                  Evidence {formatScore(row.evidence_score)}
+                                  Evidence support {formatScore(row.evidence_score)}
                                 </span>
                                 <span className="rounded-full border border-white/10 bg-zinc-950/70 px-3 py-1">
-                                  Contact {formatScore(row.contact_score)}
+                                  Contact readiness {formatScore(row.contact_score)}
                                 </span>
                                 <span
                                   className={`rounded-full border px-3 py-1 ${
-                                    row.gate_passed
+                                    rowTier === 'high_trust_usable'
                                       ? 'border-emerald-400/30 bg-emerald-400/10 text-emerald-100'
                                       : 'border-amber-400/30 bg-amber-400/10 text-amber-100'
                                   }`}
                                 >
-                                  Gate {row.gate_passed ? 'pass' : 'review'}
+                                  {TIER_LABELS[rowTier] ?? 'REVIEW'}
                                 </span>
                               </div>
                             ) : (
