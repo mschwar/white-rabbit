@@ -5,9 +5,9 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B and R09C are merged to `rebuild/validated-leads-loop`; the post-R09C live re-run remained held, and Matt accepted a source-assisted remediation pivot based on Lee's April New Mexico school-district IT evidence. R09D, R09E, and R09F passed QA and are merged to `rebuild/validated-leads-loop`; R09G is implemented pending Prompt B QA.
-**Next Prompt A feature:** None. R09G is implemented pending Prompt B QA; R09H remains blocked until R09G passes QA and merges.
-**Current Prompt B handoff:** QA `R09G - Research-workbook tiering and export semantics` on `feat/reset-r09g-research-workbook-tiering`. Keep R09H/RG4/R10-R12/export/dogfood/main blocked unless Prompt B passes and merges R09G to `rebuild/validated-leads-loop`.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B and R09C are merged to `rebuild/validated-leads-loop`; the post-R09C live re-run remained held, and Matt accepted a source-assisted remediation pivot based on Lee's April New Mexico school-district IT evidence. R09D, R09E, R09F, and R09G passed QA and are merged to `rebuild/validated-leads-loop`; R09H is ready.
+**Next Prompt A feature:** `R09H - Manual-oracle proof replay gate packet` on `feat/reset-r09h-manual-oracle-proof-packet`.
+**Current Prompt B handoff:** None. R09G passed Prompt B QA; R09H is the next same-gate Prompt A assignment. Keep RG4/R10-R12/export/dogfood/main blocked.
 **Current Prompt C handoff:** None. Do not rerun RG3 Prompt C until R09D-R09H are complete and merged.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
@@ -234,8 +234,8 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R09D | April NM evidence fixture and manual-oracle replay | merged_to_rebuild_branch | `feat/reset-r09d-april-nm-manual-oracle` | core tests + sanitized evidence fixtures |
 | R09E | K-12 source map and public roster collector | passed_prompt_b_qa | `feat/reset-r09e-k12-source-map-roster-collector` | core tests + source-map replay |
 | R09F | Source-assisted lead compiler | passed_prompt_b_qa | `feat/reset-r09f-source-assisted-lead-compiler` | core/API tests + replay artifacts |
-| R09G | Research-workbook tiering and export semantics | implemented_pending_qa | `feat/reset-r09g-research-workbook-tiering` | core/web or export tests as applicable |
-| R09H | Manual-oracle proof replay gate packet | blocked | `feat/reset-r09h-manual-oracle-proof-packet` | replay + live/source-assisted artifacts |
+| R09G | Research-workbook tiering and export semantics | passed_prompt_b_qa | `feat/reset-r09g-research-workbook-tiering` | core/web or export tests as applicable |
+| R09H | Manual-oracle proof replay gate packet | ready | `feat/reset-r09h-manual-oracle-proof-packet` | replay + live/source-assisted artifacts |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | blocked | `feat/reset-r12-evidence-dossier-review` | browser |
@@ -698,6 +698,10 @@ R09G Prompt A result:
 - Evidence artifact: `audits/raw/reset-2026-05-10/r09g/research-workbook-replay.json`, reporting 17 workbook rows, 10 `READY_WITH_CONTACT` rows, 7 `MANUAL_LOOKUP` rows, no downgraded ready rows for the April replay, export headers with sales-first fields and validation/audit/source columns, source URLs preserved, and `passes=true`.
 - Prompt A scope note: no UI, API endpoint, persistence, R09H proof packet, Prompt C, RG4, R10-R12, dogfood, or `main` changes.
 - Exact Prompt B handoff: QA `feat/reset-r09g-research-workbook-tiering`; verify the branch contains only R09G scope; rerun `cd packages/core && uv run pytest tests/test_research_workbook.py tests/test_source_assisted_compiler.py tests/test_manual_oracle.py tests/test_k12_source_map.py -q`, `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py -q`, and `git diff --check`; inspect `audits/raw/reset-2026-05-10/r09g/research-workbook-replay.json`; confirm it reports 17 workbook rows, 10 `READY_WITH_CONTACT` rows, 7 `MANUAL_LOOKUP` rows, zero downgraded ready rows for the April replay, export headers with sales-first fields plus validation/audit/source columns, source URLs preserved for name/title/organization/email where available, manual-lookup rows kept non-CRM-ready with next actions, and synthetic claimed-ready rows without contact support downgraded by tests. Confirm no UI, API endpoint, persistence, R09H proof packet, Prompt C, RG4, R10-R12, dogfood, or `main` sync scope landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R09H `ready`, and keep RG4/R10-R12/export/dogfood/main blocked.
+- Prompt B QA: passed. Report: `.gstack/qa-reports/qa-report-r09g-research-workbook-tiering-2026-05-11.md`.
+- Prompt B verification: `git diff --check` (passed); `cd packages/core && uv run pytest tests/test_research_workbook.py tests/test_source_assisted_compiler.py tests/test_manual_oracle.py tests/test_k12_source_map.py -q` (`15 passed`); `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py -q` (`21 passed`); replay artifact tie-out confirmed `audits/raw/reset-2026-05-10/r09g/research-workbook-replay.json` matches `build_april_nm_research_workbook_replay().to_payload()`.
+- Prompt B evidence summary: the R09G replay artifact reports 17 workbook rows, 10 `READY_WITH_CONTACT` rows, 7 `MANUAL_LOOKUP` rows, zero downgraded ready rows for the April replay, sales-first export headers with validation/audit/source columns, preserved source URLs, `passes=true`, and all manual-lookup rows non-CRM-ready with next actions.
+- Prompt B result: QA passed. Merge only to `rebuild/validated-leads-loop`, mark R09H `ready`, and keep RG4/R10-R12/export/dogfood/main blocked.
 
 R09H expected scope after R09G passes:
 

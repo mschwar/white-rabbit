@@ -1,14 +1,14 @@
 # STATUS
 
-**Last updated:** 2026-05-11 by Codex prompt-a-r09g-research-workbook-tiering
+**Last updated:** 2026-05-11 by Codex prompt-b-r09g-research-workbook-tiering
 **Branch:** feat/reset-r09g-research-workbook-tiering
-**Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. The post-R09C RG3 live re-run stayed held, and Matt accepted a source-assisted remediation pivot based on Lee's April New Mexico school-district IT evidence. R09G is implemented and pending Prompt B QA. The value target remains proving White Rabbit can reproduce or improve the April source-backed research workbook pattern.
+**Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. The post-R09C RG3 live re-run stayed held, and Matt accepted a source-assisted remediation pivot based on Lee's April New Mexico school-district IT evidence. R09G passed Prompt B QA and is merged to `rebuild/validated-leads-loop`. The value target remains proving White Rabbit can reproduce or improve the April source-backed research workbook pattern.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt B for `R09G - Research-workbook tiering and export semantics` on `feat/reset-r09g-research-workbook-tiering`. R09H remains blocked until R09G passes QA and merges to `rebuild/validated-leads-loop`. RG4, the `DESIGN.md` mockup preflight, R10-R12, export work, dogfood, and any `main` promotion remain blocked.
+**Next pointer:** Prompt A for `R09H - Manual-oracle proof replay gate packet` on `feat/reset-r09h-manual-oracle-proof-packet`. RG4, the `DESIGN.md` mockup preflight, R10-R12, export work, dogfood, and any `main` promotion remain blocked.
 
 **Design direction handoff:** `DESIGN.md` is now captured as the future RG4 visual direction authority. A refreshed RG4 mockup/design preflight exists on `codex/rg4-design-preflight-2026-05-11` at commit `5c5a10f`, with six rendered screens under `docs/mockups/rg4-design-preflight-2026-05-11/` on that branch. It is an unmerged inspection artifact only; it does not unlock RG4. R10-R12 remain blocked until a future RG3 Prompt C advances and Matt approves the refreshed mockups for production implementation.
 
@@ -24,13 +24,13 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** Prompt B should now QA `R09G - Research-workbook tiering and export semantics` on `feat/reset-r09g-research-workbook-tiering`. R09H remains blocked until R09G passes QA/merges. This remains an RG3 remediation gate state, not RG4. Do not unlock RG4 or sync `main`.
+**Next feature pointer:** Prompt A should now implement `R09H - Manual-oracle proof replay gate packet` on `feat/reset-r09h-manual-oracle-proof-packet`. This remains an RG3 remediation gate state, not RG4. Do not unlock RG4, do not run Prompt C until R09H passes QA/merges, and do not sync `main`.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
 **Final product mockup gate:** `DESIGN.md` is the future RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains the product-structure reference. A preflight artifact exists on `codex/rg4-design-preflight-2026-05-11`, but it remains unmerged and non-unlocking while RG3 is held. Matt must approve refreshed mockups after RG3 advances before production UI implementation.
 
-**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, and R09F are merged to `rebuild/validated-leads-loop`. R09G is implemented on `feat/reset-r09g-research-workbook-tiering` and pending Prompt B QA. The post-R09C live re-run held with `0` high-trust usable rows and `0` contact-quality passes. ADR-019 supersedes the old "run Prompt C next" handoff: R09D-R09H remain the accepted source-assisted remediation slice before any RG3 re-audit. Downstream RG4 work remains blocked.
+**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, and R09G are merged to `rebuild/validated-leads-loop`. The post-R09C live re-run held with `0` high-trust usable rows and `0` contact-quality passes. ADR-019 supersedes the old "run Prompt C next" handoff: R09D-R09H remain the accepted source-assisted remediation slice before any RG3 re-audit, and R09H is the next same-gate ready feature. Downstream RG4 work remains blocked.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -43,7 +43,7 @@
 - RG2 search/source coverage gate report: `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`
 - RG3 validation semantics hold report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 remains `in_progress / gate_hold` with R09D, R09E, and R09F passed/merged to `rebuild/validated-leads-loop`, R09G implemented pending QA, and R09H blocked; and RG4 remains blocked.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 remains `in_progress / gate_hold` with R09D, R09E, R09F, and R09G passed/merged to `rebuild/validated-leads-loop`, and R09H ready; and RG4 remains blocked.
 
 Prior accepted gates:
 
@@ -71,7 +71,7 @@ Prior accepted gates:
 
 Feature: R09G - Research-workbook tiering and export semantics
 Branch: `feat/reset-r09g-research-workbook-tiering`
-Status: `implemented_pending_qa`
+Status: `passed_prompt_b_qa`
 Why it exists: R09F compiles source-assisted candidate rows from the April New Mexico manual-oracle/source-map replay, but the source-assisted workbook still needed operator-facing tier labels and export-ready semantics that preserve ready rows, manual-lookup rows, not-found rows, source URLs, and audit context without implying unsupported rows are CRM-ready.
 Scope: Implemented only the R09G workbook tier/export semantics layer on top of the R09F compiler output.
 Non-goals: No UI wiring, no API endpoint, no persistence, no production export surface, no R09H proof packet, no Prompt C, no RG4/R10-R12, no dogfood, and no `main` sync.
@@ -84,6 +84,9 @@ Verification run by Prompt A:
 Artifacts: `audits/raw/reset-2026-05-10/r09g/research-workbook-replay.json`.
 Prompt A scope note: no UI, API endpoint, persistence, R09H proof packet, Prompt C, RG4, R10-R12, dogfood, or `main` changes.
 Exact Prompt B handoff: QA `feat/reset-r09g-research-workbook-tiering`; verify the branch contains only R09G scope; rerun `cd packages/core && uv run pytest tests/test_research_workbook.py tests/test_source_assisted_compiler.py tests/test_manual_oracle.py tests/test_k12_source_map.py -q`, `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py -q`, and `git diff --check`; inspect `audits/raw/reset-2026-05-10/r09g/research-workbook-replay.json`; confirm it reports 17 workbook rows, 10 `READY_WITH_CONTACT` rows, 7 `MANUAL_LOOKUP` rows, zero downgraded ready rows for the April replay, export headers with sales-first fields plus validation/audit/source columns, source URLs preserved for name/title/organization/email where available, manual-lookup rows kept non-CRM-ready with next actions, and synthetic claimed-ready rows without contact support downgraded by tests. Confirm no UI, API endpoint, persistence, R09H proof packet, Prompt C, RG4, R10-R12, dogfood, or `main` sync scope landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R09H `ready`, and keep RG4/R10-R12/export/dogfood/main blocked.
+Prompt B result: QA passed. Report: `.gstack/qa-reports/qa-report-r09g-research-workbook-tiering-2026-05-11.md`. Prompt B verified diff hygiene, the R09G/R09F/manual-oracle/source-map suite (`15 passed`), the source-validation/contact-status suite (`21 passed`), replay artifact tie-out, non-UI scope, northstar alignment, and that manual-lookup rows remain non-CRM-ready with next actions.
+Next pointer after merge: Prompt A for `R09H - Manual-oracle proof replay gate packet`.
+Open questions: None for R09H kickoff. RG3 Prompt C remains blocked until R09H passes QA and merges.
 
 Previous handoff:
 
@@ -452,6 +455,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-11 | prompt-b-r09g-research-workbook-tiering (Codex) | QA-passed `R09G - Research-workbook tiering and export semantics` on `feat/reset-r09g-research-workbook-tiering`: verified `git diff --check`, required core suites (`15 passed`, `21 passed`), replay artifact tie-out, workbook/export semantics, northstar drift, and non-UI scope. QA report saved at `.gstack/qa-reports/qa-report-r09g-research-workbook-tiering-2026-05-11.md`; R09H is now the next same-gate ready feature while RG4/export/dogfood/main remain blocked. |
 | 2026-05-11 | prompt-a-r09g-research-workbook-tiering (Codex) | Implemented `R09G - Research-workbook tiering and export semantics` on `feat/reset-r09g-research-workbook-tiering`: added `core.research_workbook`, workbook tier labels, sales-first CSV-ready export rows with validation/audit/source columns, contact-safe downgrade semantics, targeted tests, and `audits/raw/reset-2026-05-10/r09g/research-workbook-replay.json`. Verified R09G/R09F/manual-oracle/source-map suites (`15 passed`), source validation/contact status suites (`21 passed`), and kept R09H/RG4/export/dogfood/main blocked pending Prompt B. |
 | 2026-05-11 | prompt-b-r09f-source-assisted-compiler (Codex) | QA-passed `R09F - Source-assisted lead compiler` on `feat/reset-r09f-source-assisted-lead-compiler`: verified replay semantics, R09F core suites (`12 passed`, `6 passed`, `15 passed`), API suite (`45 passed`, existing datetime warnings), `git diff --check`, and scope/northstar boundaries. Prompt B also fixed the API import/startup blocker by lazy-loading the OpenAI-backed orchestrator, moving DB initialization out of module import, and disabling unused Pydantic/SQLAlchemy startup paths. QA report saved at `.gstack/qa-reports/qa-report-r09f-source-assisted-lead-compiler-2026-05-11.md`; R09G is now ready, while R09H/RG4/export/dogfood/main remain blocked. |
 | 2026-05-11 | prompt-b-r09e-k12-source-map (Codex) | QA-passed `R09E - K-12 source map and public roster collector` on `feat/reset-r09e-k12-source-map-roster-collector`: verified the targeted source-map pytest suite (`3 passed`), path-scoped `git diff --check`, replay artifact tie-out, fixture metadata, privacy-safe manual-lookup gaps, northstar drift alignment, and scope boundaries. QA report saved at `.gstack/qa-reports/qa-report-r09e-k12-source-map-roster-collector-2026-05-11.md`; merge only to `rebuild/validated-leads-loop`; R09F is next ready, while R09G-R09H/RG4/export/dogfood/main remain blocked. |
