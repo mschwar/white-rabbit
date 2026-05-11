@@ -1,0 +1,10 @@
+{
+  "benchmark_id": "lee-commodity-buyers",
+  "error": "Tavily search failed: Tavily API error: 432 - {\"detail\":{\"error\":\"This request exceeds your plan's set usage limit. Please upgrade your plan or contact support@tavily.com\"}}",
+  "error_code": "tavily_failed",
+  "leads": [],
+  "mode": "scout",
+  "prompt_label": "Lee commodity buyers prompt",
+  "query": "commodity buyers at retail lumber yards in Washington",
+  "runner_elapsed_seconds": 12.341
+}

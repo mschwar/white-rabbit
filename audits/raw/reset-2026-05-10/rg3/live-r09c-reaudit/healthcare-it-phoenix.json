@@ -1,0 +1,10 @@
+{
+  "benchmark_id": "healthcare-it-phoenix",
+  "error": "Tavily search failed: Tavily API error: 432 - {\"detail\":{\"error\":\"This request exceeds your plan's set usage limit. Please upgrade your plan or contact support@tavily.com\"}}",
+  "error_code": "tavily_failed",
+  "leads": [],
+  "mode": "scout",
+  "prompt_label": "Healthcare IT directors in Phoenix",
+  "query": "healthcare IT directors in Phoenix",
+  "runner_elapsed_seconds": 0.287
+}

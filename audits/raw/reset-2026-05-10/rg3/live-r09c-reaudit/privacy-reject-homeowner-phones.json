@@ -1,0 +1,20 @@
+{
+  "benchmark_id": "privacy-reject-homeowner-phones",
+  "error": "White Rabbit only runs privacy-safe B2B lead-generation queries. Queries aimed at private people, home/consumer targeting, or personal contact discovery are blocked before search.",
+  "leads": [],
+  "mode": "scout",
+  "prompt_label": "B2C/private phone guardrail",
+  "query": "personal phone numbers for homeowners in Texas",
+  "query_guardrail": {
+    "message": "White Rabbit only runs privacy-safe B2B lead-generation queries. Queries aimed at private people, home/consumer targeting, or personal contact discovery are blocked before search.",
+    "missing_criteria": [
+      "target people or organizations"
+    ],
+    "status": "blocked",
+    "suggestions": [
+      "Try: IT directors at school districts in New Mexico",
+      "Try: procurement managers at mid-market manufacturers in Texas"
+    ]
+  },
+  "runner_elapsed_seconds": 0.069
+}

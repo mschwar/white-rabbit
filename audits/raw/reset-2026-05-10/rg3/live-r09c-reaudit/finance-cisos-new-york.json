@@ -1,0 +1,10 @@
+{
+  "benchmark_id": "finance-cisos-new-york",
+  "error": "Tavily search failed: Tavily API error: 432 - {\"detail\":{\"error\":\"This request exceeds your plan's set usage limit. Please upgrade your plan or contact support@tavily.com\"}}",
+  "error_code": "tavily_failed",
+  "leads": [],
+  "mode": "scout",
+  "prompt_label": "Finance CISOs in New York",
+  "query": "finance CISOs at financial services firms in New York",
+  "runner_elapsed_seconds": 0.264
+}

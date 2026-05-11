@@ -5,10 +5,10 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B and R09C are now merged to `rebuild/validated-leads-loop`; RG3 remains held until a fresh Prompt C re-audits the gate.
-**Next Prompt A feature:** None. No new feature is ready while RG3 awaits Prompt C.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B and R09C are merged to `rebuild/validated-leads-loop`, and the post-R09C Prompt C re-audit recorded `hold`.
+**Next Prompt A feature:** None. No new feature is ready while Matt has not accepted or revised the post-R09C RG3 hold.
 **Current Prompt B handoff:** None. R09C Prompt B QA is complete and merged to `rebuild/validated-leads-loop`.
-**Current Prompt C handoff:** Audit RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop`. Confirm R07-R09C are merged, run the RG3 full evaluation/audit below, and update `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`. Do not unlock RG4, refreshed mockups, R10-R12, R13-R15, export work, dogfood, or `main` unless Prompt C records `advance`.
+**Current Prompt C handoff:** None. If Matt restores/raises Tavily quota and asks for another gate check, rerun the exact RG3 Prompt C live suite before changing product code. Otherwise Matt must define the next RG3 remediation/vendor-positioning slice. Do not unlock RG4, refreshed mockups, R10-R12, R13-R15, export work, dogfood, or `main` from the post-R09C hold.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -513,6 +513,15 @@ R09C Prompt A implementation handoff:
 - Prompt B verification: required R09C core suite (`76 passed`), API suite (`45 passed`, existing datetime warnings), `git diff --check`, and replay artifact inspection for `audits/raw/reset-2026-05-10/r09c/replay/deep-contact-evidence-pass.json` plus `quality-summary.json`.
 - Prompt B evidence summary: deeper multi-source evidence can promote promising rows only when public-web corroboration finds a direct person contact, keeps missing-contact rows in `review`, downgrades stale/conflicting rows to `failed`, and exposes contact acquisition plus high-trust yield in theme summaries without relaxing READY/high-trust precision.
 - Exact Prompt C handoff: Audit RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop`. Confirm R07-R09C are merged, run the RG3 full evaluation/audit below, and update `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`. Do not unlock RG4, refreshed mockups, R10-R12, R13-R15, export work, dogfood, or `main` unless Prompt C records `advance`.
+
+Post-R09C Prompt C result:
+
+- Branch: `audit/reset-rg3-validation-semantics-r09c`.
+- Decision: `hold`.
+- Report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`.
+- Raw notes: `audits/raw/reset-2026-05-10/rg3/command-output-r09c-reaudit.md`, `audits/raw/reset-2026-05-10/rg3/evidence-notes-r09c-reaudit.md`, and `audits/raw/reset-2026-05-10/rg3/live-r09c-reaudit/`.
+- Reason: Required core/API checks passed and R09C replay proved safer contact/evidence mechanics, but current live evidence cannot advance RG3. Four broad B2B cases returned `503` / `tavily_failed` because Tavily returned HTTP 432 plan-limit errors, and the one completed non-privacy live case produced 10 categorized rows with `0` person rows, `0` high-trust usable rows, and `0` contact-quality passes.
+- Next valid action: no downstream Prompt A, RG4 design/mockup preflight, R10-R12, R13-R15, export work, dogfood, or `main` sync is valid. Matt must either restore/upgrade Tavily search quota and ask for the exact RG3 Prompt C live suite to be rerun, or accept/revise the hold by defining another RG3 remediation or vendor-positioning slice.
 
 R09C Prompt A draft for final instruction fill-in:
 
