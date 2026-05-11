@@ -2,7 +2,7 @@
 
 **Status:** Active implementation brief for high-volume transparent tiering.
 **Created:** 2026-05-10.
-**Authority:** Implements ADR-012 and updates the reset plan before kickoff.
+**Authority:** Implements ADR-013, `docs/13-pipeline-orchestrator-contract-2026.md`, and the reset plan before kickoff.
 
 ## Core Philosophy
 
@@ -12,7 +12,7 @@ New principle:
 
 > It is great to get 500 leads as long as it is instantly clear at a glance why 450 of them are not actionable and exactly what evidence, or lack of evidence, supports that conclusion.
 
-Volume is a feature only when the system makes the distribution obvious and explains every blocker. White Rabbit should surface the full realistic picture the public web allows, apply rigorous checking, and make the output glanceable enough that Thomas or Lee can understand both the usable rows and the non-usable rows immediately.
+Volume is a feature only when the system makes the distribution obvious and explains every blocker. White Rabbit should surface the full realistic picture the public web allows, apply rigorous checking, and make the output glanceable enough that an operator can understand both the usable rows and the non-usable rows immediately.
 
 Hard constraints:
 
@@ -25,9 +25,27 @@ Hard constraints:
 
 | Query type | Target | Notes |
 | --- | --- | --- |
-| Broad vertical + geography | 50-300+ categorized candidates | Primary high-volume mode. 10-25 is only the floor. |
+| Broad vertical + geography | 50-500+ categorized candidates | Primary high-volume mode. 10-25 is only the floor. |
 | Named account / narrow | 5-30 categorized candidates | Keep tight when the target universe is genuinely small. |
 | High-trust usable tier | At least 70% precision on benchmarks | Non-negotiable; do not loosen this tier to increase volume. |
+
+## Pipeline Flow
+
+The orchestrator stages are:
+
+```text
+DISCOVER -> EXTRACT -> VERIFY -> SYNTHESIZE -> ORCHESTRATE & DELIVER
+```
+
+Operating principles across all stages:
+
+- Plan, then parallelize where safe.
+- Verify at every handoff.
+- Reflect and decide whether to continue, deepen, or route to human review.
+- Produce auditable artifacts: provenance, per-field status, verification trace, confidence rationale, and checked timestamp.
+- Keep state persistent and queryable for lead graph, source reputation, and correction memory.
+- Treat human review as first-class for the `review` tier only.
+- Log cost, latency, quality, and routing decisions.
 
 ## Required Architecture
 
@@ -47,7 +65,7 @@ Required changes:
 - Use geographic or vertical expansion only when the query is clearly broad.
 - Keep every generated vendor query under `SAFE_VENDOR_QUERY_LENGTH`.
 
-Goal after this layer: a broad query such as "K-12 IT decision makers in Arizona" should yield 50-150+ unique raw search hits before LLM extraction when the public web supports it.
+Goal after this layer: a broad query such as "K-12 IT decision makers in Arizona" should yield 100-500+ unique raw search hits before LLM extraction when the public web supports it.
 
 ### 2. Replace Binary Output With Tiered Output
 
@@ -115,6 +133,20 @@ Required changes:
 - Spot-check explanation quality in benchmark reports.
 - Expose cost and latency guardrails such as `max_results`, `aggressive_breadth`, and budget/early-stop controls.
 
+### 5. Produce The UI/Export Output Contract
+
+The pipeline must produce exactly what the mockups consume:
+
+- Categorized counts for `READY`, `REVIEW`, `ORG-ONLY`, and `NOT FOUND`.
+- Per-lead evidence dossier with field support rows for name, title, organization, email, phone, and source.
+- Each field support row has status, evidence link, and rationale.
+- Grounded `why_target` and grounded icebreaker/opener only when evidence quality supports them.
+- Contradictions or conflicting source signals surfaced explicitly when present.
+- Full provenance/audit trail for export, with sales columns first and audit columns later.
+- Aggregate stats and market insights describing the result distribution.
+- Mobile-ready compact row shape with bucket, reason, key contact status, and one-tap evidence.
+- Low-signal state for runs below volume expectations, with returned rows still visible and broadening suggestions.
+
 ## Implementation Order
 
 1. Update `query_planner.py` and `search.py` for higher raw search volume, aggregation, and dedupe.
@@ -126,7 +158,7 @@ Required changes:
 
 ## Success Criteria
 
-- Broad realistic prompts produce at least 50 categorized candidates, ideally 100+.
+- Broad realistic prompts produce at least 50 categorized candidates, ideally 100-500+ when the public web supports it.
 - The `high_trust_usable` tier maintains the existing precision bar on Arizona K-12 and similar golden sets.
 - Every candidate has a specific `primary_filter_reason` that a sales rep can read in under 3 seconds.
 - The operator can immediately answer: how many real decision-makers are publicly findable, and what blocks the rest?
@@ -143,7 +175,7 @@ Your task is to evolve the orchestrator and supporting modules from a low-volume
 Read and internalize docs/Orchestrator_Agent_Implementation_Brief.md, docs/00-product-northstar.md, docs/12-reset-gated-implementation-plan-2026-05-10.md, and docs/03-decisions.md.
 
 Key outcomes required:
-- Broad queries surface 50-300+ categorized candidates instead of single digits when the market supports it.
+- Broad queries surface 50-500+ categorized candidates instead of single digits when the market supports it.
 - A new tiered classification, high_trust_usable | review | organization_only | not_found | failed, replaces the binary gate for returned output.
 - The LLM extraction stage becomes deliberately inclusive; tiering and annotation happen server-side.
 - Every candidate receives a clear, glanceable primary_filter_reason.

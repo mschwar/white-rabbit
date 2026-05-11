@@ -317,6 +317,37 @@
         font-size: 11px;
       }
 
+      .pipeline-strip {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 1px;
+        margin-top: 20px;
+        border: 1px solid var(--line);
+        background: var(--line);
+      }
+
+      .pipeline-step {
+        min-height: 72px;
+        background: #111314;
+        padding: 13px;
+      }
+
+      .pipeline-step strong {
+        display: block;
+        color: var(--green);
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .pipeline-step span {
+        display: block;
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
       .results-layout {
         display: grid;
         grid-template-columns: minmax(0, 1fr) 340px;
@@ -375,6 +406,29 @@
       .bucket.org {
         border-color: rgba(135, 217, 255, 0.45);
         color: var(--cyan);
+      }
+
+      .filter-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 0 0 14px;
+      }
+
+      .filter-chip {
+        border: 1px solid var(--line-strong);
+        background: #0e1011;
+        color: var(--muted);
+        padding: 7px 10px;
+        font-size: 12px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .filter-chip.active {
+        border-color: rgba(183, 255, 99, 0.45);
+        color: var(--green);
+        background: var(--green-soft);
       }
 
       .table-frame {
@@ -499,12 +553,12 @@
 
       .table-frame th:nth-child(1),
       .table-frame td:nth-child(1) {
-        width: 4%;
+        width: 5%;
       }
 
       .table-frame th:nth-child(2),
       .table-frame td:nth-child(2) {
-        width: 13%;
+        width: 12%;
       }
 
       .table-frame th:nth-child(3),
@@ -591,7 +645,7 @@
 
       .evidence-item {
         display: grid;
-        grid-template-columns: 92px 1fr;
+        grid-template-columns: 82px 1fr auto;
         gap: 10px;
         align-items: start;
         border: 1px solid var(--line);
@@ -616,6 +670,21 @@
       .evidence-item small {
         color: var(--muted);
         line-height: 1.4;
+      }
+
+      .field-actions {
+        display: flex;
+        gap: 6px;
+      }
+
+      .mini-action {
+        border: 1px solid var(--line-strong);
+        background: #0d0f10;
+        color: var(--muted);
+        padding: 4px 6px;
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
       }
 
       .quote {
@@ -729,6 +798,14 @@
         margin-top: 12px;
       }
 
+      .mobile-filter {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        border-bottom: 1px solid var(--line);
+        padding: 10px 14px;
+      }
+
       .fact {
         border: 1px solid var(--line);
         background: #0c0e0f;
@@ -750,6 +827,67 @@
         font-size: 12px;
       }
 
+      .low-signal-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        gap: 20px;
+        padding-top: 20px;
+      }
+
+      .warning-panel {
+        border: 1px solid rgba(255, 209, 102, 0.45);
+        background: rgba(255, 209, 102, 0.08);
+      }
+
+      .low-signal-table table {
+        min-width: 0;
+        table-layout: fixed;
+      }
+
+      .low-signal-table th,
+      .low-signal-table td {
+        overflow-wrap: anywhere;
+        white-space: normal;
+      }
+
+      .low-signal-table th:nth-child(1),
+      .low-signal-table td:nth-child(1) {
+        width: 9% !important;
+      }
+
+      .low-signal-table th:nth-child(2),
+      .low-signal-table td:nth-child(2) {
+        width: 25% !important;
+      }
+
+      .low-signal-table th:nth-child(3),
+      .low-signal-table td:nth-child(3) {
+        width: 25% !important;
+      }
+
+      .low-signal-table th:nth-child(4),
+      .low-signal-table td:nth-child(4) {
+        width: 16% !important;
+      }
+
+      .low-signal-table th:nth-child(5),
+      .low-signal-table td:nth-child(5) {
+        width: 25% !important;
+      }
+
+      .suggestion-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .suggestion-list li {
+        border-top: 1px solid var(--line);
+        padding: 12px 16px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
       @media (max-width: 980px) {
         .shell {
           padding: 0;
@@ -764,7 +902,8 @@
         .search-strip,
         .search-empty,
         .results-layout,
-        .export-layout {
+        .export-layout,
+        .low-signal-layout {
           grid-template-columns: 1fr;
         }
 
@@ -772,7 +911,8 @@
           padding: 16px;
         }
 
-        .metric-row {
+        .metric-row,
+        .pipeline-strip {
           grid-template-columns: 1fr 1fr;
         }
 
@@ -795,6 +935,7 @@
         }
 
         .metric-row,
+        .pipeline-strip,
         .mobile-facts {
           grid-template-columns: 1fr;
         }
@@ -817,7 +958,7 @@
   </head>
   <body>
     <main class="shell">
-      <section class="chrome" aria-label="White Rabbit final product mockup">
+      <section class="chrome" aria-label="White Rabbit demo experience">
         <header class="topbar">
           <div class="brand">
             <span class="mark" aria-hidden="true"></span>
@@ -825,8 +966,8 @@
             <span class="brand-subtitle">source-backed prospecting</span>
           </div>
           <div class="top-meta">
-            <span><span class="status-dot" aria-hidden="true"></span> Production target mockup</span>
-            <span>50-300+ categorized candidates when broad</span>
+            <span><span class="status-dot" aria-hidden="true"></span> Evidence-backed search</span>
+            <span>50-500+ candidates when the market supports it</span>
           </div>
         </header>
 
@@ -835,6 +976,7 @@
           <button class="tab" type="button" aria-selected="false" data-view-target="results">Results + Evidence</button>
           <button class="tab" type="button" aria-selected="false" data-view-target="export">Export</button>
           <button class="tab" type="button" aria-selected="false" data-view-target="mobile">Mobile</button>
+          <button class="tab" type="button" aria-selected="false" data-view-target="low-signal">Low Signal</button>
         </nav>
 
         <section class="view active" id="view-search">
@@ -849,44 +991,51 @@
 
             <div class="metric-row" aria-label="Expected run quality">
               <div class="metric"><strong>186</strong><span>Categorized candidates</span></div>
-              <div class="metric"><strong>37</strong><span>High-trust usable</span></div>
+              <div class="metric"><strong>37</strong><span>Ready to use</span></div>
               <div class="metric"><strong>82</strong><span>Need review</span></div>
               <div class="metric"><strong>67</strong><span>Blocked / unknown</span></div>
             </div>
 
+            <div class="pipeline-strip" aria-label="Pipeline flow">
+              <div class="pipeline-step"><strong>Discover</strong><span>Broad public-web candidate search</span></div>
+              <div class="pipeline-step"><strong>Extract</strong><span>Structured fields plus raw evidence</span></div>
+              <div class="pipeline-step"><strong>Verify</strong><span>Per-field support and contradictions</span></div>
+              <div class="pipeline-step"><strong>Synthesize</strong><span>Buckets, reasons, and market signal</span></div>
+              <div class="pipeline-step"><strong>Deliver</strong><span>Dossier, mobile review, and CSV</span></div>
+            </div>
+
             <div class="search-empty">
               <div class="copy-block">
-                <h1>One search. Full picture. Honest evidence.</h1>
+                <h1>Find the list the public web can prove.</h1>
                 <p>
-                  One broad search can return hundreds of categorized candidates, then separates high-trust
-                  usable people from review rows, organization-only rows, true misses, and failed evidence.
+                  Search a target market once. White Rabbit returns the full candidate picture, separates
+                  ready leads from review and dead ends, and shows the evidence behind every decision.
                 </p>
                 <p>
-                  The final product should feel closer to a compact analyst desk than a dashboard: no mode
-                  toggles, no quota card unless blocked, no recipe library, no batch workspace, no implementation
-                  language in the operator path.
+                  The result is a working list, the reasons rows are not actionable, and a sales-first export
+                  that keeps provenance attached.
                 </p>
               </div>
-              <aside class="reference-list" aria-label="Operator constraints">
+              <aside class="reference-list" aria-label="Product principles">
                 <div class="reference-row">
                   <span class="kbd">01</span>
-                  <div><strong>Volume is value</strong><br /><span>Broad targets surface the realistic public-web universe.</span></div>
-                  <span class="pill ready">Gate</span>
+                  <div><strong>Volume is visible</strong><br /><span>Broad targets surface the realistic public-web universe.</span></div>
+                  <span class="pill ready">Built in</span>
                 </div>
                 <div class="reference-row">
                   <span class="kbd">02</span>
                   <div><strong>Evidence is visible</strong><br /><span>Name, title, organization, and contact status show field support.</span></div>
-                  <span class="pill ready">Gate</span>
+                  <span class="pill ready">Built in</span>
                 </div>
                 <div class="reference-row">
                   <span class="kbd">03</span>
                   <div><strong>Sales fields first</strong><br /><span>Export starts with account, person, title, contact, source, and why.</span></div>
-                  <span class="pill ready">Gate</span>
+                  <span class="pill ready">Built in</span>
                 </div>
                 <div class="reference-row">
                   <span class="kbd">04</span>
                   <div><strong>False confidence is blocked</strong><br /><span>Every non-actionable row says exactly what is missing.</span></div>
-                  <span class="pill review">Hold if false</span>
+                  <span class="pill review">Always</span>
                 </div>
               </aside>
             </div>
@@ -908,16 +1057,25 @@
                 <div class="toolbar">
                   <div>
                     <h1>186 categorized candidates</h1>
-                    <p>37 high-trust usable · 82 review · 43 organization-only · 24 not-found/failed · showing first 18 · $2.18 estimated</p>
+                    <p>37 ready · 82 review · 43 org-only · 24 not found · showing first 18 · verified evidence attached</p>
                   </div>
-                  <button class="button" type="button">Export high-trust rows</button>
+                  <button class="button" type="button">Export ready rows</button>
                 </div>
 
                 <div class="bucket-bar" aria-label="Validation buckets">
-                  <span class="bucket ready">High trust 37</span>
+                  <span class="bucket ready">Ready 37</span>
                   <span class="bucket review">Review 82</span>
                   <span class="bucket org">Org-only 43</span>
-                  <span class="bucket">Not found / failed 24</span>
+                  <span class="bucket">Not found 24</span>
+                </div>
+
+                <div class="filter-bar" aria-label="Result filters">
+                  <button class="filter-chip active" type="button">All</button>
+                  <button class="filter-chip" type="button">Ready only</button>
+                  <button class="filter-chip" type="button">Review</button>
+                  <button class="filter-chip" type="button">Verified email</button>
+                  <button class="filter-chip" type="button">Hide org-only</button>
+                  <button class="filter-chip" type="button">Conflicts</button>
                 </div>
 
                 <div class="table-frame">
@@ -946,7 +1104,7 @@
                         <td><span class="email">lena.ortiz@valleywise.example</span><div class="subline">verified</div></td>
                         <td>(602) 555-0184<div class="subline">main + extension</div></td>
                         <td><a class="source-link" href="#">IT leadership page</a></td>
-                        <td><span class="pill ready">Usable</span></td>
+                        <td><span class="pill ready">Ready</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -956,9 +1114,9 @@
                         <td><div class="lead-name">Marcus Reed</div><div class="subline">Infrastructure owner</div></td>
                         <td>Senior Director, Infrastructure</td>
                         <td><span class="email">mreed@phoenixchildrens.example</span><div class="subline">pattern supported</div></td>
-                        <td>Missing<div class="subline">not high-trust phone</div></td>
+                        <td>Missing<div class="subline">not ready: phone missing</div></td>
                         <td><a class="source-link" href="#">Technology profile</a></td>
-                        <td><span class="pill ready">Usable</span></td>
+                        <td><span class="pill ready">Ready</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -970,7 +1128,7 @@
                         <td><span class="email">ari.patel@honorhealth.example</span><div class="subline">verified</div></td>
                         <td>(480) 555-0140</td>
                         <td><a class="source-link" href="#">Security team page</a></td>
-                        <td><span class="pill ready">Usable</span></td>
+                        <td><span class="pill ready">Ready</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -982,7 +1140,7 @@
                         <td><span class="email">dana.kim@bannerhealth.example</span><div class="subline">verified</div></td>
                         <td>Missing</td>
                         <td><a class="source-link" href="#">Leadership profile</a></td>
-                        <td><span class="pill ready">Usable</span></td>
+                        <td><span class="pill ready">Ready</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -994,7 +1152,7 @@
                         <td><span class="email">noah.alvarez@dignityhealth.example</span><div class="subline">pattern supported</div></td>
                         <td>(602) 555-0117</td>
                         <td><a class="source-link" href="#">Operations directory</a></td>
-                        <td><span class="pill ready">Usable</span></td>
+                        <td><span class="pill ready">Ready</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -1006,7 +1164,7 @@
                         <td><span class="email">priya.shah@abrazohealth.example</span><div class="subline">verified</div></td>
                         <td>Missing</td>
                         <td><a class="source-link" href="#">Staff directory</a></td>
-                        <td><span class="pill ready">Usable</span></td>
+                        <td><span class="pill ready">Ready</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -1018,7 +1176,7 @@
                         <td><span class="email">caleb.morris@terros.example</span><div class="subline">verified</div></td>
                         <td>(602) 555-0166</td>
                         <td><a class="source-link" href="#">Technology page</a></td>
-                        <td><span class="pill ready">Usable</span></td>
+                        <td><span class="pill ready">Ready</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -1030,7 +1188,7 @@
                         <td><span class="email">elise.nguyen@mayoaz.example</span><div class="subline">verified</div></td>
                         <td>Missing</td>
                         <td><a class="source-link" href="#">Digital health profile</a></td>
-                        <td><span class="pill ready">Usable</span></td>
+                        <td><span class="pill ready">Ready</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -1042,7 +1200,7 @@
                         <td><span class="email">tessa.martin@sonoraquest.example</span><div class="subline">pattern supported</div></td>
                         <td>(602) 555-0131</td>
                         <td><a class="source-link" href="#">Data team page</a></td>
-                        <td><span class="pill ready">Usable</span></td>
+                        <td><span class="pill ready">Ready</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -1054,7 +1212,7 @@
                         <td><span class="email">owen.wright@southwestnetwork.example</span><div class="subline">verified</div></td>
                         <td>Missing</td>
                         <td><a class="source-link" href="#">Org profile</a></td>
-                        <td><span class="pill ready">Usable</span></td>
+                        <td><span class="pill ready">Ready</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -1066,7 +1224,7 @@
                         <td><span class="email">mira.collins@equalityhealth.example</span><div class="subline">verified</div></td>
                         <td>(602) 555-0190</td>
                         <td><a class="source-link" href="#">Leadership page</a></td>
-                        <td><span class="pill ready">Usable</span></td>
+                        <td><span class="pill ready">Ready</span></td>
                         <td><button class="row-action" type="button">Open</button></td>
                       </tr>
                       <tr>
@@ -1075,7 +1233,7 @@
                         <td>Phoenix, AZ</td>
                         <td><div class="lead-name">Samir Bell</div><div class="subline">Possible match</div></td>
                         <td>IT Manager</td>
-                        <td>Missing<div class="subline">not high-trust</div></td>
+                        <td>Missing<div class="subline">not ready</div></td>
                         <td>Missing</td>
                         <td><a class="source-link" href="#">Practice page</a></td>
                         <td><span class="pill review">Review</span></td>
@@ -1162,24 +1320,22 @@
                 <div class="panel-section">
                   <p class="panel-eyebrow">Evidence dossier</p>
                   <h2 class="panel-title">Lena Ortiz</h2>
-                  <p class="panel-subtitle">Director, Clinical Systems at Valleywise Health. High-trust usable because name, title, organization, and email are source-supported.</p>
+                  <p class="panel-subtitle">Director, Clinical Systems at Valleywise Health. Ready because name, title, organization, and email are source-supported.</p>
+                  <div class="quote" style="margin-top: 12px;">Why target: Valleywise operates a Phoenix care network with clinical platform ownership; Ortiz owns systems that map directly to healthcare IT buying conversations.</div>
                 </div>
                 <div class="panel-section">
                   <p class="panel-eyebrow">Field support</p>
                   <div class="evidence-grid">
-                    <div class="evidence-item"><span>Name</span><div><strong>Supported</strong><small>Leadership page lists Lena Ortiz in the clinical systems group.</small></div></div>
-                    <div class="evidence-item"><span>Title</span><div><strong>Supported</strong><small>Directory title matches Director, Clinical Systems.</small></div></div>
-                    <div class="evidence-item"><span>Org</span><div><strong>Supported</strong><small>Source domain and page identify Valleywise Health.</small></div></div>
-                    <div class="evidence-item"><span>Email</span><div><strong>Verified</strong><small>Email appears on the IT leadership contact page.</small></div></div>
-                    <div class="evidence-item"><span>Phone</span><div><strong>Supported</strong><small>Main line plus extension appears in the contact block.</small></div></div>
+                    <div class="evidence-item"><span>Name</span><div><strong>Supported</strong><small>Leadership page lists Lena Ortiz in the clinical systems group.</small></div><div class="field-actions"><button class="mini-action" type="button">Copy</button><button class="mini-action" type="button">Source</button></div></div>
+                    <div class="evidence-item"><span>Title</span><div><strong>Supported</strong><small>Directory title matches Director, Clinical Systems.</small></div><div class="field-actions"><button class="mini-action" type="button">Copy</button><button class="mini-action" type="button">Source</button></div></div>
+                    <div class="evidence-item"><span>Org</span><div><strong>Supported</strong><small>Source domain and page identify Valleywise Health.</small></div><div class="field-actions"><button class="mini-action" type="button">Copy</button><button class="mini-action" type="button">Source</button></div></div>
+                    <div class="evidence-item"><span>Email</span><div><strong>Verified</strong><small>Email appears on the IT leadership contact page.</small></div><div class="field-actions"><button class="mini-action" type="button">Copy</button><button class="mini-action" type="button">Source</button></div></div>
+                    <div class="evidence-item"><span>Phone</span><div><strong>Supported</strong><small>Main line plus extension appears in the contact block.</small></div><div class="field-actions"><button class="mini-action" type="button">Copy</button><button class="mini-action" type="button">Source</button></div></div>
+                    <div class="evidence-item"><span>Conflicts</span><div><strong>None found</strong><small>No source contradicted the person, title, organization, or contact status.</small></div><div class="field-actions"><button class="mini-action" type="button">Copy</button></div></div>
                   </div>
                 </div>
                 <div class="panel-section">
-                  <p class="panel-eyebrow">Why target</p>
-                  <div class="quote">Valleywise operates a Phoenix care network with clinical platform ownership. Ortiz owns systems that map directly to healthcare IT buying conversations.</div>
-                </div>
-                <div class="panel-section">
-                  <button class="button dark" type="button">Mark needs review</button>
+                  <button class="button dark" type="button">Send to review queue</button>
                 </div>
               </aside>
             </div>
@@ -1200,11 +1356,11 @@
               <aside class="export-summary">
                 <div class="panel-section">
                   <p class="panel-eyebrow">Export rule</p>
-                  <h2 class="panel-title">High-trust first. Reasons for the rest.</h2>
-                  <p class="panel-subtitle">Thomas and Lee can use the strongest rows immediately, while every review and blocked row carries the reason it is not actionable.</p>
+                  <h2 class="panel-title">Ready first. Reasons for the rest.</h2>
+                  <p class="panel-subtitle">Your team can use the strongest rows immediately, while every review and blocked row carries the reason it is not actionable.</p>
                 </div>
                 <ul class="checklist">
-                  <li><span class="check">✓</span><span>High-trust rows sorted first, followed by review, org-only, not-found, and failed rows.</span></li>
+                  <li><span class="check">✓</span><span>Ready rows sorted first, followed by review, org-only, not-found, and failed rows.</span></li>
                   <li><span class="check">✓</span><span>First 10 columns are CRM-useful and not run metadata.</span></li>
                   <li><span class="check">✓</span><span>Unsupported contacts remain clearly marked; no row is flattened into false confidence.</span></li>
                   <li><span class="check">✓</span><span>Run ID, tier, primary reason, evidence URLs, and field validation statuses remain available after sales columns.</span></li>
@@ -1237,7 +1393,7 @@
                       <td>Phoenix, AZ</td>
                       <td>Lena Ortiz</td>
                       <td>Director, Clinical Systems</td>
-                      <td>high_trust_usable</td>
+                      <td>ready</td>
                       <td>Source supports name, title, organization, and email.</td>
                       <td>lena.ortiz@valleywise.example</td>
                       <td>verified_found</td>
@@ -1253,7 +1409,7 @@
                       <td>Phoenix, AZ</td>
                       <td>Marcus Reed</td>
                       <td>Senior Director, Infrastructure</td>
-                      <td>high_trust_usable</td>
+                      <td>ready</td>
                       <td>Name, title, and org are supported; email pattern is documented.</td>
                       <td>mreed@phoenixchildrens.example</td>
                       <td>deduced_with_pattern_evidence</td>
@@ -1314,7 +1470,13 @@
             <div class="mobile-frame">
               <div class="topbar">
                 <div class="brand"><span class="mark" aria-hidden="true"></span><span class="brand-title">White Rabbit</span></div>
-                <span class="brand-subtitle">186 categorized · 37 high trust</span>
+                <span class="brand-subtitle">186 categorized · 37 ready</span>
+              </div>
+              <div class="mobile-filter" aria-label="Mobile filters">
+                <button class="filter-chip active" type="button">All</button>
+                <button class="filter-chip" type="button">Ready</button>
+                <button class="filter-chip" type="button">Review</button>
+                <button class="filter-chip" type="button">Email</button>
               </div>
               <div class="mobile-search">
                 <p class="field-label">Target</p>
@@ -1327,7 +1489,7 @@
                     <div class="lead-name">Lena Ortiz</div>
                     <div class="subline">Director, Clinical Systems</div>
                   </div>
-                  <span class="pill ready">Usable</span>
+                  <span class="pill ready">Ready</span>
                 </div>
                 <div class="mobile-facts">
                   <div class="fact"><span>Email</span><strong>verified</strong></div>
@@ -1343,7 +1505,7 @@
                     <div class="lead-name">Marcus Reed</div>
                     <div class="subline">Senior Director, Infrastructure</div>
                   </div>
-                  <span class="pill ready">Usable</span>
+                  <span class="pill ready">Ready</span>
                 </div>
                 <div class="mobile-facts">
                   <div class="fact"><span>Email</span><strong>pattern</strong></div>
@@ -1357,10 +1519,85 @@
                   <div>
                     <div class="org-name">OrthoArizona</div>
                     <div class="lead-name">Samir Bell</div>
-                    <div class="subline">IT Manager · contact missing</div>
+                    <div class="subline">Contact missing · title is plausible but below director target</div>
                   </div>
                   <span class="pill review">Review</span>
                 </div>
+                <div class="mobile-facts">
+                  <div class="fact"><span>Reason</span><strong>needs contact proof</strong></div>
+                  <div class="fact"><span>Action</span><strong>open evidence</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="view" id="view-low-signal">
+          <div class="workspace">
+            <form class="search-strip">
+              <label>
+                <p class="field-label">Target</p>
+                <input class="query-input" value="Healthcare IT directors at boutique Phoenix clinics" aria-label="Low-signal target query" />
+              </label>
+              <button class="button secondary" type="button">Broaden Search</button>
+            </form>
+
+            <div class="metric-row" aria-label="Low signal run quality">
+              <div class="metric"><strong>4</strong><span>Categorized candidates</span></div>
+              <div class="metric"><strong>1</strong><span>Ready</span></div>
+              <div class="metric"><strong>2</strong><span>Review</span></div>
+              <div class="metric"><strong>1</strong><span>Org-only</span></div>
+            </div>
+
+            <div class="low-signal-layout">
+              <aside class="warning-panel">
+                <div class="panel-section">
+                  <p class="panel-eyebrow">Low signal</p>
+                  <h2 class="panel-title">This market may be too narrow.</h2>
+                  <p class="panel-subtitle">The returned rows are still visible, but this run is below the expected broad-query coverage. Broaden the geography, role, or account type to get a fuller market picture.</p>
+                </div>
+                <ul class="suggestion-list">
+                  <li>Try "healthcare IT leaders in Phoenix metro" instead of boutique clinics only.</li>
+                  <li>Include adjacent titles such as technology director, systems director, and CIO.</li>
+                  <li>Keep this narrow query only if these 4 targets are intentionally the full universe.</li>
+                </ul>
+              </aside>
+
+              <div class="table-frame low-signal-table">
+                <table aria-label="Low signal result table">
+                  <thead>
+                    <tr>
+                      <th>Rank</th>
+                      <th>Candidate</th>
+                      <th>Evidence</th>
+                      <th>Status</th>
+                      <th>Reason</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="selected">
+                      <td class="rank">01</td>
+                      <td><div class="org-name">Arcadia Clinic Group</div><div class="subline">Nina Shah · Technology Director</div></td>
+                      <td><span class="email">nina.shah@arcadiaclinic.example</span><div class="subline"><a class="source-link" href="#">Leadership page</a></div></td>
+                      <td><span class="pill ready">Ready</span></td>
+                      <td>Name, title, org, and email are source-supported.</td>
+                    </tr>
+                    <tr>
+                      <td class="rank">02</td>
+                      <td><div class="org-name">Central Phoenix Care</div><div class="subline">Leo Grant · IT Manager</div></td>
+                      <td>Missing contact<div class="subline"><a class="source-link" href="#">Staff page</a></div></td>
+                      <td><span class="pill review">Review</span></td>
+                      <td>Person appears relevant, but contact proof is missing.</td>
+                    </tr>
+                    <tr>
+                      <td class="rank">03</td>
+                      <td><div class="org-name">North Valley Clinic</div><div class="subline">No validated person</div></td>
+                      <td>Organization only<div class="subline"><a class="source-link" href="#">Company page</a></div></td>
+                      <td><span class="pill org">Org only</span></td>
+                      <td>Account matches, but no supported IT owner was found.</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>

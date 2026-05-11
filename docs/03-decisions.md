@@ -171,7 +171,7 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 ## ADR-012 — High-volume transparent tiering is the broad-query target
 
 **Date:** 2026-05-10
-**Status:** Locked
+**Status:** Superseded by ADR-013
 
 **Context.** ADR-011 corrected the immediate failure mode where broad Scout/Full runs returned only 3-4 rows. Matt clarified afterward that 10-25 categorized results was the minimum escape velocity from that failure, not the ideal end state. The stronger product direction is to surface the full realistic picture the public web allows, then make it instantly clear why most rows are not actionable.
 
@@ -181,9 +181,22 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 ---
 
+## ADR-013 — Live-demo surface and pipeline contract use public operator language
+
+**Date:** 2026-05-10
+**Status:** Locked
+
+**Context.** Matt approved the mockup direction but clarified that the live demo must drop internal language and internal operator names. The latest pipeline sheet also reframes the high-volume target as 50-500+ surfaced candidates, with the differentiator being transparent categorization, per-field evidence, and orchestrated multi-agent verification rather than a small perfect list.
+
+**Decision.** Demo-facing UI and mockups must use external, operator-neutral language. They must not reference internal people, implementation gates, agent prompts, sprint labels, or "production target mockup" copy. Broad-query product language should target 50-500+ categorized candidates where the public web supports it, with four visible operator buckets: `READY`, `REVIEW`, `ORG-ONLY`, and `NOT FOUND`. Internal data models may keep `high_trust_usable`, `organization_only`, and other exact machine labels, but demo UI should translate them into plain operator states.
+
+**Consequences.** Mockups, screenshots, output contracts, export labels, and gate docs must distinguish public/demo copy from internal implementation labels. The pipeline contract is now `DISCOVER -> EXTRACT -> VERIFY -> SYNTHESIZE -> ORCHESTRATE & DELIVER`, with auditable artifacts at every handoff. Review workflow stays lightweight for the demo: `REVIEW` means human judgment required with context, not a full assignment or CRM workflow unless Matt explicitly adds that later.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-013, ADR-014, ...).
+1. Pick the next ADR number (ADR-014, ADR-015, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.

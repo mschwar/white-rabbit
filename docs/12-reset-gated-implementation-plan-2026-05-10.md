@@ -50,7 +50,7 @@ Do not start UI simplification, export polish, correction review, recipe, batch,
 
 ## High-Volume Transparency Requirement
 
-Lee and Thomas reported on 2026-05-10 that current Scout/Full output is not useful when Scout returns 3 rows and Full returns 4 rows. ADR-011 set 10-25 categorized rows as the first escape from that failure. ADR-012 supersedes that as the ideal target: for broad vertical + geography prompts, White Rabbit should surface 50-300+ categorized candidates where the market supports it.
+Lee and Thomas reported on 2026-05-10 that current Scout/Full output is not useful when Scout returns 3 rows and Full returns 4 rows. ADR-011 set 10-25 categorized rows as the first escape from that failure. ADR-013 supersedes that as the live-demo and pipeline target: for broad vertical + geography prompts, White Rabbit should surface 50-500+ categorized candidates where the market supports it.
 
 High volume is acceptable only because the product must make the distribution instantly understandable:
 
@@ -126,7 +126,7 @@ Before reset UI/export implementation starts, Matt must inspect the final produc
 
 This mockup is not production code. It is the visual contract for R10-R13: one search input, high-volume tier distribution, CRM-first fields, evidence one action away, sales-first export, and no Scout/Full/product-internals ceremony in the operator path.
 
-Prompt A/B agents must not invent a different final UI direction during R10-R13 without a fresh Matt approval. Prompt C for RG4 and RG5 must compare browser screenshots against this mockup and explicitly record any intentional divergence.
+Prompt A/B agents must not invent a different final UI direction during R10-R13 without a fresh Matt approval. Prompt C for RG4 and RG5 must compare browser screenshots against this mockup and explicitly record any intentional divergence. Live-demo UI copy must not mention internal people, agent prompts, gates, sprint labels, or implementation machinery.
 
 ## Prompt A - Build Next Reset Feature
 
@@ -196,16 +196,17 @@ You are working in /Users/mschwar/Documents/white-rabbit.
 You are Prompt C. Run a full zero-trust evaluation and audit for the current reset gate. This is review/report work unless the gate doc explicitly requires a small docs/status update. Do not edit product code.
 
 1. Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/12-reset-gated-implementation-plan-2026-05-10.md, audits/zero-trust-codebase-audit-2026-05-10.md, and the relevant reset feature QA reports.
-2. Checkout rebuild/validated-leads-loop and pull latest.
-3. Create an audit branch using audit/reset-rgN-short-name.
-4. Run every required gate command and browser/live check listed in the gate card.
-5. Use the true north-star evidence set: Monroe 7/8, Thomas Gmail thread IDs, Lee Gmail thread IDs, saved workbook/PDF artifacts where available, v1 proxy-lead read-only reference, current code, current UI, current live outputs, and the 2026-05-10 Lee/Thomas volume feedback.
-6. Save raw outputs under audits/raw/reset-2026-05-10/rgN/.
-7. Write the gate report under audits/gates/reset-2026-05-10/rgN-short-name.md.
-8. The gate report must include: Decision, Value Prop Verdict, Evidence Used, Commands Run, Live Results, Screenshots/Artifacts, Findings, What Worked, What Did Not Work, New Gaps Found, Recommended Scope Change For Next Gate, Next Main Promotion Recommendation, and Next Prompt A Assignment.
-9. Update docs/12-reset-gated-implementation-plan-2026-05-10.md and STATUS.md only if the gate decision is clear.
-10. If and only if the decision is advance, mark the next gate's first feature ready. Otherwise leave all downstream features blocked.
-11. Commit and push the audit branch.
+2. Read docs/13-pipeline-orchestrator-contract-2026.md for live-demo copy, pipeline stage names, and output contract expectations.
+3. Checkout rebuild/validated-leads-loop and pull latest.
+4. Create an audit branch using audit/reset-rgN-short-name.
+5. Run every required gate command and browser/live check listed in the gate card.
+6. Use the true north-star evidence set: Monroe 7/8, Thomas Gmail thread IDs, Lee Gmail thread IDs, saved workbook/PDF artifacts where available, v1 proxy-lead read-only reference, current code, current UI, current live outputs, and the 2026-05-10 Lee/Thomas volume feedback.
+7. Save raw outputs under audits/raw/reset-2026-05-10/rgN/.
+8. Write the gate report under audits/gates/reset-2026-05-10/rgN-short-name.md.
+9. The gate report must include: Decision, Value Prop Verdict, Evidence Used, Commands Run, Live Results, Screenshots/Artifacts, Findings, What Worked, What Did Not Work, New Gaps Found, Recommended Scope Change For Next Gate, Next Main Promotion Recommendation, and Next Prompt A Assignment.
+10. Update docs/12-reset-gated-implementation-plan-2026-05-10.md and STATUS.md only if the gate decision is clear.
+11. If and only if the decision is advance, mark the next gate's first feature ready. Otherwise leave all downstream features blocked.
+12. Commit and push the audit branch.
 
 Return:
 - gate decision: advance / hold / revise / rollback / kill
@@ -381,7 +382,7 @@ Implementation requirements:
 
 - Follow `docs/Orchestrator_Agent_Implementation_Brief.md`.
 - Named-account prompts preserve each account as a coverage obligation.
-- Simple vertical prompts produce enough bounded vendor queries and client-side aggregation to support 50-300+ categorized candidates where the market supports it.
+- Simple vertical prompts produce enough bounded vendor queries and client-side aggregation to support 50-500+ categorized candidates where the market supports it.
 - `scout()` exposes safe volume controls such as `max_results` and optional `aggressive_breadth`.
 - Tavily's per-call cap is handled with multi-query planning, aggregation, and deduplication.
 - Role synonyms and light geographic/vertical expansion are used only when the query is broad.
@@ -468,7 +469,7 @@ Implementation requirements:
 - Primary screen is one search input and one command.
 - No Scout/Full toggle in the operator path.
 - No quota card unless near cap or blocked.
-- Results review comfortably handles 50-300+ categorized candidates through tier distribution, filtering, and dense CRM-first review without turning into a noisy dashboard.
+- Results review comfortably handles 50-500+ categorized candidates through tier distribution, filtering, and dense CRM-first review without turning into a noisy dashboard.
 - Results table starts with organization, location, lead name, title, email, phone, source, and why target.
 - Evidence/dossier panel is available without burying CRM fields.
 - Feedback/correction controls move behind review mode.
@@ -636,7 +637,7 @@ Implement only R00 - W5 hold report and reset control docs on branch feat/reset-
 
 Required output:
 - .gstack/qa-reports/gate-w5-operator-loop-export.md with decision hold
-- report cites 2026-05-10 Lee/Thomas feedback: Scout returned 3 rows and Full returned 4 rows; 10-25 was the first escape from that failure, but ADR-012 now targets high-volume transparent tiering
+- report cites 2026-05-10 Lee/Thomas feedback: Scout returned 3 rows and Full returned 4 rows; 10-25 was the first escape from that failure, but ADR-013 now targets live-demo high-volume transparent tiering
 - docs/08-agentic-buildout-plan.md pointer to docs/12 as active reset queue
 - STATUS.md updated to show W5 held, W6 blocked, and RG0 pending audit
 - git diff --check passing
@@ -659,7 +660,7 @@ Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/12-reset-gated-imp
 
 Required checks:
 - git diff --check
-- rg -n "RG0|R00|W5 hold|reset-gated|gate-w5-operator-loop-export|ADR-012|high-volume|3 rows|4 rows" docs STATUS.md .gstack/qa-reports audits/raw/zero-trust-2026-05-10
+- rg -n "RG0|R00|W5 hold|reset-gated|gate-w5-operator-loop-export|ADR-013|high-volume|3 rows|4 rows" docs STATUS.md .gstack/qa-reports audits/raw/zero-trust-2026-05-10
 - confirm product code was not changed
 
 If QA passes, write the QA report, update STATUS.md, merge the feature branch into rebuild/validated-leads-loop, push rebuild/validated-leads-loop, and stop. Do not unlock R01. Do not sync main.

@@ -26,7 +26,7 @@ Everything in the product either improves this loop or stays out of the operator
 
 White Rabbit does not win by returning an unqualified pile of names like ZoomInfo, DiscoverOrg, Apollo, or generic GPT research. It wins by surfacing the full realistic picture the public web allows, then making the distribution explainable: real scraped and cross-validated contacts, clear source support, explicit missing/failure states, and exports that do not make SDRs or AEs waste time on bad dials, bouncebacks, guessed domains, fake emails, wrong personas, or unsupported claims.
 
-Volume is part of value when it is transparent. The old 10-25 broad-query target is now only the minimum escape velocity from the 3-4 row failure mode. For broad vertical + geography targets, the product should move toward 50-300+ categorized candidates where the market supports it, while preserving a strict high-trust usable tier. It is acceptable to surface hundreds of rows if it is instantly clear why most are not actionable and what evidence, or lack of evidence, supports that conclusion.
+Volume is part of value when it is transparent. The old 10-25 broad-query target is now only the minimum escape velocity from the 3-4 row failure mode. For broad vertical + geography targets, the product should move toward 50-500+ categorized candidates where the market supports it, while preserving a strict high-trust usable tier. It is acceptable to surface hundreds of rows if it is instantly clear why most are not actionable and what evidence, or lack of evidence, supports that conclusion.
 
 Noisy raw candidates are acceptable only when they are checked, visibly annotated, and clearly separated from usable leads. Bad data shown confidently is worse than no data.
 
@@ -102,6 +102,16 @@ Required output tiers:
 - `failed`: evidence contradicted or failed to support the candidate.
 
 The binary evidence gate remains the definition of `high_trust_usable`; it must not decide whether all other checked candidates disappear from the operator's view.
+
+Demo-facing labels translate internal tiers into operator language:
+
+| Internal tier | Demo/operator label |
+| --- | --- |
+| `high_trust_usable` | `READY` |
+| `review` | `REVIEW` |
+| `organization_only` | `ORG-ONLY` |
+| `not_found` | `NOT FOUND` |
+| `failed` | `NOT FOUND` or `REVIEW`, depending on whether a human can resolve it |
 
 Allowed contact statuses:
 
@@ -190,7 +200,7 @@ Allowed users in yellow: Matt only, with benchmark evidence captured in repo doc
 Green requires all of these:
 
 - At least 70% sampled precision on right persona, organization, and source support across the required benchmark suite.
-- Broad Thomas/Lee Scout-style prompts consistently return 50-300+ categorized candidates where the market supports it, with at least 10+ high-trust or review-worthy person candidates when the public web supports that universe.
+- Broad Thomas/Lee Scout-style prompts consistently return 50-500+ categorized candidates where the market supports it, with at least 10+ high-trust or review-worthy person candidates when the public web supports that universe.
 - At least 50% of usable rows have verified or explicitly deduced contacts.
 - Zero fake or unsupported emails in sampled output.
 - Query-to-export can be completed in under 5 minutes without Matt explaining the UI.
