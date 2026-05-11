@@ -5,9 +5,9 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG2 - Search Coverage And Source Collection.
-**Next Prompt A feature:** R06 - Not-found and organization-only coverage writer on `feat/reset-r06-nonperson-coverage`. Do not unlock RG3.
-**Current Prompt B handoff:** None. R05 passed Prompt B QA in `.gstack/qa-reports/qa-report-r05-source-collection-store-2026-05-11.md` and is ready to merge only into `rebuild/validated-leads-loop`. Prompt A may start R06 after the R05 merge lands on the integration branch.
+**Current reset gate:** RG2 - Search Coverage And Source Collection, ready for Prompt C audit after the R06 merge to `rebuild/validated-leads-loop`.
+**Next Prompt A feature:** None. R06 passed Prompt B QA; RG3 remains blocked.
+**Current Prompt B handoff:** None. R06 passed Prompt B QA on `feat/reset-r06-nonperson-coverage`; after merge to `rebuild/validated-leads-loop`, run Prompt C for RG2 and do not unlock RG3 unless the gate audit records and merges an accepted advance decision.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -180,7 +180,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | --- | --- | --- | --- | --- |
 | RG0 | W5 Hold And Control Reset | R00 | gate_advanced | `audits/gates/reset-2026-05-10/rg0-w5-hold.md` |
 | RG1 | Operator Benchmark Harness | R01-R03 | gate_advanced | `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md` |
-| RG2 | Search Coverage And Source Collection | R04-R06 | in_progress | `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md` |
+| RG2 | Search Coverage And Source Collection | R04-R06 | ready_for_prompt_c_audit | `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md` |
 | RG3 | Validation, Conflict, And Gate Semantics | R07-R09 | blocked | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
 | RG4 | Sales-First Operator UI | R10-R12 | blocked | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
 | RG5 | Sales-First Export And Persistence | R13-R14 | blocked | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
@@ -196,7 +196,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R03 | Live benchmark runner and quality summary | merged_to_rebuild_branch | `feat/reset-r03-live-benchmark-runner` | core/API + saved raw outputs |
 | R04 | High-volume query planner and search aggregation | merged_to_rebuild_branch | `feat/reset-r04-high-volume-search` | core tests |
 | R05 | Source collection and snapshot store | merged_to_rebuild_branch | `feat/reset-r05-source-collection-store` | core tests + raw source fixtures |
-| R06 | Not-found and organization-only coverage writer | ready | `feat/reset-r06-nonperson-coverage` | core tests |
+| R06 | Not-found and organization-only coverage writer | qa_passed_pending_merge | `feat/reset-r06-nonperson-coverage` | core tests |
 | R07 | Inclusive extraction prompt and candidate parse salvage | blocked | `feat/reset-r07-inclusive-extraction` | core/API tests |
 | R08 | Tiering engine, field validator, and conflict resolver | blocked | `feat/reset-r08-tier-validation-conflicts` | core tests |
 | R09 | Tier summary, score semantics, and reason language reset | blocked | `feat/reset-r09-tier-summary-semantics` | core + web tests |

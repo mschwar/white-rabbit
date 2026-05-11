@@ -7,6 +7,11 @@ from typing import Any
 import httpx
 from openai import AsyncOpenAI
 
+from .coverage import (
+    query_plan_from_search_results,
+    source_collection_from_search_results,
+    write_nonperson_coverage,
+)
 from .cost import RunMetrics, calculate_cost
 from .models import Candidate, Lead, LeadList
 from .search import fetch_search_results
@@ -194,7 +199,11 @@ async def scout(
     except Exception as exc:  # pragma: no cover - defensive branch for SDK drift
         raise OrchestratorError(f"OpenAI response missing parsed LeadList: {exc}") from exc
 
-    leads = leads_list.leads[:max_leads]
+    leads = write_nonperson_coverage(
+        leads_list.leads[:max_leads],
+        query_plan=query_plan_from_search_results(search_results),
+        source_collection=source_collection_from_search_results(search_results),
+    )
 
     async with httpx.AsyncClient(
         timeout=SOURCE_VALIDATION_TIMEOUT_SECONDS,

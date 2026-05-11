@@ -302,6 +302,11 @@ def _extract_named_accounts(query: str) -> list[str]:
     return []
 
 
+def named_account_aliases(account: str) -> tuple[str, ...]:
+    """Return known aliases that can be used to tie sources back to an account."""
+    return (account, *_ARIZONA_K12_ACCOUNT_ALIASES.get(account, ()))
+
+
 def _build_vendor_query(seed: str, filters: Mapping[str, Any] | None) -> str:
     query = _append_filters(seed, filters)
     if len(query) <= SAFE_VENDOR_QUERY_LENGTH:
