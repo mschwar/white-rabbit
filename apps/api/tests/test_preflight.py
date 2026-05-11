@@ -1,3 +1,4 @@
+import time
 import os
 import sys
 
@@ -69,53 +70,85 @@ def test_readiness_reports_missing_config_without_secret_values(monkeypatch):
     ):
         monkeypatch.delenv(name, raising=False)
 
-    monkeypatch.setattr(
-        "api.main._check_database",
-        lambda: ReadinessCheck(name="database", status="unavailable", message="Database skipped for config failure."),
-    )
-    monkeypatch.setattr(
-        "api.main._check_openai",
-        lambda: ReadinessCheck(name="openai", status="unavailable", message="OPENAI_API_KEY is missing."),
-    )
-    monkeypatch.setattr(
-        "api.main._check_tavily",
-        lambda: ReadinessCheck(name="tavily", status="unavailable", message="TAVILY_API_KEY is missing."),
-    )
-
-    payload = collect_readiness().model_dump()
+    payload = collect_readiness(timeout_seconds=0.05, dependency_timeout_seconds=0.05).model_dump()
 
     assert payload["status"] == "unavailable"
+    assert payload["budget_seconds"] == 0.05
+    assert payload["elapsed_seconds"] < 0.15
+    process = next(check for check in payload["checks"] if check["name"] == "process")
+    assert process["status"] == "ready"
     config = next(check for check in payload["checks"] if check["name"] == "config")
-    assert config["status"] == "unavailable"
+    assert config["status"] == "misconfigured"
     assert "OPENAI_API_KEY" in config["details"]["missing"]
     assert config["details"]["env_presence"]["OPENAI_API_KEY"] == {"present": False}
     assert "value" not in config["details"]["env_presence"]["OPENAI_API_KEY"]
+    env_key_map = {
+        "database": "DATABASE_URL",
+        "openai": "OPENAI_API_KEY",
+        "tavily": "TAVILY_API_KEY",
+        "sandbox": "DATABASE_URL",
+    }
+    for name in ("database", "openai", "tavily", "sandbox"):
+        check = next(item for item in payload["checks"] if item["name"] == name)
+        assert check["status"] == "misconfigured"
+        assert check["details"]["env_presence"][env_key_map[name]] == {"present": False}
 
 
-def test_health_responds_when_readiness_dependencies_are_unavailable(monkeypatch):
-    monkeypatch.setattr(
-        "api.main.collect_readiness",
-        lambda: {
-            "status": "unavailable",
-            "checked_at": "2026-05-11T00:00:00Z",
-            "checks": [
-                {
-                    "name": "database",
-                    "status": "unavailable",
-                    "required": True,
-                    "message": "Database unavailable.",
-                    "details": {"database_url_present": False},
-                }
-            ],
-        },
-    )
+def test_health_route_does_not_invoke_readiness_dependencies(monkeypatch):
+    def _fail(*args, **kwargs):
+        raise AssertionError("readiness dependency should not be called by /health")
+
+    monkeypatch.setattr("api.main._check_database", _fail)
+    monkeypatch.setattr("api.main._check_openai", _fail)
+    monkeypatch.setattr("api.main._check_tavily", _fail)
+    monkeypatch.setattr("api.main._check_sandbox", _fail)
+
     client = TestClient(app)
 
-    assert client.get("/health").json()["status"] == "ok"
-    readiness = client.get("/readiness")
+    response = client.get("/health")
 
-    assert readiness.status_code == 200
-    assert readiness.json()["status"] == "unavailable"
+    assert response.status_code == 200
+    assert response.json() == {"status": "ok", "service": "white-rabbit-api"}
+
+
+def test_readiness_returns_within_budget_when_dependencies_are_slow(monkeypatch):
+    monkeypatch.setenv("OPENAI_API_KEY", "set")
+    monkeypatch.setenv("TAVILY_API_KEY", "set")
+    monkeypatch.setenv("WR_SHARED_PASSWORD", "set")
+    monkeypatch.setenv("WR_SESSION_SECRET", "set")
+    monkeypatch.setenv("WR_API_INTERNAL_TOKEN", "set")
+    monkeypatch.setenv("DATABASE_URL", "sqlite:///:memory:")
+
+    def _slow_check(name: str):
+        def _inner(timeout_seconds: float = 1.0):
+            time.sleep(0.2)
+            return ReadinessCheck(
+                name=name,
+                status="ready",
+                message=f"{name} ready.",
+                elapsed_seconds=0.2,
+                details={"timeout_seconds": timeout_seconds},
+            )
+
+        return _inner
+
+    monkeypatch.setattr("api.main._check_database", _slow_check("database"))
+    monkeypatch.setattr("api.main._check_openai", _slow_check("openai"))
+    monkeypatch.setattr("api.main._check_tavily", _slow_check("tavily"))
+    monkeypatch.setattr("api.main._check_sandbox", _slow_check("sandbox"))
+
+    start = time.perf_counter()
+    payload = collect_readiness(timeout_seconds=0.05, dependency_timeout_seconds=0.2).model_dump()
+    elapsed = time.perf_counter() - start
+
+    assert elapsed < 0.15
+    assert payload["elapsed_seconds"] < 0.15
+    assert payload["budget_seconds"] == 0.05
+    assert payload["status"] == "unavailable"
+    for name in ("database", "openai", "tavily", "sandbox"):
+        check = next(item for item in payload["checks"] if item["name"] == name)
+        assert check["status"] == "unavailable"
+        assert check["details"]["timed_out"] is True
 
 
 def test_health_does_not_require_database_url_at_startup(monkeypatch):

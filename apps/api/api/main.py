@@ -1,6 +1,8 @@
 from __future__ import annotations
+import asyncio
 from pathlib import Path
 from datetime import datetime, timezone
+from concurrent.futures import ThreadPoolExecutor, wait
 import os
 import sys
 import secrets
@@ -31,7 +33,7 @@ from core.models import Candidate
 from core.query_guardrails import QueryGuardrailResult, evaluate_query_guardrails
 from core.query_planner import compile_query_plan
 
-from api.models import CorrectionField, CorrectionLabel, FeedbackLabel
+from api.models import CorrectionField, CorrectionLabel, FeedbackLabel, SandboxState
 
 from api.db import (
     get_db_session,
@@ -65,6 +67,8 @@ INTERNAL_API_TOKEN_HEADER = "x-white-rabbit-internal-token"
 INTERNAL_API_TOKEN_ENV = "WR_API_INTERNAL_TOKEN"
 DEFAULT_MODEL = "gpt-4o-mini"
 READINESS_TIMEOUT_SECONDS = 2.0
+READINESS_DEPENDENCY_TIMEOUT_SECONDS = 1.0
+_READINESS_EXECUTOR = ThreadPoolExecutor(max_workers=4, thread_name_prefix="white-rabbit-readiness")
 
 
 async def scout(*args, **kwargs):
@@ -85,6 +89,8 @@ class ReadinessCheck(BaseModel):
 class ReadinessResponse(BaseModel):
     status: str
     checked_at: str
+    budget_seconds: float = READINESS_TIMEOUT_SECONDS
+    elapsed_seconds: float | None = None
     checks: list[ReadinessCheck]
 
 
@@ -138,7 +144,7 @@ def _preflight_check():
 
 
 def _elapsed_since(start: float) -> float:
-    return round(time.perf_counter() - start, 3)
+    return round(time.perf_counter() - start, 6)
 
 
 def _redacted_env_presence() -> dict[str, dict[str, bool]]:
@@ -146,33 +152,64 @@ def _redacted_env_presence() -> dict[str, dict[str, bool]]:
     return {name: {"present": bool(os.environ.get(name))} for name in names}
 
 
+def _check_process() -> ReadinessCheck:
+    start = time.perf_counter()
+    return ReadinessCheck(
+        name="process",
+        status="ready",
+        message="API process is alive and answering readiness.",
+        elapsed_seconds=_elapsed_since(start),
+        details={
+            "pid": os.getpid(),
+            "service": "white-rabbit-api",
+            "env": os.environ.get("WR_ENV", "development"),
+        },
+    )
+
+
 def _check_config() -> ReadinessCheck:
+    start = time.perf_counter()
     missing = _missing_required_env_vars()
+    status = "misconfigured" if missing else "ready"
     if missing:
         return ReadinessCheck(
             name="config",
-            status="unavailable",
+            status=status,
             message=f"Missing required env: {', '.join(missing)}",
+            elapsed_seconds=_elapsed_since(start),
             details={"env_presence": _redacted_env_presence(), "missing": missing},
         )
     return ReadinessCheck(
         name="config",
-        status="ready",
+        status=status,
         message="Required configuration is present.",
+        elapsed_seconds=_elapsed_since(start),
         details={"env_presence": _redacted_env_presence(), "missing": []},
     )
 
 
 def _check_database(timeout_seconds: float = READINESS_TIMEOUT_SECONDS) -> ReadinessCheck:
     start = time.perf_counter()
-    try:
-        from api.models import get_engine
+    db_url = os.environ.get("DATABASE_URL")
+    if not db_url:
+        return ReadinessCheck(
+            name="database",
+            status="misconfigured",
+            message="DATABASE_URL is missing.",
+            elapsed_seconds=_elapsed_since(start),
+            details={
+                "database_url_present": False,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
+        )
 
-        db_url = os.environ.get("DATABASE_URL")
+    engine = None
+    try:
         connect_args: dict[str, Any] = {}
         if db_url and db_url.startswith(("postgresql://", "postgresql+")):
             connect_args["connect_timeout"] = max(1, int(timeout_seconds))
-        engine = create_engine(db_url, connect_args=connect_args) if db_url and connect_args else get_engine()
+        engine = create_engine(db_url, connect_args=connect_args) if connect_args else create_engine(db_url)
         with engine.connect() as connection:
             connection.execute(text("SELECT 1"))
         return ReadinessCheck(
@@ -180,7 +217,11 @@ def _check_database(timeout_seconds: float = READINESS_TIMEOUT_SECONDS) -> Readi
             status="ready",
             message="Database connection answered SELECT 1.",
             elapsed_seconds=_elapsed_since(start),
-            details={"database_url_present": bool(db_url)},
+            details={
+                "database_url_present": True,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
         )
     except Exception as exc:
         return ReadinessCheck(
@@ -188,8 +229,18 @@ def _check_database(timeout_seconds: float = READINESS_TIMEOUT_SECONDS) -> Readi
             status="unavailable",
             message=f"Database readiness failed: {exc.__class__.__name__}: {exc}",
             elapsed_seconds=_elapsed_since(start),
-            details={"database_url_present": bool(os.environ.get("DATABASE_URL"))},
+            details={
+                "database_url_present": True,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
         )
+    finally:
+        if engine is not None:
+            try:
+                engine.dispose()
+            except Exception:
+                pass
 
 
 def _check_openai(timeout_seconds: float = READINESS_TIMEOUT_SECONDS) -> ReadinessCheck:
@@ -200,22 +251,35 @@ def _check_openai(timeout_seconds: float = READINESS_TIMEOUT_SECONDS) -> Readine
     if not api_key:
         return ReadinessCheck(
             name="openai",
-            status="unavailable",
+            status="misconfigured",
             message="OPENAI_API_KEY is missing.",
-            details={"api_key_present": False, "base_url": base_url or "https://api.openai.com/v1", "model": model},
+            elapsed_seconds=_elapsed_since(start),
+            details={
+                "api_key_present": False,
+                "base_url": base_url or "https://api.openai.com/v1",
+                "model": model,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
         )
 
     try:
         from openai import OpenAI
 
-        client = OpenAI(api_key=api_key, base_url=base_url, timeout=timeout_seconds)
+        client = OpenAI(api_key=api_key, base_url=base_url, timeout=timeout_seconds, max_retries=0)
         client.models.retrieve(model)
         return ReadinessCheck(
             name="openai",
             status="ready",
             message="OpenAI model lookup succeeded.",
             elapsed_seconds=_elapsed_since(start),
-            details={"api_key_present": True, "base_url": base_url or "https://api.openai.com/v1", "model": model},
+            details={
+                "api_key_present": True,
+                "base_url": base_url or "https://api.openai.com/v1",
+                "model": model,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
         )
     except Exception as exc:
         return ReadinessCheck(
@@ -223,29 +287,171 @@ def _check_openai(timeout_seconds: float = READINESS_TIMEOUT_SECONDS) -> Readine
             status="unavailable",
             message=f"OpenAI readiness failed: {exc.__class__.__name__}: {exc}",
             elapsed_seconds=_elapsed_since(start),
-            details={"api_key_present": True, "base_url": base_url or "https://api.openai.com/v1", "model": model},
+            details={
+                "api_key_present": True,
+                "base_url": base_url or "https://api.openai.com/v1",
+                "model": model,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
         )
 
 
-def _check_tavily() -> ReadinessCheck:
+def _check_tavily(timeout_seconds: float = READINESS_DEPENDENCY_TIMEOUT_SECONDS) -> ReadinessCheck:
+    start = time.perf_counter()
     if not os.environ.get("TAVILY_API_KEY"):
         return ReadinessCheck(
             name="tavily",
-            status="unavailable",
+            status="misconfigured",
             message="TAVILY_API_KEY is missing.",
-            details={"api_key_present": False, "probe": "config_only"},
+            elapsed_seconds=_elapsed_since(start),
+            details={
+                "api_key_present": False,
+                "probe": "config_only",
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
         )
     return ReadinessCheck(
         name="tavily",
         status="degraded",
         message="TAVILY_API_KEY is present; live search is not probed by readiness to avoid spending vendor calls.",
-        details={"api_key_present": True, "probe": "config_only"},
+        elapsed_seconds=_elapsed_since(start),
+        details={
+            "api_key_present": True,
+            "probe": "config_only",
+            "env_presence": _redacted_env_presence(),
+            "timeout_seconds": timeout_seconds,
+        },
     )
 
 
-def collect_readiness() -> ReadinessResponse:
-    checks = [_check_config(), _check_database(), _check_openai(), _check_tavily()]
-    if any(check.status == "unavailable" and check.required for check in checks):
+def _check_sandbox(timeout_seconds: float = READINESS_TIMEOUT_SECONDS) -> ReadinessCheck:
+    start = time.perf_counter()
+    db_url = os.environ.get("DATABASE_URL")
+    if not db_url:
+        return ReadinessCheck(
+            name="sandbox",
+            status="misconfigured",
+            message="Sandbox readiness needs DATABASE_URL.",
+            elapsed_seconds=_elapsed_since(start),
+            details={
+                "sandbox_state_present": False,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
+        )
+
+    try:
+        with get_db_session() as session:
+            state = session.query(SandboxState).filter(SandboxState.id == 1).first()
+            if state is None:
+                return ReadinessCheck(
+                    name="sandbox",
+                    status="degraded",
+                    message="Sandbox state row is missing; it will be initialized on demand.",
+                    elapsed_seconds=_elapsed_since(start),
+                    details={
+                        "sandbox_state_present": False,
+                        "env_presence": _redacted_env_presence(),
+                        "timeout_seconds": timeout_seconds,
+                    },
+                )
+
+            sandbox_usage = {
+                "total_queries": state.total_queries,
+                "total_rows": state.total_rows,
+                "max_queries": state.max_queries,
+                "max_rows": state.max_rows,
+                "reset_at": state.reset_at.isoformat(),
+            }
+        return ReadinessCheck(
+            name="sandbox",
+            status="ready",
+            message="Sandbox state is readable.",
+            elapsed_seconds=_elapsed_since(start),
+            details={
+                "sandbox_state_present": True,
+                "sandbox_usage": sandbox_usage,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
+        )
+    except Exception as exc:
+        return ReadinessCheck(
+            name="sandbox",
+            status="unavailable",
+            message=f"Sandbox readiness failed: {exc.__class__.__name__}: {exc}",
+            elapsed_seconds=_elapsed_since(start),
+            details={
+                "sandbox_state_present": False,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
+        )
+
+
+def _readiness_timeout_check(name: str, *, timeout_seconds: float, elapsed_seconds: float) -> ReadinessCheck:
+    return ReadinessCheck(
+        name=name,
+        status="unavailable",
+        message=f"{name.capitalize()} readiness exceeded the {timeout_seconds} second budget.",
+        elapsed_seconds=elapsed_seconds,
+        details={
+            "timed_out": True,
+            "timeout_seconds": timeout_seconds,
+            "env_presence": _redacted_env_presence(),
+        },
+    )
+
+
+def collect_readiness(
+    timeout_seconds: float = READINESS_TIMEOUT_SECONDS,
+    dependency_timeout_seconds: float = READINESS_DEPENDENCY_TIMEOUT_SECONDS,
+) -> ReadinessResponse:
+    started = time.perf_counter()
+    budget_seconds = max(0.01, float(timeout_seconds))
+    dependency_timeout_seconds = max(0.01, float(dependency_timeout_seconds))
+    checks = [_check_process(), _check_config()]
+    dependency_specs = (
+        ("database", _check_database),
+        ("openai", _check_openai),
+        ("tavily", _check_tavily),
+        ("sandbox", _check_sandbox),
+    )
+    futures = {
+        name: _READINESS_EXECUTOR.submit(check_fn, dependency_timeout_seconds)
+        for name, check_fn in dependency_specs
+    }
+    done, _ = wait(tuple(futures.values()), timeout=budget_seconds)
+    for name, future in futures.items():
+        if future in done:
+            try:
+                checks.append(future.result())
+            except Exception as exc:
+                checks.append(
+                    ReadinessCheck(
+                        name=name,
+                        status="unavailable",
+                        message=f"{name.capitalize()} readiness failed: {exc.__class__.__name__}: {exc}",
+                        elapsed_seconds=_elapsed_since(started),
+                        details={
+                            "timed_out": False,
+                            "timeout_seconds": dependency_timeout_seconds,
+                            "env_presence": _redacted_env_presence(),
+                        },
+                    )
+                )
+        else:
+            future.cancel()
+            checks.append(
+                _readiness_timeout_check(
+                    name,
+                    timeout_seconds=budget_seconds,
+                    elapsed_seconds=_elapsed_since(started),
+                )
+            )
+    if any(check.status in {"unavailable", "misconfigured"} and check.required for check in checks):
         status = "unavailable"
     elif any(check.status == "degraded" for check in checks):
         status = "degraded"
@@ -254,6 +460,8 @@ def collect_readiness() -> ReadinessResponse:
     return ReadinessResponse(
         status=status,
         checked_at=datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        budget_seconds=budget_seconds,
+        elapsed_seconds=_elapsed_since(started),
         checks=checks,
     )
 
@@ -473,7 +681,7 @@ async def health_check():
 
 @app.get("/readiness", response_model=ReadinessResponse)
 async def readiness_check():
-    return collect_readiness()
+    return await asyncio.to_thread(collect_readiness)
 
 
 @app.post("/scout", response_model=ScoutResponse)
