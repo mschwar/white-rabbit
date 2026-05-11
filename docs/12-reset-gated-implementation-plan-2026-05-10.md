@@ -6,8 +6,8 @@
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
 **Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in progress.
-**Next Prompt A feature:** None while R08 is waiting for Prompt B QA. Do not start R09.
-**Current Prompt B handoff:** QA R08 - Tiering engine, field validator, and conflict resolver on branch `feat/reset-r08-tier-validation-conflicts`. Required checks: `cd packages/core && uv run pytest tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py -q`, `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`, and `git diff --check`. Scope check: R08 should add server-computed tiering, primary filter reasons, contact-status synchronization, inaccessible-source downgrade, person/account conflict downgrade, and tier distribution metrics only. If QA passes, merge only to `rebuild/validated-leads-loop`, then unlock R09 as the next same-gate feature; do not touch `main`.
+**Next Prompt A feature:** R09 - Tier summary, score semantics, and reason language reset on branch `feat/reset-r09-tier-summary-semantics`.
+**Current Prompt B handoff:** None. R08 passed Prompt B QA and is merged or being merged only to `rebuild/validated-leads-loop`; R09 is the next same-gate Prompt A feature after that merge lands. Do not touch `main`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -198,8 +198,8 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R05 | Source collection and snapshot store | merged_to_rebuild_branch | `feat/reset-r05-source-collection-store` | core tests + raw source fixtures |
 | R06 | Not-found and organization-only coverage writer | merged_to_rebuild_branch | `feat/reset-r06-nonperson-coverage` | core tests |
 | R07 | Inclusive extraction prompt and candidate parse salvage | merged_to_rebuild_branch | `feat/reset-r07-inclusive-extraction` | core/API tests |
-| R08 | Tiering engine, field validator, and conflict resolver | implemented_pending_qa | `feat/reset-r08-tier-validation-conflicts` | core tests |
-| R09 | Tier summary, score semantics, and reason language reset | blocked | `feat/reset-r09-tier-summary-semantics` | core + web tests |
+| R08 | Tiering engine, field validator, and conflict resolver | merged_to_rebuild_branch | `feat/reset-r08-tier-validation-conflicts` | core tests |
+| R09 | Tier summary, score semantics, and reason language reset | ready | `feat/reset-r09-tier-summary-semantics` | core + web tests |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | blocked | `feat/reset-r12-evidence-dossier-review` | browser |
