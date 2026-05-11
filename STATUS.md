@@ -1,7 +1,7 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex prompt-a-r02-benchmark-replay-harness
-**Branch:** feat/reset-r02-benchmark-replay-harness
+**Last updated:** 2026-05-10 by Codex prompt-b-r02-benchmark-replay-harness
+**Branch:** rebuild/validated-leads-loop
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
@@ -16,13 +16,13 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** No Prompt A feature is ready while `R02 - Golden benchmark replay harness` waits for Prompt B QA on `feat/reset-r02-benchmark-replay-harness`. `R01 - Operator evidence fixture pack` is QA-passed and merged into `rebuild/validated-leads-loop`; RG1 remains in progress.
+**Next feature pointer:** `R03 - Live benchmark runner and quality summary` is the next valid Prompt A feature on `feat/reset-r03-live-benchmark-runner`. `R02 - Golden benchmark replay harness` is QA-passed and merged into `rebuild/validated-leads-loop`; RG1 remains in progress.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
 **Final product mockup gate:** Inspect `docs/mockups/final-product-2026-05-10/index.html` before assigning Prompt A implementation. R10-R13 must treat it as the visual contract for live-demo high-volume tier distribution unless Matt approves a different direction; RG4/RG5 Prompt C audits must compare live screenshots against it.
 
-**Current feature branch QA status:** `feat/reset-r02-benchmark-replay-harness` is the single feature branch awaiting Prompt B QA for `R02 - Golden benchmark replay harness`. `feat/reset-r01-operator-evidence-fixtures` passed Prompt B QA and is merged into `rebuild/validated-leads-loop`. F20-F23 remain deferred.
+**Current feature branch QA status:** No feature branch is awaiting QA. `feat/reset-r02-benchmark-replay-harness` passed Prompt B QA and is merged into `rebuild/validated-leads-loop`. `R03 - Live benchmark runner and quality summary` is now ready on `feat/reset-r03-live-benchmark-runner`. F20-F23 remain deferred.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -32,7 +32,7 @@
 - W5 operator loop export hold report: `.gstack/qa-reports/gate-w5-operator-loop-export.md`
 - RG0 control reset gate report: `audits/gates/reset-2026-05-10/rg0-w5-hold.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is now advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 remains in progress, R01 is merged, and R02 is `implemented_pending_qa`.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is now advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 remains in progress, R01 and R02 are merged, and R03 is ready.
 
 Prior accepted gates:
 
@@ -59,15 +59,16 @@ Prior accepted gates:
 
 Feature: R02 - Golden benchmark replay harness
 Branch: `feat/reset-r02-benchmark-replay-harness`
-Status: `implemented_pending_qa`
-What changed: Added offline replay evaluation over the saved May 10 RG1 artifacts in `packages/core/src/core/benchmark_suite.py`. The harness now parses replay JSON into canonical candidate models, reuses `build_quality_report()`, records tier distribution and broad-query volume, tracks named-account coverage gaps, preserves HTTP/error evidence for failures like the Detroit `503 openai_failed` case, and feeds those replay observations into the benchmark suite so low-volume or missing-coverage outputs fail offline without live keys.
+Status: `qa_passed_merged`
+What changed: Prompt B verified the replay harness, confirmed the diff stayed inside replay-harness code/tests plus reset control docs, wrote the QA report, and merged the feature into `rebuild/validated-leads-loop`. The harness now preserves low-volume broad-query failures, missing named-account coverage, Detroit `503 openai_failed` evidence, and the blocked B2C/privacy refusal replay in offline benchmark evaluation.
 Tests or QA run:
 - `cd packages/core && uv run pytest tests/test_arizona_k12_benchmark.py tests/test_benchmark_suite.py tests/test_quality_report.py -q`
 - `git diff --check`
-Screenshots or report: non-UI feature; replay evidence is read from `audits/raw/zero-trust-2026-05-10/live/`.
+- `cd packages/core && uv run python ... replay summary`
+Screenshots or report: `.gstack/qa-reports/qa-report-r02-benchmark-replay-harness-2026-05-10.md`; non-UI feature, no browser screenshots required.
 Northstar reflection: This keeps the benchmark harness honest against saved operator evidence instead of synthetic pass conditions. Broad prompts that only surface 2-4 rows now fail offline for volume, and the Arizona prompt carries explicit target-coverage gaps, which moves RG1 toward a real gate instead of anecdotal claims.
-Next pointer: Prompt B only. QA `feat/reset-r02-benchmark-replay-harness`, verify the replay harness stays scoped to R02, and merge only into `rebuild/validated-leads-loop` if the card passes.
-Open questions: none blocking Prompt B.
+Next pointer: Prompt A only. Start `R03 - Live benchmark runner and quality summary` on `feat/reset-r03-live-benchmark-runner`. Do not unlock RG2.
+Open questions: none blocking R03.
 
 
 ---
@@ -216,11 +217,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. R00 and R01 are merged; R02 is `implemented_pending_qa` on `feat/reset-r02-benchmark-replay-harness`; W5 remains held; W6 remains blocked; RG1 remains in progress.
+- Product is in audit-red state. Documentation authority remediation is complete; F01-F19 are merged to `rebuild/validated-leads-loop`, but the May 10 audit found the visible loop still fails live operator benchmarks. W2, W3, and W4 are orchestrator-accepted. R00, R01, and R02 are merged; R03 is ready; W5 remains held; W6 remains blocked; RG1 remains in progress.
 
 ## Next concrete task
 
-- Assign Prompt B. Use the reusable Prompt B in `docs/12-reset-gated-implementation-plan-2026-05-10.md` and resolve the single feature branch waiting for QA: `feat/reset-r02-benchmark-replay-harness` for `R02 - Golden benchmark replay harness`. Required scope check: only replay-harness logic and tests in `packages/core`; no live runner, no RG2 search changes, no UI work.
+- Assign Prompt A. Use the reusable Prompt A in `docs/12-reset-gated-implementation-plan-2026-05-10.md` and resolve the single ready feature: `R03 - Live benchmark runner and quality summary` on `feat/reset-r03-live-benchmark-runner`. Required scope guard: live runner plus saved raw outputs only; do not start RG2 search changes or unlock the next gate.
 
 ## Open questions for Matt
 
@@ -265,6 +266,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | prompt-b-r02-benchmark-replay-harness (Codex) | QA-passed and merged `R02 - Golden benchmark replay harness` into `rebuild/validated-leads-loop`, wrote `.gstack/qa-reports/qa-report-r02-benchmark-replay-harness-2026-05-10.md`, confirmed replay-harness scope stayed inside `packages/core` plus reset control docs, and marked `R03 - Live benchmark runner and quality summary` as the next same-gate ready feature. |
 | 2026-05-10 | prompt-a-r02-benchmark-replay-harness (Codex) | Implemented `R02 - Golden benchmark replay harness` on `feat/reset-r02-benchmark-replay-harness`: added offline replay observations over the saved May 10 RG1 artifacts, reused canonical candidate parsing plus quality-report logic, tracked target coverage and broad-query volume failures, preserved Detroit `503 openai_failed` evidence and B2C refusal replay, and added tests proving the replay suite fails current bad outputs offline. |
 | 2026-05-10 | reset-queue-unblock (Codex) | Fixed the post-R01 queue state: Prompt B may unlock the next feature inside the same gate, R02 is ready, R03 remains blocked, and `.obsidian/` is ignored so local editor metadata does not dirty the integration branch. |
 | 2026-05-10 | prompt-loop-fix (Codex) | Replaced stale hard-coded R00/RG0 copy-paste prompts with reusable A/B/C prompts that resolve the next feature, QA branch, and gate from current repo state, with stop rules for duplicate or ambiguous assignments. |
