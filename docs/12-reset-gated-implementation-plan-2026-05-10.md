@@ -5,9 +5,9 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, gate_hold accepted. R09D-R09H passed QA and are merged to `rebuild/validated-leads-loop`, and the post-R09H Prompt C re-audit recorded `hold`: the source-assisted manual-oracle replay passes, but current live API evidence is unavailable because the API did not reach health during startup, and the latest complete saved live suite still has zero high-trust usable rows and zero contact-quality passes. Matt accepted the hold and authorized R09I.
-**Next Prompt A feature:** `R09I - API startup and live proof harness` on `feat/reset-r09i-api-startup-live-proof`.
-**Current Prompt B handoff:** None. No feature branch is waiting for QA.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, gate_hold accepted. R09D-R09H passed QA and are merged to `rebuild/validated-leads-loop`, and the post-R09H Prompt C re-audit recorded `hold`: the source-assisted manual-oracle replay passes, but current live API evidence is unavailable because the API did not reach health during startup, and the latest complete saved live suite still has zero high-trust usable rows and zero contact-quality passes. Matt accepted the hold and authorized R09I. R09I is implemented on its feature branch and is waiting for Prompt B QA.
+**Next Prompt A feature:** None. R09I is the only same-gate feature and is waiting for Prompt B QA.
+**Current Prompt B handoff:** QA `feat/reset-r09i-api-startup-live-proof`; verify only R09I startup/readiness diagnostics and live-harness reliability landed; rerun `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`, `cd packages/core && uv run pytest tests/test_live_benchmark_runner.py -q`, and `git diff --check`; inspect `audits/raw/reset-2026-05-10/r09i/startup-failure-probe/` including `startup/startup-failure.json`, `startup/startup-diagnostics.json`, `startup/health.http`, per-case `*.http`/`*.json`, and `quality-summary.json`; confirm `/health` is process-only and does not require DB/vendor readiness, `/readiness` reports config/database/OpenAI/Tavily readiness without secret values, the runner waits for `/health`, captures `/readiness` when health succeeds, writes startup-failure artifacts on failed health, and records `api_startup_failed`/HTTP 599 per case instead of ambiguous `000`-only evidence. Confirm no lead-quality logic, prompts, source-assisted compiler behavior, workbook/export semantics, UI, persistence, dogfood, RG4/R10-R12, or `main` promotion scope landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R09I `merged_to_rebuild_branch`, and hand off Prompt C for RG3 from current integration state while keeping downstream blocked unless Prompt C records `advance`.
 **Current Prompt C handoff:** None. Do not rerun RG3 Prompt C until R09I passes QA and merges. Keep RG4/refreshed mockups/R10-R12/export/dogfood/main blocked.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
@@ -236,7 +236,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R09F | Source-assisted lead compiler | merged_to_rebuild_branch | `feat/reset-r09f-source-assisted-lead-compiler` | core/API tests + replay artifacts |
 | R09G | Research-workbook tiering and export semantics | merged_to_rebuild_branch | `feat/reset-r09g-research-workbook-tiering` | core/web or export tests as applicable |
 | R09H | Manual-oracle proof replay gate packet | merged_to_rebuild_branch | `feat/reset-r09h-manual-oracle-proof-packet` | replay + live/source-assisted artifacts |
-| R09I | API startup and live proof harness | ready | `feat/reset-r09i-api-startup-live-proof` | API tests + live harness artifacts |
+| R09I | API startup and live proof harness | waiting_for_prompt_b_qa | `feat/reset-r09i-api-startup-live-proof` | API tests + live harness artifacts |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | blocked | `feat/reset-r12-evidence-dossier-review` | browser |
@@ -775,6 +775,18 @@ The output must make future Prompt C audits able to answer:
 
 Before ending, update STATUS.md and docs/12 with the Prompt B handoff, write any R09I raw artifacts under audits/raw/reset-2026-05-10/r09i/, commit, and push the feature branch only.
 ```
+
+R09I Prompt B QA handoff:
+
+- Branch: `feat/reset-r09i-api-startup-live-proof`.
+- Status: `waiting_for_prompt_b_qa`.
+- Prompt A change summary: API startup no longer runs DB/vendor preflight before `/health`; `/health` is process liveness only; `/readiness` reports config, database, OpenAI, and Tavily readiness with redacted env presence and actionable status; the live benchmark runner waits for `/health`, captures readiness diagnostics, writes startup artifacts, and emits per-case `api_startup_failed` / HTTP 599 artifacts when health never answers.
+- Prompt A verification:
+  - `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`48 passed`, existing datetime deprecation warnings)
+  - `cd packages/core && uv run pytest tests/test_live_benchmark_runner.py -q` (`5 passed`)
+  - `cd packages/core && WR_API_INTERNAL_TOKEN=test-internal-token uv run python -m core.live_benchmark_runner --api-base-url http://127.0.0.1:8999 --api-token test-internal-token --output-dir ../../audits/raw/reset-2026-05-10/r09i/startup-failure-probe --startup-timeout-seconds 0.2` (wrote startup-failure and per-case artifacts)
+- Artifacts: `audits/raw/reset-2026-05-10/r09i/startup-failure-probe/`.
+- Exact Prompt B handoff: QA `feat/reset-r09i-api-startup-live-proof`; verify the branch contains only R09I startup/readiness diagnostics and live-harness reliability scope; rerun `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`, `cd packages/core && uv run pytest tests/test_live_benchmark_runner.py -q`, and `git diff --check`; inspect `audits/raw/reset-2026-05-10/r09i/startup-failure-probe/startup/startup-failure.json`, `startup/startup-diagnostics.json`, `startup/health.http`, per-case `*.http`/`*.json`, and `quality-summary.json`; confirm `/health` responds without DB/vendor readiness, `/readiness` reports DB/config/vendor readiness without secret values, startup failures write actionable artifacts with port/env-presence/timeout details, and failed startup marks every case `api_startup_failed` with HTTP 599 instead of ambiguous `000`-only evidence. Confirm no lead-quality logic, prompts, source-assisted compiler behavior, workbook/export semantics, UI, persistence, dogfood, RG4/R10-R12, or `main` promotion landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R09I `merged_to_rebuild_branch`, and hand off Prompt C for RG3 from current integration state while keeping downstream blocked unless Prompt C records `advance`.
 
 RG3 full evaluation/audit:
 

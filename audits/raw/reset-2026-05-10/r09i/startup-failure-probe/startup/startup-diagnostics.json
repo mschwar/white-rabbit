@@ -1,0 +1,25 @@
+{
+  "api_base_url": "http://127.0.0.1:8999",
+  "attempts": [
+    {
+      "elapsed_seconds": 0.003,
+      "error": "ConnectError: All connection attempts failed",
+      "ok": false,
+      "status_code": 0
+    },
+    {
+      "elapsed_seconds": 0.001,
+      "error": "ConnectError: All connection attempts failed",
+      "ok": false,
+      "status_code": 0
+    }
+  ],
+  "elapsed_seconds": 0.203,
+  "failure_path": "../../audits/raw/reset-2026-05-10/r09i/startup-failure-probe/startup/startup-failure.json",
+  "health_ok": false,
+  "health_path": "../../audits/raw/reset-2026-05-10/r09i/startup-failure-probe/startup/health.json",
+  "health_status_path": "../../audits/raw/reset-2026-05-10/r09i/startup-failure-probe/startup/health.http",
+  "readiness_path": null,
+  "readiness_status": null,
+  "readiness_status_path": null
+}

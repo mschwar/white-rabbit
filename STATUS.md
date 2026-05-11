@@ -1,14 +1,14 @@
 # STATUS
 
-**Last updated:** 2026-05-11 by Codex rg3-r09i-remediation-slice
-**Branch:** rebuild/validated-leads-loop
-**Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Matt accepted the post-R09H RG3 hold on `audit/reset-rg3-manual-oracle`: the source-assisted manual-oracle replay passes offline, but current live API evidence is unavailable because the API did not reach health during startup, and the latest complete saved live suite still has zero high-trust usable rows and zero contact-quality passes. R09I is now the narrow same-gate remediation slice.
+**Last updated:** 2026-05-11 by Codex prompt-a-r09i-api-startup-live-proof
+**Branch:** feat/reset-r09i-api-startup-live-proof
+**Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Matt accepted the post-R09H RG3 hold on `audit/reset-rg3-manual-oracle`: the source-assisted manual-oracle replay passes offline, but current live API evidence is unavailable because the API did not reach health during startup, and the latest complete saved live suite still has zero high-trust usable rows and zero contact-quality passes. R09I is implemented on its feature branch and waiting for Prompt B QA.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt A for `R09I - API startup and live proof harness` on `feat/reset-r09i-api-startup-live-proof`. RG4, the `DESIGN.md` mockup preflight, R10-R12, export work, dogfood, and any `main` promotion remain blocked.
+**Next pointer:** Prompt B QA for `R09I - API startup and live proof harness` on `feat/reset-r09i-api-startup-live-proof`. RG4, the `DESIGN.md` mockup preflight, R10-R12, export work, dogfood, and any `main` promotion remain blocked.
 
 **Design direction handoff:** `DESIGN.md` is now captured as the future RG4 visual direction authority. A refreshed RG4 mockup/design preflight exists on `codex/rg4-design-preflight-2026-05-11` at commit `5c5a10f`, with six rendered screens under `docs/mockups/rg4-design-preflight-2026-05-11/` on that branch. It is an unmerged inspection artifact only; it does not unlock RG4. R10-R12 remain blocked until a future RG3 Prompt C advances and Matt approves the refreshed mockups for production implementation.
 
@@ -24,13 +24,13 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** Prompt A should now implement `R09I - API startup and live proof harness` on `feat/reset-r09i-api-startup-live-proof`. RG3 remains held after the post-R09H Prompt C audit. This remains an RG3 remediation gate state, not RG4. Do not unlock RG4 and do not sync `main` unless a future Prompt C records `advance` and Matt explicitly calls for an operator-use promotion.
+**Next feature pointer:** Prompt B should QA `R09I - API startup and live proof harness` on `feat/reset-r09i-api-startup-live-proof`. RG3 remains held after the post-R09H Prompt C audit. This remains an RG3 remediation gate state, not RG4. Do not unlock RG4 and do not sync `main` unless a future Prompt C records `advance` and Matt explicitly calls for an operator-use promotion.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
 **Final product mockup gate:** `DESIGN.md` is the future RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains the product-structure reference. A preflight artifact exists on `codex/rg4-design-preflight-2026-05-11`, but it remains unmerged and non-unlocking while RG3 is held. Matt must approve refreshed mockups after RG3 advances before production UI implementation.
 
-**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, and R09H are merged to `rebuild/validated-leads-loop`. The post-R09H Prompt C audit held RG3: the replay/workbook proof passes, but current live API evidence is unavailable and the latest complete saved live suite still has `0` high-trust usable rows and `0` contact-quality passes. Matt accepted the hold and R09I is now ready. Downstream RG4 work remains blocked.
+**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, and R09H are merged to `rebuild/validated-leads-loop`. The post-R09H Prompt C audit held RG3: the replay/workbook proof passes, but current live API evidence is unavailable and the latest complete saved live suite still has `0` high-trust usable rows and `0` contact-quality passes. Matt accepted the hold; R09I is implemented on `feat/reset-r09i-api-startup-live-proof` and waiting for Prompt B QA. Downstream RG4 work remains blocked.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -43,7 +43,7 @@
 - RG2 search/source coverage gate report: `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`
 - RG3 validation semantics hold report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 remains `gate_hold` after `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` with R09I ready; and RG4 remains blocked.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 remains `gate_hold` after `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` with R09I waiting for Prompt B QA; and RG4 remains blocked.
 
 Prior accepted gates:
 
@@ -68,6 +68,24 @@ Prior accepted gates:
 **Production URL note:** Use the stable production alias `https://white-rabbit-ten.vercel.app/`, not one-off deployment URLs like `https://white-rabbit-7kw7lh6ri-matts-projects-06539e54.vercel.app/`. Vercel deployment URLs are immutable snapshots; `7kw7lh6ri` was created before `WR_API_INTERNAL_TOKEN` existed in Production and can continue to show the old missing-token error even after the alias is fixed.
 
 **Latest handoff:**
+
+Feature: R09I - API startup and live proof harness
+Branch: `feat/reset-r09i-api-startup-live-proof`
+Status: `waiting_for_prompt_b_qa`
+Why it exists: The post-R09H RG3 audit proved the offline source-assisted workbook path but could not produce current live evidence because local API health returned `000`; future Prompt C audits need to distinguish runtime/startup failure from product-value failure.
+Scope: Implemented only process liveness, readiness diagnostics, and live benchmark startup artifact reliability.
+Non-goals: No lead-quality logic, prompt/model behavior, source-assisted compiler behavior, workbook/export semantics, UI, persistence, dogfood packet, RG4/R10-R12 work, Prompt C audit, `main` sync, or gate advancement.
+What changed: API startup no longer runs DB/vendor preflight before the app can answer `/health`; `/health` is process-only liveness; `/readiness` reports config, database, OpenAI, and Tavily readiness with redacted env presence and actionable status. The live benchmark runner now waits for `/health`, captures `/readiness` when health succeeds, writes startup diagnostics, and emits per-case `api_startup_failed` / HTTP 599 artifacts if health never answers.
+Verification run by Prompt A:
+- `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`48 passed`, existing datetime deprecation warnings)
+- `cd packages/core && uv run pytest tests/test_live_benchmark_runner.py -q` (`5 passed`)
+- `cd packages/core && WR_API_INTERNAL_TOKEN=test-internal-token uv run python -m core.live_benchmark_runner --api-base-url http://127.0.0.1:8999 --api-token test-internal-token --output-dir ../../audits/raw/reset-2026-05-10/r09i/startup-failure-probe --startup-timeout-seconds 0.2` (wrote startup-failure and per-case artifacts)
+Artifacts: `audits/raw/reset-2026-05-10/r09i/startup-failure-probe/`.
+Prompt A scope note: no lead-quality logic, prompts, source-assisted compiler behavior, workbook/export semantics, UI, persistence, dogfood, RG4/R10-R12, Prompt C, or `main` changes.
+Exact Prompt B handoff: QA `feat/reset-r09i-api-startup-live-proof`; verify the branch contains only R09I startup/readiness diagnostics and live-harness reliability scope; rerun `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`, `cd packages/core && uv run pytest tests/test_live_benchmark_runner.py -q`, and `git diff --check`; inspect `audits/raw/reset-2026-05-10/r09i/startup-failure-probe/startup/startup-failure.json`, `startup/startup-diagnostics.json`, `startup/health.http`, per-case `*.http`/`*.json`, and `quality-summary.json`; confirm `/health` responds without DB/vendor readiness, `/readiness` reports DB/config/vendor readiness without secret values, startup failures write actionable artifacts with port/env-presence/timeout details, and failed startup marks every case `api_startup_failed` with HTTP 599 instead of ambiguous `000`-only evidence. Confirm no lead-quality logic, prompts, source-assisted compiler behavior, workbook/export semantics, UI, persistence, dogfood, RG4/R10-R12, or `main` promotion landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R09I `merged_to_rebuild_branch`, and hand off Prompt C for RG3 from current integration state while keeping downstream blocked unless Prompt C records `advance`.
+Open questions: None for Prompt B. A fresh value-bearing live suite still belongs to RG3 Prompt C after R09I passes QA and merges.
+
+Previous handoff:
 
 Feature: R09H - Manual-oracle proof replay gate packet
 Branch: `feat/reset-r09h-manual-oracle-proof-packet`
@@ -427,11 +445,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; R00-R09H are merged to `rebuild/validated-leads-loop`; RG0-RG2 advanced; RG3 remains `gate_hold` after the post-R09H Prompt C audit. Matt accepted the hold and R09I is ready as the API startup/live proof harness remediation. The source-assisted manual-oracle replay passes offline, but the current live API did not reach health during Prompt C and the latest complete saved live suite still has zero high-trust usable rows and zero contact-quality passes. W5 remains held; W6 remains blocked.
+- Product is in audit-red state. Documentation authority remediation is complete; R00-R09H are merged to `rebuild/validated-leads-loop`; RG0-RG2 advanced; RG3 remains `gate_hold` after the post-R09H Prompt C audit. Matt accepted the hold, and R09I is implemented on `feat/reset-r09i-api-startup-live-proof` awaiting Prompt B QA. The source-assisted manual-oracle replay passes offline, but the latest complete saved live suite still has zero high-trust usable rows and zero contact-quality passes. W5 remains held; W6 remains blocked.
 
 ## Next concrete task
 
-- Prompt A for `R09I - API startup and live proof harness` on `feat/reset-r09i-api-startup-live-proof`. Do not start RG4, refreshed mockups, R10-R12, export, dogfood, or `main` promotion from this state.
+- Prompt B QA for `R09I - API startup and live proof harness` on `feat/reset-r09i-api-startup-live-proof`. Do not start RG4, refreshed mockups, R10-R12, export, dogfood, or `main` promotion from this state.
 
 ## Open questions for Matt
 
@@ -476,6 +494,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-11 | prompt-a-r09i-api-startup-live-proof (Codex) | Implemented `R09I - API startup and live proof harness` on `feat/reset-r09i-api-startup-live-proof`: split `/health` process liveness from `/readiness` dependency diagnostics, removed DB/vendor preflight from app startup, added redacted config/database/OpenAI/Tavily readiness reporting, and made the live benchmark runner write startup/readiness artifacts plus per-case `api_startup_failed`/HTTP 599 outputs when health never answers. Verified API tests (`48 passed`), focused harness tests (`5 passed`), and wrote `audits/raw/reset-2026-05-10/r09i/startup-failure-probe/`. R09I is waiting for Prompt B QA; RG4/export/dogfood/main remain blocked. |
 | 2026-05-11 | rg3-r09i-remediation-slice (Codex) | Accepted Matt's post-R09H RG3 hold into the reset control plane and created `R09I - API startup and live proof harness` as the single ready Prompt A feature. Added ADR-020. R09I is scoped to health/readiness diagnostics and live benchmark startup artifacts only; RG4, refreshed mockups, R10-R12, export, dogfood, and `main` promotion remain blocked. |
 | 2026-05-11 | prompt-c-rg3-manual-oracle-audit (Codex) | Ran the post-R09H RG3 Prompt C audit on `audit/reset-rg3-manual-oracle`. Decision: `hold`. The source-assisted manual-oracle replay passes offline with 17 workbook rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, sales-first export fields, and zero unsupported CRM-ready rows, but current live evidence is unavailable because the local API stayed in startup and `/health` returned `000`; the latest complete saved live suite still has zero high-trust usable rows and zero contact-quality passes. Report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`; raw notes: `audits/raw/reset-2026-05-10/rg3/evidence-notes-r09h-reaudit.md`. No downstream work or `main` sync is unlocked. |
 | 2026-05-11 | prompt-b-r09h-manual-oracle-proof-packet (Codex) | QA-passed `R09H - Manual-oracle proof replay gate packet` on `feat/reset-r09h-manual-oracle-proof-packet`: verified `git diff --check`, required core suites (`18 passed`, `21 passed`), packet artifact tie-out, non-UI scope, northstar drift, and downstream blockers. QA report saved at `.gstack/qa-reports/qa-report-r09h-manual-oracle-proof-packet-2026-05-11.md`; R09H is the last same-gate feature, so RG3 is ready for Prompt C after merge while RG4/export/dogfood/main remain blocked. |

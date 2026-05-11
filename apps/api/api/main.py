@@ -1,9 +1,10 @@
 from __future__ import annotations
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 import os
 import sys
 import secrets
+import time
 from typing import Annotated, Any, Optional
 from uuid import UUID, uuid4
 
@@ -12,9 +13,10 @@ os.environ.setdefault("PYDANTIC_DISABLE_PLUGINS", "__all__")
 
 from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException, Request
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import logging
 from contextlib import asynccontextmanager
+from sqlalchemy import create_engine, text
 
 logger = logging.getLogger("white_rabbit.api")
 
@@ -32,7 +34,6 @@ from core.query_planner import compile_query_plan
 from api.models import CorrectionField, CorrectionLabel, FeedbackLabel
 
 from api.db import (
-    init_db,
     get_db_session,
     create_recipe,
     create_recipe_run,
@@ -63,6 +64,7 @@ load_dotenv()
 INTERNAL_API_TOKEN_HEADER = "x-white-rabbit-internal-token"
 INTERNAL_API_TOKEN_ENV = "WR_API_INTERNAL_TOKEN"
 DEFAULT_MODEL = "gpt-4o-mini"
+READINESS_TIMEOUT_SECONDS = 2.0
 
 
 async def scout(*args, **kwargs):
@@ -71,11 +73,22 @@ async def scout(*args, **kwargs):
     return await orchestrator_scout(*args, **kwargs)
 
 
-def _preflight_check():
-    """Validate required env vars and vendor connectivity at startup."""
-    if "pytest" in sys.modules:
-        return
+class ReadinessCheck(BaseModel):
+    name: str
+    status: str
+    required: bool = True
+    message: str
+    elapsed_seconds: float | None = None
+    details: dict[str, Any] = Field(default_factory=dict)
 
+
+class ReadinessResponse(BaseModel):
+    status: str
+    checked_at: str
+    checks: list[ReadinessCheck]
+
+
+def _required_env_vars() -> list[str]:
     env = os.environ.get("WR_ENV", "").lower()
     _is_production = env == "production"
 
@@ -88,8 +101,19 @@ def _preflight_check():
     ]
     if _is_production:
         required.append("DATABASE_URL")
+    return required
 
-    missing = [r for r in required if not os.environ.get(r)]
+
+def _missing_required_env_vars() -> list[str]:
+    return [name for name in _required_env_vars() if not os.environ.get(name)]
+
+
+def _preflight_check():
+    """Validate required env vars and vendor connectivity when explicitly invoked."""
+    if "pytest" in sys.modules:
+        return
+
+    missing = _missing_required_env_vars()
     if missing:
         raise RuntimeError(f"Missing required env: {', '.join(missing)}")
 
@@ -113,10 +137,129 @@ def _preflight_check():
     logger.info("Postgres: %s", db_url or "localhost (default)")
 
 
+def _elapsed_since(start: float) -> float:
+    return round(time.perf_counter() - start, 3)
+
+
+def _redacted_env_presence() -> dict[str, dict[str, bool]]:
+    names = sorted(set(_required_env_vars()) | {"DATABASE_URL", "OPENAI_BASE_URL", "OPENAI_MODEL"})
+    return {name: {"present": bool(os.environ.get(name))} for name in names}
+
+
+def _check_config() -> ReadinessCheck:
+    missing = _missing_required_env_vars()
+    if missing:
+        return ReadinessCheck(
+            name="config",
+            status="unavailable",
+            message=f"Missing required env: {', '.join(missing)}",
+            details={"env_presence": _redacted_env_presence(), "missing": missing},
+        )
+    return ReadinessCheck(
+        name="config",
+        status="ready",
+        message="Required configuration is present.",
+        details={"env_presence": _redacted_env_presence(), "missing": []},
+    )
+
+
+def _check_database(timeout_seconds: float = READINESS_TIMEOUT_SECONDS) -> ReadinessCheck:
+    start = time.perf_counter()
+    try:
+        from api.models import get_engine
+
+        db_url = os.environ.get("DATABASE_URL")
+        connect_args: dict[str, Any] = {}
+        if db_url and db_url.startswith(("postgresql://", "postgresql+")):
+            connect_args["connect_timeout"] = max(1, int(timeout_seconds))
+        engine = create_engine(db_url, connect_args=connect_args) if db_url and connect_args else get_engine()
+        with engine.connect() as connection:
+            connection.execute(text("SELECT 1"))
+        return ReadinessCheck(
+            name="database",
+            status="ready",
+            message="Database connection answered SELECT 1.",
+            elapsed_seconds=_elapsed_since(start),
+            details={"database_url_present": bool(db_url)},
+        )
+    except Exception as exc:
+        return ReadinessCheck(
+            name="database",
+            status="unavailable",
+            message=f"Database readiness failed: {exc.__class__.__name__}: {exc}",
+            elapsed_seconds=_elapsed_since(start),
+            details={"database_url_present": bool(os.environ.get("DATABASE_URL"))},
+        )
+
+
+def _check_openai(timeout_seconds: float = READINESS_TIMEOUT_SECONDS) -> ReadinessCheck:
+    start = time.perf_counter()
+    api_key = os.environ.get("OPENAI_API_KEY")
+    base_url = os.environ.get("OPENAI_BASE_URL")
+    model = os.environ.get("OPENAI_MODEL", DEFAULT_MODEL)
+    if not api_key:
+        return ReadinessCheck(
+            name="openai",
+            status="unavailable",
+            message="OPENAI_API_KEY is missing.",
+            details={"api_key_present": False, "base_url": base_url or "https://api.openai.com/v1", "model": model},
+        )
+
+    try:
+        from openai import OpenAI
+
+        client = OpenAI(api_key=api_key, base_url=base_url, timeout=timeout_seconds)
+        client.models.retrieve(model)
+        return ReadinessCheck(
+            name="openai",
+            status="ready",
+            message="OpenAI model lookup succeeded.",
+            elapsed_seconds=_elapsed_since(start),
+            details={"api_key_present": True, "base_url": base_url or "https://api.openai.com/v1", "model": model},
+        )
+    except Exception as exc:
+        return ReadinessCheck(
+            name="openai",
+            status="unavailable",
+            message=f"OpenAI readiness failed: {exc.__class__.__name__}: {exc}",
+            elapsed_seconds=_elapsed_since(start),
+            details={"api_key_present": True, "base_url": base_url or "https://api.openai.com/v1", "model": model},
+        )
+
+
+def _check_tavily() -> ReadinessCheck:
+    if not os.environ.get("TAVILY_API_KEY"):
+        return ReadinessCheck(
+            name="tavily",
+            status="unavailable",
+            message="TAVILY_API_KEY is missing.",
+            details={"api_key_present": False, "probe": "config_only"},
+        )
+    return ReadinessCheck(
+        name="tavily",
+        status="degraded",
+        message="TAVILY_API_KEY is present; live search is not probed by readiness to avoid spending vendor calls.",
+        details={"api_key_present": True, "probe": "config_only"},
+    )
+
+
+def collect_readiness() -> ReadinessResponse:
+    checks = [_check_config(), _check_database(), _check_openai(), _check_tavily()]
+    if any(check.status == "unavailable" and check.required for check in checks):
+        status = "unavailable"
+    elif any(check.status == "degraded" for check in checks):
+        status = "degraded"
+    else:
+        status = "ready"
+    return ReadinessResponse(
+        status=status,
+        checked_at=datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        checks=checks,
+    )
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    init_db()
-    _preflight_check()
     yield
 
 
@@ -325,7 +468,12 @@ def _query_guardrail_or_422(query: str) -> QueryGuardrailResult:
 
 @app.get("/health")
 async def health_check():
-    return {"status": "ok"}
+    return {"status": "ok", "service": "white-rabbit-api"}
+
+
+@app.get("/readiness", response_model=ReadinessResponse)
+async def readiness_check():
+    return collect_readiness()
 
 
 @app.post("/scout", response_model=ScoutResponse)

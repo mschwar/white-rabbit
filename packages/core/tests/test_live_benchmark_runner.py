@@ -7,7 +7,7 @@ from pathlib import Path
 import httpx
 
 from core.benchmark_suite import build_operator_evidence_fixture_pack, build_saved_benchmark_observations
-from core.live_benchmark_runner import run_live_benchmark_suite
+from core.live_benchmark_runner import run_live_benchmark_suite, wait_for_api_startup
 from core.models import CandidateValidation, ContactValidationRecord, FieldValidationRecord, Lead
 
 
@@ -107,6 +107,25 @@ def test_run_live_benchmark_suite_saves_raw_outputs_and_quality_summary(tmp_path
     trimmed_pack = type(fixture_pack)(pack_id=fixture_pack.pack_id, source=fixture_pack.source, cases=cases)
 
     def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/health":
+            return httpx.Response(200, json={"status": "ok", "service": "white-rabbit-api"})
+        if request.url.path == "/readiness":
+            return httpx.Response(
+                200,
+                json={
+                    "status": "degraded",
+                    "checked_at": "2026-05-11T00:00:00Z",
+                    "checks": [
+                        {
+                            "name": "tavily",
+                            "status": "degraded",
+                            "required": True,
+                            "message": "Config-only readiness.",
+                            "details": {"api_key_present": True},
+                        }
+                    ],
+                },
+            )
         if request.url.path == "/sandbox/reset":
             return httpx.Response(200, json={"sandbox_usage": {"total_queries": 0, "total_rows": 0}})
         query = json.loads(request.content.decode("utf-8"))["query"]
@@ -161,7 +180,11 @@ def test_run_live_benchmark_suite_saves_raw_outputs_and_quality_summary(tmp_path
         asyncio.run(client.aclose())
 
     assert summary.output_root == tmp_path
+    assert summary.startup_probe is not None
+    assert summary.startup_probe.health_ok is True
     assert (tmp_path / "thomas-arizona-k12.json").exists()
+    assert (tmp_path / "startup" / "health.json").exists()
+    assert (tmp_path / "startup" / "readiness.json").exists()
     assert (tmp_path / "thomas-arizona-k12.http").read_text(encoding="utf-8").strip() == "200"
     assert (tmp_path / "privacy-reject-homeowner-phones.http").read_text(encoding="utf-8").strip() == "422"
 
@@ -171,6 +194,7 @@ def test_run_live_benchmark_suite_saves_raw_outputs_and_quality_summary(tmp_path
     assert "runner_elapsed_seconds" in saved_payload
 
     quality_summary = json.loads((tmp_path / "quality-summary.json").read_text(encoding="utf-8"))
+    assert quality_summary["startup_probe"]["health_ok"] is True
     assert quality_summary["total_cases"] == 2
     assert quality_summary["case_summaries"]["thomas-arizona-k12"]["http_status"] == 200
     assert quality_summary["case_summaries"]["thomas-arizona-k12"]["funnel_counts"] == {
@@ -209,6 +233,10 @@ def test_run_live_benchmark_suite_writes_partial_artifacts_on_timeout(tmp_path: 
     trimmed_pack = type(fixture_pack)(pack_id=fixture_pack.pack_id, source=fixture_pack.source, cases=cases)
 
     def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/health":
+            return httpx.Response(200, json={"status": "ok", "service": "white-rabbit-api"})
+        if request.url.path == "/readiness":
+            return httpx.Response(200, json={"status": "ready", "checked_at": "2026-05-11T00:00:00Z", "checks": []})
         if request.url.path == "/sandbox/reset":
             return httpx.Response(200, json={"sandbox_usage": {"total_queries": 0, "total_rows": 0}})
         raise httpx.TimeoutException("case timed out", request=request)
@@ -239,3 +267,64 @@ def test_run_live_benchmark_suite_writes_partial_artifacts_on_timeout(tmp_path: 
     assert case_summary["http_status"] == 599
     assert case_summary["error_code"] == "runner_timeout"
     assert case_summary["quality_report"]["total_candidates"] == 0
+
+
+def test_wait_for_api_startup_writes_failure_artifacts(tmp_path: Path):
+    def handler(request: httpx.Request) -> httpx.Response:
+        raise httpx.ConnectError("connection refused", request=request)
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    try:
+        probe = asyncio.run(
+            wait_for_api_startup(
+                api_base_url="http://127.0.0.1:8999",
+                output_root=tmp_path,
+                client=client,
+                timeout_seconds=0.01,
+                poll_interval_seconds=0.01,
+            )
+        )
+    finally:
+        asyncio.run(client.aclose())
+
+    assert probe.health_ok is False
+    assert probe.failure_path is not None
+    assert (tmp_path / "startup" / "health.http").read_text(encoding="utf-8").strip() == "000"
+    failure = json.loads((tmp_path / "startup" / "startup-failure.json").read_text(encoding="utf-8"))
+    assert failure["error_code"] == "api_startup_failed"
+    assert failure["api_base"]["port"] == 8999
+    assert failure["env_presence"]["WR_API_INTERNAL_TOKEN"] in ({"present": False}, {"present": True})
+
+
+def test_run_live_benchmark_suite_writes_case_artifacts_when_startup_fails(tmp_path: Path):
+    fixture_pack = build_operator_evidence_fixture_pack()
+    cases = tuple(case for case in fixture_pack.cases if case.benchmark_id == "healthcare-it-phoenix")
+    trimmed_pack = type(fixture_pack)(pack_id=fixture_pack.pack_id, source=fixture_pack.source, cases=cases)
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        raise httpx.ConnectError("connection refused", request=request)
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    try:
+        summary = asyncio.run(
+            run_live_benchmark_suite(
+                api_base_url="http://127.0.0.1:8999",
+                api_token="test-token",
+                fixture_pack=trimmed_pack,
+                output_root=tmp_path,
+                client=client,
+                startup_timeout_seconds=0.01,
+            )
+        )
+    finally:
+        asyncio.run(client.aclose())
+
+    assert summary.startup_probe is not None
+    assert summary.startup_probe.health_ok is False
+    assert summary.case_results[0].status_code == 599
+    saved_payload = json.loads((tmp_path / "healthcare-it-phoenix.json").read_text(encoding="utf-8"))
+    assert saved_payload["error_code"] == "api_startup_failed"
+    assert saved_payload["partial_artifact"] is True
+    quality_summary = json.loads((tmp_path / "quality-summary.json").read_text(encoding="utf-8"))
+    assert quality_summary["startup_probe"]["health_ok"] is False
+    assert quality_summary["case_summaries"]["healthcare-it-phoenix"]["error_code"] == "api_startup_failed"
