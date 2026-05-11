@@ -233,6 +233,80 @@ def test_scout_endpoint_forwards_filters(monkeypatch):
     assert captured["filters"] == {"location": "Albuquerque"}
 
 
+def test_scout_endpoint_uses_high_volume_settings_for_broad_queries(monkeypatch):
+    captured = {}
+    state = SimpleNamespace(
+        total_queries=0,
+        total_rows=0,
+        max_queries=10,
+        max_rows=1000,
+        reset_at=datetime(2026, 1, 1, 12, 0, 0),
+    )
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
+
+    async def fake_scout(query: str, **kwargs):
+        captured["kwargs"] = kwargs
+        return [], RunMetrics()
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+    monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
+    monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
+    monkeypatch.setattr("api.main.scout", fake_scout)
+
+    response = client.post("/scout", json={"query": "healthcare IT directors in Phoenix"})
+
+    assert response.status_code == 200
+    assert captured["kwargs"]["max_leads"] == 50
+    assert captured["kwargs"]["max_results"] == 240
+    assert captured["kwargs"]["aggressive_breadth"] is True
+    assert state.total_queries == 1
+
+
+def test_scout_endpoint_keeps_named_account_queries_on_narrow_settings(monkeypatch):
+    captured = {}
+    state = SimpleNamespace(
+        total_queries=0,
+        total_rows=0,
+        max_queries=10,
+        max_rows=1000,
+        reset_at=datetime(2026, 1, 1, 12, 0, 0),
+    )
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
+
+    async def fake_scout(query: str, **kwargs):
+        captured["kwargs"] = kwargs
+        return [], RunMetrics()
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
+    monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
+    monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
+    monkeypatch.setattr("api.main.scout", fake_scout)
+
+    response = client.post(
+        "/scout",
+        json={
+            "query": (
+                "name and email for Mesa Public Schools and Chandler Unified School District "
+                "technology decision makers"
+            )
+        },
+    )
+
+    assert response.status_code == 200
+    assert "max_leads" not in captured["kwargs"]
+    assert "max_results" not in captured["kwargs"]
+    assert "aggressive_breadth" not in captured["kwargs"]
+    assert state.total_queries == 1
+
+
 def test_scout_endpoint_blocks_broad_advice_queries(monkeypatch):
     called = {"scout": False}
 

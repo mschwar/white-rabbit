@@ -12,6 +12,7 @@ from pydantic import BaseModel, ConfigDict, Field, ValidationError
 from .coverage import (
     query_plan_from_search_results,
     source_collection_from_search_results,
+    write_broad_source_gap_rows,
     write_nonperson_coverage,
 )
 from .cost import RunMetrics, calculate_cost
@@ -111,6 +112,8 @@ perfect or gate-passing rows. Missing email, partial evidence, blocked pages, or
 source support should stay visible with explicit statuses or a failed/non-person category.
 If a row cannot safely satisfy person_lead requirements, return it as failed with a
 specific failure_reason instead of dropping it.
+For broad vertical plus geography queries, return as many categorized rows as the
+source results support, up to the requested limit. Do not stop at a top-ten list.
 
 ANTI-BIAS RULES:
 Treat the user's query intent as the only vertical signal. Do not inject VoIP,
@@ -395,16 +398,24 @@ def _validation_note(candidate: Candidate, field_name: str) -> str:
     return getattr(record, "notes", "") or ""
 
 
+def _normalize_failed_reason(reason: str) -> str:
+    cleaned = _clean_text(reason) or "Evidence did not support this row."
+    if cleaned.startswith(("REVIEW:", "NOT FOUND:", "ORG-ONLY:", "READY:")):
+        return cleaned
+    return f"REVIEW: rejected row; no hidden usable lead is implied. {cleaned}"
+
+
 def _failed_from_conflicting_lead(candidate: Lead, *, reason: str) -> FailedCandidate:
+    normalized_reason = _normalize_failed_reason(reason)
     return FailedCandidate(
         searched_target=candidate.organization or candidate.name,
-        failure_reason=reason,
+        failure_reason=normalized_reason,
         organization=candidate.organization,
         source_url=candidate.source_url,
-        explanation=reason,
+        explanation=normalized_reason,
         validation=candidate.validation,
         tier="failed",
-        primary_filter_reason=reason,
+        primary_filter_reason=normalized_reason,
     )
 
 
@@ -493,12 +504,24 @@ def _tier_person_lead(candidate: Lead) -> Lead | FailedCandidate:
 def _tier_nonperson_candidate(candidate: Candidate) -> Candidate:
     if isinstance(candidate, OrganizationOnlyCandidate):
         candidate.tier = "organization_only"
-        candidate.primary_filter_reason = candidate.explanation or "Organization was found, but no validated person was ready."
+        explanation = candidate.explanation or "Organization was found, but no validated person was ready."
+        candidate.primary_filter_reason = (
+            explanation
+            if explanation.startswith("ORG-ONLY:")
+            else f"ORG-ONLY: account found, but no validated person is CRM-ready. {explanation}"
+        )
     elif isinstance(candidate, NotFoundCandidate):
         candidate.tier = "not_found"
-        candidate.primary_filter_reason = candidate.explanation or "Target was searched, but no acceptable contact was found."
+        explanation = candidate.explanation or "Target was searched, but no acceptable contact was found."
+        candidate.primary_filter_reason = (
+            explanation
+            if explanation.startswith("NOT FOUND:")
+            else f"NOT FOUND: searched target, but no acceptable contact was validated. {explanation}"
+        )
     elif isinstance(candidate, FailedCandidate):
         candidate.tier = "failed"
+        candidate.failure_reason = _normalize_failed_reason(candidate.failure_reason)
+        candidate.explanation = _normalize_failed_reason(candidate.explanation)
         candidate.primary_filter_reason = candidate.failure_reason
     return candidate
 
@@ -516,6 +539,64 @@ def _apply_tiering_and_conflict_resolution(candidates: list[Candidate]) -> list[
 def _tier_distribution(candidates: list[Candidate]) -> dict[str, int]:
     counts = Counter(getattr(candidate, "tier", "review") for candidate in candidates)
     return {tier: counts.get(tier, 0) for tier in OUTPUT_TIERS}
+
+
+def _contact_quality_pass_count(candidates: list[Candidate]) -> int:
+    return sum(
+        1
+        for candidate in candidates
+        if _validation_status(candidate, "email") in EVIDENCE_GATE_CONTACT_STATUSES
+    )
+
+
+def _build_funnel_counts(
+    *,
+    search_results: Any,
+    extracted_candidate_count: int,
+    categorized_rows: list[Candidate],
+) -> dict[str, int]:
+    source_collection = source_collection_from_search_results(search_results)
+    raw_vendor_hits = int(getattr(search_results, "raw_result_count", len(search_results)))
+    deduped_sources = int(getattr(search_results, "deduped_source_count", len(search_results)))
+    source_snapshots = (
+        source_collection.returned_source_count
+        if source_collection is not None
+        else deduped_sources
+    )
+    tier_counts = _tier_distribution(categorized_rows)
+
+    return {
+        "raw_vendor_hits": raw_vendor_hits,
+        "deduped_sources": deduped_sources,
+        "source_snapshots": source_snapshots,
+        "extracted_candidates": extracted_candidate_count,
+        "categorized_rows": len(categorized_rows),
+        "person_rows": sum(isinstance(candidate, Lead) for candidate in categorized_rows),
+        "high_trust_usable_rows": tier_counts["high_trust_usable"],
+        "contact_quality_passes": _contact_quality_pass_count(categorized_rows),
+    }
+
+
+def _build_funnel_notes(funnel_counts: dict[str, int], *, max_leads: int) -> list[str]:
+    notes: list[str] = []
+    if funnel_counts["raw_vendor_hits"] > funnel_counts["deduped_sources"]:
+        notes.append(
+            f"Deduped {funnel_counts['raw_vendor_hits']} raw vendor hits to "
+            f"{funnel_counts['deduped_sources']} unique sources."
+        )
+    if funnel_counts["extracted_candidates"] > max_leads:
+        notes.append(
+            f"Capped {funnel_counts['extracted_candidates']} extracted candidates to "
+            f"{max_leads} returned rows."
+        )
+    if funnel_counts["deduped_sources"] > funnel_counts["extracted_candidates"]:
+        notes.append(
+            "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve "
+            "that loss without promoting them to CRM-ready leads."
+        )
+    if funnel_counts["contact_quality_passes"] == 0 and funnel_counts["categorized_rows"] > 0:
+        notes.append("No returned row has verified or source-backed deduced contact evidence.")
+    return notes
 
 
 def _resolve_max_results(max_leads: int, max_results: int | None, *, aggressive_breadth: bool) -> int:
@@ -598,10 +679,19 @@ async def scout(
 
     extracted_leads = _extract_candidates_from_completion(completion, query=query)
 
+    query_plan = query_plan_from_search_results(search_results)
+    source_collection = source_collection_from_search_results(search_results)
+    extracted_candidate_count = len(extracted_leads)
     leads = write_nonperson_coverage(
         extracted_leads[:max_leads],
-        query_plan=query_plan_from_search_results(search_results),
-        source_collection=source_collection_from_search_results(search_results),
+        query_plan=query_plan,
+        source_collection=source_collection,
+    )
+    leads = write_broad_source_gap_rows(
+        leads,
+        query_plan=query_plan,
+        source_collection=source_collection,
+        max_candidates=max_leads,
     )
 
     async with httpx.AsyncClient(
@@ -615,6 +705,11 @@ async def scout(
     for candidate, validation in zip(leads, validations, strict=True):
         candidate.validation = validation
     leads = _apply_tiering_and_conflict_resolution(leads)
+    funnel_counts = _build_funnel_counts(
+        search_results=search_results,
+        extracted_candidate_count=extracted_candidate_count,
+        categorized_rows=leads,
+    )
 
     usage = getattr(completion, "usage", None)
     metrics = RunMetrics(
@@ -623,6 +718,8 @@ async def scout(
         tavily_searches=tavily_searches,
         elapsed_seconds=round(time.perf_counter() - start_time, 2),
         tier_distribution=_tier_distribution(leads),
+        funnel_counts=funnel_counts,
+        funnel_notes=_build_funnel_notes(funnel_counts, max_leads=max_leads),
     )
     metrics.estimated_cost_usd = calculate_cost(metrics)
 

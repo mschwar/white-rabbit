@@ -164,12 +164,18 @@ def test_replay_benchmark_observations_preserve_saved_reset_failures():
     assert lee.http_status == 200
     assert lee.categorized_row_count == 4
     assert lee.review_count == 4
+    assert lee.minimum_escape_rows == 10
+    assert lee.target_categorized_rows == 50
+    assert lee.escape_velocity_floor_met is False
+    assert lee.target_volume_floor_met is False
+    assert lee.volume_floor_status == "below_active_50_plus_target"
     assert lee.high_volume_floor_met is False
 
     assert healthcare.categorized_row_count == 2
     assert healthcare.persona_pass is True
     assert healthcare.contact_pass is False
     assert healthcare.source_pass is True
+    assert healthcare.high_volume_floor_met is False
 
     assert finance.categorized_row_count == 4
     assert finance.guardrail_status == "needs_more_detail"
@@ -187,6 +193,9 @@ def test_replay_benchmark_observations_preserve_saved_reset_failures():
     assert privacy.guardrail_status == "blocked"
     assert privacy.categorized_row_count == 0
     assert privacy.privacy_refusal is True
+    assert privacy.volume_floor_status == "expected_privacy_refusal"
+    assert privacy.high_volume_floor_met is True
+    assert privacy.quality_report is None
 
 
 def test_replay_benchmark_suite_fails_current_bad_outputs_offline():

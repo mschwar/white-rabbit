@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections.abc import Iterable
 from typing import Any
 
-from .models import Candidate, NotFoundCandidate, OrganizationOnlyCandidate
+from .models import Candidate, FailedCandidate, NotFoundCandidate, OrganizationOnlyCandidate
 from .query_planner import QueryPlan, named_account_aliases
 from .source_collection import CollectedSource, SourceCollectionSnapshot
 
@@ -96,6 +96,61 @@ def write_nonperson_coverage(
         )
 
     return covered_candidates
+
+
+def _candidate_source_urls(candidates: Iterable[Candidate]) -> set[str]:
+    return {
+        _normalize(getattr(candidate, "source_url", None))
+        for candidate in candidates
+        if _normalize(getattr(candidate, "source_url", None))
+    }
+
+
+def write_broad_source_gap_rows(
+    candidates: list[Candidate],
+    *,
+    query_plan: QueryPlan | None,
+    source_collection: SourceCollectionSnapshot | None,
+    max_candidates: int,
+) -> list[Candidate]:
+    """Keep broad collected-source coverage visible without promoting weak rows.
+
+    Broad searches can collect many relevant-looking sources while extraction only
+    returns a short list. These gap rows preserve that funnel loss as explicit
+    non-CRM-ready rows instead of silently dropping source coverage.
+    """
+    if query_plan is None or not query_plan.broad_query or source_collection is None:
+        return candidates
+    if max_candidates <= len(candidates):
+        return candidates
+
+    covered = list(candidates)
+    seen_urls = _candidate_source_urls(covered)
+    for source in source_collection.sources:
+        if len(covered) >= max_candidates:
+            break
+        normalized_url = _normalize(source.url)
+        if not normalized_url or normalized_url in seen_urls:
+            continue
+
+        searched_target = source.title.strip() or source.url
+        covered.append(
+            FailedCandidate(
+                searched_target=searched_target,
+                source_url=source.url,
+                failure_reason=(
+                    "REVIEW: source collected for the broad target, but no source-supported "
+                    "person or account row was extracted; no usable lead is implied."
+                ),
+                explanation=(
+                    "Source coverage exists, but extraction did not produce a validated "
+                    "person, organization-only, or not-found row from this source."
+                ),
+            )
+        )
+        seen_urls.add(normalized_url)
+
+    return covered
 
 
 def source_collection_from_search_results(search_results: Any) -> SourceCollectionSnapshot | None:

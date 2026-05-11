@@ -21,6 +21,8 @@ class RunMetrics:
     elapsed_seconds: float = 0.0
     estimated_cost_usd: float = 0.0
     tier_distribution: dict[str, int] = field(default_factory=dict)
+    funnel_counts: dict[str, int] = field(default_factory=dict)
+    funnel_notes: list[str] = field(default_factory=list)
 
 
 def calculate_cost(metrics: RunMetrics) -> float:

@@ -1,0 +1,167 @@
+{
+  "case_summaries": {
+    "lee-commodity-buyers": {
+      "categorized_row_count": 50,
+      "error_code": null,
+      "escape_velocity_floor_met": true,
+      "expected_target_coverage_count": 0,
+      "expected_target_coverage_missing": [],
+      "failed_count": 49,
+      "funnel_counts": {
+        "categorized_rows": 50,
+        "contact_quality_passes": 0,
+        "deduped_sources": 72,
+        "extracted_candidates": 8,
+        "high_trust_usable_rows": 0,
+        "person_rows": 1,
+        "raw_vendor_hits": 96,
+        "source_snapshots": 72
+      },
+      "guardrail_status": "needs_more_detail",
+      "high_trust_usable_count": 0,
+      "high_volume_floor_met": true,
+      "http_status": 200,
+      "minimum_escape_rows": 10,
+      "not_found_count": 0,
+      "organization_only_count": 0,
+      "person_lead_count": 1,
+      "privacy_refusal": false,
+      "quality_report": {
+        "artifact_id": "lee-commodity-buyers",
+        "artifact_kind": "benchmark",
+        "candidate_category_counts": {
+          "failed": 49,
+          "not_found": 0,
+          "organization_only": 0,
+          "person_lead": 1
+        },
+        "contact_quality_count": 0,
+        "contact_quality_rate": 0.0,
+        "failed_count": 49,
+        "fake_email_count": 0,
+        "high_noise_count": 49,
+        "high_noise_rate": 0.98,
+        "not_found_count": 0,
+        "organization_only_count": 0,
+        "person_lead_count": 1,
+        "persona_match_count": 1,
+        "persona_match_rate": 0.02,
+        "precision_rate": 0.0,
+        "quality_gate_failures": [
+          "zero_usable_candidates",
+          "low_precision_rate",
+          "low_persona_match_rate",
+          "low_contact_quality_rate",
+          "high_noise_rate"
+        ],
+        "quality_gate_passed": false,
+        "quality_gate_thresholds": {
+          "maximum_fake_email_count": 0,
+          "maximum_high_noise_rate": 0.4,
+          "maximum_unsupported_email_count": 0,
+          "minimum_contact_quality_rate": 0.5,
+          "minimum_persona_match_rate": 0.5,
+          "minimum_precision_rate": 0.5,
+          "minimum_source_support_rate": 0.5,
+          "minimum_usable_count": 1
+        },
+        "query": "commodity buyers at retail lumber yards in Washington",
+        "source_support_count": 50,
+        "source_support_rate": 1.0,
+        "total_candidates": 50,
+        "unsupported_email_count": 0,
+        "usable_count": 0,
+        "validation_status_counts": {
+          "email": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 50,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "name": {
+            "failed": 0,
+            "missing": 0,
+            "supported": 1,
+            "unsupported": 49
+          },
+          "organization": {
+            "failed": 0,
+            "missing": 0,
+            "supported": 1,
+            "unsupported": 49
+          },
+          "phone": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 50,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "source": {
+            "failed": 0,
+            "missing": 0,
+            "supported": 50,
+            "unsupported": 0
+          },
+          "title": {
+            "failed": 0,
+            "missing": 0,
+            "supported": 1,
+            "unsupported": 49
+          }
+        }
+      },
+      "quality_status": "evaluated",
+      "review_count": 1,
+      "target_categorized_rows": 50,
+      "target_volume_floor_met": true,
+      "volume_floor_status": "target_met"
+    },
+    "privacy-reject-homeowner-phones": {
+      "categorized_row_count": 0,
+      "error_code": null,
+      "escape_velocity_floor_met": true,
+      "expected_target_coverage_count": 0,
+      "expected_target_coverage_missing": [],
+      "failed_count": 0,
+      "funnel_counts": {
+        "categorized_rows": 0,
+        "contact_quality_passes": 0,
+        "deduped_sources": 0,
+        "extracted_candidates": 0,
+        "high_trust_usable_rows": 0,
+        "person_rows": 0,
+        "raw_vendor_hits": 0,
+        "source_snapshots": 0
+      },
+      "guardrail_status": "blocked",
+      "high_trust_usable_count": 0,
+      "high_volume_floor_met": true,
+      "http_status": 422,
+      "minimum_escape_rows": 0,
+      "not_found_count": 0,
+      "organization_only_count": 0,
+      "person_lead_count": 0,
+      "privacy_refusal": true,
+      "quality_report": null,
+      "quality_status": "expected_privacy_refusal",
+      "review_count": 0,
+      "target_categorized_rows": 0,
+      "target_volume_floor_met": true,
+      "volume_floor_status": "expected_privacy_refusal"
+    }
+  },
+  "contact_pass_cases": 0,
+  "failed_cases": 1,
+  "guardrail_mismatches": [],
+  "observation_mismatches": [
+    "lee-commodity-buyers: source"
+  ],
+  "passed_cases": 1,
+  "persona_pass_cases": 0,
+  "privacy_refusal_cases": 1,
+  "source_pass_cases": 1,
+  "suite_id": "required_lead_quality_suite",
+  "total_cases": 2
+}

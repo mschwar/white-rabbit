@@ -94,9 +94,11 @@ def test_build_saved_benchmark_observations_reads_saved_runner_artifacts(tmp_pat
 
     assert observations["thomas-arizona-k12"].http_status == 200
     assert observations["thomas-arizona-k12"].categorized_row_count == 1
+    assert observations["thomas-arizona-k12"].funnel_counts["categorized_rows"] == 1
     assert observations["privacy-reject-homeowner-phones"].http_status == 422
     assert observations["privacy-reject-homeowner-phones"].guardrail_status == "blocked"
     assert observations["privacy-reject-homeowner-phones"].privacy_refusal is True
+    assert observations["privacy-reject-homeowner-phones"].quality_report is None
 
 
 def test_run_live_benchmark_suite_saves_raw_outputs_and_quality_summary(tmp_path: Path):
@@ -120,6 +122,16 @@ def test_run_live_benchmark_suite_saves_raw_outputs_and_quality_summary(tmp_path
                         "openai_web_searches": 0,
                         "elapsed_seconds": 1.23,
                         "estimated_cost_usd": 0.015,
+                        "funnel_counts": {
+                            "raw_vendor_hits": 24,
+                            "deduped_sources": 18,
+                            "source_snapshots": 18,
+                            "extracted_candidates": 4,
+                            "categorized_rows": 1,
+                            "person_rows": 1,
+                            "high_trust_usable_rows": 1,
+                            "contact_quality_passes": 1,
+                        },
                     },
                     "query_guardrail": {"status": "needs_more_detail", "message": "Needs account detail."},
                 },
@@ -161,5 +173,20 @@ def test_run_live_benchmark_suite_saves_raw_outputs_and_quality_summary(tmp_path
     quality_summary = json.loads((tmp_path / "quality-summary.json").read_text(encoding="utf-8"))
     assert quality_summary["total_cases"] == 2
     assert quality_summary["case_summaries"]["thomas-arizona-k12"]["http_status"] == 200
+    assert quality_summary["case_summaries"]["thomas-arizona-k12"]["funnel_counts"] == {
+        "raw_vendor_hits": 24,
+        "deduped_sources": 18,
+        "source_snapshots": 18,
+        "extracted_candidates": 4,
+        "categorized_rows": 1,
+        "person_rows": 1,
+        "high_trust_usable_rows": 1,
+        "contact_quality_passes": 1,
+    }
+    assert quality_summary["case_summaries"]["thomas-arizona-k12"]["minimum_escape_rows"] == 8
+    assert quality_summary["case_summaries"]["thomas-arizona-k12"]["target_categorized_rows"] == 8
     assert quality_summary["case_summaries"]["privacy-reject-homeowner-phones"]["http_status"] == 422
     assert quality_summary["case_summaries"]["privacy-reject-homeowner-phones"]["guardrail_status"] == "blocked"
+    assert quality_summary["case_summaries"]["privacy-reject-homeowner-phones"]["quality_status"] == "expected_privacy_refusal"
+    assert quality_summary["case_summaries"]["privacy-reject-homeowner-phones"]["quality_report"] is None
+    assert quality_summary["case_summaries"]["privacy-reject-homeowner-phones"]["volume_floor_status"] == "expected_privacy_refusal"

@@ -189,7 +189,13 @@ class ReplayBenchmarkObservation:
     failed_count: int
     expected_target_coverage_count: int = 0
     expected_target_coverage_missing: tuple[str, ...] = ()
+    minimum_escape_rows: int = 0
+    target_categorized_rows: int = 0
+    escape_velocity_floor_met: bool = False
+    target_volume_floor_met: bool = False
     high_volume_floor_met: bool = False
+    volume_floor_status: str = "not_evaluated"
+    funnel_counts: dict[str, int] | None = None
     http_status: int | None = None
     error_code: str | None = None
     quality_report: QualityReport | None = None
@@ -245,6 +251,67 @@ def _parse_replay_candidates(payload: Mapping[str, Any]) -> list[Any]:
     return LeadList.model_validate({"leads": leads}).leads
 
 
+def _empty_quality_counts() -> dict[str, int]:
+    return {
+        "total_candidates": 0,
+        "person_lead_count": 0,
+        "usable_count": 0,
+        "contact_quality_count": 0,
+        "source_support_count": 0,
+    }
+
+
+def _payload_funnel_counts(
+    payload: Mapping[str, Any],
+    *,
+    quality_counts: Mapping[str, int],
+) -> dict[str, int]:
+    metrics = payload.get("metrics")
+    if isinstance(metrics, Mapping) and isinstance(metrics.get("funnel_counts"), Mapping):
+        return {
+            "raw_vendor_hits": int(metrics["funnel_counts"].get("raw_vendor_hits", 0) or 0),
+            "deduped_sources": int(metrics["funnel_counts"].get("deduped_sources", 0) or 0),
+            "source_snapshots": int(metrics["funnel_counts"].get("source_snapshots", 0) or 0),
+            "extracted_candidates": int(metrics["funnel_counts"].get("extracted_candidates", 0) or 0),
+            "categorized_rows": int(metrics["funnel_counts"].get("categorized_rows", 0) or 0),
+            "person_rows": int(metrics["funnel_counts"].get("person_rows", 0) or 0),
+            "high_trust_usable_rows": int(metrics["funnel_counts"].get("high_trust_usable_rows", 0) or 0),
+            "contact_quality_passes": int(metrics["funnel_counts"].get("contact_quality_passes", 0) or 0),
+        }
+
+    return {
+        "raw_vendor_hits": 0,
+        "deduped_sources": 0,
+        "source_snapshots": 0,
+        "extracted_candidates": quality_counts["total_candidates"],
+        "categorized_rows": quality_counts["total_candidates"],
+        "person_rows": quality_counts["person_lead_count"],
+        "high_trust_usable_rows": quality_counts["usable_count"],
+        "contact_quality_passes": quality_counts["contact_quality_count"],
+    }
+
+
+def _volume_floor_status(
+    *,
+    case: OperatorFixtureCase,
+    privacy_refusal: bool,
+    categorized_row_count: int,
+) -> tuple[bool, bool, bool, str]:
+    if privacy_refusal:
+        return True, True, True, "expected_privacy_refusal"
+
+    escape_velocity_floor_met = categorized_row_count >= case.expected_min_categorized_rows
+    target_volume_floor_met = categorized_row_count >= case.target_categorized_rows
+    if case.theme == "broad_b2b":
+        high_volume_floor_met = target_volume_floor_met
+        status = "target_met" if target_volume_floor_met else "below_active_50_plus_target"
+    else:
+        high_volume_floor_met = escape_velocity_floor_met
+        status = "minimum_met" if escape_velocity_floor_met else "below_minimum_escape_floor"
+
+    return escape_velocity_floor_met, target_volume_floor_met, high_volume_floor_met, status
+
+
 def _build_observation_from_payload(
     case: OperatorFixtureCase,
     payload: Mapping[str, Any],
@@ -252,13 +319,6 @@ def _build_observation_from_payload(
     http_status: int | None = None,
 ) -> ReplayBenchmarkObservation:
     candidates = _parse_replay_candidates(payload)
-    quality_report = build_quality_report(
-        candidates,
-        artifact_kind="benchmark",
-        artifact_id=case.benchmark_id,
-        query=case.query,
-    )
-    thresholds = quality_report.quality_gate_thresholds
     guardrail_status = _payload_guardrail_status(payload, case.query)
     privacy_refusal = (
         case.theme == "privacy_rejection"
@@ -266,29 +326,65 @@ def _build_observation_from_payload(
         and not candidates
         and isinstance(payload.get("error"), str)
     )
-
-    return ReplayBenchmarkObservation(
-        benchmark_id=case.benchmark_id,
-        guardrail_status=guardrail_status,
-        persona_pass=quality_report.persona_match_rate >= thresholds["minimum_persona_match_rate"],
-        contact_pass=(
+    quality_report = None
+    if not privacy_refusal:
+        quality_report = build_quality_report(
+            candidates,
+            artifact_kind="benchmark",
+            artifact_id=case.benchmark_id,
+            query=case.query,
+        )
+        quality_counts = {
+            "total_candidates": quality_report.total_candidates,
+            "person_lead_count": quality_report.person_lead_count,
+            "usable_count": quality_report.usable_count,
+            "contact_quality_count": quality_report.contact_quality_count,
+            "source_support_count": quality_report.source_support_count,
+        }
+        thresholds = quality_report.quality_gate_thresholds
+        persona_pass = quality_report.persona_match_rate >= thresholds["minimum_persona_match_rate"]
+        contact_pass = (
             quality_report.contact_quality_rate >= thresholds["minimum_contact_quality_rate"]
             and quality_report.fake_email_count <= thresholds["maximum_fake_email_count"]
             and quality_report.unsupported_email_count <= thresholds["maximum_unsupported_email_count"]
             and quality_report.total_candidates > 0
-        ),
-        source_pass=(
+        )
+        source_pass = (
             quality_report.source_support_rate >= thresholds["minimum_source_support_rate"]
             and quality_report.total_candidates > 0
-        ),
+        )
+    else:
+        quality_counts = _empty_quality_counts()
+        persona_pass = False
+        contact_pass = False
+        source_pass = False
+
+    (
+        escape_velocity_floor_met,
+        target_volume_floor_met,
+        high_volume_floor_met,
+        volume_floor_status,
+    ) = _volume_floor_status(
+        case=case,
         privacy_refusal=privacy_refusal,
-        categorized_row_count=quality_report.total_candidates,
-        person_lead_count=quality_report.person_lead_count,
-        high_trust_usable_count=quality_report.usable_count,
-        review_count=quality_report.person_lead_count - quality_report.usable_count,
-        organization_only_count=quality_report.organization_only_count,
-        not_found_count=quality_report.not_found_count,
-        failed_count=quality_report.failed_count,
+        categorized_row_count=quality_counts["total_candidates"],
+    )
+    funnel_counts = _payload_funnel_counts(payload, quality_counts=quality_counts)
+
+    return ReplayBenchmarkObservation(
+        benchmark_id=case.benchmark_id,
+        guardrail_status=guardrail_status,
+        persona_pass=persona_pass,
+        contact_pass=contact_pass,
+        source_pass=source_pass,
+        privacy_refusal=privacy_refusal,
+        categorized_row_count=quality_counts["total_candidates"],
+        person_lead_count=quality_counts["person_lead_count"],
+        high_trust_usable_count=quality_counts["usable_count"],
+        review_count=quality_counts["person_lead_count"] - quality_counts["usable_count"],
+        organization_only_count=quality_report.organization_only_count if quality_report else 0,
+        not_found_count=quality_report.not_found_count if quality_report else 0,
+        failed_count=quality_report.failed_count if quality_report else 0,
         expected_target_coverage_count=sum(
             1 for target in case.expected_target_coverage if any(_row_supports_target(candidate, target) for candidate in candidates)
         ),
@@ -297,7 +393,13 @@ def _build_observation_from_payload(
             for target in case.expected_target_coverage
             if not any(_row_supports_target(candidate, target) for candidate in candidates)
         ),
-        high_volume_floor_met=quality_report.total_candidates >= case.expected_min_categorized_rows,
+        minimum_escape_rows=case.expected_min_categorized_rows,
+        target_categorized_rows=case.target_categorized_rows,
+        escape_velocity_floor_met=escape_velocity_floor_met,
+        target_volume_floor_met=target_volume_floor_met,
+        high_volume_floor_met=high_volume_floor_met,
+        volume_floor_status=volume_floor_status,
+        funnel_counts=funnel_counts,
         http_status=http_status,
         error_code=payload.get("error_code") if isinstance(payload.get("error_code"), str) else None,
         quality_report=quality_report,

@@ -393,6 +393,119 @@ def test_scout_exposes_safe_volume_controls_to_search():
     assert metrics.tavily_searches == 12
 
 
+def test_scout_backfills_broad_source_gap_rows_without_promoting_ready(monkeypatch):
+    query_plan = QueryPlan(
+        original_query="commodity buyers at retail lumber yards in Washington",
+        vendor_queries=["retail lumber yards commodity buyers washington"],
+        intent_summary="commodity buyers retail lumber yards washington",
+        broad_query=True,
+        aggressive_breadth=True,
+        target_raw_results=50,
+    )
+    source_collection = SourceCollectionSnapshot(
+        query=query_plan.original_query,
+        collected_at="2026-05-11T00:00:00Z",
+        requested_max_results=50,
+        returned_source_count=4,
+        tavily_searches=4,
+        search_depth="advanced",
+        query_plan=None,
+        sources=[
+            CollectedSource(
+                source_id=f"src_{index}",
+                rank=index,
+                title=f"Washington lumber source {index}",
+                url=f"https://example.com/source-{index}",
+                content="Washington retail lumber directory.",
+                score=0.8,
+                vendor_query="retail lumber yards commodity buyers washington",
+                matched_vendor_queries=["retail lumber yards commodity buyers washington"],
+                content_sha256=f"hash-{index}",
+            )
+            for index in range(1, 5)
+        ],
+    )
+
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None, aggressive_breadth=False):
+        return SearchResults(
+            list(source_collection.sources[0:4]),
+            tavily_searches=4,
+            query_plan=query_plan,
+            source_collection=source_collection,
+            raw_result_count=6,
+            deduped_source_count=4,
+        )
+
+    lead = Lead(
+        name="Jane Smith",
+        title="Commodity Buyer",
+        organization="Example Lumber",
+        email="",
+        email_status="missing",
+        source_url="https://example.com/source-1",
+        confidence=0.8,
+        why_target="Matches the commodity buyer target.",
+        icebreaker="I saw your buying role at Example Lumber.",
+        fit_score=0.8,
+        evidence_score=0.8,
+        contact_score=0.0,
+        gate_passed=False,
+        explanation="Person candidate with no usable contact.",
+    )
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            return SimpleNamespace(
+                choices=[SimpleNamespace(message=SimpleNamespace(parsed=LeadList(leads=[lead])))],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    async def fake_validate_candidate_source(candidate, client=None):
+        if isinstance(candidate, Lead):
+            return CandidateValidation(
+                name=FieldValidationRecord(status="supported"),
+                title=FieldValidationRecord(status="supported"),
+                organization=FieldValidationRecord(status="supported"),
+                email=ContactValidationRecord(status="missing"),
+                phone=ContactValidationRecord(status="missing"),
+                source=FieldValidationRecord(status="supported"),
+            )
+        return CandidateValidation(
+            source=FieldValidationRecord(status="supported"),
+        )
+
+    fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+    monkeypatch.setattr("core.orchestrator.validate_candidate_source", fake_validate_candidate_source)
+
+    leads, metrics = asyncio.run(
+        scout(
+            "commodity buyers at retail lumber yards in Washington",
+            max_leads=3,
+            max_results=50,
+            aggressive_breadth=True,
+            openai_client=fake_client,
+            tavily_key="fake-tavily",
+            search_fn=fake_search,
+        )
+    )
+
+    assert [lead.candidate_category for lead in leads] == ["person_lead", "failed", "failed"]
+    assert all(not getattr(lead, "gate_passed", False) for lead in leads)
+    assert leads[1].primary_filter_reason.startswith("REVIEW:")
+    assert "no usable lead is implied" in leads[1].primary_filter_reason
+    assert metrics.funnel_counts == {
+        "raw_vendor_hits": 6,
+        "deduped_sources": 4,
+        "source_snapshots": 4,
+        "extracted_candidates": 1,
+        "categorized_rows": 3,
+        "person_rows": 1,
+        "high_trust_usable_rows": 0,
+        "contact_quality_passes": 0,
+    }
+    assert any("Extraction returned fewer candidates" in note for note in metrics.funnel_notes)
+
+
 def test_scout_preserves_non_person_candidate_categories():
     async def fake_search(query: str, api_key=None, max_results=10, filters=None):
         return SearchResults([], tavily_searches=1)
@@ -860,6 +973,7 @@ def test_system_prompt_is_vertical_agnostic_and_restores_lost_instructions():
     assert "telecom, networking, or product-upgrade language" in SYSTEM_PROMPT
     assert "Return every plausible candidate" in SYSTEM_PROMPT
     assert "do not pre-filter" in SYSTEM_PROMPT
+    assert "Do not stop at a top-ten list" in SYSTEM_PROMPT
     assert "failed with a" in SYSTEM_PROMPT
     assert "GATE LOGIC" not in SYSTEM_PROMPT
     assert "server will compute" in SYSTEM_PROMPT

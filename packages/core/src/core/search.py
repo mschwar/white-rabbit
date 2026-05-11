@@ -30,11 +30,15 @@ class SearchResults(list[dict[str, Any]]):
         tavily_searches: int,
         query_plan: QueryPlan | None = None,
         source_collection: SourceCollectionSnapshot | None = None,
+        raw_result_count: int | None = None,
+        deduped_source_count: int | None = None,
     ) -> None:
         super().__init__(results)
         self.tavily_searches = tavily_searches
         self.query_plan = query_plan
         self.source_collection = source_collection
+        self.raw_result_count = raw_result_count if raw_result_count is not None else len(results)
+        self.deduped_source_count = deduped_source_count if deduped_source_count is not None else len(results)
 
 
 def _clean_results(results: list[dict[str, Any]], *, vendor_query: str) -> list[dict[str, Any]]:
@@ -162,6 +166,8 @@ async def fetch_search_results(
                 tavily_searches=len(vendor_queries),
                 query_plan=plan,
                 source_collection=source_collection,
+                raw_result_count=len(all_results),
+                deduped_source_count=len(deduped_results),
             )
     except TavilySearchError:
         raise

@@ -190,6 +190,17 @@ export type ScoutRunMetrics = {
   elapsed_seconds: number;
   estimated_cost_usd: number;
   tier_distribution?: Partial<Record<OutputTier, number>>;
+  funnel_counts?: Partial<{
+    raw_vendor_hits: number;
+    deduped_sources: number;
+    source_snapshots: number;
+    extracted_candidates: number;
+    categorized_rows: number;
+    person_rows: number;
+    high_trust_usable_rows: number;
+    contact_quality_passes: number;
+  }>;
+  funnel_notes?: string[];
 };
 
 export type QueryGuardrailResult = {

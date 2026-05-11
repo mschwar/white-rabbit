@@ -205,8 +205,18 @@ async def run_live_benchmark_suite(
                 "failed_count": observation.failed_count,
                 "expected_target_coverage_count": observation.expected_target_coverage_count,
                 "expected_target_coverage_missing": list(observation.expected_target_coverage_missing),
+                "minimum_escape_rows": observation.minimum_escape_rows,
+                "target_categorized_rows": observation.target_categorized_rows,
+                "escape_velocity_floor_met": observation.escape_velocity_floor_met,
+                "target_volume_floor_met": observation.target_volume_floor_met,
                 "high_volume_floor_met": observation.high_volume_floor_met,
+                "volume_floor_status": observation.volume_floor_status,
+                "privacy_refusal": observation.privacy_refusal,
+                "funnel_counts": dict(observation.funnel_counts or {}),
                 "error_code": observation.error_code,
+                "quality_status": (
+                    "expected_privacy_refusal" if observation.privacy_refusal else "evaluated"
+                ),
                 "quality_report": (
                     observation.quality_report.to_payload() if observation.quality_report is not None else None
                 ),

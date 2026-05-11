@@ -25,6 +25,7 @@ from core.cost import RunMetrics
 from core.models import Candidate
 from core.orchestrator import scout, OrchestratorError, DEFAULT_MODEL
 from core.query_guardrails import QueryGuardrailResult, evaluate_query_guardrails
+from core.query_planner import compile_query_plan
 
 from api.models import CorrectionField, CorrectionLabel, FeedbackLabel
 
@@ -222,8 +223,34 @@ class SandboxResetOut(BaseModel):
 
 
 SANDBOX_SCOUT_MAX_ROWS_PER_QUERY = 15
+SANDBOX_SCOUT_BROAD_MAX_ROWS_PER_QUERY = 50
+SCOUT_BROAD_MAX_RESULTS = 240
 SANDBOX_FULL_MAX_ROWS_PER_QUERY = 100
 SANDBOX_BATCH_MAX_ROWS_PER_QUERY = 100
+
+
+def _is_broad_lead_query(query: str, filters: Optional[dict]) -> bool:
+    plan = compile_query_plan(
+        query,
+        filters=filters,
+        max_results=SCOUT_BROAD_MAX_RESULTS,
+        aggressive_breadth=True,
+    )
+    return plan.broad_query
+
+
+def _scout_execution_settings(query: str, filters: Optional[dict]) -> dict[str, Any]:
+    if not _is_broad_lead_query(query, filters):
+        return {"planned_rows": SANDBOX_SCOUT_MAX_ROWS_PER_QUERY, "scout_kwargs": {}}
+
+    return {
+        "planned_rows": SANDBOX_SCOUT_BROAD_MAX_ROWS_PER_QUERY,
+        "scout_kwargs": {
+            "max_leads": SANDBOX_SCOUT_BROAD_MAX_ROWS_PER_QUERY,
+            "max_results": SCOUT_BROAD_MAX_RESULTS,
+            "aggressive_breadth": True,
+        },
+    }
 
 
 def require_internal_api_access(request: Request) -> None:
@@ -297,10 +324,15 @@ async def health_check():
 @app.post("/scout", response_model=ScoutResponse)
 async def run_scout(request: ScoutRequest, _: ProtectedApiAccess):
     guardrail = _query_guardrail_or_422(request.query)
+    execution_settings = _scout_execution_settings(request.query, request.filters)
     with get_db_session() as session:
-        sandbox_usage = _sandbox_reserve_query_or_429(session, SANDBOX_SCOUT_MAX_ROWS_PER_QUERY)
+        sandbox_usage = _sandbox_reserve_query_or_429(session, execution_settings["planned_rows"])
     try:
-        leads, metrics = await scout(request.query, filters=request.filters)
+        leads, metrics = await scout(
+            request.query,
+            filters=request.filters,
+            **execution_settings["scout_kwargs"],
+        )
         with get_db_session() as session:
             record_sandbox_rows(session, len(leads))
             sandbox_usage = _sandbox_usage_out(session)
@@ -351,10 +383,17 @@ def _internal_error_response(exc: Exception) -> dict:
 async def run_full(request: FullRequest, _: ProtectedApiAccess):
     """Run a Full query: produces a stored recipe and recipe_run."""
     guardrail = _query_guardrail_or_422(request.query)
+    aggressive_full = _is_broad_lead_query(request.query, request.filters)
     with get_db_session() as session:
         sandbox_usage = _sandbox_reserve_query_or_429(session, SANDBOX_FULL_MAX_ROWS_PER_QUERY)
     try:
-        leads, metrics = await scout(request.query, filters=request.filters, max_leads=100)
+        leads, metrics = await scout(
+            request.query,
+            filters=request.filters,
+            max_leads=SANDBOX_FULL_MAX_ROWS_PER_QUERY,
+            max_results=SCOUT_BROAD_MAX_RESULTS if aggressive_full else None,
+            aggressive_breadth=aggressive_full,
+        )
         with get_db_session() as session:
             record_sandbox_rows(session, len(leads))
             sandbox_usage = _sandbox_usage_out(session)
