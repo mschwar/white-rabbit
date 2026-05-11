@@ -233,9 +233,22 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 ---
 
+## ADR-017 — Post-R09A hold targets contact evidence before UI
+
+**Date:** 2026-05-11
+**Status:** Locked
+
+**Context.** The post-R09A RG3 re-audit held again. R09A recovered broad categorized volume for most broad prompts and added useful funnel observability, but the complete live benchmark suite still produced `0` high-trust usable rows and `0` contact-quality passes. A parallel RG4 mockup/design preflight also exists, but RG3 did not advance.
+
+**Decision.** Keep RG3 active and insert exactly one next remediation feature: `R09B - Contact and evidence acquisition pass`. R09B must target the contact/evidence choke point with source-backed public-web evidence acquisition, READY-blocker reporting, and live-runner partial-failure reliability. RG4, refreshed mockup merge, R10-R12, export polish, dogfood, paid contact-source integration, and `main` sync remain blocked until a future RG3 Prompt C records `advance`. The RG4 design preflight branch is an inspection artifact only until Matt approves it after data-quality advancement.
+
+**Consequences.** The reset avoids designing or exporting around a dataset that still has no CRM-ready contact value. Prompt A has exactly one valid next feature, and that feature cannot pass by lowering high-trust precision, inventing emails, treating inaccessible sources as support, or hiding missing contacts behind UI copy. If R09B still cannot produce contact-quality passes, the next decision should be product-positioning or vendor/source strategy, not another UI pass.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-017, ADR-018, ...).
+1. Pick the next ADR number (ADR-018, ADR-019, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.
