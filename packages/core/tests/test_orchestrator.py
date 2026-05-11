@@ -11,7 +11,9 @@ from core.models import (
     OrganizationOnlyCandidate,
 )
 from core.orchestrator import SYSTEM_PROMPT, scout
+from core.query_planner import QueryPlan
 from core.search import SearchResults
+from core.source_collection import CollectedSource, SourceCollectionSnapshot
 
 
 def test_scout_uses_injected_dependencies_and_returns_metrics():
@@ -416,6 +418,77 @@ def test_scout_preserves_non_person_candidate_categories():
     )
 
     assert [lead.candidate_category for lead in leads] == ["organization_only", "not_found"]
+
+
+def test_scout_appends_nonperson_coverage_for_missing_named_accounts(monkeypatch):
+    query_plan = QueryPlan(
+        original_query="Mesa and Chandler technology leaders",
+        vendor_queries=[
+            "Mesa Public Schools technology leaders",
+            "Chandler Unified School District technology leaders",
+        ],
+        named_accounts=["Mesa Public Schools", "Chandler Unified School District"],
+        intent_summary="technology leaders",
+        target_raw_results=20,
+    )
+    source_collection = SourceCollectionSnapshot(
+        query="Mesa and Chandler technology leaders",
+        collected_at="2026-05-11T00:00:00Z",
+        requested_max_results=20,
+        returned_source_count=1,
+        tavily_searches=2,
+        search_depth="advanced",
+        query_plan=None,
+        sources=[
+            CollectedSource(
+                source_id="src_chandler",
+                rank=1,
+                title="Chandler Unified School District technology services",
+                url="https://www.cusd80.com/technology",
+                content="Chandler Unified School District technology services directory.",
+                score=0.9,
+                vendor_query="Chandler Unified School District technology leaders",
+                matched_vendor_queries=["Chandler Unified School District technology leaders"],
+                content_sha256="abc123",
+            )
+        ],
+    )
+
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None):
+        return SearchResults(
+            [],
+            tavily_searches=2,
+            query_plan=query_plan,
+            source_collection=source_collection,
+        )
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            return SimpleNamespace(
+                choices=[SimpleNamespace(message=SimpleNamespace(parsed=LeadList(leads=[])))],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    async def fake_validate_candidate_source(candidate, client=None):
+        return CandidateValidation()
+
+    fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+    monkeypatch.setattr("core.orchestrator.validate_candidate_source", fake_validate_candidate_source)
+
+    leads, metrics = asyncio.run(
+        scout(
+            "Mesa and Chandler technology leaders",
+            openai_client=fake_client,
+            tavily_key="fake-tavily",
+            search_fn=fake_search,
+        )
+    )
+
+    assert metrics.tavily_searches == 2
+    assert [lead.candidate_category for lead in leads] == ["not_found", "organization_only"]
+    assert leads[0].searched_target == "Mesa Public Schools"
+    assert leads[1].organization == "Chandler Unified School District"
+    assert leads[1].source_url == "https://www.cusd80.com/technology"
 
 
 def test_scout_applies_source_validation_to_returned_candidates(monkeypatch):
