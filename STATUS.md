@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-10 by Codex live-demo-pipeline-mockups
+**Last updated:** 2026-05-10 by Codex mockup-copy-tightening
 **Branch:** main / rebuild/validated-leads-loop aligned
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
 
@@ -56,16 +56,16 @@ Prior accepted gates:
 **Latest handoff:**
 
 ```text
-Feature: Live-demo pipeline mockups and output contract
+Feature: Live-demo mockup copy tightening
 Branch: main -> rebuild/validated-leads-loop sync
 Status: committed_and_pushed
-What changed: Added ADR-013 for live-demo-safe copy and 50-500+ transparent tiering. Added `docs/13-pipeline-orchestrator-contract-2026.md` from Matt's CSV/XLSX pipeline artifacts, updated the orchestrator brief/output contract, and rebuilt the mockups around READY/REVIEW/ORG-ONLY/NOT FOUND, filters, evidence actions, mobile filters, and low-signal state.
+What changed: Tightened only the visible mockup copy. Removed the first-screen evidence-backed/volume tagline, pipeline-stage row, and principle list. Rewrote the low-signal guidance to diagnose the narrow-query failure and provide exact broadening moves that should improve recall.
 Tests or QA run:
  - `git diff --check`
  - `node` Playwright static render of `docs/mockups/final-product-2026-05-10/index.html`
- - `rg -n 'ADR-013|50-500|DISCOVER|EXTRACT|VERIFY|SYNTHESIZE|ORCHESTRATE|READY|REVIEW|ORG-ONLY|NOT FOUND|low-signal' docs STATUS.md`
+ - `rg -n 'Evidence-backed search|50-500\\+ candidates|Discover|Extract|Verify|Synthesize|Volume is visible|Evidence is visible|Sales fields first|False confidence|Find the list' docs/mockups/final-product-2026-05-10/index.html`
 Screenshots or report: `.gstack/qa-reports/screenshots/final-product-mockups-2026-05-10/`
-Northstar reflection: Preserves the full public-web picture plus rigorous categorization while making the demo surface understandable without internal context.
+Northstar reflection: Keeps the demo quieter while preserving source-backed categorization and making low-signal advice trust-preserving instead of generic.
 Next pointer: Matt inspection, then assign Prompt A to R00 if the mockup direction is approved.
 Open questions: none blocking R00.
 ```
@@ -266,6 +266,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-10 | mockup-copy-tightening (Codex) | Tightened only the final mockup copy: removed top tagline, pipeline-stage row, and principle list from the first screen; rewrote low-signal guidance into a concrete diagnosis plus exact broadening suggestions. |
 | 2026-05-10 | live-demo-pipeline-mockups (Codex) | Read Matt's CSV/XLSX pipeline artifacts, added ADR-013 and `docs/13-pipeline-orchestrator-contract-2026.md`, updated the orchestrator brief/reset docs, and rebuilt the mockups for live-demo copy, 50-500+ transparent tiering, filters, evidence actions, mobile review, and low-signal state. |
 | 2026-05-10 | high-volume-reset-contract (Codex) | Superseded the 10-25 ideal with ADR-012 high-volume transparent tiering, added `docs/Orchestrator_Agent_Implementation_Brief.md`, updated the northstar/reset plan, and revised the final product mockups to show 186 categorized candidates with high-trust/review/org-only/not-found/failed distribution. |
 | 2026-05-10 | final-product-mockups (Codex) | Added `docs/mockups/final-product-2026-05-10/index.html` and rendered screenshots so Matt can inspect the final intended operator product before kickoff. Wired the mockup into the reset plan as the R10-R13 visual contract and RG4/RG5 Prompt C comparison artifact. |
