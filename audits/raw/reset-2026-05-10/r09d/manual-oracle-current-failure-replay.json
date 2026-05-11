@@ -1,0 +1,19 @@
+{
+  "feature_id": "R09D",
+  "feature_name": "April NM evidence fixture and manual-oracle replay",
+  "fixture_path": "packages/core/tests/fixtures/april_nm_manual_oracle.json",
+  "comparator": "core.manual_oracle.evaluate_manual_oracle_replay",
+  "baseline_observation": "empty_current_output",
+  "expected_rows": 17,
+  "observed_rows": 0,
+  "expected_verified_contact_rows": 10,
+  "observed_verified_contact_rows": 0,
+  "expected_manual_lookup_rows": 7,
+  "observed_manual_lookup_rows": 0,
+  "structure_reproduced": false,
+  "privacy_scope": "This artifact records counts and sanitized fixture paths only. It does not copy private email bodies or full attachment contents.",
+  "notes": [
+    "R09D intentionally makes the April New Mexico manual-oracle workbook structure measurable offline before source collection or compiler remediation begins.",
+    "The empty-current-output baseline fails because it represents zero verified-contact rows, zero manual-lookup rows, zero source URLs, and zero blocker notes."
+  ]
+}
