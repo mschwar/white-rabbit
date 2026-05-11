@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { getValidationBucket, sortScoutLeads, sortScoutResultRows } from '../scout';
+import { buildTierDistribution, getValidationBucket, sortScoutLeads, sortScoutResultRows } from '../scout';
 
 test('sortScoutLeads orders leads by fit, evidence, contact, and gate', () => {
   const leads = [
@@ -60,10 +60,11 @@ test('sortScoutLeads orders leads by fit, evidence, contact, and gate', () => {
   expect(sortScoutLeads(leads, 'gate').map((lead) => lead.name)).toEqual(['Bravo', 'Charlie', 'Alpha']);
 });
 
-test('validation buckets separate usable, noisy/failed, organization-only, and not-found rows', () => {
+test('validation buckets separate ready, review, organization-only, and not-found rows', () => {
   const rows = [
     {
       candidate_category: 'person_lead' as const,
+      tier: 'high_trust_usable' as const,
       name: 'Usable Lead',
       title: 'Director',
       organization: 'Usable Schools',
@@ -81,6 +82,7 @@ test('validation buckets separate usable, noisy/failed, organization-only, and n
     },
     {
       candidate_category: 'person_lead' as const,
+      tier: 'review' as const,
       name: 'Noisy Lead',
       title: 'Director',
       organization: 'Noisy Schools',
@@ -98,17 +100,20 @@ test('validation buckets separate usable, noisy/failed, organization-only, and n
     },
     {
       candidate_category: 'organization_only' as const,
+      tier: 'organization_only' as const,
       organization: 'Example Corp',
       explanation: 'Organization-only',
     },
     {
       candidate_category: 'not_found' as const,
+      tier: 'not_found' as const,
       searched_target: 'Ghost District',
       organization: 'Ghost District',
       explanation: 'Not found',
     },
     {
       candidate_category: 'failed' as const,
+      tier: 'failed' as const,
       searched_target: 'Broken District',
       failure_reason: 'Source failed',
       explanation: 'Failed',
@@ -124,10 +129,11 @@ test('validation buckets separate usable, noisy/failed, organization-only, and n
   ]);
 });
 
-test('sortScoutResultRows keeps validation buckets grouped while sorting person rows by score', () => {
+test('sortScoutResultRows keeps validation buckets grouped while sorting person rows by signal', () => {
   const rows = [
     {
       candidate_category: 'person_lead' as const,
+      tier: 'high_trust_usable' as const,
       name: 'Alpha',
       title: 'Director',
       organization: 'Alpha Schools',
@@ -145,11 +151,13 @@ test('sortScoutResultRows keeps validation buckets grouped while sorting person 
     },
     {
       candidate_category: 'organization_only' as const,
+      tier: 'organization_only' as const,
       organization: 'Example Corp',
       explanation: 'Example Corp',
     },
     {
       candidate_category: 'person_lead' as const,
+      tier: 'review' as const,
       name: 'Bravo',
       title: 'Director',
       organization: 'Bravo Schools',
@@ -167,6 +175,7 @@ test('sortScoutResultRows keeps validation buckets grouped while sorting person 
     },
     {
       candidate_category: 'not_found' as const,
+      tier: 'not_found' as const,
       searched_target: 'Ghost District',
       organization: 'Ghost District',
       explanation: 'Ghost District',
@@ -192,4 +201,44 @@ test('sortScoutResultRows keeps validation buckets grouped while sorting person 
       return row.searched_target;
     }),
   ).toEqual(['Alpha', 'Bravo', 'Example Corp', 'Ghost District']);
+});
+
+test('buildTierDistribution uses API metrics when provided and falls back to rows', () => {
+  const rows = [
+    {
+      candidate_category: 'person_lead' as const,
+      tier: 'high_trust_usable' as const,
+      name: 'Ready Lead',
+      title: 'Director',
+      organization: 'Ready Schools',
+      email: 'ready@example.com',
+      email_status: 'verified_found' as const,
+      source_url: 'https://ready.example.com',
+      confidence: 0.9,
+      why_target: 'Ready',
+      icebreaker: 'Ready',
+      fit_score: 0.9,
+      evidence_score: 0.8,
+      contact_score: 0.7,
+      gate_passed: true,
+      explanation: 'Ready',
+    },
+    {
+      candidate_category: 'failed' as const,
+      tier: 'failed' as const,
+      searched_target: 'Blocked District',
+      failure_reason: 'Source contradicted the row.',
+      explanation: 'Blocked',
+    },
+  ];
+
+  expect(buildTierDistribution(rows).high_trust_usable).toBe(1);
+  expect(buildTierDistribution(rows).failed).toBe(1);
+  expect(buildTierDistribution(rows, { review: 3 })).toEqual({
+    high_trust_usable: 0,
+    review: 3,
+    organization_only: 0,
+    not_found: 0,
+    failed: 0,
+  });
 });

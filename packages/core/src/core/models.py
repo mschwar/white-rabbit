@@ -177,9 +177,17 @@ class Lead(CandidateBase):
     )
 
     # New Sprint 1 fields
-    fit_score: float = Field(ge=0, le=1, description="Match between person/org and target ICP")
-    evidence_score: float = Field(ge=0, le=1, description="Strength and freshness of supporting sources")
-    contact_score: float = Field(ge=0, le=1, description="Usability of email/phone/title information")
+    fit_score: float = Field(ge=0, le=1, description="Query-fit signal only; not a CRM-readiness score.")
+    evidence_score: float = Field(
+        ge=0,
+        le=1,
+        description="Server-capped evidence-support signal derived from field/source validation.",
+    )
+    contact_score: float = Field(
+        ge=0,
+        le=1,
+        description="Server-capped contact-readiness signal derived from contact validation.",
+    )
     gate_passed: bool = Field(description="True if the server-computed evidence gate cleared the thresholds")
     explanation: str = Field(description="Human-readable rationale for ranking")
 

@@ -260,7 +260,7 @@ def test_scout_sets_gate_passed_when_scores_and_evidence_align(monkeypatch):
 
     assert leads[0].gate_passed is True
     assert leads[0].tier == "high_trust_usable"
-    assert "Evidence gate passed" in leads[0].primary_filter_reason
+    assert leads[0].primary_filter_reason.startswith("READY:")
 
 
 def test_scout_constructs_async_openai_with_max_retries(monkeypatch):
@@ -709,7 +709,7 @@ def test_scout_sanitizes_invalid_extracted_email_without_dropping_person_candida
     assert leads[0].contact_score == 0.0
     assert leads[0].gate_passed is False
     assert leads[0].tier == "review"
-    assert "Contact is failed" in leads[0].primary_filter_reason
+    assert leads[0].primary_filter_reason == "REVIEW: contact is failed; row is not CRM-ready."
 
 
 def test_scout_downgrades_inaccessible_person_source_to_failed_candidate(monkeypatch):

@@ -89,13 +89,15 @@ You are a B2B lead research assistant. Your job is to parse the provided search 
 and extract decision makers relevant to the user's query intent.
 
 SCORING GUIDELINES:
-- fit_score: 0.0 to 1.0. How well does this person/org match the user's stated query intent?
-- evidence_score: 0.0 to 1.0. How current and direct is the source evidence?
-- contact_score: 0.0 to 1.0. How usable is the email/phone/title?
+- fit_score: 0.0 to 1.0. Query-fit signal only; it does not mean the row is CRM-ready.
+- evidence_score: 0.0 to 1.0. Evidence-support signal from current, direct source support.
+- contact_score: 0.0 to 1.0. Contact-readiness signal from verified or explicitly supported contact evidence.
 
 GATE:
-The gate is a pass/fail summary derived from the three scores and supporting validation
+The gate is a pass/fail summary derived from the three validation signals and supporting validation
 evidence. The server will compute and store the final boolean.
+Do not describe high fit, evidence, or contact values as "ready" unless the final server
+tier is high_trust_usable. Non-usable rows must explain the blocker in plain language.
 
 CANDIDATE CATEGORIES:
 - Set candidate_category='person_lead' for a real person with supported name, title, and organization.
@@ -423,6 +425,26 @@ def _sync_contact_fields_from_validation(candidate: Lead) -> None:
         candidate.gate_passed = False
 
 
+def _apply_score_semantics(candidate: Lead) -> None:
+    unsupported_field_count = sum(
+        1
+        for field_name in ("name", "title", "organization", "source")
+        if _validation_status(candidate, field_name) != "supported"
+    )
+    if unsupported_field_count:
+        candidate.evidence_score = min(candidate.evidence_score, max(0.0, 0.55 - (0.15 * (unsupported_field_count - 1))))
+
+    email_status = candidate.email_status
+    if email_status == "verified_found":
+        pass
+    elif email_status == "deduced_with_pattern_evidence":
+        candidate.contact_score = min(candidate.contact_score, 0.75)
+    elif email_status == "missing":
+        candidate.contact_score = min(candidate.contact_score, 0.35)
+    elif email_status in {"failed", "unsupported"}:
+        candidate.contact_score = min(candidate.contact_score, 0.2)
+
+
 def _conflict_reason(candidate: Lead) -> str | None:
     source_status = _validation_status(candidate, "source")
     if source_status in {"failed", "missing"}:
@@ -443,6 +465,7 @@ def _conflict_reason(candidate: Lead) -> str | None:
 
 def _tier_person_lead(candidate: Lead) -> Lead | FailedCandidate:
     _sync_contact_fields_from_validation(candidate)
+    _apply_score_semantics(candidate)
     conflict_reason = _conflict_reason(candidate)
     if conflict_reason is not None:
         return _failed_from_conflicting_lead(candidate, reason=conflict_reason)
@@ -450,18 +473,18 @@ def _tier_person_lead(candidate: Lead) -> Lead | FailedCandidate:
     candidate.gate_passed = _lead_passes_evidence_gate(candidate)
     if candidate.gate_passed:
         candidate.tier = "high_trust_usable"
-        candidate.primary_filter_reason = "Evidence gate passed with supported person, organization, source, and usable contact."
+        candidate.primary_filter_reason = "READY: supported person, organization, source, and usable contact cleared the evidence gate."
         return candidate
 
     email_status = candidate.email_status
     if email_status not in EVIDENCE_GATE_CONTACT_STATUSES:
-        candidate.primary_filter_reason = f"Contact is {email_status}; row needs review before CRM use."
+        candidate.primary_filter_reason = f"REVIEW: contact is {email_status}; row is not CRM-ready."
     elif any(_validation_status(candidate, field_name) != "supported" for field_name in ("name", "title", "organization")):
-        candidate.primary_filter_reason = "Name, title, or organization lacks direct source support."
+        candidate.primary_filter_reason = "REVIEW: name, title, or organization lacks direct source support."
     elif _validation_status(candidate, "source") != "supported":
-        candidate.primary_filter_reason = "Source does not provide enough direct support."
+        candidate.primary_filter_reason = "REVIEW: source does not provide enough direct support."
     else:
-        candidate.primary_filter_reason = "Scores or validation strength did not clear the high-trust evidence gate."
+        candidate.primary_filter_reason = "REVIEW: validation signals did not clear the high-trust evidence gate."
 
     candidate.tier = "review"
     return candidate

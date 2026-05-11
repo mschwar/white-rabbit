@@ -19,6 +19,17 @@ export type ValidationStatus = 'supported' | 'unsupported' | 'missing' | 'failed
 export type ContactStatus = 'verified_found' | 'deduced_with_pattern_evidence' | 'missing' | 'failed' | 'unsupported';
 
 export type ValidationBucket = 'usable' | 'noisy_failed' | 'organization_only' | 'not_found';
+export type OutputTier = 'high_trust_usable' | 'review' | 'organization_only' | 'not_found' | 'failed';
+
+export const OUTPUT_TIERS: OutputTier[] = ['high_trust_usable', 'review', 'organization_only', 'not_found', 'failed'];
+
+export const TIER_LABELS: Record<OutputTier, string> = {
+  high_trust_usable: 'READY',
+  review: 'REVIEW',
+  organization_only: 'ORG-ONLY',
+  not_found: 'NOT FOUND',
+  failed: 'REVIEW',
+};
 
 export const VALIDATION_BUCKETS: Array<{
   key: ValidationBucket;
@@ -27,22 +38,22 @@ export const VALIDATION_BUCKETS: Array<{
 }> = [
   {
     key: 'usable',
-    label: 'Usable',
+    label: 'READY',
     description: 'Person leads with evidence-backed name, title, organization, and usable contact details.',
   },
   {
     key: 'noisy_failed',
-    label: 'Noisy / failed',
-    description: 'Person rows that did not clear the gate or were rejected because the evidence was weak.',
+    label: 'REVIEW',
+    description: 'Rows that need human judgment because a blocker, conflict, or weak evidence prevents CRM-ready use.',
   },
   {
     key: 'organization_only',
-    label: 'Organization-only',
+    label: 'ORG-ONLY',
     description: 'The account was found, but no validated person was available to treat as CRM-ready.',
   },
   {
     key: 'not_found',
-    label: 'Not found',
+    label: 'NOT FOUND',
     description: 'The target was searched, but no acceptable contact was found.',
   },
 ];
@@ -89,12 +100,14 @@ export type RecipeScoreboardItem = {
 export type ScoutLead = {
   id?: string;
   candidate_category?: 'person_lead';
+  tier?: OutputTier;
+  primary_filter_reason?: string;
   validation?: CandidateValidation;
   name: string;
   title: string;
   organization: string;
   email: string;
-  email_status: 'Found' | 'Deduced' | 'Missing';
+  email_status: 'Found' | 'Deduced' | 'Missing' | ContactStatus;
   source_url: string;
   confidence: number;
   why_target: string;
@@ -134,6 +147,8 @@ export type CandidateValidation = {
 export type OrganizationOnlyResultRow = {
   id?: string;
   candidate_category: 'organization_only';
+  tier?: OutputTier;
+  primary_filter_reason?: string;
   organization: string;
   source_url?: string | null;
   explanation: string;
@@ -143,6 +158,8 @@ export type OrganizationOnlyResultRow = {
 export type NotFoundResultRow = {
   id?: string;
   candidate_category: 'not_found';
+  tier?: OutputTier;
+  primary_filter_reason?: string;
   searched_target: string;
   organization?: string | null;
   source_url?: string | null;
@@ -153,6 +170,8 @@ export type NotFoundResultRow = {
 export type FailedResultRow = {
   id?: string;
   candidate_category: 'failed';
+  tier?: OutputTier;
+  primary_filter_reason?: string;
   searched_target: string;
   failure_reason: string;
   organization?: string | null;
@@ -170,6 +189,7 @@ export type ScoutRunMetrics = {
   openai_web_searches?: number;
   elapsed_seconds: number;
   estimated_cost_usd: number;
+  tier_distribution?: Partial<Record<OutputTier, number>>;
 };
 
 export type QueryGuardrailResult = {
@@ -247,10 +267,10 @@ export type LeadSortMode = 'rank' | 'fit' | 'evidence' | 'contact' | 'gate';
 
 export const LEAD_SORT_OPTIONS: Array<{ value: LeadSortMode; label: string }> = [
   { value: 'rank', label: 'Original rank' },
-  { value: 'fit', label: 'Fit score' },
-  { value: 'evidence', label: 'Evidence score' },
-  { value: 'contact', label: 'Contact score' },
-  { value: 'gate', label: 'Gate pass/fail' },
+  { value: 'fit', label: 'Fit signal' },
+  { value: 'evidence', label: 'Evidence support' },
+  { value: 'contact', label: 'Contact readiness' },
+  { value: 'gate', label: 'Ready tier first' },
 ];
 
 export function sortScoutLeads(leads: ScoutLead[], sortMode: LeadSortMode): ScoutLead[] {
@@ -301,7 +321,11 @@ export function isPersonLead(row: ScoutResultRow): row is ScoutLead {
   return row.candidate_category === undefined || row.candidate_category === 'person_lead';
 }
 
-export function getValidationBucket(row: ScoutResultRow): ValidationBucket {
+export function getOutputTier(row: ScoutResultRow): OutputTier {
+  if (row.tier) {
+    return row.tier;
+  }
+
   if (row.candidate_category === 'organization_only') {
     return 'organization_only';
   }
@@ -311,10 +335,50 @@ export function getValidationBucket(row: ScoutResultRow): ValidationBucket {
   }
 
   if (row.candidate_category === 'failed') {
+    return 'failed';
+  }
+
+  return 'gate_passed' in row && row.gate_passed ? 'high_trust_usable' : 'review';
+}
+
+export function getValidationBucket(row: ScoutResultRow): ValidationBucket {
+  const tier = getOutputTier(row);
+  if (tier === 'organization_only') {
+    return 'organization_only';
+  }
+
+  if (tier === 'not_found') {
+    return 'not_found';
+  }
+
+  if (tier === 'failed' || tier === 'review') {
     return 'noisy_failed';
   }
 
-  return 'gate_passed' in row && row.gate_passed ? 'usable' : 'noisy_failed';
+  return 'usable';
+}
+
+export function buildTierDistribution(
+  rows: ScoutResultRow[],
+  metricsDistribution?: Partial<Record<OutputTier, number>>,
+): Record<OutputTier, number> {
+  const distribution = OUTPUT_TIERS.reduce(
+    (acc, tier) => {
+      acc[tier] = metricsDistribution?.[tier] ?? 0;
+      return acc;
+    },
+    {} as Record<OutputTier, number>,
+  );
+
+  if (metricsDistribution) {
+    return distribution;
+  }
+
+  for (const row of rows) {
+    distribution[getOutputTier(row)] += 1;
+  }
+
+  return distribution;
 }
 
 function getResultRowScore(row: ScoutResultRow, sortMode: LeadSortMode): number {
