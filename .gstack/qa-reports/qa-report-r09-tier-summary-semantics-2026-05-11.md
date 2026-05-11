@@ -1,9 +1,9 @@
 # QA Report - R09 Tier Summary, Score Semantics, And Reason Language Reset
 
-**Date:** 2026-05-11  
-**QA agent:** prompt-b-r09-qa  
-**Branch:** `feat/reset-r09-tier-summary-semantics`  
-**Integration branch:** `rebuild/validated-leads-loop`  
+**Date:** 2026-05-11
+**QA agent:** prompt-b-r09-qa
+**Branch:** `feat/reset-r09-tier-summary-semantics`
+**Integration branch:** `rebuild/validated-leads-loop`
 **Decision:** pass - ready to merge to `rebuild/validated-leads-loop`
 
 ## Current State Proven
