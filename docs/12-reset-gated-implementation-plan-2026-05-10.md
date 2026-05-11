@@ -5,9 +5,10 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, accepted post-R09A hold with R09B remediation active.
-**Next Prompt A feature:** None. R09B is implemented and waiting for Prompt B QA/merge.
-**Current Prompt B handoff:** QA `feat/reset-r09b-contact-evidence-acquisition`; verify the branch contains only R09B scope, rerun the required R09B core/API suites plus `git diff --check`, inspect `audits/raw/reset-2026-05-10/r09b/replay/quality-summary.json`, confirm no unsupported/missing/inaccessible/guessed contacts become CRM-ready, confirm direct email and explicit domain-pattern evidence are the only promotion paths, confirm READY blockers are reported for missing-contact and organization-only rows, confirm runner timeouts produce partial artifacts, and confirm no RG4/UI/export/main-sync scope creep landed. If QA passes, merge only to `rebuild/validated-leads-loop` and hand off Prompt C for RG3 re-audit; do not unlock RG4 from feature QA alone.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, accepted post-R09A hold; R09B remediation is complete and Prompt C audit is pending.
+**Next Prompt A feature:** None. R09B is merged and the current gate is waiting for Prompt C audit.
+**Current Prompt B handoff:** None. R09B has already passed QA and should merge only to `rebuild/validated-leads-loop`.
+**Current Prompt C handoff:** Audit `RG3 - Validation, Conflict, And Gate Semantics` on `rebuild/validated-leads-loop`; confirm R07-R09B are merged, rerun the gate evaluation/audit, and write `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`. Do not unlock RG4 from feature QA alone.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -208,7 +209,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R08 | Tiering engine, field validator, and conflict resolver | merged_to_rebuild_branch | `feat/reset-r08-tier-validation-conflicts` | core tests |
 | R09 | Tier summary, score semantics, and reason language reset | merged_to_rebuild_branch | `feat/reset-r09-tier-summary-semantics` | core + web tests |
 | R09A | Live value recovery and benchmark funnel diagnosis | merged_to_rebuild_branch | `feat/reset-r09a-live-value-recovery` | core/API + live/replay benchmark artifacts |
-| R09B | Contact and evidence acquisition pass | waiting_prompt_b_qa | `feat/reset-r09b-contact-evidence-acquisition` | core/API + live/replay contact evidence artifacts |
+| R09B | Contact and evidence acquisition pass | merged_to_rebuild_branch | `feat/reset-r09b-contact-evidence-acquisition` | core/API + live/replay contact evidence artifacts |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | blocked | `feat/reset-r12-evidence-dossier-review` | browser |

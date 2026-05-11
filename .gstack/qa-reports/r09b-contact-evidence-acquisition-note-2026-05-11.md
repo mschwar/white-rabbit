@@ -3,7 +3,7 @@
 **Feature:** R09B - Contact and evidence acquisition pass  
 **Branch:** `feat/reset-r09b-contact-evidence-acquisition`  
 **Date:** 2026-05-11  
-**Status:** Prompt A implementation complete, pending Prompt B QA/merge
+**Status:** Prompt A implementation complete; Prompt B QA passed and merge prepared
 
 ## What Changed
 
@@ -33,3 +33,4 @@ Replay artifacts are saved under `audits/raw/reset-2026-05-10/r09b/replay/`.
 
 - `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py tests/test_coverage.py tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py tests/test_live_benchmark_runner.py tests/test_quality_report.py -q` (`74 passed`)
 - `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`45 passed`, existing datetime deprecation warnings)
+- QA report: `.gstack/qa-reports/qa-report-r09b-contact-evidence-acquisition-2026-05-11.md`
