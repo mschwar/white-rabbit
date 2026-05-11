@@ -1,14 +1,14 @@
 # STATUS
 
-**Last updated:** 2026-05-11 by Codex prompt-b-r09c
-**Branch:** rebuild/validated-leads-loop
-**Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. Production web now has the required internal API token after the post-promotion Vercel env fix.
+**Last updated:** 2026-05-11 by Codex prompt-c-rg3-tavily-rerun
+**Branch:** audit/reset-rg3-tavily-rerun
+**Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Lee/Thomas operator feedback now makes low-volume broad runs a hard failure: Scout returning 3 rows and Full returning 4 rows is not useful. Matt has clarified that 10-25 was only the first escape from that failure; the reset now targets live-demo-safe high-volume transparent tiering for broad queries. The post-R09C Tavily-credit Prompt C re-run completed and recorded `hold`: live artifacts exist, but the suite still produced `0` high-trust usable rows, `0` contact-quality passes, and two broad runner timeouts.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt C audit for `RG3 - Validation, Conflict, And Gate Semantics` on `rebuild/validated-leads-loop`. R09B and R09C are both merged; RG4, the `DESIGN.md` mockup preflight, R10-R12, export work, and any `main` promotion remain blocked unless that audit records `advance`.
+**Next pointer:** No Prompt A/B/C assignment is currently ready. RG3 remains `in_progress / gate_hold` after the Tavily-credit re-run; RG4, the `DESIGN.md` mockup preflight, R10-R12, export work, dogfood, and any `main` promotion remain blocked unless Matt explicitly accepts or revises the next RG3 remediation path.
 
 **Design direction handoff:** `DESIGN.md` is now captured as the future RG4 visual direction authority. A refreshed RG4 mockup/design preflight exists on `codex/rg4-design-preflight-2026-05-11` at commit `5c5a10f`, with six rendered screens under `docs/mockups/rg4-design-preflight-2026-05-11/` on that branch. It is an unmerged inspection artifact only; it does not unlock RG4. R10-R12 remain blocked until a future RG3 Prompt C advances and Matt approves the refreshed mockups for production implementation.
 
@@ -24,17 +24,17 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** No Prompt A feature is ready. `R09C - Deep multi-source evidence acquisition and tier calibration` is now merged to `rebuild/validated-leads-loop`, so the next valid step is Prompt C for RG3. This remains an RG3 remediation gate state, not RG4. Do not unlock RG4 or sync `main` unless Prompt C records `advance`.
+**Next feature pointer:** No Prompt A feature is ready. `R09C - Deep multi-source evidence acquisition and tier calibration` is merged to `rebuild/validated-leads-loop`, and the post-R09C Tavily-credit Prompt C re-run recorded `hold`. This remains an RG3 remediation gate state, not RG4. Do not unlock RG4 or sync `main` unless a future Matt-approved gate decision records `advance`.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
 **Final product mockup gate:** `DESIGN.md` is the future RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains the product-structure reference. A preflight artifact exists on `codex/rg4-design-preflight-2026-05-11`, but it remains unmerged and non-unlocking while RG3 is held. Matt must approve refreshed mockups after RG3 advances before production UI implementation.
 
-**Current feature branch QA status:** R07, R08, R09, R09A, R09B, and R09C are merged to `rebuild/validated-leads-loop`. Prompt B QA passed for R09C on `feat/reset-r09c-deep-multisource-evidence-tier-calibration`, and the branch was merged back into `rebuild/validated-leads-loop`. The post-R09A RG3 Prompt C re-audit remains the latest accepted gate decision (`hold`), but the accepted remediation slice is now complete. RG3 is ready for a fresh Prompt C audit; downstream RG4 work remains blocked unless that audit records `advance`.
+**Current feature branch QA status:** R07, R08, R09, R09A, R09B, and R09C are merged to `rebuild/validated-leads-loop`. Prompt B QA passed for R09C on `feat/reset-r09c-deep-multisource-evidence-tier-calibration`, and the branch was merged back into `rebuild/validated-leads-loop`. The post-R09C Tavily-credit RG3 Prompt C re-audit is now the latest gate decision (`hold`). Downstream RG4 work remains blocked unless a future Matt-approved gate decision records `advance`.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
-**Latest gate acceptance:** W4 accepted on 2026-05-10. W5 remains explicitly held on `rebuild/validated-leads-loop`; RG0 advanced on 2026-05-10 as a control-plane reset audit; RG1 advanced on 2026-05-10 as a benchmark-harness audit; RG2 advanced on 2026-05-11 as a search/source coverage audit; RG3 held on 2026-05-11 as a validation/value audit; Matt accepted the post-R09A RG3 hold, and the full R09B+R09C remediation slice is now merged and awaiting a fresh Prompt C decision; and W6 remains blocked until the visible operator loop is proven:
+**Latest gate acceptance:** W4 accepted on 2026-05-10. W5 remains explicitly held on `rebuild/validated-leads-loop`; RG0 advanced on 2026-05-10 as a control-plane reset audit; RG1 advanced on 2026-05-10 as a benchmark-harness audit; RG2 advanced on 2026-05-11 as a search/source coverage audit; RG3 held again on 2026-05-11 after the post-R09C Tavily-credit Prompt C re-run; and W6 remains blocked until the visible operator loop is proven:
 
 - W4 benchmarks and quality reporting: `.gstack/qa-reports/gate-w4-benchmarks-quality.md`
 - W5 operator loop export hold report: `.gstack/qa-reports/gate-w5-operator-loop-export.md`
@@ -43,7 +43,7 @@
 - RG2 search/source coverage gate report: `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`
 - RG3 validation semantics hold report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 remains `in_progress / gate_hold`, but both remediation features R09B and R09C are now merged and the next valid step is Prompt C; and RG4 remains blocked.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 remains `in_progress / gate_hold` after the post-R09C Tavily-credit Prompt C re-run; and RG4 remains blocked.
 
 Prior accepted gates:
 
@@ -68,6 +68,22 @@ Prior accepted gates:
 **Production URL note:** Use the stable production alias `https://white-rabbit-ten.vercel.app/`, not one-off deployment URLs like `https://white-rabbit-7kw7lh6ri-matts-projects-06539e54.vercel.app/`. Vercel deployment URLs are immutable snapshots; `7kw7lh6ri` was created before `WR_API_INTERNAL_TOKEN` existed in Production and can continue to show the old missing-token error even after the alias is fixed.
 
 **Latest handoff:**
+
+Gate: RG3 - Validation, Conflict, And Gate Semantics
+Branch: `audit/reset-rg3-tavily-rerun`
+Status: `gate_hold`
+Why it exists: Matt asked to rerun Prompt C after Tavily credits were exhausted in the prior attempt. This audit proves the current post-R09C state from `rebuild/validated-leads-loop`, reruns the live benchmark gate with Tavily available, and records whether RG3 can advance.
+What happened: Prompt C confirmed R07-R09C are merged, confirmed RG3 had not already advanced, ran the required core/API suites and `git diff --check`, started the local API with inherited OpenAI/Tavily env cleared before loading `apps/api/.env`, and ran the live Scout benchmark suite against `http://127.0.0.1:8018`.
+Decision: `hold`
+Why: Tavily credits were available enough to produce live artifacts, but the suite still produced `0` high-trust usable rows and `0` contact-quality passes across every case/theme. Healthcare and manufacturing reached 50 categorized rows, but Lee and finance timed out with HTTP `599`, and no output was export-ready for Thomas/Lee.
+Tests or QA run:
+- `cd packages/core && uv run pytest tests/test_query_planner.py tests/test_search.py tests/test_coverage.py tests/test_source_validation.py tests/test_contact_status.py tests/test_scoring.py tests/test_orchestrator.py tests/test_live_benchmark_runner.py tests/test_quality_report.py -q` (`76 passed`)
+- `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`45 passed`, existing datetime deprecation warnings)
+- `git diff --check` (passed before audit edits)
+- `cd packages/core && uv run python -m core.live_benchmark_runner --api-base-url http://127.0.0.1:8018 --output-dir ../../audits/raw/reset-2026-05-10/rg3/live-tavily-rerun --mode scout --api-token [redacted]` (completed with partial timeout artifacts; 2/6 cases passed, 4/6 failed product-quality checks)
+Artifacts: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`; `audits/raw/reset-2026-05-10/rg3/command-output-tavily-rerun.md`; `audits/raw/reset-2026-05-10/rg3/evidence-notes-tavily-rerun.md`; `audits/raw/reset-2026-05-10/rg3/live-tavily-rerun/`.
+Next pointer at this time: None. Do not start RG4, mockup preflight, R10-R12, export work, dogfood, or `main` promotion unless Matt explicitly accepts or revises another RG3 remediation path.
+Open questions: Whether Matt wants another RG3 remediation pass focused on runner reliability plus public-web contact acquisition, or a product-positioning/vendor decision if source-backed public contact evidence remains unavailable for the benchmark themes.
 
 Feature: R09C - Deep multi-source evidence acquisition and tier calibration
 Branch: `feat/reset-r09c-deep-multisource-evidence-tier-calibration`
@@ -375,6 +391,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-11 | prompt-c-rg3-tavily-rerun (Codex) | Re-ran Prompt C for `RG3 - Validation, Conflict, And Gate Semantics` on `audit/reset-rg3-tavily-rerun`: proved R07-R09C are merged into `rebuild/validated-leads-loop`, confirmed RG3 had not advanced, ran the required core/API suites plus live Scout benchmark artifacts with Tavily available, and recorded `hold`. Live output still has `0` high-trust usable rows and `0` contact-quality passes across every case/theme, with Lee and finance timing out at HTTP `599`. Report saved at `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`; RG4/R10/export/main remain blocked. |
 | 2026-05-11 | prompt-b-r09c-deep-evidence (Codex) | QA-passed `R09C - Deep multi-source evidence acquisition and tier calibration` on `feat/reset-r09c-deep-multisource-evidence-tier-calibration`: verified `git diff --check`, the required core/API suites, replay artifact semantics, non-CRM-ready handling for missing/unsupported/conflicting contacts, theme summary contact-yield observability, northstar drift alignment, and scope boundaries. Report saved at `.gstack/qa-reports/qa-report-r09c-deep-multisource-evidence-tier-calibration-2026-05-11.md`. R09C is merged to `rebuild/validated-leads-loop`; RG3 is now ready for Prompt C audit. |
 | 2026-05-11 | rg3-r09c-queue-insert (Codex) | Updated the reset control plane so R09B completion does not trigger Prompt C. Added `R09C - Deep multi-source evidence acquisition and tier calibration` as the single ready RG3 remediation feature, kept RG3 in `in_progress / gate_hold`, added ADR-018, and blocked RG4/R10-R12/export/main until both R09B and R09C complete and a future RG3 Prompt C records `advance`. |
 | 2026-05-11 | prompt-b-r09b-contact-evidence (Codex) | QA-passed `R09B - Contact and evidence acquisition pass` on `feat/reset-r09b-contact-evidence-acquisition`: verified `git diff --check`, required core/API suites, replay artifact semantics, READY blocker reporting, northstar drift alignment, and the branch scope. QA report saved at `.gstack/qa-reports/qa-report-r09b-contact-evidence-acquisition-2026-05-11.md`; branch is ready to merge only to `rebuild/validated-leads-loop`. RG4, export, dogfood, and `main` remain blocked until a future RG3 Prompt C records `advance`. |

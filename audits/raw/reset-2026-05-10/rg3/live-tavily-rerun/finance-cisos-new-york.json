@@ -1,0 +1,11 @@
+{
+  "benchmark_id": "finance-cisos-new-york",
+  "error": "Runner timeout: ",
+  "error_code": "runner_timeout",
+  "leads": [],
+  "mode": "scout",
+  "partial_artifact": true,
+  "prompt_label": "Finance CISOs in New York",
+  "query": "finance CISOs at financial services firms in New York",
+  "runner_elapsed_seconds": 120.032
+}

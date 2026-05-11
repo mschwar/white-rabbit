@@ -1,0 +1,11 @@
+{
+  "benchmark_id": "lee-commodity-buyers",
+  "error": "Runner timeout: ",
+  "error_code": "runner_timeout",
+  "leads": [],
+  "mode": "scout",
+  "partial_artifact": true,
+  "prompt_label": "Lee commodity buyers prompt",
+  "query": "commodity buyers at retail lumber yards in Washington",
+  "runner_elapsed_seconds": 120.037
+}

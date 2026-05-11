@@ -5,10 +5,10 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B and R09C are now merged to `rebuild/validated-leads-loop`; RG3 remains held until a fresh Prompt C re-audits the gate.
-**Next Prompt A feature:** None. No new feature is ready while RG3 awaits Prompt C.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B and R09C are merged to `rebuild/validated-leads-loop`; the post-R09C Tavily-credit Prompt C re-run recorded `hold`.
+**Next Prompt A feature:** None. No new feature is ready while RG3 remains held.
 **Current Prompt B handoff:** None. R09C Prompt B QA is complete and merged to `rebuild/validated-leads-loop`.
-**Current Prompt C handoff:** Audit RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop`. Confirm R07-R09C are merged, run the RG3 full evaluation/audit below, and update `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`. Do not unlock RG4, refreshed mockups, R10-R12, R13-R15, export work, dogfood, or `main` unless Prompt C records `advance`.
+**Current Prompt C handoff:** None. RG3 was re-audited after Tavily credits were available and remains held; do not rerun a completed gate without Matt explicitly requesting another Prompt C pass.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -513,6 +513,15 @@ R09C Prompt A implementation handoff:
 - Prompt B verification: required R09C core suite (`76 passed`), API suite (`45 passed`, existing datetime warnings), `git diff --check`, and replay artifact inspection for `audits/raw/reset-2026-05-10/r09c/replay/deep-contact-evidence-pass.json` plus `quality-summary.json`.
 - Prompt B evidence summary: deeper multi-source evidence can promote promising rows only when public-web corroboration finds a direct person contact, keeps missing-contact rows in `review`, downgrades stale/conflicting rows to `failed`, and exposes contact acquisition plus high-trust yield in theme summaries without relaxing READY/high-trust precision.
 - Exact Prompt C handoff: Audit RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop`. Confirm R07-R09C are merged, run the RG3 full evaluation/audit below, and update `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`. Do not unlock RG4, refreshed mockups, R10-R12, R13-R15, export work, dogfood, or `main` unless Prompt C records `advance`.
+
+Post-R09C Prompt C Tavily-credit re-run result:
+
+- Branch: `audit/reset-rg3-tavily-rerun`.
+- Decision: `hold`.
+- Report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`.
+- Raw evidence: `audits/raw/reset-2026-05-10/rg3/command-output-tavily-rerun.md`, `audits/raw/reset-2026-05-10/rg3/evidence-notes-tavily-rerun.md`, and `audits/raw/reset-2026-05-10/rg3/live-tavily-rerun/`.
+- Reason: Tavily credits were available enough to produce live artifacts, but the current live suite still produced `0` high-trust usable rows and `0` contact-quality passes across every case/theme. Healthcare and manufacturing reached 50 categorized rows, but Lee and finance timed out with HTTP `599` artifacts, and no output was export-ready.
+- Queue consequence: RG3 remains `in_progress / gate_hold`. No downstream Prompt A, RG4 mockup preflight, R10-R12, export work, dogfood, or `main` promotion is unlocked. Do not rerun this completed gate unless Matt explicitly requests another Prompt C pass.
 
 R09C Prompt A draft for final instruction fill-in:
 
