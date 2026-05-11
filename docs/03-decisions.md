@@ -280,9 +280,22 @@ The product may still use autonomous search, Tavily, browser automation, expensi
 
 ---
 
+## ADR-020 — Accepted post-R09H hold requires API startup proof before more value work
+
+**Date:** 2026-05-11
+**Status:** Locked
+
+**Context.** The post-R09H RG3 Prompt C audit held. The source-assisted manual-oracle replay now proves the offline workbook pattern: 17 rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, sales-first export fields, and zero unsupported CRM-ready rows. But the live operator loop remains unproven because the local API stayed in startup, `/health` returned `000`, no fresh live benchmark suite completed, and the latest complete saved live suite still has `0` high-trust usable rows and `0` contact-quality passes. Matt accepted the hold.
+
+**Decision.** Keep RG3 in `gate_hold` and insert one narrow remediation feature before any further data-quality, UI, export, dogfood, or `main` work: `R09I - API startup and live proof harness`. R09I must make API startup and live verification deterministic enough for future Prompt C audits to trust the evidence. It must split basic process health from readiness/vendor checks, expose actionable readiness diagnostics, make live benchmark startup wait on health/readiness with clear timeouts, and capture startup failure artifacts instead of ambiguous `000` results.
+
+**Consequences.** Prompt A has exactly one valid next feature: R09I. RG4, refreshed mockups, R10-R12, export work, dogfood, and `main` promotion remain blocked. R09I cannot pass by changing lead-quality logic, relaxing READY/high-trust semantics, implementing UI/export, or hiding startup failures. Its job is to make the live loop observable and auditable so the next RG3 Prompt C can distinguish product-value failure from API/runtime failure.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-020, ADR-021, ...).
+1. Pick the next ADR number (ADR-021, ADR-022, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.
