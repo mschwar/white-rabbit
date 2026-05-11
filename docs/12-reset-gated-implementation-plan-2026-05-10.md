@@ -6,8 +6,8 @@
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
 **Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, in_progress / gate_hold. R09B and R09C are merged to `rebuild/validated-leads-loop`; the post-R09C live re-run remained held, and Matt accepted a source-assisted remediation pivot based on Lee's April New Mexico school-district IT evidence. R09D and R09E passed QA and are merged to `rebuild/validated-leads-loop`.
-**Next Prompt A feature:** `R09F - Source-assisted lead compiler`.
-**Current Prompt B handoff:** None. R09E passed Prompt B QA.
+**Next Prompt A feature:** None while R09F waits for Prompt B QA.
+**Current Prompt B handoff:** QA `feat/reset-r09f-source-assisted-lead-compiler`; merge only to `rebuild/validated-leads-loop` if it passes; keep R09G-R09H/RG4/R10-R12/export/dogfood/main blocked.
 **Current Prompt C handoff:** None. Do not rerun RG3 Prompt C until R09D-R09H are complete and merged.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
@@ -233,7 +233,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R09C | Deep multi-source evidence acquisition and tier calibration | merged_to_rebuild_branch | `feat/reset-r09c-deep-multisource-evidence-tier-calibration` | core/API + live/replay evidence/tier calibration artifacts |
 | R09D | April NM evidence fixture and manual-oracle replay | merged_to_rebuild_branch | `feat/reset-r09d-april-nm-manual-oracle` | core tests + sanitized evidence fixtures |
 | R09E | K-12 source map and public roster collector | passed_prompt_b_qa | `feat/reset-r09e-k12-source-map-roster-collector` | core tests + source-map replay |
-| R09F | Source-assisted lead compiler | ready | `feat/reset-r09f-source-assisted-lead-compiler` | core/API tests + replay artifacts |
+| R09F | Source-assisted lead compiler | implemented_pending_qa | `feat/reset-r09f-source-assisted-lead-compiler` | core/API tests + replay artifacts |
 | R09G | Research-workbook tiering and export semantics | blocked | `feat/reset-r09g-research-workbook-tiering` | core/web or export tests as applicable |
 | R09H | Manual-oracle proof replay gate packet | blocked | `feat/reset-r09h-manual-oracle-proof-packet` | replay + live/source-assisted artifacts |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
@@ -665,6 +665,17 @@ R09F expected scope after R09E passes:
 - Add a source-assisted compiler path that can accept source URLs, source packs, pasted search/chatbot output, or seed CSV rows.
 - Convert those inputs into canonical candidate rows with field-level evidence, dedupe, source IDs, contact status, and blocker notes.
 - Preserve the strict READY/high-trust contract while making `review` and `manual_lookup` rows useful.
+
+R09F Prompt A result:
+
+- Branch: `feat/reset-r09f-source-assisted-lead-compiler`.
+- Status: `implemented_pending_qa`.
+- Implemented only the R09F source-assisted compiler slice: `packages/core/src/core/source_assisted_compiler.py`, `packages/core/tests/test_source_assisted_compiler.py`, a small `ManualOracleRow` metadata extension in `packages/core/src/core/manual_oracle.py`, and `audits/raw/reset-2026-05-10/r09f/source-assisted-compiler-replay.json`.
+- Change summary: added a compiler path for source URLs, source packs, pasted search/chatbot output, seed CSV rows, the R09D manual-oracle fixture, and the R09E source map. The compiler emits canonical candidate rows with deterministic source/candidate IDs, source family/reputation metadata, field evidence for name/title/organization/email/source, contact status, blocker notes, next action, dedupe reporting, and strict downgrades so missing/unsupported contacts cannot remain `high_trust_usable`.
+- Verification run by Prompt A: `cd packages/core && uv run pytest tests/test_source_assisted_compiler.py tests/test_manual_oracle.py tests/test_k12_source_map.py -q` (`12 passed`); `cd packages/core && uv run pytest tests/test_source_validation.py -q` (`6 passed`); `cd packages/core && uv run pytest tests/test_contact_status.py -vv -s` (`15 passed`); `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`45 passed`, existing datetime deprecation warnings); `git diff --check -- STATUS.md docs/12-reset-gated-implementation-plan-2026-05-10.md packages/core/src/core/manual_oracle.py` (passed); `git diff --cached --check` (passed after staging the R09F files); replay artifact generated and validated as JSON.
+- Evidence artifact: `audits/raw/reset-2026-05-10/r09f/source-assisted-compiler-replay.json`, reporting 17 compiled rows, 10 `high_trust_usable` verified-contact rows, 7 `manual_lookup` rows, no unsupported READY contacts, no generic search source URLs, source IDs on every row, and manual-oracle structure reproduced.
+- Prompt A scope note: no R09G workbook/export tier semantics, UI, API endpoint, persistence, dogfood, Prompt C, RG4, R10-R12, or `main` changes.
+- Exact Prompt B handoff: QA `feat/reset-r09f-source-assisted-lead-compiler`; verify the branch contains only R09F scope; rerun the R09F core tests plus API suite and staged/full diff hygiene as the checkout allows; inspect `audits/raw/reset-2026-05-10/r09f/source-assisted-compiler-replay.json`; confirm it reports 17 compiled rows, 10 `high_trust_usable` verified-contact rows, 7 `manual_lookup` rows, no unsupported READY contacts, no generic search source URLs, source IDs on every row, field evidence on name/title/organization/email/source, duplicate handling for source packs/seed rows, and no R09G export semantics, UI, persistence, dogfood, Prompt C, RG4, or `main` sync scope. If QA passes, merge only to `rebuild/validated-leads-loop`; keep R09G-R09H/RG4/R10-R12/export/dogfood/main blocked.
 
 R09G expected scope after R09F passes:
 

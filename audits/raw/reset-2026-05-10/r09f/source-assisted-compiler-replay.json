@@ -1,0 +1,1540 @@
+{
+  "blocked_source_urls": [],
+  "candidate_count": 17,
+  "candidate_rows": [
+    {
+      "blocker_notes": "",
+      "candidate_category": "person_lead",
+      "candidate_id": "r09frow_1b05894baec2c3d2",
+      "contact_status": "verified_found",
+      "email": "",
+      "email_status": "verified_found",
+      "expected_tier": "high_trust_usable",
+      "field_evidence": {
+        "email": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_b3460051559bf2c2",
+          "source_url": "https://www.aps.edu/",
+          "status": "verified_found"
+        },
+        "name": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Named public contact retained as a sanitized label.",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_b3460051559bf2c2",
+          "source_url": "https://www.aps.edu/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Albuquerque Public Schools",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_b3460051559bf2c2",
+          "source_url": "https://www.aps.edu/",
+          "status": "supported"
+        },
+        "source": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "R09E roster-first source map seed.",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_b3460051559bf2c2",
+          "source_url": "https://www.aps.edu/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Technology leadership contact",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_b3460051559bf2c2",
+          "source_url": "https://www.aps.edu/",
+          "status": "supported"
+        }
+      },
+      "input_method": "manual_oracle_row_replay",
+      "input_row_id": "april-nm-verified-01",
+      "lead_name": "Sanitized public contact 01",
+      "name": "Sanitized public contact 01",
+      "next_action": "Ready only if future replay preserves verified public contact evidence and source support.",
+      "organization": "Albuquerque Public Schools",
+      "phone": "",
+      "primary_filter_reason": "READY: source-assisted row has field support and usable contact evidence.",
+      "source_family": "district_official_homepage",
+      "source_id": "k12src_b3460051559bf2c2",
+      "source_ids": [
+        "k12src_b3460051559bf2c2"
+      ],
+      "source_reputation_signal": "official_district",
+      "source_url": "https://www.aps.edu/",
+      "tier": "high_trust_usable",
+      "title": "Technology leadership contact",
+      "validation_notes": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+      "verification_note": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted."
+    },
+    {
+      "blocker_notes": "",
+      "candidate_category": "person_lead",
+      "candidate_id": "r09frow_b9f02e3e03d41dae",
+      "contact_status": "verified_found",
+      "email": "",
+      "email_status": "verified_found",
+      "expected_tier": "high_trust_usable",
+      "field_evidence": {
+        "email": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_b7f94b8c8674c59f",
+          "source_url": "https://www.rrps.net/",
+          "status": "verified_found"
+        },
+        "name": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Named public contact retained as a sanitized label.",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_b7f94b8c8674c59f",
+          "source_url": "https://www.rrps.net/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Rio Rancho Public Schools",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_b7f94b8c8674c59f",
+          "source_url": "https://www.rrps.net/",
+          "status": "supported"
+        },
+        "source": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "R09E roster-first source map seed.",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_b7f94b8c8674c59f",
+          "source_url": "https://www.rrps.net/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Technology leadership contact",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_b7f94b8c8674c59f",
+          "source_url": "https://www.rrps.net/",
+          "status": "supported"
+        }
+      },
+      "input_method": "manual_oracle_row_replay",
+      "input_row_id": "april-nm-verified-02",
+      "lead_name": "Sanitized public contact 02",
+      "name": "Sanitized public contact 02",
+      "next_action": "Ready only if future replay preserves verified public contact evidence and source support.",
+      "organization": "Rio Rancho Public Schools",
+      "phone": "",
+      "primary_filter_reason": "READY: source-assisted row has field support and usable contact evidence.",
+      "source_family": "district_official_homepage",
+      "source_id": "k12src_b7f94b8c8674c59f",
+      "source_ids": [
+        "k12src_b7f94b8c8674c59f"
+      ],
+      "source_reputation_signal": "official_district",
+      "source_url": "https://www.rrps.net/",
+      "tier": "high_trust_usable",
+      "title": "Technology leadership contact",
+      "validation_notes": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+      "verification_note": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted."
+    },
+    {
+      "blocker_notes": "",
+      "candidate_category": "person_lead",
+      "candidate_id": "r09frow_1197dd4f691b153c",
+      "contact_status": "verified_found",
+      "email": "",
+      "email_status": "verified_found",
+      "expected_tier": "high_trust_usable",
+      "field_evidence": {
+        "email": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_05f001417dc266b2",
+          "source_url": "https://www.laschools.net/",
+          "status": "verified_found"
+        },
+        "name": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Named public contact retained as a sanitized label.",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_05f001417dc266b2",
+          "source_url": "https://www.laschools.net/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Los Alamos Public Schools",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_05f001417dc266b2",
+          "source_url": "https://www.laschools.net/",
+          "status": "supported"
+        },
+        "source": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "R09E roster-first source map seed.",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_05f001417dc266b2",
+          "source_url": "https://www.laschools.net/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Technology leadership contact",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_05f001417dc266b2",
+          "source_url": "https://www.laschools.net/",
+          "status": "supported"
+        }
+      },
+      "input_method": "manual_oracle_row_replay",
+      "input_row_id": "april-nm-verified-03",
+      "lead_name": "Sanitized public contact 03",
+      "name": "Sanitized public contact 03",
+      "next_action": "Ready only if future replay preserves verified public contact evidence and source support.",
+      "organization": "Los Alamos Public Schools",
+      "phone": "",
+      "primary_filter_reason": "READY: source-assisted row has field support and usable contact evidence.",
+      "source_family": "district_official_homepage",
+      "source_id": "k12src_05f001417dc266b2",
+      "source_ids": [
+        "k12src_05f001417dc266b2"
+      ],
+      "source_reputation_signal": "official_district",
+      "source_url": "https://www.laschools.net/",
+      "tier": "high_trust_usable",
+      "title": "Technology leadership contact",
+      "validation_notes": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+      "verification_note": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted."
+    },
+    {
+      "blocker_notes": "",
+      "candidate_category": "person_lead",
+      "candidate_id": "r09frow_a53c00257366a85c",
+      "contact_status": "verified_found",
+      "email": "",
+      "email_status": "verified_found",
+      "expected_tier": "high_trust_usable",
+      "field_evidence": {
+        "email": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_1295521e542136f0",
+          "source_url": "https://www.hobbsschools.net/",
+          "status": "verified_found"
+        },
+        "name": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Named public contact retained as a sanitized label.",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_1295521e542136f0",
+          "source_url": "https://www.hobbsschools.net/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Hobbs Municipal Schools",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_1295521e542136f0",
+          "source_url": "https://www.hobbsschools.net/",
+          "status": "supported"
+        },
+        "source": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "R09E roster-first source map seed.",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_1295521e542136f0",
+          "source_url": "https://www.hobbsschools.net/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Technology leadership contact",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_1295521e542136f0",
+          "source_url": "https://www.hobbsschools.net/",
+          "status": "supported"
+        }
+      },
+      "input_method": "manual_oracle_row_replay",
+      "input_row_id": "april-nm-verified-04",
+      "lead_name": "Sanitized public contact 04",
+      "name": "Sanitized public contact 04",
+      "next_action": "Ready only if future replay preserves verified public contact evidence and source support.",
+      "organization": "Hobbs Municipal Schools",
+      "phone": "",
+      "primary_filter_reason": "READY: source-assisted row has field support and usable contact evidence.",
+      "source_family": "district_official_homepage",
+      "source_id": "k12src_1295521e542136f0",
+      "source_ids": [
+        "k12src_1295521e542136f0"
+      ],
+      "source_reputation_signal": "official_district",
+      "source_url": "https://www.hobbsschools.net/",
+      "tier": "high_trust_usable",
+      "title": "Technology leadership contact",
+      "validation_notes": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+      "verification_note": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted."
+    },
+    {
+      "blocker_notes": "",
+      "candidate_category": "person_lead",
+      "candidate_id": "r09frow_7bcfd68e5989620b",
+      "contact_status": "verified_found",
+      "email": "",
+      "email_status": "verified_found",
+      "expected_tier": "high_trust_usable",
+      "field_evidence": {
+        "email": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_3c30a1f0f04a91b9",
+          "source_url": "https://www.fmsk12.net/",
+          "status": "verified_found"
+        },
+        "name": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Named public contact retained as a sanitized label.",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_3c30a1f0f04a91b9",
+          "source_url": "https://www.fmsk12.net/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Farmington Municipal Schools",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_3c30a1f0f04a91b9",
+          "source_url": "https://www.fmsk12.net/",
+          "status": "supported"
+        },
+        "source": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "R09E roster-first source map seed.",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_3c30a1f0f04a91b9",
+          "source_url": "https://www.fmsk12.net/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Technology leadership contact",
+          "source_family": "district_official_homepage",
+          "source_id": "k12src_3c30a1f0f04a91b9",
+          "source_url": "https://www.fmsk12.net/",
+          "status": "supported"
+        }
+      },
+      "input_method": "manual_oracle_row_replay",
+      "input_row_id": "april-nm-verified-05",
+      "lead_name": "Sanitized public contact 05",
+      "name": "Sanitized public contact 05",
+      "next_action": "Ready only if future replay preserves verified public contact evidence and source support.",
+      "organization": "Farmington Municipal Schools",
+      "phone": "",
+      "primary_filter_reason": "READY: source-assisted row has field support and usable contact evidence.",
+      "source_family": "district_official_homepage",
+      "source_id": "k12src_3c30a1f0f04a91b9",
+      "source_ids": [
+        "k12src_3c30a1f0f04a91b9"
+      ],
+      "source_reputation_signal": "official_district",
+      "source_url": "https://www.fmsk12.net/",
+      "tier": "high_trust_usable",
+      "title": "Technology leadership contact",
+      "validation_notes": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+      "verification_note": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted."
+    },
+    {
+      "blocker_notes": "",
+      "candidate_category": "person_lead",
+      "candidate_id": "r09frow_5d1fa95eea0dbe75",
+      "contact_status": "verified_found",
+      "email": "",
+      "email_status": "verified_found",
+      "expected_tier": "high_trust_usable",
+      "field_evidence": {
+        "email": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_38061763db043bf4",
+          "source_url": "https://www.carlsbadschools.net/",
+          "status": "verified_found"
+        },
+        "name": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Named public contact retained as a sanitized label.",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_38061763db043bf4",
+          "source_url": "https://www.carlsbadschools.net/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Carlsbad Municipal School District",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_38061763db043bf4",
+          "source_url": "https://www.carlsbadschools.net/",
+          "status": "supported"
+        },
+        "source": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "official district or staff source",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_38061763db043bf4",
+          "source_url": "https://www.carlsbadschools.net/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Technology leadership contact",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_38061763db043bf4",
+          "source_url": "https://www.carlsbadschools.net/",
+          "status": "supported"
+        }
+      },
+      "input_method": "manual_oracle_row_replay",
+      "input_row_id": "april-nm-verified-06",
+      "lead_name": "Sanitized public contact 06",
+      "name": "Sanitized public contact 06",
+      "next_action": "Ready only if future replay preserves verified public contact evidence and source support.",
+      "organization": "Carlsbad Municipal School District",
+      "phone": "",
+      "primary_filter_reason": "READY: source-assisted row has field support and usable contact evidence.",
+      "source_family": "manual_oracle_public_email_source",
+      "source_id": "src_38061763db043bf4",
+      "source_ids": [
+        "src_38061763db043bf4"
+      ],
+      "source_reputation_signal": "official_public_document",
+      "source_url": "https://www.carlsbadschools.net/",
+      "tier": "high_trust_usable",
+      "title": "Technology leadership contact",
+      "validation_notes": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+      "verification_note": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted."
+    },
+    {
+      "blocker_notes": "",
+      "candidate_category": "person_lead",
+      "candidate_id": "r09frow_676c7626cf51d5a8",
+      "contact_status": "verified_found",
+      "email": "",
+      "email_status": "verified_found",
+      "expected_tier": "high_trust_usable",
+      "field_evidence": {
+        "email": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_af5b5a88d1c201fd",
+          "source_url": "https://www.taosschools.org/",
+          "status": "verified_found"
+        },
+        "name": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Named public contact retained as a sanitized label.",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_af5b5a88d1c201fd",
+          "source_url": "https://www.taosschools.org/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Taos Municipal Schools",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_af5b5a88d1c201fd",
+          "source_url": "https://www.taosschools.org/",
+          "status": "supported"
+        },
+        "source": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "official district or staff source",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_af5b5a88d1c201fd",
+          "source_url": "https://www.taosschools.org/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Technology leadership contact",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_af5b5a88d1c201fd",
+          "source_url": "https://www.taosschools.org/",
+          "status": "supported"
+        }
+      },
+      "input_method": "manual_oracle_row_replay",
+      "input_row_id": "april-nm-verified-07",
+      "lead_name": "Sanitized public contact 07",
+      "name": "Sanitized public contact 07",
+      "next_action": "Ready only if future replay preserves verified public contact evidence and source support.",
+      "organization": "Taos Municipal Schools",
+      "phone": "",
+      "primary_filter_reason": "READY: source-assisted row has field support and usable contact evidence.",
+      "source_family": "manual_oracle_public_email_source",
+      "source_id": "src_af5b5a88d1c201fd",
+      "source_ids": [
+        "src_af5b5a88d1c201fd"
+      ],
+      "source_reputation_signal": "official_public_document",
+      "source_url": "https://www.taosschools.org/",
+      "tier": "high_trust_usable",
+      "title": "Technology leadership contact",
+      "validation_notes": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+      "verification_note": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted."
+    },
+    {
+      "blocker_notes": "",
+      "candidate_category": "person_lead",
+      "candidate_id": "r09frow_f441789eb6af6ac4",
+      "contact_status": "verified_found",
+      "email": "",
+      "email_status": "verified_found",
+      "expected_tier": "high_trust_usable",
+      "field_evidence": {
+        "email": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_44b7d34183e0566b",
+          "source_url": "https://www.beleneagles.org/",
+          "status": "verified_found"
+        },
+        "name": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Named public contact retained as a sanitized label.",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_44b7d34183e0566b",
+          "source_url": "https://www.beleneagles.org/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Belen Consolidated Schools",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_44b7d34183e0566b",
+          "source_url": "https://www.beleneagles.org/",
+          "status": "supported"
+        },
+        "source": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "official district or staff source",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_44b7d34183e0566b",
+          "source_url": "https://www.beleneagles.org/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Technology leadership contact",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_44b7d34183e0566b",
+          "source_url": "https://www.beleneagles.org/",
+          "status": "supported"
+        }
+      },
+      "input_method": "manual_oracle_row_replay",
+      "input_row_id": "april-nm-verified-08",
+      "lead_name": "Sanitized public contact 08",
+      "name": "Sanitized public contact 08",
+      "next_action": "Ready only if future replay preserves verified public contact evidence and source support.",
+      "organization": "Belen Consolidated Schools",
+      "phone": "",
+      "primary_filter_reason": "READY: source-assisted row has field support and usable contact evidence.",
+      "source_family": "manual_oracle_public_email_source",
+      "source_id": "src_44b7d34183e0566b",
+      "source_ids": [
+        "src_44b7d34183e0566b"
+      ],
+      "source_reputation_signal": "official_public_document",
+      "source_url": "https://www.beleneagles.org/",
+      "tier": "high_trust_usable",
+      "title": "Technology leadership contact",
+      "validation_notes": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+      "verification_note": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted."
+    },
+    {
+      "blocker_notes": "",
+      "candidate_category": "person_lead",
+      "candidate_id": "r09frow_27cdabe927d8ad3c",
+      "contact_status": "verified_found",
+      "email": "",
+      "email_status": "verified_found",
+      "expected_tier": "high_trust_usable",
+      "field_evidence": {
+        "email": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_eb03d33f7828e1bb",
+          "source_url": "https://www.gisd.k12.nm.us/",
+          "status": "verified_found"
+        },
+        "name": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Named public contact retained as a sanitized label.",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_eb03d33f7828e1bb",
+          "source_url": "https://www.gisd.k12.nm.us/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Gadsden Independent School District",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_eb03d33f7828e1bb",
+          "source_url": "https://www.gisd.k12.nm.us/",
+          "status": "supported"
+        },
+        "source": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "official district or staff source",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_eb03d33f7828e1bb",
+          "source_url": "https://www.gisd.k12.nm.us/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Technology leadership contact",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_eb03d33f7828e1bb",
+          "source_url": "https://www.gisd.k12.nm.us/",
+          "status": "supported"
+        }
+      },
+      "input_method": "manual_oracle_row_replay",
+      "input_row_id": "april-nm-verified-09",
+      "lead_name": "Sanitized public contact 09",
+      "name": "Sanitized public contact 09",
+      "next_action": "Ready only if future replay preserves verified public contact evidence and source support.",
+      "organization": "Gadsden Independent School District",
+      "phone": "",
+      "primary_filter_reason": "READY: source-assisted row has field support and usable contact evidence.",
+      "source_family": "manual_oracle_public_email_source",
+      "source_id": "src_eb03d33f7828e1bb",
+      "source_ids": [
+        "src_eb03d33f7828e1bb"
+      ],
+      "source_reputation_signal": "official_public_document",
+      "source_url": "https://www.gisd.k12.nm.us/",
+      "tier": "high_trust_usable",
+      "title": "Technology leadership contact",
+      "validation_notes": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+      "verification_note": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted."
+    },
+    {
+      "blocker_notes": "",
+      "candidate_category": "person_lead",
+      "candidate_id": "r09frow_477a81396d2097eb",
+      "contact_status": "verified_found",
+      "email": "",
+      "email_status": "verified_found",
+      "expected_tier": "high_trust_usable",
+      "field_evidence": {
+        "email": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_dd673e8098b63eb5",
+          "source_url": "https://www.clovis-schools.org/",
+          "status": "verified_found"
+        },
+        "name": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Named public contact retained as a sanitized label.",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_dd673e8098b63eb5",
+          "source_url": "https://www.clovis-schools.org/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Clovis Municipal School District",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_dd673e8098b63eb5",
+          "source_url": "https://www.clovis-schools.org/",
+          "status": "supported"
+        },
+        "source": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "official district or staff source",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_dd673e8098b63eb5",
+          "source_url": "https://www.clovis-schools.org/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Technology leadership contact",
+          "source_family": "manual_oracle_public_email_source",
+          "source_id": "src_dd673e8098b63eb5",
+          "source_url": "https://www.clovis-schools.org/",
+          "status": "supported"
+        }
+      },
+      "input_method": "manual_oracle_row_replay",
+      "input_row_id": "april-nm-verified-10",
+      "lead_name": "Sanitized public contact 10",
+      "name": "Sanitized public contact 10",
+      "next_action": "Ready only if future replay preserves verified public contact evidence and source support.",
+      "organization": "Clovis Municipal School District",
+      "phone": "",
+      "primary_filter_reason": "READY: source-assisted row has field support and usable contact evidence.",
+      "source_family": "manual_oracle_public_email_source",
+      "source_id": "src_dd673e8098b63eb5",
+      "source_ids": [
+        "src_dd673e8098b63eb5"
+      ],
+      "source_reputation_signal": "official_public_document",
+      "source_url": "https://www.clovis-schools.org/",
+      "tier": "high_trust_usable",
+      "title": "Technology leadership contact",
+      "validation_notes": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted.",
+      "verification_note": "April public-email CSV row summarized: public email/phone present, source URL present, and verification note present. Contact details are redacted."
+    },
+    {
+      "blocker_notes": "Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "candidate_category": "person_lead",
+      "candidate_id": "r09frow_e9de869dab3520b5",
+      "contact_status": "missing",
+      "email": "",
+      "email_status": "missing",
+      "expected_tier": "manual_lookup",
+      "field_evidence": {
+        "email": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-01",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Named public contact retained as a sanitized label.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-01",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Sanitized NM district manual-lookup row 01",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-01",
+          "status": "supported"
+        },
+        "source": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "R09E roster-first source map seed.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-01",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Technology leadership contact",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-01",
+          "status": "supported"
+        }
+      },
+      "input_method": "manual_oracle_row_replay",
+      "input_row_id": "april-nm-manual-lookup-01",
+      "lead_name": "Sanitized named public contact 11",
+      "name": "Sanitized named public contact 11",
+      "next_action": "Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "organization": "Sanitized NM district manual-lookup row 01",
+      "phone": "",
+      "primary_filter_reason": "REVIEW: Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "source_family": "manual_oracle_seed",
+      "source_id": "k12src_c7e3d85a7f122602",
+      "source_ids": [
+        "k12src_c7e3d85a7f122602"
+      ],
+      "source_reputation_signal": "official_public_document",
+      "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-01",
+      "tier": "manual_lookup",
+      "title": "Technology leadership contact",
+      "validation_notes": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied.",
+      "verification_note": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied."
+    },
+    {
+      "blocker_notes": "Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "candidate_category": "person_lead",
+      "candidate_id": "r09frow_ad86643bf42319c7",
+      "contact_status": "missing",
+      "email": "",
+      "email_status": "missing",
+      "expected_tier": "manual_lookup",
+      "field_evidence": {
+        "email": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-02",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Named public contact retained as a sanitized label.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-02",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Sanitized NM district manual-lookup row 02",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-02",
+          "status": "supported"
+        },
+        "source": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "R09E roster-first source map seed.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-02",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Technology leadership contact",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-02",
+          "status": "supported"
+        }
+      },
+      "input_method": "manual_oracle_row_replay",
+      "input_row_id": "april-nm-manual-lookup-02",
+      "lead_name": "Sanitized named public contact 12",
+      "name": "Sanitized named public contact 12",
+      "next_action": "Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "organization": "Sanitized NM district manual-lookup row 02",
+      "phone": "",
+      "primary_filter_reason": "REVIEW: Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "source_family": "manual_oracle_seed",
+      "source_id": "k12src_c7e3d85a7f122602",
+      "source_ids": [
+        "k12src_c7e3d85a7f122602"
+      ],
+      "source_reputation_signal": "official_public_document",
+      "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-02",
+      "tier": "manual_lookup",
+      "title": "Technology leadership contact",
+      "validation_notes": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied.",
+      "verification_note": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied."
+    },
+    {
+      "blocker_notes": "Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "candidate_category": "person_lead",
+      "candidate_id": "r09frow_e16a0c99d8f25148",
+      "contact_status": "missing",
+      "email": "",
+      "email_status": "missing",
+      "expected_tier": "manual_lookup",
+      "field_evidence": {
+        "email": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-03",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Named public contact retained as a sanitized label.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-03",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Sanitized NM district manual-lookup row 03",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-03",
+          "status": "supported"
+        },
+        "source": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "R09E roster-first source map seed.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-03",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Technology leadership contact",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-03",
+          "status": "supported"
+        }
+      },
+      "input_method": "manual_oracle_row_replay",
+      "input_row_id": "april-nm-manual-lookup-03",
+      "lead_name": "Sanitized named public contact 13",
+      "name": "Sanitized named public contact 13",
+      "next_action": "Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "organization": "Sanitized NM district manual-lookup row 03",
+      "phone": "",
+      "primary_filter_reason": "REVIEW: Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "source_family": "manual_oracle_seed",
+      "source_id": "k12src_c7e3d85a7f122602",
+      "source_ids": [
+        "k12src_c7e3d85a7f122602"
+      ],
+      "source_reputation_signal": "official_public_document",
+      "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-03",
+      "tier": "manual_lookup",
+      "title": "Technology leadership contact",
+      "validation_notes": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied.",
+      "verification_note": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied."
+    },
+    {
+      "blocker_notes": "Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "candidate_category": "person_lead",
+      "candidate_id": "r09frow_a39586f75aa26901",
+      "contact_status": "missing",
+      "email": "",
+      "email_status": "missing",
+      "expected_tier": "manual_lookup",
+      "field_evidence": {
+        "email": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-04",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Named public contact retained as a sanitized label.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-04",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Sanitized NM district manual-lookup row 04",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-04",
+          "status": "supported"
+        },
+        "source": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "R09E roster-first source map seed.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-04",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Technology leadership contact",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-04",
+          "status": "supported"
+        }
+      },
+      "input_method": "manual_oracle_row_replay",
+      "input_row_id": "april-nm-manual-lookup-04",
+      "lead_name": "Sanitized named public contact 14",
+      "name": "Sanitized named public contact 14",
+      "next_action": "Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "organization": "Sanitized NM district manual-lookup row 04",
+      "phone": "",
+      "primary_filter_reason": "REVIEW: Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "source_family": "manual_oracle_seed",
+      "source_id": "k12src_c7e3d85a7f122602",
+      "source_ids": [
+        "k12src_c7e3d85a7f122602"
+      ],
+      "source_reputation_signal": "official_public_document",
+      "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-04",
+      "tier": "manual_lookup",
+      "title": "Technology leadership contact",
+      "validation_notes": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied.",
+      "verification_note": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied."
+    },
+    {
+      "blocker_notes": "Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "candidate_category": "person_lead",
+      "candidate_id": "r09frow_9e0438444705d902",
+      "contact_status": "missing",
+      "email": "",
+      "email_status": "missing",
+      "expected_tier": "manual_lookup",
+      "field_evidence": {
+        "email": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-05",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Named public contact retained as a sanitized label.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-05",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Sanitized NM district manual-lookup row 05",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-05",
+          "status": "supported"
+        },
+        "source": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "R09E roster-first source map seed.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-05",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Technology leadership contact",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-05",
+          "status": "supported"
+        }
+      },
+      "input_method": "manual_oracle_row_replay",
+      "input_row_id": "april-nm-manual-lookup-05",
+      "lead_name": "Sanitized named public contact 15",
+      "name": "Sanitized named public contact 15",
+      "next_action": "Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "organization": "Sanitized NM district manual-lookup row 05",
+      "phone": "",
+      "primary_filter_reason": "REVIEW: Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "source_family": "manual_oracle_seed",
+      "source_id": "k12src_c7e3d85a7f122602",
+      "source_ids": [
+        "k12src_c7e3d85a7f122602"
+      ],
+      "source_reputation_signal": "official_public_document",
+      "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-05",
+      "tier": "manual_lookup",
+      "title": "Technology leadership contact",
+      "validation_notes": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied.",
+      "verification_note": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied."
+    },
+    {
+      "blocker_notes": "Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "candidate_category": "person_lead",
+      "candidate_id": "r09frow_a1e38acabb1083d7",
+      "contact_status": "missing",
+      "email": "",
+      "email_status": "missing",
+      "expected_tier": "manual_lookup",
+      "field_evidence": {
+        "email": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-06",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Named public contact retained as a sanitized label.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-06",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Sanitized NM district manual-lookup row 06",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-06",
+          "status": "supported"
+        },
+        "source": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "R09E roster-first source map seed.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-06",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Technology leadership contact",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-06",
+          "status": "supported"
+        }
+      },
+      "input_method": "manual_oracle_row_replay",
+      "input_row_id": "april-nm-manual-lookup-06",
+      "lead_name": "Sanitized named public contact 16",
+      "name": "Sanitized named public contact 16",
+      "next_action": "Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "organization": "Sanitized NM district manual-lookup row 06",
+      "phone": "",
+      "primary_filter_reason": "REVIEW: Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "source_family": "manual_oracle_seed",
+      "source_id": "k12src_c7e3d85a7f122602",
+      "source_ids": [
+        "k12src_c7e3d85a7f122602"
+      ],
+      "source_reputation_signal": "official_public_document",
+      "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-06",
+      "tier": "manual_lookup",
+      "title": "Technology leadership contact",
+      "validation_notes": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied.",
+      "verification_note": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied."
+    },
+    {
+      "blocker_notes": "Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "candidate_category": "person_lead",
+      "candidate_id": "r09frow_d509f522b90d6b03",
+      "contact_status": "missing",
+      "email": "",
+      "email_status": "missing",
+      "expected_tier": "manual_lookup",
+      "field_evidence": {
+        "email": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-07",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Named public contact retained as a sanitized label.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-07",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Sanitized NM district manual-lookup row 07",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-07",
+          "status": "supported"
+        },
+        "source": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "R09E roster-first source map seed.",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-07",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-04-20",
+          "evidence_snippet": "Technology leadership contact",
+          "source_family": "manual_oracle_seed",
+          "source_id": "k12src_c7e3d85a7f122602",
+          "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-07",
+          "status": "supported"
+        }
+      },
+      "input_method": "manual_oracle_row_replay",
+      "input_row_id": "april-nm-manual-lookup-07",
+      "lead_name": "Sanitized named public contact 17",
+      "name": "Sanitized named public contact 17",
+      "next_action": "Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "organization": "Sanitized NM district manual-lookup row 07",
+      "phone": "",
+      "primary_filter_reason": "REVIEW: Open the source URL or district staff directory and manually resolve a direct email before CRM import.",
+      "source_family": "manual_oracle_seed",
+      "source_id": "k12src_c7e3d85a7f122602",
+      "source_ids": [
+        "k12src_c7e3d85a7f122602"
+      ],
+      "source_reputation_signal": "official_public_document",
+      "source_url": "https://sanitized-public-source.invalid/april-nm/manual-lookup-07",
+      "tier": "manual_lookup",
+      "title": "Technology leadership contact",
+      "validation_notes": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied.",
+      "verification_note": "April missing-email CSV row summarized: named person/title/source/phone present; direct email missing; exact row content not copied."
+    }
+  ],
+  "compiler_id": "r09f_source_assisted_lead_compiler",
+  "duplicate_rows": [],
+  "input_counts": {
+    "manual_oracle_rows": 17,
+    "pasted_rows": 0,
+    "seed_csv_rows": 0,
+    "source_map_sources": 13,
+    "source_packs": 0,
+    "source_urls": 0
+  },
+  "manual_oracle_replay": {
+    "duplicate_organizations": [],
+    "expected_manual_lookup_rows": 7,
+    "expected_rows": 17,
+    "expected_verified_contact_rows": 10,
+    "fixture_id": "april_nm_school_district_it_manual_oracle",
+    "manual_lookup_rows": 7,
+    "missing_blocker_note_rows": [],
+    "missing_organizations": [],
+    "missing_source_url_rows": [],
+    "observed_rows": 17,
+    "represented_organizations": [
+      "Albuquerque Public Schools",
+      "Rio Rancho Public Schools",
+      "Los Alamos Public Schools",
+      "Hobbs Municipal Schools",
+      "Farmington Municipal Schools",
+      "Carlsbad Municipal School District",
+      "Taos Municipal Schools",
+      "Belen Consolidated Schools",
+      "Gadsden Independent School District",
+      "Clovis Municipal School District",
+      "Sanitized NM district manual-lookup row 01",
+      "Sanitized NM district manual-lookup row 02",
+      "Sanitized NM district manual-lookup row 03",
+      "Sanitized NM district manual-lookup row 04",
+      "Sanitized NM district manual-lookup row 05",
+      "Sanitized NM district manual-lookup row 06",
+      "Sanitized NM district manual-lookup row 07"
+    ],
+    "sales_first_field_gaps": [],
+    "structure_reproduced": true,
+    "unsupported_ready_contacts": [],
+    "verified_contact_rows": 10
+  },
+  "passes": true,
+  "source_count": 18,
+  "source_records": [
+    {
+      "access_status": "public_html",
+      "district_id": "los-alamos-public-schools",
+      "district_name": "Los Alamos Public Schools",
+      "input_method": "k12_source_map",
+      "notes": "R09E roster-first source map seed.",
+      "source_family": "district_official_homepage",
+      "source_id": "k12src_05f001417dc266b2",
+      "source_reputation_signal": "official_district",
+      "supports": [
+        "district identity",
+        "navigation to departments"
+      ],
+      "url": "https://www.laschools.net/"
+    },
+    {
+      "access_status": "public_html",
+      "district_id": "hobbs-municipal-schools",
+      "district_name": "Hobbs Municipal Schools",
+      "input_method": "k12_source_map",
+      "notes": "R09E roster-first source map seed.",
+      "source_family": "district_official_homepage",
+      "source_id": "k12src_1295521e542136f0",
+      "source_reputation_signal": "official_district",
+      "supports": [
+        "district identity",
+        "navigation to staff/contact pages"
+      ],
+      "url": "https://www.hobbsschools.net/"
+    },
+    {
+      "access_status": "public_search_page",
+      "district_id": "albuquerque-public-schools",
+      "district_name": "Albuquerque Public Schools",
+      "input_method": "k12_source_map",
+      "notes": "R09E roster-first source map seed.",
+      "source_family": "district_staff_directory",
+      "source_id": "k12src_217e0bc282790f90",
+      "source_reputation_signal": "official_district",
+      "supports": [
+        "technology staff candidates",
+        "person/title/source discovery"
+      ],
+      "url": "https://www.aps.edu/@@search?SearchableText=technology"
+    },
+    {
+      "access_status": "public_html",
+      "district_id": "los-alamos-public-schools",
+      "district_name": "Los Alamos Public Schools",
+      "input_method": "k12_source_map",
+      "notes": "R09E roster-first source map seed.",
+      "source_family": "district_contact_page",
+      "source_id": "k12src_2f43d54179f4fb04",
+      "source_reputation_signal": "official_district",
+      "supports": [
+        "district contact route",
+        "manual lookup next action"
+      ],
+      "url": "https://www.laschools.net/page/contact-us"
+    },
+    {
+      "access_status": "public_html",
+      "district_id": "farmington-municipal-schools",
+      "district_name": "Farmington Municipal Schools",
+      "input_method": "k12_source_map",
+      "notes": "R09E roster-first source map seed.",
+      "source_family": "district_official_homepage",
+      "source_id": "k12src_3c30a1f0f04a91b9",
+      "source_reputation_signal": "official_district",
+      "supports": [
+        "district identity",
+        "navigation to departments"
+      ],
+      "url": "https://www.fmsk12.net/"
+    },
+    {
+      "access_status": "public_html_or_search",
+      "district_id": "rio-rancho-public-schools",
+      "district_name": "Rio Rancho Public Schools",
+      "input_method": "k12_source_map",
+      "notes": "R09E roster-first source map seed.",
+      "source_family": "district_staff_directory",
+      "source_id": "k12src_95c73d9215b2008d",
+      "source_reputation_signal": "official_district",
+      "supports": [
+        "staff roster",
+        "person/title/contact candidate discovery"
+      ],
+      "url": "https://www.rrps.net/apps/staff/"
+    },
+    {
+      "access_status": "public_html",
+      "district_id": "nm-ped",
+      "district_name": "New Mexico Public Education Department",
+      "input_method": "k12_source_map",
+      "notes": "R09E roster-first source map seed.",
+      "source_family": "state_public_school_directory",
+      "source_id": "k12src_979ad16bc4ee623d",
+      "source_reputation_signal": "official_state_agency",
+      "supports": [
+        "district and charter directory",
+        "official website references"
+      ],
+      "url": "https://web.ped.nm.gov/new-mexico-public-schools-directory/"
+    },
+    {
+      "access_status": "public_html",
+      "district_id": "albuquerque-public-schools",
+      "district_name": "Albuquerque Public Schools",
+      "input_method": "k12_source_map",
+      "notes": "R09E roster-first source map seed.",
+      "source_family": "district_official_homepage",
+      "source_id": "k12src_b3460051559bf2c2",
+      "source_reputation_signal": "official_district",
+      "supports": [
+        "district identity",
+        "navigation to staff/contact pages"
+      ],
+      "url": "https://www.aps.edu/"
+    },
+    {
+      "access_status": "public_html_or_form",
+      "district_id": "farmington-municipal-schools",
+      "district_name": "Farmington Municipal Schools",
+      "input_method": "k12_source_map",
+      "notes": "R09E roster-first source map seed.",
+      "source_family": "district_contact_page",
+      "source_id": "k12src_b54a6a193114f57d",
+      "source_reputation_signal": "official_district",
+      "supports": [
+        "contact route",
+        "manual lookup next action"
+      ],
+      "url": "https://www.fmsk12.net/apps/contact/"
+    },
+    {
+      "access_status": "public_html",
+      "district_id": "rio-rancho-public-schools",
+      "district_name": "Rio Rancho Public Schools",
+      "input_method": "k12_source_map",
+      "notes": "R09E roster-first source map seed.",
+      "source_family": "district_official_homepage",
+      "source_id": "k12src_b7f94b8c8674c59f",
+      "source_reputation_signal": "official_district",
+      "supports": [
+        "district identity",
+        "navigation to staff/contact pages"
+      ],
+      "url": "https://www.rrps.net/"
+    },
+    {
+      "access_status": "repo_fixture_redacted_public_source_summary",
+      "district_id": "manual-lookup-sanitized-april-nm",
+      "district_name": "Sanitized April NM manual-lookup rows",
+      "input_method": "k12_source_map",
+      "notes": "R09E roster-first source map seed.",
+      "source_family": "manual_oracle_seed",
+      "source_id": "k12src_c7e3d85a7f122602",
+      "source_reputation_signal": "official_public_document",
+      "supports": [
+        "manual lookup row count",
+        "blocker-note preservation",
+        "next-action preservation"
+      ],
+      "url": "packages/core/tests/fixtures/april_nm_manual_oracle.json"
+    },
+    {
+      "access_status": "public_html_or_search",
+      "district_id": "hobbs-municipal-schools",
+      "district_name": "Hobbs Municipal Schools",
+      "input_method": "k12_source_map",
+      "notes": "R09E roster-first source map seed.",
+      "source_family": "district_staff_directory",
+      "source_id": "k12src_c7e45dd6d232120b",
+      "source_reputation_signal": "official_district",
+      "supports": [
+        "staff roster",
+        "person/title/contact candidate discovery"
+      ],
+      "url": "https://www.hobbsschools.net/apps/staff/"
+    },
+    {
+      "access_status": "public_html",
+      "district_id": "nm-ped",
+      "district_name": "New Mexico Public Education Department",
+      "input_method": "k12_source_map",
+      "notes": "R09E roster-first source map seed.",
+      "source_family": "state_education_agency_roster",
+      "source_id": "k12src_ec523d9f0a977210",
+      "source_reputation_signal": "official_state_agency",
+      "supports": [
+        "district universe",
+        "official school directory",
+        "public-sector source family"
+      ],
+      "url": "https://web.ped.nm.gov/bureaus/constituent-services/school-directory/"
+    },
+    {
+      "access_status": "manual_oracle_replay_source",
+      "district_id": "",
+      "district_name": "Carlsbad Municipal School District",
+      "input_method": "manual_oracle_row_replay",
+      "notes": "official district or staff source",
+      "source_family": "manual_oracle_public_email_source",
+      "source_id": "src_38061763db043bf4",
+      "source_reputation_signal": "official_public_document",
+      "supports": [
+        "organization",
+        "title",
+        "contact_status",
+        "source_url",
+        "blocker_note"
+      ],
+      "url": "https://www.carlsbadschools.net/"
+    },
+    {
+      "access_status": "manual_oracle_replay_source",
+      "district_id": "",
+      "district_name": "Belen Consolidated Schools",
+      "input_method": "manual_oracle_row_replay",
+      "notes": "official district or staff source",
+      "source_family": "manual_oracle_public_email_source",
+      "source_id": "src_44b7d34183e0566b",
+      "source_reputation_signal": "official_public_document",
+      "supports": [
+        "organization",
+        "title",
+        "contact_status",
+        "source_url",
+        "blocker_note"
+      ],
+      "url": "https://www.beleneagles.org/"
+    },
+    {
+      "access_status": "manual_oracle_replay_source",
+      "district_id": "",
+      "district_name": "Taos Municipal Schools",
+      "input_method": "manual_oracle_row_replay",
+      "notes": "official district or staff source",
+      "source_family": "manual_oracle_public_email_source",
+      "source_id": "src_af5b5a88d1c201fd",
+      "source_reputation_signal": "official_public_document",
+      "supports": [
+        "organization",
+        "title",
+        "contact_status",
+        "source_url",
+        "blocker_note"
+      ],
+      "url": "https://www.taosschools.org/"
+    },
+    {
+      "access_status": "manual_oracle_replay_source",
+      "district_id": "",
+      "district_name": "Clovis Municipal School District",
+      "input_method": "manual_oracle_row_replay",
+      "notes": "official district or staff source",
+      "source_family": "manual_oracle_public_email_source",
+      "source_id": "src_dd673e8098b63eb5",
+      "source_reputation_signal": "official_public_document",
+      "supports": [
+        "organization",
+        "title",
+        "contact_status",
+        "source_url",
+        "blocker_note"
+      ],
+      "url": "https://www.clovis-schools.org/"
+    },
+    {
+      "access_status": "manual_oracle_replay_source",
+      "district_id": "",
+      "district_name": "Gadsden Independent School District",
+      "input_method": "manual_oracle_row_replay",
+      "notes": "official district or staff source",
+      "source_family": "manual_oracle_public_email_source",
+      "source_id": "src_eb03d33f7828e1bb",
+      "source_reputation_signal": "official_public_document",
+      "supports": [
+        "organization",
+        "title",
+        "contact_status",
+        "source_url",
+        "blocker_note"
+      ],
+      "url": "https://www.gisd.k12.nm.us/"
+    }
+  ],
+  "tier_distribution": {
+    "failed": 0,
+    "high_trust_usable": 10,
+    "manual_lookup": 7,
+    "not_found": 0,
+    "organization_only": 0,
+    "review": 0
+  }
+}

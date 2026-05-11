@@ -28,6 +28,11 @@ class ManualOracleRow:
     verification_note: str
     expected_tier: str
     next_action: str
+    contact_label: str = ""
+    email_value: str = ""
+    phone_value: str = ""
+    source_url_type: str = ""
+    last_verified: str = ""
 
     @classmethod
     def from_payload(cls, payload: Mapping[str, Any]) -> ManualOracleRow:
@@ -41,6 +46,11 @@ class ManualOracleRow:
             verification_note=str(payload["verification_note"]),
             expected_tier=str(payload["expected_tier"]),
             next_action=str(payload.get("next_action", "")),
+            contact_label=str(payload.get("contact_label", "")),
+            email_value=str(payload.get("email_value", "")),
+            phone_value=str(payload.get("phone_value", "")),
+            source_url_type=str(payload.get("source_url_type", "")),
+            last_verified=str(payload.get("last_verified", "")),
         )
 
 
