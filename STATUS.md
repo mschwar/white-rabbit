@@ -1,14 +1,14 @@
 # STATUS
 
-**Last updated:** 2026-05-12 by Codex prompt-c-rg3-post-r09l-source-assisted-proof
-**Branch:** audit/reset-rg3-validation-semantics
+**Last updated:** 2026-05-12 by Codex rg3-advance-integration
+**Branch:** rebuild/validated-leads-loop
 **Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Post-R09L Prompt C advanced RG3 on the source-assisted validation/runtime bar: the protected live `/source-assisted-proof` route reproduced the April New Mexico workbook pattern with 17 rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, sales-first export headers, and zero unsupported CRM-ready rows. RG4 is ready only for the refreshed mockup/design preflight from `DESIGN.md`; R10-R12 production UI, export, dogfood, and any `main` promotion remain blocked until Matt approves the preflight and explicitly asks for promotion.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt A-style RG4 refreshed mockup/design preflight from `DESIGN.md` on `rebuild/validated-leads-loop` after this audit branch is accepted/merged. Do not mark R10 ready and do not edit production UI code until Matt approves the refreshed mockups.
+**Next pointer:** Prompt A-style RG4 refreshed mockup/design preflight from `DESIGN.md` on `rebuild/validated-leads-loop`. Do not mark R10 ready and do not edit production UI code until Matt approves the refreshed mockups.
 
 **Design direction handoff:** `DESIGN.md` is now the RG4 visual direction authority. A refreshed RG4 mockup/design preflight exists on `codex/rg4-design-preflight-2026-05-11` at commit `5c5a10f`, with six rendered screens under `docs/mockups/rg4-design-preflight-2026-05-11/` on that branch. It is an unmerged inspection artifact only. The next valid assignment is a fresh or reconciled RG4 preflight for Matt approval; R10-R12 remain blocked until Matt approves the refreshed mockups for production implementation.
 
@@ -473,11 +473,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; R00-R09I are merged to `rebuild/validated-leads-loop`; RG0-RG2 advanced; RG3 remains `gate_hold` after the post-R09I Prompt C audit. Matt accepted the hold and authorized R09J-R09L as ordered same-gate remediation. R09J, R09K, and R09L are merged; RG3 is ready for Prompt C audit. W5 remains held; W6 remains blocked.
+- Product is in audit-red state. Documentation authority remediation is complete; R00-R09L are merged to `rebuild/validated-leads-loop`; RG0-RG3 have advanced; RG4 is ready only for refreshed mockup/design preflight from `DESIGN.md`. Production R10-R12 UI implementation, export, dogfood, and `main` promotion remain blocked until Matt approves the refreshed mockups and explicitly authorizes the next step. W5 remains held; W6 remains blocked.
 
 ## Next concrete task
 
-- Run Prompt C for `RG3 - Validation, Conflict, And Gate Semantics` on `rebuild/validated-leads-loop`. Do not start RG4, refreshed mockups, R10-R12, export, dogfood, or `main` promotion from this state.
+- Run the RG4 refreshed mockup/design preflight from `DESIGN.md`. Do not mark R10 ready, edit production UI code, start export/dogfood work, or sync `main` until Matt reviews and approves the refreshed mockups.
 
 ## Open questions for Matt
 
@@ -522,6 +522,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-12 | rg3-advance-integration (Codex) | Fast-forwarded `rebuild/validated-leads-loop` to the RG3 advance audit commit `20f58ab`, leaving `main` untouched. Corrected the integration-branch status handoff so the next assignment is RG4 refreshed mockup/design preflight from `DESIGN.md`, not another RG3 Prompt C run. |
 | 2026-05-12 | prompt-c-rg3-post-r09l-source-assisted-proof (Codex) | Ran the post-R09L RG3 Prompt C audit on `audit/reset-rg3-validation-semantics`. Decision: `advance`. Verified R07-R09L are merged to `origin/rebuild/validated-leads-loop`, core RG3 suite (`87 passed`), API suite (`51 passed`), bounded `/readiness`, protected live `/source-assisted-proof` service-boundary proof (`200` with token, `401` without), and source-assisted workbook value: 17 rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, sales-first export headers, no unsupported CRM-ready rows, and no private contact values. Report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`; raw evidence: `audits/raw/reset-2026-05-10/rg3/post-r09l-source-assisted-proof/`. Next assignment is RG4 refreshed mockup/design preflight from `DESIGN.md`; R10-R12, export, dogfood, and `main` promotion remain blocked. |
 | 2026-05-11 | prompt-a-r09l-live-source-assisted-proof (Codex) | Implemented `R09L - Live source-assisted product proof` on `feat/reset-r09l-live-source-assisted-proof`: added `core.live_source_assisted_proof`, a protected `/source-assisted-proof` API route, focused route/core tests, and live proof artifacts under `audits/raw/reset-2026-05-10/r09l/`; verified `uv run pytest tests/test_live_source_assisted_proof.py -q` (`2 passed`), `cd apps/api && uv run pytest tests/test_api.py -k "source_assisted_proof or protected_api_endpoints_require_internal_token" -q` (`16 passed, 28 deselected`), and wrote `live-source-assisted-proof.json`/`.md`. |
 | 2026-05-11 | prompt-b-r09k-live-runner-timeout-containment (Codex) | QA-passed `R09K - Live runner timeout containment` on `feat/reset-r09k-live-runner-timeout-containment`: verified `git diff --check`, `cd packages/core && uv run pytest tests/test_live_benchmark_runner.py -q` (`8 passed`), `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`49 passed`), timeout-containment artifacts under `audits/raw/reset-2026-05-10/r09k/`, northstar drift, and that no lead-quality, workbook/export, UI, persistence, dogfood, RG4/R10-R12, or `main` work landed. QA report saved at `.gstack/qa-reports/qa-report-r09k-live-runner-timeout-containment-2026-05-11.md`; R09K is merged_to_rebuild_branch and R09L is ready. |

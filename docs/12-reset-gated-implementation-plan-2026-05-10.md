@@ -806,7 +806,7 @@ Post-R09I Prompt C result:
 Accepted post-R09I hold and R09J-R09L remediation:
 
 - Date accepted: 2026-05-11.
-- Decision: keep RG3 in `gate_hold` and add three ordered same-gate remediation slices. R09J and R09K are merged to `rebuild/validated-leads-loop`; R09L has now passed Prompt B QA and merged to `rebuild/validated-leads-loop`. RG3 is ready for Prompt C audit.
+- Decision: keep RG3 in `gate_hold` and add three ordered same-gate remediation slices. R09J and R09K are merged to `rebuild/validated-leads-loop`; R09L passed Prompt B QA and merged to `rebuild/validated-leads-loop`. This historical remediation queue is superseded by the post-R09L Prompt C advance recorded below.
 - Why this split exists: the post-R09I hold exposed three different failure modes that should not be bundled into one oversized feature. `/readiness` must become bounded and diagnostic; the live runner must complete and preserve artifacts even when reset/product calls time out; and the source-assisted workbook value path must be proven through the live service boundary instead of only through offline replay.
 
 R09J scope - Bounded readiness diagnostics:
