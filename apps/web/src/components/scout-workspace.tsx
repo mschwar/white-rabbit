@@ -48,6 +48,13 @@ type ScoutWorkspaceProps = {
   primaryMode?: boolean;
 };
 
+const PRIMARY_LOADING_STAGES = [
+  { label: 'Reading source context', count: '18' },
+  { label: 'Matching people', count: '17' },
+  { label: 'Checking contact evidence', count: '10' },
+  { label: 'Preparing review table', count: '--' },
+] as const;
+
 function mapErrorCodeToMessage(errorCode: string | null, fallback: string): string {
   switch (errorCode) {
     case 'tavily_failed':
@@ -729,7 +736,8 @@ const QA_VALIDATION_BUCKETS_FIXTURE: ScoutResponse = {
 };
 
 export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspaceProps) {
-  const [query, setQuery] = useState(DEFAULT_SCOUT_QUERY);
+  const [query, setQuery] = useState(primaryMode ? '' : DEFAULT_SCOUT_QUERY);
+  const [sourceContext, setSourceContext] = useState('');
   const [location, setLocation] = useState(primaryMode ? '' : DEFAULT_SCOUT_LOCATION);
   const [recipeName, setRecipeName] = useState('');
   const [mode, setMode] = useState<Mode>('scout');
@@ -741,6 +749,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
   const [closeMessage, setCloseMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isQaLoading, setIsQaLoading] = useState(false);
   const [sortMode, setSortMode] = useState<LeadSortMode>('rank');
   const [isClosing, setIsClosing] = useState(false);
   const [leadExport, setLeadExport] = useState<{
@@ -757,10 +766,15 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
   const queryLabel = primaryMode ? 'Lead search' : 'Prospecting query';
 
   useEffect(() => {
+    if (primaryMode) {
+      return undefined;
+    }
+
     fetchSandboxUsage()
       .then(setSandboxUsage)
       .catch(() => undefined);
-  }, []);
+    return undefined;
+  }, [primaryMode]);
 
   useEffect(() => {
     if (process.env.NODE_ENV !== 'production' && window.location.search.includes('qa=validation-buckets')) {
@@ -768,12 +782,22 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
     }
   }, []);
 
+  useEffect(() => {
+    if (process.env.NODE_ENV !== 'production' && window.location.search.includes('qa=loading')) {
+      setIsQaLoading(true);
+    }
+  }, []);
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    const effectiveQuery =
+      primaryMode && sourceContext.trim()
+        ? `${query.trim()}\n\nSource context:\n${sourceContext.trim()}`
+        : query;
     const payload = primaryMode || mode === 'scout'
-      ? buildScoutPayload(query, location)
-      : buildFullPayload(query, location, recipeName);
+      ? buildScoutPayload(effectiveQuery, location)
+      : buildFullPayload(effectiveQuery, location, recipeName);
 
     if (!payload) {
       setError('Enter a query before searching.');
@@ -820,7 +844,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
         return;
       }
 
-      const endpoint = mode === 'scout' ? '/api/scout' : '/api/full';
+      const endpoint = primaryMode || mode === 'scout' ? '/api/scout' : '/api/full';
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -873,7 +897,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
         throw new Error(JSON.stringify({ message, errorCode, requestId }));
       }
 
-      if (mode === 'scout') {
+      if (primaryMode || mode === 'scout') {
         const data = (await response.json()) as ScoutResponse;
         setResults(data);
         setQueryGuardrail(data.query_guardrail ?? null);
@@ -976,6 +1000,243 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
   const tierDistribution = displayedResults
     ? buildTierDistribution(displayedResults.leads, displayedResults.metrics.tier_distribution)
     : null;
+  const showPrimaryLoading = primaryMode && (isLoading || isQaLoading);
+
+  if (primaryMode) {
+    return (
+      <main className="min-h-screen bg-[#050916] text-[#0a1226]">
+        <div className="min-h-screen lg:grid lg:grid-cols-[76px_minmax(0,1fr)] lg:grid-rows-[64px_minmax(0,1fr)]">
+          <header className="flex min-h-16 items-center border-b border-white/10 bg-[#050916] text-white lg:col-span-2">
+            <div className="grid h-16 w-16 place-items-center border-r border-white/10 lg:w-[76px]">
+              <div aria-hidden="true" className="grid h-9 w-9 place-items-center rounded-lg border border-dashed border-[#2d7bff]/80 bg-[#2d7bff]/15 text-[10px] font-black tracking-[0.04em]">
+                WR
+              </div>
+            </div>
+            <div className="min-w-0 px-4">
+              <p className="text-base font-semibold">White Rabbit</p>
+              <p className="truncate text-xs text-white/60">Source-backed candidate review</p>
+            </div>
+            <div className="ml-auto hidden items-center gap-2 px-4 sm:flex">
+              <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/70">READY / REVIEW</span>
+              <span className="rounded-full border border-[#2d7bff]/50 bg-[#2d7bff]/15 px-3 py-1 text-xs text-white">Evidence first</span>
+            </div>
+          </header>
+
+          <aside className="hidden border-r border-white/10 bg-[#0a1226] px-5 py-5 lg:flex lg:flex-col lg:items-center lg:justify-between">
+            <div className="grid gap-3">
+              <div className="grid h-9 w-9 place-items-center rounded-lg border border-[#2d7bff]/70 bg-[#2d7bff]/15 text-[11px] font-black text-white">
+                S
+              </div>
+              <div className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 text-[11px] font-black text-white/60">
+                E
+              </div>
+            </div>
+            <p className="[writing-mode:vertical-rl] rotate-180 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/35">
+              Review
+            </p>
+          </aside>
+
+          <section className="min-h-[calc(100vh-64px)] bg-[#fbfcfd]">
+            <div className="grid min-h-[52vh] gap-10 bg-[#050916] px-5 py-12 text-white sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(300px,420px)] lg:items-end lg:px-14">
+              <div>
+                <div aria-hidden="true" className="mb-8 grid h-24 w-24 place-items-center rounded-[18px] border border-dashed border-[#2d7bff]/80 bg-[#2d7bff]/15 text-2xl font-black tracking-[0.04em]">
+                  WR
+                </div>
+                <h1 className="max-w-3xl text-5xl font-semibold leading-[0.98] tracking-normal sm:text-6xl lg:text-7xl">
+                  Start with the target. Keep the proof beside it.
+                </h1>
+                <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
+                  Use a sales target and trusted public source context to build a review table with ready rows, blockers, and next actions.
+                </p>
+              </div>
+              <div className="rounded-lg border border-white/15 bg-white/[0.04] p-5">
+                <h2 className="text-base font-semibold">Source-assisted search</h2>
+                <p className="mt-2 text-sm leading-6 text-white/65">
+                  Rosters, staff pages, source URLs, PDFs, or seed notes give the run a better starting point than a blind web search.
+                </p>
+              </div>
+            </div>
+
+            <div className="px-5 py-8 sm:px-8 lg:px-14">
+              <form
+                className="grid gap-4 rounded-lg border border-[#cbd5e1] bg-white p-4 shadow-[0_18px_42px_rgba(10,18,38,0.08)] lg:grid-cols-[minmax(0,1fr)_minmax(300px,0.7fr)_auto] lg:items-end"
+                onSubmit={handleSubmit}
+              >
+                <label className="grid gap-2" htmlFor="query">
+                  <span className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Target</span>
+                  <textarea
+                    className="min-h-12 w-full resize-none rounded-md border border-[#cbd5e1] bg-[#fbfcfd] px-3 py-3 text-base font-semibold leading-6 text-[#0a1226] outline-none placeholder:text-[#60708a] focus:border-[#2d7bff] focus:ring-2 focus:ring-[#2d7bff]/25"
+                    id="query"
+                    name="query"
+                    onChange={(event) => setQuery(event.target.value)}
+                    placeholder="VP Sales at Series B SaaS companies in NY"
+                    value={query}
+                  />
+                </label>
+                <label className="grid gap-2" htmlFor="sourceContext">
+                  <span className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Source context</span>
+                  <textarea
+                    className="min-h-12 w-full resize-none rounded-md border border-[#cbd5e1] bg-[#fbfcfd] px-3 py-3 text-sm font-medium text-[#0a1226] outline-none placeholder:text-[#60708a] focus:border-[#2d7bff] focus:ring-2 focus:ring-[#2d7bff]/25"
+                    id="sourceContext"
+                    name="sourceContext"
+                    onChange={(event) => setSourceContext(event.target.value)}
+                    placeholder="Staff pages, rosters, trusted URLs, seed notes"
+                    value={sourceContext}
+                  />
+                </label>
+                <button
+                  className="inline-flex h-12 items-center justify-center rounded-md bg-[#2d7bff] px-5 text-sm font-black text-white transition hover:bg-[#1f65d8] disabled:cursor-not-allowed disabled:bg-[#2d7bff]/60"
+                  disabled={isLoading}
+                  type="submit"
+                >
+                  {isLoading ? 'Finding Candidates...' : 'Find Candidates'}
+                </button>
+              </form>
+              <p className="mt-4 max-w-3xl text-sm leading-6 text-[#60708a]">
+                Broad targets return a categorized market view. Narrow targets return a tighter review set.
+              </p>
+
+              {error ? (
+                <p className="mt-5 rounded-lg border border-[#a13c3c]/30 bg-[#fcebeb] px-4 py-3 text-sm text-[#8f3434]">
+                  {error}
+                </p>
+              ) : null}
+
+              {queryGuardrail && queryGuardrail.status !== 'clear' ? (
+                <div
+                  className={`mt-5 rounded-lg border px-4 py-3 text-sm ${
+                    queryGuardrail.status === 'blocked'
+                      ? 'border-[#a13c3c]/30 bg-[#fcebeb] text-[#8f3434]'
+                      : 'border-[#a16207]/30 bg-[#fff4e1] text-[#8a5707]'
+                  }`}
+                >
+                  <p className="font-semibold">
+                    {queryGuardrail.status === 'blocked' ? 'Target blocked' : 'Target could be tighter'}
+                  </p>
+                  <p className="mt-1 leading-6">{queryGuardrail.message}</p>
+                  {queryGuardrail.suggestions.length > 0 ? (
+                    <ul className="mt-2 list-disc space-y-1 pl-5 leading-6">
+                      {queryGuardrail.suggestions.map((suggestion) => (
+                        <li key={suggestion}>{suggestion}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </div>
+              ) : null}
+
+              {showPrimaryLoading ? (
+                <section aria-live="polite" className="mt-8 grid gap-5 rounded-lg border border-[#e2e7ef] bg-white p-5">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                      <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Evidence forming</p>
+                      <h2 className="mt-1 text-2xl font-semibold tracking-normal text-[#0a1226]">
+                        {query.trim() || 'Source-backed candidate review'}
+                      </h2>
+                    </div>
+                    <span className="w-fit rounded-full border border-[#2d7bff]/30 bg-[#e8f1ff] px-3 py-1 text-xs font-bold text-[#0e3a8a]">
+                      Checking fields
+                    </span>
+                  </div>
+                  <div className="grid gap-3 lg:grid-cols-4">
+                    {PRIMARY_LOADING_STAGES.map((stage, index) => (
+                      <div key={stage.label} className="rounded-lg border border-[#e2e7ef] bg-[#f6f7f9] px-4 py-3">
+                        <div className="flex items-center justify-between gap-3">
+                          <span className={`h-2.5 w-2.5 rounded-full ${index < 3 ? 'bg-[#2d7bff]' : 'bg-[#cbd5e1]'}`} />
+                          <span className="text-xs font-semibold text-[#60708a]">{stage.count}</span>
+                        </div>
+                        <p className="mt-3 text-sm font-semibold text-[#0a1226]">{stage.label}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="overflow-hidden rounded-lg border border-[#e2e7ef]">
+                    <div className="grid grid-cols-[1fr_0.8fr_0.8fr_0.7fr] bg-[#f1f4f8] px-4 py-3 text-[10px] font-black uppercase tracking-[0.08em] text-[#60708a]">
+                      <span>Company</span>
+                      <span>Person</span>
+                      <span>Source</span>
+                      <span>Status</span>
+                    </div>
+                    {[0, 1, 2, 3].map((item) => (
+                      <div key={item} className="grid grid-cols-[1fr_0.8fr_0.8fr_0.7fr] gap-4 border-t border-[#e2e7ef] px-4 py-3">
+                        <span className="h-3 rounded bg-[#e2e7ef]" />
+                        <span className="h-3 rounded bg-[#e2e7ef]" />
+                        <span className="h-3 rounded bg-[#e8f1ff]" />
+                        <span className="h-3 rounded bg-[#fff4e1]" />
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              ) : null}
+
+              {displayedResults && !showPrimaryLoading ? (
+                <section className="mt-8 rounded-lg border border-[#e2e7ef] bg-white p-5">
+                  <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                      <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Candidate review</p>
+                      <h2 className="mt-1 text-2xl font-semibold tracking-normal text-[#0a1226]">Tier summary</h2>
+                    </div>
+                    <div className="flex flex-col gap-2 sm:items-end">
+                      <label className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]" htmlFor="leadSortMode">
+                        Sort results
+                      </label>
+                      <select
+                        className="rounded-md border border-[#cbd5e1] bg-[#fbfcfd] px-3 py-2 text-sm text-[#0a1226] outline-none focus:border-[#2d7bff]"
+                        id="leadSortMode"
+                        name="leadSortMode"
+                        onChange={(event) => setSortMode(event.target.value as LeadSortMode)}
+                        value={sortMode}
+                      >
+                        {LEAD_SORT_OPTIONS.map((option) => (
+                          <option key={option.value} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
+                      <p className="text-sm text-[#60708a]">
+                        {displayedResults.leads.length} rows · {formatElapsedSeconds(displayedResults.metrics.elapsed_seconds)} · $
+                        {displayedResults.metrics.estimated_cost_usd.toFixed(4)}
+                      </p>
+                    </div>
+                  </div>
+
+                  {tierDistribution ? (
+                    <div className="mt-5 grid gap-px overflow-hidden rounded-lg border border-[#e2e7ef] bg-[#e2e7ef] sm:grid-cols-5">
+                      {OUTPUT_TIERS.map((tier) => (
+                        <div key={tier} className="bg-white px-4 py-3">
+                          <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">{TIER_LABELS[tier]}</p>
+                          <p className="mt-2 text-2xl font-semibold text-[#0a1226]">{tierDistribution[tier]}</p>
+                        </div>
+                      ))}
+                    </div>
+                  ) : null}
+
+                  <div className="mt-2 rounded-lg bg-[#0a1226] p-1">
+                    <ScoutResultsTable
+                      feedbackState={feedbackState}
+                      onOpenEvidence={handleOpenEvidence}
+                      onSubmitFeedback={handleLeadFeedback}
+                      rows={displayedRows}
+                    />
+                  </div>
+                </section>
+              ) : null}
+
+              {!displayedResults && !showPrimaryLoading ? (
+                <section className="mt-8 rounded-lg border border-dashed border-[#cbd5e1] bg-white px-5 py-8 text-sm leading-6 text-[#60708a]">
+                  The review table forms here after candidates are checked.
+                </section>
+              ) : null}
+            </div>
+          </section>
+        </div>
+        <ScoutEvidenceDrawer
+          onClose={() => setSelectedEvidenceRow(null)}
+          query={submittedQuery ?? query}
+          runId={fullResult?.run_id ?? null}
+          row={selectedEvidenceRow}
+        />
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-zinc-950 px-6 py-10 text-zinc-50">

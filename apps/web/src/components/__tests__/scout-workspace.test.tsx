@@ -312,23 +312,25 @@ test('renders the primary search shell with one natural-language input', async (
 
   render(<ScoutWorkspace primaryMode />);
 
-  expect(screen.getByRole('heading', { name: /find source-backed prospects/i })).toBeDefined();
-  expect(screen.getByLabelText(/lead search/i)).toBeDefined();
-  expect(screen.getByRole('button', { name: /search leads/i })).toBeDefined();
+  expect(screen.getByRole('heading', { name: /start with the target/i })).toBeDefined();
+  expect(screen.getByLabelText(/target/i)).toBeDefined();
+  expect(screen.getByLabelText(/source context/i)).toBeDefined();
+  expect(screen.getByRole('button', { name: /find candidates/i })).toBeDefined();
   expect(screen.queryByRole('button', { name: /^scout$/i })).toBeNull();
   expect(screen.queryByRole('button', { name: /^full$/i })).toBeNull();
   expect(screen.queryByLabelText(/location/i)).toBeNull();
+  expect(screen.queryByText(/search usage/i)).toBeNull();
   expect(screen.queryByRole('button', { name: /build lead export/i })).toBeNull();
 
-  fireEvent.change(screen.getByLabelText(/lead search/i), {
+  fireEvent.change(screen.getByLabelText(/target/i), {
     target: { value: 'K-12 IT directors in Albuquerque' },
   });
-  fireEvent.click(screen.getByRole('button', { name: /search leads/i }));
+  fireEvent.click(screen.getByRole('button', { name: /find candidates/i }));
 
-  await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
-  expect(fetchMock).toHaveBeenNthCalledWith(2, '/api/scout', expect.any(Object));
+  await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+  expect(fetchMock).toHaveBeenNthCalledWith(1, '/api/scout', expect.any(Object));
   expect(
-    JSON.parse((fetchMock.mock.calls[1][1] as RequestInit).body as string),
+    JSON.parse((fetchMock.mock.calls[0][1] as RequestInit).body as string),
   ).toEqual({ query: 'K-12 IT directors in Albuquerque' });
   const usableTable = await screen.findByRole('table', { name: /ready results/i });
   expect(within(usableTable).getByText('Jane Smith')).toBeDefined();

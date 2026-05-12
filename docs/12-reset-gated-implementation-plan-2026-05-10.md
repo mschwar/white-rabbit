@@ -6,8 +6,8 @@
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
 **Current reset gate:** RG4 - Sales-First Operator UI implementation. RG3 advanced on the post-R09L Prompt C audit after the live source-assisted proof reproduced the April New Mexico workbook pattern through the protected API boundary. Matt approved the refreshed RG4 mockups at `docs/mockups/rg4-refreshed-preflight-2026-05-12/`. Product remains red.
-**Next Prompt A feature:** R10 - Primary search workspace simplification on `feat/reset-r10-primary-search-ui`.
-**Current Prompt B handoff:** None. R10 is ready for Prompt A.
+**Next Prompt A feature:** None. R10 is implemented and waiting for Prompt B QA on `feat/reset-r10-primary-search-ui`.
+**Current Prompt B handoff:** QA `feat/reset-r10-primary-search-ui`; verify R10 primary search/start/loading shell scope only.
 **Current Prompt C handoff:** None. RG4 Prompt C is not valid until R10-R12 are implemented and merged.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
@@ -240,7 +240,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R09J | Bounded readiness diagnostics | merged_to_rebuild_branch | `feat/reset-r09j-bounded-readiness-diagnostics` | API tests + readiness probe artifacts |
 | R09K | Live runner timeout containment | merged_to_rebuild_branch | `feat/reset-r09k-live-runner-timeout-containment` | core/API tests + complete timeout artifacts |
 | R09L | Live source-assisted product proof | merged_to_rebuild_branch | `feat/reset-r09l-live-source-assisted-proof` | API/core tests + live source-assisted proof artifacts |
-| R10 | Primary search workspace simplification | ready | `feat/reset-r10-primary-search-ui` | browser |
+| R10 | Primary search workspace simplification | implemented_pending_qa | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | blocked | `feat/reset-r12-evidence-dossier-review` | browser |
 | R13 | Sales-first CSV export | blocked | `feat/reset-r13-sales-first-export` | browser + CSV |
@@ -931,7 +931,16 @@ Approved RG4 mockup preflight:
 - Integrated artifact path: `docs/mockups/rg4-refreshed-preflight-2026-05-12/`.
 - Screens: Empty/Search Start, Loading/Evidence Forming, Results Overview, Evidence Review/Dossier, Low Public Signal, and Mobile Review.
 - Matt approval: accepted on 2026-05-12.
-- Queue consequence: R10 is ready. R11/R12 remain blocked until R10 passes Prompt B and merges. RG5, RG6, and `main` promotion remain blocked.
+- Queue consequence: R10 was ready after Matt approval and is now implemented pending Prompt B QA. R11/R12 remain blocked until R10 passes Prompt B and merges. RG5, RG6, and `main` promotion remain blocked.
+
+R10 Prompt A implementation handoff:
+
+- Branch: `feat/reset-r10-primary-search-ui`.
+- Status: `implemented_pending_qa`.
+- Prompt A change summary: replaced the primary home workspace shell with the approved RG4 navy chassis, paper-white command surface, neutral `WR` placeholder mark, target plus source-context command flow, primary `Find Candidates` action, and loading/evidence-forming state with source, people, contact, and review-table stages. Primary mode now skips the old always-visible sandbox/quota card and does not expose Scout/Full operator-path controls. Existing non-primary Scout/Full workspace behavior, results table, evidence drawer, export controls, API proxies, backend/core logic, source-assisted compiler, benchmarks, persistence, dogfood, and `main` were not changed.
+- Prompt A verification: `cd apps/web && npm test -- --run` (`13` files, `30` tests passed); `cd apps/web && npm run build` (passed, with existing Next.js warnings about workspace-root inference and deprecated `middleware` naming); production Playwright QA on `http://localhost:3000/` with local test auth captured desktop/mobile empty and loading states; `git diff --check` passed.
+- Evidence artifacts: `.gstack/qa-reports/screenshots/r10-primary-search-ui-2026-05-12/01-desktop-empty.png`; `.gstack/qa-reports/screenshots/r10-primary-search-ui-2026-05-12/02-desktop-loading.png`; `.gstack/qa-reports/screenshots/r10-primary-search-ui-2026-05-12/03-mobile-empty.png`; `.gstack/qa-reports/screenshots/r10-primary-search-ui-2026-05-12/04-mobile-loading.png`.
+- Exact Prompt B handoff: QA `feat/reset-r10-primary-search-ui`; verify the branch contains only R10 primary search/start/loading shell scope; rerun `cd apps/web && npm test -- --run`, `cd apps/web && npm run build`, and `git diff --check`; inspect the four screenshots under `.gstack/qa-reports/screenshots/r10-primary-search-ui-2026-05-12/`; confirm the primary home workspace matches `DESIGN.md` and `docs/mockups/rg4-refreshed-preflight-2026-05-12/` for the approved search-start and loading states; confirm there is one target/source-context command flow, no Scout/Full operator-path controls, no always-visible quota/sandbox card, no internal names, no prompt/gate/sprint language, no ad hoc rabbit mark, no horizontal overflow on desktop/mobile, and no R11 compact CRM-first results table, R12 evidence dossier, export, persistence, backend/API/core, source-assisted compiler, benchmark, dogfood, or `main` promotion scope. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R10 `merged_to_rebuild_branch`, and then follow the reset plan for the next same-gate feature while keeping R12/RG5/RG6/export/dogfood/main blocked.
 
 RG3 full evaluation/audit:
 
@@ -997,7 +1006,7 @@ git diff --check
 R10 scope - Primary search workspace simplification:
 
 - Branch: `feat/reset-r10-primary-search-ui`.
-- Status: `ready`.
+- Status: `implemented_pending_qa`.
 - Goal: replace the old production search workspace shell with the approved RG4 primary operator surface without implementing the full results table or evidence dossier yet.
 - Design authority:
   - `DESIGN.md`.
