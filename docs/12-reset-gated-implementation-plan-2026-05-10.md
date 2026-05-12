@@ -6,9 +6,9 @@
 **Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
 **Current reset gate:** RG5 - Sales-First Export And Persistence. RG4 advanced on `audit/reset-rg4-operator-ui`; product remains red until export/persistence and dogfood gates pass.
-**Next Prompt A feature:** None. R14B stays blocked until R14A passes Prompt B and merges to `main`.
-**Current Prompt B handoff:** QA `feat/reset-r14a-image-overhaul-brand-cleanup`. Verify approved design-pack assets replaced the old generated brand rasters, the product UI is wordmark-first, no standalone rabbit/mascot/ad hoc CSS mark appears, browser/social assets are publicly reachable, desktop/mobile screenshots match the RG4/R14A brand direction, and no backend/core/export/persistence behavior changed.
-**Current Prompt C handoff:** None. RG5 is not ready for Prompt C until R14A-R14C pass Prompt B and merge to `main`. Keep R14B-R14C blocked until their prior RG5 slices merge; keep RG6/dogfood blocked until RG5 advances.
+**Next Prompt A feature:** R14B - UI/UX consistency pass on `feat/reset-r14b-ui-ux-consistency-pass`.
+**Current Prompt B handoff:** None. R14A passed Prompt B and merged to `main`. Keep R14C/RG6/dogfood blocked until their prior RG5 slices merge.
+**Current Prompt C handoff:** None. RG5 is not ready for Prompt C until R14B-R14C pass Prompt B and merge to `main`. Keep R14C/RG6/dogfood blocked until their prior RG5 slices merge; keep RG6/dogfood blocked until RG5 advances.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -160,7 +160,7 @@ Before reset UI/export implementation starts, Matt must inspect the final produc
 
 The May 10 mockup remains useful for product structure only: one search input, high-volume tier distribution, CRM-first fields, evidence one action away, sales-first export, and no Scout/Full/product-internals ceremony in the operator path.
 
-A refreshed RG4 design preflight artifact exists under `docs/mockups/rg4-refreshed-preflight-2026-05-12/` with six rendered mockup screens. Matt approved this artifact on 2026-05-12. It initially unlocked R10 only; after R10 Prompt B, R11 was ready. R11 and R12 have passed Prompt B QA and are `merged_to_rebuild_branch`. RG4 Prompt C advanced, R13 passed Prompt B QA and merged, R14 passed Prompt B QA on `feat/reset-r14-persistence-quality-tieout`, and R14A is implemented pending Prompt B QA. R14B-R14C and dogfood remain blocked until their documented prerequisites pass.
+A refreshed RG4 design preflight artifact exists under `docs/mockups/rg4-refreshed-preflight-2026-05-12/` with six rendered mockup screens. Matt approved this artifact on 2026-05-12. It initially unlocked R10 only; after R10 Prompt B, R11 was ready. R11 and R12 have passed Prompt B QA and are `merged_to_rebuild_branch`. RG4 Prompt C advanced, R13 passed Prompt B QA and merged, R14 passed Prompt B QA on `feat/reset-r14-persistence-quality-tieout`, and R14A passed Prompt B QA and merged to `main`. R14B is now ready, while R14C and dogfood remain blocked until their documented prerequisites pass.
 
 If RG3 Prompt C records `advance`, it must not mark R10 ready directly. Instead, it must assign a refreshed mockup/design preflight using `DESIGN.md`. That mockup pass must produce Empty, Loading, Results, Evidence Review, Low Signal, and Mobile Review artifacts for Matt inspection. This requirement is now satisfied by `docs/mockups/rg4-refreshed-preflight-2026-05-12/`; R10 is ready after Matt approval.
 
@@ -249,8 +249,8 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R12 | Evidence dossier review mode | merged_to_rebuild_branch | `feat/reset-r12-evidence-dossier-review` | browser |
 | R13 | Sales-first CSV export | merged_to_rebuild_branch | `feat/reset-r13-sales-first-export` | browser + CSV |
 | R14 | Persistence, DB readback, and quality report tie-out | merged_to_mainline | `feat/reset-r14-persistence-quality-tieout` | API + DB |
-| R14A | Image overhaul and approved brand asset cleanup | implemented_pending_qa | `feat/reset-r14a-image-overhaul-brand-cleanup` | browser + visual |
-| R14B | UI/UX consistency pass | blocked | `feat/reset-r14b-ui-ux-consistency-pass` | browser + screenshots |
+| R14A | Image overhaul and approved brand asset cleanup | merged_to_mainline | `feat/reset-r14a-image-overhaul-brand-cleanup` | browser + visual |
+| R14B | UI/UX consistency pass | ready | `feat/reset-r14b-ui-ux-consistency-pass` | browser + screenshots |
 | R14C | Deployment readiness and operator-use smoke | blocked | `feat/reset-r14c-deployment-readiness-smoke` | deployment + API/web smoke |
 | R15 | Internal correction review and dogfood decision packet | blocked | `feat/reset-r15-dogfood-decision-packet` | browser + docs |
 
@@ -1196,12 +1196,17 @@ R14 Prompt B result:
 R14A Prompt A result:
 
 - Branch: `feat/reset-r14a-image-overhaul-brand-cleanup`.
-- Status: `implemented_pending_qa`.
+- Status: `merged_to_mainline`.
 - Change summary: imported approved design-pack favicon, touch icons, web manifest, and social preview assets; removed the old generated rabbit/lens/rabbit-mark rasters from the app public brand folder; added a reusable wordmark-first brand identity component; replaced primary-shell `WR` placeholder boxes with a quiet signal mark and wordmark; refreshed login and metadata branding; made approved icon/social assets public through middleware; and updated historical brand-schema pointers so future agents do not revive deleted generated assets.
 - Scope note: changed files stay in web visual/brand assets, web shell/login/metadata/middleware, brand docs, reset status/control docs, and R14A browser QA evidence. No backend/API/core/search/export/persistence/source-assisted compiler/benchmark/dogfood/deployment-promotion behavior changed.
 - Verification: `cd apps/web && npm test -- --run` passed (`13` files, `30` tests); `cd apps/web && npm run build` passed with existing Next.js workspace-root and middleware deprecation warnings; `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` passed (`53 passed`, existing datetime deprecation warnings); `git diff --check` passed; browser QA on local dev captured desktop/mobile login, empty, and results screenshots under `.gstack/qa-reports/screenshots/r14a-brand-cleanup-2026-05-12/`, with desktop `scrollWidth=1440` at `1440` width and mobile `scrollWidth=390` at `390` width.
-- Exact Prompt B handoff: QA `feat/reset-r14a-image-overhaul-brand-cleanup`; verify the branch contains only R14A brand/image cleanup scope; rerun `cd apps/web && npm test -- --run`, `cd apps/web && npm run build`, `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`, and `git diff --check`; inspect browser screenshots under `.gstack/qa-reports/screenshots/r14a-brand-cleanup-2026-05-12/`; confirm no standalone rabbit/mascot/ad hoc CSS logo appears in product UI; confirm old generated rasters are deleted and no app code references them; confirm approved favicon/touch/manifest/social assets are present and publicly routable; confirm login, empty, and results states remain usable on desktop and mobile; confirm no R14B visual consistency, R14C deployment smoke, export, persistence, backend/API/core, source-assisted compiler, benchmark, dogfood, RG5 Prompt C, or deployment-promotion scope landed. If QA passes, merge only to `main`, mark R14A `merged_to_mainline`, mark R14B `ready`, and keep R14C/RG6/dogfood blocked.
-- Queue consequence: R14A is the single current Prompt B target. R14B, R14C, RG6, dogfood, and RG5 Prompt C remain blocked.
+- R14A Prompt B result:
+
+- QA report: `.gstack/qa-reports/qa-report-r14a-image-overhaul-brand-cleanup-2026-05-12.md`.
+- Prompt B verification: `git diff --check` passed; `cd apps/web && npm test -- --run` passed (`13` files, `30` tests); `cd apps/web && npm run build` passed with the existing Next.js workspace-root and middleware deprecation warnings; `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` passed (`53 passed`, existing datetime deprecation warnings).
+- Browser and asset evidence: reviewed the saved desktop/mobile login, empty, and results screenshots under `.gstack/qa-reports/screenshots/r14a-brand-cleanup-2026-05-12/`; confirmed the wordmark-first UI, quiet signal mark, and approved login/empty/results surfaces on desktop and mobile; confirmed the approved favicon, apple-touch icon, web manifest, and social preview asset endpoints returned `200` from a temporary local Next dev server; confirmed the deleted `white-rabbit-rabbit-mark.png`, `white-rabbit-search-dark.png`, and `white-rabbit-search-light.png` URLs returned `404`.
+- Scope summary: only R14A brand/image cleanup landed. No backend/API/core/search/export/persistence/source-assisted compiler/benchmark/dogfood/deployment-promotion behavior changed.
+- Queue consequence: R14A is now `merged_to_mainline`. Mark R14B `ready`, keep R14C/RG6/dogfood blocked, and do not start R14C until R14B merges.
 
 Additional R14A-R14C verification:
 
