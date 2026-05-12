@@ -25,6 +25,7 @@
     "R13 passed Prompt B QA, rebuild/validated-leads-loop was promoted to main, and ADR-024 makes main the active integration branch going forward.",
     "R14 passed Prompt B QA on feat/reset-r14-persistence-quality-tieout and should be treated as merged before R14A work starts.",
     "R14A is the next same-gate RG5 slice. R14B remains blocked until R14A passes Prompt B and merges.",
+    "The 2026-05-12 R00 Prompt B reruns were stale-target no-ops and do not affect queue state.",
     "Queue truth is main plus this assignment lock, not rebuild/validated-leads-loop and not unmerged feature or audit branch docs."
   ]
 }
