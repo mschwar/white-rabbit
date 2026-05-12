@@ -45,17 +45,17 @@ The customer offer is scoped concierge briefings fulfilled by Matt. **There is n
 9. **Three scores remain visible only when evidence-backed.** Fit / Evidence / Contact are useful only when driven by field-level validation, not LLM optimism.
 10. **Track operator minutes per usable lead.** This is the headline KPI. API cost is secondary, but do not add operator-minute ceremony before the validated query-to-export loop works.
 
-## Rebuild branch protocol
+## Mainline reset protocol
 
-For the validated-leads rebuild, feature/audit work still starts from `rebuild/validated-leads-loop`.
+For the validated-leads reset, feature/audit work now starts from `main`.
 
-- Never merge feature branches directly to `main`. Never open a PR targeting `main`.
-- ADR-010 promoted `rebuild/validated-leads-loop` to `main` for Thomas/Lee internal operator use. Treat `main` as the operator-use deployment line, not as proof that quality gates passed.
-- Only fast-forward/sync `main` from `rebuild/validated-leads-loop` when Matt or the active gate plan explicitly calls for an operator-use promotion.
+- ADR-024 supersedes the old `rebuild/validated-leads-loop` integration policy. Treat `main` as both the active integration branch and the operator-use deployment line.
+- Feature branches branch from `main` and merge back to `main` after Prompt B QA passes.
+- Do not use `rebuild/validated-leads-loop` as the control-plane source of truth for new reset work. It is historical unless Matt explicitly revives it.
 - Before rebuild work, read `docs/00-product-northstar.md` and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 - Pick the next `ready` reset feature from `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 - For reset work, first verify `docs/reset-current-assignment.json`. This file is a stop-lock: if it names a different prompt/feature/branch than the one you were asked to run, report the mismatch and do not change files.
-- All feature branches branch from `rebuild/validated-leads-loop` and all PRs target `rebuild/validated-leads-loop`.
+- All feature branches branch from `main` and all PRs target `main`.
 - Update `docs/12-reset-gated-implementation-plan-2026-05-10.md` and `STATUS.md` before ending. Update `docs/08-agentic-buildout-plan.md` only if the reset plan explicitly calls for it.
 - If a feature touches UI, browser QA and screenshots are required.
 - If a feature does not touch UI, explicit non-UI verification is required.

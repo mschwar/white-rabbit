@@ -338,9 +338,22 @@ Only R09J is ready at first. R09K remains blocked until R09J passes Prompt B and
 
 ---
 
+## ADR-024 — Main is the reset integration branch
+
+**Date:** 2026-05-12
+**Status:** Locked
+
+**Context.** ADR-010 made `main` the Thomas/Lee operator-use deployment line while feature work still merged through `rebuild/validated-leads-loop`. After the May 12 operator-use promotion and Fly API deployment, Matt directed that the repo should be ready to work directly from `main`: each feature branch should be created from `main` and merged to `main` when finished.
+
+**Decision.** Supersede the old rebuild integration-branch policy for future reset work. `main` is now both the active reset integration branch and the operator-use deployment line. Prompt A feature branches branch from `main`; Prompt B QA merges passing feature branches back to `main`; Prompt C audit branches branch from `main` and merge back to `main` only when the gate decision is `advance`.
+
+**Consequences.** `rebuild/validated-leads-loop` becomes historical for new reset work unless Matt explicitly revives it. A merge to `main` still does not mean the product is yellow/green or publicly launched; red-gate caveats, internal-only scope, evidence requirements, and Prompt A/B/C gate discipline remain active. R14 was already in flight when this ADR was recorded; Prompt B should treat the current R14 feature branch as the active branch and merge it to `main` after QA passes.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-024, ADR-025, ...).
+1. Pick the next ADR number (ADR-025, ADR-026, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.

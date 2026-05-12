@@ -45,6 +45,8 @@ htmlcov/
 
 # uv / Poetry
 uv.lock
+!apps/api/uv.lock
+!packages/core/uv.lock
 poetry.lock
 
 # OS
