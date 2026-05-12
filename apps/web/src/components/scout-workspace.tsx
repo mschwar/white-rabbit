@@ -1,6 +1,7 @@
 'use client';
 
 import { FormEvent, useEffect, useState } from 'react';
+import { BrandSignal, BrandWordmark } from '@/components/brand-identity';
 import PrimaryResultsOverview from '@/components/primary-results-overview';
 import ScoutResultsTable from '@/components/scout-results-table';
 import {
@@ -49,6 +50,34 @@ type Mode = 'scout' | 'full';
 type ScoutWorkspaceProps = {
   primaryMode?: boolean;
 };
+
+function RailGlyph({ active = false, kind }: { active?: boolean; kind: 'target' | 'evidence' }) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`grid h-9 w-9 place-items-center rounded-lg border ${
+        active
+          ? 'border-[#2d7bff]/70 bg-[#2d7bff]/15 text-white'
+          : 'border-white/10 bg-white/[0.03] text-white/55'
+      }`}
+    >
+      {kind === 'target' ? (
+        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="6.5" stroke="currentColor" strokeWidth="1.8" />
+          <path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
+          <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+        </svg>
+      ) : (
+        <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24">
+          <path d="M7 5h10M7 12h10M7 19h6" stroke="currentColor" strokeLinecap="round" strokeWidth="1.8" />
+          <circle cx="4" cy="5" r="1" fill="currentColor" />
+          <circle cx="4" cy="12" r="1" fill="currentColor" />
+          <circle cx="4" cy="19" r="1" fill="currentColor" />
+        </svg>
+      )}
+    </div>
+  );
+}
 
 const PRIMARY_LOADING_STAGES = [
   { label: 'Reading sources', count: '18' },
@@ -1141,13 +1170,10 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
         <div className="min-h-screen lg:grid lg:grid-cols-[76px_minmax(0,1fr)] lg:grid-rows-[64px_minmax(0,1fr)]">
           <header className="flex min-h-16 items-center border-b border-white/10 bg-[#050916] text-white lg:col-span-2">
             <div className="grid h-16 w-16 place-items-center border-r border-white/10 lg:w-[76px]">
-              <div aria-hidden="true" className="grid h-9 w-9 place-items-center rounded-lg border border-dashed border-[#2d7bff]/80 bg-[#2d7bff]/15 text-[10px] font-black tracking-[0.04em]">
-                WR
-              </div>
+              <BrandSignal className="h-9 w-9" />
             </div>
             <div className="min-w-0 px-4">
-              <p className="text-base font-semibold">White Rabbit</p>
-              <p className="truncate text-xs text-white/60">Source-backed candidate review</p>
+              <BrandWordmark caption="Evidence categorization" inverted />
             </div>
             <div className="ml-auto hidden items-center gap-2 px-4 sm:flex">
               {showPrimaryResultsOverview ? (
@@ -1170,12 +1196,8 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
 
           <aside className="hidden border-r border-white/10 bg-[#0a1226] px-5 py-5 lg:flex lg:flex-col lg:items-center lg:justify-between">
             <div className="grid gap-3">
-              <div className="grid h-9 w-9 place-items-center rounded-lg border border-[#2d7bff]/70 bg-[#2d7bff]/15 text-[11px] font-black text-white">
-                S
-              </div>
-              <div className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 text-[11px] font-black text-white/60">
-                E
-              </div>
+              <RailGlyph active kind="target" />
+              <RailGlyph kind="evidence" />
             </div>
             <p className="[writing-mode:vertical-rl] rotate-180 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/35">
               Review
@@ -1186,9 +1208,12 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
             {!showPrimaryResultsOverview ? (
               <div className="grid min-h-[52vh] gap-10 bg-[#050916] px-5 py-12 text-white sm:px-8 lg:px-14">
                 <div>
-                  <div aria-hidden="true" className="mb-8 grid h-24 w-24 place-items-center rounded-[18px] border border-dashed border-[#2d7bff]/80 bg-[#2d7bff]/15 text-2xl font-black tracking-[0.04em]">
-                    WR
-                  </div>
+                  <BrandWordmark
+                    caption="Prospects sorted by readiness, blockers, and source proof."
+                    className="mb-8"
+                    inverted
+                    size="hero"
+                  />
                   <h1 className="max-w-3xl text-5xl font-semibold leading-[0.98] tracking-normal sm:text-6xl lg:text-7xl">
                     Start with the target.
                   </h1>
@@ -1205,7 +1230,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                   <div>
                     <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Candidate review</p>
                     <h1 className="mt-1 text-3xl font-semibold tracking-normal text-[#0a1226] sm:text-4xl">
-                      {query.trim() || 'Source-backed candidate review'}
+                      {query.trim() || 'Candidate review'}
                     </h1>
                     <p className="mt-2 max-w-3xl text-sm leading-6 text-[#536175]">
                       Review CRM-first fields, keep uncertain rows visible, and open evidence only when a row needs proof.
@@ -1295,7 +1320,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                     <div>
                       <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Evidence forming</p>
                       <h2 className="mt-1 text-2xl font-semibold tracking-normal text-[#0a1226]">
-                        {query.trim() || 'Source-backed candidate review'}
+                        {query.trim() || 'Candidate review'}
                       </h2>
                     </div>
                     <span className="w-fit rounded-full border border-[#2d7bff]/30 bg-[#e8f1ff] px-3 py-1 text-xs font-bold text-[#0e3a8a]">

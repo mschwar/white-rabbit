@@ -1,11 +1,13 @@
 # White Rabbit Draft Design And Brand Schema - 2026-05-10
 
-**Status:** Draft visual reference.
+**Status:** Historical draft visual reference; superseded for production app identity by `DESIGN.md` and the R14A design pack cleanup.
 **Source image:** `/Users/mschwar/Documents/ChatGPT Image May 10, 2026, 10_00_49 PM.png`.
 **Extracted template:** [`assets/white-rabbit-top-half-template-2026-05-10.png`](assets/white-rabbit-top-half-template-2026-05-10.png).
 **Product code changed:** No.
 
 This schema translates the top-half brand panel into reusable design direction for later UI work. It does not advance a reset gate, replace `docs/mockups/final-product-2026-05-10/`, or authorize R10-R13 UI implementation before the active reset plan unlocks it.
+
+R14A production note: the app now uses a wordmark-first identity and approved design-pack favicon/social assets. The old generated rabbit/lens/rabbit-mark rasters are quarantined and should not be reintroduced into the operator UI.
 
 ![White Rabbit top-half brand template](assets/white-rabbit-top-half-template-2026-05-10.png)
 
@@ -31,8 +33,8 @@ Intelligence that moves you forward.
 | --- | --- |
 | Company | OrgAtlas, rendered as a small uppercase parent mark. |
 | Product | White Rabbit in prose; the wordmark may render as `WhiteRabbit` when used as a graphic lockup. |
-| Primary symbol | Rabbit inside a search lens with horizontal data trails. |
-| App mark | Cropped lens/rabbit/data-trace mark on deep navy. |
+| Historical draft symbol | Rabbit inside a search lens with horizontal data trails. |
+| App mark | Approved design-pack favicon/browser asset only; not a standalone operator UI logo. |
 | Concept keywords | Intelligent, technical, structured, enterprise, trustworthy. |
 
 ## Color Tokens
@@ -86,17 +88,21 @@ For product UI, translate this into a quieter operator workspace:
 
 - Use thin-line icons with rounded endpoints and deep navy strokes.
 - Pair icon rows with short labels: `Find`, `Verify`, `Understand`, `Connect`.
-- The rabbit/lens/data-trace mark is the primary symbol; do not introduce a second mascot or unrelated abstract logo.
+- The product UI is wordmark-first. Do not add a standalone rabbit, generated mascot, or ad hoc CSS mark unless a later ADR approves a production vector.
 - Use the blue data dots as evidence/provenance language, not generic decoration.
-- App icons should favor the dark search mark for contrast at small sizes.
+- Browser icons and social previews must come from the approved design pack, not from the May 10 generated draft rasters.
 
 Available repo assets:
 
 | Asset | Use |
 | --- | --- |
-| `apps/web/public/brand/white-rabbit-search-light.png` | Light-background lens/rabbit/data-trace mark. |
-| `apps/web/public/brand/white-rabbit-search-dark.png` | Dark-background lens/rabbit/data-trace mark. |
-| `apps/web/public/brand/white-rabbit-rabbit-mark.png` | Standalone rabbit mark. |
+| `apps/web/src/app/favicon.ico` | Approved browser favicon from the R14A design pack. |
+| `apps/web/public/apple-touch-icon.png` | Approved Apple touch icon from the R14A design pack. |
+| `apps/web/public/android-chrome-192x192.png` | Approved web app icon from the R14A design pack. |
+| `apps/web/public/android-chrome-512x512.png` | Approved web app icon from the R14A design pack. |
+| `apps/web/public/site.webmanifest` | Approved manifest from the R14A design pack. |
+| `apps/web/public/brand/white-rabbit-og-light.png` | Approved light social preview from the R14A design pack. |
+| `apps/web/public/brand/white-rabbit-og-navy.png` | Approved navy social preview from the R14A design pack. |
 | `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` | Top-half brand template reference. |
 
 ## Product UI Guardrails
@@ -105,7 +111,7 @@ Available repo assets:
 - Do not let brand polish make untrusted results feel CRM-ready.
 - `READY`, `REVIEW`, `ORG-ONLY`, and `NOT FOUND` remain the operator-facing result buckets from ADR-013.
 - Evidence and uncertainty should be styled as first-class product states, not warnings hidden in fine print.
-- Brand work should wait for the active reset queue before touching R10-R13 UI.
+- Brand work must follow the active reset queue and stay subordinate to evidence clarity.
 
 ## Draft CSS Tokens
 

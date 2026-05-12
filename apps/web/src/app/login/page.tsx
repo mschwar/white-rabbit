@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { BrandWordmark } from '@/components/brand-identity';
 
 type LoginPageSearchParams = {
   error?: string;
@@ -15,15 +16,13 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
   const hasError = resolvedSearchParams?.error === '1';
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6 py-12 text-zinc-50">
-      <section className="w-full max-w-md rounded-3xl border border-white/10 bg-white/5 p-8 shadow-2xl shadow-black/20 backdrop-blur">
+    <main className="flex min-h-screen items-center justify-center bg-[#050916] px-6 py-12 text-zinc-50">
+      <section className="w-full max-w-md rounded-lg border border-white/10 bg-white/[0.04] p-8 shadow-[0_24px_70px_rgba(0,0,0,0.32)] backdrop-blur">
         <div className="space-y-3">
-          <p className="text-sm font-medium uppercase tracking-[0.24em] text-emerald-300">
-            White Rabbit
-          </p>
+          <BrandWordmark caption="Operator workspace" inverted size="login" />
           <h1 className="text-3xl font-semibold tracking-tight">Shared-password access</h1>
           <p className="text-sm leading-6 text-zinc-300">
-            Enter the shared workspace password to continue into Scout.
+            Enter the shared workspace password to continue.
           </p>
         </div>
 
@@ -42,7 +41,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
             <input
               autoComplete="current-password"
               autoFocus
-              className="w-full rounded-2xl border border-white/10 bg-zinc-950/80 px-4 py-3 text-base text-zinc-50 outline-none ring-0 placeholder:text-zinc-500 focus:border-emerald-400"
+              className="w-full rounded-md border border-white/10 bg-[#0a1226] px-4 py-3 text-base text-zinc-50 outline-none ring-0 placeholder:text-zinc-500 focus:border-[#2d7bff] focus:ring-2 focus:ring-[#2d7bff]/25"
               id="password"
               name="password"
               placeholder="Enter shared password"
@@ -51,7 +50,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
           </div>
 
           <button
-            className="flex w-full items-center justify-center rounded-2xl bg-emerald-400 px-4 py-3 text-sm font-semibold text-emerald-950 transition hover:bg-emerald-300"
+            className="flex w-full items-center justify-center rounded-md bg-[#2d7bff] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#1f65d8]"
             type="submit"
           >
             Unlock workspace
@@ -59,7 +58,7 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
         </form>
 
         <p className="mt-6 text-xs leading-5 text-zinc-400">
-          Protected routes are gated by a session cookie.{' '}
+          Use the live workspace after signing in.{' '}
           <Link className="underline decoration-zinc-500 underline-offset-4" href="/login?next=/scout">
             Try the Scout workspace after login
           </Link>.

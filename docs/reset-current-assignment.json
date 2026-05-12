@@ -2,15 +2,15 @@
   "version": 1,
   "updated": "2026-05-12",
   "integration_branch": "main",
-  "current_prompt": "A",
+  "current_prompt": "B",
   "current_feature_id": "R14A",
   "current_feature_name": "Image overhaul and approved brand asset cleanup",
-  "current_feature_status": "ready",
+  "current_feature_status": "implemented_pending_qa",
   "current_feature_branch": "feat/reset-r14a-image-overhaul-brand-cleanup",
   "current_gate": "RG5 - Sales-First Export And Persistence",
-  "valid_next_action": "Prompt A may implement only R14A on feat/reset-r14a-image-overhaul-brand-cleanup from main after R14 Prompt B merges.",
+  "valid_next_action": "Prompt B may QA only R14A on feat/reset-r14a-image-overhaul-brand-cleanup and merge it back to main if QA passes.",
   "invalid_next_actions": [
-    "Prompt B QA work before R14A is implemented and pushed",
+    "Prompt A implementation work before R14A Prompt B completes",
     "Prompt C gate audit",
     "QA any historical merged branch, including feat/reset-r00-w5-hold-control, feat/reset-r13-sales-first-export, or feat/reset-r14-persistence-quality-tieout",
     "Start R14B, R14C, RG6, dogfood, or any deployment promotion outside the current assignment"
@@ -24,7 +24,7 @@
     "R00 is historical and already merged.",
     "R13 passed Prompt B QA, rebuild/validated-leads-loop was promoted to main, and ADR-024 makes main the active integration branch going forward.",
     "R14 passed Prompt B QA on feat/reset-r14-persistence-quality-tieout and should be treated as merged before R14A work starts.",
-    "R14A is the next same-gate RG5 slice. R14B remains blocked until R14A passes Prompt B and merges.",
+    "R14A is implemented pending Prompt B QA. R14B remains blocked until R14A passes Prompt B and merges.",
     "The 2026-05-12 R00 Prompt B reruns were stale-target no-ops and do not affect queue state.",
     "Queue truth is main plus this assignment lock, not rebuild/validated-leads-loop and not unmerged feature or audit branch docs."
   ]

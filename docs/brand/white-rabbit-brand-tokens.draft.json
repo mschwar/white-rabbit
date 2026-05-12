@@ -1,5 +1,5 @@
 {
-  "status": "draft",
+  "status": "historical_draft_superseded_for_production_identity",
   "source_image": "/Users/mschwar/Documents/ChatGPT Image May 10, 2026, 10_00_49 PM.png",
   "template_asset": "docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png",
   "brand": {
@@ -28,9 +28,13 @@
     "text_muted": "#5E6A7A"
   },
   "assets": {
-    "search_light": "apps/web/public/brand/white-rabbit-search-light.png",
-    "search_dark": "apps/web/public/brand/white-rabbit-search-dark.png",
-    "rabbit_mark": "apps/web/public/brand/white-rabbit-rabbit-mark.png",
+    "favicon": "apps/web/src/app/favicon.ico",
+    "apple_touch_icon": "apps/web/public/apple-touch-icon.png",
+    "android_chrome_192": "apps/web/public/android-chrome-192x192.png",
+    "android_chrome_512": "apps/web/public/android-chrome-512x512.png",
+    "manifest": "apps/web/public/site.webmanifest",
+    "og_light": "apps/web/public/brand/white-rabbit-og-light.png",
+    "og_navy": "apps/web/public/brand/white-rabbit-og-navy.png",
     "top_half_template": "docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png"
   },
   "operator_buckets": [
