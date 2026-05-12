@@ -14,7 +14,7 @@
 
 **Open question:** If these become production brand assets, replace the upscaled raster crops with a clean vector or native high-resolution source when available.
 
-**Queue correction:** The 2026-05-12 R00 Prompt B run was a stale-target no-op and has no queue effect. The current valid Prompt B target is `feat/reset-r13-sales-first-export`; R00 is historical and already merged.
+**Queue correction:** The 2026-05-12 R00 Prompt B run was a stale-target no-op and has no queue effect. The current valid Prompt B target is `feat/reset-r13-sales-first-export`; R00 is historical and already merged. This recheck confirmed the same no-op state.
 
 ---
 
