@@ -2,13 +2,13 @@
 
 **Status:** Active control document for the May 10 product reset.
 **Created:** 2026-05-10.
-**Integration branch:** `rebuild/validated-leads-loop`.
-**Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
+**Integration branch:** `main`.
+**Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
 **Current reset gate:** RG5 - Sales-First Export And Persistence. RG4 advanced on `audit/reset-rg4-operator-ui`; product remains red until export/persistence and dogfood gates pass.
-**Next Prompt A feature:** `R14 - Persistence, DB readback, and quality report tie-out` on `feat/reset-r14-persistence-quality-tieout`.
-**Current Prompt B handoff:** None. R13 Prompt B QA passed and merged to `rebuild/validated-leads-loop`.
-**Current Prompt C handoff:** None. RG5 is not ready for Prompt C until R14-R14C pass Prompt B and merge. Keep R14A-R14C blocked until their prior RG5 slices merge; keep RG6/dogfood/main blocked until RG5 advances.
+**Next Prompt A feature:** `R14 - Persistence, DB readback, and quality report tie-out` is already in flight on `feat/reset-r14-persistence-quality-tieout`.
+**Current Prompt B handoff:** None. R13 Prompt B QA passed, and the reset line has been promoted to `main`.
+**Current Prompt C handoff:** None. RG5 is not ready for Prompt C until R14-R14C pass Prompt B and merge to `main`. Keep R14A-R14C blocked until their prior RG5 slices merge; keep RG6/dogfood blocked until RG5 advances.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -94,15 +94,15 @@ R09D-R09H proved the offline workbook path but did not prove live startup. ADR-0
 
 ## Branch Workflow
 
-Do not merge feature branches directly to `main`.
+ADR-024 makes `main` the active integration branch and operator-use deployment line.
 
 All reset work branches from and returns to:
 
 ```text
-rebuild/validated-leads-loop
+main
 ```
 
-`main` is the operator-use deployment line because Thomas and Lee asked to use the most recent internal version. A push to `main` is an explicit operator-use promotion from `rebuild/validated-leads-loop`; it is not evidence that a reset gate passed or that the product is yellow/green. Keep feature QA and gate advancement on `rebuild/validated-leads-loop`, then sync `main` only when Matt or the active gate plan explicitly asks for that promotion.
+`rebuild/validated-leads-loop` is historical for new reset work unless Matt explicitly revives it. A merge to `main` still is not evidence that a reset gate passed or that the product is yellow/green; it means the feature passed its Prompt B QA and is available for Thomas/Lee operator use. Gate advancement still requires Prompt C.
 
 Feature branch pattern:
 
@@ -122,15 +122,15 @@ Use only this loop:
 
 ```text
 Prompt A: implement exactly one ready reset feature on a feature branch
-Prompt B: QA that feature, write the QA report, and merge only to rebuild/validated-leads-loop
+Prompt B: QA that feature, write the QA report, and merge only to main
 Prompt C: run the gate evaluation/audit after every feature in that gate has merged
 ```
 
-Prompt A never merges. Prompt B never unlocks the next gate. Prompt B may unlock the next feature inside the same in-progress gate after QA passes and the prior feature is merged. Prompt C is the only prompt that can record a gate-level `advance` or recommend an operator-use sync to `main`. A Prompt C `advance` is not active for the next Prompt A until the audit branch has been merged back into `rebuild/validated-leads-loop` and pushed.
+Prompt A never merges. Prompt B never unlocks the next gate. Prompt B may unlock the next feature inside the same in-progress gate after QA passes and the prior feature is merged. Prompt C is the only prompt that can record a gate-level `advance`. A Prompt C `advance` is not active for the next Prompt A until the audit branch has been merged back into `main` and pushed.
 
 Current kickoff order is resolved dynamically from `docs/reset-current-assignment.json`, `STATUS.md`, and the reset feature/gate tables below.
 
-Queue truth must be resolved from `rebuild/validated-leads-loop`, not from an unmerged feature branch or audit branch. If an agent starts on any branch other than `rebuild/validated-leads-loop`, it must first fetch and inspect the integration branch state before selecting work. A feature branch's local `STATUS.md` and `docs/12` can contain in-flight handoff notes, but they are not the control-plane source of truth until merged back to `rebuild/validated-leads-loop`.
+Queue truth must be resolved from `main`, not from `rebuild/validated-leads-loop`, an unmerged feature branch, or an audit branch. If an agent starts on any branch other than `main`, it must first fetch and inspect `origin/main` before selecting work. A feature branch's local `STATUS.md` and `docs/12` can contain in-flight handoff notes, but they are not the control-plane source of truth until merged back to `main`.
 
 `docs/reset-current-assignment.json` is the machine-readable assignment lock. If the assignment lock names a different prompt, feature, or branch than the prompt an agent was given, the agent must stop without editing files, writing QA reports, committing, merging, or pushing. Stale-target checks are chat-only reports; they must not create integration-branch commits.
 
@@ -160,7 +160,7 @@ Before reset UI/export implementation starts, Matt must inspect the final produc
 
 The May 10 mockup remains useful for product structure only: one search input, high-volume tier distribution, CRM-first fields, evidence one action away, sales-first export, and no Scout/Full/product-internals ceremony in the operator path.
 
-A refreshed RG4 design preflight artifact exists under `docs/mockups/rg4-refreshed-preflight-2026-05-12/` with six rendered mockup screens. Matt approved this artifact on 2026-05-12. It initially unlocked R10 only; after R10 Prompt B, R11 was ready. R11 and R12 have passed Prompt B QA and are `merged_to_rebuild_branch`. RG4 Prompt C advanced, R13 passed Prompt B QA and merged, and R14 is now the single ready Prompt A feature. R14A-R14C, dogfood, and `main` promotion remain blocked until their documented prerequisites pass.
+A refreshed RG4 design preflight artifact exists under `docs/mockups/rg4-refreshed-preflight-2026-05-12/` with six rendered mockup screens. Matt approved this artifact on 2026-05-12. It initially unlocked R10 only; after R10 Prompt B, R11 was ready. R11 and R12 have passed Prompt B QA and are `merged_to_rebuild_branch`. RG4 Prompt C advanced, R13 passed Prompt B QA and merged, and R14 is now the single Prompt A feature in flight. R14A-R14C and dogfood remain blocked until their documented prerequisites pass.
 
 If RG3 Prompt C records `advance`, it must not mark R10 ready directly. Instead, it must assign a refreshed mockup/design preflight using `DESIGN.md`. That mockup pass must produce Empty, Loading, Results, Evidence Review, Low Signal, and Mobile Review artifacts for Matt inspection. This requirement is now satisfied by `docs/mockups/rg4-refreshed-preflight-2026-05-12/`; R10 is ready after Matt approval.
 
@@ -615,7 +615,7 @@ R09D Prompt A assignment:
 ```text
 You are Prompt A for the White Rabbit reset queue.
 
-Work in /Users/mschwar/Documents/white-rabbit. Use rebuild/validated-leads-loop as the integration branch. Do not merge or target main.
+Work in /Users/mschwar/Documents/white-rabbit. Use main as the integration branch.
 
 First prove current state:
 - read AGENTS.md
@@ -1270,7 +1270,7 @@ Every gate report must include:
 # Reset Gate Review - RGN Name
 
 **Branch:**
-**Integration branch:** rebuild/validated-leads-loop
+**Integration branch:** main
 **Date:**
 **Decision:** advance / hold / revise / rollback / kill
 **Current product gate:** red / yellow / green
@@ -1285,7 +1285,7 @@ Every gate report must include:
 ## What Did Not Work
 ## New Gaps Found
 ## Recommended Scope Change For Next Gate
-## Next Main Promotion Recommendation
+## Next Deployment Recommendation
 ## Next Prompt A Assignment
 ```
 
@@ -1296,11 +1296,11 @@ Use this exact prompt for every implementation feature. The agent must resolve t
 ```text
 You are Prompt A for the White Rabbit reset queue.
 
-Work in /Users/mschwar/Documents/white-rabbit. Use rebuild/validated-leads-loop as the integration branch. Do not merge or target main.
+Work in /Users/mschwar/Documents/white-rabbit. Use main as the integration branch.
 
 First prove current state:
 - fetch origin
-- if current branch is not rebuild/validated-leads-loop, inspect origin/rebuild/validated-leads-loop before selecting work; do not resolve the queue from a feature or audit branch
+- if current branch is not main, inspect origin/main before selecting work; do not resolve the queue from rebuild/validated-leads-loop, a feature branch, or an audit branch
 - read AGENTS.md
 - read STATUS.md
 - read docs/reset-current-assignment.json
@@ -1331,7 +1331,7 @@ Required output:
 - atomic conventional commit
 - pushed feature branch
 
-Do not merge. Do not change queue readiness beyond the selected feature's own status and Prompt B handoff. Do not sync main.
+Do not merge. Do not change queue readiness beyond the selected feature's own status and Prompt B handoff.
 ```
 
 ## Reusable Copy-Paste Prompt B
@@ -1341,17 +1341,17 @@ Use this exact prompt after Prompt A has pushed the current feature branch. The 
 ```text
 You are Prompt B for the White Rabbit reset queue.
 
-Work in /Users/mschwar/Documents/white-rabbit. QA the current reset feature branch and merge only into rebuild/validated-leads-loop. Do not merge or target main.
+Work in /Users/mschwar/Documents/white-rabbit. QA the current reset feature branch and merge only into main.
 
 First prove current state:
 - fetch origin
-- inspect origin/rebuild/validated-leads-loop first; do not resolve the QA target from stale local feature/audit branch docs
+- inspect origin/main first; do not resolve the QA target from rebuild/validated-leads-loop or stale local feature/audit branch docs
 - read AGENTS.md
 - read STATUS.md
 - read docs/reset-current-assignment.json
 - read docs/00-product-northstar.md
 - read docs/12-reset-gated-implementation-plan-2026-05-10.md
-- identify the single feature branch currently waiting for QA from integration STATUS.md, integration docs/12, and the pushed branch state
+- identify the single feature branch currently waiting for QA from main STATUS.md, main docs/12, and the pushed branch state
 - run git status --short --branch
 
 Before QA, check docs/reset-current-assignment.json. If `current_prompt` is not `B`, or if `current_feature_branch` is not the branch you are about to QA, stop without editing, writing a QA report, committing, merging, or pushing.
@@ -1373,16 +1373,16 @@ If QA passes:
 - if this was the last feature in the current gate, mark the gate ready for Prompt C audit and leave downstream gates blocked
 - commit QA/docs/fixes atomically if needed
 - push the feature branch
-- merge the feature branch into rebuild/validated-leads-loop only
-- push rebuild/validated-leads-loop
+- merge the feature branch into main only
+- push main
 - stop
 
-Do not unlock the next gate. Do not sync main.
+Do not unlock the next gate.
 ```
 
 ## Reusable Copy-Paste Prompt C
 
-Use this exact prompt only after Prompt B has merged every feature in the current gate into `rebuild/validated-leads-loop`.
+Use this exact prompt only after Prompt B has merged every feature in the current gate into `main`.
 
 ```text
 You are Prompt C for the White Rabbit reset queue.
@@ -1404,26 +1404,26 @@ First prove current state:
 
 If the current gate is not ready for audit, or if it has already advanced, stop and report the exact blocker. Do not rerun a completed gate.
 
-Create an audit branch from rebuild/validated-leads-loop using audit/reset-rgN-short-name.
+Create an audit branch from main using audit/reset-rgN-short-name.
 
 Required output:
 - audits/gates/reset-2026-05-10/rgN-short-name.md
 - audits/raw/reset-2026-05-10/rgN/ with command output and cited evidence notes
 - decision: advance / hold / revise / rollback / kill
 - Value Prop Verdict that explicitly says whether the current product gives enough result volume, evidence, and export value for the operator loop
-- Next Main Promotion Recommendation
+- Next Deployment Recommendation
 - if and only if advance: unlock the next valid assignment from the integration branch and state whether that assignment is a Prompt A feature or a design/mockup preflight
 - if the current gate is RG3 and the decision is advance: do not mark R10 ready; assign the refreshed mockup/design preflight from DESIGN.md and leave R10-R12 blocked until Matt approves the refreshed mockups
 
 Commit and push the audit branch.
 
 If and only if the gate decision is `advance`:
-- checkout rebuild/validated-leads-loop
-- fast-forward merge the audit branch into rebuild/validated-leads-loop
-- push rebuild/validated-leads-loop
+- checkout main
+- fast-forward merge the audit branch into main
+- push main
 - verify Prompt A can now resolve the next ready feature from the integration branch
 
-If the gate decision is `hold`, `revise`, `rollback`, or `kill`, do not merge the audit branch into rebuild/validated-leads-loop unless Matt explicitly accepts that decision state afterward.
+If the gate decision is `hold`, `revise`, `rollback`, or `kill`, do not merge the audit branch into main unless Matt explicitly accepts that decision state afterward.
 
-Do not sync main unless Matt explicitly asks after seeing the gate decision.
+Do not create a deployment/promotion branch unless Matt explicitly asks after seeing the gate decision.
 ```
