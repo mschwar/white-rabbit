@@ -1,0 +1,1983 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>White Rabbit Mockup Review</title>
+    <style>
+      :root {
+        --navy-1000: #02040b;
+        --navy-950: #050916;
+        --navy-900: #0a1226;
+        --navy-850: #0d1938;
+        --paper: #fbfcfd;
+        --paper-2: #f5f7fa;
+        --line: #e2e7ef;
+        --line-strong: #cbd5e1;
+        --ink: #0a1226;
+        --muted: #60708a;
+        --signal: #2d7bff;
+        --signal-soft: #e8f1ff;
+        --ready: #1f7a45;
+        --ready-bg: #e6f5ec;
+        --review: #9a6507;
+        --review-bg: #fff4e1;
+        --org: #536175;
+        --org-bg: #eef1f5;
+        --not-found: #8f3434;
+        --not-found-bg: #fcebeb;
+        --focus: 0 0 0 3px rgba(45, 123, 255, 0.28);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color-scheme: light;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: #dfe5ee;
+        color: var(--ink);
+      }
+
+      body {
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      button,
+      input,
+      textarea {
+        font: inherit;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      :focus-visible {
+        outline: none;
+        box-shadow: var(--focus);
+      }
+
+      .review-nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 12px 18px;
+        border-bottom: 1px solid var(--line);
+        background: rgba(251, 252, 253, 0.96);
+        backdrop-filter: blur(14px);
+      }
+
+      .review-nav strong {
+        display: block;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .review-nav small {
+        color: var(--muted);
+      }
+
+      .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        justify-content: flex-end;
+      }
+
+      .tab {
+        min-height: 34px;
+        border: 1px solid var(--line-strong);
+        border-radius: 8px;
+        background: white;
+        color: var(--ink);
+        padding: 0 10px;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .tab[aria-selected="true"] {
+        border-color: var(--signal);
+        background: var(--signal-soft);
+        color: #0e3a8a;
+      }
+
+      .mockup-view {
+        display: none;
+        padding: 24px;
+      }
+
+      .mockup-view.active {
+        display: block;
+      }
+
+      .app-shell {
+        min-height: 900px;
+        display: grid;
+        grid-template-columns: 76px minmax(0, 1fr);
+        grid-template-rows: 64px minmax(0, 1fr);
+        overflow: hidden;
+        background: var(--navy-950);
+        box-shadow: 0 26px 70px rgba(2, 4, 11, 0.18);
+      }
+
+      .top-rail {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 76px minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 18px;
+        min-height: 64px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--navy-950);
+        color: white;
+      }
+
+      .rail-brand-cell {
+        display: grid;
+        place-items: center;
+        height: 64px;
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .brand-lockup {
+        min-width: 0;
+      }
+
+      .brand-name {
+        font-size: 16px;
+        font-weight: 760;
+      }
+
+      .brand-context {
+        overflow: hidden;
+        color: rgba(255, 255, 255, 0.66);
+        font-size: 12px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .top-meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding-right: 18px;
+      }
+
+      .top-chip {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 999px;
+        color: rgba(255, 255, 255, 0.76);
+        padding: 0 10px;
+        font-size: 12px;
+        white-space: nowrap;
+      }
+
+      .top-chip.signal {
+        border-color: rgba(45, 123, 255, 0.48);
+        background: rgba(45, 123, 255, 0.18);
+        color: white;
+      }
+
+      .left-rail {
+        grid-row: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 0;
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--navy-900);
+      }
+
+      .rail-items {
+        display: grid;
+        gap: 12px;
+      }
+
+      .rail-item {
+        display: grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 11px;
+        font-weight: 900;
+      }
+
+      .rail-item.active {
+        border-color: rgba(45, 123, 255, 0.72);
+        background: rgba(45, 123, 255, 0.16);
+        color: white;
+      }
+
+      .rail-caption {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        color: rgba(255, 255, 255, 0.38);
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .work-surface {
+        grid-column: 2;
+        grid-row: 2;
+        min-width: 0;
+        min-height: 0;
+        overflow: auto;
+        background: var(--paper);
+      }
+
+      .placeholder-mark {
+        position: relative;
+        display: inline-grid;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        border: 1px dashed rgba(45, 123, 255, 0.82);
+        border-radius: 8px;
+        background: rgba(45, 123, 255, 0.14);
+        color: white;
+        font-size: 10px;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+      }
+
+      .placeholder-mark::before,
+      .placeholder-mark::after {
+        content: "";
+        position: absolute;
+        right: -9px;
+        width: 5px;
+        height: 5px;
+        border-radius: 999px;
+        background: var(--signal);
+      }
+
+      .placeholder-mark::before {
+        top: 9px;
+      }
+
+      .placeholder-mark::after {
+        bottom: 9px;
+        opacity: 0.66;
+      }
+
+      .placeholder-mark.large {
+        width: 96px;
+        height: 96px;
+        border-radius: 18px;
+        font-size: 22px;
+      }
+
+      .placeholder-mark.large::before,
+      .placeholder-mark.large::after {
+        right: -16px;
+        width: 8px;
+        height: 8px;
+      }
+
+      .placeholder-mark.large::before {
+        top: 24px;
+      }
+
+      .placeholder-mark.large::after {
+        bottom: 24px;
+      }
+
+      .empty-work {
+        display: grid;
+        grid-template-rows: minmax(430px, 50vh) minmax(0, 1fr);
+        min-height: 836px;
+      }
+
+      .empty-brand-field {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(360px, 480px);
+        gap: 54px;
+        align-items: end;
+        padding: 52px 64px;
+        background:
+          linear-gradient(90deg, rgba(45, 123, 255, 0.12), transparent 54%),
+          var(--navy-950);
+        color: white;
+      }
+
+      .mark-note {
+        margin-top: 12px;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .empty-copy h1 {
+        max-width: 700px;
+        margin: 0;
+        font-size: clamp(44px, 5vw, 74px);
+        line-height: 0.96;
+        letter-spacing: 0;
+      }
+
+      .empty-copy p {
+        max-width: 640px;
+        margin: 22px 0 0;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 18px;
+      }
+
+      .source-card {
+        align-self: center;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.04);
+        padding: 18px;
+      }
+
+      .source-card h2 {
+        margin: 0 0 10px;
+        font-size: 16px;
+      }
+
+      .source-card p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.68);
+      }
+
+      .empty-command {
+        display: grid;
+        gap: 16px;
+        align-content: start;
+        padding: 38px 64px;
+      }
+
+      .query-bay {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(300px, 0.7fr) auto;
+        gap: 14px;
+        align-items: end;
+        max-width: 1160px;
+        border: 1px solid var(--line-strong);
+        border-radius: 8px;
+        background: white;
+        box-shadow: 0 18px 42px rgba(10, 18, 38, 0.08);
+        padding: 18px;
+      }
+
+      .field-label {
+        margin: 0 0 7px;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .query-input,
+      .source-input {
+        width: 100%;
+        border: 1px solid var(--line-strong);
+        border-radius: 6px;
+        background: var(--paper);
+        color: var(--ink);
+        font-weight: 650;
+      }
+
+      .query-input {
+        height: 48px;
+        padding: 0 14px;
+        font-size: 16px;
+      }
+
+      .query-input.compact {
+        height: 40px;
+        font-size: 13px;
+      }
+
+      .source-input {
+        min-height: 48px;
+        resize: none;
+        padding: 12px;
+        font-size: 13px;
+      }
+
+      .primary-action,
+      .secondary-action,
+      .ghost-action,
+      .evidence-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        padding: 0 14px;
+        font-size: 13px;
+        font-weight: 850;
+        white-space: nowrap;
+      }
+
+      .primary-action {
+        height: 48px;
+        background: var(--signal);
+        color: white;
+      }
+
+      .secondary-action {
+        background: var(--navy-900);
+        color: white;
+      }
+
+      .ghost-action {
+        border-color: var(--line-strong);
+        background: white;
+        color: var(--ink);
+      }
+
+      .evidence-action {
+        min-height: 30px;
+        border-color: rgba(45, 123, 255, 0.32);
+        background: white;
+        color: #0e3a8a;
+        padding: 0 10px;
+        font-size: 12px;
+      }
+
+      .helper-line {
+        max-width: 840px;
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .screen-pad {
+        padding: 24px;
+      }
+
+      .results-title {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 16px;
+      }
+
+      .results-title h1 {
+        margin: 0;
+        font-size: 25px;
+        letter-spacing: 0;
+      }
+
+      .results-title p {
+        margin: 5px 0 0;
+        color: var(--muted);
+      }
+
+      .summary-strip {
+        display: grid;
+        grid-template-columns: minmax(240px, 1.4fr) repeat(5, minmax(92px, 0.6fr)) minmax(150px, auto);
+        gap: 1px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--line);
+      }
+
+      .summary-cell {
+        display: grid;
+        align-content: center;
+        min-height: 76px;
+        gap: 4px;
+        background: white;
+        padding: 13px 14px;
+      }
+
+      .summary-cell strong {
+        font-size: 24px;
+        line-height: 1;
+      }
+
+      .summary-cell span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .summary-cell.target strong {
+        font-size: 15px;
+        line-height: 1.25;
+      }
+
+      .summary-cell.ready strong {
+        color: var(--ready);
+      }
+
+      .summary-cell.review strong {
+        color: var(--review);
+      }
+
+      .summary-cell.org strong,
+      .summary-cell.not-found strong {
+        color: var(--org);
+      }
+
+      .summary-actions {
+        justify-content: center;
+      }
+
+      .bucket-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 18px 0 14px;
+      }
+
+      .bucket-filter {
+        min-height: 34px;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        background: white;
+        color: var(--ink);
+        padding: 0 12px;
+        font-size: 12px;
+        font-weight: 850;
+      }
+
+      .bucket-filter.active {
+        border-color: var(--signal);
+        background: var(--signal-soft);
+        color: #0e3a8a;
+      }
+
+      .table-frame {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid var(--line);
+        padding: 9px 10px;
+        text-align: left;
+        vertical-align: middle;
+      }
+
+      th {
+        height: 34px;
+        background: #f1f4f8;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      td {
+        height: 46px;
+        color: #18233a;
+        font-size: 12px;
+      }
+
+      tbody tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .crm-table th:nth-child(1),
+      .crm-table td:nth-child(1) {
+        width: 15%;
+      }
+
+      .crm-table th:nth-child(2),
+      .crm-table td:nth-child(2) {
+        width: 12%;
+      }
+
+      .crm-table th:nth-child(3),
+      .crm-table td:nth-child(3) {
+        width: 14%;
+      }
+
+      .crm-table th:nth-child(4),
+      .crm-table td:nth-child(4) {
+        width: 12%;
+      }
+
+      .crm-table th:nth-child(5),
+      .crm-table td:nth-child(5) {
+        width: 10%;
+      }
+
+      .crm-table th:nth-child(6),
+      .crm-table td:nth-child(6) {
+        width: 12%;
+      }
+
+      .crm-table th:nth-child(7),
+      .crm-table td:nth-child(7) {
+        width: 10%;
+      }
+
+      .crm-table th:nth-child(8),
+      .crm-table td:nth-child(8) {
+        width: 15%;
+      }
+
+      .cell-main {
+        display: block;
+        overflow: hidden;
+        color: var(--ink);
+        font-weight: 800;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .cell-sub {
+        display: block;
+        overflow: hidden;
+        color: var(--muted);
+        font-size: 11px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .source-link {
+        color: #0e3a8a;
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .status-label {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 72px;
+        min-height: 24px;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        padding: 0 8px;
+        font-size: 10px;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+      }
+
+      .status-label.ready {
+        border-color: rgba(31, 122, 69, 0.26);
+        background: var(--ready-bg);
+        color: var(--ready);
+      }
+
+      .status-label.review {
+        border-color: rgba(161, 98, 7, 0.28);
+        background: var(--review-bg);
+        color: var(--review);
+      }
+
+      .status-label.org {
+        border-color: rgba(83, 97, 117, 0.24);
+        background: var(--org-bg);
+        color: var(--org);
+      }
+
+      .status-label.not-found {
+        border-color: rgba(143, 52, 52, 0.2);
+        background: var(--not-found-bg);
+        color: var(--not-found);
+      }
+
+      .row-review td {
+        background: #fffaf0;
+      }
+
+      .row-org td,
+      .row-not-found td {
+        background: #f7f8fa;
+      }
+
+      .selected td {
+        background: #f7fbff;
+      }
+
+      .selected td:first-child {
+        box-shadow: inset 3px 0 0 var(--signal);
+      }
+
+      .group-row td {
+        height: 32px;
+        background: #f8fafc;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 950;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .results-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 352px;
+        gap: 18px;
+        align-items: start;
+      }
+
+      .evidence-panel {
+        min-height: 100%;
+        border-left: 1px solid var(--line);
+        background: #f8fafc;
+      }
+
+      .evidence-card {
+        position: sticky;
+        top: 0;
+        display: grid;
+        gap: 16px;
+        padding: 22px;
+      }
+
+      .panel-kicker {
+        margin: 0;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 950;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .panel-title {
+        margin: 4px 0 0;
+        font-size: 24px;
+        line-height: 1.1;
+      }
+
+      .panel-copy {
+        margin: 7px 0 0;
+        color: var(--muted);
+      }
+
+      .blocker-box,
+      .low-signal-notice {
+        border: 1px solid rgba(161, 98, 7, 0.24);
+        border-radius: 8px;
+        background: var(--review-bg);
+        padding: 14px;
+      }
+
+      .blocker-box strong,
+      .low-signal-notice strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--review);
+      }
+
+      .field-list {
+        display: grid;
+        gap: 8px;
+      }
+
+      .field-row {
+        display: grid;
+        grid-template-columns: 82px minmax(0, 1fr) auto;
+        gap: 10px;
+        align-items: center;
+        min-height: 50px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+        padding: 9px 10px;
+      }
+
+      .field-row > span:first-child {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .field-row strong {
+        display: block;
+        color: var(--ink);
+        font-size: 12px;
+      }
+
+      .field-row small {
+        display: block;
+        color: var(--muted);
+      }
+
+      .source-trail {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .source-trail li {
+        display: grid;
+        grid-template-columns: 22px minmax(0, 1fr);
+        gap: 8px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+        padding: 10px;
+      }
+
+      .trail-index {
+        display: grid;
+        place-items: center;
+        width: 22px;
+        height: 22px;
+        border-radius: 999px;
+        background: var(--signal-soft);
+        color: #0e3a8a;
+        font-size: 10px;
+        font-weight: 950;
+      }
+
+      .panel-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .loading-layout {
+        display: grid;
+        grid-template-columns: 330px minmax(0, 1fr);
+        min-height: 836px;
+      }
+
+      .stage-panel {
+        padding: 28px;
+        background: var(--navy-900);
+        color: white;
+      }
+
+      .stage-panel h1 {
+        margin: 18px 0 8px;
+        font-size: 32px;
+        line-height: 1.05;
+      }
+
+      .stage-panel p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.68);
+      }
+
+      .stage-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 28px;
+      }
+
+      .stage-row {
+        display: grid;
+        grid-template-columns: 18px minmax(0, 1fr) auto;
+        gap: 10px;
+        align-items: center;
+        min-height: 44px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 8px;
+        color: rgba(255, 255, 255, 0.66);
+        padding: 0 10px;
+      }
+
+      .stage-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.32);
+      }
+
+      .stage-row.done .stage-dot {
+        background: var(--ready);
+      }
+
+      .stage-row.active {
+        border-color: rgba(45, 123, 255, 0.72);
+        color: white;
+      }
+
+      .stage-row.active .stage-dot {
+        background: var(--signal);
+        box-shadow: 0 0 0 5px rgba(45, 123, 255, 0.16);
+      }
+
+      .stage-count {
+        font-size: 12px;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .forming-table {
+        padding: 24px;
+      }
+
+      .forming-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 180px;
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+
+      .skeleton {
+        position: relative;
+        overflow: hidden;
+        border-radius: 6px;
+        background: #edf1f6;
+      }
+
+      .skeleton::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        transform: translateX(-100%);
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.62), transparent);
+        animation: shimmer 1.8s infinite;
+      }
+
+      @keyframes shimmer {
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      .skeleton-line {
+        height: 14px;
+      }
+
+      .skeleton-line.short {
+        width: 62%;
+      }
+
+      .low-signal-notice {
+        margin: 16px 0;
+      }
+
+      .low-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 350px;
+        gap: 18px;
+      }
+
+      .guidance-panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+        padding: 18px;
+      }
+
+      .guidance-panel h2 {
+        margin: 0 0 8px;
+        font-size: 18px;
+      }
+
+      .guidance-panel ul {
+        margin: 12px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+
+      .guidance-panel li + li {
+        margin-top: 8px;
+      }
+
+      .mobile-stage {
+        display: grid;
+        place-items: start center;
+        min-height: 900px;
+        padding: 24px;
+        background:
+          linear-gradient(90deg, rgba(5, 9, 22, 0.92), rgba(10, 18, 38, 0.88)),
+          var(--navy-950);
+      }
+
+      .mobile-shell {
+        width: min(390px, 100%);
+        min-height: 812px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 28px;
+        background: var(--paper);
+        box-shadow: 0 28px 90px rgba(2, 4, 11, 0.38);
+      }
+
+      .mobile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 16px;
+        background: var(--navy-950);
+        color: white;
+      }
+
+      .mobile-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .mobile-header .placeholder-mark {
+        width: 30px;
+        height: 30px;
+        border-radius: 7px;
+        flex: 0 0 auto;
+      }
+
+      .mobile-header strong,
+      .mobile-header span {
+        display: block;
+      }
+
+      .mobile-header span {
+        overflow: hidden;
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 11px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .mobile-body {
+        padding: 14px;
+      }
+
+      .mobile-query {
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 12px;
+      }
+
+      .mobile-buckets {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 12px 0;
+      }
+
+      .mobile-bucket {
+        flex: 0 0 auto;
+        min-height: 34px;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        background: white;
+        color: var(--ink);
+        padding: 0 12px;
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .mobile-bucket.active {
+        border-color: var(--signal);
+        background: var(--signal-soft);
+        color: #0e3a8a;
+      }
+
+      .mobile-card-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .mobile-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+        padding: 12px;
+      }
+
+      .mobile-card.review {
+        border-color: rgba(161, 98, 7, 0.28);
+        background: #fffaf1;
+      }
+
+      .mobile-card-head {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .mobile-facts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .mobile-fact {
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: var(--paper);
+        padding: 8px;
+      }
+
+      .mobile-fact span {
+        display: block;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 950;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .mobile-fact strong {
+        display: block;
+        overflow: hidden;
+        margin-top: 2px;
+        color: var(--ink);
+        font-size: 12px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .mobile-inspect {
+        width: 100%;
+        min-height: 42px;
+        margin-top: 10px;
+      }
+
+      .evidence-sheet {
+        margin-top: 12px;
+        border: 1px solid rgba(45, 123, 255, 0.24);
+        border-radius: 12px 12px 0 0;
+        background: white;
+        box-shadow: 0 -8px 24px rgba(10, 18, 38, 0.08);
+        padding: 12px;
+      }
+
+      .sheet-handle {
+        width: 42px;
+        height: 4px;
+        margin: 0 auto 12px;
+        border-radius: 999px;
+        background: var(--line-strong);
+      }
+
+      .sheet-title {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      .sheet-copy {
+        margin: 6px 0 10px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      @media (max-width: 1040px) {
+        .mockup-view {
+          padding: 0;
+        }
+
+        .app-shell {
+          min-height: 100vh;
+          grid-template-columns: 1fr;
+          grid-template-rows: auto minmax(0, 1fr);
+        }
+
+        .top-rail {
+          grid-template-columns: auto minmax(0, 1fr);
+          padding-right: 12px;
+        }
+
+        .rail-brand-cell {
+          width: 64px;
+        }
+
+        .top-meta,
+        .left-rail {
+          display: none;
+        }
+
+        .work-surface {
+          grid-column: 1;
+          grid-row: 2;
+        }
+
+        .summary-strip,
+        .results-grid,
+        .loading-layout,
+        .low-layout,
+        .query-bay {
+          grid-template-columns: 1fr;
+        }
+
+        .evidence-panel {
+          border-left: 0;
+          border-top: 1px solid var(--line);
+        }
+      }
+
+      @media (max-width: 720px) {
+        .review-nav {
+          display: none;
+        }
+
+        .mockup-view,
+        .screen-pad,
+        .forming-table {
+          padding: 0;
+        }
+
+        .empty-work {
+          min-height: 100vh;
+          grid-template-rows: auto minmax(0, 1fr);
+        }
+
+        .empty-brand-field {
+          grid-template-columns: 1fr;
+          padding: 34px 22px;
+        }
+
+        .empty-copy h1 {
+          font-size: 42px;
+        }
+
+        .empty-copy p {
+          font-size: 15px;
+        }
+
+        .source-card {
+          display: none;
+        }
+
+        .empty-command {
+          padding: 22px;
+        }
+
+        .table-frame {
+          overflow-x: auto;
+        }
+
+        table {
+          min-width: 980px;
+        }
+
+        .mobile-stage {
+          min-height: 100vh;
+          padding: 0;
+        }
+
+        .mobile-shell {
+          width: 100%;
+          min-height: 100vh;
+          border: 0;
+          border-radius: 0;
+          box-shadow: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="review-nav" aria-label="Mockup navigation">
+      <div>
+        <strong>White Rabbit mockup review</strong>
+        <small>Static design reference for screen inspection.</small>
+      </div>
+      <nav class="tabs" aria-label="Screens">
+        <button class="tab" type="button" aria-selected="true" data-screen="empty">Empty</button>
+        <button class="tab" type="button" aria-selected="false" data-screen="loading">Loading</button>
+        <button class="tab" type="button" aria-selected="false" data-screen="results">Results</button>
+        <button class="tab" type="button" aria-selected="false" data-screen="evidence">Evidence</button>
+        <button class="tab" type="button" aria-selected="false" data-screen="low-signal">Low Signal</button>
+        <button class="tab" type="button" aria-selected="false" data-screen="mobile">Mobile</button>
+      </nav>
+    </header>
+
+    <section class="mockup-view active" id="empty" aria-label="Empty search start mockup">
+      <div class="app-shell">
+        <header class="top-rail">
+          <div class="rail-brand-cell"><span class="placeholder-mark" aria-hidden="true">WR</span></div>
+          <div class="brand-lockup">
+            <div class="brand-name">White Rabbit</div>
+            <div class="brand-context">Source-backed lead research</div>
+          </div>
+          <div class="top-meta"><span class="top-chip signal">Ready</span></div>
+        </header>
+        <aside class="left-rail" aria-label="Product rail">
+          <div class="rail-items">
+            <span class="rail-item active">GO</span>
+            <span class="rail-item">EV</span>
+            <span class="rail-item">EX</span>
+          </div>
+          <span class="rail-caption">Operator path</span>
+        </aside>
+        <main class="work-surface empty-work">
+          <section class="empty-brand-field">
+            <div class="empty-copy">
+              <span class="placeholder-mark large" aria-hidden="true">WR</span>
+              <div class="mark-note">Replaceable mark placeholder</div>
+              <h1>Start with the target. Keep the proof beside it.</h1>
+              <p>Use a sales target and any trusted public source context to build a review table with ready rows, review rows, blockers, and next actions.</p>
+            </div>
+            <aside class="source-card">
+              <h2>Source-assisted start</h2>
+              <p>Rosters, staff pages, source URLs, PDFs, or seed notes give the run a better starting point than a blind web search.</p>
+            </aside>
+          </section>
+          <section class="empty-command" aria-label="Search command">
+            <form class="query-bay">
+              <label>
+                <p class="field-label">Target</p>
+                <input class="query-input" value="New Mexico school district IT contacts" aria-label="Target" />
+              </label>
+              <label>
+                <p class="field-label">Source context</p>
+                <textarea class="source-input" aria-label="Source context">District staff directories, technology pages, public rosters</textarea>
+              </label>
+              <button class="primary-action" type="button">Find Candidates</button>
+            </form>
+            <p class="helper-line">Use the fewest inputs that describe the target and the public sources to trust. White Rabbit separates ready contacts from rows that need manual lookup.</p>
+          </section>
+        </main>
+      </div>
+    </section>
+
+    <section class="mockup-view" id="loading" aria-label="Loading evidence forming mockup">
+      <div class="app-shell">
+        <header class="top-rail">
+          <div class="rail-brand-cell"><span class="placeholder-mark" aria-hidden="true">WR</span></div>
+          <div class="brand-lockup">
+            <div class="brand-name">White Rabbit</div>
+            <div class="brand-context">New Mexico school district IT contacts</div>
+          </div>
+          <div class="top-meta">
+            <span class="top-chip signal">Checking field support</span>
+            <span class="top-chip">17 rows forming</span>
+          </div>
+        </header>
+        <aside class="left-rail" aria-label="Product rail">
+          <div class="rail-items">
+            <span class="rail-item active">GO</span>
+            <span class="rail-item">EV</span>
+            <span class="rail-item">EX</span>
+          </div>
+          <span class="rail-caption">Evidence run</span>
+        </aside>
+        <main class="work-surface loading-layout">
+          <section class="stage-panel">
+            <span class="placeholder-mark" aria-hidden="true">WR</span>
+            <h1>Evidence is forming the table.</h1>
+            <p>Rows appear as source support clears. Counts stay grounded in checked fields, not guesses.</p>
+            <div class="stage-list">
+              <div class="stage-row done"><span class="stage-dot"></span><strong>Reading source pack</strong><span class="stage-count">18</span></div>
+              <div class="stage-row done"><span class="stage-dot"></span><strong>Matching people</strong><span class="stage-count">17</span></div>
+              <div class="stage-row active"><span class="stage-dot"></span><strong>Checking field support</strong><span class="stage-count">12</span></div>
+              <div class="stage-row"><span class="stage-dot"></span><strong>Preparing review table</strong><span class="stage-count">--</span></div>
+            </div>
+          </section>
+          <section class="forming-table">
+            <div class="forming-header">
+              <form class="query-bay" style="box-shadow: none;">
+                <label>
+                  <p class="field-label">Target</p>
+                  <input class="query-input compact" value="New Mexico school district IT contacts" aria-label="Target" />
+                </label>
+                <label>
+                  <p class="field-label">Sources</p>
+                  <input class="query-input compact" value="18 public source records" aria-label="Sources" />
+                </label>
+                <button class="primary-action" type="button">Find Candidates</button>
+              </form>
+              <div class="summary-cell">
+                <strong>12</strong>
+                <span>rows checked so far</span>
+              </div>
+            </div>
+            <div class="table-frame">
+              <table class="crm-table" aria-label="Forming evidence table">
+                <thead>
+                  <tr>
+                    <th>Organization</th>
+                    <th>Person</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Source</th>
+                    <th>Status</th>
+                    <th>Evidence</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="cell-main">Albuquerque Public Schools</span><span class="cell-sub">district</span></td>
+                    <td><span class="cell-main">Maria Sanchez</span><span class="cell-sub">name supported</span></td>
+                    <td>Director of Technology</td>
+                    <td><span class="cell-main">verified</span><span class="cell-sub">public directory</span></td>
+                    <td>main line</td>
+                    <td><a class="source-link" href="#">staff directory</a></td>
+                    <td><span class="status-label ready">READY</span></td>
+                    <td><button class="evidence-action" type="button">Evidence</button></td>
+                  </tr>
+                  <tr class="row-review">
+                    <td><span class="cell-main">Gallup-McKinley Schools</span><span class="cell-sub">district</span></td>
+                    <td><span class="cell-main">Daniel Yazzie</span><span class="cell-sub">name supported</span></td>
+                    <td>Technology Coordinator</td>
+                    <td>missing</td>
+                    <td>main line</td>
+                    <td><a class="source-link" href="#">technology page</a></td>
+                    <td><span class="status-label review">REVIEW</span></td>
+                    <td><button class="evidence-action" type="button">Evidence</button></td>
+                  </tr>
+                  <tr>
+                    <td><div class="skeleton skeleton-line"></div></td>
+                    <td><div class="skeleton skeleton-line short"></div></td>
+                    <td><div class="skeleton skeleton-line"></div></td>
+                    <td><div class="skeleton skeleton-line short"></div></td>
+                    <td><div class="skeleton skeleton-line"></div></td>
+                    <td><div class="skeleton skeleton-line"></div></td>
+                    <td><div class="skeleton skeleton-line short"></div></td>
+                    <td><div class="skeleton skeleton-line short"></div></td>
+                  </tr>
+                  <tr>
+                    <td><div class="skeleton skeleton-line"></div></td>
+                    <td><div class="skeleton skeleton-line"></div></td>
+                    <td><div class="skeleton skeleton-line short"></div></td>
+                    <td><div class="skeleton skeleton-line"></div></td>
+                    <td><div class="skeleton skeleton-line short"></div></td>
+                    <td><div class="skeleton skeleton-line"></div></td>
+                    <td><div class="skeleton skeleton-line short"></div></td>
+                    <td><div class="skeleton skeleton-line short"></div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </section>
+
+    <section class="mockup-view" id="results" aria-label="Results overview mockup">
+      <div class="app-shell">
+        <header class="top-rail">
+          <div class="rail-brand-cell"><span class="placeholder-mark" aria-hidden="true">WR</span></div>
+          <div class="brand-lockup">
+            <div class="brand-name">White Rabbit</div>
+            <div class="brand-context">New Mexico school district IT contacts</div>
+          </div>
+          <div class="top-meta">
+            <span class="top-chip signal">17 categorized</span>
+            <span class="top-chip">10 READY</span>
+          </div>
+        </header>
+        <aside class="left-rail" aria-label="Product rail">
+          <div class="rail-items">
+            <span class="rail-item active">RS</span>
+            <span class="rail-item">EV</span>
+            <span class="rail-item">EX</span>
+          </div>
+          <span class="rail-caption">Table first</span>
+        </aside>
+        <main class="work-surface screen-pad">
+          <div class="results-title">
+            <div>
+              <h1>New Mexico school district IT contacts</h1>
+              <p>17 categorized rows from 18 source records. 10 are ready with contact proof; 7 need manual lookup.</p>
+            </div>
+            <button class="ghost-action" type="button">Export READY rows</button>
+          </div>
+          <section class="summary-strip" aria-label="Run distribution">
+            <div class="summary-cell target">
+              <strong>Source-assisted run</strong>
+              <span>District rosters, staff pages, and technology pages</span>
+            </div>
+            <div class="summary-cell"><strong>17</strong><span>ALL</span></div>
+            <div class="summary-cell ready"><strong>10</strong><span>READY</span></div>
+            <div class="summary-cell review"><strong>7</strong><span>REVIEW</span></div>
+            <div class="summary-cell org"><strong>0</strong><span>ORG-ONLY</span></div>
+            <div class="summary-cell not-found"><strong>0</strong><span>NOT FOUND</span></div>
+            <div class="summary-cell summary-actions"><button class="ghost-action" type="button">Open source list</button></div>
+          </section>
+          <nav class="bucket-filters" aria-label="Bucket filters">
+            <button class="bucket-filter active" type="button">ALL 17</button>
+            <button class="bucket-filter" type="button">READY 10</button>
+            <button class="bucket-filter" type="button">REVIEW 7</button>
+            <button class="bucket-filter" type="button">ORG-ONLY 0</button>
+            <button class="bucket-filter" type="button">NOT FOUND 0</button>
+          </nav>
+          <div class="table-frame">
+            <table class="crm-table" aria-label="CRM-first results table">
+              <thead>
+                <tr>
+                  <th>Organization</th>
+                  <th>Person</th>
+                  <th>Role</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Source</th>
+                  <th>Status</th>
+                  <th>Evidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="group-row"><td colspan="8">READY - contact proof is present</td></tr>
+                <tr>
+                  <td><span class="cell-main">Albuquerque Public Schools</span><span class="cell-sub">district</span></td>
+                  <td><span class="cell-main">Maria Sanchez</span><span class="cell-sub">technology lead</span></td>
+                  <td>Director of Technology</td>
+                  <td><span class="cell-main">maria.sanchez@...</span><span class="cell-sub">verified</span></td>
+                  <td>main line</td>
+                  <td><a class="source-link" href="#">staff directory</a></td>
+                  <td><span class="status-label ready">READY</span></td>
+                  <td><button class="evidence-action" type="button">Evidence</button></td>
+                </tr>
+                <tr>
+                  <td><span class="cell-main">Las Cruces Public Schools</span><span class="cell-sub">district</span></td>
+                  <td><span class="cell-main">Evan Reed</span><span class="cell-sub">IT leadership</span></td>
+                  <td>Chief Technology Officer</td>
+                  <td><span class="cell-main">evan.reed@...</span><span class="cell-sub">verified</span></td>
+                  <td>main line</td>
+                  <td><a class="source-link" href="#">department page</a></td>
+                  <td><span class="status-label ready">READY</span></td>
+                  <td><button class="evidence-action" type="button">Evidence</button></td>
+                </tr>
+                <tr>
+                  <td><span class="cell-main">Rio Rancho Public Schools</span><span class="cell-sub">district</span></td>
+                  <td><span class="cell-main">Natalie Gomez</span><span class="cell-sub">systems owner</span></td>
+                  <td>Information Systems Director</td>
+                  <td><span class="cell-main">n.gomez@...</span><span class="cell-sub">verified</span></td>
+                  <td>main line</td>
+                  <td><a class="source-link" href="#">staff roster</a></td>
+                  <td><span class="status-label ready">READY</span></td>
+                  <td><button class="evidence-action" type="button">Evidence</button></td>
+                </tr>
+                <tr class="group-row"><td colspan="8">REVIEW - source-supported, but not CRM-ready</td></tr>
+                <tr class="row-review selected">
+                  <td><span class="cell-main">Gallup-McKinley Schools</span><span class="cell-sub">district</span></td>
+                  <td><span class="cell-main">Daniel Yazzie</span><span class="cell-sub">manual lookup</span></td>
+                  <td>Technology Coordinator</td>
+                  <td><span class="cell-main">missing</span><span class="cell-sub">needs lookup</span></td>
+                  <td>main line</td>
+                  <td><a class="source-link" href="#">technology page</a></td>
+                  <td><span class="status-label review">REVIEW</span></td>
+                  <td><button class="evidence-action" type="button">Evidence</button></td>
+                </tr>
+                <tr class="row-review">
+                  <td><span class="cell-main">Farmington Municipal Schools</span><span class="cell-sub">district</span></td>
+                  <td><span class="cell-main">Kelly James</span><span class="cell-sub">manual lookup</span></td>
+                  <td>Technology Services Manager</td>
+                  <td>missing</td>
+                  <td>main line</td>
+                  <td><a class="source-link" href="#">district directory</a></td>
+                  <td><span class="status-label review">REVIEW</span></td>
+                  <td><button class="evidence-action" type="button">Evidence</button></td>
+                </tr>
+                <tr class="row-review">
+                  <td><span class="cell-main">Roswell Independent Schools</span><span class="cell-sub">district</span></td>
+                  <td><span class="cell-main">Andrea Cho</span><span class="cell-sub">manual lookup</span></td>
+                  <td>Director, Information Technology</td>
+                  <td>missing</td>
+                  <td>main line</td>
+                  <td><a class="source-link" href="#">technology staff</a></td>
+                  <td><span class="status-label review">REVIEW</span></td>
+                  <td><button class="evidence-action" type="button">Evidence</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <section class="mockup-view" id="evidence" aria-label="Evidence review dossier mockup">
+      <div class="app-shell">
+        <header class="top-rail">
+          <div class="rail-brand-cell"><span class="placeholder-mark" aria-hidden="true">WR</span></div>
+          <div class="brand-lockup">
+            <div class="brand-name">White Rabbit</div>
+            <div class="brand-context">New Mexico school district IT contacts</div>
+          </div>
+          <div class="top-meta">
+            <span class="top-chip signal">Evidence open</span>
+            <span class="top-chip">Review row</span>
+          </div>
+        </header>
+        <aside class="left-rail" aria-label="Product rail">
+          <div class="rail-items">
+            <span class="rail-item">RS</span>
+            <span class="rail-item active">EV</span>
+            <span class="rail-item">EX</span>
+          </div>
+          <span class="rail-caption">Proof beside row</span>
+        </aside>
+        <main class="work-surface">
+          <div class="results-grid">
+            <section class="screen-pad">
+              <div class="results-title">
+                <div>
+                  <h1>Evidence review</h1>
+                  <p>The selected row stays anchored while the dossier explains support, blocker, and next action.</p>
+                </div>
+              </div>
+              <section class="summary-strip" aria-label="Run distribution">
+                <div class="summary-cell target">
+                  <strong>New Mexico school district IT contacts</strong>
+                  <span>17 categorized rows</span>
+                </div>
+                <div class="summary-cell"><strong>17</strong><span>ALL</span></div>
+                <div class="summary-cell ready"><strong>10</strong><span>READY</span></div>
+                <div class="summary-cell review"><strong>7</strong><span>REVIEW</span></div>
+                <div class="summary-cell org"><strong>0</strong><span>ORG-ONLY</span></div>
+                <div class="summary-cell not-found"><strong>0</strong><span>NOT FOUND</span></div>
+                <div class="summary-cell summary-actions"><button class="ghost-action" type="button">Open source list</button></div>
+              </section>
+              <nav class="bucket-filters" aria-label="Bucket filters">
+                <button class="bucket-filter" type="button">ALL 17</button>
+                <button class="bucket-filter" type="button">READY 10</button>
+                <button class="bucket-filter active" type="button">REVIEW 7</button>
+                <button class="bucket-filter" type="button">ORG-ONLY 0</button>
+              </nav>
+              <div class="table-frame">
+                <table class="crm-table" aria-label="CRM table with evidence open">
+                  <thead>
+                    <tr>
+                      <th>Organization</th>
+                      <th>Person</th>
+                      <th>Role</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Source</th>
+                      <th>Status</th>
+                      <th>Evidence</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="row-review selected">
+                      <td><span class="cell-main">Gallup-McKinley Schools</span><span class="cell-sub">district</span></td>
+                      <td><span class="cell-main">Daniel Yazzie</span><span class="cell-sub">manual lookup</span></td>
+                      <td>Technology Coordinator</td>
+                      <td><span class="cell-main">missing</span><span class="cell-sub">needs lookup</span></td>
+                      <td>main line</td>
+                      <td><a class="source-link" href="#">technology page</a></td>
+                      <td><span class="status-label review">REVIEW</span></td>
+                      <td><button class="evidence-action" type="button">Evidence</button></td>
+                    </tr>
+                    <tr class="row-review">
+                      <td><span class="cell-main">Farmington Municipal Schools</span><span class="cell-sub">district</span></td>
+                      <td><span class="cell-main">Kelly James</span><span class="cell-sub">manual lookup</span></td>
+                      <td>Technology Services Manager</td>
+                      <td>missing</td>
+                      <td>main line</td>
+                      <td><a class="source-link" href="#">district directory</a></td>
+                      <td><span class="status-label review">REVIEW</span></td>
+                      <td><button class="evidence-action" type="button">Evidence</button></td>
+                    </tr>
+                    <tr>
+                      <td><span class="cell-main">Albuquerque Public Schools</span><span class="cell-sub">district</span></td>
+                      <td><span class="cell-main">Maria Sanchez</span><span class="cell-sub">technology lead</span></td>
+                      <td>Director of Technology</td>
+                      <td><span class="cell-main">verified</span><span class="cell-sub">public directory</span></td>
+                      <td>main line</td>
+                      <td><a class="source-link" href="#">staff directory</a></td>
+                      <td><span class="status-label ready">READY</span></td>
+                      <td><button class="evidence-action" type="button">Evidence</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+            <aside class="evidence-panel" aria-label="Evidence dossier">
+              <div class="evidence-card">
+                <section>
+                  <p class="panel-kicker">Evidence: Daniel Yazzie @ Gallup-McKinley Schools</p>
+                  <h2 class="panel-title">Status: REVIEW</h2>
+                  <p class="panel-copy">The person, organization, and role are source-supported. Direct email is not public in the checked sources, so the row is not CRM-ready.</p>
+                </section>
+                <section class="blocker-box">
+                  <strong>Primary blocker</strong>
+                  <span>Direct contact proof missing. Use the district main line or search the district email pattern before export.</span>
+                </section>
+                <section>
+                  <p class="panel-kicker">Field support</p>
+                  <div class="field-list">
+                    <div class="field-row"><span>Name</span><div><strong>Supported</strong><small>Technology page lists Daniel Yazzie.</small></div><button class="evidence-action" type="button">Source</button></div>
+                    <div class="field-row"><span>Role</span><div><strong>Supported</strong><small>Page title maps to Technology Coordinator.</small></div><button class="evidence-action" type="button">Source</button></div>
+                    <div class="field-row"><span>Org</span><div><strong>Supported</strong><small>District domain and page identify Gallup-McKinley Schools.</small></div><button class="evidence-action" type="button">Source</button></div>
+                    <div class="field-row"><span>Email</span><div><strong>Missing</strong><small>No direct email or supported pattern found.</small></div><button class="evidence-action" type="button">Search</button></div>
+                    <div class="field-row"><span>Phone</span><div><strong>Supported</strong><small>Main district line appears on the same site.</small></div><button class="evidence-action" type="button">Source</button></div>
+                  </div>
+                </section>
+                <section>
+                  <p class="panel-kicker">Rationale</p>
+                  <p class="panel-copy">Useful for outreach prep because the right person and account are supported. Not ready for CRM export until a direct contact or supported email pattern is found.</p>
+                </section>
+                <section>
+                  <p class="panel-kicker">Source trail</p>
+                  <ol class="source-trail">
+                    <li><span class="trail-index">1</span><div><strong>District technology page</strong><br /><small>Name, role, and organization supported.</small></div></li>
+                    <li><span class="trail-index">2</span><div><strong>District contact page</strong><br /><small>Main line supported; no direct extension listed.</small></div></li>
+                    <li><span class="trail-index">3</span><div><strong>Contact pattern search</strong><br /><small>No supported email pattern found yet.</small></div></li>
+                  </ol>
+                </section>
+                <div class="panel-actions">
+                  <button class="ghost-action" type="button">Copy evidence</button>
+                  <button class="secondary-action" type="button">Keep in review</button>
+                  <button class="ghost-action" type="button">Mark not ready</button>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <section class="mockup-view" id="low-signal" aria-label="Low public signal mockup">
+      <div class="app-shell">
+        <header class="top-rail">
+          <div class="rail-brand-cell"><span class="placeholder-mark" aria-hidden="true">WR</span></div>
+          <div class="brand-lockup">
+            <div class="brand-name">White Rabbit</div>
+            <div class="brand-context">Independent clinic IT buyers in rural New Mexico</div>
+          </div>
+          <div class="top-meta">
+            <span class="top-chip signal">Low public signal</span>
+            <span class="top-chip">6 categorized</span>
+          </div>
+        </header>
+        <aside class="left-rail" aria-label="Product rail">
+          <div class="rail-items">
+            <span class="rail-item active">RS</span>
+            <span class="rail-item">EV</span>
+            <span class="rail-item">EX</span>
+          </div>
+          <span class="rail-caption">Honest output</span>
+        </aside>
+        <main class="work-surface screen-pad">
+          <div class="results-title">
+            <div>
+              <h1>Independent clinic IT buyers in rural New Mexico</h1>
+              <p>6 categorized rows. Most sources do not publish named IT owners or direct contact proof.</p>
+            </div>
+            <button class="ghost-action" type="button">Revise target</button>
+          </div>
+          <section class="summary-strip" aria-label="Low signal distribution">
+            <div class="summary-cell target">
+              <strong>Source-assisted run</strong>
+              <span>Clinic sites, staff pages, local directories</span>
+            </div>
+            <div class="summary-cell"><strong>6</strong><span>ALL</span></div>
+            <div class="summary-cell ready"><strong>1</strong><span>READY</span></div>
+            <div class="summary-cell review"><strong>2</strong><span>REVIEW</span></div>
+            <div class="summary-cell org"><strong>2</strong><span>ORG-ONLY</span></div>
+            <div class="summary-cell not-found"><strong>1</strong><span>NOT FOUND</span></div>
+            <div class="summary-cell summary-actions"><button class="ghost-action" type="button">Open sources</button></div>
+          </section>
+          <section class="low-signal-notice" aria-label="Low public signal notice">
+            <strong>Low Public Signal</strong>
+            <span>This target has a thin public data footprint. Most rows need a better source pack or a broader account definition before they can become READY.</span>
+          </section>
+          <div class="low-layout">
+            <div class="table-frame">
+              <table class="crm-table" aria-label="Low signal results table">
+                <thead>
+                  <tr>
+                    <th>Organization</th>
+                    <th>Person</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Source</th>
+                    <th>Status</th>
+                    <th>Evidence</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="cell-main">Mesa Verde Clinic</span><span class="cell-sub">clinic group</span></td>
+                    <td><span class="cell-main">Rosa Martinez</span><span class="cell-sub">operations + IT</span></td>
+                    <td>Operations Director</td>
+                    <td><span class="cell-main">verified</span><span class="cell-sub">public page</span></td>
+                    <td>main line</td>
+                    <td><a class="source-link" href="#">contact page</a></td>
+                    <td><span class="status-label ready">READY</span></td>
+                    <td><button class="evidence-action" type="button">Evidence</button></td>
+                  </tr>
+                  <tr class="row-review">
+                    <td><span class="cell-main">San Juan Family Care</span><span class="cell-sub">clinic</span></td>
+                    <td><span class="cell-main">Eli Grant</span><span class="cell-sub">possible owner</span></td>
+                    <td>Practice Manager</td>
+                    <td>missing</td>
+                    <td>main line</td>
+                    <td><a class="source-link" href="#">staff page</a></td>
+                    <td><span class="status-label review">REVIEW</span></td>
+                    <td><button class="evidence-action" type="button">Evidence</button></td>
+                  </tr>
+                  <tr class="row-org">
+                    <td><span class="cell-main">High Desert Pediatrics</span><span class="cell-sub">account found</span></td>
+                    <td>None validated</td>
+                    <td>No IT owner found</td>
+                    <td>missing</td>
+                    <td>main line</td>
+                    <td><a class="source-link" href="#">clinic site</a></td>
+                    <td><span class="status-label org">ORG-ONLY</span></td>
+                    <td><button class="evidence-action" type="button">Evidence</button></td>
+                  </tr>
+                  <tr class="row-not-found">
+                    <td><span class="cell-main">Route 66 Health</span><span class="cell-sub">searched</span></td>
+                    <td>None found</td>
+                    <td>No supported target</td>
+                    <td>missing</td>
+                    <td>missing</td>
+                    <td><a class="source-link" href="#">search log</a></td>
+                    <td><span class="status-label not-found">NOT FOUND</span></td>
+                    <td><button class="evidence-action" type="button">Evidence</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <aside class="guidance-panel" aria-label="Better source suggestions">
+              <h2>Likely better next inputs</h2>
+              <p class="panel-copy">The blocker is source availability, not effort. Add sources or broaden the target before rerunning.</p>
+              <ul>
+                <li>Add state clinic association directories or public provider rosters.</li>
+                <li>Include adjacent account types: community health centers, regional medical groups, and specialty practices.</li>
+                <li>Search published titles clinics actually use: practice manager, operations director, systems manager, administrator.</li>
+                <li>Paste known clinic URLs if the target list must stay narrow.</li>
+              </ul>
+            </aside>
+          </div>
+        </main>
+      </div>
+    </section>
+
+    <section class="mockup-view" id="mobile" aria-label="Mobile review mockup">
+      <div class="mobile-stage">
+        <main class="mobile-shell" aria-label="Mobile review screen">
+          <header class="mobile-header">
+            <div class="mobile-brand">
+              <span class="placeholder-mark" aria-hidden="true">WR</span>
+              <div>
+                <strong>White Rabbit</strong>
+                <span>NM school district IT contacts</span>
+              </div>
+            </div>
+            <span class="status-label ready">10 READY</span>
+          </header>
+          <section class="mobile-body">
+            <form class="mobile-query">
+              <p class="field-label">Target</p>
+              <input class="query-input compact" value="New Mexico school district IT contacts" aria-label="Mobile target" />
+            </form>
+            <nav class="mobile-buckets" aria-label="Mobile buckets">
+              <button class="mobile-bucket active" type="button">ALL 17</button>
+              <button class="mobile-bucket" type="button">READY 10</button>
+              <button class="mobile-bucket" type="button">REVIEW 7</button>
+              <button class="mobile-bucket" type="button">ORG 0</button>
+            </nav>
+            <section class="mobile-card-list" aria-label="Mobile cards">
+              <article class="mobile-card">
+                <div class="mobile-card-head">
+                  <div>
+                    <span class="cell-main">Albuquerque Public Schools</span>
+                    <span class="cell-sub">Maria Sanchez - Director of Technology</span>
+                  </div>
+                  <span class="status-label ready">READY</span>
+                </div>
+                <div class="mobile-facts">
+                  <div class="mobile-fact"><span>Email</span><strong>verified</strong></div>
+                  <div class="mobile-fact"><span>Phone</span><strong>main line</strong></div>
+                  <div class="mobile-fact"><span>Source</span><strong>staff directory</strong></div>
+                  <div class="mobile-fact"><span>Action</span><strong>export ready</strong></div>
+                </div>
+                <button class="evidence-action mobile-inspect" type="button">Inspect Evidence</button>
+              </article>
+              <article class="mobile-card review">
+                <div class="mobile-card-head">
+                  <div>
+                    <span class="cell-main">Gallup-McKinley Schools</span>
+                    <span class="cell-sub">Daniel Yazzie - Technology Coordinator</span>
+                  </div>
+                  <span class="status-label review">REVIEW</span>
+                </div>
+                <div class="mobile-facts">
+                  <div class="mobile-fact"><span>Blocker</span><strong>email missing</strong></div>
+                  <div class="mobile-fact"><span>Next</span><strong>check pattern</strong></div>
+                </div>
+                <button class="evidence-action mobile-inspect" type="button">Inspect Evidence</button>
+              </article>
+              <article class="mobile-card review">
+                <div class="mobile-card-head">
+                  <div>
+                    <span class="cell-main">Farmington Municipal Schools</span>
+                    <span class="cell-sub">Kelly James - Technology Services Manager</span>
+                  </div>
+                  <span class="status-label review">REVIEW</span>
+                </div>
+                <div class="mobile-facts">
+                  <div class="mobile-fact"><span>Blocker</span><strong>direct contact</strong></div>
+                  <div class="mobile-fact"><span>Source</span><strong>district directory</strong></div>
+                </div>
+                <button class="evidence-action mobile-inspect" type="button">Inspect Evidence</button>
+              </article>
+            </section>
+            <section class="evidence-sheet" aria-label="Mobile evidence sheet">
+              <div class="sheet-handle" aria-hidden="true"></div>
+              <p class="sheet-title">Evidence: Daniel Yazzie</p>
+              <p class="sheet-copy">REVIEW because the person and role are supported, but direct contact proof is missing.</p>
+              <div class="field-list">
+                <div class="field-row"><span>Name</span><div><strong>Supported</strong><small>Technology page lists the person.</small></div></div>
+                <div class="field-row"><span>Email</span><div><strong>Missing</strong><small>Check district pattern before export.</small></div></div>
+              </div>
+            </section>
+          </section>
+        </main>
+      </div>
+    </section>
+
+    <script>
+      const tabs = Array.from(document.querySelectorAll(".tab"));
+      const views = new Map(Array.from(document.querySelectorAll(".mockup-view")).map((view) => [view.id, view]));
+
+      function showScreen(screen) {
+        const selected = views.has(screen) ? screen : "empty";
+        for (const [id, view] of views) {
+          view.classList.toggle("active", id === selected);
+        }
+        for (const tab of tabs) {
+          tab.setAttribute("aria-selected", String(tab.dataset.screen === selected));
+        }
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const screen = tab.dataset.screen || "empty";
+          history.replaceState(null, "", "#" + screen);
+          showScreen(screen);
+        });
+      });
+
+      window.addEventListener("hashchange", () => showScreen(location.hash.replace("#", "") || "empty"));
+      showScreen(location.hash.replace("#", "") || "empty");
+    </script>
+  </body>
+</html>
