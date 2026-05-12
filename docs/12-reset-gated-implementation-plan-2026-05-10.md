@@ -6,9 +6,9 @@
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
 **Current reset gate:** RG5 - Sales-First Export And Persistence. RG4 advanced on `audit/reset-rg4-operator-ui`; product remains red until export/persistence and dogfood gates pass.
-**Next Prompt A feature:** `R13 - Sales-first CSV export` is ready on `feat/reset-r13-sales-first-export`.
-**Current Prompt B handoff:** None.
-**Current Prompt C handoff:** Complete. RG4 Prompt C recorded `advance`. Keep R14 blocked until R13 passes Prompt B; keep R14A-R14C blocked until their prior RG5 slices merge; keep RG6/dogfood/main blocked until RG5 advances.
+**Next Prompt A feature:** None. `R13 - Sales-first CSV export` is implemented on `feat/reset-r13-sales-first-export` and waiting for Prompt B QA.
+**Current Prompt B handoff:** QA `feat/reset-r13-sales-first-export`.
+**Current Prompt C handoff:** None. RG4 Prompt C already recorded `advance`; RG5 is not ready for Prompt C until R13-R14C pass Prompt B and merge. Keep R14 blocked until R13 passes Prompt B; keep R14A-R14C blocked until their prior RG5 slices merge; keep RG6/dogfood/main blocked until RG5 advances.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -130,6 +130,8 @@ Prompt A never merges. Prompt B never unlocks the next gate. Prompt B may unlock
 
 Current kickoff order is resolved dynamically from `STATUS.md` and the reset feature/gate tables below.
 
+Queue truth must be resolved from `rebuild/validated-leads-loop`, not from an unmerged feature branch or audit branch. If an agent starts on any branch other than `rebuild/validated-leads-loop`, it must first fetch and inspect the integration branch state before selecting work. A feature branch's local `STATUS.md` and `docs/12` can contain in-flight handoff notes, but they are not the control-plane source of truth until merged back to `rebuild/validated-leads-loop`.
+
 Do not use a hard-coded feature prompt from an earlier chat turn. Before every assignment, the agent must prove the current state from the repo:
 
 ```text
@@ -243,7 +245,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R10 | Primary search workspace simplification | merged_to_rebuild_branch | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | merged_to_rebuild_branch | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | merged_to_rebuild_branch | `feat/reset-r12-evidence-dossier-review` | browser |
-| R13 | Sales-first CSV export | ready | `feat/reset-r13-sales-first-export` | browser + CSV |
+| R13 | Sales-first CSV export | implemented_pending_qa | `feat/reset-r13-sales-first-export` | browser + CSV |
 | R14 | Persistence, DB readback, and quality report tie-out | blocked | `feat/reset-r14-persistence-quality-tieout` | API + DB |
 | R14A | Image overhaul and approved brand asset cleanup | blocked | `feat/reset-r14a-image-overhaul-brand-assets` | browser + visual |
 | R14B | UI/UX consistency pass | blocked | `feat/reset-r14b-ui-ux-consistency-pass` | browser + screenshots |
@@ -934,7 +936,7 @@ Approved RG4 mockup preflight:
 - Integrated artifact path: `docs/mockups/rg4-refreshed-preflight-2026-05-12/`.
 - Screens: Empty/Search Start, Loading/Evidence Forming, Results Overview, Evidence Review/Dossier, Low Public Signal, and Mobile Review.
 - Matt approval: accepted on 2026-05-12.
-- Queue consequence: R10 was ready after Matt approval, passed Prompt B QA, and merged to `rebuild/validated-leads-loop`. R11 and R12 are merged to `rebuild/validated-leads-loop`; RG4 Prompt C advanced the gate and R13 is ready. R14, RG6, and `main` promotion remain blocked.
+- Queue consequence at the time: R10 was ready after Matt approval, passed Prompt B QA, and merged to `rebuild/validated-leads-loop`. R11 and R12 are merged to `rebuild/validated-leads-loop`; RG4 Prompt C advanced the gate and R13 became ready. Current top-of-file state supersedes this historical note.
 
 RG4 Prompt C result:
 
@@ -944,7 +946,7 @@ RG4 Prompt C result:
 - Raw evidence: `audits/raw/reset-2026-05-10/rg4/`.
 - Reason: R10-R12 are merged; web tests/build pass; a 51-row browser audit shows the primary path can run a query, inspect CRM-first rows, and open evidence without Scout/Full, quota, export, or implementation chrome. Matt clarified that source context should stay backend/internal and not appear as daily-operator UI; ADR-023 records that production decision.
 - Caveat: the 390px browser audit reported minor horizontal overflow (`407px` scroll width). Recheck and fix if needed during R13/R14 browser QA.
-- Queue consequence: RG5 is now in progress. R13 is the single ready Prompt A feature. R14, RG6, dogfood, and `main` promotion remain blocked.
+- Queue consequence at the time: RG5 became in progress and R13 became the single ready Prompt A feature. Current top-of-file state supersedes this historical note.
 
 R10 Prompt A implementation handoff:
 
@@ -1284,6 +1286,8 @@ You are Prompt A for the White Rabbit reset queue.
 Work in /Users/mschwar/Documents/white-rabbit. Use rebuild/validated-leads-loop as the integration branch. Do not merge or target main.
 
 First prove current state:
+- fetch origin
+- if current branch is not rebuild/validated-leads-loop, inspect origin/rebuild/validated-leads-loop before selecting work; do not resolve the queue from a feature or audit branch
 - read AGENTS.md
 - read STATUS.md
 - read docs/00-product-northstar.md
@@ -1295,6 +1299,7 @@ First prove current state:
 Resolve the next feature from STATUS.md and the reset feature table:
 - choose exactly one feature marked ready
 - do not choose any feature already marked merged
+- do not choose any feature marked implemented_pending_qa or waiting for Prompt B
 - do not choose any feature in a blocked gate
 - if zero or multiple features are ready, stop and report the ambiguity
 - if the selected feature branch already exists with unmerged work, resume that branch instead of recreating or duplicating it
@@ -1324,14 +1329,16 @@ You are Prompt B for the White Rabbit reset queue.
 Work in /Users/mschwar/Documents/white-rabbit. QA the current reset feature branch and merge only into rebuild/validated-leads-loop. Do not merge or target main.
 
 First prove current state:
+- fetch origin
+- inspect origin/rebuild/validated-leads-loop first; do not resolve the QA target from stale local feature/audit branch docs
 - read AGENTS.md
 - read STATUS.md
 - read docs/00-product-northstar.md
 - read docs/12-reset-gated-implementation-plan-2026-05-10.md
-- identify the single feature branch currently waiting for QA from STATUS.md, docs/12, and the pushed branch state
+- identify the single feature branch currently waiting for QA from integration STATUS.md, integration docs/12, and the pushed branch state
 - run git status --short --branch
 
-If there is no feature branch waiting for QA, more than one plausible feature branch, or the feature is already marked merged, stop and report the ambiguity.
+If there is no feature branch waiting for QA, more than one plausible feature branch, or the feature is already marked merged on the integration branch, stop and report the ambiguity. Do not QA historical merged branches such as R00 unless the integration branch explicitly names them as the current Prompt B handoff.
 
 Required checks:
 - git diff --check
