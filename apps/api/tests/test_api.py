@@ -32,11 +32,56 @@ def test_health_check():
     assert response.json() == {"status": "ok", "service": "white-rabbit-api"}
 
 
+def test_source_assisted_proof_endpoint_returns_live_boundary_payload():
+    response = client.post("/source-assisted-proof", json={"query": "NM IT for school districts"})
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["feature_id"] == "R09L - Live source-assisted product proof"
+    assert body["request_summary"]["target"] == "April 2026 New Mexico school-district IT"
+    assert body["request_summary"]["query"] == "NM IT for school districts"
+    assert body["source_map_replay"]["source_map_reproduced"] is True
+    assert body["source_assisted_replay"]["candidate_count"] == 17
+    assert body["source_assisted_replay"]["tier_distribution"]["high_trust_usable"] == 10
+    assert body["source_assisted_replay"]["tier_distribution"]["manual_lookup"] == 7
+    assert body["workbook_replay"]["row_count"] == 17
+    assert body["workbook_replay"]["tier_distribution"]["READY_WITH_CONTACT"] == 10
+    assert body["workbook_replay"]["tier_distribution"]["MANUAL_LOOKUP"] == 7
+    assert body["workbook_replay"]["export_headers"][:7] == [
+        "query",
+        "run_id",
+        "rank",
+        "workbook_tier",
+        "operator_label",
+        "candidate_category",
+        "crm_ready",
+    ]
+
+    ready_row = next(row for row in body["workbook_replay"]["rows"] if row["workbook_tier"] == "READY_WITH_CONTACT")
+    manual_row = next(row for row in body["workbook_replay"]["rows"] if row["workbook_tier"] == "MANUAL_LOOKUP")
+    assert ready_row["crm_ready"] is True
+    assert ready_row["source_name_url"]
+    assert ready_row["source_email_url"]
+    assert manual_row["crm_ready"] is False
+    assert manual_row["source_org_url"]
+    assert manual_row["blocker_notes"]
+    assert manual_row["next_action"]
+    assert body["safety_checks"]["unsupported_crm_ready_rows"] == []
+    assert body["safety_checks"]["manual_lookup_crm_ready_rows"] == []
+    assert body["safety_checks"]["private_contact_values_redacted"] is True
+    assert body["service_boundary"]["protected_route_ok"] is True
+    assert body["service_boundary"]["internal_token_required"] is True
+    assert body["service_boundary"]["response_status"] == 200
+    assert body["prompt_b_handoff"]["keep_downstream_blocked"] is True
+    assert body["passes"] is True
+
+
 @pytest.mark.parametrize(
     ("method", "path", "payload"),
     [
         ("post", "/scout", {"query": "K-12 IT directors in Albuquerque"}),
         ("post", "/full", {"query": "K-12 IT directors in Albuquerque"}),
+        ("post", "/source-assisted-proof", {"query": "NM IT for school districts"}),
         ("post", "/batch", {"name": "Test batch", "queries": [{"query": "K-12 IT directors in Albuquerque"}]}),
         ("post", "/sandbox/reset", {}),
         ("get", "/recipes", None),

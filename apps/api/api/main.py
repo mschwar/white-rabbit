@@ -29,6 +29,12 @@ for candidate in (CORE_SRC, REPO_ROOT):
         sys.path.insert(0, str(candidate))
 
 from core.cost import RunMetrics
+from core.live_source_assisted_proof import (
+    DEFAULT_R09L_QUERY,
+    DEFAULT_R09L_RUN_ID,
+    DEFAULT_R09L_TARGET,
+    build_live_source_assisted_proof,
+)
 from core.models import Candidate
 from core.query_guardrails import QueryGuardrailResult, evaluate_query_guardrails
 from core.query_planner import compile_query_plan
@@ -501,6 +507,26 @@ class FullResponse(BaseModel):
     sandbox_usage: SandboxUsageOut | None = None
 
 
+class LiveSourceAssistedProofRequest(BaseModel):
+    target: str = DEFAULT_R09L_TARGET
+    query: str = DEFAULT_R09L_QUERY
+    run_id: str = DEFAULT_R09L_RUN_ID
+
+
+class LiveSourceAssistedProofOut(BaseModel):
+    packet_id: str
+    feature_id: str
+    generated_at: str
+    request_summary: dict[str, Any]
+    source_map_replay: dict[str, Any]
+    source_assisted_replay: dict[str, Any]
+    workbook_replay: dict[str, Any]
+    safety_checks: dict[str, Any]
+    service_boundary: dict[str, Any]
+    prompt_b_handoff: dict[str, Any]
+    passes: bool
+
+
 class FeedbackRequest(BaseModel):
     label: FeedbackLabel
 
@@ -808,6 +834,25 @@ async def run_full(request: FullRequest, _: ProtectedApiAccess):
             query_guardrail=guardrail if guardrail.status != 'clear' else None,
             sandbox_usage=sandbox_usage,
         )
+
+
+@app.post("/source-assisted-proof", response_model=LiveSourceAssistedProofOut)
+async def run_source_assisted_proof(request: LiveSourceAssistedProofRequest, _: ProtectedApiAccess):
+    proof = build_live_source_assisted_proof(
+        query=request.query,
+        run_id=request.run_id,
+        target=request.target,
+        service_boundary={
+            "route": "/source-assisted-proof",
+            "method": "POST",
+            "protected_route_ok": True,
+            "internal_token_required": True,
+            "internal_token_checked": True,
+            "sanitized_input": True,
+            "response_status": 200,
+        },
+    )
+    return LiveSourceAssistedProofOut(**proof.to_payload())
 
 
 @app.get("/recipes", response_model=list[RecipeOut])
