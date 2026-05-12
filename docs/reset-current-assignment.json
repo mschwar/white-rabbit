@@ -2,15 +2,15 @@
   "version": 1,
   "updated": "2026-05-12",
   "integration_branch": "main",
-  "current_prompt": "A",
+  "current_prompt": "B",
   "current_feature_id": "R14",
   "current_feature_name": "Persistence, DB readback, and quality report tie-out",
-  "current_feature_status": "in_progress_prompt_a",
+  "current_feature_status": "implemented_pending_qa",
   "current_feature_branch": "feat/reset-r14-persistence-quality-tieout",
   "current_gate": "RG5 - Sales-First Export And Persistence",
-  "valid_next_action": "R14 Prompt A is already in flight on feat/reset-r14-persistence-quality-tieout; after that branch is pushed, Prompt B must QA and merge it back to main.",
+  "valid_next_action": "Prompt B must QA R14 on feat/reset-r14-persistence-quality-tieout and merge only to main if QA passes.",
   "invalid_next_actions": [
-    "Prompt B QA work",
+    "Prompt A implementation work",
     "Prompt C gate audit",
     "QA any historical merged branch, including feat/reset-r00-w5-hold-control or feat/reset-r13-sales-first-export",
     "Start R14A, R14B, R14C, RG6, dogfood, or any deployment promotion outside the current assignment"
@@ -25,7 +25,7 @@
   "notes": [
     "R00 is historical and already merged.",
     "R13 passed Prompt B QA, rebuild/validated-leads-loop was promoted to main, and ADR-024 makes main the active integration branch going forward.",
-    "R14 Prompt A was already in flight when ADR-024 was recorded; do not start a duplicate R14 branch.",
+    "R14 Prompt A pushed origin/feat/reset-r14-persistence-quality-tieout at e57ef12 and is waiting for Prompt B QA.",
     "The 2026-05-12 R00 Prompt B reruns were stale-target no-ops and do not affect queue state.",
     "Queue truth is main plus this assignment lock, not rebuild/validated-leads-loop and not unmerged feature or audit branch docs."
   ]

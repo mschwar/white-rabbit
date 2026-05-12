@@ -2,21 +2,21 @@
 
 **Last updated:** 2026-05-12 by Codex mainline-reset-control
 **Branch:** main
-**Current sprint:** Matt moved reset execution to `main` on 2026-05-12 after the operator-use promotion and Fly API deploy. R13 sales-first CSV export is live on the promoted mainline. R14 persistence, DB readback, and quality report tie-out is in flight on `feat/reset-r14-persistence-quality-tieout`; Prompt B should QA/merge it directly to `main`. Product remains red. R14A-R14C, RG6, dogfood, and backend/core changes outside assigned slices remain blocked.
+**Current sprint:** Matt moved reset execution to `main` on 2026-05-12 after the operator-use promotion and Fly API deploy. R13 sales-first CSV export is live on the promoted mainline. R14 persistence, DB readback, and quality report tie-out is implemented on `feat/reset-r14-persistence-quality-tieout` and waiting for Prompt B QA/merge directly to `main`. Product remains red. R14A-R14C, RG6, dogfood, and backend/core changes outside assigned slices remain blocked.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt A for `R14 - Persistence, DB readback, and quality report tie-out` on `feat/reset-r14-persistence-quality-tieout` is in flight. When that branch is pushed, run Prompt B against `main`.
+**Next pointer:** Prompt B QA for `R14 - Persistence, DB readback, and quality report tie-out` on `feat/reset-r14-persistence-quality-tieout` against `main`.
 
-**Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It must agree with any Prompt A/B/C request before an agent edits files. It currently names `main` as the integration branch and records R14 Prompt A as already in flight on `feat/reset-r14-persistence-quality-tieout`; do not start a duplicate R14 branch.
+**Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It must agree with any Prompt A/B/C request before an agent edits files. It currently names `main` as the integration branch and allows only Prompt B QA for R14 on `feat/reset-r14-persistence-quality-tieout`.
 
 **Design direction handoff:** `DESIGN.md` is now the RG4 visual direction authority. The approved refreshed RG4 mockup/design preflight lives under `docs/mockups/rg4-refreshed-preflight-2026-05-12/`, with six rendered screens and README notes. Production UI work must use this artifact as the approved visual/product direction unless Matt approves a later change.
 
 **Open question:** If these become production brand assets, replace the upscaled raster crops with a clean vector or native high-resolution source when available.
 
-**Queue correction:** The 2026-05-12 R00 Prompt B runs were stale-target no-ops and have no queue effect. R00 is historical and already merged. The current valid target is Prompt A for R14 on `feat/reset-r14-persistence-quality-tieout` from `main`. Any future stale-target run must stop in chat only and must not edit, commit, merge, or push.
+**Queue correction:** The 2026-05-12 R00 Prompt B runs were stale-target no-ops and have no queue effect. R00 is historical and already merged. The current valid target is Prompt B for R14 on `feat/reset-r14-persistence-quality-tieout` against `main`. Any future stale-target run must stop in chat only and must not edit, commit, merge, or push.
 
 ---
 
@@ -28,13 +28,13 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** R14 is in flight for Prompt A. The next valid action after it is pushed is Prompt B QA/merge to `main`.
+**Next feature pointer:** R14 is waiting for Prompt B QA/merge to `main`. R14A stays blocked until R14 passes Prompt B and merges.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from `main`, Prompt B resolves and QA/merges the single feature branch waiting for QA back to `main`, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs. Do not resolve queue state from `rebuild/validated-leads-loop`, an unmerged feature branch, or an audit branch. `docs/reset-current-assignment.json` must match before any agent edits files.
 
 **Final product mockup gate:** Approved. `DESIGN.md` is the RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains product-structure reference only. The approved artifact is `docs/mockups/rg4-refreshed-preflight-2026-05-12/index.html` plus screenshots under `docs/mockups/rg4-refreshed-preflight-2026-05-12/screenshots/`.
 
-**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, R09H, R09I, R09J, R09K, R09L, R10, R11, R12, and R13 are merged into the promoted mainline. RG4 Prompt C advanced on the merged R10-R12 state. R14 is in flight; the post-R14 pre-dogfood slices R14A-R14C are blocked; RG6/export dogfood remain blocked.
+**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, R09H, R09I, R09J, R09K, R09L, R10, R11, R12, and R13 are merged into the promoted mainline. RG4 Prompt C advanced on the merged R10-R12 state. R14 is waiting for Prompt B QA; the post-R14 pre-dogfood slices R14A-R14C are blocked; RG6/export dogfood remain blocked.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -76,6 +76,23 @@ Prior accepted gates:
 
 **Latest handoff:**
 
+Feature: R14 - Persistence, DB readback, and quality report tie-out
+Branch: `feat/reset-r14-persistence-quality-tieout`
+Status: `implemented_pending_qa`
+Why it exists: RG5 needs export/persistence trust before dogfood. R13 made CSV usable; R14 makes the API persist the same run/lead rows, read them back from the database, and report whether response, DB, and export-facing row counts tie out.
+Scope: Implement only API/DB persistence and readback support for Scout/Full. Preserve sales-first CSV/export behavior and keep R14A-R14C, RG6, dogfood, and deployment promotion blocked.
+Non-goals: No image overhaul, UI/UX consistency pass, deployment smoke, browser visual changes, source-assisted compiler work, benchmark changes, dogfood packet, or RG5 Prompt C.
+What changed: `/scout` now creates recipe/run rows just like `/full`, saves returned leads, injects persisted lead IDs into response rows, and returns `run_id`, `recipe_id`, and a `persistence_readback` report. `/full` now uses the same readback helper and returns the same quality report. Added protected `GET /runs/{run_id}/leads` plus a web proxy at `/api/runs/[run_id]/leads` so Prompt B/RG5 can independently read persisted lead rows. Web types now model the optional persistence report and persisted-run readback response.
+Required verification from Prompt A:
+- `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest -q` (`53 passed`, existing datetime deprecation warnings)
+- `cd apps/web && npm test` (`13` files, `30` tests passed)
+- `cd apps/web && npm run build` (passed; existing Next.js warnings about workspace-root inference and deprecated `middleware` naming)
+- `git diff --check` (passed)
+Exact Prompt B handoff: QA `feat/reset-r14-persistence-quality-tieout`; verify the branch contains only R14 API/DB persistence/readback scope; rerun `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest -q`, `cd apps/web && npm test`, `cd apps/web && npm run build`, and `git diff --check`; confirm `/scout` and `/full` both persist recipe/run/lead rows, return persisted lead IDs, and include `persistence_readback`; confirm protected `GET /runs/{run_id}/leads` and the web proxy return stored rows and tier/category distributions; confirm response/readback row counts match; confirm no R14A image overhaul, R14B visual consistency, R14C deployment smoke, RG6 dogfood, source/compiler/benchmark scope, or deployment promotion landed. If QA passes, merge only to `main`, mark R14 `merged_to_mainline`, mark R14A `ready`, and keep R14B/R14C/RG6/dogfood blocked.
+Open questions: None.
+
+Previous handoff:
+
 Feature: R13 - Sales-first CSV export
 Branch: `feat/reset-r13-sales-first-export`
 Status: `merged_to_mainline`
@@ -92,7 +109,7 @@ Required verification:
 Artifacts: `.gstack/qa-reports/screenshots/r13-sales-first-export-2026-05-12/01-desktop-results-before-export.png`; `.gstack/qa-reports/screenshots/r13-sales-first-export-2026-05-12/02-desktop-export-ready.png`; `.gstack/qa-reports/screenshots/r13-sales-first-export-2026-05-12/03-mobile-export-ready.png`; `.gstack/qa-reports/csv/r13-sales-first-export-2026-05-12/primary-sales-first-export.csv`; `.gstack/qa-reports/csv/r13-sales-first-export-2026-05-12/browser-qa-summary.json`.
 Historical Prompt B handoff: completed; do not rerun R13 QA unless Matt explicitly asks for a regression audit.
 Prompt B result: QA passed. Report: `.gstack/qa-reports/qa-report-r13-sales-first-export-2026-05-12.md`. Verified `git diff --check`, web Vitest (`13` files, `30` tests), production build, API suite (`51 passed`), browser/CSV artifact evidence, northstar alignment, and R13-only scope. R13 is live on the promoted mainline.
-Next pointer after merge: Prompt A for `R14 - Persistence, DB readback, and quality report tie-out` on `feat/reset-r14-persistence-quality-tieout`. R14A-R14C, RG6, and dogfood remain blocked.
+Next pointer after merge: R14 Prompt A was completed on `feat/reset-r14-persistence-quality-tieout`; run Prompt B next. R14A-R14C, RG6, and dogfood remain blocked.
 Open questions: None.
 
 Previous handoff:
@@ -538,11 +555,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; R00-R13 are on `main`; RG0-RG4 have advanced; R14 is the single Prompt A feature and is currently in flight. R14A image overhaul, R14B UI/UX consistency, and R14C deployment-readiness remain blocked until the loop reaches them. Export persistence and dogfood remain blocked until their gates pass. W5 remains held; W6 remains blocked.
+- Product is in audit-red state. Documentation authority remediation is complete; R00-R13 are on `main`; RG0-RG4 have advanced; R14 is implemented on `feat/reset-r14-persistence-quality-tieout` and waiting for Prompt B QA. R14A image overhaul, R14B UI/UX consistency, and R14C deployment-readiness remain blocked until the loop reaches them. Export persistence and dogfood remain blocked until their gates pass. W5 remains held; W6 remains blocked.
 
 ## Next concrete task
 
-- R14 Prompt A is in flight on `feat/reset-r14-persistence-quality-tieout`. When it is pushed, run Prompt B against `main`. Do not start R14A-R14C, RG6, dogfood work, or any adjacent backend/core/UI work outside the R14 persistence and quality-report tie-out slice until the assignment lock advances.
+- Run Prompt B QA for `feat/reset-r14-persistence-quality-tieout` against `main`. Do not start R14A-R14C, RG6, dogfood work, or any adjacent backend/core/UI work outside the R14 persistence and quality-report tie-out slice until the assignment lock advances.
 
 ## Open questions for Matt
 

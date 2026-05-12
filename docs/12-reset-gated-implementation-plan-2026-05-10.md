@@ -6,8 +6,8 @@
 **Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
 **Current reset gate:** RG5 - Sales-First Export And Persistence. RG4 advanced on `audit/reset-rg4-operator-ui`; product remains red until export/persistence and dogfood gates pass.
-**Next Prompt A feature:** `R14 - Persistence, DB readback, and quality report tie-out` is already in flight on `feat/reset-r14-persistence-quality-tieout`.
-**Current Prompt B handoff:** None. R13 Prompt B QA passed, and the reset line has been promoted to `main`.
+**Next Prompt A feature:** None. R14 is implemented on `feat/reset-r14-persistence-quality-tieout` and waiting for Prompt B QA; R14A stays blocked until R14 passes Prompt B and merges to `main`.
+**Current Prompt B handoff:** `R14 - Persistence, DB readback, and quality report tie-out` on `feat/reset-r14-persistence-quality-tieout`.
 **Current Prompt C handoff:** None. RG5 is not ready for Prompt C until R14-R14C pass Prompt B and merge to `main`. Keep R14A-R14C blocked until their prior RG5 slices merge; keep RG6/dogfood blocked until RG5 advances.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
@@ -160,7 +160,7 @@ Before reset UI/export implementation starts, Matt must inspect the final produc
 
 The May 10 mockup remains useful for product structure only: one search input, high-volume tier distribution, CRM-first fields, evidence one action away, sales-first export, and no Scout/Full/product-internals ceremony in the operator path.
 
-A refreshed RG4 design preflight artifact exists under `docs/mockups/rg4-refreshed-preflight-2026-05-12/` with six rendered mockup screens. Matt approved this artifact on 2026-05-12. It initially unlocked R10 only; after R10 Prompt B, R11 was ready. R11 and R12 have passed Prompt B QA and are `merged_to_rebuild_branch`. RG4 Prompt C advanced, R13 passed Prompt B QA and merged, and R14 is now the single Prompt A feature in flight. R14A-R14C and dogfood remain blocked until their documented prerequisites pass.
+A refreshed RG4 design preflight artifact exists under `docs/mockups/rg4-refreshed-preflight-2026-05-12/` with six rendered mockup screens. Matt approved this artifact on 2026-05-12. It initially unlocked R10 only; after R10 Prompt B, R11 was ready. R11 and R12 have passed Prompt B QA and are `merged_to_rebuild_branch`. RG4 Prompt C advanced, R13 passed Prompt B QA and merged, and R14 is now waiting for Prompt B QA on `feat/reset-r14-persistence-quality-tieout`. R14A-R14C and dogfood remain blocked until their documented prerequisites pass.
 
 If RG3 Prompt C records `advance`, it must not mark R10 ready directly. Instead, it must assign a refreshed mockup/design preflight using `DESIGN.md`. That mockup pass must produce Empty, Loading, Results, Evidence Review, Low Signal, and Mobile Review artifacts for Matt inspection. This requirement is now satisfied by `docs/mockups/rg4-refreshed-preflight-2026-05-12/`; R10 is ready after Matt approval.
 
@@ -248,7 +248,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R11 | Compact CRM-first results table | merged_to_rebuild_branch | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | merged_to_rebuild_branch | `feat/reset-r12-evidence-dossier-review` | browser |
 | R13 | Sales-first CSV export | merged_to_rebuild_branch | `feat/reset-r13-sales-first-export` | browser + CSV |
-| R14 | Persistence, DB readback, and quality report tie-out | ready | `feat/reset-r14-persistence-quality-tieout` | API + DB |
+| R14 | Persistence, DB readback, and quality report tie-out | implemented_pending_qa | `feat/reset-r14-persistence-quality-tieout` | API + DB |
 | R14A | Image overhaul and approved brand asset cleanup | blocked | `feat/reset-r14a-image-overhaul-brand-assets` | browser + visual |
 | R14B | UI/UX consistency pass | blocked | `feat/reset-r14b-ui-ux-consistency-pass` | browser + screenshots |
 | R14C | Deployment readiness and operator-use smoke | blocked | `feat/reset-r14c-deployment-readiness-smoke` | deployment + API/web smoke |
