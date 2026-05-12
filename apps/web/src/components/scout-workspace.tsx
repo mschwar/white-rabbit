@@ -32,6 +32,7 @@ import {
   type ScoutResponse,
   type ValidationStatus,
   type FullResponse,
+  getOutputTier,
 } from '@/lib/scout';
 import {
   buildFullLeadExportCsv,
@@ -50,7 +51,7 @@ type ScoutWorkspaceProps = {
 };
 
 const PRIMARY_LOADING_STAGES = [
-  { label: 'Reading source context', count: '18' },
+  { label: 'Reading sources', count: '18' },
   { label: 'Matching people', count: '17' },
   { label: 'Checking contact evidence', count: '10' },
   { label: 'Preparing review table', count: '--' },
@@ -159,6 +160,62 @@ function getEvidenceRowSummary(row: ScoutResultRow): string {
   }
 
   return `${row.failure_reason} ${row.explanation}`.trim();
+}
+
+function getEvidenceDossierStatus(row: ScoutResultRow): string {
+  return TIER_LABELS[getOutputTier(row)];
+}
+
+function getEvidencePrimaryBlocker(row: ScoutResultRow): string {
+  if (row.candidate_category === 'failed') {
+    return row.failure_reason || row.explanation || 'The row was blocked by inaccessible or contradictory evidence.';
+  }
+
+  if (row.candidate_category === 'organization_only') {
+    return row.explanation || 'No validated person was found for this organization.';
+  }
+
+  if (row.candidate_category === 'not_found') {
+    return row.explanation || 'The target was searched, but no acceptable contact was found.';
+  }
+
+  const validation = getEvidenceValidation(row);
+  if (validation.email.status === 'verified_found') {
+    return row.primary_filter_reason || 'No blocker. The row is supported well enough for CRM-ready review.';
+  }
+
+  if (validation.email.status === 'deduced_with_pattern_evidence') {
+    return 'Contact proof is deduced from pattern evidence and still needs human review.';
+  }
+
+  if (validation.email.status === 'missing') {
+    return 'Direct contact proof is missing.';
+  }
+
+  if (validation.email.status === 'failed') {
+    return 'Contact evidence could not be verified.';
+  }
+
+  return row.primary_filter_reason || row.explanation || 'The row still needs evidence review.';
+}
+
+function getEvidenceTrailEntries(row: ScoutResultRow) {
+  const validation = getEvidenceValidation(row);
+
+  return [
+    { label: 'Name', record: validation.name },
+    { label: 'Role', record: validation.title },
+    { label: 'Org', record: validation.organization },
+    { label: 'Email', record: validation.email },
+    { label: 'Phone', record: validation.phone },
+    { label: 'Source', record: validation.source },
+  ].map(({ label, record }) => ({
+    label,
+    status: formatEvidenceStatusLabel(record.status),
+    detail: record.evidence_snippet || record.notes || 'No evidence snippet captured.',
+    href: record.source_url,
+    checkedAt: record.checked_at,
+  }));
 }
 
 function getCorrectionDefaultField(row: ScoutResultRow): CorrectionField {
@@ -376,7 +433,6 @@ function ScoutEvidenceDrawer({
   }
 
   const currentRow = row;
-
   const validation = getEvidenceValidation(currentRow);
   const fields = [
     { label: 'Name', record: validation.name },
@@ -386,6 +442,16 @@ function ScoutEvidenceDrawer({
     { label: 'Phone', record: validation.phone },
     { label: 'Source', record: validation.source },
   ] as const;
+  const trailEntries = getEvidenceTrailEntries(currentRow);
+  const dossierStatus = getEvidenceDossierStatus(currentRow);
+  const primaryBlocker = getEvidencePrimaryBlocker(currentRow);
+  const dossierTitle = isPersonLead(currentRow)
+    ? `${currentRow.name} @ ${currentRow.organization}`
+    : getEvidenceRowIdentity(currentRow);
+  const dossierSummary = getEvidenceRowSummary(currentRow);
+  const dossierRationale = isPersonLead(currentRow)
+    ? currentRow.why_target || currentRow.explanation || dossierSummary
+    : currentRow.explanation || dossierSummary;
 
   async function refreshCorrectionQueueExport(prefixMessage?: string) {
     if (!runId) {
@@ -461,12 +527,12 @@ function ScoutEvidenceDrawer({
       >
         <div className="flex items-start justify-between gap-4 border-b border-white/10 p-6">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">Evidence drawer</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">Evidence dossier</p>
             <h3 id="evidence-drawer-title" className="mt-2 text-2xl font-semibold tracking-tight text-zinc-50">
-              {getEvidenceRowIdentity(row)}
+              {dossierTitle}
             </h3>
             <p id="evidence-drawer-summary" className="mt-2 text-sm leading-6 text-zinc-400">
-              {getEvidenceRowSummary(row)}
+              {dossierSummary}
             </p>
           </div>
           <button
@@ -479,23 +545,79 @@ function ScoutEvidenceDrawer({
         </div>
 
         <div className="flex-1 overflow-y-auto p-6">
-          <div className="mb-4 flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-200">
-              {row.candidate_category ?? 'person_lead'}
+              {currentRow.candidate_category ?? 'person_lead'}
             </span>
             <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-200">
-              {getValidationBucket(row)}
+              {getValidationBucket(currentRow)}
+            </span>
+            <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-100">
+              {dossierStatus}
             </span>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="mt-5 grid gap-4 rounded-3xl border border-white/10 bg-white/5 p-5">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/10 bg-zinc-950/70 p-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-400">Status</p>
+                <p className="mt-2 text-lg font-semibold text-zinc-50">{dossierStatus}</p>
+                <p className="mt-1 text-sm leading-6 text-zinc-300">{dossierSummary}</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-zinc-950/70 p-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-400">Primary blocker</p>
+                <p className="mt-2 text-lg font-semibold text-zinc-50">{primaryBlocker}</p>
+                <p className="mt-1 text-sm leading-6 text-zinc-300">Review this row before treating it as CRM-ready.</p>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-400">Rationale</p>
+              <p className="mt-2 text-sm leading-6 text-zinc-200">{dossierRationale}</p>
+            </div>
+          </div>
+
+          <div className="mt-5 grid gap-4 md:grid-cols-2">
             {fields.map(({ label, record }) => renderEvidenceField(label, record))}
+          </div>
+
+          <div className="mt-5 rounded-3xl border border-white/10 bg-white/5 p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">Source trail</p>
+            <ol className="mt-4 space-y-3">
+              {trailEntries.map((entry, index) => (
+                <li key={`${entry.label}-${index}`} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-zinc-950/70 p-4">
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/10 bg-white/5 text-xs font-semibold text-zinc-200">
+                    {index + 1}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <strong className="text-sm text-zinc-50">{entry.label}</strong>
+                      <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-200">
+                        {entry.status}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm leading-6 text-zinc-300">{entry.detail}</p>
+                    {entry.checkedAt ? <p className="mt-1 text-xs text-zinc-500">{entry.checkedAt}</p> : null}
+                  </div>
+                  {entry.href ? (
+                    <a
+                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-200 transition hover:bg-white/10"
+                      href={entry.href}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Source
+                    </a>
+                  ) : null}
+                </li>
+              ))}
+            </ol>
           </div>
 
           <div className="mt-6 rounded-3xl border border-white/10 bg-white/5 p-5">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">Correction loop</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">Review actions</p>
                 <h4 className="mt-2 text-lg font-semibold text-zinc-50">Record a field-level correction</h4>
                 <p className="mt-1 text-sm leading-6 text-zinc-400">
                   Save the operator correction against this Full run, then export the queue as JSON for benchmark review.
@@ -1054,22 +1176,16 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
 
           <section className="min-h-[calc(100vh-64px)] bg-[#fbfcfd]">
             {!showPrimaryResultsOverview ? (
-              <div className="grid min-h-[52vh] gap-10 bg-[#050916] px-5 py-12 text-white sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(300px,420px)] lg:items-end lg:px-14">
+              <div className="grid min-h-[52vh] gap-10 bg-[#050916] px-5 py-12 text-white sm:px-8 lg:px-14">
                 <div>
                   <div aria-hidden="true" className="mb-8 grid h-24 w-24 place-items-center rounded-[18px] border border-dashed border-[#2d7bff]/80 bg-[#2d7bff]/15 text-2xl font-black tracking-[0.04em]">
                     WR
                   </div>
                   <h1 className="max-w-3xl text-5xl font-semibold leading-[0.98] tracking-normal sm:text-6xl lg:text-7xl">
-                    Start with the target. Keep the proof beside it.
+                    Start with the target.
                   </h1>
                   <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-                    Use a sales target and trusted public source context to build a review table with ready rows, blockers, and next actions.
-                  </p>
-                </div>
-                <div className="rounded-lg border border-white/15 bg-white/[0.04] p-5">
-                  <h2 className="text-base font-semibold">Source-assisted search</h2>
-                  <p className="mt-2 text-sm leading-6 text-white/65">
-                    Rosters, staff pages, source URLs, PDFs, or seed notes give the run a better starting point than a blind web search.
+                    Review the surfaced rows, keep blockers visible, and open evidence only when a row needs proof.
                   </p>
                 </div>
               </div>
@@ -1088,13 +1204,15 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                     </p>
                   </div>
                   <div className="rounded-[18px] border border-[#d7deea] bg-white px-4 py-3 text-sm leading-6 text-[#536175] shadow-[0_14px_30px_rgba(10,18,38,0.05)]">
-                    Refine the target or source context here to rerun without leaving the review surface.
+                    Refine the target here to rerun without leaving the review surface.
                   </div>
                 </div>
               ) : null}
 
               <form
-                className="grid gap-4 rounded-lg border border-[#cbd5e1] bg-white p-4 shadow-[0_18px_42px_rgba(10,18,38,0.08)] lg:grid-cols-[minmax(0,1fr)_minmax(300px,0.7fr)_auto] lg:items-end"
+                className={`grid gap-4 rounded-lg border border-[#cbd5e1] bg-white p-4 shadow-[0_18px_42px_rgba(10,18,38,0.08)] ${
+                  primaryMode ? 'lg:grid-cols-[minmax(0,1fr)_auto]' : 'lg:grid-cols-[minmax(0,1fr)_minmax(300px,0.7fr)_auto]'
+                } lg:items-end`}
                 onSubmit={handleSubmit}
               >
                 <label className="grid gap-2" htmlFor="query">
@@ -1108,23 +1226,25 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                     value={query}
                   />
                 </label>
-                <label className="grid gap-2" htmlFor="sourceContext">
-                  <span className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Source context</span>
-                  <textarea
-                    className="min-h-12 w-full resize-none rounded-md border border-[#cbd5e1] bg-[#fbfcfd] px-3 py-3 text-sm font-medium text-[#0a1226] outline-none placeholder:text-[#60708a] focus:border-[#2d7bff] focus:ring-2 focus:ring-[#2d7bff]/25"
-                    id="sourceContext"
-                    name="sourceContext"
-                    onChange={(event) => setSourceContext(event.target.value)}
-                    placeholder="Staff pages, rosters, trusted URLs, seed notes"
-                    value={sourceContext}
-                  />
-                </label>
+                {primaryMode ? null : (
+                  <label className="grid gap-2" htmlFor="sourceContext">
+                    <span className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Source context</span>
+                    <textarea
+                      className="min-h-12 w-full resize-none rounded-md border border-[#cbd5e1] bg-[#fbfcfd] px-3 py-3 text-sm font-medium text-[#0a1226] outline-none placeholder:text-[#60708a] focus:border-[#2d7bff] focus:ring-2 focus:ring-[#2d7bff]/25"
+                      id="sourceContext"
+                      name="sourceContext"
+                      onChange={(event) => setSourceContext(event.target.value)}
+                      placeholder="Staff pages, rosters, trusted URLs, seed notes"
+                      value={sourceContext}
+                    />
+                  </label>
+                )}
                 <button
                   className="inline-flex h-12 items-center justify-center rounded-md bg-[#2d7bff] px-5 text-sm font-black text-white transition hover:bg-[#1f65d8] disabled:cursor-not-allowed disabled:bg-[#2d7bff]/60"
                   disabled={isLoading}
                   type="submit"
                 >
-                  {isLoading ? 'Finding Candidates...' : 'Find Candidates'}
+                  {isLoading ? 'Finding Candidates...' : primaryMode ? 'Find candidates' : 'Find Candidates'}
                 </button>
               </form>
               <p className="mt-4 max-w-3xl text-sm leading-6 text-[#60708a]">
@@ -1212,7 +1332,6 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                     results={displayedResults}
                     rows={displayedRows}
                     sortMode={sortMode}
-                    sourceContext={sourceContext}
                   />
                 ) : (
                   <section className="mt-8 rounded-lg border border-[#e2e7ef] bg-white p-5">
@@ -1387,7 +1506,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                 {isLoading
                   ? 'Searching…'
                   : primaryMode
-                    ? 'Search leads'
+                    ? 'Find candidates'
                     : mode === 'scout'
                       ? 'Run Scout search'
                       : 'Run Full search'}

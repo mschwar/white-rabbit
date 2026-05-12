@@ -247,8 +247,10 @@ test('renders validation buckets and badges for mixed scout results', async () =
 
   fireEvent.click(within(usableTable).getByRole('button', { name: /view evidence for jane smith/i }));
   const usableDrawer = screen.getByRole('dialog', { name: /jane smith/i });
-  expect(within(usableDrawer).getByText(/evidence drawer/i)).toBeDefined();
-  expect(within(usableDrawer).getByText(/verified found/i)).toBeDefined();
+  expect(within(usableDrawer).getByText(/evidence dossier/i)).toBeDefined();
+  expect(within(usableDrawer).getAllByText(/verified found/i).length).toBeGreaterThan(0);
+  expect(within(usableDrawer).getByText(/primary blocker/i)).toBeDefined();
+  expect(within(usableDrawer).getByText(/source trail/i)).toBeDefined();
   expect(within(usableDrawer).getByRole('link', { name: 'https://validation.example.com/name' })).toBeDefined();
   expect(within(usableDrawer).getAllByText('2026-05-10T12:00:00Z').length).toBeGreaterThan(0);
   fireEvent.click(within(usableDrawer).getByRole('button', { name: /close/i }));
@@ -256,7 +258,7 @@ test('renders validation buckets and badges for mixed scout results', async () =
 
   fireEvent.click(screen.getByRole('button', { name: /view evidence for broken district/i }));
   const failedDrawer = screen.getByRole('dialog', { name: /broken district/i });
-  expect(within(failedDrawer).getByText(/source was inaccessible/i)).toBeDefined();
+  expect(within(failedDrawer).getAllByText(/source was inaccessible/i).length).toBeGreaterThan(0);
   expect(within(failedDrawer).getAllByText(/^failed$/i).length).toBeGreaterThan(0);
   expect(within(failedDrawer).getByRole('link', { name: 'https://validation.example.com/source' })).toBeDefined();
 });
@@ -349,7 +351,7 @@ test('renders the primary search shell with one natural-language input', async (
 
   expect(screen.getByRole('heading', { name: /start with the target/i })).toBeDefined();
   expect(screen.getByLabelText(/target/i)).toBeDefined();
-  expect(screen.getByLabelText(/source context/i)).toBeDefined();
+  expect(screen.getAllByRole('textbox')).toHaveLength(1);
   expect(screen.getByRole('button', { name: /find candidates/i })).toBeDefined();
   expect(screen.queryByRole('button', { name: /^scout$/i })).toBeNull();
   expect(screen.queryByRole('button', { name: /^full$/i })).toBeNull();

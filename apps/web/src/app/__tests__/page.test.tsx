@@ -7,9 +7,8 @@ test('renders the primary lead-search workspace', () => {
 
   expect(screen.getByRole('heading', { name: /start with the target/i })).toBeDefined();
   expect(screen.getByLabelText(/target/i)).toBeDefined();
-  expect(screen.getByLabelText(/source context/i)).toBeDefined();
   expect(screen.getByRole('button', { name: /find candidates/i })).toBeDefined();
-  expect(screen.getAllByRole('textbox')).toHaveLength(2);
+  expect(screen.getAllByRole('textbox')).toHaveLength(1);
   expect(screen.queryByRole('button', { name: /^scout$/i })).toBeNull();
   expect(screen.queryByRole('button', { name: /^full$/i })).toBeNull();
   expect(screen.queryByText(/search usage/i)).toBeNull();

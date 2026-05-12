@@ -19,7 +19,6 @@ type PrimaryResultsOverviewProps = {
   results: ScoutResponse;
   rows: ScoutResultRow[];
   sortMode: LeadSortMode;
-  sourceContext: string;
   onOpenEvidence: (row: ScoutResultRow) => void;
   onSortChange: (mode: LeadSortMode) => void;
 };
@@ -250,7 +249,6 @@ export default function PrimaryResultsOverview({
   results,
   rows,
   sortMode,
-  sourceContext,
   onOpenEvidence,
   onSortChange,
 }: PrimaryResultsOverviewProps) {
@@ -274,12 +272,6 @@ export default function PrimaryResultsOverview({
           <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Results overview</p>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-[#536175]">{countSummary(results, distribution)}</p>
         </div>
-        {sourceContext.trim() ? (
-          <div className="max-w-xl rounded-[18px] border border-[#d7deea] bg-[#f7f9fc] px-4 py-3">
-            <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Source context used</p>
-            <p className="mt-2 whitespace-pre-wrap text-sm leading-6 text-[#0a1226]">{sourceContext.trim()}</p>
-          </div>
-        ) : null}
       </div>
 
       <div className="mt-5 grid gap-px overflow-hidden rounded-[18px] border border-[#d7deea] bg-[#d7deea] lg:grid-cols-5">
