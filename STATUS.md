@@ -10,11 +10,13 @@
 
 **Next pointer:** Prompt B QA for `R13 - Sales-first CSV export` on `feat/reset-r13-sales-first-export`. Do not promote or sync `main`.
 
+**Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It must agree with any Prompt A/B/C request before an agent edits files. It currently allows only Prompt B QA for `feat/reset-r13-sales-first-export`.
+
 **Design direction handoff:** `DESIGN.md` is now the RG4 visual direction authority. The approved refreshed RG4 mockup/design preflight lives under `docs/mockups/rg4-refreshed-preflight-2026-05-12/`, with six rendered screens and README notes. Production UI work must use this artifact as the approved visual/product direction unless Matt approves a later change.
 
 **Open question:** If these become production brand assets, replace the upscaled raster crops with a clean vector or native high-resolution source when available.
 
-**Queue correction:** The 2026-05-12 R00 Prompt B run was a stale-target no-op and has no queue effect. The current valid Prompt B target is `feat/reset-r13-sales-first-export`; R00 is historical and already merged. This recheck confirmed the same no-op state.
+**Queue correction:** The 2026-05-12 R00 Prompt B runs were stale-target no-ops and have no queue effect. The current valid Prompt B target is `feat/reset-r13-sales-first-export`; R00 is historical and already merged. Any future stale-target run must stop in chat only and must not edit, commit, merge, or push.
 
 ---
 
@@ -28,7 +30,7 @@
 
 **Next feature pointer:** None while R13 waits for Prompt B QA. `main` stays unchanged unless Matt explicitly calls for an operator-use promotion.
 
-**Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from the integration branch, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs. Do not resolve queue state from an unmerged feature or audit branch.
+**Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from the integration branch, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs. Do not resolve queue state from an unmerged feature or audit branch. `docs/reset-current-assignment.json` must match before any agent edits files.
 
 **Final product mockup gate:** Approved. `DESIGN.md` is the RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains product-structure reference only. The approved artifact is `docs/mockups/rg4-refreshed-preflight-2026-05-12/index.html` plus screenshots under `docs/mockups/rg4-refreshed-preflight-2026-05-12/screenshots/`.
 
@@ -562,6 +564,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-12 | reset-assignment-lock (Codex) | Added `docs/reset-current-assignment.json` as the machine-readable current Prompt A/B/C assignment lock and updated AGENTS.md plus the reusable prompts so stale-target mismatches must stop without edits, commits, merges, or pushes. Current lock allows only Prompt B QA for `feat/reset-r13-sales-first-export`. |
 | 2026-05-12 | r13-queue-repair (Codex) | Corrected the control plane after agents used conflicting branch state and a stale R00 Prompt B target. `rebuild/validated-leads-loop` now marks `R13 - Sales-first CSV export` as `implemented_pending_qa` on `feat/reset-r13-sales-first-export`, makes Prompt B the next valid action, and adds explicit guardrails that queue truth must be resolved from the integration branch rather than feature/audit branch docs. |
 | 2026-05-12 | r14-polish-slices (Codex) | Added blocked RG5 queue slices after R14 and before R15: `R14A - Image overhaul and approved brand asset cleanup`, `R14B - UI/UX consistency pass`, and `R14C - Deployment readiness and operator-use smoke`. R14-R14C, RG6, dogfood, backend/core changes outside assigned slices, and `main` promotion remained blocked. |
 | 2026-05-12 | prompt-b-r12-evidence-dossier-review (Codex) | QA-passed `R12 - Evidence dossier review mode` on `feat/reset-r12-evidence-dossier-review`: verified `git diff --check`, `cd apps/web && npm test -- --run` (`13` files, `30` tests), `cd apps/web && npm run build`, browser QA on `http://localhost:3001/` with local shared-password login and mocked `/api/scout` responses, and screenshots under `.gstack/qa-reports/screenshots/r12-evidence-dossier-review-2026-05-12/`; R12 is merged_to_rebuild_branch and RG4 Prompt C is now valid on the merged R10-R12 state. Export, dogfood, and `main` promotion remain blocked. |

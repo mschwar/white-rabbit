@@ -128,9 +128,11 @@ Prompt C: run the gate evaluation/audit after every feature in that gate has mer
 
 Prompt A never merges. Prompt B never unlocks the next gate. Prompt B may unlock the next feature inside the same in-progress gate after QA passes and the prior feature is merged. Prompt C is the only prompt that can record a gate-level `advance` or recommend an operator-use sync to `main`. A Prompt C `advance` is not active for the next Prompt A until the audit branch has been merged back into `rebuild/validated-leads-loop` and pushed.
 
-Current kickoff order is resolved dynamically from `STATUS.md` and the reset feature/gate tables below.
+Current kickoff order is resolved dynamically from `docs/reset-current-assignment.json`, `STATUS.md`, and the reset feature/gate tables below.
 
 Queue truth must be resolved from `rebuild/validated-leads-loop`, not from an unmerged feature branch or audit branch. If an agent starts on any branch other than `rebuild/validated-leads-loop`, it must first fetch and inspect the integration branch state before selecting work. A feature branch's local `STATUS.md` and `docs/12` can contain in-flight handoff notes, but they are not the control-plane source of truth until merged back to `rebuild/validated-leads-loop`.
+
+`docs/reset-current-assignment.json` is the machine-readable assignment lock. If the assignment lock names a different prompt, feature, or branch than the prompt an agent was given, the agent must stop without editing files, writing QA reports, committing, merging, or pushing. Stale-target checks are chat-only reports; they must not create integration-branch commits.
 
 Do not use a hard-coded feature prompt from an earlier chat turn. Before every assignment, the agent must prove the current state from the repo:
 
@@ -1290,6 +1292,7 @@ First prove current state:
 - if current branch is not rebuild/validated-leads-loop, inspect origin/rebuild/validated-leads-loop before selecting work; do not resolve the queue from a feature or audit branch
 - read AGENTS.md
 - read STATUS.md
+- read docs/reset-current-assignment.json
 - read docs/00-product-northstar.md
 - read docs/12-reset-gated-implementation-plan-2026-05-10.md
 - read docs/03-decisions.md
@@ -1297,6 +1300,7 @@ First prove current state:
 - run git status --short --branch
 
 Resolve the next feature from STATUS.md and the reset feature table:
+- first check docs/reset-current-assignment.json; if `current_prompt` is not `A`, stop without editing, committing, merging, or pushing
 - choose exactly one feature marked ready
 - do not choose any feature already marked merged
 - do not choose any feature marked implemented_pending_qa or waiting for Prompt B
@@ -1333,12 +1337,15 @@ First prove current state:
 - inspect origin/rebuild/validated-leads-loop first; do not resolve the QA target from stale local feature/audit branch docs
 - read AGENTS.md
 - read STATUS.md
+- read docs/reset-current-assignment.json
 - read docs/00-product-northstar.md
 - read docs/12-reset-gated-implementation-plan-2026-05-10.md
 - identify the single feature branch currently waiting for QA from integration STATUS.md, integration docs/12, and the pushed branch state
 - run git status --short --branch
 
-If there is no feature branch waiting for QA, more than one plausible feature branch, or the feature is already marked merged on the integration branch, stop and report the ambiguity. Do not QA historical merged branches such as R00 unless the integration branch explicitly names them as the current Prompt B handoff.
+Before QA, check docs/reset-current-assignment.json. If `current_prompt` is not `B`, or if `current_feature_branch` is not the branch you are about to QA, stop without editing, writing a QA report, committing, merging, or pushing.
+
+If there is no feature branch waiting for QA, more than one plausible feature branch, or the feature is already marked merged on the integration branch, stop and report the ambiguity. Do not QA historical merged branches such as R00 unless both the integration branch and `docs/reset-current-assignment.json` explicitly name them as the current Prompt B handoff.
 
 Required checks:
 - git diff --check
