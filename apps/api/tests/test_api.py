@@ -26,6 +26,30 @@ client.headers.update({INTERNAL_API_TOKEN_HEADER: INTERNAL_API_TOKEN})
 public_client = TestClient(app)
 
 
+def fake_persistence_readback(leads):
+    run_id = "22222222-2222-2222-2222-222222222222"
+    recipe_id = "11111111-1111-1111-1111-111111111111"
+    for index, lead in enumerate(leads, start=1):
+        lead.id = f"33333333-3333-3333-3333-{index:012d}"
+    return (
+        recipe_id,
+        run_id,
+        {
+            "run_id": run_id,
+            "recipe_id": recipe_id,
+            "response_row_count": len(leads),
+            "persisted_lead_count": len(leads),
+            "db_readback_row_count": len(leads),
+            "exportable_row_count": len(leads),
+            "row_count_matches": True,
+            "first_response_lead_ids": [lead.id for lead in leads[:5]],
+            "first_db_lead_ids": [lead.id for lead in leads[:5]],
+            "tier_distribution": {},
+            "candidate_category_distribution": {},
+        },
+    )
+
+
 def test_health_check():
     response = client.get("/health")
     assert response.status_code == 200
@@ -100,6 +124,7 @@ def test_source_assisted_proof_endpoint_returns_live_boundary_payload():
             },
         ),
         ("get", "/runs/qa-validation-buckets-run/corrections", None),
+        ("get", "/runs/11111111-1111-1111-1111-111111111111/leads", None),
         ("post", "/runs/11111111-1111-1111-1111-111111111111/close", {"operator_minutes": 10}),
         ("get", "/batch", None),
         ("get", "/batch/11111111-1111-1111-1111-111111111111", None),
@@ -121,6 +146,9 @@ def test_scout_endpoint_returns_scoped_payload(monkeypatch):
         max_rows=1000,
         reset_at=datetime(2026, 1, 1, 12, 0, 0),
     )
+    recipe_id = "11111111-1111-1111-1111-111111111111"
+    run_id = "22222222-2222-2222-2222-222222222222"
+    lead_id = "33333333-3333-3333-3333-333333333333"
 
     @contextmanager
     def fake_db_session():
@@ -162,15 +190,47 @@ def test_scout_endpoint_returns_scoped_payload(monkeypatch):
     monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
     monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
     monkeypatch.setattr("api.main.scout", fake_scout)
+    monkeypatch.setattr(
+        "api.main.create_recipe",
+        lambda session, name, query, filters=None: SimpleNamespace(id=recipe_id),
+    )
+    monkeypatch.setattr(
+        "api.main.create_recipe_run",
+        lambda session, mode, recipe_id=None, lead_count=0, api_cost_breakdown=None: SimpleNamespace(id=run_id),
+    )
+    monkeypatch.setattr(
+        "api.main.save_leads",
+        lambda session, _run_id, leads: [SimpleNamespace(id=lead_id, data=leads[0], rank=1)],
+    )
+    monkeypatch.setattr(
+        "api.main.get_leads_for_run",
+        lambda session, _run_id: [SimpleNamespace(id=lead_id, data={"tier": "high_trust_usable", "candidate_category": "person_lead"}, rank=1)],
+    )
 
     response = client.post("/scout", json={"query": "K-12 IT directors in Albuquerque"})
 
     assert response.status_code == 200
     body = response.json()
+    assert body["run_id"] == run_id
+    assert body["recipe_id"] == recipe_id
+    assert body["leads"][0]["id"] == lead_id
     assert body["leads"][0]["name"] == "Jane Smith"
     assert body["leads"][0]["candidate_category"] == "person_lead"
     assert body["metrics"]["input_tokens"] == 123
     assert body["metrics"]["tavily_searches"] == 1
+    assert body["persistence_readback"] == {
+        "run_id": run_id,
+        "recipe_id": recipe_id,
+        "response_row_count": 1,
+        "persisted_lead_count": 1,
+        "db_readback_row_count": 1,
+        "exportable_row_count": 1,
+        "row_count_matches": True,
+        "first_response_lead_ids": [lead_id],
+        "first_db_lead_ids": [lead_id],
+        "tier_distribution": {"high_trust_usable": 1},
+        "candidate_category_distribution": {"person_lead": 1},
+    }
 
 
 def test_scout_endpoint_preserves_candidate_categories(monkeypatch):
@@ -229,6 +289,10 @@ def test_scout_endpoint_preserves_candidate_categories(monkeypatch):
     monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
     monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
     monkeypatch.setattr("api.main.scout", fake_scout)
+    monkeypatch.setattr(
+        "api.main._persist_run_and_build_readback",
+        lambda session, **kwargs: fake_persistence_readback(kwargs["leads"]),
+    )
 
     response = client.post("/scout", json={"query": "K-12 IT directors in Albuquerque"})
 
@@ -267,6 +331,10 @@ def test_scout_endpoint_forwards_filters(monkeypatch):
     monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
     monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
     monkeypatch.setattr("api.main.scout", fake_scout)
+    monkeypatch.setattr(
+        "api.main._persist_run_and_build_readback",
+        lambda session, **kwargs: fake_persistence_readback(kwargs["leads"]),
+    )
 
     response = client.post(
         "/scout",
@@ -301,6 +369,10 @@ def test_scout_endpoint_uses_high_volume_settings_for_broad_queries(monkeypatch)
     monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
     monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
     monkeypatch.setattr("api.main.scout", fake_scout)
+    monkeypatch.setattr(
+        "api.main._persist_run_and_build_readback",
+        lambda session, **kwargs: fake_persistence_readback(kwargs["leads"]),
+    )
 
     response = client.post("/scout", json={"query": "healthcare IT directors in Phoenix"})
 
@@ -334,6 +406,10 @@ def test_scout_endpoint_keeps_named_account_queries_on_narrow_settings(monkeypat
     monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
     monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
     monkeypatch.setattr("api.main.scout", fake_scout)
+    monkeypatch.setattr(
+        "api.main._persist_run_and_build_readback",
+        lambda session, **kwargs: fake_persistence_readback(kwargs["leads"]),
+    )
 
     response = client.post(
         "/scout",
@@ -589,6 +665,55 @@ def test_run_corrections_endpoint_returns_review_queue(monkeypatch):
     assert body[0]["notes"] == "Corrected title after source review."
 
 
+def test_run_leads_endpoint_returns_persisted_rows_and_readback(monkeypatch):
+    run_id = "22222222-2222-2222-2222-222222222222"
+    lead_id = "33333333-3333-3333-3333-333333333333"
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr(
+        "api.main.get_leads_for_run",
+        lambda session, _run_id: [
+            SimpleNamespace(
+                id=lead_id,
+                data={
+                    "id": lead_id,
+                    "name": "Jane Smith",
+                    "candidate_category": "person_lead",
+                    "tier": "high_trust_usable",
+                },
+                rank=1,
+            )
+        ],
+    )
+
+    response = client.get(f"/runs/{run_id}/leads")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body == {
+        "run_id": run_id,
+        "row_count": 1,
+        "rows": [
+            {
+                "id": lead_id,
+                "rank": 1,
+                "data": {
+                    "id": lead_id,
+                    "name": "Jane Smith",
+                    "candidate_category": "person_lead",
+                    "tier": "high_trust_usable",
+                },
+            }
+        ],
+        "tier_distribution": {"high_trust_usable": 1},
+        "candidate_category_distribution": {"person_lead": 1},
+    }
+
+
 def test_lead_feedback_model_has_label_check_constraint():
     constraints = [constraint for constraint in LeadFeedback.__table__.constraints if isinstance(constraint, CheckConstraint)]
 
@@ -706,6 +831,10 @@ def test_scout_endpoint_forwards_filters(monkeypatch):
     monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
     monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
     monkeypatch.setattr("api.main.scout", fake_scout)
+    monkeypatch.setattr(
+        "api.main._persist_run_and_build_readback",
+        lambda session, **kwargs: fake_persistence_readback(kwargs["leads"]),
+    )
 
     response = client.post(
         "/scout",
@@ -1402,6 +1531,10 @@ def test_full_endpoint_returns_persisted_lead_ids(monkeypatch):
     monkeypatch.setattr("api.main.get_sandbox_state_for_update", fake_get_sandbox_state)
     monkeypatch.setattr("api.main.record_sandbox_rows", fake_record_sandbox_rows)
     monkeypatch.setattr("api.main.scout", fake_scout)
+    monkeypatch.setattr(
+        "api.main.get_leads_for_run",
+        lambda session, run_id: [SimpleNamespace(id=FakeLead.id, data={"candidate_category": "person_lead", "tier": "review"}, rank=1)],
+    )
 
     response = client.post("/full", json={"query": "K-12 IT directors in Albuquerque"})
 
