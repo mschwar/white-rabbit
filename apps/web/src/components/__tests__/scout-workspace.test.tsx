@@ -377,6 +377,19 @@ test('renders the primary search shell with one natural-language input', async (
   expect(screen.getByRole('button', { name: /ready 1/i })).toBeDefined();
   expect(screen.getByRole('button', { name: /review 1/i })).toBeDefined();
   expect(screen.queryByText(/validation bucketed results/i)).toBeNull();
+
+  fireEvent.click(screen.getByRole('button', { name: /build csv export/i }));
+  const csvLink = await screen.findByRole('link', { name: /download csv/i });
+  expect(csvLink).toHaveAttribute(
+    'download',
+    expect.stringMatching(/^white-rabbit-lead-export-\d{4}-\d{2}-\d{2}\.csv$/),
+  );
+  const csvText = decodeURIComponent(csvLink.getAttribute('href')?.replace('data:text/csv;charset=utf-8,', '') ?? '');
+  expect(csvText.split('\n')[0]).toBe(
+    'lead_name,title,organization,email,email_status,phone,phone_status,usable_candidate,operator_label,candidate_category,rank,query,run_id,fit_score,evidence_score,contact_score,ranking_gate,source_name_url,source_title_url,source_org_url,source_email_url,source_phone_url,source_access_status,validation_notes,checked_at,location,recipe_name,sort_mode,generated_at',
+  );
+  expect(csvText.split('\n')[1]).toContain('Jane Smith,Director of Technology,Albuquerque Public Schools,jane.smith@aps.edu');
+  expect(csvText).toContain('Daniel Yazzie,Technology Coordinator,Gallup-McKinley Schools,,missing');
 });
 
 test('sorts scout results by validation signal and ready tier state', async () => {

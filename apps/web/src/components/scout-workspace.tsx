@@ -956,6 +956,11 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
         };
 
         setResults(QA_VALIDATION_BUCKETS_FIXTURE);
+        if (primaryMode || mode === 'scout') {
+          setSubmittedQuery(submittedQuery);
+          setSubmittedLocation(submittedLocation);
+          setSubmittedRecipeName(submittedRecipeName);
+        }
         if (!primaryMode && mode === 'full') {
           setFullResult(fixtureResult);
           setSubmittedQuery(submittedQuery);
@@ -1025,6 +1030,9 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
         setResults(data);
         setQueryGuardrail(data.query_guardrail ?? null);
         setSandboxUsage(data.sandbox_usage ?? null);
+        setSubmittedQuery(submittedQuery);
+        setSubmittedLocation(submittedLocation);
+        setSubmittedRecipeName(submittedRecipeName);
       } else {
         const data = (await response.json()) as FullResponse;
         setFullResult(data);
@@ -1093,7 +1101,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
   }
 
   async function handleBuildLeadExport() {
-    if (!fullResult || !displayedResults) {
+    if (!displayedResults || displayedRows.length === 0) {
       return;
     }
 
@@ -1102,10 +1110,10 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
       query: submittedQuery ?? query,
       location: submittedLocation ?? location,
       recipeName: submittedRecipeName ?? (recipeName || query),
-      runId: fullResult.run_id,
+      runId: fullResult?.run_id ?? `scout-${generatedAt.toISOString()}`,
       sortMode,
       rows: displayedRows,
-      guardrail: fullResult.query_guardrail ?? null,
+      guardrail: fullResult?.query_guardrail ?? displayedResults.query_guardrail ?? null,
       generatedAt,
     });
 
@@ -1326,13 +1334,51 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
 
               {displayedResults && !showPrimaryLoading ? (
                 showPrimaryResultsOverview ? (
-                  <PrimaryResultsOverview
-                    onOpenEvidence={handleOpenEvidence}
-                    onSortChange={setSortMode}
-                    results={displayedResults}
-                    rows={displayedRows}
-                    sortMode={sortMode}
-                  />
+                  <>
+                    <PrimaryResultsOverview
+                      onOpenEvidence={handleOpenEvidence}
+                      onSortChange={setSortMode}
+                      results={displayedResults}
+                      rows={displayedRows}
+                      sortMode={sortMode}
+                    />
+                    <section className="mt-5 rounded-[18px] border border-[#d7deea] bg-white p-5 shadow-[0_14px_30px_rgba(10,18,38,0.05)]">
+                      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                        <div>
+                          <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">CSV export</p>
+                          <h2 className="mt-1 text-xl font-semibold tracking-normal text-[#0a1226]">Sales-first workbook</h2>
+                          <p className="mt-2 max-w-2xl text-sm leading-6 text-[#536175]">
+                            Exports the current rows with sales columns first, READY rows sorted first, and validation context preserved.
+                          </p>
+                        </div>
+                        <button
+                          className="inline-flex h-11 items-center justify-center rounded-md border border-[#2d7bff] bg-[#2d7bff] px-5 text-sm font-black text-white transition hover:bg-[#1f65d8]"
+                          onClick={handleBuildLeadExport}
+                          type="button"
+                        >
+                          {leadExport ? 'Rebuild CSV export' : 'Build CSV export'}
+                        </button>
+                      </div>
+                      {leadExport ? (
+                        <div className="mt-4 rounded-lg border border-[#d7deea] bg-[#f7f9fc] px-4 py-3 text-sm text-[#536175]">
+                          <p className="font-semibold text-[#0a1226]">CSV ready</p>
+                          <p className="mt-1">
+                            {leadExport.rowCount} row{leadExport.rowCount === 1 ? '' : 's'} · generated {leadExport.generatedAtLabel}
+                          </p>
+                          <a
+                            className="mt-3 inline-flex rounded-md border border-[#b7cffd] bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.08em] text-[#0e3a8a] transition hover:border-[#2d7bff] hover:bg-[#f5f9ff]"
+                            download={leadExport.filename}
+                            href={leadExport.csvDataUrl}
+                          >
+                            Download CSV
+                          </a>
+                          <p className="mt-2 text-xs leading-5 text-[#60708a]">
+                            Includes CRM fields, readiness label, source URLs, field statuses, blocker notes, and run context.
+                          </p>
+                        </div>
+                      ) : null}
+                    </section>
+                  </>
                 ) : (
                   <section className="mt-8 rounded-lg border border-[#e2e7ef] bg-white p-5">
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">

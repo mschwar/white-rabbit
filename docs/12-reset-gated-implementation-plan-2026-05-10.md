@@ -6,9 +6,9 @@
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
 **Current reset gate:** RG5 - Sales-First Export And Persistence. RG4 advanced on `audit/reset-rg4-operator-ui`; product remains red until export/persistence and dogfood gates pass.
-**Next Prompt A feature:** `R13 - Sales-first CSV export` is ready on `feat/reset-r13-sales-first-export`.
-**Current Prompt B handoff:** None.
-**Current Prompt C handoff:** Complete. RG4 Prompt C recorded `advance`. Keep R14 blocked until R13 passes Prompt B; keep R14A-R14C blocked until their prior RG5 slices merge; keep RG6/dogfood/main blocked until RG5 advances.
+**Next Prompt A feature:** None. `R13 - Sales-first CSV export` is `implemented_pending_qa` on `feat/reset-r13-sales-first-export`.
+**Current Prompt B handoff:** QA `feat/reset-r13-sales-first-export`.
+**Current Prompt C handoff:** None. Keep R14 blocked until R13 passes Prompt B; keep R14A-R14C blocked until their prior RG5 slices merge; keep RG6/dogfood/main blocked until RG5 advances.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -156,7 +156,7 @@ Before reset UI/export implementation starts, Matt must inspect the final produc
 
 The May 10 mockup remains useful for product structure only: one search input, high-volume tier distribution, CRM-first fields, evidence one action away, sales-first export, and no Scout/Full/product-internals ceremony in the operator path.
 
-A refreshed RG4 design preflight artifact exists under `docs/mockups/rg4-refreshed-preflight-2026-05-12/` with six rendered mockup screens. Matt approved this artifact on 2026-05-12. It initially unlocked R10 only; after R10 Prompt B, R11 was ready. R11 has now passed Prompt B QA and is `merged_to_rebuild_branch`. R12 is now ready. Export, persistence, dogfood, and `main` promotion remain blocked until their documented prerequisites pass.
+A refreshed RG4 design preflight artifact exists under `docs/mockups/rg4-refreshed-preflight-2026-05-12/` with six rendered mockup screens. Matt approved this artifact on 2026-05-12. It initially unlocked R10 only; after R10 Prompt B, R11 was ready. R11 and R12 have now passed Prompt B QA and are `merged_to_rebuild_branch`. RG4 Prompt C advanced, and R13 is now `implemented_pending_qa`. R14 persistence, dogfood, and `main` promotion remain blocked until their documented prerequisites pass.
 
 If RG3 Prompt C records `advance`, it must not mark R10 ready directly. Instead, it must assign a refreshed mockup/design preflight using `DESIGN.md`. That mockup pass must produce Empty, Loading, Results, Evidence Review, Low Signal, and Mobile Review artifacts for Matt inspection. This requirement is now satisfied by `docs/mockups/rg4-refreshed-preflight-2026-05-12/`; R10 is ready after Matt approval.
 
@@ -243,7 +243,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R10 | Primary search workspace simplification | merged_to_rebuild_branch | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | merged_to_rebuild_branch | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | merged_to_rebuild_branch | `feat/reset-r12-evidence-dossier-review` | browser |
-| R13 | Sales-first CSV export | ready | `feat/reset-r13-sales-first-export` | browser + CSV |
+| R13 | Sales-first CSV export | implemented_pending_qa | `feat/reset-r13-sales-first-export` | browser + CSV |
 | R14 | Persistence, DB readback, and quality report tie-out | blocked | `feat/reset-r14-persistence-quality-tieout` | API + DB |
 | R14A | Image overhaul and approved brand asset cleanup | blocked | `feat/reset-r14a-image-overhaul-brand-assets` | browser + visual |
 | R14B | UI/UX consistency pass | blocked | `feat/reset-r14b-ui-ux-consistency-pass` | browser + screenshots |
@@ -945,6 +945,16 @@ RG4 Prompt C result:
 - Reason: R10-R12 are merged; web tests/build pass; a 51-row browser audit shows the primary path can run a query, inspect CRM-first rows, and open evidence without Scout/Full, quota, export, or implementation chrome. Matt clarified that source context should stay backend/internal and not appear as daily-operator UI; ADR-023 records that production decision.
 - Caveat: the 390px browser audit reported minor horizontal overflow (`407px` scroll width). Recheck and fix if needed during R13/R14 browser QA.
 - Queue consequence: RG5 is now in progress. R13 is the single ready Prompt A feature. R14, RG6, dogfood, and `main` promotion remain blocked.
+
+R13 Prompt A implementation handoff:
+
+- Branch: `feat/reset-r13-sales-first-export`.
+- Status: `implemented_pending_qa`.
+- Prompt A change summary: added the primary-path sales-first CSV export panel after results exist, reused the existing web export builder for primary-mode Scout results, reordered CSV columns so CRM-facing fields come first, added an operator label column, sorted READY/usable rows before non-actionable rows, and preserved validation notes, source URLs, field/contact statuses, checked timestamps, and run/query context for every exported tier. Existing R14 persistence/DB readback, backend/API/core behavior, source-assisted compiler, benchmarks, dogfood packet, RG5 Prompt C, and `main` were not changed.
+- Prompt A verification: `cd apps/web && npm test -- --run` (`13` files, `30` tests passed); `cd apps/web && npm run build` (passed, with existing Next.js warnings about workspace-root inference and deprecated `middleware` naming); `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`51 passed`, existing datetime deprecation warnings); browser QA on `http://localhost:3000/` with local test auth plus mocked `/api/scout` responses exported a 51-row CSV, confirmed first 10 headers are sales-first, confirmed READY rows sort first, confirmed REVIEW rows preserve missing contact status, and confirmed no 390px mobile horizontal overflow (`scrollWidth=390`, `innerWidth=390`); `git diff --check` passed.
+- Evidence artifacts: `.gstack/qa-reports/screenshots/r13-sales-first-export-2026-05-12/01-desktop-results-before-export.png`; `.gstack/qa-reports/screenshots/r13-sales-first-export-2026-05-12/02-desktop-export-ready.png`; `.gstack/qa-reports/screenshots/r13-sales-first-export-2026-05-12/03-mobile-export-ready.png`; `.gstack/qa-reports/csv/r13-sales-first-export-2026-05-12/primary-sales-first-export.csv`; `.gstack/qa-reports/csv/r13-sales-first-export-2026-05-12/browser-qa-summary.json`.
+- Exact Prompt B handoff: QA `feat/reset-r13-sales-first-export`; verify the branch contains only R13 sales-first CSV export scope; rerun `cd apps/web && npm test -- --run`, `cd apps/web && npm run build`, `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`, and `git diff --check`; inspect `.gstack/qa-reports/screenshots/r13-sales-first-export-2026-05-12/01-desktop-results-before-export.png`, `.gstack/qa-reports/screenshots/r13-sales-first-export-2026-05-12/02-desktop-export-ready.png`, `.gstack/qa-reports/screenshots/r13-sales-first-export-2026-05-12/03-mobile-export-ready.png`, `.gstack/qa-reports/csv/r13-sales-first-export-2026-05-12/primary-sales-first-export.csv`, and `.gstack/qa-reports/csv/r13-sales-first-export-2026-05-12/browser-qa-summary.json`; confirm the primary path exposes export only after rows exist; confirm the first 10 CSV headers are sales-useful; confirm 51 rows export from the browser QA fixture; confirm READY rows sort first; confirm REVIEW rows with missing contact remain non-CRM-ready and preserve missing contact status; confirm validation notes, source URLs, field/contact statuses, checked timestamp, and run/query context remain in the export; confirm no R14 persistence/DB readback, backend/API/core, source-assisted compiler, benchmark, dogfood, RG5 Prompt C, or `main` promotion scope landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R13 `merged_to_rebuild_branch`, mark R14 `ready`, and keep R14A-R14C/RG6/dogfood/main blocked.
+- Queue consequence: R13 is waiting for Prompt B QA. R14, R14A-R14C, RG6, dogfood, and `main` promotion remain blocked.
 
 R10 Prompt A implementation handoff:
 
