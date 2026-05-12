@@ -2,22 +2,21 @@
   "version": 1,
   "updated": "2026-05-12",
   "integration_branch": "rebuild/validated-leads-loop",
-  "current_prompt": "B",
-  "current_feature_id": "R13",
-  "current_feature_name": "Sales-first CSV export",
-  "current_feature_status": "implemented_pending_qa",
-  "current_feature_branch": "feat/reset-r13-sales-first-export",
+  "current_prompt": "A",
+  "current_feature_id": "R14",
+  "current_feature_name": "Persistence, DB readback, and quality report tie-out",
+  "current_feature_status": "ready",
+  "current_feature_branch": "feat/reset-r14-persistence-quality-tieout",
   "current_gate": "RG5 - Sales-First Export And Persistence",
-  "valid_next_action": "Prompt B QA must run on feat/reset-r13-sales-first-export.",
+  "valid_next_action": "Prompt A must implement R14 on feat/reset-r14-persistence-quality-tieout.",
   "invalid_next_actions": [
-    "Prompt A implementation work",
+    "Prompt B QA work",
     "Prompt C gate audit",
-    "QA any historical merged branch, including feat/reset-r00-w5-hold-control",
-    "Start R14, R14A, R14B, R14C, RG6, dogfood, or main promotion"
+    "QA any historical merged branch, including feat/reset-r00-w5-hold-control or feat/reset-r13-sales-first-export",
+    "Start R14A, R14B, R14C, RG6, dogfood, or main promotion"
   ],
-  "stale_target_rule": "If an assigned prompt names any feature or branch other than this current target, stop without editing, committing, merging, or pushing. Report the mismatch in chat only.",
+  "stale_target_rule": "If an assigned prompt names any feature, branch, or prompt other than this current target, stop without editing, committing, merging, or pushing. Report the mismatch in chat only.",
   "blocked_features": [
-    "R14",
     "R14A",
     "R14B",
     "R14C",
@@ -25,6 +24,7 @@
   ],
   "notes": [
     "R00 is historical and already merged.",
+    "R13 passed Prompt B QA and merged to rebuild/validated-leads-loop.",
     "The 2026-05-12 R00 Prompt B reruns were stale-target no-ops and do not affect queue state.",
     "Queue truth is the integration branch plus this assignment lock, not unmerged feature or audit branch docs."
   ]
