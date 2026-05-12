@@ -1,6 +1,7 @@
 'use client';
 
 import { FormEvent, useEffect, useState } from 'react';
+import PrimaryResultsOverview from '@/components/primary-results-overview';
 import ScoutResultsTable from '@/components/scout-results-table';
 import {
   buildScoutPayload,
@@ -1001,6 +1002,8 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
     ? buildTierDistribution(displayedResults.leads, displayedResults.metrics.tier_distribution)
     : null;
   const showPrimaryLoading = primaryMode && (isLoading || isQaLoading);
+  const showPrimaryResultsOverview = primaryMode && !!displayedResults && !showPrimaryLoading;
+  const readyCount = tierDistribution?.high_trust_usable ?? 0;
 
   if (primaryMode) {
     return (
@@ -1017,8 +1020,21 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
               <p className="truncate text-xs text-white/60">Source-backed candidate review</p>
             </div>
             <div className="ml-auto hidden items-center gap-2 px-4 sm:flex">
-              <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/70">READY / REVIEW</span>
-              <span className="rounded-full border border-[#2d7bff]/50 bg-[#2d7bff]/15 px-3 py-1 text-xs text-white">Evidence first</span>
+              {showPrimaryResultsOverview ? (
+                <>
+                  <span className="rounded-full border border-[#2d7bff]/50 bg-[#0d1938] px-3 py-1 text-xs font-semibold text-white">
+                    {displayedResults.leads.length} categorized
+                  </span>
+                  <span className="rounded-full border border-[#9fd5b5]/50 bg-[#123224] px-3 py-1 text-xs font-semibold text-[#d9f3e4]">
+                    {readyCount} READY
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/70">READY / REVIEW</span>
+                  <span className="rounded-full border border-[#2d7bff]/50 bg-[#2d7bff]/15 px-3 py-1 text-xs text-white">Evidence first</span>
+                </>
+              )}
             </div>
           </header>
 
@@ -1037,27 +1053,46 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
           </aside>
 
           <section className="min-h-[calc(100vh-64px)] bg-[#fbfcfd]">
-            <div className="grid min-h-[52vh] gap-10 bg-[#050916] px-5 py-12 text-white sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(300px,420px)] lg:items-end lg:px-14">
-              <div>
-                <div aria-hidden="true" className="mb-8 grid h-24 w-24 place-items-center rounded-[18px] border border-dashed border-[#2d7bff]/80 bg-[#2d7bff]/15 text-2xl font-black tracking-[0.04em]">
-                  WR
+            {!showPrimaryResultsOverview ? (
+              <div className="grid min-h-[52vh] gap-10 bg-[#050916] px-5 py-12 text-white sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(300px,420px)] lg:items-end lg:px-14">
+                <div>
+                  <div aria-hidden="true" className="mb-8 grid h-24 w-24 place-items-center rounded-[18px] border border-dashed border-[#2d7bff]/80 bg-[#2d7bff]/15 text-2xl font-black tracking-[0.04em]">
+                    WR
+                  </div>
+                  <h1 className="max-w-3xl text-5xl font-semibold leading-[0.98] tracking-normal sm:text-6xl lg:text-7xl">
+                    Start with the target. Keep the proof beside it.
+                  </h1>
+                  <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
+                    Use a sales target and trusted public source context to build a review table with ready rows, blockers, and next actions.
+                  </p>
                 </div>
-                <h1 className="max-w-3xl text-5xl font-semibold leading-[0.98] tracking-normal sm:text-6xl lg:text-7xl">
-                  Start with the target. Keep the proof beside it.
-                </h1>
-                <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-                  Use a sales target and trusted public source context to build a review table with ready rows, blockers, and next actions.
-                </p>
+                <div className="rounded-lg border border-white/15 bg-white/[0.04] p-5">
+                  <h2 className="text-base font-semibold">Source-assisted search</h2>
+                  <p className="mt-2 text-sm leading-6 text-white/65">
+                    Rosters, staff pages, source URLs, PDFs, or seed notes give the run a better starting point than a blind web search.
+                  </p>
+                </div>
               </div>
-              <div className="rounded-lg border border-white/15 bg-white/[0.04] p-5">
-                <h2 className="text-base font-semibold">Source-assisted search</h2>
-                <p className="mt-2 text-sm leading-6 text-white/65">
-                  Rosters, staff pages, source URLs, PDFs, or seed notes give the run a better starting point than a blind web search.
-                </p>
-              </div>
-            </div>
+            ) : null}
 
-            <div className="px-5 py-8 sm:px-8 lg:px-14">
+            <div className={`px-5 ${showPrimaryResultsOverview ? 'py-6' : 'py-8'} sm:px-8 lg:px-14`}>
+              {showPrimaryResultsOverview ? (
+                <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                  <div>
+                    <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Candidate review</p>
+                    <h1 className="mt-1 text-3xl font-semibold tracking-normal text-[#0a1226] sm:text-4xl">
+                      {query.trim() || 'Source-backed candidate review'}
+                    </h1>
+                    <p className="mt-2 max-w-3xl text-sm leading-6 text-[#536175]">
+                      Review CRM-first fields, keep uncertain rows visible, and open evidence only when a row needs proof.
+                    </p>
+                  </div>
+                  <div className="rounded-[18px] border border-[#d7deea] bg-white px-4 py-3 text-sm leading-6 text-[#536175] shadow-[0_14px_30px_rgba(10,18,38,0.05)]">
+                    Refine the target or source context here to rerun without leaving the review surface.
+                  </div>
+                </div>
+              ) : null}
+
               <form
                 className="grid gap-4 rounded-lg border border-[#cbd5e1] bg-white p-4 shadow-[0_18px_42px_rgba(10,18,38,0.08)] lg:grid-cols-[minmax(0,1fr)_minmax(300px,0.7fr)_auto] lg:items-end"
                 onSubmit={handleSubmit}
@@ -1093,7 +1128,9 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                 </button>
               </form>
               <p className="mt-4 max-w-3xl text-sm leading-6 text-[#60708a]">
-                Broad targets return a categorized market view. Narrow targets return a tighter review set.
+                {showPrimaryResultsOverview
+                  ? 'Broad targets should surface the market clearly. Tight targets should make blockers and missing contacts obvious.'
+                  : 'Broad targets return a categorized market view. Narrow targets return a tighter review set.'}
               </p>
 
               {error ? (
@@ -1168,56 +1205,67 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
               ) : null}
 
               {displayedResults && !showPrimaryLoading ? (
-                <section className="mt-8 rounded-lg border border-[#e2e7ef] bg-white p-5">
-                  <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-                    <div>
-                      <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Candidate review</p>
-                      <h2 className="mt-1 text-2xl font-semibold tracking-normal text-[#0a1226]">Tier summary</h2>
+                showPrimaryResultsOverview ? (
+                  <PrimaryResultsOverview
+                    onOpenEvidence={handleOpenEvidence}
+                    onSortChange={setSortMode}
+                    results={displayedResults}
+                    rows={displayedRows}
+                    sortMode={sortMode}
+                    sourceContext={sourceContext}
+                  />
+                ) : (
+                  <section className="mt-8 rounded-lg border border-[#e2e7ef] bg-white p-5">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                      <div>
+                        <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Candidate review</p>
+                        <h2 className="mt-1 text-2xl font-semibold tracking-normal text-[#0a1226]">Tier summary</h2>
+                      </div>
+                      <div className="flex flex-col gap-2 sm:items-end">
+                        <label className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]" htmlFor="leadSortMode">
+                          Sort results
+                        </label>
+                        <select
+                          className="rounded-md border border-[#cbd5e1] bg-[#fbfcfd] px-3 py-2 text-sm text-[#0a1226] outline-none focus:border-[#2d7bff]"
+                          id="leadSortMode"
+                          name="leadSortMode"
+                          onChange={(event) => setSortMode(event.target.value as LeadSortMode)}
+                          value={sortMode}
+                        >
+                          {LEAD_SORT_OPTIONS.map((option) => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </select>
+                        <p className="text-sm text-[#60708a]">
+                          {displayedResults.leads.length} rows · {formatElapsedSeconds(displayedResults.metrics.elapsed_seconds)} · $
+                          {displayedResults.metrics.estimated_cost_usd.toFixed(4)}
+                        </p>
+                      </div>
                     </div>
-                    <div className="flex flex-col gap-2 sm:items-end">
-                      <label className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]" htmlFor="leadSortMode">
-                        Sort results
-                      </label>
-                      <select
-                        className="rounded-md border border-[#cbd5e1] bg-[#fbfcfd] px-3 py-2 text-sm text-[#0a1226] outline-none focus:border-[#2d7bff]"
-                        id="leadSortMode"
-                        name="leadSortMode"
-                        onChange={(event) => setSortMode(event.target.value as LeadSortMode)}
-                        value={sortMode}
-                      >
-                        {LEAD_SORT_OPTIONS.map((option) => (
-                          <option key={option.value} value={option.value}>
-                            {option.label}
-                          </option>
+
+                    {tierDistribution ? (
+                      <div className="mt-5 grid gap-px overflow-hidden rounded-lg border border-[#e2e7ef] bg-[#e2e7ef] sm:grid-cols-5">
+                        {OUTPUT_TIERS.map((tier) => (
+                          <div key={tier} className="bg-white px-4 py-3">
+                            <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">{TIER_LABELS[tier]}</p>
+                            <p className="mt-2 text-2xl font-semibold text-[#0a1226]">{tierDistribution[tier]}</p>
+                          </div>
                         ))}
-                      </select>
-                      <p className="text-sm text-[#60708a]">
-                        {displayedResults.leads.length} rows · {formatElapsedSeconds(displayedResults.metrics.elapsed_seconds)} · $
-                        {displayedResults.metrics.estimated_cost_usd.toFixed(4)}
-                      </p>
-                    </div>
-                  </div>
+                      </div>
+                    ) : null}
 
-                  {tierDistribution ? (
-                    <div className="mt-5 grid gap-px overflow-hidden rounded-lg border border-[#e2e7ef] bg-[#e2e7ef] sm:grid-cols-5">
-                      {OUTPUT_TIERS.map((tier) => (
-                        <div key={tier} className="bg-white px-4 py-3">
-                          <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">{TIER_LABELS[tier]}</p>
-                          <p className="mt-2 text-2xl font-semibold text-[#0a1226]">{tierDistribution[tier]}</p>
-                        </div>
-                      ))}
+                    <div className="mt-2 rounded-lg bg-[#0a1226] p-1">
+                      <ScoutResultsTable
+                        feedbackState={feedbackState}
+                        onOpenEvidence={handleOpenEvidence}
+                        onSubmitFeedback={handleLeadFeedback}
+                        rows={displayedRows}
+                      />
                     </div>
-                  ) : null}
-
-                  <div className="mt-2 rounded-lg bg-[#0a1226] p-1">
-                    <ScoutResultsTable
-                      feedbackState={feedbackState}
-                      onOpenEvidence={handleOpenEvidence}
-                      onSubmitFeedback={handleLeadFeedback}
-                      rows={displayedRows}
-                    />
-                  </div>
-                </section>
+                  </section>
+                )
               ) : null}
 
               {!displayedResults && !showPrimaryLoading ? (

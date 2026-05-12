@@ -297,6 +297,38 @@ test('renders the primary search shell with one natural-language input', async (
         contact_score: 0.79,
         gate_passed: true,
         explanation: 'Strong district fit with current leadership evidence and usable email.',
+        validation: makeValidation({ email: 'verified_found', phone: 'missing', source: 'supported' }),
+      },
+      {
+        candidate_category: 'person_lead',
+        name: 'Daniel Yazzie',
+        title: 'Technology Coordinator',
+        organization: 'Gallup-McKinley Schools',
+        email: 'Missing',
+        email_status: 'Missing',
+        source_url: 'https://gms.k12.nm.us/technology',
+        confidence: 0.63,
+        why_target: 'Public technology page supports the role, but no direct contact is visible.',
+        icebreaker: '',
+        fit_score: 0.73,
+        evidence_score: 0.58,
+        contact_score: 0.11,
+        gate_passed: false,
+        explanation: 'Direct contact proof is still missing.',
+        validation: makeValidation({ email: 'missing', phone: 'missing', source: 'supported' }),
+      },
+      {
+        candidate_category: 'organization_only',
+        organization: 'Santa Fe Public Schools',
+        source_url: 'https://www.sfps.info',
+        explanation: 'District found, but no named technology contact was supported.',
+      },
+      {
+        candidate_category: 'not_found',
+        searched_target: 'Roswell school district IT contacts',
+        organization: 'Roswell Independent Schools',
+        source_url: 'https://www.risd.k12.nm.us',
+        explanation: 'No acceptable contact was found.',
       },
     ],
     metrics: {
@@ -306,6 +338,9 @@ test('renders the primary search shell with one natural-language input', async (
       openai_web_searches: 0,
       elapsed_seconds: 1.23,
       estimated_cost_usd: 0.010123,
+      funnel_counts: {
+        source_snapshots: 18,
+      },
     },
   });
   vi.stubGlobal('fetch', fetchMock);
@@ -332,8 +367,14 @@ test('renders the primary search shell with one natural-language input', async (
   expect(
     JSON.parse((fetchMock.mock.calls[0][1] as RequestInit).body as string),
   ).toEqual({ query: 'K-12 IT directors in Albuquerque' });
-  const usableTable = await screen.findByRole('table', { name: /ready results/i });
-  expect(within(usableTable).getByText('Jane Smith')).toBeDefined();
+  const reviewTable = await screen.findByRole('table', { name: /candidate review table/i });
+  expect(within(reviewTable).getByText('Albuquerque Public Schools')).toBeDefined();
+  expect(within(reviewTable).getByText('Jane Smith')).toBeDefined();
+  expect(within(reviewTable).getByText('Daniel Yazzie')).toBeDefined();
+  expect(screen.getByRole('button', { name: /all 4/i })).toBeDefined();
+  expect(screen.getByRole('button', { name: /ready 1/i })).toBeDefined();
+  expect(screen.getByRole('button', { name: /review 1/i })).toBeDefined();
+  expect(screen.queryByText(/validation bucketed results/i)).toBeNull();
 });
 
 test('sorts scout results by validation signal and ready tier state', async () => {
