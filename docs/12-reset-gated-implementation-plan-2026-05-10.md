@@ -6,8 +6,8 @@
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
 **Current reset gate:** RG4 - Sales-First Operator UI implementation. RG3 advanced on the post-R09L Prompt C audit after the live source-assisted proof reproduced the April New Mexico workbook pattern through the protected API boundary. Matt approved the refreshed RG4 mockups at `docs/mockups/rg4-refreshed-preflight-2026-05-12/`. Product remains red.
-**Next Prompt A feature:** None. R10 is implemented and waiting for Prompt B QA on `feat/reset-r10-primary-search-ui`.
-**Current Prompt B handoff:** QA `feat/reset-r10-primary-search-ui`; verify R10 primary search/start/loading shell scope only.
+**Next Prompt A feature:** R11 - Compact CRM-first results table on `feat/reset-r11-crm-results-table`.
+**Current Prompt B handoff:** None. R10 passed Prompt B QA and merged to `rebuild/validated-leads-loop`; R11 is ready.
 **Current Prompt C handoff:** None. RG4 Prompt C is not valid until R10-R12 are implemented and merged.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
@@ -156,7 +156,7 @@ Before reset UI/export implementation starts, Matt must inspect the final produc
 
 The May 10 mockup remains useful for product structure only: one search input, high-volume tier distribution, CRM-first fields, evidence one action away, sales-first export, and no Scout/Full/product-internals ceremony in the operator path.
 
-A refreshed RG4 design preflight artifact exists under `docs/mockups/rg4-refreshed-preflight-2026-05-12/` with six rendered mockup screens. Matt approved this artifact on 2026-05-12. It unlocks R10 only; R11/R12, export, persistence, dogfood, and `main` promotion remain blocked until their documented prerequisites pass.
+A refreshed RG4 design preflight artifact exists under `docs/mockups/rg4-refreshed-preflight-2026-05-12/` with six rendered mockup screens. Matt approved this artifact on 2026-05-12. It initially unlocked R10 only; after R10 Prompt B, R11 is ready. R12, export, persistence, dogfood, and `main` promotion remain blocked until their documented prerequisites pass.
 
 If RG3 Prompt C records `advance`, it must not mark R10 ready directly. Instead, it must assign a refreshed mockup/design preflight using `DESIGN.md`. That mockup pass must produce Empty, Loading, Results, Evidence Review, Low Signal, and Mobile Review artifacts for Matt inspection. This requirement is now satisfied by `docs/mockups/rg4-refreshed-preflight-2026-05-12/`; R10 is ready after Matt approval.
 
@@ -240,8 +240,8 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R09J | Bounded readiness diagnostics | merged_to_rebuild_branch | `feat/reset-r09j-bounded-readiness-diagnostics` | API tests + readiness probe artifacts |
 | R09K | Live runner timeout containment | merged_to_rebuild_branch | `feat/reset-r09k-live-runner-timeout-containment` | core/API tests + complete timeout artifacts |
 | R09L | Live source-assisted product proof | merged_to_rebuild_branch | `feat/reset-r09l-live-source-assisted-proof` | API/core tests + live source-assisted proof artifacts |
-| R10 | Primary search workspace simplification | implemented_pending_qa | `feat/reset-r10-primary-search-ui` | browser |
-| R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
+| R10 | Primary search workspace simplification | merged_to_rebuild_branch | `feat/reset-r10-primary-search-ui` | browser |
+| R11 | Compact CRM-first results table | ready | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | blocked | `feat/reset-r12-evidence-dossier-review` | browser |
 | R13 | Sales-first CSV export | blocked | `feat/reset-r13-sales-first-export` | browser + CSV |
 | R14 | Persistence, DB readback, and quality report tie-out | blocked | `feat/reset-r14-persistence-quality-tieout` | API + DB |
@@ -923,7 +923,7 @@ Post-R09L Prompt C result:
 - Reason: R07-R09L are merged to `origin/rebuild/validated-leads-loop`; the current RG3 regression suite passed (`87 passed`); the API suite passed (`51 passed`); `/health` returned 200; `/readiness` returned a bounded diagnostic payload; tokenless `/source-assisted-proof` returned 401; and tokened `/source-assisted-proof` returned 200 with `passes=true`.
 - Value proof: the protected live source-assisted route reproduced the April New Mexico workbook pattern with 17 workbook rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, 18 source-assisted sources, source URLs on every row, blocker/next-action notes for manual lookup rows, sales-first export headers, zero unsupported CRM-ready rows, zero manual-lookup CRM-ready rows, and private contact values redacted.
 - Scope caveat: this advances RG3 for the source-assisted validation/runtime path. It does not prove autonomous broad Scout as the operator value path, does not make the product yellow/green, does not unlock export/dogfood, and does not justify a `main` promotion without Matt's explicit request.
-- Queue consequence: RG4 was ready for refreshed mockup/design preflight only until Matt approved the mockups on 2026-05-12. R10 is now ready; R11/R12 remain blocked until R10 passes Prompt B and merges.
+- Queue consequence: RG4 was ready for refreshed mockup/design preflight only until Matt approved the mockups on 2026-05-12. R10 passed Prompt B and merged; R11 is now ready. R12 remains blocked until R11 passes Prompt B and merges.
 
 Approved RG4 mockup preflight:
 
@@ -931,16 +931,21 @@ Approved RG4 mockup preflight:
 - Integrated artifact path: `docs/mockups/rg4-refreshed-preflight-2026-05-12/`.
 - Screens: Empty/Search Start, Loading/Evidence Forming, Results Overview, Evidence Review/Dossier, Low Public Signal, and Mobile Review.
 - Matt approval: accepted on 2026-05-12.
-- Queue consequence: R10 was ready after Matt approval and is now implemented pending Prompt B QA. R11/R12 remain blocked until R10 passes Prompt B and merges. RG5, RG6, and `main` promotion remain blocked.
+- Queue consequence: R10 was ready after Matt approval, passed Prompt B QA, and merged to `rebuild/validated-leads-loop`. R11 is ready. R12 remains blocked until R11 passes Prompt B and merges. RG5, RG6, and `main` promotion remain blocked.
 
 R10 Prompt A implementation handoff:
 
 - Branch: `feat/reset-r10-primary-search-ui`.
-- Status: `implemented_pending_qa`.
+- Status: `merged_to_rebuild_branch`.
 - Prompt A change summary: replaced the primary home workspace shell with the approved RG4 navy chassis, paper-white command surface, neutral `WR` placeholder mark, target plus source-context command flow, primary `Find Candidates` action, and loading/evidence-forming state with source, people, contact, and review-table stages. Primary mode now skips the old always-visible sandbox/quota card and does not expose Scout/Full operator-path controls. Existing non-primary Scout/Full workspace behavior, results table, evidence drawer, export controls, API proxies, backend/core logic, source-assisted compiler, benchmarks, persistence, dogfood, and `main` were not changed.
 - Prompt A verification: `cd apps/web && npm test -- --run` (`13` files, `30` tests passed); `cd apps/web && npm run build` (passed, with existing Next.js warnings about workspace-root inference and deprecated `middleware` naming); production Playwright QA on `http://localhost:3000/` with local test auth captured desktop/mobile empty and loading states; `git diff --check` passed.
 - Evidence artifacts: `.gstack/qa-reports/screenshots/r10-primary-search-ui-2026-05-12/01-desktop-empty.png`; `.gstack/qa-reports/screenshots/r10-primary-search-ui-2026-05-12/02-desktop-loading.png`; `.gstack/qa-reports/screenshots/r10-primary-search-ui-2026-05-12/03-mobile-empty.png`; `.gstack/qa-reports/screenshots/r10-primary-search-ui-2026-05-12/04-mobile-loading.png`.
 - Exact Prompt B handoff: QA `feat/reset-r10-primary-search-ui`; verify the branch contains only R10 primary search/start/loading shell scope; rerun `cd apps/web && npm test -- --run`, `cd apps/web && npm run build`, and `git diff --check`; inspect the four screenshots under `.gstack/qa-reports/screenshots/r10-primary-search-ui-2026-05-12/`; confirm the primary home workspace matches `DESIGN.md` and `docs/mockups/rg4-refreshed-preflight-2026-05-12/` for the approved search-start and loading states; confirm there is one target/source-context command flow, no Scout/Full operator-path controls, no always-visible quota/sandbox card, no internal names, no prompt/gate/sprint language, no ad hoc rabbit mark, no horizontal overflow on desktop/mobile, and no R11 compact CRM-first results table, R12 evidence dossier, export, persistence, backend/API/core, source-assisted compiler, benchmark, dogfood, or `main` promotion scope. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R10 `merged_to_rebuild_branch`, and then follow the reset plan for the next same-gate feature while keeping R12/RG5/RG6/export/dogfood/main blocked.
+- Prompt B QA: passed. Report: `.gstack/qa-reports/qa-report-r10-primary-search-ui-2026-05-12.md`.
+- Prompt B verification: `git diff --check` passed; `cd apps/web && npm test -- --run` passed (`13` files, `30` tests); `cd apps/web && npm run build` passed with the existing Next.js workspace-root and `middleware` warnings; production browser QA on `next start` captured desktop/mobile empty and loading states under `.gstack/qa-reports/screenshots/r10-primary-search-ui-prompt-b-2026-05-12/`.
+- Prompt B evidence summary: the primary home workspace matches the approved RG4 search-start/loading direction, has one target/source-context command flow, hides Scout/Full controls, hides always-visible quota/sandbox usage, avoids internal prompt/gate/sprint copy, uses only the neutral `WR` placeholder mark, and has no horizontal overflow at `1440x1000` or `390x844`.
+- Prompt B scope result: no R11 compact CRM-first results table, R12 evidence dossier, export, persistence, backend/API/core, source-assisted compiler, benchmark, dogfood, or `main` promotion landed.
+- Queue consequence: R10 is merged to `rebuild/validated-leads-loop`; R11 is ready; R12/RG5/RG6/export/dogfood/main remain blocked.
 
 RG3 full evaluation/audit:
 
@@ -1006,7 +1011,7 @@ git diff --check
 R10 scope - Primary search workspace simplification:
 
 - Branch: `feat/reset-r10-primary-search-ui`.
-- Status: `implemented_pending_qa`.
+- Status: `merged_to_rebuild_branch`.
 - Goal: replace the old production search workspace shell with the approved RG4 primary operator surface without implementing the full results table or evidence dossier yet.
 - Design authority:
   - `DESIGN.md`.
@@ -1037,6 +1042,43 @@ Implement R10 - Primary search workspace simplification on feat/reset-r10-primar
 Use DESIGN.md and docs/mockups/rg4-refreshed-preflight-2026-05-12/ as the approved RG4 UI direction. Keep scope to the primary workspace/search-start/loading shell only.
 
 Do not implement R11 results table, R12 evidence dossier, export, persistence, dogfood, backend/API/core behavior, source-assisted compiler changes, benchmark changes, or main promotion.
+
+Before ending, update STATUS.md and docs/12 with the Prompt B handoff, save browser QA screenshots or notes, run the required web tests/build plus git diff --check, commit, and push the feature branch only.
+```
+
+R11 scope - Compact CRM-first results table:
+
+- Branch: `feat/reset-r11-crm-results-table`.
+- Status: `ready`.
+- Goal: replace the inherited primary-mode results review with the approved RG4 compact CRM-first table experience without implementing the evidence dossier mode or export/persistence.
+- Design authority:
+  - `DESIGN.md`.
+  - `docs/mockups/rg4-refreshed-preflight-2026-05-12/index.html`.
+  - `docs/mockups/rg4-refreshed-preflight-2026-05-12/screenshots/03-results-overview.png`.
+  - `docs/mockups/rg4-refreshed-preflight-2026-05-12/screenshots/06-mobile-review.png`.
+- Requirements:
+  - Implement the primary operator results overview after a run returns rows.
+  - Keep the table CRM-first: organization/company, location where available, lead name/person, title/role, email, phone, source, status, and why-target/reason are the first-class review fields.
+  - Show `READY`, `REVIEW`, `ORG-ONLY`, `NOT FOUND`, and relevant failed/blocked rows without making uncertain rows look CRM-ready.
+  - Keep a compact tier distribution and filters/control strip for high-volume review.
+  - Keep Scout/Full product-internals ceremony, always-visible quota/sandbox usage, prompt/gate/sprint copy, and implementation machinery out of the primary operator path.
+  - Browser QA must cover desktop and mobile results overview with enough rows to prove the table handles high-volume review better than cards or a noisy dashboard.
+- Non-goals:
+  - Do not implement R12 evidence dossier review mode beyond preserving any existing evidence action affordance needed to avoid regressions.
+  - Do not implement export, persistence, dogfood, backend/API/core changes, source-assisted compiler changes, benchmark changes, or `main` promotion.
+- Required verification:
+  - `cd apps/web && npm test -- --run`
+  - `cd apps/web && npm run build`
+  - Browser QA on desktop and mobile for results overview, with screenshots under `.gstack/qa-reports/screenshots/`.
+  - `git diff --check`
+- Exact Prompt A assignment:
+
+```text
+Implement R11 - Compact CRM-first results table on feat/reset-r11-crm-results-table.
+
+Use DESIGN.md and docs/mockups/rg4-refreshed-preflight-2026-05-12/ as the approved RG4 UI direction. Keep scope to the primary results overview/table only.
+
+Do not implement R12 evidence dossier review mode, export, persistence, dogfood, backend/API/core behavior, source-assisted compiler changes, benchmark changes, or main promotion.
 
 Before ending, update STATUS.md and docs/12 with the Prompt B handoff, save browser QA screenshots or notes, run the required web tests/build plus git diff --check, commit, and push the feature branch only.
 ```
