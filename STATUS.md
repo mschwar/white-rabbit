@@ -1,14 +1,14 @@
 # STATUS
 
-**Last updated:** 2026-05-11 by Codex prompt-a-r09k-live-runner-timeout-containment
+**Last updated:** 2026-05-11 by Codex prompt-b-r09k-live-runner-timeout-containment
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Matt accepted the post-R09I RG3 hold and authorized ordered same-gate remediation slices R09J-R09L. R09J has passed Prompt B QA and merged to `rebuild/validated-leads-loop`; R09K has been implemented_pending_qa on `feat/reset-r09k-live-runner-timeout-containment`; R09L remains blocked until R09K passes Prompt B and merges. RG4, refreshed mockups, R10-R12, export, dogfood, and `main` promotion remain blocked.
+**Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Matt accepted the post-R09I RG3 hold and authorized ordered same-gate remediation slices R09J-R09L. R09J and R09K have passed Prompt B QA and merged to `rebuild/validated-leads-loop`; R09L is ready on `feat/reset-r09l-live-source-assisted-proof`. RG4, refreshed mockups, R10-R12, export, dogfood, and `main` promotion remain blocked.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt B for `R09K - Live runner timeout containment` on `feat/reset-r09k-live-runner-timeout-containment`. Do not run Prompt C until R09J, R09K, and R09L all pass Prompt B and merge.
+**Next pointer:** Prompt A for `R09L - Live source-assisted product proof` on `feat/reset-r09l-live-source-assisted-proof`. Do not run Prompt C until R09J, R09K, and R09L all pass Prompt B and merge.
 
 **Design direction handoff:** `DESIGN.md` is now captured as the future RG4 visual direction authority. A refreshed RG4 mockup/design preflight exists on `codex/rg4-design-preflight-2026-05-11` at commit `5c5a10f`, with six rendered screens under `docs/mockups/rg4-design-preflight-2026-05-11/` on that branch. It is an unmerged inspection artifact only; it does not unlock RG4. R10-R12 remain blocked until a future RG3 Prompt C advances and Matt approves the refreshed mockups for production implementation.
 
@@ -24,17 +24,17 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** R09K is implemented_pending_qa on `feat/reset-r09k-live-runner-timeout-containment`. R09L remains blocked until R09K passes Prompt B and merges. This remains an RG3 remediation gate state, not RG4. Do not unlock RG4 and do not sync `main` unless a future Prompt C records `advance` and Matt explicitly calls for an operator-use promotion.
+**Next feature pointer:** R09K has passed Prompt B QA and merged to `rebuild/validated-leads-loop`. R09L is ready on `feat/reset-r09l-live-source-assisted-proof`. This remains an RG3 remediation gate state, not RG4. Do not unlock RG4 and do not sync `main` unless a future Prompt C records `advance` and Matt explicitly calls for an operator-use promotion.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
 **Final product mockup gate:** `DESIGN.md` is the future RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains the product-structure reference. A preflight artifact exists on `codex/rg4-design-preflight-2026-05-11`, but it remains unmerged and non-unlocking while RG3 is held. Matt must approve refreshed mockups after RG3 advances before production UI implementation.
 
-**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, R09H, R09I, and R09J are merged to `rebuild/validated-leads-loop`. The post-R09I Prompt C audit held RG3 and Matt accepted the hold. R09K is implemented_pending_qa on `feat/reset-r09k-live-runner-timeout-containment`, with timeout-containment artifacts under `audits/raw/reset-2026-05-10/r09k/`; R09L is blocked until R09K merges. Downstream RG4 work remains blocked.
+**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, R09H, R09I, R09J, and R09K are merged to `rebuild/validated-leads-loop`. The post-R09I Prompt C audit held RG3 and Matt accepted the hold. R09L is ready on `feat/reset-r09l-live-source-assisted-proof`; downstream RG4 work remains blocked.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
-**Latest gate acceptance:** W4 accepted on 2026-05-10. W5 remains explicitly held on `rebuild/validated-leads-loop`; RG0 advanced on 2026-05-10 as a control-plane reset audit; RG1 advanced on 2026-05-10 as a benchmark-harness audit; RG2 advanced on 2026-05-11 as a search/source coverage audit; RG3 remains held after the post-R09I live-proof audit and is now in accepted same-gate remediation R09K-R09L; R09J has merged, R09K is implemented_pending_qa, and W6 remains blocked until the visible operator loop is proven:
+**Latest gate acceptance:** W4 accepted on 2026-05-10. W5 remains explicitly held on `rebuild/validated-leads-loop`; RG0 advanced on 2026-05-10 as a control-plane reset audit; RG1 advanced on 2026-05-10 as a benchmark-harness audit; RG2 advanced on 2026-05-11 as a search/source coverage audit; RG3 remains held after the post-R09I live-proof audit and is now in accepted same-gate remediation R09K-R09L; R09J and R09K have merged, R09L is ready, and W6 remains blocked until the visible operator loop is proven:
 
 - W4 benchmarks and quality reporting: `.gstack/qa-reports/gate-w4-benchmarks-quality.md`
 - W5 operator loop export hold report: `.gstack/qa-reports/gate-w5-operator-loop-export.md`
@@ -43,7 +43,7 @@
 - RG2 search/source coverage gate report: `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`
 - RG3 validation semantics hold report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 remains `gate_hold` after `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` with R09J implemented_pending_qa and R09K/R09L blocked; and RG4 remains blocked.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 remains `gate_hold` after `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` with R09J and R09K merged_to_rebuild_branch and R09L ready; and RG4 remains blocked.
 
 Prior accepted gates:
 
@@ -76,34 +76,24 @@ Decision: `hold accepted`
 Why: R09I is merged and process `/health` now answers on a clean API process, but the current live proof path still fails the RG3 bar. `/readiness` timed out and can block the app, the live runner timed out on sandbox reset with an unhandled `httpx.ReadTimeout`, and a direct `/scout` benchmark attempt with startup checks skipped timed out on the first Thomas Arizona K-12 case after 120 seconds. No current live run produced result volume, high-trust usable rows, contact-quality passes, or exportable operator value.
 What worked: Core RG3 suite passed (`78 passed`), API suite passed (`48 passed`), live-runner tests passed (`5 passed`), manual-oracle replay suite passed (`18 passed`), and the April New Mexico source-assisted replay still reports 17 workbook rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, sales-first export fields, and zero unsupported CRM-ready rows.
 Artifacts: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`; `audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/`.
-Next pointer: Prompt B for R09K only. R09J is merged, R09K is implemented_pending_qa, and R09L remains blocked until R09K merges. Prompt C is blocked until R09J-R09L are merged. RG4, refreshed mockups, R10-R12, export, dogfood, and `main` promotion remain blocked.
+Next pointer: Prompt A for R09L only. R09J and R09K are merged, and R09L is ready on `feat/reset-r09l-live-source-assisted-proof`. Prompt C is blocked until R09J-R09L are merged. RG4, refreshed mockups, R10-R12, export, dogfood, and `main` promotion remain blocked.
 Open questions: None.
 
 Current feature handoff:
 
-Feature: R09J - Bounded readiness diagnostics
-Branch: `feat/reset-r09j-bounded-readiness-diagnostics`
-Status: `merged_to_rebuild_branch`
-Why it exists: The post-R09I RG3 audit proved `/health` process liveness, but `/readiness` still timed out and can block the app. Future live audits need readiness to report dependency status within a bounded budget instead of hanging or masking failures.
-Scope: Keep this to API readiness diagnostics and bounded dependency checks. `/health` remains process-only liveness. `/readiness` must report process, config, database, OpenAI, Tavily, and any sandbox/dependency readiness separately with redacted env presence and actionable status/reason fields.
-Non-goals: No lead-quality logic, prompt/model behavior, search behavior, source-assisted compiler behavior, workbook/export semantics, UI, persistence, dogfood packet, RG4/R10-R12 work, Prompt C audit, `main` sync, or gate advancement.
-Prompt A change summary: Added a process-first readiness response that reports process, config, database, OpenAI, Tavily, and sandbox checks separately; moved `/readiness` onto a worker thread; bounded dependency checks with concurrent time-boxed execution; surfaced redacted env presence plus actionable `ready`/`degraded`/`misconfigured`/`unavailable` status and reason fields; and increased timing precision so the raw probe shows nonzero elapsed time instead of collapsing fast reads to `0.0`.
-Verification run by Prompt A:
-- `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`49 passed`, existing datetime deprecation warnings)
-- `cd apps/api && python -m py_compile api/main.py tests/test_preflight.py` (passed)
-- `git diff --check` (passed)
-- Manual readiness probe against a local API process with empty env values under `audits/raw/reset-2026-05-10/r09j/missing-config-probe/`
-  - `health.http`: `200 0.001685`
-  - `readiness.http`: `200 0.001600`
-  - `readiness.json`: `process=ready`, `config/database/openai/tavily/sandbox=misconfigured`, redacted env presence, `budget_seconds=2.0`, and `elapsed_seconds=0.000381`
-Artifacts: `audits/raw/reset-2026-05-10/r09j/missing-config-probe/`.
-Exact Prompt B handoff: QA `feat/reset-r09j-bounded-readiness-diagnostics`; verify the branch contains only R09J scope; rerun `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`, `git diff --check`, and inspect `audits/raw/reset-2026-05-10/r09j/missing-config-probe/health.http`, `health.json`, `readiness.http`, and `readiness.json`; confirm `/health` remains process-only, `/readiness` returns within the configured budget with process/config/database/OpenAI/Tavily/sandbox checks reported separately, missing envs surface as `misconfigured` with redacted env presence, dependency slowness becomes bounded `unavailable` instead of hanging, and no lead-quality, prompt/model, search, workbook/export, UI, persistence, dogfood, RG4/R10-R12, Prompt C, or `main` promotion landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R09J `merged_to_rebuild_branch`, and hand off Prompt A for R09K only.
-Next after R09J Prompt B merge: unlock R09K only. Do not run Prompt C after R09J.
+Feature: R09L - Live source-assisted product proof
+Branch: `feat/reset-r09l-live-source-assisted-proof`
+Status: `ready`
+Why it exists: The post-R09K RG3 path still needs a live API/service-boundary proof of the April New Mexico source-assisted workbook flow. The offline manual-oracle replay proves the workbook shape, but the product still needs a live harness that reproduces it through the internal boundary.
+Scope: Keep this to the smallest internal API or service-boundary harness needed to run the source-assisted compiler/research-workbook path from sanitized target/source-map inputs. `/health` remains process-only liveness. The path must preserve the offline manual-oracle replay contract: 17 observed workbook rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, source URLs/provenance, and no private contact values beyond sanitized fixture data.
+Non-goals: No public UI, no production export surface, no design/RG4/R10-R12 work, no autonomous Scout quality tuning beyond what is needed to prove the source-assisted path, no dogfood packet, and no `main` promotion.
+Prompt A change summary: Not started yet.
+Verification run by Prompt A: Not run yet.
+Artifacts: `audits/raw/reset-2026-05-10/r09l/`.
+Exact Prompt B handoff: after Prompt A completes, QA the resulting `feat/reset-r09l-live-source-assisted-proof` branch with `cd packages/core && uv run pytest tests/test_manual_oracle_proof_packet.py tests/test_research_workbook.py tests/test_source_assisted_compiler.py tests/test_manual_oracle.py tests/test_k12_source_map.py -q`, `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`, focused live/service-boundary tests, `git diff --check`, and saved live proof artifacts under `audits/raw/reset-2026-05-10/r09l/`.
+Ready remediation queue:
 
-Blocked remediation queue:
-
-- R09K - Live runner timeout containment on `feat/reset-r09k-live-runner-timeout-containment`; blocked until R09J merges.
-- R09L - Live source-assisted product proof on `feat/reset-r09l-live-source-assisted-proof`; blocked until R09K merges.
+- R09L - Live source-assisted product proof on `feat/reset-r09l-live-source-assisted-proof`; ready for Prompt A.
 
 Previous feature handoff:
 
@@ -483,11 +473,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; R00-R09I are merged to `rebuild/validated-leads-loop`; RG0-RG2 advanced; RG3 remains `gate_hold` after the post-R09I Prompt C audit. Matt accepted the hold and authorized R09J-R09L as ordered same-gate remediation. R09J is implemented_pending_qa on `feat/reset-r09j-bounded-readiness-diagnostics`; R09K and R09L are blocked until their prerequisites merge. W5 remains held; W6 remains blocked.
+- Product is in audit-red state. Documentation authority remediation is complete; R00-R09I are merged to `rebuild/validated-leads-loop`; RG0-RG2 advanced; RG3 remains `gate_hold` after the post-R09I Prompt C audit. Matt accepted the hold and authorized R09J-R09L as ordered same-gate remediation. R09J and R09K are merged; R09L is ready. W5 remains held; W6 remains blocked.
 
 ## Next concrete task
 
-- Run Prompt B for `R09J - Bounded readiness diagnostics` on `feat/reset-r09j-bounded-readiness-diagnostics`. Do not run Prompt C until R09J-R09L are merged. Do not start RG4, refreshed mockups, R10-R12, export, dogfood, or `main` promotion from this state.
+- Run Prompt A for `R09L - Live source-assisted product proof` on `feat/reset-r09l-live-source-assisted-proof`. Do not run Prompt C until R09J-R09L are merged. Do not start RG4, refreshed mockups, R10-R12, export, dogfood, or `main` promotion from this state.
 
 ## Open questions for Matt
 
@@ -532,6 +522,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-11 | prompt-b-r09k-live-runner-timeout-containment (Codex) | QA-passed `R09K - Live runner timeout containment` on `feat/reset-r09k-live-runner-timeout-containment`: verified `git diff --check`, `cd packages/core && uv run pytest tests/test_live_benchmark_runner.py -q` (`8 passed`), `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`49 passed`), timeout-containment artifacts under `audits/raw/reset-2026-05-10/r09k/`, northstar drift, and that no lead-quality, workbook/export, UI, persistence, dogfood, RG4/R10-R12, or `main` work landed. QA report saved at `.gstack/qa-reports/qa-report-r09k-live-runner-timeout-containment-2026-05-11.md`; R09K is merged_to_rebuild_branch and R09L is ready. |
 | 2026-05-11 | prompt-a-r09k-live-runner-timeout-containment (Codex) | Implemented `R09K - Live runner timeout containment` on `feat/reset-r09k-live-runner-timeout-containment`: added explicit timeout containment for startup readiness, sandbox reset, product requests, and health-after-timeout probes; labeled readiness timeouts as `readiness_timeout`, sandbox reset timeouts as `sandbox_reset_timeout`, product request timeouts as `product_request_timeout`, and failed post-timeout health probes as `runner_timeout`; generated timeout-containment artifacts under `audits/raw/reset-2026-05-10/r09k/`; verified `cd packages/core && uv run pytest tests/test_live_benchmark_runner.py -q` (`8 passed`), `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`49 passed`), and `git diff --check`; and prepared the exact Prompt B handoff for R09K. |
 | 2026-05-11 | prompt-b-r09j-bounded-readiness-diagnostics (Codex) | QA-passed `R09J - Bounded readiness diagnostics` on `feat/reset-r09j-bounded-readiness-diagnostics`: verified `git diff --check`, the required API suite (`49 passed`), readiness probe tie-out, branch scope, northstar drift, and that no lead-quality, workbook/export, UI, persistence, dogfood, RG4/R10-R12, Prompt C, or `main` work landed. QA report saved at `.gstack/qa-reports/qa-report-r09j-bounded-readiness-diagnostics-2026-05-11.md`; R09J is merged_to_rebuild_branch and R09K is implemented_pending_qa. |
 | 2026-05-11 | prompt-a-r09j-bounded-readiness-diagnostics (Codex) | Implemented `R09J - Bounded readiness diagnostics` on `feat/reset-r09j-bounded-readiness-diagnostics`: added process-first readiness reporting for process/config/database/OpenAI/Tavily/sandbox, moved `/readiness` onto a worker thread, bounded dependency checks with concurrent time-boxed execution, added redacted env-presence/status/reason fields, and increased readiness timing precision. Verified API tests (`49 passed`), generated the empty-env manual readiness probe under `audits/raw/reset-2026-05-10/r09j/missing-config-probe/`, and updated the reset control plane so R09J is `implemented_pending_qa` with Prompt B handoff ready. |
