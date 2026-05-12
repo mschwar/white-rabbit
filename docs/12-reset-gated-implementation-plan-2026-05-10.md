@@ -6,9 +6,9 @@
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
 **Current reset gate:** RG4 - Sales-First Operator UI implementation. RG3 advanced on the post-R09L Prompt C audit after the live source-assisted proof reproduced the April New Mexico workbook pattern through the protected API boundary. Matt approved the refreshed RG4 mockups at `docs/mockups/rg4-refreshed-preflight-2026-05-12/`. Product remains red.
-**Next Prompt A feature:** None. `R12 - Evidence dossier review mode` is `waiting_prompt_b_qa` on `feat/reset-r12-evidence-dossier-review`.
-**Current Prompt B handoff:** QA `feat/reset-r12-evidence-dossier-review`; verify the branch contains only R12 scope, rerun the required web tests/build plus `git diff --check`, inspect the R12 browser screenshots under `.gstack/qa-reports/screenshots/r12-evidence-dossier-review-2026-05-12/`, confirm the primary shell has one target input and no source-context input or source-assisted search box, confirm the empty-state hero uses the shorter target copy and the primary action says `Find candidates`, confirm the evidence surface opens as an `Evidence dossier` with status, primary blocker, rationale, source trail, and preserved correction/export affordances, and confirm no R13-R15/export/persistence/backend/api/core/dogfood/main scope landed. If QA passes, merge only to `rebuild/validated-leads-loop` and keep RG5/RG6/export/dogfood/main blocked.
-**Current Prompt C handoff:** None. RG4 Prompt C is not valid until R10-R12 are implemented, Prompt B-accepted, and merged.
+**Next Prompt A feature:** None. `R12 - Evidence dossier review mode` is `merged_to_rebuild_branch` on `feat/reset-r12-evidence-dossier-review`.
+**Current Prompt B handoff:** Complete. R12 passed QA, the report was written, and the branch merged only to `rebuild/validated-leads-loop`.
+**Current Prompt C handoff:** RG4 Prompt C audit is now valid on the merged R10-R12 state. Keep RG5/RG6/export/dogfood/main blocked until that audit records its decision.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -242,7 +242,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R09L | Live source-assisted product proof | merged_to_rebuild_branch | `feat/reset-r09l-live-source-assisted-proof` | API/core tests + live source-assisted proof artifacts |
 | R10 | Primary search workspace simplification | merged_to_rebuild_branch | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | merged_to_rebuild_branch | `feat/reset-r11-crm-results-table` | browser |
-| R12 | Evidence dossier review mode | waiting_prompt_b_qa | `feat/reset-r12-evidence-dossier-review` | browser |
+| R12 | Evidence dossier review mode | merged_to_rebuild_branch | `feat/reset-r12-evidence-dossier-review` | browser |
 | R13 | Sales-first CSV export | blocked | `feat/reset-r13-sales-first-export` | browser + CSV |
 | R14 | Persistence, DB readback, and quality report tie-out | blocked | `feat/reset-r14-persistence-quality-tieout` | API + DB |
 | R15 | Internal correction review and dogfood decision packet | blocked | `feat/reset-r15-dogfood-decision-packet` | browser + docs |
@@ -923,7 +923,7 @@ Post-R09L Prompt C result:
 - Reason: R07-R09L are merged to `origin/rebuild/validated-leads-loop`; the current RG3 regression suite passed (`87 passed`); the API suite passed (`51 passed`); `/health` returned 200; `/readiness` returned a bounded diagnostic payload; tokenless `/source-assisted-proof` returned 401; and tokened `/source-assisted-proof` returned 200 with `passes=true`.
 - Value proof: the protected live source-assisted route reproduced the April New Mexico workbook pattern with 17 workbook rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, 18 source-assisted sources, source URLs on every row, blocker/next-action notes for manual lookup rows, sales-first export headers, zero unsupported CRM-ready rows, zero manual-lookup CRM-ready rows, and private contact values redacted.
 - Scope caveat: this advances RG3 for the source-assisted validation/runtime path. It does not prove autonomous broad Scout as the operator value path, does not make the product yellow/green, does not unlock export/dogfood, and does not justify a `main` promotion without Matt's explicit request.
-- Queue consequence: RG4 was ready for refreshed mockup/design preflight only until Matt approved the mockups on 2026-05-12. R10 passed Prompt B and merged; R11 is now ready. R12 remains blocked until R11 passes Prompt B and merges.
+- Queue consequence: RG4 was ready for refreshed mockup/design preflight only until Matt approved the mockups on 2026-05-12. R10, R11, and R12 are merged to `rebuild/validated-leads-loop`; RG4 Prompt C is now valid on the merged R10-R12 state. RG5, RG6, export, dogfood, and `main` promotion remain blocked.
 
 Approved RG4 mockup preflight:
 
@@ -931,7 +931,7 @@ Approved RG4 mockup preflight:
 - Integrated artifact path: `docs/mockups/rg4-refreshed-preflight-2026-05-12/`.
 - Screens: Empty/Search Start, Loading/Evidence Forming, Results Overview, Evidence Review/Dossier, Low Public Signal, and Mobile Review.
 - Matt approval: accepted on 2026-05-12.
-- Queue consequence: R10 was ready after Matt approval, passed Prompt B QA, and merged to `rebuild/validated-leads-loop`. R11 is ready. R12 remains blocked until R11 passes Prompt B and merges. RG5, RG6, and `main` promotion remain blocked.
+- Queue consequence: R10 was ready after Matt approval, passed Prompt B QA, and merged to `rebuild/validated-leads-loop`. R11 and R12 are now merged to `rebuild/validated-leads-loop`; RG4 Prompt C is valid on the merged R10-R12 state. RG5, RG6, and `main` promotion remain blocked.
 
 R10 Prompt A implementation handoff:
 
@@ -955,16 +955,19 @@ R11 Prompt A implementation handoff:
 - Prompt A verification: `cd apps/web && npm test -- --run` (`13` files, `30` tests passed); `cd apps/web && npm run build` (passed, with the existing Next.js workspace-root inference and deprecated `middleware` warnings); browser QA on `http://localhost:3000/` with local test auth plus mocked `/api/scout` responses captured desktop and mobile results overview screenshots under `.gstack/qa-reports/screenshots/r11-crm-results-table-2026-05-12/`; `git diff --check` passed.
 - Evidence artifacts: `.gstack/qa-reports/screenshots/r11-crm-results-table-2026-05-12/01-desktop-results-overview.png`; `.gstack/qa-reports/screenshots/r11-crm-results-table-2026-05-12/02-mobile-results-overview.png`.
 - Exact Prompt B handoff: QA `feat/reset-r11-crm-results-table`; verify the branch contains only R11 primary results overview/table scope; rerun `cd apps/web && npm test -- --run`, `cd apps/web && npm run build`, and `git diff --check`; inspect `.gstack/qa-reports/screenshots/r11-crm-results-table-2026-05-12/01-desktop-results-overview.png` and `.gstack/qa-reports/screenshots/r11-crm-results-table-2026-05-12/02-mobile-results-overview.png`; confirm the primary results overview matches `DESIGN.md` and `docs/mockups/rg4-refreshed-preflight-2026-05-12/` for the approved CRM-first table/card direction; confirm READY/REVIEW/ORG-ONLY/NOT FOUND rows remain visible without making uncertain rows look CRM-ready; confirm compact tier counts, filters, and review-order controls exist without Scout/Full controls, always-visible quota usage, prompt/gate/sprint language, or other implementation machinery in the primary operator path; confirm evidence actions still work; and confirm no R12 evidence dossier mode, export, persistence, backend/API/core, source-assisted compiler, benchmark, dogfood, or `main` promotion scope landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R11 `merged_to_rebuild_branch`, mark R12 `ready`, and keep RG5/RG6/export/dogfood/main blocked.
-- Queue consequence: R11 is `merged_to_rebuild_branch` on `feat/reset-r11-crm-results-table`; R12 is `waiting_prompt_b_qa` on `feat/reset-r12-evidence-dossier-review`.
+- Queue consequence: R11 is `merged_to_rebuild_branch` on `feat/reset-r11-crm-results-table`; R12 is `merged_to_rebuild_branch` on `feat/reset-r12-evidence-dossier-review`; RG4 Prompt C is now valid on the merged R10-R12 state.
 
 R12 Prompt A implementation handoff:
 
 - Branch: `feat/reset-r12-evidence-dossier-review`.
-- Status: `waiting_prompt_b_qa`.
+- Status: `merged_to_rebuild_branch`.
 - Prompt A change summary: removed the user-entered source-context field and the source-assisted search box from the primary shell, shortened the empty-state hero to a single target line, renamed the loading stage to `Reading sources`, changed the primary action to `Find candidates`, and turned the existing evidence drawer into an evidence dossier with status, primary blocker, rationale, source trail, and the existing correction/export loop preserved.
 - Prompt A verification: `cd apps/web && npm test -- --run` (`13` files, `30` tests passed); `cd apps/web && npm run build` (passed, with the existing Next.js workspace-root inference and deprecated `middleware` warnings); browser QA on `http://localhost:3000/` with local auth and mocked `/api/scout` responses captured desktop/mobile home, results, and evidence-dossier screenshots under `.gstack/qa-reports/screenshots/r12-evidence-dossier-review-2026-05-12/`; `git diff --check` passed.
 - Evidence artifacts: `.gstack/qa-reports/screenshots/r12-evidence-dossier-review-2026-05-12/desktop-home.png`; `.gstack/qa-reports/screenshots/r12-evidence-dossier-review-2026-05-12/desktop-results.png`; `.gstack/qa-reports/screenshots/r12-evidence-dossier-review-2026-05-12/desktop-evidence-dossier.png`; `.gstack/qa-reports/screenshots/r12-evidence-dossier-review-2026-05-12/mobile-home.png`; `.gstack/qa-reports/screenshots/r12-evidence-dossier-review-2026-05-12/mobile-results.png`; `.gstack/qa-reports/screenshots/r12-evidence-dossier-review-2026-05-12/mobile-evidence-dossier.png`.
 - Exact Prompt B handoff: QA `feat/reset-r12-evidence-dossier-review`; verify the branch contains only R12 scope, rerun `cd apps/web && npm test -- --run`, `cd apps/web && npm run build`, and `git diff --check`; inspect the R12 browser screenshots under `.gstack/qa-reports/screenshots/r12-evidence-dossier-review-2026-05-12/`; confirm the primary shell has one target input, no source-context input, no source-assisted search box, the empty-state hero says `Start with the target.`, the primary action says `Find candidates`, and the evidence surface opens an `Evidence dossier` with status, primary blocker, rationale, source trail, and preserved correction/export affordances. Confirm no R13-R15/export/persistence/backend/api/core/dogfood/main scope landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R12 `merged_to_rebuild_branch`, and keep RG5/RG6/export/dogfood/main blocked.
+- Prompt B QA: passed on 2026-05-12.
+- Report: `.gstack/qa-reports/qa-report-r12-evidence-dossier-review-2026-05-12.md`.
+- Queue consequence: R12 is `merged_to_rebuild_branch`; RG4 Prompt C is now valid on the merged R10-R12 state. RG5/RG6/export/dogfood/main remain blocked.
 
 RG3 full evaluation/audit:
 
