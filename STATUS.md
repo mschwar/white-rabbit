@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-12 by Codex mainline-reset-control
+**Last updated:** 2026-05-12 by Codex r14a-branch-lock-repair
 **Branch:** main
 **Current sprint:** Matt moved reset execution to `main` on 2026-05-12 after the operator-use promotion and Fly API deploy. R13 sales-first CSV export is live on the promoted mainline. R14 persistence, DB readback, and quality report tie-out passed Prompt B QA on `feat/reset-r14-persistence-quality-tieout` and is merged to `main`. Product remains red. R14A is ready; R14B-R14C, RG6, dogfood, and backend/core changes outside assigned slices remain blocked.
 
@@ -8,9 +8,9 @@
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt A may start `R14A - Image overhaul and approved brand asset cleanup` from `main` on `feat/reset-r14a-image-overhaul-brand-assets`.
+**Next pointer:** Prompt A may start `R14A - Image overhaul and approved brand asset cleanup` from `main` on `feat/reset-r14a-image-overhaul-brand-cleanup`.
 
-**Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It must agree with any Prompt A/B/C request before an agent edits files. It now names `main` as the integration branch and allows only Prompt A for R14A on `feat/reset-r14a-image-overhaul-brand-assets`.
+**Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It must agree with any Prompt A/B/C request before an agent edits files. It now names `main` as the integration branch and allows only Prompt A for R14A on `feat/reset-r14a-image-overhaul-brand-cleanup`.
 
 **Design direction handoff:** `DESIGN.md` is now the RG4 visual direction authority. The approved refreshed RG4 mockup/design preflight lives under `docs/mockups/rg4-refreshed-preflight-2026-05-12/`, with six rendered screens and README notes. Production UI work must use this artifact as the approved visual/product direction unless Matt approves a later change.
 
@@ -89,7 +89,7 @@ Required verification from Prompt A:
 - `cd apps/web && npm run build` (passed; existing Next.js warnings about workspace-root inference and deprecated `middleware` naming)
 - `git diff --check` (passed)
 Prompt B result: QA passed. Report: `.gstack/qa-reports/qa-report-r14-persistence-quality-tieout-2026-05-12.md`. Prompt B verified `git diff --check origin/main...HEAD`, API suite (`53 passed`), web Vitest (`13` files, `30` tests), production build, targeted persistence/readback smoke (`3 passed`), northstar alignment, and R14-only scope boundaries. The branch changed only API persistence/readback, API tests, web readback proxy, and web types.
-Next pointer after merge: Prompt A for `R14A - Image overhaul and approved brand asset cleanup` on `feat/reset-r14a-image-overhaul-brand-assets`. R14B, R14C, RG6, dogfood, source/compiler/benchmark work, deployment promotion, and RG5 Prompt C remain blocked.
+Next pointer after merge: Prompt A for `R14A - Image overhaul and approved brand asset cleanup` on `feat/reset-r14a-image-overhaul-brand-cleanup`. R14B, R14C, RG6, dogfood, source/compiler/benchmark work, deployment promotion, and RG5 Prompt C remain blocked.
 Open questions: None.
 
 Previous handoff:

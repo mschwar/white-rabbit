@@ -6,9 +6,9 @@
   "current_feature_id": "R14A",
   "current_feature_name": "Image overhaul and approved brand asset cleanup",
   "current_feature_status": "ready",
-  "current_feature_branch": "feat/reset-r14a-image-overhaul-brand-assets",
+  "current_feature_branch": "feat/reset-r14a-image-overhaul-brand-cleanup",
   "current_gate": "RG5 - Sales-First Export And Persistence",
-  "valid_next_action": "Prompt A may implement only R14A on feat/reset-r14a-image-overhaul-brand-assets from main after R14 Prompt B merges.",
+  "valid_next_action": "Prompt A may implement only R14A on feat/reset-r14a-image-overhaul-brand-cleanup from main after R14 Prompt B merges.",
   "invalid_next_actions": [
     "Prompt B QA work before R14A is implemented and pushed",
     "Prompt C gate audit",

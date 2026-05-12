@@ -249,7 +249,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R12 | Evidence dossier review mode | merged_to_rebuild_branch | `feat/reset-r12-evidence-dossier-review` | browser |
 | R13 | Sales-first CSV export | merged_to_rebuild_branch | `feat/reset-r13-sales-first-export` | browser + CSV |
 | R14 | Persistence, DB readback, and quality report tie-out | merged_to_mainline | `feat/reset-r14-persistence-quality-tieout` | API + DB |
-| R14A | Image overhaul and approved brand asset cleanup | ready | `feat/reset-r14a-image-overhaul-brand-assets` | browser + visual |
+| R14A | Image overhaul and approved brand asset cleanup | ready | `feat/reset-r14a-image-overhaul-brand-cleanup` | browser + visual |
 | R14B | UI/UX consistency pass | blocked | `feat/reset-r14b-ui-ux-consistency-pass` | browser + screenshots |
 | R14C | Deployment readiness and operator-use smoke | blocked | `feat/reset-r14c-deployment-readiness-smoke` | deployment + API/web smoke |
 | R15 | Internal correction review and dogfood decision packet | blocked | `feat/reset-r15-dogfood-decision-packet` | browser + docs |
