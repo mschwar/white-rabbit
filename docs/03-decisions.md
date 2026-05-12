@@ -312,9 +312,22 @@ Only R09J is ready at first. R09K remains blocked until R09J passes Prompt B and
 
 ---
 
+## ADR-022 — Approved RG4 mockups unlock R10 only
+
+**Date:** 2026-05-12
+**Status:** Locked
+
+**Context.** RG3 advanced on the source-assisted operator loop, then the refreshed RG4 mockup/design preflight produced inspection artifacts under `docs/mockups/rg4-refreshed-preflight-2026-05-12/`. Matt reviewed and approved the design direction. The approved preflight reconciles `DESIGN.md` with the post-R09L source-assisted proof, including target/source context, categorized source-backed rows, READY/REVIEW separation, evidence dossier, low-signal guidance, and mobile triage.
+
+**Decision.** Treat the refreshed RG4 mockups as the approved production UI direction for the RG4 implementation sequence. Unlock `R10 - Primary search workspace simplification` as the single ready Prompt A feature. Keep `R11 - Compact CRM-first results table`, `R12 - Evidence dossier review mode`, RG5 export/persistence, RG6 dogfood, and `main` promotion blocked until their documented prerequisites pass.
+
+**Consequences.** R10 agents must implement against `DESIGN.md` and `docs/mockups/rg4-refreshed-preflight-2026-05-12/`, not the older May 10 visual styling. R10 may touch production UI only for the primary workspace/search-start/loading shell assigned to R10. It must not implement the full results table, evidence dossier, export, persistence, dogfood packet, or `main` sync. Any intentional divergence from the approved mockups must be documented in the R10 handoff and later audited in RG4 Prompt C.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-022, ADR-023, ...).
+1. Pick the next ADR number (ADR-023, ADR-024, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.

@@ -1,9 +1,9 @@
 # White Rabbit RG4 Refreshed Preflight - 2026-05-12
 
-**Status:** Static inspection mockups for Matt approval before any R10 production UI work.
+**Status:** Approved RG4 visual/product reference for R10-R12 sequencing.
 **Branch:** `codex/rg4-refreshed-mockup-preflight-2026-05-12`
 **Product code changed:** No.
-**Reset or feature status changed:** No.
+**Approval:** Matt approved on 2026-05-12. This unlocks R10 only.
 
 Open `index.html` to review the six requested states. Rendered screenshots are in `screenshots/`.
 
@@ -34,4 +34,4 @@ Open `index.html` to review the six requested states. Rendered screenshots are i
 
 ## Boundary
 
-This is not production UI. It does not unlock R10, R11, R12, export, persistence, dogfood, or any `main` promotion.
+This is not production UI. It unlocks R10 as the next implementation slice, but it does not unlock R11, R12, export, persistence, dogfood, or any `main` promotion.

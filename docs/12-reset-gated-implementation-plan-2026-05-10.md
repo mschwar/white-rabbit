@@ -5,10 +5,10 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG4 - Sales-First Operator UI preflight. RG3 advanced on the post-R09L Prompt C audit after the live source-assisted proof reproduced the April New Mexico workbook pattern through the protected API boundary. Product remains red, and production RG4 implementation remains blocked until Matt approves refreshed mockups.
-**Next Prompt A feature:** RG4 refreshed mockup/design preflight from `DESIGN.md`, not R10 production UI. R10-R12 remain blocked until Matt approves the refreshed mockups.
-**Current Prompt B handoff:** None. RG3 advanced; the next assignment is pre-implementation design/mockup work.
-**Current Prompt C handoff:** None. RG4 Prompt C is not valid until the refreshed mockup/design preflight is approved and R10-R12 are implemented and merged.
+**Current reset gate:** RG4 - Sales-First Operator UI implementation. RG3 advanced on the post-R09L Prompt C audit after the live source-assisted proof reproduced the April New Mexico workbook pattern through the protected API boundary. Matt approved the refreshed RG4 mockups at `docs/mockups/rg4-refreshed-preflight-2026-05-12/`. Product remains red.
+**Next Prompt A feature:** R10 - Primary search workspace simplification on `feat/reset-r10-primary-search-ui`.
+**Current Prompt B handoff:** None. R10 is ready for Prompt A.
+**Current Prompt C handoff:** None. RG4 Prompt C is not valid until R10-R12 are implemented and merged.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -156,9 +156,9 @@ Before reset UI/export implementation starts, Matt must inspect the final produc
 
 The May 10 mockup remains useful for product structure only: one search input, high-volume tier distribution, CRM-first fields, evidence one action away, sales-first export, and no Scout/Full/product-internals ceremony in the operator path.
 
-A refreshed RG4 design preflight artifact exists on `codex/rg4-design-preflight-2026-05-11` at commit `5c5a10f` with six mockup screens. It remains an unmerged inspection artifact and must be reconciled against the post-R09L source-assisted proof before Matt approval. It does not unlock R10, export, or production UI work by itself.
+A refreshed RG4 design preflight artifact exists under `docs/mockups/rg4-refreshed-preflight-2026-05-12/` with six rendered mockup screens. Matt approved this artifact on 2026-05-12. It unlocks R10 only; R11/R12, export, persistence, dogfood, and `main` promotion remain blocked until their documented prerequisites pass.
 
-If RG3 Prompt C records `advance`, it must not mark R10 ready directly. Instead, it must assign a refreshed mockup/design preflight using `DESIGN.md`. That mockup pass must produce Empty, Loading, Results, Evidence Review, Low Signal, and Mobile Review artifacts for Matt inspection. R10-R12 remain blocked until Matt approves the refreshed mockups.
+If RG3 Prompt C records `advance`, it must not mark R10 ready directly. Instead, it must assign a refreshed mockup/design preflight using `DESIGN.md`. That mockup pass must produce Empty, Loading, Results, Evidence Review, Low Signal, and Mobile Review artifacts for Matt inspection. This requirement is now satisfied by `docs/mockups/rg4-refreshed-preflight-2026-05-12/`; R10 is ready after Matt approval.
 
 Prompt A/B agents must not invent a different final UI direction during R10-R12 without fresh Matt approval. Prompt C for RG4 and RG5 must compare browser screenshots against the approved refreshed mockups and explicitly record any intentional divergence. Live-demo UI copy must not mention internal people, agent prompts, gates, sprint labels, or implementation machinery.
 
@@ -210,7 +210,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG1 | Operator Benchmark Harness | R01-R03 | gate_advanced | `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md` |
 | RG2 | Search Coverage And Source Collection | R04-R06 | gate_advanced | `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md` |
 | RG3 | Validation, Conflict, And Gate Semantics | R07-R09L | gate_advanced | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
-| RG4 | Sales-First Operator UI | R10-R12 | ready | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
+| RG4 | Sales-First Operator UI | R10-R12 | in_progress | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
 | RG5 | Sales-First Export And Persistence | R13-R14 | blocked | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
 | RG6 | Dogfood / Kill Decision | R15 | blocked | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md` |
 
@@ -240,7 +240,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R09J | Bounded readiness diagnostics | merged_to_rebuild_branch | `feat/reset-r09j-bounded-readiness-diagnostics` | API tests + readiness probe artifacts |
 | R09K | Live runner timeout containment | merged_to_rebuild_branch | `feat/reset-r09k-live-runner-timeout-containment` | core/API tests + complete timeout artifacts |
 | R09L | Live source-assisted product proof | merged_to_rebuild_branch | `feat/reset-r09l-live-source-assisted-proof` | API/core tests + live source-assisted proof artifacts |
-| R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
+| R10 | Primary search workspace simplification | ready | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | blocked | `feat/reset-r12-evidence-dossier-review` | browser |
 | R13 | Sales-first CSV export | blocked | `feat/reset-r13-sales-first-export` | browser + CSV |
@@ -912,7 +912,7 @@ R09L Prompt B QA handoff:
 
 Prompt C audit queue:
 
-- None. RG3 advanced on the post-R09L Prompt C audit. The next valid assignment is the RG4 refreshed mockup/design preflight from `DESIGN.md`; R10-R12 remain blocked until Matt approves the refreshed mockups.
+- None. RG3 advanced and Matt approved the refreshed RG4 mockups. The next valid assignment is R10 production UI implementation, scoped only to primary search workspace simplification.
 
 Post-R09L Prompt C result:
 
@@ -923,44 +923,15 @@ Post-R09L Prompt C result:
 - Reason: R07-R09L are merged to `origin/rebuild/validated-leads-loop`; the current RG3 regression suite passed (`87 passed`); the API suite passed (`51 passed`); `/health` returned 200; `/readiness` returned a bounded diagnostic payload; tokenless `/source-assisted-proof` returned 401; and tokened `/source-assisted-proof` returned 200 with `passes=true`.
 - Value proof: the protected live source-assisted route reproduced the April New Mexico workbook pattern with 17 workbook rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, 18 source-assisted sources, source URLs on every row, blocker/next-action notes for manual lookup rows, sales-first export headers, zero unsupported CRM-ready rows, zero manual-lookup CRM-ready rows, and private contact values redacted.
 - Scope caveat: this advances RG3 for the source-assisted validation/runtime path. It does not prove autonomous broad Scout as the operator value path, does not make the product yellow/green, does not unlock export/dogfood, and does not justify a `main` promotion without Matt's explicit request.
-- Queue consequence: RG4 is ready for refreshed mockup/design preflight only. Per ADR-015, do not mark R10 ready and do not edit production UI code until Matt approves the refreshed mockups.
+- Queue consequence: RG4 was ready for refreshed mockup/design preflight only until Matt approved the mockups on 2026-05-12. R10 is now ready; R11/R12 remain blocked until R10 passes Prompt B and merges.
 
-Exact next assignment:
+Approved RG4 mockup preflight:
 
-```text
-You are Prompt A for the White Rabbit reset queue.
-
-Work in /Users/mschwar/Documents/white-rabbit. Use rebuild/validated-leads-loop as the integration branch. This is a refreshed RG4 mockup/design preflight, not production UI implementation. Do not edit production UI code. Do not merge or target main.
-
-First prove current state:
-- read AGENTS.md
-- read STATUS.md
-- read DESIGN.md
-- read docs/00-product-northstar.md
-- read docs/12-reset-gated-implementation-plan-2026-05-10.md
-- read docs/13-pipeline-orchestrator-contract-2026.md
-- read audits/gates/reset-2026-05-10/rg3-validation-semantics.md
-- run git status --short --branch
-
-Create a branch from rebuild/validated-leads-loop using codex/rg4-design-preflight-2026-05-12.
-
-Produce refreshed RG4 mockup/design preflight artifacts under docs/mockups/rg4-design-preflight-2026-05-12/ for:
-- Empty
-- Loading
-- Results
-- Evidence Review
-- Low Signal
-- Mobile Review
-
-Use DESIGN.md as the visual direction authority and docs/mockups/final-product-2026-05-10/index.html as the product-structure reference. Reconcile the preflight against the post-R09L source-assisted evidence: 17 source-assisted workbook rows, READY/REVIEW/manual-lookup semantics, evidence one action away, blocker/next-action notes, and sales-first export framing. Keep public/demo copy free of internal people, sprint IDs, gate IDs, and implementation machinery.
-
-Required output:
-- static mockup artifacts and rendered screenshots for all six states
-- a short preflight report explaining how the mockups align with DESIGN.md, the product northstar, and the post-R09L source-assisted proof
-- STATUS.md and docs/12 update with the handoff for Matt approval
-
-Do not mark R10 ready. Do not start R10-R12 production UI implementation. Do not start export, persistence, dogfood, or main promotion.
-```
+- Branch: `codex/rg4-refreshed-mockup-preflight-2026-05-12`.
+- Integrated artifact path: `docs/mockups/rg4-refreshed-preflight-2026-05-12/`.
+- Screens: Empty/Search Start, Loading/Evidence Forming, Results Overview, Evidence Review/Dossier, Low Public Signal, and Mobile Review.
+- Matt approval: accepted on 2026-05-12.
+- Queue consequence: R10 is ready. R11/R12 remain blocked until R10 passes Prompt B and merges. RG5, RG6, and `main` promotion remain blocked.
 
 RG3 full evaluation/audit:
 
@@ -1001,8 +972,8 @@ Design preflight:
 
 - `DESIGN.md` is the visual direction authority for RG4.
 - The May 10 mockup remains the product-structure reference, not the final visual direction.
-- Before R10 starts, a design/mockup agent must produce refreshed Empty, Loading, Results, Evidence Review, Low Signal, and Mobile Review mockups from `DESIGN.md`.
-- Matt must approve the refreshed mockups before R10 can be marked `ready`.
+- Completed and approved: `docs/mockups/rg4-refreshed-preflight-2026-05-12/`.
+- Matt approved the refreshed mockups on 2026-05-12, so R10 can be marked `ready`.
 - The rabbit/icon problem stays quarantined: use a placeholder or approved existing asset only until an approved vector mark exists; do not create an ad hoc CSS rabbit, generated mascot, or competing mark in production UI.
 
 Implementation requirements:
@@ -1021,6 +992,44 @@ Required feature verification:
 cd apps/web && npm test -- --run
 cd apps/web && npm run build
 git diff --check
+```
+
+R10 scope - Primary search workspace simplification:
+
+- Branch: `feat/reset-r10-primary-search-ui`.
+- Status: `ready`.
+- Goal: replace the old production search workspace shell with the approved RG4 primary operator surface without implementing the full results table or evidence dossier yet.
+- Design authority:
+  - `DESIGN.md`.
+  - `docs/mockups/rg4-refreshed-preflight-2026-05-12/index.html`.
+  - `docs/mockups/rg4-refreshed-preflight-2026-05-12/screenshots/`.
+- Requirements:
+  - Implement the primary search/start workspace and loading/evidence-forming state in production UI.
+  - Keep one primary target/source-assisted input flow. Do not expose Scout/Full product-internals ceremony in the operator path.
+  - Hide quota/sandbox usage unless the operator is near cap or blocked.
+  - Use live-demo-safe copy only: no internal names, no prompt/gate/sprint language, no implementation machinery.
+  - Preserve auth/session behavior and existing API proxy boundaries.
+  - Keep the rabbit/icon issue quarantined; use existing approved assets or a neutral placeholder only.
+  - Capture desktop and mobile screenshots for the R10 QA handoff.
+- Non-goals:
+  - Do not implement the full compact CRM-first results table; that is R11.
+  - Do not implement the evidence dossier review mode; that is R12.
+  - Do not implement export, persistence, dogfood, backend/API/core changes, source-assisted compiler changes, benchmark changes, or `main` promotion.
+- Required verification:
+  - `cd apps/web && npm test -- --run`
+  - `cd apps/web && npm run build`
+  - Browser QA on desktop and mobile for search start and loading/evidence-forming states.
+  - `git diff --check`
+- Exact Prompt A assignment:
+
+```text
+Implement R10 - Primary search workspace simplification on feat/reset-r10-primary-search-ui.
+
+Use DESIGN.md and docs/mockups/rg4-refreshed-preflight-2026-05-12/ as the approved RG4 UI direction. Keep scope to the primary workspace/search-start/loading shell only.
+
+Do not implement R11 results table, R12 evidence dossier, export, persistence, dogfood, backend/API/core behavior, source-assisted compiler changes, benchmark changes, or main promotion.
+
+Before ending, update STATUS.md and docs/12 with the Prompt B handoff, save browser QA screenshots or notes, run the required web tests/build plus git diff --check, commit, and push the feature branch only.
 ```
 
 RG4 full evaluation/audit:
