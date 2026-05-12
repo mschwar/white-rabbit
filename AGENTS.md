@@ -21,15 +21,16 @@ The customer offer is scoped concierge briefings fulfilled by Matt. **There is n
 ## Read order before working
 
 1. `STATUS.md` — what's done, what's next, what's in flight. **Always read this second.**
-2. `docs/03-decisions.md` — locked decisions. Do not re-litigate. New entries append; old entries do not change.
-3. `docs/00-product-northstar.md` — current product truth, launch gate, usable-lead definition, anti-drift rules.
-4. `docs/12-reset-gated-implementation-plan-2026-05-10.md` — active reset queue, reusable Prompt A/B/C loop, gate statuses, and next feature pointer.
-5. `docs/08-agentic-buildout-plan.md` — historical F00-F23 feature queue overlaid by the reset plan. Do not execute from it unless `docs/12` explicitly sends you back.
-6. `docs/09-rebuild-phase-gates.md` — historical W0-W6 wave plan overlaid by the reset plan. Do not execute W5/W6 from it.
-7. `docs/qa-rubric.md` — QA ship-gate tiers. Any change touching extraction/scoring must pass Tiers 1–4 unless a reset gate is stricter.
-8. `docs/02-stack.md` — current Next.js + Python + Postgres layout, conventions, env vars.
-9. `docs/00-context.md`, `docs/01-model.md`, `docs/05-reuse.md` — strategic and bootstrap reference. Check their status banners before treating them as active instructions.
-10. `docs/04-roadmap.md`, `docs/06-audit-action-plan.md`, `docs/07-buildout-plan.md` — historical/superseded plans. Do not execute from these unless the current active docs explicitly say to.
+2. `docs/reset-current-assignment.json` — machine-readable current Prompt A/B/C assignment lock. If your assigned prompt or branch disagrees with this file, stop without editing, committing, merging, or pushing.
+3. `docs/03-decisions.md` — locked decisions. Do not re-litigate. New entries append; old entries do not change.
+4. `docs/00-product-northstar.md` — current product truth, launch gate, usable-lead definition, anti-drift rules.
+5. `docs/12-reset-gated-implementation-plan-2026-05-10.md` — active reset queue, reusable Prompt A/B/C loop, gate statuses, and next feature pointer.
+6. `docs/08-agentic-buildout-plan.md` — historical F00-F23 feature queue overlaid by the reset plan. Do not execute from it unless `docs/12` explicitly sends you back.
+7. `docs/09-rebuild-phase-gates.md` — historical W0-W6 wave plan overlaid by the reset plan. Do not execute W5/W6 from it.
+8. `docs/qa-rubric.md` — QA ship-gate tiers. Any change touching extraction/scoring must pass Tiers 1–4 unless a reset gate is stricter.
+9. `docs/02-stack.md` — current Next.js + Python + Postgres layout, conventions, env vars.
+10. `docs/00-context.md`, `docs/01-model.md`, `docs/05-reuse.md` — strategic and bootstrap reference. Check their status banners before treating them as active instructions.
+11. `docs/04-roadmap.md`, `docs/06-audit-action-plan.md`, `docs/07-buildout-plan.md` — historical/superseded plans. Do not execute from these unless the current active docs explicitly say to.
 
 ## Project rules (do not break these)
 
@@ -53,6 +54,7 @@ For the validated-leads rebuild, feature/audit work still starts from `rebuild/v
 - Only fast-forward/sync `main` from `rebuild/validated-leads-loop` when Matt or the active gate plan explicitly calls for an operator-use promotion.
 - Before rebuild work, read `docs/00-product-northstar.md` and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 - Pick the next `ready` reset feature from `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
+- For reset work, first verify `docs/reset-current-assignment.json`. This file is a stop-lock: if it names a different prompt/feature/branch than the one you were asked to run, report the mismatch and do not change files.
 - All feature branches branch from `rebuild/validated-leads-loop` and all PRs target `rebuild/validated-leads-loop`.
 - Update `docs/12-reset-gated-implementation-plan-2026-05-10.md` and `STATUS.md` before ending. Update `docs/08-agentic-buildout-plan.md` only if the reset plan explicitly calls for it.
 - If a feature touches UI, browser QA and screenshots are required.
@@ -68,7 +70,7 @@ For the validated-leads rebuild, feature/audit work still starts from `rebuild/v
 ## Session protocol
 
 1. Read AGENTS.md, STATUS.md, and the most recent decision in `docs/03-decisions.md`.
-2. Read `docs/00-product-northstar.md`, `docs/12-reset-gated-implementation-plan-2026-05-10.md`, and `docs/13-pipeline-orchestrator-contract-2026.md` before selecting reset work.
+2. Read `docs/reset-current-assignment.json`, `docs/00-product-northstar.md`, `docs/12-reset-gated-implementation-plan-2026-05-10.md`, and `docs/13-pipeline-orchestrator-contract-2026.md` before selecting reset work.
 3. Pick up the next task in STATUS.md (or one explicitly assigned by Matt). For reset work, the next task must match the next `ready` feature or current gate in `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 4. Do the work. Reuse before writing new code.
 5. Before ending the session, update STATUS.md: what you did, what's next, any open questions.

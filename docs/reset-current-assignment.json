@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "updated": "2026-05-12",
+  "integration_branch": "rebuild/validated-leads-loop",
+  "current_prompt": "B",
+  "current_feature_id": "R13",
+  "current_feature_name": "Sales-first CSV export",
+  "current_feature_status": "implemented_pending_qa",
+  "current_feature_branch": "feat/reset-r13-sales-first-export",
+  "current_gate": "RG5 - Sales-First Export And Persistence",
+  "valid_next_action": "Prompt B QA must run on feat/reset-r13-sales-first-export.",
+  "invalid_next_actions": [
+    "Prompt A implementation work",
+    "Prompt C gate audit",
+    "QA any historical merged branch, including feat/reset-r00-w5-hold-control",
+    "Start R14, R14A, R14B, R14C, RG6, dogfood, or main promotion"
+  ],
+  "stale_target_rule": "If an assigned prompt names any feature or branch other than this current target, stop without editing, committing, merging, or pushing. Report the mismatch in chat only.",
+  "blocked_features": [
+    "R14",
+    "R14A",
+    "R14B",
+    "R14C",
+    "R15"
+  ],
+  "notes": [
+    "R00 is historical and already merged.",
+    "The 2026-05-12 R00 Prompt B reruns were stale-target no-ops and do not affect queue state.",
+    "Queue truth is the integration branch plus this assignment lock, not unmerged feature or audit branch docs."
+  ]
+}
