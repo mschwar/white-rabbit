@@ -1,0 +1,8 @@
+DATABASE_URL=missing_in_apps_api_env
+OPENAI_API_KEY=present_in_apps_api_env
+OPENAI_BASE_URL=missing_in_apps_api_env
+OPENAI_MODEL=missing_in_apps_api_env
+TAVILY_API_KEY=present_in_apps_api_env
+WR_API_INTERNAL_TOKEN=present_in_apps_api_env
+WR_SHARED_PASSWORD=present_in_apps_api_env
+WR_SESSION_SECRET=present_in_apps_api_env

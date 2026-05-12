@@ -1,0 +1,47 @@
+{
+  "status": "unavailable",
+  "checks": [
+    {
+      "name": "process",
+      "status": "ready",
+      "required": true,
+      "message": "API process is alive and answering readiness.",
+      "elapsed_seconds": 0.000006
+    },
+    {
+      "name": "config",
+      "status": "ready",
+      "required": true,
+      "message": "Required configuration is present.",
+      "elapsed_seconds": 0.000022
+    },
+    {
+      "name": "database",
+      "status": "misconfigured",
+      "required": true,
+      "message": "DATABASE_URL is missing.",
+      "elapsed_seconds": 0.000002
+    },
+    {
+      "name": "openai",
+      "status": "unavailable",
+      "required": true,
+      "message": "OpenAI readiness failed: NotFoundError: Error code: 404 - {'error': {'message': \"model 'gpt-4o-mini' not found\", 'type': 'not_found_error', 'param': None, 'code': None}}",
+      "elapsed_seconds": 0.467201
+    },
+    {
+      "name": "tavily",
+      "status": "degraded",
+      "required": true,
+      "message": "TAVILY_API_KEY is present; live search is not probed by readiness to avoid spending vendor calls.",
+      "elapsed_seconds": 0.000003
+    },
+    {
+      "name": "sandbox",
+      "status": "misconfigured",
+      "required": true,
+      "message": "Sandbox readiness needs DATABASE_URL.",
+      "elapsed_seconds": 0.000004
+    }
+  ]
+}

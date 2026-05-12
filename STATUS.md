@@ -1,16 +1,16 @@
 # STATUS
 
-**Last updated:** 2026-05-11 by Codex prompt-b-r09l-live-source-assisted-proof
-**Branch:** feat/reset-r09l-live-source-assisted-proof
-**Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Matt accepted the post-R09I RG3 hold and authorized ordered same-gate remediation slices R09J-R09L. R09J and R09K have passed Prompt B QA and merged to `rebuild/validated-leads-loop`; R09L has passed Prompt B QA and merged to `rebuild/validated-leads-loop`. RG3 is now ready for Prompt C audit. RG4, refreshed mockups, R10-R12, export, dogfood, and `main` promotion remain blocked.
+**Last updated:** 2026-05-12 by Codex prompt-c-rg3-post-r09l-source-assisted-proof
+**Branch:** audit/reset-rg3-validation-semantics
+**Current sprint:** The validated-leads rebuild is on `main` for Thomas/Lee internal use. Product remains red. Post-R09L Prompt C advanced RG3 on the source-assisted validation/runtime bar: the protected live `/source-assisted-proof` route reproduced the April New Mexico workbook pattern with 17 rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, sales-first export headers, and zero unsupported CRM-ready rows. RG4 is ready only for the refreshed mockup/design preflight from `DESIGN.md`; R10-R12 production UI, export, dogfood, and any `main` promotion remain blocked until Matt approves the preflight and explicitly asks for promotion.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt C for `RG3 - Validation, Conflict, And Gate Semantics` on `rebuild/validated-leads-loop`. R09J, R09K, and R09L have all passed Prompt B QA and merged.
+**Next pointer:** Prompt A-style RG4 refreshed mockup/design preflight from `DESIGN.md` on `rebuild/validated-leads-loop` after this audit branch is accepted/merged. Do not mark R10 ready and do not edit production UI code until Matt approves the refreshed mockups.
 
-**Design direction handoff:** `DESIGN.md` is now captured as the future RG4 visual direction authority. A refreshed RG4 mockup/design preflight exists on `codex/rg4-design-preflight-2026-05-11` at commit `5c5a10f`, with six rendered screens under `docs/mockups/rg4-design-preflight-2026-05-11/` on that branch. It is an unmerged inspection artifact only; it does not unlock RG4. R10-R12 remain blocked until a future RG3 Prompt C advances and Matt approves the refreshed mockups for production implementation.
+**Design direction handoff:** `DESIGN.md` is now the RG4 visual direction authority. A refreshed RG4 mockup/design preflight exists on `codex/rg4-design-preflight-2026-05-11` at commit `5c5a10f`, with six rendered screens under `docs/mockups/rg4-design-preflight-2026-05-11/` on that branch. It is an unmerged inspection artifact only. The next valid assignment is a fresh or reconciled RG4 preflight for Matt approval; R10-R12 remain blocked until Matt approves the refreshed mockups for production implementation.
 
 **Open question:** If these become production brand assets, replace the upscaled raster crops with a clean vector or native high-resolution source when available.
 
@@ -24,26 +24,26 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** R09K has passed Prompt B QA and merged to `rebuild/validated-leads-loop`. R09L has passed Prompt B QA and merged to `rebuild/validated-leads-loop`. RG3 is now ready for Prompt C audit, not RG4. Do not unlock RG4 and do not sync `main` unless Prompt C records `advance` and Matt explicitly calls for an operator-use promotion.
+**Next feature pointer:** RG3 advanced on the post-R09L Prompt C audit. Per ADR-015, do not mark R10 ready yet. The next valid assignment is the RG4 refreshed mockup/design preflight from `DESIGN.md`; R10-R12 stay blocked until Matt approves that preflight, and `main` stays unchanged unless Matt explicitly calls for an operator-use promotion.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
-**Final product mockup gate:** `DESIGN.md` is the future RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains the product-structure reference. A preflight artifact exists on `codex/rg4-design-preflight-2026-05-11`, but it remains unmerged and non-unlocking while RG3 is held. Matt must approve refreshed mockups after RG3 advances before production UI implementation.
+**Final product mockup gate:** `DESIGN.md` is the RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains the product-structure reference. A preflight artifact exists on `codex/rg4-design-preflight-2026-05-11`, but it remains unmerged and should be reconciled against the now-advanced RG3 source-assisted evidence. Matt must approve refreshed mockups before production UI implementation.
 
-**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, R09H, R09I, R09J, R09K, and R09L are merged to `rebuild/validated-leads-loop`. The post-R09I Prompt C audit held RG3 and Matt accepted the hold; RG3 is now ready for Prompt C audit. Downstream RG4 work remains blocked.
+**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, R09H, R09I, R09J, R09K, and R09L are merged to `rebuild/validated-leads-loop`. The post-R09L Prompt C audit advanced RG3. Downstream production RG4 feature work remains blocked behind the refreshed mockup/design preflight approval step.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
-**Latest gate acceptance:** W4 accepted on 2026-05-10. W5 remains explicitly held on `rebuild/validated-leads-loop`; RG0 advanced on 2026-05-10 as a control-plane reset audit; RG1 advanced on 2026-05-10 as a benchmark-harness audit; RG2 advanced on 2026-05-11 as a search/source coverage audit; RG3 remains held after the post-R09I live-proof audit and is now in accepted same-gate remediation R09J-R09L; R09J, R09K, and R09L have merged, and RG3 is now ready for Prompt C audit, while W6 remains blocked until the visible operator loop is proven:
+**Latest gate acceptance:** W4 accepted on 2026-05-10. W5 remains explicitly held on `rebuild/validated-leads-loop`; RG0 advanced on 2026-05-10 as a control-plane reset audit; RG1 advanced on 2026-05-10 as a benchmark-harness audit; RG2 advanced on 2026-05-11 as a search/source coverage audit; RG3 advanced on 2026-05-12 after the post-R09L source-assisted live proof audit. W6 remains blocked until the visible operator loop is proven:
 
 - W4 benchmarks and quality reporting: `.gstack/qa-reports/gate-w4-benchmarks-quality.md`
 - W5 operator loop export hold report: `.gstack/qa-reports/gate-w5-operator-loop-export.md`
 - RG0 control reset gate report: `audits/gates/reset-2026-05-10/rg0-w5-hold.md`
 - RG1 benchmark harness gate report: `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`
 - RG2 search/source coverage gate report: `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`
-- RG3 validation semantics hold report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`
+- RG3 validation semantics advance report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 remains `gate_hold` after `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` with R09J, R09K, and R09L merged_to_rebuild_branch; and RG4 remains blocked.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is advanced via `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`; and RG4 is ready only for refreshed mockup/design preflight while R10-R12 remain blocked.
 
 Prior accepted gates:
 
@@ -57,7 +57,7 @@ Prior accepted gates:
 - `docs/08-agentic-buildout-plan.md` is historical F00-F23 context overlaid by the reset plan.
 - `docs/09-rebuild-phase-gates.md` is historical W0-W6 context overlaid by the reset plan.
 - `docs/13-pipeline-orchestrator-contract-2026.md` is the live-demo pipeline/output contract sourced from Matt's spreadsheet artifacts.
-- `DESIGN.md` is the future RG4 visual direction authority; it is not production UI implementation and does not unlock RG4 by itself.
+- `DESIGN.md` is the RG4 visual direction authority; it is not production UI implementation and does not unlock R10-R12 by itself.
 - `docs/10-documentation-audit-2026-05-09.md` records the repo-wide documentation audit and remediation performed on this branch.
 - `.gstack/qa-reports/qa-template-agentic-buildout.md` is a historical F00-F23 QA template; current reset QA follows Prompt B in `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -70,13 +70,13 @@ Prior accepted gates:
 **Latest handoff:**
 
 Gate: RG3 - Validation, Conflict, And Gate Semantics
-Branch: `audit/reset-rg3-live-proof`
-Status: `gate_hold`
-Decision: `hold accepted`
-Why: R09I is merged and process `/health` now answers on a clean API process, but the current live proof path still fails the RG3 bar. `/readiness` timed out and can block the app, the live runner timed out on sandbox reset with an unhandled `httpx.ReadTimeout`, and a direct `/scout` benchmark attempt with startup checks skipped timed out on the first Thomas Arizona K-12 case after 120 seconds. No current live run produced result volume, high-trust usable rows, contact-quality passes, or exportable operator value.
-What worked: Core RG3 suite passed (`78 passed`), API suite passed (`48 passed`), live-runner tests passed (`5 passed`), manual-oracle replay suite passed (`18 passed`), and the April New Mexico source-assisted replay still reports 17 workbook rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, sales-first export fields, and zero unsupported CRM-ready rows.
-Artifacts: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`; `audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/`.
-Next pointer: Prompt C for RG3 on `rebuild/validated-leads-loop`. R09J, R09K, and R09L are merged, and RG3 is ready for Prompt C audit. RG4, refreshed mockups, R10-R12, export, dogfood, and `main` promotion remain blocked.
+Branch: `audit/reset-rg3-validation-semantics`
+Status: `gate_advanced`
+Decision: `advance`
+Why: R09J-R09L are merged, readiness is bounded, timeout behavior now writes partial-failure artifacts, and the protected live `/source-assisted-proof` service-boundary route reproduces the accepted April New Mexico source-assisted workbook pattern with 17 workbook rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, source URLs, blocker/next-action notes, sales-first export headers, and zero unsupported CRM-ready rows.
+What worked: Core RG3 suite passed (`87 passed`), API suite passed (`51 passed`), `/health` returned 200, `/readiness` returned a bounded diagnostic payload, tokenless `/source-assisted-proof` returned 401, and tokened `/source-assisted-proof` returned 200 with `passes=true`.
+Artifacts: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`; `audits/raw/reset-2026-05-10/rg3/post-r09l-source-assisted-proof/`.
+Next pointer: RG4 refreshed mockup/design preflight from `DESIGN.md`. Do not mark R10 ready, do not edit production UI code, do not start export/dogfood, and do not sync `main` unless Matt explicitly asks after reviewing the gate decision.
 Open questions: None.
 
 Current feature handoff:
@@ -93,7 +93,7 @@ Artifacts: `audits/raw/reset-2026-05-10/r09l/live-source-assisted-proof.json`; `
 Exact Prompt B handoff: QA `feat/reset-r09l-live-source-assisted-proof`; verify the branch contains only R09L scope; rerun `cd packages/core && uv run pytest tests/test_live_source_assisted_proof.py tests/test_manual_oracle_proof_packet.py tests/test_research_workbook.py tests/test_source_assisted_compiler.py tests/test_manual_oracle.py tests/test_k12_source_map.py -q`, `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`, and `git diff --check`; inspect `audits/raw/reset-2026-05-10/r09l/live-source-assisted-proof.json` and `.md`; confirm the protected `/source-assisted-proof` route returns the April New Mexico source-map replay, source-assisted compiler replay, workbook proof, sales-first export headers, blocker notes, and zero unsupported CRM-ready rows; confirm the response reports 17 workbook rows, 10 `READY_WITH_CONTACT` rows, 7 `MANUAL_LOOKUP` rows, source URLs, blocker notes, and redacted private contact values; confirm the route is internal-token protected and no public UI, production export surface, design/RG4/R10-R12, dogfood packet, or `main` promotion landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R09L `merged_to_rebuild_branch`, and hand off Prompt C for RG3 from current integration-branch state once R09J-R09L are all merged, while keeping downstream blocked unless Prompt C records `advance`.
 Prompt C audit queue:
 
-- RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop`; ready for Prompt C audit.
+- None. RG3 advanced on the post-R09L Prompt C audit. The next valid assignment is the RG4 refreshed mockup/design preflight from `DESIGN.md`, not R10 production UI.
 
 Previous feature handoff:
 
@@ -522,6 +522,7 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
+| 2026-05-12 | prompt-c-rg3-post-r09l-source-assisted-proof (Codex) | Ran the post-R09L RG3 Prompt C audit on `audit/reset-rg3-validation-semantics`. Decision: `advance`. Verified R07-R09L are merged to `origin/rebuild/validated-leads-loop`, core RG3 suite (`87 passed`), API suite (`51 passed`), bounded `/readiness`, protected live `/source-assisted-proof` service-boundary proof (`200` with token, `401` without), and source-assisted workbook value: 17 rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, sales-first export headers, no unsupported CRM-ready rows, and no private contact values. Report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`; raw evidence: `audits/raw/reset-2026-05-10/rg3/post-r09l-source-assisted-proof/`. Next assignment is RG4 refreshed mockup/design preflight from `DESIGN.md`; R10-R12, export, dogfood, and `main` promotion remain blocked. |
 | 2026-05-11 | prompt-a-r09l-live-source-assisted-proof (Codex) | Implemented `R09L - Live source-assisted product proof` on `feat/reset-r09l-live-source-assisted-proof`: added `core.live_source_assisted_proof`, a protected `/source-assisted-proof` API route, focused route/core tests, and live proof artifacts under `audits/raw/reset-2026-05-10/r09l/`; verified `uv run pytest tests/test_live_source_assisted_proof.py -q` (`2 passed`), `cd apps/api && uv run pytest tests/test_api.py -k "source_assisted_proof or protected_api_endpoints_require_internal_token" -q` (`16 passed, 28 deselected`), and wrote `live-source-assisted-proof.json`/`.md`. |
 | 2026-05-11 | prompt-b-r09k-live-runner-timeout-containment (Codex) | QA-passed `R09K - Live runner timeout containment` on `feat/reset-r09k-live-runner-timeout-containment`: verified `git diff --check`, `cd packages/core && uv run pytest tests/test_live_benchmark_runner.py -q` (`8 passed`), `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`49 passed`), timeout-containment artifacts under `audits/raw/reset-2026-05-10/r09k/`, northstar drift, and that no lead-quality, workbook/export, UI, persistence, dogfood, RG4/R10-R12, or `main` work landed. QA report saved at `.gstack/qa-reports/qa-report-r09k-live-runner-timeout-containment-2026-05-11.md`; R09K is merged_to_rebuild_branch and R09L is ready. |
 | 2026-05-11 | prompt-a-r09k-live-runner-timeout-containment (Codex) | Implemented `R09K - Live runner timeout containment` on `feat/reset-r09k-live-runner-timeout-containment`: added explicit timeout containment for startup readiness, sandbox reset, product requests, and health-after-timeout probes; labeled readiness timeouts as `readiness_timeout`, sandbox reset timeouts as `sandbox_reset_timeout`, product request timeouts as `product_request_timeout`, and failed post-timeout health probes as `runner_timeout`; generated timeout-containment artifacts under `audits/raw/reset-2026-05-10/r09k/`; verified `cd packages/core && uv run pytest tests/test_live_benchmark_runner.py -q` (`8 passed`), `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`49 passed`), and `git diff --check`; and prepared the exact Prompt B handoff for R09K. |

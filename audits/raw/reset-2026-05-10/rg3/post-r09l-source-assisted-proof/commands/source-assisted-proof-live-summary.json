@@ -1,0 +1,89 @@
+{
+  "passes": true,
+  "request_summary": {
+    "target": "April 2026 New Mexico school-district IT",
+    "query": "NM IT for school districts",
+    "run_id": "rg3-post-r09l-live-source-assisted-proof",
+    "source_map_id": "nm_k12_source_map_r09e",
+    "manual_oracle_fixture_id": "april_nm_school_district_it_manual_oracle",
+    "source_map_seed_count": 13,
+    "source_map_district_count": 7,
+    "manual_oracle_rows": 17
+  },
+  "source_map_replay": {
+    "source_map_reproduced": true,
+    "district_count": 7,
+    "seed_count": 13,
+    "generic_search_sources": []
+  },
+  "source_assisted_replay": {
+    "candidate_count": 17,
+    "source_count": 18,
+    "tier_distribution": {
+      "failed": 0,
+      "high_trust_usable": 10,
+      "manual_lookup": 7,
+      "not_found": 0,
+      "organization_only": 0,
+      "review": 0
+    },
+    "blocked_source_urls": [],
+    "manual_oracle_replay": {
+      "structure_reproduced": true,
+      "verified_contact_rows": 10,
+      "manual_lookup_rows": 7,
+      "unsupported_ready_contacts": []
+    },
+    "passes": true
+  },
+  "workbook_replay": {
+    "row_count": 17,
+    "tier_distribution": {
+      "READY_WITH_CONTACT": 10,
+      "REVIEW": 0,
+      "MANUAL_LOOKUP": 7,
+      "ORG_ONLY": 0,
+      "NOT_FOUND": 0,
+      "FAILED": 0
+    },
+    "downgraded_ready_rows": [],
+    "export_headers": [
+      "query",
+      "run_id",
+      "rank",
+      "workbook_tier",
+      "operator_label",
+      "candidate_category",
+      "crm_ready",
+      "lead_name",
+      "title",
+      "organization",
+      "email",
+      "email_status"
+    ],
+    "passes": true
+  },
+  "safety_checks": {
+    "unsupported_crm_ready_rows": [],
+    "manual_lookup_crm_ready_rows": [],
+    "missing_source_rows": [],
+    "missing_next_action_rows": [],
+    "private_contact_values_redacted": true,
+    "passes": true
+  },
+  "service_boundary": {
+    "route": "/source-assisted-proof",
+    "method": "POST",
+    "protected_route_ok": true,
+    "internal_token_required": true,
+    "internal_token_checked": true,
+    "sanitized_input": true,
+    "response_status": 200,
+    "source_map_id": "nm_k12_source_map_r09e",
+    "source_map_reproduced": true,
+    "source_map_seed_count": 13,
+    "source_map_district_count": 7,
+    "source_assisted_candidate_count": 17,
+    "workbook_row_count": 17
+  }
+}

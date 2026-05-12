@@ -1,0 +1,78 @@
+...................................................                      [100%]
+=============================== warnings summary ===============================
+tests/test_api.py: 21 warnings
+  /Users/mschwar/Documents/white-rabbit/apps/api/api/main.py:691: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    state.updated_at = datetime.utcnow()
+
+tests/test_api.py: 10 warnings
+  /Users/mschwar/Documents/white-rabbit/apps/api/api/db.py:358: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    state.updated_at = datetime.utcnow()
+
+tests/test_api.py::test_batch_endpoint_creates_job_and_runs
+  /Users/mschwar/Documents/white-rabbit/apps/api/tests/test_api.py:1060: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    created_at = __import__("datetime").datetime.utcnow()
+
+tests/test_api.py::test_batch_endpoint_creates_job_and_runs
+  /Users/mschwar/Documents/white-rabbit/apps/api/tests/test_api.py:1061: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    started_at = __import__("datetime").datetime.utcnow()
+
+tests/test_api.py::test_batch_endpoint_creates_job_and_runs
+  /Users/mschwar/Documents/white-rabbit/apps/api/tests/test_api.py:1062: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    ended_at = __import__("datetime").datetime.utcnow()
+
+tests/test_api.py::test_batch_endpoint_creates_job_and_runs
+  /Users/mschwar/Documents/white-rabbit/apps/api/tests/test_api.py:1074: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    started_at = __import__("datetime").datetime.utcnow()
+
+tests/test_api.py::test_batch_endpoint_creates_job_and_runs
+  /Users/mschwar/Documents/white-rabbit/apps/api/tests/test_api.py:1075: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    ended_at = __import__("datetime").datetime.utcnow()
+
+tests/test_api.py::test_batch_endpoint_creates_job_and_runs
+tests/test_api.py::test_batch_endpoint_respects_caps
+  /Users/mschwar/Documents/white-rabbit/apps/api/api/main.py:1042: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    job.started_at = datetime.utcnow()
+
+tests/test_api.py::test_batch_endpoint_creates_job_and_runs
+tests/test_api.py::test_batch_endpoint_creates_job_and_runs
+tests/test_api.py::test_batch_endpoint_respects_caps
+  /Users/mschwar/Documents/white-rabbit/apps/api/api/main.py:1048: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    batch_run.started_at = datetime.utcnow()
+
+tests/test_api.py::test_batch_endpoint_creates_job_and_runs
+tests/test_api.py::test_batch_endpoint_creates_job_and_runs
+  /Users/mschwar/Documents/white-rabbit/apps/api/api/main.py:1216: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    batch_run.ended_at = datetime.utcnow()
+
+tests/test_api.py::test_batch_endpoint_respects_caps
+  /Users/mschwar/Documents/white-rabbit/apps/api/tests/test_api.py:1219: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    created_at = __import__("datetime").datetime.utcnow()
+
+tests/test_api.py::test_batch_endpoint_respects_caps
+  /Users/mschwar/Documents/white-rabbit/apps/api/tests/test_api.py:1220: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    started_at = __import__("datetime").datetime.utcnow()
+
+tests/test_api.py::test_batch_endpoint_respects_caps
+  /Users/mschwar/Documents/white-rabbit/apps/api/tests/test_api.py:1221: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    ended_at = __import__("datetime").datetime.utcnow()
+
+tests/test_api.py::test_batch_endpoint_respects_caps
+  /Users/mschwar/Documents/white-rabbit/apps/api/tests/test_api.py:1233: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    started_at = __import__("datetime").datetime.utcnow()
+
+tests/test_api.py::test_batch_endpoint_respects_caps
+  /Users/mschwar/Documents/white-rabbit/apps/api/tests/test_api.py:1234: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    ended_at = __import__("datetime").datetime.utcnow()
+
+tests/test_api.py::test_batch_endpoint_respects_caps
+  /Users/mschwar/Documents/white-rabbit/apps/api/api/main.py:1138: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    batch_run.ended_at = datetime.utcnow()
+
+tests/test_api.py::test_full_endpoint_returns_persisted_lead_ids
+tests/test_api.py::test_full_endpoint_returns_persisted_lead_ids
+tests/test_api.py::test_full_endpoint_returns_persisted_lead_ids
+  /Users/mschwar/Documents/white-rabbit/apps/api/tests/test_api.py:1362: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    reset_at=datetime.utcnow(),
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+51 passed, 52 warnings in 0.81s

@@ -1,0 +1,205 @@
+{
+  "status": "unavailable",
+  "checks": [
+    {
+      "name": "process",
+      "status": "ready",
+      "required": true,
+      "message": "API process is alive and answering readiness.",
+      "elapsed_seconds": null,
+      "details": {}
+    },
+    {
+      "name": "config",
+      "status": "misconfigured",
+      "required": true,
+      "message": "Missing required env: OPENAI_API_KEY, TAVILY_API_KEY, WR_SHARED_PASSWORD, WR_SESSION_SECRET",
+      "elapsed_seconds": null,
+      "details": {
+        "env_presence": {
+          "DATABASE_URL": {
+            "present": false
+          },
+          "OPENAI_API_KEY": {
+            "present": false
+          },
+          "OPENAI_BASE_URL": {
+            "present": false
+          },
+          "OPENAI_MODEL": {
+            "present": false
+          },
+          "TAVILY_API_KEY": {
+            "present": false
+          },
+          "WR_API_INTERNAL_TOKEN": {
+            "present": true
+          },
+          "WR_SESSION_SECRET": {
+            "present": false
+          },
+          "WR_SHARED_PASSWORD": {
+            "present": false
+          }
+        },
+        "missing": [
+          "OPENAI_API_KEY",
+          "TAVILY_API_KEY",
+          "WR_SHARED_PASSWORD",
+          "WR_SESSION_SECRET"
+        ]
+      }
+    },
+    {
+      "name": "database",
+      "status": "misconfigured",
+      "required": true,
+      "message": "DATABASE_URL is missing.",
+      "elapsed_seconds": 0.000002,
+      "details": {
+        "database_url_present": false,
+        "env_presence": {
+          "DATABASE_URL": {
+            "present": false
+          },
+          "OPENAI_API_KEY": {
+            "present": false
+          },
+          "OPENAI_BASE_URL": {
+            "present": false
+          },
+          "OPENAI_MODEL": {
+            "present": false
+          },
+          "TAVILY_API_KEY": {
+            "present": false
+          },
+          "WR_API_INTERNAL_TOKEN": {
+            "present": true
+          },
+          "WR_SESSION_SECRET": {
+            "present": false
+          },
+          "WR_SHARED_PASSWORD": {
+            "present": false
+          }
+        },
+        "timeout_seconds": 1.0
+      }
+    },
+    {
+      "name": "openai",
+      "status": "misconfigured",
+      "required": true,
+      "message": "OPENAI_API_KEY is missing.",
+      "elapsed_seconds": null,
+      "details": {
+        "api_key_present": false,
+        "base_url": "https://api.openai.com/v1",
+        "model": "",
+        "env_presence": {
+          "DATABASE_URL": {
+            "present": false
+          },
+          "OPENAI_API_KEY": {
+            "present": false
+          },
+          "OPENAI_BASE_URL": {
+            "present": false
+          },
+          "OPENAI_MODEL": {
+            "present": false
+          },
+          "TAVILY_API_KEY": {
+            "present": false
+          },
+          "WR_API_INTERNAL_TOKEN": {
+            "present": true
+          },
+          "WR_SESSION_SECRET": {
+            "present": false
+          },
+          "WR_SHARED_PASSWORD": {
+            "present": false
+          }
+        },
+        "timeout_seconds": 1.0
+      }
+    },
+    {
+      "name": "tavily",
+      "status": "misconfigured",
+      "required": true,
+      "message": "TAVILY_API_KEY is missing.",
+      "elapsed_seconds": null,
+      "details": {
+        "api_key_present": false,
+        "probe": "config_only",
+        "env_presence": {
+          "DATABASE_URL": {
+            "present": false
+          },
+          "OPENAI_API_KEY": {
+            "present": false
+          },
+          "OPENAI_BASE_URL": {
+            "present": false
+          },
+          "OPENAI_MODEL": {
+            "present": false
+          },
+          "TAVILY_API_KEY": {
+            "present": false
+          },
+          "WR_API_INTERNAL_TOKEN": {
+            "present": true
+          },
+          "WR_SESSION_SECRET": {
+            "present": false
+          },
+          "WR_SHARED_PASSWORD": {
+            "present": false
+          }
+        },
+        "timeout_seconds": 1.0
+      }
+    },
+    {
+      "name": "sandbox",
+      "status": "misconfigured",
+      "required": true,
+      "message": "Sandbox readiness needs DATABASE_URL.",
+      "elapsed_seconds": 0.000001,
+      "details": {
+        "sandbox_state_present": false,
+        "env_presence": {
+          "DATABASE_URL": {
+            "present": false
+          },
+          "OPENAI_API_KEY": {
+            "present": false
+          },
+          "OPENAI_BASE_URL": {
+            "present": false
+          },
+          "OPENAI_MODEL": {
+            "present": false
+          },
+          "TAVILY_API_KEY": {
+            "present": false
+          },
+          "WR_API_INTERNAL_TOKEN": {
+            "present": true
+          },
+          "WR_SESSION_SECRET": {
+            "present": false
+          },
+          "WR_SHARED_PASSWORD": {
+            "present": false
+          }
+        },
+        "timeout_seconds": 1.0
+      }
+    }
+  ]
+}

@@ -5,10 +5,10 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, gate_hold accepted after the post-R09I Prompt C audit. R09D-R09I are merged to `rebuild/validated-leads-loop`, R09J and R09K have passed Prompt B QA and merged to `rebuild/validated-leads-loop`, and R09L has passed Prompt B QA and merged to `rebuild/validated-leads-loop`. RG3 is now ready for Prompt C audit; downstream gates remain blocked unless Prompt C records `advance`.
-**Next Prompt A feature:** None. R09L has merged to `rebuild/validated-leads-loop`; Prompt C is now the active step.
-**Current Prompt B handoff:** None. R09L has merged to `rebuild/validated-leads-loop`; Prompt C is now the active step.
-**Current Prompt C handoff:** RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop`. See the RG3 full evaluation/audit block below for the exact audit steps. Keep RG4/refreshed mockups/R10-R12/export/dogfood/main blocked unless the audit records `advance`.
+**Current reset gate:** RG4 - Sales-First Operator UI preflight. RG3 advanced on the post-R09L Prompt C audit after the live source-assisted proof reproduced the April New Mexico workbook pattern through the protected API boundary. Product remains red, and production RG4 implementation remains blocked until Matt approves refreshed mockups.
+**Next Prompt A feature:** RG4 refreshed mockup/design preflight from `DESIGN.md`, not R10 production UI. R10-R12 remain blocked until Matt approves the refreshed mockups.
+**Current Prompt B handoff:** None. RG3 advanced; the next assignment is pre-implementation design/mockup work.
+**Current Prompt C handoff:** None. RG4 Prompt C is not valid until the refreshed mockup/design preflight is approved and R10-R12 are implemented and merged.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -152,11 +152,11 @@ Before reset UI/export implementation starts, Matt must inspect the final produc
 - Product-structure reference: `docs/mockups/final-product-2026-05-10/index.html`.
 - Existing rendered screenshots: `.gstack/qa-reports/screenshots/final-product-mockups-2026-05-10/`.
 
-`DESIGN.md` is the future RG4 visual direction: deep navy instrument chassis, paper-white evidence table, restrained operator copy, and quarantined rabbit/icon handling until an approved vector exists. It is not production code and does not unlock RG4 by itself.
+`DESIGN.md` is the RG4 visual direction: deep navy instrument chassis, paper-white evidence table, restrained operator copy, and quarantined rabbit/icon handling until an approved vector exists. It is not production code and does not unlock production UI implementation by itself.
 
 The May 10 mockup remains useful for product structure only: one search input, high-volume tier distribution, CRM-first fields, evidence one action away, sales-first export, and no Scout/Full/product-internals ceremony in the operator path.
 
-A refreshed RG4 design preflight artifact exists on `codex/rg4-design-preflight-2026-05-11` at commit `5c5a10f` with six mockup screens. It remains an unmerged inspection artifact while RG3 is held. It does not unlock RG4, R10, export, or production UI work, and it must be rechecked against the final data-quality state if RG3 later advances.
+A refreshed RG4 design preflight artifact exists on `codex/rg4-design-preflight-2026-05-11` at commit `5c5a10f` with six mockup screens. It remains an unmerged inspection artifact and must be reconciled against the post-R09L source-assisted proof before Matt approval. It does not unlock R10, export, or production UI work by itself.
 
 If RG3 Prompt C records `advance`, it must not mark R10 ready directly. Instead, it must assign a refreshed mockup/design preflight using `DESIGN.md`. That mockup pass must produce Empty, Loading, Results, Evidence Review, Low Signal, and Mobile Review artifacts for Matt inspection. R10-R12 remain blocked until Matt approves the refreshed mockups.
 
@@ -209,8 +209,8 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG0 | W5 Hold And Control Reset | R00 | gate_advanced | `audits/gates/reset-2026-05-10/rg0-w5-hold.md` |
 | RG1 | Operator Benchmark Harness | R01-R03 | gate_advanced | `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md` |
 | RG2 | Search Coverage And Source Collection | R04-R06 | gate_advanced | `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md` |
-| RG3 | Validation, Conflict, And Gate Semantics | R07-R09L | gate_hold | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
-| RG4 | Sales-First Operator UI | R10-R12 | blocked | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
+| RG3 | Validation, Conflict, And Gate Semantics | R07-R09L | gate_advanced | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
+| RG4 | Sales-First Operator UI | R10-R12 | ready | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
 | RG5 | Sales-First Export And Persistence | R13-R14 | blocked | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
 | RG6 | Dogfood / Kill Decision | R15 | blocked | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md` |
 
@@ -912,7 +912,55 @@ R09L Prompt B QA handoff:
 
 Prompt C audit queue:
 
-- RG3 - Validation, Conflict, And Gate Semantics on `rebuild/validated-leads-loop`; ready for Prompt C audit.
+- None. RG3 advanced on the post-R09L Prompt C audit. The next valid assignment is the RG4 refreshed mockup/design preflight from `DESIGN.md`; R10-R12 remain blocked until Matt approves the refreshed mockups.
+
+Post-R09L Prompt C result:
+
+- Branch: `audit/reset-rg3-validation-semantics`.
+- Decision: `advance`.
+- Report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`.
+- Raw evidence: `audits/raw/reset-2026-05-10/rg3/post-r09l-source-assisted-proof/`.
+- Reason: R07-R09L are merged to `origin/rebuild/validated-leads-loop`; the current RG3 regression suite passed (`87 passed`); the API suite passed (`51 passed`); `/health` returned 200; `/readiness` returned a bounded diagnostic payload; tokenless `/source-assisted-proof` returned 401; and tokened `/source-assisted-proof` returned 200 with `passes=true`.
+- Value proof: the protected live source-assisted route reproduced the April New Mexico workbook pattern with 17 workbook rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, 18 source-assisted sources, source URLs on every row, blocker/next-action notes for manual lookup rows, sales-first export headers, zero unsupported CRM-ready rows, zero manual-lookup CRM-ready rows, and private contact values redacted.
+- Scope caveat: this advances RG3 for the source-assisted validation/runtime path. It does not prove autonomous broad Scout as the operator value path, does not make the product yellow/green, does not unlock export/dogfood, and does not justify a `main` promotion without Matt's explicit request.
+- Queue consequence: RG4 is ready for refreshed mockup/design preflight only. Per ADR-015, do not mark R10 ready and do not edit production UI code until Matt approves the refreshed mockups.
+
+Exact next assignment:
+
+```text
+You are Prompt A for the White Rabbit reset queue.
+
+Work in /Users/mschwar/Documents/white-rabbit. Use rebuild/validated-leads-loop as the integration branch. This is a refreshed RG4 mockup/design preflight, not production UI implementation. Do not edit production UI code. Do not merge or target main.
+
+First prove current state:
+- read AGENTS.md
+- read STATUS.md
+- read DESIGN.md
+- read docs/00-product-northstar.md
+- read docs/12-reset-gated-implementation-plan-2026-05-10.md
+- read docs/13-pipeline-orchestrator-contract-2026.md
+- read audits/gates/reset-2026-05-10/rg3-validation-semantics.md
+- run git status --short --branch
+
+Create a branch from rebuild/validated-leads-loop using codex/rg4-design-preflight-2026-05-12.
+
+Produce refreshed RG4 mockup/design preflight artifacts under docs/mockups/rg4-design-preflight-2026-05-12/ for:
+- Empty
+- Loading
+- Results
+- Evidence Review
+- Low Signal
+- Mobile Review
+
+Use DESIGN.md as the visual direction authority and docs/mockups/final-product-2026-05-10/index.html as the product-structure reference. Reconcile the preflight against the post-R09L source-assisted evidence: 17 source-assisted workbook rows, READY/REVIEW/manual-lookup semantics, evidence one action away, blocker/next-action notes, and sales-first export framing. Keep public/demo copy free of internal people, sprint IDs, gate IDs, and implementation machinery.
+
+Required output:
+- static mockup artifacts and rendered screenshots for all six states
+- a short preflight report explaining how the mockups align with DESIGN.md, the product northstar, and the post-R09L source-assisted proof
+- STATUS.md and docs/12 update with the handoff for Matt approval
+
+Do not mark R10 ready. Do not start R10-R12 production UI implementation. Do not start export, persistence, dogfood, or main promotion.
+```
 
 RG3 full evaluation/audit:
 

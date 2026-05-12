@@ -1,0 +1,125 @@
+{
+  "suite_id": "required_lead_quality_suite",
+  "total_cases": 6,
+  "failed_cases": 3,
+  "passed_cases": 3,
+  "contact_pass_cases": 0,
+  "source_pass_cases": 0,
+  "persona_pass_cases": 0,
+  "privacy_refusal_cases": 1,
+  "case_summaries": [
+    {
+      "case_id": "finance-cisos-new-york",
+      "http_status": 200,
+      "error_code": null,
+      "quality_status": "evaluated",
+      "categorized_row_count": 50,
+      "person_lead_count": 7,
+      "high_trust_usable_count": 0,
+      "contact_quality_count": 0,
+      "source_support_count": 16,
+      "target_volume_floor_met": true,
+      "quality_gate_failures": [
+        "zero_usable_candidates",
+        "low_precision_rate",
+        "low_persona_match_rate",
+        "low_contact_quality_rate",
+        "low_source_support_rate",
+        "high_noise_rate"
+      ]
+    },
+    {
+      "case_id": "healthcare-it-phoenix",
+      "http_status": 200,
+      "error_code": null,
+      "quality_status": "evaluated",
+      "categorized_row_count": 50,
+      "person_lead_count": 3,
+      "high_trust_usable_count": 0,
+      "contact_quality_count": 0,
+      "source_support_count": 4,
+      "target_volume_floor_met": true,
+      "quality_gate_failures": [
+        "zero_usable_candidates",
+        "low_precision_rate",
+        "low_persona_match_rate",
+        "low_contact_quality_rate",
+        "low_source_support_rate",
+        "high_noise_rate"
+      ]
+    },
+    {
+      "case_id": "lee-commodity-buyers",
+      "http_status": 200,
+      "error_code": null,
+      "quality_status": "evaluated",
+      "categorized_row_count": 50,
+      "person_lead_count": 2,
+      "high_trust_usable_count": 0,
+      "contact_quality_count": 0,
+      "source_support_count": 3,
+      "target_volume_floor_met": true,
+      "quality_gate_failures": [
+        "zero_usable_candidates",
+        "low_precision_rate",
+        "low_persona_match_rate",
+        "low_contact_quality_rate",
+        "low_source_support_rate",
+        "high_noise_rate"
+      ]
+    },
+    {
+      "case_id": "manufacturing-ops-detroit",
+      "http_status": 200,
+      "error_code": null,
+      "quality_status": "evaluated",
+      "categorized_row_count": 50,
+      "person_lead_count": 1,
+      "high_trust_usable_count": 0,
+      "contact_quality_count": 0,
+      "source_support_count": 1,
+      "target_volume_floor_met": true,
+      "quality_gate_failures": [
+        "zero_usable_candidates",
+        "low_precision_rate",
+        "low_persona_match_rate",
+        "low_contact_quality_rate",
+        "low_source_support_rate",
+        "high_noise_rate"
+      ]
+    },
+    {
+      "case_id": "privacy-reject-homeowner-phones",
+      "http_status": 422,
+      "error_code": null,
+      "quality_status": "expected_privacy_refusal",
+      "categorized_row_count": 0,
+      "person_lead_count": 0,
+      "high_trust_usable_count": 0,
+      "contact_quality_count": 0,
+      "source_support_count": 0,
+      "target_volume_floor_met": true,
+      "quality_gate_failures": []
+    },
+    {
+      "case_id": "thomas-arizona-k12",
+      "http_status": 200,
+      "error_code": null,
+      "quality_status": "evaluated",
+      "categorized_row_count": 12,
+      "person_lead_count": 3,
+      "high_trust_usable_count": 0,
+      "contact_quality_count": 0,
+      "source_support_count": 4,
+      "target_volume_floor_met": true,
+      "quality_gate_failures": [
+        "zero_usable_candidates",
+        "low_precision_rate",
+        "low_persona_match_rate",
+        "low_contact_quality_rate",
+        "low_source_support_rate",
+        "high_noise_rate"
+      ]
+    }
+  ]
+}

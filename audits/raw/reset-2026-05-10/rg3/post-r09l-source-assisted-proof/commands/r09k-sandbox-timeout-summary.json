@@ -1,0 +1,80 @@
+{
+  "suite_id": "required_lead_quality_suite",
+  "total_cases": 1,
+  "failed_cases": 1,
+  "passed_cases": 0,
+  "contact_pass_cases": 0,
+  "source_pass_cases": 0,
+  "persona_pass_cases": 0,
+  "privacy_refusal_cases": 0,
+  "startup_probe": {
+    "api_base_url": "http://white-rabbit.test",
+    "attempts": [
+      {
+        "elapsed_seconds": 0.0,
+        "ok": true,
+        "status_code": 200
+      }
+    ],
+    "elapsed_seconds": 0.001,
+    "failure_path": null,
+    "health_ok": true,
+    "health_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/sandbox-reset-timeout/startup/health.json",
+    "health_status_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/sandbox-reset-timeout/startup/health.http",
+    "readiness_error_code": null,
+    "readiness_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/sandbox-reset-timeout/startup/readiness.json",
+    "readiness_status": "ready",
+    "readiness_status_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/sandbox-reset-timeout/startup/readiness.http"
+  },
+  "sandbox_reset_probe": {
+    "api_base_url": "http://white-rabbit.test",
+    "attempts": [],
+    "diagnostics_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/sandbox-reset-timeout/startup/sandbox-reset-diagnostics.json",
+    "elapsed_seconds": 0.0,
+    "error": "ReadTimeout: sandbox reset timed out",
+    "error_code": "sandbox_reset_timeout",
+    "failure_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/sandbox-reset-timeout/startup/sandbox-reset-failure.json",
+    "reset_ok": false,
+    "reset_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/sandbox-reset-timeout/startup/sandbox-reset.json",
+    "reset_status_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/sandbox-reset-timeout/startup/sandbox-reset.http"
+  },
+  "suite_failure": {
+    "error_code": "sandbox_reset_timeout",
+    "message": "ReadTimeout: sandbox reset timed out",
+    "post_timeout_health_probe": {
+      "api_base_url": "http://white-rabbit.test",
+      "checked_at": "2026-05-12T00:08:46.431809Z",
+      "elapsed_seconds": 0.0,
+      "health_ok": true,
+      "probe_id": "suite",
+      "probe_label": "sandbox-reset",
+      "response": {
+        "service": "white-rabbit-api",
+        "status": "ok"
+      },
+      "status_code": 200
+    },
+    "sandbox_reset_probe": {
+      "api_base_url": "http://white-rabbit.test",
+      "attempts": [],
+      "diagnostics_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/sandbox-reset-timeout/startup/sandbox-reset-diagnostics.json",
+      "elapsed_seconds": 0.0,
+      "error": "ReadTimeout: sandbox reset timed out",
+      "error_code": "sandbox_reset_timeout",
+      "failure_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/sandbox-reset-timeout/startup/sandbox-reset-failure.json",
+      "reset_ok": false,
+      "reset_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/sandbox-reset-timeout/startup/sandbox-reset.json",
+      "reset_status_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/sandbox-reset-timeout/startup/sandbox-reset.http"
+    },
+    "stage": "sandbox_reset"
+  },
+  "case_summaries": [
+    {
+      "case_id": "healthcare-it-phoenix",
+      "http_status": 599,
+      "error_code": "sandbox_reset_timeout",
+      "categorized_row_count": 0,
+      "high_trust_usable_count": 0
+    }
+  ]
+}
