@@ -258,15 +258,164 @@ def test_run_live_benchmark_suite_writes_partial_artifacts_on_timeout(tmp_path: 
     assert summary.case_results[0].status_code == 599
     assert (tmp_path / "healthcare-it-phoenix.http").read_text(encoding="utf-8").strip() == "599"
     saved_payload = json.loads((tmp_path / "healthcare-it-phoenix.json").read_text(encoding="utf-8"))
-    assert saved_payload["error_code"] == "runner_timeout"
+    assert saved_payload["error_code"] == "product_request_timeout"
     assert saved_payload["partial_artifact"] is True
     assert saved_payload["leads"] == []
+    assert saved_payload["post_timeout_health_probe"]["health_ok"] is True
+    assert (tmp_path / "timeouts" / "product-request" / "healthcare-it-phoenix" / "health.json").exists()
+    assert (tmp_path / "timeouts" / "product-request" / "healthcare-it-phoenix" / "health.http").read_text(encoding="utf-8").strip() == "200"
 
     quality_summary = json.loads((tmp_path / "quality-summary.json").read_text(encoding="utf-8"))
     case_summary = quality_summary["case_summaries"]["healthcare-it-phoenix"]
     assert case_summary["http_status"] == 599
-    assert case_summary["error_code"] == "runner_timeout"
+    assert case_summary["error_code"] == "product_request_timeout"
+    assert case_summary["quality_status"] == "partial_artifact"
     assert case_summary["quality_report"]["total_candidates"] == 0
+    assert case_summary["post_timeout_health_probe"]["health_ok"] is True
+
+
+def test_run_live_benchmark_suite_writes_case_artifacts_when_readiness_times_out(tmp_path: Path):
+    fixture_pack = build_operator_evidence_fixture_pack()
+    cases = tuple(case for case in fixture_pack.cases if case.benchmark_id == "healthcare-it-phoenix")
+    trimmed_pack = type(fixture_pack)(pack_id=fixture_pack.pack_id, source=fixture_pack.source, cases=cases)
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/health":
+            return httpx.Response(200, json={"status": "ok", "service": "white-rabbit-api"})
+        if request.url.path == "/readiness":
+            raise httpx.ReadTimeout("readiness timed out", request=request)
+        raise AssertionError(f"Unexpected call to {request.url.path}")
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    try:
+        summary = asyncio.run(
+            run_live_benchmark_suite(
+                api_base_url="http://white-rabbit.test",
+                api_token="test-token",
+                fixture_pack=trimmed_pack,
+                output_root=tmp_path,
+                client=client,
+            )
+        )
+    finally:
+        asyncio.run(client.aclose())
+
+    assert summary.startup_probe is not None
+    assert summary.startup_probe.health_ok is True
+    assert summary.startup_probe.readiness_status == "readiness_timeout"
+    assert summary.startup_probe.readiness_error_code == "readiness_timeout"
+    saved_payload = json.loads((tmp_path / "healthcare-it-phoenix.json").read_text(encoding="utf-8"))
+    assert saved_payload["error_code"] == "readiness_timeout"
+    assert saved_payload["partial_artifact"] is True
+    assert saved_payload["startup_probe"]["readiness_error_code"] == "readiness_timeout"
+    quality_summary = json.loads((tmp_path / "quality-summary.json").read_text(encoding="utf-8"))
+    assert quality_summary["suite_failure"]["stage"] == "readiness"
+    assert quality_summary["suite_failure"]["error_code"] == "readiness_timeout"
+    case_summary = quality_summary["case_summaries"]["healthcare-it-phoenix"]
+    assert case_summary["quality_status"] == "partial_artifact"
+    assert case_summary["error_code"] == "readiness_timeout"
+
+
+def test_run_live_benchmark_suite_writes_case_artifacts_when_sandbox_reset_times_out(tmp_path: Path):
+    fixture_pack = build_operator_evidence_fixture_pack()
+    cases = tuple(case for case in fixture_pack.cases if case.benchmark_id == "healthcare-it-phoenix")
+    trimmed_pack = type(fixture_pack)(pack_id=fixture_pack.pack_id, source=fixture_pack.source, cases=cases)
+    health_calls = {"count": 0}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/health":
+            health_calls["count"] += 1
+            return httpx.Response(200, json={"status": "ok", "service": "white-rabbit-api"})
+        if request.url.path == "/readiness":
+            return httpx.Response(
+                200,
+                json={
+                    "status": "ready",
+                    "checked_at": "2026-05-11T00:00:00Z",
+                    "checks": [],
+                },
+            )
+        if request.url.path == "/sandbox/reset":
+            raise httpx.ReadTimeout("sandbox reset timed out", request=request)
+        raise AssertionError(f"Unexpected call to {request.url.path}")
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    try:
+        summary = asyncio.run(
+            run_live_benchmark_suite(
+                api_base_url="http://white-rabbit.test",
+                api_token="test-token",
+                fixture_pack=trimmed_pack,
+                output_root=tmp_path,
+                client=client,
+            )
+        )
+    finally:
+        asyncio.run(client.aclose())
+
+    assert summary.startup_probe is not None
+    assert summary.startup_probe.health_ok is True
+    assert summary.suite_report["suite_failure"]["stage"] == "sandbox_reset"
+    assert summary.suite_report["suite_failure"]["error_code"] == "sandbox_reset_timeout"
+    saved_payload = json.loads((tmp_path / "healthcare-it-phoenix.json").read_text(encoding="utf-8"))
+    assert saved_payload["error_code"] == "sandbox_reset_timeout"
+    assert saved_payload["partial_artifact"] is True
+    assert saved_payload["sandbox_reset_probe"]["error_code"] == "sandbox_reset_timeout"
+    assert saved_payload["post_timeout_health_probe"]["health_ok"] is True
+    assert health_calls["count"] >= 2
+    quality_summary = json.loads((tmp_path / "quality-summary.json").read_text(encoding="utf-8"))
+    case_summary = quality_summary["case_summaries"]["healthcare-it-phoenix"]
+    assert case_summary["quality_status"] == "partial_artifact"
+    assert case_summary["error_code"] == "sandbox_reset_timeout"
+    assert quality_summary["sandbox_reset_probe"]["error_code"] == "sandbox_reset_timeout"
+
+
+def test_run_live_benchmark_suite_records_runner_timeout_on_post_timeout_health_probe_failure(tmp_path: Path):
+    fixture_pack = build_operator_evidence_fixture_pack()
+    cases = tuple(case for case in fixture_pack.cases if case.benchmark_id == "healthcare-it-phoenix")
+    trimmed_pack = type(fixture_pack)(pack_id=fixture_pack.pack_id, source=fixture_pack.source, cases=cases)
+    health_calls = {"count": 0}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/health":
+            health_calls["count"] += 1
+            if health_calls["count"] == 1:
+                return httpx.Response(200, json={"status": "ok", "service": "white-rabbit-api"})
+            raise httpx.ReadTimeout("post-timeout health probe timed out", request=request)
+        if request.url.path == "/readiness":
+            return httpx.Response(
+                200,
+                json={
+                    "status": "ready",
+                    "checked_at": "2026-05-11T00:00:00Z",
+                    "checks": [],
+                },
+            )
+        if request.url.path == "/sandbox/reset":
+            return httpx.Response(200, json={"sandbox_usage": {"total_queries": 0, "total_rows": 0}})
+        raise httpx.ReadTimeout("product request timed out", request=request)
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    try:
+        summary = asyncio.run(
+            run_live_benchmark_suite(
+                api_base_url="http://white-rabbit.test",
+                api_token="test-token",
+                fixture_pack=trimmed_pack,
+                output_root=tmp_path,
+                client=client,
+            )
+        )
+    finally:
+        asyncio.run(client.aclose())
+
+    assert summary.case_results[0].status_code == 599
+    saved_payload = json.loads((tmp_path / "healthcare-it-phoenix.json").read_text(encoding="utf-8"))
+    assert saved_payload["error_code"] == "product_request_timeout"
+    assert saved_payload["post_timeout_health_probe"]["error_code"] == "runner_timeout"
+    quality_summary = json.loads((tmp_path / "quality-summary.json").read_text(encoding="utf-8"))
+    assert quality_summary["case_summaries"]["healthcare-it-phoenix"]["quality_status"] == "partial_artifact"
+    assert quality_summary["case_summaries"]["healthcare-it-phoenix"]["post_timeout_health_probe"]["error_code"] == "runner_timeout"
 
 
 def test_wait_for_api_startup_writes_failure_artifacts(tmp_path: Path):

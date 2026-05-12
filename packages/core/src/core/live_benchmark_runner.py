@@ -8,7 +8,7 @@ import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any, Literal, Mapping
+from typing import Any, Literal, Mapping, Sequence
 from urllib.parse import urlparse
 
 import httpx
@@ -67,6 +67,7 @@ class ApiStartupProbeResult:
     api_base_url: str
     health_ok: bool
     readiness_status: str | None
+    readiness_error_code: str | None
     attempts: tuple[dict[str, Any], ...]
     health_path: Path
     health_status_path: Path
@@ -80,12 +81,41 @@ class ApiStartupProbeResult:
             "api_base_url": self.api_base_url,
             "health_ok": self.health_ok,
             "readiness_status": self.readiness_status,
+            "readiness_error_code": self.readiness_error_code,
             "attempts": list(self.attempts),
             "health_path": str(self.health_path),
             "health_status_path": str(self.health_status_path),
             "readiness_path": str(self.readiness_path) if self.readiness_path else None,
             "readiness_status_path": str(self.readiness_status_path) if self.readiness_status_path else None,
             "failure_path": str(self.failure_path) if self.failure_path else None,
+            "elapsed_seconds": self.elapsed_seconds,
+        }
+
+
+@dataclass(frozen=True, slots=True)
+class SandboxResetProbeResult:
+    api_base_url: str
+    reset_ok: bool
+    error_code: str | None
+    error: str | None
+    attempts: tuple[dict[str, Any], ...]
+    reset_path: Path
+    reset_status_path: Path
+    failure_path: Path | None
+    diagnostics_path: Path
+    elapsed_seconds: float
+
+    def to_payload(self) -> dict[str, Any]:
+        return {
+            "api_base_url": self.api_base_url,
+            "reset_ok": self.reset_ok,
+            "error_code": self.error_code,
+            "error": self.error,
+            "attempts": list(self.attempts),
+            "reset_path": str(self.reset_path),
+            "reset_status_path": str(self.reset_status_path),
+            "failure_path": str(self.failure_path) if self.failure_path else None,
+            "diagnostics_path": str(self.diagnostics_path),
             "elapsed_seconds": self.elapsed_seconds,
         }
 
@@ -159,6 +189,402 @@ def _api_base_details(api_base_url: str) -> dict[str, Any]:
     }
 
 
+def _build_timeout_case_payload(
+    case: OperatorFixtureCase,
+    *,
+    mode: RunnerMode,
+    error_code: str,
+    message: str,
+    elapsed_seconds: float,
+    extra: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    payload: dict[str, Any] = {
+        "benchmark_id": case.benchmark_id,
+        "prompt_label": case.prompt_label,
+        "query": case.query,
+        "mode": mode,
+        "runner_elapsed_seconds": elapsed_seconds,
+        "leads": [],
+        "error": message,
+        "error_code": error_code,
+        "partial_artifact": True,
+    }
+    if extra:
+        payload.update(extra)
+    return payload
+
+
+def _write_case_timeout_artifacts(
+    *,
+    output_root: Path,
+    case: OperatorFixtureCase,
+    mode: RunnerMode,
+    status_code: int,
+    error_code: str,
+    message: str,
+    elapsed_seconds: float,
+    extra: Mapping[str, Any] | None = None,
+) -> LiveBenchmarkCaseResult:
+    response_path = output_root / f"{case.benchmark_id}.json"
+    status_path = output_root / f"{case.benchmark_id}.http"
+    payload = _build_timeout_case_payload(
+        case,
+        mode=mode,
+        error_code=error_code,
+        message=message,
+        elapsed_seconds=elapsed_seconds,
+        extra=extra,
+    )
+    _write_json(response_path, payload)
+    status_path.write_text(f"{status_code}\n", encoding="utf-8")
+    return LiveBenchmarkCaseResult(
+        benchmark_id=case.benchmark_id,
+        mode=mode,
+        status_code=status_code,
+        response_path=response_path,
+        status_path=status_path,
+        elapsed_seconds=elapsed_seconds,
+    )
+
+
+async def _probe_health_after_timeout(
+    *,
+    api_base_url: str,
+    output_root: Path,
+    client: httpx.AsyncClient,
+    probe_label: str,
+    probe_id: str,
+    timeout_seconds: float = 5.0,
+) -> dict[str, Any]:
+    probe_root = output_root / "timeouts" / probe_label / probe_id
+    probe_root.mkdir(parents=True, exist_ok=True)
+    health_path = probe_root / "health.json"
+    health_status_path = probe_root / "health.http"
+
+    started = time.perf_counter()
+    request_timeout = max(0.1, float(timeout_seconds))
+    try:
+        response = await asyncio.wait_for(
+            client.get(f"{api_base_url.rstrip('/')}/health", timeout=request_timeout),
+            timeout=request_timeout,
+        )
+        elapsed_seconds = round(time.perf_counter() - started, 3)
+        try:
+            payload: Any = response.json()
+        except ValueError:
+            payload = {"body": response.text}
+        payload = payload if isinstance(payload, dict) else {"body": payload}
+        probe_payload = {
+            "probe_label": probe_label,
+            "probe_id": probe_id,
+            "status_code": response.status_code,
+            "health_ok": response.status_code == 200 and payload.get("status") == "ok",
+            "elapsed_seconds": elapsed_seconds,
+            "response": payload,
+            "api_base_url": api_base_url,
+            "checked_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        }
+        _write_json(health_path, probe_payload)
+        health_status_path.write_text(f"{response.status_code}\n", encoding="utf-8")
+        return probe_payload
+    except (asyncio.TimeoutError, httpx.TimeoutException) as exc:
+        elapsed_seconds = round(time.perf_counter() - started, 3)
+        probe_payload = {
+            "probe_label": probe_label,
+            "probe_id": probe_id,
+            "status_code": 0,
+            "health_ok": False,
+            "elapsed_seconds": elapsed_seconds,
+            "error_code": "runner_timeout",
+            "error": f"{exc.__class__.__name__}: {exc}",
+            "timeout_seconds": request_timeout,
+            "api_base_url": api_base_url,
+            "checked_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        }
+        _write_json(health_path, probe_payload)
+        health_status_path.write_text("000\n", encoding="utf-8")
+        return probe_payload
+    except httpx.RequestError as exc:
+        elapsed_seconds = round(time.perf_counter() - started, 3)
+        probe_payload = {
+            "probe_label": probe_label,
+            "probe_id": probe_id,
+            "status_code": 0,
+            "health_ok": False,
+            "elapsed_seconds": elapsed_seconds,
+            "error_code": "runner_request_error",
+            "error": f"{exc.__class__.__name__}: {exc}",
+            "timeout_seconds": request_timeout,
+            "api_base_url": api_base_url,
+            "checked_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        }
+        _write_json(health_path, probe_payload)
+        health_status_path.write_text("000\n", encoding="utf-8")
+        return probe_payload
+
+
+async def _run_sandbox_reset_with_timeout(
+    *,
+    api_base_url: str,
+    api_token: str,
+    output_root: Path,
+    client: httpx.AsyncClient,
+    timeout_seconds: float,
+) -> SandboxResetProbeResult:
+    startup_root = output_root / "startup"
+    startup_root.mkdir(parents=True, exist_ok=True)
+    reset_path = startup_root / "sandbox-reset.json"
+    reset_status_path = startup_root / "sandbox-reset.http"
+    failure_path = startup_root / "sandbox-reset-failure.json"
+    diagnostics_path = startup_root / "sandbox-reset-diagnostics.json"
+
+    attempts: list[dict[str, Any]] = []
+    started = time.perf_counter()
+    request_timeout = max(0.1, float(timeout_seconds))
+    try:
+        response = await asyncio.wait_for(
+            client.post(
+                f"{api_base_url.rstrip('/')}/sandbox/reset",
+                headers={"x-white-rabbit-internal-token": api_token},
+                timeout=None,
+            ),
+            timeout=request_timeout,
+        )
+        elapsed_seconds = round(time.perf_counter() - started, 3)
+        try:
+            payload: Any = response.json()
+        except ValueError:
+            payload = {"body": response.text}
+        payload = payload if isinstance(payload, dict) else {"body": payload}
+        attempts.append(
+            {
+                "status_code": response.status_code,
+                "elapsed_seconds": elapsed_seconds,
+                "ok": response.status_code == 200,
+            }
+        )
+        _write_json(reset_path, payload)
+        reset_status_path.write_text(f"{response.status_code}\n", encoding="utf-8")
+        reset_ok = response.status_code == 200
+        error_code = None if reset_ok else "sandbox_reset_failed"
+        error = None if reset_ok else f"Sandbox reset returned HTTP {response.status_code}."
+        if not reset_ok:
+            _write_json(
+                failure_path,
+                {
+                    "error_code": error_code,
+                    "error": error,
+                    "api_base_url": api_base_url,
+                    "timeout_seconds": request_timeout,
+                    "status_code": response.status_code,
+                    "checked_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+                },
+            )
+        diagnostics = SandboxResetProbeResult(
+            api_base_url=api_base_url,
+            reset_ok=reset_ok,
+            error_code=error_code,
+            error=error,
+            attempts=tuple(attempts),
+            reset_path=reset_path,
+            reset_status_path=reset_status_path,
+            failure_path=None if reset_ok else failure_path,
+            diagnostics_path=diagnostics_path,
+            elapsed_seconds=elapsed_seconds,
+        )
+        _write_json(diagnostics_path, diagnostics.to_payload())
+        return diagnostics
+    except (asyncio.TimeoutError, httpx.TimeoutException) as exc:
+        elapsed_seconds = round(time.perf_counter() - started, 3)
+        failure_payload = {
+            "error_code": "sandbox_reset_timeout",
+            "error": f"{exc.__class__.__name__}: {exc}",
+            "message": f"Sandbox reset did not finish before {request_timeout} second timeout.",
+            "api_base_url": api_base_url,
+            "timeout_seconds": request_timeout,
+            "checked_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        }
+        _write_json(reset_path, failure_payload)
+        reset_status_path.write_text("000\n", encoding="utf-8")
+        _write_json(failure_path, failure_payload)
+        diagnostics = SandboxResetProbeResult(
+            api_base_url=api_base_url,
+            reset_ok=False,
+            error_code="sandbox_reset_timeout",
+            error=f"{exc.__class__.__name__}: {exc}",
+            attempts=tuple(attempts),
+            reset_path=reset_path,
+            reset_status_path=reset_status_path,
+            failure_path=failure_path,
+            diagnostics_path=diagnostics_path,
+            elapsed_seconds=elapsed_seconds,
+        )
+        _write_json(diagnostics_path, diagnostics.to_payload())
+        return diagnostics
+    except httpx.RequestError as exc:
+        elapsed_seconds = round(time.perf_counter() - started, 3)
+        failure_payload = {
+            "error_code": "sandbox_reset_request_error",
+            "error": f"{exc.__class__.__name__}: {exc}",
+            "message": "Sandbox reset request failed before completion.",
+            "api_base_url": api_base_url,
+            "timeout_seconds": request_timeout,
+            "checked_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        }
+        _write_json(reset_path, failure_payload)
+        reset_status_path.write_text("000\n", encoding="utf-8")
+        _write_json(failure_path, failure_payload)
+        diagnostics = SandboxResetProbeResult(
+            api_base_url=api_base_url,
+            reset_ok=False,
+            error_code="sandbox_reset_request_error",
+            error=f"{exc.__class__.__name__}: {exc}",
+            attempts=tuple(attempts),
+            reset_path=reset_path,
+            reset_status_path=reset_status_path,
+            failure_path=failure_path,
+            diagnostics_path=diagnostics_path,
+            elapsed_seconds=elapsed_seconds,
+        )
+        _write_json(diagnostics_path, diagnostics.to_payload())
+        return diagnostics
+
+
+def _case_quality_status(observation: ReplayBenchmarkObservation) -> str:
+    if observation.privacy_refusal:
+        return "expected_privacy_refusal"
+    if observation.error_code:
+        return "partial_artifact"
+    return "evaluated"
+
+
+def _build_quality_summary_payload(
+    *,
+    output_root: Path,
+    fixture_pack: OperatorEvidenceFixturePack,
+    startup_probe: ApiStartupProbeResult | None,
+    case_results: Sequence[LiveBenchmarkCaseResult],
+    suite_failure: dict[str, Any] | None = None,
+    sandbox_reset_probe: SandboxResetProbeResult | None = None,
+) -> dict[str, Any]:
+    observations = build_saved_benchmark_observations(output_root, fixture_pack=fixture_pack)
+    suite = build_required_benchmark_suite(fixture_pack=fixture_pack)
+    suite_report = evaluate_required_benchmark_suite(suite, observations)
+
+    theme_summaries: dict[str, dict[str, Any]] = {}
+    for case in fixture_pack.cases:
+        observation = observations[case.benchmark_id]
+        summary = theme_summaries.setdefault(
+            case.theme,
+            {
+                "case_count": 0,
+                "categorized_rows": 0,
+                "person_rows": 0,
+                "high_trust_usable_rows": 0,
+                "contact_quality_passes": 0,
+                "contact_evidence_candidates_searched": 0,
+                "contact_evidence_contacts_acquired": 0,
+                "contact_evidence_review_to_high_trust": 0,
+            },
+        )
+        funnel_counts = observation.funnel_counts or {}
+        summary["case_count"] += 1
+        summary["categorized_rows"] += observation.categorized_row_count
+        summary["person_rows"] += observation.person_lead_count
+        summary["high_trust_usable_rows"] += observation.high_trust_usable_count
+        summary["contact_quality_passes"] += int(funnel_counts.get("contact_quality_passes", 0) or 0)
+        summary["contact_evidence_candidates_searched"] += int(
+            funnel_counts.get("contact_evidence_candidates_searched", 0) or 0
+        )
+        summary["contact_evidence_contacts_acquired"] += int(
+            funnel_counts.get("contact_evidence_contacts_acquired", 0) or 0
+        )
+        summary["contact_evidence_review_to_high_trust"] += int(
+            funnel_counts.get("contact_evidence_review_to_high_trust", 0) or 0
+        )
+    for summary in theme_summaries.values():
+        summary["contact_quality_rate"] = _rate(summary["contact_quality_passes"], summary["categorized_rows"])
+        summary["high_trust_usable_yield"] = _rate(summary["high_trust_usable_rows"], summary["categorized_rows"])
+        summary["contact_acquisition_success_rate"] = _rate(
+            summary["contact_evidence_contacts_acquired"],
+            summary["contact_evidence_candidates_searched"],
+        )
+        summary["review_to_high_trust_rate"] = _rate(
+            summary["contact_evidence_review_to_high_trust"],
+            summary["contact_evidence_candidates_searched"],
+        )
+
+    case_summaries: dict[str, dict[str, Any]] = {}
+    for benchmark_id, observation in observations.items():
+        payload_path = output_root / f"{benchmark_id}.json"
+        payload: dict[str, Any] = {}
+        if payload_path.exists():
+            payload = json.loads(payload_path.read_text(encoding="utf-8"))
+        case_summary: dict[str, Any] = {
+            "http_status": observation.http_status,
+            "guardrail_status": observation.guardrail_status,
+            "categorized_row_count": observation.categorized_row_count,
+            "person_lead_count": observation.person_lead_count,
+            "high_trust_usable_count": observation.high_trust_usable_count,
+            "review_count": observation.review_count,
+            "organization_only_count": observation.organization_only_count,
+            "not_found_count": observation.not_found_count,
+            "failed_count": observation.failed_count,
+            "expected_target_coverage_count": observation.expected_target_coverage_count,
+            "expected_target_coverage_missing": list(observation.expected_target_coverage_missing),
+            "minimum_escape_rows": observation.minimum_escape_rows,
+            "target_categorized_rows": observation.target_categorized_rows,
+            "escape_velocity_floor_met": observation.escape_velocity_floor_met,
+            "target_volume_floor_met": observation.target_volume_floor_met,
+            "high_volume_floor_met": observation.high_volume_floor_met,
+            "volume_floor_status": observation.volume_floor_status,
+            "privacy_refusal": observation.privacy_refusal,
+            "funnel_counts": dict(observation.funnel_counts or {}),
+            "error_code": observation.error_code,
+            "quality_status": _case_quality_status(observation),
+            "ready_blocker_counts": (
+                {"privacy_refusal": 1}
+                if observation.privacy_refusal
+                else observation.quality_report.ready_blocker_counts
+                if observation.quality_report is not None
+                else {}
+            ),
+            "candidate_ready_blockers": (
+                []
+                if observation.privacy_refusal or observation.quality_report is None
+                else observation.quality_report.candidate_ready_blockers
+            ),
+            "quality_report": (
+                observation.quality_report.to_payload() if observation.quality_report is not None else None
+            ),
+        }
+        for key in ("startup_probe", "sandbox_reset_probe", "post_timeout_health_probe"):
+            if payload.get(key) is not None:
+                case_summary[key] = payload[key]
+        case_summaries[benchmark_id] = case_summary
+
+    suite_payload: dict[str, Any] = {
+        "suite_id": suite_report.suite_id,
+        "total_cases": suite_report.total_cases,
+        "passed_cases": suite_report.passed_cases,
+        "failed_cases": suite_report.failed_cases,
+        "persona_pass_cases": suite_report.persona_pass_cases,
+        "contact_pass_cases": suite_report.contact_pass_cases,
+        "source_pass_cases": suite_report.source_pass_cases,
+        "privacy_refusal_cases": suite_report.privacy_refusal_cases,
+        "guardrail_mismatches": list(suite_report.guardrail_mismatches),
+        "observation_mismatches": list(suite_report.observation_mismatches),
+        "startup_probe": startup_probe.to_payload() if startup_probe else None,
+        "case_summaries": case_summaries,
+        "theme_summaries": theme_summaries,
+    }
+    if sandbox_reset_probe is not None:
+        suite_payload["sandbox_reset_probe"] = sandbox_reset_probe.to_payload()
+    if suite_failure is not None:
+        suite_payload["suite_failure"] = dict(suite_failure)
+    return suite_payload
+
+
 async def wait_for_api_startup(
     *,
     api_base_url: str,
@@ -186,6 +612,7 @@ async def wait_for_api_startup(
         "env_presence": _env_presence(),
     }
     last_health_status = 0
+    readiness_error_code: str | None = None
 
     while True:
         attempt_started = time.perf_counter()
@@ -247,20 +674,40 @@ async def wait_for_api_startup(
                     if isinstance(readiness_payload.get("status"), str)
                     else f"http_{readiness_response.status_code}"
                 )
-            except (asyncio.TimeoutError, httpx.RequestError) as exc:
+                readiness_error_code = None
+            except (asyncio.TimeoutError, httpx.TimeoutException) as exc:
+                readiness_payload = {
+                    "status": "unavailable",
+                    "error": f"{exc.__class__.__name__}: {exc}",
+                    "error_code": "readiness_timeout",
+                    "message": f"Readiness did not finish before {readiness_timeout} second timeout.",
+                    "api_base_url": api_base_url,
+                    "timeout_seconds": readiness_timeout,
+                    "checked_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+                }
+                _write_json(readiness_path, readiness_payload)
+                readiness_status_path.write_text("000\n", encoding="utf-8")
+                readiness_status = "readiness_timeout"
+                readiness_error_code = "readiness_timeout"
+            except httpx.RequestError as exc:
                 readiness_payload = {
                     "status": "unavailable",
                     "error": f"{exc.__class__.__name__}: {exc}",
                     "error_code": "readiness_request_error",
+                    "api_base_url": api_base_url,
+                    "timeout_seconds": readiness_timeout,
+                    "checked_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
                 }
                 _write_json(readiness_path, readiness_payload)
                 readiness_status_path.write_text("000\n", encoding="utf-8")
                 readiness_status = "unavailable"
+                readiness_error_code = "readiness_request_error"
 
             result = ApiStartupProbeResult(
                 api_base_url=api_base_url,
                 health_ok=True,
                 readiness_status=readiness_status,
+                readiness_error_code=readiness_error_code,
                 attempts=tuple(attempts),
                 health_path=health_path,
                 health_status_path=health_status_path,
@@ -296,6 +743,7 @@ async def wait_for_api_startup(
         api_base_url=api_base_url,
         health_ok=False,
         readiness_status=None,
+        readiness_error_code=None,
         attempts=tuple(attempts),
         health_path=health_path,
         health_status_path=health_status_path,
@@ -316,6 +764,8 @@ async def _run_case(
     api_token: str,
     output_root: Path,
     mode: RunnerMode,
+    product_request_timeout_seconds: float = 120.0,
+    health_after_timeout_seconds: float = 5.0,
 ) -> LiveBenchmarkCaseResult:
     route = "/full" if mode == "full" else "/scout"
     request_body: dict[str, Any] = {"query": case.query}
@@ -328,10 +778,14 @@ async def _run_case(
 
     start = time.perf_counter()
     try:
-        response = await client.post(
-            f"{api_base_url.rstrip('/')}{route}",
-            headers={"x-white-rabbit-internal-token": api_token},
-            json=request_body,
+        response = await asyncio.wait_for(
+            client.post(
+                f"{api_base_url.rstrip('/')}{route}",
+                headers={"x-white-rabbit-internal-token": api_token},
+                json=request_body,
+                timeout=None,
+            ),
+            timeout=max(0.1, float(product_request_timeout_seconds)),
         )
         elapsed_seconds = round(time.perf_counter() - start, 3)
         try:
@@ -340,34 +794,42 @@ async def _run_case(
             payload = {"error": response.text}
         status_code = response.status_code
         normalized_payload = _normalize_response_payload(case, status_code, payload, elapsed_seconds)
-    except httpx.TimeoutException as exc:
+    except (asyncio.TimeoutError, httpx.TimeoutException) as exc:
         elapsed_seconds = round(time.perf_counter() - start, 3)
         status_code = 599
-        normalized_payload = {
-            "benchmark_id": case.benchmark_id,
-            "prompt_label": case.prompt_label,
-            "query": case.query,
-            "mode": mode,
-            "runner_elapsed_seconds": elapsed_seconds,
-            "leads": [],
-            "error": f"Runner timeout: {exc}",
-            "error_code": "runner_timeout",
-            "partial_artifact": True,
-        }
+        normalized_payload = _build_timeout_case_payload(
+            case,
+            mode=mode,
+            error_code="product_request_timeout",
+            message=f"Product request timed out: {exc}",
+            elapsed_seconds=elapsed_seconds,
+        )
+        normalized_payload["post_timeout_health_probe"] = await _probe_health_after_timeout(
+            api_base_url=api_base_url,
+            output_root=output_root,
+            client=client,
+            probe_label="product-request",
+            probe_id=case.benchmark_id,
+            timeout_seconds=health_after_timeout_seconds,
+        )
     except httpx.RequestError as exc:
         elapsed_seconds = round(time.perf_counter() - start, 3)
         status_code = 599
-        normalized_payload = {
-            "benchmark_id": case.benchmark_id,
-            "prompt_label": case.prompt_label,
-            "query": case.query,
-            "mode": mode,
-            "runner_elapsed_seconds": elapsed_seconds,
-            "leads": [],
-            "error": f"Runner request error: {exc}",
-            "error_code": "runner_request_error",
-            "partial_artifact": True,
-        }
+        normalized_payload = _build_timeout_case_payload(
+            case,
+            mode=mode,
+            error_code="product_request_request_error",
+            message=f"Product request failed before completion: {exc}",
+            elapsed_seconds=elapsed_seconds,
+        )
+        normalized_payload["post_timeout_health_probe"] = await _probe_health_after_timeout(
+            api_base_url=api_base_url,
+            output_root=output_root,
+            client=client,
+            probe_label="product-request",
+            probe_id=case.benchmark_id,
+            timeout_seconds=health_after_timeout_seconds,
+        )
     normalized_payload["mode"] = mode
     response_path.write_text(json.dumps(normalized_payload, indent=2, sort_keys=True), encoding="utf-8")
     status_path.write_text(f"{status_code}\n", encoding="utf-8")
@@ -393,15 +855,21 @@ async def run_live_benchmark_suite(
     client: httpx.AsyncClient | None = None,
     wait_for_startup: bool = True,
     startup_timeout_seconds: float = 30.0,
+    sandbox_reset_timeout_seconds: float = 30.0,
+    product_request_timeout_seconds: float = 120.0,
+    health_after_timeout_seconds: float = 5.0,
 ) -> LiveBenchmarkRunSummary:
     fixture_pack = fixture_pack or build_operator_evidence_fixture_pack()
     output_root = output_root or _DEFAULT_OUTPUT_ROOT
 
     owns_client = client is None
     if owns_client:
-        client = httpx.AsyncClient(timeout=120.0, follow_redirects=True)
+        client = httpx.AsyncClient(timeout=None, follow_redirects=True)
 
     startup_probe: ApiStartupProbeResult | None = None
+    sandbox_reset_probe: SandboxResetProbeResult | None = None
+    case_results: list[LiveBenchmarkCaseResult] = []
+    suite_failure: dict[str, Any] | None = None
     try:
         if wait_for_startup:
             startup_probe = await wait_for_api_startup(
@@ -410,68 +878,40 @@ async def run_live_benchmark_suite(
                 client=client,
                 timeout_seconds=startup_timeout_seconds,
             )
-            if not startup_probe.health_ok:
-                case_results = []
-                for case in fixture_pack.cases:
-                    response_path = output_root / f"{case.benchmark_id}.json"
-                    status_path = output_root / f"{case.benchmark_id}.http"
-                    elapsed_seconds = startup_probe.elapsed_seconds
-                    payload = {
-                        "benchmark_id": case.benchmark_id,
-                        "prompt_label": case.prompt_label,
-                        "query": case.query,
-                        "mode": mode,
-                        "runner_elapsed_seconds": elapsed_seconds,
-                        "leads": [],
-                        "error": "API startup failed before live benchmark case execution.",
-                        "error_code": "api_startup_failed",
-                        "partial_artifact": True,
-                        "startup_probe": startup_probe.to_payload(),
-                    }
-                    _write_json(response_path, payload)
-                    status_path.write_text("599\n", encoding="utf-8")
-                    case_results.append(
-                        LiveBenchmarkCaseResult(
-                            benchmark_id=case.benchmark_id,
-                            mode=mode,
-                            status_code=599,
-                            response_path=response_path,
-                            status_path=status_path,
-                            elapsed_seconds=elapsed_seconds,
-                        )
-                    )
-                observations = build_saved_benchmark_observations(output_root, fixture_pack=fixture_pack)
-                suite = build_required_benchmark_suite(fixture_pack=fixture_pack)
-                suite_report = evaluate_required_benchmark_suite(suite, observations)
-                suite_payload = {
-                    "suite_id": suite_report.suite_id,
-                    "total_cases": suite_report.total_cases,
-                    "passed_cases": suite_report.passed_cases,
-                    "failed_cases": suite_report.failed_cases,
-                    "persona_pass_cases": suite_report.persona_pass_cases,
-                    "contact_pass_cases": suite_report.contact_pass_cases,
-                    "source_pass_cases": suite_report.source_pass_cases,
-                    "privacy_refusal_cases": suite_report.privacy_refusal_cases,
-                    "guardrail_mismatches": list(suite_report.guardrail_mismatches),
-                    "observation_mismatches": list(suite_report.observation_mismatches),
+            if not startup_probe.health_ok or startup_probe.readiness_error_code is not None:
+                suite_failure = {
+                    "stage": "startup" if not startup_probe.health_ok else "readiness",
+                    "error_code": "api_startup_failed" if not startup_probe.health_ok else startup_probe.readiness_error_code,
+                    "message": (
+                        "API did not answer /health before live benchmark case execution."
+                        if not startup_probe.health_ok
+                        else f"API readiness did not finish before live benchmark case execution: {startup_probe.readiness_status}."
+                    ),
                     "startup_probe": startup_probe.to_payload(),
-                    "case_summaries": {
-                        benchmark_id: {
-                            "http_status": observation.http_status,
-                            "error_code": observation.error_code,
-                            "categorized_row_count": observation.categorized_row_count,
-                            "person_lead_count": observation.person_lead_count,
-                            "high_trust_usable_count": observation.high_trust_usable_count,
-                            "privacy_refusal": observation.privacy_refusal,
-                            "quality_report": (
-                                observation.quality_report.to_payload()
-                                if observation.quality_report is not None
-                                else None
-                            ),
-                        }
-                        for benchmark_id, observation in observations.items()
-                    },
                 }
+                case_results = [
+                    _write_case_timeout_artifacts(
+                        output_root=output_root,
+                        case=case,
+                        mode=mode,
+                        status_code=599,
+                        error_code=str(suite_failure["error_code"]),
+                        message=str(suite_failure["message"]),
+                        elapsed_seconds=startup_probe.elapsed_seconds,
+                        extra={
+                            "startup_probe": startup_probe.to_payload(),
+                            "suite_failure": suite_failure,
+                        },
+                    )
+                    for case in fixture_pack.cases
+                ]
+                suite_payload = _build_quality_summary_payload(
+                    output_root=output_root,
+                    fixture_pack=fixture_pack,
+                    startup_probe=startup_probe,
+                    case_results=case_results,
+                    suite_failure=suite_failure,
+                )
                 _write_json(output_root / "quality-summary.json", suite_payload)
                 return LiveBenchmarkRunSummary(
                     mode=mode,
@@ -483,11 +923,64 @@ async def run_live_benchmark_suite(
                 )
 
         if reset_sandbox:
-            await client.post(
-                f"{api_base_url.rstrip('/')}/sandbox/reset",
-                headers={"x-white-rabbit-internal-token": api_token},
+            sandbox_reset_probe = await _run_sandbox_reset_with_timeout(
+                api_base_url=api_base_url,
+                api_token=api_token,
+                output_root=output_root,
+                client=client,
+                timeout_seconds=sandbox_reset_timeout_seconds,
             )
-        case_results = []
+            if not sandbox_reset_probe.reset_ok:
+                post_timeout_probe = await _probe_health_after_timeout(
+                    api_base_url=api_base_url,
+                    output_root=output_root,
+                    client=client,
+                    probe_label="sandbox-reset",
+                    probe_id="suite",
+                    timeout_seconds=health_after_timeout_seconds,
+                )
+                suite_failure = {
+                    "stage": "sandbox_reset",
+                    "error_code": sandbox_reset_probe.error_code,
+                    "message": sandbox_reset_probe.error or "Sandbox reset failed before live benchmark case execution.",
+                    "sandbox_reset_probe": sandbox_reset_probe.to_payload(),
+                    "post_timeout_health_probe": post_timeout_probe,
+                }
+                case_results = [
+                    _write_case_timeout_artifacts(
+                        output_root=output_root,
+                        case=case,
+                        mode=mode,
+                        status_code=599,
+                        error_code=str(sandbox_reset_probe.error_code or "sandbox_reset_failed"),
+                        message=str(suite_failure["message"]),
+                        elapsed_seconds=sandbox_reset_probe.elapsed_seconds,
+                        extra={
+                            "startup_probe": startup_probe.to_payload() if startup_probe else None,
+                            "sandbox_reset_probe": sandbox_reset_probe.to_payload(),
+                            "suite_failure": suite_failure,
+                            "post_timeout_health_probe": post_timeout_probe,
+                        },
+                    )
+                    for case in fixture_pack.cases
+                ]
+                suite_payload = _build_quality_summary_payload(
+                    output_root=output_root,
+                    fixture_pack=fixture_pack,
+                    startup_probe=startup_probe,
+                    case_results=case_results,
+                    suite_failure=suite_failure,
+                    sandbox_reset_probe=sandbox_reset_probe,
+                )
+                _write_json(output_root / "quality-summary.json", suite_payload)
+                return LiveBenchmarkRunSummary(
+                    mode=mode,
+                    api_base_url=api_base_url,
+                    output_root=output_root,
+                    suite_report=suite_payload,
+                    case_results=tuple(case_results),
+                    startup_probe=startup_probe,
+                )
         for case in fixture_pack.cases:
             case_results.append(
                 await _run_case(
@@ -497,114 +990,22 @@ async def run_live_benchmark_suite(
                     api_token=api_token,
                     output_root=output_root,
                     mode=mode,
+                    product_request_timeout_seconds=product_request_timeout_seconds,
+                    health_after_timeout_seconds=health_after_timeout_seconds,
                 )
             )
     finally:
         if owns_client and client is not None:
             await client.aclose()
 
-    observations = build_saved_benchmark_observations(output_root, fixture_pack=fixture_pack)
-    suite = build_required_benchmark_suite(fixture_pack=fixture_pack)
-    suite_report = evaluate_required_benchmark_suite(suite, observations)
-    theme_summaries: dict[str, dict[str, Any]] = {}
-    for case in fixture_pack.cases:
-        observation = observations[case.benchmark_id]
-        summary = theme_summaries.setdefault(
-            case.theme,
-            {
-                "case_count": 0,
-                "categorized_rows": 0,
-                "person_rows": 0,
-                "high_trust_usable_rows": 0,
-                "contact_quality_passes": 0,
-                "contact_evidence_candidates_searched": 0,
-                "contact_evidence_contacts_acquired": 0,
-                "contact_evidence_review_to_high_trust": 0,
-            },
-        )
-        funnel_counts = observation.funnel_counts or {}
-        summary["case_count"] += 1
-        summary["categorized_rows"] += observation.categorized_row_count
-        summary["person_rows"] += observation.person_lead_count
-        summary["high_trust_usable_rows"] += observation.high_trust_usable_count
-        summary["contact_quality_passes"] += int(funnel_counts.get("contact_quality_passes", 0) or 0)
-        summary["contact_evidence_candidates_searched"] += int(
-            funnel_counts.get("contact_evidence_candidates_searched", 0) or 0
-        )
-        summary["contact_evidence_contacts_acquired"] += int(
-            funnel_counts.get("contact_evidence_contacts_acquired", 0) or 0
-        )
-        summary["contact_evidence_review_to_high_trust"] += int(
-            funnel_counts.get("contact_evidence_review_to_high_trust", 0) or 0
-        )
-    for summary in theme_summaries.values():
-        summary["contact_quality_rate"] = _rate(summary["contact_quality_passes"], summary["categorized_rows"])
-        summary["high_trust_usable_yield"] = _rate(summary["high_trust_usable_rows"], summary["categorized_rows"])
-        summary["contact_acquisition_success_rate"] = _rate(
-            summary["contact_evidence_contacts_acquired"],
-            summary["contact_evidence_candidates_searched"],
-        )
-        summary["review_to_high_trust_rate"] = _rate(
-            summary["contact_evidence_review_to_high_trust"],
-            summary["contact_evidence_candidates_searched"],
-        )
-    suite_payload = {
-        "suite_id": suite_report.suite_id,
-        "total_cases": suite_report.total_cases,
-        "passed_cases": suite_report.passed_cases,
-        "failed_cases": suite_report.failed_cases,
-        "persona_pass_cases": suite_report.persona_pass_cases,
-        "contact_pass_cases": suite_report.contact_pass_cases,
-        "source_pass_cases": suite_report.source_pass_cases,
-        "privacy_refusal_cases": suite_report.privacy_refusal_cases,
-        "guardrail_mismatches": list(suite_report.guardrail_mismatches),
-        "observation_mismatches": list(suite_report.observation_mismatches),
-        "startup_probe": startup_probe.to_payload() if startup_probe else None,
-        "theme_summaries": theme_summaries,
-        "case_summaries": {
-            benchmark_id: {
-                "http_status": observation.http_status,
-                "guardrail_status": observation.guardrail_status,
-                "categorized_row_count": observation.categorized_row_count,
-                "person_lead_count": observation.person_lead_count,
-                "high_trust_usable_count": observation.high_trust_usable_count,
-                "review_count": observation.review_count,
-                "organization_only_count": observation.organization_only_count,
-                "not_found_count": observation.not_found_count,
-                "failed_count": observation.failed_count,
-                "expected_target_coverage_count": observation.expected_target_coverage_count,
-                "expected_target_coverage_missing": list(observation.expected_target_coverage_missing),
-                "minimum_escape_rows": observation.minimum_escape_rows,
-                "target_categorized_rows": observation.target_categorized_rows,
-                "escape_velocity_floor_met": observation.escape_velocity_floor_met,
-                "target_volume_floor_met": observation.target_volume_floor_met,
-                "high_volume_floor_met": observation.high_volume_floor_met,
-                "volume_floor_status": observation.volume_floor_status,
-                "privacy_refusal": observation.privacy_refusal,
-                "funnel_counts": dict(observation.funnel_counts or {}),
-                "error_code": observation.error_code,
-                "quality_status": (
-                    "expected_privacy_refusal" if observation.privacy_refusal else "evaluated"
-                ),
-                "ready_blocker_counts": (
-                    {"privacy_refusal": 1}
-                    if observation.privacy_refusal
-                    else observation.quality_report.ready_blocker_counts
-                    if observation.quality_report is not None
-                    else {}
-                ),
-                "candidate_ready_blockers": (
-                    []
-                    if observation.privacy_refusal or observation.quality_report is None
-                    else observation.quality_report.candidate_ready_blockers
-                ),
-                "quality_report": (
-                    observation.quality_report.to_payload() if observation.quality_report is not None else None
-                ),
-            }
-            for benchmark_id, observation in observations.items()
-        },
-    }
+    suite_payload = _build_quality_summary_payload(
+        output_root=output_root,
+        fixture_pack=fixture_pack,
+        startup_probe=startup_probe,
+        case_results=case_results,
+        suite_failure=suite_failure,
+        sandbox_reset_probe=sandbox_reset_probe,
+    )
     (output_root / "quality-summary.json").write_text(
         json.dumps(suite_payload, indent=2, sort_keys=True),
         encoding="utf-8",

@@ -5,9 +5,9 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, gate_hold accepted after the post-R09I Prompt C audit. R09D-R09I are merged to `rebuild/validated-leads-loop`, and the post-R09I audit recorded `hold`: `/health` can now prove process liveness on a fresh API process, but `/readiness` can still time out and block the app, the live runner still cannot complete the current benchmark suite, and the direct `/scout` product path timed out on the first Thomas benchmark. Matt accepted the hold and authorized ordered same-gate remediation slices R09J-R09L. R09J has passed Prompt B QA and merged to `rebuild/validated-leads-loop`; R09K is ready on `feat/reset-r09k-live-runner-timeout-containment`; R09L remains blocked until R09K passes Prompt B and merges.
-**Next Prompt A feature:** R09K - Live runner timeout containment on `feat/reset-r09k-live-runner-timeout-containment`.
-**Current Prompt B handoff:** None. R09K is the next Prompt A feature.
+**Current reset gate:** RG3 - Validation, Conflict, And Gate Semantics, gate_hold accepted after the post-R09I Prompt C audit. R09D-R09I are merged to `rebuild/validated-leads-loop`, and the post-R09I audit recorded `hold`: `/health` can now prove process liveness on a fresh API process, but `/readiness` can still time out and block the app, the live runner still cannot complete the current benchmark suite, and the direct `/scout` product path timed out on the first Thomas benchmark. Matt accepted the hold and authorized ordered same-gate remediation slices R09J-R09L. R09J has passed Prompt B QA and merged to `rebuild/validated-leads-loop`; R09K is implemented_pending_qa on `feat/reset-r09k-live-runner-timeout-containment`; R09L remains blocked until R09K passes Prompt B and merges.
+**Next Prompt A feature:** None. R09K is implemented_pending_qa on `feat/reset-r09k-live-runner-timeout-containment` and waiting Prompt B QA.
+**Current Prompt B handoff:** QA `feat/reset-r09k-live-runner-timeout-containment`; verify the branch contains only R09K scope; rerun `cd packages/core && uv run pytest tests/test_live_benchmark_runner.py -q`, `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`, and `git diff --check`; inspect the timeout-containment artifacts under `audits/raw/reset-2026-05-10/r09k/` (including the `api-startup-failed`, `readiness-timeout`, `sandbox-reset-timeout`, `product-request-timeout`, and `runner-timeout-probe` subdirectories); confirm `/health` still answers independently, readiness timeouts are labeled `readiness_timeout`, sandbox reset timeouts are labeled `sandbox_reset_timeout`, product request timeouts are labeled `product_request_timeout`, post-timeout health probes report `runner_timeout` when they time out, and every timeout case keeps a complete artifact row plus quality summary; and confirm no lead-quality, prompt/model, search, workbook/export, UI, persistence, dogfood, RG4/R10-R12, Prompt C, or `main` promotion landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R09K `merged_to_rebuild_branch`, and hand off Prompt A for R09L only.
 **Current Prompt C handoff:** None. Do not rerun RG3 Prompt C until R09J, R09K, and R09L pass Prompt B and merge. Keep RG4/refreshed mockups/R10-R12/export/dogfood/main blocked unless a future Prompt C records `advance`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
@@ -238,7 +238,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R09H | Manual-oracle proof replay gate packet | merged_to_rebuild_branch | `feat/reset-r09h-manual-oracle-proof-packet` | replay + live/source-assisted artifacts |
 | R09I | API startup and live proof harness | merged_to_rebuild_branch | `feat/reset-r09i-api-startup-live-proof` | API tests + live harness artifacts |
 | R09J | Bounded readiness diagnostics | merged_to_rebuild_branch | `feat/reset-r09j-bounded-readiness-diagnostics` | API tests + readiness probe artifacts |
-| R09K | Live runner timeout containment | ready | `feat/reset-r09k-live-runner-timeout-containment` | core/API tests + complete timeout artifacts |
+| R09K | Live runner timeout containment | implemented_pending_qa | `feat/reset-r09k-live-runner-timeout-containment` | core/API tests + complete timeout artifacts |
 | R09L | Live source-assisted product proof | blocked | `feat/reset-r09l-live-source-assisted-proof` | API/core tests + live source-assisted proof artifacts |
 | R10 | Primary search workspace simplification | blocked | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | blocked | `feat/reset-r11-crm-results-table` | browser |
@@ -806,7 +806,7 @@ Post-R09I Prompt C result:
 Accepted post-R09I hold and R09J-R09L remediation:
 
 - Date accepted: 2026-05-11.
-- Decision: keep RG3 in `gate_hold` and add three ordered same-gate remediation slices. Only R09J was ready; it is now implemented_pending_qa and waiting for Prompt B. R09K is blocked until R09J merges. R09L is blocked until R09K merges. Do not rerun RG3 Prompt C until all three are merged.
+- Decision: keep RG3 in `gate_hold` and add three ordered same-gate remediation slices. Only R09J was ready; it is now merged to `rebuild/validated-leads-loop`. R09K is implemented_pending_qa and waiting for Prompt B. R09L is blocked until R09K merges. Do not rerun RG3 Prompt C until all three are merged.
 - Why this split exists: the post-R09I hold exposed three different failure modes that should not be bundled into one oversized feature. `/readiness` must become bounded and diagnostic; the live runner must complete and preserve artifacts even when reset/product calls time out; and the source-assisted workbook value path must be proven through the live service boundary instead of only through offline replay.
 
 R09J scope - Bounded readiness diagnostics:
@@ -838,12 +838,12 @@ R09J scope - Bounded readiness diagnostics:
 ```text
 QA `feat/reset-r09j-bounded-readiness-diagnostics`; verify the branch contains only R09J scope; rerun `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`, `git diff --check`, and inspect `audits/raw/reset-2026-05-10/r09j/missing-config-probe/health.http`, `health.json`, `readiness.http`, and `readiness.json`; confirm `/health` remains process-only, `/readiness` returns within the configured budget with process/config/database/OpenAI/Tavily/sandbox checks reported separately, missing envs surface as `misconfigured` with redacted env presence, dependency slowness becomes bounded `unavailable` instead of hanging, and no lead-quality, prompt/model, search, workbook/export, UI, persistence, dogfood, RG4/R10-R12, Prompt C, or `main` promotion landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R09J `merged_to_rebuild_branch`, and hand off Prompt A for R09K only.
 ```
-Next after R09J Prompt B merge: unlock R09K only. Do not run Prompt C after R09J.
+Next after R09K Prompt B merge: unlock R09L only. Do not run Prompt C until R09J, R09K, and R09L all pass Prompt B and merge.
 
 R09K scope - Live runner timeout containment:
 
 - Branch: `feat/reset-r09k-live-runner-timeout-containment`.
-- Status: `blocked` until R09J passes Prompt B and merges.
+- Status: `implemented_pending_qa`.
 - Goal: make the live benchmark runner finish with complete artifacts even when sandbox reset, readiness, health-after-timeout, or product-path requests time out.
 - Requirements:
   - Wrap sandbox reset, startup checks, readiness checks, benchmark requests, and health-after-timeout probes in explicit timeouts with structured error handling.
@@ -859,6 +859,25 @@ R09K scope - Live runner timeout containment:
   - Add or update tests that simulate sandbox reset timeout, product request timeout, and readiness timeout while still producing complete artifacts.
   - Save timeout-containment artifacts under `audits/raw/reset-2026-05-10/r09k/`.
   - `git diff --check`
+
+Prompt A change summary:
+
+- Added explicit timeout containment for startup readiness, sandbox reset, product requests, and health-after-timeout probes so the live runner always writes a quality summary and case artifacts instead of aborting on `httpx.ReadTimeout`.
+- Labeled readiness request timeouts as `readiness_timeout`, sandbox reset timeouts as `sandbox_reset_timeout`, product request timeouts as `product_request_timeout`, and failed post-timeout health recovery probes as `runner_timeout`.
+- Kept runtime failures separate from product-value failures by writing partial artifacts with empty leads plus structured startup/sandbox-reset/post-timeout probe payloads, while preserving the existing quality report semantics for successful or privacy-refusal cases.
+
+Verification run by Prompt A:
+
+- `cd packages/core && uv run pytest tests/test_live_benchmark_runner.py -q` (`8 passed`)
+- `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`49 passed`, existing datetime deprecation warnings)
+- `git diff --check` (passed)
+- Timeout-containment artifacts saved under `audits/raw/reset-2026-05-10/r09k/` in the `api-startup-failed`, `readiness-timeout`, `sandbox-reset-timeout`, `product-request-timeout`, and `runner-timeout-probe` subdirectories.
+
+Exact Prompt B handoff:
+
+```text
+QA `feat/reset-r09k-live-runner-timeout-containment`; verify the branch contains only R09K scope; rerun `cd packages/core && uv run pytest tests/test_live_benchmark_runner.py -q`, `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`, and `git diff --check`; inspect the timeout-containment artifacts under `audits/raw/reset-2026-05-10/r09k/` (including the `api-startup-failed`, `readiness-timeout`, `sandbox-reset-timeout`, `product-request-timeout`, and `runner-timeout-probe` subdirectories); confirm `/health` still answers independently, readiness timeouts are labeled `readiness_timeout`, sandbox reset timeouts are labeled `sandbox_reset_timeout`, product request timeouts are labeled `product_request_timeout`, post-timeout health probes report `runner_timeout` when they time out, and every timeout case keeps a complete artifact row plus quality summary; and confirm no lead-quality, prompt/model, search, workbook/export, UI, persistence, dogfood, RG4/R10-R12, Prompt C, or `main` promotion landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R09K `merged_to_rebuild_branch`, and hand off Prompt A for R09L only.
+```
 
 R09L scope - Live source-assisted product proof:
 

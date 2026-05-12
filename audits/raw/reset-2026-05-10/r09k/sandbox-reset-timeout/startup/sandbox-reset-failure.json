@@ -1,0 +1,8 @@
+{
+  "api_base_url": "http://white-rabbit.test",
+  "checked_at": "2026-05-12T00:08:46.431108Z",
+  "error": "ReadTimeout: sandbox reset timed out",
+  "error_code": "sandbox_reset_timeout",
+  "message": "Sandbox reset did not finish before 0.2 second timeout.",
+  "timeout_seconds": 0.2
+}

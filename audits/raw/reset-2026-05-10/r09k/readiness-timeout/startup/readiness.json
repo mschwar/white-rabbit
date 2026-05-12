@@ -1,0 +1,9 @@
+{
+  "api_base_url": "http://white-rabbit.test",
+  "checked_at": "2026-05-12T00:08:46.429130Z",
+  "error": "ReadTimeout: readiness timed out",
+  "error_code": "readiness_timeout",
+  "message": "Readiness did not finish before 0.2 second timeout.",
+  "status": "unavailable",
+  "timeout_seconds": 0.2
+}

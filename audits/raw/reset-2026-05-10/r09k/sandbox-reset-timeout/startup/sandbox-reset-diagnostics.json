@@ -1,0 +1,12 @@
+{
+  "api_base_url": "http://white-rabbit.test",
+  "attempts": [],
+  "diagnostics_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/sandbox-reset-timeout/startup/sandbox-reset-diagnostics.json",
+  "elapsed_seconds": 0.0,
+  "error": "ReadTimeout: sandbox reset timed out",
+  "error_code": "sandbox_reset_timeout",
+  "failure_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/sandbox-reset-timeout/startup/sandbox-reset-failure.json",
+  "reset_ok": false,
+  "reset_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/sandbox-reset-timeout/startup/sandbox-reset.json",
+  "reset_status_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/sandbox-reset-timeout/startup/sandbox-reset.http"
+}

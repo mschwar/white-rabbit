@@ -1,0 +1,12 @@
+{
+  "api_base_url": "http://white-rabbit.test",
+  "checked_at": "2026-05-12T00:08:46.437170Z",
+  "elapsed_seconds": 0.0,
+  "error": "ReadTimeout: post-timeout health probe timed out",
+  "error_code": "runner_timeout",
+  "health_ok": false,
+  "probe_id": "healthcare-it-phoenix",
+  "probe_label": "product-request",
+  "status_code": 0,
+  "timeout_seconds": 0.2
+}
