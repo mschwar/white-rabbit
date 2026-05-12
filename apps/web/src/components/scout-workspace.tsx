@@ -484,7 +484,7 @@ function ScoutEvidenceDrawer({
 
   async function refreshCorrectionQueueExport(prefixMessage?: string) {
     if (!runId) {
-      setCorrectionMessage('Run Full to export the correction queue.');
+      setCorrectionMessage('Run a saved search to export the correction queue.');
       return;
     }
 
@@ -514,7 +514,7 @@ function ScoutEvidenceDrawer({
     event.preventDefault();
 
     if (!currentRow.id || !runId || !query) {
-      setCorrectionMessage('Run a Full search first so this correction is tied to a saved run.');
+      setCorrectionMessage('Run a saved search first so this correction is tied to a saved run.');
       return;
     }
 
@@ -649,7 +649,7 @@ function ScoutEvidenceDrawer({
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#60708a]">Review actions</p>
                 <h4 className="mt-2 text-lg font-semibold text-[#0a1226]">Record a field-level correction</h4>
                 <p className="mt-1 text-sm leading-6 text-[#536175]">
-                  Save the operator correction against this Full run, then export the review queue as JSON.
+                  Save the operator correction against this saved run, then export the review queue as JSON.
                 </p>
               </div>
               {runId ? (
@@ -754,7 +754,7 @@ function ScoutEvidenceDrawer({
               </form>
             ) : (
               <p className="mt-4 text-sm leading-6 text-[#536175]">
-                Run Full first so corrections are stored against a saved run and query snapshot.
+                Run a saved search first so corrections are stored against a saved run and query snapshot.
               </p>
             )}
 
