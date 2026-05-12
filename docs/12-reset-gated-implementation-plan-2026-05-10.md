@@ -8,7 +8,7 @@
 **Current reset gate:** RG5 - Sales-First Export And Persistence. RG4 advanced on `audit/reset-rg4-operator-ui`; product remains red until export/persistence and dogfood gates pass.
 **Next Prompt A feature:** `R13 - Sales-first CSV export` is ready on `feat/reset-r13-sales-first-export`.
 **Current Prompt B handoff:** None.
-**Current Prompt C handoff:** Complete. RG4 Prompt C recorded `advance`. Keep R14/RG6/dogfood/main blocked until R13 passes Prompt B and RG5 advances.
+**Current Prompt C handoff:** Complete. RG4 Prompt C recorded `advance`. Keep R14 blocked until R13 passes Prompt B; keep R14A-R14C blocked until their prior RG5 slices merge; keep RG6/dogfood/main blocked until RG5 advances.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -211,7 +211,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG2 | Search Coverage And Source Collection | R04-R06 | gate_advanced | `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md` |
 | RG3 | Validation, Conflict, And Gate Semantics | R07-R09L | gate_advanced | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
 | RG4 | Sales-First Operator UI | R10-R12 | gate_advanced | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
-| RG5 | Sales-First Export And Persistence | R13-R14 | in_progress | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
+| RG5 | Sales-First Export And Persistence | R13-R14C | in_progress | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
 | RG6 | Dogfood / Kill Decision | R15 | blocked | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md` |
 
 ## Reset Feature Table
@@ -245,6 +245,9 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R12 | Evidence dossier review mode | merged_to_rebuild_branch | `feat/reset-r12-evidence-dossier-review` | browser |
 | R13 | Sales-first CSV export | ready | `feat/reset-r13-sales-first-export` | browser + CSV |
 | R14 | Persistence, DB readback, and quality report tie-out | blocked | `feat/reset-r14-persistence-quality-tieout` | API + DB |
+| R14A | Image overhaul and approved brand asset cleanup | blocked | `feat/reset-r14a-image-overhaul-brand-assets` | browser + visual |
+| R14B | UI/UX consistency pass | blocked | `feat/reset-r14b-ui-ux-consistency-pass` | browser + screenshots |
+| R14C | Deployment readiness and operator-use smoke | blocked | `feat/reset-r14c-deployment-readiness-smoke` | deployment + API/web smoke |
 | R15 | Internal correction review and dogfood decision packet | blocked | `feat/reset-r15-dogfood-decision-packet` | browser + docs |
 
 ## RG0 - W5 Hold And Control Reset
@@ -1135,9 +1138,14 @@ Features:
 
 - R13 - Sales-first CSV export.
 - R14 - Persistence, DB readback, and quality report tie-out.
+- R14A - Image overhaul and approved brand asset cleanup.
+- R14B - UI/UX consistency pass.
+- R14C - Deployment readiness and operator-use smoke.
+
+Execution order: R13 -> R14 -> R14A -> R14B -> R14C -> RG5 Prompt C.
 
 Goal:
-Make export a sales artifact first and audit artifact second.
+Make export a sales artifact first, persistence trustworthy, and the pre-dogfood operator surface visually consistent and deployable.
 
 Implementation requirements:
 
@@ -1147,6 +1155,9 @@ Implementation requirements:
 - Validation context remains in the export.
 - DB readback matches UI rows and CSV rows.
 - Export can include all tiers while sorting high-trust usable rows first and keeping non-actionable reasons visible.
+- Image overhaul uses only approved or clearly placeholder brand assets; no ad hoc CSS rabbit, generated mascot, or decorative image that weakens evidence-first trust.
+- UI/UX consistency pass fixes visual drift from `DESIGN.md`, the approved RG4 mockups, and known RG4 caveats, including mobile horizontal overflow.
+- Deployment readiness smoke proves the intended operator-use deployment path, environment wiring, API health, and query-to-export surface without promoting `main` unless Matt or a gate explicitly authorizes it.
 
 Required feature verification:
 
@@ -1157,6 +1168,13 @@ cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q
 git diff --check
 ```
 
+Additional R14A-R14C verification:
+
+- Browser QA desktop and mobile after each UI-affecting slice.
+- Screenshot the primary empty, results, evidence, export, and low-signal states after the consistency pass.
+- Verify the stable operator URL or preview deployment can reach the app, API health, and export path with required environment variables.
+- Confirm no internal prompt/gate/sprint language, unapproved mascot imagery, Scout/Full mode chrome, or audit-first export ordering reappears.
+
 RG5 full evaluation/audit:
 
 - Run Full/persisted query path through the UI.
@@ -1166,6 +1184,7 @@ RG5 full evaluation/audit:
 - Confirm broad benchmark exports do not contain only 3-4 rows unless the gate report proves the market is smaller.
 - Confirm high-volume exports preserve tier and `primary_filter_reason`.
 - Confirm first 10 CSV columns are sales-useful without audit metadata.
+- Confirm image, visual consistency, mobile overflow, and deployment-smoke caveats are closed or explicitly held before R15 dogfood work unlocks.
 
 Advance criteria:
 
