@@ -70,7 +70,7 @@ Prior accepted gates:
 
 **Production ops item resolved:** Vercel Production now has `WR_API_INTERNAL_TOKEN`; production was redeployed, and authenticated `/api/scout` no longer returns the missing-token 502.
 
-**Production ops item resolved:** GitHub Actions now has `FLY_API_TOKEN`, the production workflow fails instead of silently skipping Fly when the token is absent, the Fly deploy command uses the repo-root `fly.toml`, and `.dockerignore` excludes local venvs/web/docs/audit artifacts from the API build context. This fixes the deployment gap that previously left the web on new `main` while the API stayed on an older Fly release.
+**Production ops item resolved:** GitHub Actions now has `FLY_API_TOKEN`, the production workflow fails instead of silently skipping Fly when the token is absent, the Fly deploy command uses the repo-root `fly.toml`, and `.dockerignore` excludes local venvs/web/docs/audit artifacts from the API build context. `apps/api/uv.lock` and `packages/core/uv.lock` are tracked for reproducible Fly/GitHub Actions builds; do not remove them while the API Dockerfile uses `uv sync --frozen`. This fixes the deployment gap that previously left the web on new `main` while the API stayed on an older Fly release.
 
 **Production URL note:** Use the stable production alias `https://white-rabbit-ten.vercel.app/`, not one-off deployment URLs like `https://white-rabbit-7kw7lh6ri-matts-projects-06539e54.vercel.app/`. Vercel deployment URLs are immutable snapshots; `7kw7lh6ri` was created before `WR_API_INTERNAL_TOKEN` existed in Production and can continue to show the old missing-token error even after the alias is fixed.
 
