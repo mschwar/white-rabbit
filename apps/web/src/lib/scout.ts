@@ -63,8 +63,37 @@ export type FullResponse = {
   recipe_id: string | null;
   leads: ScoutResultRow[];
   metrics: ScoutRunMetrics;
+  persistence_readback?: PersistenceReadback | null;
   query_guardrail?: QueryGuardrailResult | null;
   sandbox_usage?: SandboxUsage | null;
+};
+
+export type PersistenceReadback = {
+  run_id: string;
+  recipe_id: string | null;
+  response_row_count: number;
+  persisted_lead_count: number;
+  db_readback_row_count: number;
+  exportable_row_count: number;
+  row_count_matches: boolean;
+  first_response_lead_ids: string[];
+  first_db_lead_ids: string[];
+  tier_distribution: Partial<Record<OutputTier, number>>;
+  candidate_category_distribution: Record<string, number>;
+};
+
+export type PersistedRunLeadRow = {
+  id: string;
+  rank: number;
+  data: ScoutResultRow;
+};
+
+export type PersistedRunLeadsResponse = {
+  run_id: string;
+  row_count: number;
+  rows: PersistedRunLeadRow[];
+  tier_distribution: Partial<Record<OutputTier, number>>;
+  candidate_category_distribution: Record<string, number>;
 };
 
 export type RecipeItem = {
@@ -223,6 +252,9 @@ export type SandboxUsage = {
 export type ScoutResponse = {
   leads: ScoutResultRow[];
   metrics: ScoutRunMetrics;
+  run_id?: string | null;
+  recipe_id?: string | null;
+  persistence_readback?: PersistenceReadback | null;
   query_guardrail?: QueryGuardrailResult | null;
   sandbox_usage?: SandboxUsage | null;
 };
@@ -532,6 +564,14 @@ export async function fetchRunCorrections(runId: string): Promise<LeadCorrection
   const response = await fetch(`/api/runs/${runId}/corrections`);
   if (!response.ok) {
     throw new Error('Failed to fetch correction queue.');
+  }
+  return response.json();
+}
+
+export async function fetchPersistedRunLeads(runId: string): Promise<PersistedRunLeadsResponse> {
+  const response = await fetch(`/api/runs/${runId}/leads`);
+  if (!response.ok) {
+    throw new Error('Failed to fetch persisted run lead readback.');
   }
   return response.json();
 }

@@ -1,16 +1,16 @@
 # STATUS
 
-**Last updated:** 2026-05-12 by Codex prompt-b-r13-sales-first-export
-**Branch:** rebuild/validated-leads-loop
-**Current sprint:** R13 sales-first CSV export passed Prompt B QA and merged to `rebuild/validated-leads-loop`. The primary operator path now exposes a CSV export only after rows exist, uses sales-first CSV columns, sorts READY rows first, and preserves validation/source/run context for non-actionable rows. R14 persistence, DB readback, and quality report tie-out is the single ready Prompt A feature. Product remains red. R14A-R14C, RG6, dogfood, backend/core changes outside assigned slices, and any `main` promotion remain blocked.
+**Last updated:** 2026-05-12 by Codex prompt-a-r14-persistence-quality-tieout
+**Branch:** feat/reset-r14-persistence-quality-tieout
+**Current sprint:** R14 persistence, DB readback, and quality report tie-out is implemented on `feat/reset-r14-persistence-quality-tieout` and waiting for Prompt B QA. Scout and Full now persist recipe/run/lead rows, inject persisted lead IDs back into responses, return a persistence readback report, and expose protected run-lead readback through API/web proxy routes. R14A-R14C, RG6, dogfood, backend/core changes outside assigned slices, and any `main` promotion remain blocked.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt A for `R14 - Persistence, DB readback, and quality report tie-out` on `feat/reset-r14-persistence-quality-tieout`. Do not promote or sync `main`.
+**Next pointer:** Prompt B QA for `R14 - Persistence, DB readback, and quality report tie-out` on `feat/reset-r14-persistence-quality-tieout`. Do not promote or sync `main`.
 
-**Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It must agree with any Prompt A/B/C request before an agent edits files. It currently allows only Prompt A for `R14 - Persistence, DB readback, and quality report tie-out` on `feat/reset-r14-persistence-quality-tieout`.
+**Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It must agree with any Prompt A/B/C request before an agent edits files. It currently allows only Prompt B QA for `R14 - Persistence, DB readback, and quality report tie-out` on `feat/reset-r14-persistence-quality-tieout`.
 
 **Design direction handoff:** `DESIGN.md` is now the RG4 visual direction authority. The approved refreshed RG4 mockup/design preflight lives under `docs/mockups/rg4-refreshed-preflight-2026-05-12/`, with six rendered screens and README notes. Production UI work must use this artifact as the approved visual/product direction unless Matt approves a later change.
 
@@ -73,6 +73,23 @@ Prior accepted gates:
 **Production URL note:** Use the stable production alias `https://white-rabbit-ten.vercel.app/`, not one-off deployment URLs like `https://white-rabbit-7kw7lh6ri-matts-projects-06539e54.vercel.app/`. Vercel deployment URLs are immutable snapshots; `7kw7lh6ri` was created before `WR_API_INTERNAL_TOKEN` existed in Production and can continue to show the old missing-token error even after the alias is fixed.
 
 **Latest handoff:**
+
+Feature: R14 - Persistence, DB readback, and quality report tie-out
+Branch: `feat/reset-r14-persistence-quality-tieout`
+Status: `implemented_pending_qa`
+Why it exists: RG5 needs export/persistence trust before dogfood. R13 made CSV usable; R14 makes the API persist the same run/lead rows, read them back from the database, and report whether response, DB, and export-facing row counts tie out.
+Scope: Implement only API/DB persistence and readback support for Scout/Full. Preserve sales-first CSV/export behavior and keep R14A-R14C, RG6, dogfood, and main promotion blocked.
+Non-goals: No image overhaul, UI/UX consistency pass, deployment smoke, browser visual changes, source-assisted compiler work, benchmark changes, dogfood packet, RG5 Prompt C, or `main` promotion.
+What changed: `/scout` now creates recipe/run rows just like `/full`, saves returned leads, injects persisted lead IDs into response rows, and returns `run_id`, `recipe_id`, and a `persistence_readback` report. `/full` now uses the same readback helper and returns the same quality report. Added protected `GET /runs/{run_id}/leads` plus a web proxy at `/api/runs/[run_id]/leads` so Prompt B/RG5 can independently read persisted lead rows. Web types now model the optional persistence report and persisted-run readback response.
+Required verification:
+- `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest -q` (`53 passed`, existing datetime deprecation warnings)
+- `cd apps/web && npm test` (`13` files, `30` tests passed)
+- `cd apps/web && npm run build` (passed; existing Next.js warnings about workspace-root inference and deprecated `middleware` naming)
+- `git diff --check` (passed)
+Exact Prompt B handoff: QA `feat/reset-r14-persistence-quality-tieout`; verify the branch contains only R14 API/DB persistence/readback scope; rerun `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest -q`, `cd apps/web && npm test`, `cd apps/web && npm run build`, and `git diff --check`; confirm `/scout` and `/full` both persist recipe/run/lead rows, return persisted lead IDs, and include `persistence_readback`; confirm protected `GET /runs/{run_id}/leads` and the web proxy return stored rows and tier/category distributions; confirm response/readback row counts match; confirm no R14A image overhaul, R14B visual consistency, R14C deployment smoke, RG6 dogfood, source/compiler/benchmark scope, or `main` promotion landed. If QA passes, merge only to `rebuild/validated-leads-loop`, mark R14 `merged_to_rebuild_branch`, mark R14A `ready`, and keep R14B/R14C/RG6/dogfood/main blocked.
+Open questions: None.
+
+Previous handoff:
 
 Feature: R13 - Sales-first CSV export
 Branch: `feat/reset-r13-sales-first-export`

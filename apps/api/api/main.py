@@ -491,9 +491,26 @@ class FullRequest(BaseModel):
     recipe_name: Optional[str] = None
 
 
+class PersistenceReadbackOut(BaseModel):
+    run_id: UUID
+    recipe_id: UUID | None = None
+    response_row_count: int
+    persisted_lead_count: int
+    db_readback_row_count: int
+    exportable_row_count: int
+    row_count_matches: bool
+    first_response_lead_ids: list[str]
+    first_db_lead_ids: list[str]
+    tier_distribution: dict[str, int]
+    candidate_category_distribution: dict[str, int]
+
+
 class ScoutResponse(BaseModel):
     leads: list[Candidate]
     metrics: RunMetrics
+    run_id: UUID | None = None
+    recipe_id: UUID | None = None
+    persistence_readback: PersistenceReadbackOut | None = None
     query_guardrail: QueryGuardrailResult | None = None
     sandbox_usage: SandboxUsageOut | None = None
 
@@ -503,6 +520,7 @@ class FullResponse(BaseModel):
     leads: list[Candidate]
     metrics: RunMetrics
     recipe_id: UUID | None = None
+    persistence_readback: PersistenceReadbackOut | None = None
     query_guardrail: QueryGuardrailResult | None = None
     sandbox_usage: SandboxUsageOut | None = None
 
@@ -576,6 +594,20 @@ class RecipeRunOut(BaseModel):
     lead_count: int
 
     model_config = {"from_attributes": True}
+
+
+class PersistedLeadRowOut(BaseModel):
+    id: UUID
+    rank: int
+    data: dict[str, Any]
+
+
+class PersistedRunLeadsOut(BaseModel):
+    run_id: UUID
+    row_count: int
+    rows: list[PersistedLeadRowOut]
+    tier_distribution: dict[str, int]
+    candidate_category_distribution: dict[str, int]
 
 
 class RecipeScoreboardOut(BaseModel):
@@ -700,6 +732,71 @@ def _query_guardrail_or_422(query: str) -> QueryGuardrailResult:
     return guardrail
 
 
+def _distribution_from_rows(rows: list[dict[str, Any]], field: str, default: str) -> dict[str, int]:
+    distribution: dict[str, int] = {}
+    for row in rows:
+        key = str(row.get(field) or default)
+        distribution[key] = distribution.get(key, 0) + 1
+    return distribution
+
+
+def _persist_run_and_build_readback(
+    session,
+    *,
+    mode: str,
+    query: str,
+    filters: dict[str, Any] | None,
+    leads: list[Candidate],
+    metrics: RunMetrics,
+    recipe_name: str | None = None,
+) -> tuple[UUID, UUID, PersistenceReadbackOut]:
+    recipe = create_recipe(
+        session,
+        name=recipe_name or query,
+        query=query,
+        filters=filters,
+    )
+    run = create_recipe_run(
+        session,
+        mode=mode,
+        recipe_id=recipe.id,
+        lead_count=len(leads),
+        api_cost_breakdown={
+            "input_tokens": metrics.input_tokens,
+            "output_tokens": metrics.output_tokens,
+            "tavily_searches": metrics.tavily_searches,
+            "openai_web_searches": metrics.openai_web_searches,
+            "estimated_cost_usd": metrics.estimated_cost_usd,
+        },
+    )
+    recipe_id = recipe.id
+    run_id = run.id
+    lead_dicts = [lead.model_dump() for lead in leads]
+    db_leads = save_leads(session, run_id, lead_dicts)
+
+    for lead, db_lead in zip(leads, db_leads):
+        lead.id = str(db_lead.id)
+
+    db_readback = get_leads_for_run(session, run_id)
+    readback_rows = [lead.data or {} for lead in db_readback]
+    first_response_lead_ids = [str(lead.id) for lead in db_leads[:5]]
+    first_db_lead_ids = [str(lead.id) for lead in db_readback[:5]]
+    readback = PersistenceReadbackOut(
+        run_id=run_id,
+        recipe_id=recipe_id,
+        response_row_count=len(leads),
+        persisted_lead_count=len(db_leads),
+        db_readback_row_count=len(db_readback),
+        exportable_row_count=len(readback_rows),
+        row_count_matches=len(leads) == len(db_leads) == len(db_readback),
+        first_response_lead_ids=first_response_lead_ids,
+        first_db_lead_ids=first_db_lead_ids,
+        tier_distribution=_distribution_from_rows(readback_rows, "tier", "review"),
+        candidate_category_distribution=_distribution_from_rows(readback_rows, "candidate_category", "person_lead"),
+    )
+    return recipe_id, run_id, readback
+
+
 @app.get("/health")
 async def health_check():
     return {"status": "ok", "service": "white-rabbit-api"}
@@ -724,10 +821,21 @@ async def run_scout(request: ScoutRequest, _: ProtectedApiAccess):
         )
         with get_db_session() as session:
             record_sandbox_rows(session, len(leads))
+            recipe_id, run_id, persistence_readback = _persist_run_and_build_readback(
+                session,
+                mode="scout",
+                query=request.query,
+                filters=request.filters,
+                leads=leads,
+                metrics=metrics,
+            )
             sandbox_usage = _sandbox_usage_out(session)
         return ScoutResponse(
             leads=leads,
             metrics=metrics,
+            run_id=run_id,
+            recipe_id=recipe_id,
+            persistence_readback=persistence_readback,
             query_guardrail=guardrail if guardrail.status != 'clear' else None,
             sandbox_usage=sandbox_usage,
         )
@@ -789,9 +897,6 @@ async def run_full(request: FullRequest, _: ProtectedApiAccess):
             max_results=SCOUT_BROAD_MAX_RESULTS if aggressive_full else None,
             aggressive_breadth=aggressive_full,
         )
-        with get_db_session() as session:
-            record_sandbox_rows(session, len(leads))
-            sandbox_usage = _sandbox_usage_out(session)
     except Exception as exc:
         import logging
         if _is_orchestrator_error(exc):
@@ -801,36 +906,24 @@ async def run_full(request: FullRequest, _: ProtectedApiAccess):
         raise HTTPException(status_code=500, detail=_internal_error_response(exc))
 
     with get_db_session() as session:
-        recipe = create_recipe(
-            session,
-            name=request.recipe_name or request.query,
-            query=request.query,
-            filters=request.filters,
-        )
-        run = create_recipe_run(
+        record_sandbox_rows(session, len(leads))
+        recipe_id, run_id, persistence_readback = _persist_run_and_build_readback(
             session,
             mode="full",
-            recipe_id=recipe.id,
-            lead_count=len(leads),
-            api_cost_breakdown={
-                "input_tokens": metrics.input_tokens,
-                "output_tokens": metrics.output_tokens,
-                "tavily_searches": metrics.tavily_searches,
-                "estimated_cost_usd": metrics.estimated_cost_usd,
-            },
-        )
-        lead_dicts = [lead.model_dump() for lead in leads]
-        db_leads = save_leads(session, run.id, lead_dicts)
-
-        # Inject persisted lead IDs back into the response leads
-        for lead, db_lead in zip(leads, db_leads):
-            lead.id = str(db_lead.id)
-
-        return FullResponse(
-            run_id=run.id,
+            query=request.query,
+            filters=request.filters,
             leads=leads,
             metrics=metrics,
-            recipe_id=recipe.id,
+            recipe_name=request.recipe_name,
+        )
+        sandbox_usage = _sandbox_usage_out(session)
+
+        return FullResponse(
+            run_id=run_id,
+            leads=leads,
+            metrics=metrics,
+            recipe_id=recipe_id,
+            persistence_readback=persistence_readback,
             query_guardrail=guardrail if guardrail.status != 'clear' else None,
             sandbox_usage=sandbox_usage,
         )
@@ -965,6 +1058,29 @@ async def run_corrections(run_id: str, _: ProtectedApiAccess):
             )
             for correction in corrections
         ]
+
+
+@app.get("/runs/{run_id}/leads", response_model=PersistedRunLeadsOut)
+async def run_leads(run_id: UUID, _: ProtectedApiAccess):
+    with get_db_session() as session:
+        db_leads = get_leads_for_run(session, run_id)
+
+    rows = [
+        PersistedLeadRowOut(
+            id=lead.id,
+            rank=lead.rank,
+            data=lead.data or {},
+        )
+        for lead in db_leads
+    ]
+    row_data = [row.data for row in rows]
+    return PersistedRunLeadsOut(
+        run_id=run_id,
+        row_count=len(rows),
+        rows=rows,
+        tier_distribution=_distribution_from_rows(row_data, "tier", "review"),
+        candidate_category_distribution=_distribution_from_rows(row_data, "candidate_category", "person_lead"),
+    )
 
 
 @app.post("/runs/{run_id}/close")

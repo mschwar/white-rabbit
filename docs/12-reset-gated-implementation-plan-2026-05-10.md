@@ -6,8 +6,8 @@
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
 **Current reset gate:** RG5 - Sales-First Export And Persistence. RG4 advanced on `audit/reset-rg4-operator-ui`; product remains red until export/persistence and dogfood gates pass.
-**Next Prompt A feature:** `R14 - Persistence, DB readback, and quality report tie-out` on `feat/reset-r14-persistence-quality-tieout`.
-**Current Prompt B handoff:** None. R13 Prompt B QA passed and merged to `rebuild/validated-leads-loop`.
+**Next Prompt A feature:** None. R14 is implemented pending Prompt B QA; R14A stays blocked until R14 passes Prompt B and merges.
+**Current Prompt B handoff:** `R14 - Persistence, DB readback, and quality report tie-out` on `feat/reset-r14-persistence-quality-tieout`.
 **Current Prompt C handoff:** None. RG5 is not ready for Prompt C until R14-R14C pass Prompt B and merge. Keep R14A-R14C blocked until their prior RG5 slices merge; keep RG6/dogfood/main blocked until RG5 advances.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
@@ -248,7 +248,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R11 | Compact CRM-first results table | merged_to_rebuild_branch | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | merged_to_rebuild_branch | `feat/reset-r12-evidence-dossier-review` | browser |
 | R13 | Sales-first CSV export | merged_to_rebuild_branch | `feat/reset-r13-sales-first-export` | browser + CSV |
-| R14 | Persistence, DB readback, and quality report tie-out | ready | `feat/reset-r14-persistence-quality-tieout` | API + DB |
+| R14 | Persistence, DB readback, and quality report tie-out | implemented_pending_qa | `feat/reset-r14-persistence-quality-tieout` | API + DB |
 | R14A | Image overhaul and approved brand asset cleanup | blocked | `feat/reset-r14a-image-overhaul-brand-assets` | browser + visual |
 | R14B | UI/UX consistency pass | blocked | `feat/reset-r14b-ui-ux-consistency-pass` | browser + screenshots |
 | R14C | Deployment readiness and operator-use smoke | blocked | `feat/reset-r14c-deployment-readiness-smoke` | deployment + API/web smoke |
