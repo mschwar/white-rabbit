@@ -1,6 +1,6 @@
 # STATUS
 
-**Last updated:** 2026-05-12 by Codex r14-polish-slices
+**Last updated:** 2026-05-12 by Codex prompt-b-r00-w5-hold-control
 **Branch:** rebuild/validated-leads-loop
 **Current sprint:** RG4 Prompt C completed on `audit/reset-rg4-operator-ui` with decision `advance`. R10-R12 are merged, web tests/build pass, and the primary UI supports query -> 51-row categorized review -> evidence dossier without Scout/Full, quota, export, or implementation chrome. Product remains red. R13 sales-first CSV export is now the next ready feature; R14, R14A-R14C, RG6, dogfood, backend/core changes outside assigned slices, and any `main` promotion remain blocked.
 
@@ -13,6 +13,8 @@
 **Design direction handoff:** `DESIGN.md` is now the RG4 visual direction authority. The approved refreshed RG4 mockup/design preflight lives under `docs/mockups/rg4-refreshed-preflight-2026-05-12/`, with six rendered screens and README notes. Production UI work must use this artifact as the approved visual/product direction unless Matt approves a later change.
 
 **Open question:** If these become production brand assets, replace the upscaled raster crops with a clean vector or native high-resolution source when available.
+
+**Session note:** Prompt B re-verified the historical `feat/reset-r00-w5-hold-control` QA slice on 2026-05-12. The target branch is already contained in `rebuild/validated-leads-loop`, `git diff --check` passed, the required docs/QA grep matched the reset control docs and W5 evidence, `git merge --ff-only origin/feat/reset-r00-w5-hold-control` reported `Already up to date`, and `git push origin rebuild/validated-leads-loop` reported `Everything up-to-date`. No product code changed.
 
 ---
 
