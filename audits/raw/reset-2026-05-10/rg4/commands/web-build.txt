@@ -1,0 +1,54 @@
+
+> web@0.1.0 build
+> next build
+
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/mschwar/package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /Users/mschwar/Documents/white-rabbit/apps/web/package-lock.json
+
+▲ Next.js 16.2.4 (Turbopack)
+- Environments: .env.local, .env.production
+
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+  Creating an optimized production build ...
+✓ Compiled successfully in 1409ms
+  Running TypeScript ...
+  Finished TypeScript in 1743ms ...
+  Collecting page data using 7 workers ...
+  Generating static pages using 7 workers (0/11) ...
+  Generating static pages using 7 workers (2/11) 
+  Generating static pages using 7 workers (5/11) 
+  Generating static pages using 7 workers (8/11) 
+✓ Generating static pages using 7 workers (11/11) in 63ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ƒ /
+├ ○ /_not-found
+├ ƒ /api/batch
+├ ƒ /api/full
+├ ƒ /api/leads/[lead_id]/corrections
+├ ƒ /api/leads/[lead_id]/feedback
+├ ƒ /api/login
+├ ƒ /api/logout
+├ ƒ /api/recipes
+├ ƒ /api/recipes/[recipe_id]/runs
+├ ƒ /api/recipes/[recipe_id]/scoreboard
+├ ƒ /api/runs/[run_id]/close
+├ ƒ /api/runs/[run_id]/corrections
+├ ƒ /api/sandbox
+├ ƒ /api/scout
+├ ƒ /batch
+├ ƒ /login
+├ ƒ /recipes
+└ ƒ /scout
+
+
+ƒ Proxy (Middleware)
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

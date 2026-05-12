@@ -5,10 +5,10 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Operator-use branch:** `main`, explicitly promoted from `rebuild/validated-leads-loop` by ADR-010 for Thomas/Lee internal use.
 **Current product gate:** Red.
-**Current reset gate:** RG4 - Sales-First Operator UI implementation. RG3 advanced on the post-R09L Prompt C audit after the live source-assisted proof reproduced the April New Mexico workbook pattern through the protected API boundary. Matt approved the refreshed RG4 mockups at `docs/mockups/rg4-refreshed-preflight-2026-05-12/`. Product remains red.
-**Next Prompt A feature:** None. `R12 - Evidence dossier review mode` is `merged_to_rebuild_branch` on `feat/reset-r12-evidence-dossier-review`.
-**Current Prompt B handoff:** Complete. R12 passed QA, the report was written, and the branch merged only to `rebuild/validated-leads-loop`.
-**Current Prompt C handoff:** RG4 Prompt C audit is now valid on the merged R10-R12 state. Keep RG5/RG6/export/dogfood/main blocked until that audit records its decision.
+**Current reset gate:** RG5 - Sales-First Export And Persistence. RG4 advanced on `audit/reset-rg4-operator-ui`; product remains red until export/persistence and dogfood gates pass.
+**Next Prompt A feature:** `R13 - Sales-first CSV export` is ready on `feat/reset-r13-sales-first-export`.
+**Current Prompt B handoff:** None.
+**Current Prompt C handoff:** Complete. RG4 Prompt C recorded `advance`. Keep R14/RG6/dogfood/main blocked until R13 passes Prompt B and RG5 advances.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -210,8 +210,8 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG1 | Operator Benchmark Harness | R01-R03 | gate_advanced | `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md` |
 | RG2 | Search Coverage And Source Collection | R04-R06 | gate_advanced | `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md` |
 | RG3 | Validation, Conflict, And Gate Semantics | R07-R09L | gate_advanced | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
-| RG4 | Sales-First Operator UI | R10-R12 | in_progress | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
-| RG5 | Sales-First Export And Persistence | R13-R14 | blocked | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
+| RG4 | Sales-First Operator UI | R10-R12 | gate_advanced | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
+| RG5 | Sales-First Export And Persistence | R13-R14 | in_progress | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
 | RG6 | Dogfood / Kill Decision | R15 | blocked | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md` |
 
 ## Reset Feature Table
@@ -243,7 +243,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R10 | Primary search workspace simplification | merged_to_rebuild_branch | `feat/reset-r10-primary-search-ui` | browser |
 | R11 | Compact CRM-first results table | merged_to_rebuild_branch | `feat/reset-r11-crm-results-table` | browser |
 | R12 | Evidence dossier review mode | merged_to_rebuild_branch | `feat/reset-r12-evidence-dossier-review` | browser |
-| R13 | Sales-first CSV export | blocked | `feat/reset-r13-sales-first-export` | browser + CSV |
+| R13 | Sales-first CSV export | ready | `feat/reset-r13-sales-first-export` | browser + CSV |
 | R14 | Persistence, DB readback, and quality report tie-out | blocked | `feat/reset-r14-persistence-quality-tieout` | API + DB |
 | R15 | Internal correction review and dogfood decision packet | blocked | `feat/reset-r15-dogfood-decision-packet` | browser + docs |
 
@@ -931,7 +931,17 @@ Approved RG4 mockup preflight:
 - Integrated artifact path: `docs/mockups/rg4-refreshed-preflight-2026-05-12/`.
 - Screens: Empty/Search Start, Loading/Evidence Forming, Results Overview, Evidence Review/Dossier, Low Public Signal, and Mobile Review.
 - Matt approval: accepted on 2026-05-12.
-- Queue consequence: R10 was ready after Matt approval, passed Prompt B QA, and merged to `rebuild/validated-leads-loop`. R11 and R12 are now merged to `rebuild/validated-leads-loop`; RG4 Prompt C is valid on the merged R10-R12 state. RG5, RG6, and `main` promotion remain blocked.
+- Queue consequence: R10 was ready after Matt approval, passed Prompt B QA, and merged to `rebuild/validated-leads-loop`. R11 and R12 are merged to `rebuild/validated-leads-loop`; RG4 Prompt C advanced the gate and R13 is ready. R14, RG6, and `main` promotion remain blocked.
+
+RG4 Prompt C result:
+
+- Branch: `audit/reset-rg4-operator-ui`.
+- Decision: `advance`.
+- Gate report: `audits/gates/reset-2026-05-10/rg4-operator-ui.md`.
+- Raw evidence: `audits/raw/reset-2026-05-10/rg4/`.
+- Reason: R10-R12 are merged; web tests/build pass; a 51-row browser audit shows the primary path can run a query, inspect CRM-first rows, and open evidence without Scout/Full, quota, export, or implementation chrome. Matt clarified that source context should stay backend/internal and not appear as daily-operator UI; ADR-023 records that production decision.
+- Caveat: the 390px browser audit reported minor horizontal overflow (`407px` scroll width). Recheck and fix if needed during R13/R14 browser QA.
+- Queue consequence: RG5 is now in progress. R13 is the single ready Prompt A feature. R14, RG6, dogfood, and `main` promotion remain blocked.
 
 R10 Prompt A implementation handoff:
 

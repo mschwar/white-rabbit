@@ -325,9 +325,22 @@ Only R09J is ready at first. R09K remains blocked until R09J passes Prompt B and
 
 ---
 
+## ADR-023 — Source context stays out of the daily operator UI
+
+**Date:** 2026-05-12
+**Status:** Locked
+
+**Context.** RG4 implementation initially inherited language from the refreshed mockups and R10 handoff that referred to "target plus source context." During RG4 Prompt C, Matt clarified that he intentionally eliminated the user-entered source-context field because it added noise for daily operators. The source-assisted strategy remains valid, but source context should be handled by backend/orchestrator behavior rather than exposed as an extra daily-operator control.
+
+**Decision.** Keep the primary operator UI as one target input and one command. Do not add a user-facing source-context textarea or source-assisted search box to the daily operator path unless Matt explicitly reverses this decision. Backend/orchestrator code may still use source context, source maps, rosters, URLs, seed notes, and source packs internally.
+
+**Consequences.** RG4 Prompt C must not treat absence of a primary-mode source-context input as a blocker. Future RG5/RG6 work should preserve the one-input operator surface and route source-assisted context behind the scenes. Historical mockup/R10 text that mentions source context is superseded by this ADR for the production daily-operator UI.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-023, ADR-024, ...).
+1. Pick the next ADR number (ADR-024, ADR-025, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.

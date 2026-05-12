@@ -1,14 +1,14 @@
 # STATUS
 
-**Last updated:** 2026-05-12 by Codex prompt-b-r12-evidence-dossier-review
+**Last updated:** 2026-05-12 by Codex prompt-c-rg4-operator-ui
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** R12 evidence dossier review mode is `merged_to_rebuild_branch` on `feat/reset-r12-evidence-dossier-review`. Primary mode now uses the approved RG4 results overview/table path: compact query recap, tier counts and chips, CRM-first desktop table, responsive mobile cards, and preserved evidence actions without Scout/Full ceremony or quota/internal-product chrome in the operator path. RG4 Prompt C is now the next valid step. Product remains red. RG5/RG6, export, dogfood, backend/core changes, and any `main` promotion remain blocked until Prompt C audit passes.
+**Current sprint:** RG4 Prompt C completed on `audit/reset-rg4-operator-ui` with decision `advance`. R10-R12 are merged, web tests/build pass, and the primary UI supports query -> 51-row categorized review -> evidence dossier without Scout/Full, quota, export, or implementation chrome. Product remains red. R13 sales-first CSV export is now the next ready feature; R14/RG6, dogfood, backend/core changes, and any `main` promotion remain blocked.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Latest non-reset handoff:** Split `/Users/mschwar/Downloads/Generated Image May 10, 2026 - 10_17PM.jpg` into three 2048x2048 PNG logo assets under `apps/web/public/brand/`: light search mark, dark search mark, and standalone rabbit mark. Added a corrected top-half brand template crop at `docs/brand/assets/white-rabbit-top-half-template-2026-05-10.png` plus a draft design/brand schema at `docs/brand/white-rabbit-draft-design-brand-schema-2026-05-10.md` and `docs/brand/white-rabbit-brand-tokens.draft.json`. No product code, reset gate, or active feature status changed.
 
-**Next pointer:** Prompt C for RG4 on the merged R10-R12 state. Do not promote or sync `main`.
+**Next pointer:** Prompt A for `R13 - Sales-first CSV export` on `feat/reset-r13-sales-first-export`. Do not promote or sync `main`.
 
 **Design direction handoff:** `DESIGN.md` is now the RG4 visual direction authority. The approved refreshed RG4 mockup/design preflight lives under `docs/mockups/rg4-refreshed-preflight-2026-05-12/`, with six rendered screens and README notes. Production UI work must use this artifact as the approved visual/product direction unless Matt approves a later change.
 
@@ -20,21 +20,21 @@
 
 **Operator-use branch:** `main`, promoted from `rebuild/validated-leads-loop` by ADR-010.
 
-**Current gate:** Red with Matt-directed Thomas/Lee internal-use exception. Do not treat the promotion as a public launch or as evidence that the reset gates passed.
+**Current gate:** Red with Matt-directed Thomas/Lee internal-use exception. RG4 advanced, but export/persistence and dogfood remain unproven; do not treat the promotion as a public launch or as evidence that the full reset passed.
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** Prompt C for RG4 on the merged R10-R12 state. `main` stays unchanged unless Matt explicitly calls for an operator-use promotion.
+**Next feature pointer:** Prompt A for `R13 - Sales-first CSV export`. `main` stays unchanged unless Matt explicitly calls for an operator-use promotion.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
 
 **Final product mockup gate:** Approved. `DESIGN.md` is the RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains product-structure reference only. The approved artifact is `docs/mockups/rg4-refreshed-preflight-2026-05-12/index.html` plus screenshots under `docs/mockups/rg4-refreshed-preflight-2026-05-12/screenshots/`.
 
-**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, R09H, R09I, R09J, R09K, R09L, and R10 are merged to `rebuild/validated-leads-loop`. R11 is `merged_to_rebuild_branch` from `feat/reset-r11-crm-results-table`. R12 is `merged_to_rebuild_branch` from `feat/reset-r12-evidence-dossier-review`. RG4 Prompt C is now valid on the merged R10-R12 state.
+**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, R09H, R09I, R09J, R09K, R09L, R10, R11, and R12 are merged to `rebuild/validated-leads-loop`. RG4 Prompt C advanced on the merged R10-R12 state. R13 is ready; R14/RG6/export dogfood/main remain blocked.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
-**Latest gate acceptance:** W4 accepted on 2026-05-10. W5 remains explicitly held on `rebuild/validated-leads-loop`; RG0 advanced on 2026-05-10 as a control-plane reset audit; RG1 advanced on 2026-05-10 as a benchmark-harness audit; RG2 advanced on 2026-05-11 as a search/source coverage audit; RG3 advanced on 2026-05-12 after the post-R09L source-assisted live proof audit. W6 remains blocked until the visible operator loop is proven:
+**Latest gate acceptance:** W4 accepted on 2026-05-10. W5 remains explicitly held on `rebuild/validated-leads-loop`; RG0 advanced on 2026-05-10 as a control-plane reset audit; RG1 advanced on 2026-05-10 as a benchmark-harness audit; RG2 advanced on 2026-05-11 as a search/source coverage audit; RG3 advanced on 2026-05-12 after the post-R09L source-assisted live proof audit; RG4 advanced on 2026-05-12 after the sales-first operator UI audit. W6 remains blocked until the visible operator loop is proven:
 
 - W4 benchmarks and quality reporting: `.gstack/qa-reports/gate-w4-benchmarks-quality.md`
 - W5 operator loop export hold report: `.gstack/qa-reports/gate-w5-operator-loop-export.md`
@@ -42,8 +42,9 @@
 - RG1 benchmark harness gate report: `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`
 - RG2 search/source coverage gate report: `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`
 - RG3 validation semantics advance report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`
+- RG4 operator UI advance report: `audits/gates/reset-2026-05-10/rg4-operator-ui.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is advanced via `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`; and RG4 is in progress with R11 merged and R12 ready.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is advanced via `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`; and RG4 is advanced via `audits/gates/reset-2026-05-10/rg4-operator-ui.md`.
 
 Prior accepted gates:
 
@@ -68,6 +69,19 @@ Prior accepted gates:
 **Production URL note:** Use the stable production alias `https://white-rabbit-ten.vercel.app/`, not one-off deployment URLs like `https://white-rabbit-7kw7lh6ri-matts-projects-06539e54.vercel.app/`. Vercel deployment URLs are immutable snapshots; `7kw7lh6ri` was created before `WR_API_INTERNAL_TOKEN` existed in Production and can continue to show the old missing-token error even after the alias is fixed.
 
 **Latest handoff:**
+
+Gate: RG4 - Sales-First Operator UI
+Branch: `audit/reset-rg4-operator-ui`
+Status: `gate_advanced`
+Decision: `advance`
+Why: R10-R12 are merged, web tests/build pass, and the browser audit proves the primary path can run a target query, inspect a 51-row categorized result set, and open evidence without Scout/Full, quota, export, or implementation chrome. Matt clarified that source context belongs backend/internal and should not confuse daily operators; ADR-023 records that decision.
+What worked: Web Vitest passed (`13` files, `30` tests); `npm run build` passed; the dev browser audit showed target input visible, 51 categorized rows, READY/REVIEW/ORG-ONLY/NOT FOUND visible, evidence dossier/source trail visible, Scout/Full/quota/export controls hidden, and no source-context field by design.
+Residual risks: Local `next start` smoke returned 404/`ERR_HTTP_HEADERS_SENT`; the 390px browser audit reported minor horizontal overflow (`407px` scroll width). Recheck both during R13/R14 browser QA.
+Artifacts: `audits/gates/reset-2026-05-10/rg4-operator-ui.md`; `audits/raw/reset-2026-05-10/rg4/`.
+Next pointer: Prompt A for `R13 - Sales-first CSV export` on `feat/reset-r13-sales-first-export`. R14/RG6/dogfood/main remain blocked.
+Open questions: None.
+
+Previous handoff:
 
 Gate: RG3 - Validation, Conflict, And Gate Semantics
 Branch: `audit/reset-rg3-validation-semantics`
@@ -497,11 +511,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; R00-R10 are merged to `rebuild/validated-leads-loop`; RG0-RG3 have advanced; Matt approved the refreshed RG4 mockups; R11 is `merged_to_rebuild_branch` from `feat/reset-r11-crm-results-table`; R12 is `merged_to_rebuild_branch` from `feat/reset-r12-evidence-dossier-review`; RG4 Prompt C is now valid on the merged R10-R12 state. Export, dogfood, and `main` promotion remain blocked. W5 remains held; W6 remains blocked.
+- Product is in audit-red state. Documentation authority remediation is complete; R00-R12 are merged to `rebuild/validated-leads-loop`; RG0-RG4 have advanced; R13 is the next ready feature for RG5. Export, dogfood, and `main` promotion remain blocked until their gates pass. W5 remains held; W6 remains blocked.
 
 ## Next concrete task
 
-- Run Prompt C for RG4 on the merged R10-R12 state. Do not start export/dogfood work, backend/core changes, or `main` promotion until RG4 Prompt C records its decision.
+- Run Prompt A for `R13 - Sales-first CSV export` on `feat/reset-r13-sales-first-export`. Do not start R14, dogfood work, backend/core changes beyond strict export needs, or `main` promotion.
 
 ## Open questions for Matt
 
