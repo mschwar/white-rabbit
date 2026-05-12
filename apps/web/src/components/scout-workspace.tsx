@@ -151,12 +151,12 @@ function formatEvidenceStatusLabel(status: string): string {
 }
 
 const EVIDENCE_STATUS_TONES: Record<string, string> = {
-  supported: 'border-emerald-400/20 bg-emerald-400/10 text-emerald-100',
-  verified_found: 'border-emerald-400/20 bg-emerald-400/10 text-emerald-100',
-  deduced_with_pattern_evidence: 'border-cyan-400/20 bg-cyan-400/10 text-cyan-100',
-  missing: 'border-amber-400/20 bg-amber-400/10 text-amber-100',
-  unsupported: 'border-zinc-400/20 bg-zinc-400/10 text-zinc-100',
-  failed: 'border-rose-400/20 bg-rose-400/10 text-rose-100',
+  supported: 'border-[#9fd5b5] bg-[#f3fbf6] text-[#1f7a45]',
+  verified_found: 'border-[#9fd5b5] bg-[#f3fbf6] text-[#1f7a45]',
+  deduced_with_pattern_evidence: 'border-[#b7cffd] bg-[#f5f9ff] text-[#0e3a8a]',
+  missing: 'border-[#edc98f] bg-[#fff8ec] text-[#8a5707]',
+  unsupported: 'border-[#cbd5e1] bg-[#f7f9fc] text-[#536175]',
+  failed: 'border-[#e8a6a6] bg-[#fdf0f0] text-[#a13c3c]',
 };
 
 function evidenceTone(status: string): string {
@@ -359,41 +359,41 @@ function renderEvidenceField(
   record: CandidateValidation[keyof CandidateValidation],
 ) {
   return (
-    <article key={label} className={`rounded-3xl border p-4 ${evidenceTone(record.status)}`}>
+    <article key={label} className={`rounded-lg border p-4 ${evidenceTone(record.status)}`}>
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-semibold text-zinc-50">{label}</p>
-          <p className="mt-1 text-xs uppercase tracking-[0.18em] text-current/80">Status</p>
+          <p className="text-sm font-semibold text-[#0a1226]">{label}</p>
+          <p className="mt-1 text-xs uppercase tracking-[0.16em] text-current/80">Status</p>
         </div>
-        <span className="rounded-full border px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.16em]">
+        <span className="rounded-full border border-current/20 bg-white/60 px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.12em]">
           {formatEvidenceStatusLabel(record.status)}
         </span>
       </div>
 
-      <dl className="mt-4 space-y-3 text-sm text-zinc-200">
+      <dl className="mt-4 space-y-3 text-sm text-[#0a1226]">
         <div className="space-y-1">
-          <dt className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">Source URL</dt>
-          <dd className="break-all leading-6 text-zinc-100">
+          <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#60708a]">Source URL</dt>
+          <dd className="break-all leading-6 text-[#0a1226]">
             {record.source_url ? (
-              <a className="text-emerald-300 underline decoration-emerald-300/30 underline-offset-4" href={record.source_url} rel="noreferrer" target="_blank">
+              <a className="text-[#0e3a8a] underline decoration-[#b7cffd] underline-offset-4" href={record.source_url} rel="noreferrer" target="_blank">
                 {record.source_url}
               </a>
             ) : (
-              <span className="text-zinc-500">No source URL captured</span>
+              <span className="text-[#60708a]">No source URL captured</span>
             )}
           </dd>
         </div>
         <div className="space-y-1">
-          <dt className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">Checked at</dt>
-          <dd className="leading-6 text-zinc-100">{record.checked_at ?? '—'}</dd>
+          <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#60708a]">Checked at</dt>
+          <dd className="leading-6 text-[#0a1226]">{record.checked_at ?? '—'}</dd>
         </div>
         <div className="space-y-1">
-          <dt className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">Notes</dt>
-          <dd className="leading-6 text-zinc-100">{record.notes || '—'}</dd>
+          <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#60708a]">Notes</dt>
+          <dd className="leading-6 text-[#0a1226]">{record.notes || '—'}</dd>
         </div>
         <div className="space-y-1">
-          <dt className="text-[11px] font-semibold uppercase tracking-[0.18em] text-zinc-500">Evidence snippet</dt>
-          <dd className="leading-6 text-zinc-100">{record.evidence_snippet || '—'}</dd>
+          <dt className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#60708a]">Evidence snippet</dt>
+          <dd className="leading-6 text-[#0a1226]">{record.evidence_snippet || '—'}</dd>
         </div>
       </dl>
     </article>
@@ -543,29 +543,29 @@ function ScoutEvidenceDrawer({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-stretch justify-end bg-black/70 p-4 backdrop-blur-sm sm:p-6"
+      className="fixed inset-0 z-50 flex items-stretch justify-end bg-[#050916]/35 p-0 backdrop-blur-sm sm:p-6"
       onClick={onClose}
     >
       <div
         aria-describedby="evidence-drawer-summary"
         aria-labelledby="evidence-drawer-title"
         aria-modal="true"
-        className="flex h-full w-full max-w-3xl flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-950 shadow-2xl shadow-black/60"
+        className="flex h-full w-full max-w-2xl flex-col overflow-hidden border border-[#d7deea] bg-[#fbfcfd] shadow-2xl shadow-[#0a1226]/20 sm:rounded-lg"
         onClick={(event) => event.stopPropagation()}
         role="dialog"
       >
-        <div className="flex items-start justify-between gap-4 border-b border-white/10 p-6">
+        <div className="flex items-start justify-between gap-4 border-b border-[#d7deea] bg-white p-5">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">Evidence dossier</p>
-            <h3 id="evidence-drawer-title" className="mt-2 text-2xl font-semibold tracking-tight text-zinc-50">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#60708a]">Evidence dossier</p>
+            <h3 id="evidence-drawer-title" className="mt-2 text-2xl font-semibold tracking-normal text-[#0a1226]">
               {dossierTitle}
             </h3>
-            <p id="evidence-drawer-summary" className="mt-2 text-sm leading-6 text-zinc-400">
+            <p id="evidence-drawer-summary" className="mt-2 text-sm leading-6 text-[#536175]">
               {dossierSummary}
             </p>
           </div>
           <button
-            className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-zinc-200 transition hover:bg-white/10"
+            className="rounded-md border border-[#cbd5e1] bg-white px-4 py-2 text-sm font-semibold text-[#0a1226] transition hover:border-[#2d7bff] hover:bg-[#f5f9ff]"
             onClick={onClose}
             type="button"
           >
@@ -573,36 +573,36 @@ function ScoutEvidenceDrawer({
           </button>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 overflow-y-auto p-5">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-200">
+            <span className="rounded-full border border-[#d7deea] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#536175]">
               {currentRow.candidate_category ?? 'person_lead'}
             </span>
-            <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-200">
+            <span className="rounded-full border border-[#d7deea] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#536175]">
               {getValidationBucket(currentRow)}
             </span>
-            <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-100">
+            <span className="rounded-full border border-[#b7cffd] bg-[#e8f1ff] px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[#0e3a8a]">
               {dossierStatus}
             </span>
           </div>
 
-          <div className="mt-5 grid gap-4 rounded-3xl border border-white/10 bg-white/5 p-5">
+          <div className="mt-5 grid gap-4 rounded-lg border border-[#d7deea] bg-white p-5">
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-2xl border border-white/10 bg-zinc-950/70 p-4">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-400">Status</p>
-                <p className="mt-2 text-lg font-semibold text-zinc-50">{dossierStatus}</p>
-                <p className="mt-1 text-sm leading-6 text-zinc-300">{dossierSummary}</p>
+              <div className="rounded-lg border border-[#d7deea] bg-[#fbfcfd] p-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#60708a]">Status</p>
+                <p className="mt-2 text-lg font-semibold text-[#0a1226]">{dossierStatus}</p>
+                <p className="mt-1 text-sm leading-6 text-[#536175]">{dossierSummary}</p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-zinc-950/70 p-4">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-400">Primary blocker</p>
-                <p className="mt-2 text-lg font-semibold text-zinc-50">{primaryBlocker}</p>
-                <p className="mt-1 text-sm leading-6 text-zinc-300">Review this row before treating it as CRM-ready.</p>
+              <div className="rounded-lg border border-[#edc98f] bg-[#fff8ec] p-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8a5707]">Primary blocker</p>
+                <p className="mt-2 text-lg font-semibold text-[#0a1226]">{primaryBlocker}</p>
+                <p className="mt-1 text-sm leading-6 text-[#7a5a1d]">Review this row before treating it as CRM-ready.</p>
               </div>
             </div>
 
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-400">Rationale</p>
-              <p className="mt-2 text-sm leading-6 text-zinc-200">{dossierRationale}</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#60708a]">Rationale</p>
+              <p className="mt-2 text-sm leading-6 text-[#0a1226]">{dossierRationale}</p>
             </div>
           </div>
 
@@ -610,27 +610,27 @@ function ScoutEvidenceDrawer({
             {fields.map(({ label, record }) => renderEvidenceField(label, record))}
           </div>
 
-          <div className="mt-5 rounded-3xl border border-white/10 bg-white/5 p-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">Source trail</p>
+          <div className="mt-5 rounded-lg border border-[#d7deea] bg-white p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#60708a]">Source trail</p>
             <ol className="mt-4 space-y-3">
               {trailEntries.map((entry, index) => (
-                <li key={`${entry.label}-${index}`} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-zinc-950/70 p-4">
-                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/10 bg-white/5 text-xs font-semibold text-zinc-200">
+                <li key={`${entry.label}-${index}`} className="flex items-start gap-3 rounded-lg border border-[#d7deea] bg-[#fbfcfd] p-4">
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[#b7cffd] bg-[#e8f1ff] text-xs font-semibold text-[#0e3a8a]">
                     {index + 1}
                   </span>
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-2">
-                      <strong className="text-sm text-zinc-50">{entry.label}</strong>
-                      <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-200">
+                      <strong className="text-sm text-[#0a1226]">{entry.label}</strong>
+                      <span className="rounded-full border border-[#d7deea] bg-white px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#536175]">
                         {entry.status}
                       </span>
                     </div>
-                    <p className="mt-1 text-sm leading-6 text-zinc-300">{entry.detail}</p>
-                    {entry.checkedAt ? <p className="mt-1 text-xs text-zinc-500">{entry.checkedAt}</p> : null}
+                    <p className="mt-1 text-sm leading-6 text-[#536175]">{entry.detail}</p>
+                    {entry.checkedAt ? <p className="mt-1 text-xs text-[#60708a]">{entry.checkedAt}</p> : null}
                   </div>
                   {entry.href ? (
                     <a
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-200 transition hover:bg-white/10"
+                      className="rounded-md border border-[#b7cffd] bg-white px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[#0e3a8a] transition hover:border-[#2d7bff] hover:bg-[#f5f9ff]"
                       href={entry.href}
                       rel="noreferrer"
                       target="_blank"
@@ -643,18 +643,18 @@ function ScoutEvidenceDrawer({
             </ol>
           </div>
 
-          <div className="mt-6 rounded-3xl border border-white/10 bg-white/5 p-5">
+          <div className="mt-6 rounded-lg border border-[#d7deea] bg-white p-5">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">Review actions</p>
-                <h4 className="mt-2 text-lg font-semibold text-zinc-50">Record a field-level correction</h4>
-                <p className="mt-1 text-sm leading-6 text-zinc-400">
-                  Save the operator correction against this Full run, then export the queue as JSON for benchmark review.
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#60708a]">Review actions</p>
+                <h4 className="mt-2 text-lg font-semibold text-[#0a1226]">Record a field-level correction</h4>
+                <p className="mt-1 text-sm leading-6 text-[#536175]">
+                  Save the operator correction against this Full run, then export the review queue as JSON.
                 </p>
               </div>
               {runId ? (
                 <button
-                  className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-200 transition hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-60"
+                  className="rounded-md border border-[#cbd5e1] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-[#0a1226] transition hover:border-[#2d7bff] hover:bg-[#f5f9ff] disabled:cursor-not-allowed disabled:opacity-60"
                   disabled={isLoadingQueue}
                   onClick={() => {
                     void refreshCorrectionQueueExport();
@@ -669,10 +669,10 @@ function ScoutEvidenceDrawer({
             {runId && query ? (
               <form className="mt-4 grid gap-4" onSubmit={handleSubmitCorrection}>
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <label className="flex flex-col gap-2 text-sm text-zinc-200" htmlFor="correctionLabel">
+                  <label className="flex flex-col gap-2 text-sm text-[#0a1226]" htmlFor="correctionLabel">
                     Correction type
                     <select
-                      className="rounded-2xl border border-white/10 bg-zinc-950/70 px-4 py-3 text-zinc-50 outline-none focus:border-emerald-400"
+                      className="rounded-lg border border-[#cbd5e1] bg-[#fbfcfd] px-4 py-3 text-[#0a1226] outline-none focus:border-[#2d7bff] focus:ring-2 focus:ring-[#2d7bff]/20"
                       id="correctionLabel"
                       onChange={(event) => setCorrectionLabel(event.target.value as CorrectionLabel)}
                       value={correctionLabel}
@@ -684,10 +684,10 @@ function ScoutEvidenceDrawer({
                       ))}
                     </select>
                   </label>
-                  <label className="flex flex-col gap-2 text-sm text-zinc-200" htmlFor="correctionField">
+                  <label className="flex flex-col gap-2 text-sm text-[#0a1226]" htmlFor="correctionField">
                     Corrected field
                     <select
-                      className="rounded-2xl border border-white/10 bg-zinc-950/70 px-4 py-3 text-zinc-50 outline-none focus:border-emerald-400"
+                      className="rounded-lg border border-[#cbd5e1] bg-[#fbfcfd] px-4 py-3 text-[#0a1226] outline-none focus:border-[#2d7bff] focus:ring-2 focus:ring-[#2d7bff]/20"
                       id="correctionField"
                       onChange={(event) => setCorrectionField(event.target.value as CorrectionField)}
                       value={correctionField}
@@ -701,20 +701,20 @@ function ScoutEvidenceDrawer({
                   </label>
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
-                  <label className="flex flex-col gap-2 text-sm text-zinc-200" htmlFor="correctionPreviousValue">
+                  <label className="flex flex-col gap-2 text-sm text-[#0a1226]" htmlFor="correctionPreviousValue">
                     Previous value
                     <input
-                      className="rounded-2xl border border-white/10 bg-zinc-950/70 px-4 py-3 text-zinc-50 outline-none placeholder:text-zinc-500 focus:border-emerald-400"
+                      className="rounded-lg border border-[#cbd5e1] bg-[#fbfcfd] px-4 py-3 text-[#0a1226] outline-none placeholder:text-[#60708a] focus:border-[#2d7bff] focus:ring-2 focus:ring-[#2d7bff]/20"
                       id="correctionPreviousValue"
                       onChange={(event) => setCorrectionPreviousValue(event.target.value)}
                       placeholder="Value before correction"
                       value={correctionPreviousValue}
                     />
                   </label>
-                  <label className="flex flex-col gap-2 text-sm text-zinc-200" htmlFor="correctionCorrectedValue">
+                  <label className="flex flex-col gap-2 text-sm text-[#0a1226]" htmlFor="correctionCorrectedValue">
                     Corrected value
                     <input
-                      className="rounded-2xl border border-white/10 bg-zinc-950/70 px-4 py-3 text-zinc-50 outline-none placeholder:text-zinc-500 focus:border-emerald-400"
+                      className="rounded-lg border border-[#cbd5e1] bg-[#fbfcfd] px-4 py-3 text-[#0a1226] outline-none placeholder:text-[#60708a] focus:border-[#2d7bff] focus:ring-2 focus:ring-[#2d7bff]/20"
                       id="correctionCorrectedValue"
                       onChange={(event) => setCorrectionCorrectedValue(event.target.value)}
                       placeholder="Value after correction"
@@ -722,10 +722,10 @@ function ScoutEvidenceDrawer({
                     />
                   </label>
                 </div>
-                <label className="flex flex-col gap-2 text-sm text-zinc-200" htmlFor="correctionNotes">
+                <label className="flex flex-col gap-2 text-sm text-[#0a1226]" htmlFor="correctionNotes">
                   Notes
                   <textarea
-                    className="min-h-28 rounded-2xl border border-white/10 bg-zinc-950/70 px-4 py-3 text-zinc-50 outline-none placeholder:text-zinc-500 focus:border-emerald-400"
+                    className="min-h-28 rounded-lg border border-[#cbd5e1] bg-[#fbfcfd] px-4 py-3 text-[#0a1226] outline-none placeholder:text-[#60708a] focus:border-[#2d7bff] focus:ring-2 focus:ring-[#2d7bff]/20"
                     id="correctionNotes"
                     onChange={(event) => setCorrectionNotes(event.target.value)}
                     placeholder="Why this row needs to be corrected"
@@ -735,7 +735,7 @@ function ScoutEvidenceDrawer({
 
                 <div className="flex flex-wrap items-center gap-3">
                   <button
-                    className="rounded-full bg-emerald-400 px-4 py-2 text-sm font-semibold text-emerald-950 transition hover:bg-emerald-300 disabled:cursor-not-allowed disabled:bg-emerald-300/60"
+                    className="rounded-md bg-[#2d7bff] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#1f65d8] disabled:cursor-not-allowed disabled:bg-[#2d7bff]/60"
                     disabled={isSubmittingCorrection}
                     type="submit"
                   >
@@ -743,7 +743,7 @@ function ScoutEvidenceDrawer({
                   </button>
                   {correctionExport ? (
                     <a
-                      className="rounded-full border border-emerald-300/30 bg-white/5 px-4 py-2 text-sm font-semibold text-emerald-100 transition hover:bg-emerald-400/10"
+                      className="rounded-md border border-[#b7cffd] bg-white px-4 py-2 text-sm font-semibold text-[#0e3a8a] transition hover:border-[#2d7bff] hover:bg-[#f5f9ff]"
                       download={correctionExport.filename}
                       href={correctionExport.dataUrl}
                     >
@@ -753,12 +753,12 @@ function ScoutEvidenceDrawer({
                 </div>
               </form>
             ) : (
-              <p className="mt-4 text-sm leading-6 text-zinc-400">
+              <p className="mt-4 text-sm leading-6 text-[#536175]">
                 Run Full first so corrections are stored against a saved run and query snapshot.
               </p>
             )}
 
-            {correctionMessage ? <p className="mt-4 text-sm leading-6 text-emerald-200">{correctionMessage}</p> : null}
+            {correctionMessage ? <p className="mt-4 text-sm leading-6 text-[#0e3a8a]">{correctionMessage}</p> : null}
           </div>
         </div>
       </div>
@@ -1214,11 +1214,11 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                     inverted
                     size="hero"
                   />
-                  <h1 className="max-w-3xl text-5xl font-semibold leading-[0.98] tracking-normal sm:text-6xl lg:text-7xl">
-                    Start with the target.
+                  <h1 className="max-w-4xl text-5xl font-semibold leading-[0.98] tracking-normal sm:text-6xl lg:text-7xl">
+                    Start with the target. Keep the proof beside it.
                   </h1>
                   <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
-                    Review the surfaced rows, keep blockers visible, and open evidence only when a row needs proof.
+                    Review the market clearly, keep blockers visible, and open evidence when a row needs proof.
                   </p>
                 </div>
               </div>
@@ -1236,7 +1236,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                       Review CRM-first fields, keep uncertain rows visible, and open evidence only when a row needs proof.
                     </p>
                   </div>
-                  <div className="rounded-[18px] border border-[#d7deea] bg-white px-4 py-3 text-sm leading-6 text-[#536175] shadow-[0_14px_30px_rgba(10,18,38,0.05)]">
+                  <div className="rounded-lg border border-[#d7deea] bg-white px-4 py-3 text-sm leading-6 text-[#536175] shadow-[0_14px_30px_rgba(10,18,38,0.05)]">
                     Refine the target here to rerun without leaving the review surface.
                   </div>
                 </div>
@@ -1277,7 +1277,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                   disabled={isLoading}
                   type="submit"
                 >
-                  {isLoading ? 'Finding Candidates...' : primaryMode ? 'Find candidates' : 'Find Candidates'}
+                  {isLoading ? 'Finding Candidates...' : 'Find Candidates'}
                 </button>
               </form>
               <p className="mt-4 max-w-3xl text-sm leading-6 text-[#60708a]">
@@ -1361,48 +1361,14 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                 showPrimaryResultsOverview ? (
                   <>
                     <PrimaryResultsOverview
+                      leadExport={leadExport}
+                      onBuildExport={handleBuildLeadExport}
                       onOpenEvidence={handleOpenEvidence}
                       onSortChange={setSortMode}
                       results={displayedResults}
                       rows={displayedRows}
                       sortMode={sortMode}
                     />
-                    <section className="mt-5 rounded-[18px] border border-[#d7deea] bg-white p-5 shadow-[0_14px_30px_rgba(10,18,38,0.05)]">
-                      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-                        <div>
-                          <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">CSV export</p>
-                          <h2 className="mt-1 text-xl font-semibold tracking-normal text-[#0a1226]">Sales-first workbook</h2>
-                          <p className="mt-2 max-w-2xl text-sm leading-6 text-[#536175]">
-                            Exports the current rows with sales columns first, READY rows sorted first, and validation context preserved.
-                          </p>
-                        </div>
-                        <button
-                          className="inline-flex h-11 items-center justify-center rounded-md border border-[#2d7bff] bg-[#2d7bff] px-5 text-sm font-black text-white transition hover:bg-[#1f65d8]"
-                          onClick={handleBuildLeadExport}
-                          type="button"
-                        >
-                          {leadExport ? 'Rebuild CSV export' : 'Build CSV export'}
-                        </button>
-                      </div>
-                      {leadExport ? (
-                        <div className="mt-4 rounded-lg border border-[#d7deea] bg-[#f7f9fc] px-4 py-3 text-sm text-[#536175]">
-                          <p className="font-semibold text-[#0a1226]">CSV ready</p>
-                          <p className="mt-1">
-                            {leadExport.rowCount} row{leadExport.rowCount === 1 ? '' : 's'} · generated {leadExport.generatedAtLabel}
-                          </p>
-                          <a
-                            className="mt-3 inline-flex rounded-md border border-[#b7cffd] bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.08em] text-[#0e3a8a] transition hover:border-[#2d7bff] hover:bg-[#f5f9ff]"
-                            download={leadExport.filename}
-                            href={leadExport.csvDataUrl}
-                          >
-                            Download CSV
-                          </a>
-                          <p className="mt-2 text-xs leading-5 text-[#60708a]">
-                            Includes CRM fields, readiness label, source URLs, field statuses, blocker notes, and run context.
-                          </p>
-                        </div>
-                      ) : null}
-                    </section>
                   </>
                 ) : (
                   <section className="mt-8 rounded-lg border border-[#e2e7ef] bg-white p-5">

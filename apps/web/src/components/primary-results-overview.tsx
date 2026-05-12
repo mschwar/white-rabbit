@@ -16,9 +16,16 @@ import {
 type PrimaryResultFilter = 'all' | 'high_trust_usable' | 'review' | 'organization_only' | 'not_found';
 
 type PrimaryResultsOverviewProps = {
+  leadExport: {
+    filename: string;
+    csvDataUrl: string;
+    generatedAtLabel: string;
+    rowCount: number;
+  } | null;
   results: ScoutResponse;
   rows: ScoutResultRow[];
   sortMode: LeadSortMode;
+  onBuildExport: () => void;
   onOpenEvidence: (row: ScoutResultRow) => void;
   onSortChange: (mode: LeadSortMode) => void;
 };
@@ -31,11 +38,19 @@ const FILTER_OPTIONS: Array<{ key: PrimaryResultFilter; label: string }> = [
   { key: 'not_found', label: 'NOT FOUND' },
 ];
 
+const COUNT_TILE_TONE: Record<PrimaryResultFilter, string> = {
+  all: 'text-[#0a1226]',
+  high_trust_usable: 'text-[#1f7a45]',
+  review: 'text-[#a16207]',
+  organization_only: 'text-[#536175]',
+  not_found: 'text-[#60708a]',
+};
+
 const SECTION_ORDER: OutputTier[] = ['high_trust_usable', 'review', 'organization_only', 'not_found', 'failed'];
 
 const SECTION_COPY: Record<OutputTier, { title: string; description: string }> = {
   high_trust_usable: {
-    title: 'READY - contact proof is present',
+    title: 'READY - contact proof present',
     description: 'These rows have source-backed person, company, and usable contact support.',
   },
   review: {
@@ -66,10 +81,10 @@ const STATUS_TONE: Record<OutputTier, string> = {
 
 const ROW_TONE: Record<OutputTier, string> = {
   high_trust_usable: 'bg-white',
-  review: 'bg-[#fffaf1]',
+  review: 'bg-[#fffaf4]',
   organization_only: 'bg-[#f7f9fc]',
   not_found: 'bg-[#f8fafc]',
-  failed: 'bg-[#fff7ea]',
+  failed: 'bg-[#fffaf4]',
 };
 
 function formatContactStatus(status: string | undefined): string {
@@ -236,6 +251,14 @@ function getReason(row: ScoutResultRow): { primary: string; secondary: string | 
   return { primary, secondary: null };
 }
 
+function getStatusContext(tier: OutputTier, reason: { primary: string; secondary: string | null }) {
+  if (tier === 'high_trust_usable') {
+    return { primary: 'Contact proof present.', secondary: null };
+  }
+
+  return reason;
+}
+
 function countSummary(results: ScoutResponse, distribution: Record<OutputTier, number>): string {
   const sourceCount = results.metrics.funnel_counts?.source_snapshots;
   const reviewCount = distribution.review + distribution.failed;
@@ -245,7 +268,13 @@ function countSummary(results: ScoutResponse, distribution: Record<OutputTier, n
   return `${intro} ${distribution.high_trust_usable} are ready with contact proof; ${reviewCount} need manual review.`;
 }
 
+function shouldShowLowSignal(results: ScoutResponse, distribution: Record<OutputTier, number>): boolean {
+  return results.leads.length < 10 || distribution.high_trust_usable === 0;
+}
+
 export default function PrimaryResultsOverview({
+  leadExport,
+  onBuildExport,
   results,
   rows,
   sortMode,
@@ -265,59 +294,65 @@ export default function PrimaryResultsOverview({
     rows: filteredRows.filter((row) => getOutputTier(row) === tier),
   })).filter((section) => section.rows.length > 0);
 
+  const lowSignal = shouldShowLowSignal(results, distribution);
+
   return (
-    <section className="mt-8 rounded-[22px] border border-[#d7deea] bg-white p-5 shadow-[0_18px_42px_rgba(10,18,38,0.08)] sm:p-6">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Results overview</p>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-[#536175]">{countSummary(results, distribution)}</p>
+    <section className="mt-6 rounded-lg border border-[#d7deea] bg-white p-4 shadow-[0_18px_42px_rgba(10,18,38,0.07)] sm:p-5">
+      <div className="grid overflow-hidden rounded-lg border border-[#d7deea] bg-[#d7deea] sm:grid-cols-2 xl:grid-cols-[minmax(250px,1.5fr)_repeat(5,minmax(112px,1fr))_minmax(168px,0.9fr)]">
+        <div className="bg-white px-4 py-4">
+          <p className="text-base font-semibold text-[#0a1226]">Source-assisted run</p>
+          <p className="mt-2 text-sm leading-6 text-[#536175]">{countSummary(results, distribution)}</p>
+        </div>
+        {FILTER_OPTIONS.map((option) => {
+          const count = getFilterCount(option.key, distribution, results.leads.length);
+
+          return (
+            <CountTile
+              key={option.key}
+              active={activeFilter === option.key}
+              count={count}
+              label={option.label}
+              onClick={() => setActiveFilter(option.key)}
+              tone={COUNT_TILE_TONE[option.key]}
+            />
+          );
+        })}
+        <div className="grid gap-2 bg-white px-4 py-4">
+          <button
+            className="inline-flex h-10 items-center justify-center rounded-md border border-[#2d7bff] bg-[#2d7bff] px-4 text-sm font-semibold text-white transition hover:bg-[#1f65d8]"
+            onClick={onBuildExport}
+            type="button"
+          >
+            {leadExport ? 'Rebuild CSV export' : 'Build CSV export'}
+          </button>
+          {leadExport ? (
+            <a
+              className="inline-flex h-10 items-center justify-center rounded-md border border-[#b7cffd] bg-white px-4 text-sm font-semibold text-[#0e3a8a] transition hover:border-[#2d7bff] hover:bg-[#f5f9ff]"
+              download={leadExport.filename}
+              href={leadExport.csvDataUrl}
+            >
+              Download CSV
+            </a>
+          ) : null}
         </div>
       </div>
 
-      <div className="mt-5 grid gap-px overflow-hidden rounded-[18px] border border-[#d7deea] bg-[#d7deea] lg:grid-cols-5">
-        <div className="bg-white px-4 py-4">
-          <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">ALL</p>
-          <p className="mt-2 text-3xl font-semibold text-[#0a1226]">{results.leads.length}</p>
-        </div>
-        <div className="bg-white px-4 py-4">
-          <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">READY</p>
-          <p className="mt-2 text-3xl font-semibold text-[#1f7a45]">{distribution.high_trust_usable}</p>
-        </div>
-        <div className="bg-white px-4 py-4">
-          <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">REVIEW</p>
-          <p className="mt-2 text-3xl font-semibold text-[#a16207]">{distribution.review + distribution.failed}</p>
-        </div>
-        <div className="bg-white px-4 py-4">
-          <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">ORG-ONLY</p>
-          <p className="mt-2 text-3xl font-semibold text-[#536175]">{distribution.organization_only}</p>
-        </div>
-        <div className="bg-white px-4 py-4">
-          <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">NOT FOUND</p>
-          <p className="mt-2 text-3xl font-semibold text-[#60708a]">{distribution.not_found}</p>
-        </div>
-      </div>
+      {leadExport ? (
+        <p className="mt-3 text-sm leading-6 text-[#536175]">
+          CSV ready: {leadExport.rowCount} row{leadExport.rowCount === 1 ? '' : 's'} generated {leadExport.generatedAtLabel}.
+        </p>
+      ) : null}
 
-      <div className="mt-5 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex flex-wrap gap-2">
-          {FILTER_OPTIONS.map((option) => {
-            const count = getFilterCount(option.key, distribution, results.leads.length);
-            const isActive = activeFilter === option.key;
-            return (
-              <button
-                key={option.key}
-                className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
-                  isActive
-                    ? 'border-[#2d7bff] bg-[#e8f1ff] text-[#0e3a8a]'
-                    : 'border-[#cbd5e1] bg-white text-[#0a1226] hover:border-[#9bb9f8] hover:bg-[#f5f9ff]'
-                }`}
-                onClick={() => setActiveFilter(option.key)}
-                type="button"
-              >
-                {option.label} {count}
-              </button>
-            );
-          })}
+      {lowSignal ? (
+        <div className="mt-4 rounded-lg border border-[#edc98f] bg-[#fff8ec] px-4 py-3">
+          <p className="text-sm font-semibold text-[#7a4a05]">Low Public Signal</p>
+          <p className="mt-1 text-sm leading-6 text-[#7a5a1d]">
+            This market has a low public data footprint. Most candidates lack enough traceable contact evidence to mark READY.
+          </p>
         </div>
+      ) : null}
+
+      <div className="mt-5 flex justify-end">
         <label className="flex items-center gap-3 text-sm text-[#536175]" htmlFor="primaryLeadSortMode">
           <span className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Review order</span>
           <select
@@ -337,18 +372,17 @@ export default function PrimaryResultsOverview({
       </div>
 
       <div className="mt-5 hidden overflow-x-auto md:block">
-        <table className="min-w-[1100px] w-full border-separate border-spacing-0 overflow-hidden rounded-[18px] border border-[#d7deea]" aria-label="Candidate review table">
+        <table className="w-full min-w-[980px] border-separate border-spacing-0 overflow-hidden rounded-lg border border-[#d7deea]" aria-label="Candidate review table">
           <thead className="bg-[#f1f4f8]">
             <tr className="text-left text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">
-              <th className="px-4 py-4">Organization</th>
-              <th className="px-4 py-4">Person</th>
-              <th className="px-4 py-4">Role</th>
-              <th className="px-4 py-4">Email</th>
-              <th className="px-4 py-4">Phone</th>
-              <th className="px-4 py-4">Source</th>
-              <th className="px-4 py-4">Status</th>
-              <th className="px-4 py-4">Reason</th>
-              <th className="px-4 py-4">Evidence</th>
+              <th className="px-4 py-3">Organization</th>
+              <th className="px-4 py-3">Person</th>
+              <th className="px-4 py-3">Role</th>
+              <th className="px-4 py-3">Email</th>
+              <th className="px-4 py-3">Phone</th>
+              <th className="px-4 py-3">Source</th>
+              <th className="px-4 py-3">Status</th>
+              <th className="px-4 py-3">Evidence</th>
             </tr>
           </thead>
           <tbody>
@@ -368,7 +402,7 @@ export default function PrimaryResultsOverview({
       <div className="mt-5 grid gap-4 md:hidden">
         {sectionRows.map(({ tier, rows: tierRows }) => (
           <section key={tier} className="space-y-3">
-            <div className="rounded-[18px] border border-[#d7deea] bg-[#f7f9fc] px-4 py-3">
+            <div className="rounded-lg border border-[#d7deea] bg-[#f7f9fc] px-4 py-3">
               <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">{SECTION_COPY[tier].title}</p>
               <p className="mt-1 text-sm leading-6 text-[#536175]">{SECTION_COPY[tier].description}</p>
             </div>
@@ -382,10 +416,10 @@ export default function PrimaryResultsOverview({
               const rowTier = getOutputTier(row);
 
               return (
-                <article key={`${getOrganization(row)}-${person.primary}-${index}`} className={`rounded-[20px] border border-[#d7deea] p-4 ${ROW_TONE[rowTier]}`}>
+                <article key={`${getOrganization(row)}-${person.primary}-${index}`} className={`rounded-lg border border-[#d7deea] p-4 ${ROW_TONE[rowTier]}`}>
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <h3 className="text-xl font-semibold leading-tight text-[#0a1226]">{getOrganization(row)}</h3>
+                      <h3 className="text-lg font-semibold leading-tight text-[#0a1226]">{getOrganization(row)}</h3>
                       <p className="mt-1 text-sm leading-6 text-[#536175]">
                         {person.primary} - {role.primary}
                       </p>
@@ -419,6 +453,35 @@ export default function PrimaryResultsOverview({
   );
 }
 
+function CountTile({
+  active,
+  count,
+  label,
+  onClick,
+  tone,
+}: {
+  active: boolean;
+  count: number;
+  label: string;
+  onClick: () => void;
+  tone: string;
+}) {
+  return (
+    <button
+      aria-label={`${label} ${count}`}
+      aria-pressed={active}
+      className={`bg-white px-4 py-4 text-left transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#2d7bff] ${
+        active ? 'relative z-10 ring-2 ring-inset ring-[#2d7bff]' : 'hover:bg-[#f5f9ff]'
+      }`}
+      onClick={onClick}
+      type="button"
+    >
+      <span className="block text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">{label}</span>
+      <span className={`mt-2 block text-3xl font-semibold ${tone}`}>{count}</span>
+    </button>
+  );
+}
+
 function FragmentRows({
   onOpenEvidence,
   rows,
@@ -433,7 +496,7 @@ function FragmentRows({
   return (
     <>
       <tr className="bg-[#f7f9fc]">
-        <th className="border-y border-[#d7deea] px-4 py-3 text-left" colSpan={9}>
+        <th className="border-y border-[#d7deea] px-4 py-3 text-left" colSpan={8}>
           <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">{section.title}</p>
           <p className="mt-1 text-sm font-medium text-[#536175]">{section.description}</p>
         </th>
@@ -447,29 +510,29 @@ function FragmentRows({
         const source = getSource(row);
         const reason = getReason(row);
         const rowTier = getOutputTier(row);
+        const statusContext = getStatusContext(rowTier, reason);
 
         return (
           <tr key={`${organization}-${person.primary}-${index}`} className={`${ROW_TONE[rowTier]} text-sm text-[#0a1226]`}>
-            <td className="border-t border-[#d7deea] px-4 py-4 align-top">
+            <td className="border-t border-[#d7deea] px-4 py-3 align-top">
               <p className="font-semibold">{organization}</p>
             </td>
-            <td className="border-t border-[#d7deea] px-4 py-4 align-top">
+            <td className="border-t border-[#d7deea] px-4 py-3 align-top">
               <p className="font-semibold">{person.primary}</p>
               <p className="mt-1 text-xs text-[#60708a]">{person.secondary}</p>
             </td>
-            <td className="border-t border-[#d7deea] px-4 py-4 align-top">
+            <td className="border-t border-[#d7deea] px-4 py-3 align-top">
               <p className="font-medium">{role.primary}</p>
-              <p className="mt-1 text-xs leading-5 text-[#60708a]">{role.secondary}</p>
             </td>
-            <td className="border-t border-[#d7deea] px-4 py-4 align-top">
+            <td className="border-t border-[#d7deea] px-4 py-3 align-top">
               <p className="font-medium">{email.primary}</p>
               <p className="mt-1 text-xs text-[#60708a]">{email.secondary}</p>
             </td>
-            <td className="border-t border-[#d7deea] px-4 py-4 align-top">
+            <td className="border-t border-[#d7deea] px-4 py-3 align-top">
               <p className="font-medium">{phone.primary}</p>
               <p className="mt-1 text-xs text-[#60708a]">{phone.secondary}</p>
             </td>
-            <td className="border-t border-[#d7deea] px-4 py-4 align-top">
+            <td className="border-t border-[#d7deea] px-4 py-3 align-top">
               {source.href ? (
                 <a className="font-semibold text-[#0e3a8a] underline decoration-[#b7cffd] underline-offset-4" href={source.href} rel="noreferrer" target="_blank">
                   {source.label}
@@ -479,22 +542,21 @@ function FragmentRows({
               )}
               <p className="mt-1 text-xs text-[#60708a]">{source.detail}</p>
             </td>
-            <td className="border-t border-[#d7deea] px-4 py-4 align-top">
+            <td className="border-t border-[#d7deea] px-4 py-3 align-top">
               <span className={`inline-flex rounded-full border px-3 py-1 text-xs font-black uppercase tracking-[0.08em] ${STATUS_TONE[tier]}`}>
                 {TIER_LABELS[rowTier]}
               </span>
+              <p className="mt-2 max-w-[15rem] text-xs leading-5 text-[#536175]">{statusContext.primary}</p>
+              {statusContext.secondary ? <p className="mt-1 text-xs leading-5 text-[#60708a]">{statusContext.secondary}</p> : null}
             </td>
-            <td className="border-t border-[#d7deea] px-4 py-4 align-top">
-              <p className="leading-6">{reason.primary}</p>
-              {reason.secondary ? <p className="mt-1 text-xs leading-5 text-[#60708a]">{reason.secondary}</p> : null}
-            </td>
-            <td className="border-t border-[#d7deea] px-4 py-4 align-top">
+            <td className="border-t border-[#d7deea] px-4 py-3 align-top">
               <button
+                aria-label={`Inspect evidence for ${person.primary}`}
                 className="inline-flex rounded-md border border-[#b7cffd] bg-white px-3 py-2 text-xs font-black uppercase tracking-[0.08em] text-[#0e3a8a] transition hover:border-[#2d7bff] hover:bg-[#f5f9ff]"
                 onClick={() => onOpenEvidence(row)}
                 type="button"
               >
-                Inspect evidence
+                Evidence
               </button>
             </td>
           </tr>
@@ -514,7 +576,7 @@ function MobileDetailCard({
   secondary: string | null;
 }) {
   return (
-    <div className="rounded-[16px] border border-[#d7deea] bg-white px-4 py-3">
+    <div className="rounded-lg border border-[#d7deea] bg-white px-4 py-3">
       <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">{label}</p>
       <p className="mt-2 font-semibold text-[#0a1226]">{primary}</p>
       {secondary ? <p className="mt-1 text-sm leading-6 text-[#536175]">{secondary}</p> : null}

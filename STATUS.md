@@ -1,22 +1,22 @@
 # STATUS
 
-**Last updated:** 2026-05-12 by Codex r14a-prompt-b-brand-cleanup
-**Branch:** main
-**Current sprint:** Matt moved reset execution to `main` on 2026-05-12 after the operator-use promotion and Fly API deploy. R13 sales-first CSV export is live on the promoted mainline. R14 persistence, DB readback, and quality report tie-out passed Prompt B QA on `feat/reset-r14-persistence-quality-tieout` and is merged to `main`. R14A image overhaul and approved brand asset cleanup passed Prompt B QA on `feat/reset-r14a-image-overhaul-brand-cleanup` and is merged to `main`. Product remains red. R14B is now the next ready feature on `feat/reset-r14b-ui-ux-consistency-pass`; R14C, RG6, dogfood, and backend/core changes outside assigned slices remain blocked.
+**Last updated:** 2026-05-12 by Codex r14b-prompt-a-ui-ux-consistency
+**Branch:** feat/reset-r14b-ui-ux-consistency-pass
+**Current sprint:** Matt moved reset execution to `main` on 2026-05-12 after the operator-use promotion and Fly API deploy. R13 sales-first CSV export is live on the promoted mainline. R14 persistence, DB readback, and quality report tie-out passed Prompt B QA on `feat/reset-r14-persistence-quality-tieout` and is merged to `main`. R14A image overhaul and approved brand asset cleanup passed Prompt B QA on `feat/reset-r14a-image-overhaul-brand-cleanup` and is merged to `main`. Product remains red. R14B UI/UX consistency pass is implemented on `feat/reset-r14b-ui-ux-consistency-pass` and waiting for Prompt B QA. R14C, RG6, dogfood, and backend/core changes outside assigned slices remain blocked.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Historical brand draft note:** The May 10 generated rabbit/lens/rabbit-mark rasters are superseded for production app identity. R14A deletes those generated app assets, keeps the rabbit/icon problem quarantined, and uses only the approved design-pack favicon/touch/manifest/social assets plus wordmark-first in-app identity.
 
-**Next pointer:** Prompt A should implement `R14B - UI/UX consistency pass` on `feat/reset-r14b-ui-ux-consistency-pass`. If it passes, merge to `main`, mark R14B merged, and unlock R14C. Do not start R14C until that merge lands.
+**Next pointer:** Prompt B should QA `R14B - UI/UX consistency pass` on `feat/reset-r14b-ui-ux-consistency-pass`. If it passes, merge to `main`, mark R14B merged, and unlock R14C. Do not start R14C until that merge lands.
 
-**Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It must agree with any Prompt A/B/C request before an agent edits files. It now names `main` as the integration branch and allows only Prompt A implementation for R14B on `feat/reset-r14b-ui-ux-consistency-pass`.
+**Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It must agree with any Prompt A/B/C request before an agent edits files. It now names `main` as the integration branch and allows only Prompt B QA for R14B on `feat/reset-r14b-ui-ux-consistency-pass`.
 
 **Design direction handoff:** `DESIGN.md` is now the RG4 visual direction authority. The approved refreshed RG4 mockup/design preflight lives under `docs/mockups/rg4-refreshed-preflight-2026-05-12/`, with six rendered screens and README notes. Production UI work must use this artifact as the approved visual/product direction unless Matt approves a later change.
 
 **Open question:** A standalone rabbit/icon remains quarantined until there is an approved production vector and an ADR that explicitly allows its use in the operator UI.
 
-**Queue correction:** The 2026-05-12 R00 Prompt B runs were stale-target no-ops and have no queue effect. R00 is historical and already merged. The current valid target is Prompt A for R14B. Any future stale-target run must stop in chat only and must not edit, commit, merge, or push.
+**Queue correction:** The 2026-05-12 R00 Prompt B runs were stale-target no-ops and have no queue effect. R00 is historical and already merged. The current valid target is Prompt B QA for R14B. Any future stale-target run must stop in chat only and must not edit, commit, merge, or push.
 
 ---
 
@@ -28,13 +28,13 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** R14B is the only current Prompt A target. R14C stays blocked until R14B passes Prompt A and merges.
+**Next feature pointer:** R14B is the only current Prompt B target. R14C stays blocked until R14B passes Prompt B and merges.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from `main`, Prompt B resolves and QA/merges the single feature branch waiting for QA back to `main`, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs. Do not resolve queue state from `rebuild/validated-leads-loop`, an unmerged feature branch, or an audit branch. `docs/reset-current-assignment.json` must match before any agent edits files.
 
 **Final product mockup gate:** Approved. `DESIGN.md` is the RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains product-structure reference only. The approved artifact is `docs/mockups/rg4-refreshed-preflight-2026-05-12/index.html` plus screenshots under `docs/mockups/rg4-refreshed-preflight-2026-05-12/screenshots/`.
 
-**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, R09H, R09I, R09J, R09K, R09L, R10, R11, R12, R13, R14, and R14A are merged into the promoted mainline. RG4 Prompt C advanced on the merged R10-R12 state. R14B is ready, R14C remains blocked; RG6/export dogfood remain blocked.
+**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, R09H, R09I, R09J, R09K, R09L, R10, R11, R12, R13, R14, and R14A are merged into the promoted mainline. RG4 Prompt C advanced on the merged R10-R12 state. R14B is implemented pending Prompt B QA, R14C remains blocked; RG6/export dogfood remain blocked.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -76,9 +76,28 @@ Prior accepted gates:
 
 **Latest handoff:**
 
+Feature: R14B - UI/UX consistency pass
+Branch: `feat/reset-r14b-ui-ux-consistency-pass`
+Status: `implemented_pending_qa`
+Why it exists: RG5 needs the pre-dogfood operator surface to feel visually consistent with `DESIGN.md` and the approved RG4 mockups before deployment smoke and operator-use checks begin.
+Scope: Primary operator UI/UX consistency only. Align the empty, results, evidence, export, low-signal, and mobile surfaces with the navy chassis / paper evidence direction; close the known mobile overflow caveat; keep approved R14A wordmark-first identity; preserve existing export behavior.
+Non-goals: No R14C deployment smoke, backend/API/core/search/export logic/persistence/source-assisted compiler/benchmark/dogfood work, public SaaS features, account/billing work, or deployment promotion.
+What changed: Integrated CSV export into the results summary control strip instead of a separate lower panel; added a `Low Public Signal` notice when returned rows or READY rows are below useful signal; tightened the CRM-first desktop table by removing duplicate rationale from READY rows, reducing row spacing, and keeping blockers next to status; switched the evidence drawer to a light paper dossier with structured blocker, field support, and source trail cards; adjusted primary hero/action copy and radii/spacing for the approved visual direction.
+Required verification from Prompt A:
+- `cd apps/web && npm test -- --run` (`13` files, `30` tests passed)
+- `cd apps/web && npm run build` (passed after clearing a stale generated `.next` cache left by local dev; existing Next.js warnings about workspace-root inference and deprecated `middleware` naming)
+- `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`53 passed`, existing datetime deprecation warnings)
+- Browser QA with Playwright on local dev and mocked `/api/scout`: captured desktop empty, results, export-ready, evidence-dossier, low-signal, mobile empty, and mobile results screenshots under `.gstack/qa-reports/screenshots/r14b-ui-ux-consistency-2026-05-12/`; mobile `scrollWidth=390` at `390` width
+- `git diff --check` (passed)
+Artifacts: `.gstack/qa-reports/screenshots/r14b-ui-ux-consistency-2026-05-12/01-desktop-empty.png`; `02-desktop-results.png`; `03-desktop-export-ready.png`; `04-desktop-evidence-dossier.png`; `05-desktop-low-signal.png`; `06-mobile-empty.png`; `07-mobile-results.png`; `browser-qa-summary.json`.
+Exact Prompt B handoff: QA `feat/reset-r14b-ui-ux-consistency-pass`; confirm only R14B UI/UX consistency scope landed; rerun `cd apps/web && npm test -- --run`, `cd apps/web && npm run build`, `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q`, and `git diff --check`; inspect the R14B screenshots; confirm empty/results/evidence/export/low-signal/mobile states remain aligned to `DESIGN.md` and `docs/mockups/rg4-refreshed-preflight-2026-05-12/`; confirm no horizontal overflow on 390px mobile; confirm no internal prompt/gate/sprint language, unapproved mascot imagery, Scout/Full mode chrome, audit-first export ordering, backend/API/core/search/export logic/persistence/source-assisted compiler/benchmark/dogfood, public SaaS, or deployment promotion scope landed. If QA passes, merge only to `main`, mark R14B `merged_to_mainline`, mark R14C `ready`, and keep RG6/dogfood blocked.
+Open questions: None for R14B. Standalone rabbit/icon remains quarantined pending approved production vector and ADR.
+
+Previous handoff:
+
 Feature: R14A - Image overhaul and approved brand asset cleanup
 Branch: `feat/reset-r14a-image-overhaul-brand-cleanup`
-Status: `implemented_pending_qa`
+Status: `merged_to_mainline`
 Why it exists: RG5 needs the pre-dogfood operator surface to stop carrying placeholder or unapproved brand imagery. The app should use the approved design pack for browser/social assets, keep the rabbit/icon problem quarantined, and present a wordmark-first working product surface.
 Scope: Brand/image cleanup only. Use approved design-pack favicon/touch/manifest/social assets, remove old generated app brand rasters, replace placeholder `WR` product-shell marks, keep login/metadata aligned, and update control docs for Prompt B.
 Non-goals: No R14B broad UI/UX consistency pass, R14C deployment smoke, backend/API/core/search/export/persistence/source-assisted compiler/benchmark/dogfood work, or deployment promotion.
@@ -574,11 +593,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; R00-R14 are on `main`; RG0-RG4 have advanced; R14A is implemented on `feat/reset-r14a-image-overhaul-brand-cleanup` and waiting for Prompt B QA. R14B UI/UX consistency and R14C deployment-readiness remain blocked until R14A passes Prompt B and merges. Dogfood remains blocked until RG5 advances. W5 remains held; W6 remains blocked.
+- Product is in audit-red state. Documentation authority remediation is complete; R00-R14A are on `main`; RG0-RG4 have advanced; R14B UI/UX consistency is implemented on `feat/reset-r14b-ui-ux-consistency-pass` and waiting for Prompt B QA. R14C deployment-readiness remains blocked until R14B passes Prompt B and merges. Dogfood remains blocked until RG5 advances. W5 remains held; W6 remains blocked.
 
 ## Next concrete task
 
-- Run Prompt B QA for `feat/reset-r14a-image-overhaul-brand-cleanup` against `main`. Do not start R14B-R14C, RG6, dogfood work, deployment promotion, or adjacent backend/core/export/persistence work until the assignment lock advances.
+- Run Prompt B QA for `feat/reset-r14b-ui-ux-consistency-pass` against `main`. Do not start R14C, RG6, dogfood work, deployment promotion, or adjacent backend/core/export/persistence work until the assignment lock advances.
 
 ## Open questions for Matt
 

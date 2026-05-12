@@ -1,0 +1,10 @@
+{
+  "desktop": {
+    "width": 1440
+  },
+  "mobile": {
+    "scrollWidth": 390,
+    "innerWidth": 390
+  },
+  "screenshots": 7
+}
