@@ -1,0 +1,11 @@
+{
+  "benchmark_id": "runner-timeout-partial",
+  "error": "Runner timeout: case timed out",
+  "error_code": "runner_timeout",
+  "leads": [],
+  "mode": "scout",
+  "partial_artifact": true,
+  "prompt_label": "Timeout partial artifact replay",
+  "query": "healthcare IT directors in Phoenix",
+  "runner_elapsed_seconds": 120.0
+}

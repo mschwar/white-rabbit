@@ -1,0 +1,11 @@
+{
+  "benchmark_id": "thomas-arizona-k12",
+  "error": "Runner timeout: ",
+  "error_code": "runner_timeout",
+  "leads": [],
+  "mode": "scout",
+  "partial_artifact": true,
+  "prompt_label": "Thomas Arizona K-12 exact prompt",
+  "query": "name and email and phone number for these District Approx Size Tech Decision Maker Type Mesa Public Schools 60k+ students CIO / Director of Technology; Chandler Unified School District 40k+ CTO / IT Director; Peoria Unified School District 35k+ Technology Services; Gilbert Public Schools 30k+ CTO; Deer Valley Unified School District 30k+ IT leadership; Paradise Valley Unified School District 25k+ CIO/Technology; Dysart Unified School District 24k+ Director of Technology; Maricopa Unified School District 9k+ Director of Technology",
+  "runner_elapsed_seconds": 120.006
+}

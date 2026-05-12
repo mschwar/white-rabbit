@@ -1,0 +1,13 @@
+wrote_json=../../audits/raw/reset-2026-05-10/rg3/replay-r09h-reaudit/manual-oracle-proof-packet.json
+wrote_markdown=../../audits/raw/reset-2026-05-10/rg3/replay-r09h-reaudit/manual-oracle-proof-packet.md
+packet_passes=True
+rg3_recommendation=prompt_c_ready: source-assisted replay passes; future Prompt C must rerun RG3 live evidence before any gate advance
+manual_structure_reproduced=True
+manual_observed_rows=17
+manual_verified_contact_rows=10
+manual_lookup_rows=7
+source_assisted_candidate_count=17
+workbook_row_count=17
+workbook_tier_distribution={'READY_WITH_CONTACT': 10, 'REVIEW': 0, 'MANUAL_LOOKUP': 7, 'ORG_ONLY': 0, 'NOT_FOUND': 0, 'FAILED': 0}
+unsupported_crm_ready_rows=0
+manual_lookup_crm_ready_rows=0

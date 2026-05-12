@@ -1,0 +1,2 @@
+INTERRUPTED: initial combined core suite was killed after more than 6 minutes without stdout.
+Rerun evidence is split across focused command-output files in this directory.

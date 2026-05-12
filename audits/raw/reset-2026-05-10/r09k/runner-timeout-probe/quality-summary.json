@@ -1,0 +1,210 @@
+{
+  "case_summaries": {
+    "healthcare-it-phoenix": {
+      "candidate_ready_blockers": [],
+      "categorized_row_count": 0,
+      "error_code": "product_request_timeout",
+      "escape_velocity_floor_met": false,
+      "expected_target_coverage_count": 0,
+      "expected_target_coverage_missing": [],
+      "failed_count": 0,
+      "funnel_counts": {
+        "categorized_rows": 0,
+        "contact_evidence_candidates_searched": 0,
+        "contact_evidence_conflicting_signals": 0,
+        "contact_evidence_contacts_acquired": 0,
+        "contact_evidence_field_corroborations": 0,
+        "contact_evidence_review_to_high_trust": 0,
+        "contact_evidence_searches": 0,
+        "contact_quality_passes": 0,
+        "deduped_sources": 0,
+        "extracted_candidates": 0,
+        "high_trust_usable_rows": 0,
+        "person_rows": 0,
+        "raw_vendor_hits": 0,
+        "source_snapshots": 0
+      },
+      "guardrail_status": "clear",
+      "high_trust_usable_count": 0,
+      "high_volume_floor_met": false,
+      "http_status": 599,
+      "minimum_escape_rows": 10,
+      "not_found_count": 0,
+      "organization_only_count": 0,
+      "person_lead_count": 0,
+      "post_timeout_health_probe": {
+        "api_base_url": "http://white-rabbit.test",
+        "checked_at": "2026-05-12T00:08:46.437170Z",
+        "elapsed_seconds": 0.0,
+        "error": "ReadTimeout: post-timeout health probe timed out",
+        "error_code": "runner_timeout",
+        "health_ok": false,
+        "probe_id": "healthcare-it-phoenix",
+        "probe_label": "product-request",
+        "status_code": 0,
+        "timeout_seconds": 0.2
+      },
+      "privacy_refusal": false,
+      "quality_report": {
+        "artifact_id": "healthcare-it-phoenix",
+        "artifact_kind": "benchmark",
+        "candidate_category_counts": {
+          "failed": 0,
+          "not_found": 0,
+          "organization_only": 0,
+          "person_lead": 0
+        },
+        "candidate_ready_blockers": [],
+        "contact_quality_count": 0,
+        "contact_quality_rate": 0.0,
+        "failed_count": 0,
+        "fake_email_count": 0,
+        "high_noise_count": 0,
+        "high_noise_rate": 0.0,
+        "not_found_count": 0,
+        "organization_only_count": 0,
+        "person_lead_count": 0,
+        "persona_match_count": 0,
+        "persona_match_rate": 0.0,
+        "precision_rate": 0.0,
+        "quality_gate_failures": [
+          "no_candidates",
+          "zero_usable_candidates",
+          "low_precision_rate",
+          "low_persona_match_rate",
+          "low_contact_quality_rate",
+          "low_source_support_rate"
+        ],
+        "quality_gate_passed": false,
+        "quality_gate_thresholds": {
+          "maximum_fake_email_count": 0,
+          "maximum_high_noise_rate": 0.4,
+          "maximum_unsupported_email_count": 0,
+          "minimum_contact_quality_rate": 0.5,
+          "minimum_persona_match_rate": 0.5,
+          "minimum_precision_rate": 0.5,
+          "minimum_source_support_rate": 0.5,
+          "minimum_usable_count": 1
+        },
+        "query": "healthcare IT directors in Phoenix",
+        "ready_blocker_counts": {},
+        "source_support_count": 0,
+        "source_support_rate": 0.0,
+        "total_candidates": 0,
+        "unsupported_email_count": 0,
+        "usable_count": 0,
+        "validation_status_counts": {
+          "email": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 0,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "name": {
+            "failed": 0,
+            "missing": 0,
+            "supported": 0,
+            "unsupported": 0
+          },
+          "organization": {
+            "failed": 0,
+            "missing": 0,
+            "supported": 0,
+            "unsupported": 0
+          },
+          "phone": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 0,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "source": {
+            "failed": 0,
+            "missing": 0,
+            "supported": 0,
+            "unsupported": 0
+          },
+          "title": {
+            "failed": 0,
+            "missing": 0,
+            "supported": 0,
+            "unsupported": 0
+          }
+        }
+      },
+      "quality_status": "partial_artifact",
+      "ready_blocker_counts": {},
+      "review_count": 0,
+      "target_categorized_rows": 50,
+      "target_volume_floor_met": false,
+      "volume_floor_status": "below_active_50_plus_target"
+    }
+  },
+  "contact_pass_cases": 0,
+  "failed_cases": 1,
+  "guardrail_mismatches": [],
+  "observation_mismatches": [
+    "healthcare-it-phoenix: persona, contact, source, volume"
+  ],
+  "passed_cases": 0,
+  "persona_pass_cases": 0,
+  "privacy_refusal_cases": 0,
+  "sandbox_reset_probe": {
+    "api_base_url": "http://white-rabbit.test",
+    "attempts": [
+      {
+        "elapsed_seconds": 0.0,
+        "ok": true,
+        "status_code": 200
+      }
+    ],
+    "diagnostics_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/runner-timeout-probe/startup/sandbox-reset-diagnostics.json",
+    "elapsed_seconds": 0.0,
+    "error": null,
+    "error_code": null,
+    "failure_path": null,
+    "reset_ok": true,
+    "reset_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/runner-timeout-probe/startup/sandbox-reset.json",
+    "reset_status_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/runner-timeout-probe/startup/sandbox-reset.http"
+  },
+  "source_pass_cases": 0,
+  "startup_probe": {
+    "api_base_url": "http://white-rabbit.test",
+    "attempts": [
+      {
+        "elapsed_seconds": 0.0,
+        "ok": true,
+        "status_code": 200
+      }
+    ],
+    "elapsed_seconds": 0.001,
+    "failure_path": null,
+    "health_ok": true,
+    "health_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/runner-timeout-probe/startup/health.json",
+    "health_status_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/runner-timeout-probe/startup/health.http",
+    "readiness_error_code": null,
+    "readiness_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/runner-timeout-probe/startup/readiness.json",
+    "readiness_status": "ready",
+    "readiness_status_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/runner-timeout-probe/startup/readiness.http"
+  },
+  "suite_id": "required_lead_quality_suite",
+  "theme_summaries": {
+    "broad_b2b": {
+      "case_count": 1,
+      "categorized_rows": 0,
+      "contact_acquisition_success_rate": 0.0,
+      "contact_evidence_candidates_searched": 0,
+      "contact_evidence_contacts_acquired": 0,
+      "contact_evidence_review_to_high_trust": 0,
+      "contact_quality_passes": 0,
+      "contact_quality_rate": 0.0,
+      "high_trust_usable_rows": 0,
+      "high_trust_usable_yield": 0.0,
+      "person_rows": 0,
+      "review_to_high_trust_rate": 0.0
+    }
+  },
+  "total_cases": 1
+}

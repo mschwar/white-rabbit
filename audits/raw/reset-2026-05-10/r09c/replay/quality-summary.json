@@ -1,0 +1,103 @@
+{
+  "artifact_id": "r09c-replay",
+  "artifact_kind": "benchmark",
+  "candidate_category_counts": {
+    "failed": 1,
+    "not_found": 0,
+    "organization_only": 0,
+    "person_lead": 2
+  },
+  "candidate_ready_blockers": [
+    {
+      "blocker": "no_contact_source",
+      "candidate_category": "person_lead",
+      "index": 1,
+      "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+      "tier": "review"
+    },
+    {
+      "blocker": "conflicting_evidence",
+      "candidate_category": "failed",
+      "index": 2,
+      "reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence:  cross_check_conflicts=Possible stale role signal on https://northstarparts.example/archive.",
+      "tier": "failed"
+    }
+  ],
+  "contact_quality_count": 1,
+  "contact_quality_rate": 0.333,
+  "failed_count": 1,
+  "fake_email_count": 0,
+  "high_noise_count": 1,
+  "high_noise_rate": 0.333,
+  "not_found_count": 0,
+  "organization_only_count": 0,
+  "person_lead_count": 2,
+  "persona_match_count": 2,
+  "persona_match_rate": 0.667,
+  "precision_rate": 0.333,
+  "quality_gate_failures": [
+    "low_precision_rate",
+    "low_contact_quality_rate"
+  ],
+  "quality_gate_passed": false,
+  "quality_gate_thresholds": {
+    "maximum_fake_email_count": 0,
+    "maximum_high_noise_rate": 0.4,
+    "maximum_unsupported_email_count": 0,
+    "minimum_contact_quality_rate": 0.5,
+    "minimum_persona_match_rate": 0.5,
+    "minimum_precision_rate": 0.5,
+    "minimum_source_support_rate": 0.5,
+    "minimum_usable_count": 1
+  },
+  "query": "operations leaders in Austin",
+  "ready_blocker_counts": {
+    "conflicting_evidence": 1,
+    "no_contact_source": 1
+  },
+  "source_support_count": 3,
+  "source_support_rate": 1.0,
+  "total_candidates": 3,
+  "unsupported_email_count": 0,
+  "usable_count": 1,
+  "validation_status_counts": {
+    "email": {
+      "deduced_with_pattern_evidence": 0,
+      "failed": 0,
+      "missing": 1,
+      "unsupported": 0,
+      "verified_found": 2
+    },
+    "name": {
+      "failed": 0,
+      "missing": 0,
+      "supported": 3,
+      "unsupported": 0
+    },
+    "organization": {
+      "failed": 0,
+      "missing": 0,
+      "supported": 3,
+      "unsupported": 0
+    },
+    "phone": {
+      "deduced_with_pattern_evidence": 0,
+      "failed": 0,
+      "missing": 3,
+      "unsupported": 0,
+      "verified_found": 0
+    },
+    "source": {
+      "failed": 0,
+      "missing": 0,
+      "supported": 3,
+      "unsupported": 0
+    },
+    "title": {
+      "failed": 0,
+      "missing": 0,
+      "supported": 3,
+      "unsupported": 0
+    }
+  }
+}

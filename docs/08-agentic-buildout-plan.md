@@ -1,15 +1,15 @@
 # 08 - Agentic Buildout Plan
 
-**Status:** Active control document for the validated-leads rebuild.
+**Status:** Historical F00-F23 control document; overlaid by the May 10 reset plan.
 **Created:** 2026-05-09.
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Current gate:** Red.
-**Next feature pointer:** No additional `ready` feature is currently unlocked. F19 Batch Workspace Internal-Only Policy is merged to `rebuild/validated-leads-loop`; F20-F23 remain deferred until another explicit promotion or a launch-gate change.
-**Current feature QA handoff:** W4 benchmarks and quality reporting gate accepted on 2026-05-10; F15, F16, F17, F18, and F19 are merged to `rebuild/validated-leads-loop`. There is no active follow-on feature branch because F20-F23 remain deferred.
+**Next feature pointer:** The active reset queue lives in `docs/12-reset-gated-implementation-plan-2026-05-10.md`. RG1 is in progress, `R01 - Operator evidence fixture pack` is merged, and `R02 - Golden benchmark replay harness` is the next ready reset feature.
+**Current feature QA handoff:** No feature branch is awaiting QA on the active reset queue. Do not target `main` from this document.
 
-**May 10 reset overlay:** New implementation work is now controlled by `docs/12-reset-gated-implementation-plan-2026-05-10.md`. Treat this document as historical context for F00-F23 until the reset plan explicitly sends agents back here. The next active Prompt A feature is `R00 - W5 hold report and reset control docs`, not F20-F23.
+**May 10 reset overlay:** New implementation work is now controlled by `docs/12-reset-gated-implementation-plan-2026-05-10.md`. Treat this document as historical context for F00-F23 until the reset plan explicitly sends agents back here. The active reset queue is RG1/R02, not F20-F23.
 
-This document is the missing-feature list and handoff surface for small-model build sessions. It is optimized for Matt's two-prompt loop: one prompt builds the next feature branch; one prompt QA's, documents, and merges that feature back into the rebuild integration branch.
+This document was the missing-feature list and handoff surface for small-model build sessions before the May 10 reset. It is retained for historical traceability. Do not use its Prompt A/B text or feature table for current work while `docs/12-reset-gated-implementation-plan-2026-05-10.md` is active.
 
 Build-loop note as of 2026-05-10: Matt explicitly promoted F18 from `deferred` so Prompt A could resume. Prompt B QA completed on `feat/f18-recipes-internal-only`, then the queue temporarily returned to `no ready feature`. Matt then explicitly promoted F19 only; Prompt B QA found the home path already hid batch, added explicit internal-only labeling to `/batch`, and merged the feature while F20-F23 stayed deferred.
 
@@ -56,65 +56,11 @@ Workflow for every feature after F00:
 
 F00 bootstrap exception: this planning task creates the integration branch and lands the rebuild control docs directly on `rebuild/validated-leads-loop`. Every later feature must use the branch/PR loop above.
 
-## Two-Prompt Loop
+## Historical Two-Prompt Loop
 
-### Prompt A - Build Next Feature
+The F00-F23 two-prompt loop below this document is historical. Do not copy old Prompt A/B text from this file while the May 10 reset is active.
 
-```text
-You are working in /Users/mschwar/Documents/white-rabbit.
-
-Work only on the rebuild integration line. Do not merge or target main.
-
-1. Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, and docs/08-agentic-buildout-plan.md.
-2. Checkout rebuild/validated-leads-loop and pull latest.
-3. Pick the next feature whose status is ready from docs/08-agentic-buildout-plan.md.
-4. Create its feature branch from rebuild/validated-leads-loop using the branch name in the feature card.
-5. Implement only that feature. No opportunistic refactors. No adjacent features.
-6. Run the feature's required tests or non-UI verification.
-7. Update docs/08-agentic-buildout-plan.md and STATUS.md with what changed, the feature status, tests run, and next handoff.
-8. Commit atomically with conventional commit messages.
-9. Push the feature branch.
-10. Do not merge. Do not open or target main.
-
-Return:
-- feature ID/name
-- branch
-- commits
-- tests run
-- files changed
-- current status
-- exact QA instructions for the next prompt
-```
-
-### Prompt B - QA, Docs, Merge To Rebuild Branch
-
-```text
-You are working in /Users/mschwar/Documents/white-rabbit.
-
-/qa the current feature branch and merge only into rebuild/validated-leads-loop. Never merge the feature branch directly to main.
-
-1. Read AGENTS.md, STATUS.md, docs/00-product-northstar.md, docs/08-agentic-buildout-plan.md, and the feature card being QA'd.
-2. Checkout the feature branch and pull latest.
-3. Run the required tests.
-4. If the feature is UI-visible, run browser QA, take screenshots, and save them under .gstack/qa-reports/screenshots/.
-5. If the feature is non-UI, run the explicit verification from the feature card and capture output.
-6. Check the northstar reflection. If the feature drifts, fails, or overbuilds, fix it or mark QA failed.
-7. Write a QA report in .gstack/qa-reports/.
-8. Update docs/08-agentic-buildout-plan.md and STATUS.md.
-9. Commit QA/docs/fixes atomically.
-10. Push the feature branch.
-11. Merge the feature branch into rebuild/validated-leads-loop only.
-12. Push rebuild/validated-leads-loop.
-13. Do not merge or target main. If Matt explicitly asks to update the operator-use app, sync main only after rebuild is pushed and the promotion is recorded.
-
-Return:
-- QA verdict
-- screenshots/report path
-- tests run
-- commits
-- merge target confirmation
-- updated next feature pointer
-```
+Current agents must use the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
 ## Northstar Reflection
 

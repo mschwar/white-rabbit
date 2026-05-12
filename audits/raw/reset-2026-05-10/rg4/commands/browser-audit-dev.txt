@@ -1,0 +1,46 @@
+{
+  "baseUrl": "http://localhost:3011",
+  "browserFixtureMode": "mocked_api_scout_51_rows",
+  "mockLeadCount": 51,
+  "desktopEvidence": {
+    "targetInputVisible": true,
+    "sourceContextVisible": false,
+    "scoutVisible": false,
+    "fullVisible": false,
+    "quotaVisible": false,
+    "resultsOverviewVisible": true,
+    "readyCountVisible": true,
+    "reviewLabelVisible": true,
+    "orgOnlyLabelVisible": true,
+    "notFoundLabelVisible": true,
+    "evidenceDossierVisible": true,
+    "sourceTrailVisible": true,
+    "exportControlVisible": false
+  },
+  "mobileEvidence": {
+    "resultsHorizontalOverflow": true,
+    "dossierHorizontalOverflow": true,
+    "mobileResultsLayout": {
+      "clientWidth": 390,
+      "scrollWidth": 407,
+      "bodyScrollWidth": 407
+    },
+    "mobileDossierLayout": {
+      "clientWidth": 390,
+      "scrollWidth": 407,
+      "bodyScrollWidth": 407
+    },
+    "inspectEvidenceVisible": true,
+    "dossierVisible": true
+  },
+  "findings": [
+    "api_scout_query=\"New Mexico school district IT leaders\""
+  ],
+  "screenshots": [
+    "screenshots/01-primary-empty.png",
+    "screenshots/02-primary-results.png",
+    "screenshots/03-evidence-dossier.png",
+    "screenshots/04-mobile-results.png",
+    "screenshots/05-mobile-evidence-dossier.png"
+  ]
+}

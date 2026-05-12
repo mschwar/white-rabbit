@@ -5,7 +5,7 @@
 **Integration branch:** `rebuild/validated-leads-loop`.
 **Companion docs:** `docs/00-product-northstar.md`, `docs/08-agentic-buildout-plan.md`, `docs/12-reset-gated-implementation-plan-2026-05-10.md`, `docs/qa-rubric.md`.
 
-**May 10 reset control:** Do not start new W5/W6 work from this document. New implementation work is controlled by `docs/12-reset-gated-implementation-plan-2026-05-10.md`, beginning with `R00 - W5 hold report and reset control docs`. This file remains as historical context for how F00-F19 got sequenced and why the May 10 reset had to re-gate the work.
+**May 10 reset control:** Do not start new W5/W6 work from this document. New implementation work is controlled by `docs/12-reset-gated-implementation-plan-2026-05-10.md`. As of the current reset state, RG0 has advanced, RG1 is in progress, R01 is merged, and R02 is the next ready reset feature. This file remains as historical context for how F00-F19 got sequenced and why the May 10 reset had to re-gate the work.
 
 This document groups the feature cards in `docs/08-agentic-buildout-plan.md` into implementation waves. The two-prompt feature loop still runs one feature branch at a time, but each wave ends with an explicit gate review and orchestrator acceptance before the next wave is unlocked.
 

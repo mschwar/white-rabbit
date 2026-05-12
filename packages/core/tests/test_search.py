@@ -1,10 +1,19 @@
 import asyncio
+import json
+from pathlib import Path
 
 import httpx
 import pytest
 
 from core import search
-from core.query_planner import ARIZONA_K12_TARGET_ACCOUNTS
+from core.query_planner import ARIZONA_K12_TARGET_ACCOUNTS, QueryPlan
+from core.source_collection import (
+    InMemorySourceSnapshotStore,
+    build_source_collection_snapshot,
+)
+
+
+RAW_SOURCE_FIXTURE_PATH = Path(__file__).with_name("fixtures") / "raw_source_collection_snapshot.json"
 
 
 class FakeResponse:
@@ -78,7 +87,14 @@ def test_fetch_search_results_retries_once_after_timeout(monkeypatch):
     results = asyncio.run(search.fetch_search_results('Healthcare IT directors in Phoenix', api_key='fake'))
 
     assert results == [
-        {'title': 'Lead 1', 'url': 'https://example.com/1', 'content': 'content 1', 'score': 0.9},
+        {
+            'title': 'Lead 1',
+            'url': 'https://example.com/1',
+            'content': 'content 1',
+            'score': 0.9,
+            'vendor_query': 'Healthcare IT directors in Phoenix',
+            'matched_vendor_queries': ['Healthcare IT directors in Phoenix'],
+        },
     ]
     assert len(created_clients) == 1
     assert created_clients[0].calls == 2
@@ -165,3 +181,190 @@ def test_fetch_search_results_decomposes_long_arizona_prompt_into_bounded_querie
     assert all(len(query) <= 400 for query in captured_queries)
     for account in ARIZONA_K12_TARGET_ACCOUNTS:
         assert any(account.lower() in query.lower() for query in captured_queries)
+
+
+def test_fetch_search_results_aggregates_broad_queries_under_vendor_cap(monkeypatch):
+    created_clients: list[FakeAsyncClient] = []
+    captured_payloads: list[dict[str, object]] = []
+
+    class CapturingFakeAsyncClient(FakeAsyncClient):
+        async def post(self, url: str, json: dict[str, object]):
+            captured_payloads.append(json)
+            return await super().post(url, json)
+
+    outcomes = [
+        FakeResponse(
+            [
+                {
+                    "title": f"Lead {index}",
+                    "url": f"https://example.com/{index}",
+                    "content": f"content {index}",
+                    "score": 0.9,
+                }
+            ]
+        )
+        for index in range(6)
+    ]
+
+    def fake_async_client(timeout: float | None = None) -> CapturingFakeAsyncClient:
+        return CapturingFakeAsyncClient(outcomes, created_clients, timeout=timeout)
+
+    monkeypatch.setattr(search.httpx, "AsyncClient", fake_async_client)
+
+    results = asyncio.run(
+        search.fetch_search_results(
+            "healthcare IT directors in Phoenix",
+            api_key="fake",
+            max_results=50,
+        )
+    )
+
+    assert len(results) == 6
+    assert results.tavily_searches == 6
+    assert len(captured_payloads) == 6
+    assert all(payload["max_results"] <= search.TAVILY_MAX_RESULTS_PER_QUERY for payload in captured_payloads)
+    assert all(len(str(payload["query"])) <= 400 for payload in captured_payloads)
+
+
+def test_fetch_search_results_dedupes_by_url_and_preserves_matched_queries(monkeypatch):
+    created_clients: list[FakeAsyncClient] = []
+    outcomes = [
+        FakeResponse(
+            [
+                {
+                    "title": "Shared Lead",
+                    "url": "https://example.com/shared/",
+                    "content": "content 1",
+                    "score": 0.9,
+                }
+            ]
+        ),
+        FakeResponse(
+            [
+                {
+                    "title": "Shared Lead",
+                    "url": "https://example.com/shared#bio",
+                    "content": "content 2",
+                    "score": 0.8,
+                }
+            ]
+        ),
+        FakeResponse([]),
+        FakeResponse([]),
+        FakeResponse([]),
+        FakeResponse([]),
+    ]
+
+    def fake_async_client(timeout: float | None = None) -> FakeAsyncClient:
+        return FakeAsyncClient(outcomes, created_clients, timeout=timeout)
+
+    monkeypatch.setattr(search.httpx, "AsyncClient", fake_async_client)
+
+    results = asyncio.run(
+        search.fetch_search_results(
+            "healthcare IT directors in Phoenix",
+            api_key="fake",
+            max_results=50,
+        )
+    )
+
+    assert len(results) == 1
+    assert len(results[0]["matched_vendor_queries"]) == 2
+
+
+def test_fetch_search_results_attaches_and_stores_source_collection_snapshot(monkeypatch):
+    created_clients: list[FakeAsyncClient] = []
+    snapshot_store = InMemorySourceSnapshotStore()
+    outcomes = [
+        FakeResponse(
+            [
+                {
+                    "title": "Phoenix IT Leadership",
+                    "url": "https://example.com/phoenix-it",
+                    "content": "Phoenix healthcare technology leadership content.",
+                    "score": 0.91,
+                }
+            ]
+        )
+        for _ in range(6)
+    ]
+
+    def fake_async_client(timeout: float | None = None) -> FakeAsyncClient:
+        return FakeAsyncClient(outcomes, created_clients, timeout=timeout)
+
+    monkeypatch.setattr(search.httpx, "AsyncClient", fake_async_client)
+
+    results = asyncio.run(
+        search.fetch_search_results(
+            "healthcare IT directors in Phoenix",
+            api_key="fake",
+            max_results=50,
+            source_snapshot_store=snapshot_store,
+        )
+    )
+
+    snapshot = results.source_collection
+
+    assert snapshot is not None
+    assert snapshot_store.snapshots == [snapshot]
+    assert snapshot.schema_version == "source_collection.v1"
+    assert snapshot.query == "healthcare IT directors in Phoenix"
+    assert snapshot.requested_max_results == 50
+    assert snapshot.returned_source_count == len(results)
+    assert snapshot.tavily_searches == results.tavily_searches
+    assert snapshot.search_depth == search.TAVILY_SEARCH_DEPTH
+    assert snapshot.query_plan is not None
+    assert snapshot.query_plan["broad_query"] is True
+    assert snapshot.sources[0].source_id.startswith("src_")
+    assert snapshot.sources[0].rank == 1
+    assert snapshot.sources[0].content_sha256
+    assert snapshot.sources[0].matched_vendor_queries
+
+
+def test_raw_source_collection_fixture_matches_canonical_snapshot():
+    query_plan = QueryPlan(
+        original_query="Arizona K-12 IT decision makers",
+        vendor_queries=[
+            "Mesa Public Schools Arizona K-12 IT decision makers",
+            "Chandler Unified School District Arizona K-12 IT decision makers",
+        ],
+        named_accounts=["Mesa Public Schools", "Chandler Unified School District"],
+        intent_summary="Arizona K-12 IT decision makers",
+        broad_query=False,
+        aggressive_breadth=False,
+        target_raw_results=2,
+        filters={},
+        notes=["Raw source fixture for R05 snapshot replay."],
+    )
+    snapshot = build_source_collection_snapshot(
+        query="Arizona K-12 IT decision makers",
+        results=[
+            {
+                "title": "Mesa Technology Leadership",
+                "url": "https://example.edu/mesa-tech",
+                "content": "Mesa Public Schools technology leadership page content.",
+                "score": 0.92,
+                "vendor_query": "Mesa Public Schools Arizona K-12 IT decision makers",
+                "matched_vendor_queries": [
+                    "Mesa Public Schools Arizona K-12 IT decision makers",
+                ],
+            },
+            {
+                "title": "Chandler IT Directory",
+                "url": "https://example.edu/chandler-it",
+                "content": "Chandler Unified IT directory content.",
+                "score": 0.87,
+                "vendor_query": "Chandler Unified School District Arizona K-12 IT decision makers",
+                "matched_vendor_queries": [
+                    "Chandler Unified School District Arizona K-12 IT decision makers",
+                ],
+            },
+        ],
+        requested_max_results=2,
+        tavily_searches=2,
+        search_depth="advanced",
+        query_plan=query_plan,
+        collected_at="2026-05-10T12:00:00Z",
+    )
+
+    assert json.loads(RAW_SOURCE_FIXTURE_PATH.read_text(encoding="utf-8")) == snapshot.model_dump()

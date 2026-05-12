@@ -1,0 +1,2804 @@
+{
+  "benchmark_id": "lee-commodity-buyers",
+  "leads": [
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.8,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.8,
+      "explanation": "Person row remains REVIEW because contact evidence is missing.",
+      "fit_score": 0.8,
+      "gate_passed": false,
+      "icebreaker": "I saw your leadership role at Gray Lumber.",
+      "id": null,
+      "name": "Mac Gray",
+      "organization": "Gray Lumber",
+      "primary_filter_reason": "Tier has not been computed yet.",
+      "source_url": "https://example.com/replay-source-1",
+      "tier": "review",
+      "title": "President and Sales Manager",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        }
+      },
+      "why_target": "Matches the commodity buyer target, but no usable contact was validated."
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 2",
+      "source_url": "https://example.com/replay-source-2",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 3",
+      "source_url": "https://example.com/replay-source-3",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 4",
+      "source_url": "https://example.com/replay-source-4",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 5",
+      "source_url": "https://example.com/replay-source-5",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 6",
+      "source_url": "https://example.com/replay-source-6",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 7",
+      "source_url": "https://example.com/replay-source-7",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 8",
+      "source_url": "https://example.com/replay-source-8",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 9",
+      "source_url": "https://example.com/replay-source-9",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 10",
+      "source_url": "https://example.com/replay-source-10",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 11",
+      "source_url": "https://example.com/replay-source-11",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 12",
+      "source_url": "https://example.com/replay-source-12",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 13",
+      "source_url": "https://example.com/replay-source-13",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 14",
+      "source_url": "https://example.com/replay-source-14",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 15",
+      "source_url": "https://example.com/replay-source-15",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 16",
+      "source_url": "https://example.com/replay-source-16",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 17",
+      "source_url": "https://example.com/replay-source-17",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 18",
+      "source_url": "https://example.com/replay-source-18",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 19",
+      "source_url": "https://example.com/replay-source-19",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 20",
+      "source_url": "https://example.com/replay-source-20",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 21",
+      "source_url": "https://example.com/replay-source-21",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 22",
+      "source_url": "https://example.com/replay-source-22",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 23",
+      "source_url": "https://example.com/replay-source-23",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 24",
+      "source_url": "https://example.com/replay-source-24",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 25",
+      "source_url": "https://example.com/replay-source-25",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 26",
+      "source_url": "https://example.com/replay-source-26",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 27",
+      "source_url": "https://example.com/replay-source-27",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 28",
+      "source_url": "https://example.com/replay-source-28",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 29",
+      "source_url": "https://example.com/replay-source-29",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 30",
+      "source_url": "https://example.com/replay-source-30",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 31",
+      "source_url": "https://example.com/replay-source-31",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 32",
+      "source_url": "https://example.com/replay-source-32",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 33",
+      "source_url": "https://example.com/replay-source-33",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 34",
+      "source_url": "https://example.com/replay-source-34",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 35",
+      "source_url": "https://example.com/replay-source-35",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 36",
+      "source_url": "https://example.com/replay-source-36",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 37",
+      "source_url": "https://example.com/replay-source-37",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 38",
+      "source_url": "https://example.com/replay-source-38",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 39",
+      "source_url": "https://example.com/replay-source-39",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 40",
+      "source_url": "https://example.com/replay-source-40",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 41",
+      "source_url": "https://example.com/replay-source-41",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 42",
+      "source_url": "https://example.com/replay-source-42",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 43",
+      "source_url": "https://example.com/replay-source-43",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 44",
+      "source_url": "https://example.com/replay-source-44",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 45",
+      "source_url": "https://example.com/replay-source-45",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 46",
+      "source_url": "https://example.com/replay-source-46",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 47",
+      "source_url": "https://example.com/replay-source-47",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 48",
+      "source_url": "https://example.com/replay-source-48",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 49",
+      "source_url": "https://example.com/replay-source-49",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Replay source-gap row; not CRM-ready.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "Evidence contradicted or failed to support this row.",
+      "searched_target": "Replay broad source gap 50",
+      "source_url": "https://example.com/replay-source-50",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "replay contact missing",
+          "source_url": "https://example.com/replay-source",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "replay evidence supported",
+          "notes": "replay notes supported",
+          "source_url": "https://example.com/replay-source",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 4.2,
+    "estimated_cost_usd": 0.123,
+    "funnel_counts": {
+      "categorized_rows": 50,
+      "contact_quality_passes": 0,
+      "deduped_sources": 72,
+      "extracted_candidates": 8,
+      "high_trust_usable_rows": 0,
+      "person_rows": 1,
+      "raw_vendor_hits": 96,
+      "source_snapshots": 72
+    },
+    "funnel_notes": [
+      "Deterministic R09A replay: broad source gap rows preserve source-to-candidate loss without promoting CRM-ready leads."
+    ],
+    "input_tokens": 1000,
+    "openai_web_searches": 0,
+    "output_tokens": 2200,
+    "tavily_searches": 12,
+    "tier_distribution": {
+      "failed": 49,
+      "high_trust_usable": 0,
+      "not_found": 0,
+      "organization_only": 0,
+      "review": 1
+    }
+  },
+  "mode": "scout",
+  "prompt_label": "Lee commodity buyers prompt",
+  "query": "commodity buyers at retail lumber yards in Washington",
+  "query_guardrail": {
+    "message": "Needs account detail.",
+    "missing_criteria": [
+      "target title or role"
+    ],
+    "status": "needs_more_detail",
+    "suggestions": []
+  },
+  "runner_elapsed_seconds": 0.0
+}

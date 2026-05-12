@@ -1,7 +1,7 @@
 # 02 - Stack
 
 **Status:** Active reference.
-**Authority:** For product truth, defer to `docs/00-product-northstar.md`. For current rebuild execution, defer to `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md`.
+**Authority:** For product truth, defer to `docs/00-product-northstar.md`. For current reset execution, defer to `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
 ## Runtime Choices
 
@@ -22,8 +22,9 @@ white-rabbit/
 ├── docs/
 │   ├── 00-product-northstar.md      # current product truth
 │   ├── 03-decisions.md              # locked ADRs
-│   ├── 08-agentic-buildout-plan.md  # active rebuild queue
-│   ├── 09-rebuild-phase-gates.md    # active gate process
+│   ├── 12-reset-gated-implementation-plan-2026-05-10.md  # active reset queue
+│   ├── 08-agentic-buildout-plan.md  # historical F00-F23 queue
+│   ├── 09-rebuild-phase-gates.md    # historical W0-W6 gate process
 │   └── historical/reference docs
 ├── apps/
 │   ├── web/                         # Next.js app
@@ -43,13 +44,12 @@ white-rabbit/
 
 ## Branch Workflow
 
-Current rebuild work runs on `rebuild/validated-leads-loop`.
+Current reset work runs on `rebuild/validated-leads-loop`.
 
 - Feature branches branch from `rebuild/validated-leads-loop`.
 - Feature PRs target `rebuild/validated-leads-loop`.
-- Do not merge rebuild feature work to `main`.
-- Use `docs/08-agentic-buildout-plan.md` for feature status and branch names.
-- Use `docs/09-rebuild-phase-gates.md` for wave transitions.
+- Do not merge reset feature work to `main`.
+- Use `docs/12-reset-gated-implementation-plan-2026-05-10.md` for feature status, branch names, Prompt A/B/C copy, and reset gate transitions.
 
 Legacy `main`-targeted BUILDOUT docs are historical records, not the current work queue.
 

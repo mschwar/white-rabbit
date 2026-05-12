@@ -1,6 +1,6 @@
 # White Rabbit zero-trust product audit - 2026-05-09
 
-> **Status:** Historical Record and active red-gate evidence. This audit preserves the product failure evidence that triggered the rebuild; use `docs/00-product-northstar.md`, `STATUS.md`, `docs/08-agentic-buildout-plan.md`, and `docs/09-rebuild-phase-gates.md` for current instructions.
+> **Status:** Historical Record and active red-gate evidence. This audit preserves the product failure evidence that triggered the rebuild; use `docs/00-product-northstar.md`, `STATUS.md`, and `docs/12-reset-gated-implementation-plan-2026-05-10.md` for current instructions.
 
 
 Auditor stance: every prior "works" claim was treated as untrusted. Rendered cards, screenshots, and successful API responses were not counted as evidence of product value. A lead only counted as usable if a salesperson could put it into a CRM and act without doing most of the research again.

@@ -1,0 +1,218 @@
+{
+  "benchmark_id": "contact-evidence-pass",
+  "leads": [
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.86,
+      "contact_score": 0.9,
+      "email": "jordan.lee@example.com",
+      "email_status": "verified_found",
+      "evidence_score": 0.9,
+      "explanation": "Targeted contact-evidence replay found a direct public staff snippet for the named person.",
+      "fit_score": 0.92,
+      "gate_passed": true,
+      "icebreaker": "I saw your operations leadership role at Example Corp and the team page that lists your contact.",
+      "id": null,
+      "name": "Jordan Lee",
+      "organization": "Example Corp",
+      "primary_filter_reason": "READY: supported person, organization, source, and usable contact cleared the evidence gate.",
+      "source_url": "https://example.com/team",
+      "tier": "high_trust_usable",
+      "title": "VP Operations",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "Jordan Lee VP Operations at Example Corp can be reached at jordan.lee@example.com.",
+          "notes": "Direct person email found in targeted public-web evidence pass.",
+          "source_url": "https://example.com/team",
+          "status": "verified_found"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "Jordan Lee VP Operations at Example Corp",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://example.com/team",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "Jordan Lee VP Operations at Example Corp",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://example.com/team",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://example.com/team",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "Jordan Lee VP Operations at Example Corp",
+          "notes": "http_status=200 resolved_url=https://example.com/team matched_fields=name,title,organization,email",
+          "source_url": "https://example.com/team",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "Jordan Lee VP Operations at Example Corp",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://example.com/team",
+          "status": "supported"
+        }
+      },
+      "why_target": "Operations leader matching the replay target."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.74,
+      "contact_score": 0.2,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.82,
+      "explanation": "Identity was source-supported, but no public contact source or domain pattern was found.",
+      "fit_score": 0.84,
+      "gate_passed": false,
+      "icebreaker": "I saw your operations role at Example Manufacturing.",
+      "id": null,
+      "name": "Morgan Smith",
+      "organization": "Example Manufacturing",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://example.com/leadership",
+      "tier": "review",
+      "title": "Director of Operations",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "Targeted contact-evidence pass found no direct email or explicit domain-pattern evidence.",
+          "source_url": "https://example.com/leadership",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "Morgan Smith Director of Operations at Example Manufacturing",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://example.com/leadership",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "Morgan Smith Director of Operations at Example Manufacturing",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://example.com/leadership",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://example.com/leadership",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "Morgan Smith Director of Operations at Example Manufacturing",
+          "notes": "http_status=200 resolved_url=https://example.com/leadership matched_fields=name,title,organization",
+          "source_url": "https://example.com/leadership",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "Morgan Smith Director of Operations at Example Manufacturing",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://example.com/leadership",
+          "status": "supported"
+        }
+      },
+      "why_target": "Operations leader matching the replay target."
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Organization contact/team source was found, but no named person was validated.",
+      "id": null,
+      "organization": "Example Clinic",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Organization contact/team source was found, but no named person was validated.",
+      "source_url": "https://exampleclinic.test/contact",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "name": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "Example Clinic contact and leadership directory",
+          "notes": "Organization contact/team source found, but no named person was validated.",
+          "source_url": "https://exampleclinic.test/contact",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:00:00Z",
+          "evidence_snippet": "Example Clinic contact and leadership directory",
+          "notes": "Targeted contact-evidence pass found an organization-level source only.",
+          "source_url": "https://exampleclinic.test/contact",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": null,
+          "evidence_snippet": null,
+          "notes": "",
+          "source_url": null,
+          "status": "unsupported"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 0.12,
+    "estimated_cost_usd": 0.02,
+    "funnel_counts": {
+      "categorized_rows": 3,
+      "contact_quality_passes": 1,
+      "deduped_sources": 3,
+      "extracted_candidates": 3,
+      "high_trust_usable_rows": 1,
+      "person_rows": 2,
+      "raw_vendor_hits": 3,
+      "source_snapshots": 3
+    },
+    "funnel_notes": [
+      "Contact evidence pass searched 3 promising rows and acquired 1 source-backed contacts.",
+      "Contact evidence pass checked 1 organization-only rows for staff/contact sources."
+    ],
+    "input_tokens": 1,
+    "openai_web_searches": 0,
+    "output_tokens": 1,
+    "tavily_searches": 4,
+    "tier_distribution": {
+      "failed": 0,
+      "high_trust_usable": 1,
+      "not_found": 0,
+      "organization_only": 1,
+      "review": 1
+    }
+  },
+  "mode": "replay",
+  "query": "operations leaders in Austin",
+  "runner_elapsed_seconds": 0.12
+}

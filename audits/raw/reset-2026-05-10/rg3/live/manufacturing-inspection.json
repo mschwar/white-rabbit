@@ -1,0 +1,116 @@
+{
+  "benchmark_id": "manufacturing-ops-detroit",
+  "metrics": {
+    "elapsed_seconds": 71.88,
+    "estimated_cost_usd": 0.063839,
+    "input_tokens": 20342,
+    "openai_web_searches": 0,
+    "output_tokens": 1313,
+    "tavily_searches": 6,
+    "tier_distribution": {
+      "failed": 3,
+      "high_trust_usable": 0,
+      "not_found": 2,
+      "organization_only": 1,
+      "review": 2
+    }
+  },
+  "tier_distribution": {
+    "failed": 3,
+    "high_trust_usable": 0,
+    "not_found": 2,
+    "organization_only": 1,
+    "review": 2
+  },
+  "rows": 8,
+  "leads": [
+    {
+      "category": "person_lead",
+      "tier": "review",
+      "name": "Bruce Smith",
+      "org": "Detroit Manufacturing Systems LLC",
+      "email_status": "missing",
+      "gate_passed": false,
+      "reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "validation_email": "missing",
+      "validation_source": "supported"
+    },
+    {
+      "category": "not_found",
+      "tier": "not_found",
+      "name": null,
+      "org": "Detroit Manufacturing Systems LLC",
+      "email_status": null,
+      "gate_passed": null,
+      "reason": "Only the organization was found without specific individual contacts being identified.",
+      "validation_email": "missing",
+      "validation_source": "failed"
+    },
+    {
+      "category": "failed",
+      "tier": "failed",
+      "name": null,
+      "org": "Detroit Manufacturing Systems",
+      "email_status": null,
+      "gate_passed": null,
+      "reason": "Source could not validate the person row: http_status=403 resolved_url=https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+      "validation_email": "missing",
+      "validation_source": "failed"
+    },
+    {
+      "category": "person_lead",
+      "tier": "review",
+      "name": "Aaron Hampton",
+      "org": "Detroit Manufacturing Systems LLC",
+      "email_status": "missing",
+      "gate_passed": false,
+      "reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "validation_email": "missing",
+      "validation_source": "supported"
+    },
+    {
+      "category": "failed",
+      "tier": "failed",
+      "name": null,
+      "org": "Detroit Manufacturing Systems",
+      "email_status": null,
+      "gate_passed": null,
+      "reason": "Source could not validate the person row: http_status=403 resolved_url=https://www.dmsna.com/our-story/",
+      "validation_email": "missing",
+      "validation_source": "failed"
+    },
+    {
+      "category": "organization_only",
+      "tier": "organization_only",
+      "name": null,
+      "org": "Detroit Regional Chamber",
+      "email_status": null,
+      "gate_passed": null,
+      "reason": "Identified the organization but no specific individual contacts were provided.",
+      "validation_email": "missing",
+      "validation_source": "failed"
+    },
+    {
+      "category": "not_found",
+      "tier": "not_found",
+      "name": null,
+      "org": "DTE Energy",
+      "email_status": null,
+      "gate_passed": null,
+      "reason": "No suitable leads were found from DTE Energy, despite relevance in the context.",
+      "validation_email": "missing",
+      "validation_source": "supported"
+    },
+    {
+      "category": "failed",
+      "tier": "failed",
+      "name": null,
+      "org": null,
+      "email_status": null,
+      "gate_passed": null,
+      "reason": "No contacts found relevant to manufacturing operations leaders in Detroit.",
+      "validation_email": "missing",
+      "validation_source": "missing"
+    }
+  ]
+}

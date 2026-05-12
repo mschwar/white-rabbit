@@ -1,0 +1,54 @@
+{
+  "benchmark_id": "healthcare-it-phoenix",
+  "error": "API readiness did not finish before live benchmark case execution: readiness_timeout.",
+  "error_code": "readiness_timeout",
+  "leads": [],
+  "mode": "scout",
+  "partial_artifact": true,
+  "prompt_label": "Healthcare IT directors in Phoenix",
+  "query": "healthcare IT directors in Phoenix",
+  "runner_elapsed_seconds": 0.001,
+  "startup_probe": {
+    "api_base_url": "http://white-rabbit.test",
+    "attempts": [
+      {
+        "elapsed_seconds": 0.0,
+        "ok": true,
+        "status_code": 200
+      }
+    ],
+    "elapsed_seconds": 0.001,
+    "failure_path": null,
+    "health_ok": true,
+    "health_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/readiness-timeout/startup/health.json",
+    "health_status_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/readiness-timeout/startup/health.http",
+    "readiness_error_code": "readiness_timeout",
+    "readiness_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/readiness-timeout/startup/readiness.json",
+    "readiness_status": "readiness_timeout",
+    "readiness_status_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/readiness-timeout/startup/readiness.http"
+  },
+  "suite_failure": {
+    "error_code": "readiness_timeout",
+    "message": "API readiness did not finish before live benchmark case execution: readiness_timeout.",
+    "stage": "readiness",
+    "startup_probe": {
+      "api_base_url": "http://white-rabbit.test",
+      "attempts": [
+        {
+          "elapsed_seconds": 0.0,
+          "ok": true,
+          "status_code": 200
+        }
+      ],
+      "elapsed_seconds": 0.001,
+      "failure_path": null,
+      "health_ok": true,
+      "health_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/readiness-timeout/startup/health.json",
+      "health_status_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/readiness-timeout/startup/health.http",
+      "readiness_error_code": "readiness_timeout",
+      "readiness_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/readiness-timeout/startup/readiness.json",
+      "readiness_status": "readiness_timeout",
+      "readiness_status_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/readiness-timeout/startup/readiness.http"
+    }
+  }
+}

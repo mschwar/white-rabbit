@@ -1,0 +1,645 @@
+{
+  "api_base_url": "http://127.0.0.1:8017",
+  "case_results": [
+    {
+      "benchmark_id": "thomas-arizona-k12",
+      "elapsed_seconds": 20.006,
+      "mode": "scout",
+      "response_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/thomas-arizona-k12.json",
+      "status_code": 599,
+      "status_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/thomas-arizona-k12.http"
+    },
+    {
+      "benchmark_id": "lee-commodity-buyers",
+      "elapsed_seconds": 20.006,
+      "mode": "scout",
+      "response_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/lee-commodity-buyers.json",
+      "status_code": 599,
+      "status_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/lee-commodity-buyers.http"
+    },
+    {
+      "benchmark_id": "healthcare-it-phoenix",
+      "elapsed_seconds": 20.006,
+      "mode": "scout",
+      "response_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/healthcare-it-phoenix.json",
+      "status_code": 599,
+      "status_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/healthcare-it-phoenix.http"
+    },
+    {
+      "benchmark_id": "finance-cisos-new-york",
+      "elapsed_seconds": 20.006,
+      "mode": "scout",
+      "response_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/finance-cisos-new-york.json",
+      "status_code": 599,
+      "status_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/finance-cisos-new-york.http"
+    },
+    {
+      "benchmark_id": "manufacturing-ops-detroit",
+      "elapsed_seconds": 20.006,
+      "mode": "scout",
+      "response_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/manufacturing-ops-detroit.json",
+      "status_code": 599,
+      "status_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/manufacturing-ops-detroit.http"
+    },
+    {
+      "benchmark_id": "privacy-reject-homeowner-phones",
+      "elapsed_seconds": 20.006,
+      "mode": "scout",
+      "response_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/privacy-reject-homeowner-phones.json",
+      "status_code": 599,
+      "status_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/privacy-reject-homeowner-phones.http"
+    }
+  ],
+  "mode": "scout",
+  "output_root": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live",
+  "startup_probe": {
+    "api_base_url": "http://127.0.0.1:8017",
+    "attempts": [
+      {
+        "elapsed_seconds": 5.003,
+        "error": "TimeoutError: ",
+        "ok": false,
+        "status_code": 0
+      },
+      {
+        "elapsed_seconds": 5.003,
+        "error": "TimeoutError: ",
+        "ok": false,
+        "status_code": 0
+      },
+      {
+        "elapsed_seconds": 5.002,
+        "error": "TimeoutError: ",
+        "ok": false,
+        "status_code": 0
+      },
+      {
+        "elapsed_seconds": 1.99,
+        "error": "TimeoutError: ",
+        "ok": false,
+        "status_code": 0
+      }
+    ],
+    "elapsed_seconds": 20.006,
+    "failure_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/startup/startup-failure.json",
+    "health_ok": false,
+    "health_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/startup/health.json",
+    "health_status_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/startup/health.http",
+    "readiness_path": null,
+    "readiness_status": null,
+    "readiness_status_path": null
+  },
+  "suite_report": {
+    "case_summaries": {
+      "finance-cisos-new-york": {
+        "categorized_row_count": 0,
+        "error_code": "api_startup_failed",
+        "high_trust_usable_count": 0,
+        "http_status": 599,
+        "person_lead_count": 0,
+        "privacy_refusal": false,
+        "quality_report": {
+          "artifact_id": "finance-cisos-new-york",
+          "artifact_kind": "benchmark",
+          "candidate_category_counts": {
+            "failed": 0,
+            "not_found": 0,
+            "organization_only": 0,
+            "person_lead": 0
+          },
+          "candidate_ready_blockers": [],
+          "contact_quality_count": 0,
+          "contact_quality_rate": 0.0,
+          "failed_count": 0,
+          "fake_email_count": 0,
+          "high_noise_count": 0,
+          "high_noise_rate": 0.0,
+          "not_found_count": 0,
+          "organization_only_count": 0,
+          "person_lead_count": 0,
+          "persona_match_count": 0,
+          "persona_match_rate": 0.0,
+          "precision_rate": 0.0,
+          "quality_gate_failures": [
+            "no_candidates",
+            "zero_usable_candidates",
+            "low_precision_rate",
+            "low_persona_match_rate",
+            "low_contact_quality_rate",
+            "low_source_support_rate"
+          ],
+          "quality_gate_passed": false,
+          "quality_gate_thresholds": {
+            "maximum_fake_email_count": 0,
+            "maximum_high_noise_rate": 0.4,
+            "maximum_unsupported_email_count": 0,
+            "minimum_contact_quality_rate": 0.5,
+            "minimum_persona_match_rate": 0.5,
+            "minimum_precision_rate": 0.5,
+            "minimum_source_support_rate": 0.5,
+            "minimum_usable_count": 1
+          },
+          "query": "finance CISOs at financial services firms in New York",
+          "ready_blocker_counts": {},
+          "source_support_count": 0,
+          "source_support_rate": 0.0,
+          "total_candidates": 0,
+          "unsupported_email_count": 0,
+          "usable_count": 0,
+          "validation_status_counts": {
+            "email": {
+              "deduced_with_pattern_evidence": 0,
+              "failed": 0,
+              "missing": 0,
+              "unsupported": 0,
+              "verified_found": 0
+            },
+            "name": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            },
+            "organization": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            },
+            "phone": {
+              "deduced_with_pattern_evidence": 0,
+              "failed": 0,
+              "missing": 0,
+              "unsupported": 0,
+              "verified_found": 0
+            },
+            "source": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            },
+            "title": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            }
+          }
+        }
+      },
+      "healthcare-it-phoenix": {
+        "categorized_row_count": 0,
+        "error_code": "api_startup_failed",
+        "high_trust_usable_count": 0,
+        "http_status": 599,
+        "person_lead_count": 0,
+        "privacy_refusal": false,
+        "quality_report": {
+          "artifact_id": "healthcare-it-phoenix",
+          "artifact_kind": "benchmark",
+          "candidate_category_counts": {
+            "failed": 0,
+            "not_found": 0,
+            "organization_only": 0,
+            "person_lead": 0
+          },
+          "candidate_ready_blockers": [],
+          "contact_quality_count": 0,
+          "contact_quality_rate": 0.0,
+          "failed_count": 0,
+          "fake_email_count": 0,
+          "high_noise_count": 0,
+          "high_noise_rate": 0.0,
+          "not_found_count": 0,
+          "organization_only_count": 0,
+          "person_lead_count": 0,
+          "persona_match_count": 0,
+          "persona_match_rate": 0.0,
+          "precision_rate": 0.0,
+          "quality_gate_failures": [
+            "no_candidates",
+            "zero_usable_candidates",
+            "low_precision_rate",
+            "low_persona_match_rate",
+            "low_contact_quality_rate",
+            "low_source_support_rate"
+          ],
+          "quality_gate_passed": false,
+          "quality_gate_thresholds": {
+            "maximum_fake_email_count": 0,
+            "maximum_high_noise_rate": 0.4,
+            "maximum_unsupported_email_count": 0,
+            "minimum_contact_quality_rate": 0.5,
+            "minimum_persona_match_rate": 0.5,
+            "minimum_precision_rate": 0.5,
+            "minimum_source_support_rate": 0.5,
+            "minimum_usable_count": 1
+          },
+          "query": "healthcare IT directors in Phoenix",
+          "ready_blocker_counts": {},
+          "source_support_count": 0,
+          "source_support_rate": 0.0,
+          "total_candidates": 0,
+          "unsupported_email_count": 0,
+          "usable_count": 0,
+          "validation_status_counts": {
+            "email": {
+              "deduced_with_pattern_evidence": 0,
+              "failed": 0,
+              "missing": 0,
+              "unsupported": 0,
+              "verified_found": 0
+            },
+            "name": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            },
+            "organization": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            },
+            "phone": {
+              "deduced_with_pattern_evidence": 0,
+              "failed": 0,
+              "missing": 0,
+              "unsupported": 0,
+              "verified_found": 0
+            },
+            "source": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            },
+            "title": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            }
+          }
+        }
+      },
+      "lee-commodity-buyers": {
+        "categorized_row_count": 0,
+        "error_code": "api_startup_failed",
+        "high_trust_usable_count": 0,
+        "http_status": 599,
+        "person_lead_count": 0,
+        "privacy_refusal": false,
+        "quality_report": {
+          "artifact_id": "lee-commodity-buyers",
+          "artifact_kind": "benchmark",
+          "candidate_category_counts": {
+            "failed": 0,
+            "not_found": 0,
+            "organization_only": 0,
+            "person_lead": 0
+          },
+          "candidate_ready_blockers": [],
+          "contact_quality_count": 0,
+          "contact_quality_rate": 0.0,
+          "failed_count": 0,
+          "fake_email_count": 0,
+          "high_noise_count": 0,
+          "high_noise_rate": 0.0,
+          "not_found_count": 0,
+          "organization_only_count": 0,
+          "person_lead_count": 0,
+          "persona_match_count": 0,
+          "persona_match_rate": 0.0,
+          "precision_rate": 0.0,
+          "quality_gate_failures": [
+            "no_candidates",
+            "zero_usable_candidates",
+            "low_precision_rate",
+            "low_persona_match_rate",
+            "low_contact_quality_rate",
+            "low_source_support_rate"
+          ],
+          "quality_gate_passed": false,
+          "quality_gate_thresholds": {
+            "maximum_fake_email_count": 0,
+            "maximum_high_noise_rate": 0.4,
+            "maximum_unsupported_email_count": 0,
+            "minimum_contact_quality_rate": 0.5,
+            "minimum_persona_match_rate": 0.5,
+            "minimum_precision_rate": 0.5,
+            "minimum_source_support_rate": 0.5,
+            "minimum_usable_count": 1
+          },
+          "query": "commodity buyers at retail lumber yards in Washington",
+          "ready_blocker_counts": {},
+          "source_support_count": 0,
+          "source_support_rate": 0.0,
+          "total_candidates": 0,
+          "unsupported_email_count": 0,
+          "usable_count": 0,
+          "validation_status_counts": {
+            "email": {
+              "deduced_with_pattern_evidence": 0,
+              "failed": 0,
+              "missing": 0,
+              "unsupported": 0,
+              "verified_found": 0
+            },
+            "name": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            },
+            "organization": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            },
+            "phone": {
+              "deduced_with_pattern_evidence": 0,
+              "failed": 0,
+              "missing": 0,
+              "unsupported": 0,
+              "verified_found": 0
+            },
+            "source": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            },
+            "title": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            }
+          }
+        }
+      },
+      "manufacturing-ops-detroit": {
+        "categorized_row_count": 0,
+        "error_code": "api_startup_failed",
+        "high_trust_usable_count": 0,
+        "http_status": 599,
+        "person_lead_count": 0,
+        "privacy_refusal": false,
+        "quality_report": {
+          "artifact_id": "manufacturing-ops-detroit",
+          "artifact_kind": "benchmark",
+          "candidate_category_counts": {
+            "failed": 0,
+            "not_found": 0,
+            "organization_only": 0,
+            "person_lead": 0
+          },
+          "candidate_ready_blockers": [],
+          "contact_quality_count": 0,
+          "contact_quality_rate": 0.0,
+          "failed_count": 0,
+          "fake_email_count": 0,
+          "high_noise_count": 0,
+          "high_noise_rate": 0.0,
+          "not_found_count": 0,
+          "organization_only_count": 0,
+          "person_lead_count": 0,
+          "persona_match_count": 0,
+          "persona_match_rate": 0.0,
+          "precision_rate": 0.0,
+          "quality_gate_failures": [
+            "no_candidates",
+            "zero_usable_candidates",
+            "low_precision_rate",
+            "low_persona_match_rate",
+            "low_contact_quality_rate",
+            "low_source_support_rate"
+          ],
+          "quality_gate_passed": false,
+          "quality_gate_thresholds": {
+            "maximum_fake_email_count": 0,
+            "maximum_high_noise_rate": 0.4,
+            "maximum_unsupported_email_count": 0,
+            "minimum_contact_quality_rate": 0.5,
+            "minimum_persona_match_rate": 0.5,
+            "minimum_precision_rate": 0.5,
+            "minimum_source_support_rate": 0.5,
+            "minimum_usable_count": 1
+          },
+          "query": "manufacturing operations leaders in Detroit",
+          "ready_blocker_counts": {},
+          "source_support_count": 0,
+          "source_support_rate": 0.0,
+          "total_candidates": 0,
+          "unsupported_email_count": 0,
+          "usable_count": 0,
+          "validation_status_counts": {
+            "email": {
+              "deduced_with_pattern_evidence": 0,
+              "failed": 0,
+              "missing": 0,
+              "unsupported": 0,
+              "verified_found": 0
+            },
+            "name": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            },
+            "organization": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            },
+            "phone": {
+              "deduced_with_pattern_evidence": 0,
+              "failed": 0,
+              "missing": 0,
+              "unsupported": 0,
+              "verified_found": 0
+            },
+            "source": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            },
+            "title": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            }
+          }
+        }
+      },
+      "privacy-reject-homeowner-phones": {
+        "categorized_row_count": 0,
+        "error_code": "api_startup_failed",
+        "high_trust_usable_count": 0,
+        "http_status": 599,
+        "person_lead_count": 0,
+        "privacy_refusal": true,
+        "quality_report": null
+      },
+      "thomas-arizona-k12": {
+        "categorized_row_count": 0,
+        "error_code": "api_startup_failed",
+        "high_trust_usable_count": 0,
+        "http_status": 599,
+        "person_lead_count": 0,
+        "privacy_refusal": false,
+        "quality_report": {
+          "artifact_id": "thomas-arizona-k12",
+          "artifact_kind": "benchmark",
+          "candidate_category_counts": {
+            "failed": 0,
+            "not_found": 0,
+            "organization_only": 0,
+            "person_lead": 0
+          },
+          "candidate_ready_blockers": [],
+          "contact_quality_count": 0,
+          "contact_quality_rate": 0.0,
+          "failed_count": 0,
+          "fake_email_count": 0,
+          "high_noise_count": 0,
+          "high_noise_rate": 0.0,
+          "not_found_count": 0,
+          "organization_only_count": 0,
+          "person_lead_count": 0,
+          "persona_match_count": 0,
+          "persona_match_rate": 0.0,
+          "precision_rate": 0.0,
+          "quality_gate_failures": [
+            "no_candidates",
+            "zero_usable_candidates",
+            "low_precision_rate",
+            "low_persona_match_rate",
+            "low_contact_quality_rate",
+            "low_source_support_rate"
+          ],
+          "quality_gate_passed": false,
+          "quality_gate_thresholds": {
+            "maximum_fake_email_count": 0,
+            "maximum_high_noise_rate": 0.4,
+            "maximum_unsupported_email_count": 0,
+            "minimum_contact_quality_rate": 0.5,
+            "minimum_persona_match_rate": 0.5,
+            "minimum_precision_rate": 0.5,
+            "minimum_source_support_rate": 0.5,
+            "minimum_usable_count": 1
+          },
+          "query": "name and email and phone number for these District Approx Size Tech Decision Maker Type Mesa Public Schools 60k+ students CIO / Director of Technology; Chandler Unified School District 40k+ CTO / IT Director; Peoria Unified School District 35k+ Technology Services; Gilbert Public Schools 30k+ CTO; Deer Valley Unified School District 30k+ IT leadership; Paradise Valley Unified School District 25k+ CIO/Technology; Dysart Unified School District 24k+ Director of Technology; Maricopa Unified School District 9k+ Director of Technology",
+          "ready_blocker_counts": {},
+          "source_support_count": 0,
+          "source_support_rate": 0.0,
+          "total_candidates": 0,
+          "unsupported_email_count": 0,
+          "usable_count": 0,
+          "validation_status_counts": {
+            "email": {
+              "deduced_with_pattern_evidence": 0,
+              "failed": 0,
+              "missing": 0,
+              "unsupported": 0,
+              "verified_found": 0
+            },
+            "name": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            },
+            "organization": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            },
+            "phone": {
+              "deduced_with_pattern_evidence": 0,
+              "failed": 0,
+              "missing": 0,
+              "unsupported": 0,
+              "verified_found": 0
+            },
+            "source": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            },
+            "title": {
+              "failed": 0,
+              "missing": 0,
+              "supported": 0,
+              "unsupported": 0
+            }
+          }
+        }
+      }
+    },
+    "contact_pass_cases": 0,
+    "failed_cases": 5,
+    "guardrail_mismatches": [],
+    "observation_mismatches": [
+      "thomas-arizona-k12: coverage, volume",
+      "lee-commodity-buyers: volume",
+      "healthcare-it-phoenix: persona, contact, source, volume",
+      "finance-cisos-new-york: persona, contact, source, volume",
+      "manufacturing-ops-detroit: persona, contact, source, volume"
+    ],
+    "passed_cases": 1,
+    "persona_pass_cases": 0,
+    "privacy_refusal_cases": 1,
+    "source_pass_cases": 0,
+    "startup_probe": {
+      "api_base_url": "http://127.0.0.1:8017",
+      "attempts": [
+        {
+          "elapsed_seconds": 5.003,
+          "error": "TimeoutError: ",
+          "ok": false,
+          "status_code": 0
+        },
+        {
+          "elapsed_seconds": 5.003,
+          "error": "TimeoutError: ",
+          "ok": false,
+          "status_code": 0
+        },
+        {
+          "elapsed_seconds": 5.002,
+          "error": "TimeoutError: ",
+          "ok": false,
+          "status_code": 0
+        },
+        {
+          "elapsed_seconds": 1.99,
+          "error": "TimeoutError: ",
+          "ok": false,
+          "status_code": 0
+        }
+      ],
+      "elapsed_seconds": 20.006,
+      "failure_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/startup/startup-failure.json",
+      "health_ok": false,
+      "health_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/startup/health.json",
+      "health_status_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/startup/health.http",
+      "readiness_path": null,
+      "readiness_status": null,
+      "readiness_status_path": null
+    },
+    "suite_id": "required_lead_quality_suite",
+    "total_cases": 6
+  }
+}
+
+exit=0

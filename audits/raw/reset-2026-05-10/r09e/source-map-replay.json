@@ -1,0 +1,32 @@
+{
+  "map_id": "nm_k12_source_map_r09e",
+  "district_count": 7,
+  "seed_count": 13,
+  "official_seed_count": 13,
+  "state_roster_seed_count": 1,
+  "districts_with_roster_first_sources": [
+    "New Mexico Public Education Department",
+    "Albuquerque Public Schools",
+    "Rio Rancho Public Schools",
+    "Los Alamos Public Schools",
+    "Hobbs Municipal Schools",
+    "Farmington Municipal Schools",
+    "Sanitized April NM manual-lookup rows"
+  ],
+  "districts_missing_roster_first_sources": [],
+  "source_families": [
+    "district_contact_page",
+    "district_official_homepage",
+    "district_staff_directory",
+    "manual_oracle_seed",
+    "state_education_agency_roster",
+    "state_public_school_directory"
+  ],
+  "generic_search_sources": [],
+  "coverage_gaps": [
+    "New Mexico Public Education Department: State directory can establish district universe and official websites, but district-level person extraction still requires district pages or PDFs.",
+    "Sanitized April NM manual-lookup rows: R09D intentionally redacted exact district/source identifiers for these rows; R09F must accept seed rows or operator-provided source packs to resolve them without private email dumps.",
+    "Sanitized April NM manual-lookup rows: Direct public emails were missing in the April workbook shape; preserve as manual_lookup until a source page supports contact evidence."
+  ],
+  "source_map_reproduced": true
+}

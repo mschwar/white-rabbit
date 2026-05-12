@@ -1,0 +1,13 @@
+{
+  "api_base_url": "http://white-rabbit.test",
+  "checked_at": "2026-05-12T00:08:46.434446Z",
+  "elapsed_seconds": 0.0,
+  "health_ok": true,
+  "probe_id": "healthcare-it-phoenix",
+  "probe_label": "product-request",
+  "response": {
+    "service": "white-rabbit-api",
+    "status": "ok"
+  },
+  "status_code": 200
+}

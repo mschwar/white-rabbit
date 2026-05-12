@@ -1,0 +1,26 @@
+{
+  "api_base_url": "http://white-rabbit.test",
+  "attempts": [
+    {
+      "elapsed_seconds": 0.0,
+      "error": "ConnectError: connection refused",
+      "ok": false,
+      "status_code": 0
+    },
+    {
+      "elapsed_seconds": 0.0,
+      "error": "ConnectError: connection refused",
+      "ok": false,
+      "status_code": 0
+    }
+  ],
+  "elapsed_seconds": 0.202,
+  "failure_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/api-startup-failed/startup/startup-failure.json",
+  "health_ok": false,
+  "health_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/api-startup-failed/startup/health.json",
+  "health_status_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/api-startup-failed/startup/health.http",
+  "readiness_error_code": null,
+  "readiness_path": null,
+  "readiness_status": null,
+  "readiness_status_path": null
+}

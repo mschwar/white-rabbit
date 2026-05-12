@@ -68,6 +68,7 @@ ContactStatus = Literal[
     "failed",
     "unsupported",
 ]
+OutputTier = Literal["high_trust_usable", "review", "organization_only", "not_found", "failed"]
 
 _LEGACY_CONTACT_STATUS_ALIASES = {
     "Found": "verified_found",
@@ -137,6 +138,14 @@ class CandidateBase(BaseModel):
     candidate_category: Literal["person_lead", "organization_only", "not_found", "failed"] = Field(
         description="Explicit row category."
     )
+    tier: OutputTier = Field(
+        default="review",
+        description="Server-computed output tier for operator review and export ordering.",
+    )
+    primary_filter_reason: str = Field(
+        default="Tier has not been computed yet.",
+        description="Server-computed primary reason the row is or is not actionable.",
+    )
     validation: CandidateValidation = Field(
         default_factory=CandidateValidation,
         description="Field-level validation records for the candidate.",
@@ -168,9 +177,17 @@ class Lead(CandidateBase):
     )
 
     # New Sprint 1 fields
-    fit_score: float = Field(ge=0, le=1, description="Match between person/org and target ICP")
-    evidence_score: float = Field(ge=0, le=1, description="Strength and freshness of supporting sources")
-    contact_score: float = Field(ge=0, le=1, description="Usability of email/phone/title information")
+    fit_score: float = Field(ge=0, le=1, description="Query-fit signal only; not a CRM-readiness score.")
+    evidence_score: float = Field(
+        ge=0,
+        le=1,
+        description="Server-capped evidence-support signal derived from field/source validation.",
+    )
+    contact_score: float = Field(
+        ge=0,
+        le=1,
+        description="Server-capped contact-readiness signal derived from contact validation.",
+    )
     gate_passed: bool = Field(description="True if the server-computed evidence gate cleared the thresholds")
     explanation: str = Field(description="Human-readable rationale for ranking")
 
@@ -241,6 +258,14 @@ class OrganizationOnlyCandidate(CandidateBase):
         description="Why this row remains organization-only.",
     )
 
+    @model_validator(mode="before")
+    @classmethod
+    def default_tier(cls, data: object) -> object:
+        if isinstance(data, dict):
+            data.setdefault("tier", "organization_only")
+            data.setdefault("primary_filter_reason", "Organization was found, but no validated person was ready.")
+        return data
+
     @model_validator(mode="after")
     def validate_organization_only_candidate(self) -> OrganizationOnlyCandidate:
         if not _has_text(self.organization):
@@ -260,6 +285,14 @@ class NotFoundCandidate(CandidateBase):
         default="No acceptable contact was found.",
         description="Why the search did not produce a usable person lead.",
     )
+
+    @model_validator(mode="before")
+    @classmethod
+    def default_tier(cls, data: object) -> object:
+        if isinstance(data, dict):
+            data.setdefault("tier", "not_found")
+            data.setdefault("primary_filter_reason", "Target was searched, but no acceptable contact was found.")
+        return data
 
     @model_validator(mode="after")
     def validate_not_found_candidate(self) -> NotFoundCandidate:
@@ -281,6 +314,14 @@ class FailedCandidate(CandidateBase):
         default="The candidate could not be trusted.",
         description="Human-readable explanation for the failure outcome.",
     )
+
+    @model_validator(mode="before")
+    @classmethod
+    def default_tier(cls, data: object) -> object:
+        if isinstance(data, dict):
+            data.setdefault("tier", "failed")
+            data.setdefault("primary_filter_reason", "Evidence contradicted or failed to support this row.")
+        return data
 
     @model_validator(mode="after")
     def validate_failed_candidate(self) -> FailedCandidate:

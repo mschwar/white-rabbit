@@ -1,8 +1,10 @@
 import {
+  getOutputTier,
   getValidationBucket,
   isPersonLead,
   type CandidateValidation,
   type LeadSortMode,
+  TIER_LABELS,
   type QueryGuardrailResult,
   type ScoutResultRow,
 } from './scout';
@@ -15,6 +17,7 @@ export type FullLeadExportRow = {
   location: string;
   runId: string;
   rank: string;
+  operatorLabel: string;
   candidateCategory: string;
   usableCandidate: string;
   leadName: string;
@@ -47,6 +50,13 @@ export type BuildFullLeadExportRowsInput = {
   rows: ScoutResultRow[];
   guardrail: QueryGuardrailResult | null;
   generatedAt?: Date;
+};
+
+const EXPORT_BUCKET_ORDER = {
+  usable: 0,
+  noisy_failed: 1,
+  organization_only: 2,
+  not_found: 3,
 };
 
 function escapeCsvCell(value: string): string {
@@ -212,60 +222,63 @@ export function buildFullLeadExportRows({
   const generatedAtLabel = generatedAt.toISOString();
   const guardrailContext = describeGuardrail(guardrail);
 
-  return rows.map((row, index) => {
-    const validation = getValidation(row);
-    const rankingGate = getValidationBucket(row);
-    const sourceFallback = 'source_url' in row ? row.source_url ?? null : null;
+  return rows
+    .map((row, index) => ({ row, index }))
+    .sort((left, right) => {
+      const bucketDelta =
+        EXPORT_BUCKET_ORDER[getValidationBucket(left.row)] - EXPORT_BUCKET_ORDER[getValidationBucket(right.row)];
+      if (bucketDelta !== 0) {
+        return bucketDelta;
+      }
 
-    return {
-      generatedAt: generatedAtLabel,
-      sortMode,
-      recipeName,
-      query,
-      location,
-      runId,
-      rank: String(index + 1),
-      candidateCategory: row.candidate_category ?? 'person_lead',
-      usableCandidate: isPersonLead(row) && rankingGate === 'usable' ? 'yes' : 'no',
-      leadName: getLeadName(row),
-      title: getTitle(row),
-      organization: getOrganization(row),
-      email: getEmail(row, validation),
-      emailStatus: validation.email.status,
-      phone: getPhone(row),
-      phoneStatus: validation.phone.status,
-      fitScore: getScore(row, 'fit_score'),
-      evidenceScore: getScore(row, 'evidence_score'),
-      contactScore: getScore(row, 'contact_score'),
-      rankingGate,
-      sourceNameUrl: getSourceUrl(validation.name, sourceFallback),
-      sourceTitleUrl: getSourceUrl(validation.title, sourceFallback),
-      sourceOrgUrl: getSourceUrl(validation.organization, sourceFallback),
-      sourceEmailUrl: getSourceUrl(validation.email, sourceFallback),
-      sourcePhoneUrl: getSourceUrl(validation.phone, sourceFallback),
-      sourceAccessStatus: validation.source.status,
-      validationNotes: [
-        `Generated ${generatedAtLabel}.`,
-        `Sort mode: ${sortMode}.`,
-        guardrailContext,
-        getValidationNotes(row, validation, rankingGate),
-      ].join(' '),
-      checkedAt: getCheckedAt(validation),
-    };
-  });
+      return left.index - right.index;
+    })
+    .map(({ row }, index) => {
+      const validation = getValidation(row);
+      const rankingGate = getValidationBucket(row);
+      const sourceFallback = 'source_url' in row ? row.source_url ?? null : null;
+
+      return {
+        generatedAt: generatedAtLabel,
+        sortMode,
+        recipeName,
+        query,
+        location,
+        runId,
+        rank: String(index + 1),
+        operatorLabel: TIER_LABELS[getOutputTier(row)],
+        candidateCategory: row.candidate_category ?? 'person_lead',
+        usableCandidate: isPersonLead(row) && rankingGate === 'usable' ? 'yes' : 'no',
+        leadName: getLeadName(row),
+        title: getTitle(row),
+        organization: getOrganization(row),
+        email: getEmail(row, validation),
+        emailStatus: validation.email.status,
+        phone: getPhone(row),
+        phoneStatus: validation.phone.status,
+        fitScore: getScore(row, 'fit_score'),
+        evidenceScore: getScore(row, 'evidence_score'),
+        contactScore: getScore(row, 'contact_score'),
+        rankingGate,
+        sourceNameUrl: getSourceUrl(validation.name, sourceFallback),
+        sourceTitleUrl: getSourceUrl(validation.title, sourceFallback),
+        sourceOrgUrl: getSourceUrl(validation.organization, sourceFallback),
+        sourceEmailUrl: getSourceUrl(validation.email, sourceFallback),
+        sourcePhoneUrl: getSourceUrl(validation.phone, sourceFallback),
+        sourceAccessStatus: validation.source.status,
+        validationNotes: [
+          `Generated ${generatedAtLabel}.`,
+          `Sort mode: ${sortMode}.`,
+          guardrailContext,
+          getValidationNotes(row, validation, rankingGate),
+        ].join(' '),
+        checkedAt: getCheckedAt(validation),
+      };
+    });
 }
 
 export function buildFullLeadExportCsv(rows: FullLeadExportRow[]): string {
   const headers = [
-    'generated_at',
-    'sort_mode',
-    'recipe_name',
-    'query',
-    'location',
-    'run_id',
-    'rank',
-    'candidate_category',
-    'usable_candidate',
     'lead_name',
     'title',
     'organization',
@@ -273,6 +286,12 @@ export function buildFullLeadExportCsv(rows: FullLeadExportRow[]): string {
     'email_status',
     'phone',
     'phone_status',
+    'usable_candidate',
+    'operator_label',
+    'candidate_category',
+    'rank',
+    'query',
+    'run_id',
     'fit_score',
     'evidence_score',
     'contact_score',
@@ -285,19 +304,14 @@ export function buildFullLeadExportCsv(rows: FullLeadExportRow[]): string {
     'source_access_status',
     'validation_notes',
     'checked_at',
+    'location',
+    'recipe_name',
+    'sort_mode',
+    'generated_at',
   ];
 
   const body = rows.map((row) =>
     [
-      row.generatedAt,
-      row.sortMode,
-      row.recipeName,
-      row.query,
-      row.location,
-      row.runId,
-      row.rank,
-      row.candidateCategory,
-      row.usableCandidate,
       row.leadName,
       row.title,
       row.organization,
@@ -305,6 +319,12 @@ export function buildFullLeadExportCsv(rows: FullLeadExportRow[]): string {
       row.emailStatus,
       row.phone,
       row.phoneStatus,
+      row.usableCandidate,
+      row.operatorLabel,
+      row.candidateCategory,
+      row.rank,
+      row.query,
+      row.runId,
       row.fitScore,
       row.evidenceScore,
       row.contactScore,
@@ -317,6 +337,10 @@ export function buildFullLeadExportCsv(rows: FullLeadExportRow[]): string {
       row.sourceAccessStatus,
       row.validationNotes,
       row.checkedAt,
+      row.location,
+      row.recipeName,
+      row.sortMode,
+      row.generatedAt,
     ]
       .map(escapeCsvCell)
       .join(','),

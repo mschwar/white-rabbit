@@ -1,0 +1,5 @@
+{
+  "api_base_url": "http://127.0.0.1:8999",
+  "error": "ConnectError: All connection attempts failed",
+  "error_code": "health_request_error"
+}

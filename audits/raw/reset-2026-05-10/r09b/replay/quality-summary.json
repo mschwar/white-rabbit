@@ -1,0 +1,66 @@
+{
+  "case_summaries": {
+    "contact-evidence-pass": {
+      "candidate_ready_blockers": [
+        {
+          "blocker": "no_contact_source",
+          "candidate_category": "person_lead",
+          "index": 1,
+          "reason": "REVIEW: contact is missing; row is not CRM-ready.",
+          "tier": "review"
+        },
+        {
+          "blocker": "organization_only",
+          "candidate_category": "organization_only",
+          "index": 2,
+          "reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Organization contact/team source was found, but no named person was validated.",
+          "tier": "organization_only"
+        }
+      ],
+      "contact_quality_passes": 1,
+      "funnel_counts": {
+        "categorized_rows": 3,
+        "contact_quality_passes": 1,
+        "deduped_sources": 3,
+        "extracted_candidates": 3,
+        "high_trust_usable_rows": 1,
+        "person_rows": 2,
+        "raw_vendor_hits": 3,
+        "source_snapshots": 3
+      },
+      "high_trust_usable_count": 1,
+      "http_status": 200,
+      "quality_status": "replay_evaluated",
+      "ready_blocker_counts": {
+        "no_contact_source": 1,
+        "organization_only": 1
+      }
+    },
+    "runner-timeout-partial": {
+      "candidate_ready_blockers": [],
+      "contact_quality_passes": 0,
+      "error_code": "runner_timeout",
+      "funnel_counts": {
+        "categorized_rows": 0,
+        "contact_quality_passes": 0,
+        "deduped_sources": 0,
+        "extracted_candidates": 0,
+        "high_trust_usable_rows": 0,
+        "person_rows": 0,
+        "raw_vendor_hits": 0,
+        "source_snapshots": 0
+      },
+      "high_trust_usable_count": 0,
+      "http_status": 599,
+      "quality_status": "partial_artifact",
+      "ready_blocker_counts": {}
+    }
+  },
+  "mode": "replay",
+  "notes": [
+    "R09B replay artifact proves the targeted contact-evidence path can promote only source-backed contact evidence.",
+    "Rows with missing contact or organization-only evidence remain non-CRM-ready and receive READY blockers.",
+    "Runner timeout partial artifact shape is covered by tests/test_live_benchmark_runner.py."
+  ],
+  "total_cases": 2
+}

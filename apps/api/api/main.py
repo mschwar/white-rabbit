@@ -1,17 +1,24 @@
 from __future__ import annotations
+import asyncio
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
+from concurrent.futures import ThreadPoolExecutor, wait
+import os
 import sys
 import secrets
+import time
 from typing import Annotated, Any, Optional
 from uuid import UUID, uuid4
 
+# Keep API import/startup deterministic; White Rabbit does not use Pydantic plugins.
+os.environ.setdefault("PYDANTIC_DISABLE_PLUGINS", "__all__")
+
 from dotenv import load_dotenv
 from fastapi import Depends, FastAPI, HTTPException, Request
-from pydantic import BaseModel
-import os
+from pydantic import BaseModel, Field
 import logging
 from contextlib import asynccontextmanager
+from sqlalchemy import create_engine, text
 
 logger = logging.getLogger("white_rabbit.api")
 
@@ -22,14 +29,19 @@ for candidate in (CORE_SRC, REPO_ROOT):
         sys.path.insert(0, str(candidate))
 
 from core.cost import RunMetrics
+from core.live_source_assisted_proof import (
+    DEFAULT_R09L_QUERY,
+    DEFAULT_R09L_RUN_ID,
+    DEFAULT_R09L_TARGET,
+    build_live_source_assisted_proof,
+)
 from core.models import Candidate
-from core.orchestrator import scout, OrchestratorError, DEFAULT_MODEL
 from core.query_guardrails import QueryGuardrailResult, evaluate_query_guardrails
+from core.query_planner import compile_query_plan
 
-from api.models import CorrectionField, CorrectionLabel, FeedbackLabel
+from api.models import CorrectionField, CorrectionLabel, FeedbackLabel, SandboxState
 
 from api.db import (
-    init_db,
     get_db_session,
     create_recipe,
     create_recipe_run,
@@ -59,16 +71,36 @@ load_dotenv()
 
 INTERNAL_API_TOKEN_HEADER = "x-white-rabbit-internal-token"
 INTERNAL_API_TOKEN_ENV = "WR_API_INTERNAL_TOKEN"
+DEFAULT_MODEL = "gpt-4o-mini"
+READINESS_TIMEOUT_SECONDS = 2.0
+READINESS_DEPENDENCY_TIMEOUT_SECONDS = 1.0
+_READINESS_EXECUTOR = ThreadPoolExecutor(max_workers=4, thread_name_prefix="white-rabbit-readiness")
 
-# Initialize database on startup (must happen before any endpoint uses it)
-init_db()
+
+async def scout(*args, **kwargs):
+    from core.orchestrator import scout as orchestrator_scout
+
+    return await orchestrator_scout(*args, **kwargs)
 
 
-def _preflight_check():
-    """Validate required env vars and vendor connectivity at startup."""
-    if "pytest" in sys.modules:
-        return
+class ReadinessCheck(BaseModel):
+    name: str
+    status: str
+    required: bool = True
+    message: str
+    elapsed_seconds: float | None = None
+    details: dict[str, Any] = Field(default_factory=dict)
 
+
+class ReadinessResponse(BaseModel):
+    status: str
+    checked_at: str
+    budget_seconds: float = READINESS_TIMEOUT_SECONDS
+    elapsed_seconds: float | None = None
+    checks: list[ReadinessCheck]
+
+
+def _required_env_vars() -> list[str]:
     env = os.environ.get("WR_ENV", "").lower()
     _is_production = env == "production"
 
@@ -81,8 +113,19 @@ def _preflight_check():
     ]
     if _is_production:
         required.append("DATABASE_URL")
+    return required
 
-    missing = [r for r in required if not os.environ.get(r)]
+
+def _missing_required_env_vars() -> list[str]:
+    return [name for name in _required_env_vars() if not os.environ.get(name)]
+
+
+def _preflight_check():
+    """Validate required env vars and vendor connectivity when explicitly invoked."""
+    if "pytest" in sys.modules:
+        return
+
+    missing = _missing_required_env_vars()
     if missing:
         raise RuntimeError(f"Missing required env: {', '.join(missing)}")
 
@@ -106,9 +149,331 @@ def _preflight_check():
     logger.info("Postgres: %s", db_url or "localhost (default)")
 
 
+def _elapsed_since(start: float) -> float:
+    return round(time.perf_counter() - start, 6)
+
+
+def _redacted_env_presence() -> dict[str, dict[str, bool]]:
+    names = sorted(set(_required_env_vars()) | {"DATABASE_URL", "OPENAI_BASE_URL", "OPENAI_MODEL"})
+    return {name: {"present": bool(os.environ.get(name))} for name in names}
+
+
+def _check_process() -> ReadinessCheck:
+    start = time.perf_counter()
+    return ReadinessCheck(
+        name="process",
+        status="ready",
+        message="API process is alive and answering readiness.",
+        elapsed_seconds=_elapsed_since(start),
+        details={
+            "pid": os.getpid(),
+            "service": "white-rabbit-api",
+            "env": os.environ.get("WR_ENV", "development"),
+        },
+    )
+
+
+def _check_config() -> ReadinessCheck:
+    start = time.perf_counter()
+    missing = _missing_required_env_vars()
+    status = "misconfigured" if missing else "ready"
+    if missing:
+        return ReadinessCheck(
+            name="config",
+            status=status,
+            message=f"Missing required env: {', '.join(missing)}",
+            elapsed_seconds=_elapsed_since(start),
+            details={"env_presence": _redacted_env_presence(), "missing": missing},
+        )
+    return ReadinessCheck(
+        name="config",
+        status=status,
+        message="Required configuration is present.",
+        elapsed_seconds=_elapsed_since(start),
+        details={"env_presence": _redacted_env_presence(), "missing": []},
+    )
+
+
+def _check_database(timeout_seconds: float = READINESS_TIMEOUT_SECONDS) -> ReadinessCheck:
+    start = time.perf_counter()
+    db_url = os.environ.get("DATABASE_URL")
+    if not db_url:
+        return ReadinessCheck(
+            name="database",
+            status="misconfigured",
+            message="DATABASE_URL is missing.",
+            elapsed_seconds=_elapsed_since(start),
+            details={
+                "database_url_present": False,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
+        )
+
+    engine = None
+    try:
+        connect_args: dict[str, Any] = {}
+        if db_url and db_url.startswith(("postgresql://", "postgresql+")):
+            connect_args["connect_timeout"] = max(1, int(timeout_seconds))
+        engine = create_engine(db_url, connect_args=connect_args) if connect_args else create_engine(db_url)
+        with engine.connect() as connection:
+            connection.execute(text("SELECT 1"))
+        return ReadinessCheck(
+            name="database",
+            status="ready",
+            message="Database connection answered SELECT 1.",
+            elapsed_seconds=_elapsed_since(start),
+            details={
+                "database_url_present": True,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
+        )
+    except Exception as exc:
+        return ReadinessCheck(
+            name="database",
+            status="unavailable",
+            message=f"Database readiness failed: {exc.__class__.__name__}: {exc}",
+            elapsed_seconds=_elapsed_since(start),
+            details={
+                "database_url_present": True,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
+        )
+    finally:
+        if engine is not None:
+            try:
+                engine.dispose()
+            except Exception:
+                pass
+
+
+def _check_openai(timeout_seconds: float = READINESS_TIMEOUT_SECONDS) -> ReadinessCheck:
+    start = time.perf_counter()
+    api_key = os.environ.get("OPENAI_API_KEY")
+    base_url = os.environ.get("OPENAI_BASE_URL")
+    model = os.environ.get("OPENAI_MODEL", DEFAULT_MODEL)
+    if not api_key:
+        return ReadinessCheck(
+            name="openai",
+            status="misconfigured",
+            message="OPENAI_API_KEY is missing.",
+            elapsed_seconds=_elapsed_since(start),
+            details={
+                "api_key_present": False,
+                "base_url": base_url or "https://api.openai.com/v1",
+                "model": model,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
+        )
+
+    try:
+        from openai import OpenAI
+
+        client = OpenAI(api_key=api_key, base_url=base_url, timeout=timeout_seconds, max_retries=0)
+        client.models.retrieve(model)
+        return ReadinessCheck(
+            name="openai",
+            status="ready",
+            message="OpenAI model lookup succeeded.",
+            elapsed_seconds=_elapsed_since(start),
+            details={
+                "api_key_present": True,
+                "base_url": base_url or "https://api.openai.com/v1",
+                "model": model,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
+        )
+    except Exception as exc:
+        return ReadinessCheck(
+            name="openai",
+            status="unavailable",
+            message=f"OpenAI readiness failed: {exc.__class__.__name__}: {exc}",
+            elapsed_seconds=_elapsed_since(start),
+            details={
+                "api_key_present": True,
+                "base_url": base_url or "https://api.openai.com/v1",
+                "model": model,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
+        )
+
+
+def _check_tavily(timeout_seconds: float = READINESS_DEPENDENCY_TIMEOUT_SECONDS) -> ReadinessCheck:
+    start = time.perf_counter()
+    if not os.environ.get("TAVILY_API_KEY"):
+        return ReadinessCheck(
+            name="tavily",
+            status="misconfigured",
+            message="TAVILY_API_KEY is missing.",
+            elapsed_seconds=_elapsed_since(start),
+            details={
+                "api_key_present": False,
+                "probe": "config_only",
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
+        )
+    return ReadinessCheck(
+        name="tavily",
+        status="degraded",
+        message="TAVILY_API_KEY is present; live search is not probed by readiness to avoid spending vendor calls.",
+        elapsed_seconds=_elapsed_since(start),
+        details={
+            "api_key_present": True,
+            "probe": "config_only",
+            "env_presence": _redacted_env_presence(),
+            "timeout_seconds": timeout_seconds,
+        },
+    )
+
+
+def _check_sandbox(timeout_seconds: float = READINESS_TIMEOUT_SECONDS) -> ReadinessCheck:
+    start = time.perf_counter()
+    db_url = os.environ.get("DATABASE_URL")
+    if not db_url:
+        return ReadinessCheck(
+            name="sandbox",
+            status="misconfigured",
+            message="Sandbox readiness needs DATABASE_URL.",
+            elapsed_seconds=_elapsed_since(start),
+            details={
+                "sandbox_state_present": False,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
+        )
+
+    try:
+        with get_db_session() as session:
+            state = session.query(SandboxState).filter(SandboxState.id == 1).first()
+            if state is None:
+                return ReadinessCheck(
+                    name="sandbox",
+                    status="degraded",
+                    message="Sandbox state row is missing; it will be initialized on demand.",
+                    elapsed_seconds=_elapsed_since(start),
+                    details={
+                        "sandbox_state_present": False,
+                        "env_presence": _redacted_env_presence(),
+                        "timeout_seconds": timeout_seconds,
+                    },
+                )
+
+            sandbox_usage = {
+                "total_queries": state.total_queries,
+                "total_rows": state.total_rows,
+                "max_queries": state.max_queries,
+                "max_rows": state.max_rows,
+                "reset_at": state.reset_at.isoformat(),
+            }
+        return ReadinessCheck(
+            name="sandbox",
+            status="ready",
+            message="Sandbox state is readable.",
+            elapsed_seconds=_elapsed_since(start),
+            details={
+                "sandbox_state_present": True,
+                "sandbox_usage": sandbox_usage,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
+        )
+    except Exception as exc:
+        return ReadinessCheck(
+            name="sandbox",
+            status="unavailable",
+            message=f"Sandbox readiness failed: {exc.__class__.__name__}: {exc}",
+            elapsed_seconds=_elapsed_since(start),
+            details={
+                "sandbox_state_present": False,
+                "env_presence": _redacted_env_presence(),
+                "timeout_seconds": timeout_seconds,
+            },
+        )
+
+
+def _readiness_timeout_check(name: str, *, timeout_seconds: float, elapsed_seconds: float) -> ReadinessCheck:
+    return ReadinessCheck(
+        name=name,
+        status="unavailable",
+        message=f"{name.capitalize()} readiness exceeded the {timeout_seconds} second budget.",
+        elapsed_seconds=elapsed_seconds,
+        details={
+            "timed_out": True,
+            "timeout_seconds": timeout_seconds,
+            "env_presence": _redacted_env_presence(),
+        },
+    )
+
+
+def collect_readiness(
+    timeout_seconds: float = READINESS_TIMEOUT_SECONDS,
+    dependency_timeout_seconds: float = READINESS_DEPENDENCY_TIMEOUT_SECONDS,
+) -> ReadinessResponse:
+    started = time.perf_counter()
+    budget_seconds = max(0.01, float(timeout_seconds))
+    dependency_timeout_seconds = max(0.01, float(dependency_timeout_seconds))
+    checks = [_check_process(), _check_config()]
+    dependency_specs = (
+        ("database", _check_database),
+        ("openai", _check_openai),
+        ("tavily", _check_tavily),
+        ("sandbox", _check_sandbox),
+    )
+    futures = {
+        name: _READINESS_EXECUTOR.submit(check_fn, dependency_timeout_seconds)
+        for name, check_fn in dependency_specs
+    }
+    done, _ = wait(tuple(futures.values()), timeout=budget_seconds)
+    for name, future in futures.items():
+        if future in done:
+            try:
+                checks.append(future.result())
+            except Exception as exc:
+                checks.append(
+                    ReadinessCheck(
+                        name=name,
+                        status="unavailable",
+                        message=f"{name.capitalize()} readiness failed: {exc.__class__.__name__}: {exc}",
+                        elapsed_seconds=_elapsed_since(started),
+                        details={
+                            "timed_out": False,
+                            "timeout_seconds": dependency_timeout_seconds,
+                            "env_presence": _redacted_env_presence(),
+                        },
+                    )
+                )
+        else:
+            future.cancel()
+            checks.append(
+                _readiness_timeout_check(
+                    name,
+                    timeout_seconds=budget_seconds,
+                    elapsed_seconds=_elapsed_since(started),
+                )
+            )
+    if any(check.status in {"unavailable", "misconfigured"} and check.required for check in checks):
+        status = "unavailable"
+    elif any(check.status == "degraded" for check in checks):
+        status = "degraded"
+    else:
+        status = "ready"
+    return ReadinessResponse(
+        status=status,
+        checked_at=datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        budget_seconds=budget_seconds,
+        elapsed_seconds=_elapsed_since(started),
+        checks=checks,
+    )
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    _preflight_check()
     yield
 
 
@@ -140,6 +505,26 @@ class FullResponse(BaseModel):
     recipe_id: UUID | None = None
     query_guardrail: QueryGuardrailResult | None = None
     sandbox_usage: SandboxUsageOut | None = None
+
+
+class LiveSourceAssistedProofRequest(BaseModel):
+    target: str = DEFAULT_R09L_TARGET
+    query: str = DEFAULT_R09L_QUERY
+    run_id: str = DEFAULT_R09L_RUN_ID
+
+
+class LiveSourceAssistedProofOut(BaseModel):
+    packet_id: str
+    feature_id: str
+    generated_at: str
+    request_summary: dict[str, Any]
+    source_map_replay: dict[str, Any]
+    source_assisted_replay: dict[str, Any]
+    workbook_replay: dict[str, Any]
+    safety_checks: dict[str, Any]
+    service_boundary: dict[str, Any]
+    prompt_b_handoff: dict[str, Any]
+    passes: bool
 
 
 class FeedbackRequest(BaseModel):
@@ -222,8 +607,34 @@ class SandboxResetOut(BaseModel):
 
 
 SANDBOX_SCOUT_MAX_ROWS_PER_QUERY = 15
+SANDBOX_SCOUT_BROAD_MAX_ROWS_PER_QUERY = 50
+SCOUT_BROAD_MAX_RESULTS = 240
 SANDBOX_FULL_MAX_ROWS_PER_QUERY = 100
 SANDBOX_BATCH_MAX_ROWS_PER_QUERY = 100
+
+
+def _is_broad_lead_query(query: str, filters: Optional[dict]) -> bool:
+    plan = compile_query_plan(
+        query,
+        filters=filters,
+        max_results=SCOUT_BROAD_MAX_RESULTS,
+        aggressive_breadth=True,
+    )
+    return plan.broad_query
+
+
+def _scout_execution_settings(query: str, filters: Optional[dict]) -> dict[str, Any]:
+    if not _is_broad_lead_query(query, filters):
+        return {"planned_rows": SANDBOX_SCOUT_MAX_ROWS_PER_QUERY, "scout_kwargs": {}}
+
+    return {
+        "planned_rows": SANDBOX_SCOUT_BROAD_MAX_ROWS_PER_QUERY,
+        "scout_kwargs": {
+            "max_leads": SANDBOX_SCOUT_BROAD_MAX_ROWS_PER_QUERY,
+            "max_results": SCOUT_BROAD_MAX_RESULTS,
+            "aggressive_breadth": True,
+        },
+    }
 
 
 def require_internal_api_access(request: Request) -> None:
@@ -291,16 +702,26 @@ def _query_guardrail_or_422(query: str) -> QueryGuardrailResult:
 
 @app.get("/health")
 async def health_check():
-    return {"status": "ok"}
+    return {"status": "ok", "service": "white-rabbit-api"}
+
+
+@app.get("/readiness", response_model=ReadinessResponse)
+async def readiness_check():
+    return await asyncio.to_thread(collect_readiness)
 
 
 @app.post("/scout", response_model=ScoutResponse)
 async def run_scout(request: ScoutRequest, _: ProtectedApiAccess):
     guardrail = _query_guardrail_or_422(request.query)
+    execution_settings = _scout_execution_settings(request.query, request.filters)
     with get_db_session() as session:
-        sandbox_usage = _sandbox_reserve_query_or_429(session, SANDBOX_SCOUT_MAX_ROWS_PER_QUERY)
+        sandbox_usage = _sandbox_reserve_query_or_429(session, execution_settings["planned_rows"])
     try:
-        leads, metrics = await scout(request.query, filters=request.filters)
+        leads, metrics = await scout(
+            request.query,
+            filters=request.filters,
+            **execution_settings["scout_kwargs"],
+        )
         with get_db_session() as session:
             record_sandbox_rows(session, len(leads))
             sandbox_usage = _sandbox_usage_out(session)
@@ -310,17 +731,23 @@ async def run_scout(request: ScoutRequest, _: ProtectedApiAccess):
             query_guardrail=guardrail if guardrail.status != 'clear' else None,
             sandbox_usage=sandbox_usage,
         )
-    except OrchestratorError as exc:
-        import logging
-        logging.getLogger("white_rabbit.api").error("Orchestrator error: %s", exc, exc_info=True)
-        raise HTTPException(status_code=503, detail=_orchestrator_error_response(exc))
     except Exception as exc:
         import logging
+        if _is_orchestrator_error(exc):
+            logging.getLogger("white_rabbit.api").error("Orchestrator error: %s", exc, exc_info=True)
+            raise HTTPException(status_code=503, detail=_orchestrator_error_response(exc))
         logging.getLogger("white_rabbit.api").error("Unexpected error: %s", exc, exc_info=True)
         raise HTTPException(status_code=500, detail=_internal_error_response(exc))
 
 
-def _resolve_error_code(exc: OrchestratorError) -> str:
+def _is_orchestrator_error(exc: Exception) -> bool:
+    return (
+        exc.__class__.__name__ == "OrchestratorError"
+        and exc.__class__.__module__ == "core.orchestrator"
+    )
+
+
+def _resolve_error_code(exc: Exception) -> str:
     msg = str(exc).lower()
     if "tavily" in msg:
         return "tavily_failed"
@@ -331,7 +758,7 @@ def _resolve_error_code(exc: OrchestratorError) -> str:
     return "orchestrator_error"
 
 
-def _orchestrator_error_response(exc: OrchestratorError) -> dict:
+def _orchestrator_error_response(exc: Exception) -> dict:
     return {
         "error_code": _resolve_error_code(exc),
         "message": str(exc),
@@ -351,19 +778,25 @@ def _internal_error_response(exc: Exception) -> dict:
 async def run_full(request: FullRequest, _: ProtectedApiAccess):
     """Run a Full query: produces a stored recipe and recipe_run."""
     guardrail = _query_guardrail_or_422(request.query)
+    aggressive_full = _is_broad_lead_query(request.query, request.filters)
     with get_db_session() as session:
         sandbox_usage = _sandbox_reserve_query_or_429(session, SANDBOX_FULL_MAX_ROWS_PER_QUERY)
     try:
-        leads, metrics = await scout(request.query, filters=request.filters, max_leads=100)
+        leads, metrics = await scout(
+            request.query,
+            filters=request.filters,
+            max_leads=SANDBOX_FULL_MAX_ROWS_PER_QUERY,
+            max_results=SCOUT_BROAD_MAX_RESULTS if aggressive_full else None,
+            aggressive_breadth=aggressive_full,
+        )
         with get_db_session() as session:
             record_sandbox_rows(session, len(leads))
             sandbox_usage = _sandbox_usage_out(session)
-    except OrchestratorError as exc:
-        import logging
-        logging.getLogger("white_rabbit.api").error("Orchestrator error: %s", exc, exc_info=True)
-        raise HTTPException(status_code=503, detail=_orchestrator_error_response(exc))
     except Exception as exc:
         import logging
+        if _is_orchestrator_error(exc):
+            logging.getLogger("white_rabbit.api").error("Orchestrator error: %s", exc, exc_info=True)
+            raise HTTPException(status_code=503, detail=_orchestrator_error_response(exc))
         logging.getLogger("white_rabbit.api").error("Unexpected error: %s", exc, exc_info=True)
         raise HTTPException(status_code=500, detail=_internal_error_response(exc))
 
@@ -401,6 +834,25 @@ async def run_full(request: FullRequest, _: ProtectedApiAccess):
             query_guardrail=guardrail if guardrail.status != 'clear' else None,
             sandbox_usage=sandbox_usage,
         )
+
+
+@app.post("/source-assisted-proof", response_model=LiveSourceAssistedProofOut)
+async def run_source_assisted_proof(request: LiveSourceAssistedProofRequest, _: ProtectedApiAccess):
+    proof = build_live_source_assisted_proof(
+        query=request.query,
+        run_id=request.run_id,
+        target=request.target,
+        service_boundary={
+            "route": "/source-assisted-proof",
+            "method": "POST",
+            "protected_route_ok": True,
+            "internal_token_required": True,
+            "internal_token_checked": True,
+            "sanitized_input": True,
+            "response_status": 200,
+        },
+    )
+    return LiveSourceAssistedProofOut(**proof.to_payload())
 
 
 @app.get("/recipes", response_model=list[RecipeOut])
@@ -650,32 +1102,35 @@ async def run_batch(request: BatchRequest, _: ProtectedApiAccess):
                     )
                 )
                 break
-            except OrchestratorError as exc:
-                import logging
-                logging.getLogger("white_rabbit.api").error("Batch orchestrator error: %s", exc, exc_info=True)
-                err = _orchestrator_error_response(exc)
-                batch_run.status = "failed"
-                batch_run.error_message = err["message"]
-                batch_run.ended_at = datetime.utcnow()
-                update_batch_run(
-                    session,
-                    batch_run.id,
-                    status="failed",
-                    error_message=err["message"],
-                )
-                run_records.append(
-                    BatchRunOut(
-                        id=batch_run.id,
-                        query=item.query,
-                        status="failed",
-                        lead_count=0,
-                        cost_usd=0.0,
-                        error_message=err["message"],
-                    )
-                )
-                continue
             except Exception as exc:
                 import logging
+                if _is_orchestrator_error(exc):
+                    logging.getLogger("white_rabbit.api").error(
+                        "Batch orchestrator error: %s",
+                        exc,
+                        exc_info=True,
+                    )
+                    err = _orchestrator_error_response(exc)
+                    batch_run.status = "failed"
+                    batch_run.error_message = err["message"]
+                    batch_run.ended_at = datetime.utcnow()
+                    update_batch_run(
+                        session,
+                        batch_run.id,
+                        status="failed",
+                        error_message=err["message"],
+                    )
+                    run_records.append(
+                        BatchRunOut(
+                            id=batch_run.id,
+                            query=item.query,
+                            status="failed",
+                            lead_count=0,
+                            cost_usd=0.0,
+                            error_message=err["message"],
+                        )
+                    )
+                    continue
                 logging.getLogger("white_rabbit.api").error("Batch unexpected error: %s", exc, exc_info=True)
                 err = _internal_error_response(exc)
                 batch_run.status = "failed"

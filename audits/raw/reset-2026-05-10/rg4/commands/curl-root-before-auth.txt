@@ -1,0 +1,15 @@
+HTTP/1.1 404 Not Found
+Cache-Control: private, no-cache, no-store, max-age=0, must-revalidate
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding
+x-nextjs-cache: HIT
+x-nextjs-prerender: 1
+x-nextjs-prerender: 1
+x-nextjs-stale-time: 300
+X-Powered-By: Next.js
+ETag: "7j86emjz3l6vv"
+Content-Type: text/html; charset=utf-8
+Content-Length: 8923
+Date: Tue, 12 May 2026 04:06:35 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+

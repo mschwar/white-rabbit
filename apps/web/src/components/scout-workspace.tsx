@@ -1,10 +1,12 @@
 'use client';
 
 import { FormEvent, useEffect, useState } from 'react';
+import PrimaryResultsOverview from '@/components/primary-results-overview';
 import ScoutResultsTable from '@/components/scout-results-table';
 import {
   buildScoutPayload,
   buildFullPayload,
+  buildTierDistribution,
   closeRecipeRun,
   DEFAULT_SCOUT_LOCATION,
   DEFAULT_SCOUT_QUERY,
@@ -13,6 +15,8 @@ import {
   isPersonLead,
   getValidationBucket,
   sortScoutResultRows,
+  OUTPUT_TIERS,
+  TIER_LABELS,
   CORRECTION_FIELD_OPTIONS,
   CORRECTION_LABEL_OPTIONS,
   fetchRunCorrections,
@@ -28,6 +32,7 @@ import {
   type ScoutResponse,
   type ValidationStatus,
   type FullResponse,
+  getOutputTier,
 } from '@/lib/scout';
 import {
   buildFullLeadExportCsv,
@@ -44,6 +49,13 @@ type Mode = 'scout' | 'full';
 type ScoutWorkspaceProps = {
   primaryMode?: boolean;
 };
+
+const PRIMARY_LOADING_STAGES = [
+  { label: 'Reading sources', count: '18' },
+  { label: 'Matching people', count: '17' },
+  { label: 'Checking contact evidence', count: '10' },
+  { label: 'Preparing review table', count: '--' },
+] as const;
 
 function mapErrorCodeToMessage(errorCode: string | null, fallback: string): string {
   switch (errorCode) {
@@ -148,6 +160,62 @@ function getEvidenceRowSummary(row: ScoutResultRow): string {
   }
 
   return `${row.failure_reason} ${row.explanation}`.trim();
+}
+
+function getEvidenceDossierStatus(row: ScoutResultRow): string {
+  return TIER_LABELS[getOutputTier(row)];
+}
+
+function getEvidencePrimaryBlocker(row: ScoutResultRow): string {
+  if (row.candidate_category === 'failed') {
+    return row.failure_reason || row.explanation || 'The row was blocked by inaccessible or contradictory evidence.';
+  }
+
+  if (row.candidate_category === 'organization_only') {
+    return row.explanation || 'No validated person was found for this organization.';
+  }
+
+  if (row.candidate_category === 'not_found') {
+    return row.explanation || 'The target was searched, but no acceptable contact was found.';
+  }
+
+  const validation = getEvidenceValidation(row);
+  if (validation.email.status === 'verified_found') {
+    return row.primary_filter_reason || 'No blocker. The row is supported well enough for CRM-ready review.';
+  }
+
+  if (validation.email.status === 'deduced_with_pattern_evidence') {
+    return 'Contact proof is deduced from pattern evidence and still needs human review.';
+  }
+
+  if (validation.email.status === 'missing') {
+    return 'Direct contact proof is missing.';
+  }
+
+  if (validation.email.status === 'failed') {
+    return 'Contact evidence could not be verified.';
+  }
+
+  return row.primary_filter_reason || row.explanation || 'The row still needs evidence review.';
+}
+
+function getEvidenceTrailEntries(row: ScoutResultRow) {
+  const validation = getEvidenceValidation(row);
+
+  return [
+    { label: 'Name', record: validation.name },
+    { label: 'Role', record: validation.title },
+    { label: 'Org', record: validation.organization },
+    { label: 'Email', record: validation.email },
+    { label: 'Phone', record: validation.phone },
+    { label: 'Source', record: validation.source },
+  ].map(({ label, record }) => ({
+    label,
+    status: formatEvidenceStatusLabel(record.status),
+    detail: record.evidence_snippet || record.notes || 'No evidence snippet captured.',
+    href: record.source_url,
+    checkedAt: record.checked_at,
+  }));
 }
 
 function getCorrectionDefaultField(row: ScoutResultRow): CorrectionField {
@@ -365,7 +433,6 @@ function ScoutEvidenceDrawer({
   }
 
   const currentRow = row;
-
   const validation = getEvidenceValidation(currentRow);
   const fields = [
     { label: 'Name', record: validation.name },
@@ -375,6 +442,16 @@ function ScoutEvidenceDrawer({
     { label: 'Phone', record: validation.phone },
     { label: 'Source', record: validation.source },
   ] as const;
+  const trailEntries = getEvidenceTrailEntries(currentRow);
+  const dossierStatus = getEvidenceDossierStatus(currentRow);
+  const primaryBlocker = getEvidencePrimaryBlocker(currentRow);
+  const dossierTitle = isPersonLead(currentRow)
+    ? `${currentRow.name} @ ${currentRow.organization}`
+    : getEvidenceRowIdentity(currentRow);
+  const dossierSummary = getEvidenceRowSummary(currentRow);
+  const dossierRationale = isPersonLead(currentRow)
+    ? currentRow.why_target || currentRow.explanation || dossierSummary
+    : currentRow.explanation || dossierSummary;
 
   async function refreshCorrectionQueueExport(prefixMessage?: string) {
     if (!runId) {
@@ -450,12 +527,12 @@ function ScoutEvidenceDrawer({
       >
         <div className="flex items-start justify-between gap-4 border-b border-white/10 p-6">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">Evidence drawer</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">Evidence dossier</p>
             <h3 id="evidence-drawer-title" className="mt-2 text-2xl font-semibold tracking-tight text-zinc-50">
-              {getEvidenceRowIdentity(row)}
+              {dossierTitle}
             </h3>
             <p id="evidence-drawer-summary" className="mt-2 text-sm leading-6 text-zinc-400">
-              {getEvidenceRowSummary(row)}
+              {dossierSummary}
             </p>
           </div>
           <button
@@ -468,23 +545,79 @@ function ScoutEvidenceDrawer({
         </div>
 
         <div className="flex-1 overflow-y-auto p-6">
-          <div className="mb-4 flex flex-wrap items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-200">
-              {row.candidate_category ?? 'person_lead'}
+              {currentRow.candidate_category ?? 'person_lead'}
             </span>
             <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-200">
-              {getValidationBucket(row)}
+              {getValidationBucket(currentRow)}
+            </span>
+            <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-100">
+              {dossierStatus}
             </span>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="mt-5 grid gap-4 rounded-3xl border border-white/10 bg-white/5 p-5">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-white/10 bg-zinc-950/70 p-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-400">Status</p>
+                <p className="mt-2 text-lg font-semibold text-zinc-50">{dossierStatus}</p>
+                <p className="mt-1 text-sm leading-6 text-zinc-300">{dossierSummary}</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-zinc-950/70 p-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-400">Primary blocker</p>
+                <p className="mt-2 text-lg font-semibold text-zinc-50">{primaryBlocker}</p>
+                <p className="mt-1 text-sm leading-6 text-zinc-300">Review this row before treating it as CRM-ready.</p>
+              </div>
+            </div>
+
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-zinc-400">Rationale</p>
+              <p className="mt-2 text-sm leading-6 text-zinc-200">{dossierRationale}</p>
+            </div>
+          </div>
+
+          <div className="mt-5 grid gap-4 md:grid-cols-2">
             {fields.map(({ label, record }) => renderEvidenceField(label, record))}
+          </div>
+
+          <div className="mt-5 rounded-3xl border border-white/10 bg-white/5 p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">Source trail</p>
+            <ol className="mt-4 space-y-3">
+              {trailEntries.map((entry, index) => (
+                <li key={`${entry.label}-${index}`} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-zinc-950/70 p-4">
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-white/10 bg-white/5 text-xs font-semibold text-zinc-200">
+                    {index + 1}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <strong className="text-sm text-zinc-50">{entry.label}</strong>
+                      <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-200">
+                        {entry.status}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-sm leading-6 text-zinc-300">{entry.detail}</p>
+                    {entry.checkedAt ? <p className="mt-1 text-xs text-zinc-500">{entry.checkedAt}</p> : null}
+                  </div>
+                  {entry.href ? (
+                    <a
+                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-zinc-200 transition hover:bg-white/10"
+                      href={entry.href}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      Source
+                    </a>
+                  ) : null}
+                </li>
+              ))}
+            </ol>
           </div>
 
           <div className="mt-6 rounded-3xl border border-white/10 bg-white/5 p-5">
             <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">Correction loop</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-emerald-300">Review actions</p>
                 <h4 className="mt-2 text-lg font-semibold text-zinc-50">Record a field-level correction</h4>
                 <p className="mt-1 text-sm leading-6 text-zinc-400">
                   Save the operator correction against this Full run, then export the queue as JSON for benchmark review.
@@ -609,6 +742,8 @@ const QA_VALIDATION_BUCKETS_FIXTURE: ScoutResponse = {
     {
       id: 'qa-usable-1',
       candidate_category: 'person_lead',
+      tier: 'high_trust_usable',
+      primary_filter_reason: 'READY: supported person, organization, source, and usable contact cleared the evidence gate.',
       name: 'Jane Smith',
       title: 'Director of Technology',
       organization: 'Albuquerque Public Schools',
@@ -628,6 +763,8 @@ const QA_VALIDATION_BUCKETS_FIXTURE: ScoutResponse = {
     {
       id: 'qa-noisy-1',
       candidate_category: 'person_lead',
+      tier: 'review',
+      primary_filter_reason: 'REVIEW: contact is missing; row is not CRM-ready.',
       name: 'Noisy Lead',
       title: 'Director of Operations',
       organization: 'Noisy Schools',
@@ -653,6 +790,8 @@ const QA_VALIDATION_BUCKETS_FIXTURE: ScoutResponse = {
     },
     {
       candidate_category: 'organization_only',
+      tier: 'organization_only',
+      primary_filter_reason: 'Organization was found, but no validated person was ready.',
       organization: 'Example Corp',
       source_url: 'https://example.com',
       explanation: 'Organization-only row.',
@@ -667,6 +806,8 @@ const QA_VALIDATION_BUCKETS_FIXTURE: ScoutResponse = {
     },
     {
       candidate_category: 'not_found',
+      tier: 'not_found',
+      primary_filter_reason: 'Target was searched, but no acceptable contact was found.',
       searched_target: 'Ghost District',
       organization: 'Ghost District',
       source_url: 'https://ghost.example.com',
@@ -682,6 +823,8 @@ const QA_VALIDATION_BUCKETS_FIXTURE: ScoutResponse = {
     },
     {
       candidate_category: 'failed',
+      tier: 'failed',
+      primary_filter_reason: 'Source was inaccessible.',
       searched_target: 'Broken District',
       failure_reason: 'Source was inaccessible.',
       organization: 'Broken District',
@@ -703,13 +846,21 @@ const QA_VALIDATION_BUCKETS_FIXTURE: ScoutResponse = {
     tavily_searches: 3,
     elapsed_seconds: 9.84,
     estimated_cost_usd: 0.1234,
+    tier_distribution: {
+      high_trust_usable: 1,
+      review: 1,
+      organization_only: 1,
+      not_found: 1,
+      failed: 1,
+    },
   },
   query_guardrail: null,
   sandbox_usage: null,
 };
 
 export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspaceProps) {
-  const [query, setQuery] = useState(DEFAULT_SCOUT_QUERY);
+  const [query, setQuery] = useState(primaryMode ? '' : DEFAULT_SCOUT_QUERY);
+  const [sourceContext, setSourceContext] = useState('');
   const [location, setLocation] = useState(primaryMode ? '' : DEFAULT_SCOUT_LOCATION);
   const [recipeName, setRecipeName] = useState('');
   const [mode, setMode] = useState<Mode>('scout');
@@ -721,6 +872,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
   const [closeMessage, setCloseMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isQaLoading, setIsQaLoading] = useState(false);
   const [sortMode, setSortMode] = useState<LeadSortMode>('rank');
   const [isClosing, setIsClosing] = useState(false);
   const [leadExport, setLeadExport] = useState<{
@@ -737,10 +889,15 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
   const queryLabel = primaryMode ? 'Lead search' : 'Prospecting query';
 
   useEffect(() => {
+    if (primaryMode) {
+      return undefined;
+    }
+
     fetchSandboxUsage()
       .then(setSandboxUsage)
       .catch(() => undefined);
-  }, []);
+    return undefined;
+  }, [primaryMode]);
 
   useEffect(() => {
     if (process.env.NODE_ENV !== 'production' && window.location.search.includes('qa=validation-buckets')) {
@@ -748,12 +905,22 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
     }
   }, []);
 
+  useEffect(() => {
+    if (process.env.NODE_ENV !== 'production' && window.location.search.includes('qa=loading')) {
+      setIsQaLoading(true);
+    }
+  }, []);
+
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    const effectiveQuery =
+      primaryMode && sourceContext.trim()
+        ? `${query.trim()}\n\nSource context:\n${sourceContext.trim()}`
+        : query;
     const payload = primaryMode || mode === 'scout'
-      ? buildScoutPayload(query, location)
-      : buildFullPayload(query, location, recipeName);
+      ? buildScoutPayload(effectiveQuery, location)
+      : buildFullPayload(effectiveQuery, location, recipeName);
 
     if (!payload) {
       setError('Enter a query before searching.');
@@ -789,6 +956,11 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
         };
 
         setResults(QA_VALIDATION_BUCKETS_FIXTURE);
+        if (primaryMode || mode === 'scout') {
+          setSubmittedQuery(submittedQuery);
+          setSubmittedLocation(submittedLocation);
+          setSubmittedRecipeName(submittedRecipeName);
+        }
         if (!primaryMode && mode === 'full') {
           setFullResult(fixtureResult);
           setSubmittedQuery(submittedQuery);
@@ -800,7 +972,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
         return;
       }
 
-      const endpoint = mode === 'scout' ? '/api/scout' : '/api/full';
+      const endpoint = primaryMode || mode === 'scout' ? '/api/scout' : '/api/full';
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
@@ -853,11 +1025,14 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
         throw new Error(JSON.stringify({ message, errorCode, requestId }));
       }
 
-      if (mode === 'scout') {
+      if (primaryMode || mode === 'scout') {
         const data = (await response.json()) as ScoutResponse;
         setResults(data);
         setQueryGuardrail(data.query_guardrail ?? null);
         setSandboxUsage(data.sandbox_usage ?? null);
+        setSubmittedQuery(submittedQuery);
+        setSubmittedLocation(submittedLocation);
+        setSubmittedRecipeName(submittedRecipeName);
       } else {
         const data = (await response.json()) as FullResponse;
         setFullResult(data);
@@ -926,7 +1101,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
   }
 
   async function handleBuildLeadExport() {
-    if (!fullResult || !displayedResults) {
+    if (!displayedResults || displayedRows.length === 0) {
       return;
     }
 
@@ -935,10 +1110,10 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
       query: submittedQuery ?? query,
       location: submittedLocation ?? location,
       recipeName: submittedRecipeName ?? (recipeName || query),
-      runId: fullResult.run_id,
+      runId: fullResult?.run_id ?? `scout-${generatedAt.toISOString()}`,
       sortMode,
       rows: displayedRows,
-      guardrail: fullResult.query_guardrail ?? null,
+      guardrail: fullResult?.query_guardrail ?? displayedResults.query_guardrail ?? null,
       generatedAt,
     });
 
@@ -953,6 +1128,328 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
 
   const displayedResults = results;
   const displayedRows = displayedResults ? sortScoutResultRows(displayedResults.leads, sortMode) : [];
+  const tierDistribution = displayedResults
+    ? buildTierDistribution(displayedResults.leads, displayedResults.metrics.tier_distribution)
+    : null;
+  const showPrimaryLoading = primaryMode && (isLoading || isQaLoading);
+  const showPrimaryResultsOverview = primaryMode && !!displayedResults && !showPrimaryLoading;
+  const readyCount = tierDistribution?.high_trust_usable ?? 0;
+
+  if (primaryMode) {
+    return (
+      <main className="min-h-screen bg-[#050916] text-[#0a1226]">
+        <div className="min-h-screen lg:grid lg:grid-cols-[76px_minmax(0,1fr)] lg:grid-rows-[64px_minmax(0,1fr)]">
+          <header className="flex min-h-16 items-center border-b border-white/10 bg-[#050916] text-white lg:col-span-2">
+            <div className="grid h-16 w-16 place-items-center border-r border-white/10 lg:w-[76px]">
+              <div aria-hidden="true" className="grid h-9 w-9 place-items-center rounded-lg border border-dashed border-[#2d7bff]/80 bg-[#2d7bff]/15 text-[10px] font-black tracking-[0.04em]">
+                WR
+              </div>
+            </div>
+            <div className="min-w-0 px-4">
+              <p className="text-base font-semibold">White Rabbit</p>
+              <p className="truncate text-xs text-white/60">Source-backed candidate review</p>
+            </div>
+            <div className="ml-auto hidden items-center gap-2 px-4 sm:flex">
+              {showPrimaryResultsOverview ? (
+                <>
+                  <span className="rounded-full border border-[#2d7bff]/50 bg-[#0d1938] px-3 py-1 text-xs font-semibold text-white">
+                    {displayedResults.leads.length} categorized
+                  </span>
+                  <span className="rounded-full border border-[#9fd5b5]/50 bg-[#123224] px-3 py-1 text-xs font-semibold text-[#d9f3e4]">
+                    {readyCount} READY
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="rounded-full border border-white/10 px-3 py-1 text-xs text-white/70">READY / REVIEW</span>
+                  <span className="rounded-full border border-[#2d7bff]/50 bg-[#2d7bff]/15 px-3 py-1 text-xs text-white">Evidence first</span>
+                </>
+              )}
+            </div>
+          </header>
+
+          <aside className="hidden border-r border-white/10 bg-[#0a1226] px-5 py-5 lg:flex lg:flex-col lg:items-center lg:justify-between">
+            <div className="grid gap-3">
+              <div className="grid h-9 w-9 place-items-center rounded-lg border border-[#2d7bff]/70 bg-[#2d7bff]/15 text-[11px] font-black text-white">
+                S
+              </div>
+              <div className="grid h-9 w-9 place-items-center rounded-lg border border-white/10 text-[11px] font-black text-white/60">
+                E
+              </div>
+            </div>
+            <p className="[writing-mode:vertical-rl] rotate-180 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/35">
+              Review
+            </p>
+          </aside>
+
+          <section className="min-h-[calc(100vh-64px)] bg-[#fbfcfd]">
+            {!showPrimaryResultsOverview ? (
+              <div className="grid min-h-[52vh] gap-10 bg-[#050916] px-5 py-12 text-white sm:px-8 lg:px-14">
+                <div>
+                  <div aria-hidden="true" className="mb-8 grid h-24 w-24 place-items-center rounded-[18px] border border-dashed border-[#2d7bff]/80 bg-[#2d7bff]/15 text-2xl font-black tracking-[0.04em]">
+                    WR
+                  </div>
+                  <h1 className="max-w-3xl text-5xl font-semibold leading-[0.98] tracking-normal sm:text-6xl lg:text-7xl">
+                    Start with the target.
+                  </h1>
+                  <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
+                    Review the surfaced rows, keep blockers visible, and open evidence only when a row needs proof.
+                  </p>
+                </div>
+              </div>
+            ) : null}
+
+            <div className={`px-5 ${showPrimaryResultsOverview ? 'py-6' : 'py-8'} sm:px-8 lg:px-14`}>
+              {showPrimaryResultsOverview ? (
+                <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+                  <div>
+                    <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Candidate review</p>
+                    <h1 className="mt-1 text-3xl font-semibold tracking-normal text-[#0a1226] sm:text-4xl">
+                      {query.trim() || 'Source-backed candidate review'}
+                    </h1>
+                    <p className="mt-2 max-w-3xl text-sm leading-6 text-[#536175]">
+                      Review CRM-first fields, keep uncertain rows visible, and open evidence only when a row needs proof.
+                    </p>
+                  </div>
+                  <div className="rounded-[18px] border border-[#d7deea] bg-white px-4 py-3 text-sm leading-6 text-[#536175] shadow-[0_14px_30px_rgba(10,18,38,0.05)]">
+                    Refine the target here to rerun without leaving the review surface.
+                  </div>
+                </div>
+              ) : null}
+
+              <form
+                className={`grid gap-4 rounded-lg border border-[#cbd5e1] bg-white p-4 shadow-[0_18px_42px_rgba(10,18,38,0.08)] ${
+                  primaryMode ? 'lg:grid-cols-[minmax(0,1fr)_auto]' : 'lg:grid-cols-[minmax(0,1fr)_minmax(300px,0.7fr)_auto]'
+                } lg:items-end`}
+                onSubmit={handleSubmit}
+              >
+                <label className="grid gap-2" htmlFor="query">
+                  <span className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Target</span>
+                  <textarea
+                    className="min-h-12 w-full resize-none rounded-md border border-[#cbd5e1] bg-[#fbfcfd] px-3 py-3 text-base font-semibold leading-6 text-[#0a1226] outline-none placeholder:text-[#60708a] focus:border-[#2d7bff] focus:ring-2 focus:ring-[#2d7bff]/25"
+                    id="query"
+                    name="query"
+                    onChange={(event) => setQuery(event.target.value)}
+                    placeholder="VP Sales at Series B SaaS companies in NY"
+                    value={query}
+                  />
+                </label>
+                {primaryMode ? null : (
+                  <label className="grid gap-2" htmlFor="sourceContext">
+                    <span className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Source context</span>
+                    <textarea
+                      className="min-h-12 w-full resize-none rounded-md border border-[#cbd5e1] bg-[#fbfcfd] px-3 py-3 text-sm font-medium text-[#0a1226] outline-none placeholder:text-[#60708a] focus:border-[#2d7bff] focus:ring-2 focus:ring-[#2d7bff]/25"
+                      id="sourceContext"
+                      name="sourceContext"
+                      onChange={(event) => setSourceContext(event.target.value)}
+                      placeholder="Staff pages, rosters, trusted URLs, seed notes"
+                      value={sourceContext}
+                    />
+                  </label>
+                )}
+                <button
+                  className="inline-flex h-12 items-center justify-center rounded-md bg-[#2d7bff] px-5 text-sm font-black text-white transition hover:bg-[#1f65d8] disabled:cursor-not-allowed disabled:bg-[#2d7bff]/60"
+                  disabled={isLoading}
+                  type="submit"
+                >
+                  {isLoading ? 'Finding Candidates...' : primaryMode ? 'Find candidates' : 'Find Candidates'}
+                </button>
+              </form>
+              <p className="mt-4 max-w-3xl text-sm leading-6 text-[#60708a]">
+                {showPrimaryResultsOverview
+                  ? 'Broad targets should surface the market clearly. Tight targets should make blockers and missing contacts obvious.'
+                  : 'Broad targets return a categorized market view. Narrow targets return a tighter review set.'}
+              </p>
+
+              {error ? (
+                <p className="mt-5 rounded-lg border border-[#a13c3c]/30 bg-[#fcebeb] px-4 py-3 text-sm text-[#8f3434]">
+                  {error}
+                </p>
+              ) : null}
+
+              {queryGuardrail && queryGuardrail.status !== 'clear' ? (
+                <div
+                  className={`mt-5 rounded-lg border px-4 py-3 text-sm ${
+                    queryGuardrail.status === 'blocked'
+                      ? 'border-[#a13c3c]/30 bg-[#fcebeb] text-[#8f3434]'
+                      : 'border-[#a16207]/30 bg-[#fff4e1] text-[#8a5707]'
+                  }`}
+                >
+                  <p className="font-semibold">
+                    {queryGuardrail.status === 'blocked' ? 'Target blocked' : 'Target could be tighter'}
+                  </p>
+                  <p className="mt-1 leading-6">{queryGuardrail.message}</p>
+                  {queryGuardrail.suggestions.length > 0 ? (
+                    <ul className="mt-2 list-disc space-y-1 pl-5 leading-6">
+                      {queryGuardrail.suggestions.map((suggestion) => (
+                        <li key={suggestion}>{suggestion}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </div>
+              ) : null}
+
+              {showPrimaryLoading ? (
+                <section aria-live="polite" className="mt-8 grid gap-5 rounded-lg border border-[#e2e7ef] bg-white p-5">
+                  <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                      <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Evidence forming</p>
+                      <h2 className="mt-1 text-2xl font-semibold tracking-normal text-[#0a1226]">
+                        {query.trim() || 'Source-backed candidate review'}
+                      </h2>
+                    </div>
+                    <span className="w-fit rounded-full border border-[#2d7bff]/30 bg-[#e8f1ff] px-3 py-1 text-xs font-bold text-[#0e3a8a]">
+                      Checking fields
+                    </span>
+                  </div>
+                  <div className="grid gap-3 lg:grid-cols-4">
+                    {PRIMARY_LOADING_STAGES.map((stage, index) => (
+                      <div key={stage.label} className="rounded-lg border border-[#e2e7ef] bg-[#f6f7f9] px-4 py-3">
+                        <div className="flex items-center justify-between gap-3">
+                          <span className={`h-2.5 w-2.5 rounded-full ${index < 3 ? 'bg-[#2d7bff]' : 'bg-[#cbd5e1]'}`} />
+                          <span className="text-xs font-semibold text-[#60708a]">{stage.count}</span>
+                        </div>
+                        <p className="mt-3 text-sm font-semibold text-[#0a1226]">{stage.label}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="overflow-hidden rounded-lg border border-[#e2e7ef]">
+                    <div className="grid grid-cols-[1fr_0.8fr_0.8fr_0.7fr] bg-[#f1f4f8] px-4 py-3 text-[10px] font-black uppercase tracking-[0.08em] text-[#60708a]">
+                      <span>Company</span>
+                      <span>Person</span>
+                      <span>Source</span>
+                      <span>Status</span>
+                    </div>
+                    {[0, 1, 2, 3].map((item) => (
+                      <div key={item} className="grid grid-cols-[1fr_0.8fr_0.8fr_0.7fr] gap-4 border-t border-[#e2e7ef] px-4 py-3">
+                        <span className="h-3 rounded bg-[#e2e7ef]" />
+                        <span className="h-3 rounded bg-[#e2e7ef]" />
+                        <span className="h-3 rounded bg-[#e8f1ff]" />
+                        <span className="h-3 rounded bg-[#fff4e1]" />
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              ) : null}
+
+              {displayedResults && !showPrimaryLoading ? (
+                showPrimaryResultsOverview ? (
+                  <>
+                    <PrimaryResultsOverview
+                      onOpenEvidence={handleOpenEvidence}
+                      onSortChange={setSortMode}
+                      results={displayedResults}
+                      rows={displayedRows}
+                      sortMode={sortMode}
+                    />
+                    <section className="mt-5 rounded-[18px] border border-[#d7deea] bg-white p-5 shadow-[0_14px_30px_rgba(10,18,38,0.05)]">
+                      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                        <div>
+                          <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">CSV export</p>
+                          <h2 className="mt-1 text-xl font-semibold tracking-normal text-[#0a1226]">Sales-first workbook</h2>
+                          <p className="mt-2 max-w-2xl text-sm leading-6 text-[#536175]">
+                            Exports the current rows with sales columns first, READY rows sorted first, and validation context preserved.
+                          </p>
+                        </div>
+                        <button
+                          className="inline-flex h-11 items-center justify-center rounded-md border border-[#2d7bff] bg-[#2d7bff] px-5 text-sm font-black text-white transition hover:bg-[#1f65d8]"
+                          onClick={handleBuildLeadExport}
+                          type="button"
+                        >
+                          {leadExport ? 'Rebuild CSV export' : 'Build CSV export'}
+                        </button>
+                      </div>
+                      {leadExport ? (
+                        <div className="mt-4 rounded-lg border border-[#d7deea] bg-[#f7f9fc] px-4 py-3 text-sm text-[#536175]">
+                          <p className="font-semibold text-[#0a1226]">CSV ready</p>
+                          <p className="mt-1">
+                            {leadExport.rowCount} row{leadExport.rowCount === 1 ? '' : 's'} · generated {leadExport.generatedAtLabel}
+                          </p>
+                          <a
+                            className="mt-3 inline-flex rounded-md border border-[#b7cffd] bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.08em] text-[#0e3a8a] transition hover:border-[#2d7bff] hover:bg-[#f5f9ff]"
+                            download={leadExport.filename}
+                            href={leadExport.csvDataUrl}
+                          >
+                            Download CSV
+                          </a>
+                          <p className="mt-2 text-xs leading-5 text-[#60708a]">
+                            Includes CRM fields, readiness label, source URLs, field statuses, blocker notes, and run context.
+                          </p>
+                        </div>
+                      ) : null}
+                    </section>
+                  </>
+                ) : (
+                  <section className="mt-8 rounded-lg border border-[#e2e7ef] bg-white p-5">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                      <div>
+                        <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">Candidate review</p>
+                        <h2 className="mt-1 text-2xl font-semibold tracking-normal text-[#0a1226]">Tier summary</h2>
+                      </div>
+                      <div className="flex flex-col gap-2 sm:items-end">
+                        <label className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]" htmlFor="leadSortMode">
+                          Sort results
+                        </label>
+                        <select
+                          className="rounded-md border border-[#cbd5e1] bg-[#fbfcfd] px-3 py-2 text-sm text-[#0a1226] outline-none focus:border-[#2d7bff]"
+                          id="leadSortMode"
+                          name="leadSortMode"
+                          onChange={(event) => setSortMode(event.target.value as LeadSortMode)}
+                          value={sortMode}
+                        >
+                          {LEAD_SORT_OPTIONS.map((option) => (
+                            <option key={option.value} value={option.value}>
+                              {option.label}
+                            </option>
+                          ))}
+                        </select>
+                        <p className="text-sm text-[#60708a]">
+                          {displayedResults.leads.length} rows · {formatElapsedSeconds(displayedResults.metrics.elapsed_seconds)} · $
+                          {displayedResults.metrics.estimated_cost_usd.toFixed(4)}
+                        </p>
+                      </div>
+                    </div>
+
+                    {tierDistribution ? (
+                      <div className="mt-5 grid gap-px overflow-hidden rounded-lg border border-[#e2e7ef] bg-[#e2e7ef] sm:grid-cols-5">
+                        {OUTPUT_TIERS.map((tier) => (
+                          <div key={tier} className="bg-white px-4 py-3">
+                            <p className="text-[11px] font-black uppercase tracking-[0.1em] text-[#60708a]">{TIER_LABELS[tier]}</p>
+                            <p className="mt-2 text-2xl font-semibold text-[#0a1226]">{tierDistribution[tier]}</p>
+                          </div>
+                        ))}
+                      </div>
+                    ) : null}
+
+                    <div className="mt-2 rounded-lg bg-[#0a1226] p-1">
+                      <ScoutResultsTable
+                        feedbackState={feedbackState}
+                        onOpenEvidence={handleOpenEvidence}
+                        onSubmitFeedback={handleLeadFeedback}
+                        rows={displayedRows}
+                      />
+                    </div>
+                  </section>
+                )
+              ) : null}
+
+              {!displayedResults && !showPrimaryLoading ? (
+                <section className="mt-8 rounded-lg border border-dashed border-[#cbd5e1] bg-white px-5 py-8 text-sm leading-6 text-[#60708a]">
+                  The review table forms here after candidates are checked.
+                </section>
+              ) : null}
+            </div>
+          </section>
+        </div>
+        <ScoutEvidenceDrawer
+          onClose={() => setSelectedEvidenceRow(null)}
+          query={submittedQuery ?? query}
+          runId={fullResult?.run_id ?? null}
+          row={selectedEvidenceRow}
+        />
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-zinc-950 px-6 py-10 text-zinc-50">
@@ -961,7 +1458,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
           <p className="text-sm font-medium uppercase tracking-[0.22em] text-emerald-300">Lead search</p>
           <h1 className="text-4xl font-semibold tracking-tight sm:text-5xl">Find source-backed prospects</h1>
           <p className="max-w-3xl text-base leading-7 text-zinc-300 sm:text-lg">
-            Run a focused B2B target query and review returned rows with validation buckets, fit, evidence, and contact scores.
+            Run a focused B2B target query and review returned rows by readiness tier, evidence support, and contact readiness.
           </p>
         </div>
 
@@ -1055,7 +1552,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                 {isLoading
                   ? 'Searching…'
                   : primaryMode
-                    ? 'Search leads'
+                    ? 'Find candidates'
                     : mode === 'scout'
                       ? 'Run Scout search'
                       : 'Run Full search'}
@@ -1170,7 +1667,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                   Download CSV
                 </a>
                 <p className="mt-2 text-xs leading-6 text-zinc-400">
-                  Includes candidate category, usable flags, field and contact statuses, source support, scores, gate status, and validation notes.
+                  Includes candidate category, readiness tier, field and contact statuses, source support, validation signals, gate status, and validation notes.
                 </p>
               </div>
             ) : null}
@@ -1181,7 +1678,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <p className="text-sm font-medium uppercase tracking-[0.18em] text-zinc-400">Results</p>
-              <h2 className="mt-1 text-2xl font-semibold tracking-tight">Validation buckets</h2>
+              <h2 className="mt-1 text-2xl font-semibold tracking-tight">Tier summary</h2>
             </div>
             {displayedResults ? (
               <div className="flex flex-col gap-2 sm:items-end">
@@ -1209,6 +1706,17 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
             ) : null}
           </div>
 
+          {tierDistribution ? (
+            <div className="mt-5 grid gap-3 sm:grid-cols-5">
+              {OUTPUT_TIERS.map((tier) => (
+                <div key={tier} className="rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3">
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-500">{TIER_LABELS[tier]}</p>
+                  <p className="mt-2 text-2xl font-semibold text-zinc-50">{tierDistribution[tier]}</p>
+                </div>
+              ))}
+            </div>
+          ) : null}
+
           {displayedResults ? (
             <ScoutResultsTable
               feedbackState={feedbackState}
@@ -1218,7 +1726,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
             />
           ) : (
             <p className="mt-6 text-sm leading-6 text-zinc-400">
-              Run a query to see validation buckets, score breakdowns, and source checks here.
+              Run a query to see readiness tiers, validation signals, and source checks here.
             </p>
           )}
         </section>

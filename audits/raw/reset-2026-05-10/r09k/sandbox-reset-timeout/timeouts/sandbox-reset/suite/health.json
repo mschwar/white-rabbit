@@ -1,0 +1,13 @@
+{
+  "api_base_url": "http://white-rabbit.test",
+  "checked_at": "2026-05-12T00:08:46.431809Z",
+  "elapsed_seconds": 0.0,
+  "health_ok": true,
+  "probe_id": "suite",
+  "probe_label": "sandbox-reset",
+  "response": {
+    "service": "white-rabbit-api",
+    "status": "ok"
+  },
+  "status_code": 200
+}

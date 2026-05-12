@@ -1,0 +1,19 @@
+{
+  "rowsExported": 51,
+  "firstTenHeaders": [
+    "lead_name",
+    "title",
+    "organization",
+    "email",
+    "email_status",
+    "phone",
+    "phone_status",
+    "usable_candidate",
+    "operator_label",
+    "candidate_category"
+  ],
+  "overflow": {
+    "scrollWidth": 390,
+    "innerWidth": 390
+  }
+}

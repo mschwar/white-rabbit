@@ -1,0 +1,8 @@
+## health after startup
+{"status":"ok","service":"white-rabbit-api"}
+HTTP_STATUS=200
+
+## readiness after startup
+curl: (28) Operation timed out after 8003 milliseconds with 0 bytes received
+
+HTTP_STATUS=000

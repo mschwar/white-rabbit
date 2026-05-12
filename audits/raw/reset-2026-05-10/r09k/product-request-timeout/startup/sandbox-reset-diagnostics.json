@@ -1,0 +1,18 @@
+{
+  "api_base_url": "http://white-rabbit.test",
+  "attempts": [
+    {
+      "elapsed_seconds": 0.0,
+      "ok": true,
+      "status_code": 200
+    }
+  ],
+  "diagnostics_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/product-request-timeout/startup/sandbox-reset-diagnostics.json",
+  "elapsed_seconds": 0.0,
+  "error": null,
+  "error_code": null,
+  "failure_path": null,
+  "reset_ok": true,
+  "reset_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/product-request-timeout/startup/sandbox-reset.json",
+  "reset_status_path": "/Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/r09k/product-request-timeout/startup/sandbox-reset.http"
+}

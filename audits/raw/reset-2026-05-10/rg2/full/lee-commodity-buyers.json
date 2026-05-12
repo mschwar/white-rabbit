@@ -1,0 +1,264 @@
+{
+  "benchmark_id": "lee-commodity-buyers",
+  "leads": [
+    {
+      "candidate_category": "person_lead",
+      "confidence": 1.0,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Will Preston is an established Senior Commodity Buyer at ProBuild Holdings, relevant due to his location and expertise in procurement which aligns perfectly with the target market.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "Hi Will, I noticed your impressive track record as a Senior Commodity Buyer with ProBuild Holdings, where your expertise in sourcing and procurement aligns perfectly with the needs of retail lumber yards in Washington.",
+      "id": "110a9172-c9fd-4a98-a648-19353e88bec1",
+      "name": "Will Preston",
+      "organization": "ProBuild Holdings",
+      "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+      "title": "Senior Commodity Buyer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/will-preston-a3549342",
+          "source_url": "https://www.linkedin.com/in/will-preston-a3549342",
+          "status": "failed"
+        }
+      },
+      "why_target": "As a Senior Commodity Buyer, Will Preston plays a vital role in sourcing materials for ProBuild Holdings, aligning with your focus on retail lumber yard procurement."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 1.0,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Dan R. is a credible Commodities Broker with a relevant focus on lumber, located in Washington, making him a suitable lead for procurement connections.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "Hi Dan, your expertise as a Commodities Broker at Alpinew\u00ebst Resources is very impressive, and I believe your insights could greatly benefit retail lumber yards in Washington looking to optimize their purchasing strategies.",
+      "id": "6cc83a21-fb3b-4e2c-bb7f-9b1836de4be7",
+      "name": "Dan R.",
+      "organization": "Alpinew\u00ebst Resources",
+      "source_url": "https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+      "title": "Commodities Broker",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "source_url": "https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "source_url": "https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "source_url": "https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "source_url": "https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "source_url": "https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "source_url": "https://www.linkedin.com/in/dan-r-a7341074?trk=people-guest_people_search-card",
+          "status": "failed"
+        }
+      },
+      "why_target": "Dan R. specializes in commodities brokerage, including lumber types, making him a fitting contact for procurement-related discussions with retail lumber yards."
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "NWH Hardwood is a known entity engaged in lumber purchasing, making it relevant; however, no specific contacts are available from the details.",
+      "id": "a757d338-760e-4ce6-a4c4-098af5c4289f",
+      "organization": "NWH Hardwood Lumber Manufacturing & Distribution",
+      "source_url": "https://nwh.com/sell-your-timber/",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": "...n!=o.tag||null!=t&&t!=o.priority)}),gform.hooks[o][r]=e)}}); Sell Your Timber | NWH Hardwood Lumber Manufacturing & Distribution img:is([sizes=auto i],[sizes^=\"auto,\" i]){contain-intrinsic-size:3000px 1500px}...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": "...n!=o.tag||null!=t&&t!=o.priority)}),gform.hooks[o][r]=e)}}); Sell Your Timber | NWH Hardwood Lumber Manufacturing & Distribution img:is([sizes=auto i],[sizes^=\"auto,\" i]){contain-intrinsic-size:3000px 1500px}...",
+          "notes": "http_status=200 resolved_url=https://nwh.com/sell-your-timber/ matched_fields=organization",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Edensaw is a reputable supplier in the lumber market, but without named individual contacts, it falls under organization-only.",
+      "id": "4dd62a13-1054-458b-bcc5-e45208fcca29",
+      "organization": "Edensaw Woods, LTD",
+      "source_url": "https://www.edensaw.com/",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.edensaw.com/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.edensaw.com/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": "...erm\" } } { \"@@context\": \"http://schema.org\", \"@@type\": \"Organization\", \"name\": \"Edensaw Woods, Ltd.\", \"alternateName\": \"Edensaw\", \"url\": \"http://www.edensaw.com/\", \"sameAs\" : [ \"...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.edensaw.com/",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.edensaw.com/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": "...erm\" } } { \"@@context\": \"http://schema.org\", \"@@type\": \"Organization\", \"name\": \"Edensaw Woods, Ltd.\", \"alternateName\": \"Edensaw\", \"url\": \"http://www.edensaw.com/\", \"sameAs\" : [ \"...",
+          "notes": "http_status=200 resolved_url=https://www.edensaw.com/ matched_fields=organization",
+          "source_url": "https://www.edensaw.com/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:30:31Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.edensaw.com/",
+          "status": "missing"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 72.3,
+    "estimated_cost_usd": 0.068443,
+    "input_tokens": 50057,
+    "openai_web_searches": 0,
+    "output_tokens": 1558,
+    "tavily_searches": 6
+  },
+  "mode": "full",
+  "prompt_label": "Lee commodity buyers prompt",
+  "query": "commodity buyers at retail lumber yards in Washington",
+  "query_guardrail": {
+    "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+    "missing_criteria": [
+      "target title or role"
+    ],
+    "status": "needs_more_detail",
+    "suggestions": [
+      "Add a title or role, such as director, manager, VP, or owner."
+    ]
+  },
+  "recipe_id": "a24afd4c-53a6-46a3-a5be-3bdfe6c9592a",
+  "run_id": "2b9d0427-26d4-4acf-8a94-c0dd03913537",
+  "runner_elapsed_seconds": 72.434,
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 8,
+    "remaining_rows": 987,
+    "reset_at": "2026-05-11T05:27:53.622892-06:00",
+    "total_queries": 2,
+    "total_rows": 13
+  }
+}

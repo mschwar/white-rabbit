@@ -1,0 +1,13 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+locator.fill: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for getByLabel(/password/i)[22m
+
+    at /Users/mschwar/Documents/white-rabbit/audits/raw/reset-2026-05-10/rg4/evidence/browser-audit.mjs:148:36 {
+  name: 'TimeoutError'
+}
+
+Node.js v25.5.0

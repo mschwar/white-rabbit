@@ -144,7 +144,7 @@ test('builds a validation export csv with candidate categories and validation no
     recipeName: 'District leadership',
     runId: 'run-1',
     sortMode: 'fit',
-    rows,
+    rows: [rows[1], rows[0], rows[2], rows[3], rows[4]],
     guardrail: {
       status: 'clear',
       message: 'Query guardrail clear.',
@@ -162,6 +162,7 @@ test('builds a validation export csv with candidate categories and validation no
   expect(exportRows[0].emailStatus).toBe('verified_found');
   expect(exportRows[0].phone).toBe('');
   expect(exportRows[0].phoneStatus).toBe('missing');
+  expect(exportRows[0].operatorLabel).toBe('READY');
   expect(exportRows[0].rankingGate).toBe('usable');
   expect(exportRows[0].sourceAccessStatus).toBe('supported');
   expect(exportRows[0].validationNotes).toContain('Bucket: usable');
@@ -174,41 +175,42 @@ test('builds a validation export csv with candidate categories and validation no
   expect(exportRows[1].rankingGate).toBe('noisy_failed');
   expect(exportRows[1].fitScore).toBe('0.31');
 
-  expect(exportRows[2].candidateCategory).toBe('organization_only');
-  expect(exportRows[2].leadName).toBe('');
-  expect(exportRows[2].title).toBe('');
-  expect(exportRows[2].email).toBe('');
-  expect(exportRows[2].emailStatus).toBe('missing');
-  expect(exportRows[2].rankingGate).toBe('organization_only');
+  expect(exportRows[2].candidateCategory).toBe('failed');
+  expect(exportRows[2].usableCandidate).toBe('no');
+  expect(exportRows[2].emailStatus).toBe('failed');
+  expect(exportRows[2].rankingGate).toBe('noisy_failed');
+  expect(exportRows[2].validationNotes).toContain('Failure: Source was inaccessible.');
 
-  expect(exportRows[3].candidateCategory).toBe('not_found');
-  expect(exportRows[3].organization).toBe('Ghost District');
-  expect(exportRows[3].rankingGate).toBe('not_found');
+  expect(exportRows[3].candidateCategory).toBe('organization_only');
+  expect(exportRows[3].leadName).toBe('');
+  expect(exportRows[3].title).toBe('');
+  expect(exportRows[3].email).toBe('');
+  expect(exportRows[3].emailStatus).toBe('missing');
+  expect(exportRows[3].rankingGate).toBe('organization_only');
 
-  expect(exportRows[4].candidateCategory).toBe('failed');
-  expect(exportRows[4].usableCandidate).toBe('no');
-  expect(exportRows[4].emailStatus).toBe('failed');
-  expect(exportRows[4].rankingGate).toBe('noisy_failed');
-  expect(exportRows[4].validationNotes).toContain('Failure: Source was inaccessible.');
+  expect(exportRows[4].candidateCategory).toBe('not_found');
+  expect(exportRows[4].organization).toBe('Ghost District');
+  expect(exportRows[4].rankingGate).toBe('not_found');
 
   const csv = buildFullLeadExportCsv(exportRows);
   const parsed = parseCsv(csv);
 
   expect(csv).toContain(
-    'generated_at,sort_mode,recipe_name,query,location,run_id,rank,candidate_category,usable_candidate,lead_name,title,organization,email,email_status,phone,phone_status,fit_score,evidence_score,contact_score,ranking_gate,source_name_url,source_title_url,source_org_url,source_email_url,source_phone_url,source_access_status,validation_notes,checked_at',
+    'lead_name,title,organization,email,email_status,phone,phone_status,usable_candidate,operator_label,candidate_category,rank,query,run_id,fit_score,evidence_score,contact_score,ranking_gate,source_name_url,source_title_url,source_org_url,source_email_url,source_phone_url,source_access_status,validation_notes,checked_at,location,recipe_name,sort_mode,generated_at',
   );
   expect(parsed).toHaveLength(5);
   expect(parsed[0].candidate_category).toBe('person_lead');
   expect(parsed[0].lead_name).toBe('Jane Smith');
   expect(parsed[0].email).toBe('jane.smith@aps.edu');
   expect(parsed[0].phone).toBe('');
-  expect(parsed[2].candidate_category).toBe('organization_only');
-  expect(parsed[2].lead_name).toBe('');
-  expect(parsed[2].email_status).toBe('missing');
-  expect(parsed[2].ranking_gate).toBe('organization_only');
-  expect(parsed[4].candidate_category).toBe('failed');
-  expect(parsed[4].email).toBe('');
-  expect(parsed[4].validation_notes).toContain('Failure: Source was inaccessible.');
+  expect(parsed[0].operator_label).toBe('READY');
+  expect(parsed[2].candidate_category).toBe('failed');
+  expect(parsed[2].email).toBe('');
+  expect(parsed[2].validation_notes).toContain('Failure: Source was inaccessible.');
+  expect(parsed[3].candidate_category).toBe('organization_only');
+  expect(parsed[3].lead_name).toBe('');
+  expect(parsed[3].email_status).toBe('missing');
+  expect(parsed[3].ranking_gate).toBe('organization_only');
 });
 
 test('builds a stable lead export filename', () => {

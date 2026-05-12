@@ -1,0 +1,499 @@
+{
+  "benchmark_id": "thomas-arizona-k12",
+  "leads": [
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.0,
+      "contact_score": 1.0,
+      "email": "david.sanders@mpsaz.org",
+      "email_status": "verified_found",
+      "evidence_score": 1.0,
+      "explanation": "David Sanders is the Chief Technology Officer at Mesa Public Schools, a prominent role aligning with the user's need for technology decision-makers in school districts.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "I admire your work as Chief Technology Officer at Mesa Public Schools, especially your strategies for integrating technology into educational practices\u2014a crucial aspect for enhancing student learning.",
+      "id": null,
+      "name": "David Sanders",
+      "organization": "Mesa Public Schools",
+      "source_url": "https://rocketreach.co/david-sanders-email_13537132",
+      "title": "Chief Technology Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for email.",
+          "source_url": "https://rocketreach.co/david-sanders-email_13537132",
+          "status": "unsupported"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": "David Sanders Email & Phone Number | Mesa Public Schools Chief Technology Officer Contact Inf...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://rocketreach.co/david-sanders-email_13537132",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": "David Sanders Email & Phone Number | Mesa Public Schools Chief Technology Officer Contact Information if (!window.RR_INIT_STORE) { windo...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://rocketreach.co/david-sanders-email_13537132",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://rocketreach.co/david-sanders-email_13537132",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": "David Sanders Email & Phone Number | Mesa Public Schools Chief Technology Officer Contact Inf...",
+          "notes": "http_status=200 resolved_url=https://rocketreach.co/david-sanders-email_13537132 matched_fields=name,title,organization",
+          "source_url": "https://rocketreach.co/david-sanders-email_13537132",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": "David Sanders Email & Phone Number | Mesa Public Schools Chief Technology Officer Contact Information if (!window.RR_INIT_STORE) { window.RR_INIT_STORE = {}; } w...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://rocketreach.co/david-sanders-email_13537132",
+          "status": "supported"
+        }
+      },
+      "why_target": "As the CTO of Mesa Public Schools, your expertise in educational technology aligns perfectly with our focus on K-12 innovation."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.0,
+      "contact_score": 0.5,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "John Gay is the Chief Technology Officer for Peoria Unified School District, making him a relevant leader, but a usable email was not found.",
+      "fit_score": 0.9,
+      "gate_passed": false,
+      "icebreaker": "Your role as Chief Technology Officer at Peoria Unified School District demonstrates great leadership in leveraging technology for student success\u2014a critical component in today's educational landscape.",
+      "id": null,
+      "name": "John Gay",
+      "organization": "Peoria Unified School District",
+      "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+      "title": "Chief Technology Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+          "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+          "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+          "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+          "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+          "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+          "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+          "status": "failed"
+        }
+      },
+      "why_target": "As the Chief Technology Officer at Peoria Unified School District, your leadership in IT is highly relevant to our focus on tech advancements in education."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.0,
+      "contact_score": 0.5,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Brian Boone is the Chief Information Officer for Deer Valley Unified School District; however, an email was not available for contact.",
+      "fit_score": 0.9,
+      "gate_passed": false,
+      "icebreaker": "I admire your leadership as the Chief Information Officer at Deer Valley Unified School District, particularly your focus on strategic tech initiatives that support education\u2014essential for modern learning environments.",
+      "id": null,
+      "name": "Brian Boone",
+      "organization": "Deer Valley Unified School District",
+      "source_url": "https://www.linkedin.com/in/brian-boone-74447541",
+      "title": "Chief Information Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/brian-boone-74447541",
+          "source_url": "https://www.linkedin.com/in/brian-boone-74447541",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/brian-boone-74447541",
+          "source_url": "https://www.linkedin.com/in/brian-boone-74447541",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/brian-boone-74447541",
+          "source_url": "https://www.linkedin.com/in/brian-boone-74447541",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/brian-boone-74447541",
+          "source_url": "https://www.linkedin.com/in/brian-boone-74447541",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/brian-boone-74447541",
+          "source_url": "https://www.linkedin.com/in/brian-boone-74447541",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/brian-boone-74447541",
+          "source_url": "https://www.linkedin.com/in/brian-boone-74447541",
+          "status": "failed"
+        }
+      },
+      "why_target": "In your capacity as the CIO of Deer Valley Unified School District, you play a vital role in educational technology, aligning with our interest in K-12 tech leadership."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.0,
+      "contact_score": 0.5,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Colleen Flannery is the CTO at Chandler Unified School District, but no usable email was available.",
+      "fit_score": 0.9,
+      "gate_passed": false,
+      "icebreaker": "Your work as Chief Technology Officer at Chandler Unified School District is commendable, especially in advancing the usage of technology to enhance student learning\u2014a priority in today\u2019s educational system.",
+      "id": null,
+      "name": "Colleen Flannery",
+      "organization": "Chandler Unified School District",
+      "source_url": "https://www.linkedin.com/in/colleen-flannery-21531840",
+      "title": "Chief Technology Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/colleen-flannery-21531840",
+          "source_url": "https://www.linkedin.com/in/colleen-flannery-21531840",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/colleen-flannery-21531840",
+          "source_url": "https://www.linkedin.com/in/colleen-flannery-21531840",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/colleen-flannery-21531840",
+          "source_url": "https://www.linkedin.com/in/colleen-flannery-21531840",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/colleen-flannery-21531840",
+          "source_url": "https://www.linkedin.com/in/colleen-flannery-21531840",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/colleen-flannery-21531840",
+          "source_url": "https://www.linkedin.com/in/colleen-flannery-21531840",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/colleen-flannery-21531840",
+          "source_url": "https://www.linkedin.com/in/colleen-flannery-21531840",
+          "status": "failed"
+        }
+      },
+      "why_target": "As the Chief Technology Officer of Chandler Unified School District, your role is essential in shaping tech decisions for K-12 education, aligning with our focus area."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.0,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Carter Plante serves as the Director of Technology at Maricopa Unified School District; however, no contact details were available.",
+      "fit_score": 0.9,
+      "gate_passed": false,
+      "icebreaker": "Your role as Director of Technology at Maricopa Unified School District showcases your commitment to enhancing educational experiences through technology\u2014a crucial area for growth.",
+      "id": null,
+      "name": "Carter Plante",
+      "organization": "Maricopa Unified School District",
+      "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+      "title": "Director of Technology",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "failed"
+        }
+      },
+      "why_target": "As Director of Technology at Maricopa Unified School District, your insights into educational tech adoption align with our interest in school district decision-makers."
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Source coverage was found for Gilbert Public Schools, but no usable person lead was validated from the collected results.",
+      "id": null,
+      "organization": "Gilbert Public Schools",
+      "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": "...Technology Vail School District Jon Castelhano Executive Director of Technology Gilbert Public Schools Samantha Doyle Assistant Director Information Technology Paradise Valley Unifie...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": "...Technology Vail School District Jon Castelhano Executive Director of Technology Gilbert Public Schools Samantha Doyle Assistant Director Information Technology Paradise Valley Unifie...",
+          "notes": "http_status=200 resolved_url=https://events.govtech.com/Arizona-CIO-CTO-Forum-2024 matched_fields=organization",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Source coverage was found for Paradise Valley Unified School District, but no usable person lead was validated from the collected results.",
+      "id": null,
+      "organization": "Paradise Valley Unified School District",
+      "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": "...oard Education Representatives Jeff Billings Director of Information Technology Paradise Valley Unified School District Brian Boone Chief Information Officer Deer Valley Unified School District Mark...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": "...oard Education Representatives Jeff Billings Director of Information Technology Paradise Valley Unified School District Brian Boone Chief Information Officer Deer Valley Unified School District Mark...",
+          "notes": "http_status=200 resolved_url=https://events.govtech.com/Arizona-CIO-CTO-Forum-2024 matched_fields=organization",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Source coverage was found for Dysart Unified School District, but no usable person lead was validated from the collected results.",
+      "id": null,
+      "organization": "Dysart Unified School District",
+      "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": "...ervices Chandler Unified School District Diana Hawari Chief Information Officer Dysart Unified School District Damian Nichols Director Information Technology and Emergency Management Kyrene...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": "...ervices Chandler Unified School District Diana Hawari Chief Information Officer Dysart Unified School District Damian Nichols Director Information Technology and Emergency Management Kyrene...",
+          "notes": "http_status=200 resolved_url=https://events.govtech.com/Arizona-CIO-CTO-Forum-2024 matched_fields=organization",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:22:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum-2024",
+          "status": "missing"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 88.67,
+    "estimated_cost_usd": 0.085691,
+    "input_tokens": 29087,
+    "openai_web_searches": 0,
+    "output_tokens": 2214,
+    "tavily_searches": 8
+  },
+  "mode": "scout",
+  "prompt_label": "Thomas Arizona K-12 exact prompt",
+  "query": "name and email and phone number for these District Approx Size Tech Decision Maker Type Mesa Public Schools 60k+ students CIO / Director of Technology; Chandler Unified School District 40k+ CTO / IT Director; Peoria Unified School District 35k+ Technology Services; Gilbert Public Schools 30k+ CTO; Deer Valley Unified School District 30k+ IT leadership; Paradise Valley Unified School District 25k+ CIO/Technology; Dysart Unified School District 24k+ Director of Technology; Maricopa Unified School District 9k+ Director of Technology",
+  "query_guardrail": {
+    "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+    "missing_criteria": [
+      "location"
+    ],
+    "status": "needs_more_detail",
+    "suggestions": [
+      "Add a geography, such as a city, state, or region."
+    ]
+  },
+  "runner_elapsed_seconds": 88.738,
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 9,
+    "remaining_rows": 992,
+    "reset_at": "2026-05-11T05:21:26.478143-06:00",
+    "total_queries": 1,
+    "total_rows": 8
+  }
+}

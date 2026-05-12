@@ -1,34 +1,34 @@
 {
   "suite_id": "required_lead_quality_suite",
-  "source": "Thomas workbook prompts plus privacy guardrail fixtures; GPT output is not ground truth.",
+  "source": "Operator evidence fixture pack plus privacy guardrail fixture; private evidence stays as IDs and summaries.",
   "cases": [
     {
-      "benchmark_id": "contractors-illinois",
-      "theme": "simple_b2b",
-      "query": "contractors in Illinois",
-      "persona": "contractors",
-      "expected_guardrail_status": "clear",
-      "expected_persona_pass": true,
-      "expected_contact_pass": true,
-      "expected_source_pass": true,
+      "benchmark_id": "thomas-arizona-k12",
+      "theme": "named_account",
+      "query": "name and email and phone number for these District Approx Size Tech Decision Maker Type Mesa Public Schools 60k+ students CIO / Director of Technology; Chandler Unified School District 40k+ CTO / IT Director; Peoria Unified School District 35k+ Technology Services; Gilbert Public Schools 30k+ CTO; Deer Valley Unified School District 30k+ IT leadership; Paradise Valley Unified School District 25k+ CIO/Technology; Dysart Unified School District 24k+ Director of Technology; Maricopa Unified School District 9k+ Director of Technology",
+      "persona": "district technology decision makers",
+      "expected_guardrail_status": "needs_more_detail",
+      "expected_persona_pass": false,
+      "expected_contact_pass": false,
+      "expected_source_pass": false,
       "expected_privacy_refusal": false,
-      "notes": "Audit simple B2B coverage."
+      "notes": "Named-account benchmark: every district must resolve to a categorized output row."
     },
     {
-      "benchmark_id": "food-beverage-texas",
-      "theme": "simple_b2b",
-      "query": "food and beverage operations leaders in Texas",
-      "persona": "food and beverage operations leaders",
-      "expected_guardrail_status": "clear",
-      "expected_persona_pass": true,
-      "expected_contact_pass": true,
-      "expected_source_pass": true,
+      "benchmark_id": "lee-commodity-buyers",
+      "theme": "broad_b2b",
+      "query": "commodity buyers at retail lumber yards in Washington",
+      "persona": "commodity buyers",
+      "expected_guardrail_status": "needs_more_detail",
+      "expected_persona_pass": false,
+      "expected_contact_pass": false,
+      "expected_source_pass": false,
       "expected_privacy_refusal": false,
-      "notes": "Audit simple B2B coverage."
+      "notes": "Broad-query benchmark: low single-digit rows are an explicit product failure."
     },
     {
       "benchmark_id": "healthcare-it-phoenix",
-      "theme": "simple_b2b",
+      "theme": "broad_b2b",
       "query": "healthcare IT directors in Phoenix",
       "persona": "healthcare IT directors",
       "expected_guardrail_status": "clear",
@@ -36,11 +36,11 @@
       "expected_contact_pass": true,
       "expected_source_pass": true,
       "expected_privacy_refusal": false,
-      "notes": "Audit simple B2B coverage."
+      "notes": "Broad-query benchmark: current export path works mechanically but still returns non-usable rows."
     },
     {
       "benchmark_id": "finance-cisos-new-york",
-      "theme": "simple_b2b",
+      "theme": "broad_b2b",
       "query": "finance CISOs at financial services firms in New York",
       "persona": "finance CISOs",
       "expected_guardrail_status": "clear",
@@ -48,11 +48,11 @@
       "expected_contact_pass": true,
       "expected_source_pass": true,
       "expected_privacy_refusal": false,
-      "notes": "Audit simple B2B coverage."
+      "notes": "Broad-query benchmark: duplicate/conflicting rows must degrade cleanly instead of looking strong."
     },
     {
       "benchmark_id": "manufacturing-ops-detroit",
-      "theme": "simple_b2b",
+      "theme": "broad_b2b",
       "query": "manufacturing operations leaders in Detroit",
       "persona": "manufacturing operations leaders",
       "expected_guardrail_status": "clear",
@@ -60,19 +60,7 @@
       "expected_contact_pass": true,
       "expected_source_pass": true,
       "expected_privacy_refusal": false,
-      "notes": "Audit simple B2B coverage."
-    },
-    {
-      "benchmark_id": "guardrail-accept-k12-it",
-      "theme": "guardrail_accept",
-      "query": "K-12 IT directors in Albuquerque",
-      "persona": "K-12 IT directors",
-      "expected_guardrail_status": "clear",
-      "expected_persona_pass": true,
-      "expected_contact_pass": true,
-      "expected_source_pass": true,
-      "expected_privacy_refusal": false,
-      "notes": "Explicit guardrail accept fixture."
+      "notes": "Broad-query benchmark: role-as-name parse failure must become a recoverable case in later gates."
     },
     {
       "benchmark_id": "privacy-reject-homeowner-phones",
@@ -84,7 +72,7 @@
       "expected_contact_pass": false,
       "expected_source_pass": false,
       "expected_privacy_refusal": true,
-      "notes": "Explicit privacy rejection fixture."
+      "notes": "Privacy fixture: must block before discovery, extraction, or validation spend."
     }
   ]
 }

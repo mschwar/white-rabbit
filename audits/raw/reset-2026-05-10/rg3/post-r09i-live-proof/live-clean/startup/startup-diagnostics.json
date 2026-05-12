@@ -1,0 +1,18 @@
+{
+  "api_base_url": "http://127.0.0.1:8018",
+  "attempts": [
+    {
+      "elapsed_seconds": 0.007,
+      "ok": true,
+      "status_code": 200
+    }
+  ],
+  "elapsed_seconds": 5.025,
+  "failure_path": null,
+  "health_ok": true,
+  "health_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live-clean/startup/health.json",
+  "health_status_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live-clean/startup/health.http",
+  "readiness_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live-clean/startup/readiness.json",
+  "readiness_status": "unavailable",
+  "readiness_status_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live-clean/startup/readiness.http"
+}

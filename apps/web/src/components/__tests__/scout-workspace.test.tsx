@@ -73,6 +73,8 @@ test('renders validation buckets and badges for mixed scout results', async () =
     leads: [
       {
         candidate_category: 'person_lead',
+        tier: 'high_trust_usable',
+        primary_filter_reason: 'READY: supported person, organization, source, and usable contact cleared the evidence gate.',
         name: 'Jane Smith',
         title: 'Director of Technology',
         organization: 'Albuquerque Public Schools',
@@ -91,6 +93,8 @@ test('renders validation buckets and badges for mixed scout results', async () =
       },
       {
         candidate_category: 'person_lead',
+        tier: 'review',
+        primary_filter_reason: 'REVIEW: contact is missing; row is not CRM-ready.',
         name: 'Noisy Lead',
         title: 'Director of Operations',
         organization: 'Noisy Schools',
@@ -116,6 +120,8 @@ test('renders validation buckets and badges for mixed scout results', async () =
       },
       {
         candidate_category: 'organization_only',
+        tier: 'organization_only',
+        primary_filter_reason: 'Organization was found, but no validated person was ready.',
         organization: 'Example Corp',
         source_url: 'https://example.com',
         explanation: 'Organization-only row.',
@@ -130,6 +136,8 @@ test('renders validation buckets and badges for mixed scout results', async () =
       },
       {
         candidate_category: 'not_found',
+        tier: 'not_found',
+        primary_filter_reason: 'Target was searched, but no acceptable contact was found.',
         searched_target: 'Ghost District',
         organization: 'Ghost District',
         source_url: 'https://ghost.example.com',
@@ -145,6 +153,8 @@ test('renders validation buckets and badges for mixed scout results', async () =
       },
       {
         candidate_category: 'failed',
+        tier: 'failed',
+        primary_filter_reason: 'Source was inaccessible.',
         searched_target: 'Broken District',
         failure_reason: 'Source was inaccessible.',
         organization: 'Broken District',
@@ -167,6 +177,13 @@ test('renders validation buckets and badges for mixed scout results', async () =
       openai_web_searches: 0,
       elapsed_seconds: 1.23,
       estimated_cost_usd: 0.010123,
+      tier_distribution: {
+        high_trust_usable: 1,
+        review: 1,
+        organization_only: 1,
+        not_found: 1,
+        failed: 1,
+      },
     },
   });
   vi.stubGlobal('fetch', fetchMock);
@@ -182,11 +199,15 @@ test('renders validation buckets and badges for mixed scout results', async () =
   fireEvent.click(screen.getByRole('button', { name: /run scout search/i }));
 
   await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
-  expect(screen.getByRole('heading', { name: /validation buckets/i })).toBeDefined();
+  expect(screen.getByRole('heading', { name: /tier summary/i })).toBeDefined();
+  expect(screen.getAllByText('READY').length).toBeGreaterThan(0);
+  expect(screen.getAllByText('REVIEW').length).toBeGreaterThan(0);
+  expect(screen.getAllByText('ORG-ONLY').length).toBeGreaterThan(0);
+  expect(screen.getAllByText('NOT FOUND').length).toBeGreaterThan(0);
 
-  const usableTable = screen.getByRole('table', { name: /usable results/i });
-  const noisyTable = screen.getByRole('table', { name: /noisy \/ failed results/i });
-  const organizationOnlyTable = screen.getByRole('table', { name: /organization-only results/i });
+  const usableTable = screen.getByRole('table', { name: /ready results/i });
+  const noisyTable = screen.getByRole('table', { name: /review results/i });
+  const organizationOnlyTable = screen.getByRole('table', { name: /org-only results/i });
   const notFoundTable = screen.getByRole('table', { name: /not found results/i });
 
   expect(within(usableTable).getByText('Jane Smith')).toBeDefined();
@@ -221,12 +242,15 @@ test('renders validation buckets and badges for mixed scout results', async () =
     }),
   ).toBeDefined();
   expect(screen.getAllByText(/source was inaccessible/i).length).toBeGreaterThan(0);
+  expect(screen.getAllByText(/contact is missing; row is not crm-ready/i).length).toBeGreaterThan(0);
   expect(screen.getAllByText(/the candidate could not be trusted/i).length).toBeGreaterThan(0);
 
   fireEvent.click(within(usableTable).getByRole('button', { name: /view evidence for jane smith/i }));
   const usableDrawer = screen.getByRole('dialog', { name: /jane smith/i });
-  expect(within(usableDrawer).getByText(/evidence drawer/i)).toBeDefined();
-  expect(within(usableDrawer).getByText(/verified found/i)).toBeDefined();
+  expect(within(usableDrawer).getByText(/evidence dossier/i)).toBeDefined();
+  expect(within(usableDrawer).getAllByText(/verified found/i).length).toBeGreaterThan(0);
+  expect(within(usableDrawer).getByText(/primary blocker/i)).toBeDefined();
+  expect(within(usableDrawer).getByText(/source trail/i)).toBeDefined();
   expect(within(usableDrawer).getByRole('link', { name: 'https://validation.example.com/name' })).toBeDefined();
   expect(within(usableDrawer).getAllByText('2026-05-10T12:00:00Z').length).toBeGreaterThan(0);
   fireEvent.click(within(usableDrawer).getByRole('button', { name: /close/i }));
@@ -234,7 +258,7 @@ test('renders validation buckets and badges for mixed scout results', async () =
 
   fireEvent.click(screen.getByRole('button', { name: /view evidence for broken district/i }));
   const failedDrawer = screen.getByRole('dialog', { name: /broken district/i });
-  expect(within(failedDrawer).getByText(/source was inaccessible/i)).toBeDefined();
+  expect(within(failedDrawer).getAllByText(/source was inaccessible/i).length).toBeGreaterThan(0);
   expect(within(failedDrawer).getAllByText(/^failed$/i).length).toBeGreaterThan(0);
   expect(within(failedDrawer).getByRole('link', { name: 'https://validation.example.com/source' })).toBeDefined();
 });
@@ -275,6 +299,38 @@ test('renders the primary search shell with one natural-language input', async (
         contact_score: 0.79,
         gate_passed: true,
         explanation: 'Strong district fit with current leadership evidence and usable email.',
+        validation: makeValidation({ email: 'verified_found', phone: 'missing', source: 'supported' }),
+      },
+      {
+        candidate_category: 'person_lead',
+        name: 'Daniel Yazzie',
+        title: 'Technology Coordinator',
+        organization: 'Gallup-McKinley Schools',
+        email: 'Missing',
+        email_status: 'Missing',
+        source_url: 'https://gms.k12.nm.us/technology',
+        confidence: 0.63,
+        why_target: 'Public technology page supports the role, but no direct contact is visible.',
+        icebreaker: '',
+        fit_score: 0.73,
+        evidence_score: 0.58,
+        contact_score: 0.11,
+        gate_passed: false,
+        explanation: 'Direct contact proof is still missing.',
+        validation: makeValidation({ email: 'missing', phone: 'missing', source: 'supported' }),
+      },
+      {
+        candidate_category: 'organization_only',
+        organization: 'Santa Fe Public Schools',
+        source_url: 'https://www.sfps.info',
+        explanation: 'District found, but no named technology contact was supported.',
+      },
+      {
+        candidate_category: 'not_found',
+        searched_target: 'Roswell school district IT contacts',
+        organization: 'Roswell Independent Schools',
+        source_url: 'https://www.risd.k12.nm.us',
+        explanation: 'No acceptable contact was found.',
       },
     ],
     metrics: {
@@ -284,35 +340,59 @@ test('renders the primary search shell with one natural-language input', async (
       openai_web_searches: 0,
       elapsed_seconds: 1.23,
       estimated_cost_usd: 0.010123,
+      funnel_counts: {
+        source_snapshots: 18,
+      },
     },
   });
   vi.stubGlobal('fetch', fetchMock);
 
   render(<ScoutWorkspace primaryMode />);
 
-  expect(screen.getByRole('heading', { name: /find source-backed prospects/i })).toBeDefined();
-  expect(screen.getByLabelText(/lead search/i)).toBeDefined();
-  expect(screen.getByRole('button', { name: /search leads/i })).toBeDefined();
+  expect(screen.getByRole('heading', { name: /start with the target/i })).toBeDefined();
+  expect(screen.getByLabelText(/target/i)).toBeDefined();
+  expect(screen.getAllByRole('textbox')).toHaveLength(1);
+  expect(screen.getByRole('button', { name: /find candidates/i })).toBeDefined();
   expect(screen.queryByRole('button', { name: /^scout$/i })).toBeNull();
   expect(screen.queryByRole('button', { name: /^full$/i })).toBeNull();
   expect(screen.queryByLabelText(/location/i)).toBeNull();
+  expect(screen.queryByText(/search usage/i)).toBeNull();
   expect(screen.queryByRole('button', { name: /build lead export/i })).toBeNull();
 
-  fireEvent.change(screen.getByLabelText(/lead search/i), {
+  fireEvent.change(screen.getByLabelText(/target/i), {
     target: { value: 'K-12 IT directors in Albuquerque' },
   });
-  fireEvent.click(screen.getByRole('button', { name: /search leads/i }));
+  fireEvent.click(screen.getByRole('button', { name: /find candidates/i }));
 
-  await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
-  expect(fetchMock).toHaveBeenNthCalledWith(2, '/api/scout', expect.any(Object));
+  await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+  expect(fetchMock).toHaveBeenNthCalledWith(1, '/api/scout', expect.any(Object));
   expect(
-    JSON.parse((fetchMock.mock.calls[1][1] as RequestInit).body as string),
+    JSON.parse((fetchMock.mock.calls[0][1] as RequestInit).body as string),
   ).toEqual({ query: 'K-12 IT directors in Albuquerque' });
-  const usableTable = await screen.findByRole('table', { name: /usable results/i });
-  expect(within(usableTable).getByText('Jane Smith')).toBeDefined();
+  const reviewTable = await screen.findByRole('table', { name: /candidate review table/i });
+  expect(within(reviewTable).getByText('Albuquerque Public Schools')).toBeDefined();
+  expect(within(reviewTable).getByText('Jane Smith')).toBeDefined();
+  expect(within(reviewTable).getByText('Daniel Yazzie')).toBeDefined();
+  expect(screen.getByRole('button', { name: /all 4/i })).toBeDefined();
+  expect(screen.getByRole('button', { name: /ready 1/i })).toBeDefined();
+  expect(screen.getByRole('button', { name: /review 1/i })).toBeDefined();
+  expect(screen.queryByText(/validation bucketed results/i)).toBeNull();
+
+  fireEvent.click(screen.getByRole('button', { name: /build csv export/i }));
+  const csvLink = await screen.findByRole('link', { name: /download csv/i });
+  expect(csvLink).toHaveAttribute(
+    'download',
+    expect.stringMatching(/^white-rabbit-lead-export-\d{4}-\d{2}-\d{2}\.csv$/),
+  );
+  const csvText = decodeURIComponent(csvLink.getAttribute('href')?.replace('data:text/csv;charset=utf-8,', '') ?? '');
+  expect(csvText.split('\n')[0]).toBe(
+    'lead_name,title,organization,email,email_status,phone,phone_status,usable_candidate,operator_label,candidate_category,rank,query,run_id,fit_score,evidence_score,contact_score,ranking_gate,source_name_url,source_title_url,source_org_url,source_email_url,source_phone_url,source_access_status,validation_notes,checked_at,location,recipe_name,sort_mode,generated_at',
+  );
+  expect(csvText.split('\n')[1]).toContain('Jane Smith,Director of Technology,Albuquerque Public Schools,jane.smith@aps.edu');
+  expect(csvText).toContain('Daniel Yazzie,Technology Coordinator,Gallup-McKinley Schools,,missing');
 });
 
-test('sorts scout results by score and gate state', async () => {
+test('sorts scout results by validation signal and ready tier state', async () => {
 const fetchMock = makeFetchMock({
 leads: [
 {
@@ -371,7 +451,7 @@ target: { value: 'K-12 IT directors in Albuquerque' },
 fireEvent.click(screen.getByRole('button', { name: /run scout search/i }));
 
 await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(2));
-const usableTable = await screen.findByRole('table', { name: /usable results/i });
+const usableTable = await screen.findByRole('table', { name: /ready results/i });
 let alphaLead = within(usableTable).getByText('Alpha Lead');
 let bravoLead = within(usableTable).getByText('Bravo Lead');
 expect(alphaLead.compareDocumentPosition(bravoLead) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
@@ -488,7 +568,7 @@ test('builds a CSV export from a full run', async () => {
   );
   expect(
     screen.getByText(
-      /includes candidate category, usable flags, field and contact statuses, source support, scores, gate status, and validation notes/i,
+      /includes candidate category, readiness tier, field and contact statuses, source support, validation signals, gate status, and validation notes/i,
     ),
   ).toBeDefined();
 });

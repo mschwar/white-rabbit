@@ -3,7 +3,7 @@
 **Status:** Active Matt-only guide while the validated-leads rebuild is red.
 **Audience:** Matt and agents. Not Thomas/Lee daily dogfood.
 
-White Rabbit is not currently an operator-ready lead tool. The active product truth is in [`docs/00-product-northstar.md`](00-product-northstar.md), and the current rebuild queue is in [`docs/08-agentic-buildout-plan.md`](08-agentic-buildout-plan.md).
+White Rabbit is not currently an operator-ready lead tool. The active product truth is in [`docs/00-product-northstar.md`](00-product-northstar.md), and the current reset queue is in [`docs/12-reset-gated-implementation-plan-2026-05-10.md`](12-reset-gated-implementation-plan-2026-05-10.md).
 
 ## What You Can Use Today
 
@@ -84,6 +84,6 @@ Prefer adding durable fixtures or QA evidence over ad hoc notes.
 
 ## Where To Work Next
 
-Use `STATUS.md` for the latest handoff. As of this guide, the active next pointer is F04 Query compiler / planner on the rebuild line.
+Use `STATUS.md` for the latest handoff and `docs/12-reset-gated-implementation-plan-2026-05-10.md` for the active reset queue. As of the current reset state, Prompt A should resolve the single ready feature from those docs rather than from this guide.
 
 Do not use legacy Sprint/BUILDOUT docs as the next-task queue.

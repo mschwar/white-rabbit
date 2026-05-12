@@ -1,0 +1,15 @@
+origin/feat/reset-r07-inclusive-extraction merged_into origin/rebuild/validated-leads-loop
+origin/feat/reset-r08-tier-validation-conflicts merged_into origin/rebuild/validated-leads-loop
+origin/feat/reset-r09-tier-summary-semantics merged_into origin/rebuild/validated-leads-loop
+origin/feat/reset-r09a-live-value-recovery merged_into origin/rebuild/validated-leads-loop
+origin/feat/reset-r09b-contact-evidence-acquisition merged_into origin/rebuild/validated-leads-loop
+origin/feat/reset-r09c-deep-multisource-evidence-tier-calibration merged_into origin/rebuild/validated-leads-loop
+origin/feat/reset-r09d-april-nm-manual-oracle merged_into origin/rebuild/validated-leads-loop
+origin/feat/reset-r09e-k12-source-map-roster-collector merged_into origin/rebuild/validated-leads-loop
+origin/feat/reset-r09f-source-assisted-lead-compiler merged_into origin/rebuild/validated-leads-loop
+origin/feat/reset-r09g-research-workbook-tiering merged_into origin/rebuild/validated-leads-loop
+origin/feat/reset-r09h-manual-oracle-proof-packet merged_into origin/rebuild/validated-leads-loop
+origin/feat/reset-r09i-api-startup-live-proof merged_into origin/rebuild/validated-leads-loop
+origin/feat/reset-r09j-bounded-readiness-diagnostics merged_into origin/rebuild/validated-leads-loop
+origin/feat/reset-r09k-live-runner-timeout-containment merged_into origin/rebuild/validated-leads-loop
+origin/feat/reset-r09l-live-source-assisted-proof merged_into origin/rebuild/validated-leads-loop

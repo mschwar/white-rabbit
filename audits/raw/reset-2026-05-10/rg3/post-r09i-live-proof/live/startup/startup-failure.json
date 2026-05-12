@@ -1,0 +1,65 @@
+{
+  "api_base": {
+    "host": "127.0.0.1",
+    "path": "",
+    "port": 8017,
+    "scheme": "http"
+  },
+  "api_base_url": "http://127.0.0.1:8017",
+  "attempts": [
+    {
+      "elapsed_seconds": 5.003,
+      "error": "TimeoutError: ",
+      "ok": false,
+      "status_code": 0
+    },
+    {
+      "elapsed_seconds": 5.003,
+      "error": "TimeoutError: ",
+      "ok": false,
+      "status_code": 0
+    },
+    {
+      "elapsed_seconds": 5.002,
+      "error": "TimeoutError: ",
+      "ok": false,
+      "status_code": 0
+    },
+    {
+      "elapsed_seconds": 1.99,
+      "error": "TimeoutError: ",
+      "ok": false,
+      "status_code": 0
+    }
+  ],
+  "checked_at": "2026-05-11T23:11:54.761925Z",
+  "env_presence": {
+    "DATABASE_URL": {
+      "present": false
+    },
+    "OPENAI_API_KEY": {
+      "present": true
+    },
+    "OPENAI_BASE_URL": {
+      "present": false
+    },
+    "OPENAI_MODEL": {
+      "present": false
+    },
+    "TAVILY_API_KEY": {
+      "present": true
+    },
+    "WR_API_INTERNAL_TOKEN": {
+      "present": true
+    }
+  },
+  "error_code": "api_startup_failed",
+  "last_health_payload": {
+    "api_base_url": "http://127.0.0.1:8017",
+    "error": "TimeoutError: ",
+    "error_code": "health_request_error"
+  },
+  "last_health_status": 0,
+  "message": "API did not answer /health before 20.0 second timeout.",
+  "timeout_seconds": 20.0
+}

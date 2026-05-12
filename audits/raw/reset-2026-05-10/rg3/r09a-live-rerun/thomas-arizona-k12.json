@@ -1,0 +1,712 @@
+{
+  "benchmark_id": "thomas-arizona-k12",
+  "leads": [
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/dbsanders67",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/dbsanders67",
+      "id": null,
+      "organization": "Mesa Public Schools",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/dbsanders67",
+      "searched_target": "Mesa Public Schools",
+      "source_url": "https://www.linkedin.com/in/dbsanders67",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/dbsanders67",
+          "source_url": "https://www.linkedin.com/in/dbsanders67",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/dbsanders67",
+          "source_url": "https://www.linkedin.com/in/dbsanders67",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/dbsanders67",
+          "source_url": "https://www.linkedin.com/in/dbsanders67",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/dbsanders67",
+          "source_url": "https://www.linkedin.com/in/dbsanders67",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/dbsanders67",
+          "source_url": "https://www.linkedin.com/in/dbsanders67",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/dbsanders67",
+          "source_url": "https://www.linkedin.com/in/dbsanders67",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+      "id": null,
+      "organization": "Peoria Unified School District",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+      "searched_target": "Peoria Unified School District",
+      "source_url": "https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "source_url": "https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "source_url": "https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "source_url": "https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "source_url": "https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "source_url": "https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "source_url": "https://www.yourvalley.net/stories/peoria-unified-announces-new-chief-technology-and-operations-officer-arizona,266408",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+      "id": null,
+      "organization": "Peoria Unified School District",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+      "searched_target": "Peoria Unified School District",
+      "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+          "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+          "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+          "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+          "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+          "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+          "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/jill-thomas-2aa89614",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/jill-thomas-2aa89614",
+      "id": null,
+      "organization": "Peoria Unified School District",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/jill-thomas-2aa89614",
+      "searched_target": "Peoria Unified School District",
+      "source_url": "https://www.linkedin.com/in/jill-thomas-2aa89614",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/jill-thomas-2aa89614",
+          "source_url": "https://www.linkedin.com/in/jill-thomas-2aa89614",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jill-thomas-2aa89614",
+          "source_url": "https://www.linkedin.com/in/jill-thomas-2aa89614",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jill-thomas-2aa89614",
+          "source_url": "https://www.linkedin.com/in/jill-thomas-2aa89614",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/jill-thomas-2aa89614",
+          "source_url": "https://www.linkedin.com/in/jill-thomas-2aa89614",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jill-thomas-2aa89614",
+          "source_url": "https://www.linkedin.com/in/jill-thomas-2aa89614",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/jill-thomas-2aa89614",
+          "source_url": "https://www.linkedin.com/in/jill-thomas-2aa89614",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+      "id": null,
+      "organization": "Gilbert Public Schools",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+      "searched_target": "Gilbert Public Schools",
+      "source_url": "https://www.linkedin.com/in/joncastelhano",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/joncastelhano",
+          "source_url": "https://www.linkedin.com/in/joncastelhano",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
+      "id": null,
+      "organization": "Gilbert Public Schools",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
+      "searched_target": "Gilbert Public Schools",
+      "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
+          "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
+          "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
+          "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
+          "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
+          "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/scott-haase-b96565102",
+          "source_url": "https://www.linkedin.com/in/scott-haase-b96565102",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/diana-hawari",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/diana-hawari",
+      "id": null,
+      "organization": "Dysart Unified School District",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/diana-hawari",
+      "searched_target": "Dysart Unified School District",
+      "source_url": "https://www.linkedin.com/in/diana-hawari",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/diana-hawari",
+          "source_url": "https://www.linkedin.com/in/diana-hawari",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/diana-hawari",
+          "source_url": "https://www.linkedin.com/in/diana-hawari",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/diana-hawari",
+          "source_url": "https://www.linkedin.com/in/diana-hawari",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/diana-hawari",
+          "source_url": "https://www.linkedin.com/in/diana-hawari",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/diana-hawari",
+          "source_url": "https://www.linkedin.com/in/diana-hawari",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/diana-hawari",
+          "source_url": "https://www.linkedin.com/in/diana-hawari",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+      "id": null,
+      "organization": "Maricopa Unified School District",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+      "searched_target": "Maricopa Unified School District",
+      "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/carter-plante-412825155",
+          "source_url": "https://www.linkedin.com/in/carter-plante-412825155",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/christine-dickinson-517b3545",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/christine-dickinson-517b3545",
+      "id": null,
+      "organization": "Maricopa Unified School District",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/christine-dickinson-517b3545",
+      "searched_target": "Maricopa Unified School District",
+      "source_url": "https://www.linkedin.com/in/christine-dickinson-517b3545",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/christine-dickinson-517b3545",
+          "source_url": "https://www.linkedin.com/in/christine-dickinson-517b3545",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/christine-dickinson-517b3545",
+          "source_url": "https://www.linkedin.com/in/christine-dickinson-517b3545",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/christine-dickinson-517b3545",
+          "source_url": "https://www.linkedin.com/in/christine-dickinson-517b3545",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/christine-dickinson-517b3545",
+          "source_url": "https://www.linkedin.com/in/christine-dickinson-517b3545",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/christine-dickinson-517b3545",
+          "source_url": "https://www.linkedin.com/in/christine-dickinson-517b3545",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/christine-dickinson-517b3545",
+          "source_url": "https://www.linkedin.com/in/christine-dickinson-517b3545",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Source coverage was found for Chandler Unified School District, but no usable person lead was validated from the collected results.",
+      "id": null,
+      "organization": "Chandler Unified School District",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Source coverage was found for Chandler Unified School District, but no usable person lead was validated from the collected results.",
+      "source_url": "https://www.linkedin.com/in/lindsay-duran-cte",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/lindsay-duran-cte",
+          "source_url": "https://www.linkedin.com/in/lindsay-duran-cte",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/lindsay-duran-cte",
+          "source_url": "https://www.linkedin.com/in/lindsay-duran-cte",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/lindsay-duran-cte",
+          "source_url": "https://www.linkedin.com/in/lindsay-duran-cte",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/lindsay-duran-cte",
+          "source_url": "https://www.linkedin.com/in/lindsay-duran-cte",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/lindsay-duran-cte",
+          "source_url": "https://www.linkedin.com/in/lindsay-duran-cte",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/lindsay-duran-cte",
+          "source_url": "https://www.linkedin.com/in/lindsay-duran-cte",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Source coverage was found for Deer Valley Unified School District, but no usable person lead was validated from the collected results.",
+      "id": null,
+      "organization": "Deer Valley Unified School District",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Source coverage was found for Deer Valley Unified School District, but no usable person lead was validated from the collected results.",
+      "source_url": "https://resources.finalsite.net/images/v1762561758/dvusdorg/y1wkfwnnbg4mrsxk3z0q/DVUSDTechVisionPlan2025.pdf",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://resources.finalsite.net/images/v1762561758/dvusdorg/y1wkfwnnbg4mrsxk3z0q/DVUSDTechVisionPlan2025.pdf",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://resources.finalsite.net/images/v1762561758/dvusdorg/y1wkfwnnbg4mrsxk3z0q/DVUSDTechVisionPlan2025.pdf",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for organization.",
+          "source_url": "https://resources.finalsite.net/images/v1762561758/dvusdorg/y1wkfwnnbg4mrsxk3z0q/DVUSDTechVisionPlan2025.pdf",
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://resources.finalsite.net/images/v1762561758/dvusdorg/y1wkfwnnbg4mrsxk3z0q/DVUSDTechVisionPlan2025.pdf",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://resources.finalsite.net/images/v1762561758/dvusdorg/y1wkfwnnbg4mrsxk3z0q/DVUSDTechVisionPlan2025.pdf matched_fields=none",
+          "source_url": "https://resources.finalsite.net/images/v1762561758/dvusdorg/y1wkfwnnbg4mrsxk3z0q/DVUSDTechVisionPlan2025.pdf",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://resources.finalsite.net/images/v1762561758/dvusdorg/y1wkfwnnbg4mrsxk3z0q/DVUSDTechVisionPlan2025.pdf",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Source coverage was found for Paradise Valley Unified School District, but no usable person lead was validated from the collected results.",
+      "id": null,
+      "organization": "Paradise Valley Unified School District",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Source coverage was found for Paradise Valley Unified School District, but no usable person lead was validated from the collected results.",
+      "source_url": "https://www.pvschools.net/",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.pvschools.net/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.pvschools.net/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": "Home - Paradise Valley Unified School District dataLayer = [{ 'schoolDomain': 'www.pvschools.net' }]; dataLayer.push({'uaID':...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.pvschools.net/",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.pvschools.net/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": "Home - Paradise Valley Unified School District dataLayer = [{ 'schoolDomain': 'www.pvschools.net' }]; dataLayer.push({'uaID':...",
+          "notes": "http_status=200 resolved_url=https://www.pvschools.net/ matched_fields=organization",
+          "source_url": "https://www.pvschools.net/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T12:47:14Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.pvschools.net/",
+          "status": "missing"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 60.72,
+    "estimated_cost_usd": 0.085056,
+    "funnel_counts": {
+      "categorized_rows": 12,
+      "contact_quality_passes": 0,
+      "deduped_sources": 50,
+      "extracted_candidates": 9,
+      "high_trust_usable_rows": 0,
+      "person_rows": 0,
+      "raw_vendor_hits": 56,
+      "source_snapshots": 50
+    },
+    "funnel_notes": [
+      "Deduped 56 raw vendor hits to 50 unique sources.",
+      "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+      "No returned row has verified or source-backed deduced contact evidence."
+    ],
+    "input_tokens": 26637,
+    "openai_web_searches": 0,
+    "output_tokens": 1768,
+    "tavily_searches": 8,
+    "tier_distribution": {
+      "failed": 9,
+      "high_trust_usable": 0,
+      "not_found": 0,
+      "organization_only": 3,
+      "review": 0
+    }
+  },
+  "mode": "scout",
+  "prompt_label": "Thomas Arizona K-12 exact prompt",
+  "query": "name and email and phone number for these District Approx Size Tech Decision Maker Type Mesa Public Schools 60k+ students CIO / Director of Technology; Chandler Unified School District 40k+ CTO / IT Director; Peoria Unified School District 35k+ Technology Services; Gilbert Public Schools 30k+ CTO; Deer Valley Unified School District 30k+ IT leadership; Paradise Valley Unified School District 25k+ CIO/Technology; Dysart Unified School District 24k+ Director of Technology; Maricopa Unified School District 9k+ Director of Technology",
+  "query_guardrail": {
+    "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+    "missing_criteria": [
+      "location"
+    ],
+    "status": "needs_more_detail",
+    "suggestions": [
+      "Add a geography, such as a city, state, or region."
+    ]
+  },
+  "runner_elapsed_seconds": 61.556,
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 9,
+    "remaining_rows": 988,
+    "reset_at": "2026-05-11T12:46:26.803469-06:00",
+    "total_queries": 1,
+    "total_rows": 12
+  }
+}

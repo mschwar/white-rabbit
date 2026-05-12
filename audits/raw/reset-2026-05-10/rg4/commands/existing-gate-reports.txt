@@ -1,0 +1,4 @@
+audits/gates/reset-2026-05-10/rg0-w5-hold.md
+audits/gates/reset-2026-05-10/rg1-benchmark-harness.md
+audits/gates/reset-2026-05-10/rg2-search-source-coverage.md
+audits/gates/reset-2026-05-10/rg3-validation-semantics.md

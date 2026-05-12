@@ -194,9 +194,153 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 ---
 
+## ADR-014 — Reset plan is the active execution authority
+
+**Date:** 2026-05-10
+**Status:** Locked
+
+**Context.** ADR-006 correctly established a documentation authority model before the May 10 reset existed. After R01 QA, the repo still had several top-level surfaces routing agents to the historical `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` flow. That caused Prompt A to stop even though the reset loop should have continued to R02 inside RG1.
+
+**Decision.** While the May 10 reset is active, `docs/12-reset-gated-implementation-plan-2026-05-10.md` is the active execution authority for feature selection, Prompt A/B/C copy, reset gate state, and next-feature readiness. `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` remain historical context for F00-F23 and W0-W6, but agents must not execute from them unless `docs/12` explicitly sends them back.
+
+**Consequences.** AGENTS.md, STATUS.md, archived reference banners, historical QA reports, and future gate reports must point to `docs/12` for active reset execution. Prompt B may unlock the next feature inside the same in-progress reset gate after QA passes; only Prompt C can advance a reset gate or unlock the first feature in the next gate.
+
+---
+
+## ADR-015 — Design direction is captured but cannot unlock UI implementation
+
+**Date:** 2026-05-11
+**Status:** Locked
+
+**Context.** A parallel design audit produced a new direction on `codex/design-vision-2026-05-11`: deep navy instrument chassis plus paper-white evidence table, with the rule "The brand leads once. Then the product speaks." The reset is still in RG3, and RG4 UI work remains blocked until the data-quality gate advances.
+
+**Decision.** Add `DESIGN.md` as the future visual direction authority for RG4, but treat it as planning input only. The May 10 mockup remains the product-structure reference, not the final visual direction. If RG3 advances, the next assignment is a refreshed mockup/design preflight from `DESIGN.md`, not production R10 implementation. R10-R12 stay blocked until Matt approves the refreshed mockups. The rabbit/icon problem remains quarantined until an approved vector exists.
+
+**Consequences.** Design direction can be reviewed and used to brief future mockup agents without contaminating RG3 evidence or unlocking UI work early. Prompt C for RG3 must cite `DESIGN.md` only as future RG4 input. Prompt A/B agents must not implement a new visual system, production logo, or RG4 UI until the reset plan explicitly marks that work ready after mockup approval.
+
+---
+
+## ADR-016 — Accepted RG3 hold requires a narrow live-value remediation slice
+
+**Date:** 2026-05-11
+**Status:** Locked
+
+**Context.** RG3 Prompt C held after live benchmark evidence showed the product had safer validation semantics but still failed the operator-value bar: broad runs returned only 7-10 categorized rows, the suite produced 0 high-trust usable leads, and contact-quality passes were 0. Matt accepted the hold instead of advancing RG4 or treating the hold as an unresolved queue blocker.
+
+**Decision.** Keep RG3 active and insert one remediation feature before any design or UI work: `R09A - Live value recovery and benchmark funnel diagnosis`. R09A must diagnose and repair the source-to-candidate-to-tier funnel, fix benchmark floor semantics, preserve strict READY/high-trust precision, keep unsupported contacts non-CRM-ready, and normalize failed/not-found reasons. RG4, refreshed mockups, R10-R12, export work, dogfood, and `main` sync remain blocked until a future RG3 Prompt C records `advance`.
+
+**Consequences.** Prompt A now has exactly one valid next feature, and the A/B loop can resume without reopening downstream scope. The remediation is allowed to touch search/extraction/tiering/quality-report code only where it directly improves live value or proves the exact choke point. Agents must not satisfy R09A by lowering validation strictness, inventing contacts, or making UI/export work compensate for weak data.
+
+---
+
+## ADR-017 — Post-R09A hold targets contact evidence before UI
+
+**Date:** 2026-05-11
+**Status:** Locked
+
+**Context.** The post-R09A RG3 re-audit held again. R09A recovered broad categorized volume for most broad prompts and added useful funnel observability, but the complete live benchmark suite still produced `0` high-trust usable rows and `0` contact-quality passes. A parallel RG4 mockup/design preflight also exists, but RG3 did not advance.
+
+**Decision.** Keep RG3 active and insert exactly one next remediation feature: `R09B - Contact and evidence acquisition pass`. R09B must target the contact/evidence choke point with source-backed public-web evidence acquisition, READY-blocker reporting, and live-runner partial-failure reliability. RG4, refreshed mockup merge, R10-R12, export polish, dogfood, paid contact-source integration, and `main` sync remain blocked until a future RG3 Prompt C records `advance`. The RG4 design preflight branch is an inspection artifact only until Matt approves it after data-quality advancement.
+
+**Consequences.** The reset avoids designing or exporting around a dataset that still has no CRM-ready contact value. Prompt A has exactly one valid next feature, and that feature cannot pass by lowering high-trust precision, inventing emails, treating inaccessible sources as support, or hiding missing contacts behind UI copy. If R09B still cannot produce contact-quality passes, the next decision should be product-positioning or vendor/source strategy, not another UI pass.
+
+---
+
+## ADR-018 — RG3 remediation expands to R09B plus R09C before any new gate audit
+
+**Date:** 2026-05-11
+**Status:** Locked
+
+**Context.** R09B completed the first contact/evidence remediation pass inside the accepted RG3 hold. Matt explicitly directed that RG3 must not run Prompt C after R09B and that a second remediation feature is required inside the same gate before any re-audit. The purpose of the added feature is to improve contact quality and tier usefulness on promising rows without weakening the strict `high_trust_usable` contract.
+
+**Decision.** Keep RG3 in `in_progress / gate_hold` after R09B and insert `R09C - Deep multi-source evidence acquisition and tier calibration` as the single ready feature. Treat R09B plus R09C together as the accepted RG3 remediation slice. Do not unlock RG4, refreshed mockups, R10-R12, export work, dogfood work, or any `main` promotion until both R09B and R09C are complete and a future RG3 Prompt C records `advance`.
+
+**Consequences.** Prompt C is explicitly blocked after R09B. Prompt A has exactly one valid next assignment: R09C. R09C may improve evidence acquisition depth, corroboration, and tier usefulness for promising rows, but it cannot pass by relaxing the `high_trust_usable` definition, inventing contacts, compensating with UI/export work, or treating unsupported evidence as support.
+
+---
+
+## ADR-019 — Source-assisted research compiler is the next value path
+
+**Date:** 2026-05-11
+**Status:** Locked
+
+**Context.** The post-R09C RG3 Tavily re-run remained held: live benchmarks still produced `0` high-trust usable rows and `0` contact-quality passes despite high-volume source and evidence-acquisition work. Matt then pointed back to Lee's April "NM IT for school districts" email thread. That thread shows the real commercial proof point: a human plus basic chatbot/Codex workflow produced a source-backed New Mexico school-district IT workbook with verified public emails, manual-lookup rows, source URLs, verification notes, and outreach/export artifacts. Thomas asked for the output, and that proof point helped drive live sales/demo momentum. The successful pattern was not fully autonomous broad Scout search; it was targeted public-source research compiled into an honest workbook.
+
+**Decision.** Keep RG3 active, but pivot the next remediation from autonomous broad-search patching to a source-assisted research compiler path. The April New Mexico school-district IT package becomes the manual-oracle benchmark. Add `R09D-R09H` before any RG3 advance decision:
+
+- `R09D - April NM evidence fixture and manual-oracle replay`
+- `R09E - K-12 source map and public roster collector`
+- `R09F - Source-assisted lead compiler`
+- `R09G - Research-workbook tiering and export semantics`
+- `R09H - Manual-oracle proof replay gate packet`
+
+The product may still use autonomous search, Tavily, browser automation, expensive models, and multi-agent verification, but the launch wedge is source-assisted public-web research that beats the human+chatbot baseline on speed, evidence, categorization, and export honesty. Missing contact information may remain valuable as a `manual_lookup` or `review` row when name, title, organization, source, and next action are clear. Missing, unsupported, inaccessible, guessed, or conflicting contacts must still never be marked CRM-ready.
+
+**Consequences.** No downstream RG4 UI, export polish, dogfood, or `main` promotion is unlocked by the post-R09C hold. The next valid Prompt A is R09D after this control-plane patch lands. Prompt C must not re-run RG3 until R09D-R09H have merged. The gate should judge whether White Rabbit can reproduce or improve the April New Mexico source-backed workbook, not whether the current autonomous Scout path can magically produce CRM-ready contacts from broad generic web search. High-volume transparent tiering remains a future/product-scale target, but it no longer overrides the nearer proof point: source-assisted research workbooks with verified rows, manual-lookup rows, not-found rows, and auditable evidence.
+
+---
+
+## ADR-020 — Accepted post-R09H hold requires API startup proof before more value work
+
+**Date:** 2026-05-11
+**Status:** Locked
+
+**Context.** The post-R09H RG3 Prompt C audit held. The source-assisted manual-oracle replay now proves the offline workbook pattern: 17 rows, 10 `READY_WITH_CONTACT`, 7 `MANUAL_LOOKUP`, sales-first export fields, and zero unsupported CRM-ready rows. But the live operator loop remains unproven because the local API stayed in startup, `/health` returned `000`, no fresh live benchmark suite completed, and the latest complete saved live suite still has `0` high-trust usable rows and `0` contact-quality passes. Matt accepted the hold.
+
+**Decision.** Keep RG3 in `gate_hold` and insert one narrow remediation feature before any further data-quality, UI, export, dogfood, or `main` work: `R09I - API startup and live proof harness`. R09I must make API startup and live verification deterministic enough for future Prompt C audits to trust the evidence. It must split basic process health from readiness/vendor checks, expose actionable readiness diagnostics, make live benchmark startup wait on health/readiness with clear timeouts, and capture startup failure artifacts instead of ambiguous `000` results.
+
+**Consequences.** Prompt A has exactly one valid next feature: R09I. RG4, refreshed mockups, R10-R12, export work, dogfood, and `main` promotion remain blocked. R09I cannot pass by changing lead-quality logic, relaxing READY/high-trust semantics, implementing UI/export, or hiding startup failures. Its job is to make the live loop observable and auditable so the next RG3 Prompt C can distinguish product-value failure from API/runtime failure.
+
+---
+
+## ADR-021 — Accepted post-R09I hold requires bounded live runtime before another RG3 audit
+
+**Date:** 2026-05-11
+**Status:** Locked
+
+**Context.** The post-R09I RG3 Prompt C audit held. R09I proved one important runtime boundary: a clean API process can now answer `/health` as process liveness. The rest of the live operator loop is still not trustworthy evidence. `/readiness` can time out and block the app, the live benchmark runner can die during sandbox reset with an unhandled `httpx.ReadTimeout`, and a direct `/scout` run timed out on the first Thomas benchmark with zero returned rows. The offline source-assisted manual-oracle replay still passes, but the live service boundary does not yet prove either the autonomous Scout path or the source-assisted workbook path.
+
+**Decision.** Keep RG3 in `gate_hold` and insert three ordered remediation slices before the next RG3 Prompt C audit:
+
+- `R09J - Bounded readiness diagnostics`
+- `R09K - Live runner timeout containment`
+- `R09L - Live source-assisted product proof`
+
+Only R09J is ready at first. R09K remains blocked until R09J passes Prompt B and merges. R09L remains blocked until R09K passes Prompt B and merges. Prompt C for RG3 must not rerun until R09J-R09L are merged. These slices are runtime and live-proof remediation inside RG3, not a new gate.
+
+**Consequences.** The reset loop now attacks the remaining ambiguity in order: first make dependency readiness bounded and diagnostic, then make benchmark execution complete and artifact-preserving under timeouts, then prove the source-assisted workbook value path through the live API/service boundary. RG4, refreshed mockups, R10-R12, export polish, persistence, dogfood, and `main` promotion remain blocked. The new slices cannot pass by relaxing high-trust/READY semantics, inventing contacts, hiding runtime failures, or converting offline replay success into live product claims without current service-boundary evidence.
+
+---
+
+## ADR-022 — Approved RG4 mockups unlock R10 only
+
+**Date:** 2026-05-12
+**Status:** Locked
+
+**Context.** RG3 advanced on the source-assisted operator loop, then the refreshed RG4 mockup/design preflight produced inspection artifacts under `docs/mockups/rg4-refreshed-preflight-2026-05-12/`. Matt reviewed and approved the design direction. The approved preflight reconciles `DESIGN.md` with the post-R09L source-assisted proof, including target/source context, categorized source-backed rows, READY/REVIEW separation, evidence dossier, low-signal guidance, and mobile triage.
+
+**Decision.** Treat the refreshed RG4 mockups as the approved production UI direction for the RG4 implementation sequence. Unlock `R10 - Primary search workspace simplification` as the single ready Prompt A feature. Keep `R11 - Compact CRM-first results table`, `R12 - Evidence dossier review mode`, RG5 export/persistence, RG6 dogfood, and `main` promotion blocked until their documented prerequisites pass.
+
+**Consequences.** R10 agents must implement against `DESIGN.md` and `docs/mockups/rg4-refreshed-preflight-2026-05-12/`, not the older May 10 visual styling. R10 may touch production UI only for the primary workspace/search-start/loading shell assigned to R10. It must not implement the full results table, evidence dossier, export, persistence, dogfood packet, or `main` sync. Any intentional divergence from the approved mockups must be documented in the R10 handoff and later audited in RG4 Prompt C.
+
+---
+
+## ADR-023 — Source context stays out of the daily operator UI
+
+**Date:** 2026-05-12
+**Status:** Locked
+
+**Context.** RG4 implementation initially inherited language from the refreshed mockups and R10 handoff that referred to "target plus source context." During RG4 Prompt C, Matt clarified that he intentionally eliminated the user-entered source-context field because it added noise for daily operators. The source-assisted strategy remains valid, but source context should be handled by backend/orchestrator behavior rather than exposed as an extra daily-operator control.
+
+**Decision.** Keep the primary operator UI as one target input and one command. Do not add a user-facing source-context textarea or source-assisted search box to the daily operator path unless Matt explicitly reverses this decision. Backend/orchestrator code may still use source context, source maps, rosters, URLs, seed notes, and source packs internally.
+
+**Consequences.** RG4 Prompt C must not treat absence of a primary-mode source-context input as a blocker. Future RG5/RG6 work should preserve the one-input operator surface and route source-assisted context behind the scenes. Historical mockup/R10 text that mentions source context is superseded by this ADR for the production daily-operator UI.
+
+---
+
 ## How to add a new ADR
 
-1. Pick the next ADR number (ADR-014, ADR-015, ...).
+1. Pick the next ADR number (ADR-024, ADR-025, ...).
 2. Add an entry at the bottom of this file with the same format.
 3. Set Status to "Locked" once Matt confirms.
 4. If the new ADR overrides an old one, mark the old one's Status as "Superseded by ADR-NNN" but **do not delete or rewrite its body**.

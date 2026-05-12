@@ -1,0 +1,56 @@
+{
+  "schema_version": "source_collection.v1",
+  "query": "Arizona K-12 IT decision makers",
+  "collected_at": "2026-05-10T12:00:00Z",
+  "requested_max_results": 2,
+  "returned_source_count": 2,
+  "tavily_searches": 2,
+  "search_depth": "advanced",
+  "query_plan": {
+    "original_query": "Arizona K-12 IT decision makers",
+    "vendor_queries": [
+      "Mesa Public Schools Arizona K-12 IT decision makers",
+      "Chandler Unified School District Arizona K-12 IT decision makers"
+    ],
+    "named_accounts": [
+      "Mesa Public Schools",
+      "Chandler Unified School District"
+    ],
+    "intent_summary": "Arizona K-12 IT decision makers",
+    "broad_query": false,
+    "aggressive_breadth": false,
+    "target_raw_results": 2,
+    "filters": {},
+    "notes": [
+      "Raw source fixture for R05 snapshot replay."
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "src_78fed3aebad09f9b",
+      "rank": 1,
+      "title": "Mesa Technology Leadership",
+      "url": "https://example.edu/mesa-tech",
+      "content": "Mesa Public Schools technology leadership page content.",
+      "score": 0.92,
+      "vendor_query": "Mesa Public Schools Arizona K-12 IT decision makers",
+      "matched_vendor_queries": [
+        "Mesa Public Schools Arizona K-12 IT decision makers"
+      ],
+      "content_sha256": "ad04ca705ac2ca29546889aa2aba9d19e3d2a2365ac844890250b91442597e65"
+    },
+    {
+      "source_id": "src_3c34531a81faba56",
+      "rank": 2,
+      "title": "Chandler IT Directory",
+      "url": "https://example.edu/chandler-it",
+      "content": "Chandler Unified IT directory content.",
+      "score": 0.87,
+      "vendor_query": "Chandler Unified School District Arizona K-12 IT decision makers",
+      "matched_vendor_queries": [
+        "Chandler Unified School District Arizona K-12 IT decision makers"
+      ],
+      "content_sha256": "0a89454c3498c691435f8c26ec407e680dc5ca4f94d798288c47db1026423b89"
+    }
+  ]
+}

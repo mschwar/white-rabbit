@@ -1,0 +1,11 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.6, pytest-9.0.3, pluggy-1.6.0 -- /Users/mschwar/Documents/white-rabbit/apps/api/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/mschwar/Documents/white-rabbit/apps/api
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collecting ... collected 1 item
+
+tests/test_preflight.py::test_preflight_fails_on_empty_openai_key PASSED
+
+============================== 1 passed in 15.63s ==============================

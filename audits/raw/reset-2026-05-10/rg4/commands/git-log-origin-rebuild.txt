@@ -1,0 +1,20 @@
+8dc20e0 (HEAD -> audit/reset-rg4-operator-ui, origin/rebuild/validated-leads-loop, origin/feat/reset-r12-evidence-dossier-review, rebuild/validated-leads-loop, feat/reset-r12-evidence-dossier-review) docs: record r12 qa pass
+b9ae375 feat: add r12 evidence dossier review mode
+b692d70 (origin/feat/reset-r11-crm-results-table, feat/reset-r11-crm-results-table) docs: qa r11 crm-first results table
+5d5761b feat: add r11 crm-first results table
+2055417 (origin/feat/reset-r10-primary-search-ui, feat/reset-r10-primary-search-ui) docs: qa r10 primary search ui
+b98ac92 feat: simplify primary search workspace
+beb0db9 docs(reset): approve rg4 mockups and unlock r10
+8f61079 (origin/codex/rg4-refreshed-mockup-preflight-2026-05-12, codex/rg4-refreshed-mockup-preflight-2026-05-12) docs(mockup): add rg4 refreshed preflight
+a0ccb8d docs(reset): mark rg3 audit merged
+20f58ab (origin/audit/reset-rg3-validation-semantics, audit/reset-rg3-validation-semantics) docs: advance rg3 source-assisted proof audit
+5fedc76 (origin/feat/reset-r09l-live-source-assisted-proof, feat/reset-r09l-live-source-assisted-proof) docs: record r09l prompt b qa pass
+caa9663 feat: add R09L live source-assisted proof
+71c0925 (origin/feat/reset-r09k-live-runner-timeout-containment, feat/reset-r09k-live-runner-timeout-containment) docs: qa r09k live runner timeout containment
+bfcd40e feat: contain live runner timeouts for r09k
+cf8b1ee (origin/feat/reset-r09j-bounded-readiness-diagnostics, feat/reset-r09j-bounded-readiness-diagnostics) docs: qa r09j bounded readiness diagnostics
+1f9bf99 feat: add bounded readiness diagnostics
+dad0302 (origin/audit/reset-rg3-live-proof, audit/reset-rg3-live-proof) docs(reset): add r09j r09l remediation slices
+1839489 docs: record rg3 post-r09i live proof hold
+339bea0 (origin/feat/reset-r09i-api-startup-live-proof, feat/reset-r09i-api-startup-live-proof) docs: qa r09i api startup harness
+ab86d9f feat: add r09i api startup proof harness

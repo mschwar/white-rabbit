@@ -1,0 +1,218 @@
+[
+  {
+    "name": "Khalil Jackson",
+    "organization": "New York Federal Reserve Bank",
+    "title": "CISO",
+    "tier": "review",
+    "email_status": "missing",
+    "gate_passed": false,
+    "reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "source": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+    "validation": {
+      "name": "supported",
+      "title": "supported",
+      "organization": "supported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    }
+  },
+  {
+    "name": "Tod Mitchinson",
+    "organization": "New York Life",
+    "title": "VP, Chief Information Security Officer",
+    "tier": "review",
+    "email_status": "missing",
+    "gate_passed": false,
+    "reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "source": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+    "validation": {
+      "name": "supported",
+      "title": "supported",
+      "organization": "supported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    }
+  },
+  {
+    "name": "Kylie Watson",
+    "organization": "Sumitomo Mitsui Banking Corporation",
+    "title": "CISO",
+    "tier": "review",
+    "email_status": "missing",
+    "gate_passed": false,
+    "reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "source": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+    "validation": {
+      "name": "supported",
+      "title": "supported",
+      "organization": "supported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    }
+  },
+  {
+    "name": "Lauren Rosenblatt",
+    "organization": "Public Service Enterprise Group Inc",
+    "title": "VP, Chief Information Security Officer",
+    "tier": "review",
+    "email_status": "missing",
+    "gate_passed": false,
+    "reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "source": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+    "validation": {
+      "name": "supported",
+      "title": "supported",
+      "organization": "supported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    }
+  },
+  {
+    "name": "Theodore Fotias",
+    "organization": "Phoenix Children's Hospital",
+    "title": "IT Director",
+    "tier": "review",
+    "email_status": "missing",
+    "gate_passed": false,
+    "reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "source": "https://www.linkedin.com/in/theodore-fotias-595a4b34",
+    "validation": {
+      "name": "supported",
+      "title": "unsupported",
+      "organization": "supported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    }
+  },
+  {
+    "name": "Fred Frederick",
+    "organization": "NaphCare, Inc.",
+    "title": "IT Director",
+    "tier": "review",
+    "email_status": "missing",
+    "gate_passed": false,
+    "reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "source": "https://www.linkedin.com/in/fred-frederick-78b4b532",
+    "validation": {
+      "name": "supported",
+      "title": "unsupported",
+      "organization": "supported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    }
+  },
+  {
+    "name": "Kevin Rhode",
+    "organization": "District Medical Group",
+    "title": "CIO",
+    "tier": "review",
+    "email_status": "missing",
+    "gate_passed": false,
+    "reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "source": "https://www.dmgaz.org/executives/",
+    "validation": {
+      "name": "supported",
+      "title": "supported",
+      "organization": "supported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    }
+  },
+  {
+    "name": "Mac Gray",
+    "organization": "Gray Lumber",
+    "title": "President and Sales Manager",
+    "tier": "review",
+    "email_status": "unsupported",
+    "gate_passed": false,
+    "reason": "REVIEW: contact is unsupported; row is not CRM-ready.",
+    "source": "https://www.graylumber.com/employees-1",
+    "validation": {
+      "name": "supported",
+      "title": "supported",
+      "organization": "supported",
+      "email": "unsupported",
+      "phone": "missing",
+      "source": "supported"
+    }
+  },
+  {
+    "name": "Bruce Smith",
+    "organization": "Detroit Manufacturing Systems LLC",
+    "title": "CEO",
+    "tier": "review",
+    "email_status": "missing",
+    "gate_passed": false,
+    "reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "source": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
+    "validation": {
+      "name": "supported",
+      "title": "supported",
+      "organization": "unsupported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    }
+  },
+  {
+    "name": "Aaron Hampton",
+    "organization": "Detroit Manufacturing Systems LLC",
+    "title": "Director of Operation Excellence and Continuous Improvement",
+    "tier": "review",
+    "email_status": "missing",
+    "gate_passed": false,
+    "reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "source": "https://rocketreach.co/detroit-manufacturing-systems-llc-management_b5ed8bc3f42e7f65",
+    "validation": {
+      "name": "supported",
+      "title": "supported",
+      "organization": "supported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    }
+  },
+  {
+    "name": "David Sanders",
+    "organization": "Mesa Public Schools",
+    "title": "Chief Technology Officer",
+    "tier": "review",
+    "email_status": "missing",
+    "gate_passed": false,
+    "reason": "REVIEW: contact is missing; row is not CRM-ready.",
+    "source": "https://rocketreach.co/david-sanders-email_13537132",
+    "validation": {
+      "name": "supported",
+      "title": "supported",
+      "organization": "supported",
+      "email": "missing",
+      "phone": "missing",
+      "source": "supported"
+    }
+  },
+  {
+    "name": "Diana Hawari",
+    "organization": "Dysart Unified School District",
+    "title": "Chief Information Officer",
+    "tier": "review",
+    "email_status": "unsupported",
+    "gate_passed": false,
+    "reason": "REVIEW: contact is unsupported; row is not CRM-ready.",
+    "source": "https://www.linkedin.com/in/diana-hawari",
+    "validation": {
+      "name": "supported",
+      "title": "supported",
+      "organization": "supported",
+      "email": "unsupported",
+      "phone": "missing",
+      "source": "supported"
+    }
+  }
+]

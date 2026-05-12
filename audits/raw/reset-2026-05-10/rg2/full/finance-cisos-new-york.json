@@ -1,0 +1,339 @@
+{
+  "benchmark_id": "finance-cisos-new-york",
+  "leads": [
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.0,
+      "contact_score": 0.7,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.9,
+      "explanation": "Tod is a validated CISO at a major financial services firm in New York, aligning perfectly with your target profile.",
+      "fit_score": 0.9,
+      "gate_passed": false,
+      "icebreaker": "Hi Tod, as the CISO of New York Life, your leadership in cybersecurity is essential, especially given the increasing regulatory requirements in the financial sector.",
+      "id": "b032d519-4588-4180-8d34-b5d9e224c340",
+      "name": "Tod Mitchinson",
+      "organization": "New York Life Insurance Company",
+      "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+      "title": "VP, Chief Information Security Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": "...cer Tomas Maldonado National Football League Chief Information Security Officer Tod Mitchinson New York Life VP, Chief Information Security Officer Lauren Rosenblatt Public S...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for organization.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": "...cer Tomas Maldonado National Football League Chief Information Security Officer Tod Mitchinson New York Life VP, Chief Information Security Officer Lauren Rosenblatt Public S...",
+          "notes": "http_status=200 resolved_url=https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362 matched_fields=name,title",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": "...Football League Chief Information Security Officer Tod Mitchinson New York Life VP, Chief Information Security Officer Lauren Rosenblatt Public Service Enterprise Group Inc VP, Chief Information Sec...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "supported"
+        }
+      },
+      "why_target": "As the CISO at New York Life Insurance Company, Tod Mitchinson plays a crucial role in addressing cybersecurity, a top concern for financial services firms."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.0,
+      "contact_score": 0.7,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.8,
+      "explanation": "Jessica Wilson is identified as a CISO-related role within a financial services firm in New York.",
+      "fit_score": 0.85,
+      "gate_passed": false,
+      "icebreaker": "Hi Jessica, your position as Business Information Security Officer at Bank of America is critical, especially with the evolving cybersecurity landscape in finance.",
+      "id": "9e148243-d0cc-42f0-b5cc-4e8aad3e3e0a",
+      "name": "Jessica Wilson",
+      "organization": "Bank of America",
+      "source_url": "https://ciso-fs.coriniumintelligence.com/",
+      "title": "Business Information Security Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": "...and Technology Security Bureau of Diplomatic Security U.S. Department of State Jessica Wilson Business Information Security Officer Bank of America Scot Miller SVP, Chief In...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": "...y U.S. Department of State Jessica Wilson Business Information Security Officer Bank of America Scot Miller SVP, Chief Information Security Officer Mr. Cooper Ellis Wong Chief...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": "...and Technology Security Bureau of Diplomatic Security U.S. Department of State Jessica Wilson Business Information Security Officer Bank of America Scot Miller SVP, Chief In...",
+          "notes": "http_status=200 resolved_url=https://ciso-fs.coriniumintelligence.com/ matched_fields=name,title,organization",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": "...Security Bureau of Diplomatic Security U.S. Department of State Jessica Wilson Business Information Security Officer Bank of America Scot Miller SVP, Chief Information Security Officer Mr. Cooper...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/",
+          "status": "supported"
+        }
+      },
+      "why_target": "Jessica Wilson's role at Bank of America, a key player in financial services, makes her a significant decision maker for cybersecurity compliance."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.0,
+      "contact_score": 0.7,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.9,
+      "explanation": "Khalil Jackson is confirmed as CISO at a major financial institution, fitting the target persona perfectly.",
+      "fit_score": 0.95,
+      "gate_passed": false,
+      "icebreaker": "Hi Khalil, your efforts at the Federal Reserve Bank of New York in enhancing cybersecurity resilience are vital, especially in today's regulatory environment.",
+      "id": "1cd392bf-f094-47e8-8e9e-f5a17c5f9218",
+      "name": "Khalil Jackson",
+      "organization": "Federal Reserve Bank of New York",
+      "source_url": "https://www.evanta.com/ciso/new-york",
+      "title": "CISO",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for name.",
+          "source_url": "https://www.evanta.com/ciso/new-york",
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for organization.",
+          "source_url": "https://www.evanta.com/ciso/new-york",
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": "New York CISO Community var dataLayer = window.dataLayer = window.dataLayer || []; window.dat...",
+          "notes": "http_status=200 resolved_url=https://www.evanta.com/ciso/new-york matched_fields=title",
+          "source_url": "https://www.evanta.com/ciso/new-york",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": "New York CISO Community var dataLayer = window.dataLayer = window.dataLayer || []; window.dat...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.evanta.com/ciso/new-york",
+          "status": "supported"
+        }
+      },
+      "why_target": "Khalil Jackson, as CISO of the Federal Reserve Bank of New York, plays a pivotal role in overseeing cybersecurity for one of the most significant financial institutions in the country."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.0,
+      "contact_score": 0.7,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.8,
+      "explanation": "Ellis Wong is verified as the CISO at JST Capital, a financial services firm in New York.",
+      "fit_score": 0.88,
+      "gate_passed": false,
+      "icebreaker": "Hi Ellis, your leadership as CISO at JST Capital in such a fast-paced financial environment is impressive, especially with the increasing regulatory pressures.",
+      "id": "7cefb892-4c47-48b3-8769-affa34d733d8",
+      "name": "Ellis Wong",
+      "organization": "JST Capital",
+      "source_url": "https://www.ladders.com/jobs/chief-information-security-officer-jobs,new-york-ny",
+      "title": "Chief Information Security Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. fetch_error=ConnectTimeout: ",
+          "source_url": "https://www.ladders.com/jobs/chief-information-security-officer-jobs,new-york-ny",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "fetch_error=ConnectTimeout: ",
+          "source_url": "https://www.ladders.com/jobs/chief-information-security-officer-jobs,new-york-ny",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "fetch_error=ConnectTimeout: ",
+          "source_url": "https://www.ladders.com/jobs/chief-information-security-officer-jobs,new-york-ny",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. fetch_error=ConnectTimeout: ",
+          "source_url": "https://www.ladders.com/jobs/chief-information-security-officer-jobs,new-york-ny",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "fetch_error=ConnectTimeout: ",
+          "source_url": "https://www.ladders.com/jobs/chief-information-security-officer-jobs,new-york-ny",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "fetch_error=ConnectTimeout: ",
+          "source_url": "https://www.ladders.com/jobs/chief-information-security-officer-jobs,new-york-ny",
+          "status": "failed"
+        }
+      },
+      "why_target": "As CISO at JST Capital, Ellis Wong is instrumental in maintaining cybersecurity measures in a financial services firm aligned with your target profile."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.0,
+      "contact_score": 0.7,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.8,
+      "explanation": "Rich Kellen is confirmed as the CISO at IFF, making him a relevant lead within the financial services sector.",
+      "fit_score": 0.85,
+      "gate_passed": false,
+      "icebreaker": "Hi Rich, leading cybersecurity efforts at IFF must be a critical and challenging role, especially with the evolving digital threats in finance.",
+      "id": "84a70633-8fcc-48d0-b368-683700a445ed",
+      "name": "Rich Kellen",
+      "organization": "IFF",
+      "source_url": "https://www.evanta.com/ciso/new-york",
+      "title": "VP & Chief Information Security Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": "...nce Corporation CISO Tom Kartanowicz Standard Chartered CISO, Americas & Europe Rich Kellen IFF VP & CISO Sherif Khalifa CPP Investments CISO Boris Kogan Interactive Broke...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.evanta.com/ciso/new-york",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": "...olden Crum & Forster SVP & CISO Frank Hsieh Banco Santander CISO, CIB Sai Iyer Ziff Davis CISO Carlo Joseph Paramount Skydance Corporation CISO Tom Kartanowicz Sta...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.evanta.com/ciso/new-york",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": "...nce Corporation CISO Tom Kartanowicz Standard Chartered CISO, Americas & Europe Rich Kellen IFF VP & CISO Sherif Khalifa CPP Investments CISO Boris Kogan Interactive Broke...",
+          "notes": "http_status=200 resolved_url=https://www.evanta.com/ciso/new-york matched_fields=name,organization",
+          "source_url": "https://www.evanta.com/ciso/new-york",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T05:32:32Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for title.",
+          "source_url": "https://www.evanta.com/ciso/new-york",
+          "status": "unsupported"
+        }
+      },
+      "why_target": "Rich Kellen's position as CISO at IFF underscores his role in managing cybersecurity strategies, crucial for financial services amidst regulatory scrutiny."
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 77.66,
+    "estimated_cost_usd": 0.067231,
+    "input_tokens": 39622,
+    "openai_web_searches": 0,
+    "output_tokens": 2147,
+    "tavily_searches": 6
+  },
+  "mode": "full",
+  "prompt_label": "Finance CISOs in New York",
+  "query": "finance CISOs at financial services firms in New York",
+  "query_guardrail": null,
+  "recipe_id": "5fbd1c55-7163-438d-a782-4897851fd951",
+  "run_id": "76d101c4-c666-4b41-8976-37582bcad1cc",
+  "runner_elapsed_seconds": 77.688,
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 6,
+    "remaining_rows": 979,
+    "reset_at": "2026-05-11T05:27:53.622892-06:00",
+    "total_queries": 4,
+    "total_rows": 21
+  }
+}

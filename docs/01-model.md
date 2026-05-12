@@ -2,7 +2,7 @@
 
 **Status:** Archived Reference with active concepts.
 **Current product truth:** See `docs/00-product-northstar.md`.
-**Current rebuild execution:** See `docs/08-agentic-buildout-plan.md`.
+**Current reset execution:** See `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
 This document describes the original operator/recipe/scoring model. Keep the strategic concepts, but defer to the product northstar for current usable-lead, validation-by-field, and red/yellow/green gate rules.
 

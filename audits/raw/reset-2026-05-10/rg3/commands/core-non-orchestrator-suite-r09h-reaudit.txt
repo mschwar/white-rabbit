@@ -1,0 +1,2 @@
+TIMEOUT: bounded combined non-orchestrator core suite exited 124 after 120 seconds without stdout before completion.
+Individual file reruns in this directory produced concrete pass output.

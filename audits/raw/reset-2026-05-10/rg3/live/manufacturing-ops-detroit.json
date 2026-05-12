@@ -1,0 +1,488 @@
+{
+  "benchmark_id": "manufacturing-ops-detroit",
+  "leads": [
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.98521,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.55,
+      "explanation": "Bruce Smith is identified as CEO with a strong background in manufacturing but lacks a verified email.",
+      "fit_score": 0.98521,
+      "gate_passed": false,
+      "icebreaker": "I admire your commitment to fostering a culture of growth at Detroit Manufacturing Systems, and I'm eager to discuss how we can support your initiatives.",
+      "id": null,
+      "name": "Bruce Smith",
+      "organization": "Detroit Manufacturing Systems LLC",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
+      "tier": "review",
+      "title": "CEO",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": "...etDfd(); window.pemTracking = getDfd(); window.appRedirectCompleted = getDfd(); Bruce Smith - Voltava | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@type\":\"WebPag...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": "...etDfd(); window.pemTracking = getDfd(); window.appRedirectCompleted = getDfd(); Bruce Smith - Voltava | LinkedIn {\"@context\":\"http://schema.org\",\"@graph\":[{\"@type\":\"WebPag...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/in/bruce-smith-6b2aa95 matched_fields=name,title",
+          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": "...l Supplier Partner Conference last week in\u2026 Liked by Bruce Smith Fun to see The CEO Series clip with William Salvi who is such a thoughtful interviewer. Continuous...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
+          "status": "supported"
+        }
+      },
+      "why_target": "As the CEO of Detroit Manufacturing Systems, you lead operations in a city pivotal to the manufacturing sector, making your insights valuable for industry trends."
+    },
+    {
+      "candidate_category": "not_found",
+      "explanation": "Only the organization was found without specific individual contacts being identified.",
+      "id": null,
+      "organization": "Detroit Manufacturing Systems LLC",
+      "primary_filter_reason": "Only the organization was found without specific individual contacts being identified.",
+      "searched_target": "manufacturing operations leaders in Detroit",
+      "source_url": "https://www.dmsna.com/",
+      "tier": "not_found",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.dmsna.com/",
+          "source_url": "https://www.dmsna.com/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.dmsna.com/",
+          "source_url": "https://www.dmsna.com/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.dmsna.com/",
+          "source_url": "https://www.dmsna.com/",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.dmsna.com/",
+          "source_url": "https://www.dmsna.com/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.dmsna.com/",
+          "source_url": "https://www.dmsna.com/",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.dmsna.com/",
+          "source_url": "https://www.dmsna.com/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Source could not validate the person row: http_status=403 resolved_url=https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+      "failure_reason": "Source could not validate the person row: http_status=403 resolved_url=https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+      "id": null,
+      "organization": "Detroit Manufacturing Systems",
+      "primary_filter_reason": "Source could not validate the person row: http_status=403 resolved_url=https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+      "searched_target": "Detroit Manufacturing Systems",
+      "source_url": "https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+          "source_url": "https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+          "source_url": "https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+          "source_url": "https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+          "source_url": "https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+          "source_url": "https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+          "source_url": "https://www.dmsna.com/meet-monica-brand-chro-at-dms/",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.9798227,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.9798227,
+      "explanation": "Aaron Hampton is a lead in operations but does not have a verified email traced to him.",
+      "fit_score": 0.9798227,
+      "gate_passed": false,
+      "icebreaker": "It's impressive that you lead initiatives to improve operational performance at DMS, a key player in Detroit's manufacturing landscape.",
+      "id": null,
+      "name": "Aaron Hampton",
+      "organization": "Detroit Manufacturing Systems LLC",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://rocketreach.co/detroit-manufacturing-systems-llc-management_b5ed8bc3f42e7f65",
+      "tier": "review",
+      "title": "Director of Operation Excellence and Continuous Improvement",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://rocketreach.co/detroit-manufacturing-systems-llc-management_b5ed8bc3f42e7f65",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": "...turing Systems LLC management team includes Yvonne Champoux (Account Manager) , Aaron Hampton (Director of Operation Excellence and Continuous Improvement) , and Kory Gollan...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://rocketreach.co/detroit-manufacturing-systems-llc-management_b5ed8bc3f42e7f65",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": ">>\" /> >>\" /> >>\" /> Detroit Manufacturing Systems LLC Management Team | Org Chart window.varify = window.varify || {};window.varify.i...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://rocketreach.co/detroit-manufacturing-systems-llc-management_b5ed8bc3f42e7f65",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://rocketreach.co/detroit-manufacturing-systems-llc-management_b5ed8bc3f42e7f65",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": "...turing Systems LLC management team includes Yvonne Champoux (Account Manager) , Aaron Hampton (Director of Operation Excellence and Continuous Improvement) , and Kory Gollan...",
+          "notes": "http_status=200 resolved_url=https://rocketreach.co/detroit-manufacturing-systems-llc-management_b5ed8bc3f42e7f65 matched_fields=name,title,organization",
+          "source_url": "https://rocketreach.co/detroit-manufacturing-systems-llc-management_b5ed8bc3f42e7f65",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": "...LLC management team includes Yvonne Champoux (Account Manager) , Aaron Hampton (Director of Operation Excellence and Continuous Improvement) , and Kory Gollan (Controls Engineering Manager) . Looking for a particular De...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://rocketreach.co/detroit-manufacturing-systems-llc-management_b5ed8bc3f42e7f65",
+          "status": "supported"
+        }
+      },
+      "why_target": "Overseeing operational excellence initiatives is crucial for improving manufacturing efficiency, which aligns with your focus on manufacturing operations."
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "Source could not validate the person row: http_status=403 resolved_url=https://www.dmsna.com/our-story/",
+      "failure_reason": "Source could not validate the person row: http_status=403 resolved_url=https://www.dmsna.com/our-story/",
+      "id": null,
+      "organization": "Detroit Manufacturing Systems",
+      "primary_filter_reason": "Source could not validate the person row: http_status=403 resolved_url=https://www.dmsna.com/our-story/",
+      "searched_target": "Detroit Manufacturing Systems",
+      "source_url": "https://www.dmsna.com/our-story/",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.dmsna.com/our-story/",
+          "source_url": "https://www.dmsna.com/our-story/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.dmsna.com/our-story/",
+          "source_url": "https://www.dmsna.com/our-story/",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.dmsna.com/our-story/",
+          "source_url": "https://www.dmsna.com/our-story/",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.dmsna.com/our-story/",
+          "source_url": "https://www.dmsna.com/our-story/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.dmsna.com/our-story/",
+          "source_url": "https://www.dmsna.com/our-story/",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.dmsna.com/our-story/",
+          "source_url": "https://www.dmsna.com/our-story/",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Identified the organization but no specific individual contacts were provided.",
+      "id": null,
+      "organization": "Detroit Regional Chamber",
+      "primary_filter_reason": "Identified the organization but no specific individual contacts were provided.",
+      "source_url": "https://www.detroitchamber.com/about/investor-directory/",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/about/investor-directory/",
+          "source_url": "https://www.detroitchamber.com/about/investor-directory/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/about/investor-directory/",
+          "source_url": "https://www.detroitchamber.com/about/investor-directory/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.detroitchamber.com/about/investor-directory/",
+          "source_url": "https://www.detroitchamber.com/about/investor-directory/",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/about/investor-directory/",
+          "source_url": "https://www.detroitchamber.com/about/investor-directory/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.detroitchamber.com/about/investor-directory/",
+          "source_url": "https://www.detroitchamber.com/about/investor-directory/",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/about/investor-directory/",
+          "source_url": "https://www.detroitchamber.com/about/investor-directory/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "not_found",
+      "explanation": "No suitable leads were found from DTE Energy, despite relevance in the context.",
+      "id": null,
+      "organization": "DTE Energy",
+      "primary_filter_reason": "No suitable leads were found from DTE Energy, despite relevance in the context.",
+      "searched_target": "manufacturing operations leaders in Detroit",
+      "source_url": "https://careers.dteenergy.com/go/Operations-Leadership-Rotational-Program/4475800/",
+      "tier": "not_found",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://careers.dteenergy.com/go/Operations-Leadership-Rotational-Program/4475800/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://careers.dteenergy.com/go/Operations-Leadership-Rotational-Program/4475800/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": "DTE Energy Operations Leadership Rotational Program (function(w,d,s,l,i){w[l]=w[l]||[];w[l...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://careers.dteenergy.com/go/Operations-Leadership-Rotational-Program/4475800/",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://careers.dteenergy.com/go/Operations-Leadership-Rotational-Program/4475800/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": "DTE Energy Operations Leadership Rotational Program (function(w,d,s,l,i){w[l]=w[l]||[];w[l...",
+          "notes": "http_status=200 resolved_url=https://careers.dteenergy.com/go/Operations-Leadership-Rotational-Program/4475800/ matched_fields=organization",
+          "source_url": "https://careers.dteenergy.com/go/Operations-Leadership-Rotational-Program/4475800/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://careers.dteenergy.com/go/Operations-Leadership-Rotational-Program/4475800/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "No identifiable individuals or organizations matched the target search criteria.",
+      "failure_reason": "No contacts found relevant to manufacturing operations leaders in Detroit.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "No contacts found relevant to manufacturing operations leaders in Detroit.",
+      "searched_target": "manufacturing operations leaders in Detroit",
+      "source_url": null,
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "source_url was not provided.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "title": {
+          "checked_at": "2026-05-11T06:51:33Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 71.88,
+    "estimated_cost_usd": 0.063839,
+    "input_tokens": 20342,
+    "openai_web_searches": 0,
+    "output_tokens": 1313,
+    "tavily_searches": 6,
+    "tier_distribution": {
+      "failed": 3,
+      "high_trust_usable": 0,
+      "not_found": 2,
+      "organization_only": 1,
+      "review": 2
+    }
+  },
+  "mode": "scout",
+  "prompt_label": "Manufacturing operations leaders in Detroit",
+  "query": "manufacturing operations leaders in Detroit",
+  "query_guardrail": null,
+  "runner_elapsed_seconds": 71.914,
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 5,
+    "remaining_rows": 959,
+    "reset_at": "2026-05-11T06:45:47.067181-06:00",
+    "total_queries": 5,
+    "total_rows": 41
+  }
+}

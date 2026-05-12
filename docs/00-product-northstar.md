@@ -8,13 +8,14 @@ This document supersedes older optimistic "works" claims when product quality is
 
 ## One-Sentence Product Definition
 
-White Rabbit is an internal-first B2B lead research tool that turns a natural-language sales target into a useful, exportable list of field-validated leads with transparent evidence.
+White Rabbit is an internal-first B2B lead research tool that turns a sales target and public-source evidence into a useful, exportable research workbook of field-validated leads, manual-lookup rows, not-found rows, and transparent evidence.
 
 ## Core Loop
 
 ```text
 natural-language query
-  -> high-quality validated leads
+  -> source-assisted public-web research
+  -> high-quality validated leads and explicit manual-lookup/not-found rows
   -> transparent field-level evidence
   -> ranked results
   -> export
@@ -29,6 +30,10 @@ White Rabbit does not win by returning an unqualified pile of names like ZoomInf
 Volume is part of value when it is transparent. The old 10-25 broad-query target is now only the minimum escape velocity from the 3-4 row failure mode. For broad vertical + geography targets, the product should move toward 50-500+ categorized candidates where the market supports it, while preserving a strict high-trust usable tier. It is acceptable to surface hundreds of rows if it is instantly clear why most are not actionable and what evidence, or lack of evidence, supports that conclusion.
 
 Noisy raw candidates are acceptable only when they are checked, visibly annotated, and clearly separated from usable leads. Bad data shown confidently is worse than no data.
+
+The near-term launch wedge is source-assisted research, not fully autonomous broad search. The April 2026 New Mexico school-district IT package proved that a human plus basic chatbot/Codex workflow can produce a useful workbook when it starts from public rosters, district staff pages, source URLs, and explicit manual-lookup notes. White Rabbit's first job is to beat that manual workflow: gather or accept source evidence, extract structured rows, validate every field, preserve useful rows even when contact is missing, label blockers honestly, and export a sales-first workbook.
+
+Autonomous search remains useful only when it feeds this evidence compiler. A missing direct email is not automatically a useless row if the name, title, organization, source, and next action are clear; it is a `review` or `manual_lookup` row. It must still never be presented as CRM-ready.
 
 ## Target User
 
@@ -97,6 +102,7 @@ Required output tiers:
 
 - `high_trust_usable`: strict CRM-ready row; current evidence gate passed.
 - `review`: plausible person lead with partial evidence, weaker contact, medium confidence, or another explicit limitation.
+- `manual_lookup`: named, source-supported target row with a clear missing-contact or source-access blocker and a concrete next action for a human operator.
 - `organization_only`: target account found, no validated person ready for CRM use.
 - `not_found`: target searched, no acceptable contact/person found.
 - `failed`: evidence contradicted or failed to support the candidate.
@@ -109,6 +115,7 @@ Demo-facing labels translate internal tiers into operator language:
 | --- | --- |
 | `high_trust_usable` | `READY` |
 | `review` | `REVIEW` |
+| `manual_lookup` | `REVIEW` |
 | `organization_only` | `ORG-ONLY` |
 | `not_found` | `NOT FOUND` |
 | `failed` | `NOT FOUND` or `REVIEW`, depending on whether a human can resolve it |
@@ -173,6 +180,7 @@ Red if any of these are true:
 
 - Any golden benchmark returns zero leads or crashes.
 - Any broad Scout/Full benchmark returns fewer than 50 categorized candidates after high-volume mode lands, or fewer than 10 before it lands, without a source-backed reason that the target market is smaller.
+- The source-assisted/manual-oracle benchmark cannot reproduce or improve the April New Mexico school-district IT workbook structure: verified contacts, manual-lookup rows, source URLs, blocker notes, and sales-first export.
 - Backend lead-search endpoints are callable outside the intended app boundary.
 - B2C/privacy-sensitive queries are not explicitly blocked.
 - Any sampled row contains a fake, guessed, unsupported, or mismatched email without a failed/deduced label.
@@ -186,6 +194,7 @@ Allowed users in red by default: Matt and agents only. ADR-010 records a 2026-05
 Yellow requires all of these:
 
 - Arizona K-12 VoIP benchmark returns at least 6 of 8 target districts with either a correct named technology/IT/telecom decision maker or an explicit `not_found` reason.
+- April New Mexico school-district IT replay returns the manual-oracle distribution as categorized rows: verified-contact rows where public evidence supports them, manual-lookup rows where direct contact is missing, and no unsupported contact marked ready.
 - Broad Scout/Full benchmarks return at least 50 categorized candidates where the market supports it, with high-trust usable rows clearly separated from review, organization-only, not-found, and failed rows.
 - At least 50% of sampled returned person rows are right persona and source-backed.
 - Contact status is one of verified, deduced-with-evidence, missing, failed, or unsupported. No unsupported "Found" emails.
@@ -200,6 +209,7 @@ Allowed users in yellow: Matt only, with benchmark evidence captured in repo doc
 Green requires all of these:
 
 - At least 70% sampled precision on right persona, organization, and source support across the required benchmark suite.
+- Source-assisted April New Mexico replay reproduces or improves the manual-oracle workbook with lower operator research burden and zero unsupported CRM-ready contacts.
 - Broad Thomas/Lee Scout-style prompts consistently return 50-500+ categorized candidates where the market supports it, with at least 10+ high-trust or review-worthy person candidates when the public web supports that universe.
 - At least 50% of usable rows have verified or explicitly deduced contacts.
 - Zero fake or unsupported emails in sampled output.

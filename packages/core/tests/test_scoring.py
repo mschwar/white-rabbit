@@ -6,7 +6,7 @@ from core.models import (
     NotFoundCandidate,
     OrganizationOnlyCandidate,
 )
-from core.orchestrator import _lead_passes_evidence_gate
+from core.orchestrator import _lead_passes_evidence_gate, _tier_person_lead
 
 
 def _field(status: str = "supported") -> FieldValidationRecord:
@@ -109,6 +109,44 @@ def test_evidence_gate_blocks_fake_or_unsupported_contacts():
     assert _lead_passes_evidence_gate(failed_contact) is False
     assert _lead_passes_evidence_gate(unsupported_contact) is False
     assert _lead_passes_evidence_gate(missing_contact) is False
+
+
+def test_evidence_gate_is_not_the_only_return_tier():
+    review_lead = _lead(validation=_validation(email_status="missing"), contact_score=0.0)
+
+    assert _lead_passes_evidence_gate(review_lead) is False
+    assert review_lead.candidate_category == "person_lead"
+
+
+def test_tiering_caps_contact_signal_for_non_usable_contact_statuses():
+    lead = _lead(
+        validation=_validation(email_status="missing"),
+        evidence_score=0.95,
+        contact_score=0.95,
+    )
+
+    tiered = _tier_person_lead(lead)
+
+    assert isinstance(tiered, Lead)
+    assert tiered.tier == "review"
+    assert tiered.contact_score == 0.35
+    assert tiered.gate_passed is False
+    assert tiered.primary_filter_reason.startswith("REVIEW:")
+
+
+def test_tiering_caps_evidence_signal_when_field_support_is_missing():
+    lead = _lead(
+        validation=_validation(title_status="unsupported", source_status="unsupported"),
+        evidence_score=0.95,
+        contact_score=0.95,
+    )
+
+    tiered = _tier_person_lead(lead)
+
+    assert isinstance(tiered, Lead)
+    assert tiered.tier == "review"
+    assert tiered.evidence_score == 0.4
+    assert "direct source support" in tiered.primary_filter_reason
 
 
 def test_non_person_candidates_are_not_passable_person_leads():

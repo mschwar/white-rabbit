@@ -1,6 +1,6 @@
 # White Rabbit — Hard Audit 2026-05-07
 
-> **Status:** Historical Record. This document preserves evidence from the date it was written. Do not use it as the current work queue. Current product truth: `docs/00-product-northstar.md`; current state: `STATUS.md`; current rebuild execution: `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md`.
+> **Status:** Historical Record. This document preserves evidence from the date it was written. Do not use it as the current work queue. Current product truth: `docs/00-product-northstar.md`; current state: `STATUS.md`; current reset execution: `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
 
 **Branch:** audit/hard-audit-2026-05-07

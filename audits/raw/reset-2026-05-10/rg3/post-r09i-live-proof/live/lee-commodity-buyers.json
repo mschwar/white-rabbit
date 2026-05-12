@@ -1,0 +1,48 @@
+{
+  "benchmark_id": "lee-commodity-buyers",
+  "error": "API startup failed before live benchmark case execution.",
+  "error_code": "api_startup_failed",
+  "leads": [],
+  "mode": "scout",
+  "partial_artifact": true,
+  "prompt_label": "Lee commodity buyers prompt",
+  "query": "commodity buyers at retail lumber yards in Washington",
+  "runner_elapsed_seconds": 20.006,
+  "startup_probe": {
+    "api_base_url": "http://127.0.0.1:8017",
+    "attempts": [
+      {
+        "elapsed_seconds": 5.003,
+        "error": "TimeoutError: ",
+        "ok": false,
+        "status_code": 0
+      },
+      {
+        "elapsed_seconds": 5.003,
+        "error": "TimeoutError: ",
+        "ok": false,
+        "status_code": 0
+      },
+      {
+        "elapsed_seconds": 5.002,
+        "error": "TimeoutError: ",
+        "ok": false,
+        "status_code": 0
+      },
+      {
+        "elapsed_seconds": 1.99,
+        "error": "TimeoutError: ",
+        "ok": false,
+        "status_code": 0
+      }
+    ],
+    "elapsed_seconds": 20.006,
+    "failure_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/startup/startup-failure.json",
+    "health_ok": false,
+    "health_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/startup/health.json",
+    "health_status_path": "../../audits/raw/reset-2026-05-10/rg3/post-r09i-live-proof/live/startup/health.http",
+    "readiness_path": null,
+    "readiness_status": null,
+    "readiness_status_path": null
+  }
+}

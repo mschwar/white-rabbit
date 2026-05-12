@@ -2,7 +2,7 @@
 
 **Status:** Archived Reference.
 **Current product truth:** See `docs/00-product-northstar.md`.
-**Current execution plan:** See `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md`.
+**Current execution plan:** See `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
 This document preserves bootstrap strategy. It is still useful context, but any conflict with the product northstar or STATUS should be resolved in favor of the active docs.
 

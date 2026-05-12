@@ -1,7 +1,7 @@
 # 04 — Roadmap
 
 **Status:** Superseded.
-**Superseded by:** `docs/00-product-northstar.md`, `docs/08-agentic-buildout-plan.md`, and `docs/09-rebuild-phase-gates.md`.
+**Superseded by:** `docs/00-product-northstar.md` and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
 This roadmap is a historical pre-rebuild sprint plan. Do not use it as the current work queue. It remains here to preserve the original product assumptions and sprint history.
 

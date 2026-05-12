@@ -1,0 +1,25 @@
+
+> web@0.1.0 start
+> next start -p 3010
+
+▲ Next.js 16.2.4
+- Local:         http://localhost:3010
+- Network:       http://192.168.1.31:3010
+✓ Ready in 129ms
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/mschwar/package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * /Users/mschwar/Documents/white-rabbit/apps/web/package-lock.json
+
+⨯ Error: Cannot append headers after they are sent to the client
+    at q (.next/server/chunks/ssr/0hcr_next_dist_esm_build_templates_app-page_1347-vy.js:2:6634)
+    at async Module.M [as handler] (.next/server/chunks/ssr/0hcr_next_dist_esm_build_templates_app-page_1347-vy.js:2:9375) {
+  code: 'ERR_HTTP_HEADERS_SENT'
+}
+⨯ Error: Cannot append headers after they are sent to the client
+    at q (.next/server/chunks/ssr/0hcr_next_dist_esm_build_templates_app-page_1347-vy.js:2:6634)
+    at async Module.M [as handler] (.next/server/chunks/ssr/0hcr_next_dist_esm_build_templates_app-page_1347-vy.js:2:9375) {
+  code: 'ERR_HTTP_HEADERS_SENT'
+}

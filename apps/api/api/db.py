@@ -39,7 +39,7 @@ def init_db(database_url: str | None = None):
 @contextmanager
 def get_db_session() -> Generator[Session, None, None]:
     if _session_maker is None:
-        raise RuntimeError("Database not initialized. Call init_db() first.")
+        init_db()
     session = _session_maker()
     try:
         yield session

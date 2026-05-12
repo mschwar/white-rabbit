@@ -1,0 +1,2846 @@
+{
+  "benchmark_id": "finance-cisos-new-york",
+  "leads": [
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.9998535,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Valid lead based on title and organization, but no public email to reach out.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "Your leadership in steering cybersecurity at MoneyLion is instrumental in protecting consumer finance in today's digital world.",
+      "id": null,
+      "name": "Lance Friedman",
+      "organization": "MoneyLion",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+      "tier": "review",
+      "title": "CISO",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...window.appRedirectCompleted = getDfd(); New York Banking Cybersecurity Leaders: Lance Friedman & Co. | CISO Whisperer posted on the topic | LinkedIn {\"@context\":\"http://schem...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...to Watch in the State of New York\u2019s banking industry include:\\nLance Friedman - MoneyLion\\nYuval Malisov - BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichae...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...window.appRedirectCompleted = getDfd(); New York Banking Cybersecurity Leaders: Lance Friedman & Co. | CISO Whisperer posted on the topic | LinkedIn {\"@context\":\"http://schem...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ matched_fields=name,title,organization",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...eted = getDfd(); New York Banking Cybersecurity Leaders: Lance Friedman & Co. | CISO Whisperer posted on the topic | LinkedIn {\"@context\":\"http://schema.org\",\"@type...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        }
+      },
+      "why_target": "As CISO at MoneyLion, you are at the forefront of safeguarding financial technologies, making your insights invaluable for enhancing cybersecurity practices."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.9998535,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Valid lead based on title and organization, but no public email to reach out.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "I'm looking forward to your experience regarding innovations in financial services cybersecurity at BHI.",
+      "id": null,
+      "name": "Yuval Malisov",
+      "organization": "BHI",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+      "tier": "review",
+      "title": "CISO",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...the State of New York\u2019s banking industry include:\\nLance Friedman - MoneyLion\\nYuval Malisov - BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichael Livni, CRISC...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...w York\u2019s banking industry include:\\nLance Friedman - MoneyLion\\nYuval Malisov - BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichael Livni, CRISC - Vall...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...the State of New York\u2019s banking industry include:\\nLance Friedman - MoneyLion\\nYuval Malisov - BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichael Livni, CRISC...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ matched_fields=name,title,organization",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...eted = getDfd(); New York Banking Cybersecurity Leaders: Lance Friedman & Co. | CISO Whisperer posted on the topic | LinkedIn {\"@context\":\"http://schema.org\",\"@type...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        }
+      },
+      "why_target": "Your role as CISO at BHI involves navigating complex cybersecurity landscapes vital to financial integrity, which aligns closely with today's security challenges."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.9998535,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Valid lead based on title and organization, but no public email to reach out.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "Your expertise in financial security at a federal level is essential for guiding practices that protect our economy.",
+      "id": null,
+      "name": "Robert Brown",
+      "organization": "Federal Home Loan Bank of New York",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+      "tier": "review",
+      "title": "CISO",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...k\u2019s banking industry include:\\nLance Friedman - MoneyLion\\nYuval Malisov - BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichael Livni, CRISC - Valley Bank\\nSofik...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...ustry include:\\nLance Friedman - MoneyLion\\nYuval Malisov - BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichael Livni, CRISC - Valley Bank\\nSofika Petrofski, CISM - First Central Sav...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...k\u2019s banking industry include:\\nLance Friedman - MoneyLion\\nYuval Malisov - BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichael Livni, CRISC - Valley Bank\\nSofik...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ matched_fields=name,title,organization",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...eted = getDfd(); New York Banking Cybersecurity Leaders: Lance Friedman & Co. | CISO Whisperer posted on the topic | LinkedIn {\"@context\":\"http://schema.org\",\"@type...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        }
+      },
+      "why_target": "In your position at the Federal Home Loan Bank of New York, your leadership in cybersecurity is critical in protecting financial infrastructure."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.9998535,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Valid lead based on title and organization, but no public email to reach out.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "My team is interested in Valley Bank's approach to cybersecurity, and your leadership role plays a key part in that.",
+      "id": null,
+      "name": "Michael Livni",
+      "organization": "Valley Bank",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+      "tier": "review",
+      "title": "CISO",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...eyLion\\nYuval Malisov - BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichael Livni, CRISC - Valley Bank\\nSofika Petrofski, CISM - First Central Savings Bank\\nTerr...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichael Livni, CRISC - Valley Bank\\nSofika Petrofski, CISM - First Central Savings Bank\\nTerrence Driscoll - Citiz...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...eyLion\\nYuval Malisov - BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichael Livni, CRISC - Valley Bank\\nSofika Petrofski, CISM - First Central Savings Bank\\nTerr...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ matched_fields=name,title,organization",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...eted = getDfd(); New York Banking Cybersecurity Leaders: Lance Friedman & Co. | CISO Whisperer posted on the topic | LinkedIn {\"@context\":\"http://schema.org\",\"@type...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        }
+      },
+      "why_target": "As CISO at Valley Bank, your insights can greatly aid in enhancing security protocols critical for safeguarding financial transactions."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.9998535,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Valid lead based on title and organization, but no public email to reach out.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "Your expertise in cybersecurity across banking operations is vital in today's evolving threat landscape.",
+      "id": null,
+      "name": "Sofika Petrofski",
+      "organization": "First Central Savings Bank",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+      "tier": "review",
+      "title": "CISM",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...Brown - Federal Home Loan Bank of New York\\nMichael Livni, CRISC - Valley Bank\\nSofika Petrofski, CISM - First Central Savings Bank\\nTerrence Driscoll - Citizens\\nAnthony S. -...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...Bank of New York\\nMichael Livni, CRISC - Valley Bank\\nSofika Petrofski, CISM - First Central Savings Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple Bank\\nKarl Schimmeck - Synchr...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...Brown - Federal Home Loan Bank of New York\\nMichael Livni, CRISC - Valley Bank\\nSofika Petrofski, CISM - First Central Savings Bank\\nTerrence Driscoll - Citizens\\nAnthony S. -...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ matched_fields=name,title,organization",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...me Loan Bank of New York\\nMichael Livni, CRISC - Valley Bank\\nSofika Petrofski, CISM - First Central Savings Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        }
+      },
+      "why_target": "Your role at First Central Savings Bank highlights the critical importance of security management in banking."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.9998535,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Valid lead based on title and organization, but no public email to reach out.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "I'm eager to learn how your strategies at Citizens enhance security for banking customers today.",
+      "id": null,
+      "name": "Terrence Driscoll",
+      "organization": "Citizens",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+      "tier": "review",
+      "title": "CISO",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...ivni, CRISC - Valley Bank\\nSofika Petrofski, CISM - First Central Savings Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple Bank\\nKarl Schimmeck - Synchrony\\n\\nThese leader...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...Bank\\nSofika Petrofski, CISM - First Central Savings Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple Bank\\nKarl Schimmeck - Synchrony\\n\\nThese leaders are stren...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...ivni, CRISC - Valley Bank\\nSofika Petrofski, CISM - First Central Savings Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple Bank\\nKarl Schimmeck - Synchrony\\n\\nThese leader...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ matched_fields=name,title,organization",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...eted = getDfd(); New York Banking Cybersecurity Leaders: Lance Friedman & Co. | CISO Whisperer posted on the topic | LinkedIn {\"@context\":\"http://schema.org\",\"@type...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        }
+      },
+      "why_target": "As CISO of Citizens, your leadership is vital in ensuring the security of consumer banking services in a digital age."
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Valid lead based on organization name, but no clear title or public email to reach out.",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Could not safely parse person candidate: Input should be a valid string",
+      "id": null,
+      "organization": "Apple Bank",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Could not safely parse person candidate: Input should be a valid string",
+      "searched_target": "finance CISOs at financial services firms in New York",
+      "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "..., CISM - First Central Savings Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple Bank\\nKarl Schimmeck - Synchrony\\n\\nThese leaders are strengthening resilience acros...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "..., CISM - First Central Savings Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple Bank\\nKarl Schimmeck - Synchrony\\n\\nThese leaders are strengthening resilience acros...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ matched_fields=organization",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.9998535,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 1.0,
+      "explanation": "Valid lead based on title and organization, but no public email to reach out.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "Your leadership at Synchrony positions you well to speak on evolving security challenges in consumer finance.",
+      "id": null,
+      "name": "Karl Schimmeck",
+      "organization": "Synchrony",
+      "primary_filter_reason": "REVIEW: contact is missing; row is not CRM-ready.",
+      "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+      "tier": "review",
+      "title": "CISO",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...st Central Savings Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple Bank\\nKarl Schimmeck - Synchrony\\n\\nThese leaders are strengthening resilience across New York\u2019s ban...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...s Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple Bank\\nKarl Schimmeck - Synchrony\\n\\nThese leaders are strengthening resilience across New York\u2019s banking ecosyst...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...st Central Savings Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple Bank\\nKarl Schimmeck - Synchrony\\n\\nThese leaders are strengthening resilience across New York\u2019s ban...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ matched_fields=name,title,organization",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...eted = getDfd(); New York Banking Cybersecurity Leaders: Lance Friedman & Co. | CISO Whisperer posted on the topic | LinkedIn {\"@context\":\"http://schema.org\",\"@type...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        }
+      },
+      "why_target": "As CISO at Synchrony, your experience in financial cybersecurity is pivotal in protecting customer financial data."
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Valid organization with significant relevance, but lacks specific named person or title.",
+      "id": null,
+      "organization": "MoneyLion",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Valid organization with significant relevance, but lacks specific named person or title.",
+      "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...to Watch in the State of New York\u2019s banking industry include:\\nLance Friedman - MoneyLion\\nYuval Malisov - BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichae...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...to Watch in the State of New York\u2019s banking industry include:\\nLance Friedman - MoneyLion\\nYuval Malisov - BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichae...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ matched_fields=organization",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Valid organization with significant relevance, but lacks specific named person or title.",
+      "id": null,
+      "organization": "BHI",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Valid organization with significant relevance, but lacks specific named person or title.",
+      "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...w York\u2019s banking industry include:\\nLance Friedman - MoneyLion\\nYuval Malisov - BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichael Livni, CRISC - Vall...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...w York\u2019s banking industry include:\\nLance Friedman - MoneyLion\\nYuval Malisov - BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichael Livni, CRISC - Vall...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ matched_fields=organization",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Valid organization with significant relevance, but lacks specific named person or title.",
+      "id": null,
+      "organization": "Federal Home Loan Bank of New York",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Valid organization with significant relevance, but lacks specific named person or title.",
+      "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...ustry include:\\nLance Friedman - MoneyLion\\nYuval Malisov - BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichael Livni, CRISC - Valley Bank\\nSofika Petrofski, CISM - First Central Sav...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...ustry include:\\nLance Friedman - MoneyLion\\nYuval Malisov - BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichael Livni, CRISC - Valley Bank\\nSofika Petrofski, CISM - First Central Sav...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ matched_fields=organization",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Valid organization with significant relevance, but lacks specific named person or title.",
+      "id": null,
+      "organization": "Valley Bank",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Valid organization with significant relevance, but lacks specific named person or title.",
+      "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichael Livni, CRISC - Valley Bank\\nSofika Petrofski, CISM - First Central Savings Bank\\nTerrence Driscoll - Citiz...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...BHI\\nRobert Brown - Federal Home Loan Bank of New York\\nMichael Livni, CRISC - Valley Bank\\nSofika Petrofski, CISM - First Central Savings Bank\\nTerrence Driscoll - Citiz...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ matched_fields=organization",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Valid organization with significant relevance, but lacks specific named person or title.",
+      "id": null,
+      "organization": "First Central Savings Bank",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Valid organization with significant relevance, but lacks specific named person or title.",
+      "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...Bank of New York\\nMichael Livni, CRISC - Valley Bank\\nSofika Petrofski, CISM - First Central Savings Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple Bank\\nKarl Schimmeck - Synchr...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...Bank of New York\\nMichael Livni, CRISC - Valley Bank\\nSofika Petrofski, CISM - First Central Savings Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple Bank\\nKarl Schimmeck - Synchr...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ matched_fields=organization",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Valid organization with significant relevance, but lacks specific named person or title.",
+      "id": null,
+      "organization": "Citizens",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Valid organization with significant relevance, but lacks specific named person or title.",
+      "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...Bank\\nSofika Petrofski, CISM - First Central Savings Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple Bank\\nKarl Schimmeck - Synchrony\\n\\nThese leaders are stren...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...Bank\\nSofika Petrofski, CISM - First Central Savings Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple Bank\\nKarl Schimmeck - Synchrony\\n\\nThese leaders are stren...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ matched_fields=organization",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Valid organization with significant relevance, but lacks specific named person or title.",
+      "id": null,
+      "organization": "Apple Bank",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Valid organization with significant relevance, but lacks specific named person or title.",
+      "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "..., CISM - First Central Savings Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple Bank\\nKarl Schimmeck - Synchrony\\n\\nThese leaders are strengthening resilience acros...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "..., CISM - First Central Savings Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple Bank\\nKarl Schimmeck - Synchrony\\n\\nThese leaders are strengthening resilience acros...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ matched_fields=organization",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Valid organization with significant relevance, but lacks specific named person or title.",
+      "id": null,
+      "organization": "Synchrony",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Valid organization with significant relevance, but lacks specific named person or title.",
+      "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...s Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple Bank\\nKarl Schimmeck - Synchrony\\n\\nThese leaders are strengthening resilience across New York\u2019s banking ecosyst...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": "...s Bank\\nTerrence Driscoll - Citizens\\nAnthony S. - Apple Bank\\nKarl Schimmeck - Synchrony\\n\\nThese leaders are strengthening resilience across New York\u2019s banking ecosyst...",
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ matched_fields=organization",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/cisowhisperer_cisos-to-watch-in-the-state-of-new-yorks-activity-7432756390999339008-x8PJ",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Financial Services Summit: New York 2025 ISMG%%sep%%Events ismg.events",
+      "source_url": "https://ismg.events/summit/summitpast/financial-services-summit-new-york-2025/",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/summitpast/financial-services-summit-new-york-2025/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/summitpast/financial-services-summit-new-york-2025/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/summitpast/financial-services-summit-new-york-2025/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/summitpast/financial-services-summit-new-york-2025/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://ismg.events/summit/summitpast/financial-services-summit-new-york-2025/ matched_fields=none",
+          "source_url": "https://ismg.events/summit/summitpast/financial-services-summit-new-york-2025/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/summitpast/financial-services-summit-new-york-2025/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "NYDFS and Finding Your CISO",
+      "source_url": "https://blog.twinstate.com/nydfs-and-finding-your-ciso",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://blog.twinstate.com/nydfs-and-finding-your-ciso",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://blog.twinstate.com/nydfs-and-finding-your-ciso",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://blog.twinstate.com/nydfs-and-finding-your-ciso",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://blog.twinstate.com/nydfs-and-finding-your-ciso",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://blog.twinstate.com/nydfs-and-finding-your-ciso matched_fields=none",
+          "source_url": "https://blog.twinstate.com/nydfs-and-finding-your-ciso",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://blog.twinstate.com/nydfs-and-finding-your-ciso",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "New York\u2019s Top 10 Most Followed Chief Information Security Officer (CISOs) on LinkedIn - CXO Junction",
+      "source_url": "https://cxojunction.com/myblog/new-york-top-10-most-followed-chief-information-security-officer-cisos-on-linkedin/",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://cxojunction.com/myblog/new-york-top-10-most-followed-chief-information-security-officer-cisos-on-linkedin/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://cxojunction.com/myblog/new-york-top-10-most-followed-chief-information-security-officer-cisos-on-linkedin/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://cxojunction.com/myblog/new-york-top-10-most-followed-chief-information-security-officer-cisos-on-linkedin/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://cxojunction.com/myblog/new-york-top-10-most-followed-chief-information-security-officer-cisos-on-linkedin/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://cxojunction.com/myblog/new-york-top-10-most-followed-chief-information-security-officer-cisos-on-linkedin/ matched_fields=none",
+          "source_url": "https://cxojunction.com/myblog/new-york-top-10-most-followed-chief-information-security-officer-cisos-on-linkedin/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://cxojunction.com/myblog/new-york-top-10-most-followed-chief-information-security-officer-cisos-on-linkedin/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Financial Services Summit: New York 2025 ISMG%%sep%%Events ismg.events",
+      "source_url": "https://ismg.events/summit/summitpast/newyork-financial-service-2025/",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/summitpast/newyork-financial-service-2025/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/summitpast/newyork-financial-service-2025/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/summitpast/newyork-financial-service-2025/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/summitpast/newyork-financial-service-2025/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://ismg.events/summit/summitpast/newyork-financial-service-2025/ matched_fields=none",
+          "source_url": "https://ismg.events/summit/summitpast/newyork-financial-service-2025/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/summitpast/newyork-financial-service-2025/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Client List \u2013 CIO CISO NYC | NCS Madison",
+      "source_url": "https://ncsmadison.com/cio-ciso-nyc/client-list/",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://ncsmadison.com/cio-ciso-nyc/client-list/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://ncsmadison.com/cio-ciso-nyc/client-list/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://ncsmadison.com/cio-ciso-nyc/client-list/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://ncsmadison.com/cio-ciso-nyc/client-list/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://ncsmadison.com/cio-ciso-nyc/client-list/ matched_fields=none",
+          "source_url": "https://ncsmadison.com/cio-ciso-nyc/client-list/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://ncsmadison.com/cio-ciso-nyc/client-list/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "2025 New York CISO Community Inner Circle",
+      "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367 matched_fields=none",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8367",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "NYC CISO & Data Security Banking Finance & Insurance Executive Dinner",
+      "source_url": "https://events.bizzabo.com/nyc-ciso-051426/home",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://events.bizzabo.com/nyc-ciso-051426/home",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://events.bizzabo.com/nyc-ciso-051426/home",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://events.bizzabo.com/nyc-ciso-051426/home",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://events.bizzabo.com/nyc-ciso-051426/home",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://events.bizzabo.com/nyc-ciso-051426/home matched_fields=none",
+          "source_url": "https://events.bizzabo.com/nyc-ciso-051426/home",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://events.bizzabo.com/nyc-ciso-051426/home",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "2025 New York CISO Inner Circle",
+      "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362 matched_fields=none",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "CISO Financial Services (CISO FS) 2026 | Home",
+      "source_url": "https://ciso-fs.coriniumintelligence.com/",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://ciso-fs.coriniumintelligence.com/ matched_fields=none",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Financial Services Industry - Fortium Partners",
+      "source_url": "https://www.fortiumpartners.com/financial-services-industry",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.fortiumpartners.com/financial-services-industry",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.fortiumpartners.com/financial-services-industry",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.fortiumpartners.com/financial-services-industry",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.fortiumpartners.com/financial-services-industry",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.fortiumpartners.com/financial-services-industry matched_fields=none",
+          "source_url": "https://www.fortiumpartners.com/financial-services-industry",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.fortiumpartners.com/financial-services-industry",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Cybersecurity Resource Center | Department of Financial Services",
+      "source_url": "https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "source_url": "https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "source_url": "https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "source_url": "https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "source_url": "https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "source_url": "https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "source_url": "https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "CISO FSI NY - Speakers",
+      "source_url": "https://ciso-fs.coriniumintelligence.com/speakers",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/speakers",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/speakers",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/speakers",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/speakers",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://ciso-fs.coriniumintelligence.com/speakers matched_fields=none",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/speakers",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/speakers",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "108 Chief Information Security Officer jobs in New York",
+      "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york-ny",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york-ny",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york-ny",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york-ny",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york-ny",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york-ny matched_fields=none",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york-ny",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york-ny",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "About Us | Learn about who we are and what we do | FS-ISAC",
+      "source_url": "https://www.fsisac.com/about-us",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/about-us",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/about-us",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/about-us",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/about-us",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.fsisac.com/about-us matched_fields=none",
+          "source_url": "https://www.fsisac.com/about-us",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/about-us",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Chief Information Security Officer | City of New York Jobs",
+      "source_url": "https://cityjobs.nyc.gov/job/chief-information-security-officer-in-queens-jid-41782",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://cityjobs.nyc.gov/job/chief-information-security-officer-in-queens-jid-41782",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://cityjobs.nyc.gov/job/chief-information-security-officer-in-queens-jid-41782",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://cityjobs.nyc.gov/job/chief-information-security-officer-in-queens-jid-41782",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://cityjobs.nyc.gov/job/chief-information-security-officer-in-queens-jid-41782",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://cityjobs.nyc.gov/job/chief-information-security-officer-in-queens-jid-41782 matched_fields=none",
+          "source_url": "https://cityjobs.nyc.gov/job/chief-information-security-officer-in-queens-jid-41782",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://cityjobs.nyc.gov/job/chief-information-security-officer-in-queens-jid-41782",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "New Cybersecurity Requirements for Financial Service Comps",
+      "source_url": "https://phillipslytle.com/new-cybersecurity-requirements-for-financial-service-companies/",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://phillipslytle.com/new-cybersecurity-requirements-for-financial-service-companies/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://phillipslytle.com/new-cybersecurity-requirements-for-financial-service-companies/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://phillipslytle.com/new-cybersecurity-requirements-for-financial-service-companies/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://phillipslytle.com/new-cybersecurity-requirements-for-financial-service-companies/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://phillipslytle.com/new-cybersecurity-requirements-for-financial-service-companies/ matched_fields=none",
+          "source_url": "https://phillipslytle.com/new-cybersecurity-requirements-for-financial-service-companies/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://phillipslytle.com/new-cybersecurity-requirements-for-financial-service-companies/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "123 Chief Information Security Officer jobs in New York",
+      "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york matched_fields=none",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Do I need a CISO? A guide for NY Financial Advisors | Fractional CISO - Virtual CISO",
+      "source_url": "https://fractionalciso.com/need-ciso-guide-ny-financial-advisors/",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://fractionalciso.com/need-ciso-guide-ny-financial-advisors/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://fractionalciso.com/need-ciso-guide-ny-financial-advisors/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://fractionalciso.com/need-ciso-guide-ny-financial-advisors/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://fractionalciso.com/need-ciso-guide-ny-financial-advisors/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://fractionalciso.com/need-ciso-guide-ny-financial-advisors/ matched_fields=none",
+          "source_url": "https://fractionalciso.com/need-ciso-guide-ny-financial-advisors/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://fractionalciso.com/need-ciso-guide-ny-financial-advisors/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "List of Fortune 500 Chief Information Security Officers",
+      "source_url": "https://cybersecurityventures.com/ciso-500/",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://cybersecurityventures.com/ciso-500/",
+          "source_url": "https://cybersecurityventures.com/ciso-500/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://cybersecurityventures.com/ciso-500/",
+          "source_url": "https://cybersecurityventures.com/ciso-500/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://cybersecurityventures.com/ciso-500/",
+          "source_url": "https://cybersecurityventures.com/ciso-500/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://cybersecurityventures.com/ciso-500/",
+          "source_url": "https://cybersecurityventures.com/ciso-500/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://cybersecurityventures.com/ciso-500/",
+          "source_url": "https://cybersecurityventures.com/ciso-500/",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://cybersecurityventures.com/ciso-500/",
+          "source_url": "https://cybersecurityventures.com/ciso-500/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Chief Information Security Officer (CISO) | $ 84000 - $ 120000 / Year | New York, New York",
+      "source_url": "https://www.adecco.com/en-us/job-search/chief-information-security-officer-ciso-new-york-new-york/us_en_99_025348_2542131",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.adecco.com/en-us/job-search/chief-information-security-officer-ciso-new-york-new-york/us_en_99_025348_2542131",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.adecco.com/en-us/job-search/chief-information-security-officer-ciso-new-york-new-york/us_en_99_025348_2542131",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.adecco.com/en-us/job-search/chief-information-security-officer-ciso-new-york-new-york/us_en_99_025348_2542131",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.adecco.com/en-us/job-search/chief-information-security-officer-ciso-new-york-new-york/us_en_99_025348_2542131",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.adecco.com/en-us/job-search/chief-information-security-officer-ciso-new-york-new-york/us_en_99_025348_2542131 matched_fields=none",
+          "source_url": "https://www.adecco.com/en-us/job-search/chief-information-security-officer-ciso-new-york-new-york/us_en_99_025348_2542131",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.adecco.com/en-us/job-search/chief-information-security-officer-ciso-new-york-new-york/us_en_99_025348_2542131",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Virtual CISO Services | vCISO | New York, NY",
+      "source_url": "https://beachfleischman.com/virtual-chief-information-security-officer-new-york-ny/",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://beachfleischman.com/virtual-chief-information-security-officer-new-york-ny/",
+          "source_url": "https://beachfleischman.com/virtual-chief-information-security-officer-new-york-ny/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://beachfleischman.com/virtual-chief-information-security-officer-new-york-ny/",
+          "source_url": "https://beachfleischman.com/virtual-chief-information-security-officer-new-york-ny/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://beachfleischman.com/virtual-chief-information-security-officer-new-york-ny/",
+          "source_url": "https://beachfleischman.com/virtual-chief-information-security-officer-new-york-ny/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://beachfleischman.com/virtual-chief-information-security-officer-new-york-ny/",
+          "source_url": "https://beachfleischman.com/virtual-chief-information-security-officer-new-york-ny/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://beachfleischman.com/virtual-chief-information-security-officer-new-york-ny/",
+          "source_url": "https://beachfleischman.com/virtual-chief-information-security-officer-new-york-ny/",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://beachfleischman.com/virtual-chief-information-security-officer-new-york-ny/",
+          "source_url": "https://beachfleischman.com/virtual-chief-information-security-officer-new-york-ny/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "[PDF] new york minimum cybersecurity requirements for financial services ...",
+      "source_url": "https://www.honigman.com/assets/htmldocuments/New%20York%20Minimum%20Cybersecurity%20Requirements%20for%20Financial%20Services%20Companies%20Overview%20and%20Requirements%20Summary.pdf",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.honigman.com/assets/htmldocuments/New%20York%20Minimum%20Cybersecurity%20Requirements%20for%20Financial%20Services%20Companies%20Overview%20and%20Requirements%20Summary.pdf",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.honigman.com/assets/htmldocuments/New%20York%20Minimum%20Cybersecurity%20Requirements%20for%20Financial%20Services%20Companies%20Overview%20and%20Requirements%20Summary.pdf",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.honigman.com/assets/htmldocuments/New%20York%20Minimum%20Cybersecurity%20Requirements%20for%20Financial%20Services%20Companies%20Overview%20and%20Requirements%20Summary.pdf",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.honigman.com/assets/htmldocuments/New%20York%20Minimum%20Cybersecurity%20Requirements%20for%20Financial%20Services%20Companies%20Overview%20and%20Requirements%20Summary.pdf",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.honigman.com/assets/htmldocuments/New%20York%20Minimum%20Cybersecurity%20Requirements%20for%20Financial%20Services%20Companies%20Overview%20and%20Requirements%20Summary.pdf matched_fields=none",
+          "source_url": "https://www.honigman.com/assets/htmldocuments/New%20York%20Minimum%20Cybersecurity%20Requirements%20for%20Financial%20Services%20Companies%20Overview%20and%20Requirements%20Summary.pdf",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.honigman.com/assets/htmldocuments/New%20York%20Minimum%20Cybersecurity%20Requirements%20for%20Financial%20Services%20Companies%20Overview%20and%20Requirements%20Summary.pdf",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Agenda | CISO FS NY 2026 | Corinium",
+      "source_url": "https://ciso-fs.coriniumintelligence.com/agenda",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/agenda",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/agenda",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/agenda",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/agenda",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://ciso-fs.coriniumintelligence.com/agenda matched_fields=none",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/agenda",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com/agenda",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Khalil Jackson, CISO, New York Federal Reserve Bank, Joins FAIR Institute Board",
+      "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board matched_fields=none",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "ciso jobs in new york, ny | Dice.com",
+      "source_url": "https://www.dice.com/jobs/q-ciso-l-new+york%2C+ny-jobs",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.dice.com/jobs/q-ciso-l-new+york%2C+ny-jobs",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.dice.com/jobs/q-ciso-l-new+york%2C+ny-jobs",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.dice.com/jobs/q-ciso-l-new+york%2C+ny-jobs",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.dice.com/jobs/q-ciso-l-new+york%2C+ny-jobs",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.dice.com/jobs/q-ciso-l-new+york%2C+ny-jobs matched_fields=none",
+          "source_url": "https://www.dice.com/jobs/q-ciso-l-new+york%2C+ny-jobs",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.dice.com/jobs/q-ciso-l-new+york%2C+ny-jobs",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "BNY Mellon Appoints Gary Delaney as International Chief ...",
+      "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html matched_fields=none",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "CISO Talk: Adam Fletcher, Chief Security Officer at Blackstone. Brought to you by Evolution Equity. | Adam Fletcher",
+      "source_url": "https://www.linkedin.com/posts/adambfletcher_ciso-talk-adam-fletcher-chief-security-activity-7191486265576288256--bRL",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/adambfletcher_ciso-talk-adam-fletcher-chief-security-activity-7191486265576288256--bRL",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/adambfletcher_ciso-talk-adam-fletcher-chief-security-activity-7191486265576288256--bRL",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/adambfletcher_ciso-talk-adam-fletcher-chief-security-activity-7191486265576288256--bRL",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/adambfletcher_ciso-talk-adam-fletcher-chief-security-activity-7191486265576288256--bRL",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/posts/adambfletcher_ciso-talk-adam-fletcher-chief-security-activity-7191486265576288256--bRL matched_fields=none",
+          "source_url": "https://www.linkedin.com/posts/adambfletcher_ciso-talk-adam-fletcher-chief-security-activity-7191486265576288256--bRL",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/posts/adambfletcher_ciso-talk-adam-fletcher-chief-security-activity-7191486265576288256--bRL",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Doug Jaworski - Global Atlantic Financial Group",
+      "source_url": "https://www.linkedin.com/in/dougjaworski",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/dougjaworski",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/dougjaworski",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/dougjaworski",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/dougjaworski",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/in/dougjaworski matched_fields=none",
+          "source_url": "https://www.linkedin.com/in/dougjaworski",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/dougjaworski",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Peter Keenan - Lazard",
+      "source_url": "https://www.linkedin.com/in/peterkeenan",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/peterkeenan",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/peterkeenan",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/peterkeenan",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/peterkeenan",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/in/peterkeenan matched_fields=none",
+          "source_url": "https://www.linkedin.com/in/peterkeenan",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/peterkeenan",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "David Stern | KKR",
+      "source_url": "https://www.kkr.com/about/our-people/david-stern",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.kkr.com/about/our-people/david-stern",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.kkr.com/about/our-people/david-stern",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.kkr.com/about/our-people/david-stern",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.kkr.com/about/our-people/david-stern",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.kkr.com/about/our-people/david-stern matched_fields=none",
+          "source_url": "https://www.kkr.com/about/our-people/david-stern",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.kkr.com/about/our-people/david-stern",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Scott Bader | Chief Information Security Officer | Five Star Bank",
+      "source_url": "https://www.five-starbank.com/scott-bader-promoted",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.five-starbank.com/scott-bader-promoted",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.five-starbank.com/scott-bader-promoted",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.five-starbank.com/scott-bader-promoted",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.five-starbank.com/scott-bader-promoted",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.five-starbank.com/scott-bader-promoted matched_fields=none",
+          "source_url": "https://www.five-starbank.com/scott-bader-promoted",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.five-starbank.com/scott-bader-promoted",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Joe B. - Cyber@BNY | CISO - CTO - Prompter Website = Bernik.com ...",
+      "source_url": "https://www.linkedin.com/in/bernik",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/bernik",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/bernik",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/bernik",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/bernik",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/in/bernik matched_fields=none",
+          "source_url": "https://www.linkedin.com/in/bernik",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/bernik",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "17 Chief information security officer bank jobs in New York, NY",
+      "source_url": "https://www.glassdoor.com/Job/new-york-chief-information-security-officer-bank-jobs-SRCH_IL.0,8_IC1132348_KO9,48.htm",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/new-york-chief-information-security-officer-bank-jobs-SRCH_IL.0,8_IC1132348_KO9,48.htm",
+          "source_url": "https://www.glassdoor.com/Job/new-york-chief-information-security-officer-bank-jobs-SRCH_IL.0,8_IC1132348_KO9,48.htm",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/new-york-chief-information-security-officer-bank-jobs-SRCH_IL.0,8_IC1132348_KO9,48.htm",
+          "source_url": "https://www.glassdoor.com/Job/new-york-chief-information-security-officer-bank-jobs-SRCH_IL.0,8_IC1132348_KO9,48.htm",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/new-york-chief-information-security-officer-bank-jobs-SRCH_IL.0,8_IC1132348_KO9,48.htm",
+          "source_url": "https://www.glassdoor.com/Job/new-york-chief-information-security-officer-bank-jobs-SRCH_IL.0,8_IC1132348_KO9,48.htm",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/new-york-chief-information-security-officer-bank-jobs-SRCH_IL.0,8_IC1132348_KO9,48.htm",
+          "source_url": "https://www.glassdoor.com/Job/new-york-chief-information-security-officer-bank-jobs-SRCH_IL.0,8_IC1132348_KO9,48.htm",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.glassdoor.com/Job/new-york-chief-information-security-officer-bank-jobs-SRCH_IL.0,8_IC1132348_KO9,48.htm",
+          "source_url": "https://www.glassdoor.com/Job/new-york-chief-information-security-officer-bank-jobs-SRCH_IL.0,8_IC1132348_KO9,48.htm",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/new-york-chief-information-security-officer-bank-jobs-SRCH_IL.0,8_IC1132348_KO9,48.htm",
+          "source_url": "https://www.glassdoor.com/Job/new-york-chief-information-security-officer-bank-jobs-SRCH_IL.0,8_IC1132348_KO9,48.htm",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": null,
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "NYC CIO & CISO Banking, Finance, Fintech, Insurance Roadshow",
+      "source_url": "https://events.bizzabo.com/nyc-ciso-bfsi-0523",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://events.bizzabo.com/nyc-ciso-bfsi-0523",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://events.bizzabo.com/nyc-ciso-bfsi-0523",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://events.bizzabo.com/nyc-ciso-bfsi-0523",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://events.bizzabo.com/nyc-ciso-bfsi-0523",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://events.bizzabo.com/nyc-ciso-bfsi-0523 matched_fields=none",
+          "source_url": "https://events.bizzabo.com/nyc-ciso-bfsi-0523",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-11T07:40:30Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://events.bizzabo.com/nyc-ciso-bfsi-0523",
+          "status": "missing"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 132.32,
+    "estimated_cost_usd": 0.133045,
+    "funnel_counts": {
+      "categorized_rows": 50,
+      "contact_quality_passes": 0,
+      "deduped_sources": 163,
+      "extracted_candidates": 16,
+      "high_trust_usable_rows": 0,
+      "person_rows": 7,
+      "raw_vendor_hits": 240,
+      "source_snapshots": 163
+    },
+    "funnel_notes": [
+      "Deduped 240 raw vendor hits to 163 unique sources.",
+      "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+      "No returned row has verified or source-backed deduced contact evidence."
+    ],
+    "input_tokens": 74526,
+    "openai_web_searches": 0,
+    "output_tokens": 3110,
+    "tavily_searches": 12,
+    "tier_distribution": {
+      "failed": 35,
+      "high_trust_usable": 0,
+      "not_found": 0,
+      "organization_only": 8,
+      "review": 7
+    }
+  },
+  "mode": "scout",
+  "prompt_label": "Finance CISOs in New York",
+  "query": "finance CISOs at financial services firms in New York",
+  "query_guardrail": null,
+  "runner_elapsed_seconds": 132.469,
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 5,
+    "remaining_rows": 788,
+    "reset_at": "2026-05-11T07:24:42.453859-06:00",
+    "total_queries": 5,
+    "total_rows": 212
+  }
+}

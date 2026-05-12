@@ -1,0 +1,7 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.12, pytest-9.0.3, pluggy-1.6.0 -- /Users/mschwar/Documents/white-rabbit/packages/core/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/mschwar/Documents/white-rabbit/packages/core
+configfile: pyproject.toml
+plugins: anyio-4.13.0
+collecting ...

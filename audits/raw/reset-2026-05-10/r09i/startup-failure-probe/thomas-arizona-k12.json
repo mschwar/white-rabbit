@@ -1,0 +1,36 @@
+{
+  "benchmark_id": "thomas-arizona-k12",
+  "error": "API startup failed before live benchmark case execution.",
+  "error_code": "api_startup_failed",
+  "leads": [],
+  "mode": "scout",
+  "partial_artifact": true,
+  "prompt_label": "Thomas Arizona K-12 exact prompt",
+  "query": "name and email and phone number for these District Approx Size Tech Decision Maker Type Mesa Public Schools 60k+ students CIO / Director of Technology; Chandler Unified School District 40k+ CTO / IT Director; Peoria Unified School District 35k+ Technology Services; Gilbert Public Schools 30k+ CTO; Deer Valley Unified School District 30k+ IT leadership; Paradise Valley Unified School District 25k+ CIO/Technology; Dysart Unified School District 24k+ Director of Technology; Maricopa Unified School District 9k+ Director of Technology",
+  "runner_elapsed_seconds": 0.203,
+  "startup_probe": {
+    "api_base_url": "http://127.0.0.1:8999",
+    "attempts": [
+      {
+        "elapsed_seconds": 0.003,
+        "error": "ConnectError: All connection attempts failed",
+        "ok": false,
+        "status_code": 0
+      },
+      {
+        "elapsed_seconds": 0.001,
+        "error": "ConnectError: All connection attempts failed",
+        "ok": false,
+        "status_code": 0
+      }
+    ],
+    "elapsed_seconds": 0.203,
+    "failure_path": "../../audits/raw/reset-2026-05-10/r09i/startup-failure-probe/startup/startup-failure.json",
+    "health_ok": false,
+    "health_path": "../../audits/raw/reset-2026-05-10/r09i/startup-failure-probe/startup/health.json",
+    "health_status_path": "../../audits/raw/reset-2026-05-10/r09i/startup-failure-probe/startup/health.http",
+    "readiness_path": null,
+    "readiness_status": null,
+    "readiness_status_path": null
+  }
+}

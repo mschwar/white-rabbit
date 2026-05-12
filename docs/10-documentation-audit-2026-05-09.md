@@ -1,8 +1,10 @@
 # 10 - Documentation Audit 2026-05-09
 
-**Status:** Active remediation report.
+**Status:** Historical Remediation Report.
 **Created:** 2026-05-09.
 **Branch:** `feat/docs-hard-audit-remediation`.
+
+**Post-reset note (2026-05-10):** This report is historical evidence for the May 9 documentation cleanup. The active execution authority has since moved to `docs/12-reset-gated-implementation-plan-2026-05-10.md` per ADR-014. Preserve the findings below, but do not use this report's older `docs/08` / `docs/09` authority model to select current reset work.
 
 ## Verdict
 
@@ -22,8 +24,8 @@ Use this hierarchy when docs conflict:
 1. `docs/03-decisions.md` for locked ADR history. New decisions append; old decisions do not get rewritten.
 2. `docs/00-product-northstar.md` for current product truth, usable-lead definitions, red/yellow/green launch gate, and anti-drift rules.
 3. `STATUS.md` for current branch, current state, next pointer, and latest handoff.
-4. `docs/08-agentic-buildout-plan.md` for rebuild feature sequencing.
-5. `docs/09-rebuild-phase-gates.md` for wave-gate rules.
+4. `docs/12-reset-gated-implementation-plan-2026-05-10.md` for reset feature sequencing, Prompt A/B/C copy, and reset gate rules.
+5. `docs/08-agentic-buildout-plan.md` / `docs/09-rebuild-phase-gates.md` for historical F00-F23 and W0-W6 context only.
 6. `docs/qa-rubric.md` for QA tiers, unless a rebuild gate specifies stricter checks.
 
 Older roadmap, BUILDOUT, audit, QA, and meeting docs are historical evidence unless they explicitly say `Status: Active`.
@@ -33,7 +35,7 @@ Older roadmap, BUILDOUT, audit, QA, and meeting docs are historical evidence unl
 | Class | Status label | Treatment |
 | --- | --- | --- |
 | Current product truth | `Active` | Keep accurate on every relevant session. |
-| Current rebuild execution | `Active` | Must point to the right next feature and gate. |
+| Current reset execution | `Active` | Must point to the right next feature and gate. |
 | Historical plans | `Superseded` | Keep evidence, add banner, link to active control docs. |
 | Audit/QA/report evidence | `Historical Record` | Preserve findings and screenshots; do not use as current instructions. |
 | Bootstrap/reference docs | `Archived Reference` | Keep for context; link to active docs for execution. |
