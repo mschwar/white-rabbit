@@ -1,8 +1,8 @@
 # STATUS
 
-**Last updated:** 2026-05-12 by Codex prompt-a-r13-sales-first-export
+**Last updated:** 2026-05-12 by Codex r13-queue-repair
 **Branch:** rebuild/validated-leads-loop
-**Current sprint:** R13 sales-first CSV export is implemented on `feat/reset-r13-sales-first-export` and waiting for Prompt B QA. The primary operator path now exposes a CSV export only after rows exist, uses sales-first CSV columns, sorts READY rows first, and preserves validation/source/run context for non-actionable rows. Product remains red. R14, R14A-R14C, RG6, dogfood, persistence/DB readback, backend/core changes, and any `main` promotion remain blocked.
+**Current sprint:** R13 sales-first CSV export is implemented on `feat/reset-r13-sales-first-export` and waiting for Prompt B QA. The primary operator path now exposes a CSV export only after rows exist, uses sales-first CSV columns, sorts READY rows first, and preserves validation/source/run context for non-actionable rows. There is no valid Prompt A feature right now. Product remains red. R14, R14A-R14C, RG6, dogfood, persistence/DB readback, backend/core changes outside assigned slices, and any `main` promotion remain blocked.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
@@ -14,6 +14,8 @@
 
 **Open question:** If these become production brand assets, replace the upscaled raster crops with a clean vector or native high-resolution source when available.
 
+**Queue correction:** The 2026-05-12 R00 Prompt B run was a stale-target no-op and has no queue effect. The current valid Prompt B target is `feat/reset-r13-sales-first-export`; R00 is historical and already merged.
+
 ---
 
 ## Current rebuild status (2026-05-10)
@@ -24,9 +26,9 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** Prompt B QA for `R13 - Sales-first CSV export`. `main` stays unchanged unless Matt explicitly calls for an operator-use promotion.
+**Next feature pointer:** None while R13 waits for Prompt B QA. `main` stays unchanged unless Matt explicitly calls for an operator-use promotion.
 
-**Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from current repo state, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs.
+**Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from the integration branch, Prompt B resolves and QA/merges the single feature branch waiting for QA, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate or recommend a `main` operator-use sync. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs. Do not resolve queue state from an unmerged feature or audit branch.
 
 **Final product mockup gate:** Approved. `DESIGN.md` is the RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains product-structure reference only. The approved artifact is `docs/mockups/rg4-refreshed-preflight-2026-05-12/index.html` plus screenshots under `docs/mockups/rg4-refreshed-preflight-2026-05-12/screenshots/`.
 
@@ -97,7 +99,7 @@ Why: R10-R12 are merged, web tests/build pass, and the browser audit proves the 
 What worked: Web Vitest passed (`13` files, `30` tests); `npm run build` passed; the dev browser audit showed target input visible, 51 categorized rows, READY/REVIEW/ORG-ONLY/NOT FOUND visible, evidence dossier/source trail visible, Scout/Full/quota/export controls hidden, and no source-context field by design.
 Residual risks: Local `next start` smoke returned 404/`ERR_HTTP_HEADERS_SENT`; the 390px browser audit reported minor horizontal overflow (`407px` scroll width). Recheck both during R13/R14 browser QA.
 Artifacts: `audits/gates/reset-2026-05-10/rg4-operator-ui.md`; `audits/raw/reset-2026-05-10/rg4/`.
-Next pointer: Prompt A for `R13 - Sales-first CSV export` on `feat/reset-r13-sales-first-export`. R14, R14A-R14C, RG6, dogfood, and main remain blocked.
+Next pointer: Prompt B QA for `R13 - Sales-first CSV export` on `feat/reset-r13-sales-first-export`. R14, R14A-R14C, RG6, dogfood, and main remain blocked.
 Open questions: None.
 
 Previous handoff:
@@ -530,11 +532,11 @@ A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deploy
 
 ## What’s in flight
 
-- Product is in audit-red state. Documentation authority remediation is complete; R00-R12 are merged to `rebuild/validated-leads-loop`; RG0-RG4 have advanced; R13 is implemented on `feat/reset-r13-sales-first-export` and waiting for Prompt B QA. R14 persistence plus the newly inserted R14A image overhaul, R14B UI/UX consistency, and R14C deployment-readiness slices are blocked until the loop reaches them. Dogfood and `main` promotion remain blocked until their gates pass. W5 remains held; W6 remains blocked.
+- Product is in audit-red state. Documentation authority remediation is complete; R00-R12 are merged to `rebuild/validated-leads-loop`; RG0-RG4 have advanced; R13 is implemented on `feat/reset-r13-sales-first-export` and waiting for Prompt B QA. R14 plus the newly inserted R14A image overhaul, R14B UI/UX consistency, and R14C deployment-readiness slices are blocked until the loop reaches them. Export, dogfood, and `main` promotion remain blocked until their gates pass. W5 remains held; W6 remains blocked.
 
 ## Next concrete task
 
-- Run Prompt B QA for `R13 - Sales-first CSV export` on `feat/reset-r13-sales-first-export`. Do not start R14, R14A-R14C, dogfood work, backend/core changes, persistence/DB readback, or `main` promotion until Prompt B passes and merges R13 to `rebuild/validated-leads-loop`.
+- Run Prompt B QA for `R13 - Sales-first CSV export` on `feat/reset-r13-sales-first-export`. Do not start Prompt A, R14, R14A-R14C, dogfood work, backend/core changes beyond strict export needs, or `main` promotion.
 
 ## Open questions for Matt
 
@@ -579,8 +581,9 @@ Open residual risks:
 
 | Date | Agent | Summary |
 |------|-------|---------|
-| 2026-05-12 | r14-polish-slices (Codex) | Added blocked RG5 queue slices after R14 and before R15: `R14A - Image overhaul and approved brand asset cleanup`, `R14B - UI/UX consistency pass`, and `R14C - Deployment readiness and operator-use smoke`. Updated the reset plan and handoff language so R13 remains the only ready Prompt A feature; R14-R14C, RG6, dogfood, backend/core changes outside assigned slices, and `main` promotion remain blocked. |
+| 2026-05-12 | r13-queue-repair (Codex) | Corrected the control plane after agents used conflicting branch state and a stale R00 Prompt B target. `rebuild/validated-leads-loop` now marks `R13 - Sales-first CSV export` as `implemented_pending_qa` on `feat/reset-r13-sales-first-export`, makes Prompt B the next valid action, and adds explicit guardrails that queue truth must be resolved from the integration branch rather than feature/audit branch docs. |
 | 2026-05-12 | prompt-a-r13-sales-first-export (Codex) | Implemented `R13 - Sales-first CSV export` on `feat/reset-r13-sales-first-export`: added the primary-path sales-first CSV export panel after results exist, reordered CSV columns so the first 10 fields are sales-useful, sorted READY rows first, preserved validation/source/run context for all exported tiers, and kept R14 persistence/DB readback, backend/API/core, source-assisted compiler, benchmark, dogfood, RG5 Prompt C, and `main` untouched. Verified `git diff --check`, `cd apps/web && npm test -- --run` (`13` files, `30` tests), `cd apps/web && npm run build`, `cd apps/api && WR_API_INTERNAL_TOKEN=test-internal-token uv run pytest tests -q` (`51 passed`), and browser QA with a 51-row mocked primary run plus CSV artifact under `.gstack/qa-reports/csv/r13-sales-first-export-2026-05-12/`; branch is waiting for Prompt B QA. |
+| 2026-05-12 | r14-polish-slices (Codex) | Added blocked RG5 queue slices after R14 and before R15: `R14A - Image overhaul and approved brand asset cleanup`, `R14B - UI/UX consistency pass`, and `R14C - Deployment readiness and operator-use smoke`. R14-R14C, RG6, dogfood, backend/core changes outside assigned slices, and `main` promotion remained blocked. |
 | 2026-05-12 | prompt-b-r12-evidence-dossier-review (Codex) | QA-passed `R12 - Evidence dossier review mode` on `feat/reset-r12-evidence-dossier-review`: verified `git diff --check`, `cd apps/web && npm test -- --run` (`13` files, `30` tests), `cd apps/web && npm run build`, browser QA on `http://localhost:3001/` with local shared-password login and mocked `/api/scout` responses, and screenshots under `.gstack/qa-reports/screenshots/r12-evidence-dossier-review-2026-05-12/`; R12 is merged_to_rebuild_branch and RG4 Prompt C is now valid on the merged R10-R12 state. Export, dogfood, and `main` promotion remain blocked. |
 | 2026-05-12 | prompt-b-r11-crm-results-table (Codex) | QA-passed `R11 - Compact CRM-first results table` on `feat/reset-r11-crm-results-table`: verified `git diff --check`, `cd apps/web && npm test -- --run` (`13` files, `30` tests), `cd apps/web && npm run build`, browser QA on `http://localhost:3000/` with local shared-password login and mocked `/api/sandbox` + `/api/scout` responses, and screenshots under `.gstack/qa-reports/screenshots/r11-crm-results-table-2026-05-12/`; R11 is ready to merge to `rebuild/validated-leads-loop` and R12 is now `waiting_prompt_b_qa`. |
 | 2026-05-12 | prompt-a-r11-crm-results-table (Codex) | Implemented `R11 - Compact CRM-first results table` on `feat/reset-r11-crm-results-table`: replaced the inherited primary-mode validation-bucket review with a compact RG4 results overview, CRM-first grouped desktop table, responsive mobile cards, tier-count chips/filters, and preserved evidence actions; kept Scout/Full product-internals ceremony, always-visible quota usage, R12 dossier work, export, persistence, backend/API/core, benchmarks, dogfood, and `main` promotion untouched. Verified `cd apps/web && npm test -- --run` (`13` files, `30` tests), `cd apps/web && npm run build`, browser QA screenshots under `.gstack/qa-reports/screenshots/r11-crm-results-table-2026-05-12/`, and `git diff --check`; branch is waiting for Prompt B QA. R12 is now `waiting_prompt_b_qa`. |
