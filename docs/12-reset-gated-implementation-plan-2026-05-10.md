@@ -6,9 +6,9 @@
 **Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
 **Current reset gate:** RG5 - Sales-First Export And Persistence. RG4 advanced on `audit/reset-rg4-operator-ui`; product remains red until export/persistence and dogfood gates pass.
-**Next Prompt A feature:** R14C - Deployment readiness and operator-use smoke on `feat/reset-r14c-deployment-readiness-smoke`.
-**Current Prompt B handoff:** None. R14B passed Prompt B QA and merged to `main`; R14C is the next same-gate feature.
-**Current Prompt C handoff:** None. RG5 is not ready for Prompt C until R14C passes Prompt B and merges to `main`. Keep RG6/dogfood blocked until RG5 advances.
+**Next Prompt A feature:** None. R13-R14C are now merged to `main`; wait for RG5 Prompt C before starting RG6 or dogfood work.
+**Current Prompt B handoff:** Completed. R14C passed Prompt B QA and merged to `main` on 2026-05-19.
+**Current Prompt C handoff:** RG5 - Sales-First Export And Persistence. Use `audits/gates/reset-2026-05-10/rg5-export-persistence.md` as the gate report target; R13-R14C are merged, so Prompt C should audit RG5 next. Keep RG6/dogfood blocked until RG5 advances.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -251,7 +251,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R14 | Persistence, DB readback, and quality report tie-out | merged_to_mainline | `feat/reset-r14-persistence-quality-tieout` | API + DB |
 | R14A | Image overhaul and approved brand asset cleanup | merged_to_mainline | `feat/reset-r14a-image-overhaul-brand-cleanup` | browser + visual |
 | R14B | UI/UX consistency pass | merged_to_mainline | `feat/reset-r14b-ui-ux-consistency-pass` | browser + screenshots |
-| R14C | Deployment readiness and operator-use smoke | ready | `feat/reset-r14c-deployment-readiness-smoke` | deployment + API/web smoke |
+| R14C | Deployment readiness and operator-use smoke | merged_to_mainline | `feat/reset-r14c-deployment-readiness-smoke` | deployment + API/web smoke |
 | R15 | Internal correction review and dogfood decision packet | blocked | `feat/reset-r15-dogfood-decision-packet` | browser + docs |
 
 ## RG0 - W5 Hold And Control Reset

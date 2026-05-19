@@ -27,7 +27,10 @@ End-to-end/browser checks use Playwright or the Codex Browser skill when the fea
 ```bash
 cd apps/web
 npm run test:e2e
+npm run test:e2e:prod
 ```
+
+`npm run test:e2e:prod` is the deployment-readiness smoke for `next start`. When saving browser evidence, set `WR_E2E_ARTIFACT_DIR` to capture screenshots and the browser QA summary under `.gstack/qa-reports/`.
 
 ## API
 
