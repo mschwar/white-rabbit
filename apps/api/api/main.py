@@ -48,6 +48,7 @@ from api.db import (
     save_leads,
     close_recipe_run,
     get_recipes,
+    get_recipe_run,
     get_recipe_runs,
     get_leads_for_run,
     add_lead_feedback,
@@ -1060,9 +1061,16 @@ async def run_corrections(run_id: str, _: ProtectedApiAccess):
         ]
 
 
-@app.get("/runs/{run_id}/leads", response_model=PersistedRunLeadsOut)
+@app.get(
+    "/runs/{run_id}/leads",
+    response_model=PersistedRunLeadsOut,
+    responses={404: {"description": "Run not found"}},
+)
 async def run_leads(run_id: UUID, _: ProtectedApiAccess):
     with get_db_session() as session:
+        run = get_recipe_run(session, run_id)
+        if run is None:
+            raise HTTPException(status_code=404, detail="Run not found")
         db_leads = get_leads_for_run(session, run_id)
 
     rows = [
@@ -1075,7 +1083,7 @@ async def run_leads(run_id: UUID, _: ProtectedApiAccess):
     ]
     row_data = [row.data for row in rows]
     return PersistedRunLeadsOut(
-        run_id=run_id,
+        run_id=run.id,
         row_count=len(rows),
         rows=rows,
         tier_distribution=_distribution_from_rows(row_data, "tier", "review"),
