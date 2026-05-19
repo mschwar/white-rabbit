@@ -34,6 +34,18 @@ export default async function LoginPage({ searchParams }: LoginPageProps) {
 
         <form className="mt-6 space-y-4" action="/api/login" method="post">
           <input type="hidden" name="next" value={nextPath} />
+          <div className="sr-only">
+            <label htmlFor="username">Username</label>
+            <input
+              autoComplete="username"
+              id="username"
+              name="username"
+              readOnly
+              tabIndex={-1}
+              type="text"
+              value="shared-workspace"
+            />
+          </div>
           <div className="flex flex-col gap-3 text-sm font-medium text-zinc-200">
             <label className="block" htmlFor="password">
               Password

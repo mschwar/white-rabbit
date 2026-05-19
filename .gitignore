@@ -77,5 +77,6 @@ coverage/
 .localnotes
 scratch/
 .gstack/
+.gemini/
 apps/web/playwright-report/
 apps/web/test-results/
