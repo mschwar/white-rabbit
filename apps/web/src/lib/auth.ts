@@ -65,6 +65,33 @@ export function isPublicPath(pathname: string): boolean {
   );
 }
 
+export function shouldUseSecureSessionCookie(options: {
+  cookieMode?: string | null;
+  forwardedProto?: string | null;
+  requestProtocol?: string | null;
+} = {}): boolean {
+  const cookieMode = options.cookieMode?.trim().toLowerCase() || 'auto';
+
+  if (cookieMode === 'always') {
+    return true;
+  }
+
+  if (cookieMode === 'never') {
+    return false;
+  }
+
+  const forwardedProto = options.forwardedProto
+    ?.split(',')[0]
+    ?.trim()
+    ?.toLowerCase();
+
+  if (forwardedProto) {
+    return forwardedProto === 'https';
+  }
+
+  return options.requestProtocol?.toLowerCase() === 'https:';
+}
+
 export async function createSessionToken(secret: string, issuedAt = Date.now()): Promise<string> {
   const payload = base64UrlEncode(
     encoder.encode(JSON.stringify({ v: SESSION_VERSION, iat: issuedAt })),

@@ -21,6 +21,7 @@ afterEach(() => {
   vi.clearAllMocks();
   delete process.env.WR_SHARED_PASSWORD;
   delete process.env.WR_SESSION_SECRET;
+  delete process.env.WR_SESSION_COOKIE_SECURE;
   delete process.env.NODE_ENV;
 });
 
@@ -40,6 +41,23 @@ test('successful login redirects with 303 so the browser follows with GET', asyn
   expect(response.headers.get('location')).toBe('http://localhost/scout');
   expect(createSessionToken).toHaveBeenCalledWith('session-secret');
   expect(response.cookies.get(SESSION_COOKIE_NAME)?.value).toBe('signed-session-token');
+  expect(response.cookies.get(SESSION_COOKIE_NAME)?.secure).toBe(false);
+});
+
+test('successful login keeps secure cookies for forwarded https traffic', async () => {
+  process.env.WR_SHARED_PASSWORD = 'correct-password';
+  process.env.WR_SESSION_SECRET = 'session-secret';
+  vi.mocked(matchesSharedPassword).mockReturnValue(true);
+
+  const request = new NextRequest('http://localhost/api/login', {
+    method: 'POST',
+    headers: { 'x-forwarded-proto': 'https' },
+    body: new URLSearchParams({ password: 'correct-password', next: '/scout' }),
+  });
+
+  const response = await POST(request);
+
+  expect(response.cookies.get(SESSION_COOKIE_NAME)?.secure).toBe(true);
 });
 
 test('failed login redirects back to login with 303 and preserves next', async () => {

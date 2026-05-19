@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createSessionToken, normalizeNextPath, SESSION_COOKIE_NAME, SESSION_MAX_AGE_MS } from '@/lib/auth';
+import {
+  createSessionToken,
+  normalizeNextPath,
+  SESSION_COOKIE_NAME,
+  SESSION_MAX_AGE_MS,
+  shouldUseSecureSessionCookie,
+} from '@/lib/auth';
 import { matchesSharedPassword } from '@/lib/password';
 
 export const runtime = 'nodejs';
@@ -36,7 +42,11 @@ export async function POST(request: NextRequest) {
     value: await createSessionToken(sessionSecret),
     httpOnly: true,
     sameSite: 'lax',
-    secure: process.env.NODE_ENV === 'production',
+    secure: shouldUseSecureSessionCookie({
+      cookieMode: process.env.WR_SESSION_COOKIE_SECURE,
+      forwardedProto: request.headers.get('x-forwarded-proto'),
+      requestProtocol: request.nextUrl.protocol,
+    }),
     path: '/',
     maxAge: SESSION_MAX_AGE_MS / 1000,
   });
