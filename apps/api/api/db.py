@@ -167,6 +167,10 @@ def get_recipe_runs(session: Session, recipe_id: UUID | None = None) -> list[Rec
     return query.order_by(RecipeRun.started_at.desc()).all()
 
 
+def get_recipe_run(session: Session, run_id: UUID) -> RecipeRun | None:
+    return session.query(RecipeRun).filter(RecipeRun.id == run_id).first()
+
+
 def get_leads_for_run(session: Session, run_id: UUID) -> list[Lead]:
     return session.query(Lead).filter(Lead.run_id == run_id).order_by(Lead.rank).all()
 
@@ -185,7 +189,7 @@ def close_recipe_run(
     run_id: UUID,
     operator_minutes: float | None = None,
 ) -> RecipeRun | None:
-    run = session.query(RecipeRun).filter(RecipeRun.id == run_id).first()
+    run = get_recipe_run(session, run_id)
     if run:
         run.ended_at = datetime.utcnow()
         run.operator_minutes = operator_minutes

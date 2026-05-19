@@ -675,6 +675,10 @@ def test_run_leads_endpoint_returns_persisted_rows_and_readback(monkeypatch):
 
     monkeypatch.setattr("api.main.get_db_session", fake_db_session)
     monkeypatch.setattr(
+        "api.main.get_recipe_run",
+        lambda session, _run_id: SimpleNamespace(id=run_id),
+    )
+    monkeypatch.setattr(
         "api.main.get_leads_for_run",
         lambda session, _run_id: [
             SimpleNamespace(
@@ -712,6 +716,27 @@ def test_run_leads_endpoint_returns_persisted_rows_and_readback(monkeypatch):
         "tier_distribution": {"high_trust_usable": 1},
         "candidate_category_distribution": {"person_lead": 1},
     }
+
+
+def test_run_leads_endpoint_returns_404_when_run_is_missing(monkeypatch):
+    run_id = "22222222-2222-2222-2222-222222222222"
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.get_recipe_run", lambda session, _run_id: None)
+
+    def fail_if_called(session, _run_id):
+        raise AssertionError("lead readback should not run when the recipe run is missing")
+
+    monkeypatch.setattr("api.main.get_leads_for_run", fail_if_called)
+
+    response = client.get(f"/runs/{run_id}/leads")
+
+    assert response.status_code == 404
+    assert response.json() == {"detail": "Run not found"}
 
 
 def test_lead_feedback_model_has_label_check_constraint():
