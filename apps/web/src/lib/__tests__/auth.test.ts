@@ -3,6 +3,7 @@ import {
   createSessionToken,
   isPublicPath,
   normalizeNextPath,
+  shouldUseSecureSessionCookie,
   verifySessionToken,
 } from '../auth';
 
@@ -17,6 +18,15 @@ test('isPublicPath keeps login and auth routes public', () => {
   expect(isPublicPath('/api/login')).toBe(true);
   expect(isPublicPath('/api/logout')).toBe(true);
   expect(isPublicPath('/scout')).toBe(false);
+});
+
+test('shouldUseSecureSessionCookie honors override and forwarded proto', () => {
+  expect(shouldUseSecureSessionCookie({ cookieMode: 'always', requestProtocol: 'http:' })).toBe(true);
+  expect(shouldUseSecureSessionCookie({ cookieMode: 'never', requestProtocol: 'https:' })).toBe(false);
+  expect(shouldUseSecureSessionCookie({ forwardedProto: 'https', requestProtocol: 'http:' })).toBe(true);
+  expect(shouldUseSecureSessionCookie({ forwardedProto: 'http', requestProtocol: 'https:' })).toBe(false);
+  expect(shouldUseSecureSessionCookie({ requestProtocol: 'https:' })).toBe(true);
+  expect(shouldUseSecureSessionCookie({ requestProtocol: 'http:' })).toBe(false);
 });
 
 test('createSessionToken and verifySessionToken enforce max age and clock skew', async () => {

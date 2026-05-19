@@ -1,0 +1,17 @@
+{
+  "baseURL": "http://127.0.0.1:3000",
+  "artifactDir": "/central/repos/active/white-rabbit/.gstack/qa-reports/screenshots/r14c-prod-smoke",
+  "apiChecks": "skipped",
+  "export": {
+    "downloadName": "white-rabbit-lead-export-2026-05-19.csv",
+    "firstTwoLines": [
+      "lead_name,title,organization,email,email_status,phone,phone_status,usable_candidate,operator_label,candidate_category,rank,query,run_id,fit_score,evidence_score,contact_score,ranking_gate,source_name_url,source_title_url,source_org_url,source_email_url,source_phone_url,source_access_status,validation_notes,checked_at,location,recipe_name,sort_mode,generated_at",
+      "Jane Smith,Director of Technology,Albuquerque Public Schools,jane.smith@aps.edu,verified_found,,missing,yes,READY,person_lead,1,New Mexico school district IT leaders,scout-2026-05-19T16:33:19.232Z,0.91,0.87,0.82,usable,https://validation.example.com/name,https://validation.example.com/title,https://validation.example.com/organization,https://validation.example.com/email,https://validation.example.com/phone,supported,Generated 2026-05-19T16:33:19.232Z. Sort mode: rank. No query guardrail result returned. Category: person_lead | Bucket: usable | Gate passed: yes | Summary: Strong district fit with current leadership evidence and usable contact details. | Why target: Owns district technology decisions. | Field statuses: name=supported; title=supported; organization=supported; email=verified_found; phone=missing; source=supported | Source note: source supported notes,2026-05-19T15:00:00Z,,New Mexico school district IT leaders,rank,2026-05-19T16:33:19.232Z"
+    ],
+    "lineCount": 4
+  },
+  "primaryModeChrome": {
+    "scoutVisible": 0,
+    "fullVisible": 0
+  }
+}

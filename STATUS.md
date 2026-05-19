@@ -1,16 +1,16 @@
 # STATUS
 
-**Last updated:** 2026-05-12 by Codex r14b-prompt-b-ui-ux-qa
+**Last updated:** 2026-05-19 by Codex r14c-prompt-b-qa
 **Branch:** main
-**Current sprint:** Matt moved reset execution to `main` on 2026-05-12 after the operator-use promotion and Fly API deploy. R13 sales-first CSV export is live on the promoted mainline. R14 persistence, DB readback, and quality report tie-out passed Prompt B QA on `feat/reset-r14-persistence-quality-tieout` and is merged to `main`. R14A image overhaul and approved brand asset cleanup passed Prompt B QA on `feat/reset-r14a-image-overhaul-brand-cleanup` and is merged to `main`. Product remains red. R14B UI/UX consistency pass passed Prompt B QA on `feat/reset-r14b-ui-ux-consistency-pass` and is merged to `main`. R14C deployment readiness and operator-use smoke is now ready. RG6, dogfood, and backend/core changes outside assigned slices remain blocked.
+**Current sprint:** Matt moved reset execution to `main` on 2026-05-12 after the operator-use promotion and Fly API deploy. R13 sales-first CSV export is live on the promoted mainline. R14 persistence, DB readback, and quality report tie-out passed Prompt B QA on `feat/reset-r14-persistence-quality-tieout` and is merged to `main`. R14A image overhaul and approved brand asset cleanup passed Prompt B QA on `feat/reset-r14a-image-overhaul-brand-cleanup` and is merged to `main`. Product remains red. R14B UI/UX consistency pass passed Prompt B QA on `feat/reset-r14b-ui-ux-consistency-pass` and is merged to `main`. R14C deployment readiness and operator-use smoke passed Prompt B QA on `feat/reset-r14c-deployment-readiness-smoke` and is merged to `main`. RG5 Prompt C is now the next gate step; RG6, dogfood, and backend/core changes outside assigned slices remain blocked.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Historical brand draft note:** The May 10 generated rabbit/lens/rabbit-mark rasters are superseded for production app identity. R14A deletes those generated app assets, keeps the rabbit/icon problem quarantined, and uses only the approved design-pack favicon/touch/manifest/social assets plus wordmark-first in-app identity.
 
-**Next pointer:** Prompt A should implement `R14C - Deployment readiness and operator-use smoke` on `feat/reset-r14c-deployment-readiness-smoke` from `main`. Do not start RG5 Prompt C, RG6, dogfood, R15, public SaaS work, or adjacent backend/core/export/persistence logic work until R14C passes Prompt B and merges.
+**Next pointer:** Prompt C should audit `RG5 - Sales-First Export And Persistence` using `audits/gates/reset-2026-05-10/rg5-export-persistence.md` now that R13-R14C are merged to `main`. Do not start RG6, dogfood, R15, public SaaS work, or adjacent backend/core/export/persistence logic work until RG5 records an advance/hold decision.
 
-**Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It must agree with any Prompt A/B/C request before an agent edits files. It now names `main` as the integration branch and allows only Prompt A implementation for R14C on `feat/reset-r14c-deployment-readiness-smoke`.
+**Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It must agree with any Prompt A/B/C request before an agent edits files. Update it before starting RG5 Prompt C so it no longer names Prompt A/R14C.
 
 **Design direction handoff:** `DESIGN.md` is now the RG4 visual direction authority. The approved refreshed RG4 mockup/design preflight lives under `docs/mockups/rg4-refreshed-preflight-2026-05-12/`, with six rendered screens and README notes. Production UI work must use this artifact as the approved visual/product direction unless Matt approves a later change.
 
@@ -34,7 +34,7 @@
 
 **Final product mockup gate:** Approved. `DESIGN.md` is the RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains product-structure reference only. The approved artifact is `docs/mockups/rg4-refreshed-preflight-2026-05-12/index.html` plus screenshots under `docs/mockups/rg4-refreshed-preflight-2026-05-12/screenshots/`.
 
-**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, R09H, R09I, R09J, R09K, R09L, R10, R11, R12, R13, R14, R14A, and R14B are merged into the promoted mainline. RG4 Prompt C advanced on the merged R10-R12 state. R14C is ready for Prompt A; RG5 Prompt C, RG6, and export dogfood remain blocked.
+**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, R09H, R09I, R09J, R09K, R09L, R10, R11, R12, R13, R14, R14A, R14B, and R14C are merged into the promoted mainline. RG4 Prompt C advanced on the merged R10-R12 state. RG5 Prompt C is now the next required step; RG6 and export dogfood remain blocked.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -78,13 +78,20 @@ Prior accepted gates:
 
 Feature: R14C - Deployment readiness and operator-use smoke
 Branch: `feat/reset-r14c-deployment-readiness-smoke`
-Status: `ready`
+Status: `merged_to_mainline`
 Why it exists: RG5 needs the intended operator-use deployment path, environment wiring, API health, and query-to-export smoke proven before a gate audit or dogfood decision can run.
 Scope: Deployment readiness and operator-use smoke only. Verify the stable operator URL, web/API environment wiring, API health/readiness, primary query-to-export path, and saved smoke artifacts. Keep the work evidence-backed and update reset docs with exact results.
 Non-goals: No new product UI, backend/API/core/search/export logic/persistence/source-assisted compiler/benchmark changes, public SaaS/account/billing work, RG5 Prompt C audit, RG6 dogfood packet, or deployment promotion beyond the documented R14C smoke unless Matt explicitly authorizes it.
-Required starting checks: read `docs/reset-current-assignment.json`, `docs/12-reset-gated-implementation-plan-2026-05-10.md`, `docs/13-pipeline-orchestrator-contract-2026.md`, and this STATUS file from `main`; confirm the assignment lock names Prompt A/R14C before editing.
-Exact Prompt A assignment: Implement `R14C - Deployment readiness and operator-use smoke` on `feat/reset-r14c-deployment-readiness-smoke`; save smoke evidence under `.gstack/qa-reports/` or `audits/raw/reset-2026-05-10/rg5/` as appropriate; update STATUS.md and docs/12 with a Prompt B handoff; commit and push the feature branch only.
-Open questions: None for R14C kickoff. Product remains red and RG6/dogfood stay blocked until RG5 advances.
+What changed: Added a dedicated `next start` Playwright smoke config and npm script, tightened the prod-smoke browser assertions around login/results/evidence/export, fixed shared-password login redirects so local production smoke preserves the request host instead of bouncing from `127.0.0.1` to `localhost`, added auth regression coverage for host-preserving redirects, and saved R14C browser artifacts plus QA summary under `.gstack/qa-reports/`.
+Required verification from Prompt A / Prompt B:
+- `cd apps/web && npm test -- --run src/app/api/login/route.regression-1.test.ts src/lib/__tests__/auth.test.ts src/app/api/login/route.test.ts` (passed)
+- `cd apps/web && npm run test:e2e:prod` (passed)
+- Browser QA screenshots captured under `.gstack/qa-reports/screenshots/r14c-prod-smoke/` for login gate, results overview, evidence drawer, and export-ready states; `browser-qa-summary.json` records CSV download success and sales-first headers
+- `git diff --check` (to be rerun from `main` after merge if Prompt C wants a fresh branch-root confirmation)
+Artifacts: `.gstack/qa-reports/qa-report-r14c-deployment-readiness-2026-05-19.md`; `.gstack/qa-reports/screenshots/r14c-prod-smoke/01-login-gate.png`; `03-results-overview.png`; `04-evidence-drawer.png`; `05-export-ready.png`; `.gstack/qa-reports/screenshots/r14c-prod-smoke/browser-qa-summary.json`.
+Prompt B result: QA passed. The only functional issue found was a login redirect origin bug in local production smoke; it was fixed and covered by `route.regression-1.test.ts`. R14C is merged to `main`.
+Next pointer after merge: Prompt C should audit `RG5 - Sales-First Export And Persistence` using `audits/gates/reset-2026-05-10/rg5-export-persistence.md`. Keep RG6, dogfood, public SaaS work, and adjacent backend/core changes blocked until that gate records a decision.
+Open questions: Live remote Fly `/health` and `/readiness` were not re-proven in this session because direct API curl access had previously been blocked; if Prompt C needs live endpoint proof, capture it as part of the RG5 audit.
 
 Previous handoff:
 
