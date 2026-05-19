@@ -141,6 +141,8 @@ On macOS/Linux, use `DATABASE_URL=... uv run pytest ...` instead of the PowerShe
 
 Deployment config exists for Vercel (web), Fly.io (API), and Neon/Postgres. The rebuild branch is not a launch signal. Production or preview deploys must still respect the red/yellow/green launch gate in `docs/00-product-northstar.md`.
 
+Web production deploys are intended to run from GitHub Actions using `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID` repo secrets, not by relying on Vercel Git auto-deploy author matching. This keeps deploy authority tied to repository automation instead of the individual commit author. If the Actions-based Vercel deploy is enabled, disable the Vercel project's Git auto-deploy so Hermes/automation pushes do not trigger "commit author is not a team member" failures.
+
 ## Project Layout
 
 ```text
