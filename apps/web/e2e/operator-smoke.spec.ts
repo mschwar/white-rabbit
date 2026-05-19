@@ -223,9 +223,10 @@ test('production-like operator smoke covers login, readiness, and csv export', a
 
   await expect(page.getByRole('button', { name: /build csv export/i })).toBeVisible();
   await expect(page.getByText(/candidate review/i)).toBeVisible();
-  await expect(page.getByText('READY')).toBeVisible();
-  await expect(page.getByText('REVIEW')).toBeVisible();
-  await expect(page.getByText('ORG-ONLY')).toBeVisible();
+  const candidateTable = page.getByLabel('Candidate review table');
+  await expect(candidateTable.getByText('READY', { exact: true })).toBeVisible();
+  await expect(candidateTable.getByText('REVIEW', { exact: true })).toBeVisible();
+  await expect(candidateTable.getByText('ORG-ONLY', { exact: true })).toBeVisible();
   await maybeScreenshot(page, '03-results-overview.png');
 
   await page.getByRole('button', { name: /inspect evidence/i }).first().click();

@@ -18,6 +18,19 @@ function requireEnv(name: string): string {
   return value;
 }
 
+function resolveRequestOrigin(request: NextRequest): string {
+  const forwardedProto = request.headers.get('x-forwarded-proto')?.split(',')[0]?.trim();
+  const forwardedHost = request.headers.get('x-forwarded-host')?.split(',')[0]?.trim();
+  const host = forwardedHost || request.headers.get('host')?.trim();
+
+  if (!host) {
+    return request.nextUrl.origin;
+  }
+
+  const protocol = forwardedProto || request.nextUrl.protocol.replace(/:$/, '');
+  return `${protocol}://${host}`;
+}
+
 export async function POST(request: NextRequest) {
   const formData = await request.formData();
   const password = String(formData.get('password') ?? '');
@@ -29,14 +42,14 @@ export async function POST(request: NextRequest) {
   }
 
   if (!matchesSharedPassword(password, expectedPassword)) {
-    const redirectUrl = new URL('/login', request.url);
+    const redirectUrl = new URL('/login', resolveRequestOrigin(request));
     redirectUrl.searchParams.set('error', '1');
     redirectUrl.searchParams.set('next', nextPath);
     return NextResponse.redirect(redirectUrl, { status: 303 });
   }
 
   const sessionSecret = requireEnv('WR_SESSION_SECRET');
-  const response = NextResponse.redirect(new URL(nextPath, request.url), { status: 303 });
+  const response = NextResponse.redirect(new URL(nextPath, resolveRequestOrigin(request)), { status: 303 });
   response.cookies.set({
     name: SESSION_COOKIE_NAME,
     value: await createSessionToken(sessionSecret),
