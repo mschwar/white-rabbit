@@ -16,7 +16,11 @@ x-white-rabbit-internal-token: <WR_API_INTERNAL_TOKEN>
 
 The Next.js app proxy is responsible for sending that header. Direct tokenless calls to protected endpoints should fail.
 
-`GET /runs/{run_id}/leads` now returns `404 {"detail":"Run not found"}` when the run ID does not exist, instead of implying a successful empty readback.
+`GET /runs/{run_id}/leads` returns `404 {"detail":"Run not found"}` when the run ID does not exist, instead of implying a successful empty readback. The endpoint must copy the run ID while the DB session is open; production readback previously returned 500 when response construction touched a detached ORM run after the session closed.
+
+## Readiness semantics
+
+`GET /readiness` is a bounded diagnostic endpoint. Required dependencies (`config`, `database`, `openai`, `sandbox`) must be `ready`; `misconfigured` or `unavailable` means the service is not ready. Tavily is intentionally checked as `probe: "config_only"` so readiness does not spend vendor search calls. When `TAVILY_API_KEY` is present, the Tavily check is `ready` with `live_probe_skipped_reason: "avoid_spend"`; live Tavily behavior is proven by the operator smoke/live benchmark artifacts, not by readiness.
 
 ## Local Commands
 

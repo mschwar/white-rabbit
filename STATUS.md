@@ -1,14 +1,14 @@
 # STATUS
 
-**Last updated:** 2026-05-22 by Codex rg6-fresh-evidence
-**Branch:** audit/reset-rg6-fresh-evidence
-**Current sprint:** Matt moved reset execution to `main` on 2026-05-12 after the operator-use promotion and Fly API deploy. R13 sales-first CSV export, R14 persistence/readback, R14A brand cleanup, R14B UI/UX consistency, R14C deployment readiness/operator-use smoke, and R15 dogfood decision packet are merged to `main`. Matt authorized fresh RG6 evidence gathering on 2026-05-22; the fresh production run keeps RG6 held/product-red because Arizona K-12 returned 0 high-trust usable rows / 0 source-backed contacts, separate persisted run readback returned 500, web `/api/source-assisted-proof` returned 404, readiness was degraded, and operator-minute evidence is still missing.
+**Last updated:** 2026-05-22 by Codex rg6-production-remediation
+**Branch:** fix/prod-readback-source-proof-readiness
+**Current sprint:** Matt moved reset execution to `main` on 2026-05-12 after the operator-use promotion and Fly API deploy. R13 sales-first CSV export, R14 persistence/readback, R14A brand cleanup, R14B UI/UX consistency, R14C deployment readiness/operator-use smoke, and R15 dogfood decision packet are merged to `main`. Matt authorized fresh RG6 evidence gathering on 2026-05-22; the fresh production run keeps RG6 held/product-red because Arizona K-12 returned 0 high-trust usable rows / 0 source-backed contacts and operator-minute evidence is still missing. The immediate production plumbing blockers from that addendum are remediated in this branch: `/runs/{run_id}/leads` no longer touches detached ORM runs during readback, web `/api/source-assisted-proof` now proxies the protected API route, and readiness now reports Tavily's no-spend config-only probe as `ready` with explicit documentation instead of degrading the service.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Historical brand draft note:** The May 10 generated rabbit/lens/rabbit-mark rasters are superseded for production app identity. R14A deletes those generated app assets, keeps the rabbit/icon problem quarantined, and uses only the approved design-pack favicon/touch/manifest/social assets plus wordmark-first in-app identity.
 
-**Next pointer:** No downstream Prompt A assignment is valid after the fresh RG6 evidence addendum. Keep public SaaS/account/org/billing work plus yellow/green and Thomas/Lee dogfood claims blocked. Any next work must be a Matt-directed red remediation scoped to the live blockers in `audits/raw/reset-2026-05-10/rg6/fresh-2026-05-22/fresh-evidence-summary.md` and then re-audited against `docs/00-product-northstar.md` line by line.
+**Next pointer:** Production plumbing remediation for the fresh RG6 addendum is complete in `fix/prod-readback-source-proof-readiness`: fix/deploy the run-leads readback 500, web `/api/source-assisted-proof`, and readiness semantics before re-checking production. Keep public SaaS/account/org/billing work plus yellow/green and Thomas/Lee dogfood claims blocked. Any next quality work must still be a Matt-directed red remediation scoped to the remaining live blockers in `audits/raw/reset-2026-05-10/rg6/fresh-2026-05-22/fresh-evidence-summary.md` and then re-audited against `docs/00-product-northstar.md` line by line.
 
 **Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It now records RG6 as held after fresh production evidence; it must agree with any future Prompt A/B/C request before an agent edits files.
 
@@ -76,6 +76,17 @@ Prior accepted gates:
 **Production URL note:** Use the stable production alias `https://white-rabbit-ten.vercel.app/`, not one-off deployment URLs like `https://white-rabbit-7kw7lh6ri-matts-projects-06539e54.vercel.app/`. Vercel deployment URLs are immutable snapshots; `7kw7lh6ri` was created before `WR_API_INTERNAL_TOKEN` existed in Production and can continue to show the old missing-token error even after the alias is fixed.
 
 **Latest handoff:**
+
+Feature: RG6 production plumbing remediation
+Branch: `fix/prod-readback-source-proof-readiness`
+Status: `implemented_pending_production_recheck`
+Why it exists: Matt directed immediate red remediation for the fresh RG6 live blockers: production web run-leads readback 500, missing web `/api/source-assisted-proof`, and degraded readiness semantics.
+What changed: Fixed `GET /runs/{run_id}/leads` to copy the ORM run ID before the DB session closes, preventing detached-instance 500s during response construction. Added the Next.js `/api/source-assisted-proof` route so the web path forwards protected source-assisted proof requests to the FastAPI route with the internal token. Changed Tavily readiness from `degraded` to `ready` when the key is present, because readiness intentionally performs a no-spend config-only probe; documented that live Tavily behavior is proven by smoke/live benchmark artifacts instead.
+Verification: API targeted regression tests passed (`test_run_leads_endpoint_does_not_touch_detached_run_after_session_closes`, `test_readiness_tavily_config_only_probe_does_not_degrade_service`, existing run-leads readback and source-assisted API tests). `apps/web` production build passed and lists `/api/source-assisted-proof`. Vitest route tests could not execute in this shell because the Vitest worker pool timed out before loading any tests, including pre-existing `src/app/api/scout/route.test.ts`; build/TypeScript covered the new route.
+Next pointer: Deploy this branch/mainline, then re-check production `/readiness`, web `/api/source-assisted-proof`, and web `/api/runs/{run_id}/leads` using a freshly persisted run before claiming the plumbing blockers are closed in live evidence. Product remains red until lead quality/contact yield/operator-minute blockers clear in a reviewed gate.
+Open questions: Remaining RG6 product blockers are Arizona benchmark quality/contact yield, guardrail false-positive detail detection, sampled benchmark precision, and timed unassisted operator run evidence.
+
+Previous handoff:
 
 Gate: RG6 - Dogfood / Kill Decision
 Branch: `audit/reset-rg6-fresh-evidence`

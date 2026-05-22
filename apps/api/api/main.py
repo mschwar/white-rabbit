@@ -321,12 +321,13 @@ def _check_tavily(timeout_seconds: float = READINESS_DEPENDENCY_TIMEOUT_SECONDS)
         )
     return ReadinessCheck(
         name="tavily",
-        status="degraded",
-        message="TAVILY_API_KEY is present; live search is not probed by readiness to avoid spending vendor calls.",
+        status="ready",
+        message="TAVILY_API_KEY is present. Readiness intentionally uses a config-only probe to avoid spending vendor calls; live search is verified by smoke/live benchmark runs.",
         elapsed_seconds=_elapsed_since(start),
         details={
             "api_key_present": True,
             "probe": "config_only",
+            "live_probe_skipped_reason": "avoid_spend",
             "env_presence": _redacted_env_presence(),
             "timeout_seconds": timeout_seconds,
         },
@@ -1071,6 +1072,7 @@ async def run_leads(run_id: UUID, _: ProtectedApiAccess):
         run = get_recipe_run(session, run_id)
         if run is None:
             raise HTTPException(status_code=404, detail="Run not found")
+        persisted_run_id = run.id
         db_leads = get_leads_for_run(session, run_id)
 
     rows = [
@@ -1083,7 +1085,7 @@ async def run_leads(run_id: UUID, _: ProtectedApiAccess):
     ]
     row_data = [row.data for row in rows]
     return PersistedRunLeadsOut(
-        run_id=run.id,
+        run_id=persisted_run_id,
         row_count=len(rows),
         rows=rows,
         tier_distribution=_distribution_from_rows(row_data, "tier", "review"),
