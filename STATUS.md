@@ -1,22 +1,22 @@
 # STATUS
 
-**Last updated:** 2026-05-19 by Codex r14c-prompt-b-qa
-**Branch:** main
-**Current sprint:** Matt moved reset execution to `main` on 2026-05-12 after the operator-use promotion and Fly API deploy. R13 sales-first CSV export is live on the promoted mainline. R14 persistence, DB readback, and quality report tie-out passed Prompt B QA on `feat/reset-r14-persistence-quality-tieout` and is merged to `main`. R14A image overhaul and approved brand asset cleanup passed Prompt B QA on `feat/reset-r14a-image-overhaul-brand-cleanup` and is merged to `main`. Product remains red. R14B UI/UX consistency pass passed Prompt B QA on `feat/reset-r14b-ui-ux-consistency-pass` and is merged to `main`. R14C deployment readiness and operator-use smoke passed Prompt B QA on `feat/reset-r14c-deployment-readiness-smoke` and is merged to `main`. RG5 Prompt C is now the next gate step; RG6, dogfood, and backend/core changes outside assigned slices remain blocked.
+**Last updated:** 2026-05-22 by Codex rg5-prompt-c-audit
+**Branch:** audit/reset-rg5-export-persistence
+**Current sprint:** Matt moved reset execution to `main` on 2026-05-12 after the operator-use promotion and Fly API deploy. R13 sales-first CSV export, R14 persistence/readback, R14A brand cleanup, R14B UI/UX consistency, and R14C deployment readiness/operator-use smoke are merged to `main`. RG5 Prompt C advanced on `audit/reset-rg5-export-persistence` with report `audits/gates/reset-2026-05-10/rg5-export-persistence.md`. Product remains red. RG6 is now in progress and R15 is the single ready Prompt A feature; public SaaS, accounts, billing, and yellow/green claims remain blocked until RG6 records a decision.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Historical brand draft note:** The May 10 generated rabbit/lens/rabbit-mark rasters are superseded for production app identity. R14A deletes those generated app assets, keeps the rabbit/icon problem quarantined, and uses only the approved design-pack favicon/touch/manifest/social assets plus wordmark-first in-app identity.
 
-**Next pointer:** Prompt C should audit `RG5 - Sales-First Export And Persistence` using `audits/gates/reset-2026-05-10/rg5-export-persistence.md` now that R13-R14C are merged to `main`. Do not start RG6, dogfood, R15, public SaaS work, or adjacent backend/core/export/persistence logic work until RG5 records an advance/hold decision.
+**Next pointer:** Prompt A should implement `R15 - Internal correction review and dogfood decision packet` on `feat/reset-r15-dogfood-decision-packet`. Use the RG5 report as input, evaluate `docs/00-product-northstar.md` red/yellow/green criteria line by line, and keep the product red unless RG6 evidence proves a higher gate.
 
-**Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It must agree with any Prompt A/B/C request before an agent edits files. Update it before starting RG5 Prompt C so it no longer names Prompt A/R14C.
+**Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It now names Prompt A/R15 on `feat/reset-r15-dogfood-decision-packet`; it must agree with any Prompt A/B/C request before an agent edits files.
 
 **Design direction handoff:** `DESIGN.md` is now the RG4 visual direction authority. The approved refreshed RG4 mockup/design preflight lives under `docs/mockups/rg4-refreshed-preflight-2026-05-12/`, with six rendered screens and README notes. Production UI work must use this artifact as the approved visual/product direction unless Matt approves a later change.
 
 **Open question:** A standalone rabbit/icon remains quarantined until there is an approved production vector and an ADR that explicitly allows its use in the operator UI.
 
-**Queue correction:** The 2026-05-12 R00 Prompt B runs were stale-target no-ops and have no queue effect. R00 is historical and already merged. The current valid target is Prompt A for R14C. Any future stale-target run must stop in chat only and must not edit, commit, merge, or push.
+**Queue correction:** The 2026-05-12 R00 Prompt B runs were stale-target no-ops and have no queue effect. R00 is historical and already merged. The current valid target is Prompt A for R15. Any future stale-target run must stop in chat only and must not edit, commit, merge, or push.
 
 ---
 
@@ -24,17 +24,17 @@
 
 **Operator-use branch:** `main`. ADR-024 now makes `main` both the operator-use branch and the reset integration branch.
 
-**Current gate:** Red with Matt-directed Thomas/Lee internal-use exception. RG4 advanced, but export/persistence and dogfood remain unproven; do not treat the promotion as a public launch or as evidence that the full reset passed.
+**Current gate:** Red with Matt-directed Thomas/Lee internal-use exception. RG5 advanced for export/persistence mechanics, but live data-quality and dogfood readiness remain unproven; do not treat the promotion as a public launch or as evidence that the full reset passed.
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** R14C is the only current Prompt A target. RG5 Prompt C stays blocked until R14C passes Prompt B and merges.
+**Next feature pointer:** R15 is the only current Prompt A target. RG6/R15 must produce the dogfood/kill decision packet before any yellow/green or Thomas/Lee dogfood claim.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from `main`, Prompt B resolves and QA/merges the single feature branch waiting for QA back to `main`, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs. Do not resolve queue state from `rebuild/validated-leads-loop`, an unmerged feature branch, or an audit branch. `docs/reset-current-assignment.json` must match before any agent edits files.
 
 **Final product mockup gate:** Approved. `DESIGN.md` is the RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains product-structure reference only. The approved artifact is `docs/mockups/rg4-refreshed-preflight-2026-05-12/index.html` plus screenshots under `docs/mockups/rg4-refreshed-preflight-2026-05-12/screenshots/`.
 
-**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, R09H, R09I, R09J, R09K, R09L, R10, R11, R12, R13, R14, R14A, R14B, and R14C are merged into the promoted mainline. RG4 Prompt C advanced on the merged R10-R12 state. RG5 Prompt C is now the next required step; RG6 and export dogfood remain blocked.
+**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, R09H, R09I, R09J, R09K, R09L, R10, R11, R12, R13, R14, R14A, R14B, and R14C are merged into the promoted mainline. RG4 and RG5 Prompt C audits advanced. RG6 is now in progress and R15 is ready; export dogfood and yellow/green claims remain blocked until the R15/RG6 decision packet.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -47,8 +47,9 @@
 - RG2 search/source coverage gate report: `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`
 - RG3 validation semantics advance report: `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`
 - RG4 operator UI advance report: `audits/gates/reset-2026-05-10/rg4-operator-ui.md`
+- RG5 export/persistence advance report: `audits/gates/reset-2026-05-10/rg5-export-persistence.md`
 
-**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is advanced via `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`; and RG4 is advanced via `audits/gates/reset-2026-05-10/rg4-operator-ui.md`.
+**Latest reset control doc:** `docs/12-reset-gated-implementation-plan-2026-05-10.md` defines reset gates RG0-RG6. Every gate requires a full evaluation/audit report before downstream gate work unlocks. RG0 is advanced via `audits/gates/reset-2026-05-10/rg0-w5-hold.md`; RG1 is advanced via `audits/gates/reset-2026-05-10/rg1-benchmark-harness.md`; RG2 is advanced via `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md`; RG3 is advanced via `audits/gates/reset-2026-05-10/rg3-validation-semantics.md`; RG4 is advanced via `audits/gates/reset-2026-05-10/rg4-operator-ui.md`; and RG5 is advanced via `audits/gates/reset-2026-05-10/rg5-export-persistence.md`.
 
 Prior accepted gates:
 
@@ -75,6 +76,19 @@ Prior accepted gates:
 **Production URL note:** Use the stable production alias `https://white-rabbit-ten.vercel.app/`, not one-off deployment URLs like `https://white-rabbit-7kw7lh6ri-matts-projects-06539e54.vercel.app/`. Vercel deployment URLs are immutable snapshots; `7kw7lh6ri` was created before `WR_API_INTERNAL_TOKEN` existed in Production and can continue to show the old missing-token error even after the alias is fixed.
 
 **Latest handoff:**
+
+Gate: RG5 - Sales-First Export And Persistence
+Branch: `audit/reset-rg5-export-persistence`
+Status: `gate_advanced`
+Report: `audits/gates/reset-2026-05-10/rg5-export-persistence.md`
+Why it exists: RG5 needed Prompt C to decide whether the merged R13-R14C export, persistence, brand/UI consistency, and deployment-smoke slices are enough to unlock the dogfood/kill decision packet.
+What changed: Added the RG5 gate report, saved an RG5 artifact summary under `audits/raw/reset-2026-05-10/rg5/`, marked RG5 `gate_advanced`, marked RG6 `in_progress`, and made R15 the single ready Prompt A feature in the reset plan and assignment lock.
+Decision: Advance RG5 only. Product remains red. RG5 proves export/persistence mechanics, not live lead quality or dogfood readiness.
+Verification: `git diff --check` passed. Fresh local Vitest/API pytest reruns were attempted but timed out before assertions/collection completed in this shell; logs are saved under `audits/raw/reset-2026-05-10/rg5/`. Direct production curl was blocked by the execution environment, so RG6 must still gather fresh live endpoint proof where network/secrets are available.
+Next pointer: Prompt A should implement `R15 - Internal correction review and dogfood decision packet` on `feat/reset-r15-dogfood-decision-packet`. Keep public SaaS/account/billing work and yellow/green claims blocked until RG6 records a decision.
+Open questions: None for RG5 advancement. RG6 must resolve whether the product remains red, earns Matt-only yellow evaluation, or should pause/manual-concierge fallback.
+
+Previous handoff:
 
 Feature: R14C - Deployment readiness and operator-use smoke
 Branch: `feat/reset-r14c-deployment-readiness-smoke`

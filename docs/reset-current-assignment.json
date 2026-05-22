@@ -1,30 +1,26 @@
 {
   "version": 1,
-  "updated": "2026-05-19",
+  "updated": "2026-05-22",
   "integration_branch": "main",
-  "current_prompt": "C",
-  "current_feature_id": null,
-  "current_feature_name": null,
-  "current_feature_status": null,
-  "current_feature_branch": null,
-  "current_gate": "RG5 - Sales-First Export And Persistence",
-  "valid_next_action": "Prompt C should audit RG5 using audits/gates/reset-2026-05-10/rg5-export-persistence.md now that R13-R14C are merged to main. Keep RG6, dogfood, R15, public SaaS, and adjacent backend/core/export/persistence logic changes blocked until RG5 records a decision.",
+  "current_prompt": "A",
+  "current_feature_id": "R15",
+  "current_feature_name": "Internal correction review and dogfood decision packet",
+  "current_feature_status": "ready",
+  "current_feature_branch": "feat/reset-r15-dogfood-decision-packet",
+  "current_gate": "RG6 - Dogfood / Kill Decision",
+  "valid_next_action": "Prompt A should implement only R15 on feat/reset-r15-dogfood-decision-packet using the RG5 gate report and current reset docs. Build a dogfood/kill decision packet; keep product gate red unless RG6 evidence proves yellow/green criteria.",
   "invalid_next_actions": [
-    "Start a new Prompt A feature before RG5 Prompt C records a gate decision",
-    "Start RG6, dogfood, R15, public SaaS, accounts, orgs, or billing work",
-    "Backend/API/core/search/export/persistence/source-assisted compiler/benchmark work outside the RG5 gate audit",
-    "Any deployment promotion beyond the documented R14C smoke unless Matt explicitly authorizes it"
+    "Start public SaaS, accounts, orgs, billing, or external self-serve work",
+    "Mark the product yellow or green without RG6 evidence mapped line by line to docs/00-product-northstar.md",
+    "Start backend/API/core/search/export/persistence/source-assisted compiler changes outside the R15 decision-packet scope",
+    "Deploy or promote production beyond evidence gathering unless Matt explicitly authorizes it",
+    "Resolve queue state from rebuild/validated-leads-loop, an unmerged feature branch, or an audit branch instead of main plus this assignment lock"
   ],
-  "blocked_features": [
-    "R15"
-  ],
+  "blocked_features": [],
   "notes": [
-    "R13 passed Prompt B QA and remains merged on main.",
-    "R14 passed Prompt B QA on feat/reset-r14-persistence-quality-tieout and is merged to main.",
-    "R14A passed Prompt B QA and merged to main.",
-    "R14B passed Prompt B QA and merged to main.",
-    "R14C passed Prompt B QA on 2026-05-19 and merged to main.",
-    "The next queue action is RG5 Prompt C, not another same-gate feature branch.",
-    "Queue truth is main plus this assignment lock, not rebuild/validated-leads-loop and not unmerged feature or audit branch docs."
+    "R13 through R14C are merged to main.",
+    "RG5 advanced on 2026-05-22 via audits/gates/reset-2026-05-10/rg5-export-persistence.md.",
+    "Product remains red; RG5 advancement proves export/persistence mechanics, not live data-quality or dogfood readiness.",
+    "RG6/R15 must produce a decision packet and evaluate red/yellow/green criteria before any Thomas/Lee dogfood or yellow/green claim."
   ]
 }

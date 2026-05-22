@@ -1,0 +1,6 @@
+## api persistence/readback targeted tests
+2026-05-22T16:36:24Z
+   Building core @ file:///Users/mschwar/Documents/white-rabbit/packages/core
+      Built core @ file:///Users/mschwar/Documents/white-rabbit/packages/core
+Uninstalled 1 package in 2ms
+Installed 1 package in 3ms

@@ -5,10 +5,10 @@
 **Integration branch:** `main`.
 **Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
-**Current reset gate:** RG5 - Sales-First Export And Persistence. RG4 advanced on `audit/reset-rg4-operator-ui`; product remains red until export/persistence and dogfood gates pass.
-**Next Prompt A feature:** None. R13-R14C are now merged to `main`; wait for RG5 Prompt C before starting RG6 or dogfood work.
+**Current reset gate:** RG6 - Dogfood / Kill Decision. RG5 advanced on `audit/reset-rg5-export-persistence`; product remains red until the dogfood/kill decision packet proves a yellow/green gate or records a hold/kill decision.
+**Next Prompt A feature:** R15 - Internal correction review and dogfood decision packet on `feat/reset-r15-dogfood-decision-packet`. R13-R14C are merged to `main` and RG5 Prompt C advanced; do not start public SaaS/account/billing work or mark yellow/green without the RG6 decision packet.
 **Current Prompt B handoff:** Completed. R14C passed Prompt B QA and merged to `main` on 2026-05-19.
-**Current Prompt C handoff:** RG5 - Sales-First Export And Persistence. Use `audits/gates/reset-2026-05-10/rg5-export-persistence.md` as the gate report target; R13-R14C are merged, so Prompt C should audit RG5 next. Keep RG6/dogfood blocked until RG5 advances.
+**Current Prompt C handoff:** Completed. RG5 advanced on 2026-05-22 via `audits/gates/reset-2026-05-10/rg5-export-persistence.md`; Prompt A should implement R15 next and keep product gate red until RG6 records a decision.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -215,8 +215,8 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG2 | Search Coverage And Source Collection | R04-R06 | gate_advanced | `audits/gates/reset-2026-05-10/rg2-search-source-coverage.md` |
 | RG3 | Validation, Conflict, And Gate Semantics | R07-R09L | gate_advanced | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
 | RG4 | Sales-First Operator UI | R10-R12 | gate_advanced | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
-| RG5 | Sales-First Export And Persistence | R13-R14C | in_progress | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
-| RG6 | Dogfood / Kill Decision | R15 | blocked | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md` |
+| RG5 | Sales-First Export And Persistence | R13-R14C | gate_advanced | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
+| RG6 | Dogfood / Kill Decision | R15 | in_progress | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md` |
 
 ## Reset Feature Table
 
@@ -252,7 +252,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R14A | Image overhaul and approved brand asset cleanup | merged_to_mainline | `feat/reset-r14a-image-overhaul-brand-cleanup` | browser + visual |
 | R14B | UI/UX consistency pass | merged_to_mainline | `feat/reset-r14b-ui-ux-consistency-pass` | browser + screenshots |
 | R14C | Deployment readiness and operator-use smoke | merged_to_mainline | `feat/reset-r14c-deployment-readiness-smoke` | deployment + API/web smoke |
-| R15 | Internal correction review and dogfood decision packet | blocked | `feat/reset-r15-dogfood-decision-packet` | browser + docs |
+| R15 | Internal correction review and dogfood decision packet | ready | `feat/reset-r15-dogfood-decision-packet` | browser + docs |
 
 ## RG0 - W5 Hold And Control Reset
 
@@ -1252,6 +1252,15 @@ Advance criteria:
 
 - Export can be handed to Thomas/Lee without explaining validation internals first.
 - Uncertain rows remain clearly marked and cannot masquerade as CRM-ready.
+
+RG5 Prompt C result:
+
+- Branch: `audit/reset-rg5-export-persistence`.
+- Decision: `advance`.
+- Report: `audits/gates/reset-2026-05-10/rg5-export-persistence.md`.
+- Evidence summary: R13-R14C are merged to `main`; R13 saved a 51-row sales-first CSV artifact with CRM fields first and validation/run context preserved; R14 Prompt B verified persistence/readback row-count tie-out for `/scout`, `/full`, and protected run-lead readback; R14A/R14B/R14C closed brand, visual consistency, mobile overflow, and local production-smoke slices enough to unlock the decision packet.
+- Caveats carried into RG6: product remains red; fresh remote Fly/Vercel endpoint proof was blocked in the RG5 audit environment; R14C browser smoke uses deterministic mocked rows and does not prove live lead quality; RG6 must evaluate red/yellow/green criteria line by line before dogfood.
+- Queue consequence: RG6 is now in progress and R15 is the single ready Prompt A feature. Keep public SaaS, accounts, orgs, billing, and yellow/green claims blocked until RG6 records a decision.
 
 ## RG6 - Dogfood / Kill Decision
 
