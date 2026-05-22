@@ -739,6 +739,68 @@ def test_run_leads_endpoint_returns_404_when_run_is_missing(monkeypatch):
     assert response.json() == {"detail": "Run not found"}
 
 
+def test_run_leads_endpoint_does_not_touch_detached_run_after_session_closes(monkeypatch):
+    run_id = "22222222-2222-2222-2222-222222222222"
+
+    class DetachedRun:
+        def detach(self):
+            self._detached = True
+
+        @property
+        def id(self):
+            if getattr(self, "_detached", False):
+                raise RuntimeError("detached instance access after DB session close")
+            return run_id
+
+    run = DetachedRun()
+
+    @contextmanager
+    def fake_db_session():
+        yield object()
+        run.detach()
+
+    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
+    monkeypatch.setattr("api.main.get_recipe_run", lambda session, _run_id: run)
+    monkeypatch.setattr("api.main.get_leads_for_run", lambda session, _run_id: [])
+
+    response = client.get(f"/runs/{run_id}/leads")
+
+    assert response.status_code == 200
+    assert response.json()["run_id"] == run_id
+
+
+def test_readiness_tavily_config_only_probe_does_not_degrade_service(monkeypatch):
+    from api import main as api_main
+
+    monkeypatch.setenv("OPENAI_API_KEY", "test-openai")
+    monkeypatch.setenv("TAVILY_API_KEY", "test-tavily")
+    monkeypatch.setenv("WR_SHARED_PASSWORD", "test-password")
+    monkeypatch.setenv("WR_SESSION_SECRET", "test-session-secret")
+    monkeypatch.setenv("WR_API_INTERNAL_TOKEN", INTERNAL_API_TOKEN)
+    monkeypatch.setenv("DATABASE_URL", "postgresql://example/db")
+
+    def ready_check(name):
+        return api_main.ReadinessCheck(
+            name=name,
+            status="ready",
+            message=f"{name} ready",
+            details={"test": True},
+        )
+
+    monkeypatch.setattr(api_main, "_check_database", lambda timeout_seconds: ready_check("database"))
+    monkeypatch.setattr(api_main, "_check_openai", lambda timeout_seconds: ready_check("openai"))
+    monkeypatch.setattr(api_main, "_check_sandbox", lambda timeout_seconds: ready_check("sandbox"))
+
+    response = client.get("/readiness")
+
+    assert response.status_code == 200
+    body = response.json()
+    assert body["status"] == "ready"
+    tavily = next(check for check in body["checks"] if check["name"] == "tavily")
+    assert tavily["status"] == "ready"
+    assert tavily["details"]["probe"] == "config_only"
+
+
 def test_lead_feedback_model_has_label_check_constraint():
     constraints = [constraint for constraint in LeadFeedback.__table__.constraints if isinstance(constraint, CheckConstraint)]
 
