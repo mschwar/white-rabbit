@@ -8,7 +8,7 @@
 **Current reset gate:** RG6 - Dogfood / Kill Decision. Prompt C accepted the R15 red-hold recommendation on `audit/reset-rg6-dogfood-decision` after confirming R15 merged to `main` at `6858047`.
 **Next Prompt A feature:** None. RG6 is held/product-red; do not start public SaaS/account/billing work or mark yellow/green without a future reviewed RG6 decision backed by fresh evidence.
 **Current Prompt B handoff:** None. R15 Prompt B is complete and merged to `main`.
-**Current Prompt C handoff:** Complete on `audit/reset-rg6-dogfood-decision`; hold branches do not merge to `main` unless Matt explicitly accepts the decision state afterward.
+**Current Prompt C handoff:** Complete on `audit/reset-rg6-dogfood-decision`; Matt accepted the held decision state on 2026-05-22, so the audit branch may merge to `main` as the accepted RG6 red-hold control record without unlocking downstream feature work.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -1327,7 +1327,7 @@ R15 Prompt C result:
 - Prompt C confirmed R15 is merged to `main` at `6858047 docs: qa r15 dogfood decision packet (#31)`.
 - Prompt C accepted the R15 packet's red-hold/no-dogfood recommendation because it maps all 8 red / 8 yellow / 8 green northstar criteria and the unresolved rows still lack fresh production endpoint proof, production query-to-export/DB readback, broad Thomas/Lee prompt consistency, sampled precision, privacy-sensitive blocking, and unassisted operator-minute evidence.
 - Queue consequence: no next Prompt A assignment. Public SaaS, accounts, orgs, billing, yellow/green promotion, and Thomas/Lee dogfood expansion remain blocked unless a future approved evidence run satisfies `docs/00-product-northstar.md` line by line.
-- Merge consequence: because the decision is `hold`, do not merge this audit branch to `main` unless Matt explicitly accepts this held decision state afterward.
+- Merge consequence: Matt accepted this held decision state on 2026-05-22, so this audit branch may merge to `main` as the accepted RG6 red-hold control record. This merge does not unlock downstream Prompt A/B/C work.
 
 ## Status Rules
 

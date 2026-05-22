@@ -193,4 +193,4 @@ None.
 
 Prompt C accepts the R15 recommendation as the RG6 gate decision: `hold`, product gate `red`. No downstream Prompt A assignment is valid from this branch. Public SaaS, accounts, orgs, billing, yellow/green promotion, and Thomas/Lee dogfood expansion remain blocked until Matt authorizes fresh evidence gathering and a later gate record maps that evidence line by line to `docs/00-product-northstar.md`.
 
-Because the decision is `hold`, this audit branch must not merge to `main` unless Matt explicitly accepts the hold state afterward, per the Prompt C contract in `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
+Matt accepted the `hold` decision state on 2026-05-22. This audit branch may merge to `main` as the accepted RG6 red-hold control record, but that merge does not unlock downstream Prompt A/B/C work.
