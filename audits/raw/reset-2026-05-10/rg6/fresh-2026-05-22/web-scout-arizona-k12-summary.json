@@ -1,0 +1,109 @@
+{
+  "candidate_category_distribution": {
+    "failed": 4,
+    "not_found": 1,
+    "organization_only": 2,
+    "person_lead": 6
+  },
+  "high_trust_usable_with_contact_evidence": 0,
+  "label": "arizona-k12-voip",
+  "metrics": {
+    "elapsed_seconds": 124.68,
+    "estimated_cost_usd": 0.355318,
+    "funnel_counts": {
+      "categorized_rows": 13,
+      "contact_evidence_candidates_searched": 8,
+      "contact_evidence_conflicting_signals": 1,
+      "contact_evidence_contacts_acquired": 0,
+      "contact_evidence_field_corroborations": 21,
+      "contact_evidence_review_to_high_trust": 0,
+      "contact_evidence_searches": 29,
+      "contact_quality_passes": 0,
+      "deduped_sources": 50,
+      "extracted_candidates": 12,
+      "high_trust_usable_rows": 0,
+      "person_rows": 6,
+      "raw_vendor_hits": 54,
+      "source_snapshots": 50
+    },
+    "funnel_notes": [
+      "Deduped 54 raw vendor hits to 50 unique sources.",
+      "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+      "No returned row has verified or source-backed deduced contact evidence.",
+      "Deep contact evidence pass searched 8 promising rows and acquired 0 source-backed contacts; 0 rows gained enough contact evidence to clear the READY gate.",
+      "Deep contact evidence pass observed 21 field corroborations and 1 conflicting signals across public-web sources.",
+      "Contact evidence pass checked 1 organization-only rows for staff/contact sources."
+    ],
+    "input_tokens": 26388,
+    "openai_web_searches": 0,
+    "output_tokens": 2267,
+    "tavily_searches": 35,
+    "tier_distribution": {
+      "failed": 4,
+      "high_trust_usable": 0,
+      "not_found": 1,
+      "organization_only": 2,
+      "review": 6
+    }
+  },
+  "persistence_readback": {
+    "candidate_category_distribution": {
+      "failed": 4,
+      "not_found": 1,
+      "organization_only": 2,
+      "person_lead": 6
+    },
+    "db_readback_row_count": 13,
+    "exportable_row_count": 13,
+    "first_db_lead_ids": [
+      "07af0091-49b7-4a54-90a8-828a899a3d13",
+      "bfc7f018-72b6-4906-8348-ec72b3595d98",
+      "37ee949e-dffc-4160-8fde-3579aa9df479",
+      "f087a679-f45f-41cb-b078-35168e1db473",
+      "1cc4d43b-4fc9-4cfd-b368-78cb9aee12fd"
+    ],
+    "first_response_lead_ids": [
+      "07af0091-49b7-4a54-90a8-828a899a3d13",
+      "bfc7f018-72b6-4906-8348-ec72b3595d98",
+      "37ee949e-dffc-4160-8fde-3579aa9df479",
+      "f087a679-f45f-41cb-b078-35168e1db473",
+      "1cc4d43b-4fc9-4cfd-b368-78cb9aee12fd"
+    ],
+    "persisted_lead_count": 13,
+    "recipe_id": "f7ca36ed-e8a5-4923-a927-fcc5bbbd7531",
+    "response_row_count": 13,
+    "row_count_matches": true,
+    "run_id": "56a9a1cc-d4e5-46e3-83fe-ce6aec9fadd6",
+    "tier_distribution": {
+      "failed": 4,
+      "not_found": 1,
+      "organization_only": 2,
+      "review": 6
+    }
+  },
+  "query_guardrail": {
+    "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+    "missing_criteria": [
+      "target title or role",
+      "location"
+    ],
+    "status": "needs_more_detail",
+    "suggestions": [
+      "Add a title or role, such as director, manager, VP, or owner.",
+      "Add a geography, such as a city, state, or region."
+    ]
+  },
+  "recipe_id": "f7ca36ed-e8a5-4923-a927-fcc5bbbd7531",
+  "row_count": 13,
+  "rows_with_validation": 13,
+  "run_id": "56a9a1cc-d4e5-46e3-83fe-ce6aec9fadd6",
+  "seconds": 126.569,
+  "status": 200,
+  "tier_distribution": {
+    "failed": 4,
+    "not_found": 1,
+    "organization_only": 2,
+    "review": 6
+  },
+  "unsupported_ready_row_indexes": []
+}
