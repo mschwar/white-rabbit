@@ -1,0 +1,27 @@
+{
+  "body": "<!DOCTYPE html><html lang=\"en\" class=\"geist_a71539c9-module__T19VSG__variable geist_mono_8d43a2aa-module__8Li5zG__variable h-full antialiased\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"stylesheet\" href=\"/_next/static/chunks/08obuwt37yqx4.css\" data-precedence=\"next\"/><link rel=\"preload\" as=\"script\" fetchPriority=\"low\" href=\"/_next/static/chunks/0aumqkk4i5ix6.js\"/><script src=\"/_next/static/chunks/10c7ejw.s1avw.js\" async=\"\"></script><script src=\"/_next/static/chunks/0j72xargfskmb.js\" async=\"\"></script><script src=\"/_next/static/chunks/09j252uk0ivs9.js\" async=\"\"></script><script src=\"/_next/static/chunks/turbopack-0br3x_yd63qz-.js\" async=\"\"></script><script src=\"/_next/static/chunks/04ck6i02nzj~g.js\" async=\"\"></script><script src=\"/_next/static/chunks/0fzj_bbxinfzf.js\" async=\"\"></script><meta name=\"robots\" content=\"noindex\"/><meta name=\"next-size-adjust\" content=\"\"/><title>404: This page could not be found.</title><title>White Rabbit</title><meta name=\"description\" content=\"Evidence-backed prospect categorization.\"/><link rel=\"manifest\" href=\"/site.webmanifest\"/><meta property=\"og:title\" content=\"White Rabbit\"/><meta property=\"og:description\" content=\"Evidence-backed prospect categorization.\"/><meta property=\"og:image\" content=\"https://white-rabbit-ten.vercel.app/brand/white-rabbit-og-light.png\"/><meta property=\"og:image:width\" content=\"1200\"/><meta property=\"og:image:height\" content=\"630\"/><meta property=\"og:image:alt\" content=\"White Rabbit\"/><meta name=\"twitter:card\" content=\"summary_large_image\"/><meta name=\"twitter:title\" content=\"White Rabbit\"/><meta name=\"twitter:description\" content=\"Evidence-backed prospect categorization.\"/><meta name=\"twitter:image\" content=\"https://white-rabbit-ten.vercel.app/brand/white-rabbit-og-light.png\"/><link rel=\"icon\" href=\"/favicon.ico?favicon.0ferwk0mq5fo~.ico\" sizes=\"256x256\" type=\"image/x-icon\"/><link rel=\"icon\" href=\"/favicon.ico\"/><link rel=\"apple-touch-icon\" href=\"/apple-touch-icon.png\"/><script src=\"/_next/static/chunks/03~yq9q893hmn.js\" noModule=\"\"></script></head><body class=\"min-h-full flex flex-col\"><div hidden=\"\"><!--$--><!--/$--></div><div style=\"font-family:system-ui,&quot;Segoe UI&quot;,Roboto,Helvetica,Arial,sans-serif,&quot;Apple Color Emoji&quot;,&quot;Segoe UI Emoji&quot;;height:100vh;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center\"><div><style>body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}</style><h1 class=\"next-error-h1\" style=\"display:inline-block;margin:0 20px 0 0;padding:0 23px 0 0;font-size:24px;font-weight:500;vertical-align:top;line-height:49px\">404</h1><div style=\"display:inline-block\"><h2 style=\"font-size:14px;font-weight:400;line-height:49px;margin:0\">This page could not be found.</h2></div></div></div><!--$--><!--/$--><script src=\"/_next/static/chunks/0aumqkk4i5ix6.js\" id=\"_R_\" async=\"\"></script><script>(self.__next_f=self.__next_f||[]).push([0])</script><script>self.__next_f.push([1,\"1:\\\"$Sreact.fragment\\\"\\n2:I[10291,[\\\"/_next/static/chunks/04ck6i02nzj~g.js\\\",\\\"/_next/static/chunks/0fzj_bbxinfzf.js\\\"],\\\"default\\\"]\\n3:I[2968,[\\\"/_next/static/chunks/04ck6i02nzj~g.js\\\",\\\"/_next/static/chunks/0fzj_bbxinfzf.js\\\"],\\\"default\\\"]\\n4:I[82520,[\\\"/_next/static/chunks/04ck6i02nzj~g.js\\\",\\\"/_next/static/chunks/0fzj_bbxinfzf.js\\\"],\\\"OutletBoundary\\\"]\\n5:\\\"$Sreact.suspense\\\"\\n8:I[82520,[\\\"/_next/static/chunks/04ck6i02nzj~g.js\\\",\\\"/_next/static/chunks/0fzj_bbxinfzf.js\\\"],\\\"ViewportBoundary\\\"]\\na:I[82520,[\\\"/_next/static/chunks/04ck6i02nzj~g.js\\\",\\\"/_next/static/chunks/0fzj_bbxinfzf.js\\\"],\\\"MetadataBoundary\\\"]\\nc:I[24462,[\\\"/_next/static/chunks/04ck6i02nzj~g.js\\\",\\\"/_next/static/chunks/0fzj_bbxinfzf.js\\\"],\\\"default\\\",1]\\n:HL[\\\"/_next/static/chunks/08obuwt37yqx4.css\\\",\\\"style\\\"]\\n\"])</script><scri",
+  "final_url": "https://white-rabbit-ten.vercel.app/api/source-assisted-proof",
+  "headers": {
+    "Accept-Ranges": "bytes",
+    "Access-Control-Allow-Origin": "*",
+    "Age": "0",
+    "Cache-Control": "public, max-age=0, must-revalidate",
+    "Connection": "close",
+    "Content-Disposition": "inline; filename=\"404\"",
+    "Content-Length": "11032",
+    "Content-Type": "text/html; charset=utf-8",
+    "Date": "Fri, 22 May 2026 18:16:07 GMT",
+    "Etag": "\"68b59f8a7bb8c61566dc7311c7a30cbc\"",
+    "Last-Modified": "Fri, 22 May 2026 18:16:07 GMT",
+    "Server": "Vercel",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+    "X-Matched-Path": "/404",
+    "X-Next-Error-Status": "404",
+    "X-Vercel-Cache": "HIT",
+    "X-Vercel-Id": "sfo1::bnfsm-[REDACTED_PHONE]43-2a11c1a9cdd7"
+  },
+  "method": "POST",
+  "seconds": 0.382,
+  "status": 404,
+  "url": "https://white-rabbit-ten.vercel.app/api/source-assisted-proof"
+}

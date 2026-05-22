@@ -5,10 +5,10 @@
 **Integration branch:** `main`.
 **Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
-**Current reset gate:** RG6 - Dogfood / Kill Decision. Prompt C accepted the R15 red-hold recommendation on `audit/reset-rg6-dogfood-decision` after confirming R15 merged to `main` at `6858047`.
-**Next Prompt A feature:** None. RG6 is held/product-red; do not start public SaaS/account/billing work or mark yellow/green without a future reviewed RG6 decision backed by fresh evidence.
+**Current reset gate:** RG6 - Dogfood / Kill Decision. Prompt C accepted the R15 red-hold recommendation; Matt then authorized fresh production evidence on 2026-05-22, and that fresh evidence confirms RG6 remains held/product-red.
+**Next Prompt A feature:** None. RG6 is held/product-red after fresh evidence; do not start public SaaS/account/billing work or mark yellow/green without a later reviewed RG6 decision that clears the fresh live blockers.
 **Current Prompt B handoff:** None. R15 Prompt B is complete and merged to `main`.
-**Current Prompt C handoff:** Complete on `audit/reset-rg6-dogfood-decision`; Matt accepted the held decision state on 2026-05-22, so the audit branch may merge to `main` as the accepted RG6 red-hold control record without unlocking downstream feature work.
+**Current Prompt C handoff:** Complete; Matt accepted the held decision state and then authorized fresh RG6 evidence gathering on 2026-05-22. The fresh evidence addendum keeps RG6 in `gate_hold` and does not unlock downstream feature work.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -216,7 +216,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG3 | Validation, Conflict, And Gate Semantics | R07-R09L | gate_advanced | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
 | RG4 | Sales-First Operator UI | R10-R12 | gate_advanced | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
 | RG5 | Sales-First Export And Persistence | R13-R14C | gate_advanced | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
-| RG6 | Dogfood / Kill Decision | R15 | gate_hold | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md` |
+| RG6 | Dogfood / Kill Decision | R15 + fresh evidence addendum | gate_hold | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md`; `audits/raw/reset-2026-05-10/rg6/fresh-2026-05-22/fresh-evidence-summary.md` |
 
 ## Reset Feature Table
 
@@ -1328,6 +1328,18 @@ R15 Prompt C result:
 - Prompt C accepted the R15 packet's red-hold/no-dogfood recommendation because it maps all 8 red / 8 yellow / 8 green northstar criteria and the unresolved rows still lack fresh production endpoint proof, production query-to-export/DB readback, broad Thomas/Lee prompt consistency, sampled precision, privacy-sensitive blocking, and unassisted operator-minute evidence.
 - Queue consequence: no next Prompt A assignment. Public SaaS, accounts, orgs, billing, yellow/green promotion, and Thomas/Lee dogfood expansion remain blocked unless a future approved evidence run satisfies `docs/00-product-northstar.md` line by line.
 - Merge consequence: Matt accepted this held decision state on 2026-05-22, so this audit branch may merge to `main` as the accepted RG6 red-hold control record. This merge does not unlock downstream Prompt A/B/C work.
+
+RG6 fresh evidence addendum:
+
+- Branch: `audit/reset-rg6-fresh-evidence`.
+- Decision: keep `hold`.
+- Product gate: keep `red`.
+- Why this addendum exists: Matt explicitly authorized fresh RG6 evidence gathering after accepting the R15 red-hold decision.
+- Fresh evidence artifacts: `audits/raw/reset-2026-05-10/rg6/fresh-2026-05-22/`.
+- Fresh production results: Fly `/health` returned 200; `/readiness` returned HTTP 200 with body status `degraded`; direct tokenless `/scout` and `/source-assisted-proof` returned 401; Vercel shared-password auth returned 200; a privacy-sensitive consumer/private-person query was blocked with HTTP 422; web `/api/source-assisted-proof` returned 404.
+- Fresh Arizona K-12 Scout result: 13 categorized rows in 126.569 seconds at estimated cost `$0.355318`; tier distribution was 6 `review`, 2 `organization_only`, 1 `not_found`, 4 `failed`, and 0 `high_trust_usable`; contact quality passes were 0 and contacts acquired were 0.
+- Persistence/readback result: the Scout response inline `persistence_readback` claimed 13/13 persisted rows and matching IDs, but separate web `GET /api/runs/{run_id}/leads` returned HTTP 500 (`Failed to fetch persisted run lead readback.`).
+- Queue consequence: no next Prompt A assignment is valid from this gate hold. Any next work must be explicitly Matt-directed red remediation for the fresh live blockers, followed by a new reviewed RG6 gate record. Public SaaS/accounts/orgs/billing, yellow/green promotion, and Thomas/Lee dogfood expansion remain blocked.
 
 ## Status Rules
 

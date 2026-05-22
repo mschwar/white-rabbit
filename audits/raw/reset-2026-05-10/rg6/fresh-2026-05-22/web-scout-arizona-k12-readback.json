@@ -1,0 +1,24 @@
+{
+  "body": {
+    "error": "Failed to fetch persisted run lead readback."
+  },
+  "final_url": "https://white-rabbit-ten.vercel.app/api/runs/56a9a1cc-d4e5-46e3-83fe-ce6aec9fadd6/leads",
+  "headers": {
+    "Age": "0",
+    "Cache-Control": "public, max-age=0, must-revalidate",
+    "Connection": "close",
+    "Content-Type": "application/json",
+    "Date": "Fri, 22 May 2026 18:18:15 GMT",
+    "Server": "Vercel",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+    "Transfer-Encoding": "chunked",
+    "Vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "X-Matched-Path": "/api/runs/[run_id]/leads",
+    "X-Vercel-Cache": "MISS",
+    "X-Vercel-Id": "sfo1::iad1::667nm-[REDACTED_PHONE]08-ff25c865e0cb"
+  },
+  "method": "GET",
+  "seconds": 0.828,
+  "status": 500,
+  "url": "https://white-rabbit-ten.vercel.app/api/runs/56a9a1cc-d4e5-46e3-83fe-ce6aec9fadd6/leads"
+}
