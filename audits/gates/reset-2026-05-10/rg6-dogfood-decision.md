@@ -84,7 +84,7 @@ The remaining corrections are still dogfood-blocking:
 | B2C/privacy-sensitive queries are not explicitly blocked. | Not evaluated in R15. | No fresh privacy-sensitive query suite was run. |
 | Sampled row contains fake, guessed, unsupported, or mismatched email without failed/deduced label. | No new violation found in saved artifacts; not enough for dogfood. | R09L reports zero unsupported CRM-ready rows; R13 export preserves contact statuses. |
 | Export lacks validation context. | Cleared for saved R13/RG5 artifacts. | R13/RG5 show sales-first export with validation/run/source context. |
-| Operator UI organizes/scales untrusted data before single-query loop works. | Still a risk, not a new violation. | UI/export mechanics work with deterministic rows; live data quality remains unproven, so product stays red. |
+| Operator UI organizes, beautifies, or scales untrusted data before the single-query loop works. | Still a risk, not a new violation. | UI/export mechanics work with deterministic rows; live data quality remains unproven, so product stays red. |
 
 Conclusion: red cannot be cleared. At least production endpoint proof, broad live prompt consistency, privacy-sensitive blocking, and unassisted operator-minute evidence are missing.
 
@@ -93,7 +93,7 @@ Conclusion: red cannot be cleared. At least production endpoint proof, broad liv
 | Requirement | R15 result | Evidence / note |
 | --- | --- | --- |
 | Arizona K-12 VoIP benchmark returns at least 6 of 8 target districts with correct named decision maker or explicit `not_found`. | Not proven. | No fresh Arizona benchmark evidence was captured in RG6. |
-| April New Mexico replay returns manual-oracle distribution with verified-contact rows, manual-lookup rows, and no unsupported contact marked ready. | Proven in saved R09L, not fresh production. | R09L: 10 ready-with-contact, 7 manual-lookup, zero unsupported CRM-ready rows. |
+| April New Mexico school-district IT replay returns the manual-oracle distribution as categorized rows: verified-contact rows where public evidence supports them, manual-lookup rows where direct contact is missing, and no unsupported contact marked ready. | Proven in saved R09L, not fresh production. | R09L: 10 ready-with-contact, 7 manual-lookup, zero unsupported CRM-ready rows. |
 | Broad Scout/Full benchmarks return at least 50 categorized candidates where market supports it, with high-trust rows separated from other tiers. | Not proven. | R13 fixture has 51 categorized rows, but broad live consistency is not proven. |
 | At least 50% sampled returned person rows are right persona and source-backed. | Not proven. | R15 did not have fresh sampling evidence across the required suite. |
 | Contact status uses verified/deduced/missing/failed/unsupported; no unsupported `Found` emails. | Partially proven. | R09L/R13 artifacts preserve statuses, but no fresh full suite sampling. |

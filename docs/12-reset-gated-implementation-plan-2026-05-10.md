@@ -5,10 +5,10 @@
 **Integration branch:** `main`.
 **Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
-**Current reset gate:** RG6 - Dogfood / Kill Decision. R15 Prompt A is implemented pending Prompt B QA on `feat/reset-r15-dogfood-decision-packet`; product remains red because the R15 packet records a hold/no-dogfood recommendation unless Prompt B or a later Prompt C audit adds fresh evidence.
-**Next Prompt A feature:** None. R15 is implemented pending QA; do not start public SaaS/account/billing work or mark yellow/green without a reviewed RG6 decision.
-**Current Prompt B handoff:** QA `feat/reset-r15-dogfood-decision-packet`. Confirm the R15 packet is docs/report-only, maps every northstar red/yellow/green criterion line by line, preserves the red product gate, and does not claim fresh production proof or Thomas/Lee dogfood readiness.
-**Current Prompt C handoff:** Blocked until R15 passes Prompt B and merges to `main`.
+**Current reset gate:** RG6 - Dogfood / Kill Decision. R15 Prompt B passed QA on `feat/reset-r15-dogfood-decision-packet`; after merge to `main`, RG6 is ready for Prompt C audit/acceptance of the red-hold recommendation.
+**Next Prompt A feature:** None. R15 is the last RG6 feature; do not start public SaaS/account/billing work or mark yellow/green without a reviewed RG6 decision.
+**Current Prompt B handoff:** Complete for R15; QA report is `.gstack/qa-reports/qa-report-r15-dogfood-decision-2026-05-22.md`.
+**Current Prompt C handoff:** Audit RG6 from `main` after R15 is merged. Confirm the R15 packet keeps the product red/hold, evaluates northstar red/yellow/green criteria line by line, and does not unlock Thomas/Lee dogfood, public launch, accounts, billing, or yellow/green claims without fresh evidence.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -252,7 +252,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R14A | Image overhaul and approved brand asset cleanup | merged_to_mainline | `feat/reset-r14a-image-overhaul-brand-cleanup` | browser + visual |
 | R14B | UI/UX consistency pass | merged_to_mainline | `feat/reset-r14b-ui-ux-consistency-pass` | browser + screenshots |
 | R14C | Deployment readiness and operator-use smoke | merged_to_mainline | `feat/reset-r14c-deployment-readiness-smoke` | deployment + API/web smoke |
-| R15 | Internal correction review and dogfood decision packet | implemented_pending_qa | `feat/reset-r15-dogfood-decision-packet` | docs/report QA |
+| R15 | Internal correction review and dogfood decision packet | merged_to_mainline | `feat/reset-r15-dogfood-decision-packet` | docs/report QA |
 
 ## RG0 - W5 Hold And Control Reset
 
@@ -1311,6 +1311,14 @@ R15 Prompt A result:
 - Decision packet recommendation: `hold`; keep product gate red.
 - Evidence summary: RG5 proves export/persistence mechanics; R09L proves the April New Mexico source-assisted workbook shape; R13 saved a 51-row export with only 5 `READY` / `usable_candidate=yes` rows; R14C proves local mocked query-to-export mechanics; fresh production endpoint proof, live production query-to-export/DB readback, broad Thomas/Lee prompt consistency, sampled precision, privacy-sensitive blocking, and operator-minute evidence remain missing.
 - Queue consequence: Prompt B should QA the R15 packet on `feat/reset-r15-dogfood-decision-packet`. Do not start another Prompt A feature, public SaaS/accounts/billing work, or yellow/green/dogfood claims.
+
+R15 Prompt B result:
+
+- QA report: `.gstack/qa-reports/qa-report-r15-dogfood-decision-2026-05-22.md`.
+- Status: `merged_to_mainline` after merge to `main`.
+- Prompt B verified R15 is docs/report-only, `git diff --check` passes, the packet maps all 8 red / 8 yellow / 8 green northstar criteria, the denied production probe remains documented as missing evidence and was not retried, and the packet does not claim yellow, green, public launch, Thomas/Lee dogfood readiness, or fresh production proof.
+- Browser QA note: because R15 is docs-only, Prompt B rendered the decision packet in a browser and captured desktop/mobile screenshots under `.gstack/qa-reports/screenshots/r15-dogfood-decision-2026-05-22/` with no console errors.
+- Queue consequence: RG6 is ready for Prompt C audit/acceptance from `main`. Keep product gate red and do not start downstream public SaaS/account/billing/yellow/green/dogfood work unless Prompt C records a new evidence-backed decision.
 
 ## Status Rules
 

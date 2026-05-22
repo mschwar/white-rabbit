@@ -1,16 +1,16 @@
 # STATUS
 
-**Last updated:** 2026-05-22 by Codex r15-prompt-a
+**Last updated:** 2026-05-22 by Codex r15-prompt-b
 **Branch:** feat/reset-r15-dogfood-decision-packet
-**Current sprint:** Matt moved reset execution to `main` on 2026-05-12 after the operator-use promotion and Fly API deploy. R13 sales-first CSV export, R14 persistence/readback, R14A brand cleanup, R14B UI/UX consistency, and R14C deployment readiness/operator-use smoke are merged to `main`. RG5 Prompt C advanced on `audit/reset-rg5-export-persistence` with report `audits/gates/reset-2026-05-10/rg5-export-persistence.md`. R15 Prompt A is implemented pending Prompt B QA on `feat/reset-r15-dogfood-decision-packet`; the R15 packet recommends RG6 hold and product red because fresh production endpoint proof, live production query-to-export/DB readback, broad Thomas/Lee prompt consistency, sampled precision, privacy-sensitive blocking, and operator-minute evidence remain missing.
+**Current sprint:** Matt moved reset execution to `main` on 2026-05-12 after the operator-use promotion and Fly API deploy. R13 sales-first CSV export, R14 persistence/readback, R14A brand cleanup, R14B UI/UX consistency, and R14C deployment readiness/operator-use smoke are merged to `main`. RG5 Prompt C advanced on `audit/reset-rg5-export-persistence` with report `audits/gates/reset-2026-05-10/rg5-export-persistence.md`. R15 Prompt B passed QA on `feat/reset-r15-dogfood-decision-packet`; the R15 packet recommends RG6 hold and product red because fresh production endpoint proof, live production query-to-export/DB readback, broad Thomas/Lee prompt consistency, sampled precision, privacy-sensitive blocking, and operator-minute evidence remain missing.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Historical brand draft note:** The May 10 generated rabbit/lens/rabbit-mark rasters are superseded for production app identity. R14A deletes those generated app assets, keeps the rabbit/icon problem quarantined, and uses only the approved design-pack favicon/touch/manifest/social assets plus wordmark-first in-app identity.
 
-**Next pointer:** Prompt B should QA `R15 - Internal correction review and dogfood decision packet` on `feat/reset-r15-dogfood-decision-packet`. Confirm the packet evaluates `docs/00-product-northstar.md` red/yellow/green criteria line by line, keeps the product red, and does not claim fresh production proof, yellow/green, public launch, or Thomas/Lee dogfood readiness.
+**Next pointer:** Prompt C should audit `RG6 - Dogfood / Kill Decision` from `main` after R15 merges. Confirm R15 is merged, decide whether to accept the red-hold/no-dogfood recommendation, and keep public SaaS/account/billing work plus yellow/green and Thomas/Lee dogfood claims blocked unless fresh evidence satisfies `docs/00-product-northstar.md` line by line.
 
-**Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It now names Prompt B/R15 on `feat/reset-r15-dogfood-decision-packet`; it must agree with any Prompt A/B/C request before an agent edits files.
+**Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It now names Prompt C/RG6 after R15 Prompt B QA; it must agree with any Prompt A/B/C request before an agent edits files.
 
 **Design direction handoff:** `DESIGN.md` is now the RG4 visual direction authority. The approved refreshed RG4 mockup/design preflight lives under `docs/mockups/rg4-refreshed-preflight-2026-05-12/`, with six rendered screens and README notes. Production UI work must use this artifact as the approved visual/product direction unless Matt approves a later change.
 
@@ -28,13 +28,13 @@
 
 **Latest operator feedback:** On 2026-05-10, Matt reported that Lee and Thomas need Scout/Full to return more than 10 categorized results for broad targets because 3-4 rows provide no sales value. Matt then clarified that 10-25 is minimum escape velocity, not the ideal end state. The current direction is live-demo-safe high-volume transparent tiering: broad vertical + geography prompts should surface 50-500+ categorized candidates where the market supports it, while preserving a strict ready tier and explaining every non-actionable row.
 
-**Next feature pointer:** R15 is implemented pending Prompt B QA. RG6/R15 records a red-hold/no-dogfood recommendation before any yellow/green or Thomas/Lee dogfood claim can be reconsidered.
+**Next feature pointer:** R15 Prompt B QA passed. RG6 is ready for Prompt C audit/acceptance after R15 merges to `main`; RG6/R15 records a red-hold/no-dogfood recommendation before any yellow/green or Thomas/Lee dogfood claim can be reconsidered.
 
 **Kickoff workflow:** Use only the reusable Prompt A/B/C loop in `docs/12-reset-gated-implementation-plan-2026-05-10.md`: Prompt A resolves and implements the single ready feature from `main`, Prompt B resolves and QA/merges the single feature branch waiting for QA back to `main`, and Prompt C resolves the current gate only after all features in that gate have merged. Prompt B may unlock the next feature inside the same in-progress gate after QA passes; Prompt C is the only prompt that can unlock the next gate. Do not use hard-coded R00/RG0 prompts from older chat turns or from stale docs. Do not resolve queue state from `rebuild/validated-leads-loop`, an unmerged feature branch, or an audit branch. `docs/reset-current-assignment.json` must match before any agent edits files.
 
 **Final product mockup gate:** Approved. `DESIGN.md` is the RG4 visual direction authority, while `docs/mockups/final-product-2026-05-10/index.html` remains product-structure reference only. The approved artifact is `docs/mockups/rg4-refreshed-preflight-2026-05-12/index.html` plus screenshots under `docs/mockups/rg4-refreshed-preflight-2026-05-12/screenshots/`.
 
-**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, R09H, R09I, R09J, R09K, R09L, R10, R11, R12, R13, R14, R14A, R14B, and R14C are merged into the promoted mainline. RG4 and RG5 Prompt C audits advanced. R15 Prompt A is implemented pending Prompt B QA; export dogfood and yellow/green claims remain blocked because the R15 packet recommends RG6 hold/product red.
+**Current feature branch QA status:** R07, R08, R09, R09A, R09B, R09C, R09D, R09E, R09F, R09G, R09H, R09I, R09J, R09K, R09L, R10, R11, R12, R13, R14, R14A, R14B, and R14C are merged into the promoted mainline. RG4 and RG5 Prompt C audits advanced. R15 Prompt B QA passed and is ready to merge; export dogfood and yellow/green claims remain blocked because the R15 packet recommends RG6 hold/product red.
 
 **Latest historical orchestrator review:** `.gstack/qa-reports/orchestrator-review-w1-f04-2026-05-10.md` accepted the W1 gate and F04 merge after rerunning W1/F04 verification. It also records the root cause of the earlier gate bypass: the old gate docs required reports but did not require an orchestrator acceptance checkpoint before agents unlocked downstream waves. Current reset advancement is governed by ADR-014 and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
@@ -79,15 +79,17 @@ Prior accepted gates:
 
 Feature: R15 - Internal correction review and dogfood decision packet
 Branch: `feat/reset-r15-dogfood-decision-packet`
-Status: `implemented_pending_qa`
+Status: `merged_to_mainline` after Prompt B merge
 Report: `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md`
 Raw evidence: `audits/raw/reset-2026-05-10/rg6/r15-evidence-summary.md`
+Prompt B QA report: `.gstack/qa-reports/qa-report-r15-dogfood-decision-2026-05-22.md`
+Screenshots: `.gstack/qa-reports/screenshots/r15-dogfood-decision-2026-05-22/01-r15-decision-render.png`; `.gstack/qa-reports/screenshots/r15-dogfood-decision-2026-05-22/02-r15-decision-mobile-render.png`
 Why it exists: RG6 needed a decision packet to decide whether the reset earns Matt-only yellow evaluation, Thomas/Lee dogfood, continued red hold, or kill/manual-concierge fallback.
-What changed: Added the RG6/R15 dogfood decision packet and raw evidence summary; updated `STATUS.md`, `docs/12-reset-gated-implementation-plan-2026-05-10.md`, and `docs/reset-current-assignment.json` for Prompt B QA handoff.
+What changed: Prompt B QA tightened two northstar criterion labels in the R15 packet, added QA/browser evidence, and updated `STATUS.md`, `docs/12-reset-gated-implementation-plan-2026-05-10.md`, and `docs/reset-current-assignment.json` for Prompt C handoff.
 Decision packet recommendation: Hold and keep product red. Do not mark yellow, green, public launch, or Thomas/Lee dogfood readiness.
 Evidence summary: RG5 proves export/persistence mechanics; R09L proves the April New Mexico source-assisted workbook shape; R13 saved a 51-row export with only 5 `READY` / `usable_candidate=yes` rows; R14C proves local mocked query-to-export mechanics; fresh production endpoint proof, live production query-to-export/DB readback, broad Thomas/Lee prompt consistency, sampled precision, privacy-sensitive blocking, and operator-minute evidence remain missing.
-Verification: `git diff --check` passed. No browser QA was required because R15 is docs/report-only and no product code changed.
-Next pointer: Prompt B should QA `feat/reset-r15-dogfood-decision-packet`; keep public SaaS/account/billing work and yellow/green claims blocked.
+Verification: `git diff --check` passed; R15 maps all 8 red / 8 yellow / 8 green northstar criteria; browser-render screenshots were captured with no console errors. Product build timed out in this shell, but no product code changed.
+Next pointer: Prompt C should audit RG6 from `main`; keep public SaaS/account/billing work and yellow/green/Thomas-Lee dogfood claims blocked unless fresh evidence satisfies the northstar.
 Open questions: RG6 needs an approved environment for fresh production endpoint/query/export/DB proof and a timed unassisted operator run before any dogfood upgrade.
 
 Previous handoff:
