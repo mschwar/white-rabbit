@@ -5,10 +5,10 @@
 **Integration branch:** `main`.
 **Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
-**Current reset gate:** RG6 - Dogfood / Kill Decision. RG5 advanced on `audit/reset-rg5-export-persistence`; product remains red until the dogfood/kill decision packet proves a yellow/green gate or records a hold/kill decision.
-**Next Prompt A feature:** R15 - Internal correction review and dogfood decision packet on `feat/reset-r15-dogfood-decision-packet`. R13-R14C are merged to `main` and RG5 Prompt C advanced; do not start public SaaS/account/billing work or mark yellow/green without the RG6 decision packet.
-**Current Prompt B handoff:** Completed. R14C passed Prompt B QA and merged to `main` on 2026-05-19.
-**Current Prompt C handoff:** Completed. RG5 advanced on 2026-05-22 via `audits/gates/reset-2026-05-10/rg5-export-persistence.md`; Prompt A should implement R15 next and keep product gate red until RG6 records a decision.
+**Current reset gate:** RG6 - Dogfood / Kill Decision. R15 Prompt A is implemented pending Prompt B QA on `feat/reset-r15-dogfood-decision-packet`; product remains red because the R15 packet records a hold/no-dogfood recommendation unless Prompt B or a later Prompt C audit adds fresh evidence.
+**Next Prompt A feature:** None. R15 is implemented pending QA; do not start public SaaS/account/billing work or mark yellow/green without a reviewed RG6 decision.
+**Current Prompt B handoff:** QA `feat/reset-r15-dogfood-decision-packet`. Confirm the R15 packet is docs/report-only, maps every northstar red/yellow/green criterion line by line, preserves the red product gate, and does not claim fresh production proof or Thomas/Lee dogfood readiness.
+**Current Prompt C handoff:** Blocked until R15 passes Prompt B and merges to `main`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -252,7 +252,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R14A | Image overhaul and approved brand asset cleanup | merged_to_mainline | `feat/reset-r14a-image-overhaul-brand-cleanup` | browser + visual |
 | R14B | UI/UX consistency pass | merged_to_mainline | `feat/reset-r14b-ui-ux-consistency-pass` | browser + screenshots |
 | R14C | Deployment readiness and operator-use smoke | merged_to_mainline | `feat/reset-r14c-deployment-readiness-smoke` | deployment + API/web smoke |
-| R15 | Internal correction review and dogfood decision packet | ready | `feat/reset-r15-dogfood-decision-packet` | browser + docs |
+| R15 | Internal correction review and dogfood decision packet | implemented_pending_qa | `feat/reset-r15-dogfood-decision-packet` | docs/report QA |
 
 ## RG0 - W5 Hold And Control Reset
 
@@ -1301,6 +1301,16 @@ Advance criteria:
 - Yellow only if Matt can evaluate with benchmark evidence and sales-first export.
 - Green only if Thomas/Lee can dogfood without re-researching most rows.
 - Otherwise hold or kill.
+
+R15 Prompt A result:
+
+- Branch: `feat/reset-r15-dogfood-decision-packet`.
+- Status: `implemented_pending_qa`.
+- Report: `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md`.
+- Raw evidence summary: `audits/raw/reset-2026-05-10/rg6/r15-evidence-summary.md`.
+- Decision packet recommendation: `hold`; keep product gate red.
+- Evidence summary: RG5 proves export/persistence mechanics; R09L proves the April New Mexico source-assisted workbook shape; R13 saved a 51-row export with only 5 `READY` / `usable_candidate=yes` rows; R14C proves local mocked query-to-export mechanics; fresh production endpoint proof, live production query-to-export/DB readback, broad Thomas/Lee prompt consistency, sampled precision, privacy-sensitive blocking, and operator-minute evidence remain missing.
+- Queue consequence: Prompt B should QA the R15 packet on `feat/reset-r15-dogfood-decision-packet`. Do not start another Prompt A feature, public SaaS/accounts/billing work, or yellow/green/dogfood claims.
 
 ## Status Rules
 
