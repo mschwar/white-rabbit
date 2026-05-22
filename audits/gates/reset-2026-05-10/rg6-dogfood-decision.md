@@ -1,10 +1,11 @@
 # Reset Gate Review - RG6 Dogfood / Kill Decision
 
-**Branch:** `feat/reset-r15-dogfood-decision-packet`
+**Branch:** `audit/reset-rg6-dogfood-decision`
 **Integration branch:** `main`
 **Date:** 2026-05-22
 **Decision:** hold
 **Current product gate:** red
+**Prompt C result:** accepted R15 red-hold/no-dogfood recommendation after confirming R15 merged to `main` at `6858047` (`docs: qa r15 dogfood decision packet (#31)`).
 
 ## Evidence Used
 
@@ -24,10 +25,14 @@ git status --short --branch && git branch --show-current
 date -u +%Y-%m-%dT%H:%M:%SZ
 # inspected saved R13/R14C/R09L artifacts with Python during Prompt A evidence collection
 # attempted fresh production probe of stable Vercel/Fly endpoints; blocked before execution by environment/user approval
+git fetch origin && git status --short --branch && git branch --show-current && git merge-base --is-ancestor 6858047 origin/main && echo R15_HEAD_IS_ON_ORIGIN_MAIN && git show --stat --oneline --decorate -1 HEAD
+# Prompt C counted northstar launch-gate bullets against this report and inspected R13 CSV counts; output saved to audits/raw/reset-2026-05-10/rg6/prompt-c-verification.txt
 git diff --check
 ```
 
-The fresh production probe returned exactly: `BLOCKED: User denied. Do NOT retry.` No production probe artifact was created, and the denied command was not retried.
+The fresh production probe returned exactly: `BLOCKED: User denied. Do NOT retry.` No production probe artifact was created, and the denied command was not retried. Prompt C did not retry production probing.
+
+Prompt C confirmed R15 is merged to `main`: local `main` and `origin/main` both point at `6858047 docs: qa r15 dogfood decision packet (#31)`, and that commit contains the R15 QA report, screenshots, RG6 report, raw evidence summary, reset-plan update, assignment-lock update, and STATUS update.
 
 ## Live Results
 
@@ -86,7 +91,7 @@ The remaining corrections are still dogfood-blocking:
 | Export lacks validation context. | Cleared for saved R13/RG5 artifacts. | R13/RG5 show sales-first export with validation/run/source context. |
 | Operator UI organizes, beautifies, or scales untrusted data before the single-query loop works. | Still a risk, not a new violation. | UI/export mechanics work with deterministic rows; live data quality remains unproven, so product stays red. |
 
-Conclusion: red cannot be cleared. At least production endpoint proof, broad live prompt consistency, privacy-sensitive blocking, and unassisted operator-minute evidence are missing.
+Conclusion: red cannot be cleared. At least production endpoint proof, broad live prompt consistency, privacy-sensitive blocking, and unassisted operator-minute evidence are missing. Prompt C accepts this red/hold finding because the report maps all 8 red criteria from `docs/00-product-northstar.md` and no fresh evidence was available to clear the unresolved rows.
 
 ### Yellow criteria - Matt-only internal evaluation
 
@@ -101,7 +106,7 @@ Conclusion: red cannot be cleared. At least production endpoint proof, broad liv
 | Operator UI hides recipes, batch, Friday review, scoreboards, sandbox reset, and implementation-detail copy from primary navigation. | Mechanically supported. | RG4/R14B/R14C reports show primary path hides implementation chrome. |
 | Export includes validation-by-field columns. | Proven for saved R13/RG5 artifacts. | R13/RG5 export preserves validation/source/status/run context. |
 
-Conclusion: yellow is not earned. The product should not be marked Matt-only yellow evaluation because benchmark coverage, production proof, and sampled precision evidence are incomplete.
+Conclusion: yellow is not earned. The product should not be marked Matt-only yellow evaluation because benchmark coverage, production proof, and sampled precision evidence are incomplete. Prompt C accepts this finding; no Matt-only yellow evaluation is unlocked.
 
 ### Green criteria - Thomas/Lee operator dogfood
 
@@ -116,7 +121,7 @@ Conclusion: yellow is not earned. The product should not be marked Matt-only yel
 | Operator minutes per usable lead can be tracked without extra ceremony. | Not proven. | No operator-minute measurement artifact exists. |
 | Thomas can run Arizona benchmark and one simple B2B query without re-researching most rows. | Not proven. | No Thomas unassisted run evidence exists. |
 
-Conclusion: green is not earned. Thomas/Lee dogfood must stay blocked except for the existing Matt-directed red-gate internal-use exception recorded elsewhere.
+Conclusion: green is not earned. Thomas/Lee dogfood must stay blocked except for the existing Matt-directed red-gate internal-use exception recorded elsewhere. Prompt C accepts this finding; no Thomas/Lee dogfood expansion is unlocked.
 
 ## Value Prop Verdict
 
@@ -184,39 +189,8 @@ R15 is report/control-plane work. The stable operator-use deployment line remain
 
 ## Next Prompt A Assignment
 
-None until Prompt B QA reviews this R15 packet and merges it to `main`.
+None.
 
-Prompt B handoff:
+Prompt C accepts the R15 recommendation as the RG6 gate decision: `hold`, product gate `red`. No downstream Prompt A assignment is valid from this branch. Public SaaS, accounts, orgs, billing, yellow/green promotion, and Thomas/Lee dogfood expansion remain blocked until Matt authorizes fresh evidence gathering and a later gate record maps that evidence line by line to `docs/00-product-northstar.md`.
 
-```text
-You are Prompt B for the White Rabbit reset queue.
-
-Work in /Users/mschwar/Documents/white-rabbit. QA `feat/reset-r15-dogfood-decision-packet` against `main`.
-
-First prove current state:
-- fetch origin
-- read AGENTS.md
-- read STATUS.md
-- read docs/reset-current-assignment.json
-- read docs/00-product-northstar.md
-- read docs/12-reset-gated-implementation-plan-2026-05-10.md
-- read audits/gates/reset-2026-05-10/rg5-export-persistence.md
-- read audits/gates/reset-2026-05-10/rg6-dogfood-decision.md
-- run git status --short --branch
-
-Before QA, confirm `docs/reset-current-assignment.json` names Prompt B/R15 on `feat/reset-r15-dogfood-decision-packet`. If it does not, stop without editing, committing, merging, or pushing.
-
-Required QA:
-- confirm R15 is docs/report-only and does not change product code;
-- verify the packet evaluates every red/yellow/green criterion from `docs/00-product-northstar.md` line by line;
-- verify it does not claim yellow, green, Thomas/Lee dogfood readiness, public launch, or fresh production endpoint proof;
-- verify the blocked production probe is documented as missing evidence and was not retried;
-- run `git diff --check`;
-- because R15 is docs-only, no browser QA is required unless Prompt B chooses to capture additional non-destructive evidence in an approved environment.
-
-If QA passes:
-- write a QA report under `.gstack/qa-reports/`;
-- mark R15 `merged_to_mainline` after merge;
-- keep RG6 `gate_hold` / product red unless a separate Prompt C audit with fresh evidence changes it;
-- merge only to `main` and push.
-```
+Matt accepted the `hold` decision state on 2026-05-22. This audit branch may merge to `main` as the accepted RG6 red-hold control record, but that merge does not unlock downstream Prompt A/B/C work.

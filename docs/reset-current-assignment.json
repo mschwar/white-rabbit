@@ -2,27 +2,30 @@
   "version": 1,
   "updated": "2026-05-22",
   "integration_branch": "main",
-  "current_prompt": "C",
+  "current_prompt": "none",
   "current_feature_id": "R15",
   "current_feature_name": "Internal correction review and dogfood decision packet",
   "current_feature_status": "merged_to_mainline",
   "current_feature_branch": "feat/reset-r15-dogfood-decision-packet",
   "current_gate": "RG6 - Dogfood / Kill Decision",
-  "valid_next_action": "Prompt C should audit RG6 from main after R15 Prompt B merge. Confirm R15 is merged, evaluate whether to accept the hold/red recommendation, and do not unlock downstream public SaaS, accounts, orgs, billing, yellow/green, or Thomas/Lee dogfood without fresh evidence mapped line by line to docs/00-product-northstar.md.",
+  "current_gate_status": "gate_hold",
+  "current_audit_branch": "audit/reset-rg6-dogfood-decision",
+  "valid_next_action": "No downstream Prompt A/B/C assignment is valid from this lock. RG6 Prompt C accepted the R15 hold/product-red recommendation after confirming R15 merged to main, and Matt accepted the held decision state on 2026-05-22. Await explicit authorization for fresh evidence gathering before any further reset work.",
   "invalid_next_actions": [
-    "Start another Prompt A feature before RG6 Prompt C records a decision",
+    "Start another Prompt A feature before Matt explicitly authorizes fresh RG6 evidence gathering or revises the hold state",
     "Start public SaaS, accounts, orgs, billing, or external self-serve work",
-    "Mark the product yellow or green without reviewed RG6 evidence mapped line by line to docs/00-product-northstar.md",
+    "Mark the product yellow or green without fresh reviewed RG6 evidence mapped line by line to docs/00-product-northstar.md",
     "Claim Thomas/Lee dogfood readiness or public launch from RG5 export/persistence or R15 red-hold evidence alone",
     "Retry the previously denied production curl/probe without explicit new user authorization",
     "Deploy or promote production beyond evidence gathering unless Matt explicitly authorizes it",
-    "Resolve queue state from rebuild/validated-leads-loop, an unmerged feature branch, or an audit branch instead of main plus this assignment lock"
+    "Resolve queue state from rebuild/validated-leads-loop, an unmerged feature branch, or a historical assignment instead of main plus this assignment lock"
   ],
   "blocked_features": [],
   "notes": [
-    "R13 through R14C are merged to main.",
+    "R13 through R15 are merged to main.",
     "RG5 advanced on 2026-05-22 via audits/gates/reset-2026-05-10/rg5-export-persistence.md.",
-    "R15 Prompt B passed QA and should be merged to main; the packet remains a hold/product-red recommendation.",
-    "R15 recommends hold / product red because fresh production endpoint proof, live production query-to-export/DB readback, broad Thomas/Lee prompt consistency, sampled precision, privacy-sensitive blocking, and operator-minute evidence remain missing."
+    "RG6 Prompt C accepted hold/product-red on audit/reset-rg6-dogfood-decision after confirming main/origin main at 6858047 docs: qa r15 dogfood decision packet (#31).",
+    "R15/RG6 remains hold/product red because fresh production endpoint proof, live production query-to-export/DB readback, broad Thomas/Lee prompt consistency, sampled precision, privacy-sensitive blocking, and operator-minute evidence remain missing.",
+    "Matt accepted the held decision state on 2026-05-22, so the audit branch may merge to main as the accepted RG6 red-hold control record; no downstream feature work is unlocked by that merge."
   ]
 }

@@ -1,0 +1,5 @@
+RG6 Prompt C verification summary
+northstar/report row counts: {"Green - Thomas/Lee Operator Dogfood": 8, "RG6 Green criteria - Thomas/Lee operator dogfood": 8, "RG6 Red criteria": 8, "RG6 Yellow criteria - Matt-only internal evaluation": 8, "Red - Do Not Ship Or Dogfood": 8, "Yellow - Matt-Only Internal Evaluation": 8}
+r13 csv counts: {"candidate_category": {"failed": 3, "not_found": 8, "organization_only": 15, "person_lead": 25}, "operator_label": {"NOT FOUND": 8, "ORG-ONLY": 15, "READY": 5, "REVIEW": 23}, "r13_rows": 51, "usable_candidate": {"no": 46, "yes": 5}}
+git status before docs edits:
+## audit/reset-rg6-dogfood-decision
