@@ -1,0 +1,8 @@
+## web targeted tests
+2026-05-22T16:27:36Z
+
+> web@0.1.0 test
+> vitest run --run src/lib/__tests__/full-export.test.ts src/components/__tests__/scout-workspace.test.tsx src/app/api/runs/[run_id]/leads/route.test.ts
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.5 [39m[90m/Users/mschwar/Documents/white-rabbit/apps/web[39m

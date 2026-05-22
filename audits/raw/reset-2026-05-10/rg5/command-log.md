@@ -1,0 +1,39 @@
+# RG5 verification command log
+
+Generated: 2026-05-22T16:27:30Z
+
+## git status
+## audit/reset-rg5-export-persistence
+?? audits/raw/reset-2026-05-10/rg5/
+
+## current assignment
+{
+  "version": 1,
+  "updated": "2026-05-19",
+  "integration_branch": "main",
+  "current_prompt": "C",
+  "current_feature_id": null,
+  "current_feature_name": null,
+  "current_feature_status": null,
+  "current_feature_branch": null,
+  "current_gate": "RG5 - Sales-First Export And Persistence",
+  "valid_next_action": "Prompt C should audit RG5 using audits/gates/reset-2026-05-10/rg5-export-persistence.md now that R13-R14C are merged to main. Keep RG6, dogfood, R15, public SaaS, and adjacent backend/core/export/persistence logic changes blocked until RG5 records a decision.",
+  "invalid_next_actions": [
+    "Start a new Prompt A feature before RG5 Prompt C records a gate decision",
+    "Start RG6, dogfood, R15, public SaaS, accounts, orgs, or billing work",
+    "Backend/API/core/search/export/persistence/source-assisted compiler/benchmark work outside the RG5 gate audit",
+    "Any deployment promotion beyond the documented R14C smoke unless Matt explicitly authorizes it"
+  ],
+  "blocked_features": [
+    "R15"
+  ],
+  "notes": [
+    "R13 passed Prompt B QA and remains merged on main.",
+    "R14 passed Prompt B QA on feat/reset-r14-persistence-quality-tieout and is merged to main.",
+    "R14A passed Prompt B QA and merged to main.",
+    "R14B passed Prompt B QA and merged to main.",
+    "R14C passed Prompt B QA on 2026-05-19 and merged to main.",
+    "The next queue action is RG5 Prompt C, not another same-gate feature branch.",
+    "Queue truth is main plus this assignment lock, not rebuild/validated-leads-loop and not unmerged feature or audit branch docs."
+  ]
+}
