@@ -5,10 +5,10 @@
 **Integration branch:** `main`.
 **Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
-**Current reset gate:** RG6 - Dogfood / Kill Decision. R15 Prompt B passed QA on `feat/reset-r15-dogfood-decision-packet`; after merge to `main`, RG6 is ready for Prompt C audit/acceptance of the red-hold recommendation.
-**Next Prompt A feature:** None. R15 is the last RG6 feature; do not start public SaaS/account/billing work or mark yellow/green without a reviewed RG6 decision.
-**Current Prompt B handoff:** Complete for R15; QA report is `.gstack/qa-reports/qa-report-r15-dogfood-decision-2026-05-22.md`.
-**Current Prompt C handoff:** Audit RG6 from `main` after R15 is merged. Confirm the R15 packet keeps the product red/hold, evaluates northstar red/yellow/green criteria line by line, and does not unlock Thomas/Lee dogfood, public launch, accounts, billing, or yellow/green claims without fresh evidence.
+**Current reset gate:** RG6 - Dogfood / Kill Decision. Prompt C accepted the R15 red-hold recommendation on `audit/reset-rg6-dogfood-decision` after confirming R15 merged to `main` at `6858047`.
+**Next Prompt A feature:** None. RG6 is held/product-red; do not start public SaaS/account/billing work or mark yellow/green without a future reviewed RG6 decision backed by fresh evidence.
+**Current Prompt B handoff:** None. R15 Prompt B is complete and merged to `main`.
+**Current Prompt C handoff:** Complete on `audit/reset-rg6-dogfood-decision`; hold branches do not merge to `main` unless Matt explicitly accepts the decision state afterward.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -216,7 +216,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG3 | Validation, Conflict, And Gate Semantics | R07-R09L | gate_advanced | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
 | RG4 | Sales-First Operator UI | R10-R12 | gate_advanced | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
 | RG5 | Sales-First Export And Persistence | R13-R14C | gate_advanced | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
-| RG6 | Dogfood / Kill Decision | R15 | in_progress | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md` |
+| RG6 | Dogfood / Kill Decision | R15 | gate_hold | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md` |
 
 ## Reset Feature Table
 
@@ -1318,7 +1318,16 @@ R15 Prompt B result:
 - Status: `merged_to_mainline` after merge to `main`.
 - Prompt B verified R15 is docs/report-only, `git diff --check` passes, the packet maps all 8 red / 8 yellow / 8 green northstar criteria, the denied production probe remains documented as missing evidence and was not retried, and the packet does not claim yellow, green, public launch, Thomas/Lee dogfood readiness, or fresh production proof.
 - Browser QA note: because R15 is docs-only, Prompt B rendered the decision packet in a browser and captured desktop/mobile screenshots under `.gstack/qa-reports/screenshots/r15-dogfood-decision-2026-05-22/` with no console errors.
-- Queue consequence: RG6 is ready for Prompt C audit/acceptance from `main`. Keep product gate red and do not start downstream public SaaS/account/billing/yellow/green/dogfood work unless Prompt C records a new evidence-backed decision.
+
+R15 Prompt C result:
+
+- Branch: `audit/reset-rg6-dogfood-decision`.
+- Decision: `hold`.
+- Product gate: `red`.
+- Prompt C confirmed R15 is merged to `main` at `6858047 docs: qa r15 dogfood decision packet (#31)`.
+- Prompt C accepted the R15 packet's red-hold/no-dogfood recommendation because it maps all 8 red / 8 yellow / 8 green northstar criteria and the unresolved rows still lack fresh production endpoint proof, production query-to-export/DB readback, broad Thomas/Lee prompt consistency, sampled precision, privacy-sensitive blocking, and unassisted operator-minute evidence.
+- Queue consequence: no next Prompt A assignment. Public SaaS, accounts, orgs, billing, yellow/green promotion, and Thomas/Lee dogfood expansion remain blocked unless a future approved evidence run satisfies `docs/00-product-northstar.md` line by line.
+- Merge consequence: because the decision is `hold`, do not merge this audit branch to `main` unless Matt explicitly accepts this held decision state afterward.
 
 ## Status Rules
 
