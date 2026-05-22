@@ -5,7 +5,7 @@
   "current_prompt": "none",
   "current_feature_id": "RG6-PROD-PLUMBING-REMEDIATION",
   "current_feature_name": "Production readback, source-assisted proof, and readiness remediation",
-  "current_feature_status": "implemented_pending_production_recheck",
+  "current_feature_status": "merged_deployed_pending_production_recheck",
   "current_feature_branch": "fix/prod-readback-source-proof-readiness",
   "current_gate": "RG6 - Dogfood / Kill Decision",
   "current_gate_status": "gate_hold",
