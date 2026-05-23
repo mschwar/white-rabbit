@@ -73,8 +73,8 @@ load_dotenv()
 INTERNAL_API_TOKEN_HEADER = "x-white-rabbit-internal-token"
 INTERNAL_API_TOKEN_ENV = "WR_API_INTERNAL_TOKEN"
 DEFAULT_MODEL = "gpt-4o-mini"
-READINESS_TIMEOUT_SECONDS = 2.0
-READINESS_DEPENDENCY_TIMEOUT_SECONDS = 1.0
+READINESS_TIMEOUT_SECONDS = 5.0
+READINESS_DEPENDENCY_TIMEOUT_SECONDS = 3.0
 _READINESS_EXECUTOR = ThreadPoolExecutor(max_workers=4, thread_name_prefix="white-rabbit-readiness")
 
 
@@ -1075,14 +1075,14 @@ async def run_leads(run_id: UUID, _: ProtectedApiAccess):
         persisted_run_id = run.id
         db_leads = get_leads_for_run(session, run_id)
 
-    rows = [
-        PersistedLeadRowOut(
-            id=lead.id,
-            rank=lead.rank,
-            data=lead.data or {},
-        )
-        for lead in db_leads
-    ]
+        rows = [
+            PersistedLeadRowOut(
+                id=lead.id,
+                rank=lead.rank,
+                data=lead.data or {},
+            )
+            for lead in db_leads
+        ]
     row_data = [row.data for row in rows]
     return PersistedRunLeadsOut(
         run_id=persisted_run_id,
