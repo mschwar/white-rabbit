@@ -33,6 +33,18 @@ def test_query_guardrails_warn_on_vague_lead_query():
     assert any('geography' in suggestion for suggestion in result.suggestions)
 
 
+def test_query_guardrails_allow_rg6_arizona_named_account_remediation_query():
+    result = evaluate_query_guardrails(
+        'Arizona K-12 VoIP and network technology decision makers: '
+        'Mesa Public Schools; Chandler Unified School District; Peoria Unified School District; '
+        'Gilbert Public Schools; Deer Valley Unified School District; Paradise Valley Unified School District'
+    )
+
+    assert result.status == 'clear'
+    assert result.missing_criteria == []
+    assert result.suggestions == []
+
+
 @pytest.mark.parametrize(
     ('query', 'expected_message_snippet'),
     [
