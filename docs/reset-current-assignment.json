@@ -5,12 +5,12 @@
   "current_prompt": "none",
   "current_feature_id": "RG6-GUARDRAIL-FALSE-POSITIVE-REMEDIATION",
   "current_feature_name": "Arizona named-account query guardrail false-positive remediation",
-  "current_feature_status": "implemented_pending_review",
+  "current_feature_status": "merged_to_mainline",
   "current_feature_branch": "fix/rg6-query-guardrail-false-positive",
   "current_gate": "RG6 - Dogfood / Kill Decision",
   "current_gate_status": "gate_hold",
   "current_audit_branch": "audit/reset-rg6-fresh-evidence",
-  "valid_next_action": "Review and, if accepted, merge/deploy the Matt-directed red remediation on fix/rg6-query-guardrail-false-positive. The remediation only clears the RG6 guardrail false-positive where an Arizona named-account K-12 technology decision-maker query was incorrectly marked needs_more_detail. No downstream Prompt A/B/C assignment is valid from this lock; remaining RG6 product-quality/operator-evidence blockers still require Matt-directed red remediation and a later reviewed RG6 gate record.",
+  "valid_next_action": "The Matt-directed guardrail false-positive remediation on fix/rg6-query-guardrail-false-positive is merged to main. Next, deploy/recheck production if needed, then continue only with Matt-directed red remediation for remaining RG6 product-quality/operator-evidence blockers. No downstream Prompt A/B/C assignment is valid from this lock, and no yellow/green or dogfood expansion is unlocked without a later reviewed RG6 gate record.",
   "invalid_next_actions": [
     "Start public SaaS, accounts, orgs, billing, or external self-serve work",
     "Mark the product yellow or green without a later reviewed RG6 gate record clearing the fresh live blockers line by line against docs/00-product-northstar.md",
@@ -29,7 +29,7 @@
     "Fresh Arizona K-12 run returned 13 categorized rows, 0 high_trust_usable, 0 contact quality passes, 0 contacts acquired, estimated cost $0.355318.",
     "Fresh blockers included: web /api/source-assisted-proof returned 404, separate web persisted run readback returned 500, guardrail marked the detailed Arizona named-account query needs_more_detail, and operator-minute evidence remains missing.",
     "The immediate plumbing remediation for readback/source-assisted-proof/readiness is implemented, deployed, and treated as production rechecked/passed per Matt direction.",
-    "This remediation is a narrow code fix for the remaining guardrail false-positive only: Arizona/state-at-start geography and decision-maker role language now count as sufficient detail.",
+    "The guardrail false-positive remediation is merged to main: Arizona/state-at-start geography and decision-maker role language now count as sufficient detail.",
     "No yellow/green, public SaaS, account/org/billing work, or Thomas/Lee dogfood expansion is unlocked."
   ]
 }
