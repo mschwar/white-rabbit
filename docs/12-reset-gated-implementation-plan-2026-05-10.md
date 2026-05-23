@@ -6,7 +6,7 @@
 **Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
 **Current reset gate:** RG6 - Dogfood / Kill Decision. Prompt C accepted the R15 red-hold recommendation; Matt then authorized fresh production evidence on 2026-05-22, and that fresh evidence confirms RG6 remains held/product-red.
-**Next Prompt A feature:** None. RG6 is held/product-red after fresh evidence; the immediate Matt-directed production plumbing remediation for readback/source-assisted-proof/readiness is merged and deployed from `fix/prod-readback-source-proof-readiness`, but direct production recheck remains pending evidence. No public SaaS/account/billing work or yellow/green claim is unlocked without a later reviewed RG6 decision clearing the remaining live blockers.
+**Next Prompt A feature:** None. RG6 is held/product-red after fresh evidence; the immediate Matt-directed production plumbing remediation for readback/source-assisted-proof/readiness is merged, deployed, and treated as production rechecked/passed per Matt direction. No public SaaS/account/billing work or yellow/green claim is unlocked without a later reviewed RG6 decision clearing the remaining live product-quality/operator-evidence blockers.
 **Current Prompt B handoff:** None. R15 Prompt B is complete and merged to `main`.
 **Current Prompt C handoff:** Complete; Matt accepted the held decision state and then authorized fresh RG6 evidence gathering on 2026-05-22. The fresh evidence addendum keeps RG6 in `gate_hold` and does not unlock downstream feature work.
 

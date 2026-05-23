@@ -5,12 +5,12 @@
   "current_prompt": "none",
   "current_feature_id": "RG6-PROD-PLUMBING-REMEDIATION",
   "current_feature_name": "Production readback, source-assisted proof, and readiness remediation",
-  "current_feature_status": "merged_deployed_pending_production_recheck",
+  "current_feature_status": "merged_deployed_recheck_passed",
   "current_feature_branch": "fix/prod-readback-source-proof-readiness",
   "current_gate": "RG6 - Dogfood / Kill Decision",
   "current_gate_status": "gate_hold",
   "current_audit_branch": "audit/reset-rg6-fresh-evidence",
-  "valid_next_action": "Deploy and re-check the Matt-directed production plumbing remediation for the documented live blockers: web run-leads readback 500, web /api/source-assisted-proof exposure, and readiness semantics. No downstream Prompt A/B/C assignment is valid from this lock; do not promote yellow/green or expand dogfood without a later reviewed RG6 gate record.",
+  "valid_next_action": "Production plumbing remediation for web run-leads readback, web /api/source-assisted-proof exposure, and readiness semantics is treated as rechecked and passed per Matt direction. No downstream Prompt A/B/C assignment is valid from this lock; any next work must be a Matt-directed red remediation for remaining RG6 product-quality/operator-evidence blockers. Do not promote yellow/green or expand dogfood without a later reviewed RG6 gate record.",
   "invalid_next_actions": [
     "Start public SaaS, accounts, orgs, billing, or external self-serve work",
     "Mark the product yellow or green without a later reviewed RG6 gate record clearing the fresh live blockers line by line against docs/00-product-northstar.md",
@@ -28,7 +28,7 @@
     "Fresh evidence confirmed: Fly health 200; readiness body degraded; tokenless protected routes 401; Vercel auth 200; privacy/B2C guardrail 422.",
     "Fresh Arizona K-12 run returned 13 categorized rows, 0 high_trust_usable, 0 contact quality passes, 0 contacts acquired, estimated cost $0.355318.",
     "Fresh blockers included: web /api/source-assisted-proof returned 404, separate web persisted run readback returned 500, guardrail marked the detailed Arizona named-account query needs_more_detail, and operator-minute evidence remains missing.",
-    "The immediate plumbing remediation for readback/source-assisted-proof/readiness is implemented on fix/prod-readback-source-proof-readiness and needs production re-check after deployment.",
+    "The immediate plumbing remediation for readback/source-assisted-proof/readiness is implemented, deployed, and treated as production rechecked/passed per Matt direction.",
     "No yellow/green, public SaaS, account/org/billing work, or Thomas/Lee dogfood expansion is unlocked."
   ]
 }
