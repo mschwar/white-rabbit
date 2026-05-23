@@ -35,6 +35,8 @@ _ROLE_HINTS = (
     'technology leader',
     'sales leader',
     'sales leaders',
+    'decision maker',
+    'decision makers',
     'general manager',
     'plant manager',
 )
@@ -94,6 +96,26 @@ _LOCATION_HINTS = (
     ' nevada',
     ' albuquerque',
     ' santa fe',
+)
+
+_LOCATION_NAME_HINTS = (
+    'california',
+    'texas',
+    'new york',
+    'florida',
+    'new mexico',
+    'colorado',
+    'arizona',
+    'oklahoma',
+    'kansas',
+    'utah',
+    'nevada',
+    'albuquerque',
+    'santa fe',
+    'phoenix',
+    'detroit',
+    'washington',
+    'illinois',
 )
 
 _LEAD_INTENT_HINTS = (
@@ -212,6 +234,13 @@ def _contains_any(text: str, phrases: tuple[str, ...]) -> bool:
     return False
 
 
+def _contains_word_phrase(text: str, phrases: tuple[str, ...]) -> bool:
+    for phrase in phrases:
+        if re.search(rf'(?<!\w){re.escape(phrase)}(?!\w)', text):
+            return True
+    return False
+
+
 def _has_role_target(text: str) -> bool:
     return _contains_any(text, _ROLE_HINTS)
 
@@ -221,7 +250,7 @@ def _has_org_target(text: str) -> bool:
 
 
 def _has_location(text: str) -> bool:
-    return _contains_any(text, _LOCATION_HINTS)
+    return _contains_any(text, _LOCATION_HINTS) or _contains_word_phrase(text, _LOCATION_NAME_HINTS)
 
 
 def _has_lead_intent(text: str) -> bool:

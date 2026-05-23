@@ -1,16 +1,16 @@
 # STATUS
 
-**Last updated:** 2026-05-22 by Hermes repo-hygiene / production-plumbing recheck closeout
-**Branch:** main
-**Current sprint:** Matt moved reset execution to `main` on 2026-05-12 after the operator-use promotion and Fly API deploy. R13 sales-first CSV export, R14 persistence/readback, R14A brand cleanup, R14B UI/UX consistency, R14C deployment readiness/operator-use smoke, and R15 dogfood decision packet are merged to `main`. Matt authorized fresh RG6 evidence gathering on 2026-05-22; the fresh production run keeps RG6 held/product-red because Arizona K-12 returned 0 high-trust usable rows / 0 source-backed contacts and operator-minute evidence is still missing. Matt has now directed that the requested production plumbing recheck be treated as passed: readiness is ready, Tavily is ready/config_only, source-assisted proof no longer 404s, and fresh run readback no longer 500s.
+**Last updated:** 2026-05-23 by Hermes RG6 guardrail false-positive remediation
+**Branch:** fix/rg6-query-guardrail-false-positive
+**Current sprint:** Matt moved reset execution to `main` on 2026-05-12 after the operator-use promotion and Fly API deploy. R13 sales-first CSV export, R14 persistence/readback, R14A brand cleanup, R14B UI/UX consistency, R14C deployment readiness/operator-use smoke, and R15 dogfood decision packet are merged to `main`. Matt authorized fresh RG6 evidence gathering on 2026-05-22; the fresh production run keeps RG6 held/product-red because Arizona K-12 returned 0 high-trust usable rows / 0 source-backed contacts and operator-minute evidence is still missing. Matt directed that the requested production plumbing recheck be treated as passed. The cleanest next red remediation is now implemented on `fix/rg6-query-guardrail-false-positive`: the detailed Arizona named-account K-12 technology decision-maker query no longer gets incorrectly marked `needs_more_detail`.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
 
 **Historical brand draft note:** The May 10 generated rabbit/lens/rabbit-mark rasters are superseded for production app identity. R14A deletes those generated app assets, keeps the rabbit/icon problem quarantined, and uses only the approved design-pack favicon/touch/manifest/social assets plus wordmark-first in-app identity.
 
-**Next pointer:** Production plumbing remediation for the fresh RG6 addendum is complete and the requested live recheck is treated as passed. Keep public SaaS/account/org/billing work plus yellow/green and Thomas/Lee dogfood claims blocked. Any next quality work must still be a Matt-directed red remediation scoped to the remaining live RG6 product blockers in `audits/raw/reset-2026-05-10/rg6/fresh-2026-05-22/fresh-evidence-summary.md` and then re-audited against `docs/00-product-northstar.md` line by line.
+**Next pointer:** Review, merge, and deploy `fix/rg6-query-guardrail-false-positive` if accepted. This clears only the guardrail false-positive where a detailed Arizona named-account K-12 technology decision-maker query was marked `needs_more_detail`. Product remains red after this remediation: public SaaS/account/org/billing work plus yellow/green and Thomas/Lee dogfood claims remain blocked. Any next quality work must still be a Matt-directed red remediation scoped to remaining live RG6 product blockers in `audits/raw/reset-2026-05-10/rg6/fresh-2026-05-22/fresh-evidence-summary.md` and then re-audited against `docs/00-product-northstar.md` line by line.
 
-**Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It now records RG6 as held after fresh production evidence; it must agree with any future Prompt A/B/C request before an agent edits files.
+**Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It now records the Matt-directed RG6 guardrail false-positive remediation branch as implemented pending review while RG6 remains held/product-red; it must agree with any future Prompt A/B/C request before an agent edits files.
 
 **Design direction handoff:** `DESIGN.md` is now the RG4 visual direction authority. The approved refreshed RG4 mockup/design preflight lives under `docs/mockups/rg4-refreshed-preflight-2026-05-12/`, with six rendered screens and README notes. Production UI work must use this artifact as the approved visual/product direction unless Matt approves a later change.
 
@@ -76,6 +76,17 @@ Prior accepted gates:
 **Production URL note:** Use the stable production alias `https://white-rabbit-ten.vercel.app/`, not one-off deployment URLs like `https://white-rabbit-7kw7lh6ri-matts-projects-06539e54.vercel.app/`. Vercel deployment URLs are immutable snapshots; `7kw7lh6ri` was created before `WR_API_INTERNAL_TOKEN` existed in Production and can continue to show the old missing-token error even after the alias is fixed.
 
 **Latest handoff:**
+
+Feature: RG6 guardrail false-positive remediation
+Branch: `fix/rg6-query-guardrail-false-positive`
+Status: `implemented_pending_review`
+Why it exists: Fresh RG6 evidence showed the detailed Arizona named-account K-12 VoIP / network technology decision-maker query was allowed to run but still surfaced `query_guardrail.status=needs_more_detail` with missing role/location, even though the query included decision-maker language and Arizona geography.
+What changed: Updated the core query guardrail so `decision maker(s)` counts as a role target and state/city names count as location even when they appear at the start of a query. Added a regression test for the exact RG6 Arizona named-account remediation query.
+Verification: `cd packages/core && PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 .venv/bin/python -m pytest tests/test_query_guardrails.py -q -s` passed (`10 passed`). `cd packages/core && PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 .venv/bin/python -m pytest tests/test_benchmark_suite.py -q` passed (`7 passed`). `git diff --check` passed. API `tests/test_api.py` collection timed out in this backup checkout before running assertions; no API code changed.
+Next pointer: If accepted, merge/deploy this branch, then run a production recheck confirming the Arizona remediation query reports `query_guardrail.status=clear`. Product remains red: this does not clear Arizona lead quality/contact yield, sampled precision, or operator-minute blockers.
+Open questions: Remaining RG6 product blockers are Arizona benchmark quality/contact yield, sampled benchmark precision, and timed unassisted operator run evidence.
+
+Previous handoff:
 
 Feature: RG6 production plumbing remediation
 Branch: `fix/prod-readback-source-proof-readiness`
