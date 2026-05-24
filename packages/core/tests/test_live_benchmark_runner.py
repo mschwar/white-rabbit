@@ -204,6 +204,8 @@ def test_run_live_benchmark_suite_saves_raw_outputs_and_quality_summary(tmp_path
         "extracted_candidates": 4,
         "categorized_rows": 1,
         "person_rows": 1,
+        "persona_supported_rows": 0,
+        "source_supported_rows": 0,
         "high_trust_usable_rows": 1,
         "contact_quality_passes": 1,
         "contact_evidence_candidates_searched": 0,

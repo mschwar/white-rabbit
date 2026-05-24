@@ -18,10 +18,16 @@ def test_compile_query_plan_decomposes_arizona_benchmark_prompt():
     plan = compile_query_plan(LONG_ARIZONA_PROMPT)
 
     assert plan.named_accounts == list(ARIZONA_K12_TARGET_ACCOUNTS)
-    assert len(plan.vendor_queries) == 8
+    assert len(plan.vendor_queries) >= 24
     assert all(len(query) <= SAFE_VENDOR_QUERY_LENGTH for query in plan.vendor_queries)
     assert all("arizona" in query.lower() for query in plan.vendor_queries)
     assert any("voip" in query.lower() for query in plan.vendor_queries)
+    assert any("staff directory" in query.lower() for query in plan.vendor_queries)
+    assert any("technology services" in query.lower() for query in plan.vendor_queries)
+    assert any("director of technology" in query.lower() for query in plan.vendor_queries)
+    for account in ARIZONA_K12_TARGET_ACCOUNTS:
+        account_queries = [query for query in plan.vendor_queries if account.lower() in query.lower()]
+        assert len(account_queries) >= 3
 
 
 def test_compile_query_plan_preserves_simple_query_intent_and_filters():

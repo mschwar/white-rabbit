@@ -1,0 +1,20 @@
+{
+  "baseUrl": "http://127.0.0.1:3010",
+  "scoutPayload": {
+    "query": "Arizona K-12 technology decision makers"
+  },
+  "closePayload": {
+    "operator_minutes": 0.01
+  },
+  "consoleMessages": [
+    "info: %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+    "log: [HMR] connected",
+    "info: %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold",
+    "log: [HMR] connected"
+  ],
+  "screenshots": [
+    "primary-results.png",
+    "evidence-review.png",
+    "export-auto-close.png"
+  ]
+}

@@ -255,6 +255,7 @@ def _empty_quality_counts() -> dict[str, int]:
     return {
         "total_candidates": 0,
         "person_lead_count": 0,
+        "persona_match_count": 0,
         "usable_count": 0,
         "contact_quality_count": 0,
         "source_support_count": 0,
@@ -269,6 +270,8 @@ def _empty_funnel_counts() -> dict[str, int]:
         "extracted_candidates": 0,
         "categorized_rows": 0,
         "person_rows": 0,
+        "persona_supported_rows": 0,
+        "source_supported_rows": 0,
         "high_trust_usable_rows": 0,
         "contact_quality_passes": 0,
         "contact_evidence_candidates_searched": 0,
@@ -300,6 +303,8 @@ def _payload_funnel_counts(
         "extracted_candidates": quality_counts["total_candidates"],
         "categorized_rows": quality_counts["total_candidates"],
         "person_rows": quality_counts["person_lead_count"],
+        "persona_supported_rows": quality_counts["persona_match_count"],
+        "source_supported_rows": quality_counts["source_support_count"],
         "high_trust_usable_rows": quality_counts["usable_count"],
         "contact_quality_passes": quality_counts["contact_quality_count"],
     })
@@ -352,6 +357,7 @@ def _build_observation_from_payload(
         quality_counts = {
             "total_candidates": quality_report.total_candidates,
             "person_lead_count": quality_report.person_lead_count,
+            "persona_match_count": quality_report.persona_match_count,
             "usable_count": quality_report.usable_count,
             "contact_quality_count": quality_report.contact_quality_count,
             "source_support_count": quality_report.source_support_count,

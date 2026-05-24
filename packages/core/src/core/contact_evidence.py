@@ -44,7 +44,26 @@ _CONTACT_SOURCE_TERMS = (
     "board agenda",
     "contact",
     "email",
+    "technology services",
+    "administration",
 )
+_AUTHORITATIVE_SOURCE_TYPES = {
+    "staff_directory",
+    "leadership_team",
+    "department",
+    "contact",
+    "board_agenda_pdf",
+}
+_SOURCE_TYPE_PRIORITY = {
+    "staff_directory": 0,
+    "leadership_team": 1,
+    "department": 2,
+    "contact": 3,
+    "board_agenda_pdf": 4,
+    "about": 5,
+    "news_press": 6,
+    "generic": 7,
+}
 _CONFLICT_TERMS = (
     "former",
     "previously",
@@ -133,6 +152,12 @@ def _source_domain(value: str) -> str:
     return match.group(1) if match else ""
 
 
+def _same_domain(left: str, right: str) -> bool:
+    if not left or not right:
+        return False
+    return left == right or left.endswith(f".{right}") or right.endswith(f".{left}")
+
+
 def _snippet(text: str, needle: str, window: int = 120) -> str:
     lowered = text.lower()
     index = lowered.find(needle.lower())
@@ -217,6 +242,57 @@ def _page_signal(result: Mapping[str, Any], candidate: Lead) -> _PageSignal:
     )
 
 
+def _rank_contact_results(results: Iterable[Mapping[str, Any]]) -> list[Mapping[str, Any]]:
+    return sorted(
+        list(results),
+        key=lambda result: (
+            _SOURCE_TYPE_PRIORITY.get(_detect_page_type(result), 99),
+            0 if any(term in _result_text(result).lower() for term in _CONTACT_SOURCE_TERMS) else 1,
+            -float(_result_value(result, "score") or 0.0),
+        ),
+    )
+
+
+def _candidate_source_domains(candidate: Lead) -> tuple[str, ...]:
+    domains: list[str] = []
+    for value in (
+        candidate.source_url,
+        candidate.validation.source.source_url,
+        candidate.validation.organization.source_url,
+        candidate.validation.title.source_url,
+        candidate.validation.name.source_url,
+    ):
+        domain = _source_domain(value or "")
+        if domain and domain not in domains:
+            domains.append(domain)
+    return tuple(domains)
+
+
+def _source_is_authoritative_for_candidate(result: Mapping[str, Any], candidate: Lead) -> bool:
+    source_type = _detect_page_type(result)
+    result_domain = _source_domain(_result_url(result))
+    if any(_same_domain(result_domain, domain) for domain in _candidate_source_domains(candidate)):
+        return source_type in _AUTHORITATIVE_SOURCE_TYPES or any(
+            term in _result_text(result).lower() for term in _CONTACT_SOURCE_TERMS
+        )
+    return source_type == "board_agenda_pdf" and candidate.organization.lower() in _result_text(result).lower()
+
+
+def _direct_email_is_source_backed(result: Mapping[str, Any], candidate: Lead) -> bool:
+    text = _result_text(result)
+    lowered = text.lower()
+    if candidate.name.lower() not in lowered:
+        return False
+    if candidate.organization.lower() not in lowered and candidate.title.lower() not in lowered:
+        return False
+    return _source_is_authoritative_for_candidate(result, candidate)
+
+
+def _domain_is_source_backed(domain: str, result: Mapping[str, Any], candidate: Lead) -> bool:
+    candidate_domains = _candidate_source_domains(candidate)
+    return any(_same_domain(domain, candidate_domain) for candidate_domain in candidate_domains)
+
+
 def _corroborating_source_count(signals: Iterable[_PageSignal]) -> int:
     urls = {
         signal.source_url
@@ -247,9 +323,9 @@ def _find_direct_email_evidence(
     signal_list = list(signals)
     corroborating_sources = max(1, _corroborating_source_count(signal_list))
     conflicts = _conflicting_signals(signal_list)
-    for result in results:
+    for result in _rank_contact_results(results):
         text = _result_text(result)
-        if not _result_mentions_candidate(text, candidate):
+        if not _result_mentions_candidate(text, candidate) or not _direct_email_is_source_backed(result, candidate):
             continue
         for match in _EMAIL_RE.finditer(text):
             email = match.group(0).lower()
@@ -287,7 +363,7 @@ def _find_explicit_pattern_evidence(
     if conflicts:
         return None
 
-    for result in results:
+    for result in _rank_contact_results(results):
         text = _result_text(result)
         lowered = text.lower()
         if candidate.organization.lower() not in lowered:
@@ -300,6 +376,8 @@ def _find_explicit_pattern_evidence(
         if domain_match is None:
             continue
         domain = domain_match.group(1).lower()
+        if not _domain_is_source_backed(domain, result, candidate):
+            continue
         email = f"{first}.{last}@{domain}"
         return _ContactEvidence(
             status="deduced_with_pattern_evidence",
@@ -340,16 +418,18 @@ def _promising_candidate(candidate: Candidate) -> bool:
 def _contact_queries(candidate: Candidate, original_query: str) -> list[str]:
     queries: list[str]
     if isinstance(candidate, Lead):
-        domain = _source_domain(candidate.source_url)
-        queries = [
+        source_domains = _candidate_source_domains(candidate)
+        queries = []
+        for domain in source_domains:
+            queries.append(f'site:{domain} "{candidate.name}" "{candidate.title}" email contact staff directory')
+            queries.append(f'site:{domain} "{candidate.organization}" technology services leadership email')
+        queries.extend([
             f'"{candidate.name}" "{candidate.organization}" {candidate.title} email contact staff leadership team directory',
             f'"{candidate.organization}" "{candidate.title}" staff leadership team department directory email',
             f'"{candidate.organization}" "{candidate.name}" board agenda minutes pdf',
             f'"{candidate.organization}" email format contact directory first.last',
             f'"{candidate.name}" "{candidate.organization}" news press release',
-        ]
-        if domain:
-            queries.insert(1, f'site:{domain} "{candidate.name}" "{candidate.title}" email contact')
+        ])
     elif isinstance(candidate, OrganizationOnlyCandidate):
         queries = [
             f'"{candidate.organization}" staff leadership team department directory contact email',

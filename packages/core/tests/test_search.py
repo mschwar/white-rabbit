@@ -142,7 +142,7 @@ def test_fetch_search_results_decomposes_long_arizona_prompt_into_bounded_querie
                 }
             ]
         )
-        for index in range(8)
+        for index in range(24)
     ]
 
     long_prompt = (
@@ -174,10 +174,10 @@ def test_fetch_search_results_decomposes_long_arizona_prompt_into_bounded_querie
     results = asyncio.run(search.fetch_search_results(long_prompt, api_key="fake", max_results=8))
 
     assert len(results) == 8
-    assert results.tavily_searches == 8
+    assert results.tavily_searches == 24
     assert len(created_clients) == 1
-    assert created_clients[0].calls == 8
-    assert len(captured_queries) == 8
+    assert created_clients[0].calls == 24
+    assert len(captured_queries) == 24
     assert all(len(query) <= 400 for query in captured_queries)
     for account in ARIZONA_K12_TARGET_ACCOUNTS:
         assert any(account.lower() in query.lower() for query in captured_queries)
