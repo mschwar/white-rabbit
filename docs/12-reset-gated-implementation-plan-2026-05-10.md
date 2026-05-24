@@ -6,9 +6,9 @@
 **Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
 **Current reset gate:** RG6 - Dogfood / Kill Decision. Prompt C accepted the R15 red-hold recommendation; Matt then authorized fresh production evidence on 2026-05-22, and that fresh evidence confirms RG6 remains held/product-red.
-**Next Prompt A feature:** None. The Matt-directed RG6 lead-quality/contact-yield remediation is implemented on `fix/rg6-lead-quality-contact-yield` and must go through Prompt B QA before merge. No public SaaS/account/billing work or yellow/green claim is unlocked without a later reviewed RG6 decision clearing the remaining live product-quality/operator-evidence blockers.
-**Current Prompt B handoff:** QA `fix/rg6-lead-quality-contact-yield`: verify shared READY policy, Arizona K-12 named-account query expansion, official-source contact evidence promotion/blocking, deterministic sampled-precision tooling, primary export auto-close operator-minute capture, browser screenshots, and scope boundaries. If QA passes, merge only to `main`.
-**Current Prompt C handoff:** Blocked until the in-flight RG6 remediation branch passes Prompt B and merges, then a later reviewed RG6 gate record reruns live/sampled/operator evidence line by line against `docs/00-product-northstar.md`.
+**Next Prompt A feature:** None. The Matt-directed RG6 lead-quality/contact-yield remediation passed Prompt B QA and merged to `main`. No public SaaS/account/billing work or yellow/green claim is unlocked without a later reviewed RG6 decision clearing the remaining live product-quality/operator-evidence blockers.
+**Current Prompt B handoff:** Complete. QA report: `.gstack/qa-reports/qa-report-rg6-lead-quality-contact-yield-2026-05-24.md`.
+**Current Prompt C handoff:** Re-audit RG6 from `main` on `audit/reset-rg6-post-remediation`. The audit must rerun live Arizona K-12 production evidence, generate sampled precision from required benchmark outputs, capture a timed no-assistance primary query-to-export operator run, and map results line by line against `docs/00-product-northstar.md`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -253,7 +253,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R14B | UI/UX consistency pass | merged_to_mainline | `feat/reset-r14b-ui-ux-consistency-pass` | browser + screenshots |
 | R14C | Deployment readiness and operator-use smoke | merged_to_mainline | `feat/reset-r14c-deployment-readiness-smoke` | deployment + API/web smoke |
 | R15 | Internal correction review and dogfood decision packet | merged_to_mainline | `feat/reset-r15-dogfood-decision-packet` | docs/report QA |
-| RG6R1 | Lead quality, contact yield, sampled precision, and operator-minute remediation | implemented_pending_qa | `fix/rg6-lead-quality-contact-yield` | core/API/web + browser |
+| RG6R1 | Lead quality, contact yield, sampled precision, and operator-minute remediation | merged_to_mainline | `fix/rg6-lead-quality-contact-yield` | core/API/web + browser |
 
 ## RG0 - W5 Hold And Control Reset
 
@@ -1351,6 +1351,15 @@ RG6R1 lead-quality/contact-yield remediation Prompt A result:
 - Local verification: focused and full `packages/core` suites passed; `apps/api` pytest passed with `WR_API_INTERNAL_TOKEN=test-internal-token`; full web Vitest and `npm run build` passed; Playwright browser QA on local dev with mocked `/api/scout` captured primary results, evidence review, export-ready, and `/api/runs/browser-rg6-run-1/close` with `operator_minutes=0.01`.
 - Artifact note: local browser artifacts were written under ignored `apps/web/test-results/rg6-lead-quality-contact-yield/`; they are QA evidence for this implementation branch only, not production gate evidence.
 - Queue consequence: Prompt B should QA `fix/rg6-lead-quality-contact-yield`. If QA passes, merge only to `main`. This branch does not clear RG6 by itself; a later reviewed RG6 gate record must rerun live Arizona K-12, sampled precision, and timed operator evidence line by line against `docs/00-product-northstar.md`.
+
+RG6R1 Prompt B result:
+
+- QA report: `.gstack/qa-reports/qa-report-rg6-lead-quality-contact-yield-2026-05-24.md`.
+- Status: `merged_to_mainline` after merge to `main`.
+- Prompt B verified the branch scope: shared READY policy, Arizona K-12 named-account query expansion, official-source contact evidence promotion/blocking, deterministic sampled-precision tooling, primary export auto-close operator-minute capture, browser screenshots, and no public SaaS/accounts/orgs/billing, dogfood/yellow/green, or `proxy-lead` scope.
+- Verification passed: `packages/core` full suite (`161 passed, 6 skipped`), `apps/api` suite (`56 passed` with existing datetime warnings), `apps/web` Vitest (`15 files`, `37 tests`), `apps/web` production build, browser QA screenshots for primary results/evidence/export/auto-close, and `git diff --check`.
+- Browser QA artifacts: `.gstack/qa-reports/screenshots/rg6-lead-quality-contact-yield-2026-05-24/`.
+- Queue consequence: Prompt C should re-audit RG6 from `main` on `audit/reset-rg6-post-remediation`. Product remains red until live Arizona K-12, sampled precision, and timed no-assistance operator evidence clear the relevant northstar criteria in a reviewed gate record.
 
 ## Status Rules
 
