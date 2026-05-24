@@ -1,0 +1,7 @@
+{
+  "collected_at": "2026-05-24T01:11:10.193168Z",
+  "password_available_locally": true,
+  "query": "Arizona K-12 VoIP and network technology decision makers: Mesa Public Schools; Chandler Unified School District; Peoria Unified School District; Gilbert Public Schools; Deer Valley Unified School District; Paradise Valley Unified School District",
+  "scope": "RG6 production guardrail false-positive recheck only",
+  "web_base": "https://white-rabbit-ten.vercel.app"
+}

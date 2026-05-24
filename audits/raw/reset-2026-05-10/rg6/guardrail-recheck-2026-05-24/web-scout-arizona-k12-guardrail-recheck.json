@@ -1,0 +1,620 @@
+{
+  "body": {
+    "leads": [
+      {
+        "candidate_category": "person_lead",
+        "confidence": 0.8,
+        "contact_score": 1,
+        "email": "[REDACTED]",
+        "email_status": "verified_found",
+        "evidence_score": 0.8,
+        "explanation": "This lead has a verified name, title, and email address supported by a credible source.",
+        "fit_score": 0.9,
+        "gate_passed": true,
+        "icebreaker": "I appreciate your dedication to creating supportive learning environments at Mesa Public Schools, especially in light of the ongoing focus on integrating new technologies for educational improvement.",
+        "id": "1733ef15-8e5b-4721-9a40-811b2f0cdf94",
+        "name": "Kathy Ray",
+        "organization": "Mesa Public Schools",
+        "primary_filter_reason": "READY: supported person, organization, source, and usable contact cleared the evidence gate.",
+        "source_url": "https://mpsaz.tedk12.com/hire/Admin/JobPostingPrintView.aspx?JobID=23554&Internal=",
+        "tier": "high_trust_usable",
+        "title": "Principal",
+        "validation": {
+          "email": "[REDACTED]",
+          "name": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "...pplications Accepted Start Date 06/27/2024 End Date 08/27/2024 Job Contact Name Kathy Ray Title Principal Email [REDACTED_EMAIL] Phone [REDACTED_PHONE]",
+            "notes": "Direct text support found for name.",
+            "source_url": "https://mpsaz.tedk12.com/hire/Admin/JobPostingPrintView.aspx?JobID=23554&Internal=",
+            "status": "supported"
+          },
+          "organization": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "...{ window.print(); } $(document).ready(function() { //window.print(); }); Print Mesa Public Schools Teacher - Special Education, Intermediate Self Contained LASER/Emotional Disabi...",
+            "notes": "Direct text support found for organization.",
+            "source_url": "https://mpsaz.tedk12.com/hire/Admin/JobPostingPrintView.aspx?JobID=23554&Internal=",
+            "status": "supported"
+          },
+          "phone": "[REDACTED]",
+          "source": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "...pplications Accepted Start Date 06/27/2024 End Date 08/27/2024 Job Contact Name Kathy Ray Title Principal Email [REDACTED_EMAIL] Phone [REDACTED_PHONE]",
+            "notes": "http_status=200 resolved_url=https://mpsaz.tedk12.com/hire/Admin/JobPostingPrintView.aspx?JobID=23554&Internal= matched_fields=name,title,organization,email",
+            "source_url": "https://mpsaz.tedk12.com/hire/Admin/JobPostingPrintView.aspx?JobID=23554&Internal=",
+            "status": "supported"
+          },
+          "title": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "...ID 22053 Description JOB TITLE: Special Education Teacher REPORTS TO: Building Principal Mesa Public Schools is an award-winning district and voted Best Place to Work i...",
+            "notes": "Direct text support found for title.",
+            "source_url": "https://mpsaz.tedk12.com/hire/Admin/JobPostingPrintView.aspx?JobID=23554&Internal=",
+            "status": "supported"
+          }
+        },
+        "why_target": "As the Principal, Kathy Ray plays a pivotal role in decision-making regarding technology implementations in the district's schools."
+      },
+      {
+        "candidate_category": "failed",
+        "explanation": "REVIEW: rejected row; no hidden usable lead is implied. While Dr. Temesi is relevant, there is no direct email or phone listed, preventing contact readiness.",
+        "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Could not safely parse person candidate: Input should be a valid string",
+        "id": "38d79651-b475-4996-bc16-21a4b9941f9c",
+        "organization": "Mesa Public Schools",
+        "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Could not safely parse person candidate: Input should be a valid string",
+        "searched_target": "Mesa Public Schools, K-12 technology decision maker",
+        "source_url": "https://blogs.cisco.com/education/mesa-public-schools-creates-vision-for-the-future",
+        "tier": "failed",
+        "validation": {
+          "email": "[REDACTED]",
+          "name": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "name is not present on the candidate.",
+            "source_url": "https://blogs.cisco.com/education/mesa-public-schools-creates-vision-for-the-future",
+            "status": "missing"
+          },
+          "organization": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "...[sizes=\"auto\" i], [sizes^=\"auto,\" i]) { contain-intrinsic-size: 3000px 1500px } Mesa Public Schools Creates Vision for the Future - Cisco Blogs {\"@context\":\"https://schema.org\",\"@...",
+            "notes": "Direct text support found for organization.",
+            "source_url": "https://blogs.cisco.com/education/mesa-public-schools-creates-vision-for-the-future",
+            "status": "supported"
+          },
+          "phone": "[REDACTED]",
+          "source": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "...[sizes=\"auto\" i], [sizes^=\"auto,\" i]) { contain-intrinsic-size: 3000px 1500px } Mesa Public Schools Creates Vision for the Future - Cisco Blogs {\"@context\":\"https://schema.org\",\"@...",
+            "notes": "http_status=200 resolved_url=https://blogs.cisco.com/education/mesa-public-schools-creates-vision-for-the-future matched_fields=organization",
+            "source_url": "https://blogs.cisco.com/education/mesa-public-schools-creates-vision-for-the-future",
+            "status": "supported"
+          },
+          "title": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "title is not present on the candidate.",
+            "source_url": "https://blogs.cisco.com/education/mesa-public-schools-creates-vision-for-the-future",
+            "status": "missing"
+          }
+        }
+      },
+      {
+        "candidate_category": "organization_only",
+        "explanation": "The organization is found, but no people with relevant roles were identified.",
+        "id": "8bf086bd-135a-4bbe-94e2-ba3cc2f0e636",
+        "organization": "Chandler Unified School District",
+        "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. The organization is found, but no people with relevant roles were identified.",
+        "source_url": "https://www.cusd80.com/",
+        "tier": "organization_only",
+        "validation": {
+          "email": "[REDACTED]",
+          "name": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "name is not present on the candidate.",
+            "source_url": "https://www.cusd80.com/",
+            "status": "missing"
+          },
+          "organization": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "District Administration - Chandler Unified School District Natasha Davis\n\nNatasha Davis  \n Director, Counseling and Social Services\n\nStephanie Howell\n\nStephanie Howell  \n Directo...",
+            "notes": "Organization contact/team source found, but no named person was validated.",
+            "source_url": "https://www.cusd80.com/about-us/administration/district-administration",
+            "status": "supported"
+          },
+          "phone": "[REDACTED]",
+          "source": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "District Administration - Chandler Unified School District Natasha Davis\n\nNatasha Davis  \n Director, Counseling and Social Services\n\nStephanie Howell\n\nStephanie Howell  \n Directo...",
+            "notes": "Targeted contact-evidence pass found an organization-level source only.",
+            "source_url": "https://www.cusd80.com/about-us/administration/district-administration",
+            "status": "supported"
+          },
+          "title": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "title is not present on the candidate.",
+            "source_url": "https://www.cusd80.com/",
+            "status": "missing"
+          }
+        }
+      },
+      {
+        "candidate_category": "person_lead",
+        "confidence": 0.8,
+        "contact_score": 0,
+        "email": "",
+        "email_status": "missing",
+        "evidence_score": 0.5,
+        "explanation": "While Dr. Battle holds a significant position, her absence of contact information hinders outreach potential.",
+        "fit_score": 0.8,
+        "gate_passed": false,
+        "icebreaker": "I admire your commitment to advancing educational initiatives at Chandler Unified School District, especially under current, evolving educational landscapes.",
+        "id": "b7c8668f-dc5b-49d2-a08d-019c64b927aa",
+        "name": "Dr. Anna Battle",
+        "organization": "Chandler Unified School District",
+        "primary_filter_reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+        "source_url": "https://www.cusd80.com/about-us/administration/superintendent-search",
+        "tier": "review",
+        "title": "Deputy Superintendent",
+        "validation": {
+          "email": "[REDACTED]",
+          "name": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "...28, 2026, the Chandler Unified School District (CUSD) Governing Board selected Dr. Anna Battle as the district\u2019s next superintendent following an extensive, community-informe...",
+            "notes": "Direct text support found for name.",
+            "source_url": "https://www.cusd80.com/about-us/administration/superintendent-search",
+            "status": "supported"
+          },
+          "organization": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "Chandler Unified School District Superintendent Search - Chandler Unified School District dataLayer = [{ 'school...",
+            "notes": "Direct text support found for organization.",
+            "source_url": "https://www.cusd80.com/about-us/administration/superintendent-search",
+            "status": "supported"
+          },
+          "phone": "[REDACTED]",
+          "source": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "...28, 2026, the Chandler Unified School District (CUSD) Governing Board selected Dr. Anna Battle as the district\u2019s next superintendent following an extensive, community-informe...",
+            "notes": "http_status=200 resolved_url=https://www.cusd80.com/about-us/administration/superintendent-search matched_fields=name,title,organization",
+            "source_url": "https://www.cusd80.com/about-us/administration/superintendent-search",
+            "status": "supported"
+          },
+          "title": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "...zational excellence, and equitable educational systems. She currently serves as Deputy Superintendent for Roosevelt School District (PK\u20138) in the heart of Phoenix, Arizona, where sh...",
+            "notes": "Direct text support found for title.",
+            "source_url": "https://www.cusd80.com/about-us/administration/superintendent-search",
+            "status": "supported"
+          }
+        },
+        "why_target": "Dr. Battle's role indicates she has influence over K-12 educational strategies, including technology decisions."
+      },
+      {
+        "candidate_category": "failed",
+        "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://www.yourvalley.net/gilbert-independent/stories/gilbert-district-charts-cautious-but-forward-thinking-path-for-classroom-ai,598366",
+        "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://www.yourvalley.net/gilbert-independent/stories/gilbert-district-charts-cautious-but-forward-thinking-path-for-classroom-ai,598366",
+        "id": "9dad0058-6267-41c6-be8f-1aa9ba70c7fb",
+        "organization": "Gilbert Public Schools",
+        "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://www.yourvalley.net/gilbert-independent/stories/gilbert-district-charts-cautious-but-forward-thinking-path-for-classroom-ai,598366",
+        "searched_target": "Gilbert Public Schools",
+        "source_url": "https://www.yourvalley.net/gilbert-independent/stories/gilbert-district-charts-cautious-but-forward-thinking-path-for-classroom-ai,598366",
+        "tier": "failed",
+        "validation": {
+          "email": "[REDACTED]",
+          "name": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "http_status=403 resolved_url=https://www.yourvalley.net/gilbert-independent/stories/gilbert-district-charts-cautious-but-forward-thinking-path-for-classroom-ai,598366",
+            "source_url": "https://www.yourvalley.net/gilbert-independent/stories/gilbert-district-charts-cautious-but-forward-thinking-path-for-classroom-ai,598366",
+            "status": "failed"
+          },
+          "organization": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "http_status=403 resolved_url=https://www.yourvalley.net/gilbert-independent/stories/gilbert-district-charts-cautious-but-forward-thinking-path-for-classroom-ai,598366",
+            "source_url": "https://www.yourvalley.net/gilbert-independent/stories/gilbert-district-charts-cautious-but-forward-thinking-path-for-classroom-ai,598366",
+            "status": "failed"
+          },
+          "phone": "[REDACTED]",
+          "source": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "http_status=403 resolved_url=https://www.yourvalley.net/gilbert-independent/stories/gilbert-district-charts-cautious-but-forward-thinking-path-for-classroom-ai,598366",
+            "source_url": "https://www.yourvalley.net/gilbert-independent/stories/gilbert-district-charts-cautious-but-forward-thinking-path-for-classroom-ai,598366",
+            "status": "failed"
+          },
+          "title": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "http_status=403 resolved_url=https://www.yourvalley.net/gilbert-independent/stories/gilbert-district-charts-cautious-but-forward-thinking-path-for-classroom-ai,598366",
+            "source_url": "https://www.yourvalley.net/gilbert-independent/stories/gilbert-district-charts-cautious-but-forward-thinking-path-for-classroom-ai,598366",
+            "status": "failed"
+          }
+        }
+      },
+      {
+        "candidate_category": "person_lead",
+        "confidence": 0.9,
+        "contact_score": 0.9,
+        "email": "[REDACTED]",
+        "email_status": "verified_found",
+        "evidence_score": 0.5,
+        "explanation": "While Superintendent Finch is highly relevant, the absence of direct contact information complicates outreach efforts.",
+        "fit_score": 0.9,
+        "gate_passed": false,
+        "icebreaker": "I'm impressed by Deer Valley's innovative approaches to educational technology under your guidance, particularly in adapting to current digital needs.",
+        "id": "1ba8daca-191e-44ed-a771-a0eac9b79b7f",
+        "name": "Curtis Finch",
+        "organization": "Deer Valley Unified School District",
+        "primary_filter_reason": "REVIEW: validation signals did not clear the high-trust evidence gate.",
+        "source_url": "https://www.dvusd.org",
+        "tier": "review",
+        "title": "Superintendent",
+        "validation": {
+          "email": "[REDACTED]",
+          "name": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "...- Friday 8 a.m. - 4:30 p.m. Main Phone Line: [REDACTED_PHONE] Superintendent : Dr. Curtis Finch DVUSD Governing Board Join DVUSD Sonoran Foothills Math Teacher Caps Off a Hat...",
+            "notes": "Direct text support found for name.",
+            "source_url": "https://www.dvusd.org",
+            "status": "supported"
+          },
+          "organization": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "Home - Deer Valley Unified School District dataLayer = [{ 'schoolDomain': 'www.dvusd.org' }]; dataLayer.push({'measurement...",
+            "notes": "Direct text support found for organization.",
+            "source_url": "https://www.dvusd.org",
+            "status": "supported"
+          },
+          "phone": "[REDACTED]",
+          "source": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "...- Friday 8 a.m. - 4:30 p.m. Main Phone Line: [REDACTED_PHONE] Superintendent : Dr. Curtis Finch DVUSD Governing Board Join DVUSD Sonoran Foothills Math Teacher Caps Off a Hat...",
+            "notes": "http_status=200 resolved_url=https://www.dvusd.org matched_fields=name,title,organization",
+            "source_url": "https://www.dvusd.org",
+            "status": "supported"
+          },
+          "title": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "...Special Education Speech and Language Teacher Prep Program Transition Services Superintendent Superintendent Home Page Superintendent Goals State of the District Dr. Finch's...",
+            "notes": "Direct text support found for title.",
+            "source_url": "https://www.dvusd.org",
+            "status": "supported"
+          }
+        },
+        "why_target": "Superintendent Finch oversees innovation and technology improvements across the district."
+      },
+      {
+        "candidate_category": "person_lead",
+        "confidence": 0.8,
+        "contact_score": 0,
+        "email": "",
+        "email_status": "missing",
+        "evidence_score": 0.10000000000000009,
+        "explanation": "Shane McCord is connected to decision-making, but lacks contact details for follow-up.",
+        "fit_score": 0.8,
+        "gate_passed": false,
+        "icebreaker": "Your leadership in Gilbert Public Schools during such a transformative era for education is commendable, especially your focus on enhancing technology integration.",
+        "id": "f1c0c7a7-7be9-4ce0-9363-d2adb245b94c",
+        "name": "Shane McCord",
+        "organization": "Gilbert Public Schools",
+        "primary_filter_reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+        "source_url": "https://ballotpedia.org/Gilbert_Public_Schools,_Arizona",
+        "tier": "review",
+        "title": "Superintendent",
+        "validation": {
+          "email": "[REDACTED]",
+          "name": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "No direct text support found for name.",
+            "source_url": "https://ballotpedia.org/Gilbert_Public_Schools,_Arizona",
+            "status": "unsupported"
+          },
+          "organization": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "No direct text support found for organization.",
+            "source_url": "https://ballotpedia.org/Gilbert_Public_Schools,_Arizona",
+            "status": "unsupported"
+          },
+          "phone": "[REDACTED]",
+          "source": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "http_status=202 resolved_url=https://ballotpedia.org/Gilbert_Public_Schools,_Arizona matched_fields=none",
+            "source_url": "https://ballotpedia.org/Gilbert_Public_Schools,_Arizona",
+            "status": "unsupported"
+          },
+          "title": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "No direct text support found for title.",
+            "source_url": "https://ballotpedia.org/Gilbert_Public_Schools,_Arizona",
+            "status": "unsupported"
+          }
+        },
+        "why_target": "Shane McCord plays a crucial role in making decisions about K-12 technology in Gilbert Schools."
+      },
+      {
+        "candidate_category": "person_lead",
+        "confidence": 0.7,
+        "contact_score": 0,
+        "email": "",
+        "email_status": "missing",
+        "evidence_score": 0.4,
+        "explanation": "Coots holds a relevant position, but no direct contact information is available to reach her.",
+        "fit_score": 0.8,
+        "gate_passed": false,
+        "icebreaker": "The innovative strategies you are developing in the realm of instructional technology at Deer Valley are truly exciting for the future of education.",
+        "id": "35ca6258-b967-42f7-bd4a-424bcd11945f",
+        "name": "Michelle Coots",
+        "organization": "Deer Valley Unified School District",
+        "primary_filter_reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+        "source_url": "https://www.dvusd.org/departments/cia/edtech/ai",
+        "tier": "review",
+        "title": "Manager of Instructional Technology",
+        "validation": {
+          "email": "[REDACTED]",
+          "name": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "...as released in May 2024. Deer Valley USD's Manager of Instructional Technology, Michelle Coots, is on the core team that drafted the guidance and Superintendent Dr. Curtis Fi...",
+            "notes": "Direct text support found for name.",
+            "source_url": "https://www.dvusd.org/departments/cia/edtech/ai",
+            "status": "supported"
+          },
+          "organization": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "Artificial Intelligence in DVUSD - Deer Valley Unified School District dataLayer = [{ 'schoolDomain': 'www.dvusd.org' }]; dataLayer.push({'measurement...",
+            "notes": "Direct text support found for organization.",
+            "source_url": "https://www.dvusd.org/departments/cia/edtech/ai",
+            "status": "supported"
+          },
+          "phone": "[REDACTED]",
+          "source": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "...as released in May 2024. Deer Valley USD's Manager of Instructional Technology, Michelle Coots, is on the core team that drafted the guidance and Superintendent Dr. Curtis Fi...",
+            "notes": "http_status=200 resolved_url=https://www.dvusd.org/departments/cia/edtech/ai matched_fields=name,title,organization",
+            "source_url": "https://www.dvusd.org/departments/cia/edtech/ai",
+            "status": "supported"
+          },
+          "title": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "...a's K-12 Schools and School Systems was released in May 2024. Deer Valley USD's Manager of Instructional Technology, Michelle Coots, is on the core team that drafted the guidance and Superintende...",
+            "notes": "Direct text support found for title.",
+            "source_url": "https://www.dvusd.org/departments/cia/edtech/ai",
+            "status": "supported"
+          }
+        },
+        "why_target": "Michelle Coots is involved in educational technology guidance in the Deer Valley district."
+      },
+      {
+        "candidate_category": "organization_only",
+        "explanation": "The district is relevant but lacks any identified decision makers to engage with directly.",
+        "id": "fa6fbddb-0d86-4a24-bc31-650189e33228",
+        "organization": "Paradise Valley Unified School District",
+        "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. The district is relevant but lacks any identified decision makers to engage with directly.",
+        "source_url": "https://www.pvschools.net",
+        "tier": "organization_only",
+        "validation": {
+          "email": "[REDACTED]",
+          "name": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "name is not present on the candidate.",
+            "source_url": "https://www.pvschools.net",
+            "status": "missing"
+          },
+          "organization": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "Paradise Valley Unified School District - Overview, Competitors, News, and Employees | Clodura.AI pvschools.net\n\nSign Up to View in Detail\n\n## Paradise Valley...",
+            "notes": "Organization contact/team source found, but no named person was validated.",
+            "source_url": "https://clodura.ai/directory/company/paradise-valley-unified-school-district",
+            "status": "supported"
+          },
+          "phone": "[REDACTED]",
+          "source": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "Paradise Valley Unified School District - Overview, Competitors, News, and Employees | Clodura.AI pvschools.net\n\nSign Up to View in Detail\n\n## Paradise Valley...",
+            "notes": "Targeted contact-evidence pass found an organization-level source only.",
+            "source_url": "https://clodura.ai/directory/company/paradise-valley-unified-school-district",
+            "status": "supported"
+          },
+          "title": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "title is not present on the candidate.",
+            "source_url": "https://www.pvschools.net",
+            "status": "missing"
+          }
+        }
+      },
+      {
+        "candidate_category": "failed",
+        "explanation": "REVIEW: rejected row; no hidden usable lead is implied. James is involved in decision-making but lacks direct contact information.",
+        "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Could not safely parse person candidate: Value error, Lead.name must include at least a first and last name.",
+        "id": "cb9e603e-034f-4798-a43f-38f8a1c81bf5",
+        "organization": "Deer Valley Unified School District",
+        "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Could not safely parse person candidate: Value error, Lead.name must include at least a first and last name.",
+        "searched_target": "Deer Valley Unified School District, K-12 technology decision maker",
+        "source_url": "https://www.ricoh-usa.com/en/insights/case-studies/optimized-print-services-with-integrated-resource-center",
+        "tier": "failed",
+        "validation": {
+          "email": "[REDACTED]",
+          "name": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "name is not present on the candidate.",
+            "source_url": "https://www.ricoh-usa.com/en/insights/case-studies/optimized-print-services-with-integrated-resource-center",
+            "status": "missing"
+          },
+          "organization": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "Case Study: Deer Valley Unified School District \u2014 Optimized Print Services | Ricoh USA #nprogress { pointer-events: none; } #np...",
+            "notes": "Direct text support found for organization.",
+            "source_url": "https://www.ricoh-usa.com/en/insights/case-studies/optimized-print-services-with-integrated-resource-center",
+            "status": "supported"
+          },
+          "phone": "[REDACTED]",
+          "source": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "Case Study: Deer Valley Unified School District \u2014 Optimized Print Services | Ricoh USA #nprogress { pointer-events: none; } #np...",
+            "notes": "http_status=200 resolved_url=https://www.ricoh-usa.com/en/insights/case-studies/optimized-print-services-with-integrated-resource-center matched_fields=organization",
+            "source_url": "https://www.ricoh-usa.com/en/insights/case-studies/optimized-print-services-with-integrated-resource-center",
+            "status": "supported"
+          },
+          "title": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "title is not present on the candidate.",
+            "source_url": "https://www.ricoh-usa.com/en/insights/case-studies/optimized-print-services-with-integrated-resource-center",
+            "status": "missing"
+          }
+        }
+      },
+      {
+        "candidate_category": "organization_only",
+        "explanation": "Source coverage was found for Peoria Unified School District, but no usable person lead was validated from the collected results.",
+        "id": "9333c4f5-cfe0-455d-83d3-a4e46882a6fd",
+        "organization": "Peoria Unified School District",
+        "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Source coverage was found for Peoria Unified School District, but no usable person lead was validated from the collected results.",
+        "source_url": "https://en.wikipedia.org/wiki/Mesa_Public_Schools",
+        "tier": "organization_only",
+        "validation": {
+          "email": "[REDACTED]",
+          "name": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "name is not present on the candidate. http_status=403 resolved_url=https://en.wikipedia.org/wiki/Mesa_Public_Schools",
+            "source_url": "https://en.wikipedia.org/wiki/Mesa_Public_Schools",
+            "status": "missing"
+          },
+          "organization": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "Peoria Unified School District - Wikipedia ## Contents\n\n# Peoria Unified School District\n\n| Peoria Unified School District | |\n --- |\n|  | |\n| Address...",
+            "notes": "Organization contact/team source found, but no named person was validated.",
+            "source_url": "https://en.wikipedia.org/wiki/Peoria_Unified_School_District",
+            "status": "supported"
+          },
+          "phone": "[REDACTED]",
+          "source": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": "Peoria Unified School District - Wikipedia ## Contents\n\n# Peoria Unified School District\n\n| Peoria Unified School District | |\n --- |\n|  | |\n| Address...",
+            "notes": "Targeted contact-evidence pass found an organization-level source only.",
+            "source_url": "https://en.wikipedia.org/wiki/Peoria_Unified_School_District",
+            "status": "supported"
+          },
+          "title": {
+            "checked_at": "2026-05-24T01:12:18Z",
+            "evidence_snippet": null,
+            "notes": "title is not present on the candidate. http_status=403 resolved_url=https://en.wikipedia.org/wiki/Mesa_Public_Schools",
+            "source_url": "https://en.wikipedia.org/wiki/Mesa_Public_Schools",
+            "status": "missing"
+          }
+        }
+      }
+    ],
+    "metrics": {
+      "elapsed_seconds": 91.6,
+      "estimated_cost_usd": 0.235571,
+      "funnel_counts": {
+        "categorized_rows": 11,
+        "contact_evidence_candidates_searched": 7,
+        "contact_evidence_conflicting_signals": 0,
+        "contact_evidence_contacts_acquired": 1,
+        "contact_evidence_field_corroborations": 19,
+        "contact_evidence_review_to_high_trust": 0,
+        "contact_evidence_searches": 17,
+        "contact_quality_passes": 2,
+        "deduped_sources": 50,
+        "extracted_candidates": 10,
+        "high_trust_usable_rows": 1,
+        "person_rows": 5,
+        "raw_vendor_hits": 54,
+        "source_snapshots": 50
+      },
+      "funnel_notes": [
+        "Deduped 54 raw vendor hits to 50 unique sources.",
+        "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+        "Deep contact evidence pass searched 7 promising rows and acquired 1 source-backed contacts; 0 rows gained enough contact evidence to clear the READY gate.",
+        "Deep contact evidence pass observed 19 field corroborations and 0 conflicting signals across public-web sources.",
+        "Contact evidence pass checked 3 organization-only rows for staff/contact sources."
+      ],
+      "input_tokens": 29438,
+      "openai_web_searches": 0,
+      "output_tokens": 1926,
+      "tavily_searches": 23,
+      "tier_distribution": {
+        "failed": 3,
+        "high_trust_usable": 1,
+        "not_found": 0,
+        "organization_only": 3,
+        "review": 4
+      }
+    },
+    "persistence_readback": {
+      "candidate_category_distribution": {
+        "failed": 3,
+        "organization_only": 3,
+        "person_lead": 5
+      },
+      "db_readback_row_count": 11,
+      "exportable_row_count": 11,
+      "first_db_lead_ids": [
+        "1733ef15-8e5b-4721-9a40-811b2f0cdf94",
+        "38d79651-b475-4996-bc16-21a4b9941f9c",
+        "8bf086bd-135a-4bbe-94e2-ba3cc2f0e636",
+        "b7c8668f-dc5b-49d2-a08d-019c64b927aa",
+        "9dad0058-6267-41c6-be8f-1aa9ba70c7fb"
+      ],
+      "first_response_lead_ids": [
+        "1733ef15-8e5b-4721-9a40-811b2f0cdf94",
+        "38d79651-b475-4996-bc16-21a4b9941f9c",
+        "8bf086bd-135a-4bbe-94e2-ba3cc2f0e636",
+        "b7c8668f-dc5b-49d2-a08d-019c64b927aa",
+        "9dad0058-6267-41c6-be8f-1aa9ba70c7fb"
+      ],
+      "persisted_lead_count": 11,
+      "recipe_id": "b8afa1c3-f54f-4e35-a8e1-8e831140cbea",
+      "response_row_count": 11,
+      "row_count_matches": true,
+      "run_id": "5f560f5f-fbfe-43f3-868c-6d0cd055bd27",
+      "tier_distribution": {
+        "failed": 3,
+        "high_trust_usable": 1,
+        "organization_only": 3,
+        "review": 4
+      }
+    },
+    "query_guardrail": null,
+    "recipe_id": "b8afa1c3-f54f-4e35-a8e1-8e831140cbea",
+    "run_id": "5f560f5f-fbfe-43f3-868c-6d0cd055bd27",
+    "sandbox_usage": {
+      "max_queries": 10,
+      "max_rows": 1000,
+      "remaining_queries": 1,
+      "remaining_rows": 754,
+      "reset_at": "2026-05-12T14:55:56.048954+00:00",
+      "total_queries": 9,
+      "total_rows": 246
+    }
+  },
+  "final_url": "https://white-rabbit-ten.vercel.app/api/scout",
+  "headers": {
+    "Cache-Control": "public, max-age=0, must-revalidate",
+    "Connection": "close",
+    "Content-Type": "application/json",
+    "Date": "Sun, 24 May 2026 01:12:56 GMT",
+    "Server": "Vercel",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+    "Transfer-Encoding": "chunked",
+    "Vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "X-Matched-Path": "/api/scout",
+    "X-Vercel-Cache": "MISS",
+    "X-Vercel-Id": "sfo1::iad1::5t5jb-[REDACTED_PHONE]44-9179ec0adbe4"
+  },
+  "method": "POST",
+  "seconds": 104.301,
+  "status": 200,
+  "url": "https://white-rabbit-ten.vercel.app/api/scout"
+}

@@ -1,0 +1,52 @@
+RG6 production guardrail recheck proof
+collected_at_utc=2026-05-24T01:11:10Z
+
+$ git status --short --branch
+## main...origin/main
+?? audits/raw/reset-2026-05-10/rg6/guardrail-recheck-2026-05-24/
+
+$ git rev-parse HEAD
+73860b59b64c214d92664c8e8d72a5f1f9bb6c1d
+
+$ git merge-base --is-ancestor 73860b5 HEAD; echo $?
+0
+
+$ git ls-remote origin refs/heads/main | cut -c1-12
+73860b59b64c
+
+$ python3 -m json.tool docs/reset-current-assignment.json
+{
+    "version": 1,
+    "updated": "2026-05-23",
+    "integration_branch": "main",
+    "current_prompt": "none",
+    "current_feature_id": "RG6-GUARDRAIL-FALSE-POSITIVE-REMEDIATION",
+    "current_feature_name": "Arizona named-account query guardrail false-positive remediation",
+    "current_feature_status": "merged_to_mainline",
+    "current_feature_branch": "fix/rg6-query-guardrail-false-positive",
+    "current_gate": "RG6 - Dogfood / Kill Decision",
+    "current_gate_status": "gate_hold",
+    "current_audit_branch": "audit/reset-rg6-fresh-evidence",
+    "valid_next_action": "The Matt-directed guardrail false-positive remediation on fix/rg6-query-guardrail-false-positive is merged to main. Next, deploy/recheck production if needed, then continue only with Matt-directed red remediation for remaining RG6 product-quality/operator-evidence blockers. No downstream Prompt A/B/C assignment is valid from this lock, and no yellow/green or dogfood expansion is unlocked without a later reviewed RG6 gate record.",
+    "invalid_next_actions": [
+        "Start public SaaS, accounts, orgs, billing, or external self-serve work",
+        "Mark the product yellow or green without a later reviewed RG6 gate record clearing the fresh live blockers line by line against docs/00-product-northstar.md",
+        "Claim Thomas/Lee dogfood readiness from R15/RG6 or the 2026-05-22 fresh evidence addendum",
+        "Start a generic downstream Prompt A feature instead of an explicitly Matt-directed red remediation for the fresh live blockers",
+        "Treat the guardrail false-positive fix as evidence that Arizona K-12 lead quality/contact yield or operator-minute blockers are cleared",
+        "Resolve queue state from rebuild/validated-leads-loop, an unmerged feature branch, or a historical assignment instead of main plus this assignment lock"
+    ],
+    "blocked_features": [],
+    "notes": [
+        "R13 through R15 are merged to main.",
+        "RG6 Prompt C accepted hold/product-red and Matt accepted that held state on 2026-05-22.",
+        "Matt then authorized fresh RG6 evidence gathering on 2026-05-22.",
+        "Fresh production evidence is saved under audits/raw/reset-2026-05-10/rg6/fresh-2026-05-22/.",
+        "Fresh evidence confirmed: Fly health 200; readiness body degraded; tokenless protected routes 401; Vercel auth 200; privacy/B2C guardrail 422.",
+        "Fresh Arizona K-12 run returned 13 categorized rows, 0 high_trust_usable, 0 contact quality passes, 0 contacts acquired, estimated cost $0.355318.",
+        "Fresh blockers included: web /api/source-assisted-proof returned 404, separate web persisted run readback returned 500, guardrail marked the detailed Arizona named-account query needs_more_detail, and operator-minute evidence remains missing.",
+        "The immediate plumbing remediation for readback/source-assisted-proof/readiness is implemented, deployed, and treated as production rechecked/passed per Matt direction.",
+        "The guardrail false-positive remediation is merged to main: Arizona/state-at-start geography and decision-maker role language now count as sufficient detail.",
+        "No yellow/green, public SaaS, account/org/billing work, or Thomas/Lee dogfood expansion is unlocked."
+    ]
+}
