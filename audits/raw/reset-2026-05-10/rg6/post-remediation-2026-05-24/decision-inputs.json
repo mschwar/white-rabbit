@@ -1,0 +1,57 @@
+{
+  "arizona_scout_summary": {
+    "candidate_category_distribution": {},
+    "contact_quality_passes": 0,
+    "high_trust_usable_with_contact_evidence": 0,
+    "metrics": null,
+    "operator_label_distribution": {},
+    "persistence_readback": null,
+    "query_guardrail": null,
+    "recipe_id": null,
+    "row_count": 0,
+    "run_id": null,
+    "seconds": 0.638,
+    "status": 429,
+    "tier_distribution": {}
+  },
+  "close_status": null,
+  "collected_at": "2026-05-24T04:47:04.657040Z",
+  "direct_api": {
+    "health_status": 200,
+    "readiness_body_status": "ready",
+    "readiness_status": 200,
+    "tokenless_scout_status": 401
+  },
+  "readback_status": null,
+  "timed_query_to_export": {
+    "close_status": null,
+    "collected_at": "2026-05-24T04:47:04.657040Z",
+    "export": {
+      "headers": [
+        "lead_name",
+        "title",
+        "organization",
+        "email_status",
+        "phone_status",
+        "usable_candidate",
+        "operator_label",
+        "candidate_category",
+        "tier",
+        "validation_notes"
+      ],
+      "path": "audits/raw/reset-2026-05-10/rg6/post-remediation-2026-05-24/timed-query-to-export.csv",
+      "row_count": 0
+    },
+    "operator_flow": "no-assistance scripted primary query-to-export production flow: authenticated web /api/scout -> persisted readback -> CSV materialization -> /api/runs/{run_id}/close",
+    "operator_minutes": 0.011,
+    "readback_status": null,
+    "run_id": null,
+    "scout_seconds": 0.638
+  },
+  "web": {
+    "authenticated_home_status": 200,
+    "login_status": 200,
+    "privacy_guardrail_status": 422,
+    "source_assisted_route_status": 200
+  }
+}

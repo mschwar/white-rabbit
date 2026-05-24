@@ -5,10 +5,10 @@
 **Integration branch:** `main`.
 **Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
-**Current reset gate:** RG6 - Dogfood / Kill Decision. Prompt C accepted the R15 red-hold recommendation; Matt then authorized fresh production evidence on 2026-05-22, and that fresh evidence confirms RG6 remains held/product-red.
-**Next Prompt A feature:** None. The Matt-directed RG6 lead-quality/contact-yield remediation passed Prompt B QA and merged to `main`. No public SaaS/account/billing work or yellow/green claim is unlocked without a later reviewed RG6 decision clearing the remaining live product-quality/operator-evidence blockers.
-**Current Prompt B handoff:** Complete. QA report: `.gstack/qa-reports/qa-report-rg6-lead-quality-contact-yield-2026-05-24.md`.
-**Current Prompt C handoff:** Re-audit RG6 from `main` on `audit/reset-rg6-post-remediation`. The audit must rerun live Arizona K-12 production evidence, generate sampled precision from required benchmark outputs, capture a timed no-assistance primary query-to-export operator run, and map results line by line against `docs/00-product-northstar.md`.
+**Current reset gate:** RG6 - Dogfood / Kill Decision remains held/product-red. Prompt C accepted the R15 red-hold recommendation; Matt authorized fresh production evidence on 2026-05-22; the Matt-directed lead-quality/contact-yield remediation merged to `main`; and the 2026-05-24 post-remediation Prompt C re-audit still keeps RG6 held/product-red.
+**Next Prompt A feature:** None. No public SaaS/account/billing work or yellow/green claim is unlocked. Any next work must be a Matt-authorized narrow red-remediation step for the exhausted production sandbox query cap / missing fresh required-suite benchmark outputs / invalid timed query-to-export evidence.
+**Current Prompt B handoff:** None.
+**Current Prompt C handoff:** Complete. Re-audit report: `audits/gates/reset-2026-05-10/rg6-post-remediation-re-audit.md`. Fresh sanitized artifacts: `audits/raw/reset-2026-05-10/rg6/post-remediation-2026-05-24/`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
