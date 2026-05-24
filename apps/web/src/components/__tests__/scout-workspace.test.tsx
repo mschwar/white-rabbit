@@ -573,6 +573,94 @@ test('builds a CSV export from a full run', async () => {
   ).toBeDefined();
 });
 
+test('primary export closes the persisted scout run with elapsed operator minutes', async () => {
+  const fetchMock = vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+    const url = input.toString();
+    if (url.endsWith('/api/scout')) {
+      return Promise.resolve(
+        new Response(
+          JSON.stringify({
+            run_id: 'primary-run-1',
+            recipe_id: 'primary-recipe-1',
+            leads: [
+              {
+                id: 'primary-lead-1',
+                candidate_category: 'person_lead',
+                tier: 'high_trust_usable',
+                primary_filter_reason: 'READY: supported person, organization, source, and usable contact cleared the evidence gate.',
+                name: 'Jane Smith',
+                title: 'Director of Technology',
+                organization: 'Mesa Public Schools',
+                email: 'jane.smith@mpsaz.org',
+                email_status: 'verified_found',
+                source_url: 'https://www.mpsaz.org/technology',
+                confidence: 0.9,
+                why_target: 'Owns district technology decisions.',
+                icebreaker: 'I saw your technology work at Mesa Public Schools.',
+                fit_score: 0.91,
+                evidence_score: 0.9,
+                contact_score: 0.88,
+                gate_passed: true,
+                explanation: 'Strong district fit with current leadership evidence and usable email.',
+                validation: makeValidation(),
+              },
+            ],
+            metrics: {
+              input_tokens: 1,
+              output_tokens: 1,
+              tavily_searches: 1,
+              elapsed_seconds: 1,
+              estimated_cost_usd: 0.01,
+              tier_distribution: { high_trust_usable: 1 },
+            },
+            query_guardrail: null,
+            sandbox_usage: null,
+          }),
+          { status: 200, headers: { 'content-type': 'application/json' } },
+        ),
+      );
+    }
+
+    if (url.endsWith('/api/runs/primary-run-1/close') && init?.method === 'POST') {
+      return Promise.resolve(
+        new Response(JSON.stringify({ status: 'ok', ended_at: '2026-05-24T12:00:00Z' }), {
+          status: 200,
+          headers: { 'content-type': 'application/json' },
+        }),
+      );
+    }
+
+    return Promise.resolve(new Response('not found', { status: 404 }));
+  });
+
+  vi.stubGlobal('fetch', fetchMock);
+
+  render(<ScoutWorkspace primaryMode />);
+
+  fireEvent.change(screen.getByLabelText(/target/i), {
+    target: { value: 'Arizona K-12 technology decision makers' },
+  });
+  fireEvent.click(screen.getByRole('button', { name: /find candidates/i }));
+
+  expect((await screen.findAllByText(/mesa public schools/i)).length).toBeGreaterThan(0);
+
+  fireEvent.click(screen.getByRole('button', { name: /build csv export/i }));
+
+  await waitFor(() => {
+    expect(fetchMock).toHaveBeenCalledWith(
+      '/api/runs/primary-run-1/close',
+      expect.objectContaining({
+        method: 'POST',
+        body: expect.stringContaining('operator_minutes'),
+      }),
+    );
+  });
+  expect(await screen.findByRole('link', { name: /download csv/i })).toHaveAttribute(
+    'href',
+    expect.stringContaining('primary-run-1'),
+  );
+});
+
 test('shows a validation message for blank queries', async () => {
   vi.stubGlobal('fetch', vi.fn());
 

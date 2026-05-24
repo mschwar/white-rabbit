@@ -910,6 +910,8 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
     generatedAtLabel: string;
     rowCount: number;
   } | null>(null);
+  const [runStartedAtMs, setRunStartedAtMs] = useState<number | null>(null);
+  const [closedExportRunIds, setClosedExportRunIds] = useState<Record<string, true>>({});
   const [selectedEvidenceRow, setSelectedEvidenceRow] = useState<ScoutResultRow | null>(null);
   const [submittedQuery, setSubmittedQuery] = useState<string | null>(null);
   const [submittedLocation, setSubmittedLocation] = useState<string | null>(null);
@@ -967,6 +969,8 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
     setResults(null);
     setFullResult(null);
     setLeadExport(null);
+    setRunStartedAtMs(Date.now());
+    setClosedExportRunIds({});
     setSelectedEvidenceRow(null);
     setSubmittedQuery(null);
     setSubmittedLocation(null);
@@ -1135,11 +1139,13 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
     }
 
     const generatedAt = new Date();
+    const persistedRunId = fullResult?.run_id ?? displayedResults.run_id ?? null;
+    const exportRunId = persistedRunId ?? `scout-${generatedAt.toISOString()}`;
     const exportRows = buildFullLeadExportRows({
       query: submittedQuery ?? query,
       location: submittedLocation ?? location,
       recipeName: submittedRecipeName ?? (recipeName || query),
-      runId: fullResult?.run_id ?? `scout-${generatedAt.toISOString()}`,
+      runId: exportRunId,
       sortMode,
       rows: displayedRows,
       guardrail: fullResult?.query_guardrail ?? displayedResults.query_guardrail ?? null,
@@ -1153,6 +1159,20 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
       generatedAtLabel: generatedAt.toLocaleString(),
       rowCount: exportRows.length,
     });
+
+    if (primaryMode && persistedRunId && !closedExportRunIds[persistedRunId]) {
+      const elapsedMinutes = Math.max((Date.now() - (runStartedAtMs ?? Date.now())) / 60000, 0.01);
+      setIsClosing(true);
+      try {
+        await closeRecipeRun(persistedRunId, Number(elapsedMinutes.toFixed(2)));
+        setClosedExportRunIds((prev) => ({ ...prev, [persistedRunId]: true }));
+        setCloseMessage(`Run closed with ${elapsedMinutes.toFixed(2)} operator minutes.`);
+      } catch (err) {
+        setCloseMessage(err instanceof Error ? err.message : 'Failed to close run.');
+      } finally {
+        setIsClosing(false);
+      }
+    }
   }
 
   const displayedResults = results;

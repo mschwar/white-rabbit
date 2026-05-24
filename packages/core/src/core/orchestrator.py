@@ -25,6 +25,15 @@ from .models import (
     NotFoundCandidate,
     OrganizationOnlyCandidate,
 )
+from .lead_quality_policy import (
+    READY_CONTACT_STATUSES,
+    READY_SCORE_THRESHOLD,
+    lead_has_persona_support,
+    lead_has_source_support,
+    lead_is_ready_eligible,
+    validation_note,
+    validation_status,
+)
 from .search import fetch_search_results
 from .source_validation import SOURCE_VALIDATION_TIMEOUT_SECONDS, validate_candidate_source
 
@@ -32,8 +41,8 @@ DEFAULT_MODEL = "gpt-4o-mini"
 DEFAULT_TAVILY_RESULTS = 50
 DEFAULT_FULL_TAVILY_RESULTS = 100
 MAX_TAVILY_RESULTS = 500
-GATE_THRESHOLD = 0.6
-EVIDENCE_GATE_CONTACT_STATUSES = {"verified_found", "deduced_with_pattern_evidence"}
+GATE_THRESHOLD = READY_SCORE_THRESHOLD
+EVIDENCE_GATE_CONTACT_STATUSES = READY_CONTACT_STATUSES
 CONTACT_STATUSES = EVIDENCE_GATE_CONTACT_STATUSES | {"missing", "failed", "unsupported"}
 OUTPUT_TIERS = ("high_trust_usable", "review", "organization_only", "not_found", "failed")
 LEGACY_CONTACT_STATUS_ALIASES = {
@@ -367,36 +376,7 @@ def _extract_candidates_from_completion(completion: Any, *, query: str) -> list[
 
 
 def _lead_passes_evidence_gate(candidate: Lead) -> bool:
-    validation = getattr(candidate, "validation", None)
-    if candidate.candidate_category != "person_lead" or validation is None:
-        return False
-
-    if any(
-        getattr(getattr(validation, field_name), "status", None) != "supported"
-        for field_name in ("name", "title", "organization", "source")
-    ):
-        return False
-
-    if getattr(getattr(validation, "email", None), "status", None) not in EVIDENCE_GATE_CONTACT_STATUSES:
-        return False
-
-    return (
-        candidate.fit_score >= GATE_THRESHOLD
-        and candidate.evidence_score >= GATE_THRESHOLD
-        and candidate.contact_score >= GATE_THRESHOLD
-    )
-
-
-def _validation_status(candidate: Candidate, field_name: str) -> str:
-    validation = getattr(candidate, "validation", None)
-    record = getattr(validation, field_name, None)
-    return getattr(record, "status", "unsupported")
-
-
-def _validation_note(candidate: Candidate, field_name: str) -> str:
-    validation = getattr(candidate, "validation", None)
-    record = getattr(validation, field_name, None)
-    return getattr(record, "notes", "") or ""
+    return lead_is_ready_eligible(candidate, threshold=GATE_THRESHOLD)
 
 
 def _normalize_failed_reason(reason: str) -> str:
@@ -421,7 +401,7 @@ def _failed_from_conflicting_lead(candidate: Lead, *, reason: str) -> FailedCand
 
 
 def _sync_contact_fields_from_validation(candidate: Lead) -> None:
-    email_status = _validation_status(candidate, "email")
+    email_status = validation_status(candidate, "email")
     if candidate.email_status == "failed" and not candidate.email and email_status in {"missing", "unsupported"}:
         email_status = "failed"
     elif candidate.email_status == "missing" and not candidate.email and email_status == "unsupported":
@@ -441,7 +421,7 @@ def _apply_score_semantics(candidate: Lead) -> None:
     unsupported_field_count = sum(
         1
         for field_name in ("name", "title", "organization", "source")
-        if _validation_status(candidate, field_name) != "supported"
+        if validation_status(candidate, field_name) != "supported"
     )
     if unsupported_field_count:
         candidate.evidence_score = min(candidate.evidence_score, max(0.0, 0.55 - (0.15 * (unsupported_field_count - 1))))
@@ -458,17 +438,17 @@ def _apply_score_semantics(candidate: Lead) -> None:
 
 
 def _conflict_reason(candidate: Lead) -> str | None:
-    source_status = _validation_status(candidate, "source")
+    source_status = validation_status(candidate, "source")
     if source_status in {"failed", "missing"}:
-        return f"Source could not validate the person row: {_validation_note(candidate, 'source')}"
-    source_notes = _validation_note(candidate, "source").lower()
+        return f"Source could not validate the person row: {validation_note(candidate, 'source')}"
+    source_notes = validation_note(candidate, "source").lower()
     if "cross_check_conflicts=" in source_notes:
-        return f"Cross-source verification found conflicting evidence: {_validation_note(candidate, 'source')}"
+        return f"Cross-source verification found conflicting evidence: {validation_note(candidate, 'source')}"
 
     for field_name in ("name", "title", "organization"):
-        status = _validation_status(candidate, field_name)
+        status = validation_status(candidate, field_name)
         if status == "failed":
-            return f"{field_name} failed field validation: {_validation_note(candidate, field_name)}"
+            return f"{field_name} failed field validation: {validation_note(candidate, field_name)}"
 
     name = candidate.name.strip().lower()
     organization = candidate.organization.strip().lower()
@@ -493,7 +473,7 @@ def _tier_person_lead(candidate: Lead) -> Lead | FailedCandidate:
 
     email_status = candidate.email_status
     if email_status not in EVIDENCE_GATE_CONTACT_STATUSES:
-        email_note = _validation_note(candidate, "email")
+        email_note = validation_note(candidate, "email")
         if "Deep contact pass searched" in email_note:
             candidate.primary_filter_reason = (
                 f"REVIEW: contact is {email_status}; deeper public-web pass did not find a direct email "
@@ -501,18 +481,18 @@ def _tier_person_lead(candidate: Lead) -> Lead | FailedCandidate:
             )
         else:
             candidate.primary_filter_reason = f"REVIEW: contact is {email_status}; row is not CRM-ready."
-    elif any(_validation_status(candidate, field_name) != "supported" for field_name in ("name", "title", "organization")):
+    elif any(validation_status(candidate, field_name) != "supported" for field_name in ("name", "title", "organization")):
         unsupported_fields = [
             field_name
             for field_name in ("name", "title", "organization")
-            if _validation_status(candidate, field_name) != "supported"
+            if validation_status(candidate, field_name) != "supported"
         ]
         candidate.primary_filter_reason = (
             "REVIEW: "
             + ", ".join(unsupported_fields)
             + " lacks direct source support; contact evidence alone is not enough for READY."
         )
-    elif _validation_status(candidate, "source") != "supported":
+    elif validation_status(candidate, "source") != "supported":
         candidate.primary_filter_reason = "REVIEW: source does not provide enough direct support."
     else:
         candidate.primary_filter_reason = "REVIEW: validation signals did not clear the high-trust evidence gate."
@@ -566,7 +546,7 @@ def _contact_quality_pass_count(candidates: list[Candidate]) -> int:
         1
         for candidate in candidates
         if isinstance(candidate, Lead)
-        and _validation_status(candidate, "email") in EVIDENCE_GATE_CONTACT_STATUSES
+        and validation_status(candidate, "email") in EVIDENCE_GATE_CONTACT_STATUSES
     )
 
 
@@ -594,6 +574,11 @@ def _build_funnel_counts(
         "extracted_candidates": extracted_candidate_count,
         "categorized_rows": len(categorized_rows),
         "person_rows": sum(isinstance(candidate, Lead) for candidate in categorized_rows),
+        "persona_supported_rows": sum(lead_has_persona_support(candidate) for candidate in categorized_rows),
+        "source_supported_rows": sum(
+            lead_has_source_support(candidate) or validation_status(candidate, "source") == "supported"
+            for candidate in categorized_rows
+        ),
         "high_trust_usable_rows": tier_counts["high_trust_usable"],
         "contact_quality_passes": _contact_quality_pass_count(categorized_rows),
     }

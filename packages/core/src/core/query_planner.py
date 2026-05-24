@@ -406,6 +406,14 @@ _BROAD_SOURCE_QUALIFIERS = (
     "email",
     "directory",
 )
+_K12_TECH_ROLE_VARIANTS = (
+    "Director of Technology",
+    "IT Director",
+    "CIO",
+    "CTO",
+    "Technology Services",
+    "Information Technology",
+)
 
 
 def _extract_role_expansions(query: str) -> list[str]:
@@ -458,13 +466,22 @@ def _compile_named_account_queries(
     max_results: int,
 ) -> QueryPlan:
     intent_terms = _extract_intent_terms(normalized_query)
-    if _has_school_context(normalized_query):
+    school_context = _has_school_context(normalized_query)
+    if school_context:
         intent_terms.extend(["Arizona", "K-12"])
     intent_summary = " ".join(_unique_preserve_order(intent_terms)) if intent_terms else normalized_query
-    vendor_queries = [
-        _build_vendor_query(f"{account} {intent_summary}", filters)
-        for account in named_accounts
-    ]
+    vendor_query_seeds: list[str] = []
+    for account in named_accounts:
+        vendor_query_seeds.append(f"{account} {intent_summary}")
+        if school_context:
+            vendor_query_seeds.extend(
+                [
+                    f'{account} Arizona K-12 "{_K12_TECH_ROLE_VARIANTS[0]}" "{_K12_TECH_ROLE_VARIANTS[1]}" staff directory email',
+                    f"{account} Arizona K-12 CIO CTO technology services leadership contact",
+                ]
+            )
+
+    vendor_queries = [_build_vendor_query(seed, filters) for seed in vendor_query_seeds]
 
     return QueryPlan(
         original_query=normalized_query,
@@ -477,6 +494,12 @@ def _compile_named_account_queries(
         notes=[
             f"Decomposed into {len(named_accounts)} named-account searches.",
             "Compiled each account query to stay within the Tavily limit.",
+            (
+                "Expanded Arizona K-12 named-account searches with technology role variants "
+                "and official staff/contact source qualifiers."
+                if school_context
+                else "Used named-account search without K-12-specific source expansion."
+            ),
         ],
     )
 

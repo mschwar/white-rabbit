@@ -4,19 +4,18 @@ from collections import Counter
 from dataclasses import dataclass, field
 from typing import Any, Literal, Mapping, Sequence
 
+from .lead_quality_policy import (
+    READY_CONTACT_STATUSES,
+    ReadyBlocker,
+    lead_has_contact_support,
+    lead_has_persona_support,
+    lead_has_source_support,
+    ready_blocker_for_candidate,
+    validation_status,
+)
 from .models import Candidate, Lead
 
 QualityArtifactKind = Literal["run", "benchmark"]
-ReadyBlocker = Literal[
-    "no_contact_source",
-    "no_validated_domain_pattern",
-    "source_inaccessible",
-    "title_unsupported",
-    "persona_mismatch",
-    "organization_only",
-    "conflicting_evidence",
-    "privacy_refusal",
-]
 
 _PERSONAL_FIELD_STATUSES = ("supported", "unsupported", "missing", "failed")
 _CONTACT_STATUSES = (
@@ -27,7 +26,7 @@ _CONTACT_STATUSES = (
     "unsupported",
 )
 _CANDIDATE_CATEGORIES = ("person_lead", "organization_only", "not_found", "failed")
-_USABLE_CONTACT_STATUSES = {"verified_found", "deduced_with_pattern_evidence"}
+_USABLE_CONTACT_STATUSES = READY_CONTACT_STATUSES
 _DEFAULT_QUALITY_GATE_THRESHOLDS = {
     "minimum_usable_count": 1,
     "minimum_precision_rate": 0.5,
@@ -162,58 +161,6 @@ def _evaluate_quality_gate(
     return not failures, tuple(failures)
 
 
-def _record_notes(candidate: Candidate, field_name: str) -> str:
-    return getattr(getattr(candidate.validation, field_name), "notes", "") or ""
-
-
-def _ready_blocker_for_candidate(candidate: Candidate) -> ReadyBlocker | None:
-    if getattr(candidate, "tier", None) == "high_trust_usable":
-        return None
-
-    reason = getattr(candidate, "primary_filter_reason", "") or ""
-    reason_lower = reason.lower()
-    if "conflict" in reason_lower or "contradict" in reason_lower:
-        return "conflicting_evidence"
-
-    if candidate.candidate_category == "organization_only":
-        return "organization_only"
-
-    if candidate.validation.source.status in {"failed", "missing"}:
-        return "source_inaccessible"
-
-    if isinstance(candidate, Lead):
-        if candidate.validation.title.status in {"unsupported", "missing", "failed"}:
-            return "title_unsupported"
-        if (
-            candidate.validation.name.status == "failed"
-            or candidate.validation.organization.status == "failed"
-            or "persona" in reason_lower
-        ):
-            return "persona_mismatch"
-        if candidate.validation.email.status == "missing":
-            return "no_contact_source"
-        if candidate.validation.email.status == "unsupported":
-            return "no_validated_domain_pattern"
-        if candidate.validation.email.status == "failed":
-            return "conflicting_evidence"
-
-    if candidate.candidate_category == "not_found":
-        return "no_contact_source"
-
-    if candidate.candidate_category == "failed":
-        notes = " ".join(
-            _record_notes(candidate, field_name)
-            for field_name in ("source", "name", "title", "organization", "email")
-        ).lower()
-        if "http_status=403" in notes or "http_status=404" in notes or "fetch_error" in notes:
-            return "source_inaccessible"
-        if "title" in reason_lower:
-            return "title_unsupported"
-        return "conflicting_evidence"
-
-    return None
-
-
 def build_quality_report(
     candidates: Sequence[Candidate],
     *,
@@ -247,7 +194,7 @@ def build_quality_report(
 
         validation = candidate.validation
         for field_name in ("name", "title", "organization", "source", "email", "phone"):
-            status = getattr(getattr(validation, field_name), "status", "unsupported")
+            status = validation_status(candidate, field_name)
             validation_status_counts[field_name][status] += 1
 
         if category == "person_lead":
@@ -255,10 +202,7 @@ def build_quality_report(
             if isinstance(candidate, Lead) and candidate.gate_passed:
                 usable_count += 1
 
-            if all(
-                getattr(validation, field_name).status == "supported"
-                for field_name in ("name", "title", "organization")
-            ):
+            if lead_has_persona_support(candidate):
                 persona_match_count += 1
 
         elif category == "organization_only":
@@ -268,19 +212,21 @@ def build_quality_report(
         elif category == "failed":
             failed_count += 1
 
-        if isinstance(candidate, Lead) and validation.email.status in _USABLE_CONTACT_STATUSES:
+        if lead_has_contact_support(candidate):
             contact_quality_count += 1
-        elif validation.email.status == "failed":
+        elif validation_status(candidate, "email") == "failed":
             fake_email_count += 1
-        elif validation.email.status == "unsupported":
+        elif validation_status(candidate, "email") == "unsupported":
             unsupported_email_count += 1
 
-        if validation.source.status == "supported":
+        if lead_has_source_support(candidate) or (
+            candidate.candidate_category != "person_lead" and validation_status(candidate, "source") == "supported"
+        ):
             source_support_count += 1
-        if category in {"organization_only", "failed"} or validation.email.status in {"failed", "unsupported"}:
+        if category in {"organization_only", "failed"} or validation_status(candidate, "email") in {"failed", "unsupported"}:
             high_noise_count += 1
 
-        ready_blocker = _ready_blocker_for_candidate(candidate)
+        ready_blocker = ready_blocker_for_candidate(candidate)
         if ready_blocker is not None:
             ready_blocker_counter[ready_blocker] += 1
             candidate_ready_blockers.append(

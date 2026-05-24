@@ -228,6 +228,14 @@ export type ScoutRunMetrics = {
     person_rows: number;
     high_trust_usable_rows: number;
     contact_quality_passes: number;
+    contact_evidence_candidates_searched: number;
+    contact_evidence_searches: number;
+    contact_evidence_contacts_acquired: number;
+    contact_evidence_field_corroborations: number;
+    contact_evidence_conflicting_signals: number;
+    contact_evidence_review_to_high_trust: number;
+    persona_supported_rows: number;
+    source_supported_rows: number;
   }>;
   funnel_notes?: string[];
 };

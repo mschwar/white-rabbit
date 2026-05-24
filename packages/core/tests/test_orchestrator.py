@@ -783,6 +783,8 @@ def test_scout_backfills_broad_source_gap_rows_without_promoting_ready(monkeypat
         "extracted_candidates": 1,
         "categorized_rows": 3,
         "person_rows": 1,
+        "persona_supported_rows": 1,
+        "source_supported_rows": 3,
         "high_trust_usable_rows": 0,
         "contact_quality_passes": 0,
         "contact_evidence_candidates_searched": 1,

@@ -6,9 +6,9 @@
 **Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
 **Current reset gate:** RG6 - Dogfood / Kill Decision. Prompt C accepted the R15 red-hold recommendation; Matt then authorized fresh production evidence on 2026-05-22, and that fresh evidence confirms RG6 remains held/product-red.
-**Next Prompt A feature:** None. RG6 is held/product-red after fresh evidence; the immediate Matt-directed production plumbing remediation for readback/source-assisted-proof/readiness is merged, deployed, and treated as production rechecked/passed per Matt direction. The narrow Matt-directed guardrail false-positive remediation is merged to `main`, but no public SaaS/account/billing work or yellow/green claim is unlocked without a later reviewed RG6 decision clearing the remaining live product-quality/operator-evidence blockers.
-**Current Prompt B handoff:** None. R15 Prompt B is complete and merged to `main`.
-**Current Prompt C handoff:** Complete; Matt accepted the held decision state and then authorized fresh RG6 evidence gathering on 2026-05-22. The fresh evidence addendum keeps RG6 in `gate_hold` and does not unlock downstream feature work.
+**Next Prompt A feature:** None. The Matt-directed RG6 lead-quality/contact-yield remediation is implemented on `fix/rg6-lead-quality-contact-yield` and must go through Prompt B QA before merge. No public SaaS/account/billing work or yellow/green claim is unlocked without a later reviewed RG6 decision clearing the remaining live product-quality/operator-evidence blockers.
+**Current Prompt B handoff:** QA `fix/rg6-lead-quality-contact-yield`: verify shared READY policy, Arizona K-12 named-account query expansion, official-source contact evidence promotion/blocking, deterministic sampled-precision tooling, primary export auto-close operator-minute capture, browser screenshots, and scope boundaries. If QA passes, merge only to `main`.
+**Current Prompt C handoff:** Blocked until the in-flight RG6 remediation branch passes Prompt B and merges, then a later reviewed RG6 gate record reruns live/sampled/operator evidence line by line against `docs/00-product-northstar.md`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -216,7 +216,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG3 | Validation, Conflict, And Gate Semantics | R07-R09L | gate_advanced | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
 | RG4 | Sales-First Operator UI | R10-R12 | gate_advanced | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
 | RG5 | Sales-First Export And Persistence | R13-R14C | gate_advanced | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
-| RG6 | Dogfood / Kill Decision | R15 + fresh evidence addendum | gate_hold | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md`; `audits/raw/reset-2026-05-10/rg6/fresh-2026-05-22/fresh-evidence-summary.md` |
+| RG6 | Dogfood / Kill Decision | R15 + fresh evidence addendum + Matt-directed red remediations | gate_hold | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md`; `audits/raw/reset-2026-05-10/rg6/fresh-2026-05-22/fresh-evidence-summary.md` |
 
 ## Reset Feature Table
 
@@ -253,6 +253,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R14B | UI/UX consistency pass | merged_to_mainline | `feat/reset-r14b-ui-ux-consistency-pass` | browser + screenshots |
 | R14C | Deployment readiness and operator-use smoke | merged_to_mainline | `feat/reset-r14c-deployment-readiness-smoke` | deployment + API/web smoke |
 | R15 | Internal correction review and dogfood decision packet | merged_to_mainline | `feat/reset-r15-dogfood-decision-packet` | docs/report QA |
+| RG6R1 | Lead quality, contact yield, sampled precision, and operator-minute remediation | implemented_pending_qa | `fix/rg6-lead-quality-contact-yield` | core/API/web + browser |
 
 ## RG0 - W5 Hold And Control Reset
 
@@ -1340,6 +1341,16 @@ RG6 fresh evidence addendum:
 - Fresh Arizona K-12 Scout result: 13 categorized rows in 126.569 seconds at estimated cost `$0.355318`; tier distribution was 6 `review`, 2 `organization_only`, 1 `not_found`, 4 `failed`, and 0 `high_trust_usable`; contact quality passes were 0 and contacts acquired were 0.
 - Persistence/readback result: the Scout response inline `persistence_readback` claimed 13/13 persisted rows and matching IDs, but separate web `GET /api/runs/{run_id}/leads` returned HTTP 500 (`Failed to fetch persisted run lead readback.`).
 - Queue consequence: no next Prompt A assignment is valid from this gate hold. Any next work must be explicitly Matt-directed red remediation for the fresh live blockers, followed by a new reviewed RG6 gate record. Public SaaS/accounts/orgs/billing, yellow/green promotion, and Thomas/Lee dogfood expansion remain blocked.
+
+RG6R1 lead-quality/contact-yield remediation Prompt A result:
+
+- Branch: `fix/rg6-lead-quality-contact-yield`.
+- Status: `implemented_pending_qa`.
+- Why this remediation exists: Matt explicitly directed one scoped RG6 red remediation for the remaining lead-quality/contact-yield, sampled precision, and operator-minute blockers after the production plumbing/readback/readiness and guardrail false-positive work closed.
+- Scope implemented: shared core READY policy for persona/source/contact/score support; Arizona K-12 named-account query expansion with bounded role/source variants; official district/staff/contact source prioritization and source-backed direct/pattern email promotion; deterministic sampled-precision packet tooling; and primary query-to-export auto-close using the persisted run ID plus elapsed operator minutes.
+- Local verification: focused and full `packages/core` suites passed; `apps/api` pytest passed with `WR_API_INTERNAL_TOKEN=test-internal-token`; full web Vitest and `npm run build` passed; Playwright browser QA on local dev with mocked `/api/scout` captured primary results, evidence review, export-ready, and `/api/runs/browser-rg6-run-1/close` with `operator_minutes=0.01`.
+- Artifact note: local browser artifacts were written under ignored `apps/web/test-results/rg6-lead-quality-contact-yield/`; they are QA evidence for this implementation branch only, not production gate evidence.
+- Queue consequence: Prompt B should QA `fix/rg6-lead-quality-contact-yield`. If QA passes, merge only to `main`. This branch does not clear RG6 by itself; a later reviewed RG6 gate record must rerun live Arizona K-12, sampled precision, and timed operator evidence line by line against `docs/00-product-northstar.md`.
 
 ## Status Rules
 
