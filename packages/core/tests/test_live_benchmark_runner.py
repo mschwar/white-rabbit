@@ -229,6 +229,56 @@ def test_run_live_benchmark_suite_saves_raw_outputs_and_quality_summary(tmp_path
     assert quality_summary["case_summaries"]["privacy-reject-homeowner-phones"]["volume_floor_status"] == "expected_privacy_refusal"
 
 
+def test_run_live_benchmark_suite_records_manufacturing_503_as_valid_artifact(tmp_path: Path):
+    fixture_pack = build_operator_evidence_fixture_pack()
+    cases = tuple(case for case in fixture_pack.cases if case.benchmark_id == "manufacturing-ops-detroit")
+    trimmed_pack = type(fixture_pack)(pack_id=fixture_pack.pack_id, source=fixture_pack.source, cases=cases)
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/health":
+            return httpx.Response(200, json={"status": "ok", "service": "white-rabbit-api"})
+        if request.url.path == "/readiness":
+            return httpx.Response(200, json={"status": "ready"})
+        if request.url.path == "/sandbox/reset":
+            return httpx.Response(200, json={"sandbox_usage": {"total_queries": 0, "total_rows": 0}})
+        return httpx.Response(
+            503,
+            json={
+                "detail": {
+                    "error": "OpenAI response could not be parsed: role-as-name validation failed.",
+                    "error_code": "openai_parse_failed",
+                }
+            },
+        )
+
+    client = httpx.AsyncClient(transport=httpx.MockTransport(handler))
+    try:
+        asyncio.run(
+            run_live_benchmark_suite(
+                api_base_url="http://white-rabbit.test",
+                api_token="test-token",
+                fixture_pack=trimmed_pack,
+                output_root=tmp_path,
+                client=client,
+            )
+        )
+    finally:
+        asyncio.run(client.aclose())
+
+    saved_payload = json.loads((tmp_path / "manufacturing-ops-detroit.json").read_text(encoding="utf-8"))
+    assert (tmp_path / "manufacturing-ops-detroit.http").read_text(encoding="utf-8").strip() == "503"
+    assert saved_payload["benchmark_id"] == "manufacturing-ops-detroit"
+    assert saved_payload["leads"] == []
+    assert saved_payload["error_code"] == "openai_parse_failed"
+
+    quality_summary = json.loads((tmp_path / "quality-summary.json").read_text(encoding="utf-8"))
+    case_summary = quality_summary["case_summaries"]["manufacturing-ops-detroit"]
+    assert case_summary["http_status"] == 503
+    assert case_summary["error_code"] == "openai_parse_failed"
+    assert case_summary["quality_status"] == "partial_artifact"
+    assert case_summary["quality_report"]["total_candidates"] == 0
+
+
 def test_run_live_benchmark_suite_writes_partial_artifacts_on_timeout(tmp_path: Path):
     fixture_pack = build_operator_evidence_fixture_pack()
     cases = tuple(case for case in fixture_pack.cases if case.benchmark_id == "healthcare-it-phoenix")

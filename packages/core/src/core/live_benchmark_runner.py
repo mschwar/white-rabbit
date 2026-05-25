@@ -157,6 +157,7 @@ def _normalize_response_payload(case: OperatorFixtureCase, status_code: int, pay
     error_payload = detail if isinstance(detail, dict) else payload if isinstance(payload, dict) else {}
 
     normalized["leads"] = []
+    normalized["partial_artifact"] = True
     if "query_guardrail" in error_payload:
         normalized["query_guardrail"] = error_payload.get("query_guardrail")
     if isinstance(error_payload.get("error"), str):

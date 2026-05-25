@@ -1,0 +1,77 @@
+{
+  "api_base": {
+    "host": "127.0.0.1",
+    "path": "",
+    "port": 8000,
+    "scheme": "http"
+  },
+  "api_base_url": "http://127.0.0.1:8000",
+  "attempts": [
+    {
+      "elapsed_seconds": 0.014,
+      "error": "ConnectError: All connection attempts failed",
+      "ok": false,
+      "status_code": 0
+    },
+    {
+      "elapsed_seconds": 0.002,
+      "error": "ConnectError: All connection attempts failed",
+      "ok": false,
+      "status_code": 0
+    },
+    {
+      "elapsed_seconds": 0.001,
+      "error": "ConnectError: All connection attempts failed",
+      "ok": false,
+      "status_code": 0
+    },
+    {
+      "elapsed_seconds": 0.001,
+      "error": "ConnectError: All connection attempts failed",
+      "ok": false,
+      "status_code": 0
+    },
+    {
+      "elapsed_seconds": 0.001,
+      "error": "ConnectError: All connection attempts failed",
+      "ok": false,
+      "status_code": 0
+    },
+    {
+      "elapsed_seconds": 0.002,
+      "error": "ConnectError: All connection attempts failed",
+      "ok": false,
+      "status_code": 0
+    }
+  ],
+  "checked_at": "2026-05-25T20:29:59.909538Z",
+  "env_presence": {
+    "DATABASE_URL": {
+      "present": false
+    },
+    "OPENAI_API_KEY": {
+      "present": false
+    },
+    "OPENAI_BASE_URL": {
+      "present": false
+    },
+    "OPENAI_MODEL": {
+      "present": false
+    },
+    "TAVILY_API_KEY": {
+      "present": false
+    },
+    "WR_API_INTERNAL_TOKEN": {
+      "present": true
+    }
+  },
+  "error_code": "api_startup_failed",
+  "last_health_payload": {
+    "api_base_url": "http://127.0.0.1:8000",
+    "error": "ConnectError: All connection attempts failed",
+    "error_code": "health_request_error"
+  },
+  "last_health_status": 0,
+  "message": "API did not answer /health before 5.0 second timeout.",
+  "timeout_seconds": 5.0
+}

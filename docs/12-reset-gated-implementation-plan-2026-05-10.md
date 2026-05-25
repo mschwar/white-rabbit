@@ -5,10 +5,10 @@
 **Integration branch:** `main`.
 **Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
-**Current reset gate:** RG6 - Dogfood / Kill Decision remains held/product-red. Prompt C accepted the R15 red-hold recommendation; Matt authorized fresh production evidence on 2026-05-22; the Matt-directed lead-quality/contact-yield remediation merged to `main`; the 2026-05-24 post-remediation Prompt C re-audit kept RG6 held/product-red; and the later unblocked remediation recheck improved runtime/contact/timed-export evidence but still did not clear RG6.
-**Next Prompt A feature:** None. No public SaaS/account/billing work or yellow/green claim is unlocked. Any next work must be a Matt-authorized narrow red-remediation step for source strategy, Arizona 6-of-8 named-account quality, broad sampled precision, and missing complete required-suite artifacts.
-**Current Prompt B handoff:** None.
-**Current Prompt C handoff:** Complete. Re-audit report: `audits/gates/reset-2026-05-10/rg6-post-remediation-re-audit.md`. Follow-up recheck report: `audits/gates/reset-2026-05-10/rg6-unblocked-remediation-recheck.md`. Fresh sanitized artifacts: `audits/raw/reset-2026-05-10/rg6/post-remediation-stable-rerun-2026-05-24/`.
+**Current reset gate:** RG6 - Dogfood / Kill Decision remains held/product-red. Prompt C accepted the R15 red-hold recommendation; Matt authorized fresh production evidence on 2026-05-22; the Matt-directed lead-quality/contact-yield remediation merged to `main`; the 2026-05-24 post-remediation Prompt C re-audit kept RG6 held/product-red; the later unblocked remediation recheck improved runtime/contact/timed-export evidence but still did not clear RG6; and the 2026-05-25 source-quality remediation added adjacent-alias drift protection plus partial-artifact evidence while live suite execution was blocked by local Docker/API startup.
+**Next Prompt A feature:** None. No public SaaS/account/billing work or yellow/green claim is unlocked. Any next work must be a Matt-authorized narrow red-remediation step with a working local or remote API target for source strategy, Arizona 6-of-8 named-account quality, broad sampled precision, and complete live required-suite artifacts.
+**Current Prompt B handoff:** QA `fix/rg6-source-quality-required-suite-remediation` if Matt requests review; do not merge without explicit Matt authorization.
+**Current Prompt C handoff:** Complete for the prior re-audit/recheck only. Re-audit report: `audits/gates/reset-2026-05-10/rg6-post-remediation-re-audit.md`. Follow-up recheck report: `audits/gates/reset-2026-05-10/rg6-unblocked-remediation-recheck.md`. Latest source-quality remediation artifacts: `audits/raw/reset-2026-05-10/rg6/source-quality-remediation-2026-05-25/`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -216,7 +216,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG3 | Validation, Conflict, And Gate Semantics | R07-R09L | gate_advanced | `audits/gates/reset-2026-05-10/rg3-validation-semantics.md` |
 | RG4 | Sales-First Operator UI | R10-R12 | gate_advanced | `audits/gates/reset-2026-05-10/rg4-operator-ui.md` |
 | RG5 | Sales-First Export And Persistence | R13-R14C | gate_advanced | `audits/gates/reset-2026-05-10/rg5-export-persistence.md` |
-| RG6 | Dogfood / Kill Decision | R15 + fresh evidence addendum + Matt-directed red remediations | gate_hold | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md`; `audits/raw/reset-2026-05-10/rg6/fresh-2026-05-22/fresh-evidence-summary.md` |
+| RG6 | Dogfood / Kill Decision | R15 + fresh evidence addendum + Matt-directed red remediations | gate_hold | `audits/gates/reset-2026-05-10/rg6-dogfood-decision.md`; `audits/raw/reset-2026-05-10/rg6/fresh-2026-05-22/fresh-evidence-summary.md`; `audits/raw/reset-2026-05-10/rg6/source-quality-remediation-2026-05-25/` |
 
 ## Reset Feature Table
 
@@ -255,6 +255,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R15 | Internal correction review and dogfood decision packet | merged_to_mainline | `feat/reset-r15-dogfood-decision-packet` | docs/report QA |
 | RG6R1 | Lead quality, contact yield, sampled precision, and operator-minute remediation | merged_to_mainline | `fix/rg6-lead-quality-contact-yield` | core/API/web + browser |
 | RG6R2 | Unblocked remediation recheck and source/runtime follow-up | gate_hold | `audit/reset-rg6-post-remediation` | production/runtime + saved suite + browser QA |
+| RG6R3 | Source-quality required-suite remediation | local_remediation_complete_live_suite_blocked | `fix/rg6-source-quality-required-suite-remediation` | focused/core/API tests + partial required-suite artifacts |
 
 ## RG0 - W5 Hold And Control Reset
 

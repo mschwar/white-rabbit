@@ -137,6 +137,128 @@ def test_write_nonperson_coverage_does_not_duplicate_existing_account_rows():
     assert candidates[1].searched_target == "Ghost District"
 
 
+def test_write_nonperson_coverage_returns_exactly_one_representation_per_named_account():
+    official_lead = _lead()
+    generic_duplicate = _lead()
+    generic_duplicate.email = ""
+    generic_duplicate.email_status = "missing"
+    generic_duplicate.source_url = "https://www.govtech.com/events/mesa-speaker"
+    generic_duplicate.contact_score = 0.2
+    chandler_adjacent = Lead(
+        name="Adjacent Official",
+        title="Director of Technology",
+        organization="Chandler-Gilbert Community College",
+        email="",
+        email_status="missing",
+        source_url="https://www.linkedin.com/in/adjacent",
+        confidence=0.4,
+        why_target="Adjacent district drift.",
+        icebreaker="Your community college technology role appears adjacent to the target district list.",
+        fit_score=0.2,
+        evidence_score=0.2,
+        contact_score=0.0,
+        gate_passed=False,
+        explanation="Not a target district.",
+    )
+
+    candidates = write_nonperson_coverage(
+        [generic_duplicate, official_lead, chandler_adjacent],
+        query_plan=_query_plan(),
+        source_collection=_source_collection(),
+    )
+
+    assert len(candidates) == 2
+    assert candidates[0] is official_lead
+    assert candidates[0].organization == "Mesa Public Schools"
+    assert isinstance(candidates[1], NotFoundCandidate)
+    assert candidates[1].searched_target == "Ghost District"
+    assert all(getattr(candidate, "organization", "") != "Chandler-Gilbert Community College" for candidate in candidates)
+
+
+def test_write_nonperson_coverage_does_not_count_adjacent_single_word_alias_drift():
+    plan = QueryPlan(
+        original_query="Gilbert Public Schools and Chandler Unified School District technology leaders",
+        vendor_queries=["Gilbert Chandler technology leaders"],
+        named_accounts=["Gilbert Public Schools", "Chandler Unified School District"],
+        intent_summary="technology leaders",
+        target_raw_results=8,
+    )
+    adjacent = Lead(
+        name="Adjacent Official",
+        title="Director of Technology",
+        organization="Chandler-Gilbert Community College",
+        email="",
+        email_status="missing",
+        source_url="https://www.linkedin.com/in/adjacent",
+        confidence=0.4,
+        why_target="Adjacent account drift.",
+        icebreaker="Your community college technology role appears adjacent to the target district list.",
+        fit_score=0.2,
+        evidence_score=0.2,
+        contact_score=0.0,
+        gate_passed=False,
+        explanation="Not a target district.",
+    )
+
+    candidates = write_nonperson_coverage([adjacent], query_plan=plan, source_collection=None)
+
+    assert len(candidates) == 2
+    assert all(isinstance(candidate, NotFoundCandidate) for candidate in candidates)
+    assert [candidate.searched_target for candidate in candidates] == [
+        "Gilbert Public Schools",
+        "Chandler Unified School District",
+    ]
+
+
+def test_write_nonperson_coverage_prefers_official_source_for_organization_only_rows():
+    plan = QueryPlan(
+        original_query="Arizona K-12 technology leaders",
+        vendor_queries=["Mesa Public Schools technology leaders"],
+        named_accounts=["Mesa Public Schools"],
+        intent_summary="technology leaders",
+        target_raw_results=8,
+    )
+    source_collection = SourceCollectionSnapshot(
+        query="Arizona K-12 technology leaders",
+        collected_at="2026-05-24T00:00:00Z",
+        requested_max_results=8,
+        returned_source_count=2,
+        tavily_searches=1,
+        search_depth="advanced",
+        query_plan=None,
+        sources=[
+            CollectedSource(
+                source_id="src_generic",
+                rank=1,
+                title="GovTech event speaker list",
+                url="https://www.govtech.com/events/arizona-k12-speakers",
+                content="Mesa Public Schools appeared on an event speaker list.",
+                score=0.99,
+                vendor_query="Mesa Public Schools technology leaders",
+                matched_vendor_queries=["Mesa Public Schools technology leaders"],
+                content_sha256="generic",
+            ),
+            CollectedSource(
+                source_id="src_official",
+                rank=2,
+                title="Technology Services Staff Directory",
+                url="https://www.mpsaz.org/technology/staff",
+                content="Mesa Public Schools Technology Services staff directory.",
+                score=0.72,
+                vendor_query="Mesa Public Schools technology leaders",
+                matched_vendor_queries=["Mesa Public Schools technology leaders"],
+                content_sha256="official",
+            ),
+        ],
+    )
+
+    candidates = write_nonperson_coverage([], query_plan=plan, source_collection=source_collection)
+
+    assert len(candidates) == 1
+    assert isinstance(candidates[0], OrganizationOnlyCandidate)
+    assert candidates[0].source_url == "https://www.mpsaz.org/technology/staff"
+
+
 def test_write_nonperson_coverage_ignores_broad_queries_without_named_accounts():
     plan = QueryPlan(
         original_query="healthcare IT directors in Phoenix",

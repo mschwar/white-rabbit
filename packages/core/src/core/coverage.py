@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections.abc import Iterable
 from typing import Any
 
-from .models import Candidate, FailedCandidate, NotFoundCandidate, OrganizationOnlyCandidate
+from .models import Candidate, FailedCandidate, Lead, NotFoundCandidate, OrganizationOnlyCandidate
 from .query_planner import QueryPlan, named_account_aliases, official_domains_for_named_account
 from .source_collection import CollectedSource, SourceCollectionSnapshot
 
@@ -21,9 +21,36 @@ def _candidate_text(candidate: Candidate) -> str:
     return _normalize(" ".join(part for part in parts if part))
 
 
+_K12_ACCOUNT_CONTEXT_TERMS = (
+    "public schools",
+    "school district",
+    "unified school district",
+    "usd",
+    "district",
+    "k-12",
+    "k12",
+)
+
+
+def _text_has_word(text: str, word: str) -> bool:
+    padded = f" {text} "
+    return f" {word} " in padded
+
+
+def _text_covers_account_alias(text: str, alias: str) -> bool:
+    normalized_alias = _normalize(alias)
+    if not normalized_alias:
+        return False
+    if " " in normalized_alias:
+        return normalized_alias in text
+    if not _text_has_word(text, normalized_alias):
+        return False
+    return any(term in text for term in _K12_ACCOUNT_CONTEXT_TERMS)
+
+
 def _candidate_covers_account(candidate: Candidate, aliases: Iterable[str]) -> bool:
     text = _candidate_text(candidate)
-    return any(_normalize(alias) and _normalize(alias) in text for alias in aliases)
+    return any(_text_covers_account_alias(text, alias) for alias in aliases)
 
 
 def _source_text(source: CollectedSource) -> str:
@@ -32,7 +59,7 @@ def _source_text(source: CollectedSource) -> str:
 
 def _source_covers_account(source: CollectedSource, aliases: Iterable[str]) -> bool:
     text = _source_text(source)
-    return any(_normalize(alias) and _normalize(alias) in text for alias in aliases)
+    return any(_text_covers_account_alias(text, alias) for alias in aliases)
 
 
 def _source_matches_official_account_domain(source: CollectedSource, account: str) -> bool:
@@ -48,10 +75,45 @@ def _first_source_for_account(
         return None
 
     aliases = named_account_aliases(account)
-    for source in source_collection.sources:
-        if _source_covers_account(source, aliases) or _source_matches_official_account_domain(source, account):
-            return source
-    return None
+    account_sources = [
+        source
+        for source in source_collection.sources
+        if _source_covers_account(source, aliases) or _source_matches_official_account_domain(source, account)
+    ]
+    if not account_sources:
+        return None
+    return sorted(
+        account_sources,
+        key=lambda source: (
+            0 if _source_matches_official_account_domain(source, account) else 1,
+            source.rank,
+        ),
+    )[0]
+
+
+def _candidate_is_official_for_account(candidate: Candidate, account: str) -> bool:
+    source_url = _normalize(getattr(candidate, "source_url", None))
+    return any(domain in source_url for domain in official_domains_for_named_account(account))
+
+
+def _candidate_selection_rank(candidate: Candidate, account: str) -> tuple[int, int]:
+    category_rank = {
+        "person_lead": 0,
+        "organization_only": 1,
+        "not_found": 2,
+        "failed": 3,
+    }.get(getattr(candidate, "candidate_category", "failed"), 4)
+    official_rank = 0 if _candidate_is_official_for_account(candidate, account) else 1
+    contact_rank = 0 if isinstance(candidate, Lead) and (candidate.email or candidate.phone) else 1
+    return (category_rank, official_rank + contact_rank)
+
+
+def _best_existing_candidate_for_account(candidates: Iterable[Candidate], account: str) -> Candidate | None:
+    aliases = named_account_aliases(account)
+    matches = [candidate for candidate in candidates if _candidate_covers_account(candidate, aliases)]
+    if not matches:
+        return None
+    return sorted(matches, key=lambda candidate: _candidate_selection_rank(candidate, account))[0]
 
 
 def write_nonperson_coverage(
@@ -69,10 +131,11 @@ def write_nonperson_coverage(
     if query_plan is None or not query_plan.named_accounts:
         return candidates
 
-    covered_candidates = list(candidates)
+    covered_candidates: list[Candidate] = []
     for account in query_plan.named_accounts:
-        aliases = named_account_aliases(account)
-        if any(_candidate_covers_account(candidate, aliases) for candidate in covered_candidates):
+        existing = _best_existing_candidate_for_account(candidates, account)
+        if existing is not None:
+            covered_candidates.append(existing)
             continue
 
         source = _first_source_for_account(account, source_collection)
