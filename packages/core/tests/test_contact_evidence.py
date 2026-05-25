@@ -77,6 +77,61 @@ def test_contact_evidence_promotes_direct_public_email_from_official_staff_sourc
     assert stats.acquired_contacts == 1
 
 
+def test_contact_evidence_promotes_direct_public_phone_from_official_staff_source():
+    async def fake_search(query: str, **kwargs):
+        return [
+            {
+                "title": "Mesa Public Schools staff directory",
+                "url": "https://www.mpsaz.org/staff/technology",
+                "content": "Jane Smith Director of Technology Mesa Public Schools Phone: (480) 472-0005",
+            }
+        ]
+
+    lead = _lead()
+
+    stats = asyncio.run(
+        acquire_contact_evidence([lead], query="Arizona K-12 technology directors", search_fn=fake_search, tavily_key="fake")
+    )
+
+    assert lead.phone == "(480) 472-0005"
+    assert lead.validation.phone.status == "verified_found"
+    assert stats.acquired_contacts == 1
+
+
+def test_contact_evidence_prioritizes_known_official_domain_over_external_source():
+    calls: list[str] = []
+
+    async def fake_search(query: str, **kwargs):
+        calls.append(query)
+        if query.startswith('site:dysart.org "Jane Smith"'):
+            return [
+                {
+                    "title": "Dysart Unified public budget PDF",
+                    "url": "https://dysart.org/cms/uploads/files/14/budget.pdf",
+                    "content": (
+                        "District name Dysart Unified. First Name Jane Last Name Smith "
+                        "Email Address jane.smith@dysart.org Telephone Number 623-876-7180."
+                    ),
+                }
+            ]
+        return []
+
+    lead = _lead()
+    lead.name = "Jane Smith"
+    lead.organization = "Dysart Unified School District"
+    lead.source_url = "https://www.cosn.org/event/speakers"
+    lead.validation.source.source_url = "https://www.cosn.org/event/speakers"
+
+    stats = asyncio.run(
+        acquire_contact_evidence([lead], query="Arizona K-12 technology directors", search_fn=fake_search, tavily_key="fake")
+    )
+
+    assert calls[0].startswith("site:dysart.org")
+    assert lead.email == "jane.smith@dysart.org"
+    assert lead.validation.email.status == "verified_found"
+    assert stats.acquired_contacts == 1
+
+
 def test_contact_evidence_rejects_pattern_from_unrelated_domain():
     async def fake_search(query: str, **kwargs):
         return [

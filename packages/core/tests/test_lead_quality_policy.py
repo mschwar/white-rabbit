@@ -54,6 +54,15 @@ def _lead(*, title_status: str = "supported", email_status: str = "verified_foun
     )
 
 
+def test_ready_policy_accepts_source_backed_phone_when_email_is_missing():
+    lead = _lead(email_status="missing")
+    lead.phone = "(480) 472-0005"
+    lead.validation.phone = _contact("verified_found")
+
+    assert lead_has_contact_support(lead) is True
+    assert lead_is_ready_eligible(lead) is True
+
+
 def test_ready_policy_requires_persona_source_contact_and_scores():
     lead = _lead()
 

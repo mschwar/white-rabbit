@@ -1,4 +1,9 @@
-from core.query_planner import ARIZONA_K12_TARGET_ACCOUNTS, SAFE_VENDOR_QUERY_LENGTH, compile_query_plan
+from core.query_planner import (
+    ARIZONA_K12_TARGET_ACCOUNTS,
+    SAFE_VENDOR_QUERY_LENGTH,
+    compile_query_plan,
+    official_domains_for_organization,
+)
 
 
 LONG_ARIZONA_PROMPT = (
@@ -25,9 +30,27 @@ def test_compile_query_plan_decomposes_arizona_benchmark_prompt():
     assert any("staff directory" in query.lower() for query in plan.vendor_queries)
     assert any("technology services" in query.lower() for query in plan.vendor_queries)
     assert any("director of technology" in query.lower() for query in plan.vendor_queries)
+    assert any(query.lower().startswith("site:dysart.org") for query in plan.vendor_queries)
+    first_pass_queries = plan.vendor_queries[: len(ARIZONA_K12_TARGET_ACCOUNTS)]
+    assert all(query.lower().startswith("site:") for query in first_pass_queries)
+    assert {query.split()[0].removeprefix("site:") for query in first_pass_queries} == {
+        "mpsaz.org",
+        "cusd80.com",
+        "peoriaunified.org",
+        "gilbertschools.net",
+        "dvusd.org",
+        "pvschools.net",
+        "dysart.org",
+        "musd20.org",
+    }
     for account in ARIZONA_K12_TARGET_ACCOUNTS:
         account_queries = [query for query in plan.vendor_queries if account.lower() in query.lower()]
         assert len(account_queries) >= 3
+
+
+def test_official_domains_match_arizona_k12_organizations():
+    assert official_domains_for_organization("Dysart Unified School District") == ("dysart.org",)
+    assert official_domains_for_organization("Paradise Valley Unified School District") == ("pvschools.net",)
 
 
 def test_compile_query_plan_preserves_simple_query_intent_and_filters():

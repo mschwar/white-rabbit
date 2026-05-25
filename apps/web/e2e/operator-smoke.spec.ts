@@ -40,7 +40,7 @@ const scoutResponse = {
       name: 'Jane Smith',
       title: 'Director of Technology',
       organization: 'Albuquerque Public Schools',
-      email: 'jane.smith@aps.edu',
+      email: 'jane.smith@district.example',
       email_status: 'Found',
       phone: '(505) 555-0101',
       phone_status: 'Found',
@@ -198,6 +198,13 @@ test('production-like operator smoke covers login, readiness, and csv export', a
       body: JSON.stringify(scoutResponse),
     });
   });
+  await page.route('**/api/runs/qa-r14c-run/close', async (route) => {
+    await route.fulfill({
+      status: 200,
+      contentType: 'application/json',
+      body: JSON.stringify({ status: 'ok', ended_at: '2026-05-24T12:00:00Z' }),
+    });
+  });
 
   const homeResponse = await page.goto('/');
   expect(homeResponse?.status()).toBe(200);
@@ -245,13 +252,19 @@ test('production-like operator smoke covers login, readiness, and csv export', a
   const csvText = decodeURIComponent((href ?? '').replace('data:text/csv;charset=utf-8,', ''));
   const csvLines = csvText.trim().split('\n');
   expect(csvLines[0]).toContain('lead_name,title,organization,email,email_status,phone,phone_status');
-  expect(csvLines[1]).toContain('Jane Smith,Director of Technology,Albuquerque Public Schools,jane.smith@aps.edu');
+  expect(csvLines[1]).toContain('Jane Smith,Director of Technology,Albuquerque Public Schools,jane.smith@district.example');
+  await expect(page.getByText(/run closed with \d+\.\d{2} operator minutes/i)).toBeVisible();
   smokeSummary.export = {
     downloadName,
     firstTwoLines: csvLines.slice(0, 2),
     lineCount: csvLines.length,
   };
+  smokeSummary.autoClose = {
+    runId: scoutResponse.run_id,
+    routeMocked: true,
+  };
   await maybeScreenshot(page, '05-export-ready.png');
+  await maybeScreenshot(page, '06-auto-close.png');
 
   const scoutToggle = page.getByRole('button', { name: /^scout$/i });
   const fullToggle = page.getByRole('button', { name: /^full$/i });

@@ -161,7 +161,11 @@ function getEmail(row: ScoutResultRow, validation: CandidateValidation): string 
   return '';
 }
 
-function getPhone(_row: ScoutResultRow): string {
+function getPhone(row: ScoutResultRow): string {
+  if (isPersonLead(row) && row.phone && row.validation?.phone.status === 'verified_found') {
+    return row.phone;
+  }
+
   return '';
 }
 

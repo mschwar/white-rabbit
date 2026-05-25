@@ -1,0 +1,105 @@
+{
+  "benchmark_id": "finance-cisos-new-york",
+  "candidate_category_distribution": {
+    "failed": 46,
+    "person_lead": 4
+  },
+  "contact_quality_passes": 0,
+  "high_trust_usable_with_contact_evidence": 0,
+  "metrics": {
+    "elapsed_seconds": 103.76,
+    "estimated_cost_usd": 0.289776,
+    "funnel_counts": {
+      "categorized_rows": 50,
+      "contact_evidence_candidates_searched": 4,
+      "contact_evidence_conflicting_signals": 0,
+      "contact_evidence_contacts_acquired": 0,
+      "contact_evidence_field_corroborations": 12,
+      "contact_evidence_review_to_high_trust": 0,
+      "contact_evidence_searches": 16,
+      "contact_quality_passes": 0,
+      "deduped_sources": 158,
+      "extracted_candidates": 5,
+      "high_trust_usable_rows": 0,
+      "person_rows": 4,
+      "persona_supported_rows": 4,
+      "raw_vendor_hits": 232,
+      "source_snapshots": 158,
+      "source_supported_rows": 4
+    },
+    "funnel_notes": [
+      "Deduped 232 raw vendor hits to 158 unique sources.",
+      "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+      "No returned row has verified or source-backed deduced contact evidence.",
+      "Deep contact evidence pass searched 4 promising rows and acquired 0 source-backed contacts; 0 rows gained enough contact evidence to clear the READY gate.",
+      "Deep contact evidence pass observed 12 field corroborations and 0 conflicting signals across public-web sources."
+    ],
+    "input_tokens": 61389,
+    "openai_web_searches": 0,
+    "output_tokens": 946,
+    "tavily_searches": 28,
+    "tier_distribution": {
+      "failed": 46,
+      "high_trust_usable": 0,
+      "not_found": 0,
+      "organization_only": 0,
+      "review": 4
+    }
+  },
+  "operator_label_distribution": {
+    "NOT FOUND": 46,
+    "ORG-ONLY": 0,
+    "READY": 0,
+    "REVIEW": 4
+  },
+  "persistence_readback": {
+    "candidate_category_distribution": {
+      "failed": 46,
+      "person_lead": 4
+    },
+    "db_readback_row_count": 50,
+    "exportable_row_count": 50,
+    "first_db_lead_ids": [
+      "df38a137-a2e1-4030-8d2b-855d4d02bd4a",
+      "3f70c2dc-426e-425b-8f02-b02cc2d8d54f",
+      "68f07c41-4cd5-4ff1-85df-7811a6058710",
+      "765db537-bda2-4554-9858-f3b0a50ab2f1",
+      "d3f35722-e6be-4bb8-afc0-cff2022aa5a4"
+    ],
+    "first_response_lead_ids": [
+      "df38a137-a2e1-4030-8d2b-855d4d02bd4a",
+      "3f70c2dc-426e-425b-8f02-b02cc2d8d54f",
+      "68f07c41-4cd5-4ff1-85df-7811a6058710",
+      "765db537-bda2-4554-9858-f3b0a50ab2f1",
+      "d3f35722-e6be-4bb8-afc0-cff2022aa5a4"
+    ],
+    "persisted_lead_count": 50,
+    "recipe_id": "4732123d-8bcf-4cc3-9516-204621d1f377",
+    "response_row_count": 50,
+    "row_count_matches": true,
+    "run_id": "87c686b6-5339-4e05-b115-096cc535b105",
+    "tier_distribution": {
+      "failed": 46,
+      "review": 4
+    }
+  },
+  "query_guardrail": null,
+  "recipe_id": "4732123d-8bcf-4cc3-9516-204621d1f377",
+  "row_count": 50,
+  "run_id": "87c686b6-5339-4e05-b115-096cc535b105",
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 6,
+    "remaining_rows": 842,
+    "reset_at": "2026-05-24T15:45:48.060753+00:00",
+    "total_queries": 4,
+    "total_rows": 158
+  },
+  "seconds": 105.737,
+  "status": 200,
+  "tier_distribution": {
+    "failed": 46,
+    "review": 4
+  }
+}

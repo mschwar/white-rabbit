@@ -48,7 +48,10 @@ def lead_has_source_support(candidate: Candidate) -> bool:
 
 
 def lead_has_contact_support(candidate: Candidate) -> bool:
-    return isinstance(candidate, Lead) and validation_status(candidate, "email") in READY_CONTACT_STATUSES
+    return isinstance(candidate, Lead) and (
+        validation_status(candidate, "email") in READY_CONTACT_STATUSES
+        or validation_status(candidate, "phone") in READY_CONTACT_STATUSES
+    )
 
 
 def lead_has_ready_scores(candidate: Candidate, *, threshold: float = READY_SCORE_THRESHOLD) -> bool:
@@ -100,12 +103,14 @@ def ready_blocker_for_candidate(candidate: Candidate) -> ReadyBlocker | None:
             or "persona" in reason_lower
         ):
             return "persona_mismatch"
-        if validation_status(candidate, "email") == "missing":
-            return "no_contact_source"
-        if validation_status(candidate, "email") == "unsupported":
-            return "no_validated_domain_pattern"
-        if validation_status(candidate, "email") == "failed":
+        email_status = validation_status(candidate, "email")
+        phone_status = validation_status(candidate, "phone")
+        if email_status == "failed" or phone_status == "failed":
             return "conflicting_evidence"
+        if email_status == "unsupported" or phone_status == "unsupported":
+            return "no_validated_domain_pattern"
+        if email_status == "missing" and phone_status == "missing":
+            return "no_contact_source"
 
     if candidate.candidate_category == "not_found":
         return "no_contact_source"

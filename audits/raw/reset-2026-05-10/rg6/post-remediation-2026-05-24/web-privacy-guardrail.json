@@ -1,0 +1,34 @@
+{
+  "body": {
+    "error": "White Rabbit only runs privacy-safe B2B lead-generation queries. Queries aimed at private people, home/consumer targeting, or personal contact discovery are blocked before search.",
+    "query_guardrail": {
+      "message": "White Rabbit only runs privacy-safe B2B lead-generation queries. Queries aimed at private people, home/consumer targeting, or personal contact discovery are blocked before search.",
+      "missing_criteria": [
+        "target people or organizations"
+      ],
+      "status": "blocked",
+      "suggestions": [
+        "Try: IT directors at school districts in New Mexico",
+        "Try: procurement managers at mid-market manufacturers in Texas"
+      ]
+    }
+  },
+  "final_url": "https://white-rabbit-ten.vercel.app/api/scout",
+  "headers": {
+    "Cache-Control": "public, max-age=0, must-revalidate",
+    "Connection": "close",
+    "Content-Type": "application/json",
+    "Date": "Sun, 24 May 2026 04:47:17 GMT",
+    "Server": "Vercel",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+    "Transfer-Encoding": "chunked",
+    "Vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+    "X-Matched-Path": "/api/scout",
+    "X-Vercel-Cache": "MISS",
+    "X-Vercel-Id": "sfo1::iad1::cqcr4-[REDACTED_PHONE]92-0082d1029c05"
+  },
+  "method": "POST",
+  "seconds": 0.412,
+  "status": 422,
+  "url": "https://white-rabbit-ten.vercel.app/api/scout"
+}

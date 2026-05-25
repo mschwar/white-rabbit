@@ -1,0 +1,25 @@
+{
+  "close_status": null,
+  "collected_at": "2026-05-24T04:47:04.657040Z",
+  "export": {
+    "headers": [
+      "lead_name",
+      "title",
+      "organization",
+      "email_status",
+      "phone_status",
+      "usable_candidate",
+      "operator_label",
+      "candidate_category",
+      "tier",
+      "validation_notes"
+    ],
+    "path": "audits/raw/reset-2026-05-10/rg6/post-remediation-2026-05-24/timed-query-to-export.csv",
+    "row_count": 0
+  },
+  "operator_flow": "no-assistance scripted primary query-to-export production flow: authenticated web /api/scout -> persisted readback -> CSV materialization -> /api/runs/{run_id}/close",
+  "operator_minutes": 0.011,
+  "readback_status": null,
+  "run_id": null,
+  "scout_seconds": 0.638
+}

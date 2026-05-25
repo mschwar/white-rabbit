@@ -6,7 +6,7 @@ import httpx
 import pytest
 
 from core import search
-from core.query_planner import ARIZONA_K12_TARGET_ACCOUNTS, QueryPlan
+from core.query_planner import ARIZONA_K12_TARGET_ACCOUNTS, QueryPlan, compile_query_plan
 from core.source_collection import (
     InMemorySourceSnapshotStore,
     build_source_collection_snapshot,
@@ -131,20 +131,6 @@ def test_fetch_search_results_raises_after_three_timeout_attempts(monkeypatch):
 def test_fetch_search_results_decomposes_long_arizona_prompt_into_bounded_queries(monkeypatch):
     created_clients: list[FakeAsyncClient] = []
     captured_queries: list[str] = []
-    outcomes = [
-        FakeResponse(
-            [
-                {
-                    "title": f"Lead {index}",
-                    "url": f"https://example.com/{index}",
-                    "content": f"content {index}",
-                    "score": 0.9,
-                }
-            ]
-        )
-        for index in range(24)
-    ]
-
     long_prompt = (
         "Find the Arizona K-12 VoIP benchmark contacts. "
         "I need technology and telecom decision makers for Mesa, Chandler, Peoria, Gilbert, "
@@ -156,6 +142,20 @@ def test_fetch_search_results_decomposes_long_arizona_prompt_into_bounded_querie
         "is intentionally long and noisy. "
         "Do not lose the K-12, IT, VoIP, or Arizona intent while compiling the query."
     )
+    expected_query_count = len(compile_query_plan(long_prompt, max_results=8).vendor_queries)
+    outcomes = [
+        FakeResponse(
+            [
+                {
+                    "title": f"Lead {index}",
+                    "url": f"https://example.com/{index}",
+                    "content": f"content {index}",
+                    "score": 0.9,
+                }
+            ]
+        )
+        for index in range(expected_query_count)
+    ]
 
     async def fake_sleep(delay: float) -> None:
         return None
@@ -174,11 +174,12 @@ def test_fetch_search_results_decomposes_long_arizona_prompt_into_bounded_querie
     results = asyncio.run(search.fetch_search_results(long_prompt, api_key="fake", max_results=8))
 
     assert len(results) == 8
-    assert results.tavily_searches == 24
+    assert results.tavily_searches == expected_query_count
     assert len(created_clients) == 1
-    assert created_clients[0].calls == 24
-    assert len(captured_queries) == 24
+    assert created_clients[0].calls == expected_query_count
+    assert len(captured_queries) == expected_query_count
     assert all(len(query) <= 400 for query in captured_queries)
+    assert any(query.startswith("site:dysart.org") for query in captured_queries)
     for account in ARIZONA_K12_TARGET_ACCOUNTS:
         assert any(account.lower() in query.lower() for query in captured_queries)
 

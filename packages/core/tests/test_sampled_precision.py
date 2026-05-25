@@ -50,11 +50,13 @@ def _lead(name: str, *, email_status: str = "verified_found", title_status: str 
 
 
 def test_sampled_precision_packet_is_deterministic_and_counts_support_dimensions():
+    unsupported_email_lead = _lead("Maria Garcia", email_status="unsupported")
+    unsupported_email_lead.email = "maria.garcia@example.test"
     packet = build_sampled_precision_packet(
         {
             "thomas-arizona-k12": [
                 _lead("Jane Smith"),
-                _lead("Maria Garcia", email_status="unsupported"),
+                unsupported_email_lead,
                 _lead("Alex Johnson", title_status="unsupported"),
             ]
         },
@@ -70,3 +72,14 @@ def test_sampled_precision_packet_is_deterministic_and_counts_support_dimensions
     assert packet.unsupported_email_count == 1
     assert packet.fake_email_count == 0
     assert packet.green_precision_floor_met is False
+
+
+def test_sampled_precision_does_not_count_redacted_empty_email_as_unsupported_contact():
+    lead = _lead("Brian Boone", email_status="unsupported")
+    lead.email = ""
+
+    packet = build_sampled_precision_packet({"thomas-arizona-k12": [lead]})
+
+    assert packet.sampled_row_count == 1
+    assert packet.contact_support_precision == 0.0
+    assert packet.unsupported_email_count == 0

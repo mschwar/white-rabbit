@@ -106,8 +106,9 @@ def _row_from_candidate(benchmark_id: str, row_index: int, candidate: Candidate)
     source_supported = lead_has_source_support(candidate) or validation_status(candidate, "source") == "supported"
     contact_supported = lead_has_contact_support(candidate)
     email_status = validation_status(candidate, "email")
-    unsupported_email = isinstance(candidate, Lead) and email_status == "unsupported"
-    fake_email = isinstance(candidate, Lead) and email_status == "failed"
+    email_value = candidate.email.strip() if isinstance(candidate, Lead) else ""
+    unsupported_email = bool(email_value) and email_status == "unsupported"
+    fake_email = bool(email_value) and email_status == "failed"
     return SampledPrecisionRow(
         benchmark_id=benchmark_id,
         row_index=row_index,

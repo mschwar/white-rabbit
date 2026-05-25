@@ -4,7 +4,7 @@ from collections.abc import Iterable
 from typing import Any
 
 from .models import Candidate, FailedCandidate, NotFoundCandidate, OrganizationOnlyCandidate
-from .query_planner import QueryPlan, named_account_aliases
+from .query_planner import QueryPlan, named_account_aliases, official_domains_for_named_account
 from .source_collection import CollectedSource, SourceCollectionSnapshot
 
 
@@ -35,6 +35,11 @@ def _source_covers_account(source: CollectedSource, aliases: Iterable[str]) -> b
     return any(_normalize(alias) and _normalize(alias) in text for alias in aliases)
 
 
+def _source_matches_official_account_domain(source: CollectedSource, account: str) -> bool:
+    url = _normalize(source.url)
+    return any(domain in url for domain in official_domains_for_named_account(account))
+
+
 def _first_source_for_account(
     account: str,
     source_collection: SourceCollectionSnapshot | None,
@@ -44,7 +49,7 @@ def _first_source_for_account(
 
     aliases = named_account_aliases(account)
     for source in source_collection.sources:
-        if _source_covers_account(source, aliases):
+        if _source_covers_account(source, aliases) or _source_matches_official_account_domain(source, account):
             return source
     return None
 

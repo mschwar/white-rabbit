@@ -11,6 +11,7 @@ from .models import (
     Lead,
     OrganizationOnlyCandidate,
 )
+from .query_planner import named_account_aliases, official_domains_for_organization
 
 CONTACT_EVIDENCE_MAX_CANDIDATES = 8
 CONTACT_EVIDENCE_MAX_RESULTS = 5
@@ -18,6 +19,7 @@ CONTACT_EVIDENCE_MAX_QUERIES_PER_CANDIDATE = 4
 USABLE_CONTACT_STATUSES = {"verified_found", "deduced_with_pattern_evidence"}
 
 _EMAIL_RE = re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", re.IGNORECASE)
+_PHONE_RE = re.compile(r"(?:\+?1[\s.-]?)?(?:\(?\d{3}\)?[\s.-]?)\d{3}[\s.-]?\d{4}")
 _DOMAIN_RE = re.compile(r"@([A-Z0-9.-]+\.[A-Z]{2,})", re.IGNORECASE)
 _GENERIC_EMAIL_PREFIXES = {
     "admin",
@@ -98,8 +100,9 @@ class ContactEvidenceStats:
 
 @dataclass(frozen=True, slots=True)
 class _ContactEvidence:
+    contact_field: str
     status: str
-    email: str
+    value: str
     source_url: str
     snippet: str
     notes: str
@@ -195,12 +198,30 @@ def _text_mentions(value: str, needle: str) -> bool:
     return bool(needle) and needle.lower() in value.lower()
 
 
+def _text_mentions_candidate_name(value: str, candidate: Lead) -> bool:
+    if _text_mentions(value, candidate.name):
+        return True
+    parts = _name_parts(candidate)
+    if parts is None:
+        return False
+    first, last = parts
+    lowered = value.lower()
+    return first in lowered and last in lowered
+
+
+def _text_mentions_candidate_organization(value: str, candidate: Lead) -> bool:
+    if _text_mentions(value, candidate.organization):
+        return True
+    lowered = value.lower()
+    return any(alias.lower() in lowered for alias in named_account_aliases(candidate.organization))
+
+
 def _result_mentions_candidate(result_text: str, candidate: Lead) -> bool:
     lowered = result_text.lower()
-    name = candidate.name.lower()
-    organization = candidate.organization.lower()
     title = candidate.title.lower()
-    return name in lowered or (organization in lowered and title in lowered)
+    return _text_mentions_candidate_name(result_text, candidate) or (
+        _text_mentions_candidate_organization(result_text, candidate) and title in lowered
+    )
 
 
 def _detect_page_type(result: Any) -> str:
@@ -235,7 +256,7 @@ def _page_signal(result: Mapping[str, Any], candidate: Lead) -> _PageSignal:
         text=text,
         supports_name=_text_mentions(text, candidate.name),
         supports_title=_text_mentions(text, candidate.title),
-        supports_organization=_text_mentions(text, candidate.organization),
+        supports_organization=_text_mentions_candidate_organization(text, candidate),
         has_contact_source_terms=any(term in lowered for term in _CONTACT_SOURCE_TERMS),
         has_email_pattern=any(marker in lowered for marker in _PATTERN_MARKERS),
         conflict=conflict,
@@ -255,6 +276,9 @@ def _rank_contact_results(results: Iterable[Mapping[str, Any]]) -> list[Mapping[
 
 def _candidate_source_domains(candidate: Lead) -> tuple[str, ...]:
     domains: list[str] = []
+    for domain in official_domains_for_organization(candidate.organization):
+        if domain and domain not in domains:
+            domains.append(domain)
     for value in (
         candidate.source_url,
         candidate.validation.source.source_url,
@@ -275,15 +299,15 @@ def _source_is_authoritative_for_candidate(result: Mapping[str, Any], candidate:
         return source_type in _AUTHORITATIVE_SOURCE_TYPES or any(
             term in _result_text(result).lower() for term in _CONTACT_SOURCE_TERMS
         )
-    return source_type == "board_agenda_pdf" and candidate.organization.lower() in _result_text(result).lower()
+    return source_type == "board_agenda_pdf" and _text_mentions_candidate_organization(_result_text(result), candidate)
 
 
 def _direct_email_is_source_backed(result: Mapping[str, Any], candidate: Lead) -> bool:
     text = _result_text(result)
     lowered = text.lower()
-    if candidate.name.lower() not in lowered:
+    if not _text_mentions_candidate_name(text, candidate):
         return False
-    if candidate.organization.lower() not in lowered and candidate.title.lower() not in lowered:
+    if not _text_mentions_candidate_organization(text, candidate) and candidate.title.lower() not in lowered:
         return False
     return _source_is_authoritative_for_candidate(result, candidate)
 
@@ -332,12 +356,45 @@ def _find_direct_email_evidence(
             if _email_is_generic(email) or not _email_matches_person(email, candidate):
                 continue
             return _ContactEvidence(
+                contact_field="email",
                 status="verified_found",
-                email=email,
+                value=email,
                 source_url=_result_url(result),
                 snippet=_snippet(text, email),
                 notes=(
                     "Direct person email found in targeted public-web evidence pass "
+                    f"on a {_detect_page_type(result)} source; corroborating_sources={corroborating_sources}."
+                ),
+                source_type=_detect_page_type(result),
+                corroborating_source_count=corroborating_sources,
+                conflicting_signals=conflicts,
+            )
+    return None
+
+
+def _find_direct_phone_evidence(
+    results: Iterable[Mapping[str, Any]],
+    candidate: Lead,
+    *,
+    signals: Iterable[_PageSignal] = (),
+) -> _ContactEvidence | None:
+    signal_list = list(signals)
+    corroborating_sources = max(1, _corroborating_source_count(signal_list))
+    conflicts = _conflicting_signals(signal_list)
+    for result in _rank_contact_results(results):
+        text = _result_text(result)
+        if not _result_mentions_candidate(text, candidate) or not _direct_email_is_source_backed(result, candidate):
+            continue
+        for match in _PHONE_RE.finditer(text):
+            phone = match.group(0).strip()
+            return _ContactEvidence(
+                contact_field="phone",
+                status="verified_found",
+                value=phone,
+                source_url=_result_url(result),
+                snippet=_snippet(text, phone),
+                notes=(
+                    "Direct person phone found in targeted public-web evidence pass "
                     f"on a {_detect_page_type(result)} source; corroborating_sources={corroborating_sources}."
                 ),
                 source_type=_detect_page_type(result),
@@ -380,8 +437,9 @@ def _find_explicit_pattern_evidence(
             continue
         email = f"{first}.{last}@{domain}"
         return _ContactEvidence(
+            contact_field="email",
             status="deduced_with_pattern_evidence",
-            email=email,
+            value=email,
             source_url=_result_url(result),
             snippet=_snippet(text, domain),
             notes=(
@@ -398,7 +456,8 @@ def _find_explicit_pattern_evidence(
 def _promising_candidate(candidate: Candidate) -> bool:
     if isinstance(candidate, Lead):
         email_status = getattr(candidate.validation.email, "status", "unsupported")
-        if email_status in USABLE_CONTACT_STATUSES:
+        phone_status = getattr(candidate.validation.phone, "status", "unsupported")
+        if email_status in USABLE_CONTACT_STATUSES or phone_status in USABLE_CONTACT_STATUSES:
             return False
         if getattr(candidate.validation.source, "status", "unsupported") in {"failed", "missing"}:
             return False
@@ -421,8 +480,10 @@ def _contact_queries(candidate: Candidate, original_query: str) -> list[str]:
         source_domains = _candidate_source_domains(candidate)
         queries = []
         for domain in source_domains:
-            queries.append(f'site:{domain} "{candidate.name}" "{candidate.title}" email contact staff directory')
-            queries.append(f'site:{domain} "{candidate.organization}" technology services leadership email')
+            queries.append(f'site:{domain} "{candidate.name}" email phone contact staff directory')
+            queries.append(f'site:{domain} "{candidate.name}" "{candidate.organization}" email phone')
+            queries.append(f'site:{domain} "{candidate.organization}" "{candidate.title}" staff directory email phone')
+            queries.append(f'site:{domain} "{candidate.organization}" technology services leadership email phone')
         queries.extend([
             f'"{candidate.name}" "{candidate.organization}" {candidate.title} email contact staff leadership team directory',
             f'"{candidate.organization}" "{candidate.title}" staff leadership team department directory email',
@@ -462,16 +523,21 @@ def _rank_candidates(candidates: Iterable[Candidate]) -> list[Candidate]:
 
 
 def _apply_contact_evidence(candidate: Lead, evidence: _ContactEvidence) -> None:
-    candidate.email = evidence.email
-    candidate.email_status = evidence.status  # type: ignore[assignment]
     candidate.contact_score = max(candidate.contact_score, 0.75 if evidence.status == "deduced_with_pattern_evidence" else 0.9)
-    candidate.validation.email = ContactValidationRecord(
+    contact_record = ContactValidationRecord(
         status=evidence.status,  # type: ignore[arg-type]
         source_url=evidence.source_url,
         evidence_snippet=evidence.snippet,
         checked_at=candidate.validation.source.checked_at,
         notes=evidence.notes,
     )
+    if evidence.contact_field == "email":
+        candidate.email = evidence.value
+        candidate.email_status = evidence.status  # type: ignore[assignment]
+        candidate.validation.email = contact_record
+    else:
+        candidate.phone = evidence.value
+        candidate.validation.phone = contact_record
     if candidate.validation.source.status != "supported":
         candidate.validation.source = FieldValidationRecord(
             status="supported",
@@ -499,7 +565,8 @@ def _record_unacquired_contact_search(candidate: Lead, signals: Iterable[_PageSi
         checked_at=candidate.validation.email.checked_at,
         notes=(
             f"{candidate.validation.email.notes} Deep contact pass searched page_types={page_type_note}; "
-            f"corroborating_sources={corroborating_sources}; no direct person email or explicit domain pattern found."
+            f"corroborating_sources={corroborating_sources}; no direct person email or explicit domain pattern found; "
+            "no direct person phone found."
         ).strip(),
     )
 
@@ -589,6 +656,10 @@ async def acquire_contact_evidence(
                         conflict_messages.add(signal.conflict)
                         conflicting_signals += 1
                 evidence = _find_direct_email_evidence(
+                    result_list,
+                    candidate,
+                    signals=signals,
+                ) or _find_direct_phone_evidence(
                     result_list,
                     candidate,
                     signals=signals,

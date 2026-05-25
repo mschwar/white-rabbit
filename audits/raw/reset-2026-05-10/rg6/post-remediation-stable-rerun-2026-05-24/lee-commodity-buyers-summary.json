@@ -1,0 +1,113 @@
+{
+  "benchmark_id": "lee-commodity-buyers",
+  "candidate_category_distribution": {
+    "failed": 45,
+    "person_lead": 5
+  },
+  "contact_quality_passes": 5,
+  "high_trust_usable_with_contact_evidence": 0,
+  "metrics": {
+    "elapsed_seconds": 110.13,
+    "estimated_cost_usd": 0.142636,
+    "funnel_counts": {
+      "categorized_rows": 50,
+      "contact_evidence_candidates_searched": 1,
+      "contact_evidence_conflicting_signals": 0,
+      "contact_evidence_contacts_acquired": 1,
+      "contact_evidence_field_corroborations": 1,
+      "contact_evidence_review_to_high_trust": 0,
+      "contact_evidence_searches": 1,
+      "contact_quality_passes": 5,
+      "deduped_sources": 185,
+      "extracted_candidates": 6,
+      "high_trust_usable_rows": 0,
+      "person_rows": 5,
+      "persona_supported_rows": 0,
+      "raw_vendor_hits": 240,
+      "source_snapshots": 185,
+      "source_supported_rows": 5
+    },
+    "funnel_notes": [
+      "Deduped 240 raw vendor hits to 185 unique sources.",
+      "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+      "Deep contact evidence pass searched 1 promising rows and acquired 1 source-backed contacts; 0 rows gained enough contact evidence to clear the READY gate.",
+      "Deep contact evidence pass observed 1 field corroborations and 0 conflicting signals across public-web sources."
+    ],
+    "input_tokens": 79708,
+    "openai_web_searches": 0,
+    "output_tokens": 1133,
+    "tavily_searches": 13,
+    "tier_distribution": {
+      "failed": 45,
+      "high_trust_usable": 0,
+      "not_found": 0,
+      "organization_only": 0,
+      "review": 5
+    }
+  },
+  "operator_label_distribution": {
+    "NOT FOUND": 45,
+    "ORG-ONLY": 0,
+    "READY": 0,
+    "REVIEW": 5
+  },
+  "persistence_readback": {
+    "candidate_category_distribution": {
+      "failed": 45,
+      "person_lead": 5
+    },
+    "db_readback_row_count": 50,
+    "exportable_row_count": 50,
+    "first_db_lead_ids": [
+      "184e3745-376b-4723-8d75-a7b49a6ea85e",
+      "5de0c106-fc6c-410e-ac4b-9d70ecfe5500",
+      "e4144771-fbaa-401d-ad8f-cc87163cbbf6",
+      "c88b1a2d-08ca-4972-bccd-0bbbfccda379",
+      "f86cec4d-6766-478f-9d4f-4b62913f3dc8"
+    ],
+    "first_response_lead_ids": [
+      "184e3745-376b-4723-8d75-a7b49a6ea85e",
+      "5de0c106-fc6c-410e-ac4b-9d70ecfe5500",
+      "e4144771-fbaa-401d-ad8f-cc87163cbbf6",
+      "c88b1a2d-08ca-4972-bccd-0bbbfccda379",
+      "f86cec4d-6766-478f-9d4f-4b62913f3dc8"
+    ],
+    "persisted_lead_count": 50,
+    "recipe_id": "f822512c-065c-40ee-90f4-653d8b5416d3",
+    "response_row_count": 50,
+    "row_count_matches": true,
+    "run_id": "067ddd82-0624-4693-a892-7e310eb6e630",
+    "tier_distribution": {
+      "failed": 45,
+      "review": 5
+    }
+  },
+  "query_guardrail": {
+    "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+    "missing_criteria": [
+      "target title or role"
+    ],
+    "status": "needs_more_detail",
+    "suggestions": [
+      "Add a title or role, such as director, manager, VP, or owner."
+    ]
+  },
+  "recipe_id": "f822512c-065c-40ee-90f4-653d8b5416d3",
+  "row_count": 50,
+  "run_id": "067ddd82-0624-4693-a892-7e310eb6e630",
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 8,
+    "remaining_rows": 942,
+    "reset_at": "2026-05-24T15:45:48.060753+00:00",
+    "total_queries": 2,
+    "total_rows": 58
+  },
+  "seconds": 112.417,
+  "status": 200,
+  "tier_distribution": {
+    "failed": 45,
+    "review": 5
+  }
+}

@@ -183,7 +183,7 @@ def get_engine(database_url: str | None = None):
         if os.environ.get("WR_ENV") == "production":
             raise RuntimeError("DATABASE_URL must be set in production")
         url = "postgresql://white_rabbit:***@localhost:5432/white_rabbit"
-    return create_engine(url)
+    return create_engine(url, pool_pre_ping=True, pool_recycle=300)
 
 
 def get_session_maker(engine):

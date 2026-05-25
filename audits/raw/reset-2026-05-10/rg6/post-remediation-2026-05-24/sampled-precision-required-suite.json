@@ -1,0 +1,12 @@
+{
+  "contact_support_precision": 0.0,
+  "fake_email_count": 0,
+  "green_precision_floor_met": false,
+  "organization_precision": 0.0,
+  "packet_id": "required_suite_sampled_precision",
+  "persona_precision": 0.0,
+  "rows": [],
+  "sampled_row_count": 0,
+  "source_support_precision": 0.0,
+  "unsupported_email_count": 0
+}

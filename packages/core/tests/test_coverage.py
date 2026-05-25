@@ -83,6 +83,45 @@ def test_write_nonperson_coverage_adds_organization_only_and_not_found_rows():
     assert "named-account obligation" in candidates[1].explanation
 
 
+def test_write_nonperson_coverage_uses_known_official_domain_as_account_source():
+    plan = QueryPlan(
+        original_query="Arizona K-12 technology leaders",
+        vendor_queries=["site:musd20.org Maricopa Unified School District technology"],
+        named_accounts=["Maricopa Unified School District"],
+        intent_summary="technology leaders",
+        target_raw_results=8,
+    )
+    source_collection = SourceCollectionSnapshot(
+        query="Arizona K-12 technology leaders",
+        collected_at="2026-05-24T00:00:00Z",
+        requested_max_results=8,
+        returned_source_count=1,
+        tavily_searches=1,
+        search_depth="advanced",
+        query_plan=None,
+        sources=[
+            CollectedSource(
+                source_id="src_maricopa",
+                rank=1,
+                title="Technology Services",
+                url="https://www.musd20.org/departments/technology",
+                content="Technology department contact information.",
+                score=0.88,
+                vendor_query="site:musd20.org Maricopa Unified School District technology",
+                matched_vendor_queries=["site:musd20.org Maricopa Unified School District technology"],
+                content_sha256="def456",
+            )
+        ],
+    )
+
+    candidates = write_nonperson_coverage([], query_plan=plan, source_collection=source_collection)
+
+    assert len(candidates) == 1
+    assert isinstance(candidates[0], OrganizationOnlyCandidate)
+    assert candidates[0].organization == "Maricopa Unified School District"
+    assert candidates[0].source_url == "https://www.musd20.org/departments/technology"
+
+
 def test_write_nonperson_coverage_does_not_duplicate_existing_account_rows():
     candidates = write_nonperson_coverage(
         [_lead()],
