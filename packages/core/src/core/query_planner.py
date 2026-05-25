@@ -2,9 +2,13 @@ from __future__ import annotations
 
 from collections.abc import Mapping
 from dataclasses import dataclass, field
+from functools import lru_cache
 from typing import Any
 import re
 from math import ceil
+from urllib.parse import urlparse
+
+from .k12_source_map import K12RosterSeed, collect_k12_roster_sources, load_az_k12_source_map
 
 MAX_TAVILY_QUERY_LENGTH = 400
 SAFE_VENDOR_QUERY_LENGTH = 380
@@ -40,7 +44,7 @@ _ARIZONA_K12_ACCOUNT_ALIASES = {
 }
 
 _ARIZONA_K12_ACCOUNT_DOMAINS = {
-    "Mesa Public Schools": ("mpsaz.org",),
+    "Mesa Public Schools": ("mpsaz.org", "departments.mpsaz.org"),
     "Chandler Unified School District": ("cusd80.com",),
     "Peoria Unified School District": ("peoriaunified.org",),
     "Gilbert Public Schools": ("gilbertschools.net",),
@@ -440,6 +444,15 @@ _K12_TECH_ROLE_VARIANTS = (
     "Technology Services",
     "Information Technology",
 )
+_ARIZONA_K12_SOURCE_MAP_SEED_LIMIT_PER_ACCOUNT = 3
+_SOURCE_FAMILY_QUERY_TERMS = {
+    "district_staff_directory": '"staff directory" technology IT director email phone',
+    "district_technology_page": '"information technology" "technology services" CIO CTO "director of technology" phone email',
+    "district_leadership_page": '"district leadership" "director of information technology" technology phone',
+    "district_board_agenda_pdf": 'filetype:pdf "Information Technology" "Technology Officer" email phone',
+    "district_contact_page": '"contact" "Information Technology" technology phone email',
+    "district_official_homepage": "official district technology contact",
+}
 
 
 def _extract_role_expansions(query: str) -> list[str]:
@@ -458,6 +471,63 @@ def _extract_locations(query: str, filters: Mapping[str, Any] | None) -> list[st
             if key.lower() in {"location", "city", "state", "region", "geography"} and value:
                 locations.append(str(value))
     return _unique_preserve_order(locations)
+
+
+@lru_cache(maxsize=1)
+def _arizona_k12_source_map_seeds() -> tuple[K12RosterSeed, ...]:
+    try:
+        return tuple(collect_k12_roster_sources(load_az_k12_source_map()))
+    except (OSError, KeyError, TypeError, ValueError):
+        return ()
+
+
+def _arizona_source_map_seeds_for_account(account: str) -> list[K12RosterSeed]:
+    return [
+        seed
+        for seed in _arizona_k12_source_map_seeds()
+        if seed.district_name == account
+    ][:_ARIZONA_K12_SOURCE_MAP_SEED_LIMIT_PER_ACCOUNT]
+
+
+def _source_family_query_terms(source_family: str) -> str:
+    return _SOURCE_FAMILY_QUERY_TERMS.get(source_family, "technology staff directory contact")
+
+
+def _source_seed_path_terms(url: str) -> str:
+    parsed = urlparse(url)
+    path = parsed.path.strip("/")
+    if not path:
+        return ""
+    return re.sub(r"[^A-Za-z0-9]+", " ", path).strip()
+
+
+def _source_seed_site(url: str) -> str:
+    parsed = urlparse(url)
+    if parsed.netloc:
+        return parsed.netloc.lower()
+    return ""
+
+
+def _build_arizona_source_map_query(account: str, seed: K12RosterSeed) -> str:
+    source = seed.url.strip()
+    terms = _source_family_query_terms(seed.source_family)
+    if source.lower().startswith("site:"):
+        account_bit = "" if account.lower() in source.lower() else f' "{account}"'
+        return _collapse_whitespace(f"{source}{account_bit} Arizona K-12 {terms}")
+
+    site = _source_seed_site(source)
+    path_terms = _source_seed_path_terms(source)
+    if site:
+        return _collapse_whitespace(f'site:{site} "{account}" Arizona K-12 {terms} {path_terms}')
+    return _collapse_whitespace(f'"{source}" "{account}" Arizona K-12 {terms}')
+
+
+def arizona_official_source_queries_for_named_account(account: str) -> tuple[str, ...]:
+    """Return official-source-first Arizona K-12 query seeds for a named district."""
+    return tuple(
+        _build_arizona_source_map_query(account, seed)
+        for seed in _arizona_source_map_seeds_for_account(account)
+    )
 
 
 def _is_broad_query(
@@ -499,6 +569,11 @@ def _compile_named_account_queries(
     vendor_query_seeds: list[str] = []
 
     if school_context:
+        for source_index in range(_ARIZONA_K12_SOURCE_MAP_SEED_LIMIT_PER_ACCOUNT):
+            for account in named_accounts:
+                source_queries = arizona_official_source_queries_for_named_account(account)
+                if source_index < len(source_queries):
+                    vendor_query_seeds.append(source_queries[source_index])
         # Interleave by query type, not account, so bounded result sets still
         # include at least one official-domain pass for every named district.
         for account in named_accounts:
@@ -534,8 +609,8 @@ def _compile_named_account_queries(
             f"Decomposed into {len(named_accounts)} named-account searches.",
             "Compiled each account query to stay within the Tavily limit.",
             (
-                "Expanded Arizona K-12 named-account searches with technology role variants "
-                "and official staff/contact source qualifiers."
+                "Expanded Arizona K-12 named-account searches with source-map official "
+                "staff/technology/leadership families before generic role variants."
                 if school_context
                 else "Used named-account search without K-12-specific source expansion."
             ),

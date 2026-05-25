@@ -1,0 +1,603 @@
+{
+  "map_id": "az_k12_source_map_rg6r3",
+  "state": "AZ",
+  "vertical": "Arizona K-12 school district technology / IT / telecom leadership",
+  "source_authority_note": "Roster-first Arizona source map for RG6R3. Start with official Arizona education-agency, district staff-directory, technology-department, leadership, contact, and public-document sources before any generic web breadth. Search-pattern entries are domain-constrained official-source seeds, not broad Tavily fallbacks.",
+  "districts": [
+    {
+      "district_id": "az-ade",
+      "name": "Arizona Department of Education",
+      "state": "AZ",
+      "manual_oracle_row_ids": [],
+      "expected_source_families": [
+        "state_education_agency_roster",
+        "state_public_school_directory"
+      ],
+      "coverage_gaps": [
+        "State directory can establish the official district universe, but district-level IT person extraction still requires district pages, staff directories, or public PDFs."
+      ],
+      "sources": [
+        {
+          "family_id": "az-ade-school-directory",
+          "source_family": "state_education_agency_roster",
+          "priority": 1,
+          "url": "https://www.azed.gov/school-directory",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_state_agency",
+          "crawl_method": "fetch_html",
+          "extraction_method": "directory_link_parse",
+          "supports": [
+            "district universe",
+            "official Arizona education agency source"
+          ],
+          "notes": "Official ADE school directory seed."
+        },
+        {
+          "family_id": "az-ade-agency-directory",
+          "source_family": "state_public_school_directory",
+          "priority": 2,
+          "url": "https://www.azed.gov/agency-directory",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_state_agency",
+          "crawl_method": "fetch_html",
+          "extraction_method": "agency_directory_parse",
+          "supports": [
+            "state agency contact route",
+            "official public-sector source family"
+          ],
+          "notes": "State-agency fallback for official-directory discovery."
+        }
+      ]
+    },
+    {
+      "district_id": "mesa-public-schools",
+      "name": "Mesa Public Schools",
+      "state": "AZ",
+      "manual_oracle_row_ids": [
+        "az_mesa"
+      ],
+      "expected_source_families": [
+        "district_technology_page",
+        "district_staff_directory",
+        "district_official_homepage"
+      ],
+      "coverage_gaps": [],
+      "sources": [
+        {
+          "family_id": "mesa-information-systems",
+          "source_family": "district_technology_page",
+          "priority": 1,
+          "url": "https://departments.mpsaz.org/o/departments/page/infosys",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "technology_department_parse",
+          "supports": [
+            "technology department",
+            "Chief Technology Officer",
+            "district help desk phone"
+          ],
+          "notes": "Official Information Systems page avoids the blocked legacy www.mpsaz.org/infosys path."
+        },
+        {
+          "family_id": "mesa-departments-staff",
+          "source_family": "district_staff_directory",
+          "priority": 2,
+          "url": "https://departments.mpsaz.org/o/departments/staff?page_no=6",
+          "access_status": "public_html_or_search",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "staff_directory_parse",
+          "supports": [
+            "staff roster",
+            "person/title/contact candidate discovery"
+          ],
+          "notes": "Official department staff page with Information Systems leadership."
+        },
+        {
+          "family_id": "mesa-home",
+          "source_family": "district_official_homepage",
+          "priority": 20,
+          "url": "https://www.mpsaz.org/o/mpsaz/",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "homepage_navigation_discovery",
+          "supports": [
+            "district identity",
+            "official homepage"
+          ],
+          "notes": "Official district homepage fallback."
+        }
+      ]
+    },
+    {
+      "district_id": "chandler-unified-school-district",
+      "name": "Chandler Unified School District",
+      "state": "AZ",
+      "manual_oracle_row_ids": [
+        "az_chandler"
+      ],
+      "expected_source_families": [
+        "district_staff_directory",
+        "district_technology_page",
+        "district_official_homepage"
+      ],
+      "coverage_gaps": [
+        "Technology Services person evidence may require an official-domain staff search pattern before homepage fallback."
+      ],
+      "sources": [
+        {
+          "family_id": "chandler-technology-services-search",
+          "source_family": "district_staff_directory",
+          "priority": 1,
+          "url": "site:cusd80.com \"Colleen Flannery\" \"Director of Technology Services\"",
+          "access_status": "official_domain_search_pattern",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "vendor_search",
+          "extraction_method": "staff_directory_search_result_parse",
+          "supports": [
+            "person/title/source discovery",
+            "official-domain staff evidence"
+          ],
+          "notes": "Domain-constrained official-source search pattern for the known Chandler technology-services lead."
+        },
+        {
+          "family_id": "chandler-technology-services-role-search",
+          "source_family": "district_technology_page",
+          "priority": 2,
+          "url": "site:cusd80.com \"Technology Services\" \"Chandler Unified School District\" \"Director\"",
+          "access_status": "official_domain_search_pattern",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "vendor_search",
+          "extraction_method": "technology_department_search_result_parse",
+          "supports": [
+            "technology services",
+            "role-specific official-domain source discovery"
+          ],
+          "notes": "Official-domain search pattern before generic Chandler homepage fallback."
+        },
+        {
+          "family_id": "chandler-home",
+          "source_family": "district_official_homepage",
+          "priority": 20,
+          "url": "https://www.cusd80.com/",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "homepage_navigation_discovery",
+          "supports": [
+            "district identity",
+            "official homepage"
+          ],
+          "notes": "Official homepage fallback."
+        }
+      ]
+    },
+    {
+      "district_id": "peoria-unified-school-district",
+      "name": "Peoria Unified School District",
+      "state": "AZ",
+      "manual_oracle_row_ids": [
+        "az_peoria"
+      ],
+      "expected_source_families": [
+        "district_staff_directory",
+        "district_board_agenda_pdf",
+        "district_official_homepage"
+      ],
+      "coverage_gaps": [
+        "Recent public pages often expose the technology leader through official PDFs or handbooks instead of a dedicated technology staff page."
+      ],
+      "sources": [
+        {
+          "family_id": "peoria-staff",
+          "source_family": "district_staff_directory",
+          "priority": 1,
+          "url": "https://www.peoriaunified.org/staff",
+          "access_status": "public_html_or_search",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "staff_directory_parse",
+          "supports": [
+            "staff roster",
+            "person/title/contact candidate discovery"
+          ],
+          "notes": "Official Apptegy staff directory seed."
+        },
+        {
+          "family_id": "peoria-technology-officer-pdf-search",
+          "source_family": "district_board_agenda_pdf",
+          "priority": 2,
+          "url": "site:peoriaunified.org \"Chief Technology\" \"Peoria Unified School District\"",
+          "access_status": "official_domain_search_pattern",
+          "source_reputation_signal": "official_public_document",
+          "crawl_method": "vendor_search",
+          "extraction_method": "public_pdf_or_handbook_parse",
+          "supports": [
+            "technology executive title",
+            "official public document"
+          ],
+          "notes": "Official-domain PDF/handbook search replaces the prior third-party news fallback."
+        },
+        {
+          "family_id": "peoria-home",
+          "source_family": "district_official_homepage",
+          "priority": 20,
+          "url": "https://www.peoriaunified.org/",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "homepage_navigation_discovery",
+          "supports": [
+            "district identity",
+            "official homepage"
+          ],
+          "notes": "Official homepage fallback."
+        }
+      ]
+    },
+    {
+      "district_id": "gilbert-public-schools",
+      "name": "Gilbert Public Schools",
+      "state": "AZ",
+      "manual_oracle_row_ids": [
+        "az_gilbert"
+      ],
+      "expected_source_families": [
+        "district_staff_directory",
+        "district_technology_page",
+        "district_official_homepage"
+      ],
+      "coverage_gaps": [],
+      "sources": [
+        {
+          "family_id": "gilbert-contact-staff-directory",
+          "source_family": "district_staff_directory",
+          "priority": 1,
+          "url": "https://www.gilbertschools.net/contact",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "department_staff_directory_parse",
+          "supports": [
+            "department staff directory",
+            "technology leadership",
+            "person/title/source discovery"
+          ],
+          "notes": "Official contact page includes the Technology department staff directory."
+        },
+        {
+          "family_id": "gilbert-family-technology",
+          "source_family": "district_technology_page",
+          "priority": 2,
+          "url": "https://www.gilbertschools.net/families/technology",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "technology_page_parse",
+          "supports": [
+            "technology services context",
+            "official district technology page"
+          ],
+          "notes": "Official technology context page fallback."
+        },
+        {
+          "family_id": "gilbert-home",
+          "source_family": "district_official_homepage",
+          "priority": 20,
+          "url": "https://www.gilbertschools.net/",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "homepage_navigation_discovery",
+          "supports": [
+            "district identity",
+            "official homepage"
+          ],
+          "notes": "Official homepage fallback."
+        }
+      ]
+    },
+    {
+      "district_id": "deer-valley-unified-school-district",
+      "name": "Deer Valley Unified School District",
+      "state": "AZ",
+      "manual_oracle_row_ids": [
+        "az_deer_valley"
+      ],
+      "expected_source_families": [
+        "district_technology_page",
+        "district_staff_directory",
+        "district_official_homepage"
+      ],
+      "coverage_gaps": [],
+      "sources": [
+        {
+          "family_id": "deer-valley-information-services",
+          "source_family": "district_technology_page",
+          "priority": 1,
+          "url": "https://www.dvusd.org/departments/information-services-and-technology",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "technology_department_parse",
+          "supports": [
+            "Information Services and Technology",
+            "Chief Information Officer",
+            "department contacts",
+            "phone evidence"
+          ],
+          "notes": "Official IS&T page with leadership and department contacts."
+        },
+        {
+          "family_id": "deer-valley-site-map-ist",
+          "source_family": "district_staff_directory",
+          "priority": 2,
+          "url": "https://www.dvusd.org/site-map-link",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "site_map_department_link_parse",
+          "supports": [
+            "district source navigation",
+            "Information Services and Technology route"
+          ],
+          "notes": "Official site-map route that keeps discovery on DVUSD-owned pages."
+        },
+        {
+          "family_id": "deer-valley-home",
+          "source_family": "district_official_homepage",
+          "priority": 20,
+          "url": "https://www.dvusd.org/",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "homepage_navigation_discovery",
+          "supports": [
+            "district identity",
+            "official homepage"
+          ],
+          "notes": "Official homepage fallback."
+        }
+      ]
+    },
+    {
+      "district_id": "paradise-valley-unified-school-district",
+      "name": "Paradise Valley Unified School District",
+      "state": "AZ",
+      "manual_oracle_row_ids": [
+        "az_paradise_valley"
+      ],
+      "expected_source_families": [
+        "district_technology_page",
+        "district_staff_directory",
+        "district_leadership_page",
+        "district_official_homepage"
+      ],
+      "coverage_gaps": [],
+      "sources": [
+        {
+          "family_id": "paradise-valley-information-technology",
+          "source_family": "district_technology_page",
+          "priority": 1,
+          "url": "https://www.pvschools.net/departments-directory/information-technology",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "technology_department_parse",
+          "supports": [
+            "Information Technology department",
+            "Director of Information Technology",
+            "phone evidence"
+          ],
+          "notes": "Official IT page replaces prior third-party organization-only source."
+        },
+        {
+          "family_id": "paradise-valley-leadership",
+          "source_family": "district_leadership_page",
+          "priority": 2,
+          "url": "https://www.pvschools.net/our-district/leadership",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "leadership_directory_parse",
+          "supports": [
+            "district leadership",
+            "department directors",
+            "Director of Information Technology"
+          ],
+          "notes": "Official leadership page gives another cited path for the IT director."
+        },
+        {
+          "family_id": "paradise-valley-staff-directory",
+          "source_family": "district_staff_directory",
+          "priority": 3,
+          "url": "https://www.pvschools.net/our-district/staff-directory",
+          "access_status": "public_html_or_search",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "staff_directory_parse",
+          "supports": [
+            "staff roster",
+            "manual lookup next action"
+          ],
+          "notes": "Official staff directory fallback for person lookup."
+        },
+        {
+          "family_id": "paradise-valley-home",
+          "source_family": "district_official_homepage",
+          "priority": 20,
+          "url": "https://www.pvschools.net/",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "homepage_navigation_discovery",
+          "supports": [
+            "district identity",
+            "official homepage"
+          ],
+          "notes": "Official homepage fallback."
+        }
+      ]
+    },
+    {
+      "district_id": "dysart-unified-school-district",
+      "name": "Dysart Unified School District",
+      "state": "AZ",
+      "manual_oracle_row_ids": [
+        "az_dysart"
+      ],
+      "expected_source_families": [
+        "district_technology_page",
+        "district_board_agenda_pdf",
+        "district_contact_page",
+        "district_official_homepage"
+      ],
+      "coverage_gaps": [],
+      "sources": [
+        {
+          "family_id": "dysart-information-technology",
+          "source_family": "district_technology_page",
+          "priority": 1,
+          "url": "https://www.dysart.org/mainsite/panels/information-technology/143/information-technology",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "technology_department_parse",
+          "supports": [
+            "Information Technology department",
+            "official district technology source"
+          ],
+          "notes": "Official Dysart technology page."
+        },
+        {
+          "family_id": "dysart-budget-it-director-search",
+          "source_family": "district_board_agenda_pdf",
+          "priority": 2,
+          "url": "site:dysart.org/cms/uploads/files/14 \"Diana Hawari\" \"Information Technology\"",
+          "access_status": "official_domain_search_pattern",
+          "source_reputation_signal": "official_public_document",
+          "crawl_method": "vendor_search",
+          "extraction_method": "public_pdf_parse",
+          "supports": [
+            "Information Technology Director",
+            "public email evidence",
+            "public phone evidence"
+          ],
+          "notes": "Official Dysart public-document source pattern for IT director evidence."
+        },
+        {
+          "family_id": "dysart-contact",
+          "source_family": "district_contact_page",
+          "priority": 3,
+          "url": "https://dysart.org/mainsite/pages/dysart-schools/1010/contact-us",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "contact_page_parse",
+          "supports": [
+            "department contact route",
+            "Information Technology contact route"
+          ],
+          "notes": "Official district contact page lists department contact routes."
+        },
+        {
+          "family_id": "dysart-home",
+          "source_family": "district_official_homepage",
+          "priority": 20,
+          "url": "https://www.dysart.org/",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "homepage_navigation_discovery",
+          "supports": [
+            "district identity",
+            "official homepage"
+          ],
+          "notes": "Official homepage fallback."
+        }
+      ]
+    },
+    {
+      "district_id": "maricopa-unified-school-district",
+      "name": "Maricopa Unified School District",
+      "state": "AZ",
+      "manual_oracle_row_ids": [
+        "az_maricopa"
+      ],
+      "expected_source_families": [
+        "district_technology_page",
+        "district_staff_directory",
+        "district_official_homepage"
+      ],
+      "coverage_gaps": [
+        "Current official technology pages establish department coverage and support manual lookup; person-level technology leadership may require a later source-specific pass."
+      ],
+      "sources": [
+        {
+          "family_id": "maricopa-technology-department",
+          "source_family": "district_technology_page",
+          "priority": 1,
+          "url": "https://www.musd20.org/departments",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "department_directory_parse",
+          "supports": [
+            "Technology department",
+            "district contact route",
+            "manual lookup next action"
+          ],
+          "notes": "Official departments directory includes Technology."
+        },
+        {
+          "family_id": "maricopa-technology-faq",
+          "source_family": "district_technology_page",
+          "priority": 2,
+          "url": "https://www.musd20.org/departments/technology/faqs",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "technology_page_parse",
+          "supports": [
+            "Technology support route",
+            "district technology context",
+            "manual lookup next action"
+          ],
+          "notes": "Official technology page supplies a support route even when no person is exposed."
+        },
+        {
+          "family_id": "maricopa-technology-staff-search",
+          "source_family": "district_staff_directory",
+          "priority": 3,
+          "url": "site:musd20.org \"Technology\" \"Maricopa Unified School District\" \"Director\"",
+          "access_status": "official_domain_search_pattern",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "vendor_search",
+          "extraction_method": "staff_directory_search_result_parse",
+          "supports": [
+            "person/title/source discovery",
+            "manual lookup fallback"
+          ],
+          "notes": "Official-domain staff search pattern before generic fallback."
+        },
+        {
+          "family_id": "maricopa-home",
+          "source_family": "district_official_homepage",
+          "priority": 20,
+          "url": "https://www.musd20.org/",
+          "access_status": "public_html",
+          "source_reputation_signal": "official_district",
+          "crawl_method": "fetch_html",
+          "extraction_method": "homepage_navigation_discovery",
+          "supports": [
+            "district identity",
+            "official homepage"
+          ],
+          "notes": "Official homepage fallback."
+        }
+      ]
+    }
+  ]
+}

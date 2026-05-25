@@ -96,6 +96,46 @@ def test_validate_candidate_source_marks_200_without_matches_unsupported():
     assert "matched_fields=none" in validation.source.notes
 
 
+def test_validate_candidate_source_supports_k12_tech_role_family_with_snippet():
+    candidate = Lead(
+        name="Jon Castelhano",
+        title="Executive Director of Technology",
+        organization="Gilbert Public Schools",
+        email="",
+        email_status="missing",
+        source_url="https://www.gilbertschools.net/contact",
+        confidence=0.8,
+        why_target="Fits the district technology ICP.",
+        icebreaker="I noticed Gilbert Public Schools lists a technology leadership team.",
+        fit_score=0.8,
+        evidence_score=0.7,
+        contact_score=0.0,
+        gate_passed=False,
+        explanation="Official district contact page lists technology leadership.",
+    )
+    client = FakeClient(
+        FakeResponse(
+            200,
+            "Contact Us - Gilbert Public Schools. Department Staff Directory. "
+            "Technology Jon Castelhano CHIEF TECHNOLOGY OFFICER Donalee McIntyre "
+            "EXECUTIVE ASSISTANT Scott Haase DIRECTOR - TECH INFRASTRUCTURE AND CYBERSECURITY.",
+            "https://www.gilbertschools.net/contact",
+        )
+    )
+
+    validation = asyncio.run(validate_candidate_source(candidate, client=client))
+
+    assert validation.name.status == "supported"
+    assert validation.title.status == "supported"
+    assert validation.title.evidence_snippet is not None
+    assert "Jon Castelhano" in validation.title.evidence_snippet
+    assert "CHIEF TECHNOLOGY OFFICER" in validation.title.evidence_snippet
+    assert validation.title.notes == "Role-family text support found for title."
+    assert validation.organization.status == "supported"
+    assert validation.email.status == "missing"
+    assert "matched_fields=name,title,organization" in validation.source.notes
+
+
 @pytest.mark.parametrize("status_code", [403, 404, 999])
 def test_validate_candidate_source_marks_inaccessible_sources_failed(status_code):
     candidate = _make_lead(source_url="https://example.com/blocked")
