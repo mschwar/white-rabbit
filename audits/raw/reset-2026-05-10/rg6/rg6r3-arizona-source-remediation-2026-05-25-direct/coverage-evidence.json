@@ -1,0 +1,149 @@
+{
+  "benchmark_id": "thomas-arizona-k12",
+  "coverage_condition_6_of_8_met": true,
+  "expected_target_coverage_count": 8,
+  "expected_target_coverage_missing": [],
+  "explicit_blocker_rows": 2,
+  "row_count": 8,
+  "rows": [
+    {
+      "candidate_category": "failed",
+      "explicit_blocker_row": false,
+      "organization": "Mesa Public Schools",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://departments.mpsaz.org/o/departments/staff?page_no=3",
+      "rank": 1,
+      "source_backed_person": false,
+      "statuses": {
+        "email": "failed",
+        "name": "failed",
+        "organization": "failed",
+        "phone": "failed",
+        "source": "failed",
+        "title": "failed"
+      },
+      "tier": "failed"
+    },
+    {
+      "candidate_category": "failed",
+      "explicit_blocker_row": false,
+      "organization": "Peoria Unified School District",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+      "rank": 2,
+      "source_backed_person": false,
+      "statuses": {
+        "email": "failed",
+        "name": "failed",
+        "organization": "failed",
+        "phone": "missing",
+        "source": "failed",
+        "title": "failed"
+      },
+      "tier": "failed"
+    },
+    {
+      "candidate_category": "person_lead",
+      "explicit_blocker_row": false,
+      "organization": "Dysart Unified School District",
+      "primary_filter_reason": "READY: supported person, organization, source, and usable contact cleared the evidence gate.",
+      "rank": 3,
+      "source_backed_person": true,
+      "statuses": {
+        "email": "verified_found",
+        "name": "supported",
+        "organization": "supported",
+        "phone": "unsupported",
+        "source": "supported",
+        "title": "supported"
+      },
+      "tier": "high_trust_usable"
+    },
+    {
+      "candidate_category": "person_lead",
+      "explicit_blocker_row": false,
+      "organization": "Deer Valley Unified School District",
+      "primary_filter_reason": "READY: supported person, organization, source, and usable contact cleared the evidence gate.",
+      "rank": 4,
+      "source_backed_person": true,
+      "statuses": {
+        "email": "missing",
+        "name": "supported",
+        "organization": "supported",
+        "phone": "verified_found",
+        "source": "supported",
+        "title": "supported"
+      },
+      "tier": "high_trust_usable"
+    },
+    {
+      "candidate_category": "person_lead",
+      "explicit_blocker_row": false,
+      "organization": "Chandler Unified School District",
+      "primary_filter_reason": "REVIEW: validation signals did not clear the high-trust evidence gate.",
+      "rank": 5,
+      "source_backed_person": true,
+      "statuses": {
+        "email": "verified_found",
+        "name": "supported",
+        "organization": "supported",
+        "phone": "missing",
+        "source": "supported",
+        "title": "supported"
+      },
+      "tier": "review"
+    },
+    {
+      "candidate_category": "person_lead",
+      "explicit_blocker_row": false,
+      "organization": "Gilbert Public Schools",
+      "primary_filter_reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+      "rank": 6,
+      "source_backed_person": true,
+      "statuses": {
+        "email": "missing",
+        "name": "supported",
+        "organization": "supported",
+        "phone": "missing",
+        "source": "supported",
+        "title": "supported"
+      },
+      "tier": "review"
+    },
+    {
+      "candidate_category": "organization_only",
+      "explicit_blocker_row": true,
+      "organization": "Paradise Valley Unified School District",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Source coverage was found for Paradise Valley Unified School District, but no usable person lead was validated from the collected results.",
+      "rank": 7,
+      "source_backed_person": false,
+      "statuses": {
+        "email": "missing",
+        "name": "missing",
+        "organization": "supported",
+        "phone": "missing",
+        "source": "supported",
+        "title": "missing"
+      },
+      "tier": "organization_only"
+    },
+    {
+      "candidate_category": "organization_only",
+      "explicit_blocker_row": true,
+      "organization": "Maricopa Unified School District",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Source coverage was found for Maricopa Unified School District, but no usable person lead was validated from the collected results.",
+      "rank": 8,
+      "source_backed_person": false,
+      "statuses": {
+        "email": "missing",
+        "name": "missing",
+        "organization": "supported",
+        "phone": "missing",
+        "source": "supported",
+        "title": "missing"
+      },
+      "tier": "organization_only"
+    }
+  ],
+  "run_id": "6e8d4d25-50e9-4cbb-924e-0cd850c35759",
+  "source_backed_or_explicit_blocker_rows": 6,
+  "source_backed_person_rows": 4
+}

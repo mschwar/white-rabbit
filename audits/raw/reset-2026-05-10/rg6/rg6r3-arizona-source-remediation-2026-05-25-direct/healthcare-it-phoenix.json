@@ -1,0 +1,2853 @@
+{
+  "benchmark_id": "healthcare-it-phoenix",
+  "leads": [
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://phoenixchildrens.org/about-us/leadership-team matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://phoenixchildrens.org/about-us/leadership-team.",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://phoenixchildrens.org/about-us/leadership-team matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://phoenixchildrens.org/about-us/leadership-team.",
+      "id": "3c032a46-9a36-4f7d-be2c-60d761191e1a",
+      "organization": "Phoenix Children\u2019s Hospital",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://phoenixchildrens.org/about-us/leadership-team matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://phoenixchildrens.org/about-us/leadership-team.",
+      "searched_target": "Phoenix Children\u2019s Hospital",
+      "source_url": "https://phoenixchildrens.org/about-us/leadership-team",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. Deep contact pass searched page_types=board_agenda_pdf, department, generic, leadership_team, news_press, staff_directory; corroborating_sources=3; no direct person email or explicit domain pattern found; no direct person phone found.",
+          "source_url": "https://phoenixchildrens.org/about-us/leadership-team",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": "...and Chief of Staff Chad Johnson , Senior Vice President, PCCN & PCMG Operations Brian Meyer , Senior Vice President and Chief Information Officer Blake Bulloch, MD, MBA ,...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://phoenixchildrens.org/about-us/leadership-team",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": "...reach History of Phoenix Children's Leadership Team Newsroom - Media Guidelines Phoenix Children\u2019s Hospital Foundation Ways to Help Main Navigation (Bottom) I am a Patient Family \">Patien...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://phoenixchildrens.org/about-us/leadership-team",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://phoenixchildrens.org/about-us/leadership-team",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": "...and Chief of Staff Chad Johnson , Senior Vice President, PCCN & PCMG Operations Brian Meyer , Senior Vice President and Chief Information Officer Blake Bulloch, MD, MBA ,...",
+          "notes": "http_status=200 resolved_url=https://phoenixchildrens.org/about-us/leadership-team matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://phoenixchildrens.org/about-us/leadership-team.",
+          "source_url": "https://phoenixchildrens.org/about-us/leadership-team",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": "...taff Chad Johnson , Senior Vice President, PCCN & PCMG Operations Brian Meyer , Senior Vice President and Chief Information Officer Blake Bulloch, MD, MBA , Chief Medical Officer, Phoenix Children's Jason Fraser...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://phoenixchildrens.org/about-us/leadership-team",
+          "status": "supported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/ matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter.",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/ matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter.",
+      "id": "479a89fa-aaaf-4017-8182-8b33c3c59733",
+      "organization": "VA Phoenix Health Care",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/ matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter.",
+      "searched_target": "VA Phoenix Health Care",
+      "source_url": "https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. Deep contact pass searched page_types=contact, generic, leadership_team, staff_directory; corroborating_sources=6; no direct person email or explicit domain pattern found; no direct person phone found.",
+          "source_url": "https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": "Elijah J. Ditter | VA Phoenix Health Care | Veterans Affairs Skip to Content An official website...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": "Elijah J. Ditter | VA Phoenix Health Care | Veterans Affairs Skip to Content An official website of the United States gov...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": "Elijah J. Ditter | VA Phoenix Health Care | Veterans Affairs Skip to Content An official website...",
+          "notes": "http_status=200 resolved_url=https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/ matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter.",
+          "source_url": "https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": "...ely. Talk to the Veterans Crisis Line now Elijah J. Ditter Elijah J. Ditter MHA Medical Center Director VA Phoenix health care Phone: Elijah J. Ditter serves as the Medical Center Dir...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/",
+          "status": "supported"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://www.honorhealth.com/company/leadership matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://www.honorhealth.com/company/leadership. | Possible stale role signal on https://www.honorhealth.com/company/leadership.",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://www.honorhealth.com/company/leadership matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://www.honorhealth.com/company/leadership. | Possible stale role signal on https://www.honorhealth.com/company/leadership.",
+      "id": "96180c3d-1945-4aac-80f8-934f9d5ab64e",
+      "organization": "HonorHealth",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://www.honorhealth.com/company/leadership matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://www.honorhealth.com/company/leadership. | Possible stale role signal on https://www.honorhealth.com/company/leadership.",
+      "searched_target": "HonorHealth",
+      "source_url": "https://www.honorhealth.com/company/leadership",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. Deep contact pass searched page_types=board_agenda_pdf, leadership_team, staff_directory; corroborating_sources=14; no direct person email or explicit domain pattern found; no direct person phone found.",
+          "source_url": "https://www.honorhealth.com/company/leadership",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": "...iversity of Phoenix and an associate\\u0027s degree from Mesa Community College. Jim Whitfill, MD - Senior vice president, strategic partnerships and chief transformation of...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.honorhealth.com/company/leadership",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": "{ \"@context\": \"https://schema.org\", \"@graph\": [ { \"@id\": \"https://www.honorhealth.com/company/leadership\", \"description\": \"Todd LaPorte - CEO, HonorHealthWith mo...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.honorhealth.com/company/leadership",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.honorhealth.com/company/leadership",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": "...iversity of Phoenix and an associate\\u0027s degree from Mesa Community College. Jim Whitfill, MD - Senior vice president, strategic partnerships and chief transformation of...",
+          "notes": "http_status=200 resolved_url=https://www.honorhealth.com/company/leadership matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://www.honorhealth.com/company/leadership. | Possible stale role signal on https://www.honorhealth.com/company/leadership.",
+          "source_url": "https://www.honorhealth.com/company/leadership",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": "...y College. Jim Whitfill, MD - Senior vice president, strategic partnerships and chief transformation officerAs Chief Transformation Officer, Jim Whitfill, MD, MBA, FSIIM, FACP, brings lead...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.honorhealth.com/company/leadership",
+          "status": "supported"
+        }
+      }
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.9904406,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.10000000000000009,
+      "explanation": "David Higginson's significant position in healthcare technology makes him important, however, contact information is unavailable.",
+      "fit_score": 0.9904406,
+      "gate_passed": false,
+      "icebreaker": "Your leadership as CTO at Phoenix Children's in advancing health IT is essential to the hospital's innovative capabilities.",
+      "id": "cceca1f0-9607-45cc-bb2b-7a4af20163e7",
+      "name": "David Higginson",
+      "organization": "Phoenix Children\u2019s Hospital",
+      "phone": "",
+      "primary_filter_reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+      "source_url": "https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter",
+      "tier": "review",
+      "title": "Chief Technology Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. Deep contact pass searched page_types=board_agenda_pdf, generic, leadership_team, news_press, staff_directory; corroborating_sources=0; no direct person email or explicit domain pattern found; no direct person phone found.",
+          "source_url": "https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for name.",
+          "source_url": "https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/",
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for organization.",
+          "source_url": "https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/",
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/ matched_fields=none",
+          "source_url": "https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for title.",
+          "source_url": "https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/",
+          "status": "unsupported"
+        }
+      },
+      "why_target": "David Higginson\u2019s role as CTO involves critical technology strategy, making him a strong candidate in the healthcare IT sector."
+    },
+    {
+      "candidate_category": "not_found",
+      "explanation": "No valid contact or lead found that clearly fits the healthcare IT director role in the Phoenix area.",
+      "id": "c048a5ff-9022-4fde-9ebf-351a336b453c",
+      "organization": null,
+      "primary_filter_reason": "NOT FOUND: searched target, but no acceptable contact was validated. No valid contact or lead found that clearly fits the healthcare IT director role in the Phoenix area.",
+      "searched_target": "healthcare IT directors in Phoenix",
+      "source_url": null,
+      "tier": "not_found",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "source_url was not provided.",
+          "source_url": null,
+          "status": "missing"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": null,
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "b5957cad-83a0-4721-9b3a-befcbedf20d3",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Clinical Informatics Director Jobs in Phoenix, AZ - ZipRecruiter",
+      "source_url": "https://www.ziprecruiter.com/Jobs/Clinical-Informatics-Director/-in-Phoenix,AZ",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Clinical-Informatics-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Clinical-Informatics-Director/-in-Phoenix,AZ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Clinical-Informatics-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Clinical-Informatics-Director/-in-Phoenix,AZ",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Clinical-Informatics-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Clinical-Informatics-Director/-in-Phoenix,AZ",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Clinical-Informatics-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Clinical-Informatics-Director/-in-Phoenix,AZ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Clinical-Informatics-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Clinical-Informatics-Director/-in-Phoenix,AZ",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Clinical-Informatics-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Clinical-Informatics-Director/-in-Phoenix,AZ",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "10f355e2-f4ab-42e5-af69-acb382eedfb9",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Healthcare Director Jobs, Employment in Phoenix, AZ | Indeed",
+      "source_url": "https://www.indeed.com/q-healthcare-director-l-phoenix,-az-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-healthcare-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-healthcare-director-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-healthcare-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-healthcare-director-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-healthcare-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-healthcare-director-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-healthcare-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-healthcare-director-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-healthcare-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-healthcare-director-l-phoenix,-az-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-healthcare-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-healthcare-director-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "e276ef7a-7d2c-4863-be89-b4245841ae8d",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Health Information Management Director Career Guide | University of Phoenix",
+      "source_url": "https://www.phoenix.edu/career-guides/healthcare/health-information-management-director.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.phoenix.edu/career-guides/healthcare/health-information-management-director.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.phoenix.edu/career-guides/healthcare/health-information-management-director.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.phoenix.edu/career-guides/healthcare/health-information-management-director.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.phoenix.edu/career-guides/healthcare/health-information-management-director.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.phoenix.edu/career-guides/healthcare/health-information-management-director.html matched_fields=none",
+          "source_url": "https://www.phoenix.edu/career-guides/healthcare/health-information-management-director.html",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.phoenix.edu/career-guides/healthcare/health-information-management-director.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "89c6e206-2bf4-406c-b40b-d49c397ffe04",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Director Healthcare jobs in Greater Phoenix Area - LinkedIn",
+      "source_url": "https://www.linkedin.com/jobs/director-healthcare-jobs-greater-phoenix-area",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-healthcare-jobs-greater-phoenix-area",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-healthcare-jobs-greater-phoenix-area",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-healthcare-jobs-greater-phoenix-area",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-healthcare-jobs-greater-phoenix-area",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/jobs/director-healthcare-jobs-greater-phoenix-area matched_fields=none",
+          "source_url": "https://www.linkedin.com/jobs/director-healthcare-jobs-greater-phoenix-area",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-healthcare-jobs-greater-phoenix-area",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "d25ffa58-55c4-43d9-b2b8-50cb40068c6e",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "$70k-$424k Health Care Director Jobs Phoenix, AZ Hiring Now",
+      "source_url": "https://www.ziprecruiter.com/Jobs/Health-Care-Director/-in-Phoenix,AZ",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Health-Care-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Health-Care-Director/-in-Phoenix,AZ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Health-Care-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Health-Care-Director/-in-Phoenix,AZ",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Health-Care-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Health-Care-Director/-in-Phoenix,AZ",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Health-Care-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Health-Care-Director/-in-Phoenix,AZ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Health-Care-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Health-Care-Director/-in-Phoenix,AZ",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Health-Care-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Health-Care-Director/-in-Phoenix,AZ",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "7a0d96e3-c620-447d-b547-723b8d1a294a",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Director Of Health Services jobs in Phoenix, Az - Indeed",
+      "source_url": "https://www.indeed.com/q-director-of-health-services-l-phoenix,-az-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-director-of-health-services-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-of-health-services-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-director-of-health-services-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-of-health-services-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-director-of-health-services-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-of-health-services-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-director-of-health-services-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-of-health-services-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-director-of-health-services-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-of-health-services-l-phoenix,-az-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-director-of-health-services-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-of-health-services-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "82623d60-2f05-457a-9b92-6d6275fedfa2",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Phoenix Healthcare IT Services & Consulting | Medsphere",
+      "source_url": "https://www.medsphere.com/solutions/phoenix",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.medsphere.com/solutions/phoenix",
+          "source_url": "https://www.medsphere.com/solutions/phoenix",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.medsphere.com/solutions/phoenix",
+          "source_url": "https://www.medsphere.com/solutions/phoenix",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.medsphere.com/solutions/phoenix",
+          "source_url": "https://www.medsphere.com/solutions/phoenix",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.medsphere.com/solutions/phoenix",
+          "source_url": "https://www.medsphere.com/solutions/phoenix",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.medsphere.com/solutions/phoenix",
+          "source_url": "https://www.medsphere.com/solutions/phoenix",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.medsphere.com/solutions/phoenix",
+          "source_url": "https://www.medsphere.com/solutions/phoenix",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "d5f8e5d4-5ce4-40f0-8f16-79f286ddce0b",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "242 Director of healthcare operations jobs in Phoenix, AZ - Glassdoor",
+      "source_url": "https://www.glassdoor.com/Job/director-of-healthcare-operations-jobs-SRCH_IC1133904_KO0,33.htm",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/director-of-healthcare-operations-jobs-SRCH_IC1133904_KO0,33.htm",
+          "source_url": "https://www.glassdoor.com/Job/director-of-healthcare-operations-jobs-SRCH_IC1133904_KO0,33.htm",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/director-of-healthcare-operations-jobs-SRCH_IC1133904_KO0,33.htm",
+          "source_url": "https://www.glassdoor.com/Job/director-of-healthcare-operations-jobs-SRCH_IC1133904_KO0,33.htm",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/director-of-healthcare-operations-jobs-SRCH_IC1133904_KO0,33.htm",
+          "source_url": "https://www.glassdoor.com/Job/director-of-healthcare-operations-jobs-SRCH_IC1133904_KO0,33.htm",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/director-of-healthcare-operations-jobs-SRCH_IC1133904_KO0,33.htm",
+          "source_url": "https://www.glassdoor.com/Job/director-of-healthcare-operations-jobs-SRCH_IC1133904_KO0,33.htm",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.glassdoor.com/Job/director-of-healthcare-operations-jobs-SRCH_IC1133904_KO0,33.htm",
+          "source_url": "https://www.glassdoor.com/Job/director-of-healthcare-operations-jobs-SRCH_IC1133904_KO0,33.htm",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/director-of-healthcare-operations-jobs-SRCH_IC1133904_KO0,33.htm",
+          "source_url": "https://www.glassdoor.com/Job/director-of-healthcare-operations-jobs-SRCH_IC1133904_KO0,33.htm",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "49f894ac-5171-4757-98ef-22698f8cd06e",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Phoenix Area | Indian Health Service (IHS)",
+      "source_url": "https://www.ihs.gov/phoenix",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.ihs.gov/phoenix/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.ihs.gov/phoenix/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.ihs.gov/phoenix/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.ihs.gov/phoenix/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.ihs.gov/phoenix/ matched_fields=none",
+          "source_url": "https://www.ihs.gov/phoenix/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.ihs.gov/phoenix/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "8a529f5e-e10a-4aa4-97fa-4d5b2d1e3431",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Phoenix, AZ - Health Management Associates",
+      "source_url": "https://www.healthmanagement.com/about/locations/arizona/phoenix",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.healthmanagement.com/about/locations/arizona/phoenix",
+          "source_url": "https://www.healthmanagement.com/about/locations/arizona/phoenix",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.healthmanagement.com/about/locations/arizona/phoenix",
+          "source_url": "https://www.healthmanagement.com/about/locations/arizona/phoenix",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.healthmanagement.com/about/locations/arizona/phoenix",
+          "source_url": "https://www.healthmanagement.com/about/locations/arizona/phoenix",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.healthmanagement.com/about/locations/arizona/phoenix",
+          "source_url": "https://www.healthmanagement.com/about/locations/arizona/phoenix",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.healthmanagement.com/about/locations/arizona/phoenix",
+          "source_url": "https://www.healthmanagement.com/about/locations/arizona/phoenix",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.healthmanagement.com/about/locations/arizona/phoenix",
+          "source_url": "https://www.healthmanagement.com/about/locations/arizona/phoenix",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "57c6c429-764f-4aab-af26-5b84f614942a",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Executive Director, Technology & AI Products - Healthcare at City of ...",
+      "source_url": "https://www.cityofhopejobs.org/job/10778/executive-director-technology-ai-products-healthcare-information-technology-us",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.cityofhopejobs.org/job/10778/executive-director-technology-ai-products-healthcare-information-technology-us/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.cityofhopejobs.org/job/10778/executive-director-technology-ai-products-healthcare-information-technology-us/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.cityofhopejobs.org/job/10778/executive-director-technology-ai-products-healthcare-information-technology-us/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.cityofhopejobs.org/job/10778/executive-director-technology-ai-products-healthcare-information-technology-us/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.cityofhopejobs.org/job/10778/executive-director-technology-ai-products-healthcare-information-technology-us/ matched_fields=none",
+          "source_url": "https://www.cityofhopejobs.org/job/10778/executive-director-technology-ai-products-healthcare-information-technology-us/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.cityofhopejobs.org/job/10778/executive-director-technology-ai-products-healthcare-information-technology-us/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "c84a192c-e343-4b43-b09d-acc0b7b787b3",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "106 Director Healthcare Technology Management jobs in United ...",
+      "source_url": "https://www.linkedin.com/jobs/director-healthcare-technology-management-jobs",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-healthcare-technology-management-jobs",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-healthcare-technology-management-jobs",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-healthcare-technology-management-jobs",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-healthcare-technology-management-jobs",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/jobs/director-healthcare-technology-management-jobs matched_fields=none",
+          "source_url": "https://www.linkedin.com/jobs/director-healthcare-technology-management-jobs",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-healthcare-technology-management-jobs",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "c22be290-dcf0-4643-893a-bb5cc294c258",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Top Healthcare Software Companies in Phoenix, AZ - Gregslist",
+      "source_url": "https://gregslist.com/phoenix/software-companies-industry/healthcare",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://gregslist.com/phoenix/software-companies-industry/healthcare",
+          "source_url": "https://gregslist.com/phoenix/software-companies-industry/healthcare",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://gregslist.com/phoenix/software-companies-industry/healthcare",
+          "source_url": "https://gregslist.com/phoenix/software-companies-industry/healthcare",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://gregslist.com/phoenix/software-companies-industry/healthcare",
+          "source_url": "https://gregslist.com/phoenix/software-companies-industry/healthcare",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://gregslist.com/phoenix/software-companies-industry/healthcare",
+          "source_url": "https://gregslist.com/phoenix/software-companies-industry/healthcare",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://gregslist.com/phoenix/software-companies-industry/healthcare",
+          "source_url": "https://gregslist.com/phoenix/software-companies-industry/healthcare",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://gregslist.com/phoenix/software-companies-industry/healthcare",
+          "source_url": "https://gregslist.com/phoenix/software-companies-industry/healthcare",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "6e9f3ad2-7165-4843-8867-0e3c6badf89e",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Welcome to Phoenix Health Care Management Services, Inc",
+      "source_url": "https://www.phoenix-healthcare.com",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.phoenix-healthcare.com",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.phoenix-healthcare.com",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.phoenix-healthcare.com",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.phoenix-healthcare.com",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.phoenix-healthcare.com matched_fields=none",
+          "source_url": "https://www.phoenix-healthcare.com",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.phoenix-healthcare.com",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "385529da-8085-410d-91c7-eca1da9c4892",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Lauren Phoenix, MBA, M.Ed - CRO | CSO | VP, Strategy & Growth | Driving 0\u21921 to Scale Through GTM, Partnerships & Client Ecosystems | Healthcare SaaS \u2022 Value-Based Care \u2022 Payer/Provider \u2022 PBM | Data & Analytics | VC/PE-Backed | B2B & B2B2C - HiLabs",
+      "source_url": "https://www.linkedin.com/in/lphoenix-mba",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/lphoenix-mba",
+          "source_url": "https://www.linkedin.com/in/lphoenix-mba",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/lphoenix-mba",
+          "source_url": "https://www.linkedin.com/in/lphoenix-mba",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/lphoenix-mba",
+          "source_url": "https://www.linkedin.com/in/lphoenix-mba",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/lphoenix-mba",
+          "source_url": "https://www.linkedin.com/in/lphoenix-mba",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/lphoenix-mba",
+          "source_url": "https://www.linkedin.com/in/lphoenix-mba",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/lphoenix-mba",
+          "source_url": "https://www.linkedin.com/in/lphoenix-mba",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "7e7a84dc-72f3-4053-a9fd-b7878a6b77d3",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Leadership | PHNY - Phoenix House",
+      "source_url": "https://phoenixhouseny.org/our-story/leadership",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://phoenixhouseny.org/our-story/leadership/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://phoenixhouseny.org/our-story/leadership/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://phoenixhouseny.org/our-story/leadership/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://phoenixhouseny.org/our-story/leadership/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://phoenixhouseny.org/our-story/leadership/ matched_fields=none",
+          "source_url": "https://phoenixhouseny.org/our-story/leadership/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://phoenixhouseny.org/our-story/leadership/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "acd41660-7934-4ec6-bd8b-e80dcb0836f9",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Leadership Dialogue \u2014 Advancing Health Care Innovation with Amy Perry, President and CEO of Banner Health | AHA News",
+      "source_url": "https://www.aha.org/news/chairpersons-file/2024-11-18-leadership-dialogue-advancing-health-care-innovation-amy-perry-president-and-ceo-banner",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.aha.org/news/chairpersons-file/2024-11-18-leadership-dialogue-advancing-health-care-innovation-amy-perry-president-and-ceo-banner",
+          "source_url": "https://www.aha.org/news/chairpersons-file/2024-11-18-leadership-dialogue-advancing-health-care-innovation-amy-perry-president-and-ceo-banner",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.aha.org/news/chairpersons-file/2024-11-18-leadership-dialogue-advancing-health-care-innovation-amy-perry-president-and-ceo-banner",
+          "source_url": "https://www.aha.org/news/chairpersons-file/2024-11-18-leadership-dialogue-advancing-health-care-innovation-amy-perry-president-and-ceo-banner",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.aha.org/news/chairpersons-file/2024-11-18-leadership-dialogue-advancing-health-care-innovation-amy-perry-president-and-ceo-banner",
+          "source_url": "https://www.aha.org/news/chairpersons-file/2024-11-18-leadership-dialogue-advancing-health-care-innovation-amy-perry-president-and-ceo-banner",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.aha.org/news/chairpersons-file/2024-11-18-leadership-dialogue-advancing-health-care-innovation-amy-perry-president-and-ceo-banner",
+          "source_url": "https://www.aha.org/news/chairpersons-file/2024-11-18-leadership-dialogue-advancing-health-care-innovation-amy-perry-president-and-ceo-banner",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.aha.org/news/chairpersons-file/2024-11-18-leadership-dialogue-advancing-health-care-innovation-amy-perry-president-and-ceo-banner",
+          "source_url": "https://www.aha.org/news/chairpersons-file/2024-11-18-leadership-dialogue-advancing-health-care-innovation-amy-perry-president-and-ceo-banner",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.aha.org/news/chairpersons-file/2024-11-18-leadership-dialogue-advancing-health-care-innovation-amy-perry-president-and-ceo-banner",
+          "source_url": "https://www.aha.org/news/chairpersons-file/2024-11-18-leadership-dialogue-advancing-health-care-innovation-amy-perry-president-and-ceo-banner",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "fab1612f-66c3-49b0-807c-8e1bdaf8eb35",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Our Leaders | Cardinal Health",
+      "source_url": "https://www.cardinalhealth.com/en/about-us/our-leaders.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. fetch_error=ReadTimeout: ",
+          "source_url": "https://www.cardinalhealth.com/en/about-us/our-leaders.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. fetch_error=ReadTimeout: ",
+          "source_url": "https://www.cardinalhealth.com/en/about-us/our-leaders.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. fetch_error=ReadTimeout: ",
+          "source_url": "https://www.cardinalhealth.com/en/about-us/our-leaders.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. fetch_error=ReadTimeout: ",
+          "source_url": "https://www.cardinalhealth.com/en/about-us/our-leaders.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "fetch_error=ReadTimeout: ",
+          "source_url": "https://www.cardinalhealth.com/en/about-us/our-leaders.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. fetch_error=ReadTimeout: ",
+          "source_url": "https://www.cardinalhealth.com/en/about-us/our-leaders.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "723c56c8-9014-41c8-8e26-933cd96c0d52",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "$75k-$171k Healthcare It Director Jobs in Phoenix, AZ - ZipRecruiter",
+      "source_url": "https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-Phoenix,AZ",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-Phoenix,AZ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-Phoenix,AZ",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-Phoenix,AZ",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-Phoenix,AZ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-Phoenix,AZ",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-Phoenix,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-Phoenix,AZ",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "2e20ec9f-f190-4e87-9469-1d556911ca3b",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "IT Director Jobs, Employment in Phoenix, AZ - Indeed",
+      "source_url": "https://www.indeed.com/q-it-director-l-phoenix,-az-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-it-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-it-director-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-it-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-it-director-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-it-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-it-director-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-it-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-it-director-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-it-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-it-director-l-phoenix,-az-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-it-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-it-director-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "debf9cc4-d5c2-47c1-b0cf-694a0f77eace",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Executive Director, Software Engineering - Myworkdayjobs.com",
+      "source_url": "https://bannerhealth.wd108.myworkdayjobs.com/en-US/Careers/job/Executive-Director--Software-Engineering_R4433442",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://bannerhealth.wd108.myworkdayjobs.com/en-US/Careers/job/Executive-Director--Software-Engineering_R4433442",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://bannerhealth.wd108.myworkdayjobs.com/en-US/Careers/job/Executive-Director--Software-Engineering_R4433442",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://bannerhealth.wd108.myworkdayjobs.com/en-US/Careers/job/Executive-Director--Software-Engineering_R4433442",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://bannerhealth.wd108.myworkdayjobs.com/en-US/Careers/job/Executive-Director--Software-Engineering_R4433442",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://bannerhealth.wd108.myworkdayjobs.com/en-US/Careers/job/Executive-Director--Software-Engineering_R4433442 matched_fields=none",
+          "source_url": "https://bannerhealth.wd108.myworkdayjobs.com/en-US/Careers/job/Executive-Director--Software-Engineering_R4433442",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://bannerhealth.wd108.myworkdayjobs.com/en-US/Careers/job/Executive-Director--Software-Engineering_R4433442",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "7411ed57-32fd-4340-8d70-40abda9e4994",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Director, Operational Oversight (REMOTE) - Molina Healthcare",
+      "source_url": "https://www.theladders.com/job/director-operational-oversight-remote-molinahealthcare-phoenix-az_82449851",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/job/director-operational-oversight-remote-molinahealthcare-phoenix-az_82449851",
+          "source_url": "https://www.theladders.com/job/director-operational-oversight-remote-molinahealthcare-phoenix-az_82449851",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/job/director-operational-oversight-remote-molinahealthcare-phoenix-az_82449851",
+          "source_url": "https://www.theladders.com/job/director-operational-oversight-remote-molinahealthcare-phoenix-az_82449851",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/job/director-operational-oversight-remote-molinahealthcare-phoenix-az_82449851",
+          "source_url": "https://www.theladders.com/job/director-operational-oversight-remote-molinahealthcare-phoenix-az_82449851",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/job/director-operational-oversight-remote-molinahealthcare-phoenix-az_82449851",
+          "source_url": "https://www.theladders.com/job/director-operational-oversight-remote-molinahealthcare-phoenix-az_82449851",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.theladders.com/job/director-operational-oversight-remote-molinahealthcare-phoenix-az_82449851",
+          "source_url": "https://www.theladders.com/job/director-operational-oversight-remote-molinahealthcare-phoenix-az_82449851",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/job/director-operational-oversight-remote-molinahealthcare-phoenix-az_82449851",
+          "source_url": "https://www.theladders.com/job/director-operational-oversight-remote-molinahealthcare-phoenix-az_82449851",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "02a04596-2b12-469a-8743-1d4edee96176",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "297 It Director jobs in Greater Phoenix Area - LinkedIn",
+      "source_url": "https://www.linkedin.com/jobs/it-director-jobs-greater-phoenix-area",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/it-director-jobs-greater-phoenix-area",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/it-director-jobs-greater-phoenix-area",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/it-director-jobs-greater-phoenix-area",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/it-director-jobs-greater-phoenix-area",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/jobs/it-director-jobs-greater-phoenix-area matched_fields=none",
+          "source_url": "https://www.linkedin.com/jobs/it-director-jobs-greater-phoenix-area",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/it-director-jobs-greater-phoenix-area",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "239b0bb5-6d89-45be-af40-a9d1d53b5b5b",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Healthcare It Director Jobs in San Tan Valley, AZ - ZipRecruiter",
+      "source_url": "https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-San-Tan-Valley,AZ",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-San-Tan-Valley,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-San-Tan-Valley,AZ",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-San-Tan-Valley,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-San-Tan-Valley,AZ",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-San-Tan-Valley,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-San-Tan-Valley,AZ",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-San-Tan-Valley,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-San-Tan-Valley,AZ",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-San-Tan-Valley,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-San-Tan-Valley,AZ",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-San-Tan-Valley,AZ",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Healthcare-It-Director/-in-San-Tan-Valley,AZ",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "3a3ed593-ffcc-444b-a0af-143351e901d7",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Open Positions in Director/Management - Career Opportunities @ Phoenix Children's",
+      "source_url": "https://careers.phoenixchildrens.com/Positions/Director%7CManagement-jobs",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://careers.phoenixchildrens.com/Positions/Director%7CManagement-jobs",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://careers.phoenixchildrens.com/Positions/Director%7CManagement-jobs",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://careers.phoenixchildrens.com/Positions/Director%7CManagement-jobs",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://careers.phoenixchildrens.com/Positions/Director%7CManagement-jobs",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://careers.phoenixchildrens.com/Positions/Director%7CManagement-jobs matched_fields=none",
+          "source_url": "https://careers.phoenixchildrens.com/Positions/Director%7CManagement-jobs",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://careers.phoenixchildrens.com/Positions/Director%7CManagement-jobs",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "67b07651-aeb0-4245-b1a4-32dd93a1aae6",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Just a moment...",
+      "source_url": "https://www.glassdoor.com/Job/phoenix-it-director-jobs-SRCH_IL.0,7_IC1133904_KO8,19.htm",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/phoenix-it-director-jobs-SRCH_IL.0,7_IC1133904_KO8,19.htm",
+          "source_url": "https://www.glassdoor.com/Job/phoenix-it-director-jobs-SRCH_IL.0,7_IC1133904_KO8,19.htm",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/phoenix-it-director-jobs-SRCH_IL.0,7_IC1133904_KO8,19.htm",
+          "source_url": "https://www.glassdoor.com/Job/phoenix-it-director-jobs-SRCH_IL.0,7_IC1133904_KO8,19.htm",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/phoenix-it-director-jobs-SRCH_IL.0,7_IC1133904_KO8,19.htm",
+          "source_url": "https://www.glassdoor.com/Job/phoenix-it-director-jobs-SRCH_IL.0,7_IC1133904_KO8,19.htm",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/phoenix-it-director-jobs-SRCH_IL.0,7_IC1133904_KO8,19.htm",
+          "source_url": "https://www.glassdoor.com/Job/phoenix-it-director-jobs-SRCH_IL.0,7_IC1133904_KO8,19.htm",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.glassdoor.com/Job/phoenix-it-director-jobs-SRCH_IL.0,7_IC1133904_KO8,19.htm",
+          "source_url": "https://www.glassdoor.com/Job/phoenix-it-director-jobs-SRCH_IL.0,7_IC1133904_KO8,19.htm",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/phoenix-it-director-jobs-SRCH_IL.0,7_IC1133904_KO8,19.htm",
+          "source_url": "https://www.glassdoor.com/Job/phoenix-it-director-jobs-SRCH_IL.0,7_IC1133904_KO8,19.htm",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "e56ad311-1706-4887-95a6-56747fc14e9b",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Information Technology Jobs in Phoenix, AZ | City of Hope Careers",
+      "source_url": "https://www.cityofhopejobs.org/jobs/information-technology/us-az-phoenix",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.cityofhopejobs.org/jobs/information-technology/us-az-phoenix",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.cityofhopejobs.org/jobs/information-technology/us-az-phoenix",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.cityofhopejobs.org/jobs/information-technology/us-az-phoenix",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.cityofhopejobs.org/jobs/information-technology/us-az-phoenix",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.cityofhopejobs.org/jobs/information-technology/us-az-phoenix matched_fields=none",
+          "source_url": "https://www.cityofhopejobs.org/jobs/information-technology/us-az-phoenix",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.cityofhopejobs.org/jobs/information-technology/us-az-phoenix",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "52c9ced3-9b0d-4b8d-85e4-b2c7878053c8",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Director Hospital Jobs, Employment in Phoenix, AZ | Indeed",
+      "source_url": "https://www.indeed.com/q-director-hospital-l-phoenix,-az-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-director-hospital-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-hospital-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-director-hospital-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-hospital-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-director-hospital-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-hospital-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-director-hospital-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-hospital-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-director-hospital-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-hospital-l-phoenix,-az-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-director-hospital-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-hospital-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "6947c791-38d2-4667-a258-86102ba7e7d9",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Hospital IT Jobs, Employment in Phoenix, AZ | Indeed",
+      "source_url": "https://www.indeed.com/q-hospital-it-l-phoenix,-az-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-hospital-it-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-hospital-it-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-hospital-it-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-hospital-it-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-hospital-it-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-hospital-it-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-hospital-it-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-hospital-it-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-hospital-it-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-hospital-it-l-phoenix,-az-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-hospital-it-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-hospital-it-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "c9f67ac3-88db-4ffc-b2de-f27ef866bd44",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Our Management Team - Phoenix Hospital Group",
+      "source_url": "https://www.phoenixhospitalgroup.com/about/management-team",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.phoenixhospitalgroup.com/about/management-team",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.phoenixhospitalgroup.com/about/management-team",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.phoenixhospitalgroup.com/about/management-team",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.phoenixhospitalgroup.com/about/management-team",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.phoenixhospitalgroup.com/about/management-team matched_fields=none",
+          "source_url": "https://www.phoenixhospitalgroup.com/about/management-team",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.phoenixhospitalgroup.com/about/management-team",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "0c75886d-b190-4128-b463-12a6ea5a47a7",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "$16-$29/hr Hospital Information Technology Jobs in Arizona",
+      "source_url": "https://www.ziprecruiter.com/Jobs/Hospital-Information-Technology/--in-Arizona",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Hospital-Information-Technology/--in-Arizona",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Hospital-Information-Technology/--in-Arizona",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Hospital-Information-Technology/--in-Arizona",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Hospital-Information-Technology/--in-Arizona",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Hospital-Information-Technology/--in-Arizona",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Hospital-Information-Technology/--in-Arizona",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Hospital-Information-Technology/--in-Arizona",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Hospital-Information-Technology/--in-Arizona",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Hospital-Information-Technology/--in-Arizona",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Hospital-Information-Technology/--in-Arizona",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Hospital-Information-Technology/--in-Arizona",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Hospital-Information-Technology/--in-Arizona",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "e52066d3-c23d-4f49-a64d-411a71359325",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Executive Leadership | Arizona General Hospital | Dignity Health | Dignity Health",
+      "source_url": "https://www.dignityhealth.org/arizona/locations/arizonageneral/about-us/executive-leadership",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.dignityhealth.org/arizona/locations/arizonageneral/about-us/executive-leadership",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.dignityhealth.org/arizona/locations/arizonageneral/about-us/executive-leadership",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.dignityhealth.org/arizona/locations/arizonageneral/about-us/executive-leadership",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.dignityhealth.org/arizona/locations/arizonageneral/about-us/executive-leadership",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.dignityhealth.org/arizona/locations/arizonageneral/about-us/executive-leadership matched_fields=none",
+          "source_url": "https://www.dignityhealth.org/arizona/locations/arizonageneral/about-us/executive-leadership",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.dignityhealth.org/arizona/locations/arizonageneral/about-us/executive-leadership",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "d02ff706-93d7-43f7-9a2e-64fcfb3bc81d",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Banner Rehabilitation Hospital Phoenix Leadership",
+      "source_url": "https://www.banner-rehabhospitals.com/patients-and-caregivers/meet-your-team/phoenix-leadership",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.banner-rehabhospitals.com/patients-and-caregivers/meet-your-team/phoenix-leadership",
+          "source_url": "https://www.banner-rehabhospitals.com/patients-and-caregivers/meet-your-team/phoenix-leadership",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.banner-rehabhospitals.com/patients-and-caregivers/meet-your-team/phoenix-leadership",
+          "source_url": "https://www.banner-rehabhospitals.com/patients-and-caregivers/meet-your-team/phoenix-leadership",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.banner-rehabhospitals.com/patients-and-caregivers/meet-your-team/phoenix-leadership",
+          "source_url": "https://www.banner-rehabhospitals.com/patients-and-caregivers/meet-your-team/phoenix-leadership",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.banner-rehabhospitals.com/patients-and-caregivers/meet-your-team/phoenix-leadership",
+          "source_url": "https://www.banner-rehabhospitals.com/patients-and-caregivers/meet-your-team/phoenix-leadership",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.banner-rehabhospitals.com/patients-and-caregivers/meet-your-team/phoenix-leadership",
+          "source_url": "https://www.banner-rehabhospitals.com/patients-and-caregivers/meet-your-team/phoenix-leadership",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.banner-rehabhospitals.com/patients-and-caregivers/meet-your-team/phoenix-leadership",
+          "source_url": "https://www.banner-rehabhospitals.com/patients-and-caregivers/meet-your-team/phoenix-leadership",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "8584b66f-1269-460a-a7ce-8e14a76f2388",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Leadership Jobs in Phoenix at TENET",
+      "source_url": "https://jobs.tenethealth.com/employment/phoenix-leadership-jobs/1127/9245408/6252001-5551752-5303754-5308655/4",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://jobs.tenethealth.com/employment/phoenix-leadership-jobs/1127/9245408/6252001-5551752-5303754-5308655/4",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://jobs.tenethealth.com/employment/phoenix-leadership-jobs/1127/9245408/6252001-5551752-5303754-5308655/4",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://jobs.tenethealth.com/employment/phoenix-leadership-jobs/1127/9245408/6252001-5551752-5303754-5308655/4",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://jobs.tenethealth.com/employment/phoenix-leadership-jobs/1127/9245408/6252001-5551752-5303754-5308655/4",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://jobs.tenethealth.com/employment/phoenix-leadership-jobs/1127/9245408/6252001-5551752-5303754-5308655/4 matched_fields=none",
+          "source_url": "https://jobs.tenethealth.com/employment/phoenix-leadership-jobs/1127/9245408/6252001-5551752-5303754-5308655/4",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://jobs.tenethealth.com/employment/phoenix-leadership-jobs/1127/9245408/6252001-5551752-5303754-5308655/4",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "57064857-1025-4b37-98e3-5acf081d10b6",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Banner Corporate Center in Phoenix | Central Ave & Thomas Rd",
+      "source_url": "https://www.bannerhealth.com/locations/phoenix/banner-corporate-center-phoenix",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.bannerhealth.com/locations/phoenix/banner-corporate-center-phoenix",
+          "source_url": "https://www.bannerhealth.com/locations/phoenix/banner-corporate-center-phoenix",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.bannerhealth.com/locations/phoenix/banner-corporate-center-phoenix",
+          "source_url": "https://www.bannerhealth.com/locations/phoenix/banner-corporate-center-phoenix",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.bannerhealth.com/locations/phoenix/banner-corporate-center-phoenix",
+          "source_url": "https://www.bannerhealth.com/locations/phoenix/banner-corporate-center-phoenix",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.bannerhealth.com/locations/phoenix/banner-corporate-center-phoenix",
+          "source_url": "https://www.bannerhealth.com/locations/phoenix/banner-corporate-center-phoenix",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.bannerhealth.com/locations/phoenix/banner-corporate-center-phoenix",
+          "source_url": "https://www.bannerhealth.com/locations/phoenix/banner-corporate-center-phoenix",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.bannerhealth.com/locations/phoenix/banner-corporate-center-phoenix",
+          "source_url": "https://www.bannerhealth.com/locations/phoenix/banner-corporate-center-phoenix",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "3a7a36b7-0744-4283-bd48-6e5c199cd9da",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Northern Arizona Healthcare Administration | About Us",
+      "source_url": "https://www.nahealth.com/about-us/northern-arizona-healthcare-administration",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.nahealth.com/about-us/northern-arizona-healthcare-administration",
+          "source_url": "https://www.nahealth.com/about-us/northern-arizona-healthcare-administration",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.nahealth.com/about-us/northern-arizona-healthcare-administration",
+          "source_url": "https://www.nahealth.com/about-us/northern-arizona-healthcare-administration",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.nahealth.com/about-us/northern-arizona-healthcare-administration",
+          "source_url": "https://www.nahealth.com/about-us/northern-arizona-healthcare-administration",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.nahealth.com/about-us/northern-arizona-healthcare-administration",
+          "source_url": "https://www.nahealth.com/about-us/northern-arizona-healthcare-administration",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.nahealth.com/about-us/northern-arizona-healthcare-administration",
+          "source_url": "https://www.nahealth.com/about-us/northern-arizona-healthcare-administration",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.nahealth.com/about-us/northern-arizona-healthcare-administration",
+          "source_url": "https://www.nahealth.com/about-us/northern-arizona-healthcare-administration",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "3898c5d1-1fc7-4518-8afe-d42769e39dcd",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Mike Sheldon \u2013 AZ Dept. of Health Services News",
+      "source_url": "https://directorsblog.health.azdhs.gov/author/mike-sheldon",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://directorsblog.health.azdhs.gov/author/mike-sheldon/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://directorsblog.health.azdhs.gov/author/mike-sheldon/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://directorsblog.health.azdhs.gov/author/mike-sheldon/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://directorsblog.health.azdhs.gov/author/mike-sheldon/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://directorsblog.health.azdhs.gov/author/mike-sheldon/ matched_fields=none",
+          "source_url": "https://directorsblog.health.azdhs.gov/author/mike-sheldon/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://directorsblog.health.azdhs.gov/author/mike-sheldon/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "e401545c-ed2c-4fcd-9f6c-b811e9d70741",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Valleywise Health Medical Center in Phoenix, AZ | Valleywise",
+      "source_url": "https://valleywisehealth.org/locations/valleywise-health-medical-center",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://valleywisehealth.org/locations/valleywise-health-medical-center",
+          "source_url": "https://valleywisehealth.org/locations/valleywise-health-medical-center",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://valleywisehealth.org/locations/valleywise-health-medical-center",
+          "source_url": "https://valleywisehealth.org/locations/valleywise-health-medical-center",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://valleywisehealth.org/locations/valleywise-health-medical-center",
+          "source_url": "https://valleywisehealth.org/locations/valleywise-health-medical-center",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://valleywisehealth.org/locations/valleywise-health-medical-center",
+          "source_url": "https://valleywisehealth.org/locations/valleywise-health-medical-center",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://valleywisehealth.org/locations/valleywise-health-medical-center",
+          "source_url": "https://valleywisehealth.org/locations/valleywise-health-medical-center",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://valleywisehealth.org/locations/valleywise-health-medical-center",
+          "source_url": "https://valleywisehealth.org/locations/valleywise-health-medical-center",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "eb5062f0-555e-48b6-b54f-4c5063fa4926",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Leadership | Adelante Healthcare",
+      "source_url": "https://adelantehealthcare.com/about-us/leadership",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://adelantehealthcare.com/about-us/leadership",
+          "source_url": "https://adelantehealthcare.com/about-us/leadership",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://adelantehealthcare.com/about-us/leadership",
+          "source_url": "https://adelantehealthcare.com/about-us/leadership",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://adelantehealthcare.com/about-us/leadership",
+          "source_url": "https://adelantehealthcare.com/about-us/leadership",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://adelantehealthcare.com/about-us/leadership",
+          "source_url": "https://adelantehealthcare.com/about-us/leadership",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://adelantehealthcare.com/about-us/leadership",
+          "source_url": "https://adelantehealthcare.com/about-us/leadership",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://adelantehealthcare.com/about-us/leadership",
+          "source_url": "https://adelantehealthcare.com/about-us/leadership",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "187411ba-8209-4eea-8b27-8459e6c42f3d",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Clinical Director - Phoenix, AZ (Phoenix Clinic) | Jobs & Internships",
+      "source_url": "https://tallo.com/talent/job/healthcare/healthcare-administrator/az/phoenix/clinical-director-phoenix-a-61a21bdd",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=410 resolved_url=https://tallo.com/talent/job/healthcare/healthcare-administrator/az/phoenix/clinical-director-phoenix-a-61a21bdd",
+          "source_url": "https://tallo.com/talent/job/healthcare/healthcare-administrator/az/phoenix/clinical-director-phoenix-a-61a21bdd",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=410 resolved_url=https://tallo.com/talent/job/healthcare/healthcare-administrator/az/phoenix/clinical-director-phoenix-a-61a21bdd",
+          "source_url": "https://tallo.com/talent/job/healthcare/healthcare-administrator/az/phoenix/clinical-director-phoenix-a-61a21bdd",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=410 resolved_url=https://tallo.com/talent/job/healthcare/healthcare-administrator/az/phoenix/clinical-director-phoenix-a-61a21bdd",
+          "source_url": "https://tallo.com/talent/job/healthcare/healthcare-administrator/az/phoenix/clinical-director-phoenix-a-61a21bdd",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=410 resolved_url=https://tallo.com/talent/job/healthcare/healthcare-administrator/az/phoenix/clinical-director-phoenix-a-61a21bdd",
+          "source_url": "https://tallo.com/talent/job/healthcare/healthcare-administrator/az/phoenix/clinical-director-phoenix-a-61a21bdd",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=410 resolved_url=https://tallo.com/talent/job/healthcare/healthcare-administrator/az/phoenix/clinical-director-phoenix-a-61a21bdd",
+          "source_url": "https://tallo.com/talent/job/healthcare/healthcare-administrator/az/phoenix/clinical-director-phoenix-a-61a21bdd",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=410 resolved_url=https://tallo.com/talent/job/healthcare/healthcare-administrator/az/phoenix/clinical-director-phoenix-a-61a21bdd",
+          "source_url": "https://tallo.com/talent/job/healthcare/healthcare-administrator/az/phoenix/clinical-director-phoenix-a-61a21bdd",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "10994db5-421f-4848-934e-a5f1555f1175",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "IT Director in Phoenix at Spectrum Medical Care Center | Apply now! \u2013 StudySmarter \u2013 Talents",
+      "source_url": "https://talents.vaia.com/companies/spectrum-medical-care-center/phoenix/it-director-64371621",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://talents.vaia.com/companies/spectrum-medical-care-center/phoenix/it-director-64371621/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://talents.vaia.com/companies/spectrum-medical-care-center/phoenix/it-director-64371621/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://talents.vaia.com/companies/spectrum-medical-care-center/phoenix/it-director-64371621/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://talents.vaia.com/companies/spectrum-medical-care-center/phoenix/it-director-64371621/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://talents.vaia.com/companies/spectrum-medical-care-center/phoenix/it-director-64371621/ matched_fields=none",
+          "source_url": "https://talents.vaia.com/companies/spectrum-medical-care-center/phoenix/it-director-64371621/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://talents.vaia.com/companies/spectrum-medical-care-center/phoenix/it-director-64371621/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "2739504c-3b63-49ad-a902-230119e27dce",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Clinical Director jobs in Phoenix, AZ - Indeed",
+      "source_url": "https://www.indeed.com/q-clinical-director-l-phoenix,-az-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-clinical-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-clinical-director-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-clinical-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-clinical-director-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-clinical-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-clinical-director-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-clinical-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-clinical-director-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-clinical-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-clinical-director-l-phoenix,-az-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-clinical-director-l-phoenix,-az-jobs.html",
+          "source_url": "https://www.indeed.com/q-clinical-director-l-phoenix,-az-jobs.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "424dbb91-ec08-423b-bb91-de25f1930871",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "157 Director clinic manager jobs in Phoenix, AZ - Glassdoor",
+      "source_url": "https://www.glassdoor.com/Job/phoenix-director-clinic-manager-jobs-SRCH_IL.0,7_IC1133904_KO8,31.htm",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/phoenix-director-clinic-manager-jobs-SRCH_IL.0,7_IC1133904_KO8,31.htm",
+          "source_url": "https://www.glassdoor.com/Job/phoenix-director-clinic-manager-jobs-SRCH_IL.0,7_IC1133904_KO8,31.htm",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/phoenix-director-clinic-manager-jobs-SRCH_IL.0,7_IC1133904_KO8,31.htm",
+          "source_url": "https://www.glassdoor.com/Job/phoenix-director-clinic-manager-jobs-SRCH_IL.0,7_IC1133904_KO8,31.htm",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/phoenix-director-clinic-manager-jobs-SRCH_IL.0,7_IC1133904_KO8,31.htm",
+          "source_url": "https://www.glassdoor.com/Job/phoenix-director-clinic-manager-jobs-SRCH_IL.0,7_IC1133904_KO8,31.htm",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/phoenix-director-clinic-manager-jobs-SRCH_IL.0,7_IC1133904_KO8,31.htm",
+          "source_url": "https://www.glassdoor.com/Job/phoenix-director-clinic-manager-jobs-SRCH_IL.0,7_IC1133904_KO8,31.htm",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.glassdoor.com/Job/phoenix-director-clinic-manager-jobs-SRCH_IL.0,7_IC1133904_KO8,31.htm",
+          "source_url": "https://www.glassdoor.com/Job/phoenix-director-clinic-manager-jobs-SRCH_IL.0,7_IC1133904_KO8,31.htm",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/phoenix-director-clinic-manager-jobs-SRCH_IL.0,7_IC1133904_KO8,31.htm",
+          "source_url": "https://www.glassdoor.com/Job/phoenix-director-clinic-manager-jobs-SRCH_IL.0,7_IC1133904_KO8,31.htm",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "5ed43ba8-792a-4dfd-b25c-dc93f0f36b93",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "HTM Director (Section Head) - Mayo Clinic - Phoenix, AZ | Ladders",
+      "source_url": "https://www.theladders.com/job/htm-director-section-head-mayoclinic-phoenix-az_82609183",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/job/htm-director-section-head-mayoclinic-phoenix-az_82609183",
+          "source_url": "https://www.theladders.com/job/htm-director-section-head-mayoclinic-phoenix-az_82609183",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/job/htm-director-section-head-mayoclinic-phoenix-az_82609183",
+          "source_url": "https://www.theladders.com/job/htm-director-section-head-mayoclinic-phoenix-az_82609183",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/job/htm-director-section-head-mayoclinic-phoenix-az_82609183",
+          "source_url": "https://www.theladders.com/job/htm-director-section-head-mayoclinic-phoenix-az_82609183",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/job/htm-director-section-head-mayoclinic-phoenix-az_82609183",
+          "source_url": "https://www.theladders.com/job/htm-director-section-head-mayoclinic-phoenix-az_82609183",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.theladders.com/job/htm-director-section-head-mayoclinic-phoenix-az_82609183",
+          "source_url": "https://www.theladders.com/job/htm-director-section-head-mayoclinic-phoenix-az_82609183",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/job/htm-director-section-head-mayoclinic-phoenix-az_82609183",
+          "source_url": "https://www.theladders.com/job/htm-director-section-head-mayoclinic-phoenix-az_82609183",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "bb3ee68a-78e1-493d-96c3-d2431168150e",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Healthcare IT Director $205,000 Jobs, Employment | Indeed",
+      "source_url": "https://www.indeed.com/q-Healthcare-IT-Director-$205,000-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-Healthcare-IT-Director-$205,000-jobs.html",
+          "source_url": "https://www.indeed.com/q-Healthcare-IT-Director-$205,000-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-Healthcare-IT-Director-$205,000-jobs.html",
+          "source_url": "https://www.indeed.com/q-Healthcare-IT-Director-$205,000-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-Healthcare-IT-Director-$205,000-jobs.html",
+          "source_url": "https://www.indeed.com/q-Healthcare-IT-Director-$205,000-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-Healthcare-IT-Director-$205,000-jobs.html",
+          "source_url": "https://www.indeed.com/q-Healthcare-IT-Director-$205,000-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-Healthcare-IT-Director-$205,000-jobs.html",
+          "source_url": "https://www.indeed.com/q-Healthcare-IT-Director-$205,000-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:18:54Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-Healthcare-IT-Director-$205,000-jobs.html",
+          "source_url": "https://www.indeed.com/q-Healthcare-IT-Director-$205,000-jobs.html",
+          "status": "missing"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 124.16,
+    "estimated_cost_usd": 0.287056,
+    "funnel_counts": {
+      "categorized_rows": 50,
+      "contact_evidence_candidates_searched": 4,
+      "contact_evidence_conflicting_signals": 3,
+      "contact_evidence_contacts_acquired": 0,
+      "contact_evidence_field_corroborations": 9,
+      "contact_evidence_review_to_high_trust": 0,
+      "contact_evidence_searches": 16,
+      "contact_quality_passes": 0,
+      "deduped_sources": 141,
+      "extracted_candidates": 5,
+      "high_trust_usable_rows": 0,
+      "person_rows": 1,
+      "persona_supported_rows": 0,
+      "raw_vendor_hits": 207,
+      "source_snapshots": 141,
+      "source_supported_rows": 3
+    },
+    "funnel_notes": [
+      "Deduped 207 raw vendor hits to 141 unique sources.",
+      "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+      "No returned row has verified or source-backed deduced contact evidence.",
+      "Deep contact evidence pass searched 4 promising rows and acquired 0 source-backed contacts; 0 rows gained enough contact evidence to clear the READY gate.",
+      "Deep contact evidence pass observed 9 field corroborations and 3 conflicting signals across public-web sources."
+    ],
+    "input_tokens": 43505,
+    "openai_web_searches": 0,
+    "output_tokens": 883,
+    "tavily_searches": 28,
+    "tier_distribution": {
+      "failed": 48,
+      "high_trust_usable": 0,
+      "not_found": 1,
+      "organization_only": 0,
+      "review": 1
+    }
+  },
+  "mode": "scout",
+  "persistence_readback": {
+    "candidate_category_distribution": {
+      "failed": 48,
+      "not_found": 1,
+      "person_lead": 1
+    },
+    "db_readback_row_count": 50,
+    "exportable_row_count": 50,
+    "first_db_lead_ids": [
+      "3c032a46-9a36-4f7d-be2c-60d761191e1a",
+      "479a89fa-aaaf-4017-8182-8b33c3c59733",
+      "96180c3d-1945-4aac-80f8-934f9d5ab64e",
+      "cceca1f0-9607-45cc-bb2b-7a4af20163e7",
+      "c048a5ff-9022-4fde-9ebf-351a336b453c"
+    ],
+    "first_response_lead_ids": [
+      "3c032a46-9a36-4f7d-be2c-60d761191e1a",
+      "479a89fa-aaaf-4017-8182-8b33c3c59733",
+      "96180c3d-1945-4aac-80f8-934f9d5ab64e",
+      "cceca1f0-9607-45cc-bb2b-7a4af20163e7",
+      "c048a5ff-9022-4fde-9ebf-351a336b453c"
+    ],
+    "persisted_lead_count": 50,
+    "recipe_id": "48750206-f270-4f48-a56d-bceb0fbf9166",
+    "response_row_count": 50,
+    "row_count_matches": true,
+    "run_id": "00cddba4-5ec3-44ca-b255-be1f8a37f603",
+    "tier_distribution": {
+      "failed": 48,
+      "not_found": 1,
+      "review": 1
+    }
+  },
+  "prompt_label": "Healthcare IT directors in Phoenix",
+  "query": "healthcare IT directors in Phoenix",
+  "query_guardrail": null,
+  "recipe_id": "48750206-f270-4f48-a56d-bceb0fbf9166",
+  "run_id": "00cddba4-5ec3-44ca-b255-be1f8a37f603",
+  "runner_elapsed_seconds": 126.577,
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 7,
+    "remaining_rows": 892,
+    "reset_at": "2026-05-25T22:12:50.168118+00:00",
+    "total_queries": 3,
+    "total_rows": 108
+  }
+}

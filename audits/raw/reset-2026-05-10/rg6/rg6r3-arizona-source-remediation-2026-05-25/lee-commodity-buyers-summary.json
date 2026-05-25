@@ -1,0 +1,22 @@
+{
+  "benchmark_id": "lee-commodity-buyers",
+  "candidate_category_distribution": {},
+  "contact_quality_passes": 0,
+  "high_trust_usable_with_contact_evidence": 0,
+  "metrics": null,
+  "operator_label_distribution": {
+    "NOT FOUND": 0,
+    "ORG-ONLY": 0,
+    "READY": 0,
+    "REVIEW": 0
+  },
+  "persistence_readback": null,
+  "query_guardrail": null,
+  "recipe_id": null,
+  "row_count": 0,
+  "run_id": null,
+  "sandbox_usage": null,
+  "seconds": 0.191,
+  "status": 401,
+  "tier_distribution": {}
+}

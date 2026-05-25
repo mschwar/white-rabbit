@@ -1,0 +1,2902 @@
+{
+  "benchmark_id": "lee-commodity-buyers",
+  "leads": [
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.8,
+      "contact_score": 0.85,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.95,
+      "explanation": "The contact information for Eric Feiro is directly verified and actively involved in sourcing, making him a relevant lead.",
+      "fit_score": 0.9,
+      "gate_passed": true,
+      "icebreaker": "I noticed you specialize in timber sourcing and quality management at NWH, and I believe there are potential synergies between our efforts.",
+      "id": "4cfd10ab-f551-4786-ba58-d5c1906cf238",
+      "name": "Eric Feiro",
+      "organization": "NWH Hardwood Lumber Manufacturing & Distribution",
+      "phone": "360-708-9265",
+      "primary_filter_reason": "READY: supported person, organization, source, and usable contact cleared the evidence gate.",
+      "source_url": "https://nwh.com/sell-your-timber",
+      "tier": "high_trust_usable",
+      "title": "Timber Buyer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...\"Prof.\"},{\"text\":\"Rev.\",\"value\":\"Rev.\"}]}; Log/Timber Buyers washington Everett Eric Feiro: 360-708-9265 Centralia Jeremy Martin: 360-520-5565 Bill Bush: 360-520-2287 Lon...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...n!=o.tag||null!=t&&t!=o.priority)}),gform.hooks[o][r]=e)}}); Sell Your Timber | NWH Hardwood Lumber Manufacturing & Distribution img:is([sizes=auto i],[sizes^=\"auto,\" i]){contain-intrinsic-size:3000px 1500px}...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...ext\":\"Rev.\",\"value\":\"Rev.\"}]}; Log/Timber Buyers washington Everett Eric Feiro: 360-708-9265 Centralia Jeremy Martin: 360-520-5565 Bill Bush: 360-520-2287 Longview John And...",
+          "notes": "Direct text support found for phone.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "verified_found"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...\"Prof.\"},{\"text\":\"Rev.\",\"value\":\"Rev.\"}]}; Log/Timber Buyers washington Everett Eric Feiro: 360-708-9265 Centralia Jeremy Martin: 360-520-5565 Bill Bush: 360-520-2287 Lon...",
+          "notes": "http_status=200 resolved_url=https://nwh.com/sell-your-timber/ matched_fields=name,title,organization,phone",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...-Buy-Your-Logs-Standing-Timber.png\",\"width\":1080,\"height\":1080,\"caption\":\"Log & Timber Buyers\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https:\\/\\/nwh.com\\/sell-your-timber\\/#bread...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        }
+      },
+      "why_target": "As a Timber Buyer at NWH Hardwood, Eric is actively involved in sourcing timber, which aligns perfectly with your focus on commodity buyers at lumber yards in Washington."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.8,
+      "contact_score": 0.75,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.9,
+      "explanation": "Jeremy Martin's contact information is verified, pertinent to timber buying in Washington, making him a strong candidate.",
+      "fit_score": 0.85,
+      "gate_passed": true,
+      "icebreaker": "Your expertise in timber purchasing at NWH is impressive, and I believe we could collaborate to enhance sourcing strategies.",
+      "id": "1dae1567-946b-4aea-8cd3-c63fb1652647",
+      "name": "Jeremy Martin",
+      "organization": "NWH Hardwood Lumber Manufacturing & Distribution",
+      "phone": "360-520-5565",
+      "primary_filter_reason": "READY: supported person, organization, source, and usable contact cleared the evidence gate.",
+      "source_url": "https://nwh.com/sell-your-timber",
+      "tier": "high_trust_usable",
+      "title": "Timber Buyer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...v.\"}]}; Log/Timber Buyers washington Everett Eric Feiro: 360-708-9265 Centralia Jeremy Martin: 360-520-5565 Bill Bush: 360-520-2287 Longview John Anderson: 360-269-2500 wisc...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...n!=o.tag||null!=t&&t!=o.priority)}),gform.hooks[o][r]=e)}}); Sell Your Timber | NWH Hardwood Lumber Manufacturing & Distribution img:is([sizes=auto i],[sizes^=\"auto,\" i]){contain-intrinsic-size:3000px 1500px}...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...ber Buyers washington Everett Eric Feiro: 360-708-9265 Centralia Jeremy Martin: 360-520-5565 Bill Bush: 360-520-2287 Longview John Anderson: 360-269-2500 wisconsin North/Ea...",
+          "notes": "Direct text support found for phone.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "verified_found"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...v.\"}]}; Log/Timber Buyers washington Everett Eric Feiro: 360-708-9265 Centralia Jeremy Martin: 360-520-5565 Bill Bush: 360-520-2287 Longview John Anderson: 360-269-2500 wisc...",
+          "notes": "http_status=200 resolved_url=https://nwh.com/sell-your-timber/ matched_fields=name,title,organization,phone",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...-Buy-Your-Logs-Standing-Timber.png\",\"width\":1080,\"height\":1080,\"caption\":\"Log & Timber Buyers\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https:\\/\\/nwh.com\\/sell-your-timber\\/#bread...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        }
+      },
+      "why_target": "As a Timber Buyer at NWH, Jeremy plays a critical role in purchasing timber, which directly relates to your interest in commodity buyers in the lumber market."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.8,
+      "contact_score": 0.75,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.9,
+      "explanation": "Bill Bush is a verified contact with relevant decision-making authority in timber procurement.",
+      "fit_score": 0.85,
+      "gate_passed": true,
+      "icebreaker": "Your role in timber procurement at NWH has caught my attention, and I see opportunities to explore shared interests in sourcing lumber.",
+      "id": "12acac93-8a0c-4506-9de5-ba156ab5af0d",
+      "name": "Bill Bush",
+      "organization": "NWH Hardwood Lumber Manufacturing & Distribution",
+      "phone": "360-520-2287",
+      "primary_filter_reason": "READY: supported person, organization, source, and usable contact cleared the evidence gate.",
+      "source_url": "https://nwh.com/sell-your-timber",
+      "tier": "high_trust_usable",
+      "title": "Timber Buyer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...shington Everett Eric Feiro: 360-708-9265 Centralia Jeremy Martin: 360-520-5565 Bill Bush: 360-520-2287 Longview John Anderson: 360-269-2500 wisconsin North/East Tyler O...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...n!=o.tag||null!=t&&t!=o.priority)}),gform.hooks[o][r]=e)}}); Sell Your Timber | NWH Hardwood Lumber Manufacturing & Distribution img:is([sizes=auto i],[sizes^=\"auto,\" i]){contain-intrinsic-size:3000px 1500px}...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...erett Eric Feiro: 360-708-9265 Centralia Jeremy Martin: 360-520-5565 Bill Bush: 360-520-2287 Longview John Anderson: 360-269-2500 wisconsin North/East Tyler Oestreich: 715-...",
+          "notes": "Direct text support found for phone.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "verified_found"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...shington Everett Eric Feiro: 360-708-9265 Centralia Jeremy Martin: 360-520-5565 Bill Bush: 360-520-2287 Longview John Anderson: 360-269-2500 wisconsin North/East Tyler O...",
+          "notes": "http_status=200 resolved_url=https://nwh.com/sell-your-timber/ matched_fields=name,title,organization,phone",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...-Buy-Your-Logs-Standing-Timber.png\",\"width\":1080,\"height\":1080,\"caption\":\"Log & Timber Buyers\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https:\\/\\/nwh.com\\/sell-your-timber\\/#bread...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        }
+      },
+      "why_target": "As a Timber Buyer at NWH, Bill is deeply involved in timber procurement, a key aspect for commodity buyers in the lumber industry."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.8,
+      "contact_score": 0.75,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.9,
+      "explanation": "John Anderson holds a verified role as a buyer, ensuring his relevance for sourcing discussions.",
+      "fit_score": 0.85,
+      "gate_passed": true,
+      "icebreaker": "I've been impressed with the timber procurement processes at NWH, and I think you have valuable insights that could enhance our initiative.",
+      "id": "3df67ed0-30ec-4715-8746-b909cfed0ce3",
+      "name": "John Anderson",
+      "organization": "NWH Hardwood Lumber Manufacturing & Distribution",
+      "phone": "360-269-2500",
+      "primary_filter_reason": "READY: supported person, organization, source, and usable contact cleared the evidence gate.",
+      "source_url": "https://nwh.com/sell-your-timber",
+      "tier": "high_trust_usable",
+      "title": "Timber Buyer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...708-9265 Centralia Jeremy Martin: 360-520-5565 Bill Bush: 360-520-2287 Longview John Anderson: 360-269-2500 wisconsin North/East Tyler Oestreich: 715-218-6498 Richard Rudolf...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...n!=o.tag||null!=t&&t!=o.priority)}),gform.hooks[o][r]=e)}}); Sell Your Timber | NWH Hardwood Lumber Manufacturing & Distribution img:is([sizes=auto i],[sizes^=\"auto,\" i]){contain-intrinsic-size:3000px 1500px}...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...lia Jeremy Martin: 360-520-5565 Bill Bush: 360-520-2287 Longview John Anderson: 360-269-2500 wisconsin North/East Tyler Oestreich: 715-218-6498 Richard Rudolf: 262-709-1863...",
+          "notes": "Direct text support found for phone.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "verified_found"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...708-9265 Centralia Jeremy Martin: 360-520-5565 Bill Bush: 360-520-2287 Longview John Anderson: 360-269-2500 wisconsin North/East Tyler Oestreich: 715-218-6498 Richard Rudolf...",
+          "notes": "http_status=200 resolved_url=https://nwh.com/sell-your-timber/ matched_fields=name,title,organization,phone",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...-Buy-Your-Logs-Standing-Timber.png\",\"width\":1080,\"height\":1080,\"caption\":\"Log & Timber Buyers\"},{\"@type\":\"BreadcrumbList\",\"@id\":\"https:\\/\\/nwh.com\\/sell-your-timber\\/#bread...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "supported"
+        }
+      },
+      "why_target": "John's role as a Timber Buyer at NWH directly connects him to the commodity procurement aspects crucial for your focus area."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.7,
+      "contact_score": 0.1,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.55,
+      "explanation": "While the role of Danny Steiger is pivotal, there is no verified contact information available at this time, blocking the lead.",
+      "fit_score": 0.8,
+      "gate_passed": false,
+      "icebreaker": "I admire the impact Lumber Traders has made in the community and would love to discuss how we can work together to enhance procurement strategies.",
+      "id": "e7e385ec-4d11-446e-9212-2829f4ddc590",
+      "name": "Danny Steiger",
+      "organization": "Lumber Traders Inc.",
+      "phone": "",
+      "primary_filter_reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+      "source_url": "https://fr.linkedin.com/company/lumber-traders-inc-",
+      "tier": "review",
+      "title": "President and CEO",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. Deep contact pass searched page_types=about, board_agenda_pdf, department, generic, staff_directory; corroborating_sources=1; no direct person email or explicit domain pattern found; no direct person phone found.",
+          "source_url": "https://fr.linkedin.com/company/lumber-traders-inc-",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...62 Port Angeles, WA, US Obtenir l\u2019itin\u00e9raire Employ\u00e9s chez Lumber Traders, Inc. Danny Steiger Paschal Anah Christopher Clark Ian Tucker Voir tous les employ\u00e9s Pages similair...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://fr.linkedin.com/company/lumber-traders-inc-",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...\"addressRegion\":\"WA\",\"postalCode\":\"98363\",\"addressCountry\":\"US\"},\"description\":\"Lumber Traders Inc. is an employee-owned parent company that operates retail building material stor...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://fr.linkedin.com/company/lumber-traders-inc-",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://fr.linkedin.com/company/lumber-traders-inc-",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "...62 Port Angeles, WA, US Obtenir l\u2019itin\u00e9raire Employ\u00e9s chez Lumber Traders, Inc. Danny Steiger Paschal Anah Christopher Clark Ian Tucker Voir tous les employ\u00e9s Pages similair...",
+          "notes": "http_status=200 resolved_url=https://fr.linkedin.com/company/lumber-traders-inc- matched_fields=name,organization",
+          "source_url": "https://fr.linkedin.com/company/lumber-traders-inc-",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for title.",
+          "source_url": "https://fr.linkedin.com/company/lumber-traders-inc-",
+          "status": "unsupported"
+        }
+      },
+      "why_target": "As the CEO, Danny has oversight of procurement strategies which are essential for commodity buying at retail lumber yards."
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/ed-martin-3b117740",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/ed-martin-3b117740",
+      "id": "613d9f25-e977-4192-9058-64d476b6be27",
+      "organization": "Western Forest Products",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/ed-martin-3b117740",
+      "searched_target": "Western Forest Products",
+      "source_url": "https://www.linkedin.com/in/ed-martin-3b117740",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/ed-martin-3b117740",
+          "source_url": "https://www.linkedin.com/in/ed-martin-3b117740",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/ed-martin-3b117740",
+          "source_url": "https://www.linkedin.com/in/ed-martin-3b117740",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/ed-martin-3b117740",
+          "source_url": "https://www.linkedin.com/in/ed-martin-3b117740",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/ed-martin-3b117740",
+          "source_url": "https://www.linkedin.com/in/ed-martin-3b117740",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/ed-martin-3b117740",
+          "source_url": "https://www.linkedin.com/in/ed-martin-3b117740",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/ed-martin-3b117740",
+          "source_url": "https://www.linkedin.com/in/ed-martin-3b117740",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "While the organization is relevant, specific decision-maker information is not available.",
+      "id": "f7b8c6e6-969e-4ace-8478-a259d312fb12",
+      "organization": "NWH Hardwood Lumber Manufacturing & Distribution",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. While the organization is relevant, specific decision-maker information is not available.",
+      "source_url": "https://nwh.com/sell-your-timber",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "Leadership | NWH Hardwood Lumber Manufacturing & Distribution ## Leadership Team\n\nFrom the very beginning we have been guided by people who bring ideas to life. Today is no differen...",
+          "notes": "Organization contact/team source found, but no named person was validated.",
+          "source_url": "https://nwh.com/company/leadership",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": "Leadership | NWH Hardwood Lumber Manufacturing & Distribution ## Leadership Team\n\nFrom the very beginning we have been guided by people who bring ideas to life. Today is no differen...",
+          "notes": "Targeted contact-evidence pass found an organization-level source only.",
+          "source_url": "https://nwh.com/company/leadership",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://nwh.com/sell-your-timber/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "b66027d5-731d-40fe-a747-df074f946f78",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Lumber & Building Material Stores in Washington - Market Research Report (2016-2031) | IBISWorld",
+      "source_url": "https://www.ibisworld.com/united-states/industry/washington/lumber-building-material-stores/42359",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=405 resolved_url=https://www.ibisworld.com/united-states/industry/washington/lumber-building-material-stores/42359",
+          "source_url": "https://www.ibisworld.com/united-states/industry/washington/lumber-building-material-stores/42359",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=405 resolved_url=https://www.ibisworld.com/united-states/industry/washington/lumber-building-material-stores/42359",
+          "source_url": "https://www.ibisworld.com/united-states/industry/washington/lumber-building-material-stores/42359",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=405 resolved_url=https://www.ibisworld.com/united-states/industry/washington/lumber-building-material-stores/42359",
+          "source_url": "https://www.ibisworld.com/united-states/industry/washington/lumber-building-material-stores/42359",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=405 resolved_url=https://www.ibisworld.com/united-states/industry/washington/lumber-building-material-stores/42359",
+          "source_url": "https://www.ibisworld.com/united-states/industry/washington/lumber-building-material-stores/42359",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=405 resolved_url=https://www.ibisworld.com/united-states/industry/washington/lumber-building-material-stores/42359",
+          "source_url": "https://www.ibisworld.com/united-states/industry/washington/lumber-building-material-stores/42359",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=405 resolved_url=https://www.ibisworld.com/united-states/industry/washington/lumber-building-material-stores/42359",
+          "source_url": "https://www.ibisworld.com/united-states/industry/washington/lumber-building-material-stores/42359",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "8add0835-d5a4-4e46-b11f-6cb45d751637",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Specialty Forest Products | Quality Lumber",
+      "source_url": "https://specialtyforest.com",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://specialtyforest.com",
+          "source_url": "https://specialtyforest.com",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://specialtyforest.com",
+          "source_url": "https://specialtyforest.com",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://specialtyforest.com",
+          "source_url": "https://specialtyforest.com",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://specialtyforest.com",
+          "source_url": "https://specialtyforest.com",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://specialtyforest.com",
+          "source_url": "https://specialtyforest.com",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://specialtyforest.com",
+          "source_url": "https://specialtyforest.com",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "4fd311da-63ce-48f1-b94a-a85caccd471f",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Lumber yards in WA State? - FineWoodworking",
+      "source_url": "https://www.finewoodworking.com/forum/lumber-yards-in-wa-state",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.finewoodworking.com/forum/lumber-yards-in-wa-state",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.finewoodworking.com/forum/lumber-yards-in-wa-state",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.finewoodworking.com/forum/lumber-yards-in-wa-state",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.finewoodworking.com/forum/lumber-yards-in-wa-state",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.finewoodworking.com/forum/lumber-yards-in-wa-state matched_fields=none",
+          "source_url": "https://www.finewoodworking.com/forum/lumber-yards-in-wa-state",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.finewoodworking.com/forum/lumber-yards-in-wa-state",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "59094271-7667-4c39-ae6b-431b0ce1d255",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Lumber Traders Inc. Expands, Moves Sizable Volume In Softwoods\ufffc | Miller Wood Trade Publications",
+      "source_url": "https://millerwoodtradepub.com/lumber-traders-inc-expands-moves-sizable-volume-in-softwoods%EF%BF%BC",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://millerwoodtradepub.com/lumber-traders-inc-expands-moves-sizable-volume-in-softwoods%EF%BF%BC/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://millerwoodtradepub.com/lumber-traders-inc-expands-moves-sizable-volume-in-softwoods%EF%BF%BC/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://millerwoodtradepub.com/lumber-traders-inc-expands-moves-sizable-volume-in-softwoods%EF%BF%BC/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://millerwoodtradepub.com/lumber-traders-inc-expands-moves-sizable-volume-in-softwoods%EF%BF%BC/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://millerwoodtradepub.com/lumber-traders-inc-expands-moves-sizable-volume-in-softwoods%EF%BF%BC/ matched_fields=none",
+          "source_url": "https://millerwoodtradepub.com/lumber-traders-inc-expands-moves-sizable-volume-in-softwoods%EF%BF%BC/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://millerwoodtradepub.com/lumber-traders-inc-expands-moves-sizable-volume-in-softwoods%EF%BF%BC/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "d4a98f0d-39a2-47cf-94e7-be832b823518",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "History - Western Building Material Association",
+      "source_url": "https://wbma.org/history",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://wbma.org/history/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://wbma.org/history/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://wbma.org/history/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://wbma.org/history/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://wbma.org/history/ matched_fields=none",
+          "source_url": "https://wbma.org/history/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://wbma.org/history/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "7c8bcca1-83ce-4123-b1d2-81bffef7bcd8",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Graham WA Lumber Yard | Builders FirstSource",
+      "source_url": "https://www.bldr.com/location/graham-wa-lumber-yard/GRAHWAYD",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.bldr.com/location/graham-wa-lumber-yard/GRAHWAYD",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.bldr.com/location/graham-wa-lumber-yard/GRAHWAYD",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.bldr.com/location/graham-wa-lumber-yard/GRAHWAYD",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.bldr.com/location/graham-wa-lumber-yard/GRAHWAYD",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.bldr.com/location/graham-wa-lumber-yard/GRAHWAYD matched_fields=none",
+          "source_url": "https://www.bldr.com/location/graham-wa-lumber-yard/GRAHWAYD",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.bldr.com/location/graham-wa-lumber-yard/GRAHWAYD",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "56bb88eb-5b6d-4521-84b2-89c133c3fd89",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Bob Maurer - Commodity Buyer - Central Valley Bldrs Supply - Nor Cal Lumber Co Inc",
+      "source_url": "https://www.linkedin.com/in/bob-maurer-2026609",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/bob-maurer-2026609",
+          "source_url": "https://www.linkedin.com/in/bob-maurer-2026609",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/bob-maurer-2026609",
+          "source_url": "https://www.linkedin.com/in/bob-maurer-2026609",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/bob-maurer-2026609",
+          "source_url": "https://www.linkedin.com/in/bob-maurer-2026609",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/bob-maurer-2026609",
+          "source_url": "https://www.linkedin.com/in/bob-maurer-2026609",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/bob-maurer-2026609",
+          "source_url": "https://www.linkedin.com/in/bob-maurer-2026609",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/bob-maurer-2026609",
+          "source_url": "https://www.linkedin.com/in/bob-maurer-2026609",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "05e69337-4ccb-4af7-a262-f7b94778109f",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "TOP 10 BEST Lumber Yards in Seattle, WA - Updated 2026 - Yelp",
+      "source_url": "https://www.yelp.com/search?find_desc=Lumber+Yards&find_loc=Seattle%2C+WA",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.yelp.com/search?find_desc=Lumber+Yards&find_loc=Seattle%2C+WA",
+          "source_url": "https://www.yelp.com/search?find_desc=Lumber+Yards&find_loc=Seattle%2C+WA",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.yelp.com/search?find_desc=Lumber+Yards&find_loc=Seattle%2C+WA",
+          "source_url": "https://www.yelp.com/search?find_desc=Lumber+Yards&find_loc=Seattle%2C+WA",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.yelp.com/search?find_desc=Lumber+Yards&find_loc=Seattle%2C+WA",
+          "source_url": "https://www.yelp.com/search?find_desc=Lumber+Yards&find_loc=Seattle%2C+WA",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.yelp.com/search?find_desc=Lumber+Yards&find_loc=Seattle%2C+WA",
+          "source_url": "https://www.yelp.com/search?find_desc=Lumber+Yards&find_loc=Seattle%2C+WA",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.yelp.com/search?find_desc=Lumber+Yards&find_loc=Seattle%2C+WA",
+          "source_url": "https://www.yelp.com/search?find_desc=Lumber+Yards&find_loc=Seattle%2C+WA",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.yelp.com/search?find_desc=Lumber+Yards&find_loc=Seattle%2C+WA",
+          "source_url": "https://www.yelp.com/search?find_desc=Lumber+Yards&find_loc=Seattle%2C+WA",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "602e678a-ddcf-4d97-89ae-93762b291564",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Lumber Buyer Jobs, Employment | Indeed",
+      "source_url": "https://www.indeed.com/q-lumber-buyer-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-lumber-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-lumber-buyer-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-lumber-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-lumber-buyer-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-lumber-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-lumber-buyer-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-lumber-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-lumber-buyer-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-lumber-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-lumber-buyer-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-lumber-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-lumber-buyer-jobs.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "a88741fc-5081-4670-98e5-a4b7edbcc84e",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Framing Lumber Prices | NAHB",
+      "source_url": "https://www.nahb.org/news-and-economics/housing-economics/national-statistics/framing-lumber-prices",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.nahb.org/news-and-economics/housing-economics/national-statistics/framing-lumber-prices",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.nahb.org/news-and-economics/housing-economics/national-statistics/framing-lumber-prices",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.nahb.org/news-and-economics/housing-economics/national-statistics/framing-lumber-prices",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.nahb.org/news-and-economics/housing-economics/national-statistics/framing-lumber-prices",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.nahb.org/news-and-economics/housing-economics/national-statistics/framing-lumber-prices matched_fields=none",
+          "source_url": "https://www.nahb.org/news-and-economics/housing-economics/national-statistics/framing-lumber-prices",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.nahb.org/news-and-economics/housing-economics/national-statistics/framing-lumber-prices",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "d4b6861f-3d11-4764-8ba0-071bd3a1732f",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Western Lumber Buyers Guide - Western Wood Products Association",
+      "source_url": "https://www.wwpa.org/buyers-guide",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.wwpa.org/buyers-guide",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.wwpa.org/buyers-guide",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.wwpa.org/buyers-guide",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.wwpa.org/buyers-guide",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.wwpa.org/buyers-guide matched_fields=none",
+          "source_url": "https://www.wwpa.org/buyers-guide",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.wwpa.org/buyers-guide",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "068fd5be-ded6-4def-9b04-3b8a75ebac0a",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Lumber Yard | Building Materials Supplier | 84 Lumber",
+      "source_url": "https://www.84lumber.com",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.84lumber.com",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.84lumber.com",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.84lumber.com",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.84lumber.com",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.84lumber.com matched_fields=none",
+          "source_url": "https://www.84lumber.com",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.84lumber.com",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "1d15e59e-e24e-459d-84d4-6fef7780774a",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Evergreen Lumber - Evergreen Lumber",
+      "source_url": "https://evergreenlbm.com",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://evergreenlbm.com",
+          "source_url": "https://evergreenlbm.com",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://evergreenlbm.com",
+          "source_url": "https://evergreenlbm.com",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://evergreenlbm.com",
+          "source_url": "https://evergreenlbm.com",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://evergreenlbm.com",
+          "source_url": "https://evergreenlbm.com",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://evergreenlbm.com",
+          "source_url": "https://evergreenlbm.com",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://evergreenlbm.com",
+          "source_url": "https://evergreenlbm.com",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "2a281195-e3b9-4559-98be-ad6febedd932",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "R.P. Lumber Company | Best Service. Best Value.",
+      "source_url": "https://www.rplumber.com",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.rplumber.com",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.rplumber.com",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.rplumber.com",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.rplumber.com",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.rplumber.com matched_fields=none",
+          "source_url": "https://www.rplumber.com",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.rplumber.com",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "d5318791-1c35-40c2-a0c6-cb10aaf1033a",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "BlueLinx - Building Products Distributor - Home",
+      "source_url": "https://bluelinxco.com",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://bluelinxco.com",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://bluelinxco.com",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://bluelinxco.com",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://bluelinxco.com",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://bluelinxco.com matched_fields=none",
+          "source_url": "https://bluelinxco.com",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://bluelinxco.com",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "ed7b5d62-1d1c-40e3-bb77-c7230e73bfdc",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Home - Stimson Lumber",
+      "source_url": "https://stimsonlumber.com",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://stimsonlumber.com",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://stimsonlumber.com",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://stimsonlumber.com",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://stimsonlumber.com",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://stimsonlumber.com matched_fields=none",
+          "source_url": "https://stimsonlumber.com",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://stimsonlumber.com",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "89caa391-72c2-48f7-8cb4-7d4412e30249",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "PARR Lumber | Home Building Materials for Builders, Contractors, Remodelers & DIYers",
+      "source_url": "https://parr.com",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://parr.com",
+          "source_url": "https://parr.com",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://parr.com",
+          "source_url": "https://parr.com",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://parr.com",
+          "source_url": "https://parr.com",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://parr.com",
+          "source_url": "https://parr.com",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://parr.com",
+          "source_url": "https://parr.com",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://parr.com",
+          "source_url": "https://parr.com",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "8ec326cc-4960-4d7b-ae3e-b7fef6f4f51a",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Partnerships for Climate-Smart Commodities Project Summaries | USDA",
+      "source_url": "https://www.usda.gov/partnerships-climate-smart-commodities-project-summaries",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. fetch_error=ReadTimeout: ",
+          "source_url": "https://www.usda.gov/partnerships-climate-smart-commodities-project-summaries",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. fetch_error=ReadTimeout: ",
+          "source_url": "https://www.usda.gov/partnerships-climate-smart-commodities-project-summaries",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. fetch_error=ReadTimeout: ",
+          "source_url": "https://www.usda.gov/partnerships-climate-smart-commodities-project-summaries",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. fetch_error=ReadTimeout: ",
+          "source_url": "https://www.usda.gov/partnerships-climate-smart-commodities-project-summaries",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "fetch_error=ReadTimeout: ",
+          "source_url": "https://www.usda.gov/partnerships-climate-smart-commodities-project-summaries",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. fetch_error=ReadTimeout: ",
+          "source_url": "https://www.usda.gov/partnerships-climate-smart-commodities-project-summaries",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "f46c179a-6023-46e8-9e43-c5af5ee60433",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Construction & Home Improvement Retail Depot - Business for Sale in Not Disclosed, WA",
+      "source_url": "https://www.businessbroker.net/business-for-sale/construction-and-home-improvement-retail-depot-washington/999080.aspx",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=405 resolved_url=https://www.businessbroker.net/business-for-sale/construction-and-home-improvement-retail-depot-washington/999080.aspx",
+          "source_url": "https://www.businessbroker.net/business-for-sale/construction-and-home-improvement-retail-depot-washington/999080.aspx",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=405 resolved_url=https://www.businessbroker.net/business-for-sale/construction-and-home-improvement-retail-depot-washington/999080.aspx",
+          "source_url": "https://www.businessbroker.net/business-for-sale/construction-and-home-improvement-retail-depot-washington/999080.aspx",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=405 resolved_url=https://www.businessbroker.net/business-for-sale/construction-and-home-improvement-retail-depot-washington/999080.aspx",
+          "source_url": "https://www.businessbroker.net/business-for-sale/construction-and-home-improvement-retail-depot-washington/999080.aspx",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=405 resolved_url=https://www.businessbroker.net/business-for-sale/construction-and-home-improvement-retail-depot-washington/999080.aspx",
+          "source_url": "https://www.businessbroker.net/business-for-sale/construction-and-home-improvement-retail-depot-washington/999080.aspx",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=405 resolved_url=https://www.businessbroker.net/business-for-sale/construction-and-home-improvement-retail-depot-washington/999080.aspx",
+          "source_url": "https://www.businessbroker.net/business-for-sale/construction-and-home-improvement-retail-depot-washington/999080.aspx",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=405 resolved_url=https://www.businessbroker.net/business-for-sale/construction-and-home-improvement-retail-depot-washington/999080.aspx",
+          "source_url": "https://www.businessbroker.net/business-for-sale/construction-and-home-improvement-retail-depot-washington/999080.aspx",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "68d49432-9158-4268-bb31-d359879708ee",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Lumber Commodity Buyer Jobs, Employment | Indeed",
+      "source_url": "https://www.indeed.com/q-lumber-commodity-buyer-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-lumber-commodity-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-lumber-commodity-buyer-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-lumber-commodity-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-lumber-commodity-buyer-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-lumber-commodity-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-lumber-commodity-buyer-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-lumber-commodity-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-lumber-commodity-buyer-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-lumber-commodity-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-lumber-commodity-buyer-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-lumber-commodity-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-lumber-commodity-buyer-jobs.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "4a86bcee-8a0a-4996-8c6b-279394af0595",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Lumber & Building Material Stores in the US Industry Analysis, 2026",
+      "source_url": "https://www.ibisworld.com/united-states/industry/lumber-building-material-stores/1034",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=405 resolved_url=https://www.ibisworld.com/united-states/industry/lumber-building-material-stores/1034",
+          "source_url": "https://www.ibisworld.com/united-states/industry/lumber-building-material-stores/1034",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=405 resolved_url=https://www.ibisworld.com/united-states/industry/lumber-building-material-stores/1034",
+          "source_url": "https://www.ibisworld.com/united-states/industry/lumber-building-material-stores/1034",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=405 resolved_url=https://www.ibisworld.com/united-states/industry/lumber-building-material-stores/1034",
+          "source_url": "https://www.ibisworld.com/united-states/industry/lumber-building-material-stores/1034",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=405 resolved_url=https://www.ibisworld.com/united-states/industry/lumber-building-material-stores/1034",
+          "source_url": "https://www.ibisworld.com/united-states/industry/lumber-building-material-stores/1034",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=405 resolved_url=https://www.ibisworld.com/united-states/industry/lumber-building-material-stores/1034",
+          "source_url": "https://www.ibisworld.com/united-states/industry/lumber-building-material-stores/1034",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=405 resolved_url=https://www.ibisworld.com/united-states/industry/lumber-building-material-stores/1034",
+          "source_url": "https://www.ibisworld.com/united-states/industry/lumber-building-material-stores/1034",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "bfa5296c-e028-4ec8-a8c0-d18d47d3b959",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Lumber Purchasing Jobs (NOW HIRING) - ZipRecruiter",
+      "source_url": "https://www.ziprecruiter.com/Jobs/Lumber-Purchasing",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Lumber-Purchasing",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Lumber-Purchasing",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Lumber-Purchasing",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Lumber-Purchasing",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Lumber-Purchasing",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Lumber-Purchasing",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Lumber-Purchasing",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Lumber-Purchasing",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Lumber-Purchasing",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Lumber-Purchasing",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Lumber-Purchasing",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Lumber-Purchasing",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "a362453b-6854-4ba1-beec-59bac22a5a0b",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Capital Lumber | The Leading Distributor of Building Materials in the West",
+      "source_url": "https://www.capital-lumber.com",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.capital-lumber.com",
+          "source_url": "https://www.capital-lumber.com",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.capital-lumber.com",
+          "source_url": "https://www.capital-lumber.com",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.capital-lumber.com",
+          "source_url": "https://www.capital-lumber.com",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.capital-lumber.com",
+          "source_url": "https://www.capital-lumber.com",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.capital-lumber.com",
+          "source_url": "https://www.capital-lumber.com",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.capital-lumber.com",
+          "source_url": "https://www.capital-lumber.com",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "301d4a18-27c7-46d8-b972-d76388a86e04",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Please join us in welcoming Jeff Shumate to LBM Advantage as a ...",
+      "source_url": "https://www.facebook.com/LBMAdvantage/posts/please-join-us-in-welcoming-jeff-shumate-to-lbm-advantage-as-a-commodities-trade/1350159803782608",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.facebook.com/LBMAdvantage/posts/please-join-us-in-welcoming-jeff-shumate-to-lbm-advantage-as-a-commodities-trade/1350159803782608",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.facebook.com/LBMAdvantage/posts/please-join-us-in-welcoming-jeff-shumate-to-lbm-advantage-as-a-commodities-trade/1350159803782608",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.facebook.com/LBMAdvantage/posts/please-join-us-in-welcoming-jeff-shumate-to-lbm-advantage-as-a-commodities-trade/1350159803782608",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.facebook.com/LBMAdvantage/posts/please-join-us-in-welcoming-jeff-shumate-to-lbm-advantage-as-a-commodities-trade/1350159803782608",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.facebook.com/LBMAdvantage/posts/please-join-us-in-welcoming-jeff-shumate-to-lbm-advantage-as-a-commodities-trade/1350159803782608 matched_fields=none",
+          "source_url": "https://www.facebook.com/LBMAdvantage/posts/please-join-us-in-welcoming-jeff-shumate-to-lbm-advantage-as-a-commodities-trade/1350159803782608",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.facebook.com/LBMAdvantage/posts/please-join-us-in-welcoming-jeff-shumate-to-lbm-advantage-as-a-commodities-trade/1350159803782608",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "ad9438e5-86c9-4ea0-89a7-11927fc633ae",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "National Lumber - Building Supplies for Baltimore and DC",
+      "source_url": "https://nationallumber.biz",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://nationallumber.biz",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://nationallumber.biz",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://nationallumber.biz",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://nationallumber.biz",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://nationallumber.biz matched_fields=none",
+          "source_url": "https://nationallumber.biz",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://nationallumber.biz",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "8f093d3b-a29e-4384-81db-51dab7c4ad5a",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Lumber yard vs big box store pricing : r/Homebuilding - Reddit",
+      "source_url": "https://www.reddit.com/r/Homebuilding/comments/xmcdnh/lumber_yard_vs_big_box_store_pricing",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.reddit.com/r/Homebuilding/comments/xmcdnh/lumber_yard_vs_big_box_store_pricing/",
+          "source_url": "https://www.reddit.com/r/Homebuilding/comments/xmcdnh/lumber_yard_vs_big_box_store_pricing/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.reddit.com/r/Homebuilding/comments/xmcdnh/lumber_yard_vs_big_box_store_pricing/",
+          "source_url": "https://www.reddit.com/r/Homebuilding/comments/xmcdnh/lumber_yard_vs_big_box_store_pricing/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.reddit.com/r/Homebuilding/comments/xmcdnh/lumber_yard_vs_big_box_store_pricing/",
+          "source_url": "https://www.reddit.com/r/Homebuilding/comments/xmcdnh/lumber_yard_vs_big_box_store_pricing/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.reddit.com/r/Homebuilding/comments/xmcdnh/lumber_yard_vs_big_box_store_pricing/",
+          "source_url": "https://www.reddit.com/r/Homebuilding/comments/xmcdnh/lumber_yard_vs_big_box_store_pricing/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.reddit.com/r/Homebuilding/comments/xmcdnh/lumber_yard_vs_big_box_store_pricing/",
+          "source_url": "https://www.reddit.com/r/Homebuilding/comments/xmcdnh/lumber_yard_vs_big_box_store_pricing/",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.reddit.com/r/Homebuilding/comments/xmcdnh/lumber_yard_vs_big_box_store_pricing/",
+          "source_url": "https://www.reddit.com/r/Homebuilding/comments/xmcdnh/lumber_yard_vs_big_box_store_pricing/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "890bc8d7-4845-4b35-8f4c-738f89cd02d3",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Just a moment...",
+      "source_url": "https://www.glassdoor.com/Job/lumber-and-building-materials-purchasing-jobs-SRCH_KO0,40.htm",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/lumber-and-building-materials-purchasing-jobs-SRCH_KO0,40.htm",
+          "source_url": "https://www.glassdoor.com/Job/lumber-and-building-materials-purchasing-jobs-SRCH_KO0,40.htm",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/lumber-and-building-materials-purchasing-jobs-SRCH_KO0,40.htm",
+          "source_url": "https://www.glassdoor.com/Job/lumber-and-building-materials-purchasing-jobs-SRCH_KO0,40.htm",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/lumber-and-building-materials-purchasing-jobs-SRCH_KO0,40.htm",
+          "source_url": "https://www.glassdoor.com/Job/lumber-and-building-materials-purchasing-jobs-SRCH_KO0,40.htm",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/lumber-and-building-materials-purchasing-jobs-SRCH_KO0,40.htm",
+          "source_url": "https://www.glassdoor.com/Job/lumber-and-building-materials-purchasing-jobs-SRCH_KO0,40.htm",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.glassdoor.com/Job/lumber-and-building-materials-purchasing-jobs-SRCH_KO0,40.htm",
+          "source_url": "https://www.glassdoor.com/Job/lumber-and-building-materials-purchasing-jobs-SRCH_KO0,40.htm",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/lumber-and-building-materials-purchasing-jobs-SRCH_KO0,40.htm",
+          "source_url": "https://www.glassdoor.com/Job/lumber-and-building-materials-purchasing-jobs-SRCH_KO0,40.htm",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "6898efa5-2992-4d08-913d-e5da95aa748d",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Request a Quote | Builders FirstSource",
+      "source_url": "https://www.bldr.com/contact/request-quote",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.bldr.com/contact/request-quote",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.bldr.com/contact/request-quote",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.bldr.com/contact/request-quote",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.bldr.com/contact/request-quote",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.bldr.com/contact/request-quote matched_fields=none",
+          "source_url": "https://www.bldr.com/contact/request-quote",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.bldr.com/contact/request-quote",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "79a3b208-a55d-4913-ae23-262325299c38",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Building Materials Buyer Jobs, Employment - Indeed",
+      "source_url": "https://www.indeed.com/q-building-materials-buyer-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-building-materials-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-building-materials-buyer-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-building-materials-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-building-materials-buyer-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-building-materials-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-building-materials-buyer-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-building-materials-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-building-materials-buyer-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-building-materials-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-building-materials-buyer-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-building-materials-buyer-jobs.html",
+          "source_url": "https://www.indeed.com/q-building-materials-buyer-jobs.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "1ec90fcc-f7aa-4a9a-a8d9-51d5145c903f",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "0 purchasing Jobs in Washington State, April 2026 | Glassdoor",
+      "source_url": "https://www.glassdoor.com/Job/washington-state-purchasing-jobs-SRCH_IL.0,16_IS3020_KO17,27.htm",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/washington-state-purchasing-jobs-SRCH_IL.0,16_IS3020_KO17,27.htm",
+          "source_url": "https://www.glassdoor.com/Job/washington-state-purchasing-jobs-SRCH_IL.0,16_IS3020_KO17,27.htm",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/washington-state-purchasing-jobs-SRCH_IL.0,16_IS3020_KO17,27.htm",
+          "source_url": "https://www.glassdoor.com/Job/washington-state-purchasing-jobs-SRCH_IL.0,16_IS3020_KO17,27.htm",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/washington-state-purchasing-jobs-SRCH_IL.0,16_IS3020_KO17,27.htm",
+          "source_url": "https://www.glassdoor.com/Job/washington-state-purchasing-jobs-SRCH_IL.0,16_IS3020_KO17,27.htm",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/washington-state-purchasing-jobs-SRCH_IL.0,16_IS3020_KO17,27.htm",
+          "source_url": "https://www.glassdoor.com/Job/washington-state-purchasing-jobs-SRCH_IL.0,16_IS3020_KO17,27.htm",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.glassdoor.com/Job/washington-state-purchasing-jobs-SRCH_IL.0,16_IS3020_KO17,27.htm",
+          "source_url": "https://www.glassdoor.com/Job/washington-state-purchasing-jobs-SRCH_IL.0,16_IS3020_KO17,27.htm",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/washington-state-purchasing-jobs-SRCH_IL.0,16_IS3020_KO17,27.htm",
+          "source_url": "https://www.glassdoor.com/Job/washington-state-purchasing-jobs-SRCH_IL.0,16_IS3020_KO17,27.htm",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "950362de-f0b0-4a0a-9e87-2b57f231bf8d",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Purchase | Department of Enterprise Services (DES)",
+      "source_url": "https://des.wa.gov/purchase",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://des.wa.gov/purchase",
+          "source_url": "https://des.wa.gov/purchase",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://des.wa.gov/purchase",
+          "source_url": "https://des.wa.gov/purchase",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://des.wa.gov/purchase",
+          "source_url": "https://des.wa.gov/purchase",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://des.wa.gov/purchase",
+          "source_url": "https://des.wa.gov/purchase",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://des.wa.gov/purchase",
+          "source_url": "https://des.wa.gov/purchase",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://des.wa.gov/purchase",
+          "source_url": "https://des.wa.gov/purchase",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "de26d976-8fbe-49b0-8f49-95fb973d7c0d",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Purchasing Jobs in Spokane, WA (NOW HIRING) - ZipRecruiter",
+      "source_url": "https://www.ziprecruiter.com/Jobs/Purchasing/-in-Spokane,WA",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Purchasing/-in-Spokane,WA",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Purchasing/-in-Spokane,WA",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Purchasing/-in-Spokane,WA",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Purchasing/-in-Spokane,WA",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Purchasing/-in-Spokane,WA",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Purchasing/-in-Spokane,WA",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Purchasing/-in-Spokane,WA",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Purchasing/-in-Spokane,WA",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Purchasing/-in-Spokane,WA",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Purchasing/-in-Spokane,WA",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Purchasing/-in-Spokane,WA",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Purchasing/-in-Spokane,WA",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "97eec094-d64b-4e47-a804-a1919e791322",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "11-3061.00 - Purchasing Managers - O*NET",
+      "source_url": "https://www.onetonline.org/link/summary/11-3061.00",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.onetonline.org/link/summary/11-3061.00",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.onetonline.org/link/summary/11-3061.00",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.onetonline.org/link/summary/11-3061.00",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.onetonline.org/link/summary/11-3061.00",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.onetonline.org/link/summary/11-3061.00 matched_fields=none",
+          "source_url": "https://www.onetonline.org/link/summary/11-3061.00",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.onetonline.org/link/summary/11-3061.00",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "fac36b25-7fed-4f80-a8b9-8607020f4c9d",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Bundle | Procurement Built for Modern Construction Teams",
+      "source_url": "https://www.bundle.build",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.bundle.build",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.bundle.build",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.bundle.build",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.bundle.build",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.bundle.build matched_fields=none",
+          "source_url": "https://www.bundle.build",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.bundle.build",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "2680e3b5-6dd0-46bd-8419-b4ed26c565bf",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Purchasing Managers, Buyers, and Purchasing Agents : Occupational Outlook Handbook: : U.S. Bureau of Labor Statistics",
+      "source_url": "https://www.bls.gov/ooh/business-and-financial/purchasing-managers-buyers-and-purchasing-agents.htm",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.bls.gov/ooh/business-and-financial/purchasing-managers-buyers-and-purchasing-agents.htm",
+          "source_url": "https://www.bls.gov/ooh/business-and-financial/purchasing-managers-buyers-and-purchasing-agents.htm",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.bls.gov/ooh/business-and-financial/purchasing-managers-buyers-and-purchasing-agents.htm",
+          "source_url": "https://www.bls.gov/ooh/business-and-financial/purchasing-managers-buyers-and-purchasing-agents.htm",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.bls.gov/ooh/business-and-financial/purchasing-managers-buyers-and-purchasing-agents.htm",
+          "source_url": "https://www.bls.gov/ooh/business-and-financial/purchasing-managers-buyers-and-purchasing-agents.htm",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.bls.gov/ooh/business-and-financial/purchasing-managers-buyers-and-purchasing-agents.htm",
+          "source_url": "https://www.bls.gov/ooh/business-and-financial/purchasing-managers-buyers-and-purchasing-agents.htm",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.bls.gov/ooh/business-and-financial/purchasing-managers-buyers-and-purchasing-agents.htm",
+          "source_url": "https://www.bls.gov/ooh/business-and-financial/purchasing-managers-buyers-and-purchasing-agents.htm",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.bls.gov/ooh/business-and-financial/purchasing-managers-buyers-and-purchasing-agents.htm",
+          "source_url": "https://www.bls.gov/ooh/business-and-financial/purchasing-managers-buyers-and-purchasing-agents.htm",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "ae45e61d-7e6f-4a03-b3b6-f9e4a0d00309",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "M&C Specialties hiring Buyer in Southampton, PA | LinkedIn",
+      "source_url": "https://www.linkedin.com/jobs/view/buyer-at-m-c-specialties-4410785201",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/view/buyer-at-m-c-specialties-4410785201",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/view/buyer-at-m-c-specialties-4410785201",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/view/buyer-at-m-c-specialties-4410785201",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/view/buyer-at-m-c-specialties-4410785201",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/jobs/view/buyer-at-m-c-specialties-4410785201 matched_fields=none",
+          "source_url": "https://www.linkedin.com/jobs/view/buyer-at-m-c-specialties-4410785201",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/view/buyer-at-m-c-specialties-4410785201",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "d5153093-a42e-4049-ae2d-1db8b03bb26e",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Apprenticeship Occupations Listings | Apprenticeship.gov",
+      "source_url": "https://www.apprenticeship.gov/apprenticeship-occupations/listings?occupationCode=11-3061.00",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.apprenticeship.gov/apprenticeship-occupations/listings?occupationCode=11-3061.00",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.apprenticeship.gov/apprenticeship-occupations/listings?occupationCode=11-3061.00",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.apprenticeship.gov/apprenticeship-occupations/listings?occupationCode=11-3061.00",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.apprenticeship.gov/apprenticeship-occupations/listings?occupationCode=11-3061.00",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.apprenticeship.gov/apprenticeship-occupations/listings?occupationCode=11-3061.00 matched_fields=none",
+          "source_url": "https://www.apprenticeship.gov/apprenticeship-occupations/listings?occupationCode=11-3061.00",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.apprenticeship.gov/apprenticeship-occupations/listings?occupationCode=11-3061.00",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "65a875a4-bbfd-46d6-9e74-fe4b1b7b4714",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "The Best Purchasing Jobs in Glen Mills, PA | Monster",
+      "source_url": "https://www.monster.com/jobs/q-purchasing-jobs-l-glen-mills-pa",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.monster.com/jobs/q-purchasing-jobs-l-glen-mills-pa",
+          "source_url": "https://www.monster.com/jobs/q-purchasing-jobs-l-glen-mills-pa",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.monster.com/jobs/q-purchasing-jobs-l-glen-mills-pa",
+          "source_url": "https://www.monster.com/jobs/q-purchasing-jobs-l-glen-mills-pa",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.monster.com/jobs/q-purchasing-jobs-l-glen-mills-pa",
+          "source_url": "https://www.monster.com/jobs/q-purchasing-jobs-l-glen-mills-pa",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.monster.com/jobs/q-purchasing-jobs-l-glen-mills-pa",
+          "source_url": "https://www.monster.com/jobs/q-purchasing-jobs-l-glen-mills-pa",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.monster.com/jobs/q-purchasing-jobs-l-glen-mills-pa",
+          "source_url": "https://www.monster.com/jobs/q-purchasing-jobs-l-glen-mills-pa",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.monster.com/jobs/q-purchasing-jobs-l-glen-mills-pa",
+          "source_url": "https://www.monster.com/jobs/q-purchasing-jobs-l-glen-mills-pa",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "c131920d-9fa3-418d-a6d1-ed8e062c8857",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Daniel Waggoner Email & Phone Number | Kingston Lumber Supply ...",
+      "source_url": "https://rocketreach.co/daniel-waggoner-email_63475156",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://rocketreach.co/daniel-waggoner-email_63475156",
+          "source_url": "https://rocketreach.co/daniel-waggoner-email_63475156",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://rocketreach.co/daniel-waggoner-email_63475156",
+          "source_url": "https://rocketreach.co/daniel-waggoner-email_63475156",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://rocketreach.co/daniel-waggoner-email_63475156",
+          "source_url": "https://rocketreach.co/daniel-waggoner-email_63475156",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://rocketreach.co/daniel-waggoner-email_63475156",
+          "source_url": "https://rocketreach.co/daniel-waggoner-email_63475156",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://rocketreach.co/daniel-waggoner-email_63475156",
+          "source_url": "https://rocketreach.co/daniel-waggoner-email_63475156",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://rocketreach.co/daniel-waggoner-email_63475156",
+          "source_url": "https://rocketreach.co/daniel-waggoner-email_63475156",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "a1231ce2-f756-463f-8f28-aebff135415c",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Logging, Lumbering, and Forestry in Southwest Washington - HistoryLink.org",
+      "source_url": "https://www.historylink.org/File/23258",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.historylink.org/File/23258",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.historylink.org/File/23258",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.historylink.org/File/23258",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.historylink.org/File/23258",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.historylink.org/File/23258 matched_fields=none",
+          "source_url": "https://www.historylink.org/File/23258",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.historylink.org/File/23258",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "bc88d213-2b9d-4284-bf6d-848b8f226e8c",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Logging",
+      "source_url": "https://www.nwcouncil.org/history/Logging",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.nwcouncil.org/reports/columbia-river-history/logging/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.nwcouncil.org/reports/columbia-river-history/logging/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.nwcouncil.org/reports/columbia-river-history/logging/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.nwcouncil.org/reports/columbia-river-history/logging/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.nwcouncil.org/reports/columbia-river-history/logging/ matched_fields=none",
+          "source_url": "https://www.nwcouncil.org/reports/columbia-river-history/logging/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.nwcouncil.org/reports/columbia-river-history/logging/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "1838a2c0-64b3-412f-b23f-d71d66feb3ca",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "[PDF] Washington's Forests, Timber Supply, and Forest-Related Industries",
+      "source_url": "https://dnr.wa.gov/publications/em_fwfeconomiclow1.pdf",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://dnr.wa.gov/publications/em_fwfeconomiclow1.pdf",
+          "source_url": "https://dnr.wa.gov/publications/em_fwfeconomiclow1.pdf",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://dnr.wa.gov/publications/em_fwfeconomiclow1.pdf",
+          "source_url": "https://dnr.wa.gov/publications/em_fwfeconomiclow1.pdf",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://dnr.wa.gov/publications/em_fwfeconomiclow1.pdf",
+          "source_url": "https://dnr.wa.gov/publications/em_fwfeconomiclow1.pdf",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://dnr.wa.gov/publications/em_fwfeconomiclow1.pdf",
+          "source_url": "https://dnr.wa.gov/publications/em_fwfeconomiclow1.pdf",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://dnr.wa.gov/publications/em_fwfeconomiclow1.pdf",
+          "source_url": "https://dnr.wa.gov/publications/em_fwfeconomiclow1.pdf",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://dnr.wa.gov/publications/em_fwfeconomiclow1.pdf",
+          "source_url": "https://dnr.wa.gov/publications/em_fwfeconomiclow1.pdf",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "f8b13158-8fd5-4dbc-869f-c14f53c6d363",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Center for the Study of the Pacific Northwest",
+      "source_url": "https://www.washington.edu/uwired/outreach/cspn/Website/Classroom%20Materials/Curriculum%20Packets/Evergreen%20State/Section%20II.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.washington.edu/uwired/outreach/cspn/Website/Classroom%20Materials/Curriculum%20Packets/Evergreen%20State/Section%20II.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.washington.edu/uwired/outreach/cspn/Website/Classroom%20Materials/Curriculum%20Packets/Evergreen%20State/Section%20II.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.washington.edu/uwired/outreach/cspn/Website/Classroom%20Materials/Curriculum%20Packets/Evergreen%20State/Section%20II.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.washington.edu/uwired/outreach/cspn/Website/Classroom%20Materials/Curriculum%20Packets/Evergreen%20State/Section%20II.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.washington.edu/uwired/outreach/cspn/Website/Classroom%20Materials/Curriculum%20Packets/Evergreen%20State/Section%20II.html matched_fields=none",
+          "source_url": "https://www.washington.edu/uwired/outreach/cspn/Website/Classroom%20Materials/Curriculum%20Packets/Evergreen%20State/Section%20II.html",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:17:19Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.washington.edu/uwired/outreach/cspn/Website/Classroom%20Materials/Curriculum%20Packets/Evergreen%20State/Section%20II.html",
+          "status": "missing"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 108.17,
+    "estimated_cost_usd": 0.180143,
+    "funnel_counts": {
+      "categorized_rows": 50,
+      "contact_evidence_candidates_searched": 2,
+      "contact_evidence_conflicting_signals": 0,
+      "contact_evidence_contacts_acquired": 0,
+      "contact_evidence_field_corroborations": 1,
+      "contact_evidence_review_to_high_trust": 0,
+      "contact_evidence_searches": 5,
+      "contact_quality_passes": 4,
+      "deduped_sources": 154,
+      "extracted_candidates": 7,
+      "high_trust_usable_rows": 4,
+      "person_rows": 5,
+      "persona_supported_rows": 4,
+      "raw_vendor_hits": 204,
+      "source_snapshots": 154,
+      "source_supported_rows": 6
+    },
+    "funnel_notes": [
+      "Deduped 204 raw vendor hits to 154 unique sources.",
+      "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+      "Deep contact evidence pass searched 2 promising rows and acquired 0 source-backed contacts; 0 rows gained enough contact evidence to clear the READY gate.",
+      "Deep contact evidence pass observed 1 field corroborations and 0 conflicting signals across public-web sources.",
+      "Contact evidence pass checked 1 organization-only rows for staff/contact sources."
+    ],
+    "input_tokens": 62178,
+    "openai_web_searches": 0,
+    "output_tokens": 1360,
+    "tavily_searches": 17,
+    "tier_distribution": {
+      "failed": 44,
+      "high_trust_usable": 4,
+      "not_found": 0,
+      "organization_only": 1,
+      "review": 1
+    }
+  },
+  "mode": "scout",
+  "persistence_readback": {
+    "candidate_category_distribution": {
+      "failed": 44,
+      "organization_only": 1,
+      "person_lead": 5
+    },
+    "db_readback_row_count": 50,
+    "exportable_row_count": 50,
+    "first_db_lead_ids": [
+      "4cfd10ab-f551-4786-ba58-d5c1906cf238",
+      "1dae1567-946b-4aea-8cd3-c63fb1652647",
+      "12acac93-8a0c-4506-9de5-ba156ab5af0d",
+      "3df67ed0-30ec-4715-8746-b909cfed0ce3",
+      "e7e385ec-4d11-446e-9212-2829f4ddc590"
+    ],
+    "first_response_lead_ids": [
+      "4cfd10ab-f551-4786-ba58-d5c1906cf238",
+      "1dae1567-946b-4aea-8cd3-c63fb1652647",
+      "12acac93-8a0c-4506-9de5-ba156ab5af0d",
+      "3df67ed0-30ec-4715-8746-b909cfed0ce3",
+      "e7e385ec-4d11-446e-9212-2829f4ddc590"
+    ],
+    "persisted_lead_count": 50,
+    "recipe_id": "befab877-e589-45fe-b3e0-1503f9e7391d",
+    "response_row_count": 50,
+    "row_count_matches": true,
+    "run_id": "b7ba5457-c5fa-4fe8-aa5b-6c01e7bf76e3",
+    "tier_distribution": {
+      "failed": 44,
+      "high_trust_usable": 4,
+      "organization_only": 1,
+      "review": 1
+    }
+  },
+  "prompt_label": "Lee commodity buyers prompt",
+  "query": "commodity buyers at retail lumber yards in Washington",
+  "query_guardrail": {
+    "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+    "missing_criteria": [
+      "target title or role"
+    ],
+    "status": "needs_more_detail",
+    "suggestions": [
+      "Add a title or role, such as director, manager, VP, or owner."
+    ]
+  },
+  "recipe_id": "befab877-e589-45fe-b3e0-1503f9e7391d",
+  "run_id": "b7ba5457-c5fa-4fe8-aa5b-6c01e7bf76e3",
+  "runner_elapsed_seconds": 110.82,
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 8,
+    "remaining_rows": 942,
+    "reset_at": "2026-05-25T22:12:50.168118+00:00",
+    "total_queries": 2,
+    "total_rows": 58
+  }
+}

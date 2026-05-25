@@ -1,0 +1,40 @@
+{
+  "benchmark_id": "thomas-arizona-k12",
+  "close_status": 200,
+  "export": {
+    "headers": [
+      "lead_name",
+      "title",
+      "organization",
+      "email",
+      "email_status",
+      "phone",
+      "phone_status",
+      "usable_candidate",
+      "operator_label",
+      "candidate_category",
+      "rank",
+      "query",
+      "run_id",
+      "fit_score",
+      "evidence_score",
+      "contact_score",
+      "ranking_gate",
+      "source_name_url",
+      "source_title_url",
+      "source_org_url",
+      "source_email_url",
+      "source_phone_url",
+      "source_access_status",
+      "validation_notes",
+      "checked_at"
+    ],
+    "path": "../../audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25-direct/timed-query-to-export.csv",
+    "row_count": 8
+  },
+  "operator_flow": "direct protected Fly API live suite -> saved Arizona JSON -> persisted readback -> CSV materialization -> /runs/{run_id}/close",
+  "operator_minutes": 3.034,
+  "readback_status": 200,
+  "run_id": "6e8d4d25-50e9-4cbb-924e-0cd850c35759",
+  "scout_seconds": 182.059
+}

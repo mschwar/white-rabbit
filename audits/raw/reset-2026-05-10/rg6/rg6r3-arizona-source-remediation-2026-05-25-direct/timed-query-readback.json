@@ -1,0 +1,529 @@
+{
+  "body": {
+    "candidate_category_distribution": {
+      "failed": 2,
+      "organization_only": 2,
+      "person_lead": 4
+    },
+    "row_count": 8,
+    "rows": [
+      {
+        "data": {
+          "candidate_category": "failed",
+          "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://departments.mpsaz.org/o/departments/staff?page_no=3",
+          "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://departments.mpsaz.org/o/departments/staff?page_no=3",
+          "id": null,
+          "organization": "Mesa Public Schools",
+          "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://departments.mpsaz.org/o/departments/staff?page_no=3",
+          "searched_target": "Mesa Public Schools",
+          "source_url": "https://departments.mpsaz.org/o/departments/staff?page_no=3",
+          "tier": "failed",
+          "validation": {
+            "email": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "http_status=403 resolved_url=https://departments.mpsaz.org/o/departments/staff?page_no=3",
+              "source_url": "https://departments.mpsaz.org/o/departments/staff?page_no=3",
+              "status": "failed"
+            },
+            "name": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "http_status=403 resolved_url=https://departments.mpsaz.org/o/departments/staff?page_no=3",
+              "source_url": "https://departments.mpsaz.org/o/departments/staff?page_no=3",
+              "status": "failed"
+            },
+            "organization": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "http_status=403 resolved_url=https://departments.mpsaz.org/o/departments/staff?page_no=3",
+              "source_url": "https://departments.mpsaz.org/o/departments/staff?page_no=3",
+              "status": "failed"
+            },
+            "phone": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "http_status=403 resolved_url=https://departments.mpsaz.org/o/departments/staff?page_no=3",
+              "source_url": "https://departments.mpsaz.org/o/departments/staff?page_no=3",
+              "status": "failed"
+            },
+            "source": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "http_status=403 resolved_url=https://departments.mpsaz.org/o/departments/staff?page_no=3",
+              "source_url": "https://departments.mpsaz.org/o/departments/staff?page_no=3",
+              "status": "failed"
+            },
+            "title": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "http_status=403 resolved_url=https://departments.mpsaz.org/o/departments/staff?page_no=3",
+              "source_url": "https://departments.mpsaz.org/o/departments/staff?page_no=3",
+              "status": "failed"
+            }
+          }
+        },
+        "id": "4ecb18bd-4e77-4633-b345-40c2c75fce17",
+        "rank": 1
+      },
+      {
+        "data": {
+          "candidate_category": "failed",
+          "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+          "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+          "id": null,
+          "organization": "Peoria Unified School District",
+          "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+          "searched_target": "Peoria Unified School District",
+          "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+          "tier": "failed",
+          "validation": {
+            "email": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+              "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+              "status": "failed"
+            },
+            "name": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+              "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+              "status": "failed"
+            },
+            "organization": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+              "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+              "status": "failed"
+            },
+            "phone": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "phone is not present on the candidate. http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+              "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+              "status": "missing"
+            },
+            "source": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+              "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+              "status": "failed"
+            },
+            "title": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+              "source_url": "https://www.linkedin.com/in/john-gay-9b3231133",
+              "status": "failed"
+            }
+          }
+        },
+        "id": "53371e15-7020-427b-a03d-4b237b3aa4d4",
+        "rank": 2
+      },
+      {
+        "data": {
+          "candidate_category": "person_lead",
+          "confidence": 0.7,
+          "contact_score": 0.9,
+          "email": "diana.hawari@dysart.org",
+          "email_status": "verified_found",
+          "evidence_score": 0.9,
+          "explanation": "Diana's email and phone number are directly tied to the official organizational profile.",
+          "fit_score": 0.85,
+          "gate_passed": true,
+          "icebreaker": "Diana, your leadership in creating secure access for students at Dysart Unified really resonates with current tech trends in education.",
+          "id": null,
+          "name": "Diana Hawari",
+          "organization": "Dysart Unified School District",
+          "phone": "623-876-7180",
+          "primary_filter_reason": "READY: supported person, organization, source, and usable contact cleared the evidence gate.",
+          "source_url": "https://www.cosn.org/person/diana-hawari",
+          "tier": "high_trust_usable",
+          "title": "Chief Information Officer",
+          "validation": {
+            "email": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "...960 Curriculum Coordinator Ms.\nDana dana.knoebel@dysart.org 623-876-7077 Information Technology (IT) Director Ms.\nDiana diana.hawari@dysart.org 623-876-7180 Bookstore Manager Ms.\nMarydel marydel.speidell@dysart.org 623-876-7959 Governing Board Member Ms.\nDawn Den...",
+              "notes": "Direct person email found in targeted public-web evidence pass on a board_agenda_pdf source; corroborating_sources=5.",
+              "source_url": "https://dysart.org/cms/uploads/files/14/2023EXPBUD_v2.pdf",
+              "status": "verified_found"
+            },
+            "name": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "Diana Hawari | CoSN :where(.wp-block-button__link){border-radius:9999px;box-shadow:none;padd...",
+              "notes": "Direct text support found for name.",
+              "source_url": "https://www.cosn.org/person/diana-hawari/",
+              "status": "supported"
+            },
+            "organization": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "...ve Resource Center Membership FAQs Diana Hawari CETL\u00ae Chief Information Officer Dysart Unified School District (AZ) Home People Diana Hawari googletag.cmd.push(function() { googletag.display...",
+              "notes": "Direct text support found for organization.",
+              "source_url": "https://www.cosn.org/person/diana-hawari/",
+              "status": "supported"
+            },
+            "phone": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "No direct text support found for phone.",
+              "source_url": "https://www.cosn.org/person/diana-hawari/",
+              "status": "unsupported"
+            },
+            "source": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "Diana Hawari | CoSN :where(.wp-block-button__link){border-radius:9999px;box-shadow:none;padd...",
+              "notes": "http_status=200 resolved_url=https://www.cosn.org/person/diana-hawari/ matched_fields=name,title,organization",
+              "source_url": "https://www.cosn.org/person/diana-hawari/",
+              "status": "supported"
+            },
+            "title": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "...r Spotlight Member Exclusive Resource Center Membership FAQs Diana Hawari CETL\u00ae Chief Information Officer Dysart Unified School District (AZ) Home People Diana Hawari googletag.cmd.push...",
+              "notes": "Direct text support found for title.",
+              "source_url": "https://www.cosn.org/person/diana-hawari/",
+              "status": "supported"
+            }
+          },
+          "why_target": "Diana's role as CIO is crucial for driving tech strategy and resource allocation in a K-12 setting."
+        },
+        "id": "aed38cbf-a19e-4286-851e-76e1f041e9db",
+        "rank": 3
+      },
+      {
+        "data": {
+          "candidate_category": "person_lead",
+          "confidence": 0.65,
+          "contact_score": 0.6,
+          "email": "",
+          "email_status": "missing",
+          "evidence_score": 0.85,
+          "explanation": "Brian's phone number is verified, but lacking an email limits the lead's usability.",
+          "fit_score": 0.75,
+          "gate_passed": true,
+          "icebreaker": "Brian, it's great to see your focus on ensuring students have the tech tools necessary for learning at Deer Valley.",
+          "id": null,
+          "name": "Brian Boone",
+          "organization": "Deer Valley Unified School District",
+          "phone": "602-467-5152",
+          "primary_filter_reason": "READY: supported person, organization, source, and usable contact cleared the evidence gate.",
+          "source_url": "https://www.dvusd.org/departments/information-services-and-technology",
+          "tier": "high_trust_usable",
+          "title": "Chief Information Officer",
+          "validation": {
+            "email": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "email is not present on the candidate.",
+              "source_url": "https://www.dvusd.org/departments/information-services-and-technology",
+              "status": "missing"
+            },
+            "name": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "...ing and enhance operational efficiency. Parent Tech Support Department Contacts Brian Boone 602-467-5152 Chief Information Officer CeAnn Ruta 602-467-5152 Secretary Domini...",
+              "notes": "Direct text support found for name.",
+              "source_url": "https://www.dvusd.org/departments/information-services-and-technology",
+              "status": "supported"
+            },
+            "organization": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "Information Services and Technology (IS&T) - Deer Valley Unified School District dataLayer = [{ 'schoolDomain': 'www.dvusd.org' }]; dataLayer.push({'measurement...",
+              "notes": "Direct text support found for organization.",
+              "source_url": "https://www.dvusd.org/departments/information-services-and-technology",
+              "status": "supported"
+            },
+            "phone": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "...nce operational efficiency. Parent Tech Support Department Contacts Brian Boone 602-467-5152 Chief Information Officer CeAnn Ruta 602-467-5152 Secretary Dominic Avila 602-4...",
+              "notes": "Direct text support found for phone.",
+              "source_url": "https://www.dvusd.org/departments/information-services-and-technology",
+              "status": "verified_found"
+            },
+            "source": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "...ing and enhance operational efficiency. Parent Tech Support Department Contacts Brian Boone 602-467-5152 Chief Information Officer CeAnn Ruta 602-467-5152 Secretary Domini...",
+              "notes": "http_status=200 resolved_url=https://www.dvusd.org/departments/information-services-and-technology matched_fields=name,title,organization,phone",
+              "source_url": "https://www.dvusd.org/departments/information-services-and-technology",
+              "status": "supported"
+            },
+            "title": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "...al efficiency. Parent Tech Support Department Contacts Brian Boone 602-467-5152 Chief Information Officer CeAnn Ruta 602-467-5152 Secretary Dominic Avila 602-467-5140 Network & Infrastr...",
+              "notes": "Direct text support found for title.",
+              "source_url": "https://www.dvusd.org/departments/information-services-and-technology",
+              "status": "supported"
+            }
+          },
+          "why_target": "As CIO, Brian has significant influence over tech decisions, making him a key contact."
+        },
+        "id": "9515a96f-8726-4125-bf62-6ebab2d2a09b",
+        "rank": 4
+      },
+      {
+        "data": {
+          "candidate_category": "person_lead",
+          "confidence": 0.6,
+          "contact_score": 0.9,
+          "email": "huish.mark@cusd80.com",
+          "email_status": "verified_found",
+          "evidence_score": 0.5,
+          "explanation": "No contact details are provided in the source, limiting any outreach possibility.",
+          "fit_score": 0.7,
+          "gate_passed": false,
+          "icebreaker": "Mark, your efforts in improving the technology landscape for Chandler Unified reflect the amazing potential of education tech.",
+          "id": null,
+          "name": "Mark Huish",
+          "organization": "Chandler Unified School District",
+          "phone": "",
+          "primary_filter_reason": "REVIEW: validation signals did not clear the high-trust evidence gate.",
+          "source_url": "https://www.cusd80.com/about-us/administration/district-administration",
+          "tier": "review",
+          "title": "Director, Technology Infrastructure",
+          "validation": {
+            "email": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "...s)\n School Resource Officers (Secondary Schools)\n\nDirector of School Safety and Security\n\nMark Huish  \n 480-812-7047  \n huish.mark@cusd80.com\n\n## School Safety Highlights [...] Full-time District Safety Director - Mark Huish\n Safety team at every school\n Design...",
+              "notes": "Direct person email found in targeted public-web evidence pass on a staff_directory source; corroborating_sources=2.",
+              "source_url": "https://www.cusd80.com/parents-students/safety-and-security",
+              "status": "verified_found"
+            },
+            "name": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "...rt Services Scot Leatherman Scot Leatherman Director, Technology Infrastructure Mark Huish Mark Huish Director, School Safety and Security Lauren Randel Lauren Randel Dir...",
+              "notes": "Direct text support found for name.",
+              "source_url": "https://www.cusd80.com/about-us/administration/district-administration",
+              "status": "supported"
+            },
+            "organization": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "...port (MTSS) PD Menu 301 for Eligible Employees Header Holder Header School Name Chandler Unified School District Premier District of Choice Toggle Menu Container Menu Header Right Column Heade...",
+              "notes": "Direct text support found for organization.",
+              "source_url": "https://www.cusd80.com/about-us/administration/district-administration",
+              "status": "supported"
+            },
+            "phone": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "phone is not present on the candidate.",
+              "source_url": "https://www.cusd80.com/about-us/administration/district-administration",
+              "status": "missing"
+            },
+            "source": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "...rt Services Scot Leatherman Scot Leatherman Director, Technology Infrastructure Mark Huish Mark Huish Director, School Safety and Security Lauren Randel Lauren Randel Dir...",
+              "notes": "http_status=200 resolved_url=https://www.cusd80.com/about-us/administration/district-administration matched_fields=name,title,organization",
+              "source_url": "https://www.cusd80.com/about-us/administration/district-administration",
+              "status": "supported"
+            },
+            "title": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "...Finney Jaydee Finney Director, Support Services Scot Leatherman Scot Leatherman Director, Technology Infrastructure Mark Huish Mark Huish Director, School Safety and Security Lauren Randel Lauren...",
+              "notes": "Direct text support found for title.",
+              "source_url": "https://www.cusd80.com/about-us/administration/district-administration",
+              "status": "supported"
+            }
+          },
+          "why_target": "Mark oversees technology infrastructure, placing him in a key decision-making role for tech initiatives."
+        },
+        "id": "bd1e32d7-6b4d-4138-93eb-264eb20e39ed",
+        "rank": 5
+      },
+      {
+        "data": {
+          "candidate_category": "person_lead",
+          "confidence": 0.65,
+          "contact_score": 0.0,
+          "email": "",
+          "email_status": "missing",
+          "evidence_score": 0.6,
+          "explanation": "While Jon is noted for his title, no direct contact info is listed, making outreach challenging.",
+          "fit_score": 0.65,
+          "gate_passed": false,
+          "icebreaker": "Jon, your insights at technology forums are invaluable for shaping future educational technologies at Gilbert.",
+          "id": null,
+          "name": "Jon Castelhano",
+          "organization": "Gilbert Public Schools",
+          "phone": "",
+          "primary_filter_reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+          "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum",
+          "tier": "review",
+          "title": "Executive Director of Technology",
+          "validation": {
+            "email": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "email is not present on the candidate. Deep contact pass searched page_types=board_agenda_pdf, leadership_team, staff_directory; corroborating_sources=5; no direct person email or explicit domain pattern found; no direct person phone found.",
+              "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum",
+              "status": "missing"
+            },
+            "name": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "...nified School District Mark Breen Chief Technology Officer Vail School District Jon Castelhano Executive Director of Technology Gilbert Public Schools Shaun Creighton Directo...",
+              "notes": "Direct text support found for name.",
+              "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum",
+              "status": "supported"
+            },
+            "organization": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "...gy Officer Vail School District Jon Castelhano Executive Director of Technology Gilbert Public Schools Shaun Creighton Director of Instructional Technology Chandler Unified School Di...",
+              "notes": "Direct text support found for organization.",
+              "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum",
+              "status": "supported"
+            },
+            "phone": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "phone is not present on the candidate.",
+              "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum",
+              "status": "missing"
+            },
+            "source": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "...nified School District Mark Breen Chief Technology Officer Vail School District Jon Castelhano Executive Director of Technology Gilbert Public Schools Shaun Creighton Directo...",
+              "notes": "http_status=200 resolved_url=https://events.govtech.com/Arizona-CIO-CTO-Forum matched_fields=name,title,organization",
+              "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum",
+              "status": "supported"
+            },
+            "title": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "...istrict Mark Breen Chief Technology Officer Vail School District Jon Castelhano Executive Director of Technology Gilbert Public Schools Shaun Creighton Director of Instructional Technology Cha...",
+              "notes": "Direct text support found for title.",
+              "source_url": "https://events.govtech.com/Arizona-CIO-CTO-Forum",
+              "status": "supported"
+            }
+          },
+          "why_target": "As Executive Director, Jon plays a pivotal role in decision-making regarding technology at Gilbert Public Schools."
+        },
+        "id": "715f48e8-dfc0-493e-810e-ca5c0838d50f",
+        "rank": 6
+      },
+      {
+        "data": {
+          "candidate_category": "organization_only",
+          "explanation": "Source coverage was found for Paradise Valley Unified School District, but no usable person lead was validated from the collected results.",
+          "id": null,
+          "organization": "Paradise Valley Unified School District",
+          "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Source coverage was found for Paradise Valley Unified School District, but no usable person lead was validated from the collected results.",
+          "source_url": "https://www.pvschools.net/our-district/contact-us",
+          "tier": "organization_only",
+          "validation": {
+            "email": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "email is not present on the candidate.",
+              "source_url": "https://www.pvschools.net/our-district/contact-us",
+              "status": "missing"
+            },
+            "name": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "name is not present on the candidate.",
+              "source_url": "https://www.pvschools.net/our-district/contact-us",
+              "status": "missing"
+            },
+            "organization": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "Contact Us - Paradise Valley Unified School District 602-449-2000\n\n## Frequently Requested Phone Numbers\n\nRecords  \nRecords and Transcripts - 602-449-2244  \nRecords and Tra...",
+              "notes": "Organization contact/team source found, but no named person was validated.",
+              "source_url": "https://www.pvschools.net/our-district/contact-us",
+              "status": "supported"
+            },
+            "phone": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "phone is not present on the candidate.",
+              "source_url": "https://www.pvschools.net/our-district/contact-us",
+              "status": "missing"
+            },
+            "source": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "Contact Us - Paradise Valley Unified School District 602-449-2000\n\n## Frequently Requested Phone Numbers\n\nRecords  \nRecords and Transcripts - 602-449-2244  \nRecords and Tra...",
+              "notes": "Targeted contact-evidence pass found an organization-level source only.",
+              "source_url": "https://www.pvschools.net/our-district/contact-us",
+              "status": "supported"
+            },
+            "title": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "title is not present on the candidate.",
+              "source_url": "https://www.pvschools.net/our-district/contact-us",
+              "status": "missing"
+            }
+          }
+        },
+        "id": "e7d46045-1f3d-4359-acec-7d0e3c88ff1d",
+        "rank": 7
+      },
+      {
+        "data": {
+          "candidate_category": "organization_only",
+          "explanation": "Source coverage was found for Maricopa Unified School District, but no usable person lead was validated from the collected results.",
+          "id": null,
+          "organization": "Maricopa Unified School District",
+          "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Source coverage was found for Maricopa Unified School District, but no usable person lead was validated from the collected results.",
+          "source_url": "https://www.musd20.org/departments/technology",
+          "tier": "organization_only",
+          "validation": {
+            "email": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "email is not present on the candidate.",
+              "source_url": "https://www.musd20.org/departments/technology",
+              "status": "missing"
+            },
+            "name": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "name is not present on the candidate.",
+              "source_url": "https://www.musd20.org/departments/technology",
+              "status": "missing"
+            },
+            "organization": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "Technology - Maricopa Unified School District 20 ## Technology Assistance for Students\n\nPlease review our frequently asked questions (FAQs).  If you require addition...",
+              "notes": "Organization contact/team source found, but no named person was validated.",
+              "source_url": "https://www.musd20.org/departments/technology",
+              "status": "supported"
+            },
+            "phone": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "phone is not present on the candidate.",
+              "source_url": "https://www.musd20.org/departments/technology",
+              "status": "missing"
+            },
+            "source": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": "Technology - Maricopa Unified School District 20 ## Technology Assistance for Students\n\nPlease review our frequently asked questions (FAQs).  If you require addition...",
+              "notes": "Targeted contact-evidence pass found an organization-level source only.",
+              "source_url": "https://www.musd20.org/departments/technology",
+              "status": "supported"
+            },
+            "title": {
+              "checked_at": "2026-05-25T22:15:30Z",
+              "evidence_snippet": null,
+              "notes": "title is not present on the candidate.",
+              "source_url": "https://www.musd20.org/departments/technology",
+              "status": "missing"
+            }
+          }
+        },
+        "id": "d45cb8d5-74da-45db-914a-041174d7d4c0",
+        "rank": 8
+      }
+    ],
+    "run_id": "6e8d4d25-50e9-4cbb-924e-0cd850c35759",
+    "tier_distribution": {
+      "failed": 2,
+      "high_trust_usable": 2,
+      "organization_only": 2,
+      "review": 2
+    }
+  },
+  "seconds": 0.749,
+  "status": 200
+}

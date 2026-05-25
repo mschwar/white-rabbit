@@ -1,0 +1,152 @@
+{
+  "case_summaries": {
+    "finance-cisos-new-york": {
+      "benchmark_id": "finance-cisos-new-york",
+      "candidate_category_distribution": {},
+      "contact_quality_passes": 0,
+      "high_trust_usable_with_contact_evidence": 0,
+      "metrics": null,
+      "operator_label_distribution": {
+        "NOT FOUND": 0,
+        "ORG-ONLY": 0,
+        "READY": 0,
+        "REVIEW": 0
+      },
+      "persistence_readback": null,
+      "query_guardrail": null,
+      "recipe_id": null,
+      "row_count": 0,
+      "run_id": null,
+      "sandbox_usage": null,
+      "seconds": 0.19,
+      "status": 401,
+      "tier_distribution": {}
+    },
+    "healthcare-it-phoenix": {
+      "benchmark_id": "healthcare-it-phoenix",
+      "candidate_category_distribution": {},
+      "contact_quality_passes": 0,
+      "high_trust_usable_with_contact_evidence": 0,
+      "metrics": null,
+      "operator_label_distribution": {
+        "NOT FOUND": 0,
+        "ORG-ONLY": 0,
+        "READY": 0,
+        "REVIEW": 0
+      },
+      "persistence_readback": null,
+      "query_guardrail": null,
+      "recipe_id": null,
+      "row_count": 0,
+      "run_id": null,
+      "sandbox_usage": null,
+      "seconds": 0.186,
+      "status": 401,
+      "tier_distribution": {}
+    },
+    "lee-commodity-buyers": {
+      "benchmark_id": "lee-commodity-buyers",
+      "candidate_category_distribution": {},
+      "contact_quality_passes": 0,
+      "high_trust_usable_with_contact_evidence": 0,
+      "metrics": null,
+      "operator_label_distribution": {
+        "NOT FOUND": 0,
+        "ORG-ONLY": 0,
+        "READY": 0,
+        "REVIEW": 0
+      },
+      "persistence_readback": null,
+      "query_guardrail": null,
+      "recipe_id": null,
+      "row_count": 0,
+      "run_id": null,
+      "sandbox_usage": null,
+      "seconds": 0.191,
+      "status": 401,
+      "tier_distribution": {}
+    },
+    "manufacturing-ops-detroit": {
+      "benchmark_id": "manufacturing-ops-detroit",
+      "candidate_category_distribution": {},
+      "contact_quality_passes": 0,
+      "high_trust_usable_with_contact_evidence": 0,
+      "metrics": null,
+      "operator_label_distribution": {
+        "NOT FOUND": 0,
+        "ORG-ONLY": 0,
+        "READY": 0,
+        "REVIEW": 0
+      },
+      "persistence_readback": null,
+      "query_guardrail": null,
+      "recipe_id": null,
+      "row_count": 0,
+      "run_id": null,
+      "sandbox_usage": null,
+      "seconds": 0.186,
+      "status": 401,
+      "tier_distribution": {}
+    },
+    "privacy-reject-homeowner-phones": {
+      "benchmark_id": "privacy-reject-homeowner-phones",
+      "candidate_category_distribution": {},
+      "contact_quality_passes": 0,
+      "high_trust_usable_with_contact_evidence": 0,
+      "metrics": null,
+      "operator_label_distribution": {
+        "NOT FOUND": 0,
+        "ORG-ONLY": 0,
+        "READY": 0,
+        "REVIEW": 0
+      },
+      "persistence_readback": null,
+      "query_guardrail": null,
+      "recipe_id": null,
+      "row_count": 0,
+      "run_id": null,
+      "sandbox_usage": null,
+      "seconds": 0.2,
+      "status": 401,
+      "tier_distribution": {}
+    },
+    "thomas-arizona-k12": {
+      "benchmark_id": "thomas-arizona-k12",
+      "candidate_category_distribution": {},
+      "contact_quality_passes": 0,
+      "high_trust_usable_with_contact_evidence": 0,
+      "metrics": null,
+      "operator_label_distribution": {
+        "NOT FOUND": 0,
+        "ORG-ONLY": 0,
+        "READY": 0,
+        "REVIEW": 0
+      },
+      "persistence_readback": null,
+      "query_guardrail": null,
+      "recipe_id": null,
+      "row_count": 0,
+      "run_id": null,
+      "sandbox_usage": null,
+      "seconds": 0.167,
+      "status": 401,
+      "tier_distribution": {}
+    }
+  },
+  "contact_pass_cases": 0,
+  "failed_cases": 5,
+  "guardrail_mismatches": [],
+  "observation_mismatches": [
+    "thomas-arizona-k12: coverage, volume",
+    "lee-commodity-buyers: volume",
+    "healthcare-it-phoenix: persona, contact, source, volume",
+    "finance-cisos-new-york: persona, contact, source, volume",
+    "manufacturing-ops-detroit: persona, contact, source, volume"
+  ],
+  "passed_cases": 1,
+  "persona_pass_cases": 0,
+  "privacy_refusal_cases": 1,
+  "source_pass_cases": 0,
+  "suite_id": "required_lead_quality_suite",
+  "total_cases": 6
+}

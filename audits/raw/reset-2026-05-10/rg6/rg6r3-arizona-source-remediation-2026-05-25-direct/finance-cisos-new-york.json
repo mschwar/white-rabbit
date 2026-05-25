@@ -1,0 +1,2901 @@
+{
+  "benchmark_id": "finance-cisos-new-york",
+  "leads": [
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.75,
+      "contact_score": 0.35,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.75,
+      "explanation": "Contact information is missing.",
+      "fit_score": 0.85,
+      "gate_passed": false,
+      "icebreaker": "I noticed that as a leader at Mr. Cooper, you are navigating the complexities of cybersecurity in finance, which is a hot topic currently.",
+      "id": "cd99d945-74d3-4b64-bb44-479980971f28",
+      "name": "Scot Miller",
+      "organization": "Mr. Cooper",
+      "phone": "",
+      "primary_filter_reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+      "source_url": "https://ciso-fs.coriniumintelligence.com",
+      "tier": "review",
+      "title": "SVP, Chief Information Security Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. Deep contact pass searched page_types=board_agenda_pdf, leadership_team; corroborating_sources=4; no direct person email or explicit domain pattern found; no direct person phone found.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...t of State Jessica Wilson Business Information Security Officer Bank of America Scot Miller SVP, Chief Information Security Officer Mr. Cooper Ellis Wong Chief Information...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...ity Officer Bank of America Scot Miller SVP, Chief Information Security Officer Mr. Cooper Ellis Wong Chief Information Security Officer JST Capital Christopher Russell C...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...t of State Jessica Wilson Business Information Security Officer Bank of America Scot Miller SVP, Chief Information Security Officer Mr. Cooper Ellis Wong Chief Information...",
+          "notes": "http_status=200 resolved_url=https://ciso-fs.coriniumintelligence.com matched_fields=name,title,organization",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...essica Wilson Business Information Security Officer Bank of America Scot Miller SVP, Chief Information Security Officer Mr. Cooper Ellis Wong Chief Information Security Officer JST Capital Christophe...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        }
+      },
+      "why_target": "As the Chief Information Security Officer at Mr. Cooper, Scot Miller plays a crucial role in safeguarding financial data, an alignment with your focus on finance CISOs at financial services firms in New York."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.75,
+      "contact_score": 0.35,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.55,
+      "explanation": "Contact information is missing.",
+      "fit_score": 0.8,
+      "gate_passed": false,
+      "icebreaker": "As a VP at JPMorgan Chase, your work in analytics likely intersects with cybersecurity strategies prevalent in the financial sector today.",
+      "id": "90fa3583-ba3c-4fe4-a8bd-0edc0dc89dd4",
+      "name": "Nishit Mehta",
+      "organization": "JPMorgan Chase",
+      "phone": "",
+      "primary_filter_reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+      "source_url": "https://ciso-fs.coriniumintelligence.com",
+      "tier": "review",
+      "title": "Vice President, Analytics Solutions",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. Deep contact pass searched page_types=board_agenda_pdf, leadership_team; corroborating_sources=0; no direct person email or explicit domain pattern found; no direct person phone found.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...Officer JST Capital Christopher Russell CISO & Head of Tokenization TZERO GROUP Nishit Mehta Vice President, Analytics Solutions JPMorganChase View all Speakers Suggest a S...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for organization.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...Officer JST Capital Christopher Russell CISO & Head of Tokenization TZERO GROUP Nishit Mehta Vice President, Analytics Solutions JPMorganChase View all Speakers Suggest a S...",
+          "notes": "http_status=200 resolved_url=https://ciso-fs.coriniumintelligence.com matched_fields=name,title",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...apital Christopher Russell CISO & Head of Tokenization TZERO GROUP Nishit Mehta Vice President, Analytics Solutions JPMorganChase View all Speakers Suggest a Speaker Join as a Sponsor FEATURED SP...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        }
+      },
+      "why_target": "In his role at JPMorgan Chase, Nishit Mehta manages analytics solutions that are vital for effective cybersecurity, and aligns well with your query about finance CISOs in New York."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.9,
+      "contact_score": 0.35,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.9,
+      "explanation": "Contact information is missing.",
+      "fit_score": 1.0,
+      "gate_passed": false,
+      "icebreaker": "Your role as CISO at the Federal Reserve Bank highlights crucial strategies in managing cybersecurity within the financial services sector.",
+      "id": "b4aa1af3-37e4-4521-b238-322dc199de2a",
+      "name": "Khalil Jackson",
+      "organization": "Federal Reserve Bank of New York",
+      "phone": "",
+      "primary_filter_reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+      "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+      "tier": "review",
+      "title": "CISO",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. Deep contact pass searched page_types=board_agenda_pdf, generic, leadership_team; corroborating_sources=3; no direct person email or explicit domain pattern found; no direct person phone found.",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "Khalil Jackson, CISO, New York Federal Reserve Bank, Joins FAIR Institute Board hsjQuery = win...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...Officer to the FAIR Institute Board of Directors : Khalil Jackson, CISO at the Federal Reserve Bank of New York. Khalil\u2019s deep experience will enrich our mission of research and education in...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "Khalil Jackson, CISO, New York Federal Reserve Bank, Joins FAIR Institute Board hsjQuery = win...",
+          "notes": "http_status=200 resolved_url=https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board matched_fields=name,title,organization",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "Khalil Jackson, CISO, New York Federal Reserve Bank, Joins FAIR Institute Board hsjQuery = window['j...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.fairinstitute.org/blog/khalil-jackson-ciso-new-york-federal-reserve-bank-joins-fair-institute-board",
+          "status": "supported"
+        }
+      },
+      "why_target": "As the Chief Information Security Officer at the Federal Reserve Bank of New York, Khalil Jackson is at the forefront of financial cybersecurity, making him highly relevant to your focus on finance CISOs."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.7,
+      "contact_score": 0.35,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.7,
+      "explanation": "Contact information is missing.",
+      "fit_score": 0.75,
+      "gate_passed": false,
+      "icebreaker": "I see that your role involves critical responsibilities related to information security at Bank of America, which is key to protecting customer data in the financial sector.",
+      "id": "509eaf99-4bf5-458e-95dc-66906eda4d23",
+      "name": "Jessica Wilson",
+      "organization": "Bank of America",
+      "phone": "",
+      "primary_filter_reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+      "source_url": "https://ciso-fs.coriniumintelligence.com",
+      "tier": "review",
+      "title": "Business Information Security Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. Deep contact pass searched page_types=board_agenda_pdf, department, leadership_team; corroborating_sources=3; no direct person email or explicit domain pattern found; no direct person phone found.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...and Technology Security Bureau of Diplomatic Security U.S. Department of State Jessica Wilson Business Information Security Officer Bank of America Scot Miller SVP, Chief In...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...y U.S. Department of State Jessica Wilson Business Information Security Officer Bank of America Scot Miller SVP, Chief Information Security Officer Mr. Cooper Ellis Wong Chief...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...and Technology Security Bureau of Diplomatic Security U.S. Department of State Jessica Wilson Business Information Security Officer Bank of America Scot Miller SVP, Chief In...",
+          "notes": "http_status=200 resolved_url=https://ciso-fs.coriniumintelligence.com matched_fields=name,title,organization",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...Security Bureau of Diplomatic Security U.S. Department of State Jessica Wilson Business Information Security Officer Bank of America Scot Miller SVP, Chief Information Security Officer Mr. Cooper...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        }
+      },
+      "why_target": "As a Business Information Security Officer at Bank of America, Jessica Wilson is engaged in leading financial cybersecurity efforts, fitting the profile of your search for finance CISOs."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.8,
+      "contact_score": 0.35,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.55,
+      "explanation": "Contact information is missing.",
+      "fit_score": 0.75,
+      "gate_passed": false,
+      "icebreaker": "Your position in analytics solutions at JPMorgan Chase plays a significant role in strengthening cybersecurity, particularly in the face of evolving threats.",
+      "id": "85e4e6ac-3f04-4658-9d6d-3093dd6e0f4e",
+      "name": "Nishit Mehta",
+      "organization": "JPMorgan Chase",
+      "phone": "",
+      "primary_filter_reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+      "source_url": "https://ciso-fs.coriniumintelligence.com",
+      "tier": "review",
+      "title": "Vice President, Analytics Solutions",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. Deep contact pass searched page_types=board_agenda_pdf, leadership_team; corroborating_sources=0; no direct person email or explicit domain pattern found; no direct person phone found.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...Officer JST Capital Christopher Russell CISO & Head of Tokenization TZERO GROUP Nishit Mehta Vice President, Analytics Solutions JPMorganChase View all Speakers Suggest a S...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for organization.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "unsupported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...Officer JST Capital Christopher Russell CISO & Head of Tokenization TZERO GROUP Nishit Mehta Vice President, Analytics Solutions JPMorganChase View all Speakers Suggest a S...",
+          "notes": "http_status=200 resolved_url=https://ciso-fs.coriniumintelligence.com matched_fields=name,title",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...apital Christopher Russell CISO & Head of Tokenization TZERO GROUP Nishit Mehta Vice President, Analytics Solutions JPMorganChase View all Speakers Suggest a Speaker Join as a Sponsor FEATURED SP...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        }
+      },
+      "why_target": "Nishit Mehta's role underscores the importance of cybersecurity analytics in financial service firms, resonating with your query about finance CISOs."
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://ciso-fs.coriniumintelligence.com matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content. | Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content. | Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content.",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://ciso-fs.coriniumintelligence.com matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content. | Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content. | Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content.",
+      "id": "ffb67fa8-0b7b-44c3-b253-bb98710c509a",
+      "organization": "JST Capital",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://ciso-fs.coriniumintelligence.com matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content. | Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content. | Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content.",
+      "searched_target": "JST Capital",
+      "source_url": "https://ciso-fs.coriniumintelligence.com",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. Deep contact pass searched page_types=board_agenda_pdf, leadership_team; corroborating_sources=3; no direct person email or explicit domain pattern found; no direct person phone found.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...Bank of America Scot Miller SVP, Chief Information Security Officer Mr. Cooper Ellis Wong Chief Information Security Officer JST Capital Christopher Russell CISO & Head...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...ation Security Officer Mr. Cooper Ellis Wong Chief Information Security Officer JST Capital Christopher Russell CISO & Head of Tokenization TZERO GROUP Nishit Mehta Vice P...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...Bank of America Scot Miller SVP, Chief Information Security Officer Mr. Cooper Ellis Wong Chief Information Security Officer JST Capital Christopher Russell CISO & Head...",
+          "notes": "http_status=200 resolved_url=https://ciso-fs.coriniumintelligence.com matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content. | Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content. | Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...a Wilson Business Information Security Officer Bank of America Scot Miller SVP, Chief Information Security Officer Mr. Cooper Ellis Wong Chief Information Security Officer JST Capital Christophe...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://ciso-fs.coriniumintelligence.com",
+          "status": "supported"
+        }
+      }
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.75,
+      "contact_score": 0.35,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.75,
+      "explanation": "Contact information is missing.",
+      "fit_score": 0.8,
+      "gate_passed": false,
+      "icebreaker": "As the new CISO at BNY Mellon, your role is pivotal in navigating today's cybersecurity challenges in the banking sector.",
+      "id": "decdb036-f023-44c3-8b36-7b3861091e18",
+      "name": "Gary Delaney",
+      "organization": "BNY Mellon",
+      "phone": "",
+      "primary_filter_reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+      "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+      "tier": "review",
+      "title": "Chief Information Security Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. Deep contact pass searched page_types=board_agenda_pdf, contact, leadership_team, staff_directory; corroborating_sources=3; no direct person email or explicit domain pattern found; no direct person phone found.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "BNY Mellon Appoints Gary Delaney as International Chief Information Security Officer | BNY var digitalData = { p...",
+          "notes": "Direct text support found for name.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "supported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "BNY Mellon Appoints Gary Delaney as International Chief Information Security Officer | BNY...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "BNY Mellon Appoints Gary Delaney as International Chief Information Security Officer | BNY var digitalData = { p...",
+          "notes": "http_status=200 resolved_url=https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html matched_fields=name,title,organization",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "BNY Mellon Appoints Gary Delaney as International Chief Information Security Officer | BNY var digitalData = { page: { pageInfo:{ pageName:\"bny:about-us:newsroom:co...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/newsroom/company-news/bny-mellon-appoints-gary-delaney-international-chief-information-security-officer.html",
+          "status": "supported"
+        }
+      },
+      "why_target": "Gary Delaney's role at BNY Mellon places him at a crucial intersection of finance and cybersecurity, matching your query for finance CISOs in New York."
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "No individual contact was validated for Wells Fargo.",
+      "id": "0ecfbe09-51a6-48e0-bf1a-458076286a92",
+      "organization": "Wells Fargo",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. No individual contact was validated for Wells Fargo.",
+      "source_url": "https://www.ciso-fs.coriniumintelligence.com",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. fetch_error=ConnectError: [Errno -2] Name or service not known",
+          "source_url": "https://www.ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. fetch_error=ConnectError: [Errno -2] Name or service not known",
+          "source_url": "https://www.ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "Leadership and Governance - Wells Fargo Saul Van Beurden , Senior EVP, Head of Artificial Intelligence, Co-CEO of Consumer Banking and Lending [...] Steven D....",
+          "notes": "Organization contact/team source found, but no named person was validated.",
+          "source_url": "https://www.wellsfargo.com/about/corporate/governance",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. fetch_error=ConnectError: [Errno -2] Name or service not known",
+          "source_url": "https://www.ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "Leadership and Governance - Wells Fargo Saul Van Beurden , Senior EVP, Head of Artificial Intelligence, Co-CEO of Consumer Banking and Lending [...] Steven D....",
+          "notes": "Targeted contact-evidence pass found an organization-level source only.",
+          "source_url": "https://www.wellsfargo.com/about/corporate/governance",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. fetch_error=ConnectError: [Errno -2] Name or service not known",
+          "source_url": "https://www.ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "No individual contact was validated for HSBC.",
+      "id": "d8098a4b-3ac5-4c4c-8875-29763ee5e6c4",
+      "organization": "HSBC",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. No individual contact was validated for HSBC.",
+      "source_url": "https://www.ciso-fs.coriniumintelligence.com",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. fetch_error=ConnectError: [Errno -2] Name or service not known",
+          "source_url": "https://www.ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. fetch_error=ConnectError: [Errno -2] Name or service not known",
+          "source_url": "https://www.ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "fetch_error=ConnectError: [Errno -2] Name or service not known",
+          "source_url": "https://www.ciso-fs.coriniumintelligence.com",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. fetch_error=ConnectError: [Errno -2] Name or service not known",
+          "source_url": "https://www.ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "fetch_error=ConnectError: [Errno -2] Name or service not known",
+          "source_url": "https://www.ciso-fs.coriniumintelligence.com",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. fetch_error=ConnectError: [Errno -2] Name or service not known",
+          "source_url": "https://www.ciso-fs.coriniumintelligence.com",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. No specific individual was identified in the job posting for contact purposes.",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Insufficient details for a valid candidate.",
+      "id": "c2637607-692f-45aa-8f37-de82bbcbf557",
+      "organization": "Fintech Platform",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Insufficient details for a valid candidate.",
+      "searched_target": "finance CISOs at financial services firms in New York",
+      "source_url": "https://www.jrgpartners.com/jobs/chief-information-security-officer-ciso-fintech-platform-new-york-ny",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-information-security-officer-ciso-fintech-platform-new-york-ny/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-information-security-officer-ciso-fintech-platform-new-york-ny/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...yers For Jobseekers Contact Us Chief Information Security Officer (CISO) with a Fintech Platform \u2013 New York, NY Role Overview for Chief Information Security Officer (CISO) with...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-information-security-officer-ciso-fintech-platform-new-york-ny/",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-information-security-officer-ciso-fintech-platform-new-york-ny/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": "...yers For Jobseekers Contact Us Chief Information Security Officer (CISO) with a Fintech Platform \u2013 New York, NY Role Overview for Chief Information Security Officer (CISO) with...",
+          "notes": "http_status=200 resolved_url=https://www.jrgpartners.com/jobs/chief-information-security-officer-ciso-fintech-platform-new-york-ny/ matched_fields=organization",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-information-security-officer-ciso-fintech-platform-new-york-ny/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-information-security-officer-ciso-fintech-platform-new-york-ny/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "7c868d5b-42a6-4591-b642-8d4dfb989bea",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Chief Information Security Officer - Credit Genie - New York, NY",
+      "source_url": "https://www.theladders.com/job/chief-information-security-officer-credit-genie-new-york-ny_82900360",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/job/chief-information-security-officer-credit-genie-new-york-ny_82900360",
+          "source_url": "https://www.theladders.com/job/chief-information-security-officer-credit-genie-new-york-ny_82900360",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/job/chief-information-security-officer-credit-genie-new-york-ny_82900360",
+          "source_url": "https://www.theladders.com/job/chief-information-security-officer-credit-genie-new-york-ny_82900360",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/job/chief-information-security-officer-credit-genie-new-york-ny_82900360",
+          "source_url": "https://www.theladders.com/job/chief-information-security-officer-credit-genie-new-york-ny_82900360",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/job/chief-information-security-officer-credit-genie-new-york-ny_82900360",
+          "source_url": "https://www.theladders.com/job/chief-information-security-officer-credit-genie-new-york-ny_82900360",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.theladders.com/job/chief-information-security-officer-credit-genie-new-york-ny_82900360",
+          "source_url": "https://www.theladders.com/job/chief-information-security-officer-credit-genie-new-york-ny_82900360",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/job/chief-information-security-officer-credit-genie-new-york-ny_82900360",
+          "source_url": "https://www.theladders.com/job/chief-information-security-officer-credit-genie-new-york-ny_82900360",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "60ee4dd6-058f-4759-8a58-a1c6f51f2d3a",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "New York State Seeks to Raise the Bar on Cybersecurity for Financial Services Providers, Including Certain Fintech and Cryptocurrency Companies - O'Melveny",
+      "source_url": "https://www.omm.com/insights/alerts-publications/new-york-state-seeks-to-raise-the-bar-on-cybersecurity-for-financial-services-providers-including-certain-fintech-and-cryptocurrency-companies",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.omm.com/insights/alerts-publications/new-york-state-seeks-to-raise-the-bar-on-cybersecurity-for-financial-services-providers-including-certain-fintech-and-cryptocurrency-companies",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.omm.com/insights/alerts-publications/new-york-state-seeks-to-raise-the-bar-on-cybersecurity-for-financial-services-providers-including-certain-fintech-and-cryptocurrency-companies",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.omm.com/insights/alerts-publications/new-york-state-seeks-to-raise-the-bar-on-cybersecurity-for-financial-services-providers-including-certain-fintech-and-cryptocurrency-companies",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.omm.com/insights/alerts-publications/new-york-state-seeks-to-raise-the-bar-on-cybersecurity-for-financial-services-providers-including-certain-fintech-and-cryptocurrency-companies",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.omm.com/insights/alerts-publications/new-york-state-seeks-to-raise-the-bar-on-cybersecurity-for-financial-services-providers-including-certain-fintech-and-cryptocurrency-companies matched_fields=none",
+          "source_url": "https://www.omm.com/insights/alerts-publications/new-york-state-seeks-to-raise-the-bar-on-cybersecurity-for-financial-services-providers-including-certain-fintech-and-cryptocurrency-companies",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.omm.com/insights/alerts-publications/new-york-state-seeks-to-raise-the-bar-on-cybersecurity-for-financial-services-providers-including-certain-fintech-and-cryptocurrency-companies",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "2fa516d8-9c0f-4511-95d7-6779f969c395",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "New York Cybersecurity Services | Fractional CISO",
+      "source_url": "https://fractionalciso.com/vciso-services/areas-we-serve/new-york-cybersecurity-services",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=404 resolved_url=https://fractionalciso.com/vciso-services/areas-we-serve/new-york-cybersecurity-services",
+          "source_url": "https://fractionalciso.com/vciso-services/areas-we-serve/new-york-cybersecurity-services",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=404 resolved_url=https://fractionalciso.com/vciso-services/areas-we-serve/new-york-cybersecurity-services",
+          "source_url": "https://fractionalciso.com/vciso-services/areas-we-serve/new-york-cybersecurity-services",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=404 resolved_url=https://fractionalciso.com/vciso-services/areas-we-serve/new-york-cybersecurity-services",
+          "source_url": "https://fractionalciso.com/vciso-services/areas-we-serve/new-york-cybersecurity-services",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=404 resolved_url=https://fractionalciso.com/vciso-services/areas-we-serve/new-york-cybersecurity-services",
+          "source_url": "https://fractionalciso.com/vciso-services/areas-we-serve/new-york-cybersecurity-services",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=404 resolved_url=https://fractionalciso.com/vciso-services/areas-we-serve/new-york-cybersecurity-services",
+          "source_url": "https://fractionalciso.com/vciso-services/areas-we-serve/new-york-cybersecurity-services",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=404 resolved_url=https://fractionalciso.com/vciso-services/areas-we-serve/new-york-cybersecurity-services",
+          "source_url": "https://fractionalciso.com/vciso-services/areas-we-serve/new-york-cybersecurity-services",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "82f72c3e-1bf1-47c8-a835-13424ddd1319",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Proposed Amendments to NY Financial Services Cybersecurity Regulations Impose New Obligations on Large Entities, Boards of Directors and CISOs",
+      "source_url": "https://www.hunton.com/privacy-and-cybersecurity-law-blog/proposed-amendments-to-ny-financial-services-cybersecurity-regulations-impose-new-obligations-on-large-entities-boards-of-directors-and-cisos",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.hunton.com/privacy-and-cybersecurity-law-blog/proposed-amendments-to-ny-financial-services-cybersecurity-regulations-impose-new-obligations-on-large-entities-boards-of-directors-and-cisos",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.hunton.com/privacy-and-cybersecurity-law-blog/proposed-amendments-to-ny-financial-services-cybersecurity-regulations-impose-new-obligations-on-large-entities-boards-of-directors-and-cisos",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.hunton.com/privacy-and-cybersecurity-law-blog/proposed-amendments-to-ny-financial-services-cybersecurity-regulations-impose-new-obligations-on-large-entities-boards-of-directors-and-cisos",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.hunton.com/privacy-and-cybersecurity-law-blog/proposed-amendments-to-ny-financial-services-cybersecurity-regulations-impose-new-obligations-on-large-entities-boards-of-directors-and-cisos",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.hunton.com/privacy-and-cybersecurity-law-blog/proposed-amendments-to-ny-financial-services-cybersecurity-regulations-impose-new-obligations-on-large-entities-boards-of-directors-and-cisos matched_fields=none",
+          "source_url": "https://www.hunton.com/privacy-and-cybersecurity-law-blog/proposed-amendments-to-ny-financial-services-cybersecurity-regulations-impose-new-obligations-on-large-entities-boards-of-directors-and-cisos",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.hunton.com/privacy-and-cybersecurity-law-blog/proposed-amendments-to-ny-financial-services-cybersecurity-regulations-impose-new-obligations-on-large-entities-boards-of-directors-and-cisos",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "0c9d3292-1937-4caf-9918-a07ec8b31c68",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "New Cybersecurity Requirements for Financial Service Comps",
+      "source_url": "https://phillipslytle.com/new-cybersecurity-requirements-for-financial-service-companies",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://phillipslytle.com/new-cybersecurity-requirements-for-financial-service-companies/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://phillipslytle.com/new-cybersecurity-requirements-for-financial-service-companies/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://phillipslytle.com/new-cybersecurity-requirements-for-financial-service-companies/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://phillipslytle.com/new-cybersecurity-requirements-for-financial-service-companies/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://phillipslytle.com/new-cybersecurity-requirements-for-financial-service-companies/ matched_fields=none",
+          "source_url": "https://phillipslytle.com/new-cybersecurity-requirements-for-financial-service-companies/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://phillipslytle.com/new-cybersecurity-requirements-for-financial-service-companies/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "52b67d5b-7da2-4e74-959c-49d134cb5cd1",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "[PDF] new york minimum cybersecurity requirements for financial services ...",
+      "source_url": "https://www.honigman.com/assets/htmldocuments/New%20York%20Minimum%20Cybersecurity%20Requirements%20for%20Financial%20Services%20Companies%20Overview%20and%20Requirements%20Summary.pdf",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.honigman.com/assets/htmldocuments/New%20York%20Minimum%20Cybersecurity%20Requirements%20for%20Financial%20Services%20Companies%20Overview%20and%20Requirements%20Summary.pdf",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.honigman.com/assets/htmldocuments/New%20York%20Minimum%20Cybersecurity%20Requirements%20for%20Financial%20Services%20Companies%20Overview%20and%20Requirements%20Summary.pdf",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.honigman.com/assets/htmldocuments/New%20York%20Minimum%20Cybersecurity%20Requirements%20for%20Financial%20Services%20Companies%20Overview%20and%20Requirements%20Summary.pdf",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.honigman.com/assets/htmldocuments/New%20York%20Minimum%20Cybersecurity%20Requirements%20for%20Financial%20Services%20Companies%20Overview%20and%20Requirements%20Summary.pdf",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.honigman.com/assets/htmldocuments/New%20York%20Minimum%20Cybersecurity%20Requirements%20for%20Financial%20Services%20Companies%20Overview%20and%20Requirements%20Summary.pdf matched_fields=none",
+          "source_url": "https://www.honigman.com/assets/htmldocuments/New%20York%20Minimum%20Cybersecurity%20Requirements%20for%20Financial%20Services%20Companies%20Overview%20and%20Requirements%20Summary.pdf",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.honigman.com/assets/htmldocuments/New%20York%20Minimum%20Cybersecurity%20Requirements%20for%20Financial%20Services%20Companies%20Overview%20and%20Requirements%20Summary.pdf",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "c25255d3-927e-4c67-9bfa-d1ecf2fe299c",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Chief Information Security Officer | City of New York Jobs",
+      "source_url": "https://cityjobs.nyc.gov/job/chief-information-security-officer-in-queens-jid-41782",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://cityjobs.nyc.gov/job/chief-information-security-officer-in-queens-jid-41782",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://cityjobs.nyc.gov/job/chief-information-security-officer-in-queens-jid-41782",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://cityjobs.nyc.gov/job/chief-information-security-officer-in-queens-jid-41782",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://cityjobs.nyc.gov/job/chief-information-security-officer-in-queens-jid-41782",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://cityjobs.nyc.gov/job/chief-information-security-officer-in-queens-jid-41782 matched_fields=none",
+          "source_url": "https://cityjobs.nyc.gov/job/chief-information-security-officer-in-queens-jid-41782",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://cityjobs.nyc.gov/job/chief-information-security-officer-in-queens-jid-41782",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "5b828e04-8f6c-4ef0-aa02-0c4deb11ba8e",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Chief Information Security Officer Salary in New York, NY (Updated for 2026) | Robert Half",
+      "source_url": "https://www.roberthalf.com/us/en/job-details/chief-information-security-officer/new-york-ny",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.roberthalf.com/us/en/job-details/chief-information-security-officer/new-york-ny",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.roberthalf.com/us/en/job-details/chief-information-security-officer/new-york-ny",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.roberthalf.com/us/en/job-details/chief-information-security-officer/new-york-ny",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.roberthalf.com/us/en/job-details/chief-information-security-officer/new-york-ny",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.roberthalf.com/us/en/job-details/chief-information-security-officer/new-york-ny matched_fields=none",
+          "source_url": "https://www.roberthalf.com/us/en/job-details/chief-information-security-officer/new-york-ny",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.roberthalf.com/us/en/job-details/chief-information-security-officer/new-york-ny",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "c3b731dc-9896-4da0-be2c-5ab66f956b10",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Cybersecurity Resource Center | Department of Financial Services",
+      "source_url": "https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "source_url": "https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "source_url": "https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "source_url": "https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "source_url": "https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "source_url": "https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "source_url": "https://www.dfs.ny.gov/industry_guidance/cybersecurity",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "0ade3e7f-b47a-40ce-899d-3e1250e5e2bc",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "ISMG Cybersecurity Summit Financial Services",
+      "source_url": "https://ismg.events/summit/financial-service-2024",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/financial-service-2024/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/financial-service-2024/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/financial-service-2024/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/financial-service-2024/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://ismg.events/summit/financial-service-2024/ matched_fields=none",
+          "source_url": "https://ismg.events/summit/financial-service-2024/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/financial-service-2024/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "f55c9b7e-67ca-4ba1-8744-5e5ca44e1c0b",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Chief Information Security Officer Jobs in New York - ZipRecruiter",
+      "source_url": "https://www.ziprecruiter.com/Jobs/Chief-Information-Security-Officer/--in-New-York",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Chief-Information-Security-Officer/--in-New-York",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Chief-Information-Security-Officer/--in-New-York",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Chief-Information-Security-Officer/--in-New-York",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Chief-Information-Security-Officer/--in-New-York",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Chief-Information-Security-Officer/--in-New-York",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Chief-Information-Security-Officer/--in-New-York",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Chief-Information-Security-Officer/--in-New-York",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Chief-Information-Security-Officer/--in-New-York",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Chief-Information-Security-Officer/--in-New-York",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Chief-Information-Security-Officer/--in-New-York",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Chief-Information-Security-Officer/--in-New-York",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Chief-Information-Security-Officer/--in-New-York",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "cd577eb1-98ee-4ee6-843e-093ca5317dd0",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Chief Information Security Officer (CISO) Jobs in New York - Wellfound",
+      "source_url": "https://wellfound.com/role/l/chief-information-security-officer/new-york",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://wellfound.com/role/l/chief-information-security-officer/new-york",
+          "source_url": "https://wellfound.com/role/l/chief-information-security-officer/new-york",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://wellfound.com/role/l/chief-information-security-officer/new-york",
+          "source_url": "https://wellfound.com/role/l/chief-information-security-officer/new-york",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://wellfound.com/role/l/chief-information-security-officer/new-york",
+          "source_url": "https://wellfound.com/role/l/chief-information-security-officer/new-york",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://wellfound.com/role/l/chief-information-security-officer/new-york",
+          "source_url": "https://wellfound.com/role/l/chief-information-security-officer/new-york",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://wellfound.com/role/l/chief-information-security-officer/new-york",
+          "source_url": "https://wellfound.com/role/l/chief-information-security-officer/new-york",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://wellfound.com/role/l/chief-information-security-officer/new-york",
+          "source_url": "https://wellfound.com/role/l/chief-information-security-officer/new-york",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "bb2e276d-9ea8-4934-8810-80cd341dacf8",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Information Security Officer jobs in New York, NY - Indeed",
+      "source_url": "https://www.indeed.com/q-information-security-officer-l-new-york,-ny-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-information-security-officer-l-new-york,-ny-jobs.html",
+          "source_url": "https://www.indeed.com/q-information-security-officer-l-new-york,-ny-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-information-security-officer-l-new-york,-ny-jobs.html",
+          "source_url": "https://www.indeed.com/q-information-security-officer-l-new-york,-ny-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-information-security-officer-l-new-york,-ny-jobs.html",
+          "source_url": "https://www.indeed.com/q-information-security-officer-l-new-york,-ny-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-information-security-officer-l-new-york,-ny-jobs.html",
+          "source_url": "https://www.indeed.com/q-information-security-officer-l-new-york,-ny-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-information-security-officer-l-new-york,-ny-jobs.html",
+          "source_url": "https://www.indeed.com/q-information-security-officer-l-new-york,-ny-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-information-security-officer-l-new-york,-ny-jobs.html",
+          "source_url": "https://www.indeed.com/q-information-security-officer-l-new-york,-ny-jobs.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "3ffa9e7b-ee6d-4948-a2f1-c152c880591c",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "About Us | Learn about who we are and what we do - FS-ISAC",
+      "source_url": "https://www.fsisac.com/about-us",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/about-us",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/about-us",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/about-us",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/about-us",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.fsisac.com/about-us matched_fields=none",
+          "source_url": "https://www.fsisac.com/about-us",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/about-us",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "9691d3d6-bed7-4336-b5d7-3a48a1f5b3a6",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "The CISO's Take: Navigating Cyber Risk in Financial Services",
+      "source_url": "https://www.youtube.com/watch?v=NVNjLh0a-fs",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.youtube.com/watch?v=NVNjLh0a-fs",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.youtube.com/watch?v=NVNjLh0a-fs",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.youtube.com/watch?v=NVNjLh0a-fs",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.youtube.com/watch?v=NVNjLh0a-fs",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.youtube.com/watch?v=NVNjLh0a-fs matched_fields=none",
+          "source_url": "https://www.youtube.com/watch?v=NVNjLh0a-fs",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.youtube.com/watch?v=NVNjLh0a-fs",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "2adc8c35-5007-4edf-af75-dcbab0877329",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "40 Head Of Information Security jobs in New York - LinkedIn",
+      "source_url": "https://www.linkedin.com/jobs/head-of-information-security-jobs-new-york",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/head-of-information-security-jobs-new-york",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/head-of-information-security-jobs-new-york",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/head-of-information-security-jobs-new-york",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/head-of-information-security-jobs-new-york",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/jobs/head-of-information-security-jobs-new-york matched_fields=none",
+          "source_url": "https://www.linkedin.com/jobs/head-of-information-security-jobs-new-york",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/head-of-information-security-jobs-new-york",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "ddfbff11-89ad-4c96-b4a1-dfb96a29d8c5",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "NYDFS and Finding Your CISO",
+      "source_url": "https://blog.twinstate.com/nydfs-and-finding-your-ciso",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://blog.twinstate.com/nydfs-and-finding-your-ciso",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://blog.twinstate.com/nydfs-and-finding-your-ciso",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://blog.twinstate.com/nydfs-and-finding-your-ciso",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://blog.twinstate.com/nydfs-and-finding-your-ciso",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://blog.twinstate.com/nydfs-and-finding-your-ciso matched_fields=none",
+          "source_url": "https://blog.twinstate.com/nydfs-and-finding-your-ciso",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://blog.twinstate.com/nydfs-and-finding-your-ciso",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "f4338c7c-255d-47c9-9b8a-719f5bdeef7a",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Chief Information Security Officer (CISO) | $ 84000 - $ 120000 / Year | New York, New York",
+      "source_url": "https://www.adecco.com/en-us/job-search/chief-information-security-officer-ciso-new-york-new-york/us_en_99_025348_2542131",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.adecco.com/en-us/job-search/chief-information-security-officer-ciso-new-york-new-york/us_en_99_025348_2542131",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.adecco.com/en-us/job-search/chief-information-security-officer-ciso-new-york-new-york/us_en_99_025348_2542131",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.adecco.com/en-us/job-search/chief-information-security-officer-ciso-new-york-new-york/us_en_99_025348_2542131",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.adecco.com/en-us/job-search/chief-information-security-officer-ciso-new-york-new-york/us_en_99_025348_2542131",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.adecco.com/en-us/job-search/chief-information-security-officer-ciso-new-york-new-york/us_en_99_025348_2542131 matched_fields=none",
+          "source_url": "https://www.adecco.com/en-us/job-search/chief-information-security-officer-ciso-new-york-new-york/us_en_99_025348_2542131",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.adecco.com/en-us/job-search/chief-information-security-officer-ciso-new-york-new-york/us_en_99_025348_2542131",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "758600e9-f7d3-4d4b-a751-804c8e8a87cc",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Cybersecurity Information Officer (CISO) for Financial Services | JANUS",
+      "source_url": "https://janusassociates.com/sectors/financial-services",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://janusassociates.com/sectors/financial-services/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://janusassociates.com/sectors/financial-services/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://janusassociates.com/sectors/financial-services/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://janusassociates.com/sectors/financial-services/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://janusassociates.com/sectors/financial-services/ matched_fields=none",
+          "source_url": "https://janusassociates.com/sectors/financial-services/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://janusassociates.com/sectors/financial-services/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "2927b2a5-7645-419b-b03d-46fddf854ef0",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Bank of America Executive Joins FS-ISAC as Chief Information Security Officer",
+      "source_url": "https://www.fsisac.com/newsroom/pr-bank-of-america-executive-joins-fs-isac-as-chief-information-security-officer",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/newsroom/pr-bank-of-america-executive-joins-fs-isac-as-chief-information-security-officer",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/newsroom/pr-bank-of-america-executive-joins-fs-isac-as-chief-information-security-officer",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/newsroom/pr-bank-of-america-executive-joins-fs-isac-as-chief-information-security-officer",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/newsroom/pr-bank-of-america-executive-joins-fs-isac-as-chief-information-security-officer",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.fsisac.com/newsroom/pr-bank-of-america-executive-joins-fs-isac-as-chief-information-security-officer matched_fields=none",
+          "source_url": "https://www.fsisac.com/newsroom/pr-bank-of-america-executive-joins-fs-isac-as-chief-information-security-officer",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.fsisac.com/newsroom/pr-bank-of-america-executive-joins-fs-isac-as-chief-information-security-officer",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "cba25cdc-fa83-44c2-92df-5c620a4ebba3",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "List of Fortune 500 Chief Information Security Officers",
+      "source_url": "https://cybersecurityventures.com/ciso-500",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://cybersecurityventures.com/ciso-500",
+          "source_url": "https://cybersecurityventures.com/ciso-500",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://cybersecurityventures.com/ciso-500",
+          "source_url": "https://cybersecurityventures.com/ciso-500",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://cybersecurityventures.com/ciso-500",
+          "source_url": "https://cybersecurityventures.com/ciso-500",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://cybersecurityventures.com/ciso-500",
+          "source_url": "https://cybersecurityventures.com/ciso-500",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://cybersecurityventures.com/ciso-500",
+          "source_url": "https://cybersecurityventures.com/ciso-500",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://cybersecurityventures.com/ciso-500",
+          "source_url": "https://cybersecurityventures.com/ciso-500",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "6cd0e348-1adb-4e87-973b-dbbb998372a7",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Chief Information Security Officer jobs in New York, NY - Indeed",
+      "source_url": "https://www.indeed.com/q-chief-information-security-officer-l-new-york,-ny-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-chief-information-security-officer-l-new-york,-ny-jobs.html",
+          "source_url": "https://www.indeed.com/q-chief-information-security-officer-l-new-york,-ny-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-chief-information-security-officer-l-new-york,-ny-jobs.html",
+          "source_url": "https://www.indeed.com/q-chief-information-security-officer-l-new-york,-ny-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-chief-information-security-officer-l-new-york,-ny-jobs.html",
+          "source_url": "https://www.indeed.com/q-chief-information-security-officer-l-new-york,-ny-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-chief-information-security-officer-l-new-york,-ny-jobs.html",
+          "source_url": "https://www.indeed.com/q-chief-information-security-officer-l-new-york,-ny-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-chief-information-security-officer-l-new-york,-ny-jobs.html",
+          "source_url": "https://www.indeed.com/q-chief-information-security-officer-l-new-york,-ny-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-chief-information-security-officer-l-new-york,-ny-jobs.html",
+          "source_url": "https://www.indeed.com/q-chief-information-security-officer-l-new-york,-ny-jobs.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "075ef8c6-aaed-4d59-a3ae-20ad8dac892f",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Jobs in New York | Barclay Simpson",
+      "source_url": "https://www.barclaysimpson.com/job-region/new-york",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.barclaysimpson.com/job-region/new-york/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.barclaysimpson.com/job-region/new-york/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.barclaysimpson.com/job-region/new-york/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.barclaysimpson.com/job-region/new-york/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.barclaysimpson.com/job-region/new-york/ matched_fields=none",
+          "source_url": "https://www.barclaysimpson.com/job-region/new-york/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.barclaysimpson.com/job-region/new-york/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "7c942e1d-080f-4b8e-a159-da824ee9d4ea",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "129 Chief Information Security Officer jobs in New York - LinkedIn",
+      "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york matched_fields=none",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs-new-york",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "baea1144-dfe2-4124-aee9-51c0ebe109a1",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "The CISO Role: What Does a Chief Information Security Officer Do? | Splunk",
+      "source_url": "https://www.splunk.com/en_us/blog/learn/chief-information-security-officer-ciso-role.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.splunk.com/en_us/blog/learn/chief-information-security-officer-ciso-role.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.splunk.com/en_us/blog/learn/chief-information-security-officer-ciso-role.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.splunk.com/en_us/blog/learn/chief-information-security-officer-ciso-role.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.splunk.com/en_us/blog/learn/chief-information-security-officer-ciso-role.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.splunk.com/en_us/blog/learn/chief-information-security-officer-ciso-role.html matched_fields=none",
+          "source_url": "https://www.splunk.com/en_us/blog/learn/chief-information-security-officer-ciso-role.html",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.splunk.com/en_us/blog/learn/chief-information-security-officer-ciso-role.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "3c822b7f-8451-4bf2-ae08-4baf2a35a318",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Best Financial Services Cybersecurity Jobs in New York City, NY 2026 | Built In NYC",
+      "source_url": "https://www.builtinnyc.com/jobs/cybersecurity-it/security/financial-services",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.builtinnyc.com/jobs/cybersecurity-it/security/financial-services",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.builtinnyc.com/jobs/cybersecurity-it/security/financial-services",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.builtinnyc.com/jobs/cybersecurity-it/security/financial-services",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.builtinnyc.com/jobs/cybersecurity-it/security/financial-services",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.builtinnyc.com/jobs/cybersecurity-it/security/financial-services matched_fields=none",
+          "source_url": "https://www.builtinnyc.com/jobs/cybersecurity-it/security/financial-services",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.builtinnyc.com/jobs/cybersecurity-it/security/financial-services",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "f0935821-e3b2-471e-ba08-9e0c08f4f5c8",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Chief Information Security Officer jobs in United States - LinkedIn",
+      "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/jobs/chief-information-security-officer-jobs matched_fields=none",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/chief-information-security-officer-jobs",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "18ede656-c4cc-47d3-a0b8-d4b8e05a98b3",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "2025 New York CISO Inner Circle",
+      "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362 matched_fields=none",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.evanta.com/ciso/new-york/new-york-ciso-inner-circle-8362",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "9ce04810-c0d0-4b21-87b4-5056e9f2a368",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Leadership - SecurityScorecard",
+      "source_url": "https://securityscorecard.com/company/leadership",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://securityscorecard.com/company/leadership",
+          "source_url": "https://securityscorecard.com/company/leadership",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://securityscorecard.com/company/leadership",
+          "source_url": "https://securityscorecard.com/company/leadership",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://securityscorecard.com/company/leadership",
+          "source_url": "https://securityscorecard.com/company/leadership",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://securityscorecard.com/company/leadership",
+          "source_url": "https://securityscorecard.com/company/leadership",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://securityscorecard.com/company/leadership",
+          "source_url": "https://securityscorecard.com/company/leadership",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://securityscorecard.com/company/leadership",
+          "source_url": "https://securityscorecard.com/company/leadership",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "0941ffbc-513a-4e87-b08a-9d43fbb2949a",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Khalil Jackson - NYU Law and NYU Tandon",
+      "source_url": "https://cybersecurity-strategy-masters.nyu.edu/student-spotlight/khalil-jackson",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://cybersecurity-strategy-masters.nyu.edu/student-spotlight/khalil-jackson",
+          "source_url": "https://cybersecurity-strategy-masters.nyu.edu/student-spotlight/khalil-jackson",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://cybersecurity-strategy-masters.nyu.edu/student-spotlight/khalil-jackson",
+          "source_url": "https://cybersecurity-strategy-masters.nyu.edu/student-spotlight/khalil-jackson",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://cybersecurity-strategy-masters.nyu.edu/student-spotlight/khalil-jackson",
+          "source_url": "https://cybersecurity-strategy-masters.nyu.edu/student-spotlight/khalil-jackson",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://cybersecurity-strategy-masters.nyu.edu/student-spotlight/khalil-jackson",
+          "source_url": "https://cybersecurity-strategy-masters.nyu.edu/student-spotlight/khalil-jackson",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://cybersecurity-strategy-masters.nyu.edu/student-spotlight/khalil-jackson",
+          "source_url": "https://cybersecurity-strategy-masters.nyu.edu/student-spotlight/khalil-jackson",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://cybersecurity-strategy-masters.nyu.edu/student-spotlight/khalil-jackson",
+          "source_url": "https://cybersecurity-strategy-masters.nyu.edu/student-spotlight/khalil-jackson",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "8a26f0d6-b16d-4569-984b-0a57d28b386a",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Chief Information Security Officer at City National Bank of Florida",
+      "source_url": "https://careers.citynational.com/job/miami/chief-information-security-officer/41192/93779889072",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://careers.citynational.com/job/miami/chief-information-security-officer/41192/93779889072",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://careers.citynational.com/job/miami/chief-information-security-officer/41192/93779889072",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://careers.citynational.com/job/miami/chief-information-security-officer/41192/93779889072",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://careers.citynational.com/job/miami/chief-information-security-officer/41192/93779889072",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://careers.citynational.com/job/miami/chief-information-security-officer/41192/93779889072 matched_fields=none",
+          "source_url": "https://careers.citynational.com/job/miami/chief-information-security-officer/41192/93779889072",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://careers.citynational.com/job/miami/chief-information-security-officer/41192/93779889072",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "fe3d5eeb-b417-4da4-97e0-1fb510213f3d",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Joe B. - BNY",
+      "source_url": "https://www.linkedin.com/in/bernik",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/bernik",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/bernik",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/bernik",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/bernik",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/in/bernik matched_fields=none",
+          "source_url": "https://www.linkedin.com/in/bernik",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/bernik",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "f5a068f0-bfc5-4084-8a01-9cc6fa60575c",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "New York Proposes New Cybersecurity Regulations for Financial Institutions: Quarles Law Firm, Attorneys, Lawyers",
+      "source_url": "https://www.quarles.com/newsroom/publications/new-york-proposes-new-cybersecurity-regulations-for-financial-institutions",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.quarles.com/newsroom/publications/new-york-proposes-new-cybersecurity-regulations-for-financial-institutions",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.quarles.com/newsroom/publications/new-york-proposes-new-cybersecurity-regulations-for-financial-institutions",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.quarles.com/newsroom/publications/new-york-proposes-new-cybersecurity-regulations-for-financial-institutions",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.quarles.com/newsroom/publications/new-york-proposes-new-cybersecurity-regulations-for-financial-institutions",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.quarles.com/newsroom/publications/new-york-proposes-new-cybersecurity-regulations-for-financial-institutions matched_fields=none",
+          "source_url": "https://www.quarles.com/newsroom/publications/new-york-proposes-new-cybersecurity-regulations-for-financial-institutions",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.quarles.com/newsroom/publications/new-york-proposes-new-cybersecurity-regulations-for-financial-institutions",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "018511ea-4b68-4227-a7c3-8f74f16b28d3",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Cybersecurity Summit: USA Financial Services by BankInfoSecurity",
+      "source_url": "https://ismg.events/summit/newyork-financial-service-2026",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/newyork-financial-service-2026/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/newyork-financial-service-2026/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/newyork-financial-service-2026/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/newyork-financial-service-2026/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://ismg.events/summit/newyork-financial-service-2026/ matched_fields=none",
+          "source_url": "https://ismg.events/summit/newyork-financial-service-2026/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://ismg.events/summit/newyork-financial-service-2026/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "8073193f-807d-44db-b95e-1a72edd358be",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Information Security | BNY",
+      "source_url": "https://www.bny.com/corporate/global/en/about-us/trust-center/information-security.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/trust-center/information-security.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/trust-center/information-security.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/trust-center/information-security.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/trust-center/information-security.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.bny.com/corporate/global/en/about-us/trust-center/information-security.html matched_fields=none",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/trust-center/information-security.html",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.bny.com/corporate/global/en/about-us/trust-center/information-security.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "f2c17aa1-bc11-4dcc-9958-c7243b5df154",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Chief Information Security Officer - Amalgamated Bank - LinkedIn",
+      "source_url": "https://www.linkedin.com/jobs/view/chief-information-security-officer-at-amalgamated-bank-4290981146",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/view/chief-information-security-officer-at-amalgamated-bank-4290981146",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/view/chief-information-security-officer-at-amalgamated-bank-4290981146",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/view/chief-information-security-officer-at-amalgamated-bank-4290981146",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/view/chief-information-security-officer-at-amalgamated-bank-4290981146",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/jobs/view/chief-information-security-officer-at-amalgamated-bank-4290981146 matched_fields=none",
+          "source_url": "https://www.linkedin.com/jobs/view/chief-information-security-officer-at-amalgamated-bank-4290981146",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/view/chief-information-security-officer-at-amalgamated-bank-4290981146",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "4f8337e2-169f-42f0-b225-55dbaebbc5a9",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "2025 State-of-the-Field Conference on Cyber Risk to Financial Stability - FEDERAL RESERVE BANK of NEW YORK",
+      "source_url": "https://www.newyorkfed.org/research/conference/2025/Cyber-Risk-Financial-Stability",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.newyorkfed.org/research/conference/2025/Cyber-Risk-Financial-Stability",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.newyorkfed.org/research/conference/2025/Cyber-Risk-Financial-Stability",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.newyorkfed.org/research/conference/2025/Cyber-Risk-Financial-Stability",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.newyorkfed.org/research/conference/2025/Cyber-Risk-Financial-Stability",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.newyorkfed.org/research/conference/2025/Cyber-Risk-Financial-Stability matched_fields=none",
+          "source_url": "https://www.newyorkfed.org/research/conference/2025/Cyber-Risk-Financial-Stability",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.newyorkfed.org/research/conference/2025/Cyber-Risk-Financial-Stability",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "24067661-9d1f-4e21-bd51-a24cb119cdd0",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "New York says banks are responsible for vendors' cyber risk | American Banker",
+      "source_url": "https://www.americanbanker.com/news/new-york-says-banks-are-responsible-for-vendors-cyber-risk",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.americanbanker.com/news/new-york-says-banks-are-responsible-for-vendors-cyber-risk",
+          "source_url": "https://www.americanbanker.com/news/new-york-says-banks-are-responsible-for-vendors-cyber-risk",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.americanbanker.com/news/new-york-says-banks-are-responsible-for-vendors-cyber-risk",
+          "source_url": "https://www.americanbanker.com/news/new-york-says-banks-are-responsible-for-vendors-cyber-risk",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.americanbanker.com/news/new-york-says-banks-are-responsible-for-vendors-cyber-risk",
+          "source_url": "https://www.americanbanker.com/news/new-york-says-banks-are-responsible-for-vendors-cyber-risk",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.americanbanker.com/news/new-york-says-banks-are-responsible-for-vendors-cyber-risk",
+          "source_url": "https://www.americanbanker.com/news/new-york-says-banks-are-responsible-for-vendors-cyber-risk",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.americanbanker.com/news/new-york-says-banks-are-responsible-for-vendors-cyber-risk",
+          "source_url": "https://www.americanbanker.com/news/new-york-says-banks-are-responsible-for-vendors-cyber-risk",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.americanbanker.com/news/new-york-says-banks-are-responsible-for-vendors-cyber-risk",
+          "source_url": "https://www.americanbanker.com/news/new-york-says-banks-are-responsible-for-vendors-cyber-risk",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "ce47f8f9-dc40-4201-a9d6-03449854de02",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Chief Information Security Officer Bank Jobs, Employment | Indeed",
+      "source_url": "https://www.indeed.com/q-chief-information-security-officer-bank-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-chief-information-security-officer-bank-jobs.html",
+          "source_url": "https://www.indeed.com/q-chief-information-security-officer-bank-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-chief-information-security-officer-bank-jobs.html",
+          "source_url": "https://www.indeed.com/q-chief-information-security-officer-bank-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-chief-information-security-officer-bank-jobs.html",
+          "source_url": "https://www.indeed.com/q-chief-information-security-officer-bank-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-chief-information-security-officer-bank-jobs.html",
+          "source_url": "https://www.indeed.com/q-chief-information-security-officer-bank-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-chief-information-security-officer-bank-jobs.html",
+          "source_url": "https://www.indeed.com/q-chief-information-security-officer-bank-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-chief-information-security-officer-bank-jobs.html",
+          "source_url": "https://www.indeed.com/q-chief-information-security-officer-bank-jobs.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "52c3758a-93d4-4be7-833e-65635e647ef0",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "136 Chief information security officer bank jobs in United States",
+      "source_url": "https://www.glassdoor.com/Job/chief-information-security-officer-bank-jobs-SRCH_KO0,39.htm",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/chief-information-security-officer-bank-jobs-SRCH_KO0,39.htm",
+          "source_url": "https://www.glassdoor.com/Job/chief-information-security-officer-bank-jobs-SRCH_KO0,39.htm",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/chief-information-security-officer-bank-jobs-SRCH_KO0,39.htm",
+          "source_url": "https://www.glassdoor.com/Job/chief-information-security-officer-bank-jobs-SRCH_KO0,39.htm",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/chief-information-security-officer-bank-jobs-SRCH_KO0,39.htm",
+          "source_url": "https://www.glassdoor.com/Job/chief-information-security-officer-bank-jobs-SRCH_KO0,39.htm",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/chief-information-security-officer-bank-jobs-SRCH_KO0,39.htm",
+          "source_url": "https://www.glassdoor.com/Job/chief-information-security-officer-bank-jobs-SRCH_KO0,39.htm",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.glassdoor.com/Job/chief-information-security-officer-bank-jobs-SRCH_KO0,39.htm",
+          "source_url": "https://www.glassdoor.com/Job/chief-information-security-officer-bank-jobs-SRCH_KO0,39.htm",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:21:26Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/chief-information-security-officer-bank-jobs-SRCH_KO0,39.htm",
+          "source_url": "https://www.glassdoor.com/Job/chief-information-security-officer-bank-jobs-SRCH_KO0,39.htm",
+          "status": "missing"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 168.49,
+    "estimated_cost_usd": 0.419605,
+    "funnel_counts": {
+      "categorized_rows": 50,
+      "contact_evidence_candidates_searched": 8,
+      "contact_evidence_conflicting_signals": 1,
+      "contact_evidence_contacts_acquired": 0,
+      "contact_evidence_field_corroborations": 14,
+      "contact_evidence_review_to_high_trust": 0,
+      "contact_evidence_searches": 29,
+      "contact_quality_passes": 0,
+      "deduped_sources": 140,
+      "extracted_candidates": 10,
+      "high_trust_usable_rows": 0,
+      "person_rows": 6,
+      "persona_supported_rows": 4,
+      "raw_vendor_hits": 206,
+      "source_snapshots": 140,
+      "source_supported_rows": 9
+    },
+    "funnel_notes": [
+      "Deduped 206 raw vendor hits to 140 unique sources.",
+      "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+      "No returned row has verified or source-backed deduced contact evidence.",
+      "Deep contact evidence pass searched 8 promising rows and acquired 0 source-backed contacts; 0 rows gained enough contact evidence to clear the READY gate.",
+      "Deep contact evidence pass observed 14 field corroborations and 1 conflicting signals across public-web sources.",
+      "Contact evidence pass checked 1 organization-only rows for staff/contact sources."
+    ],
+    "input_tokens": 56725,
+    "openai_web_searches": 0,
+    "output_tokens": 1827,
+    "tavily_searches": 41,
+    "tier_distribution": {
+      "failed": 42,
+      "high_trust_usable": 0,
+      "not_found": 0,
+      "organization_only": 2,
+      "review": 6
+    }
+  },
+  "mode": "scout",
+  "persistence_readback": {
+    "candidate_category_distribution": {
+      "failed": 42,
+      "organization_only": 2,
+      "person_lead": 6
+    },
+    "db_readback_row_count": 50,
+    "exportable_row_count": 50,
+    "first_db_lead_ids": [
+      "cd99d945-74d3-4b64-bb44-479980971f28",
+      "90fa3583-ba3c-4fe4-a8bd-0edc0dc89dd4",
+      "b4aa1af3-37e4-4521-b238-322dc199de2a",
+      "509eaf99-4bf5-458e-95dc-66906eda4d23",
+      "85e4e6ac-3f04-4658-9d6d-3093dd6e0f4e"
+    ],
+    "first_response_lead_ids": [
+      "cd99d945-74d3-4b64-bb44-479980971f28",
+      "90fa3583-ba3c-4fe4-a8bd-0edc0dc89dd4",
+      "b4aa1af3-37e4-4521-b238-322dc199de2a",
+      "509eaf99-4bf5-458e-95dc-66906eda4d23",
+      "85e4e6ac-3f04-4658-9d6d-3093dd6e0f4e"
+    ],
+    "persisted_lead_count": 50,
+    "recipe_id": "132bb0f5-6f7b-4053-b1e4-800cc9370fb1",
+    "response_row_count": 50,
+    "row_count_matches": true,
+    "run_id": "17202745-77fe-4729-96b3-1eeb5fe7943f",
+    "tier_distribution": {
+      "failed": 42,
+      "organization_only": 2,
+      "review": 6
+    }
+  },
+  "prompt_label": "Finance CISOs in New York",
+  "query": "finance CISOs at financial services firms in New York",
+  "query_guardrail": null,
+  "recipe_id": "132bb0f5-6f7b-4053-b1e4-800cc9370fb1",
+  "run_id": "17202745-77fe-4729-96b3-1eeb5fe7943f",
+  "runner_elapsed_seconds": 170.904,
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 6,
+    "remaining_rows": 842,
+    "reset_at": "2026-05-25T22:12:50.168118+00:00",
+    "total_queries": 4,
+    "total_rows": 158
+  }
+}

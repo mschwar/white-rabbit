@@ -1,0 +1,86 @@
+{
+  "baseline_artifact": "audits/raw/reset-2026-05-10/rg6/post-remediation-stable-rerun-2026-05-24/sampled-precision-required-suite.json",
+  "new_artifact": "audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25-direct/sampled-precision-required-suite.json",
+  "overall": {
+    "after": {
+      "contact_support_precision": 0.146,
+      "fake_email_count": 0,
+      "green_precision_floor_met": false,
+      "organization_precision": 0.562,
+      "persona_precision": 0.25,
+      "sampled_row_count": 48,
+      "source_support_precision": 0.604,
+      "unsupported_email_count": 0
+    },
+    "before": {
+      "contact_support_precision": 0.184,
+      "fake_email_count": 0,
+      "green_precision_floor_met": false,
+      "organization_precision": 0.421,
+      "persona_precision": 0.158,
+      "sampled_row_count": 38,
+      "source_support_precision": 0.447,
+      "unsupported_email_count": 0
+    },
+    "delta": {
+      "contact_support_precision": -0.038,
+      "organization_precision": 0.141,
+      "persona_precision": 0.092,
+      "source_support_precision": 0.157
+    }
+  },
+  "subsets": {
+    "arizona": {
+      "after": {
+        "contact_support_precision": 0.375,
+        "fake_email_count": 0,
+        "organization_precision": 0.75,
+        "persona_precision": 0.5,
+        "sampled_row_count": 8,
+        "source_support_precision": 0.75,
+        "unsupported_email_count": 0
+      },
+      "before": {
+        "contact_support_precision": 0.25,
+        "fake_email_count": 0,
+        "organization_precision": 0.625,
+        "persona_precision": 0.25,
+        "sampled_row_count": 8,
+        "source_support_precision": 0.625,
+        "unsupported_email_count": 0
+      },
+      "delta": {
+        "contact_support_precision": 0.125,
+        "organization_precision": 0.125,
+        "persona_precision": 0.25,
+        "source_support_precision": 0.125
+      }
+    },
+    "required_suite_rest": {
+      "after": {
+        "contact_support_precision": 0.1,
+        "fake_email_count": 0,
+        "organization_precision": 0.525,
+        "persona_precision": 0.2,
+        "sampled_row_count": 40,
+        "source_support_precision": 0.575,
+        "unsupported_email_count": 0
+      },
+      "before": {
+        "contact_support_precision": 0.167,
+        "fake_email_count": 0,
+        "organization_precision": 0.367,
+        "persona_precision": 0.133,
+        "sampled_row_count": 30,
+        "source_support_precision": 0.4,
+        "unsupported_email_count": 0
+      },
+      "delta": {
+        "contact_support_precision": -0.067,
+        "organization_precision": 0.158,
+        "persona_precision": 0.067,
+        "source_support_precision": 0.175
+      }
+    }
+  }
+}

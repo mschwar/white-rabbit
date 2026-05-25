@@ -1,0 +1,19 @@
+{
+  "api_base_url": "https://white-rabbit-api.fly.dev",
+  "attempts": [
+    {
+      "elapsed_seconds": 0.165,
+      "ok": true,
+      "status_code": 200
+    }
+  ],
+  "elapsed_seconds": 2.788,
+  "failure_path": null,
+  "health_ok": true,
+  "health_path": "../../audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25-direct/startup/health.json",
+  "health_status_path": "../../audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25-direct/startup/health.http",
+  "readiness_error_code": null,
+  "readiness_path": "../../audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25-direct/startup/readiness.json",
+  "readiness_status": "ready",
+  "readiness_status_path": "../../audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25-direct/startup/readiness.http"
+}

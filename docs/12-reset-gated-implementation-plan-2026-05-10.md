@@ -5,10 +5,10 @@
 **Integration branch:** `main`.
 **Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
-**Current reset gate:** RG6 - Dogfood / Kill Decision remains held/product-red. Prompt C accepted the R15 red-hold recommendation; Matt authorized fresh production evidence on 2026-05-22; the Matt-directed lead-quality/contact-yield remediation merged to `main`; the 2026-05-24 post-remediation Prompt C re-audit kept RG6 held/product-red; and the later unblocked remediation recheck improved runtime/contact/timed-export evidence but still did not clear RG6.
-**Next Prompt A feature:** None. No public SaaS/account/billing work or yellow/green claim is unlocked. Any next work must be a Matt-authorized narrow red-remediation step for source strategy, Arizona 6-of-8 named-account quality, broad sampled precision, and missing complete required-suite artifacts.
+**Current reset gate:** RG6 - Dogfood / Kill Decision remains held/product-red. Prompt C accepted the R15 red-hold recommendation; Matt authorized fresh production evidence on 2026-05-22; the Matt-directed lead-quality/contact-yield remediation merged to `main`; the 2026-05-24 post-remediation Prompt C re-audit kept RG6 held/product-red; the later unblocked remediation recheck improved runtime/contact/timed-export evidence but still did not clear RG6; and RG6R3 improved Arizona source/persona/org precision without clearing the gate.
+**Next Prompt A feature:** `RG6R4 - required-suite contact precision and web-boundary follow-up` on `fix/rg6r4-required-suite-contact-precision`. This is a narrow same-gate red-remediation slice under the restored two-prompt A/B rhythm. No public SaaS/account/billing work or yellow/green claim is unlocked.
 **Current Prompt B handoff:** None.
-**Current Prompt C handoff:** Complete. Re-audit report: `audits/gates/reset-2026-05-10/rg6-post-remediation-re-audit.md`. Follow-up recheck report: `audits/gates/reset-2026-05-10/rg6-unblocked-remediation-recheck.md`. Fresh sanitized artifacts: `audits/raw/reset-2026-05-10/rg6/post-remediation-stable-rerun-2026-05-24/`.
+**Current Prompt C handoff:** None until Matt asks for a gate-level RG6 decision. Re-audit report: `audits/gates/reset-2026-05-10/rg6-post-remediation-re-audit.md`. Follow-up recheck report: `audits/gates/reset-2026-05-10/rg6-unblocked-remediation-recheck.md`. Fresh RG6R3 direct evidence: `audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25-direct/`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -255,6 +255,8 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R15 | Internal correction review and dogfood decision packet | merged_to_mainline | `feat/reset-r15-dogfood-decision-packet` | docs/report QA |
 | RG6R1 | Lead quality, contact yield, sampled precision, and operator-minute remediation | merged_to_mainline | `fix/rg6-lead-quality-contact-yield` | core/API/web + browser |
 | RG6R2 | Unblocked remediation recheck and source/runtime follow-up | gate_hold | `audit/reset-rg6-post-remediation` | production/runtime + saved suite + browser QA |
+| RG6R3 | Arizona official-domain source targeting and citation enforcement | merged_to_mainline | `fix/rg6r3-arizona-source-targeting` | core + direct live artifacts |
+| RG6R4 | Required-suite contact precision and web-boundary follow-up | ready | `fix/rg6r4-required-suite-contact-precision` | core/API + live evidence |
 
 ## RG0 - W5 Hold And Control Reset
 
@@ -1269,6 +1271,7 @@ RG5 Prompt C result:
 Features:
 
 - R15 - Internal correction review and dogfood decision packet.
+- RG6R1/RG6R2/RG6R3/RG6R4 - Matt-directed narrow red-remediation slices while the gate remains held.
 
 Goal:
 Decide whether White Rabbit v2 earns Matt-only yellow evaluation, Thomas/Lee dogfood, or a pause.
@@ -1375,6 +1378,21 @@ RG6 unblocked remediation recheck:
 - Remaining blockers: Arizona still does not prove 6-of-8 named-account quality; sampled precision is persona `0.158`, organization `0.421`, source `0.447`, contact `0.184`; required-suite summary is still 2/6 passed; healthcare/finance have zero contact-quality passes; manufacturing still has no valid current product artifact; browser QA is mocked and does not prove live lead quality.
 - Verification passed: `packages/core` full suite (`169 passed, 6 skipped`), `apps/api` suite (`57 passed`, existing datetime warnings), `apps/web` Vitest (`15 files`, `37 tests`), `apps/web` production build, Playwright production-mode smoke (`2 passed`) with screenshots under `audits/raw/reset-2026-05-10/rg6/browser-qa-2026-05-24/`, Fly deploy, and post-deploy runtime checks.
 - Queue consequence: no downstream Prompt A/B/C is valid. The next valid work, if Matt explicitly authorizes it, must focus on source strategy and broad precision. Public SaaS/accounts/orgs/billing, yellow/green promotion, and Thomas/Lee dogfood expansion remain blocked.
+
+RG6R3 Arizona source strategy remediation Prompt B result:
+
+- Plan: `docs/14-narrow-arizona-source-strategy-remediation-plan.md`.
+- Branch: `fix/rg6r3-arizona-source-targeting`.
+- Status: `merged_to_mainline` after Prompt B QA and merge to `main`.
+- QA report: `.gstack/qa-reports/qa-report-rg6r3-arizona-source-remediation-2026-05-25.md`.
+- Direct live evidence: `audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25-direct/`.
+- Failed web-boundary collector evidence retained separately: `audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25/`.
+- What changed: Arizona official-domain source targeting and source-map coverage improved for the 8 named districts, and citation grounding tests were added in core. No UI, API route, auth, export-column, recipe, batch, scoreboard, public SaaS, account, org, billing, dogfood, or `proxy-lead` scope landed.
+- Verification passed: `cd packages/core && PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 uv run pytest tests -q` (`174 passed, 6 skipped`); `cd packages/core && PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 uv run pytest tests/test_arizona_k12_benchmark.py -q --tb=line` (`5 passed, 1 skipped`); direct protected Fly API live suite completed with 5 product HTTP 200 cases and privacy refusal HTTP 422.
+- Evidence result: Arizona returned HTTP 200 with 8 rows, 8/8 expected targets represented, 6/8 source-backed person or explicit blocker rows, 2 high-trust usable rows, 3 contact-quality passes, readback 200, close 200, and `operator_minutes=3.034`.
+- Sampled precision delta: Arizona-only persona `0.250 -> 0.500`, organization `0.625 -> 0.750`, source `0.625 -> 0.750`, contact `0.250 -> 0.375`; overall required-suite persona `0.158 -> 0.250`, organization `0.421 -> 0.562`, source `0.447 -> 0.604`, contact `0.184 -> 0.146`.
+- Remaining blockers: RG6 remains product-red; Arizona still has only 2 high-trust usable rows; the sampled packet remains below the 70% floor; required-suite contact support regressed; the separate web-boundary collector attempt returned 401 for `/api/scout` and `/api/source-assisted-proof`.
+- Queue consequence: normal two-prompt A/B rhythm is restored under the same RG6 red-remediation authorization. `RG6R4 - required-suite contact precision and web-boundary follow-up` is the single ready Prompt A feature on `fix/rg6r4-required-suite-contact-precision`. No Prompt C is required until Matt decides the narrow remediation tranche is complete and asks for a gate-level RG6 decision.
 
 ## Status Rules
 

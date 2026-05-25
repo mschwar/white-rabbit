@@ -1,0 +1,62 @@
+{
+  "after": {
+    "body": {
+      "error": "Unauthorized"
+    },
+    "final_url": "https://white-rabbit-ten.vercel.app/api/sandbox",
+    "headers": {
+      "Cache-Control": "public, max-age=0, must-revalidate",
+      "Connection": "close",
+      "Content-Type": "application/json",
+      "Date": "Mon, 25 May 2026 22:10:54 GMT",
+      "Server": "Vercel",
+      "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+      "Transfer-Encoding": "chunked",
+      "X-Vercel-Id": "sfo1::f9hvc-[REDACTED_PHONE]62-09850b3db9aa"
+    },
+    "method": "GET",
+    "seconds": 0.177,
+    "status": 401,
+    "url": "https://white-rabbit-ten.vercel.app/api/sandbox"
+  },
+  "before": {
+    "body": {
+      "error": "Unauthorized"
+    },
+    "final_url": "https://white-rabbit-ten.vercel.app/api/sandbox",
+    "headers": {
+      "Cache-Control": "public, max-age=0, must-revalidate",
+      "Connection": "close",
+      "Content-Type": "application/json",
+      "Date": "Mon, 25 May 2026 22:10:54 GMT",
+      "Server": "Vercel",
+      "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+      "Transfer-Encoding": "chunked",
+      "X-Vercel-Id": "sfo1::p79c4-[REDACTED_PHONE]03-e30dbb76e876"
+    },
+    "method": "GET",
+    "seconds": 0.203,
+    "status": 401,
+    "url": "https://white-rabbit-ten.vercel.app/api/sandbox"
+  },
+  "reset": {
+    "body": {
+      "error": "Unauthorized"
+    },
+    "final_url": "https://white-rabbit-ten.vercel.app/api/sandbox",
+    "headers": {
+      "Cache-Control": "public, max-age=0, must-revalidate",
+      "Connection": "close",
+      "Content-Type": "application/json",
+      "Date": "Mon, 25 May 2026 22:10:54 GMT",
+      "Server": "Vercel",
+      "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+      "Transfer-Encoding": "chunked",
+      "X-Vercel-Id": "sfo1::mwtdl-[REDACTED_PHONE]82-45ec0e3d265a"
+    },
+    "method": "POST",
+    "seconds": 0.18,
+    "status": 401,
+    "url": "https://white-rabbit-ten.vercel.app/api/sandbox"
+  }
+}

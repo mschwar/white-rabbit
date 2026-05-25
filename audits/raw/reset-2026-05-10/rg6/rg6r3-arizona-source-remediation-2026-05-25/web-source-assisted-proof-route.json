@@ -1,0 +1,20 @@
+{
+  "body": {
+    "error": "Unauthorized"
+  },
+  "final_url": "https://white-rabbit-ten.vercel.app/api/source-assisted-proof",
+  "headers": {
+    "Cache-Control": "public, max-age=0, must-revalidate",
+    "Connection": "close",
+    "Content-Type": "application/json",
+    "Date": "Mon, 25 May 2026 22:10:55 GMT",
+    "Server": "Vercel",
+    "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+    "Transfer-Encoding": "chunked",
+    "X-Vercel-Id": "sfo1::xfcl6-[REDACTED_PHONE]49-05f58cbc037d"
+  },
+  "method": "POST",
+  "seconds": 0.191,
+  "status": 401,
+  "url": "https://white-rabbit-ten.vercel.app/api/source-assisted-proof"
+}

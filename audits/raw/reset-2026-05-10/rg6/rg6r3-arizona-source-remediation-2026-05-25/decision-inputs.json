@@ -1,0 +1,237 @@
+{
+  "arizona_scout_summary": {
+    "benchmark_id": "thomas-arizona-k12",
+    "candidate_category_distribution": {},
+    "contact_quality_passes": 0,
+    "high_trust_usable_with_contact_evidence": 0,
+    "metrics": null,
+    "operator_label_distribution": {
+      "NOT FOUND": 0,
+      "ORG-ONLY": 0,
+      "READY": 0,
+      "REVIEW": 0
+    },
+    "persistence_readback": null,
+    "query_guardrail": null,
+    "recipe_id": null,
+    "row_count": 0,
+    "run_id": null,
+    "sandbox_usage": null,
+    "seconds": 0.167,
+    "status": 401,
+    "tier_distribution": {}
+  },
+  "collected_at": "2026-05-25T22:10:49.904712Z",
+  "direct_api": {
+    "health_status": 200,
+    "readiness_body_status": "ready",
+    "readiness_status": 200,
+    "tokenless_scout_status": 401
+  },
+  "required_suite": {
+    "case_summaries": {
+      "finance-cisos-new-york": {
+        "benchmark_id": "finance-cisos-new-york",
+        "candidate_category_distribution": {},
+        "contact_quality_passes": 0,
+        "high_trust_usable_with_contact_evidence": 0,
+        "metrics": null,
+        "operator_label_distribution": {
+          "NOT FOUND": 0,
+          "ORG-ONLY": 0,
+          "READY": 0,
+          "REVIEW": 0
+        },
+        "persistence_readback": null,
+        "query_guardrail": null,
+        "recipe_id": null,
+        "row_count": 0,
+        "run_id": null,
+        "sandbox_usage": null,
+        "seconds": 0.19,
+        "status": 401,
+        "tier_distribution": {}
+      },
+      "healthcare-it-phoenix": {
+        "benchmark_id": "healthcare-it-phoenix",
+        "candidate_category_distribution": {},
+        "contact_quality_passes": 0,
+        "high_trust_usable_with_contact_evidence": 0,
+        "metrics": null,
+        "operator_label_distribution": {
+          "NOT FOUND": 0,
+          "ORG-ONLY": 0,
+          "READY": 0,
+          "REVIEW": 0
+        },
+        "persistence_readback": null,
+        "query_guardrail": null,
+        "recipe_id": null,
+        "row_count": 0,
+        "run_id": null,
+        "sandbox_usage": null,
+        "seconds": 0.186,
+        "status": 401,
+        "tier_distribution": {}
+      },
+      "lee-commodity-buyers": {
+        "benchmark_id": "lee-commodity-buyers",
+        "candidate_category_distribution": {},
+        "contact_quality_passes": 0,
+        "high_trust_usable_with_contact_evidence": 0,
+        "metrics": null,
+        "operator_label_distribution": {
+          "NOT FOUND": 0,
+          "ORG-ONLY": 0,
+          "READY": 0,
+          "REVIEW": 0
+        },
+        "persistence_readback": null,
+        "query_guardrail": null,
+        "recipe_id": null,
+        "row_count": 0,
+        "run_id": null,
+        "sandbox_usage": null,
+        "seconds": 0.191,
+        "status": 401,
+        "tier_distribution": {}
+      },
+      "manufacturing-ops-detroit": {
+        "benchmark_id": "manufacturing-ops-detroit",
+        "candidate_category_distribution": {},
+        "contact_quality_passes": 0,
+        "high_trust_usable_with_contact_evidence": 0,
+        "metrics": null,
+        "operator_label_distribution": {
+          "NOT FOUND": 0,
+          "ORG-ONLY": 0,
+          "READY": 0,
+          "REVIEW": 0
+        },
+        "persistence_readback": null,
+        "query_guardrail": null,
+        "recipe_id": null,
+        "row_count": 0,
+        "run_id": null,
+        "sandbox_usage": null,
+        "seconds": 0.186,
+        "status": 401,
+        "tier_distribution": {}
+      },
+      "privacy-reject-homeowner-phones": {
+        "benchmark_id": "privacy-reject-homeowner-phones",
+        "candidate_category_distribution": {},
+        "contact_quality_passes": 0,
+        "high_trust_usable_with_contact_evidence": 0,
+        "metrics": null,
+        "operator_label_distribution": {
+          "NOT FOUND": 0,
+          "ORG-ONLY": 0,
+          "READY": 0,
+          "REVIEW": 0
+        },
+        "persistence_readback": null,
+        "query_guardrail": null,
+        "recipe_id": null,
+        "row_count": 0,
+        "run_id": null,
+        "sandbox_usage": null,
+        "seconds": 0.2,
+        "status": 401,
+        "tier_distribution": {}
+      },
+      "thomas-arizona-k12": {
+        "benchmark_id": "thomas-arizona-k12",
+        "candidate_category_distribution": {},
+        "contact_quality_passes": 0,
+        "high_trust_usable_with_contact_evidence": 0,
+        "metrics": null,
+        "operator_label_distribution": {
+          "NOT FOUND": 0,
+          "ORG-ONLY": 0,
+          "READY": 0,
+          "REVIEW": 0
+        },
+        "persistence_readback": null,
+        "query_guardrail": null,
+        "recipe_id": null,
+        "row_count": 0,
+        "run_id": null,
+        "sandbox_usage": null,
+        "seconds": 0.167,
+        "status": 401,
+        "tier_distribution": {}
+      }
+    },
+    "contact_pass_cases": 0,
+    "failed_cases": 5,
+    "guardrail_mismatches": [],
+    "observation_mismatches": [
+      "thomas-arizona-k12: coverage, volume",
+      "lee-commodity-buyers: volume",
+      "healthcare-it-phoenix: persona, contact, source, volume",
+      "finance-cisos-new-york: persona, contact, source, volume",
+      "manufacturing-ops-detroit: persona, contact, source, volume"
+    ],
+    "passed_cases": 1,
+    "persona_pass_cases": 0,
+    "privacy_refusal_cases": 1,
+    "source_pass_cases": 0,
+    "suite_id": "required_lead_quality_suite",
+    "total_cases": 6
+  },
+  "sandbox_after": {
+    "error": "Unauthorized"
+  },
+  "sandbox_reset_status": 401,
+  "timed_query_to_export": {
+    "benchmark_id": "thomas-arizona-k12",
+    "close_status": null,
+    "collected_at": "2026-05-25T22:10:49.904712Z",
+    "export": {
+      "headers": [
+        "lead_name",
+        "title",
+        "organization",
+        "email",
+        "email_status",
+        "phone",
+        "phone_status",
+        "usable_candidate",
+        "operator_label",
+        "candidate_category",
+        "rank",
+        "query",
+        "run_id",
+        "fit_score",
+        "evidence_score",
+        "contact_score",
+        "ranking_gate",
+        "source_name_url",
+        "source_title_url",
+        "source_org_url",
+        "source_email_url",
+        "source_phone_url",
+        "source_access_status",
+        "validation_notes",
+        "checked_at",
+        "location",
+        "recipe_name",
+        "sort_mode",
+        "generated_at"
+      ],
+      "path": "audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25/timed-query-to-export.csv",
+      "row_count": 0
+    },
+    "operator_flow": "no-assistance scripted primary query-to-export production flow: authenticated web /api/scout -> persisted readback -> CSV materialization -> /api/runs/{run_id}/close",
+    "operator_minutes": 0.003,
+    "readback_status": null,
+    "run_id": null,
+    "scout_seconds": 0.167
+  },
+  "web": {
+    "authenticated_home_status": 200,
+    "login_status": 200,
+    "source_assisted_route_status": 401
+  }
+}

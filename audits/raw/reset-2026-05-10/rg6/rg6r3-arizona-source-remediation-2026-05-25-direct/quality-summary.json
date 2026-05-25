@@ -1,0 +1,3667 @@
+{
+  "case_summaries": {
+    "finance-cisos-new-york": {
+      "candidate_ready_blockers": [
+        {
+          "blocker": "no_contact_source",
+          "candidate_category": "person_lead",
+          "index": 0,
+          "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+          "tier": "review"
+        },
+        {
+          "blocker": "no_contact_source",
+          "candidate_category": "person_lead",
+          "index": 1,
+          "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+          "tier": "review"
+        },
+        {
+          "blocker": "no_contact_source",
+          "candidate_category": "person_lead",
+          "index": 2,
+          "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+          "tier": "review"
+        },
+        {
+          "blocker": "no_contact_source",
+          "candidate_category": "person_lead",
+          "index": 3,
+          "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+          "tier": "review"
+        },
+        {
+          "blocker": "no_contact_source",
+          "candidate_category": "person_lead",
+          "index": 4,
+          "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+          "tier": "review"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 5,
+          "reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://ciso-fs.coriniumintelligence.com matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content. | Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content. | Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "no_contact_source",
+          "candidate_category": "person_lead",
+          "index": 6,
+          "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+          "tier": "review"
+        },
+        {
+          "blocker": "organization_only",
+          "candidate_category": "organization_only",
+          "index": 7,
+          "reason": "ORG-ONLY: account found, but no validated person is CRM-ready. No individual contact was validated for Wells Fargo.",
+          "tier": "organization_only"
+        },
+        {
+          "blocker": "organization_only",
+          "candidate_category": "organization_only",
+          "index": 8,
+          "reason": "ORG-ONLY: account found, but no validated person is CRM-ready. No individual contact was validated for HSBC.",
+          "tier": "organization_only"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 9,
+          "reason": "REVIEW: rejected row; no hidden usable lead is implied. Insufficient details for a valid candidate.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 10,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 11,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 12,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 13,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 14,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 15,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 16,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 17,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 18,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 19,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 20,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 21,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 22,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 23,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 24,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 25,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 26,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 27,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 28,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 29,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 30,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 31,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 32,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 33,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 34,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 35,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 36,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 37,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 38,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 39,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 40,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 41,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 42,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 43,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 44,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 45,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 46,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 47,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 48,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 49,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        }
+      ],
+      "categorized_row_count": 50,
+      "error_code": null,
+      "escape_velocity_floor_met": true,
+      "expected_target_coverage_count": 0,
+      "expected_target_coverage_missing": [],
+      "failed_count": 42,
+      "funnel_counts": {
+        "categorized_rows": 50,
+        "contact_evidence_candidates_searched": 8,
+        "contact_evidence_conflicting_signals": 1,
+        "contact_evidence_contacts_acquired": 0,
+        "contact_evidence_field_corroborations": 14,
+        "contact_evidence_review_to_high_trust": 0,
+        "contact_evidence_searches": 29,
+        "contact_quality_passes": 0,
+        "deduped_sources": 140,
+        "extracted_candidates": 10,
+        "high_trust_usable_rows": 0,
+        "person_rows": 6,
+        "persona_supported_rows": 4,
+        "raw_vendor_hits": 206,
+        "source_snapshots": 140,
+        "source_supported_rows": 9
+      },
+      "guardrail_status": "clear",
+      "high_trust_usable_count": 0,
+      "high_volume_floor_met": true,
+      "http_status": 200,
+      "minimum_escape_rows": 10,
+      "not_found_count": 0,
+      "organization_only_count": 2,
+      "person_lead_count": 6,
+      "privacy_refusal": false,
+      "quality_report": {
+        "artifact_id": "finance-cisos-new-york",
+        "artifact_kind": "benchmark",
+        "candidate_category_counts": {
+          "failed": 42,
+          "not_found": 0,
+          "organization_only": 2,
+          "person_lead": 6
+        },
+        "candidate_ready_blockers": [
+          {
+            "blocker": "no_contact_source",
+            "candidate_category": "person_lead",
+            "index": 0,
+            "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+            "tier": "review"
+          },
+          {
+            "blocker": "no_contact_source",
+            "candidate_category": "person_lead",
+            "index": 1,
+            "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+            "tier": "review"
+          },
+          {
+            "blocker": "no_contact_source",
+            "candidate_category": "person_lead",
+            "index": 2,
+            "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+            "tier": "review"
+          },
+          {
+            "blocker": "no_contact_source",
+            "candidate_category": "person_lead",
+            "index": 3,
+            "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+            "tier": "review"
+          },
+          {
+            "blocker": "no_contact_source",
+            "candidate_category": "person_lead",
+            "index": 4,
+            "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+            "tier": "review"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 5,
+            "reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://ciso-fs.coriniumintelligence.com matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content. | Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content. | Possible stale role signal on https://ciso-fs.coriniumintelligence.com/ciso-financial-services-content.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "no_contact_source",
+            "candidate_category": "person_lead",
+            "index": 6,
+            "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+            "tier": "review"
+          },
+          {
+            "blocker": "organization_only",
+            "candidate_category": "organization_only",
+            "index": 7,
+            "reason": "ORG-ONLY: account found, but no validated person is CRM-ready. No individual contact was validated for Wells Fargo.",
+            "tier": "organization_only"
+          },
+          {
+            "blocker": "organization_only",
+            "candidate_category": "organization_only",
+            "index": 8,
+            "reason": "ORG-ONLY: account found, but no validated person is CRM-ready. No individual contact was validated for HSBC.",
+            "tier": "organization_only"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 9,
+            "reason": "REVIEW: rejected row; no hidden usable lead is implied. Insufficient details for a valid candidate.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 10,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 11,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 12,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 13,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 14,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 15,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 16,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 17,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 18,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 19,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 20,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 21,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 22,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 23,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 24,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 25,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 26,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 27,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 28,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 29,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 30,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 31,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 32,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 33,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 34,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 35,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 36,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 37,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 38,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 39,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 40,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 41,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 42,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 43,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 44,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 45,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 46,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 47,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 48,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 49,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          }
+        ],
+        "contact_quality_count": 0,
+        "contact_quality_rate": 0.0,
+        "failed_count": 42,
+        "fake_email_count": 0,
+        "high_noise_count": 44,
+        "high_noise_rate": 0.88,
+        "not_found_count": 0,
+        "organization_only_count": 2,
+        "person_lead_count": 6,
+        "persona_match_count": 4,
+        "persona_match_rate": 0.08,
+        "precision_rate": 0.0,
+        "quality_gate_failures": [
+          "zero_usable_candidates",
+          "low_precision_rate",
+          "low_persona_match_rate",
+          "low_contact_quality_rate",
+          "low_source_support_rate",
+          "high_noise_rate"
+        ],
+        "quality_gate_passed": false,
+        "quality_gate_thresholds": {
+          "maximum_fake_email_count": 0,
+          "maximum_high_noise_rate": 0.4,
+          "maximum_unsupported_email_count": 0,
+          "minimum_contact_quality_rate": 0.5,
+          "minimum_persona_match_rate": 0.5,
+          "minimum_precision_rate": 0.5,
+          "minimum_source_support_rate": 0.5,
+          "minimum_usable_count": 1
+        },
+        "query": "finance CISOs at financial services firms in New York",
+        "ready_blocker_counts": {
+          "conflicting_evidence": 29,
+          "no_contact_source": 6,
+          "organization_only": 2,
+          "source_inaccessible": 13
+        },
+        "source_support_count": 9,
+        "source_support_rate": 0.18,
+        "total_candidates": 50,
+        "unsupported_email_count": 0,
+        "usable_count": 0,
+        "validation_status_counts": {
+          "email": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 50,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "name": {
+            "failed": 0,
+            "missing": 43,
+            "supported": 7,
+            "unsupported": 0
+          },
+          "organization": {
+            "failed": 1,
+            "missing": 40,
+            "supported": 7,
+            "unsupported": 2
+          },
+          "phone": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 50,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "source": {
+            "failed": 14,
+            "missing": 0,
+            "supported": 9,
+            "unsupported": 27
+          },
+          "title": {
+            "failed": 0,
+            "missing": 43,
+            "supported": 7,
+            "unsupported": 0
+          }
+        }
+      },
+      "quality_status": "evaluated",
+      "ready_blocker_counts": {
+        "conflicting_evidence": 29,
+        "no_contact_source": 6,
+        "organization_only": 2,
+        "source_inaccessible": 13
+      },
+      "review_count": 6,
+      "target_categorized_rows": 50,
+      "target_volume_floor_met": true,
+      "volume_floor_status": "target_met"
+    },
+    "healthcare-it-phoenix": {
+      "candidate_ready_blockers": [
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 0,
+          "reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://phoenixchildrens.org/about-us/leadership-team matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://phoenixchildrens.org/about-us/leadership-team.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 1,
+          "reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/ matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 2,
+          "reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://www.honorhealth.com/company/leadership matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://www.honorhealth.com/company/leadership. | Possible stale role signal on https://www.honorhealth.com/company/leadership.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "title_unsupported",
+          "candidate_category": "person_lead",
+          "index": 3,
+          "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+          "tier": "review"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "not_found",
+          "index": 4,
+          "reason": "NOT FOUND: searched target, but no acceptable contact was validated. No valid contact or lead found that clearly fits the healthcare IT director role in the Phoenix area.",
+          "tier": "not_found"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 5,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 6,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 7,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 8,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 9,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 10,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 11,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 12,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 13,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 14,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 15,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 16,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 17,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 18,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 19,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 20,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 21,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 22,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 23,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 24,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 25,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 26,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 27,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 28,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 29,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 30,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 31,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 32,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 33,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 34,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 35,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 36,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 37,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 38,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 39,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 40,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 41,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 42,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 43,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 44,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 45,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 46,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 47,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 48,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 49,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        }
+      ],
+      "categorized_row_count": 50,
+      "error_code": null,
+      "escape_velocity_floor_met": true,
+      "expected_target_coverage_count": 0,
+      "expected_target_coverage_missing": [],
+      "failed_count": 48,
+      "funnel_counts": {
+        "categorized_rows": 50,
+        "contact_evidence_candidates_searched": 4,
+        "contact_evidence_conflicting_signals": 3,
+        "contact_evidence_contacts_acquired": 0,
+        "contact_evidence_field_corroborations": 9,
+        "contact_evidence_review_to_high_trust": 0,
+        "contact_evidence_searches": 16,
+        "contact_quality_passes": 0,
+        "deduped_sources": 141,
+        "extracted_candidates": 5,
+        "high_trust_usable_rows": 0,
+        "person_rows": 1,
+        "persona_supported_rows": 0,
+        "raw_vendor_hits": 207,
+        "source_snapshots": 141,
+        "source_supported_rows": 3
+      },
+      "guardrail_status": "clear",
+      "high_trust_usable_count": 0,
+      "high_volume_floor_met": true,
+      "http_status": 200,
+      "minimum_escape_rows": 10,
+      "not_found_count": 1,
+      "organization_only_count": 0,
+      "person_lead_count": 1,
+      "privacy_refusal": false,
+      "quality_report": {
+        "artifact_id": "healthcare-it-phoenix",
+        "artifact_kind": "benchmark",
+        "candidate_category_counts": {
+          "failed": 48,
+          "not_found": 1,
+          "organization_only": 0,
+          "person_lead": 1
+        },
+        "candidate_ready_blockers": [
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 0,
+            "reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://phoenixchildrens.org/about-us/leadership-team matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://phoenixchildrens.org/about-us/leadership-team.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 1,
+            "reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter/ matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://www.va.gov/phoenix-health-care/staff-profiles/elijah-ditter.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 2,
+            "reason": "REVIEW: rejected row; no hidden usable lead is implied. Cross-source verification found conflicting evidence: http_status=200 resolved_url=https://www.honorhealth.com/company/leadership matched_fields=name,title,organization cross_check_conflicts=Possible stale role signal on https://www.honorhealth.com/company/leadership. | Possible stale role signal on https://www.honorhealth.com/company/leadership.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "title_unsupported",
+            "candidate_category": "person_lead",
+            "index": 3,
+            "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+            "tier": "review"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "not_found",
+            "index": 4,
+            "reason": "NOT FOUND: searched target, but no acceptable contact was validated. No valid contact or lead found that clearly fits the healthcare IT director role in the Phoenix area.",
+            "tier": "not_found"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 5,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 6,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 7,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 8,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 9,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 10,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 11,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 12,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 13,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 14,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 15,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 16,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 17,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 18,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 19,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 20,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 21,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 22,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 23,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 24,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 25,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 26,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 27,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 28,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 29,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 30,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 31,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 32,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 33,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 34,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 35,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 36,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 37,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 38,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 39,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 40,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 41,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 42,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 43,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 44,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 45,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 46,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 47,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 48,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 49,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          }
+        ],
+        "contact_quality_count": 0,
+        "contact_quality_rate": 0.0,
+        "failed_count": 48,
+        "fake_email_count": 0,
+        "high_noise_count": 48,
+        "high_noise_rate": 0.96,
+        "not_found_count": 1,
+        "organization_only_count": 0,
+        "person_lead_count": 1,
+        "persona_match_count": 0,
+        "persona_match_rate": 0.0,
+        "precision_rate": 0.0,
+        "quality_gate_failures": [
+          "zero_usable_candidates",
+          "low_precision_rate",
+          "low_persona_match_rate",
+          "low_contact_quality_rate",
+          "low_source_support_rate",
+          "high_noise_rate"
+        ],
+        "quality_gate_passed": false,
+        "quality_gate_thresholds": {
+          "maximum_fake_email_count": 0,
+          "maximum_high_noise_rate": 0.4,
+          "maximum_unsupported_email_count": 0,
+          "minimum_contact_quality_rate": 0.5,
+          "minimum_persona_match_rate": 0.5,
+          "minimum_precision_rate": 0.5,
+          "minimum_source_support_rate": 0.5,
+          "minimum_usable_count": 1
+        },
+        "query": "healthcare IT directors in Phoenix",
+        "ready_blocker_counts": {
+          "conflicting_evidence": 19,
+          "source_inaccessible": 30,
+          "title_unsupported": 1
+        },
+        "source_support_count": 3,
+        "source_support_rate": 0.06,
+        "total_candidates": 50,
+        "unsupported_email_count": 0,
+        "usable_count": 0,
+        "validation_status_counts": {
+          "email": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 50,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "name": {
+            "failed": 0,
+            "missing": 46,
+            "supported": 3,
+            "unsupported": 1
+          },
+          "organization": {
+            "failed": 0,
+            "missing": 46,
+            "supported": 3,
+            "unsupported": 1
+          },
+          "phone": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 50,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "source": {
+            "failed": 29,
+            "missing": 1,
+            "supported": 3,
+            "unsupported": 17
+          },
+          "title": {
+            "failed": 0,
+            "missing": 46,
+            "supported": 3,
+            "unsupported": 1
+          }
+        }
+      },
+      "quality_status": "evaluated",
+      "ready_blocker_counts": {
+        "conflicting_evidence": 19,
+        "source_inaccessible": 30,
+        "title_unsupported": 1
+      },
+      "review_count": 1,
+      "target_categorized_rows": 50,
+      "target_volume_floor_met": true,
+      "volume_floor_status": "target_met"
+    },
+    "lee-commodity-buyers": {
+      "candidate_ready_blockers": [
+        {
+          "blocker": "title_unsupported",
+          "candidate_category": "person_lead",
+          "index": 4,
+          "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+          "tier": "review"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 5,
+          "reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/ed-martin-3b117740",
+          "tier": "failed"
+        },
+        {
+          "blocker": "organization_only",
+          "candidate_category": "organization_only",
+          "index": 6,
+          "reason": "ORG-ONLY: account found, but no validated person is CRM-ready. While the organization is relevant, specific decision-maker information is not available.",
+          "tier": "organization_only"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 7,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 8,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 9,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 10,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 11,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 12,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 13,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 14,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 15,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 16,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 17,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 18,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 19,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 20,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 21,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 22,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 23,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 24,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 25,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 26,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 27,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 28,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 29,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 30,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 31,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 32,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 33,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 34,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 35,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 36,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 37,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 38,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 39,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 40,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 41,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 42,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 43,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 44,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 45,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 46,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 47,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 48,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 49,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        }
+      ],
+      "categorized_row_count": 50,
+      "error_code": null,
+      "escape_velocity_floor_met": true,
+      "expected_target_coverage_count": 0,
+      "expected_target_coverage_missing": [],
+      "failed_count": 44,
+      "funnel_counts": {
+        "categorized_rows": 50,
+        "contact_evidence_candidates_searched": 2,
+        "contact_evidence_conflicting_signals": 0,
+        "contact_evidence_contacts_acquired": 0,
+        "contact_evidence_field_corroborations": 1,
+        "contact_evidence_review_to_high_trust": 0,
+        "contact_evidence_searches": 5,
+        "contact_quality_passes": 4,
+        "deduped_sources": 154,
+        "extracted_candidates": 7,
+        "high_trust_usable_rows": 4,
+        "person_rows": 5,
+        "persona_supported_rows": 4,
+        "raw_vendor_hits": 204,
+        "source_snapshots": 154,
+        "source_supported_rows": 6
+      },
+      "guardrail_status": "needs_more_detail",
+      "high_trust_usable_count": 4,
+      "high_volume_floor_met": true,
+      "http_status": 200,
+      "minimum_escape_rows": 10,
+      "not_found_count": 0,
+      "organization_only_count": 1,
+      "person_lead_count": 5,
+      "privacy_refusal": false,
+      "quality_report": {
+        "artifact_id": "lee-commodity-buyers",
+        "artifact_kind": "benchmark",
+        "candidate_category_counts": {
+          "failed": 44,
+          "not_found": 0,
+          "organization_only": 1,
+          "person_lead": 5
+        },
+        "candidate_ready_blockers": [
+          {
+            "blocker": "title_unsupported",
+            "candidate_category": "person_lead",
+            "index": 4,
+            "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+            "tier": "review"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 5,
+            "reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/ed-martin-3b117740",
+            "tier": "failed"
+          },
+          {
+            "blocker": "organization_only",
+            "candidate_category": "organization_only",
+            "index": 6,
+            "reason": "ORG-ONLY: account found, but no validated person is CRM-ready. While the organization is relevant, specific decision-maker information is not available.",
+            "tier": "organization_only"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 7,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 8,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 9,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 10,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 11,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 12,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 13,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 14,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 15,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 16,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 17,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 18,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 19,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 20,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 21,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 22,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 23,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 24,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 25,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 26,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 27,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 28,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 29,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 30,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 31,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 32,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 33,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 34,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 35,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 36,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 37,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 38,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 39,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 40,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 41,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 42,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 43,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 44,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 45,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 46,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 47,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 48,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 49,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          }
+        ],
+        "contact_quality_count": 4,
+        "contact_quality_rate": 0.08,
+        "failed_count": 44,
+        "fake_email_count": 0,
+        "high_noise_count": 45,
+        "high_noise_rate": 0.9,
+        "not_found_count": 0,
+        "organization_only_count": 1,
+        "person_lead_count": 5,
+        "persona_match_count": 4,
+        "persona_match_rate": 0.08,
+        "precision_rate": 0.08,
+        "quality_gate_failures": [
+          "low_precision_rate",
+          "low_persona_match_rate",
+          "low_contact_quality_rate",
+          "low_source_support_rate",
+          "high_noise_rate"
+        ],
+        "quality_gate_passed": false,
+        "quality_gate_thresholds": {
+          "maximum_fake_email_count": 0,
+          "maximum_high_noise_rate": 0.4,
+          "maximum_unsupported_email_count": 0,
+          "minimum_contact_quality_rate": 0.5,
+          "minimum_persona_match_rate": 0.5,
+          "minimum_precision_rate": 0.5,
+          "minimum_source_support_rate": 0.5,
+          "minimum_usable_count": 1
+        },
+        "query": "commodity buyers at retail lumber yards in Washington",
+        "ready_blocker_counts": {
+          "conflicting_evidence": 20,
+          "organization_only": 1,
+          "source_inaccessible": 24,
+          "title_unsupported": 1
+        },
+        "source_support_count": 6,
+        "source_support_rate": 0.12,
+        "total_candidates": 50,
+        "unsupported_email_count": 0,
+        "usable_count": 4,
+        "validation_status_counts": {
+          "email": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 50,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "name": {
+            "failed": 1,
+            "missing": 44,
+            "supported": 5,
+            "unsupported": 0
+          },
+          "organization": {
+            "failed": 1,
+            "missing": 43,
+            "supported": 6,
+            "unsupported": 0
+          },
+          "phone": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 46,
+            "unsupported": 0,
+            "verified_found": 4
+          },
+          "source": {
+            "failed": 24,
+            "missing": 0,
+            "supported": 6,
+            "unsupported": 20
+          },
+          "title": {
+            "failed": 1,
+            "missing": 44,
+            "supported": 4,
+            "unsupported": 1
+          }
+        }
+      },
+      "quality_status": "evaluated",
+      "ready_blocker_counts": {
+        "conflicting_evidence": 20,
+        "organization_only": 1,
+        "source_inaccessible": 24,
+        "title_unsupported": 1
+      },
+      "review_count": 1,
+      "target_categorized_rows": 50,
+      "target_volume_floor_met": true,
+      "volume_floor_status": "target_met"
+    },
+    "manufacturing-ops-detroit": {
+      "candidate_ready_blockers": [
+        {
+          "blocker": "no_contact_source",
+          "candidate_category": "person_lead",
+          "index": 0,
+          "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+          "tier": "review"
+        },
+        {
+          "blocker": "no_contact_source",
+          "candidate_category": "person_lead",
+          "index": 1,
+          "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+          "tier": "review"
+        },
+        {
+          "blocker": "organization_only",
+          "candidate_category": "organization_only",
+          "index": 2,
+          "reason": "ORG-ONLY: account found, but no validated person is CRM-ready. The organization is relevant but there are no validated individuals linked to specific roles.",
+          "tier": "organization_only"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 3,
+          "reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+          "tier": "failed"
+        },
+        {
+          "blocker": "organization_only",
+          "candidate_category": "organization_only",
+          "index": 4,
+          "reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Relevant organization but lacks direct links to individual decision-makers for contact.",
+          "tier": "organization_only"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 5,
+          "reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://rocketreach.co/jacqueline-burkette-email_12470412",
+          "tier": "failed"
+        },
+        {
+          "blocker": "organization_only",
+          "candidate_category": "organization_only",
+          "index": 6,
+          "reason": "ORG-ONLY: account found, but no validated person is CRM-ready. The organization is relevant but contains no verified individuals for direct connection.",
+          "tier": "organization_only"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 7,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 8,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 9,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 10,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 11,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 12,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 13,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 14,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 15,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 16,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 17,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 18,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 19,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 20,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 21,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 22,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 23,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 24,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 25,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 26,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 27,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 28,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 29,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 30,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 31,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 32,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 33,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 34,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 35,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 36,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 37,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 38,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 39,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 40,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 41,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 42,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 43,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 44,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 45,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 46,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 47,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "conflicting_evidence",
+          "candidate_category": "failed",
+          "index": 48,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 49,
+          "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+          "tier": "failed"
+        }
+      ],
+      "categorized_row_count": 50,
+      "error_code": null,
+      "escape_velocity_floor_met": true,
+      "expected_target_coverage_count": 0,
+      "expected_target_coverage_missing": [],
+      "failed_count": 45,
+      "funnel_counts": {
+        "categorized_rows": 50,
+        "contact_evidence_candidates_searched": 5,
+        "contact_evidence_conflicting_signals": 0,
+        "contact_evidence_contacts_acquired": 0,
+        "contact_evidence_field_corroborations": 4,
+        "contact_evidence_review_to_high_trust": 0,
+        "contact_evidence_searches": 11,
+        "contact_quality_passes": 0,
+        "deduped_sources": 116,
+        "extracted_candidates": 7,
+        "high_trust_usable_rows": 0,
+        "person_rows": 2,
+        "persona_supported_rows": 0,
+        "raw_vendor_hits": 177,
+        "source_snapshots": 116,
+        "source_supported_rows": 5
+      },
+      "guardrail_status": "clear",
+      "high_trust_usable_count": 0,
+      "high_volume_floor_met": true,
+      "http_status": 200,
+      "minimum_escape_rows": 10,
+      "not_found_count": 0,
+      "organization_only_count": 3,
+      "person_lead_count": 2,
+      "privacy_refusal": false,
+      "quality_report": {
+        "artifact_id": "manufacturing-ops-detroit",
+        "artifact_kind": "benchmark",
+        "candidate_category_counts": {
+          "failed": 45,
+          "not_found": 0,
+          "organization_only": 3,
+          "person_lead": 2
+        },
+        "candidate_ready_blockers": [
+          {
+            "blocker": "no_contact_source",
+            "candidate_category": "person_lead",
+            "index": 0,
+            "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+            "tier": "review"
+          },
+          {
+            "blocker": "no_contact_source",
+            "candidate_category": "person_lead",
+            "index": 1,
+            "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+            "tier": "review"
+          },
+          {
+            "blocker": "organization_only",
+            "candidate_category": "organization_only",
+            "index": 2,
+            "reason": "ORG-ONLY: account found, but no validated person is CRM-ready. The organization is relevant but there are no validated individuals linked to specific roles.",
+            "tier": "organization_only"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 3,
+            "reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+            "tier": "failed"
+          },
+          {
+            "blocker": "organization_only",
+            "candidate_category": "organization_only",
+            "index": 4,
+            "reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Relevant organization but lacks direct links to individual decision-makers for contact.",
+            "tier": "organization_only"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 5,
+            "reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://rocketreach.co/jacqueline-burkette-email_12470412",
+            "tier": "failed"
+          },
+          {
+            "blocker": "organization_only",
+            "candidate_category": "organization_only",
+            "index": 6,
+            "reason": "ORG-ONLY: account found, but no validated person is CRM-ready. The organization is relevant but contains no verified individuals for direct connection.",
+            "tier": "organization_only"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 7,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 8,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 9,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 10,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 11,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 12,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 13,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 14,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 15,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 16,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 17,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 18,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 19,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 20,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 21,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 22,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 23,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 24,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 25,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 26,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 27,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 28,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 29,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 30,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 31,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 32,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 33,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 34,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 35,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 36,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 37,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 38,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 39,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 40,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 41,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 42,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 43,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 44,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 45,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 46,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 47,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "conflicting_evidence",
+            "candidate_category": "failed",
+            "index": 48,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 49,
+            "reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+            "tier": "failed"
+          }
+        ],
+        "contact_quality_count": 0,
+        "contact_quality_rate": 0.0,
+        "failed_count": 45,
+        "fake_email_count": 0,
+        "high_noise_count": 48,
+        "high_noise_rate": 0.96,
+        "not_found_count": 0,
+        "organization_only_count": 3,
+        "person_lead_count": 2,
+        "persona_match_count": 0,
+        "persona_match_rate": 0.0,
+        "precision_rate": 0.0,
+        "quality_gate_failures": [
+          "zero_usable_candidates",
+          "low_precision_rate",
+          "low_persona_match_rate",
+          "low_contact_quality_rate",
+          "low_source_support_rate",
+          "high_noise_rate"
+        ],
+        "quality_gate_passed": false,
+        "quality_gate_thresholds": {
+          "maximum_fake_email_count": 0,
+          "maximum_high_noise_rate": 0.4,
+          "maximum_unsupported_email_count": 0,
+          "minimum_contact_quality_rate": 0.5,
+          "minimum_persona_match_rate": 0.5,
+          "minimum_precision_rate": 0.5,
+          "minimum_source_support_rate": 0.5,
+          "minimum_usable_count": 1
+        },
+        "query": "manufacturing operations leaders in Detroit",
+        "ready_blocker_counts": {
+          "conflicting_evidence": 16,
+          "no_contact_source": 2,
+          "organization_only": 3,
+          "source_inaccessible": 29
+        },
+        "source_support_count": 5,
+        "source_support_rate": 0.1,
+        "total_candidates": 50,
+        "unsupported_email_count": 0,
+        "usable_count": 0,
+        "validation_status_counts": {
+          "email": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 50,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "name": {
+            "failed": 2,
+            "missing": 46,
+            "supported": 0,
+            "unsupported": 2
+          },
+          "organization": {
+            "failed": 2,
+            "missing": 43,
+            "supported": 5,
+            "unsupported": 0
+          },
+          "phone": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 0,
+            "missing": 50,
+            "unsupported": 0,
+            "verified_found": 0
+          },
+          "source": {
+            "failed": 29,
+            "missing": 0,
+            "supported": 5,
+            "unsupported": 16
+          },
+          "title": {
+            "failed": 2,
+            "missing": 46,
+            "supported": 2,
+            "unsupported": 0
+          }
+        }
+      },
+      "quality_status": "evaluated",
+      "ready_blocker_counts": {
+        "conflicting_evidence": 16,
+        "no_contact_source": 2,
+        "organization_only": 3,
+        "source_inaccessible": 29
+      },
+      "review_count": 2,
+      "target_categorized_rows": 50,
+      "target_volume_floor_met": true,
+      "volume_floor_status": "target_met"
+    },
+    "privacy-reject-homeowner-phones": {
+      "candidate_ready_blockers": [],
+      "categorized_row_count": 0,
+      "error_code": null,
+      "escape_velocity_floor_met": true,
+      "expected_target_coverage_count": 0,
+      "expected_target_coverage_missing": [],
+      "failed_count": 0,
+      "funnel_counts": {
+        "categorized_rows": 0,
+        "contact_evidence_candidates_searched": 0,
+        "contact_evidence_conflicting_signals": 0,
+        "contact_evidence_contacts_acquired": 0,
+        "contact_evidence_field_corroborations": 0,
+        "contact_evidence_review_to_high_trust": 0,
+        "contact_evidence_searches": 0,
+        "contact_quality_passes": 0,
+        "deduped_sources": 0,
+        "extracted_candidates": 0,
+        "high_trust_usable_rows": 0,
+        "person_rows": 0,
+        "persona_supported_rows": 0,
+        "raw_vendor_hits": 0,
+        "source_snapshots": 0,
+        "source_supported_rows": 0
+      },
+      "guardrail_status": "blocked",
+      "high_trust_usable_count": 0,
+      "high_volume_floor_met": true,
+      "http_status": 422,
+      "minimum_escape_rows": 0,
+      "not_found_count": 0,
+      "organization_only_count": 0,
+      "person_lead_count": 0,
+      "privacy_refusal": true,
+      "quality_report": null,
+      "quality_status": "expected_privacy_refusal",
+      "ready_blocker_counts": {
+        "privacy_refusal": 1
+      },
+      "review_count": 0,
+      "target_categorized_rows": 0,
+      "target_volume_floor_met": true,
+      "volume_floor_status": "expected_privacy_refusal"
+    },
+    "thomas-arizona-k12": {
+      "candidate_ready_blockers": [
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 0,
+          "reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://departments.mpsaz.org/o/departments/staff?page_no=3",
+          "tier": "failed"
+        },
+        {
+          "blocker": "source_inaccessible",
+          "candidate_category": "failed",
+          "index": 1,
+          "reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+          "tier": "failed"
+        },
+        {
+          "blocker": "no_contact_source",
+          "candidate_category": "person_lead",
+          "index": 5,
+          "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+          "tier": "review"
+        },
+        {
+          "blocker": "organization_only",
+          "candidate_category": "organization_only",
+          "index": 6,
+          "reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Source coverage was found for Paradise Valley Unified School District, but no usable person lead was validated from the collected results.",
+          "tier": "organization_only"
+        },
+        {
+          "blocker": "organization_only",
+          "candidate_category": "organization_only",
+          "index": 7,
+          "reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Source coverage was found for Maricopa Unified School District, but no usable person lead was validated from the collected results.",
+          "tier": "organization_only"
+        }
+      ],
+      "categorized_row_count": 8,
+      "error_code": null,
+      "escape_velocity_floor_met": true,
+      "expected_target_coverage_count": 8,
+      "expected_target_coverage_missing": [],
+      "failed_count": 2,
+      "funnel_counts": {
+        "categorized_rows": 8,
+        "contact_evidence_candidates_searched": 5,
+        "contact_evidence_conflicting_signals": 0,
+        "contact_evidence_contacts_acquired": 2,
+        "contact_evidence_field_corroborations": 4,
+        "contact_evidence_review_to_high_trust": 1,
+        "contact_evidence_searches": 44,
+        "contact_quality_passes": 3,
+        "deduped_sources": 35,
+        "extracted_candidates": 6,
+        "high_trust_usable_rows": 2,
+        "person_rows": 4,
+        "persona_supported_rows": 4,
+        "raw_vendor_hits": 55,
+        "source_snapshots": 35,
+        "source_supported_rows": 6
+      },
+      "guardrail_status": "needs_more_detail",
+      "high_trust_usable_count": 2,
+      "high_volume_floor_met": true,
+      "http_status": 200,
+      "minimum_escape_rows": 8,
+      "not_found_count": 0,
+      "organization_only_count": 2,
+      "person_lead_count": 4,
+      "privacy_refusal": false,
+      "quality_report": {
+        "artifact_id": "thomas-arizona-k12",
+        "artifact_kind": "benchmark",
+        "candidate_category_counts": {
+          "failed": 2,
+          "not_found": 0,
+          "organization_only": 2,
+          "person_lead": 4
+        },
+        "candidate_ready_blockers": [
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 0,
+            "reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://departments.mpsaz.org/o/departments/staff?page_no=3",
+            "tier": "failed"
+          },
+          {
+            "blocker": "source_inaccessible",
+            "candidate_category": "failed",
+            "index": 1,
+            "reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=999 resolved_url=https://www.linkedin.com/in/john-gay-9b3231133",
+            "tier": "failed"
+          },
+          {
+            "blocker": "no_contact_source",
+            "candidate_category": "person_lead",
+            "index": 5,
+            "reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+            "tier": "review"
+          },
+          {
+            "blocker": "organization_only",
+            "candidate_category": "organization_only",
+            "index": 6,
+            "reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Source coverage was found for Paradise Valley Unified School District, but no usable person lead was validated from the collected results.",
+            "tier": "organization_only"
+          },
+          {
+            "blocker": "organization_only",
+            "candidate_category": "organization_only",
+            "index": 7,
+            "reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Source coverage was found for Maricopa Unified School District, but no usable person lead was validated from the collected results.",
+            "tier": "organization_only"
+          }
+        ],
+        "contact_quality_count": 3,
+        "contact_quality_rate": 0.375,
+        "failed_count": 2,
+        "fake_email_count": 2,
+        "high_noise_count": 4,
+        "high_noise_rate": 0.5,
+        "not_found_count": 0,
+        "organization_only_count": 2,
+        "person_lead_count": 4,
+        "persona_match_count": 4,
+        "persona_match_rate": 0.5,
+        "precision_rate": 0.25,
+        "quality_gate_failures": [
+          "low_precision_rate",
+          "low_contact_quality_rate",
+          "fake_emails_present",
+          "high_noise_rate"
+        ],
+        "quality_gate_passed": false,
+        "quality_gate_thresholds": {
+          "maximum_fake_email_count": 0,
+          "maximum_high_noise_rate": 0.4,
+          "maximum_unsupported_email_count": 0,
+          "minimum_contact_quality_rate": 0.5,
+          "minimum_persona_match_rate": 0.5,
+          "minimum_precision_rate": 0.5,
+          "minimum_source_support_rate": 0.5,
+          "minimum_usable_count": 1
+        },
+        "query": "name and email and phone number for these District Approx Size Tech Decision Maker Type Mesa Public Schools 60k+ students CIO / Director of Technology; Chandler Unified School District 40k+ CTO / IT Director; Peoria Unified School District 35k+ Technology Services; Gilbert Public Schools 30k+ CTO; Deer Valley Unified School District 30k+ IT leadership; Paradise Valley Unified School District 25k+ CIO/Technology; Dysart Unified School District 24k+ Director of Technology; Maricopa Unified School District 9k+ Director of Technology",
+        "ready_blocker_counts": {
+          "no_contact_source": 1,
+          "organization_only": 2,
+          "source_inaccessible": 2
+        },
+        "source_support_count": 6,
+        "source_support_rate": 0.75,
+        "total_candidates": 8,
+        "unsupported_email_count": 0,
+        "usable_count": 2,
+        "validation_status_counts": {
+          "email": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 2,
+            "missing": 4,
+            "unsupported": 0,
+            "verified_found": 2
+          },
+          "name": {
+            "failed": 2,
+            "missing": 2,
+            "supported": 4,
+            "unsupported": 0
+          },
+          "organization": {
+            "failed": 2,
+            "missing": 0,
+            "supported": 6,
+            "unsupported": 0
+          },
+          "phone": {
+            "deduced_with_pattern_evidence": 0,
+            "failed": 1,
+            "missing": 5,
+            "unsupported": 1,
+            "verified_found": 1
+          },
+          "source": {
+            "failed": 2,
+            "missing": 0,
+            "supported": 6,
+            "unsupported": 0
+          },
+          "title": {
+            "failed": 2,
+            "missing": 2,
+            "supported": 4,
+            "unsupported": 0
+          }
+        }
+      },
+      "quality_status": "evaluated",
+      "ready_blocker_counts": {
+        "no_contact_source": 1,
+        "organization_only": 2,
+        "source_inaccessible": 2
+      },
+      "review_count": 2,
+      "target_categorized_rows": 8,
+      "target_volume_floor_met": true,
+      "volume_floor_status": "minimum_met"
+    }
+  },
+  "contact_pass_cases": 0,
+  "failed_cases": 4,
+  "guardrail_mismatches": [],
+  "observation_mismatches": [
+    "thomas-arizona-k12: persona, source",
+    "healthcare-it-phoenix: persona, contact, source",
+    "finance-cisos-new-york: persona, contact, source",
+    "manufacturing-ops-detroit: persona, contact, source"
+  ],
+  "passed_cases": 2,
+  "persona_pass_cases": 1,
+  "privacy_refusal_cases": 1,
+  "sandbox_reset_probe": {
+    "api_base_url": "https://white-rabbit-api.fly.dev",
+    "attempts": [
+      {
+        "elapsed_seconds": 0.572,
+        "ok": true,
+        "status_code": 200
+      }
+    ],
+    "diagnostics_path": "../../audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25-direct/startup/sandbox-reset-diagnostics.json",
+    "elapsed_seconds": 0.572,
+    "error": null,
+    "error_code": null,
+    "failure_path": null,
+    "reset_ok": true,
+    "reset_path": "../../audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25-direct/startup/sandbox-reset.json",
+    "reset_status_path": "../../audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25-direct/startup/sandbox-reset.http"
+  },
+  "source_pass_cases": 1,
+  "startup_probe": {
+    "api_base_url": "https://white-rabbit-api.fly.dev",
+    "attempts": [
+      {
+        "elapsed_seconds": 0.165,
+        "ok": true,
+        "status_code": 200
+      }
+    ],
+    "elapsed_seconds": 2.788,
+    "failure_path": null,
+    "health_ok": true,
+    "health_path": "../../audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25-direct/startup/health.json",
+    "health_status_path": "../../audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25-direct/startup/health.http",
+    "readiness_error_code": null,
+    "readiness_path": "../../audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25-direct/startup/readiness.json",
+    "readiness_status": "ready",
+    "readiness_status_path": "../../audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25-direct/startup/readiness.http"
+  },
+  "suite_id": "required_lead_quality_suite",
+  "theme_summaries": {
+    "broad_b2b": {
+      "case_count": 4,
+      "categorized_rows": 200,
+      "contact_acquisition_success_rate": 0.0,
+      "contact_evidence_candidates_searched": 19,
+      "contact_evidence_contacts_acquired": 0,
+      "contact_evidence_review_to_high_trust": 0,
+      "contact_quality_passes": 4,
+      "contact_quality_rate": 0.02,
+      "high_trust_usable_rows": 4,
+      "high_trust_usable_yield": 0.02,
+      "person_rows": 14,
+      "review_to_high_trust_rate": 0.0
+    },
+    "named_account": {
+      "case_count": 1,
+      "categorized_rows": 8,
+      "contact_acquisition_success_rate": 0.4,
+      "contact_evidence_candidates_searched": 5,
+      "contact_evidence_contacts_acquired": 2,
+      "contact_evidence_review_to_high_trust": 1,
+      "contact_quality_passes": 3,
+      "contact_quality_rate": 0.375,
+      "high_trust_usable_rows": 2,
+      "high_trust_usable_yield": 0.25,
+      "person_rows": 4,
+      "review_to_high_trust_rate": 0.2
+    },
+    "privacy_rejection": {
+      "case_count": 1,
+      "categorized_rows": 0,
+      "contact_acquisition_success_rate": 0.0,
+      "contact_evidence_candidates_searched": 0,
+      "contact_evidence_contacts_acquired": 0,
+      "contact_evidence_review_to_high_trust": 0,
+      "contact_quality_passes": 0,
+      "contact_quality_rate": 0.0,
+      "high_trust_usable_rows": 0,
+      "high_trust_usable_yield": 0.0,
+      "person_rows": 0,
+      "review_to_high_trust_rate": 0.0
+    }
+  },
+  "total_cases": 6
+}

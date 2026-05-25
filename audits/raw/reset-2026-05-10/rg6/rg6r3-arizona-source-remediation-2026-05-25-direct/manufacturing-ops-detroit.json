@@ -1,0 +1,2859 @@
+{
+  "benchmark_id": "manufacturing-ops-detroit",
+  "leads": [
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.81,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.55,
+      "explanation": "The individual title is mentioned but name and contact details are not provided.",
+      "fit_score": 0.81,
+      "gate_passed": false,
+      "icebreaker": "As Chief Manufacturing Officer, your leadership will drive operational excellence in an evolving manufacturing landscape in Detroit.",
+      "id": "bdbb1c1c-574e-406c-86ce-363832885913",
+      "name": "Not Provided",
+      "organization": "Leading Manufacturing Firm",
+      "phone": "",
+      "primary_filter_reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+      "source_url": "https://www.jrgpartners.com/jobs/chief-manufacturing-officer-at-leading-manufacturing-firm-detroit-mi",
+      "tier": "review",
+      "title": "Chief Manufacturing Officer",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. Deep contact pass searched page_types=board_agenda_pdf, generic, leadership_team, staff_directory; corroborating_sources=2; no direct person email or explicit domain pattern found; no direct person phone found.",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-manufacturing-officer-at-leading-manufacturing-firm-detroit-mi/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for name.",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-manufacturing-officer-at-leading-manufacturing-firm-detroit-mi/",
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": "...e(/\\bno-js\\b/,'js')})(document.documentElement); Chief Manufacturing Officer at Leading Manufacturing Firm, Detroit, MI - JRG Partners LLC {\"slug\":\"real-cookie-banner-pro\",\"textDomain\":\"...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-manufacturing-officer-at-leading-manufacturing-firm-detroit-mi/",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-manufacturing-officer-at-leading-manufacturing-firm-detroit-mi/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": "...assName = html.className.replace(/\\bno-js\\b/,'js')})(document.documentElement); Chief Manufacturing Officer at Leading Manufacturing Firm, Detroit, MI - JRG Partners LLC {\"slug\":\"real-coo...",
+          "notes": "http_status=200 resolved_url=https://www.jrgpartners.com/jobs/chief-manufacturing-officer-at-leading-manufacturing-firm-detroit-mi/ matched_fields=title,organization",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-manufacturing-officer-at-leading-manufacturing-firm-detroit-mi/",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": "...assName = html.className.replace(/\\bno-js\\b/,'js')})(document.documentElement); Chief Manufacturing Officer at Leading Manufacturing Firm, Detroit, MI - JRG Partners LLC {\"slug\":\"real-coo...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-manufacturing-officer-at-leading-manufacturing-firm-detroit-mi/",
+          "status": "supported"
+        }
+      },
+      "why_target": "You would be a key decision-maker in streamlining manufacturing processes, aligning with our focus on operational efficiency."
+    },
+    {
+      "candidate_category": "person_lead",
+      "confidence": 0.77,
+      "contact_score": 0.0,
+      "email": "",
+      "email_status": "missing",
+      "evidence_score": 0.55,
+      "explanation": "The position is clearly stated but lacks concrete personal identification.",
+      "fit_score": 0.77,
+      "gate_passed": false,
+      "icebreaker": "As Director of Manufacturing Operations, you'd be leading next-generation supply chain initiatives right in Detroit.",
+      "id": "8fb881cb-341d-4f13-8c33-5bfdca4daf1c",
+      "name": "Not Provided",
+      "organization": "Nox Metals",
+      "phone": "",
+      "primary_filter_reason": "REVIEW: contact is missing; deeper public-web pass did not find a direct email or explicit domain-pattern source.",
+      "source_url": "https://jobs.ashbyhq.com/nox-metals/236e60d4-cbe7-4d5f-93f3-d9c0d8689ef3",
+      "tier": "review",
+      "title": "Director of Manufacturing Operations",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. Deep contact pass searched page_types=generic, leadership_team; corroborating_sources=3; no direct person email or explicit domain pattern found; no direct person phone found.",
+          "source_url": "https://jobs.ashbyhq.com/nox-metals/236e60d4-cbe7-4d5f-93f3-d9c0d8689ef3",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "No direct text support found for name.",
+          "source_url": "https://jobs.ashbyhq.com/nox-metals/236e60d4-cbe7-4d5f-93f3-d9c0d8689ef3",
+          "status": "unsupported"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": "Director of Manufacturing Operations @ NOX METALS {\"@context\":\"https://schema.org/\",\"@type\":\"JobPosting\",\"title\":\"Director of Man...",
+          "notes": "Direct text support found for organization.",
+          "source_url": "https://jobs.ashbyhq.com/nox-metals/236e60d4-cbe7-4d5f-93f3-d9c0d8689ef3",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://jobs.ashbyhq.com/nox-metals/236e60d4-cbe7-4d5f-93f3-d9c0d8689ef3",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": "Director of Manufacturing Operations @ NOX METALS {\"@context\":\"https://schema.org/\",\"@type\":\"JobPosting\",\"title\":\"Di...",
+          "notes": "http_status=200 resolved_url=https://jobs.ashbyhq.com/nox-metals/236e60d4-cbe7-4d5f-93f3-d9c0d8689ef3 matched_fields=title,organization",
+          "source_url": "https://jobs.ashbyhq.com/nox-metals/236e60d4-cbe7-4d5f-93f3-d9c0d8689ef3",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": "Director of Manufacturing Operations @ NOX METALS {\"@context\":\"https://schema.org/\",\"@type\":\"JobPosting\",\"title\":\"Di...",
+          "notes": "Direct text support found for title.",
+          "source_url": "https://jobs.ashbyhq.com/nox-metals/236e60d4-cbe7-4d5f-93f3-d9c0d8689ef3",
+          "status": "supported"
+        }
+      },
+      "why_target": "Your role directly impacts the efficiency and success of manufacturing operations at Nox Metals."
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "The organization is relevant but there are no validated individuals linked to specific roles.",
+      "id": "fb5be00a-a9b0-4226-81a6-d37a06d88852",
+      "organization": "Detroit Manufacturing Systems",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. The organization is relevant but there are no validated individuals linked to specific roles.",
+      "source_url": "https://www.linkedin.com/company/detroit-manufacturing-systems",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/company/detroit-manufacturing-systems",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/company/detroit-manufacturing-systems",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": "Detroit Manufacturing Systems Company Profile | Management and Employees List | Name & Title | Social | Contact Info |\n --- \n| Benjamin Meachem  Chie...",
+          "notes": "Organization contact/team source found, but no named person was validated.",
+          "source_url": "https://www.datanyze.com/companies/detroit-manufacturing-systems/365407065",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/company/detroit-manufacturing-systems",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": "Detroit Manufacturing Systems Company Profile | Management and Employees List | Name & Title | Social | Contact Info |\n --- \n| Benjamin Meachem  Chie...",
+          "notes": "Targeted contact-evidence pass found an organization-level source only.",
+          "source_url": "https://www.datanyze.com/companies/detroit-manufacturing-systems/365407065",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/company/detroit-manufacturing-systems",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+      "id": "88d63c21-7d4b-489b-9212-83983bcf9f25",
+      "organization": "Detroit Manufacturing Systems",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+      "searched_target": "Detroit Manufacturing Systems",
+      "source_url": "https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+          "source_url": "https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+          "source_url": "https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+          "source_url": "https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+          "source_url": "https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+          "source_url": "https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+          "source_url": "https://michauto.org/ceo-spotlight-detroit-manufacturing-systems-bruce-smith",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "Relevant organization but lacks direct links to individual decision-makers for contact.",
+      "id": "2127c969-8505-47b5-9111-ee7600ba00d1",
+      "organization": "Voltava",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. Relevant organization but lacks direct links to individual decision-makers for contact.",
+      "source_url": "https://www.dmsna.com/a-message-from-the-senior-leadership-team",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.dmsna.com/a-message-from-the-senior-leadership-team",
+          "source_url": "https://www.dmsna.com/a-message-from-the-senior-leadership-team",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.dmsna.com/a-message-from-the-senior-leadership-team",
+          "source_url": "https://www.dmsna.com/a-message-from-the-senior-leadership-team",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": "Voltava | Global Manufacturing & Assembly Partner And with those three as our foundation, we create Impact.\n\nImpact is about th...",
+          "notes": "Organization contact/team source found, but no named person was validated.",
+          "source_url": "https://voltava.com",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.dmsna.com/a-message-from-the-senior-leadership-team",
+          "source_url": "https://www.dmsna.com/a-message-from-the-senior-leadership-team",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": "Voltava | Global Manufacturing & Assembly Partner And with those three as our foundation, we create Impact.\n\nImpact is about th...",
+          "notes": "Targeted contact-evidence pass found an organization-level source only.",
+          "source_url": "https://voltava.com",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.dmsna.com/a-message-from-the-senior-leadership-team",
+          "source_url": "https://www.dmsna.com/a-message-from-the-senior-leadership-team",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://rocketreach.co/jacqueline-burkette-email_12470412",
+      "failure_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://rocketreach.co/jacqueline-burkette-email_12470412",
+      "id": "dcf71bb5-377b-4790-aaa1-bb1b8225979b",
+      "organization": "Voltava",
+      "primary_filter_reason": "REVIEW: rejected row; no hidden usable lead is implied. Source could not validate the person row: http_status=403 resolved_url=https://rocketreach.co/jacqueline-burkette-email_12470412",
+      "searched_target": "Voltava",
+      "source_url": "https://rocketreach.co/jacqueline-burkette-email_12470412",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://rocketreach.co/jacqueline-burkette-email_12470412",
+          "source_url": "https://rocketreach.co/jacqueline-burkette-email_12470412",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://rocketreach.co/jacqueline-burkette-email_12470412",
+          "source_url": "https://rocketreach.co/jacqueline-burkette-email_12470412",
+          "status": "failed"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://rocketreach.co/jacqueline-burkette-email_12470412",
+          "source_url": "https://rocketreach.co/jacqueline-burkette-email_12470412",
+          "status": "failed"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://rocketreach.co/jacqueline-burkette-email_12470412",
+          "source_url": "https://rocketreach.co/jacqueline-burkette-email_12470412",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://rocketreach.co/jacqueline-burkette-email_12470412",
+          "source_url": "https://rocketreach.co/jacqueline-burkette-email_12470412",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://rocketreach.co/jacqueline-burkette-email_12470412",
+          "source_url": "https://rocketreach.co/jacqueline-burkette-email_12470412",
+          "status": "failed"
+        }
+      }
+    },
+    {
+      "candidate_category": "organization_only",
+      "explanation": "The organization is relevant but contains no verified individuals for direct connection.",
+      "id": "feadca11-0d0f-4766-ac34-26d7146e858e",
+      "organization": "Detroit Regional Chamber",
+      "primary_filter_reason": "ORG-ONLY: account found, but no validated person is CRM-ready. The organization is relevant but contains no verified individuals for direct connection.",
+      "source_url": "https://www.detroitchamber.com/bios/hussein-berry",
+      "tier": "organization_only",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/bios/hussein-berry",
+          "source_url": "https://www.detroitchamber.com/bios/hussein-berry",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/bios/hussein-berry",
+          "source_url": "https://www.detroitchamber.com/bios/hussein-berry",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": "Staff Directory - Detroit Regional Chamber Lori Ostrow headshot\n\n### Lori Ostrow\n\n Vice President, Member and Investor Relations, Detroit Regional Chamber\n\nBrian...",
+          "notes": "Organization contact/team source found, but no named person was validated.",
+          "source_url": "https://www.detroitchamber.com/about/chamber-staff",
+          "status": "supported"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/bios/hussein-berry",
+          "source_url": "https://www.detroitchamber.com/bios/hussein-berry",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": "Staff Directory - Detroit Regional Chamber Lori Ostrow headshot\n\n### Lori Ostrow\n\n Vice President, Member and Investor Relations, Detroit Regional Chamber\n\nBrian...",
+          "notes": "Targeted contact-evidence pass found an organization-level source only.",
+          "source_url": "https://www.detroitchamber.com/about/chamber-staff",
+          "status": "supported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/bios/hussein-berry",
+          "source_url": "https://www.detroitchamber.com/bios/hussein-berry",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "586b1424-ef8f-49e4-bc9b-749a0607b981",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Top 10: Manufacturing Leaders In North America | Manufacturing Digital",
+      "source_url": "https://manufacturingdigital.com/top10/top-10-manufacturing-leaders-in-north-america",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://manufacturingdigital.com/top10/top-10-manufacturing-leaders-in-north-america",
+          "source_url": "https://manufacturingdigital.com/top10/top-10-manufacturing-leaders-in-north-america",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://manufacturingdigital.com/top10/top-10-manufacturing-leaders-in-north-america",
+          "source_url": "https://manufacturingdigital.com/top10/top-10-manufacturing-leaders-in-north-america",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://manufacturingdigital.com/top10/top-10-manufacturing-leaders-in-north-america",
+          "source_url": "https://manufacturingdigital.com/top10/top-10-manufacturing-leaders-in-north-america",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://manufacturingdigital.com/top10/top-10-manufacturing-leaders-in-north-america",
+          "source_url": "https://manufacturingdigital.com/top10/top-10-manufacturing-leaders-in-north-america",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://manufacturingdigital.com/top10/top-10-manufacturing-leaders-in-north-america",
+          "source_url": "https://manufacturingdigital.com/top10/top-10-manufacturing-leaders-in-north-america",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://manufacturingdigital.com/top10/top-10-manufacturing-leaders-in-north-america",
+          "source_url": "https://manufacturingdigital.com/top10/top-10-manufacturing-leaders-in-north-america",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "96dcc917-6cc5-402d-ad07-4dbb6a481efe",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Advanced Manufacturing - ArcGIS StoryMaps",
+      "source_url": "https://storymaps.arcgis.com/stories/4c1d3fd8cc71433299ed87cd3c5531c5",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://storymaps.arcgis.com/stories/4c1d3fd8cc71433299ed87cd3c5531c5",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://storymaps.arcgis.com/stories/4c1d3fd8cc71433299ed87cd3c5531c5",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://storymaps.arcgis.com/stories/4c1d3fd8cc71433299ed87cd3c5531c5",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://storymaps.arcgis.com/stories/4c1d3fd8cc71433299ed87cd3c5531c5",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://storymaps.arcgis.com/stories/4c1d3fd8cc71433299ed87cd3c5531c5 matched_fields=none",
+          "source_url": "https://storymaps.arcgis.com/stories/4c1d3fd8cc71433299ed87cd3c5531c5",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://storymaps.arcgis.com/stories/4c1d3fd8cc71433299ed87cd3c5531c5",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "1b8d188c-8574-46f3-afbc-b1ffed6d42ac",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Vice President Of Manufacturing jobs in Detroit, Mi - Indeed",
+      "source_url": "https://www.indeed.com/q-vice-president-of-manufacturing-l-detroit,-mi-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-vice-president-of-manufacturing-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-vice-president-of-manufacturing-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-vice-president-of-manufacturing-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-vice-president-of-manufacturing-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-vice-president-of-manufacturing-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-vice-president-of-manufacturing-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-vice-president-of-manufacturing-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-vice-president-of-manufacturing-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-vice-president-of-manufacturing-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-vice-president-of-manufacturing-l-detroit,-mi-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-vice-president-of-manufacturing-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-vice-president-of-manufacturing-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "21cc37b8-18ee-4d2f-8995-cb681c64c2d3",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Detroit Manufacturing Executive Search - Reaction Search International",
+      "source_url": "https://www.reactionsearch.com/locations-industries/detroit-manufacturing-executive-search",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.reactionsearch.com/locations-industries/detroit-manufacturing-executive-search/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.reactionsearch.com/locations-industries/detroit-manufacturing-executive-search/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.reactionsearch.com/locations-industries/detroit-manufacturing-executive-search/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.reactionsearch.com/locations-industries/detroit-manufacturing-executive-search/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.reactionsearch.com/locations-industries/detroit-manufacturing-executive-search/ matched_fields=none",
+          "source_url": "https://www.reactionsearch.com/locations-industries/detroit-manufacturing-executive-search/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.reactionsearch.com/locations-industries/detroit-manufacturing-executive-search/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "87c13497-c853-40c1-83a8-dc4c29e4373f",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Advanced Manufacturing Companies",
+      "source_url": "https://www.detroitregionalpartnership.com/advanced-manufacturing",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.detroitregionalpartnership.com/advanced-manufacturing",
+          "source_url": "https://www.detroitregionalpartnership.com/advanced-manufacturing",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.detroitregionalpartnership.com/advanced-manufacturing",
+          "source_url": "https://www.detroitregionalpartnership.com/advanced-manufacturing",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.detroitregionalpartnership.com/advanced-manufacturing",
+          "source_url": "https://www.detroitregionalpartnership.com/advanced-manufacturing",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.detroitregionalpartnership.com/advanced-manufacturing",
+          "source_url": "https://www.detroitregionalpartnership.com/advanced-manufacturing",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.detroitregionalpartnership.com/advanced-manufacturing",
+          "source_url": "https://www.detroitregionalpartnership.com/advanced-manufacturing",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.detroitregionalpartnership.com/advanced-manufacturing",
+          "source_url": "https://www.detroitregionalpartnership.com/advanced-manufacturing",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "46dedad6-0af2-4824-927c-c008270ca3fa",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Manufacturing Production Group Jobs in Detroit at American Axle & Manufacturing",
+      "source_url": "https://careers.aam.com/en/employment/detroit-manufacturing-production-group-jobs/44944/8685440/6252001-5001836-5014227-4990729/4",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://careers.aam.com/en/employment/detroit-manufacturing-production-group-jobs/44944/8685440/6252001-5001836-5014227-4990729/4",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://careers.aam.com/en/employment/detroit-manufacturing-production-group-jobs/44944/8685440/6252001-5001836-5014227-4990729/4",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://careers.aam.com/en/employment/detroit-manufacturing-production-group-jobs/44944/8685440/6252001-5001836-5014227-4990729/4",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://careers.aam.com/en/employment/detroit-manufacturing-production-group-jobs/44944/8685440/6252001-5001836-5014227-4990729/4",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://careers.aam.com/en/employment/detroit-manufacturing-production-group-jobs/44944/8685440/6252001-5001836-5014227-4990729/4 matched_fields=none",
+          "source_url": "https://careers.aam.com/en/employment/detroit-manufacturing-production-group-jobs/44944/8685440/6252001-5001836-5014227-4990729/4",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://careers.aam.com/en/employment/detroit-manufacturing-production-group-jobs/44944/8685440/6252001-5001836-5014227-4990729/4",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "e9e90ca1-6974-43e2-9c77-e764bc94e46e",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "110 Director Of Manufacturing jobs in Detroit, Michigan, United ...",
+      "source_url": "https://www.linkedin.com/jobs/director-of-manufacturing-jobs-detroit-mi",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-manufacturing-jobs-detroit-mi",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-manufacturing-jobs-detroit-mi",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-manufacturing-jobs-detroit-mi",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-manufacturing-jobs-detroit-mi",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/jobs/director-of-manufacturing-jobs-detroit-mi matched_fields=none",
+          "source_url": "https://www.linkedin.com/jobs/director-of-manufacturing-jobs-detroit-mi",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/director-of-manufacturing-jobs-detroit-mi",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "7f90d279-aab5-4e10-9507-d5b63a24ff1c",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Manufacturing Manager Jobs in Detroit, MI (NOW HIRING)",
+      "source_url": "https://www.ziprecruiter.com/Jobs/Manufacturing-Manager/-in-Detroit,MI",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Manufacturing-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Manufacturing-Manager/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Manufacturing-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Manufacturing-Manager/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Manufacturing-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Manufacturing-Manager/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Manufacturing-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Manufacturing-Manager/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Manufacturing-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Manufacturing-Manager/-in-Detroit,MI",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Manufacturing-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Manufacturing-Manager/-in-Detroit,MI",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "cf551259-74ce-49ca-b6b3-de04a39f9f27",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Operations Manager @ Detroit Manufacturing Systems",
+      "source_url": "https://www.tealhq.com/job/operations-manager_7ea1ad1d10a5f20e30df7a4e468df66161599",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.tealhq.com/job/operations-manager_7ea1ad1d10a5f20e30df7a4e468df66161599",
+          "source_url": "https://www.tealhq.com/job/operations-manager_7ea1ad1d10a5f20e30df7a4e468df66161599",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.tealhq.com/job/operations-manager_7ea1ad1d10a5f20e30df7a4e468df66161599",
+          "source_url": "https://www.tealhq.com/job/operations-manager_7ea1ad1d10a5f20e30df7a4e468df66161599",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.tealhq.com/job/operations-manager_7ea1ad1d10a5f20e30df7a4e468df66161599",
+          "source_url": "https://www.tealhq.com/job/operations-manager_7ea1ad1d10a5f20e30df7a4e468df66161599",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.tealhq.com/job/operations-manager_7ea1ad1d10a5f20e30df7a4e468df66161599",
+          "source_url": "https://www.tealhq.com/job/operations-manager_7ea1ad1d10a5f20e30df7a4e468df66161599",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.tealhq.com/job/operations-manager_7ea1ad1d10a5f20e30df7a4e468df66161599",
+          "source_url": "https://www.tealhq.com/job/operations-manager_7ea1ad1d10a5f20e30df7a4e468df66161599",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.tealhq.com/job/operations-manager_7ea1ad1d10a5f20e30df7a4e468df66161599",
+          "source_url": "https://www.tealhq.com/job/operations-manager_7ea1ad1d10a5f20e30df7a4e468df66161599",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "9cd8b0aa-f447-476a-96c6-8a94f6f3f46c",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Head of Multi-Site Manufacturing & Operations Excellence in Detroit at Professional Search Group, LLC | Apply now! \u2013 StudySmarter \u2013 Talents",
+      "source_url": "https://talents.vaia.com/companies/professional-search-group-llc/detroit/head-of-multi-site-manufacturing-operations-excellence-58605783",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://talents.vaia.com/companies/professional-search-group-llc/detroit/head-of-multi-site-manufacturing-operations-excellence-58605783/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://talents.vaia.com/companies/professional-search-group-llc/detroit/head-of-multi-site-manufacturing-operations-excellence-58605783/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://talents.vaia.com/companies/professional-search-group-llc/detroit/head-of-multi-site-manufacturing-operations-excellence-58605783/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://talents.vaia.com/companies/professional-search-group-llc/detroit/head-of-multi-site-manufacturing-operations-excellence-58605783/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://talents.vaia.com/companies/professional-search-group-llc/detroit/head-of-multi-site-manufacturing-operations-excellence-58605783/ matched_fields=none",
+          "source_url": "https://talents.vaia.com/companies/professional-search-group-llc/detroit/head-of-multi-site-manufacturing-operations-excellence-58605783/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://talents.vaia.com/companies/professional-search-group-llc/detroit/head-of-multi-site-manufacturing-operations-excellence-58605783/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "bfa38dc2-e5ac-41b5-a69a-90dd2b213da3",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Operations Manager job in Detroit at Detroit Manufacturing Systems LLC | Lensa",
+      "source_url": "https://lensa.com/job-v1/detroit-manufacturing-systems-llc/detroit-mi/operations-manager/436e37c936eb9e881add197bd2072b9b",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://lensa.com/job-v1/detroit-manufacturing-systems-llc/detroit-mi/operations-manager/436e37c936eb9e881add197bd2072b9b",
+          "source_url": "https://lensa.com/job-v1/detroit-manufacturing-systems-llc/detroit-mi/operations-manager/436e37c936eb9e881add197bd2072b9b",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://lensa.com/job-v1/detroit-manufacturing-systems-llc/detroit-mi/operations-manager/436e37c936eb9e881add197bd2072b9b",
+          "source_url": "https://lensa.com/job-v1/detroit-manufacturing-systems-llc/detroit-mi/operations-manager/436e37c936eb9e881add197bd2072b9b",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://lensa.com/job-v1/detroit-manufacturing-systems-llc/detroit-mi/operations-manager/436e37c936eb9e881add197bd2072b9b",
+          "source_url": "https://lensa.com/job-v1/detroit-manufacturing-systems-llc/detroit-mi/operations-manager/436e37c936eb9e881add197bd2072b9b",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://lensa.com/job-v1/detroit-manufacturing-systems-llc/detroit-mi/operations-manager/436e37c936eb9e881add197bd2072b9b",
+          "source_url": "https://lensa.com/job-v1/detroit-manufacturing-systems-llc/detroit-mi/operations-manager/436e37c936eb9e881add197bd2072b9b",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://lensa.com/job-v1/detroit-manufacturing-systems-llc/detroit-mi/operations-manager/436e37c936eb9e881add197bd2072b9b",
+          "source_url": "https://lensa.com/job-v1/detroit-manufacturing-systems-llc/detroit-mi/operations-manager/436e37c936eb9e881add197bd2072b9b",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://lensa.com/job-v1/detroit-manufacturing-systems-llc/detroit-mi/operations-manager/436e37c936eb9e881add197bd2072b9b",
+          "source_url": "https://lensa.com/job-v1/detroit-manufacturing-systems-llc/detroit-mi/operations-manager/436e37c936eb9e881add197bd2072b9b",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "4e5417c9-3b75-40e4-baa0-169dc4a720d5",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Top Manufacturing Companies in Detroit - May 2026 Rankings | Clutch.co",
+      "source_url": "https://clutch.co/logistics/manufacturing-companies/detroit",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://clutch.co/logistics/manufacturing-companies/detroit",
+          "source_url": "https://clutch.co/logistics/manufacturing-companies/detroit",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://clutch.co/logistics/manufacturing-companies/detroit",
+          "source_url": "https://clutch.co/logistics/manufacturing-companies/detroit",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://clutch.co/logistics/manufacturing-companies/detroit",
+          "source_url": "https://clutch.co/logistics/manufacturing-companies/detroit",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://clutch.co/logistics/manufacturing-companies/detroit",
+          "source_url": "https://clutch.co/logistics/manufacturing-companies/detroit",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://clutch.co/logistics/manufacturing-companies/detroit",
+          "source_url": "https://clutch.co/logistics/manufacturing-companies/detroit",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://clutch.co/logistics/manufacturing-companies/detroit",
+          "source_url": "https://clutch.co/logistics/manufacturing-companies/detroit",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "ef3fa0f0-bbcc-409a-b200-cec98819bef7",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Top Detroit, MI Manufacturing Companies 2026 | Built In",
+      "source_url": "https://builtin.com/companies/location/detroit/type/manufacturing-companies",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://builtin.com/companies/location/detroit/type/manufacturing-companies",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://builtin.com/companies/location/detroit/type/manufacturing-companies",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://builtin.com/companies/location/detroit/type/manufacturing-companies",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://builtin.com/companies/location/detroit/type/manufacturing-companies",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://builtin.com/companies/location/detroit/type/manufacturing-companies matched_fields=none",
+          "source_url": "https://builtin.com/companies/location/detroit/type/manufacturing-companies",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://builtin.com/companies/location/detroit/type/manufacturing-companies",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "e6dca13f-9dd4-4606-be1c-cd718338e078",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Manufacturing Operations Manager jobs in Detroit, MI - Indeed",
+      "source_url": "https://www.indeed.com/q-manufacturing-operations-manager-l-detroit,-mi-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-manufacturing-operations-manager-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-manufacturing-operations-manager-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-manufacturing-operations-manager-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-manufacturing-operations-manager-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-manufacturing-operations-manager-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-manufacturing-operations-manager-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-manufacturing-operations-manager-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-manufacturing-operations-manager-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-manufacturing-operations-manager-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-manufacturing-operations-manager-l-detroit,-mi-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-manufacturing-operations-manager-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-manufacturing-operations-manager-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "fe4d0959-fda4-41dd-a99c-f2854089e413",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Detroit Manufacturing Systems Company Profile - Datanyze",
+      "source_url": "https://www.datanyze.com/companies/detroit-manufacturing-systems/365407065",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.datanyze.com/companies/detroit-manufacturing-systems/365407065",
+          "source_url": "https://www.datanyze.com/companies/detroit-manufacturing-systems/365407065",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.datanyze.com/companies/detroit-manufacturing-systems/365407065",
+          "source_url": "https://www.datanyze.com/companies/detroit-manufacturing-systems/365407065",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.datanyze.com/companies/detroit-manufacturing-systems/365407065",
+          "source_url": "https://www.datanyze.com/companies/detroit-manufacturing-systems/365407065",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.datanyze.com/companies/detroit-manufacturing-systems/365407065",
+          "source_url": "https://www.datanyze.com/companies/detroit-manufacturing-systems/365407065",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.datanyze.com/companies/detroit-manufacturing-systems/365407065",
+          "source_url": "https://www.datanyze.com/companies/detroit-manufacturing-systems/365407065",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.datanyze.com/companies/detroit-manufacturing-systems/365407065",
+          "source_url": "https://www.datanyze.com/companies/detroit-manufacturing-systems/365407065",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "63047ef9-7843-4a47-916a-3b71ae941618",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Detroit Manufacturing Systems CEO, Founder, Key Executive Team, Board of Directors & Employees",
+      "source_url": "https://www.cbinsights.com/company/detroit-manufacturing-systems/people",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.cbinsights.com/company/detroit-manufacturing-systems/people",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.cbinsights.com/company/detroit-manufacturing-systems/people",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.cbinsights.com/company/detroit-manufacturing-systems/people",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.cbinsights.com/company/detroit-manufacturing-systems/people",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.cbinsights.com/company/detroit-manufacturing-systems/people matched_fields=none",
+          "source_url": "https://www.cbinsights.com/company/detroit-manufacturing-systems/people",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.cbinsights.com/company/detroit-manufacturing-systems/people",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "5ffabba9-6f65-443d-81f0-da3c66530c8a",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Our Story - Detroit Manufacturing Systems",
+      "source_url": "https://www.dmsna.com/our-story",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.dmsna.com/our-story",
+          "source_url": "https://www.dmsna.com/our-story",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.dmsna.com/our-story",
+          "source_url": "https://www.dmsna.com/our-story",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.dmsna.com/our-story",
+          "source_url": "https://www.dmsna.com/our-story",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.dmsna.com/our-story",
+          "source_url": "https://www.dmsna.com/our-story",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.dmsna.com/our-story",
+          "source_url": "https://www.dmsna.com/our-story",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.dmsna.com/our-story",
+          "source_url": "https://www.dmsna.com/our-story",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "24c41fa7-f260-40ea-ad87-a8b134797ec5",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Bruce Smith & Tom Swartz With Detroit Manufacturing Systems",
+      "source_url": "https://www.youtube.com/watch?v=bdGUU46DJx4",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.youtube.com/watch?v=bdGUU46DJx4",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.youtube.com/watch?v=bdGUU46DJx4",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.youtube.com/watch?v=bdGUU46DJx4",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.youtube.com/watch?v=bdGUU46DJx4",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.youtube.com/watch?v=bdGUU46DJx4 matched_fields=none",
+          "source_url": "https://www.youtube.com/watch?v=bdGUU46DJx4",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.youtube.com/watch?v=bdGUU46DJx4",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "e1d82b6c-cc2e-4d92-abcd-a836a3cdeb59",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Vice President Manufacturing Operations Jobs in Michigan",
+      "source_url": "https://www.ziprecruiter.com/Jobs/Vice-President-Manufacturing-Operations/--in-Michigan",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Vice-President-Manufacturing-Operations/--in-Michigan",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Vice-President-Manufacturing-Operations/--in-Michigan",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Vice-President-Manufacturing-Operations/--in-Michigan",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Vice-President-Manufacturing-Operations/--in-Michigan",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Vice-President-Manufacturing-Operations/--in-Michigan",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Vice-President-Manufacturing-Operations/--in-Michigan",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Vice-President-Manufacturing-Operations/--in-Michigan",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Vice-President-Manufacturing-Operations/--in-Michigan",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Vice-President-Manufacturing-Operations/--in-Michigan",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Vice-President-Manufacturing-Operations/--in-Michigan",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Vice-President-Manufacturing-Operations/--in-Michigan",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Vice-President-Manufacturing-Operations/--in-Michigan",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "0d2575c9-fc3c-4ce8-9747-18ca0a4fb2f4",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Board of Directors - Detroit Regional Chamber",
+      "source_url": "https://www.detroitchamber.com/about/board-of-directors",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/about/board-of-directors",
+          "source_url": "https://www.detroitchamber.com/about/board-of-directors",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/about/board-of-directors",
+          "source_url": "https://www.detroitchamber.com/about/board-of-directors",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/about/board-of-directors",
+          "source_url": "https://www.detroitchamber.com/about/board-of-directors",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/about/board-of-directors",
+          "source_url": "https://www.detroitchamber.com/about/board-of-directors",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.detroitchamber.com/about/board-of-directors",
+          "source_url": "https://www.detroitchamber.com/about/board-of-directors",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/about/board-of-directors",
+          "source_url": "https://www.detroitchamber.com/about/board-of-directors",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "90fe3206-9296-4252-9829-5b5425671018",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Just a moment...",
+      "source_url": "https://www.glassdoor.com/Explore/top-manufacturing-companies-detroit_IS.4,17_ISEC10015_IL.28,35_IM236.htm",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Explore/top-manufacturing-companies-detroit_IS.4,17_ISEC10015_IL.28,35_IM236.htm",
+          "source_url": "https://www.glassdoor.com/Explore/top-manufacturing-companies-detroit_IS.4,17_ISEC10015_IL.28,35_IM236.htm",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Explore/top-manufacturing-companies-detroit_IS.4,17_ISEC10015_IL.28,35_IM236.htm",
+          "source_url": "https://www.glassdoor.com/Explore/top-manufacturing-companies-detroit_IS.4,17_ISEC10015_IL.28,35_IM236.htm",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Explore/top-manufacturing-companies-detroit_IS.4,17_ISEC10015_IL.28,35_IM236.htm",
+          "source_url": "https://www.glassdoor.com/Explore/top-manufacturing-companies-detroit_IS.4,17_ISEC10015_IL.28,35_IM236.htm",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Explore/top-manufacturing-companies-detroit_IS.4,17_ISEC10015_IL.28,35_IM236.htm",
+          "source_url": "https://www.glassdoor.com/Explore/top-manufacturing-companies-detroit_IS.4,17_ISEC10015_IL.28,35_IM236.htm",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.glassdoor.com/Explore/top-manufacturing-companies-detroit_IS.4,17_ISEC10015_IL.28,35_IM236.htm",
+          "source_url": "https://www.glassdoor.com/Explore/top-manufacturing-companies-detroit_IS.4,17_ISEC10015_IL.28,35_IM236.htm",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Explore/top-manufacturing-companies-detroit_IS.4,17_ISEC10015_IL.28,35_IM236.htm",
+          "source_url": "https://www.glassdoor.com/Explore/top-manufacturing-companies-detroit_IS.4,17_ISEC10015_IL.28,35_IM236.htm",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "6e33fd06-7057-483a-bc92-03150ba5d072",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "COO Job - Industrial Manufacturer | Detroit, MI | JRG Partners",
+      "source_url": "https://www.jrgpartners.com/jobs/chief-operating-officer-industrial-manufacturer-detroit-mi",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-operating-officer-industrial-manufacturer-detroit-mi/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-operating-officer-industrial-manufacturer-detroit-mi/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-operating-officer-industrial-manufacturer-detroit-mi/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-operating-officer-industrial-manufacturer-detroit-mi/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.jrgpartners.com/jobs/chief-operating-officer-industrial-manufacturer-detroit-mi/ matched_fields=none",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-operating-officer-industrial-manufacturer-detroit-mi/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.jrgpartners.com/jobs/chief-operating-officer-industrial-manufacturer-detroit-mi/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "4650348b-ead9-463d-8631-0a95262f3ece",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Top Executive Search & Leadership Advisory Firm in Michigan | Stanton Chase Detroit | Stanton Chase",
+      "source_url": "https://www.stantonchase.com/office/executive-search-firm-in-detroit-united-states",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.stantonchase.com/office/executive-search-firm-in-detroit-united-states",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.stantonchase.com/office/executive-search-firm-in-detroit-united-states",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.stantonchase.com/office/executive-search-firm-in-detroit-united-states",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.stantonchase.com/office/executive-search-firm-in-detroit-united-states",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.stantonchase.com/office/executive-search-firm-in-detroit-united-states matched_fields=none",
+          "source_url": "https://www.stantonchase.com/office/executive-search-firm-in-detroit-united-states",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.stantonchase.com/office/executive-search-firm-in-detroit-united-states",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "a9dbdbba-2a1c-4c53-96a2-8d9d16e817ca",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "34 Director of manufacturing operations jobs in Detroit, MI - Glassdoor",
+      "source_url": "https://www.glassdoor.com/Job/detroit-director-of-manufacturing-operations-jobs-SRCH_IL.0,7_IC1134644_KO8,44.htm",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/detroit-director-of-manufacturing-operations-jobs-SRCH_IL.0,7_IC1134644_KO8,44.htm",
+          "source_url": "https://www.glassdoor.com/Job/detroit-director-of-manufacturing-operations-jobs-SRCH_IL.0,7_IC1134644_KO8,44.htm",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/detroit-director-of-manufacturing-operations-jobs-SRCH_IL.0,7_IC1134644_KO8,44.htm",
+          "source_url": "https://www.glassdoor.com/Job/detroit-director-of-manufacturing-operations-jobs-SRCH_IL.0,7_IC1134644_KO8,44.htm",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/detroit-director-of-manufacturing-operations-jobs-SRCH_IL.0,7_IC1134644_KO8,44.htm",
+          "source_url": "https://www.glassdoor.com/Job/detroit-director-of-manufacturing-operations-jobs-SRCH_IL.0,7_IC1134644_KO8,44.htm",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/detroit-director-of-manufacturing-operations-jobs-SRCH_IL.0,7_IC1134644_KO8,44.htm",
+          "source_url": "https://www.glassdoor.com/Job/detroit-director-of-manufacturing-operations-jobs-SRCH_IL.0,7_IC1134644_KO8,44.htm",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.glassdoor.com/Job/detroit-director-of-manufacturing-operations-jobs-SRCH_IL.0,7_IC1134644_KO8,44.htm",
+          "source_url": "https://www.glassdoor.com/Job/detroit-director-of-manufacturing-operations-jobs-SRCH_IL.0,7_IC1134644_KO8,44.htm",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/detroit-director-of-manufacturing-operations-jobs-SRCH_IL.0,7_IC1134644_KO8,44.htm",
+          "source_url": "https://www.glassdoor.com/Job/detroit-director-of-manufacturing-operations-jobs-SRCH_IL.0,7_IC1134644_KO8,44.htm",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "dd649ad7-f965-4e77-836a-4579f6bfd369",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Detroit Industries",
+      "source_url": "https://www.detroitregionalpartnership.com/seven-industries-powering-the-detroit-region",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.detroitregionalpartnership.com/seven-industries-powering-the-detroit-region",
+          "source_url": "https://www.detroitregionalpartnership.com/seven-industries-powering-the-detroit-region",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.detroitregionalpartnership.com/seven-industries-powering-the-detroit-region",
+          "source_url": "https://www.detroitregionalpartnership.com/seven-industries-powering-the-detroit-region",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.detroitregionalpartnership.com/seven-industries-powering-the-detroit-region",
+          "source_url": "https://www.detroitregionalpartnership.com/seven-industries-powering-the-detroit-region",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.detroitregionalpartnership.com/seven-industries-powering-the-detroit-region",
+          "source_url": "https://www.detroitregionalpartnership.com/seven-industries-powering-the-detroit-region",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.detroitregionalpartnership.com/seven-industries-powering-the-detroit-region",
+          "source_url": "https://www.detroitregionalpartnership.com/seven-industries-powering-the-detroit-region",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.detroitregionalpartnership.com/seven-industries-powering-the-detroit-region",
+          "source_url": "https://www.detroitregionalpartnership.com/seven-industries-powering-the-detroit-region",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "27ba0369-c04b-4420-9074-9c723118a30b",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Fleet Operations Manager at Leading Logistics Firm, Detroit, MI - JRG Partners LLC",
+      "source_url": "https://www.jrgpartners.com/jobs/fleet-operations-manager-at-leading-logistics-firm-detroit-mi",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.jrgpartners.com/jobs/fleet-operations-manager-at-leading-logistics-firm-detroit-mi/",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.jrgpartners.com/jobs/fleet-operations-manager-at-leading-logistics-firm-detroit-mi/",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.jrgpartners.com/jobs/fleet-operations-manager-at-leading-logistics-firm-detroit-mi/",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.jrgpartners.com/jobs/fleet-operations-manager-at-leading-logistics-firm-detroit-mi/",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.jrgpartners.com/jobs/fleet-operations-manager-at-leading-logistics-firm-detroit-mi/ matched_fields=none",
+          "source_url": "https://www.jrgpartners.com/jobs/fleet-operations-manager-at-leading-logistics-firm-detroit-mi/",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.jrgpartners.com/jobs/fleet-operations-manager-at-leading-logistics-firm-detroit-mi/",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "4084720c-22b9-4c27-a4a5-d5b2602b8775",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "$64k-$139k Business Operations Manager Jobs in Detroit, MI",
+      "source_url": "https://www.ziprecruiter.com/Jobs/Business-Operations-Manager/-in-Detroit,MI",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Business-Operations-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Business-Operations-Manager/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Business-Operations-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Business-Operations-Manager/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Business-Operations-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Business-Operations-Manager/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Business-Operations-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Business-Operations-Manager/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Business-Operations-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Business-Operations-Manager/-in-Detroit,MI",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Business-Operations-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Business-Operations-Manager/-in-Detroit,MI",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "5e6e5e39-26e2-4ee1-b337-eeed7847684a",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Director of plant operations jobs in Detroit, MI - Indeed",
+      "source_url": "https://www.indeed.com/q-director-of-plant-operations-l-detroit,-mi-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-director-of-plant-operations-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-of-plant-operations-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-director-of-plant-operations-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-of-plant-operations-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-director-of-plant-operations-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-of-plant-operations-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-director-of-plant-operations-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-of-plant-operations-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-director-of-plant-operations-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-of-plant-operations-l-detroit,-mi-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-director-of-plant-operations-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-director-of-plant-operations-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "905705c2-a657-4878-8a47-084642beafab",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "$139k-$182k Product Operations Manager Jobs in Detroit, MI",
+      "source_url": "https://www.ziprecruiter.com/Jobs/Product-Operations-Manager/-in-Detroit,MI",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Product-Operations-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Product-Operations-Manager/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Product-Operations-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Product-Operations-Manager/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Product-Operations-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Product-Operations-Manager/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Product-Operations-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Product-Operations-Manager/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Product-Operations-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Product-Operations-Manager/-in-Detroit,MI",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Product-Operations-Manager/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Product-Operations-Manager/-in-Detroit,MI",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "cae77e26-a781-46b9-becc-d5c06f3dd708",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Operations Manager Senior in Detroit - Energy Jobline",
+      "source_url": "https://www.energyjobline.com/job/operations-manager-senior-detroit-30307042",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.energyjobline.com/botchallenge.html?token=848c9e68fef7be5d6fed72d4a110b005&target=/job/operations-manager-senior-detroit-30307042",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.energyjobline.com/botchallenge.html?token=848c9e68fef7be5d6fed72d4a110b005&target=/job/operations-manager-senior-detroit-30307042",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.energyjobline.com/botchallenge.html?token=848c9e68fef7be5d6fed72d4a110b005&target=/job/operations-manager-senior-detroit-30307042",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.energyjobline.com/botchallenge.html?token=848c9e68fef7be5d6fed72d4a110b005&target=/job/operations-manager-senior-detroit-30307042",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.energyjobline.com/botchallenge.html?token=848c9e68fef7be5d6fed72d4a110b005&target=/job/operations-manager-senior-detroit-30307042 matched_fields=none",
+          "source_url": "https://www.energyjobline.com/botchallenge.html?token=848c9e68fef7be5d6fed72d4a110b005&target=/job/operations-manager-senior-detroit-30307042",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.energyjobline.com/botchallenge.html?token=848c9e68fef7be5d6fed72d4a110b005&target=/job/operations-manager-senior-detroit-30307042",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "9c79cd3a-ffd7-4494-b69f-ca8854db3d45",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Values & Leadership - Diversified Chemical Technologies, Inc. (DCT)",
+      "source_url": "https://www.dchem.com/leadership",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.dchem.com/leadership",
+          "source_url": "https://www.dchem.com/leadership",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.dchem.com/leadership",
+          "source_url": "https://www.dchem.com/leadership",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.dchem.com/leadership",
+          "source_url": "https://www.dchem.com/leadership",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.dchem.com/leadership",
+          "source_url": "https://www.dchem.com/leadership",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.dchem.com/leadership",
+          "source_url": "https://www.dchem.com/leadership",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.dchem.com/leadership",
+          "source_url": "https://www.dchem.com/leadership",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "e9c2df4e-1231-4286-ac18-bc8900ed4327",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Bruce Smith - Detroit Manufacturing Systems LLC - Voltava",
+      "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/in/bruce-smith-6b2aa95 matched_fields=none",
+          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/in/bruce-smith-6b2aa95",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "2f27219c-9da4-46ad-adb6-15e03b50daee",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Detroit Workforce (Wayne County) - Detroit Regional Chamber",
+      "source_url": "https://www.detroitchamber.com/research/regional-overview/business/workforce-statistics",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/research/regional-overview/business/workforce-statistics",
+          "source_url": "https://www.detroitchamber.com/research/regional-overview/business/workforce-statistics",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/research/regional-overview/business/workforce-statistics",
+          "source_url": "https://www.detroitchamber.com/research/regional-overview/business/workforce-statistics",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/research/regional-overview/business/workforce-statistics",
+          "source_url": "https://www.detroitchamber.com/research/regional-overview/business/workforce-statistics",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/research/regional-overview/business/workforce-statistics",
+          "source_url": "https://www.detroitchamber.com/research/regional-overview/business/workforce-statistics",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.detroitchamber.com/research/regional-overview/business/workforce-statistics",
+          "source_url": "https://www.detroitchamber.com/research/regional-overview/business/workforce-statistics",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.detroitchamber.com/research/regional-overview/business/workforce-statistics",
+          "source_url": "https://www.detroitchamber.com/research/regional-overview/business/workforce-statistics",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "32b737ed-3504-4889-9b1d-ba272684cab0",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "$75k-$180k Director Plant Operations Jobs in Detroit, MI - ZipRecruiter",
+      "source_url": "https://www.ziprecruiter.com/Jobs/Director-Plant-Operations/-in-Detroit,MI",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Director-Plant-Operations/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Director-Plant-Operations/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Director-Plant-Operations/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Director-Plant-Operations/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Director-Plant-Operations/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Director-Plant-Operations/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Director-Plant-Operations/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Director-Plant-Operations/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Director-Plant-Operations/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Director-Plant-Operations/-in-Detroit,MI",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Director-Plant-Operations/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Director-Plant-Operations/-in-Detroit,MI",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "549b0f5a-d023-4b55-b5c8-31da8a1afe9f",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "407 Plant Operations Manager jobs in Detroit - LinkedIn",
+      "source_url": "https://www.linkedin.com/jobs/plant-operations-manager-jobs-detroit-mi",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/plant-operations-manager-jobs-detroit-mi",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/plant-operations-manager-jobs-detroit-mi",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/plant-operations-manager-jobs-detroit-mi",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/plant-operations-manager-jobs-detroit-mi",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/jobs/plant-operations-manager-jobs-detroit-mi matched_fields=none",
+          "source_url": "https://www.linkedin.com/jobs/plant-operations-manager-jobs-detroit-mi",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/plant-operations-manager-jobs-detroit-mi",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "c5a8015f-d8f6-4e81-998d-1eb0726012c4",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "The Best Plant Manager Jobs in Detroit, MI | Monster",
+      "source_url": "https://www.monster.com/jobs/q-plant-manager-jobs-l-detroit-mi",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.monster.com/jobs/q-plant-manager-jobs-l-detroit-mi",
+          "source_url": "https://www.monster.com/jobs/q-plant-manager-jobs-l-detroit-mi",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.monster.com/jobs/q-plant-manager-jobs-l-detroit-mi",
+          "source_url": "https://www.monster.com/jobs/q-plant-manager-jobs-l-detroit-mi",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.monster.com/jobs/q-plant-manager-jobs-l-detroit-mi",
+          "source_url": "https://www.monster.com/jobs/q-plant-manager-jobs-l-detroit-mi",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.monster.com/jobs/q-plant-manager-jobs-l-detroit-mi",
+          "source_url": "https://www.monster.com/jobs/q-plant-manager-jobs-l-detroit-mi",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.monster.com/jobs/q-plant-manager-jobs-l-detroit-mi",
+          "source_url": "https://www.monster.com/jobs/q-plant-manager-jobs-l-detroit-mi",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.monster.com/jobs/q-plant-manager-jobs-l-detroit-mi",
+          "source_url": "https://www.monster.com/jobs/q-plant-manager-jobs-l-detroit-mi",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "472765f9-3f63-40b3-b982-8cbd410e8a68",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Plant Manager jobs in Detroit, Mi - Indeed",
+      "source_url": "https://www.indeed.com/q-plant-manager-l-detroit,-mi-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-plant-manager-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-plant-manager-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-plant-manager-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-plant-manager-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-plant-manager-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-plant-manager-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-plant-manager-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-plant-manager-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-plant-manager-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-plant-manager-l-detroit,-mi-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-plant-manager-l-detroit,-mi-jobs.html",
+          "source_url": "https://www.indeed.com/q-plant-manager-l-detroit,-mi-jobs.html",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "f1666d7f-0469-4915-b34d-3d0b6e6f6a2e",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Highest Paying Plant Operations Manager Jobs in Detroit, MI | Ladders",
+      "source_url": "https://www.theladders.com/jobs/plant-operations-manager-jobs,detroit-mi?sort=ByRelevance&page=1",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/jobs/plant-operations-manager-jobs,detroit-mi?sort=ByRelevance&page=1",
+          "source_url": "https://www.theladders.com/jobs/plant-operations-manager-jobs,detroit-mi?sort=ByRelevance&page=1",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/jobs/plant-operations-manager-jobs,detroit-mi?sort=ByRelevance&page=1",
+          "source_url": "https://www.theladders.com/jobs/plant-operations-manager-jobs,detroit-mi?sort=ByRelevance&page=1",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/jobs/plant-operations-manager-jobs,detroit-mi?sort=ByRelevance&page=1",
+          "source_url": "https://www.theladders.com/jobs/plant-operations-manager-jobs,detroit-mi?sort=ByRelevance&page=1",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/jobs/plant-operations-manager-jobs,detroit-mi?sort=ByRelevance&page=1",
+          "source_url": "https://www.theladders.com/jobs/plant-operations-manager-jobs,detroit-mi?sort=ByRelevance&page=1",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.theladders.com/jobs/plant-operations-manager-jobs,detroit-mi?sort=ByRelevance&page=1",
+          "source_url": "https://www.theladders.com/jobs/plant-operations-manager-jobs,detroit-mi?sort=ByRelevance&page=1",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.theladders.com/jobs/plant-operations-manager-jobs,detroit-mi?sort=ByRelevance&page=1",
+          "source_url": "https://www.theladders.com/jobs/plant-operations-manager-jobs,detroit-mi?sort=ByRelevance&page=1",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "f4cf0d75-d577-4f2c-8e13-cff7280c0871",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "27 plant operations manager Jobs in Detroit, MI, March 2026",
+      "source_url": "https://www.glassdoor.com/Job/detroit-mi-plant-operations-manager-jobs-SRCH_IL.0,10_IC1134644_KO11,35.htm",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/detroit-mi-plant-operations-manager-jobs-SRCH_IL.0,10_IC1134644_KO11,35.htm",
+          "source_url": "https://www.glassdoor.com/Job/detroit-mi-plant-operations-manager-jobs-SRCH_IL.0,10_IC1134644_KO11,35.htm",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/detroit-mi-plant-operations-manager-jobs-SRCH_IL.0,10_IC1134644_KO11,35.htm",
+          "source_url": "https://www.glassdoor.com/Job/detroit-mi-plant-operations-manager-jobs-SRCH_IL.0,10_IC1134644_KO11,35.htm",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/detroit-mi-plant-operations-manager-jobs-SRCH_IL.0,10_IC1134644_KO11,35.htm",
+          "source_url": "https://www.glassdoor.com/Job/detroit-mi-plant-operations-manager-jobs-SRCH_IL.0,10_IC1134644_KO11,35.htm",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/detroit-mi-plant-operations-manager-jobs-SRCH_IL.0,10_IC1134644_KO11,35.htm",
+          "source_url": "https://www.glassdoor.com/Job/detroit-mi-plant-operations-manager-jobs-SRCH_IL.0,10_IC1134644_KO11,35.htm",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.glassdoor.com/Job/detroit-mi-plant-operations-manager-jobs-SRCH_IL.0,10_IC1134644_KO11,35.htm",
+          "source_url": "https://www.glassdoor.com/Job/detroit-mi-plant-operations-manager-jobs-SRCH_IL.0,10_IC1134644_KO11,35.htm",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.glassdoor.com/Job/detroit-mi-plant-operations-manager-jobs-SRCH_IL.0,10_IC1134644_KO11,35.htm",
+          "source_url": "https://www.glassdoor.com/Job/detroit-mi-plant-operations-manager-jobs-SRCH_IL.0,10_IC1134644_KO11,35.htm",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "abad6f1b-34e9-4441-9c54-8372e52ba55c",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "212 Plant Maintenance Manager jobs in Detroit, Michigan, United ...",
+      "source_url": "https://www.linkedin.com/jobs/plant-maintenance-manager-jobs-detroit-mi",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/plant-maintenance-manager-jobs-detroit-mi",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/plant-maintenance-manager-jobs-detroit-mi",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/plant-maintenance-manager-jobs-detroit-mi",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/plant-maintenance-manager-jobs-detroit-mi",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://www.linkedin.com/jobs/plant-maintenance-manager-jobs-detroit-mi matched_fields=none",
+          "source_url": "https://www.linkedin.com/jobs/plant-maintenance-manager-jobs-detroit-mi",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://www.linkedin.com/jobs/plant-maintenance-manager-jobs-detroit-mi",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "122da893-fc53-4b76-b432-a873567f3031",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Plant Jobs in Detroit, MI (NOW HIRING) - ZipRecruiter",
+      "source_url": "https://www.ziprecruiter.com/Jobs/Plant/-in-Detroit,MI",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Plant/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Plant/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Plant/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Plant/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Plant/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Plant/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Plant/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Plant/-in-Detroit,MI",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Plant/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Plant/-in-Detroit,MI",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.ziprecruiter.com/Jobs/Plant/-in-Detroit,MI",
+          "source_url": "https://www.ziprecruiter.com/Jobs/Plant/-in-Detroit,MI",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "33b45704-3c5f-42b0-89e2-0c4210cd5307",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Plant Manager Jobs in Food Manufacturing",
+      "source_url": "https://m.careersinfood.com/plant_manager-jobs-food-manufacturing.cfm",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate.",
+          "source_url": "https://m.careersinfood.com/plant_manager-jobs-food-manufacturing.cfm",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate.",
+          "source_url": "https://m.careersinfood.com/plant_manager-jobs-food-manufacturing.cfm",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate.",
+          "source_url": "https://m.careersinfood.com/plant_manager-jobs-food-manufacturing.cfm",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate.",
+          "source_url": "https://m.careersinfood.com/plant_manager-jobs-food-manufacturing.cfm",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=200 resolved_url=https://m.careersinfood.com/plant_manager-jobs-food-manufacturing.cfm matched_fields=none",
+          "source_url": "https://m.careersinfood.com/plant_manager-jobs-food-manufacturing.cfm",
+          "status": "unsupported"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate.",
+          "source_url": "https://m.careersinfood.com/plant_manager-jobs-food-manufacturing.cfm",
+          "status": "missing"
+        }
+      }
+    },
+    {
+      "candidate_category": "failed",
+      "explanation": "REVIEW: rejected row; no hidden usable lead is implied. Source coverage exists, but extraction did not produce a validated person, organization-only, or not-found row from this source.",
+      "failure_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "id": "8e22b9b3-5d88-4bfa-9d31-8a2a9b19c8da",
+      "organization": null,
+      "primary_filter_reason": "REVIEW: source collected for the broad target, but no source-supported person or account row was extracted; no usable lead is implied.",
+      "searched_target": "Plant Operations Manager Jobs, Employment - Indeed",
+      "source_url": "https://www.indeed.com/q-plant-operations-manager-jobs.html",
+      "tier": "failed",
+      "validation": {
+        "email": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "email is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-plant-operations-manager-jobs.html",
+          "source_url": "https://www.indeed.com/q-plant-operations-manager-jobs.html",
+          "status": "missing"
+        },
+        "name": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "name is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-plant-operations-manager-jobs.html",
+          "source_url": "https://www.indeed.com/q-plant-operations-manager-jobs.html",
+          "status": "missing"
+        },
+        "organization": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "organization is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-plant-operations-manager-jobs.html",
+          "source_url": "https://www.indeed.com/q-plant-operations-manager-jobs.html",
+          "status": "missing"
+        },
+        "phone": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "phone is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-plant-operations-manager-jobs.html",
+          "source_url": "https://www.indeed.com/q-plant-operations-manager-jobs.html",
+          "status": "missing"
+        },
+        "source": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "http_status=403 resolved_url=https://www.indeed.com/q-plant-operations-manager-jobs.html",
+          "source_url": "https://www.indeed.com/q-plant-operations-manager-jobs.html",
+          "status": "failed"
+        },
+        "title": {
+          "checked_at": "2026-05-25T22:24:00Z",
+          "evidence_snippet": null,
+          "notes": "title is not present on the candidate. http_status=403 resolved_url=https://www.indeed.com/q-plant-operations-manager-jobs.html",
+          "source_url": "https://www.indeed.com/q-plant-operations-manager-jobs.html",
+          "status": "missing"
+        }
+      }
+    }
+  ],
+  "metrics": {
+    "elapsed_seconds": 115.87,
+    "estimated_cost_usd": 0.235955,
+    "funnel_counts": {
+      "categorized_rows": 50,
+      "contact_evidence_candidates_searched": 5,
+      "contact_evidence_conflicting_signals": 0,
+      "contact_evidence_contacts_acquired": 0,
+      "contact_evidence_field_corroborations": 4,
+      "contact_evidence_review_to_high_trust": 0,
+      "contact_evidence_searches": 11,
+      "contact_quality_passes": 0,
+      "deduped_sources": 116,
+      "extracted_candidates": 7,
+      "high_trust_usable_rows": 0,
+      "person_rows": 2,
+      "persona_supported_rows": 0,
+      "raw_vendor_hits": 177,
+      "source_snapshots": 116,
+      "source_supported_rows": 5
+    },
+    "funnel_notes": [
+      "Deduped 177 raw vendor hits to 116 unique sources.",
+      "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+      "No returned row has verified or source-backed deduced contact evidence.",
+      "Deep contact evidence pass searched 5 promising rows and acquired 0 source-backed contacts; 0 rows gained enough contact evidence to clear the READY gate.",
+      "Deep contact evidence pass observed 4 field corroborations and 0 conflicting signals across public-web sources.",
+      "Contact evidence pass checked 3 organization-only rows for staff/contact sources."
+    ],
+    "input_tokens": 34938,
+    "openai_web_searches": 0,
+    "output_tokens": 1190,
+    "tavily_searches": 23,
+    "tier_distribution": {
+      "failed": 45,
+      "high_trust_usable": 0,
+      "not_found": 0,
+      "organization_only": 3,
+      "review": 2
+    }
+  },
+  "mode": "scout",
+  "persistence_readback": {
+    "candidate_category_distribution": {
+      "failed": 45,
+      "organization_only": 3,
+      "person_lead": 2
+    },
+    "db_readback_row_count": 50,
+    "exportable_row_count": 50,
+    "first_db_lead_ids": [
+      "bdbb1c1c-574e-406c-86ce-363832885913",
+      "8fb881cb-341d-4f13-8c33-5bfdca4daf1c",
+      "fb5be00a-a9b0-4226-81a6-d37a06d88852",
+      "88d63c21-7d4b-489b-9212-83983bcf9f25",
+      "2127c969-8505-47b5-9111-ee7600ba00d1"
+    ],
+    "first_response_lead_ids": [
+      "bdbb1c1c-574e-406c-86ce-363832885913",
+      "8fb881cb-341d-4f13-8c33-5bfdca4daf1c",
+      "fb5be00a-a9b0-4226-81a6-d37a06d88852",
+      "88d63c21-7d4b-489b-9212-83983bcf9f25",
+      "2127c969-8505-47b5-9111-ee7600ba00d1"
+    ],
+    "persisted_lead_count": 50,
+    "recipe_id": "3518addc-67ca-4e4b-ae00-3daa09b02bf0",
+    "response_row_count": 50,
+    "row_count_matches": true,
+    "run_id": "da8d07e5-7576-410e-ae8c-09dd6d7628f6",
+    "tier_distribution": {
+      "failed": 45,
+      "organization_only": 3,
+      "review": 2
+    }
+  },
+  "prompt_label": "Manufacturing operations leaders in Detroit",
+  "query": "manufacturing operations leaders in Detroit",
+  "query_guardrail": null,
+  "recipe_id": "3518addc-67ca-4e4b-ae00-3daa09b02bf0",
+  "run_id": "da8d07e5-7576-410e-ae8c-09dd6d7628f6",
+  "runner_elapsed_seconds": 117.581,
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 5,
+    "remaining_rows": 792,
+    "reset_at": "2026-05-25T22:12:50.168118+00:00",
+    "total_queries": 5,
+    "total_rows": 208
+  }
+}
