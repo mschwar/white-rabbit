@@ -6,8 +6,8 @@
 **Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
 **Current reset gate:** RG6 - Dogfood / Kill Decision remains held/product-red. Prompt C accepted the R15 red-hold recommendation; Matt authorized fresh production evidence on 2026-05-22; the Matt-directed lead-quality/contact-yield remediation merged to `main`; the 2026-05-24 post-remediation Prompt C re-audit kept RG6 held/product-red; the later unblocked remediation recheck improved runtime/contact/timed-export evidence but still did not clear RG6; and RG6R3 improved Arizona source/persona/org precision without clearing the gate.
-**Next Prompt A feature:** `RG6R4 - required-suite contact precision and web-boundary follow-up` on `fix/rg6r4-required-suite-contact-precision`. This is a narrow same-gate red-remediation slice under the restored two-prompt A/B rhythm. No public SaaS/account/billing work or yellow/green claim is unlocked.
-**Current Prompt B handoff:** None.
+**Next Prompt A feature:** None while RG6R4 is waiting for Prompt B QA. No public SaaS/account/billing work or yellow/green claim is unlocked.
+**Current Prompt B handoff:** QA `RG6R4 - required-suite contact precision and web-boundary follow-up` on `fix/rg6r4-required-suite-contact-precision`. Confirm the branch stays scoped to required-suite contact precision plus the RG6R3 web-boundary 401 follow-up, rerun full core/web checks, capture fresh required-suite sampled precision and web-boundary evidence, and merge to `main` only if contact precision improves without weakening auth boundaries.
 **Current Prompt C handoff:** None until Matt asks for a gate-level RG6 decision. Re-audit report: `audits/gates/reset-2026-05-10/rg6-post-remediation-re-audit.md`. Follow-up recheck report: `audits/gates/reset-2026-05-10/rg6-unblocked-remediation-recheck.md`. Fresh RG6R3 direct evidence: `audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25-direct/`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
@@ -256,7 +256,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG6R1 | Lead quality, contact yield, sampled precision, and operator-minute remediation | merged_to_mainline | `fix/rg6-lead-quality-contact-yield` | core/API/web + browser |
 | RG6R2 | Unblocked remediation recheck and source/runtime follow-up | gate_hold | `audit/reset-rg6-post-remediation` | production/runtime + saved suite + browser QA |
 | RG6R3 | Arizona official-domain source targeting and citation enforcement | merged_to_mainline | `fix/rg6r3-arizona-source-targeting` | core + direct live artifacts |
-| RG6R4 | Required-suite contact precision and web-boundary follow-up | ready | `fix/rg6r4-required-suite-contact-precision` | core/API + live evidence |
+| RG6R4 | Required-suite contact precision and web-boundary follow-up | waiting_for_prompt_b | `fix/rg6r4-required-suite-contact-precision` | core/web + live evidence |
 
 ## RG0 - W5 Hold And Control Reset
 

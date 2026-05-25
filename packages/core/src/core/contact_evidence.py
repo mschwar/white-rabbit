@@ -194,6 +194,11 @@ def _email_matches_person(email: str, candidate: Lead) -> bool:
     return last in local_part and (first in local_part or local_part.startswith(f"{first[:1]}{last}"))
 
 
+def _email_domain(email: str) -> str:
+    match = _DOMAIN_RE.search(email)
+    return match.group(1).lower() if match else ""
+
+
 def _text_mentions(value: str, needle: str) -> bool:
     return bool(needle) and needle.lower() in value.lower()
 
@@ -302,12 +307,30 @@ def _source_is_authoritative_for_candidate(result: Mapping[str, Any], candidate:
     return source_type == "board_agenda_pdf" and _text_mentions_candidate_organization(_result_text(result), candidate)
 
 
-def _direct_email_is_source_backed(result: Mapping[str, Any], candidate: Lead) -> bool:
+def _direct_email_is_source_backed(result: Mapping[str, Any], candidate: Lead, *, email: str) -> bool:
     text = _result_text(result)
     lowered = text.lower()
-    if not _text_mentions_candidate_name(text, candidate):
+    if not _source_is_authoritative_for_candidate(result, candidate):
         return False
-    if not _text_mentions_candidate_organization(text, candidate) and candidate.title.lower() not in lowered:
+
+    if _text_mentions_candidate_name(text, candidate):
+        return _text_mentions_candidate_organization(text, candidate) or candidate.title.lower() in lowered
+
+    if not _email_matches_person(email, candidate):
+        return False
+    domain = _email_domain(email)
+    if not domain or not _domain_is_source_backed(domain, result, candidate):
+        return False
+    return (
+        _text_mentions_candidate_organization(text, candidate)
+        or candidate.title.lower() in lowered
+        or any(term in lowered for term in _CONTACT_SOURCE_TERMS)
+    )
+
+
+def _direct_phone_is_source_backed(result: Mapping[str, Any], candidate: Lead) -> bool:
+    text = _result_text(result)
+    if not _result_mentions_candidate(text, candidate):
         return False
     return _source_is_authoritative_for_candidate(result, candidate)
 
@@ -349,11 +372,11 @@ def _find_direct_email_evidence(
     conflicts = _conflicting_signals(signal_list)
     for result in _rank_contact_results(results):
         text = _result_text(result)
-        if not _result_mentions_candidate(text, candidate) or not _direct_email_is_source_backed(result, candidate):
-            continue
         for match in _EMAIL_RE.finditer(text):
             email = match.group(0).lower()
             if _email_is_generic(email) or not _email_matches_person(email, candidate):
+                continue
+            if not _direct_email_is_source_backed(result, candidate, email=email):
                 continue
             return _ContactEvidence(
                 contact_field="email",
@@ -383,7 +406,7 @@ def _find_direct_phone_evidence(
     conflicts = _conflicting_signals(signal_list)
     for result in _rank_contact_results(results):
         text = _result_text(result)
-        if not _result_mentions_candidate(text, candidate) or not _direct_email_is_source_backed(result, candidate):
+        if not _direct_phone_is_source_backed(result, candidate):
             continue
         for match in _PHONE_RE.finditer(text):
             phone = match.group(0).strip()

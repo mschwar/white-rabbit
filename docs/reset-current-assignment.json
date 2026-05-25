@@ -2,20 +2,20 @@
   "version": 1,
   "updated": "2026-05-25",
   "integration_branch": "main",
-  "current_prompt": "A",
+  "current_prompt": "B",
   "current_feature_id": "RG6R4-REQUIRED-SUITE-CONTACT-PRECISION",
   "current_feature_name": "RG6R4 - required-suite contact precision and web-boundary follow-up",
-  "current_feature_status": "ready",
+  "current_feature_status": "waiting_for_prompt_b",
   "current_feature_branch": "fix/rg6r4-required-suite-contact-precision",
   "current_gate": "RG6 - Dogfood / Kill Decision",
   "current_gate_status": "gate_hold",
   "current_audit_branch": "audit/reset-rg6-post-remediation",
-  "valid_next_action": "Normal two-prompt A/B rhythm is restored under the existing RG6 red-remediation authorization. Prompt A may implement the single ready narrow RG6R4 slice on fix/rg6r4-required-suite-contact-precision, scoped to required-suite contact precision and the web-boundary 401 follow-up surfaced by the RG6R3 evidence. Prompt B will QA, merge to main, and capture fresh evidence.",
+  "valid_next_action": "Prompt B may now QA fix/rg6r4-required-suite-contact-precision, confirm the RG6R4 scope, rerun core/web verification, capture fresh required-suite and web-boundary evidence, and merge to main only if the evidence improves required-suite contact precision without weakening auth boundaries.",
   "invalid_next_actions": [
     "Start public SaaS, accounts, orgs, billing, signup, or external self-serve work",
     "Mark the product yellow or green from RG6R3",
     "Claim Thomas/Lee dogfood readiness from RG6R3",
-    "Start a generic downstream Prompt A feature outside the single ready RG6R4 narrow slice",
+    "Start a generic downstream Prompt A feature while RG6R4 is waiting for Prompt B QA",
     "Treat RG6R3 persona/organization/source improvements as clearing the below-floor sampled precision gate",
     "Treat the direct API timed export as sufficient while web-boundary 401, Arizona high-trust count, and required-suite contact precision remain unresolved",
     "Resolve queue state from rebuild/validated-leads-loop, an unmerged feature branch, or a historical assignment instead of main plus this assignment lock"
@@ -28,6 +28,7 @@
     "Arizona-only precision improved: persona 0.250 to 0.500, organization 0.625 to 0.750, source 0.625 to 0.750, contact 0.250 to 0.375.",
     "Arizona coverage reached 6 of 8 source-backed person or explicit blocker rows, with 8 of 8 expected targets represented, but still only 2 high_trust_usable rows.",
     "The separate web-boundary collector attempt returned 401 for /api/scout and /api/source-assisted-proof; the direct protected Fly API evidence succeeded.",
-    "RG6 remains gate_hold/product-red. No yellow/green, public SaaS, account/org/billing work, or Thomas/Lee dogfood expansion is unlocked."
+    "RG6 remains gate_hold/product-red. No yellow/green, public SaaS, account/org/billing work, or Thomas/Lee dogfood expansion is unlocked.",
+    "2026-05-25: Prompt A implemented RG6R4 on fix/rg6r4-required-suite-contact-precision and moved the lock to Prompt B QA."
   ]
 }

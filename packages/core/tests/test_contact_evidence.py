@@ -77,6 +77,50 @@ def test_contact_evidence_promotes_direct_public_email_from_official_staff_sourc
     assert stats.acquired_contacts == 1
 
 
+def test_contact_evidence_accepts_person_matching_email_on_official_contact_source_without_name_snippet():
+    async def fake_search(query: str, **kwargs):
+        return [
+            {
+                "title": "Mesa Public Schools technology staff directory",
+                "url": "https://www.mpsaz.org/staff/technology",
+                "content": "Technology Services contacts for Mesa Public Schools include jane.smith@mpsaz.org.",
+            }
+        ]
+
+    lead = _lead()
+
+    stats = asyncio.run(
+        acquire_contact_evidence([lead], query="Arizona K-12 technology directors", search_fn=fake_search, tavily_key="fake")
+    )
+
+    assert lead.email == "jane.smith@mpsaz.org"
+    assert lead.email_status == "verified_found"
+    assert lead.validation.email.source_url == "https://www.mpsaz.org/staff/technology"
+    assert stats.acquired_contacts == 1
+
+
+def test_contact_evidence_rejects_person_matching_email_when_official_source_lacks_contact_context():
+    async def fake_search(query: str, **kwargs):
+        return [
+            {
+                "title": "Mesa Public Schools newsletter archive",
+                "url": "https://www.mpsaz.org/news/archive",
+                "content": "Archived update from Mesa Public Schools includes jane.smith@mpsaz.org.",
+            }
+        ]
+
+    lead = _lead()
+
+    stats = asyncio.run(
+        acquire_contact_evidence([lead], query="Arizona K-12 technology directors", search_fn=fake_search, tavily_key="fake")
+    )
+
+    assert lead.email == ""
+    assert lead.email_status == "missing"
+    assert lead.validation.email.status == "missing"
+    assert stats.acquired_contacts == 0
+
+
 def test_contact_evidence_promotes_direct_public_phone_from_official_staff_source():
     async def fake_search(query: str, **kwargs):
         return [
