@@ -14,6 +14,28 @@ _SUPPORTED_SOURCE_FIELD_STATUSES = {"supported", "verified_found"}
 
 _HTML_TAG_RE = re.compile(r"<[^>]+>")
 _WHITESPACE_RE = re.compile(r"\s+")
+_K12_TECH_TITLE_MARKERS = (
+    "technology",
+    "information technology",
+    "information services",
+    "cio",
+    "cto",
+    "network",
+    "infrastructure",
+    "cybersecurity",
+)
+_K12_TECH_ROLE_PATTERNS = (
+    re.compile(r"\bchief\s+technology\s+officer\b", re.IGNORECASE),
+    re.compile(r"\bchief\s+information\s+officer\b", re.IGNORECASE),
+    re.compile(r"\bCIO\b", re.IGNORECASE),
+    re.compile(r"\bCTO\b", re.IGNORECASE),
+    re.compile(r"\bdirector\s+of\s+(?:information\s+)?technology\b", re.IGNORECASE),
+    re.compile(r"\binformation\s+technology\s+\(IT\)\s+director\b", re.IGNORECASE),
+    re.compile(r"\binformation\s+technology\s+director\b", re.IGNORECASE),
+    re.compile(r"\btechnology\s+services\b", re.IGNORECASE),
+    re.compile(r"\btech(?:nology)?\s+infrastructure\s+and\s+cybersecurity\b", re.IGNORECASE),
+    re.compile(r"\bnetwork\s+(?:administrator|manager|director)\b", re.IGNORECASE),
+)
 
 
 def _has_text(value: Any) -> bool:
@@ -49,6 +71,53 @@ def _find_evidence_snippet(source_text: str, field_value: str, window: int = 80)
     if end < len(source_text):
         snippet = f"{snippet}..."
     return snippet
+
+
+def _snippet_from_span(source_text: str, start: int, end: int, window: int = 120) -> str:
+    snippet_start = max(0, start - window)
+    snippet_end = min(len(source_text), end + window)
+    snippet = source_text[snippet_start:snippet_end].strip()
+    if snippet_start > 0:
+        snippet = f"...{snippet}"
+    if snippet_end < len(source_text):
+        snippet = f"{snippet}..."
+    return snippet
+
+
+def _find_title_role_evidence_snippet(
+    source_text: str,
+    field_value: str,
+    *,
+    context_values: tuple[str, ...] = (),
+) -> str | None:
+    lowered_title = field_value.lower()
+    if not any(marker in lowered_title for marker in _K12_TECH_TITLE_MARKERS):
+        return None
+
+    role_matches = [
+        match
+        for pattern in _K12_TECH_ROLE_PATTERNS
+        for match in pattern.finditer(source_text)
+    ]
+    if not role_matches:
+        return None
+
+    context_matches = [
+        match
+        for context in context_values
+        if _has_text(context)
+        for match in [_phrase_pattern(context).search(source_text)]
+        if match is not None
+    ]
+    for context_match in context_matches:
+        for role_match in role_matches:
+            span_start = min(context_match.start(), role_match.start())
+            span_end = max(context_match.end(), role_match.end())
+            if span_end - span_start <= 280:
+                return _snippet_from_span(source_text, span_start, span_end)
+
+    role_match = role_matches[0]
+    return _snippet_from_span(source_text, role_match.start(), role_match.end())
 
 
 def _field_record_for_missing_source(
@@ -148,6 +217,7 @@ def _field_record_from_source_text(
     source_url: str,
     checked_at: str,
     source_text: str,
+    context_values: tuple[str, ...] = (),
 ) -> tuple[FieldValidationRecord, str | None]:
     if not _has_text(field_value):
         return (
@@ -172,6 +242,24 @@ def _field_record_from_source_text(
             ),
             snippet,
         )
+
+    if field_name == "title":
+        role_snippet = _find_title_role_evidence_snippet(
+            source_text,
+            field_value,
+            context_values=context_values,
+        )
+        if role_snippet:
+            return (
+                FieldValidationRecord(
+                    status="supported",
+                    source_url=source_url,
+                    evidence_snippet=role_snippet,
+                    checked_at=checked_at,
+                    notes="Role-family text support found for title.",
+                ),
+                role_snippet,
+            )
 
     return (
         FieldValidationRecord(
@@ -312,6 +400,10 @@ def _build_source_text_validation(
                 source_url=resolved_url,
                 checked_at=checked_at,
                 source_text=source_text,
+                context_values=(
+                    str(field_values["name"] or ""),
+                    str(field_values["organization"] or ""),
+                ),
             )
         field_records[field_name] = record
         if record.status in _SUPPORTED_SOURCE_FIELD_STATUSES:

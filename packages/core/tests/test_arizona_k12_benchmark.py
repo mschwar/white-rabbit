@@ -12,6 +12,10 @@ import pytest
 
 from core.benchmark_suite import build_operator_evidence_fixture_pack
 from core.orchestrator import scout
+from core.query_planner import (
+    ARIZONA_K12_TARGET_ACCOUNTS,
+    compile_query_plan,
+)
 
 FIXTURE_PATH = Path(__file__).with_name("fixtures") / "arizona_k12_voip.json"
 LIVE_ENV_FLAG = "RUN_LIVE"
@@ -319,6 +323,26 @@ def test_arizona_benchmark_harness_rejects_fake_emails_and_wrong_categories():
     assert summary.passes(fixture) is False
     assert any("Mesa" in message for message in summary.mismatched_cases)
     assert any("Gilbert" in message for message in summary.mismatched_cases)
+
+
+def test_arizona_benchmark_query_prefers_source_map_official_family_searches():
+    fixture = _load_fixture()
+    plan = compile_query_plan(fixture["query"], max_results=len(fixture["cases"]))
+
+    assert plan.named_accounts == list(ARIZONA_K12_TARGET_ACCOUNTS)
+    assert len(plan.vendor_queries) >= len(ARIZONA_K12_TARGET_ACCOUNTS) * 5
+    assert "source-map official staff/technology/leadership families" in " ".join(plan.notes)
+
+    first_pass_queries = plan.vendor_queries[: len(ARIZONA_K12_TARGET_ACCOUNTS)]
+    assert all(query.lower().startswith("site:") for query in first_pass_queries)
+    assert first_pass_queries[0].lower().startswith("site:departments.mpsaz.org")
+    assert any("pvschools.net" in query.lower() and "information technology" in query.lower() for query in first_pass_queries)
+    assert any("musd20.org" in query.lower() and "departments" in query.lower() for query in first_pass_queries)
+    assert all("yourvalley.net" not in query.lower() for query in plan.vendor_queries)
+
+    for account in ARIZONA_K12_TARGET_ACCOUNTS:
+        account_queries = [query for query in plan.vendor_queries if account.lower() in query.lower()]
+        assert len(account_queries) >= 5
 
 
 needs_live_keys = pytest.mark.skipif(

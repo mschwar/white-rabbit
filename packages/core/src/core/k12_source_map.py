@@ -9,6 +9,7 @@ from typing import Any, Iterable, Mapping
 
 _REPO_ROOT = Path(__file__).resolve().parents[4]
 DEFAULT_K12_SOURCE_MAP_PATH = _REPO_ROOT / "packages/core/tests/fixtures/nm_k12_source_map.json"
+DEFAULT_AZ_K12_SOURCE_MAP_PATH = _REPO_ROOT / "packages/core/tests/fixtures/az_k12_source_map.json"
 
 ROSTER_FIRST_FAMILIES = {
     "state_education_agency_roster",
@@ -16,6 +17,7 @@ ROSTER_FIRST_FAMILIES = {
     "district_official_homepage",
     "district_staff_directory",
     "district_technology_page",
+    "district_leadership_page",
     "district_board_agenda_pdf",
     "district_contact_page",
     "manual_oracle_seed",
@@ -195,6 +197,11 @@ class K12SourceMapReplaySummary:
 
 def load_nm_k12_source_map(path: Path | None = None) -> K12SourceMap:
     fixture_path = path or DEFAULT_K12_SOURCE_MAP_PATH
+    return K12SourceMap.from_payload(json.loads(fixture_path.read_text(encoding="utf-8")))
+
+
+def load_az_k12_source_map(path: Path | None = None) -> K12SourceMap:
+    fixture_path = path or DEFAULT_AZ_K12_SOURCE_MAP_PATH
     return K12SourceMap.from_payload(json.loads(fixture_path.read_text(encoding="utf-8")))
 
 
