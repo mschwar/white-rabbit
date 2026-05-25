@@ -16,6 +16,7 @@ import {
 type PrimaryResultFilter = 'all' | 'high_trust_usable' | 'review' | 'organization_only' | 'not_found';
 
 type PrimaryResultsOverviewProps = {
+  closeMessage: string | null;
   leadExport: {
     filename: string;
     csvDataUrl: string;
@@ -200,7 +201,8 @@ function getEmail(row: ScoutResultRow): { primary: string; secondary: string } {
 function getPhone(row: ScoutResultRow): { primary: string; secondary: string } {
   const phoneStatus = row.validation?.phone.status;
   if (phoneStatus === 'verified_found') {
-    return { primary: 'Captured', secondary: 'verified' };
+    const phoneValue = isPersonLead(row) && row.phone ? row.phone : 'Captured';
+    return { primary: phoneValue, secondary: 'verified' };
   }
 
   if (phoneStatus === 'deduced_with_pattern_evidence') {
@@ -273,6 +275,7 @@ function shouldShowLowSignal(results: ScoutResponse, distribution: Record<Output
 }
 
 export default function PrimaryResultsOverview({
+  closeMessage,
   leadExport,
   onBuildExport,
   results,
@@ -338,9 +341,12 @@ export default function PrimaryResultsOverview({
       </div>
 
       {leadExport ? (
-        <p className="mt-3 text-sm leading-6 text-[#536175]">
-          CSV ready: {leadExport.rowCount} row{leadExport.rowCount === 1 ? '' : 's'} generated {leadExport.generatedAtLabel}.
-        </p>
+        <div className="mt-3 space-y-1 text-sm leading-6 text-[#536175]">
+          <p>
+            CSV ready: {leadExport.rowCount} row{leadExport.rowCount === 1 ? '' : 's'} generated {leadExport.generatedAtLabel}.
+          </p>
+          {closeMessage ? <p className="font-medium text-[#1f7a45]">{closeMessage}</p> : null}
+        </div>
       ) : null}
 
       {lowSignal ? (

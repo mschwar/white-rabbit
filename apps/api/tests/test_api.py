@@ -18,7 +18,7 @@ INTERNAL_API_TOKEN = "test-internal-token"
 os.environ["WR_API_INTERNAL_TOKEN"] = INTERNAL_API_TOKEN
 
 from api.main import app
-from api.models import CorrectionField, CorrectionLabel, FeedbackLabel, LeadCorrection, LeadFeedback
+from api.models import CorrectionField, CorrectionLabel, FeedbackLabel, LeadCorrection, LeadFeedback, get_engine
 from api.db import get_db_session, get_recipe_scoreboard, get_sandbox_state
 
 client = TestClient(app)
@@ -54,6 +54,13 @@ def test_health_check():
     response = client.get("/health")
     assert response.status_code == 200
     assert response.json() == {"status": "ok", "service": "white-rabbit-api"}
+
+
+def test_database_engine_pre_pings_stale_connections():
+    engine = get_engine("sqlite:///:memory:")
+
+    assert engine.pool._pre_ping is True
+    assert engine.pool._recycle == 300
 
 
 def test_source_assisted_proof_endpoint_returns_live_boundary_payload():

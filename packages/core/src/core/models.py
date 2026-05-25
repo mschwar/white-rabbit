@@ -165,6 +165,7 @@ class Lead(CandidateBase):
         default="unsupported",
         description="Email contact status: verified_found, deduced_with_pattern_evidence, missing, failed, or unsupported",
     )
+    phone: str = Field(default="", description="Professional phone number, or blank if unavailable")
     source_url: str = Field(description="Best source URL supporting the contact, title, or email")
     confidence: float = Field(
         ge=0,

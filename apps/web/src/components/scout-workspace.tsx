@@ -275,7 +275,7 @@ function getCorrectionFieldValue(row: ScoutResultRow, fieldName: CorrectionField
       case 'email':
         return row.email;
       case 'phone':
-        return '';
+        return row.phone ?? '';
       case 'source':
         return row.source_url;
     }
@@ -1381,6 +1381,7 @@ export default function ScoutWorkspace({ primaryMode = false }: ScoutWorkspacePr
                 showPrimaryResultsOverview ? (
                   <>
                     <PrimaryResultsOverview
+                      closeMessage={closeMessage}
                       leadExport={leadExport}
                       onBuildExport={handleBuildLeadExport}
                       onOpenEvidence={handleOpenEvidence}

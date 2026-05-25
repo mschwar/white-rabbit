@@ -1,0 +1,87 @@
+{
+  "after": {
+    "body": {
+      "max_queries": 10,
+      "max_rows": 1000,
+      "remaining_queries": 10,
+      "remaining_rows": 1000,
+      "reset_at": "2026-05-24T15:45:48.060753+00:00",
+      "total_queries": 0,
+      "total_rows": 0
+    },
+    "final_url": "https://white-rabbit-ten.vercel.app/api/sandbox",
+    "headers": {
+      "Age": "0",
+      "Cache-Control": "public, max-age=0, must-revalidate",
+      "Connection": "close",
+      "Content-Type": "application/json",
+      "Date": "Sun, 24 May 2026 15:45:49 GMT",
+      "Server": "Vercel",
+      "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+      "Transfer-Encoding": "chunked",
+      "Vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+      "X-Matched-Path": "/api/sandbox",
+      "X-Vercel-Cache": "MISS",
+      "X-Vercel-Id": "sfo1::iad1::gtgrc-[REDACTED_PHONE]30-5784ded5e017"
+    },
+    "method": "GET",
+    "seconds": 1.112,
+    "status": 200,
+    "url": "https://white-rabbit-ten.vercel.app/api/sandbox"
+  },
+  "before": {
+    "body": {
+      "error": "Internal Server Error"
+    },
+    "final_url": "https://white-rabbit-ten.vercel.app/api/sandbox",
+    "headers": {
+      "Age": "0",
+      "Cache-Control": "public, max-age=0, must-revalidate",
+      "Connection": "close",
+      "Content-Type": "application/json",
+      "Date": "Sun, 24 May 2026 15:45:46 GMT",
+      "Server": "Vercel",
+      "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+      "Transfer-Encoding": "chunked",
+      "Vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+      "X-Matched-Path": "/api/sandbox",
+      "X-Vercel-Cache": "MISS",
+      "X-Vercel-Id": "sfo1::iad1::7v8n6-[REDACTED_PHONE]44-d20b187fbad6"
+    },
+    "method": "GET",
+    "seconds": 0.463,
+    "status": 500,
+    "url": "https://white-rabbit-ten.vercel.app/api/sandbox"
+  },
+  "reset": {
+    "body": {
+      "sandbox_usage": {
+        "max_queries": 10,
+        "max_rows": 1000,
+        "remaining_queries": 10,
+        "remaining_rows": 1000,
+        "reset_at": "2026-05-24T15:45:48.060753",
+        "total_queries": 0,
+        "total_rows": 0
+      }
+    },
+    "final_url": "https://white-rabbit-ten.vercel.app/api/sandbox",
+    "headers": {
+      "Cache-Control": "public, max-age=0, must-revalidate",
+      "Connection": "close",
+      "Content-Type": "application/json",
+      "Date": "Sun, 24 May 2026 15:45:48 GMT",
+      "Server": "Vercel",
+      "Strict-Transport-Security": "max-age=63072000; includeSubDomains; preload",
+      "Transfer-Encoding": "chunked",
+      "Vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch",
+      "X-Matched-Path": "/api/sandbox",
+      "X-Vercel-Cache": "MISS",
+      "X-Vercel-Id": "sfo1::iad1::c6nc2-[REDACTED_PHONE]99-6e4d29e93efc"
+    },
+    "method": "POST",
+    "seconds": 1.529,
+    "status": 200,
+    "url": "https://white-rabbit-ten.vercel.app/api/sandbox"
+  }
+}

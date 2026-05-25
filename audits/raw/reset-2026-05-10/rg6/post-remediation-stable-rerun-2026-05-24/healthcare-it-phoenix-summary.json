@@ -1,0 +1,109 @@
+{
+  "benchmark_id": "healthcare-it-phoenix",
+  "candidate_category_distribution": {
+    "failed": 48,
+    "not_found": 1,
+    "person_lead": 1
+  },
+  "contact_quality_passes": 0,
+  "high_trust_usable_with_contact_evidence": 0,
+  "metrics": {
+    "elapsed_seconds": 155.87,
+    "estimated_cost_usd": 0.209838,
+    "funnel_counts": {
+      "categorized_rows": 50,
+      "contact_evidence_candidates_searched": 2,
+      "contact_evidence_conflicting_signals": 1,
+      "contact_evidence_contacts_acquired": 0,
+      "contact_evidence_field_corroborations": 4,
+      "contact_evidence_review_to_high_trust": 0,
+      "contact_evidence_searches": 8,
+      "contact_quality_passes": 0,
+      "deduped_sources": 167,
+      "extracted_candidates": 6,
+      "high_trust_usable_rows": 0,
+      "person_rows": 1,
+      "persona_supported_rows": 0,
+      "raw_vendor_hits": 240,
+      "source_snapshots": 167,
+      "source_supported_rows": 3
+    },
+    "funnel_notes": [
+      "Deduped 240 raw vendor hits to 167 unique sources.",
+      "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+      "No returned row has verified or source-backed deduced contact evidence.",
+      "Deep contact evidence pass searched 2 promising rows and acquired 0 source-backed contacts; 0 rows gained enough contact evidence to clear the READY gate.",
+      "Deep contact evidence pass observed 4 field corroborations and 1 conflicting signals across public-web sources."
+    ],
+    "input_tokens": 61648,
+    "openai_web_searches": 0,
+    "output_tokens": 985,
+    "tavily_searches": 20,
+    "tier_distribution": {
+      "failed": 48,
+      "high_trust_usable": 0,
+      "not_found": 1,
+      "organization_only": 0,
+      "review": 1
+    }
+  },
+  "operator_label_distribution": {
+    "NOT FOUND": 49,
+    "ORG-ONLY": 0,
+    "READY": 0,
+    "REVIEW": 1
+  },
+  "persistence_readback": {
+    "candidate_category_distribution": {
+      "failed": 48,
+      "not_found": 1,
+      "person_lead": 1
+    },
+    "db_readback_row_count": 50,
+    "exportable_row_count": 50,
+    "first_db_lead_ids": [
+      "7c31ff32-316a-4b7d-be47-80e21cc79a42",
+      "2938414a-356e-4140-9a3e-69ce2e494324",
+      "656ac24c-90a3-4904-9021-661d8364cb7e",
+      "022e802f-f01c-4e50-a64f-decc403c31ae",
+      "e5643556-d43f-48b6-9f0e-09ea621fa401"
+    ],
+    "first_response_lead_ids": [
+      "7c31ff32-316a-4b7d-be47-80e21cc79a42",
+      "2938414a-356e-4140-9a3e-69ce2e494324",
+      "656ac24c-90a3-4904-9021-661d8364cb7e",
+      "022e802f-f01c-4e50-a64f-decc403c31ae",
+      "e5643556-d43f-48b6-9f0e-09ea621fa401"
+    ],
+    "persisted_lead_count": 50,
+    "recipe_id": "d8d62a8d-38e9-4ba8-81f0-df0a35b88eee",
+    "response_row_count": 50,
+    "row_count_matches": true,
+    "run_id": "49506553-5d93-4ada-a62f-800de79ba259",
+    "tier_distribution": {
+      "failed": 48,
+      "not_found": 1,
+      "review": 1
+    }
+  },
+  "query_guardrail": null,
+  "recipe_id": "d8d62a8d-38e9-4ba8-81f0-df0a35b88eee",
+  "row_count": 50,
+  "run_id": "49506553-5d93-4ada-a62f-800de79ba259",
+  "sandbox_usage": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 7,
+    "remaining_rows": 892,
+    "reset_at": "2026-05-24T15:45:48.060753+00:00",
+    "total_queries": 3,
+    "total_rows": 108
+  },
+  "seconds": 158.047,
+  "status": 200,
+  "tier_distribution": {
+    "failed": 48,
+    "not_found": 1,
+    "review": 1
+  }
+}

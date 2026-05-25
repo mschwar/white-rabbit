@@ -5,10 +5,10 @@
 **Integration branch:** `main`.
 **Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
-**Current reset gate:** RG6 - Dogfood / Kill Decision remains held/product-red. Prompt C accepted the R15 red-hold recommendation; Matt authorized fresh production evidence on 2026-05-22; the Matt-directed lead-quality/contact-yield remediation merged to `main`; and the 2026-05-24 post-remediation Prompt C re-audit still keeps RG6 held/product-red.
-**Next Prompt A feature:** None. No public SaaS/account/billing work or yellow/green claim is unlocked. Any next work must be a Matt-authorized narrow red-remediation step for the exhausted production sandbox query cap / missing fresh required-suite benchmark outputs / invalid timed query-to-export evidence.
+**Current reset gate:** RG6 - Dogfood / Kill Decision remains held/product-red. Prompt C accepted the R15 red-hold recommendation; Matt authorized fresh production evidence on 2026-05-22; the Matt-directed lead-quality/contact-yield remediation merged to `main`; the 2026-05-24 post-remediation Prompt C re-audit kept RG6 held/product-red; and the later unblocked remediation recheck improved runtime/contact/timed-export evidence but still did not clear RG6.
+**Next Prompt A feature:** None. No public SaaS/account/billing work or yellow/green claim is unlocked. Any next work must be a Matt-authorized narrow red-remediation step for source strategy, Arizona 6-of-8 named-account quality, broad sampled precision, and missing complete required-suite artifacts.
 **Current Prompt B handoff:** None.
-**Current Prompt C handoff:** Complete. Re-audit report: `audits/gates/reset-2026-05-10/rg6-post-remediation-re-audit.md`. Fresh sanitized artifacts: `audits/raw/reset-2026-05-10/rg6/post-remediation-2026-05-24/`.
+**Current Prompt C handoff:** Complete. Re-audit report: `audits/gates/reset-2026-05-10/rg6-post-remediation-re-audit.md`. Follow-up recheck report: `audits/gates/reset-2026-05-10/rg6-unblocked-remediation-recheck.md`. Fresh sanitized artifacts: `audits/raw/reset-2026-05-10/rg6/post-remediation-stable-rerun-2026-05-24/`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
 
@@ -254,6 +254,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | R14C | Deployment readiness and operator-use smoke | merged_to_mainline | `feat/reset-r14c-deployment-readiness-smoke` | deployment + API/web smoke |
 | R15 | Internal correction review and dogfood decision packet | merged_to_mainline | `feat/reset-r15-dogfood-decision-packet` | docs/report QA |
 | RG6R1 | Lead quality, contact yield, sampled precision, and operator-minute remediation | merged_to_mainline | `fix/rg6-lead-quality-contact-yield` | core/API/web + browser |
+| RG6R2 | Unblocked remediation recheck and source/runtime follow-up | gate_hold | `audit/reset-rg6-post-remediation` | production/runtime + saved suite + browser QA |
 
 ## RG0 - W5 Hold And Control Reset
 
@@ -1360,6 +1361,20 @@ RG6R1 Prompt B result:
 - Verification passed: `packages/core` full suite (`161 passed, 6 skipped`), `apps/api` suite (`56 passed` with existing datetime warnings), `apps/web` Vitest (`15 files`, `37 tests`), `apps/web` production build, browser QA screenshots for primary results/evidence/export/auto-close, and `git diff --check`.
 - Browser QA artifacts: `.gstack/qa-reports/screenshots/rg6-lead-quality-contact-yield-2026-05-24/`.
 - Queue consequence: Prompt C should re-audit RG6 from `main` on `audit/reset-rg6-post-remediation`. Product remains red until live Arizona K-12, sampled precision, and timed no-assistance operator evidence clear the relevant northstar criteria in a reviewed gate record.
+
+RG6 unblocked remediation recheck:
+
+- Report: `audits/gates/reset-2026-05-10/rg6-unblocked-remediation-recheck.md`.
+- Branch: `audit/reset-rg6-post-remediation`.
+- Decision: keep `gate_hold`.
+- Product gate: keep `red`.
+- Why this recheck exists: Matt authorized resolving the remaining blockers and getting back to a proper gated-loop state after the post-remediation Prompt C run hit the production sandbox cap and could not produce valid Arizona/sampled/timed artifacts.
+- What changed: Deployed API/core image `white-rabbit-api:deployment-01KSDDWGE5A5Z40R91R8DMQFNZ`; kept Fly on two 1GB started machines; added DB connection pre-ping/pool recycle; interleaved official Arizona district domain searches ahead of broader named-account queries; counted known official domains as named-account source coverage; preserved verified phone evidence in core/web/export; made saved benchmark parsing tolerate non-HTTP collector failures; corrected sampled precision so redacted empty email fields do not count as unsupported email contacts; and exposed primary export auto-close proof in browser QA.
+- Runtime evidence: latest post-deploy `/health` returned 200, `/readiness` returned 200 with body status `ready`, tokenless direct `/scout` returned 401, and Fly machine list showed two started `shared-cpu-1x:1024MB` machines on the latest image.
+- Arizona evidence: stable production Arizona K-12 returned HTTP 200 with 8 categorized rows, 2 `high_trust_usable`, 2 `review`, 1 `organization_only`, 3 `failed`, 2 contact-quality passes, 2 contacts acquired, 8/8 persisted/readback rows, an 8-row CSV export, and `/runs/{run_id}/close` at `operator_minutes=3.755`.
+- Remaining blockers: Arizona still does not prove 6-of-8 named-account quality; sampled precision is persona `0.158`, organization `0.421`, source `0.447`, contact `0.184`; required-suite summary is still 2/6 passed; healthcare/finance have zero contact-quality passes; manufacturing still has no valid current product artifact; browser QA is mocked and does not prove live lead quality.
+- Verification passed: `packages/core` full suite (`169 passed, 6 skipped`), `apps/api` suite (`57 passed`, existing datetime warnings), `apps/web` Vitest (`15 files`, `37 tests`), `apps/web` production build, Playwright production-mode smoke (`2 passed`) with screenshots under `audits/raw/reset-2026-05-10/rg6/browser-qa-2026-05-24/`, Fly deploy, and post-deploy runtime checks.
+- Queue consequence: no downstream Prompt A/B/C is valid. The next valid work, if Matt explicitly authorizes it, must focus on source strategy and broad precision. Public SaaS/accounts/orgs/billing, yellow/green promotion, and Thomas/Lee dogfood expansion remain blocked.
 
 ## Status Rules
 

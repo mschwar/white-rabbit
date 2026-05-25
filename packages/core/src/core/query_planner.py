@@ -39,6 +39,17 @@ _ARIZONA_K12_ACCOUNT_ALIASES = {
     "Maricopa Unified School District": ("maricopa unified school district", "maricopa"),
 }
 
+_ARIZONA_K12_ACCOUNT_DOMAINS = {
+    "Mesa Public Schools": ("mpsaz.org",),
+    "Chandler Unified School District": ("cusd80.com",),
+    "Peoria Unified School District": ("peoriaunified.org",),
+    "Gilbert Public Schools": ("gilbertschools.net",),
+    "Deer Valley Unified School District": ("dvusd.org",),
+    "Paradise Valley Unified School District": ("pvschools.net",),
+    "Dysart Unified School District": ("dysart.org",),
+    "Maricopa Unified School District": ("musd20.org",),
+}
+
 _ROLE_PHRASES = (
     "it directors",
     "it director",
@@ -307,6 +318,21 @@ def named_account_aliases(account: str) -> tuple[str, ...]:
     return (account, *_ARIZONA_K12_ACCOUNT_ALIASES.get(account, ()))
 
 
+def official_domains_for_named_account(account: str) -> tuple[str, ...]:
+    """Return known official public domains for a reset named account."""
+    return _ARIZONA_K12_ACCOUNT_DOMAINS.get(account, ())
+
+
+def official_domains_for_organization(organization: str) -> tuple[str, ...]:
+    """Return known official public domains matching an organization string."""
+    lower = organization.lower()
+    for account, aliases in _ARIZONA_K12_ACCOUNT_ALIASES.items():
+        names = (account, *aliases)
+        if any(alias.lower() in lower for alias in names):
+            return official_domains_for_named_account(account)
+    return ()
+
+
 def _build_vendor_query(seed: str, filters: Mapping[str, Any] | None) -> str:
     query = _append_filters(seed, filters)
     if len(query) <= SAFE_VENDOR_QUERY_LENGTH:
@@ -471,15 +497,28 @@ def _compile_named_account_queries(
         intent_terms.extend(["Arizona", "K-12"])
     intent_summary = " ".join(_unique_preserve_order(intent_terms)) if intent_terms else normalized_query
     vendor_query_seeds: list[str] = []
-    for account in named_accounts:
-        vendor_query_seeds.append(f"{account} {intent_summary}")
-        if school_context:
-            vendor_query_seeds.extend(
-                [
-                    f'{account} Arizona K-12 "{_K12_TECH_ROLE_VARIANTS[0]}" "{_K12_TECH_ROLE_VARIANTS[1]}" staff directory email',
-                    f"{account} Arizona K-12 CIO CTO technology services leadership contact",
-                ]
+
+    if school_context:
+        # Interleave by query type, not account, so bounded result sets still
+        # include at least one official-domain pass for every named district.
+        for account in named_accounts:
+            for domain in official_domains_for_named_account(account):
+                vendor_query_seeds.append(
+                    f'site:{domain} "{account}" Arizona technology staff directory email phone'
+                )
+        for account in named_accounts:
+            vendor_query_seeds.append(
+                f'{account} Arizona K-12 "{_K12_TECH_ROLE_VARIANTS[0]}" "{_K12_TECH_ROLE_VARIANTS[1]}" staff directory email'
             )
+        for account in named_accounts:
+            vendor_query_seeds.append(
+                f"{account} Arizona K-12 CIO CTO technology services leadership contact"
+            )
+        for account in named_accounts:
+            vendor_query_seeds.append(f"{account} {intent_summary}")
+    else:
+        for account in named_accounts:
+            vendor_query_seeds.append(f"{account} {intent_summary}")
 
     vendor_queries = [_build_vendor_query(seed, filters) for seed in vendor_query_seeds]
 

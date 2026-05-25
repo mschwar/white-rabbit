@@ -1,0 +1,244 @@
+{
+  "baseURL": "http://127.0.0.1:3100",
+  "artifactDir": "/tmp/white-rabbit-rg6-work/audits/raw/reset-2026-05-10/rg6/browser-qa-2026-05-24",
+  "apiChecks": {
+    "apiBaseUrl": "https://white-rabbit-api.fly.dev",
+    "healthStatus": 200,
+    "healthBody": {
+      "status": "ok",
+      "service": "white-rabbit-api"
+    },
+    "readinessStatus": 200,
+    "readinessBody": {
+      "status": "ready",
+      "checked_at": "2026-05-25T01:48:59.500290Z",
+      "budget_seconds": 5,
+      "elapsed_seconds": 2.168648,
+      "checks": [
+        {
+          "name": "process",
+          "status": "ready",
+          "required": true,
+          "message": "API process is alive and answering readiness.",
+          "elapsed_seconds": 0.000007,
+          "details": {
+            "pid": 664,
+            "service": "white-rabbit-api",
+            "env": "development"
+          }
+        },
+        {
+          "name": "config",
+          "status": "ready",
+          "required": true,
+          "message": "Required configuration is present.",
+          "elapsed_seconds": 0.000023,
+          "details": {
+            "env_presence": {
+              "DATABASE_URL": {
+                "present": true
+              },
+              "OPENAI_API_KEY": {
+                "present": true
+              },
+              "OPENAI_BASE_URL": {
+                "present": false
+              },
+              "OPENAI_MODEL": {
+                "present": false
+              },
+              "TAVILY_API_KEY": {
+                "present": true
+              },
+              "WR_API_INTERNAL_TOKEN": {
+                "present": true
+              },
+              "WR_SESSION_SECRET": {
+                "present": true
+              },
+              "WR_SHARED_PASSWORD": {
+                "present": true
+              }
+            },
+            "missing": []
+          }
+        },
+        {
+          "name": "database",
+          "status": "ready",
+          "required": true,
+          "message": "Database connection answered SELECT 1.",
+          "elapsed_seconds": 2.167143,
+          "details": {
+            "database_url_present": true,
+            "env_presence": {
+              "DATABASE_URL": {
+                "present": true
+              },
+              "OPENAI_API_KEY": {
+                "present": true
+              },
+              "OPENAI_BASE_URL": {
+                "present": false
+              },
+              "OPENAI_MODEL": {
+                "present": false
+              },
+              "TAVILY_API_KEY": {
+                "present": true
+              },
+              "WR_API_INTERNAL_TOKEN": {
+                "present": true
+              },
+              "WR_SESSION_SECRET": {
+                "present": true
+              },
+              "WR_SHARED_PASSWORD": {
+                "present": true
+              }
+            },
+            "timeout_seconds": 3
+          }
+        },
+        {
+          "name": "openai",
+          "status": "ready",
+          "required": true,
+          "message": "OpenAI model lookup succeeded.",
+          "elapsed_seconds": 0.518074,
+          "details": {
+            "api_key_present": true,
+            "base_url": "https://api.openai.com/v1",
+            "model": "gpt-4o-mini",
+            "env_presence": {
+              "DATABASE_URL": {
+                "present": true
+              },
+              "OPENAI_API_KEY": {
+                "present": true
+              },
+              "OPENAI_BASE_URL": {
+                "present": false
+              },
+              "OPENAI_MODEL": {
+                "present": false
+              },
+              "TAVILY_API_KEY": {
+                "present": true
+              },
+              "WR_API_INTERNAL_TOKEN": {
+                "present": true
+              },
+              "WR_SESSION_SECRET": {
+                "present": true
+              },
+              "WR_SHARED_PASSWORD": {
+                "present": true
+              }
+            },
+            "timeout_seconds": 3
+          }
+        },
+        {
+          "name": "tavily",
+          "status": "ready",
+          "required": true,
+          "message": "TAVILY_API_KEY is present. Readiness intentionally uses a config-only probe to avoid spending vendor calls; live search is verified by smoke/live benchmark runs.",
+          "elapsed_seconds": 0.000004,
+          "details": {
+            "api_key_present": true,
+            "probe": "config_only",
+            "live_probe_skipped_reason": "avoid_spend",
+            "env_presence": {
+              "DATABASE_URL": {
+                "present": true
+              },
+              "OPENAI_API_KEY": {
+                "present": true
+              },
+              "OPENAI_BASE_URL": {
+                "present": false
+              },
+              "OPENAI_MODEL": {
+                "present": false
+              },
+              "TAVILY_API_KEY": {
+                "present": true
+              },
+              "WR_API_INTERNAL_TOKEN": {
+                "present": true
+              },
+              "WR_SESSION_SECRET": {
+                "present": true
+              },
+              "WR_SHARED_PASSWORD": {
+                "present": true
+              }
+            },
+            "timeout_seconds": 3
+          }
+        },
+        {
+          "name": "sandbox",
+          "status": "ready",
+          "required": true,
+          "message": "Sandbox state is readable.",
+          "elapsed_seconds": 2.006964,
+          "details": {
+            "sandbox_state_present": true,
+            "sandbox_usage": {
+              "total_queries": 5,
+              "total_rows": 208,
+              "max_queries": 10,
+              "max_rows": 1000,
+              "reset_at": "2026-05-24T15:45:48.060753+00:00"
+            },
+            "env_presence": {
+              "DATABASE_URL": {
+                "present": true
+              },
+              "OPENAI_API_KEY": {
+                "present": true
+              },
+              "OPENAI_BASE_URL": {
+                "present": false
+              },
+              "OPENAI_MODEL": {
+                "present": false
+              },
+              "TAVILY_API_KEY": {
+                "present": true
+              },
+              "WR_API_INTERNAL_TOKEN": {
+                "present": true
+              },
+              "WR_SESSION_SECRET": {
+                "present": true
+              },
+              "WR_SHARED_PASSWORD": {
+                "present": true
+              }
+            },
+            "timeout_seconds": 3
+          }
+        }
+      ]
+    }
+  },
+  "export": {
+    "downloadName": "white-rabbit-lead-export-2026-05-25.csv",
+    "firstTwoLines": [
+      "lead_name,title,organization,email,email_status,phone,phone_status,usable_candidate,operator_label,candidate_category,rank,query,run_id,fit_score,evidence_score,contact_score,ranking_gate,source_name_url,source_title_url,source_org_url,source_email_url,source_phone_url,source_access_status,validation_notes,checked_at,location,recipe_name,sort_mode,generated_at",
+      "Jane Smith,Director of Technology,Albuquerque Public Schools,jane.smith@district.example,verified_found,,missing,yes,READY,person_lead,1,New Mexico school district IT leaders,qa-r14c-run,0.91,0.87,0.82,usable,https://validation.example.com/name,https://validation.example.com/title,https://validation.example.com/organization,https://validation.example.com/email,https://validation.example.com/phone,supported,Generated 2026-05-25T01:49:00.181Z. Sort mode: rank. No query guardrail result returned. Category: person_lead | Bucket: usable | Gate passed: yes | Summary: Strong district fit with current leadership evidence and usable contact details. | Why target: Owns district technology decisions. | Field statuses: name=supported; title=supported; organization=supported; email=verified_found; phone=missing; source=supported | Source note: source supported notes,2026-05-19T15:00:00Z,,New Mexico school district IT leaders,rank,2026-05-25T01:49:00.181Z"
+    ],
+    "lineCount": 4
+  },
+  "autoClose": {
+    "runId": "qa-r14c-run",
+    "routeMocked": true
+  },
+  "primaryModeChrome": {
+    "scoutVisible": 0,
+    "fullVisible": 0
+  }
+}

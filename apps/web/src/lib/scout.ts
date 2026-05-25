@@ -137,6 +137,7 @@ export type ScoutLead = {
   organization: string;
   email: string;
   email_status: 'Found' | 'Deduced' | 'Missing' | ContactStatus;
+  phone?: string;
   source_url: string;
   confidence: number;
   why_target: string;

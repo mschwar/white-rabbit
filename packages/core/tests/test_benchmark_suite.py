@@ -5,9 +5,11 @@ from pathlib import Path
 
 from core.benchmark_suite import (
     BenchmarkObservation,
+    OperatorEvidenceFixturePack,
     build_replay_benchmark_observations,
     build_operator_evidence_fixture_pack,
     build_required_benchmark_suite,
+    build_saved_benchmark_observations,
     evaluate_required_benchmark_suite,
     validate_required_benchmark_suite,
 )
@@ -220,3 +222,26 @@ def test_replay_benchmark_suite_fails_current_bad_outputs_offline():
         "finance-cisos-new-york: guardrail, contact, volume",
         "manufacturing-ops-detroit: persona, contact, source, volume",
     }
+
+
+def test_saved_benchmark_observations_tolerate_non_http_collector_status(tmp_path: Path):
+    case = build_operator_evidence_fixture_pack().cases[0]
+    fixture_pack = OperatorEvidenceFixturePack(
+        pack_id="test-pack",
+        source="unit-test",
+        cases=(case,),
+    )
+    (tmp_path / f"{case.benchmark_id}.json").write_text(
+        json.dumps(
+            {
+                "query_guardrail": {"status": case.expected_guardrail_status},
+                "leads": [],
+            }
+        ),
+        encoding="utf-8",
+    )
+    (tmp_path / f"{case.benchmark_id}.http").write_text("ERROR\n", encoding="utf-8")
+
+    observations = build_saved_benchmark_observations(tmp_path, fixture_pack=fixture_pack)
+
+    assert observations[case.benchmark_id].http_status is None

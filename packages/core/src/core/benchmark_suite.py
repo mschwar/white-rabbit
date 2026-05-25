@@ -457,10 +457,20 @@ def build_saved_benchmark_observations(
         payload_path = output_root / f"{case.benchmark_id}.json"
         status_path = output_root / f"{case.benchmark_id}.http"
         payload = json.loads(payload_path.read_text(encoding="utf-8"))
-        http_status = int(status_path.read_text(encoding="utf-8").strip()) if status_path.exists() else None
+        http_status = _parse_saved_http_status(status_path)
         observations[case.benchmark_id] = _build_observation_from_payload(case, payload, http_status=http_status)
 
     return observations
+
+
+def _parse_saved_http_status(status_path: Path) -> int | None:
+    if not status_path.exists():
+        return None
+    raw_status = status_path.read_text(encoding="utf-8").strip()
+    try:
+        return int(raw_status)
+    except ValueError:
+        return None
 
 
 def build_operator_evidence_fixture_pack() -> OperatorEvidenceFixturePack:

@@ -1,0 +1,716 @@
+{
+  "arizona_scout_summary": {
+    "benchmark_id": "thomas-arizona-k12",
+    "candidate_category_distribution": {
+      "failed": 3,
+      "organization_only": 1,
+      "person_lead": 4
+    },
+    "contact_quality_passes": 2,
+    "high_trust_usable_with_contact_evidence": 2,
+    "metrics": {
+      "elapsed_seconds": 223.59,
+      "estimated_cost_usd": 0.674832,
+      "funnel_counts": {
+        "categorized_rows": 8,
+        "contact_evidence_candidates_searched": 5,
+        "contact_evidence_conflicting_signals": 0,
+        "contact_evidence_contacts_acquired": 2,
+        "contact_evidence_field_corroborations": 5,
+        "contact_evidence_review_to_high_trust": 2,
+        "contact_evidence_searches": 35,
+        "contact_quality_passes": 2,
+        "deduped_sources": 48,
+        "extracted_candidates": 7,
+        "high_trust_usable_rows": 2,
+        "person_rows": 4,
+        "persona_supported_rows": 2,
+        "raw_vendor_hits": 64,
+        "source_snapshots": 48,
+        "source_supported_rows": 5
+      },
+      "funnel_notes": [
+        "Deduped 64 raw vendor hits to 48 unique sources.",
+        "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+        "Deep contact evidence pass searched 5 promising rows and acquired 2 source-backed contacts; 2 rows gained enough contact evidence to clear the READY gate.",
+        "Deep contact evidence pass observed 5 field corroborations and 0 conflicting signals across public-web sources.",
+        "Contact evidence pass checked 1 organization-only rows for staff/contact sources."
+      ],
+      "input_tokens": 25684,
+      "openai_web_searches": 0,
+      "output_tokens": 1633,
+      "tavily_searches": 67,
+      "tier_distribution": {
+        "failed": 3,
+        "high_trust_usable": 2,
+        "not_found": 0,
+        "organization_only": 1,
+        "review": 2
+      }
+    },
+    "operator_label_distribution": {
+      "NOT FOUND": 3,
+      "ORG-ONLY": 1,
+      "READY": 2,
+      "REVIEW": 2
+    },
+    "persistence_readback": {
+      "candidate_category_distribution": {
+        "failed": 3,
+        "organization_only": 1,
+        "person_lead": 4
+      },
+      "db_readback_row_count": 8,
+      "exportable_row_count": 8,
+      "first_db_lead_ids": [
+        "af047535-776f-46ad-85a6-6f0732ed6b28",
+        "0cbc9cc2-38d4-4bb3-83b1-2896c1ec26c6",
+        "3ddbfa3c-f777-436c-a680-d4e75ac5fae2",
+        "e29ed0e1-ffca-4a01-97f6-78383856be0b",
+        "6509b8ac-5db6-432b-a4cb-8bf311009293"
+      ],
+      "first_response_lead_ids": [
+        "af047535-776f-46ad-85a6-6f0732ed6b28",
+        "0cbc9cc2-38d4-4bb3-83b1-2896c1ec26c6",
+        "3ddbfa3c-f777-436c-a680-d4e75ac5fae2",
+        "e29ed0e1-ffca-4a01-97f6-78383856be0b",
+        "6509b8ac-5db6-432b-a4cb-8bf311009293"
+      ],
+      "persisted_lead_count": 8,
+      "recipe_id": "c59a3c8d-c51a-4762-af20-6c389f8728fb",
+      "response_row_count": 8,
+      "row_count_matches": true,
+      "run_id": "1448cb7b-9100-4d05-9fe6-4527f4f3f63e",
+      "tier_distribution": {
+        "failed": 3,
+        "high_trust_usable": 2,
+        "organization_only": 1,
+        "review": 2
+      }
+    },
+    "query_guardrail": {
+      "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+      "missing_criteria": [
+        "location"
+      ],
+      "status": "needs_more_detail",
+      "suggestions": [
+        "Add a geography, such as a city, state, or region."
+      ]
+    },
+    "recipe_id": "c59a3c8d-c51a-4762-af20-6c389f8728fb",
+    "row_count": 8,
+    "run_id": "1448cb7b-9100-4d05-9fe6-4527f4f3f63e",
+    "sandbox_usage": {
+      "max_queries": 10,
+      "max_rows": 1000,
+      "remaining_queries": 9,
+      "remaining_rows": 992,
+      "reset_at": "2026-05-24T15:45:48.060753+00:00",
+      "total_queries": 1,
+      "total_rows": 8
+    },
+    "seconds": 225.32,
+    "status": 200,
+    "tier_distribution": {
+      "failed": 3,
+      "high_trust_usable": 2,
+      "organization_only": 1,
+      "review": 2
+    }
+  },
+  "collected_at": "2026-05-24T15:45:39.551874Z",
+  "direct_api": {
+    "health_status": 200,
+    "readiness_body_status": "unavailable",
+    "readiness_status": 200,
+    "tokenless_scout_status": 401
+  },
+  "post_deploy_runtime": {
+    "deployed_image": "white-rabbit-api:deployment-01KSDDWGE5A5Z40R91R8DMQFNZ",
+    "health_status": 200,
+    "readiness_body_status": "ready",
+    "readiness_status": 200,
+    "tokenless_scout_status": 401
+  },
+  "required_suite": {
+    "case_summaries": {
+      "finance-cisos-new-york": {
+        "benchmark_id": "finance-cisos-new-york",
+        "candidate_category_distribution": {
+          "failed": 46,
+          "person_lead": 4
+        },
+        "contact_quality_passes": 0,
+        "high_trust_usable_with_contact_evidence": 0,
+        "metrics": {
+          "elapsed_seconds": 103.76,
+          "estimated_cost_usd": 0.289776,
+          "funnel_counts": {
+            "categorized_rows": 50,
+            "contact_evidence_candidates_searched": 4,
+            "contact_evidence_conflicting_signals": 0,
+            "contact_evidence_contacts_acquired": 0,
+            "contact_evidence_field_corroborations": 12,
+            "contact_evidence_review_to_high_trust": 0,
+            "contact_evidence_searches": 16,
+            "contact_quality_passes": 0,
+            "deduped_sources": 158,
+            "extracted_candidates": 5,
+            "high_trust_usable_rows": 0,
+            "person_rows": 4,
+            "persona_supported_rows": 4,
+            "raw_vendor_hits": 232,
+            "source_snapshots": 158,
+            "source_supported_rows": 4
+          },
+          "funnel_notes": [
+            "Deduped 232 raw vendor hits to 158 unique sources.",
+            "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+            "No returned row has verified or source-backed deduced contact evidence.",
+            "Deep contact evidence pass searched 4 promising rows and acquired 0 source-backed contacts; 0 rows gained enough contact evidence to clear the READY gate.",
+            "Deep contact evidence pass observed 12 field corroborations and 0 conflicting signals across public-web sources."
+          ],
+          "input_tokens": 61389,
+          "openai_web_searches": 0,
+          "output_tokens": 946,
+          "tavily_searches": 28,
+          "tier_distribution": {
+            "failed": 46,
+            "high_trust_usable": 0,
+            "not_found": 0,
+            "organization_only": 0,
+            "review": 4
+          }
+        },
+        "operator_label_distribution": {
+          "NOT FOUND": 46,
+          "ORG-ONLY": 0,
+          "READY": 0,
+          "REVIEW": 4
+        },
+        "persistence_readback": {
+          "candidate_category_distribution": {
+            "failed": 46,
+            "person_lead": 4
+          },
+          "db_readback_row_count": 50,
+          "exportable_row_count": 50,
+          "first_db_lead_ids": [
+            "df38a137-a2e1-4030-8d2b-855d4d02bd4a",
+            "3f70c2dc-426e-425b-8f02-b02cc2d8d54f",
+            "68f07c41-4cd5-4ff1-85df-7811a6058710",
+            "765db537-bda2-4554-9858-f3b0a50ab2f1",
+            "d3f35722-e6be-4bb8-afc0-cff2022aa5a4"
+          ],
+          "first_response_lead_ids": [
+            "df38a137-a2e1-4030-8d2b-855d4d02bd4a",
+            "3f70c2dc-426e-425b-8f02-b02cc2d8d54f",
+            "68f07c41-4cd5-4ff1-85df-7811a6058710",
+            "765db537-bda2-4554-9858-f3b0a50ab2f1",
+            "d3f35722-e6be-4bb8-afc0-cff2022aa5a4"
+          ],
+          "persisted_lead_count": 50,
+          "recipe_id": "4732123d-8bcf-4cc3-9516-204621d1f377",
+          "response_row_count": 50,
+          "row_count_matches": true,
+          "run_id": "87c686b6-5339-4e05-b115-096cc535b105",
+          "tier_distribution": {
+            "failed": 46,
+            "review": 4
+          }
+        },
+        "query_guardrail": null,
+        "recipe_id": "4732123d-8bcf-4cc3-9516-204621d1f377",
+        "row_count": 50,
+        "run_id": "87c686b6-5339-4e05-b115-096cc535b105",
+        "sandbox_usage": {
+          "max_queries": 10,
+          "max_rows": 1000,
+          "remaining_queries": 6,
+          "remaining_rows": 842,
+          "reset_at": "2026-05-24T15:45:48.060753+00:00",
+          "total_queries": 4,
+          "total_rows": 158
+        },
+        "seconds": 105.737,
+        "status": 200,
+        "tier_distribution": {
+          "failed": 46,
+          "review": 4
+        }
+      },
+      "healthcare-it-phoenix": {
+        "benchmark_id": "healthcare-it-phoenix",
+        "candidate_category_distribution": {
+          "failed": 48,
+          "not_found": 1,
+          "person_lead": 1
+        },
+        "contact_quality_passes": 0,
+        "high_trust_usable_with_contact_evidence": 0,
+        "metrics": {
+          "elapsed_seconds": 155.87,
+          "estimated_cost_usd": 0.209838,
+          "funnel_counts": {
+            "categorized_rows": 50,
+            "contact_evidence_candidates_searched": 2,
+            "contact_evidence_conflicting_signals": 1,
+            "contact_evidence_contacts_acquired": 0,
+            "contact_evidence_field_corroborations": 4,
+            "contact_evidence_review_to_high_trust": 0,
+            "contact_evidence_searches": 8,
+            "contact_quality_passes": 0,
+            "deduped_sources": 167,
+            "extracted_candidates": 6,
+            "high_trust_usable_rows": 0,
+            "person_rows": 1,
+            "persona_supported_rows": 0,
+            "raw_vendor_hits": 240,
+            "source_snapshots": 167,
+            "source_supported_rows": 3
+          },
+          "funnel_notes": [
+            "Deduped 240 raw vendor hits to 167 unique sources.",
+            "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+            "No returned row has verified or source-backed deduced contact evidence.",
+            "Deep contact evidence pass searched 2 promising rows and acquired 0 source-backed contacts; 0 rows gained enough contact evidence to clear the READY gate.",
+            "Deep contact evidence pass observed 4 field corroborations and 1 conflicting signals across public-web sources."
+          ],
+          "input_tokens": 61648,
+          "openai_web_searches": 0,
+          "output_tokens": 985,
+          "tavily_searches": 20,
+          "tier_distribution": {
+            "failed": 48,
+            "high_trust_usable": 0,
+            "not_found": 1,
+            "organization_only": 0,
+            "review": 1
+          }
+        },
+        "operator_label_distribution": {
+          "NOT FOUND": 49,
+          "ORG-ONLY": 0,
+          "READY": 0,
+          "REVIEW": 1
+        },
+        "persistence_readback": {
+          "candidate_category_distribution": {
+            "failed": 48,
+            "not_found": 1,
+            "person_lead": 1
+          },
+          "db_readback_row_count": 50,
+          "exportable_row_count": 50,
+          "first_db_lead_ids": [
+            "7c31ff32-316a-4b7d-be47-80e21cc79a42",
+            "2938414a-356e-4140-9a3e-69ce2e494324",
+            "656ac24c-90a3-4904-9021-661d8364cb7e",
+            "022e802f-f01c-4e50-a64f-decc403c31ae",
+            "e5643556-d43f-48b6-9f0e-09ea621fa401"
+          ],
+          "first_response_lead_ids": [
+            "7c31ff32-316a-4b7d-be47-80e21cc79a42",
+            "2938414a-356e-4140-9a3e-69ce2e494324",
+            "656ac24c-90a3-4904-9021-661d8364cb7e",
+            "022e802f-f01c-4e50-a64f-decc403c31ae",
+            "e5643556-d43f-48b6-9f0e-09ea621fa401"
+          ],
+          "persisted_lead_count": 50,
+          "recipe_id": "d8d62a8d-38e9-4ba8-81f0-df0a35b88eee",
+          "response_row_count": 50,
+          "row_count_matches": true,
+          "run_id": "49506553-5d93-4ada-a62f-800de79ba259",
+          "tier_distribution": {
+            "failed": 48,
+            "not_found": 1,
+            "review": 1
+          }
+        },
+        "query_guardrail": null,
+        "recipe_id": "d8d62a8d-38e9-4ba8-81f0-df0a35b88eee",
+        "row_count": 50,
+        "run_id": "49506553-5d93-4ada-a62f-800de79ba259",
+        "sandbox_usage": {
+          "max_queries": 10,
+          "max_rows": 1000,
+          "remaining_queries": 7,
+          "remaining_rows": 892,
+          "reset_at": "2026-05-24T15:45:48.060753+00:00",
+          "total_queries": 3,
+          "total_rows": 108
+        },
+        "seconds": 158.047,
+        "status": 200,
+        "tier_distribution": {
+          "failed": 48,
+          "not_found": 1,
+          "review": 1
+        }
+      },
+      "lee-commodity-buyers": {
+        "benchmark_id": "lee-commodity-buyers",
+        "candidate_category_distribution": {
+          "failed": 45,
+          "person_lead": 5
+        },
+        "contact_quality_passes": 5,
+        "high_trust_usable_with_contact_evidence": 0,
+        "metrics": {
+          "elapsed_seconds": 110.13,
+          "estimated_cost_usd": 0.142636,
+          "funnel_counts": {
+            "categorized_rows": 50,
+            "contact_evidence_candidates_searched": 1,
+            "contact_evidence_conflicting_signals": 0,
+            "contact_evidence_contacts_acquired": 1,
+            "contact_evidence_field_corroborations": 1,
+            "contact_evidence_review_to_high_trust": 0,
+            "contact_evidence_searches": 1,
+            "contact_quality_passes": 5,
+            "deduped_sources": 185,
+            "extracted_candidates": 6,
+            "high_trust_usable_rows": 0,
+            "person_rows": 5,
+            "persona_supported_rows": 0,
+            "raw_vendor_hits": 240,
+            "source_snapshots": 185,
+            "source_supported_rows": 5
+          },
+          "funnel_notes": [
+            "Deduped 240 raw vendor hits to 185 unique sources.",
+            "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+            "Deep contact evidence pass searched 1 promising rows and acquired 1 source-backed contacts; 0 rows gained enough contact evidence to clear the READY gate.",
+            "Deep contact evidence pass observed 1 field corroborations and 0 conflicting signals across public-web sources."
+          ],
+          "input_tokens": 79708,
+          "openai_web_searches": 0,
+          "output_tokens": 1133,
+          "tavily_searches": 13,
+          "tier_distribution": {
+            "failed": 45,
+            "high_trust_usable": 0,
+            "not_found": 0,
+            "organization_only": 0,
+            "review": 5
+          }
+        },
+        "operator_label_distribution": {
+          "NOT FOUND": 45,
+          "ORG-ONLY": 0,
+          "READY": 0,
+          "REVIEW": 5
+        },
+        "persistence_readback": {
+          "candidate_category_distribution": {
+            "failed": 45,
+            "person_lead": 5
+          },
+          "db_readback_row_count": 50,
+          "exportable_row_count": 50,
+          "first_db_lead_ids": [
+            "184e3745-376b-4723-8d75-a7b49a6ea85e",
+            "5de0c106-fc6c-410e-ac4b-9d70ecfe5500",
+            "e4144771-fbaa-401d-ad8f-cc87163cbbf6",
+            "c88b1a2d-08ca-4972-bccd-0bbbfccda379",
+            "f86cec4d-6766-478f-9d4f-4b62913f3dc8"
+          ],
+          "first_response_lead_ids": [
+            "184e3745-376b-4723-8d75-a7b49a6ea85e",
+            "5de0c106-fc6c-410e-ac4b-9d70ecfe5500",
+            "e4144771-fbaa-401d-ad8f-cc87163cbbf6",
+            "c88b1a2d-08ca-4972-bccd-0bbbfccda379",
+            "f86cec4d-6766-478f-9d4f-4b62913f3dc8"
+          ],
+          "persisted_lead_count": 50,
+          "recipe_id": "f822512c-065c-40ee-90f4-653d8b5416d3",
+          "response_row_count": 50,
+          "row_count_matches": true,
+          "run_id": "067ddd82-0624-4693-a892-7e310eb6e630",
+          "tier_distribution": {
+            "failed": 45,
+            "review": 5
+          }
+        },
+        "query_guardrail": {
+          "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+          "missing_criteria": [
+            "target title or role"
+          ],
+          "status": "needs_more_detail",
+          "suggestions": [
+            "Add a title or role, such as director, manager, VP, or owner."
+          ]
+        },
+        "recipe_id": "f822512c-065c-40ee-90f4-653d8b5416d3",
+        "row_count": 50,
+        "run_id": "067ddd82-0624-4693-a892-7e310eb6e630",
+        "sandbox_usage": {
+          "max_queries": 10,
+          "max_rows": 1000,
+          "remaining_queries": 8,
+          "remaining_rows": 942,
+          "reset_at": "2026-05-24T15:45:48.060753+00:00",
+          "total_queries": 2,
+          "total_rows": 58
+        },
+        "seconds": 112.417,
+        "status": 200,
+        "tier_distribution": {
+          "failed": 45,
+          "review": 5
+        }
+      },
+      "manufacturing-ops-detroit": {
+        "benchmark_id": "manufacturing-ops-detroit",
+        "candidate_category_distribution": {},
+        "contact_quality_passes": 0,
+        "high_trust_usable_with_contact_evidence": 0,
+        "metrics": null,
+        "operator_label_distribution": {
+          "NOT FOUND": 0,
+          "ORG-ONLY": 0,
+          "READY": 0,
+          "REVIEW": 0
+        },
+        "persistence_readback": null,
+        "query_guardrail": null,
+        "recipe_id": null,
+        "row_count": 0,
+        "run_id": null,
+        "sandbox_usage": null,
+        "seconds": 300.112,
+        "status": "ERROR",
+        "tier_distribution": {}
+      },
+      "privacy-reject-homeowner-phones": {
+        "benchmark_id": "privacy-reject-homeowner-phones",
+        "candidate_category_distribution": {},
+        "contact_quality_passes": 0,
+        "high_trust_usable_with_contact_evidence": 0,
+        "metrics": null,
+        "operator_label_distribution": {
+          "NOT FOUND": 0,
+          "ORG-ONLY": 0,
+          "READY": 0,
+          "REVIEW": 0
+        },
+        "persistence_readback": null,
+        "query_guardrail": {
+          "message": "White Rabbit only runs privacy-safe B2B lead-generation queries. Queries aimed at private people, home/consumer targeting, or personal contact discovery are blocked before search.",
+          "missing_criteria": [
+            "target people or organizations"
+          ],
+          "status": "blocked",
+          "suggestions": [
+            "Try: IT directors at school districts in New Mexico",
+            "Try: procurement managers at mid-market manufacturers in Texas"
+          ]
+        },
+        "recipe_id": null,
+        "row_count": 0,
+        "run_id": null,
+        "sandbox_usage": null,
+        "seconds": 0.572,
+        "status": 422,
+        "tier_distribution": {}
+      },
+      "thomas-arizona-k12": {
+        "benchmark_id": "thomas-arizona-k12",
+        "candidate_category_distribution": {
+          "failed": 3,
+          "organization_only": 1,
+          "person_lead": 4
+        },
+        "contact_quality_passes": 2,
+        "high_trust_usable_with_contact_evidence": 2,
+        "metrics": {
+          "elapsed_seconds": 223.59,
+          "estimated_cost_usd": 0.674832,
+          "funnel_counts": {
+            "categorized_rows": 8,
+            "contact_evidence_candidates_searched": 5,
+            "contact_evidence_conflicting_signals": 0,
+            "contact_evidence_contacts_acquired": 2,
+            "contact_evidence_field_corroborations": 5,
+            "contact_evidence_review_to_high_trust": 2,
+            "contact_evidence_searches": 35,
+            "contact_quality_passes": 2,
+            "deduped_sources": 48,
+            "extracted_candidates": 7,
+            "high_trust_usable_rows": 2,
+            "person_rows": 4,
+            "persona_supported_rows": 2,
+            "raw_vendor_hits": 64,
+            "source_snapshots": 48,
+            "source_supported_rows": 5
+          },
+          "funnel_notes": [
+            "Deduped 64 raw vendor hits to 48 unique sources.",
+            "Extraction returned fewer candidates than deduped sources; broad source gap rows preserve that loss without promoting them to CRM-ready leads.",
+            "Deep contact evidence pass searched 5 promising rows and acquired 2 source-backed contacts; 2 rows gained enough contact evidence to clear the READY gate.",
+            "Deep contact evidence pass observed 5 field corroborations and 0 conflicting signals across public-web sources.",
+            "Contact evidence pass checked 1 organization-only rows for staff/contact sources."
+          ],
+          "input_tokens": 25684,
+          "openai_web_searches": 0,
+          "output_tokens": 1633,
+          "tavily_searches": 67,
+          "tier_distribution": {
+            "failed": 3,
+            "high_trust_usable": 2,
+            "not_found": 0,
+            "organization_only": 1,
+            "review": 2
+          }
+        },
+        "operator_label_distribution": {
+          "NOT FOUND": 3,
+          "ORG-ONLY": 1,
+          "READY": 2,
+          "REVIEW": 2
+        },
+        "persistence_readback": {
+          "candidate_category_distribution": {
+            "failed": 3,
+            "organization_only": 1,
+            "person_lead": 4
+          },
+          "db_readback_row_count": 8,
+          "exportable_row_count": 8,
+          "first_db_lead_ids": [
+            "af047535-776f-46ad-85a6-6f0732ed6b28",
+            "0cbc9cc2-38d4-4bb3-83b1-2896c1ec26c6",
+            "3ddbfa3c-f777-436c-a680-d4e75ac5fae2",
+            "e29ed0e1-ffca-4a01-97f6-78383856be0b",
+            "6509b8ac-5db6-432b-a4cb-8bf311009293"
+          ],
+          "first_response_lead_ids": [
+            "af047535-776f-46ad-85a6-6f0732ed6b28",
+            "0cbc9cc2-38d4-4bb3-83b1-2896c1ec26c6",
+            "3ddbfa3c-f777-436c-a680-d4e75ac5fae2",
+            "e29ed0e1-ffca-4a01-97f6-78383856be0b",
+            "6509b8ac-5db6-432b-a4cb-8bf311009293"
+          ],
+          "persisted_lead_count": 8,
+          "recipe_id": "c59a3c8d-c51a-4762-af20-6c389f8728fb",
+          "response_row_count": 8,
+          "row_count_matches": true,
+          "run_id": "1448cb7b-9100-4d05-9fe6-4527f4f3f63e",
+          "tier_distribution": {
+            "failed": 3,
+            "high_trust_usable": 2,
+            "organization_only": 1,
+            "review": 2
+          }
+        },
+        "query_guardrail": {
+          "message": "This is a lead-generation query, but tighter results will come from adding a title, vertical/company type, and location.",
+          "missing_criteria": [
+            "location"
+          ],
+          "status": "needs_more_detail",
+          "suggestions": [
+            "Add a geography, such as a city, state, or region."
+          ]
+        },
+        "recipe_id": "c59a3c8d-c51a-4762-af20-6c389f8728fb",
+        "row_count": 8,
+        "run_id": "1448cb7b-9100-4d05-9fe6-4527f4f3f63e",
+        "sandbox_usage": {
+          "max_queries": 10,
+          "max_rows": 1000,
+          "remaining_queries": 9,
+          "remaining_rows": 992,
+          "reset_at": "2026-05-24T15:45:48.060753+00:00",
+          "total_queries": 1,
+          "total_rows": 8
+        },
+        "seconds": 225.32,
+        "status": 200,
+        "tier_distribution": {
+          "failed": 3,
+          "high_trust_usable": 2,
+          "organization_only": 1,
+          "review": 2
+        }
+      }
+    },
+    "contact_pass_cases": 0,
+    "failed_cases": 4,
+    "guardrail_mismatches": [],
+    "observation_mismatches": [
+      "thomas-arizona-k12: source",
+      "healthcare-it-phoenix: persona, contact, source",
+      "finance-cisos-new-york: persona, contact, source",
+      "manufacturing-ops-detroit: persona, contact, source, volume"
+    ],
+    "passed_cases": 2,
+    "persona_pass_cases": 0,
+    "privacy_refusal_cases": 1,
+    "source_pass_cases": 1,
+    "suite_id": "required_lead_quality_suite",
+    "total_cases": 6
+  },
+  "sandbox_after": {
+    "max_queries": 10,
+    "max_rows": 1000,
+    "remaining_queries": 10,
+    "remaining_rows": 1000,
+    "reset_at": "2026-05-24T15:45:48.060753+00:00",
+    "total_queries": 0,
+    "total_rows": 0
+  },
+  "sandbox_reset_status": 200,
+  "timed_query_to_export": {
+    "benchmark_id": "thomas-arizona-k12",
+    "close_status": 200,
+    "collected_at": "2026-05-24T15:45:39.551874Z",
+    "export": {
+      "headers": [
+        "lead_name",
+        "title",
+        "organization",
+        "email",
+        "email_status",
+        "phone",
+        "phone_status",
+        "usable_candidate",
+        "operator_label",
+        "candidate_category",
+        "rank",
+        "query",
+        "run_id",
+        "fit_score",
+        "evidence_score",
+        "contact_score",
+        "ranking_gate",
+        "source_name_url",
+        "source_title_url",
+        "source_org_url",
+        "source_email_url",
+        "source_phone_url",
+        "source_access_status",
+        "validation_notes",
+        "checked_at",
+        "location",
+        "recipe_name",
+        "sort_mode",
+        "generated_at"
+      ],
+      "path": "/tmp/white-rabbit-rg6-work/audits/raw/reset-2026-05-10/rg6/post-remediation-stable-rerun-2026-05-24/timed-query-to-export.csv",
+      "row_count": 8
+    },
+    "operator_flow": "no-assistance scripted primary query-to-export production flow: authenticated web /api/scout -> persisted readback -> CSV materialization -> /api/runs/{run_id}/close",
+    "operator_minutes": 3.755,
+    "readback_status": 200,
+    "run_id": "1448cb7b-9100-4d05-9fe6-4527f4f3f63e",
+    "scout_seconds": 225.32
+  },
+  "web": {
+    "authenticated_home_status": 200,
+    "login_status": 200,
+    "source_assisted_route_status": 200
+  }
+}

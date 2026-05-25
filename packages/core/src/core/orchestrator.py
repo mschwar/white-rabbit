@@ -28,6 +28,7 @@ from .models import (
 from .lead_quality_policy import (
     READY_CONTACT_STATUSES,
     READY_SCORE_THRESHOLD,
+    lead_has_contact_support,
     lead_has_persona_support,
     lead_has_source_support,
     lead_is_ready_eligible,
@@ -145,6 +146,12 @@ Use email_status values from this contact-status set:
 If you cannot find an email in the search results, set email='' and email_status='missing'.
 Never invent or guess an email, and never use the old Found/Deduced labels.
 
+PHONE EVIDENCE:
+If a direct professional phone appears in the same source evidence as the person's
+name, title, and organization, set phone to that number and phone_status to
+verified_found. If no direct phone appears, set phone='' and phone_status='missing'.
+Never invent a phone number.
+
 CONTENT:
 Include the organization name for every lead. If you cannot find a clear organization,
 omit the lead entirely.
@@ -202,13 +209,13 @@ def _bool_or_default(value: Any, *, default: bool = False) -> bool:
     return default
 
 
-def _normalize_contact_status(value: Any, *, email: str) -> str:
+def _normalize_contact_status(value: Any, *, contact_value: str) -> str:
     status = _clean_text(value)
     if status is not None:
         status = LEGACY_CONTACT_STATUS_ALIASES.get(status, status)
     if status not in CONTACT_STATUSES:
         status = "unsupported"
-    if not email and status != "failed":
+    if not contact_value and status != "failed":
         return "missing"
     return status
 
@@ -238,7 +245,8 @@ def _extraction_failure_candidate(
 
 def _coerce_person_lead(raw: ExtractedCandidate, *, query: str) -> Candidate:
     email = _clean_text(raw.email) or ""
-    status = _normalize_contact_status(raw.email_status, email=email)
+    phone = _clean_text(raw.phone) or ""
+    status = _normalize_contact_status(raw.email_status, contact_value=email)
     payload = {
         "candidate_category": "person_lead",
         "name": _clean_text(raw.name),
@@ -246,6 +254,7 @@ def _coerce_person_lead(raw: ExtractedCandidate, *, query: str) -> Candidate:
         "organization": _clean_text(raw.organization),
         "email": email,
         "email_status": status,
+        "phone": phone,
         "source_url": _clean_text(raw.source_url),
         "confidence": _score_or_default(raw.confidence),
         "why_target": _clean_text(raw.why_target),
@@ -402,6 +411,7 @@ def _failed_from_conflicting_lead(candidate: Lead, *, reason: str) -> FailedCand
 
 def _sync_contact_fields_from_validation(candidate: Lead) -> None:
     email_status = validation_status(candidate, "email")
+    phone_status = validation_status(candidate, "phone")
     if candidate.email_status == "failed" and not candidate.email and email_status in {"missing", "unsupported"}:
         email_status = "failed"
     elif candidate.email_status == "missing" and not candidate.email and email_status == "unsupported":
@@ -409,11 +419,18 @@ def _sync_contact_fields_from_validation(candidate: Lead) -> None:
     if email_status in CONTACT_STATUSES:
         candidate.email_status = email_status
 
+    has_usable_contact = (
+        email_status in EVIDENCE_GATE_CONTACT_STATUSES
+        or phone_status in EVIDENCE_GATE_CONTACT_STATUSES
+    )
     if email_status not in EVIDENCE_GATE_CONTACT_STATUSES:
         candidate.email = ""
-        candidate.contact_score = min(candidate.contact_score, 0.4)
 
-    if email_status in {"failed", "unsupported", "missing"}:
+    if not has_usable_contact:
+        candidate.contact_score = min(candidate.contact_score, 0.4)
+        candidate.gate_passed = False
+
+    if email_status in {"failed", "unsupported", "missing"} and phone_status not in EVIDENCE_GATE_CONTACT_STATUSES:
         candidate.gate_passed = False
 
 
@@ -427,13 +444,15 @@ def _apply_score_semantics(candidate: Lead) -> None:
         candidate.evidence_score = min(candidate.evidence_score, max(0.0, 0.55 - (0.15 * (unsupported_field_count - 1))))
 
     email_status = candidate.email_status
-    if email_status == "verified_found":
+    phone_status = validation_status(candidate, "phone")
+    contact_status = email_status if email_status in EVIDENCE_GATE_CONTACT_STATUSES else phone_status
+    if contact_status == "verified_found":
         pass
-    elif email_status == "deduced_with_pattern_evidence":
+    elif contact_status == "deduced_with_pattern_evidence":
         candidate.contact_score = min(candidate.contact_score, 0.75)
-    elif email_status == "missing":
+    elif email_status == "missing" and phone_status == "missing":
         candidate.contact_score = min(candidate.contact_score, 0.35)
-    elif email_status in {"failed", "unsupported"}:
+    elif email_status in {"failed", "unsupported"} and phone_status not in EVIDENCE_GATE_CONTACT_STATUSES:
         candidate.contact_score = min(candidate.contact_score, 0.2)
 
 
@@ -545,8 +564,7 @@ def _contact_quality_pass_count(candidates: list[Candidate]) -> int:
     return sum(
         1
         for candidate in candidates
-        if isinstance(candidate, Lead)
-        and validation_status(candidate, "email") in EVIDENCE_GATE_CONTACT_STATUSES
+        if isinstance(candidate, Lead) and lead_has_contact_support(candidate)
     )
 
 

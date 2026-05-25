@@ -93,6 +93,79 @@ def test_scout_uses_injected_dependencies_and_returns_metrics(monkeypatch):
     assert metrics.estimated_cost_usd > 0
 
 
+def test_scout_preserves_source_backed_phone_from_extraction(monkeypatch):
+    async def fake_search(query: str, api_key=None, max_results=10, filters=None):
+        return [
+            {
+                "title": "Mesa Public Schools staff directory",
+                "url": "https://www.mpsaz.org/staff/technology",
+                "content": "Jane Smith Director of Technology Mesa Public Schools Phone: (480) 472-0005",
+                "score": 0.93,
+            }
+        ]
+
+    extracted = ExtractedLeadList(
+        leads=[
+            ExtractedCandidate(
+                candidate_category="person_lead",
+                name="Jane Smith",
+                title="Director of Technology",
+                organization="Mesa Public Schools",
+                email="",
+                email_status="missing",
+                phone="(480) 472-0005",
+                phone_status="verified_found",
+                source_url="https://www.mpsaz.org/staff/technology",
+                confidence=0.9,
+                why_target="Owns district technology decisions.",
+                icebreaker="I saw your team supports district technology services.",
+                fit_score=0.9,
+                evidence_score=0.9,
+                contact_score=0.9,
+                gate_passed=False,
+                explanation="Official staff directory lists the role and phone.",
+            )
+        ]
+    )
+
+    class FakeCompletions:
+        async def parse(self, model, messages, response_format):
+            return SimpleNamespace(
+                choices=[SimpleNamespace(message=SimpleNamespace(parsed=extracted))],
+                usage=SimpleNamespace(prompt_tokens=1, completion_tokens=1),
+            )
+
+    fake_client = SimpleNamespace(beta=SimpleNamespace(chat=SimpleNamespace(completions=FakeCompletions())))
+
+    async def fake_validate_candidate_source(candidate, client=None):
+        assert candidate.phone == "(480) 472-0005"
+        return CandidateValidation(
+            name=FieldValidationRecord(status="supported", source_url=candidate.source_url),
+            title=FieldValidationRecord(status="supported", source_url=candidate.source_url),
+            organization=FieldValidationRecord(status="supported", source_url=candidate.source_url),
+            email=ContactValidationRecord(status="missing", source_url=candidate.source_url),
+            phone=ContactValidationRecord(status="verified_found", source_url=candidate.source_url),
+            source=FieldValidationRecord(status="supported", source_url=candidate.source_url),
+        )
+
+    monkeypatch.setattr("core.orchestrator.validate_candidate_source", fake_validate_candidate_source)
+
+    leads, metrics = asyncio.run(
+        scout(
+            "Arizona K-12 technology directors",
+            openai_client=fake_client,
+            tavily_key="fake-tavily",
+            search_fn=fake_search,
+        )
+    )
+
+    assert len(leads) == 1
+    assert leads[0].phone == "(480) 472-0005"
+    assert leads[0].validation.phone.status == "verified_found"
+    assert leads[0].tier == "high_trust_usable"
+    assert metrics.funnel_counts["contact_quality_passes"] == 1
+
+
 def test_scout_rejects_gate_when_evidence_validation_is_unsupported(monkeypatch):
     async def fake_search(query: str, api_key=None, max_results=10, filters=None):
         return []
