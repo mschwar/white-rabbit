@@ -1,0 +1,168 @@
+{
+  "artifact_id": "retail_it_to_white_rabbit_contract_map_2026_05_20",
+  "source_artifact": "attachment-extract.json",
+  "white_rabbit_contract_sources": [
+    "docs/00-product-northstar.md",
+    "docs/13-pipeline-orchestrator-contract-2026.md",
+    "packages/core/src/core/models.py",
+    "apps/web/src/lib/full-export.ts",
+    "packages/core/src/core/manual_oracle.py"
+  ],
+  "current_contract_summary": {
+    "candidate_categories": [
+      "person_lead",
+      "organization_only",
+      "not_found",
+      "failed"
+    ],
+    "output_tiers": [
+      "high_trust_usable",
+      "review",
+      "manual_lookup",
+      "organization_only",
+      "not_found",
+      "failed"
+    ],
+    "operator_labels": {
+      "high_trust_usable": "READY",
+      "review": "REVIEW",
+      "manual_lookup": "REVIEW",
+      "organization_only": "ORG-ONLY",
+      "not_found": "NOT FOUND",
+      "failed": "NOT FOUND or REVIEW"
+    },
+    "contact_statuses": [
+      "verified_found",
+      "deduced_with_pattern_evidence",
+      "missing",
+      "failed",
+      "unsupported"
+    ],
+    "ready_contact_rule": "A person row can be READY/high_trust_usable only when person, title, organization, source, and usable contact evidence are field-supported. Public corporate contact channels alone are not person-contact evidence.",
+    "export_columns_from_primary_path": [
+      "lead_name",
+      "title",
+      "organization",
+      "email",
+      "email_status",
+      "phone",
+      "phone_status",
+      "usable_candidate",
+      "operator_label",
+      "candidate_category",
+      "rank",
+      "query",
+      "run_id",
+      "fit_score",
+      "evidence_score",
+      "contact_score",
+      "ranking_gate",
+      "source_name_url",
+      "source_title_url",
+      "source_org_url",
+      "source_email_url",
+      "source_phone_url",
+      "source_access_status",
+      "validation_notes",
+      "checked_at",
+      "location",
+      "recipe_name",
+      "sort_mode",
+      "generated_at"
+    ]
+  },
+  "field_mapping": [
+    {
+      "source_field": "state",
+      "white_rabbit_field": "location / query context / validation_notes",
+      "rule": "State is target scope, not proof of a state-level IT decision maker."
+    },
+    {
+      "source_field": "company",
+      "white_rabbit_field": "organization",
+      "rule": "Must be source-supported for person_lead, organization_only, not_found, and failed rows."
+    },
+    {
+      "source_field": "retail_segment / industry",
+      "white_rabbit_field": "validation_notes or market_insight",
+      "rule": "Useful context, but not itself a readiness signal."
+    },
+    {
+      "source_field": "contact_scope",
+      "white_rabbit_field": "candidate_category / tier / primary_filter_reason",
+      "rule": "Use to separate public corporate contact rows from person leads."
+    },
+    {
+      "source_field": "name",
+      "white_rabbit_field": "lead_name / Lead.name",
+      "rule": "Only valid for person_lead when it is a real person, not a department, role, company, or generic contact channel."
+    },
+    {
+      "source_field": "title",
+      "white_rabbit_field": "title",
+      "rule": "Must be current or explicitly source-supported; older public references should remain REVIEW until refreshed."
+    },
+    {
+      "source_field": "direct_email",
+      "white_rabbit_field": "email + email_status",
+      "rule": "Blank is allowed. Non-empty values require verified_found or deduced_with_pattern_evidence. No guessed, private, stale, unsupported, or placeholder emails."
+    },
+    {
+      "source_field": "direct_phone",
+      "white_rabbit_field": "phone + phone_status",
+      "rule": "Person-level phone only counts when source-supported for that person. Main corporate phone maps to org contact context, not READY contact support."
+    },
+    {
+      "source_field": "public_corporate_phone",
+      "white_rabbit_field": "source_phone_url / validation_notes / organization contact context",
+      "rule": "Do not treat as person phone unless the source ties it to the person."
+    },
+    {
+      "source_field": "public_corporate_email",
+      "white_rabbit_field": "validation_notes / organization contact context",
+      "rule": "Generic media/info/contact emails do not make a person CRM-ready."
+    },
+    {
+      "source_field": "profile_url / official_source_url",
+      "white_rabbit_field": "source_name_url / source_title_url / source_org_url / source_access_status",
+      "rule": "Can support name, title, and organization after fetch/access validation."
+    },
+    {
+      "source_field": "corporate_contact_url",
+      "white_rabbit_field": "source_email_url / source_phone_url when relevant",
+      "rule": "Supports corporate channel availability, not person contact readiness by default."
+    },
+    {
+      "source_field": "verification_tier",
+      "white_rabbit_field": "tier / ranking_gate / validation_notes",
+      "rule": "verified_current means source currency only; it must not automatically map to READY."
+    },
+    {
+      "source_field": "status_note",
+      "white_rabbit_field": "validation_notes / primary_filter_reason / evidence rationale",
+      "rule": "Useful blocker/evidence note; should become field-level validation notes with checked_at."
+    }
+  ],
+  "requested_shape_to_contract_outcome": [
+    {
+      "source_shape": "State-specific IT directors at Target/Walmart/Lowes",
+      "contract_outcome": "Mostly organization_only or not_found unless a state-specific retail IT person is supported by public evidence.",
+      "risk": "The transcript pivoted away from this target, so White Rabbit should preserve missing/not_found rows instead of hiding the miss."
+    },
+    {
+      "source_shape": "National public retail technology executives",
+      "contract_outcome": "review/manual_lookup person_lead rows when name/title/org/profile are supported but direct person contact is missing; high_trust_usable only where person-level email/phone evidence exists.",
+      "risk": "Volume can look good while contact yield stays below the product gate."
+    },
+    {
+      "source_shape": "Older public leadership press releases",
+      "contract_outcome": "review or failed until current title/organization is rechecked.",
+      "risk": "Old official sources are still official but may be stale."
+    },
+    {
+      "source_shape": "Generic public corporate contact channels",
+      "contract_outcome": "organization contact context only.",
+      "risk": "Current export has fields for email/phone; filling them with generic channels would create false CRM confidence."
+    }
+  ]
+}

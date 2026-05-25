@@ -1,0 +1,333 @@
+{
+  "artifact_id": "lee_retail_it_leads_docx_extract_2026_05_20",
+  "created_at": "2026-05-25",
+  "privacy_posture": "Clean extraction from a private Gmail attachment. The raw DOCX and full terminal transcript are not committed; this packet stores structured facts, row-shape examples visible in the transcript, and benchmark implications only.",
+  "source_thread": {
+    "gmail_thread_id": "19e47ed26a29d2a2",
+    "source_message_id": "19e47ed26a29d2a2",
+    "sender": "Lee Biby <lee@org-atlas.com>",
+    "sent_at_utc": "2026-05-21T00:26:20Z",
+    "sent_at_mountain": "2026-05-20T18:26:20-06:00",
+    "subject": "REPO for Retail IT leads",
+    "attachment_filename": "Retail IT leads for REPO.docx",
+    "attachment_size_bytes": 43849,
+    "attachment_sha256": "e609e3a28699fe30fdfeb38dd0601c9e0782e44bfa940fe0f4f2651c951e8879",
+    "lee_message_body": "empty",
+    "matt_reply_summary": "Matt called the material useful and asked Lee to send future source material as Markdown, JSON, or plain text instead of DOCX."
+  },
+  "docx_shape": {
+    "kind": "Codex terminal transcript pasted into DOCX",
+    "paragraph_count": 859,
+    "page_count_from_connector_parse": 58,
+    "visible_builder_rows_extracted": 19,
+    "visible_builder_rows_note": "Rows are examples visible in the transcript builder additions with complete official_source_url fields; later transcript notes may supersede individual seed rows such as Caseys."
+  },
+  "extracted_requests": [
+    {
+      "request_id": "retail_state_tabs_initial",
+      "source": "visible prompt in attachment transcript",
+      "ask": "Build a contact file for IT directors in the retail industry using Target, Walmart, and Lowes as examples, scoped to Arizona, New Mexico, and North Carolina, with separate state tabs/pages and typical contact fields such as name, email, phone, company, and title.",
+      "target_accounts": [
+        "Target",
+        "Walmart",
+        "Lowes"
+      ],
+      "target_states": [
+        "Arizona",
+        "New Mexico",
+        "North Carolina"
+      ],
+      "requested_fields": [
+        "state",
+        "company",
+        "industry",
+        "contact_scope",
+        "name",
+        "title",
+        "direct_email",
+        "direct_phone",
+        "public_corporate_phone",
+        "public_corporate_email",
+        "profile_url",
+        "corporate_contact_url",
+        "state_presence_source",
+        "notes"
+      ],
+      "agent_constraint_recorded": "The agent stated it would not compile personal direct emails or cell numbers for individual employees, and instead used official public company leaders and corporate contact channels when state-level IT directors were not published.",
+      "outputs_named_in_transcript": [
+        "district_it_contacts/output/retail_contacts_by_state.xlsx",
+        "district_it_contacts/output/retail_contacts_arizona.csv",
+        "district_it_contacts/output/retail_contacts_new_mexico.csv",
+        "district_it_contacts/output/retail_contacts_north_carolina.csv"
+      ]
+    },
+    {
+      "request_id": "retail_national_technology_leaders_pivot",
+      "source": "visible continuation in attachment transcript",
+      "ask": "Broaden from literal state-level IT directors to publicly listed retail technology and digital leaders nationwide to approach roughly 75 usable rows without compiling personal direct emails or cell numbers.",
+      "target_row_count": "roughly 75",
+      "final_counts_recorded": {
+        "total_rows": 77,
+        "verified_current_rows": 59,
+        "older_public_rows": 18
+      },
+      "workbook_sheets_recorded": [
+        "Verified_Current",
+        "Older_Public",
+        "README"
+      ],
+      "fieldnames_visible_in_builder": [
+        "verification_tier",
+        "name",
+        "title",
+        "company",
+        "retail_segment",
+        "official_source_url",
+        "public_company_contact_url",
+        "public_company_phone",
+        "public_company_email",
+        "status_note"
+      ],
+      "outputs_named_in_transcript": [
+        "district_it_contacts/output/retail_tech_leaders_public.xlsx",
+        "district_it_contacts/output/retail_tech_leaders_public.csv",
+        "district_it_contacts/output/retail_tech_leaders_verified_current.csv"
+      ],
+      "quality_fixes_recorded": [
+        "Neal Sample was remapped to Best Buy rather than a misattributed company row.",
+        "The Walgreens contact URL typo was corrected.",
+        "The Caseys row was moved to a current official leadership-page source."
+      ]
+    }
+  ],
+  "visible_public_rows_from_docx_builder_additions": [
+    {
+      "verification_tier": "verified_current",
+      "name": "Jason Bonfig",
+      "title": "SEVP, Chief Customer, Product and Fulfillment Officer",
+      "company": "Best Buy",
+      "retail_segment": "Consumer Electronics Retail",
+      "official_source_url": "https://corporate.bestbuy.com/our-leadership/",
+      "public_company_contact_url": "https://corporate.bestbuy.com/about-best-buy/",
+      "public_company_phone": "1-888-237-8289",
+      "public_company_email": "",
+      "status_note": "Current public leadership listing on Best Buy corporate site; role includes product leadership."
+    },
+    {
+      "verification_tier": "verified_current",
+      "name": "Arianne Parisi",
+      "title": "Chief Digital Officer",
+      "company": "Kohl's",
+      "retail_segment": "Department Store Retail",
+      "official_source_url": "https://corporate.kohls.com/bio-arianneparisi",
+      "public_company_contact_url": "https://corporate.kohls.com/contact-us",
+      "public_company_phone": "262-703-7000",
+      "public_company_email": "",
+      "status_note": "Current public executive bio on Kohl's corporate site."
+    },
+    {
+      "verification_tier": "verified_current",
+      "name": "Greg Fancher",
+      "title": "Executive Vice President and Chief Information Technology Officer",
+      "company": "PetSmart",
+      "retail_segment": "Pet Specialty Retail",
+      "official_source_url": "https://www.petsmartcorporate.com/our-leadership/greg-fancher/",
+      "public_company_contact_url": "https://www.petsmartcorporate.com/contact-us/",
+      "public_company_phone": "(888) 839-9638",
+      "public_company_email": "",
+      "status_note": "Current public leadership bio on PetSmart corporate site."
+    },
+    {
+      "verification_tier": "verified_current",
+      "name": "Guillaume Ledieu",
+      "title": "Chief Technology Officer",
+      "company": "REI Co-op",
+      "retail_segment": "Outdoor Specialty Retail",
+      "official_source_url": "https://www.rei.com/about-rei/leadership",
+      "public_company_contact_url": "https://www.rei.com/help",
+      "public_company_phone": "",
+      "public_company_email": "",
+      "status_note": "Current public leadership listing on REI's official site."
+    },
+    {
+      "verification_tier": "verified_current",
+      "name": "Rick Williams",
+      "title": "Senior Vice President, Information Technology",
+      "company": "Ace Hardware",
+      "retail_segment": "Hardware Cooperative Retail",
+      "official_source_url": "https://newsroom.acehardware.com/executive-bios/",
+      "public_company_contact_url": "https://www.acehardware.com/customer-service",
+      "public_company_phone": "1-888-827-4223",
+      "public_company_email": "",
+      "status_note": "Current public officer bio on Ace Hardware's executive bios page."
+    },
+    {
+      "verification_tier": "verified_current",
+      "name": "Bill Kiss",
+      "title": "Vice President, Digital and Retail Strategy and Innovation",
+      "company": "Ace Hardware",
+      "retail_segment": "Hardware Cooperative Retail",
+      "official_source_url": "https://newsroom.acehardware.com/executive-bios/",
+      "public_company_contact_url": "https://www.acehardware.com/customer-service",
+      "public_company_phone": "1-888-827-4223",
+      "public_company_email": "",
+      "status_note": "Current public officer bio on Ace Hardware's executive bios page; role includes digital and innovation scope."
+    },
+    {
+      "verification_tier": "verified_current",
+      "name": "Sarah Clarke",
+      "title": "Executive Vice President, Chief Supply Chain, Technology & International Officer",
+      "company": "American Eagle Outfitters",
+      "retail_segment": "Apparel Retail",
+      "official_source_url": "https://www.aeo-inc.com/leadership/",
+      "public_company_contact_url": "https://www.aeo-inc.com/",
+      "public_company_phone": "",
+      "public_company_email": "",
+      "status_note": "Current public leadership listing on AEO's official site."
+    },
+    {
+      "verification_tier": "verified_current",
+      "name": "Varadheeswaran Chennakrishnan",
+      "title": "Executive Vice President, Chief Information Officer",
+      "company": "Burlington Stores",
+      "retail_segment": "Off-Price Retail",
+      "official_source_url": "https://www.burlingtoninvestors.com/static-files/6d1ae171-740c-41ef-a6b3-12e78ff4353c",
+      "public_company_contact_url": "https://www.burlingtoninvestors.com/",
+      "public_company_phone": "(855) 973-8445",
+      "public_company_email": "Info@BurlingtonInvestors.com",
+      "status_note": "Current management team listing in Burlington Stores' official annual report."
+    },
+    {
+      "verification_tier": "verified_current",
+      "name": "Larry Kraus",
+      "title": "Senior Vice President, Chief Information Officer",
+      "company": "Ollie's Bargain Outlet",
+      "retail_segment": "Discount Closeout Retail",
+      "official_source_url": "https://investors.ollies.us/executive-officers",
+      "public_company_contact_url": "https://investors.ollies.us/",
+      "public_company_phone": "",
+      "public_company_email": "",
+      "status_note": "Current public executive officer listing on Ollie's investor site."
+    },
+    {
+      "verification_tier": "verified_current",
+      "name": "Carlo Pochintesta",
+      "title": "Chief Information Officer",
+      "company": "Barnes & Noble",
+      "retail_segment": "Books and Specialty Retail",
+      "official_source_url": "https://www.barnesandnobleinc.com/management-overview/",
+      "public_company_contact_url": "https://www.barnesandnobleinc.com/management-overview/",
+      "public_company_phone": "",
+      "public_company_email": "",
+      "status_note": "Current public management team listing on Barnes & Noble's official site."
+    },
+    {
+      "verification_tier": "verified_current",
+      "name": "Dave Hayne",
+      "title": "Chief Technology Officer and President of Nuuly",
+      "company": "Urban Outfitters",
+      "retail_segment": "Lifestyle Apparel Retail",
+      "official_source_url": "https://www.urbn.com/who-we-are/senior-leadership",
+      "public_company_contact_url": "https://www.urbn.com/",
+      "public_company_phone": "",
+      "public_company_email": "",
+      "status_note": "Current public leadership listing on Urban Outfitters' official site."
+    },
+    {
+      "verification_tier": "verified_current",
+      "name": "Mike Hite",
+      "title": "Chief Technology Officer",
+      "company": "Saks Global",
+      "retail_segment": "Luxury Retail",
+      "official_source_url": "https://www.saksglobal.com/operating-leadership?item=79",
+      "public_company_contact_url": "https://www.saksglobal.com/operating-leadership?item=79",
+      "public_company_phone": "",
+      "public_company_email": "",
+      "status_note": "Current public operating group leadership listing on Saks Global's official site."
+    },
+    {
+      "verification_tier": "verified_current",
+      "name": "Raghu Sagi",
+      "title": "Executive Vice President, Chief Information & Technology Officer",
+      "company": "Carter's",
+      "retail_segment": "Children's Apparel Retail",
+      "official_source_url": "https://ir.carters.com/management/raghu-sagi",
+      "public_company_contact_url": "https://ir.carters.com/contact-us",
+      "public_company_phone": "",
+      "public_company_email": "",
+      "status_note": "Current public management bio on Carter's investor site."
+    },
+    {
+      "verification_tier": "verified_current",
+      "name": "Martin Christopher",
+      "title": "Chief Technology Officer",
+      "company": "Lands' End",
+      "retail_segment": "Apparel Retail",
+      "official_source_url": "https://investors.landsend.com/corporate-governance/management",
+      "public_company_contact_url": "https://investors.landsend.com/contact-us",
+      "public_company_phone": "",
+      "public_company_email": "",
+      "status_note": "Current public management listing on Lands' End investor site."
+    },
+    {
+      "verification_tier": "verified_current",
+      "name": "Karen Etzkorn",
+      "title": "Chief Information Officer",
+      "company": "QVC Group",
+      "retail_segment": "Video / E-commerce Retail",
+      "official_source_url": "https://www.qvcgrp.com/newsroom/executive/karen-etzkorn/",
+      "public_company_contact_url": "https://www.qvcgrp.com/lp/contact-us/",
+      "public_company_phone": "",
+      "public_company_email": "",
+      "status_note": "Current public executive bio on QVC Group's official site."
+    },
+    {
+      "verification_tier": "verified_current",
+      "name": "David Lauren",
+      "title": "Chief Branding and Innovation Officer",
+      "company": "Ralph Lauren",
+      "retail_segment": "Luxury Apparel Retail",
+      "official_source_url": "https://corporate.ralphlauren.com/leadership",
+      "public_company_contact_url": "https://investor.ralphlauren.com/contact-us-0",
+      "public_company_phone": "212-318-7000",
+      "public_company_email": "",
+      "status_note": "Current public leadership listing on Ralph Lauren's corporate site; role leads innovation and digital brand teams."
+    },
+    {
+      "verification_tier": "older_public",
+      "name": "Siobhan McFeeney",
+      "title": "Chief Technology and Digital Officer",
+      "company": "Kohl's",
+      "retail_segment": "Department Store Retail",
+      "official_source_url": "https://corporate.kohls.com/news/kohls-moves-to-cloud-centric-stores-it-model-to-drive-speed-and-efficiency",
+      "public_company_contact_url": "https://corporate.kohls.com/contact-us",
+      "public_company_phone": "262-703-7000",
+      "public_company_email": "",
+      "status_note": "Official Kohl's technology article referencing her technology and digital leadership; retained as older public leadership reference."
+    },
+    {
+      "verification_tier": "older_public",
+      "name": "Matt Francis",
+      "title": "Chief Technology Officer",
+      "company": "GameStop",
+      "retail_segment": "Specialty Gaming Retail",
+      "official_source_url": "https://investor.gamestop.com/news-releases/news-details/2021/GameStop-Appoints-Chief-Technology-Officer-02-03-2021/default.aspx",
+      "public_company_contact_url": "https://investor.gamestop.com/",
+      "public_company_phone": "(817) 424-2001",
+      "public_company_email": "",
+      "status_note": "Official GameStop press release naming him CTO; retained as older public leadership reference."
+    },
+    {
+      "verification_tier": "older_public",
+      "name": "Michael Kobayashi",
+      "title": "Group Executive Vice President, Supply Chain, Merchant Operations, and Technology",
+      "company": "Ross Stores",
+      "retail_segment": "Off-Price Retail",
+      "official_source_url": "https://investors.rossstores.com/news-releases/news-release-details/ross-stores-announces-operational-leadership-changes",
+      "public_company_contact_url": "https://investors.rossstores.com/",
+      "public_company_phone": "",
+      "public_company_email": "",
+      "status_note": "Official Ross Stores leadership press release describing his technology scope; retained as older public leadership reference."
+    }
+  ]
+}
