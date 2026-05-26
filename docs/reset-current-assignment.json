@@ -5,19 +5,19 @@
   "current_prompt": "B",
   "current_feature_id": "RG6R4-REQUIRED-SUITE-CONTACT-PRECISION",
   "current_feature_name": "RG6R4 - required-suite contact precision and web-boundary follow-up",
-  "current_feature_status": "qa_failed",
+  "current_feature_status": "implemented_pending_qa",
   "current_feature_branch": "fix/rg6r4-required-suite-contact-precision",
   "current_gate": "RG6 - Dogfood / Kill Decision",
   "current_gate_status": "gate_hold",
   "current_audit_branch": "audit/reset-rg6-post-remediation",
-  "valid_next_action": "Re-run Prompt B on fix/rg6r4-required-suite-contact-precision only after Tavily quota is restored or Matt authorizes an alternate evidence path. Use the updated branch, verify internal-token API web-boundary access plus tokenless rejection, rerun required core/API/web checks, and do not merge to main until fresh required-suite evidence improves contact precision without weakening auth boundaries.",
+  "valid_next_action": "Re-run Prompt B on fix/rg6r4-required-suite-contact-precision now that Tavily quota is restored and verified. Use the updated branch, verify internal-token API web-boundary access plus tokenless rejection, rerun required core/API/web checks, capture fresh required-suite evidence, and do not merge to main until contact precision improves without weakening auth boundaries.",
   "invalid_next_actions": [
     "Start public SaaS, accounts, orgs, billing, signup, or external self-serve work",
     "Mark the product yellow or green from RG6R3 or RG6R4 local checks",
     "Claim Thomas/Lee dogfood readiness from RG6R3 or RG6R4 local checks",
-    "Start a generic downstream Prompt A feature while RG6R4 is blocked in Prompt B QA",
+    "Start a generic downstream Prompt A feature while RG6R4 is waiting for Prompt B rerun",
     "Treat RG6R3 persona/organization/source improvements as clearing the below-floor sampled precision gate",
-    "Treat the 2026-05-25 RG6R4 Prompt B run as merge evidence while required-suite product cases are blocked by Tavily quota and sampled precision has zero rows",
+    "Treat the 2026-05-25 RG6R4 Prompt B run as merge evidence while its required-suite product cases were blocked by Tavily quota and sampled precision had zero rows",
     "Merge RG6R4 from the 2026-05-25 Prompt B run without fresh required-suite evidence on the updated branch",
     "Treat middleware tests, direct API checks, or sampled-precision denominator cleanup alone as clearing the live product gate",
     "Resolve queue state from rebuild/validated-leads-loop, an unmerged unrelated branch, or a historical assignment instead of main plus this assignment lock"
@@ -36,6 +36,8 @@
     "2026-05-25: Prompt B temporarily deployed RG6R4 image deployment-01KSH6T2FCA91NMVR5KQVQ60XR for evidence, then restored prior mainline image deployment-01KSGJT21PZYH4A3V3WTHS55JY after the merge condition failed.",
     "2026-05-26: The branch gained follow-up fixes for internal-token API middleware pass-through, official/employer-domain contact-evidence query precision, and sampled-precision person-row denominators.",
     "2026-05-26: Local follow-up verification passed core, API, web Vitest, web build, focused contact/sampled/middleware tests, and git diff --check.",
+    "2026-05-26: Tavily quota is restored and verified through the live Fly TAVILY_API_KEY: usage endpoint reports Project plan, plan_limit 4000, plan_usage 3499, and an advanced search smoke returned HTTP 200.",
+    "2026-05-26: RG6R4 is unblocked for a fresh Prompt B rerun. The prior qa_failed evidence remains historical and is not merge evidence.",
     "RG6 remains gate_hold/product-red. No yellow/green, public SaaS, account/org/billing work, or Thomas/Lee dogfood expansion is unlocked."
   ]
 }
