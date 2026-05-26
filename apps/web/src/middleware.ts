@@ -5,6 +5,7 @@ import {
   SESSION_COOKIE_NAME,
   verifySessionToken,
 } from './lib/auth';
+import { INTERNAL_API_TOKEN_HEADER } from './lib/internal-api';
 
 async function isAuthenticated(request: NextRequest): Promise<boolean> {
   const secret = process.env.WR_SESSION_SECRET;
@@ -17,6 +18,12 @@ async function isAuthenticated(request: NextRequest): Promise<boolean> {
   return verifySessionToken(token, secret);
 }
 
+function hasValidInternalApiToken(request: NextRequest): boolean {
+  const expected = process.env.WR_API_INTERNAL_TOKEN;
+  const provided = request.headers.get(INTERNAL_API_TOKEN_HEADER);
+  return Boolean(expected && provided && provided === expected);
+}
+
 export async function middleware(request: NextRequest) {
   const { pathname, search } = request.nextUrl;
   const authenticated = await isAuthenticated(request);
@@ -26,6 +33,10 @@ export async function middleware(request: NextRequest) {
   }
 
   if (isPublicPath(pathname)) {
+    return NextResponse.next();
+  }
+
+  if (pathname.startsWith('/api/') && hasValidInternalApiToken(request)) {
     return NextResponse.next();
   }
 

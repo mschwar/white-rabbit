@@ -16,6 +16,7 @@ from .query_planner import named_account_aliases, official_domains_for_organizat
 CONTACT_EVIDENCE_MAX_CANDIDATES = 8
 CONTACT_EVIDENCE_MAX_RESULTS = 5
 CONTACT_EVIDENCE_MAX_QUERIES_PER_CANDIDATE = 4
+CONTACT_EVIDENCE_SOURCE_DOMAIN_QUERY_LIMIT = 1
 USABLE_CONTACT_STATUSES = {"verified_found", "deduced_with_pattern_evidence"}
 
 _EMAIL_RE = re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", re.IGNORECASE)
@@ -82,6 +83,25 @@ _PATTERN_MARKERS = (
     "first_last@",
     "first initial last@",
 )
+_ORG_DOMAIN_STOPWORDS = {
+    "and",
+    "bank",
+    "company",
+    "corp",
+    "corporation",
+    "firm",
+    "inc",
+    "llc",
+    "ltd",
+    "of",
+    "public",
+    "school",
+    "schools",
+    "services",
+    "system",
+    "the",
+    "unified",
+}
 
 
 SearchFn = Callable[..., Awaitable[Iterable[Mapping[str, Any]]]]
@@ -153,6 +173,11 @@ def _result_url(result: Any) -> str:
 def _source_domain(value: str) -> str:
     match = re.search(r"https?://(?:www\.)?([^/?#]+)", value.lower())
     return match.group(1) if match else ""
+
+
+def _email_domain(value: str) -> str:
+    match = _DOMAIN_RE.search(value)
+    return match.group(1).lower() if match else ""
 
 
 def _same_domain(left: str, right: str) -> bool:
@@ -297,6 +322,26 @@ def _candidate_source_domains(candidate: Lead) -> tuple[str, ...]:
     return tuple(domains)
 
 
+def _known_official_domains(candidate: Lead) -> tuple[str, ...]:
+    return official_domains_for_organization(candidate.organization)
+
+
+def _candidate_evidence_domains(candidate: Lead) -> tuple[str, ...]:
+    known_domains = set(_known_official_domains(candidate))
+    domains: list[str] = []
+    for value in (
+        candidate.source_url,
+        candidate.validation.source.source_url,
+        candidate.validation.organization.source_url,
+        candidate.validation.title.source_url,
+        candidate.validation.name.source_url,
+    ):
+        domain = _source_domain(value or "")
+        if domain and domain not in known_domains and domain not in domains:
+            domains.append(domain)
+    return tuple(domains)
+
+
 def _source_is_authoritative_for_candidate(result: Mapping[str, Any], candidate: Lead) -> bool:
     source_type = _detect_page_type(result)
     result_domain = _source_domain(_result_url(result))
@@ -307,19 +352,51 @@ def _source_is_authoritative_for_candidate(result: Mapping[str, Any], candidate:
     return source_type == "board_agenda_pdf" and _text_mentions_candidate_organization(_result_text(result), candidate)
 
 
+def _result_domain_backs_contact_domain(result: Mapping[str, Any], domain: str, candidate: Lead) -> bool:
+    if not domain:
+        return False
+    result_domain = _source_domain(_result_url(result))
+    if not _same_domain(result_domain, domain):
+        return False
+    if not _domain_matches_organization_name(result_domain, candidate.organization):
+        return False
+    text = _result_text(result)
+    lowered = text.lower()
+    return _text_mentions_candidate_organization(text, candidate) and (
+        _detect_page_type(result) in _AUTHORITATIVE_SOURCE_TYPES
+        or any(term in lowered for term in _CONTACT_SOURCE_TERMS)
+        or _text_mentions_candidate_name(text, candidate)
+    )
+
+
+def _domain_matches_organization_name(domain: str, organization: str) -> bool:
+    compact_domain = re.sub(r"[^a-z0-9]", "", domain.lower())
+    tokens = [
+        token
+        for token in re.split(r"[^a-z0-9]+", organization.lower())
+        if len(token) > 2 and token not in _ORG_DOMAIN_STOPWORDS
+    ]
+    return any(token in compact_domain for token in tokens)
+
+
 def _direct_email_is_source_backed(result: Mapping[str, Any], candidate: Lead, *, email: str) -> bool:
     text = _result_text(result)
     lowered = text.lower()
-    if not _source_is_authoritative_for_candidate(result, candidate):
-        return False
+    domain = _email_domain(email)
+    source_backed = _source_is_authoritative_for_candidate(result, candidate) or _result_domain_backs_contact_domain(
+        result,
+        domain,
+        candidate,
+    )
 
     if _text_mentions_candidate_name(text, candidate):
-        return _text_mentions_candidate_organization(text, candidate) or candidate.title.lower() in lowered
+        if not (_text_mentions_candidate_organization(text, candidate) or candidate.title.lower() in lowered):
+            return False
+        return source_backed
 
     if not _email_matches_person(email, candidate):
         return False
-    domain = _email_domain(email)
-    if not domain or not _domain_is_source_backed(domain, result, candidate):
+    if not domain or not source_backed:
         return False
     return (
         _text_mentions_candidate_organization(text, candidate)
@@ -332,12 +409,12 @@ def _direct_phone_is_source_backed(result: Mapping[str, Any], candidate: Lead) -
     text = _result_text(result)
     if not _result_mentions_candidate(text, candidate):
         return False
-    return _source_is_authoritative_for_candidate(result, candidate)
-
-
-def _domain_is_source_backed(domain: str, result: Mapping[str, Any], candidate: Lead) -> bool:
-    candidate_domains = _candidate_source_domains(candidate)
-    return any(_same_domain(domain, candidate_domain) for candidate_domain in candidate_domains)
+    result_domain = _source_domain(_result_url(result))
+    return _source_is_authoritative_for_candidate(result, candidate) or _result_domain_backs_contact_domain(
+        result,
+        result_domain,
+        candidate,
+    )
 
 
 def _corroborating_source_count(signals: Iterable[_PageSignal]) -> int:
@@ -456,7 +533,10 @@ def _find_explicit_pattern_evidence(
         if domain_match is None:
             continue
         domain = domain_match.group(1).lower()
-        if not _domain_is_source_backed(domain, result, candidate):
+        if not (
+            _source_is_authoritative_for_candidate(result, candidate)
+            or _result_domain_backs_contact_domain(result, domain, candidate)
+        ):
             continue
         email = f"{first}.{last}@{domain}"
         return _ContactEvidence(
@@ -500,14 +580,19 @@ def _promising_candidate(candidate: Candidate) -> bool:
 def _contact_queries(candidate: Candidate, original_query: str) -> list[str]:
     queries: list[str]
     if isinstance(candidate, Lead):
-        source_domains = _candidate_source_domains(candidate)
+        official_domains = _known_official_domains(candidate)
+        evidence_domains = _candidate_evidence_domains(candidate)
         queries = []
-        for domain in source_domains:
+        for domain in official_domains:
             queries.append(f'site:{domain} "{candidate.name}" email phone contact staff directory')
             queries.append(f'site:{domain} "{candidate.name}" "{candidate.organization}" email phone')
             queries.append(f'site:{domain} "{candidate.organization}" "{candidate.title}" staff directory email phone')
             queries.append(f'site:{domain} "{candidate.organization}" technology services leadership email phone')
+        for domain in evidence_domains[:CONTACT_EVIDENCE_SOURCE_DOMAIN_QUERY_LIMIT]:
+            queries.append(f'site:{domain} "{candidate.name}" "{candidate.organization}" email phone contact')
         queries.extend([
+            f'"{candidate.name}" "{candidate.organization}" email phone contact',
+            f'"{candidate.name}" "{candidate.organization}" "{candidate.title}" email phone',
             f'"{candidate.name}" "{candidate.organization}" {candidate.title} email contact staff leadership team directory',
             f'"{candidate.organization}" "{candidate.title}" staff leadership team department directory email',
             f'"{candidate.organization}" "{candidate.name}" board agenda minutes pdf',

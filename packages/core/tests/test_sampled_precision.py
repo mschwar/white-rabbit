@@ -1,4 +1,5 @@
 from core.models import CandidateValidation, ContactValidationRecord, FieldValidationRecord, Lead
+from core.models import OrganizationOnlyCandidate
 from core.sampled_precision import build_sampled_precision_packet
 
 
@@ -64,7 +65,10 @@ def test_sampled_precision_packet_is_deterministic_and_counts_support_dimensions
     )
 
     assert packet.sampled_row_count == 3
+    assert packet.precision_scored_row_count == 3
+    assert packet.context_row_count == 0
     assert [row.row_index for row in packet.rows] == [0, 1, 2]
+    assert all(row.precision_scored for row in packet.rows)
     assert packet.persona_precision == 0.667
     assert packet.organization_precision == 1.0
     assert packet.source_support_precision == 1.0
@@ -83,3 +87,29 @@ def test_sampled_precision_does_not_count_redacted_empty_email_as_unsupported_co
     assert packet.sampled_row_count == 1
     assert packet.contact_support_precision == 0.0
     assert packet.unsupported_email_count == 0
+
+
+def test_sampled_precision_keeps_nonperson_rows_as_context_not_precision_denominator():
+    org_only = OrganizationOnlyCandidate(
+        organization="Mesa Public Schools",
+        source_url="https://www.mpsaz.org",
+        explanation="Account found, no person validated.",
+    )
+
+    packet = build_sampled_precision_packet(
+        {
+            "thomas-arizona-k12": [
+                _lead("Jane Smith"),
+                org_only,
+            ]
+        }
+    )
+
+    assert packet.sampled_row_count == 2
+    assert packet.precision_scored_row_count == 1
+    assert packet.context_row_count == 1
+    assert [row.precision_scored for row in packet.rows] == [True, False]
+    assert packet.persona_precision == 1.0
+    assert packet.organization_precision == 1.0
+    assert packet.source_support_precision == 1.0
+    assert packet.contact_support_precision == 1.0

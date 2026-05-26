@@ -36,6 +36,7 @@ class SampledPrecisionRow:
     right_organization: bool
     source_supported: bool
     contact_supported: bool
+    precision_scored: bool
     unsupported_email: bool
     fake_email: bool
     review_notes: str
@@ -53,6 +54,7 @@ class SampledPrecisionRow:
             "right_organization": self.right_organization,
             "source_supported": self.source_supported,
             "contact_supported": self.contact_supported,
+            "precision_scored": self.precision_scored,
             "unsupported_email": self.unsupported_email,
             "fake_email": self.fake_email,
             "review_notes": self.review_notes,
@@ -67,6 +69,8 @@ class SampledPrecisionPacket:
     organization_precision: float
     source_support_precision: float
     contact_support_precision: float
+    precision_scored_row_count: int
+    context_row_count: int
     unsupported_email_count: int
     fake_email_count: int
     green_precision_floor_met: bool
@@ -80,6 +84,8 @@ class SampledPrecisionPacket:
             "organization_precision": self.organization_precision,
             "source_support_precision": self.source_support_precision,
             "contact_support_precision": self.contact_support_precision,
+            "precision_scored_row_count": self.precision_scored_row_count,
+            "context_row_count": self.context_row_count,
             "unsupported_email_count": self.unsupported_email_count,
             "fake_email_count": self.fake_email_count,
             "green_precision_floor_met": self.green_precision_floor_met,
@@ -105,6 +111,7 @@ def _row_from_candidate(benchmark_id: str, row_index: int, candidate: Candidate)
     right_organization = validation_status(candidate, "organization") == "supported"
     source_supported = lead_has_source_support(candidate) or validation_status(candidate, "source") == "supported"
     contact_supported = lead_has_contact_support(candidate)
+    precision_scored = isinstance(candidate, Lead)
     email_status = validation_status(candidate, "email")
     email_value = candidate.email.strip() if isinstance(candidate, Lead) else ""
     unsupported_email = bool(email_value) and email_status == "unsupported"
@@ -121,6 +128,7 @@ def _row_from_candidate(benchmark_id: str, row_index: int, candidate: Candidate)
         right_organization=right_organization,
         source_supported=source_supported,
         contact_supported=contact_supported,
+        precision_scored=precision_scored,
         unsupported_email=unsupported_email,
         fake_email=fake_email,
         review_notes=_review_notes(candidate),
@@ -148,16 +156,19 @@ def build_sampled_precision_packet(
             rows.append(_row_from_candidate(benchmark_id, row_index, candidate))
 
     sampled_count = len(rows)
-    persona_count = sum(row.right_persona for row in rows)
-    organization_count = sum(row.right_organization for row in rows)
-    source_count = sum(row.source_supported for row in rows)
-    contact_count = sum(row.contact_supported for row in rows)
+    precision_rows = [row for row in rows if row.precision_scored]
+    precision_scored_row_count = len(precision_rows)
+    context_row_count = sampled_count - precision_scored_row_count
+    persona_count = sum(row.right_persona for row in precision_rows)
+    organization_count = sum(row.right_organization for row in precision_rows)
+    source_count = sum(row.source_supported for row in precision_rows)
+    contact_count = sum(row.contact_supported for row in precision_rows)
     unsupported_email_count = sum(row.unsupported_email for row in rows)
     fake_email_count = sum(row.fake_email for row in rows)
-    persona_precision = _rate(persona_count, sampled_count)
-    organization_precision = _rate(organization_count, sampled_count)
-    source_support_precision = _rate(source_count, sampled_count)
-    contact_support_precision = _rate(contact_count, sampled_count)
+    persona_precision = _rate(persona_count, precision_scored_row_count)
+    organization_precision = _rate(organization_count, precision_scored_row_count)
+    source_support_precision = _rate(source_count, precision_scored_row_count)
+    contact_support_precision = _rate(contact_count, precision_scored_row_count)
     green_precision_floor_met = (
         persona_precision >= 0.7
         and organization_precision >= 0.7
@@ -172,6 +183,8 @@ def build_sampled_precision_packet(
         organization_precision=organization_precision,
         source_support_precision=source_support_precision,
         contact_support_precision=contact_support_precision,
+        precision_scored_row_count=precision_scored_row_count,
+        context_row_count=context_row_count,
         unsupported_email_count=unsupported_email_count,
         fake_email_count=fake_email_count,
         green_precision_floor_met=green_precision_floor_met,

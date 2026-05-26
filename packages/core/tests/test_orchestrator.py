@@ -545,7 +545,8 @@ def test_scout_runs_deep_contact_queries_after_first_shallow_miss(monkeypatch):
     )
 
     assert len(search_calls) == 3
-    assert search_calls[2].startswith("site:example.com")
+    assert search_calls[1].startswith("site:example.com")
+    assert search_calls[2] == '"Jordan Lee" "Example Corp" email phone contact'
     assert leads[0].email_status == "verified_found"
     assert leads[0].tier == "high_trust_usable"
     assert "staff_directory" in leads[0].validation.email.notes

@@ -1,6 +1,6 @@
 # 14 - Narrow Arizona Source Strategy Remediation Plan (RG6)
 
-**Status:** RG6R3 completed by Prompt B on 2026-05-25; same narrow red-remediation authorization continues through the restored A/B loop for RG6R4.
+**Status:** RG6R3 completed by Prompt B on 2026-05-25. RG6R4 is implemented on `fix/rg6r4-required-suite-contact-precision` and waiting for Prompt B QA; use `STATUS.md`, `docs/reset-current-assignment.json`, and `docs/12-reset-gated-implementation-plan-2026-05-10.md` for the active RG6R4 lock.
 **Created:** 2026-05-25
 **Current gate:** RG6 - Dogfood / Kill Decision (held product-red)
 **Scope:** Strictly limited source-planning + claim-grounding improvements for the Arizona K-12 named-account benchmark.

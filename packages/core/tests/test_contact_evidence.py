@@ -221,6 +221,87 @@ def test_contact_evidence_rejects_direct_email_from_third_party_directory():
     assert stats.acquired_contacts == 0
 
 
+def test_contact_evidence_uses_broad_employer_queries_when_seed_source_is_third_party():
+    calls: list[str] = []
+
+    async def fake_search(query: str, **kwargs):
+        calls.append(query)
+        if query == '"Scot Miller" "Mr. Cooper" email phone contact':
+            return [
+                {
+                    "title": "Mr. Cooper leadership contact",
+                    "url": "https://www.mrcooper.com/leadership/security",
+                    "content": (
+                        "Scot Miller SVP, Chief Information Security Officer at Mr. Cooper "
+                        "Email: scot.miller@mrcooper.com"
+                    ),
+                }
+            ]
+        return []
+
+    lead = _lead()
+    lead.name = "Scot Miller"
+    lead.title = "SVP, Chief Information Security Officer"
+    lead.organization = "Mr. Cooper"
+    lead.source_url = "https://ciso-fs.coriniumintelligence.com"
+    lead.validation.source.source_url = "https://ciso-fs.coriniumintelligence.com"
+
+    stats = asyncio.run(
+        acquire_contact_evidence(
+            [lead],
+            query="finance CISOs at financial services firms in New York",
+            search_fn=fake_search,
+            tavily_key="fake",
+        )
+    )
+
+    assert calls[:2] == [
+        'site:ciso-fs.coriniumintelligence.com "Scot Miller" "Mr. Cooper" email phone contact',
+        '"Scot Miller" "Mr. Cooper" email phone contact',
+    ]
+    assert lead.email == "scot.miller@mrcooper.com"
+    assert lead.email_status == "verified_found"
+    assert lead.validation.email.status == "verified_found"
+    assert stats.acquired_contacts == 1
+
+
+def test_contact_evidence_promotes_pattern_from_employer_domain_source():
+    async def fake_search(query: str, **kwargs):
+        if query == '"Scot Miller" "Mr. Cooper" email phone contact':
+            return [
+                {
+                    "title": "Mr. Cooper security leadership contacts",
+                    "url": "https://www.mrcooper.com/security/contact",
+                    "content": (
+                        "Mr. Cooper security leadership uses first.last@mrcooper.com. "
+                        "Scot Miller is SVP, Chief Information Security Officer."
+                    ),
+                }
+            ]
+        return []
+
+    lead = _lead()
+    lead.name = "Scot Miller"
+    lead.title = "SVP, Chief Information Security Officer"
+    lead.organization = "Mr. Cooper"
+    lead.source_url = "https://ciso-fs.coriniumintelligence.com"
+    lead.validation.source.source_url = "https://ciso-fs.coriniumintelligence.com"
+
+    stats = asyncio.run(
+        acquire_contact_evidence(
+            [lead],
+            query="finance CISOs at financial services firms in New York",
+            search_fn=fake_search,
+            tavily_key="fake",
+        )
+    )
+
+    assert lead.email == "scot.miller@mrcooper.com"
+    assert lead.email_status == "deduced_with_pattern_evidence"
+    assert lead.validation.email.status == "deduced_with_pattern_evidence"
+    assert stats.acquired_contacts == 1
+
+
 def test_contact_evidence_does_not_treat_shared_public_suffix_as_same_domain():
     async def fake_search(query: str, **kwargs):
         return [
