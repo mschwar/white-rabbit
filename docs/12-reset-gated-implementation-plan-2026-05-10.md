@@ -6,8 +6,8 @@
 **Operator-use branch:** `main`. ADR-024 supersedes the older `rebuild/validated-leads-loop` integration policy.
 **Current product gate:** Red.
 **Current reset gate:** RG6 - Dogfood / Kill Decision remains held/product-red. Prompt C accepted the R15 red-hold recommendation; Matt authorized fresh production evidence on 2026-05-22; the Matt-directed lead-quality/contact-yield remediation merged to `main`; the 2026-05-24 post-remediation Prompt C re-audit kept RG6 held/product-red; the later unblocked remediation recheck improved runtime/contact/timed-export evidence but still did not clear RG6; and RG6R3 improved Arizona source/persona/org precision without clearing the gate.
-**Next Prompt A feature:** None while RG6R4 is waiting for Prompt B QA. No public SaaS/account/billing work or yellow/green claim is unlocked.
-**Current Prompt B handoff:** QA `RG6R4 - required-suite contact precision and web-boundary follow-up` on `fix/rg6r4-required-suite-contact-precision`. Confirm the branch stays scoped to required-suite contact precision plus the RG6R3 web-boundary 401 follow-up, rerun full core/web checks, capture fresh required-suite sampled precision and web-boundary evidence, and merge to `main` only if contact precision improves without weakening auth boundaries.
+**Next Prompt A feature:** None while RG6R4 remains blocked in Prompt B QA. No public SaaS/account/billing work or yellow/green claim is unlocked.
+**Current Prompt B handoff:** Re-run `RG6R4 - required-suite contact precision and web-boundary follow-up` on `fix/rg6r4-required-suite-contact-precision` only after Tavily quota is restored or Matt authorizes an alternate evidence path. The 2026-05-25 Prompt B run passed local core/API/web checks and preserved web/API auth boundaries, but did not merge because the required-suite product cases returned `503 tavily_failed`, the sampled packet had `0` rows, and contact precision did not improve.
 **Current Prompt C handoff:** None until Matt asks for a gate-level RG6 decision. Re-audit report: `audits/gates/reset-2026-05-10/rg6-post-remediation-re-audit.md`. Follow-up recheck report: `audits/gates/reset-2026-05-10/rg6-unblocked-remediation-recheck.md`. Fresh RG6R3 direct evidence: `audits/raw/reset-2026-05-10/rg6/rg6r3-arizona-source-remediation-2026-05-25-direct/`.
 
 This document converts the May 10 zero-trust audit into an implementation queue. It overlays `docs/08-agentic-buildout-plan.md` and `docs/09-rebuild-phase-gates.md` until the reset either reaches yellow or is killed. The old F00-F23 history remains useful context, but new implementation work should use the reset feature table below.
@@ -256,7 +256,7 @@ Spend rule: live verification stays under `$5` unless Matt explicitly raises the
 | RG6R1 | Lead quality, contact yield, sampled precision, and operator-minute remediation | merged_to_mainline | `fix/rg6-lead-quality-contact-yield` | core/API/web + browser |
 | RG6R2 | Unblocked remediation recheck and source/runtime follow-up | gate_hold | `audit/reset-rg6-post-remediation` | production/runtime + saved suite + browser QA |
 | RG6R3 | Arizona official-domain source targeting and citation enforcement | merged_to_mainline | `fix/rg6r3-arizona-source-targeting` | core + direct live artifacts |
-| RG6R4 | Required-suite contact precision and web-boundary follow-up | waiting_for_prompt_b | `fix/rg6r4-required-suite-contact-precision` | core/web + live evidence |
+| RG6R4 | Required-suite contact precision and web-boundary follow-up | qa_failed | `fix/rg6r4-required-suite-contact-precision` | core/API/web passed; live evidence blocked by Tavily quota |
 
 ## RG0 - W5 Hold And Control Reset
 
@@ -1393,6 +1393,20 @@ RG6R3 Arizona source strategy remediation Prompt B result:
 - Sampled precision delta: Arizona-only persona `0.250 -> 0.500`, organization `0.625 -> 0.750`, source `0.625 -> 0.750`, contact `0.250 -> 0.375`; overall required-suite persona `0.158 -> 0.250`, organization `0.421 -> 0.562`, source `0.447 -> 0.604`, contact `0.184 -> 0.146`.
 - Remaining blockers: RG6 remains product-red; Arizona still has only 2 high-trust usable rows; the sampled packet remains below the 70% floor; required-suite contact support regressed; the separate web-boundary collector attempt returned 401 for `/api/scout` and `/api/source-assisted-proof`.
 - Queue consequence: normal two-prompt A/B rhythm is restored under the same RG6 red-remediation authorization. `RG6R4 - required-suite contact precision and web-boundary follow-up` is the single ready Prompt A feature on `fix/rg6r4-required-suite-contact-precision`. No Prompt C is required until Matt decides the narrow remediation tranche is complete and asks for a gate-level RG6 decision.
+
+RG6R4 required-suite contact precision Prompt B result:
+
+- Branch: `fix/rg6r4-required-suite-contact-precision`.
+- Status: `qa_failed`; do not merge to `main` from the 2026-05-25 Prompt B run.
+- QA report: `.gstack/qa-reports/qa-report-rg6r4-required-suite-contact-precision-2026-05-25.md`.
+- Raw evidence: `audits/raw/reset-2026-05-10/rg6/rg6r4-required-suite-contact-precision-2026-05-25/`.
+- What changed: Core contact evidence can promote a person-matching direct email from an official contact/staff source even when the snippet omits the full name, while rejecting official pages without contact context. Web middleware regression tests cover protected API rejection and valid session pass-through.
+- Verification passed: `packages/core` full suite (`176 passed, 6 skipped`), `apps/api` suite (`57 passed`, existing datetime warnings), `apps/web` Vitest (`16 files`, `39 tests`), `apps/web` production build, and `git diff --check main...HEAD`.
+- Boundary evidence: direct Fly `/health` returned 200, `/readiness` returned 200 with body status `ready`, direct tokenless `/scout` returned 401, authenticated stable web login returned 200, authenticated web `/api/source-assisted-proof` returned 200, and web sandbox reset returned 200.
+- Required-suite blocker: product benchmark cases returned `503 tavily_failed` because Tavily pay-as-you-go limit was exceeded; privacy refusal still returned 422.
+- Sampled precision result: sampled rows `48 -> 0`, persona `0.250 -> 0.000`, organization `0.562 -> 0.000`, source `0.604 -> 0.000`, contact `0.146 -> 0.000`; unsupported/fake email counts stayed `0`.
+- Deployment restoration: Prompt B temporarily deployed RG6R4 image `deployment-01KSH6T2FCA91NMVR5KQVQ60XR` for evidence, then restored prior mainline image `deployment-01KSGJT21PZYH4A3V3WTHS55JY` after the merge condition failed. Post-restore health/readiness returned 200 and tokenless `/scout` returned 401.
+- Queue consequence: no new Prompt A work is valid from this result. Re-run Prompt B for RG6R4 only after Tavily quota is restored or Matt authorizes an alternate evidence path. RG6 remains held/product-red.
 
 ## Status Rules
 

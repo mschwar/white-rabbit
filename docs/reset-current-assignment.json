@@ -5,19 +5,21 @@
   "current_prompt": "B",
   "current_feature_id": "RG6R4-REQUIRED-SUITE-CONTACT-PRECISION",
   "current_feature_name": "RG6R4 - required-suite contact precision and web-boundary follow-up",
-  "current_feature_status": "waiting_for_prompt_b",
+  "current_feature_status": "qa_failed",
   "current_feature_branch": "fix/rg6r4-required-suite-contact-precision",
   "current_gate": "RG6 - Dogfood / Kill Decision",
   "current_gate_status": "gate_hold",
   "current_audit_branch": "audit/reset-rg6-post-remediation",
-  "valid_next_action": "Prompt B may now QA fix/rg6r4-required-suite-contact-precision, confirm the RG6R4 scope, rerun core/web verification, capture fresh required-suite and web-boundary evidence, and merge to main only if the evidence improves required-suite contact precision without weakening auth boundaries.",
+  "valid_next_action": "Re-run Prompt B on fix/rg6r4-required-suite-contact-precision only after Tavily quota is restored or Matt authorizes an alternate evidence path. Do not merge to main until fresh required-suite evidence improves contact precision without weakening auth boundaries.",
   "invalid_next_actions": [
     "Start public SaaS, accounts, orgs, billing, signup, or external self-serve work",
     "Mark the product yellow or green from RG6R3",
     "Claim Thomas/Lee dogfood readiness from RG6R3",
-    "Start a generic downstream Prompt A feature while RG6R4 is waiting for Prompt B QA",
+    "Start a generic downstream Prompt A feature while RG6R4 is blocked in Prompt B QA",
     "Treat RG6R3 persona/organization/source improvements as clearing the below-floor sampled precision gate",
-    "Treat the direct API timed export as sufficient while web-boundary 401, Arizona high-trust count, and required-suite contact precision remain unresolved",
+    "Treat the 2026-05-25 RG6R4 Prompt B run as merge evidence while required-suite product cases are blocked by Tavily quota and sampled precision has zero rows",
+    "Merge RG6R4 from the 2026-05-25 Prompt B run",
+    "Treat the direct API timed export as sufficient while Arizona high-trust count and required-suite contact precision remain unresolved",
     "Resolve queue state from rebuild/validated-leads-loop, an unmerged feature branch, or a historical assignment instead of main plus this assignment lock"
   ],
   "blocked_features": [],
@@ -29,6 +31,9 @@
     "Arizona coverage reached 6 of 8 source-backed person or explicit blocker rows, with 8 of 8 expected targets represented, but still only 2 high_trust_usable rows.",
     "The separate web-boundary collector attempt returned 401 for /api/scout and /api/source-assisted-proof; the direct protected Fly API evidence succeeded.",
     "RG6 remains gate_hold/product-red. No yellow/green, public SaaS, account/org/billing work, or Thomas/Lee dogfood expansion is unlocked.",
-    "2026-05-25: Prompt A implemented RG6R4 on fix/rg6r4-required-suite-contact-precision and moved the lock to Prompt B QA."
+    "2026-05-25: Prompt A implemented RG6R4 on fix/rg6r4-required-suite-contact-precision and moved the lock to Prompt B QA.",
+    "2026-05-25: Prompt B reran full local core/API/web checks and captured fresh boundary evidence. Local checks passed and auth boundaries did not weaken: direct tokenless scout returned 401, authenticated web source-assisted proof returned 200, and middleware regression tests covered protected API rejection/pass-through.",
+    "2026-05-25: Prompt B did not merge. Required-suite product cases returned 503 tavily_failed because the Tavily pay-as-you-go limit was exceeded; sampled precision had 0 rows and contact precision 0.000 versus RG6R3 baseline 0.146.",
+    "2026-05-25: Prompt B temporarily deployed RG6R4 image deployment-01KSH6T2FCA91NMVR5KQVQ60XR for evidence, then restored prior mainline image deployment-01KSGJT21PZYH4A3V3WTHS55JY after the merge condition failed."
   ]
 }

@@ -1,0 +1,32 @@
+{
+  "blocked_by": "Tavily pay-as-you-go limit returned 503 tavily_failed for product benchmark cases",
+  "branch_image_deployed_for_evidence": "registry.fly.io/white-rabbit-api:deployment-01KSH6T2FCA91NMVR5KQVQ60XR",
+  "collected_at": "2026-05-26T03:58:58.039668Z",
+  "direct_api": {
+    "health_status": 200,
+    "readiness_body_status": "ready",
+    "readiness_status": 200,
+    "tokenless_scout_status": 401
+  },
+  "local_middleware_regression": {
+    "source": "apps/web/src/middleware.test.ts",
+    "unauthenticated_protected_api": 401,
+    "valid_session_protected_api": "NextResponse.next / x-middleware-next=1"
+  },
+  "privacy_refusal_status": 422,
+  "product_suite_statuses": {
+    "finance-cisos-new-york": 503,
+    "healthcare-it-phoenix": 503,
+    "lee-commodity-buyers": 503,
+    "manufacturing-ops-detroit": 503,
+    "privacy-reject-homeowner-phones": 422,
+    "thomas-arizona-k12": 503
+  },
+  "restored_image_after_blocked_qa": "registry.fly.io/white-rabbit-api:deployment-01KSGJT21PZYH4A3V3WTHS55JY",
+  "sandbox_reset_status": 200,
+  "web": {
+    "authenticated_home_status": 200,
+    "login_status": 200,
+    "source_assisted_route_status": 200
+  }
+}

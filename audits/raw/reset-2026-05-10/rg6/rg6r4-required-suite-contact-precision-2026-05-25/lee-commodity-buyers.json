@@ -1,0 +1,5 @@
+{
+  "error_code": "tavily_failed",
+  "message": "Tavily search failed: Tavily API error: 433 - {\"detail\":{\"error\":\"This request exceeds the pay-as-you-go limit. You can increase your limit on the Tavily dashboard.\"}}",
+  "request_id": "ddfdd2c4-45ed-487c-82c2-b[REDACTED_PHONE]4"
+}

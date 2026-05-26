@@ -1,0 +1,30 @@
+{
+  "baseline": "rg6r3-arizona-source-remediation-2026-05-25-direct",
+  "baseline_required_suite": {
+    "contact_support_precision": 0.146,
+    "fake_email_count": 0,
+    "organization_precision": 0.562,
+    "persona_precision": 0.25,
+    "sampled_row_count": 48,
+    "source_support_precision": 0.604,
+    "unsupported_email_count": 0
+  },
+  "delta": {
+    "contact_support_precision": -0.146,
+    "organization_precision": -0.562,
+    "persona_precision": -0.25,
+    "source_support_precision": -0.604
+  },
+  "fresh": "rg6r4-required-suite-contact-precision-2026-05-25",
+  "fresh_required_suite": {
+    "contact_support_precision": 0.0,
+    "fake_email_count": 0,
+    "organization_precision": 0.0,
+    "persona_precision": 0.0,
+    "sampled_row_count": 0,
+    "source_support_precision": 0.0,
+    "unsupported_email_count": 0
+  },
+  "merge_condition_met": false,
+  "reason": "Fresh product cases returned 503 tavily_failed, sampled row count is 0, and contact precision did not improve."
+}

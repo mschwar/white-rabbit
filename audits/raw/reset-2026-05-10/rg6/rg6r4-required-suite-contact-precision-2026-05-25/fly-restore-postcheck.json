@@ -1,0 +1,245 @@
+{
+  "checks": [
+    {
+      "body": {
+        "service": "white-rabbit-api",
+        "status": "ok"
+      },
+      "method": "GET",
+      "path": "/health",
+      "seconds": 0.368,
+      "status": 200
+    },
+    {
+      "body": {
+        "budget_seconds": 5.0,
+        "checked_at": "2026-05-26T04:02:15.918683Z",
+        "checks": [
+          {
+            "details": {
+              "env": "development",
+              "pid": 664,
+              "service": "white-rabbit-api"
+            },
+            "elapsed_seconds": 5e-06,
+            "message": "API process is alive and answering readiness.",
+            "name": "process",
+            "required": true,
+            "status": "ready"
+          },
+          {
+            "details": {
+              "env_presence": {
+                "DATABASE_URL": {
+                  "present": true
+                },
+                "OPENAI_API_KEY": {
+                  "present": true
+                },
+                "OPENAI_BASE_URL": {
+                  "present": false
+                },
+                "OPENAI_MODEL": {
+                  "present": false
+                },
+                "TAVILY_API_KEY": {
+                  "present": true
+                },
+                "WR_API_INTERNAL_TOKEN": {
+                  "present": true
+                },
+                "WR_SESSION_SECRET": {
+                  "present": true
+                },
+                "WR_SHARED_PASSWORD": {
+                  "present": true
+                }
+              },
+              "missing": []
+            },
+            "elapsed_seconds": 1.2e-05,
+            "message": "Required configuration is present.",
+            "name": "config",
+            "required": true,
+            "status": "ready"
+          },
+          {
+            "details": {
+              "database_url_present": true,
+              "env_presence": {
+                "DATABASE_URL": {
+                  "present": true
+                },
+                "OPENAI_API_KEY": {
+                  "present": true
+                },
+                "OPENAI_BASE_URL": {
+                  "present": false
+                },
+                "OPENAI_MODEL": {
+                  "present": false
+                },
+                "TAVILY_API_KEY": {
+                  "present": true
+                },
+                "WR_API_INTERNAL_TOKEN": {
+                  "present": true
+                },
+                "WR_SESSION_SECRET": {
+                  "present": true
+                },
+                "WR_SHARED_PASSWORD": {
+                  "present": true
+                }
+              },
+              "timeout_seconds": 3.0
+            },
+            "elapsed_seconds": 1.684131,
+            "message": "Database connection answered SELECT 1.",
+            "name": "database",
+            "required": true,
+            "status": "ready"
+          },
+          {
+            "details": {
+              "api_key_present": true,
+              "base_url": "https://api.openai.com/v1",
+              "env_presence": {
+                "DATABASE_URL": {
+                  "present": true
+                },
+                "OPENAI_API_KEY": {
+                  "present": true
+                },
+                "OPENAI_BASE_URL": {
+                  "present": false
+                },
+                "OPENAI_MODEL": {
+                  "present": false
+                },
+                "TAVILY_API_KEY": {
+                  "present": true
+                },
+                "WR_API_INTERNAL_TOKEN": {
+                  "present": true
+                },
+                "WR_SESSION_SECRET": {
+                  "present": true
+                },
+                "WR_SHARED_PASSWORD": {
+                  "present": true
+                }
+              },
+              "model": "gpt-4o-mini",
+              "timeout_seconds": 3.0
+            },
+            "elapsed_seconds": 2.114999,
+            "message": "OpenAI model lookup succeeded.",
+            "name": "openai",
+            "required": true,
+            "status": "ready"
+          },
+          {
+            "details": {
+              "api_key_present": true,
+              "env_presence": {
+                "DATABASE_URL": {
+                  "present": true
+                },
+                "OPENAI_API_KEY": {
+                  "present": true
+                },
+                "OPENAI_BASE_URL": {
+                  "present": false
+                },
+                "OPENAI_MODEL": {
+                  "present": false
+                },
+                "TAVILY_API_KEY": {
+                  "present": true
+                },
+                "WR_API_INTERNAL_TOKEN": {
+                  "present": true
+                },
+                "WR_SESSION_SECRET": {
+                  "present": true
+                },
+                "WR_SHARED_PASSWORD": {
+                  "present": true
+                }
+              },
+              "live_probe_skipped_reason": "avoid_spend",
+              "probe": "config_only",
+              "timeout_seconds": 3.0
+            },
+            "elapsed_seconds": 3e-06,
+            "message": "TAVILY_API_KEY is present. Readiness intentionally uses a config-only probe to avoid spending vendor calls; live search is verified by smoke/live benchmark runs.",
+            "name": "tavily",
+            "required": true,
+            "status": "ready"
+          },
+          {
+            "details": {
+              "env_presence": {
+                "DATABASE_URL": {
+                  "present": true
+                },
+                "OPENAI_API_KEY": {
+                  "present": true
+                },
+                "OPENAI_BASE_URL": {
+                  "present": false
+                },
+                "OPENAI_MODEL": {
+                  "present": false
+                },
+                "TAVILY_API_KEY": {
+                  "present": true
+                },
+                "WR_API_INTERNAL_TOKEN": {
+                  "present": true
+                },
+                "WR_SESSION_SECRET": {
+                  "present": true
+                },
+                "WR_SHARED_PASSWORD": {
+                  "present": true
+                }
+              },
+              "sandbox_state_present": true,
+              "sandbox_usage": {
+                "max_queries": 10,
+                "max_rows": 1000,
+                "reset_at": "2026-05-26T03:59:03.837002+00:00",
+                "total_queries": 5,
+                "total_rows": 0
+              },
+              "timeout_seconds": 3.0
+            },
+            "elapsed_seconds": 1.641594,
+            "message": "Sandbox state is readable.",
+            "name": "sandbox",
+            "required": true,
+            "status": "ready"
+          }
+        ],
+        "elapsed_seconds": 2.120507,
+        "status": "ready"
+      },
+      "method": "GET",
+      "path": "/readiness",
+      "seconds": 2.283,
+      "status": 200
+    },
+    {
+      "body": {
+        "detail": "Missing or invalid internal API token."
+      },
+      "method": "POST",
+      "path": "/scout",
+      "seconds": 0.197,
+      "status": 401
+    }
+  ],
+  "restored_image": "registry.fly.io/white-rabbit-api:deployment-01KSGJT21PZYH4A3V3WTHS55JY"
+}
