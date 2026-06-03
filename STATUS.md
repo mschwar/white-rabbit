@@ -1,7 +1,7 @@
 # STATUS
 
-**Last updated:** 2026-05-24 by Codex RG6 unblocked remediation recheck
-**Branch:** audit/reset-rg6-post-remediation
+**Last updated:** 2026-06-03 by Codex lean first-principles reset packet
+**Branch:** codex/first-principles-lee-reset (docs-only)
 **Current sprint:** Matt moved reset execution to `main` on 2026-05-12 after the operator-use promotion and Fly API deploy. R13 sales-first CSV export, R14 persistence/readback, R14A brand cleanup, R14B UI/UX consistency, R14C deployment readiness/operator-use smoke, and R15 dogfood decision packet are merged to `main`. Matt authorized fresh RG6 evidence gathering on 2026-05-22; the fresh production run kept RG6 held/product-red. Matt directed that the requested production plumbing recheck be treated as passed. The narrow RG6 guardrail false-positive remediation is merged to `main` and production-rechecked on the stable alias. The Matt-directed RG6 lead-quality/contact-yield remediation passed Prompt B QA and merged to `main`. A further 2026-05-24 unblocked remediation recheck improved production runtime, Arizona contact evidence, and timed export evidence, but RG6 still remains held/product-red: Arizona reached 2 READY contact-supported rows but did not prove 6-of-8 named-account quality, sampled precision remains below the 70% floor, broad required-suite precision/contact yield remains poor, and manufacturing still lacks a valid current product artifact.
 
 > Update this file at the end of every session. It is the source of truth for "where we are."
@@ -9,6 +9,8 @@
 **Historical brand draft note:** The May 10 generated rabbit/lens/rabbit-mark rasters are superseded for production app identity. R14A deletes those generated app assets, keeps the rabbit/icon problem quarantined, and uses only the approved design-pack favicon/touch/manifest/social assets plus wordmark-first in-app identity.
 
 **Next pointer:** None until Matt explicitly authorizes the next red-remediation step. The latest 2026-05-24 unblocked recheck from `audit/reset-rg6-post-remediation` kept RG6/product red: Arizona produced a valid run/export/close with 2 READY contact-supported rows, but did not prove 6-of-8 named-account quality; sampled precision remains 0.158 persona / 0.421 organization / 0.447 source; and manufacturing still has no valid current product artifact. Public SaaS/account/org/billing work plus yellow/green and Thomas/Lee dogfood claims remain blocked.
+
+**Docs-only first-principles reset packet (2026-06-03):** Added `docs/first-principles-reset/` as a lean reset packet: v2 postmortem, frozen proxy-lead v1 summary, Lee-centered workflow thesis, and short execution prompts. Private email summaries live outside git at `/Users/mschwar/Documents/white-rabbit-private/lee-reset/`. This packet is not a Prompt A/B/C assignment, does not alter `docs/reset-current-assignment.json`, and does not unlock RG6, dogfood, public SaaS, account/org/billing, or product implementation work.
 
 **Assignment lock:** `docs/reset-current-assignment.json` is the machine-readable current assignment. It now records no valid downstream Prompt A/B/C assignment from this held RG6 re-audit state; it must agree with any future Prompt A/B/C request before an agent edits files.
 
