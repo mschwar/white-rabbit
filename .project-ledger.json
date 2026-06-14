@@ -1,0 +1,11 @@
+{
+  "project_key": "github.com/mschwar/white-rabbit",
+  "display_name": "White Rabbit v2",
+  "description": "Internal-first B2B lead research tool for Matt, Thomas, and Lee.",
+  "status": "active",
+  "tags": ["b2b", "lead-research", "web"],
+  "canonical_url": "https://github.com/mschwar/white-rabbit.git",
+  "shared": true,
+  "storage_scope": "shared",
+  "repo_name": "white-rabbit"
+}
