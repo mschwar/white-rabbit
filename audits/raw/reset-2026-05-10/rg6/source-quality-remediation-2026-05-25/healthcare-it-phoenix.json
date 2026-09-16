@@ -1,0 +1,116 @@
+{
+  "benchmark_id": "healthcare-it-phoenix",
+  "error": "API did not answer /health before live benchmark case execution.",
+  "error_code": "api_startup_failed",
+  "leads": [],
+  "mode": "scout",
+  "partial_artifact": true,
+  "prompt_label": "Healthcare IT directors in Phoenix",
+  "query": "healthcare IT directors in Phoenix",
+  "runner_elapsed_seconds": 5.009,
+  "startup_probe": {
+    "api_base_url": "http://127.0.0.1:8000",
+    "attempts": [
+      {
+        "elapsed_seconds": 0.014,
+        "error": "ConnectError: All connection attempts failed",
+        "ok": false,
+        "status_code": 0
+      },
+      {
+        "elapsed_seconds": 0.002,
+        "error": "ConnectError: All connection attempts failed",
+        "ok": false,
+        "status_code": 0
+      },
+      {
+        "elapsed_seconds": 0.001,
+        "error": "ConnectError: All connection attempts failed",
+        "ok": false,
+        "status_code": 0
+      },
+      {
+        "elapsed_seconds": 0.001,
+        "error": "ConnectError: All connection attempts failed",
+        "ok": false,
+        "status_code": 0
+      },
+      {
+        "elapsed_seconds": 0.001,
+        "error": "ConnectError: All connection attempts failed",
+        "ok": false,
+        "status_code": 0
+      },
+      {
+        "elapsed_seconds": 0.002,
+        "error": "ConnectError: All connection attempts failed",
+        "ok": false,
+        "status_code": 0
+      }
+    ],
+    "elapsed_seconds": 5.009,
+    "failure_path": "../../audits/raw/reset-2026-05-10/rg6/source-quality-remediation-2026-05-25/startup/startup-failure.json",
+    "health_ok": false,
+    "health_path": "../../audits/raw/reset-2026-05-10/rg6/source-quality-remediation-2026-05-25/startup/health.json",
+    "health_status_path": "../../audits/raw/reset-2026-05-10/rg6/source-quality-remediation-2026-05-25/startup/health.http",
+    "readiness_error_code": null,
+    "readiness_path": null,
+    "readiness_status": null,
+    "readiness_status_path": null
+  },
+  "suite_failure": {
+    "error_code": "api_startup_failed",
+    "message": "API did not answer /health before live benchmark case execution.",
+    "stage": "startup",
+    "startup_probe": {
+      "api_base_url": "http://127.0.0.1:8000",
+      "attempts": [
+        {
+          "elapsed_seconds": 0.014,
+          "error": "ConnectError: All connection attempts failed",
+          "ok": false,
+          "status_code": 0
+        },
+        {
+          "elapsed_seconds": 0.002,
+          "error": "ConnectError: All connection attempts failed",
+          "ok": false,
+          "status_code": 0
+        },
+        {
+          "elapsed_seconds": 0.001,
+          "error": "ConnectError: All connection attempts failed",
+          "ok": false,
+          "status_code": 0
+        },
+        {
+          "elapsed_seconds": 0.001,
+          "error": "ConnectError: All connection attempts failed",
+          "ok": false,
+          "status_code": 0
+        },
+        {
+          "elapsed_seconds": 0.001,
+          "error": "ConnectError: All connection attempts failed",
+          "ok": false,
+          "status_code": 0
+        },
+        {
+          "elapsed_seconds": 0.002,
+          "error": "ConnectError: All connection attempts failed",
+          "ok": false,
+          "status_code": 0
+        }
+      ],
+      "elapsed_seconds": 5.009,
+      "failure_path": "../../audits/raw/reset-2026-05-10/rg6/source-quality-remediation-2026-05-25/startup/startup-failure.json",
+      "health_ok": false,
+      "health_path": "../../audits/raw/reset-2026-05-10/rg6/source-quality-remediation-2026-05-25/startup/health.json",
+      "health_status_path": "../../audits/raw/reset-2026-05-10/rg6/source-quality-remediation-2026-05-25/startup/health.http",
+      "readiness_error_code": null,
+      "readiness_path": null,
+      "readiness_status": null,
+      "readiness_status_path": null
+    }
+  }
+}

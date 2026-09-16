@@ -6,7 +6,7 @@ from typing import Any
 
 import httpx
 
-from .query_planner import QueryPlan, compile_query_plan
+from .query_planner import QueryPlan, compile_query_plan, official_domains_for_named_account
 from .source_collection import (
     SourceCollectionSnapshot,
     SourceSnapshotStore,
@@ -76,6 +76,60 @@ def _dedupe_results(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
         seen[key] = result
         deduped.append(result)
     return deduped
+
+
+_LOW_TRUST_SOURCE_DOMAINS = (
+    "linkedin.com",
+    "govtech.com",
+    "eventbrite.com",
+    "indeed.com",
+    "ziprecruiter.com",
+    "glassdoor.com",
+)
+_OFFICIAL_SOURCE_TERMS = (
+    "staff",
+    "directory",
+    "technology",
+    "information technology",
+    "department",
+    "leadership",
+    "board",
+    "agenda",
+    "minutes",
+    "roster",
+)
+
+
+def _result_text(result: Mapping[str, Any]) -> str:
+    return " ".join(str(result.get(key, "")) for key in ("title", "url", "content")).lower()
+
+
+def _source_rank(result: Mapping[str, Any], plan: QueryPlan | None) -> tuple[int, float]:
+    """Prefer official/public roster-like named-account sources over generic hits."""
+    text = _result_text(result)
+    url = str(result.get("url", "")).lower()
+    score_rank = -float(result.get("score") or 0.0)
+    if plan is not None:
+        official_domains = tuple(
+            domain
+            for account in plan.named_accounts
+            for domain in official_domains_for_named_account(account)
+        )
+        if any(domain in url for domain in official_domains):
+            if any(term in text for term in _OFFICIAL_SOURCE_TERMS):
+                return (0, score_rank)
+            return (1, score_rank)
+    if any(domain in url for domain in (".gov", ".edu")) and any(term in text for term in _OFFICIAL_SOURCE_TERMS):
+        return (2, score_rank)
+    if any(domain in url for domain in _LOW_TRUST_SOURCE_DOMAINS):
+        return (9, score_rank)
+    return (5, score_rank)
+
+
+def _rank_results_for_plan(results: list[dict[str, Any]], plan: QueryPlan | None) -> list[dict[str, Any]]:
+    if plan is None or not plan.named_accounts:
+        return results
+    return sorted(results, key=lambda result: _source_rank(result, plan))
 
 
 async def _fetch_single_search_results(
@@ -150,7 +204,7 @@ async def fetch_search_results(
                         search_depth,
                     )
                 )
-            deduped_results = _dedupe_results(all_results)[:max_results]
+            deduped_results = _rank_results_for_plan(_dedupe_results(all_results), plan)[:max_results]
             source_collection = build_source_collection_snapshot(
                 query=query,
                 results=deduped_results,
