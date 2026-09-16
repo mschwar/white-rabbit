@@ -1,0 +1,641 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 0.8499999999999999,
+      "speaker": "Lee Biby",
+      "start": 0.0,
+      "text": " jobs out yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 1.6499999999999997,
+      "speaker": "Matt Schwartz",
+      "start": 0.8499999999999999,
+      "text": " Good God,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 3.499999999999999,
+      "speaker": "Matt Schwartz",
+      "start": 1.7999999999999996,
+      "text": " what that's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 9.0,
+      "speaker": "Lee Biby",
+      "start": 3.499999999999999,
+      "text": " one of them was paying them a half million dollars yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 10.5,
+      "speaker": "Matt Schwartz",
+      "start": 9.65,
+      "text": " insane",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 26.2,
+      "speaker": "Lee Biby",
+      "start": 12.35,
+      "text": " like it's helping launch sales for this company some somebody he used to know it's what he's used to knows dad it's like hey we're watching this company and I need you to make it famous so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 38.192,
+      "speaker": "Lee Biby",
+      "start": 28.692,
+      "text": " Is there any trying to get in front of all the celebrities you can to make it nice and make it public and it's like okay well what's it pay he's like half a million it's like good yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 40.442,
+      "speaker": "Matt Schwartz",
+      "start": 38.942,
+      "text": " Dude, that sounds so stressful.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 42.092,
+      "speaker": "Lee Biby",
+      "start": 41.342,
+      "text": " kind of crazy",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 57.958,
+      "speaker": "Lee Biby",
+      "start": 56.308,
+      "text": " Tell me that, tell me that,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 62.158,
+      "speaker": "Lee Biby",
+      "start": 58.158,
+      "text": " I think I figured out the thing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 87.792,
+      "speaker": "Lee Biby",
+      "start": 85.492,
+      "text": " So, yeah, what's new with you?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 89.592,
+      "speaker": "Matt Schwartz",
+      "start": 88.64200000000001,
+      "text": " I had nothing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 91.492,
+      "speaker": "Matt Schwartz",
+      "start": 90.542,
+      "text": " Yeah, nothing,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 91.89200000000001,
+      "speaker": "Matt Schwartz",
+      "start": 91.64200000000001,
+      "text": " nothing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 99.042,
+      "speaker": "Matt Schwartz",
+      "start": 94.242,
+      "text": " Did you have any information about the demo people?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 102.14200000000001,
+      "speaker": "Matt Schwartz",
+      "start": 99.39200000000001,
+      "text": " Like, they're all going to be on Monday?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 103.89200000000001,
+      "speaker": "Lee Biby",
+      "start": 103.59200000000001,
+      "text": " No,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 104.292,
+      "speaker": "Lee Biby",
+      "start": 103.94200000000001,
+      "text": " he said,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 104.64200000000001,
+      "speaker": "@",
+      "start": 104.292,
+      "text": " uh,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 105.69200000000001,
+      "speaker": "Lee Biby",
+      "start": 104.64200000000001,
+      "text": " he",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 109.84200000000001,
+      "speaker": "Lee Biby",
+      "start": 108.19200000000001,
+      "text": " said he's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 112.242,
+      "speaker": "Lee Biby",
+      "start": 111.992,
+      "text": " going to.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 117.66,
+      "speaker": "Lee Biby",
+      "start": 112.66,
+      "text": " send out the invite to the guy just depending on when he's available",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 118.56,
+      "speaker": "Matt Schwartz",
+      "start": 118.00999999999999,
+      "text": " Okay.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 119.50999999999999,
+      "speaker": "Matt Schwartz",
+      "start": 118.66,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 126.91,
+      "speaker": "Lee Biby",
+      "start": 120.21,
+      "text": " it's not like a rush but he said he's the guy still wanting to get it get out he",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 138.66,
+      "speaker": "Lee Biby",
+      "start": 136.41,
+      "text": " just said he's ready but I don't know where he's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 139.26,
+      "speaker": "@",
+      "start": 138.66,
+      "text": " at",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 151.72,
+      "speaker": "Matt Schwartz",
+      "start": 148.82,
+      "text": " You should be able to just click the link and see.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 187.254,
+      "speaker": "Lee Biby",
+      "start": 186.804,
+      "text": " Maybe, yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 198.604,
+      "speaker": "Matt Schwartz",
+      "start": 196.554,
+      "text": " I think that's just come on.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 210.304,
+      "speaker": "Lee Biby",
+      "start": 208.154,
+      "text": " I want to get out of here with that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 212.204,
+      "speaker": "Matt Schwartz",
+      "start": 211.054,
+      "text": " Oh, that's awesome.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 214.226,
+      "speaker": "Thomas Gentry",
+      "start": 213.076,
+      "text": " When I've been so alive.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 216.076,
+      "speaker": "Matt Schwartz",
+      "start": 214.576,
+      "text": " Are you in Vegas?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 217.27599999999998,
+      "speaker": "Thomas Gentry",
+      "start": 216.926,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 217.926,
+      "speaker": "Thomas Gentry",
+      "start": 217.376,
+      "text": " I'm in Vegas.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 218.476,
+      "speaker": "Matt Schwartz",
+      "start": 217.926,
+      "text": " Dude,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 219.226,
+      "speaker": "Matt Schwartz",
+      "start": 218.676,
+      "text": " how is it?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 221.27599999999998,
+      "speaker": "Thomas Gentry",
+      "start": 219.826,
+      "text": " It's nice and it's not terrible.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 224.126,
+      "speaker": "Matt Schwartz",
+      "start": 222.676,
+      "text": " What hotel is that?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 225.77599999999998,
+      "speaker": "Thomas Gentry",
+      "start": 225.076,
+      "text": " It's the era.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 227.12599999999998,
+      "speaker": "Matt Schwartz",
+      "start": 225.926,
+      "text": " Nice, man.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 228.37599999999998,
+      "speaker": "Matt Schwartz",
+      "start": 227.576,
+      "text": " How's it going?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 230.576,
+      "speaker": "Thomas Gentry",
+      "start": 229.426,
+      "text": " Just living, working,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 230.826,
+      "speaker": "Thomas Gentry",
+      "start": 230.676,
+      "text": " man.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 232.176,
+      "speaker": "Thomas Gentry",
+      "start": 230.87599999999998,
+      "text": " I was in the tool today.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 232.87599999999998,
+      "speaker": "Thomas Gentry",
+      "start": 232.226,
+      "text": " How are you, dude?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 233.976,
+      "speaker": "Matt Schwartz",
+      "start": 232.87599999999998,
+      "text": " Good. Good, good.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 237.926,
+      "speaker": "Matt Schwartz",
+      "start": 234.076,
+      "text": " Yeah, dude, I'd much rather hear about freaking Vegas than...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 239.33,
+      "speaker": "Matt Schwartz",
+      "start": 238.58,
+      "text": " than anything else",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 241.83,
+      "speaker": "Thomas Gentry",
+      "start": 239.33,
+      "text": " We're going to Morgan Wally tomorrow night.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 244.58,
+      "speaker": "Thomas Gentry",
+      "start": 242.48000000000002,
+      "text": " Freaking out two days early to just kind of chill,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 244.93,
+      "speaker": "Thomas Gentry",
+      "start": 244.63000000000002,
+      "text": " fool,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 246.03,
+      "speaker": "Thomas Gentry",
+      "start": 245.08,
+      "text": " and work and do whatever.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 249.43,
+      "speaker": "Matt Schwartz",
+      "start": 246.03,
+      "text": " so mainly mainly pleasure not so much work",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 252.33,
+      "speaker": "Thomas Gentry",
+      "start": 249.93,
+      "text": " I don't know, we worked until what, like two months?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 258.03000000000003,
+      "speaker": "Thomas Gentry",
+      "start": 253.53000000000003,
+      "text": " We worked until about two and then we headed down to the pool and that's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 259.33000000000004,
+      "speaker": "Matt Schwartz",
+      "start": 258.03000000000003,
+      "text": " awesome that is awesome",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_60",
+      "end": 262.03000000000003,
+      "speaker": "Thomas Gentry",
+      "start": 260.18,
+      "text": " leave with the button down, dude.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_61",
+      "end": 264.33000000000004,
+      "speaker": "Thomas Gentry",
+      "start": 262.48,
+      "text": " I show up shirtless with a goddamn hat.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_62",
+      "end": 267.498,
+      "speaker": "Matt Schwartz",
+      "start": 265.748,
+      "text": " Yeah, he's a fancy boy.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_63",
+      "end": 268.998,
+      "speaker": "Matt Schwartz",
+      "start": 267.598,
+      "text": " That is a fancy boy.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_64",
+      "end": 270.348,
+      "speaker": "Thomas Gentry",
+      "start": 269.948,
+      "text": " So,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_65",
+      "end": 273.14799999999997,
+      "speaker": "Thomas Gentry",
+      "start": 270.448,
+      "text": " I'll just kind of start off if that's cool.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_66",
+      "end": 273.298,
+      "speaker": "Matt Schwartz",
+      "start": 273.14799999999997,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_67",
+      "end": 273.548,
+      "speaker": "Thomas Gentry",
+      "start": 273.298,
+      "text": " Is that okay",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_68",
+      "end": 273.698,
+      "speaker": "Matt Schwartz",
+      "start": 273.548,
+      "text": " yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_69",
+      "end": 274.298,
+      "speaker": "Thomas Gentry",
+      "start": 273.698,
+      "text": " when I stop?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_70",
+      "end": 280.098,
+      "speaker": "Thomas Gentry",
+      "start": 274.848,
+      "text": " So the questions is the idea to give them those four specific queries,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_71",
+      "end": 281.14799999999997,
+      "speaker": "Thomas Gentry",
+      "start": 280.248,
+      "text": " right,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_72",
+      "end": 285.998,
+      "speaker": "Thomas Gentry",
+      "start": 281.198,
+      "text": " that they can pull data back against, or are those just examples of queries that we can provide them with?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_73",
+      "end": 286.498,
+      "speaker": "Matt Schwartz",
+      "start": 286.048,
+      "text": " correct.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_74",
+      "end": 287.548,
+      "speaker": "Matt Schwartz",
+      "start": 286.548,
+      "text": " For the second one.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_75",
+      "end": 292.348,
+      "speaker": "Matt Schwartz",
+      "start": 287.798,
+      "text": " So a few things right now, just think of that as",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_76",
+      "end": 297.24,
+      "speaker": "Matt Schwartz",
+      "start": 294.74,
+      "text": " Really rough draft for the UI,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_77",
+      "end": 298.99,
+      "speaker": "Matt Schwartz",
+      "start": 297.49,
+      "text": " right? Just for the user interface.",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "jobs out yeah Good God, what that's one of them was paying them a half million dollars yeah insane like it's helping launch sales for this company some somebody he used to know it's what he's used to knows dad it's like hey we're watching this company and I need you to make it famous so\nIs there any trying to get in front of all the celebrities you can to make it nice and make it public and it's like okay well what's it pay he's like half a million it's like good yeah Dude, that sounds so stressful. kind of crazy\nTell me that, tell me that, I think I figured out the thing.\nSo, yeah, what's new with you? I had nothing. Yeah, nothing, nothing. Did you have any information about the demo people? Like, they're all going to be on Monday? No, he said, uh, he said he's going to.\nsend out the invite to the guy just depending on when he's available Okay. Yeah. it's not like a rush but he said he's the guy still wanting to get it get out he just said he's ready but I don't know where he's at\nYou should be able to just click the link and see.\nMaybe, yeah. I think that's just come on. I want to get out of here with that. Oh, that's awesome.\nWhen I've been so alive. Are you in Vegas? Yeah, I'm in Vegas. Dude, how is it? It's nice and it's not terrible. What hotel is that? It's the era. Nice, man. How's it going? Just living, working, man. I was in the tool today. How are you, dude? Good. Good, good. Yeah, dude, I'd much rather hear about freaking Vegas than...\nthan anything else We're going to Morgan Wally tomorrow night. Freaking out two days early to just kind of chill, fool, and work and do whatever. so mainly mainly pleasure not so much work I don't know, we worked until what, like two months? We worked until about two and then we headed down to the pool and that's awesome that is awesome leave with the button down, dude. I show up shirtless with a goddamn hat.\nYeah, he's a fancy boy. That is a fancy boy. So, I'll just kind of start off if that's cool. Yeah, Is that okay yeah, when I stop? So the questions is the idea to give them those four specific queries, right, that they can pull data back against, or are those just examples of queries that we can provide them with? correct. For the second one. So a few things right now, just think of that as\nReally rough draft for the UI, right? Just for the user interface.",
+  "usage": {
+    "input_tokens": 5431,
+    "output_tokens": 7009,
+    "total_tokens": 12440,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 4991,
+      "text_tokens": 440
+    }
+  }
+}

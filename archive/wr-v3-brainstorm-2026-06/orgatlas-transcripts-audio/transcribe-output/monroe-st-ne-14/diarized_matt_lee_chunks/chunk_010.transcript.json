@@ -1,0 +1,441 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 3.614,
+      "speaker": "Matt Schwartz",
+      "start": 1.364,
+      "text": " Right, but Thomas isn't the CEO of a company.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 8.314,
+      "speaker": "Matt Schwartz",
+      "start": 4.7139999999999995,
+      "text": " The CEO of the company might not get as excited as Thomas did.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 10.214,
+      "speaker": "Matt Schwartz",
+      "start": 8.514,
+      "text": " Thomas got excited as a sales rep.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 15.564000000000002,
+      "speaker": "Matt Schwartz",
+      "start": 14.264000000000001,
+      "text": " This, like, dude,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 22.664,
+      "speaker": "Matt Schwartz",
+      "start": 15.664000000000001,
+      "text": " there are hundreds of competitors that are like $79 a month right now.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 23.464000000000002,
+      "speaker": "Matt Schwartz",
+      "start": 23.164,
+      "text": " What?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 26.714000000000002,
+      "speaker": "Matt Schwartz",
+      "start": 24.514000000000003,
+      "text": " So what we, our target.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 28.87,
+      "speaker": "Matt Schwartz",
+      "start": 28.02,
+      "text": " Because not these guys,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 30.77,
+      "speaker": "Matt Schwartz",
+      "start": 28.919999999999998,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 36.120000000000005,
+      "speaker": "Matt Schwartz",
+      "start": 30.869999999999997,
+      "text": " Our target is people that don't have access to any of this. They don't even know and they don't want to think about it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 37.47,
+      "speaker": "Matt Schwartz",
+      "start": 36.27,
+      "text": " They just want the results.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 45.92,
+      "speaker": "A",
+      "start": 43.22,
+      "text": " Yeah, sort of made up an industry in the head",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 50.37,
+      "speaker": "Matt Schwartz",
+      "start": 46.72,
+      "text": " Yeah, and a market and a price point and everything in our head.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 54.37,
+      "speaker": "Matt Schwartz",
+      "start": 50.72,
+      "text": " That's why I really like most of this is finding one customer that wants to pay you money.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 69.28399999999999,
+      "speaker": "Matt Schwartz",
+      "start": 65.684,
+      "text": " Why just build random shit and then ask people for money and then",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 72.434,
+      "speaker": "Matt Schwartz",
+      "start": 71.334,
+      "text": " justify why they should pay you?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 85.084,
+      "speaker": "Matt Schwartz",
+      "start": 79.484,
+      "text": " So that Thomas is worth his weight in gold for two reasons. One is because he's a great salesperson,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 88.134,
+      "speaker": "Matt Schwartz",
+      "start": 85.184,
+      "text": " two because he has information in his head about what he does.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 90.73400000000001,
+      "speaker": "Matt Schwartz",
+      "start": 88.98400000000001,
+      "text": " Like we would want to ask him.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 101.508,
+      "speaker": "Matt Schwartz",
+      "start": 91.508,
+      "text": " I mean ideally you'd want his bosses be like why okay do you have Zoom info why how much does it cost have you looked at the alternatives and",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 118.358,
+      "speaker": "Matt Schwartz",
+      "start": 103.30799999999999,
+      "text": " then talking to people that don't have current software have you even heard of Zoom info have you heard of sales seamless have you heard of these things what do you currently pay shit even starting with what is your biggest pain point right now where are you like leaking money",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 120.212,
+      "speaker": "Matt Schwartz",
+      "start": 119.412,
+      "text": " How do you make money?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 126.912,
+      "speaker": "Matt Schwartz",
+      "start": 121.762,
+      "text": " How do you find, how do you grow as a company instead of just,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 127.81200000000001,
+      "speaker": "Matt Schwartz",
+      "start": 127.012,
+      "text": " and",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 136.062,
+      "speaker": "Matt Schwartz",
+      "start": 132.062,
+      "text": " that's the issue with the demos is like we I don't even know what we're demoing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 138.162,
+      "speaker": "Matt Schwartz",
+      "start": 136.662,
+      "text": " How the fuck are we going to sell it?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 151.06,
+      "speaker": "Matt Schwartz",
+      "start": 144.66,
+      "text": " So like for example the guy that we've demoed for if we had built for him We could have built something for him and sold it to him",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 155.10999999999999,
+      "speaker": "Matt Schwartz",
+      "start": 152.66,
+      "text": " But that's a different that's a very different thing than what we're doing",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 201.312,
+      "speaker": "Matt Schwartz",
+      "start": 183.412,
+      "text": " But it requires a different like instead of being hardcore outbound sales it requires a lot of listening sales where you're listening for pain points you're listening for what currently people are doing what do they need what do they want what would they pay for as opposed to here's a thing buy it from me",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 215.866,
+      "speaker": "Matt Schwartz",
+      "start": 212.116,
+      "text": " So I still think that what we're going to build here with these two wedges,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 216.866,
+      "speaker": "Matt Schwartz",
+      "start": 215.966,
+      "text": " the",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 223.866,
+      "speaker": "Matt Schwartz",
+      "start": 218.16600000000003,
+      "text": " source assisted versus the autonomous lead, I think we still have like there's still a market for it. It's just not that market.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 225.216,
+      "speaker": "Matt Schwartz",
+      "start": 224.16600000000003,
+      "text": " Forget that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 226.41600000000003,
+      "speaker": "Matt Schwartz",
+      "start": 225.91600000000003,
+      "text": " Right.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 234.216,
+      "speaker": "Matt Schwartz",
+      "start": 226.51600000000002,
+      "text": " It's going to be selling to new Mexicans that don't know up from down like Nestor or somebody like that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 236.866,
+      "speaker": "Matt Schwartz",
+      "start": 234.616,
+      "text": " People that are still like raw dogging.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 240.744,
+      "speaker": "Matt Schwartz",
+      "start": 237.844,
+      "text": " leads and paying a lot of money for it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 246.394,
+      "speaker": "A",
+      "start": 246.29399999999998,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 252.244,
+      "speaker": "A",
+      "start": 249.444,
+      "text": " So there's always going to be a need for leads.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 254.644,
+      "speaker": "A",
+      "start": 253.594,
+      "text": " That's a universal.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 257.694,
+      "speaker": "Matt Schwartz",
+      "start": 255.144,
+      "text": " And at the highest level that shit is locked.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 258.344,
+      "speaker": "A",
+      "start": 257.844,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 261.894,
+      "speaker": "A",
+      "start": 261.044,
+      "text": " And even",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 265.194,
+      "speaker": "Matt Schwartz",
+      "start": 263.094,
+      "text": " Even at the medium level it's locked.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 265.644,
+      "speaker": "Matt Schwartz",
+      "start": 265.244,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 267.428,
+      "speaker": "Matt Schwartz",
+      "start": 266.228,
+      "text": " But at the smallest level,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 271.178,
+      "speaker": "Matt Schwartz",
+      "start": 267.528,
+      "text": " what we're really like they just don't have the time, the access,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 273.978,
+      "speaker": "Matt Schwartz",
+      "start": 271.228,
+      "text": " the information or the money to solve those problems.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 282.928,
+      "speaker": "A",
+      "start": 279.928,
+      "text": " Well, for instance well never mind that's B2C",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 289.82800000000003,
+      "speaker": "A",
+      "start": 284.32800000000003,
+      "text": " They just fired the head marketing lady at my work because she couldn't get us any leads in New Mexico,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 291.778,
+      "speaker": "A",
+      "start": 289.978,
+      "text": " but that's it's a customer",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 294.428,
+      "speaker": "A",
+      "start": 294.028,
+      "text": " But anyway",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 295.274,
+      "speaker": "A",
+      "start": 294.324,
+      "text": " Yeah, it's gotta be.",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "Right, but Thomas isn't the CEO of a company. The CEO of the company might not get as excited as Thomas did. Thomas got excited as a sales rep. This, like, dude, there are hundreds of competitors that are like $79 a month right now. What? So what we, our target.\nBecause not these guys, right? Our target is people that don't have access to any of this. They don't even know and they don't want to think about it. They just want the results. Yeah, sort of made up an industry in the head Yeah, and a market and a price point and everything in our head. That's why I really like most of this is finding one customer that wants to pay you money.\nWhy just build random shit and then ask people for money and then justify why they should pay you? So that Thomas is worth his weight in gold for two reasons. One is because he's a great salesperson, two because he has information in his head about what he does. Like we would want to ask him.\nI mean ideally you'd want his bosses be like why okay do you have Zoom info why how much does it cost have you looked at the alternatives and then talking to people that don't have current software have you even heard of Zoom info have you heard of sales seamless have you heard of these things what do you currently pay shit even starting with what is your biggest pain point right now where are you like leaking money\nHow do you make money? How do you find, how do you grow as a company instead of just, and that's the issue with the demos is like we I don't even know what we're demoing. How the fuck are we going to sell it?\nSo like for example the guy that we've demoed for if we had built for him We could have built something for him and sold it to him But that's a different that's a very different thing than what we're doing\nBut it requires a different like instead of being hardcore outbound sales it requires a lot of listening sales where you're listening for pain points you're listening for what currently people are doing what do they need what do they want what would they pay for as opposed to here's a thing buy it from me\nSo I still think that what we're going to build here with these two wedges, the source assisted versus the autonomous lead, I think we still have like there's still a market for it. It's just not that market. Forget that. Right. It's going to be selling to new Mexicans that don't know up from down like Nestor or somebody like that. People that are still like raw dogging.\nleads and paying a lot of money for it. Yeah. So there's always going to be a need for leads. That's a universal. And at the highest level that shit is locked. Yeah. And even Even at the medium level it's locked. Yeah.\nBut at the smallest level, what we're really like they just don't have the time, the access, the information or the money to solve those problems. Well, for instance well never mind that's B2C They just fired the head marketing lady at my work because she couldn't get us any leads in New Mexico, but that's it's a customer But anyway\nYeah, it's gotta be.",
+  "usage": {
+    "input_tokens": 4775,
+    "output_tokens": 6807,
+    "total_tokens": 11582,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 4405,
+      "text_tokens": 370
+    }
+  }
+}

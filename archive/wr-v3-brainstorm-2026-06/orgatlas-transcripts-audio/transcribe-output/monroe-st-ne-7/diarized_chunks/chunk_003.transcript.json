@@ -1,0 +1,441 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 16.900000000000002,
+      "speaker": "A",
+      "start": 0.0,
+      "text": " um the actual product itself like is pretty open uh there's still a lot that we can do in terms of on the back end we can have it pull a lot more information um we can change almost anything so i just it's kind of a proof of concept more than anything else",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 25.1,
+      "speaker": "B",
+      "start": 17.700000000000003,
+      "text": " So that's helpful because I was trying to figure out like how I'm going to position it with that specific like four queries to Scotty.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 27.91,
+      "speaker": "B",
+      "start": 26.26,
+      "text": " So high level my goal is this,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 28.21,
+      "speaker": "B",
+      "start": 28.01,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 29.560000000000002,
+      "speaker": "B",
+      "start": 28.26,
+      "text": " I'm not going to talk to Lee about it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 34.660000000000004,
+      "speaker": "B",
+      "start": 29.61,
+      "text": " If we can get Scotty's 10 grand that he has available left for pulling in leads,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 41.46000000000001,
+      "speaker": "B",
+      "start": 34.96000000000001,
+      "text": " they have a $45,000 year budget for basically Zoom info.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 47.910000000000004,
+      "speaker": "B",
+      "start": 42.36,
+      "text": " They have eight months left with Zoom info and $35,000 every year goes to them.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 53.96000000000001,
+      "speaker": "B",
+      "start": 48.260000000000005,
+      "text": " So there's 10 grand available. So if we can come in right now with 10 grand and show them more value than they're getting out of Zoom.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 67.254,
+      "speaker": "B",
+      "start": 54.804,
+      "text": " That means that eight months from now we can collect that other 35 grand is kind of my hope and even if even if that's not the case 10 grand right now is a ton of ramp money for us to invest into the tool and just you know what I mean",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 81.20400000000001,
+      "speaker": "A",
+      "start": 67.254,
+      "text": " absolutely yeah so um the things that i need to know i want to know is for example how many leads are they getting right now with zoom info more or less like and this doesn't have to be exact it can just be like ballpark you think they're getting 300 leads",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 85.042,
+      "speaker": "A",
+      "start": 81.542,
+      "text": " And, you know, 10% of them are actual, like, actually,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 85.492,
+      "speaker": "B",
+      "start": 85.042,
+      "text": " 10",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 85.542,
+      "speaker": "A",
+      "start": 85.492,
+      "text": " okay.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 105.742,
+      "speaker": "B",
+      "start": 85.542,
+      "text": ",000 bro thousands of leads so if you go into zoom info you can basically say I'm looking for a CISO in New York that has you know 10,000 employees with an operating you know capacity of X amount of dollars for example and it'll pull you back that curated list but they can apply different filters and continue to run that list",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 113.698,
+      "speaker": "A",
+      "start": 107.348,
+      "text": " So then the next question is, why do you think that they got so excited with the list that they saw?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 115.848,
+      "speaker": "A",
+      "start": 113.898,
+      "text": " Because that wasn't like 10,000.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 138.99200000000002,
+      "speaker": "B",
+      "start": 117.492,
+      "text": " says the quality so i called on the arizona list that that we pulled from my query and every one of the numbers was correct right so it was 100 accurate now it wasn't necessarily like bill's landline it might have given me like the district phone number but when you're getting info from zoom or discover or any of those companies a lot of assumptions are made so it could be like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 159.64,
+      "speaker": "B",
+      "start": 139.54,
+      "text": " Thomas Gentry is the IT director of whatever county and most people's email addresses is like first initial last name at you know usb schools.com and so it'll give you 80% of the data back as assumptions and then you'll have to go through to be like oh domain doesn't exist or you know and then it'll flag your email",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 165.64,
+      "speaker": "C",
+      "start": 159.64,
+      "text": " system as spam if you get spam like that happens.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 166.856,
+      "speaker": "B",
+      "start": 166.356,
+      "text": " Yes.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 167.456,
+      "speaker": "B",
+      "start": 167.05599999999998,
+      "text": " Also,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 169.606,
+      "speaker": "B",
+      "start": 167.55599999999998,
+      "text": " if you're doing trying to do a batch outreach,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 173.256,
+      "speaker": "B",
+      "start": 169.856,
+      "text": " but for us, we're not doing the email like sending from our tool.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 179.55599999999998,
+      "speaker": "B",
+      "start": 173.30599999999998,
+      "text": " So that'd be more of like a Microsoft like Outlook hold on them, if you will, you know, from the email side.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 183.55599999999998,
+      "speaker": "A",
+      "start": 180.856,
+      "text": " So what do you like,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 189.406,
+      "speaker": "A",
+      "start": 183.606,
+      "text": " what is your intuition tell you about what would make the guy happy in the meeting?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 191.656,
+      "speaker": "A",
+      "start": 189.456,
+      "text": " Like if you saw a certain number of leads,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 192.406,
+      "speaker": "A",
+      "start": 191.756,
+      "text": " if you saw",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 196.224,
+      "speaker": "B",
+      "start": 193.524,
+      "text": " I think that if he had the ability to change the vertical,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 197.474,
+      "speaker": "B",
+      "start": 196.524,
+      "text": " right,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 201.524,
+      "speaker": "B",
+      "start": 197.524,
+      "text": " so like for them, let's say that one day they want to go after food and beverage.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 209.724,
+      "speaker": "B",
+      "start": 202.274,
+      "text": " They could put whatever the job title is food and beverage, the next week, they might want to do manufacturing or, you know, aerospace,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 210.624,
+      "speaker": "B",
+      "start": 209.874,
+      "text": " what have you.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 217.724,
+      "speaker": "B",
+      "start": 211.774,
+      "text": " That's kind of the variation there is giving them the ability to kind of pull back data as they see fit.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 222.684,
+      "speaker": "B",
+      "start": 218.484,
+      "text": " And I get where you're going as far as like trying to keep them within a certain scope.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 231.584,
+      "speaker": "B",
+      "start": 224.334,
+      "text": " My fear with the tool is that we're giving them giving them authentic AI as like just a lead gen tool in general and they could do whatever they wanted to with it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 232.03400000000002,
+      "speaker": "B",
+      "start": 231.63400000000001,
+      "text": " Right.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 234.28400000000002,
+      "speaker": "B",
+      "start": 232.084,
+      "text": " Like we want it to be specific about lead generation,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 240.93400000000003,
+      "speaker": "B",
+      "start": 234.53400000000002,
+      "text": " but we want to be able to empower them to like have a good idea on a Saturday night and come in and be like, you know what,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 246.18400000000003,
+      "speaker": "B",
+      "start": 240.984,
+      "text": " I want to talk to companies that are whatever vertical, whatever bucket and then go and pull that list.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 247.38400000000001,
+      "speaker": "A",
+      "start": 246.93400000000003,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 250.968,
+      "speaker": "A",
+      "start": 249.268,
+      "text": " Um, so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 254.468,
+      "speaker": "A",
+      "start": 253.618,
+      "text": " then let's talk lists.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 266.26800000000003,
+      "speaker": "A",
+      "start": 255.868,
+      "text": " So if we know ZoomInfo's lists are like 10,000 and you're going to have to do a huge amount of work going through it to vet the actual leads,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 269.918,
+      "speaker": "A",
+      "start": 266.468,
+      "text": " what's our differentiator, right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 272.368,
+      "speaker": "A",
+      "start": 269.968,
+      "text": " So the list that we provide,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 274.318,
+      "speaker": "A",
+      "start": 272.518,
+      "text": " how is it better?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 285.304,
+      "speaker": "B",
+      "start": 274.804,
+      "text": " So one of the things that I liked on the actual Excel file export that Lee gave me on the very far right column, it identifies how it tried to validate that information.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 288.45399999999995,
+      "speaker": "B",
+      "start": 285.75399999999996,
+      "text": " I don't remember what the like key prompts were in particular,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 293.904,
+      "speaker": "B",
+      "start": 288.604,
+      "text": " but it was like check X compared against Y type of deal to give you that deliverable, if you will.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 298.304,
+      "speaker": "B",
+      "start": 294.20399999999995,
+      "text": " Zoom info doesn't necessarily do that. It'll just be like, here's 5,000 people,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 299.104,
+      "speaker": "B",
+      "start": 298.404,
+      "text": " give it a shot.",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "um the actual product itself like is pretty open uh there's still a lot that we can do in terms of on the back end we can have it pull a lot more information um we can change almost anything so i just it's kind of a proof of concept more than anything else So that's helpful because I was trying to figure out like how I'm going to position it with that specific like four queries to Scotty.\nSo high level my goal is this, right? I'm not going to talk to Lee about it. If we can get Scotty's 10 grand that he has available left for pulling in leads, they have a $45,000 year budget for basically Zoom info. They have eight months left with Zoom info and $35,000 every year goes to them. So there's 10 grand available. So if we can come in right now with 10 grand and show them more value than they're getting out of Zoom.\nThat means that eight months from now we can collect that other 35 grand is kind of my hope and even if even if that's not the case 10 grand right now is a ton of ramp money for us to invest into the tool and just you know what I mean absolutely yeah so um the things that i need to know i want to know is for example how many leads are they getting right now with zoom info more or less like and this doesn't have to be exact it can just be like ballpark you think they're getting 300 leads\nAnd, you know, 10% of them are actual, like, actually, 10 okay. ,000 bro thousands of leads so if you go into zoom info you can basically say I'm looking for a CISO in New York that has you know 10 ,000 employees with an operating you know capacity of X amount of dollars for example and it'll pull you back that curated list but they can apply different filters and continue to run that list\nSo then the next question is, why do you think that they got so excited with the list that they saw? Because that wasn't like 10,000.\nsays the quality so i called on the arizona list that that we pulled from my query and every one of the numbers was correct right so it was 100 accurate now it wasn't necessarily like bill's landline it might have given me like the district phone number but when you're getting info from zoom or discover or any of those companies a lot of assumptions are made so it could be like\nThomas Gentry is the IT director of whatever county and most people's email addresses is like first initial last name at you know usb schools.com and so it'll give you 80% of the data back as assumptions and then you'll have to go through to be like oh domain doesn't exist or you know and then it'll flag your email system as spam if you get spam like that happens.\nYes. Also, if you're doing trying to do a batch outreach, but for us, we're not doing the email like sending from our tool. So that'd be more of like a Microsoft like Outlook hold on them, if you will, you know, from the email side. So what do you like, what is your intuition tell you about what would make the guy happy in the meeting? Like if you saw a certain number of leads, if you saw\nI think that if he had the ability to change the vertical, right, so like for them, let's say that one day they want to go after food and beverage. They could put whatever the job title is food and beverage, the next week, they might want to do manufacturing or, you know, aerospace, what have you. That's kind of the variation there is giving them the ability to kind of pull back data as they see fit.\nAnd I get where you're going as far as like trying to keep them within a certain scope. My fear with the tool is that we're giving them giving them authentic AI as like just a lead gen tool in general and they could do whatever they wanted to with it. Right. Like we want it to be specific about lead generation, but we want to be able to empower them to like have a good idea on a Saturday night and come in and be like, you know what, I want to talk to companies that are whatever vertical, whatever bucket and then go and pull that list. Yeah.\nUm, so then let's talk lists. So if we know ZoomInfo's lists are like 10,000 and you're going to have to do a huge amount of work going through it to vet the actual leads, what's our differentiator, right? So the list that we provide, how is it better?\nSo one of the things that I liked on the actual Excel file export that Lee gave me on the very far right column, it identifies how it tried to validate that information. I don't remember what the like key prompts were in particular, but it was like check X compared against Y type of deal to give you that deliverable, if you will. Zoom info doesn't necessarily do that. It'll just be like, here's 5,000 people, give it a shot.",
+  "usage": {
+    "input_tokens": 5458,
+    "output_tokens": 8714,
+    "total_tokens": 14172,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 5140,
+      "text_tokens": 318
+    }
+  }
+}

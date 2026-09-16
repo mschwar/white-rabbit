@@ -1,0 +1,497 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 3.6499999999999995,
+      "speaker": "Lee Biby",
+      "start": 0.0,
+      "text": " Yeah, I don't know what message is out in this thing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 5.999999999999999,
+      "speaker": "Matt Schwartz",
+      "start": 4.8999999999999995,
+      "text": " It's like on the phone.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 6.699999999999999,
+      "speaker": "Lee Biby",
+      "start": 6.3999999999999995,
+      "text": " Okay.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 7.599999999999999,
+      "speaker": "Matt Schwartz",
+      "start": 6.999999999999999,
+      "text": " See it?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 9.6,
+      "speaker": "Matt Schwartz",
+      "start": 7.749999999999999,
+      "text": " So just type that,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 11.95,
+      "speaker": "Matt Schwartz",
+      "start": 9.7,
+      "text": " Claude CLI install.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 37.706,
+      "speaker": "Matt Schwartz",
+      "start": 27.956,
+      "text": " And then you're going to go down to, it's probably the Clod, like the Quick Start Clod Code Docs, and just scroll down.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 49.506,
+      "speaker": "Lee Biby",
+      "start": 48.006,
+      "text": " Make sure you have no JS.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 52.956,
+      "speaker": "Matt Schwartz",
+      "start": 50.756,
+      "text": " Yeah, we already installed that when you were over,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 53.156000000000006,
+      "speaker": "Matt Schwartz",
+      "start": 53.006,
+      "text": " remember?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 54.456,
+      "speaker": "Matt Schwartz",
+      "start": 53.356,
+      "text": " Took forever to install.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 55.666000000000004,
+      "speaker": "Thomas Gentry",
+      "start": 55.316,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 60.266000000000005,
+      "speaker": "Matt Schwartz",
+      "start": 56.566,
+      "text": " So try the first one, this curl fssl.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 63.016000000000005,
+      "speaker": "Matt Schwartz",
+      "start": 60.466,
+      "text": " Just copy that and drop it into your CLI.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 85.562,
+      "speaker": "Matt Schwartz",
+      "start": 81.812,
+      "text": " So if you go down, do you see the thing that says macOS Linux?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 97.912,
+      "speaker": "Lee Biby",
+      "start": 95.712,
+      "text": " I don't know if I'm looking where you're looking on",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 100.462,
+      "speaker": "Matt Schwartz",
+      "start": 97.912,
+      "text": " Are you on, so look at your URL,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 102.512,
+      "speaker": "Matt Schwartz",
+      "start": 100.662,
+      "text": " is it code.claud.com?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 108.562,
+      "speaker": "Lee Biby",
+      "start": 104.062,
+      "text": " a cloud codes calm box code",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 109.962,
+      "speaker": "Lee Biby",
+      "start": 108.962,
+      "text": " up so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 109.86,
+      "speaker": "Matt Schwartz",
+      "start": 108.66,
+      "text": " So if you scroll down,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 112.41,
+      "speaker": "Matt Schwartz",
+      "start": 109.91,
+      "text": " keep scrolling down until you get to step one,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 113.31,
+      "speaker": "Matt Schwartz",
+      "start": 112.46,
+      "text": " install Cloud Code.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 119.86,
+      "speaker": "Lee Biby",
+      "start": 118.66,
+      "text": " It's called Cloud Cook.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 122.46,
+      "speaker": "Matt Schwartz",
+      "start": 120.30999999999999,
+      "text": " So you're just going to go to that first one,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 123.75999999999999,
+      "speaker": "Matt Schwartz",
+      "start": 122.55999999999999,
+      "text": " the Mac OS, Linux,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 125.00999999999999,
+      "speaker": "Matt Schwartz",
+      "start": 123.96,
+      "text": " and WSL.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 131.51,
+      "speaker": "Matt Schwartz",
+      "start": 127.21,
+      "text": " And then you're going to copy it and then paste it into your terminal.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 153.668,
+      "speaker": "Matt Schwartz",
+      "start": 153.268,
+      "text": " Okay,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 154.668,
+      "speaker": "Matt Schwartz",
+      "start": 153.718,
+      "text": " so then do the next one.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 155.968,
+      "speaker": "Matt Schwartz",
+      "start": 154.818,
+      "text": " Are you in Windows or Linux?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 161.168,
+      "speaker": "Lee Biby",
+      "start": 158.418,
+      "text": " Oh, I guess I'm in Windows.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 161.418,
+      "speaker": "Matt Schwartz",
+      "start": 161.168,
+      "text": " Okay,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 162.818,
+      "speaker": "Matt Schwartz",
+      "start": 161.46800000000002,
+      "text": " so then do the Windows PowerShell.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 164.068,
+      "speaker": "Matt Schwartz",
+      "start": 162.96800000000002,
+      "text": " Do the one below it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 165.768,
+      "speaker": "Matt Schwartz",
+      "start": 164.668,
+      "text": " Copy and paste that one.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 173.018,
+      "speaker": "Lee Biby",
+      "start": 171.71800000000002,
+      "text": " But do I want it to be in the Linux?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 174.668,
+      "speaker": "Matt Schwartz",
+      "start": 173.918,
+      "text": " Don't worry about it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 177.168,
+      "speaker": "Matt Schwartz",
+      "start": 175.268,
+      "text": " For now, just yeah, you just want to get it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 181.26,
+      "speaker": "Matt Schwartz",
+      "start": 178.26,
+      "text": " and then it can help you nice",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 185.20999999999998,
+      "speaker": "Lee Biby",
+      "start": 183.51,
+      "text": " Setting up Cloud Code, okay?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 187.26,
+      "speaker": "Lee Biby",
+      "start": 185.26,
+      "text": " Strong Cloud Code, Auto Builder, okay.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 202.60999999999999,
+      "speaker": "Matt Schwartz",
+      "start": 187.26,
+      "text": " and then that'll prompt you to authenticate and once you authenticate it'll link it to your cloud account and then you know instead of writing codex you can write just cloud and it'll turn on the the CLI like the",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 208.87,
+      "speaker": "Matt Schwartz",
+      "start": 204.02,
+      "text": " It'll be the exact same thing that you're doing with codex, but instead of doing it with chat GPT you'll be doing it with quad",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 219.02,
+      "speaker": "Lee Biby",
+      "start": 210.72,
+      "text": " But then all of the renderings from Claude is going to be in a file not show up in the PowerShell.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 221.57000000000002,
+      "speaker": "Lee Biby",
+      "start": 220.72,
+      "text": " Install complete.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 230.07000000000002,
+      "speaker": "Matt Schwartz",
+      "start": 224.07000000000002,
+      "text": " Well when you have a repository it's all going to the same place right because it's all going into the repository in your computer",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 232.056,
+      "speaker": "Matt Schwartz",
+      "start": 231.156,
+      "text": " So the agents,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 235.306,
+      "speaker": "Matt Schwartz",
+      "start": 232.106,
+      "text": " you can just tell the agents to be point, you point them to the same directory.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 241.906,
+      "speaker": "Matt Schwartz",
+      "start": 240.256,
+      "text": " So they're kind of interchangeable.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 250.756,
+      "speaker": "Lee Biby",
+      "start": 244.006,
+      "text": " Right now I'm just working out of users l5e that's kind of my way see C drive users",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 252.406,
+      "speaker": "Matt Schwartz",
+      "start": 251.95600000000002,
+      "text": " Okay,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 254.256,
+      "speaker": "Matt Schwartz",
+      "start": 252.45600000000002,
+      "text": " well, once you start like making projects,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 256.106,
+      "speaker": "Matt Schwartz",
+      "start": 254.306,
+      "text": " you just create like a directory,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 258.80600000000004,
+      "speaker": "Matt Schwartz",
+      "start": 256.206,
+      "text": " and then you make you start it in that directory.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 264.15,
+      "speaker": "Matt Schwartz",
+      "start": 259.7,
+      "text": " Or you could just tell it to go into the directory with normal words. Just say,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 264.34999999999997,
+      "speaker": "Matt Schwartz",
+      "start": 264.2,
+      "text": " hey,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 265.25,
+      "speaker": "Matt Schwartz",
+      "start": 264.4,
+      "text": " go to this directory.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 271.55,
+      "speaker": "Lee Biby",
+      "start": 270.09999999999997,
+      "text": " I want to work Thomas's app.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 298.08,
+      "speaker": "Lee Biby",
+      "start": 297.78,
+      "text": " Thomas has",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "Yeah, I don't know what message is out in this thing. It's like on the phone. Okay. See it? So just type that, Claude CLI install.\nAnd then you're going to go down to, it's probably the Clod, like the Quick Start Clod Code Docs, and just scroll down. Make sure you have no JS. Yeah, we already installed that when you were over, remember? Took forever to install.\nYeah. So try the first one, this curl fssl. Just copy that and drop it into your CLI.\nSo if you go down, do you see the thing that says macOS Linux? I don't know if I'm looking where you're looking on Are you on, so look at your URL, is it code.claud.com? a cloud codes calm box code up so\nSo if you scroll down, keep scrolling down until you get to step one, install Cloud Code. It's called Cloud Cook. So you're just going to go to that first one, the Mac OS, Linux, and WSL. And then you're going to copy it and then paste it into your terminal.\nOkay, so then do the next one. Are you in Windows or Linux? Oh, I guess I'm in Windows. Okay, so then do the Windows PowerShell. Do the one below it. Copy and paste that one. But do I want it to be in the Linux? Don't worry about it. For now, just yeah, you just want to get it.\nand then it can help you nice Setting up Cloud Code, okay? Strong Cloud Code, Auto Builder, okay. and then that'll prompt you to authenticate and once you authenticate it'll link it to your cloud account and then you know instead of writing codex you can write just cloud and it'll turn on the the CLI like the\nIt'll be the exact same thing that you're doing with codex, but instead of doing it with chat GPT you'll be doing it with quad But then all of the renderings from Claude is going to be in a file not show up in the PowerShell. Install complete. Well when you have a repository it's all going to the same place right because it's all going into the repository in your computer\nSo the agents, you can just tell the agents to be point, you point them to the same directory. So they're kind of interchangeable. Right now I'm just working out of users l5e that's kind of my way see C drive users Okay, well, once you start like making projects, you just create like a directory, and then you make you start it in that directory.\nOr you could just tell it to go into the directory with normal words. Just say, hey, go to this directory. I want to work Thomas's app.\nThomas has",
+  "usage": {
+    "input_tokens": 5265,
+    "output_tokens": 6435,
+    "total_tokens": 11700,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 4825,
+      "text_tokens": 440
+    }
+  }
+}

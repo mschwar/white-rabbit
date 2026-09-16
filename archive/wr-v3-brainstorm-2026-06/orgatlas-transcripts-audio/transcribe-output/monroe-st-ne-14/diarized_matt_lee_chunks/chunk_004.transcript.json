@@ -1,0 +1,585 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 0.10000000000000009,
+      "speaker": "Lee Biby",
+      "start": 0.0,
+      "text": " whatever,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 0.30000000000000004,
+      "speaker": "Lee Biby",
+      "start": 0.25,
+      "text": " and",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 1.05,
+      "speaker": "Matt Schwartz",
+      "start": 0.30000000000000004,
+      "text": " Well, so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 2.5,
+      "speaker": "Lee Biby",
+      "start": 1.05,
+      "text": " then they're going to track their sales.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 4.3,
+      "speaker": "Matt Schwartz",
+      "start": 2.5,
+      "text": " you're right.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 4.8999999999999995,
+      "speaker": "Matt Schwartz",
+      "start": 4.35,
+      "text": " I agree.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 7.1499999999999995,
+      "speaker": "Matt Schwartz",
+      "start": 5.199999999999999,
+      "text": " At the end of the day, it is just a list.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 21.9,
+      "speaker": "Matt Schwartz",
+      "start": 8.25,
+      "text": " I will say I'm sure my own like conceptual models is going to be pretty warped. But in my experience, the vast majority of success comes from expectations,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 27.0,
+      "speaker": "Matt Schwartz",
+      "start": 26.4,
+      "text": " assumptions.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 47.836,
+      "speaker": "Matt Schwartz",
+      "start": 28.436,
+      "text": " around what they're getting and what they're paying for and what its value is so the closer the better aligned it is the more likely the outcome is going to be good it's really easy to give something someone give someone high value but they don't know it's a high value because they have a different idea of what value is and then they're pissed",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 53.15,
+      "speaker": "Matt Schwartz",
+      "start": 48.5,
+      "text": " Right. So when I think when we have those three levels, it just becomes harder to keep that clean,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 53.3,
+      "speaker": "Lee Biby",
+      "start": 53.15,
+      "text": " Well,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 53.7,
+      "speaker": "Matt Schwartz",
+      "start": 53.3,
+      "text": " the",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 54.55,
+      "speaker": "Lee Biby",
+      "start": 53.7,
+      "text": " yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 55.9,
+      "speaker": "Matt Schwartz",
+      "start": 54.55,
+      "text": " delivering of value.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 58.5,
+      "speaker": "Matt Schwartz",
+      "start": 55.95,
+      "text": " And as a company to have success,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 61.45,
+      "speaker": "Matt Schwartz",
+      "start": 58.6,
+      "text": " like we want good word of mouth, good organic traction.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 67.85,
+      "speaker": "Matt Schwartz",
+      "start": 62.4,
+      "text": " But it's not worth thinking about right now. Right now we're just nailing what it is that we have.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 69.95,
+      "speaker": "Matt Schwartz",
+      "start": 68.1,
+      "text": " So we have the enriching.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 76.02,
+      "speaker": "Matt Schwartz",
+      "start": 70.42,
+      "text": " Where we're enriching is the lead list so that they can triage the leads to high-value sales people.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 80.67,
+      "speaker": "Matt Schwartz",
+      "start": 76.32000000000001,
+      "text": " We have the boutiques a lead gen engine for small businesses",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 85.41,
+      "speaker": "Matt Schwartz",
+      "start": 81.46,
+      "text": " Where we are just using the Google search thing that's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 86.80999999999999,
+      "speaker": "Lee Biby",
+      "start": 85.41,
+      "text": " They submit a request.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 98.21,
+      "speaker": "Matt Schwartz",
+      "start": 86.80999999999999,
+      "text": " They submit a request that's gonna go into the A_B_C_ and then it's gonna that A_B_C_ is gonna get converted into a a seg elite segment and then we're gonna be scraping and pulling together a list.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 100.55999999999999,
+      "speaker": "Lee Biby",
+      "start": 98.35999999999999,
+      "text": " And and fluffing if necessary.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 100.80999999999999,
+      "speaker": "Matt Schwartz",
+      "start": 100.55999999999999,
+      "text": " Yep.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 105.41,
+      "speaker": "Lee Biby",
+      "start": 100.80999999999999,
+      "text": " Like get it up to a hundred if there's only seventy and just say yeah thirty of these are okay.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 106.21,
+      "speaker": "Matt Schwartz",
+      "start": 105.91,
+      "text": " Okay.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 108.14,
+      "speaker": "Matt Schwartz",
+      "start": 106.74,
+      "text": " um cool",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 122.69,
+      "speaker": "Matt Schwartz",
+      "start": 117.33999999999999,
+      "text": " so yeah again it's just two it's just two products it's the source assisted versus the autonomous",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 143.864,
+      "speaker": "Matt Schwartz",
+      "start": 138.964,
+      "text": " We should probably so we would start with the source assisted I think now",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 145.414,
+      "speaker": "Lee Biby",
+      "start": 143.864,
+      "text": " seems more straightforward",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 159.514,
+      "speaker": "Matt Schwartz",
+      "start": 148.564,
+      "text": " let's play through our demos for example that demo that we had could we even what would have success even looked like with that company like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 162.614,
+      "speaker": "Matt Schwartz",
+      "start": 161.764,
+      "text": " would it have been possible",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 167.28799999999998,
+      "speaker": "Lee Biby",
+      "start": 165.588,
+      "text": " If we're doing it this way, if we're doing",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 167.338,
+      "speaker": "Matt Schwartz",
+      "start": 167.28799999999998,
+      "text": " Like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 167.988,
+      "speaker": "Lee Biby",
+      "start": 167.338,
+      "text": " this way, any",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 176.238,
+      "speaker": "Matt Schwartz",
+      "start": 167.988,
+      "text": " any way that we even ever talked about like what would that even what would success even look like they were looking for like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 179.78799999999998,
+      "speaker": "Matt Schwartz",
+      "start": 177.988,
+      "text": " leaders so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 182.488,
+      "speaker": "Lee Biby",
+      "start": 180.53799999999998,
+      "text": " I really don't understand what they're looking for.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 187.238,
+      "speaker": "Lee Biby",
+      "start": 182.588,
+      "text": " A high level government agents that would like to use their search capacity?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 190.688,
+      "speaker": "Matt Schwartz",
+      "start": 188.438,
+      "text": " what they were looking for is",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 194.834,
+      "speaker": "A",
+      "start": 192.084,
+      "text": " My my understanding is let's say you find dirt on something",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 200.434,
+      "speaker": "A",
+      "start": 198.084,
+      "text": " They want to sell that dirt so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 203.834,
+      "speaker": "A",
+      "start": 201.684,
+      "text": " they're trying to find people that want to buy that dirt",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 213.784,
+      "speaker": "B",
+      "start": 207.88400000000001,
+      "text": " I thought it was a lot like what we're doing in that, yeah, the dirt, but the...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 216.962,
+      "speaker": "B",
+      "start": 214.612,
+      "text": " The thing they sold was the access to that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 217.462,
+      "speaker": "A",
+      "start": 217.012,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 218.31199999999998,
+      "speaker": "B",
+      "start": 217.462,
+      "text": " If you're, yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 226.06199999999998,
+      "speaker": "A",
+      "start": 218.31199999999998,
+      "text": " So they're trying to find the people that would want access to it, right? But to do that they have to kind of already have some startup.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 230.56199999999998,
+      "speaker": "B",
+      "start": 226.06199999999998,
+      "text": " You're private security for an NBA player.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 234.66199999999998,
+      "speaker": "B",
+      "start": 231.462,
+      "text": " And I know people that hate that fucking guy because he just switched teams.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 235.012,
+      "speaker": "A",
+      "start": 234.66199999999998,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 236.41199999999998,
+      "speaker": "B",
+      "start": 235.16199999999998,
+      "text": " Do you want to know who they are?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 236.66199999999998,
+      "speaker": "A",
+      "start": 236.41199999999998,
+      "text": " Exactly.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 237.06199999999998,
+      "speaker": "B",
+      "start": 236.66199999999998,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 237.16199999999998,
+      "speaker": "A",
+      "start": 237.06199999999998,
+      "text": "",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 238.012,
+      "speaker": "A",
+      "start": 237.31199999999998,
+      "text": " Exactly.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 238.41199999999998,
+      "speaker": "B",
+      "start": 238.012,
+      "text": " So.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 246.856,
+      "speaker": "A",
+      "start": 239.156,
+      "text": " But in that case it would have been source-assisted and we would have needed that like we would want that list of kind of dirt. With the list of dirt we can find things.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_60",
+      "end": 255.506,
+      "speaker": "B",
+      "start": 247.056,
+      "text": " Well no, that's more of the that's more the second one, where who is it, where are they gonna be, and what do they do.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_61",
+      "end": 266.00600000000003,
+      "speaker": "B",
+      "start": 256.556,
+      "text": " Okay, so let me find it for you and I'll get you that list, and you can I'll give you pictures of everybody, you can make sure to watch out for them. Whereas the other one would be",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_62",
+      "end": 272.416,
+      "speaker": "B",
+      "start": 267.316,
+      "text": " Who can I, who can I offer private security to who's in trouble?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_63",
+      "end": 275.066,
+      "speaker": "B",
+      "start": 273.76599999999996,
+      "text": " And you'll go after that",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_64",
+      "end": 275.26599999999996,
+      "speaker": "A",
+      "start": 275.066,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_65",
+      "end": 275.566,
+      "speaker": "B",
+      "start": 275.26599999999996,
+      "text": " person.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_66",
+      "end": 282.51599999999996,
+      "speaker": "A",
+      "start": 275.76599999999996,
+      "text": " Well, because we could have done Legion on both sides, right, on the side of finding",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_67",
+      "end": 292.416,
+      "speaker": "A",
+      "start": 286.616,
+      "text": " the people to do the things and then finding the people that want to know the things.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_68",
+      "end": 297.15000000000003,
+      "speaker": "A",
+      "start": 294.1,
+      "text": " But I guess what I'm trying to say is what would have success looked like for that guy like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_69",
+      "end": 298.5,
+      "speaker": "B",
+      "start": 297.15000000000003,
+      "text": " Yeah, that would have been",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_70",
+      "end": 299.90000000000003,
+      "speaker": "A",
+      "start": 299.25,
+      "text": " so he would tight",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "whatever, and Well, so then they're going to track their sales. you're right. I agree. At the end of the day, it is just a list. I will say I'm sure my own like conceptual models is going to be pretty warped. But in my experience, the vast majority of success comes from expectations, assumptions.\naround what they're getting and what they're paying for and what its value is so the closer the better aligned it is the more likely the outcome is going to be good it's really easy to give something someone give someone high value but they don't know it's a high value because they have a different idea of what value is and then they're pissed\nRight. So when I think when we have those three levels, it just becomes harder to keep that clean, Well, the yeah delivering of value. And as a company to have success, like we want good word of mouth, good organic traction. But it's not worth thinking about right now. Right now we're just nailing what it is that we have. So we have the enriching.\nWhere we're enriching is the lead list so that they can triage the leads to high-value sales people. We have the boutiques a lead gen engine for small businesses\nWhere we are just using the Google search thing that's They submit a request. They submit a request that's gonna go into the A_B_C_ and then it's gonna that A_B_C_ is gonna get converted into a a seg elite segment and then we're gonna be scraping and pulling together a list. And and fluffing if necessary. Yep. Like get it up to a hundred if there's only seventy and just say yeah thirty of these are okay. Okay.\num cool so yeah again it's just two it's just two products it's the source assisted versus the autonomous\nWe should probably so we would start with the source assisted I think now seems more straightforward let's play through our demos for example that demo that we had could we even what would have success even looked like with that company like would it have been possible\nIf we're doing it this way, if we're doing Like this way, any any way that we even ever talked about like what would that even what would success even look like they were looking for like leaders so I really don't understand what they're looking for. A high level government agents that would like to use their search capacity? what they were looking for is\nMy my understanding is let's say you find dirt on something They want to sell that dirt so they're trying to find people that want to buy that dirt I thought it was a lot like what we're doing in that, yeah, the dirt, but the...\nThe thing they sold was the access to that. Yeah. If you're, yeah. So they're trying to find the people that would want access to it, right? But to do that they have to kind of already have some startup. You're private security for an NBA player. And I know people that hate that fucking guy because he just switched teams. Yeah. Do you want to know who they are? Exactly. Yeah. Exactly. So.\nBut in that case it would have been source-assisted and we would have needed that like we would want that list of kind of dirt. With the list of dirt we can find things. Well no, that's more of the that's more the second one, where who is it, where are they gonna be, and what do they do. Okay, so let me find it for you and I'll get you that list, and you can I'll give you pictures of everybody, you can make sure to watch out for them. Whereas the other one would be\nWho can I, who can I offer private security to who's in trouble? And you'll go after that Yeah. person. Well, because we could have done Legion on both sides, right, on the side of finding the people to do the things and then finding the people that want to know the things.\nBut I guess what I'm trying to say is what would have success looked like for that guy like Yeah, that would have been so he would tight",
+  "usage": {
+    "input_tokens": 5922,
+    "output_tokens": 8394,
+    "total_tokens": 14316,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 5498,
+      "text_tokens": 424
+    }
+  }
+}

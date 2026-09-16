@@ -1,0 +1,497 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 9.450000000000001,
+      "speaker": "A",
+      "start": 0.0,
+      "text": " guns, lay-offs, people leaving company, open positions, people who have been promoted. So let's do pain point. And then I'm going to type in a key word of sales training. Whoopty",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 9.700000000000001,
+      "speaker": "Matt Schwartz",
+      "start": 9.450000000000001,
+      "text": " So it",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 9.750000000000002,
+      "speaker": "A",
+      "start": 9.700000000000001,
+      "text": " doo,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 10.000000000000002,
+      "speaker": "Matt Schwartz",
+      "start": 9.750000000000002,
+      "text": " automatically",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 10.550000000000002,
+      "speaker": "A",
+      "start": 10.000000000000002,
+      "text": " and now we're seeing",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 10.750000000000002,
+      "speaker": "Matt Schwartz",
+      "start": 10.550000000000002,
+      "text": " pulls",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 11.100000000000001,
+      "speaker": "A",
+      "start": 10.750000000000002,
+      "text": " a list",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 11.400000000000002,
+      "speaker": "Matt Schwartz",
+      "start": 11.100000000000001,
+      "text": " it up too.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 12.100000000000001,
+      "speaker": "A",
+      "start": 11.400000000000002,
+      "text": " of suits",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 12.450000000000001,
+      "speaker": "Matt Schwartz",
+      "start": 12.100000000000001,
+      "text": " So that that",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 12.8,
+      "speaker": "A",
+      "start": 12.450000000000001,
+      "text": " and companies",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 13.25,
+      "speaker": "Matt Schwartz",
+      "start": 12.8,
+      "text": " party exists",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 13.55,
+      "speaker": "A",
+      "start": 13.25,
+      "text": " who are showing",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 15.100000000000001,
+      "speaker": "Matt Schwartz",
+      "start": 13.55,
+      "text": " doesn't signals mean it exists. They're not.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 27.85,
+      "speaker": "A",
+      "start": 15.100000000000001,
+      "text": " that they're facing pain points or projects related to sales training. So Cody Labs says a front-line source in social and relationships has indicated the organisation is planning to begin initiatives related to sales automation and enablement.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 53.528000000000006,
+      "speaker": "A",
+      "start": 27.828,
+      "text": " That means for me as a sales trainer and someone offers keynotes most types of things They're a worthwhile company to reach out to and connect with so it's pretty incredible You can go a layer deeper than even what LinkedIn be able to provide to you. The next one here is intent This is the thing that really took some time to set up a couple of weeks back You can set up intent topic clusters set up key areas where people at those companies might be searching for that relate to your product service the pain points you help with and then you can target people based on",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 58.056,
+      "speaker": "A",
+      "start": 53.556,
+      "text": " One, what accounts and what people at those accounts are showing some level of intent for what you sell.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 61.856,
+      "speaker": "A",
+      "start": 58.205999999999996,
+      "text": " So if I go to intent score high and I select my KeenerOps,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 66.456,
+      "speaker": "A",
+      "start": 61.906,
+      "text": " I'll go to short tab so people who have been searching for this topic in the past couple of weeks.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 69.006,
+      "speaker": "A",
+      "start": 66.606,
+      "text": " Clio, which is a legal software based in Canada,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 73.306,
+      "speaker": "A",
+      "start": 69.206,
+      "text": " has been searching for sales trainers and Keener speakers recently.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 74.756,
+      "speaker": "A",
+      "start": 73.556,
+      "text": " Someone out there can at least.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 79.756,
+      "speaker": "A",
+      "start": 74.806,
+      "text": " Therefore, it's worth me bumping that person up the top of my priority list and reaching out to someone at that company.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 84.432,
+      "speaker": "A",
+      "start": 79.732,
+      "text": " basically to initiate a conversation because it's more likely that they're actually looking for something like what I offer.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 86.382,
+      "speaker": "A",
+      "start": 84.532,
+      "text": " And the last sales signal here is technologies,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 88.732,
+      "speaker": "A",
+      "start": 86.532,
+      "text": " search for people using a specific technology.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 105.932,
+      "speaker": "A",
+      "start": 88.882,
+      "text": " So let's say if I'm selling for Pandora and I want to try and sell to people who are using DocuSign and I put DocuSign in here and bang now I've got a list of 1,866 companies and 4,960 people at those companies who are in my buying group who are likely using DocuSign.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 110.98,
+      "speaker": "A",
+      "start": 105.78,
+      "text": " I can reach out to these people and talk about the related pain points as to why people often switch from that tool.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 114.58,
+      "speaker": "A",
+      "start": 111.18,
+      "text": " So that advanced search is pretty darn impressive.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 123.73,
+      "speaker": "A",
+      "start": 114.78,
+      "text": " Like I mentioned, one of my favorite tools to use is LinkedIn Sales Navigator, and I would argue this goes deeper than that with the intent signals and more specific triggers and scoops that you can layer into the search.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 125.33,
+      "speaker": "A",
+      "start": 123.78,
+      "text": " The next thing I want to look at is intent,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 127.68,
+      "speaker": "A",
+      "start": 125.48,
+      "text": " so there's an entire tab just for intent.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 130.63,
+      "speaker": "A",
+      "start": 127.88,
+      "text": " And that's where you can go a little bit deeper on some of the intent topics that I shared earlier.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 132.08,
+      "speaker": "A",
+      "start": 130.73,
+      "text": " So I can select my intent topics.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 134.012,
+      "speaker": "A",
+      "start": 132.212,
+      "text": " And I can also select the audience strength,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 137.91199999999998,
+      "speaker": "A",
+      "start": 134.16199999999998,
+      "text": " so is it just one person in this company who's been searching that topic or is it multiple?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 139.362,
+      "speaker": "A",
+      "start": 138.112,
+      "text": " So then when I click on this company,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 140.31199999999998,
+      "speaker": "A",
+      "start": 139.41199999999998,
+      "text": " if it's coming from my results,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 141.212,
+      "speaker": "A",
+      "start": 140.512,
+      "text": " eight by eight,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 144.41199999999998,
+      "speaker": "A",
+      "start": 141.31199999999998,
+      "text": " it will actually give me more intent data about that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 147.81199999999998,
+      "speaker": "A",
+      "start": 144.512,
+      "text": " On June 1st, over five people from this company, eight by eight,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 153.612,
+      "speaker": "A",
+      "start": 147.862,
+      "text": " have been searching for keynote speakers and sales training and those people were in the San Francisco office and the Romania office.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 159.56199999999998,
+      "speaker": "A",
+      "start": 153.862,
+      "text": " So what does that give me information to do? Well, because I've fed Zooming for my buyer persona, I can look down here and find the right people.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 184.79,
+      "speaker": "A",
+      "start": 159.54,
+      "text": " people I can now reach out to as a result that intensity telling me hey these are the top people at this account you should probably reach out to based on this intensity this is dope I feel like a bit of idiot for not using this past few months tracker this is interesting stay in the loop when your contacts change jobs tell us which contacts to track and we'll do the rest upload a list you upload your list of top contacts from your customer list and if they change jobs you can hit them up at their new company websites now this is the part where I was like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 188.982,
+      "speaker": "A",
+      "start": 185.332,
+      "text": " A couple of weeks ago I took a little WhatsApp and made sure there was something for us to look at in here,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 198.382,
+      "speaker": "A",
+      "start": 189.082,
+      "text": " but basically I inserted a little piece of code on each of my landing pages on my website willaikin.com where I have a sales training course and t-shirts like this one.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 206.132,
+      "speaker": "A",
+      "start": 198.482,
+      "text": " So I inserted this piece of ZoomInfo code onto my website a couple of weeks ago and now it's picking up people who are visiting my website and what companies they work for.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 212.182,
+      "speaker": "A",
+      "start": 206.232,
+      "text": " I can now see 88 different companies who an employee at that company has visited my website.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 214.744,
+      "speaker": "A",
+      "start": 212.244,
+      "text": " I can see this person went on my sales coaching page,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 217.444,
+      "speaker": "A",
+      "start": 214.944,
+      "text": " my sales courses page and my sales team training page.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 220.794,
+      "speaker": "A",
+      "start": 217.594,
+      "text": " I don't want that person to go to waste just because my website didn't convert them well.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 223.044,
+      "speaker": "A",
+      "start": 220.944,
+      "text": " And because ZoomInfo knows who I sell to,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 226.644,
+      "speaker": "A",
+      "start": 223.094,
+      "text": " it's pointed out that Chris is probably someone who I should reach out to at that account.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 228.544,
+      "speaker": "A",
+      "start": 226.744,
+      "text": " This is reducing a lot of work for me to build lists.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 230.444,
+      "speaker": "A",
+      "start": 228.794,
+      "text": " Let's look at the last couple of places and Hans,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 238.244,
+      "speaker": "A",
+      "start": 230.694,
+      "text": " you can upload a list of contacts and your data might be inaccurate and it will basically cleanse that list for you and make it more accurate using their data.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 264.142,
+      "speaker": "A",
+      "start": 238.292,
+      "text": " data I will say that ZoomInfo is renowned well known to have some of the most accurate data in space I'll tell a story about this actually I used to work for a tech startup and we were using a competitive solution to ZoomInfo called LeadIQ and every rep had their own LeadIQ license so we were finding prospects to identify a target using LeadIQ to pull their contact information off of LinkedIn and then we were sequencing them in outreach however our sales ops and leadership team noticed that the contact information was really bad like half of the numbers were wrong",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 290.65200000000004,
+      "speaker": "A",
+      "start": 264.052,
+      "text": " from a lot of the emails were incorrect so they were bouncing so what they did was they went ahead and bought two licenses of zoom info for the sales ops people who then went through and cleansed all the data that we'd be getting from lead iq and then continued to add new data based on some of the signal scoops and whatnot so in terms of accuracy zoom info i'd say is probably renowned to be one of the better vendors in this space that the last thing i'm looking at here workflows everything we just ran through you could automate to be done automatically so for example",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 295.28,
+      "speaker": "A",
+      "start": 290.58,
+      "text": " For example, if I go to site visit targeting and I try it, I can set a big trigger,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 299.78,
+      "speaker": "A",
+      "start": 295.38,
+      "text": " for example when someone visits willakin.com on any page for any company.",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "guns, lay-offs, people leaving company, open positions, people who have been promoted. So let's do pain point. And then I'm going to type in a key word of sales training. Whoopty So it doo, automatically and now we're seeing pulls a list it up too. of suits So that that and companies party exists who are showing doesn't signals mean it exists. They're not. that they're facing pain points or projects related to sales training. So Cody Labs says a front-line source in social and relationships has indicated the organisation is planning to begin initiatives related to sales automation and enablement.\nThat means for me as a sales trainer and someone offers keynotes most types of things They're a worthwhile company to reach out to and connect with so it's pretty incredible You can go a layer deeper than even what LinkedIn be able to provide to you. The next one here is intent This is the thing that really took some time to set up a couple of weeks back You can set up intent topic clusters set up key areas where people at those companies might be searching for that relate to your product service the pain points you help with and then you can target people based on\nOne, what accounts and what people at those accounts are showing some level of intent for what you sell. So if I go to intent score high and I select my KeenerOps, I'll go to short tab so people who have been searching for this topic in the past couple of weeks. Clio, which is a legal software based in Canada, has been searching for sales trainers and Keener speakers recently. Someone out there can at least. Therefore, it's worth me bumping that person up the top of my priority list and reaching out to someone at that company.\nbasically to initiate a conversation because it's more likely that they're actually looking for something like what I offer. And the last sales signal here is technologies, search for people using a specific technology. So let's say if I'm selling for Pandora and I want to try and sell to people who are using DocuSign and I put DocuSign in here and bang now I've got a list of 1,866 companies and 4,960 people at those companies who are in my buying group who are likely using DocuSign.\nI can reach out to these people and talk about the related pain points as to why people often switch from that tool. So that advanced search is pretty darn impressive. Like I mentioned, one of my favorite tools to use is LinkedIn Sales Navigator, and I would argue this goes deeper than that with the intent signals and more specific triggers and scoops that you can layer into the search. The next thing I want to look at is intent, so there's an entire tab just for intent. And that's where you can go a little bit deeper on some of the intent topics that I shared earlier. So I can select my intent topics.\nAnd I can also select the audience strength, so is it just one person in this company who's been searching that topic or is it multiple? So then when I click on this company, if it's coming from my results, eight by eight, it will actually give me more intent data about that. On June 1st, over five people from this company, eight by eight, have been searching for keynote speakers and sales training and those people were in the San Francisco office and the Romania office. So what does that give me information to do? Well, because I've fed Zooming for my buyer persona, I can look down here and find the right people.\npeople I can now reach out to as a result that intensity telling me hey these are the top people at this account you should probably reach out to based on this intensity this is dope I feel like a bit of idiot for not using this past few months tracker this is interesting stay in the loop when your contacts change jobs tell us which contacts to track and we'll do the rest upload a list you upload your list of top contacts from your customer list and if they change jobs you can hit them up at their new company websites now this is the part where I was like\nA couple of weeks ago I took a little WhatsApp and made sure there was something for us to look at in here, but basically I inserted a little piece of code on each of my landing pages on my website willaikin.com where I have a sales training course and t-shirts like this one. So I inserted this piece of ZoomInfo code onto my website a couple of weeks ago and now it's picking up people who are visiting my website and what companies they work for. I can now see 88 different companies who an employee at that company has visited my website.\nI can see this person went on my sales coaching page, my sales courses page and my sales team training page. I don't want that person to go to waste just because my website didn't convert them well. And because ZoomInfo knows who I sell to, it's pointed out that Chris is probably someone who I should reach out to at that account. This is reducing a lot of work for me to build lists. Let's look at the last couple of places and Hans, you can upload a list of contacts and your data might be inaccurate and it will basically cleanse that list for you and make it more accurate using their data.\ndata I will say that ZoomInfo is renowned well known to have some of the most accurate data in space I'll tell a story about this actually I used to work for a tech startup and we were using a competitive solution to ZoomInfo called LeadIQ and every rep had their own LeadIQ license so we were finding prospects to identify a target using LeadIQ to pull their contact information off of LinkedIn and then we were sequencing them in outreach however our sales ops and leadership team noticed that the contact information was really bad like half of the numbers were wrong\nfrom a lot of the emails were incorrect so they were bouncing so what they did was they went ahead and bought two licenses of zoom info for the sales ops people who then went through and cleansed all the data that we'd be getting from lead iq and then continued to add new data based on some of the signal scoops and whatnot so in terms of accuracy zoom info i'd say is probably renowned to be one of the better vendors in this space that the last thing i'm looking at here workflows everything we just ran through you could automate to be done automatically so for example\nFor example, if I go to site visit targeting and I try it, I can set a big trigger, for example when someone visits willakin.com on any page for any company.",
+  "usage": {
+    "input_tokens": 6417,
+    "output_tokens": 9113,
+    "total_tokens": 15530,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 5997,
+      "text_tokens": 420
+    }
+  }
+}

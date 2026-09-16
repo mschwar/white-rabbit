@@ -1,0 +1,497 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 11.152000000000001,
+      "speaker": "Lee Biby",
+      "start": 2.452,
+      "text": " We're family owned, we're not going to hire a lot, we don't have a huge team, it's not going to do this instead of you zoom in for the list.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 20.602000000000004,
+      "speaker": "Lee Biby",
+      "start": 12.702000000000002,
+      "text": " Or the pitch would have been most people who are in this industry pay $99 a month or $10,000 a month, whatever,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 22.602000000000004,
+      "speaker": "Lee Biby",
+      "start": 20.752000000000002,
+      "text": " for a zoom in for a list.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 29.402,
+      "speaker": "Lee Biby",
+      "start": 22.852000000000004,
+      "text": " You guys don't really have that capacity and you don't have the money to risk on shit leads that are just going to bug you down.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 37.134,
+      "speaker": "Lee Biby",
+      "start": 32.084,
+      "text": " What we would prefer to do is allow you to have access to very specific lists,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 44.184000000000005,
+      "speaker": "Lee Biby",
+      "start": 37.434000000000005,
+      "text": " zero in on higher value targeted people that we verify with White Rabbit.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 48.534000000000006,
+      "speaker": "Lee Biby",
+      "start": 45.48400000000001,
+      "text": " For instance, you can do a search there too,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 55.184000000000005,
+      "speaker": "Lee Biby",
+      "start": 48.684000000000005,
+      "text": " but the difference is they would, if they were already paying for Zoom,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 57.48400000000001,
+      "speaker": "Lee Biby",
+      "start": 55.23400000000001,
+      "text": " if they weren't paying for Zoom, I think",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 60.38400000000001,
+      "speaker": "Lee Biby",
+      "start": 59.084,
+      "text": " they would have bought it if it...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 68.456,
+      "speaker": "Lee Biby",
+      "start": 62.356,
+      "text": " But alternatively, we could have said how many leads are you going through a month?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 73.156,
+      "speaker": "Lee Biby",
+      "start": 68.906,
+      "text": " Okay, what if you let me verify",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 76.706,
+      "speaker": "Lee Biby",
+      "start": 74.606,
+      "text": " that contact information for an additional,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 82.856,
+      "speaker": "Lee Biby",
+      "start": 76.906,
+      "text": " for whatever a month and anything over 50% in height.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 86.906,
+      "speaker": "Lee Biby",
+      "start": 86.006,
+      "text": " That doesn't really,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 88.356,
+      "speaker": "Lee Biby",
+      "start": 87.006,
+      "text": " I'm not sure that works for that many.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 91.536,
+      "speaker": "Lee Biby",
+      "start": 90.036,
+      "text": " Just because she's still going to be this person.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 93.636,
+      "speaker": "Lee Biby",
+      "start": 92.436,
+      "text": " If it were a...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 112.286,
+      "speaker": "Matt Schwartz",
+      "start": 101.536,
+      "text": " So let's pretend we had a Thomas and we also had a couple of like maybe sales managers and high-level C-suite people.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 114.786,
+      "speaker": "Matt Schwartz",
+      "start": 113.38600000000001,
+      "text": " I would want to know.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 120.538,
+      "speaker": "Matt Schwartz",
+      "start": 116.788,
+      "text": " Okay, they're paying X amount of dollars per month.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 122.088,
+      "speaker": "Matt Schwartz",
+      "start": 121.038,
+      "text": " What are they paying for?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 124.88799999999999,
+      "speaker": "Matt Schwartz",
+      "start": 122.93799999999999,
+      "text": " Right there, okay, let's say they're paying for Zoom info.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 125.68799999999999,
+      "speaker": "Matt Schwartz",
+      "start": 124.988,
+      "text": " What does that mean?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 130.488,
+      "speaker": "Matt Schwartz",
+      "start": 126.93799999999999,
+      "text": " They're paying $5,000 a month for Zoom info? Okay, does that mean five queries?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 134.338,
+      "speaker": "Matt Schwartz",
+      "start": 130.938,
+      "text": " Is there a specific number of hits that they get?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 141.188,
+      "speaker": "Matt Schwartz",
+      "start": 135.938,
+      "text": " Like, I want to know what the current paid solution is and what it does.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 153.458,
+      "speaker": "Matt Schwartz",
+      "start": 143.508,
+      "text": " Because then that'll help us gauge what the value is that we have and it'll help us dial in to what our minimum product is.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 156.608,
+      "speaker": "Matt Schwartz",
+      "start": 155.508,
+      "text": " Is it a list of 100?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 157.208,
+      "speaker": "Matt Schwartz",
+      "start": 156.80800000000002,
+      "text": " I don't know.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 159.55800000000002,
+      "speaker": "Matt Schwartz",
+      "start": 158.508,
+      "text": " Might be a list of 10.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 165.80800000000002,
+      "speaker": "Matt Schwartz",
+      "start": 163.358,
+      "text": " But without that information we're kind of just,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 166.80800000000002,
+      "speaker": "Matt Schwartz",
+      "start": 165.90800000000002,
+      "text": " I",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 168.458,
+      "speaker": "Matt Schwartz",
+      "start": 168.258,
+      "text": " don't know.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 169.536,
+      "speaker": "Matt Schwartz",
+      "start": 169.236,
+      "text": " where",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 186.386,
+      "speaker": "Matt Schwartz",
+      "start": 171.286,
+      "text": " we don't even know what our own value is but if we have that we can be like yeah here here's what you would normally do you would pay $5,000 for zoom info that would buy you a list of a thousand leads ten percent of them are going to be actionable",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 193.386,
+      "speaker": "A",
+      "start": 187.83599999999998,
+      "text": " the past 10 years because they're once the largest content data sales intelligence solutions out there.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 200.84799999999998,
+      "speaker": "A",
+      "start": 196.148,
+      "text": " I sat down to start trying to record this video a couple of weeks ago and then started asking me to add target accounts,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 202.84799999999998,
+      "speaker": "A",
+      "start": 201.09799999999998,
+      "text": " add things to my website and I was like, dang,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 205.898,
+      "speaker": "A",
+      "start": 203.048,
+      "text": " I obviously have to do some setup here before I do it for all of you,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 206.698,
+      "speaker": "A",
+      "start": 205.998,
+      "text": " so I went and did that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 212.34799999999998,
+      "speaker": "A",
+      "start": 206.798,
+      "text": " But in doing that, I realised there's a ton more to it than just grabbing contact information and mobile phone numbers.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 214.19799999999998,
+      "speaker": "A",
+      "start": 212.548,
+      "text": " Let's take a look at the advanced search,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 216.34799999999998,
+      "speaker": "A",
+      "start": 214.298,
+      "text": " which is where I think a lot of people...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 221.34799999999998,
+      "speaker": "A",
+      "start": 217.748,
+      "text": " I feel people will spend most of their time in the platform. So in the advanced search,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 223.44799999999998,
+      "speaker": "A",
+      "start": 221.59799999999998,
+      "text": " you've got all the classic fields that you'd expect.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 226.34799999999998,
+      "speaker": "A",
+      "start": 223.548,
+      "text": " If you use LinkedIn Sales Navigator or even just core LinkedIn,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 227.19799999999998,
+      "speaker": "A",
+      "start": 226.498,
+      "text": " company size,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 228.298,
+      "speaker": "A",
+      "start": 227.44799999999998,
+      "text": " company geography,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 229.44799999999998,
+      "speaker": "A",
+      "start": 228.498,
+      "text": " contact geography,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 230.398,
+      "speaker": "A",
+      "start": 229.648,
+      "text": " job title,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 230.998,
+      "speaker": "A",
+      "start": 230.548,
+      "text": " revenue,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 231.748,
+      "speaker": "A",
+      "start": 231.298,
+      "text": " industry,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 233.398,
+      "speaker": "A",
+      "start": 231.898,
+      "text": " all those types of things you'd come to expect.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 234.648,
+      "speaker": "A",
+      "start": 233.548,
+      "text": " And you can search for companies,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 235.298,
+      "speaker": "A",
+      "start": 234.84799999999998,
+      "text": " contacts,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 243.548,
+      "speaker": "A",
+      "start": 235.498,
+      "text": " or scoops. And my understanding of scoops is it's like a trigger in reason or change or something going on in the account that might give you a good reason to reach out to that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 269.922,
+      "speaker": "A",
+      "start": 243.572,
+      "text": " that account so I can select my sales training buying committee and immediately we get 270,000 contacts and in that buying committee that I set up it's like sales enablement VP of sales CRO and then I can do my company account so let's just do minimum employee count 50 and max account 1000 but this is where we start to use the sales signals and as I mentioned before these are like triggers so I can select when the scoop happened if it's a recent or it's something happened within six months and then I can select the scoop",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 298.676,
+      "speaker": "A",
+      "start": 269.876,
+      "text": " scoops type so it's financial scoops divestures earnings mergers funding IPOs those types of things there's general business scoops they've won an award they've attended an event they've relocated their office they've entered a new geography they've launched a new product it's opportunity scoops and this one's probably the most interesting to me because you can literally type in a pain point or product or initiative and if zoominfo can pick it up it will find people who have an active project or initiative or pain point related to what you sell and then finally there's the personal scoops which is",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 299.88,
+      "speaker": "A",
+      "start": 298.58,
+      "text": " which is executive moves are implied.",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "We're family owned, we're not going to hire a lot, we don't have a huge team, it's not going to do this instead of you zoom in for the list. Or the pitch would have been most people who are in this industry pay $99 a month or $10,000 a month, whatever, for a zoom in for a list. You guys don't really have that capacity and you don't have the money to risk on shit leads that are just going to bug you down.\nWhat we would prefer to do is allow you to have access to very specific lists, zero in on higher value targeted people that we verify with White Rabbit. For instance, you can do a search there too, but the difference is they would, if they were already paying for Zoom, if they weren't paying for Zoom, I think they would have bought it if it...\nBut alternatively, we could have said how many leads are you going through a month? Okay, what if you let me verify that contact information for an additional, for whatever a month and anything over 50 % in height. That doesn't really, I'm not sure that works for that many.\nJust because she's still going to be this person. If it were a... So let's pretend we had a Thomas and we also had a couple of like maybe sales managers and high-level C-suite people. I would want to know.\nOkay, they're paying X amount of dollars per month. What are they paying for? Right there, okay, let's say they're paying for Zoom info. What does that mean? They're paying $5,000 a month for Zoom info? Okay, does that mean five queries? Is there a specific number of hits that they get? Like, I want to know what the current paid solution is and what it does.\nBecause then that'll help us gauge what the value is that we have and it'll help us dial in to what our minimum product is. Is it a list of 100? I don't know. Might be a list of 10. But without that information we're kind of just, I don't know.\nwhere we don't even know what our own value is but if we have that we can be like yeah here here's what you would normally do you would pay $5,000 for zoom info that would buy you a list of a thousand leads ten percent of them are going to be actionable the past 10 years because they're once the largest content data sales intelligence solutions out there.\nI sat down to start trying to record this video a couple of weeks ago and then started asking me to add target accounts, add things to my website and I was like, dang, I obviously have to do some setup here before I do it for all of you, so I went and did that. But in doing that, I realised there's a ton more to it than just grabbing contact information and mobile phone numbers. Let's take a look at the advanced search, which is where I think a lot of people...\nI feel people will spend most of their time in the platform. So in the advanced search, you've got all the classic fields that you'd expect. If you use LinkedIn Sales Navigator or even just core LinkedIn, company size, company geography, contact geography, job title, revenue, industry, all those types of things you'd come to expect. And you can search for companies, contacts, or scoops. And my understanding of scoops is it's like a trigger in reason or change or something going on in the account that might give you a good reason to reach out to that.\nthat account so I can select my sales training buying committee and immediately we get 270,000 contacts and in that buying committee that I set up it's like sales enablement VP of sales CRO and then I can do my company account so let's just do minimum employee count 50 and max account 1000 but this is where we start to use the sales signals and as I mentioned before these are like triggers so I can select when the scoop happened if it's a recent or it's something happened within six months and then I can select the scoop\nscoops type so it's financial scoops divestures earnings mergers funding IPOs those types of things there's general business scoops they've won an award they've attended an event they've relocated their office they've entered a new geography they've launched a new product it's opportunity scoops and this one's probably the most interesting to me because you can literally type in a pain point or product or initiative and if zoominfo can pick it up it will find people who have an active project or initiative or pain point related to what you sell and then finally there's the personal scoops which is\nwhich is executive moves are implied.",
+  "usage": {
+    "input_tokens": 5448,
+    "output_tokens": 8598,
+    "total_tokens": 14046,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 5090,
+      "text_tokens": 358
+    }
+  }
+}

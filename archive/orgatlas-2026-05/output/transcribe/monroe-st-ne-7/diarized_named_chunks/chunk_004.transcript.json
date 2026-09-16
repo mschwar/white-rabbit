@@ -1,0 +1,433 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 0.34,
+      "speaker": "Matt Schwartz",
+      "start": 0.34,
+      "text": " Got",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 0.7900000000000003,
+      "speaker": "Thomas Gentry",
+      "start": 0.34,
+      "text": " because they",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 0.8400000000000003,
+      "speaker": "Matt Schwartz",
+      "start": 0.7900000000000003,
+      "text": " it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 16.64,
+      "speaker": "Thomas Gentry",
+      "start": 0.8400000000000003,
+      "text": " might pull info from like you know linkedin or what have you and they try to aggregate four or five different data sources and then sometimes they know the email address right but a lot of the times it's assumption being made on that list from my understanding is not making assumptions",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 22.490000000000002,
+      "speaker": "Matt Schwartz",
+      "start": 18.64,
+      "text": " It's cross-checking them pretty rigorously. So the number...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 34.364000000000004,
+      "speaker": "Matt Schwartz",
+      "start": 23.764,
+      "text": " of leads is going to be way less right but we're using we're scraping like live websites and things like that and then we're doing what we can to cross-reference",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 49.414,
+      "speaker": "Thomas Gentry",
+      "start": 36.414,
+      "text": " that's the difference bro is the quality of data right basically if you think about it like this i employ somebody that's that i pay 60 grand a year to right and i say i want you to make 100 dials every day against this list",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 57.632,
+      "speaker": "Thomas Gentry",
+      "start": 50.132,
+      "text": " Do I want my person that I'm spending that money on to spend 80% of their time going to bad phone numbers and, you know, having kickback emails?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 58.681999999999995,
+      "speaker": "Thomas Gentry",
+      "start": 57.732,
+      "text": " Absolutely not.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 66.43199999999999,
+      "speaker": "Thomas Gentry",
+      "start": 58.882,
+      "text": " I'd rather it be that I have 80 contacts that are the right people because then you can put it into your CRM and you can say didn't connect,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 72.232,
+      "speaker": "Thomas Gentry",
+      "start": 66.782,
+      "text": " you know what I mean? You can start building some business intelligence against it and eventually you'll get it,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 73.182,
+      "speaker": "Thomas Gentry",
+      "start": 72.332,
+      "text": " you know what I'm saying?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 75.032,
+      "speaker": "Thomas Gentry",
+      "start": 73.232,
+      "text": " But the other one is you're just like, oh.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 78.04,
+      "speaker": "Thomas Gentry",
+      "start": 75.54,
+      "text": " Dial tone, dial tone, email return type of deal.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 79.89,
+      "speaker": "Matt Schwartz",
+      "start": 79.29,
+      "text": " Okay.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 85.94000000000001,
+      "speaker": "Lee Biby",
+      "start": 84.94000000000001,
+      "text": " Are we recording this thing?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 86.49000000000001,
+      "speaker": "Matt Schwartz",
+      "start": 85.94000000000001,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 102.14000000000001,
+      "speaker": "Lee Biby",
+      "start": 89.84,
+      "text": " So spending that kind of time on an energy on garbage leads is a compounding, you know, debt basically paying someone to waste your time and more resources.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 130.39000000000001,
+      "speaker": "Thomas Gentry",
+      "start": 103.54,
+      "text": " but that's an industry standard bro every company that i've worked in for the last 10 years my sdrs have been like okay i want you to go and tap x y and z and they're like this is a 25 year old guy girl hops in to zoom info puts in whatever variables and calls against that list and the majority of the time that list is nonsense you know what i mean i have to pee i'm gonna go off camera and unmute for a minute i'll be back here",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 130.44,
+      "speaker": "Matt Schwartz",
+      "start": 130.39000000000001,
+      "text": " This",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 130.84,
+      "speaker": "Thomas Gentry",
+      "start": 130.44,
+      "text": " we go you guys",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 131.04000000000002,
+      "speaker": "Matt Schwartz",
+      "start": 130.84,
+      "text": " sounds",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 131.19,
+      "speaker": "Thomas Gentry",
+      "start": 131.04000000000002,
+      "text": " chat",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 132.04000000000002,
+      "speaker": "Matt Schwartz",
+      "start": 131.19,
+      "text": " good.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 139.11599999999999,
+      "speaker": "Thomas Gentry",
+      "start": 136.916,
+      "text": " You got a chat though. Don't just let me sit here in the quietness.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 144.11599999999999,
+      "speaker": "Lee Biby",
+      "start": 140.166,
+      "text": " and say we don't want to get you shot um well",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 144.816,
+      "speaker": "Matt Schwartz",
+      "start": 144.316,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 147.716,
+      "speaker": "Matt Schwartz",
+      "start": 144.86599999999999,
+      "text": " the business intelligence surface",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 153.166,
+      "speaker": "Matt Schwartz",
+      "start": 149.416,
+      "text": " is also really promising in terms of value,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 156.216,
+      "speaker": "Matt Schwartz",
+      "start": 153.266,
+      "text": " something to think about.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 166.066,
+      "speaker": "Lee Biby",
+      "start": 162.666,
+      "text": " you could see it i mean i guess you could make the case like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 180.606,
+      "speaker": "Lee Biby",
+      "start": 167.156,
+      "text": " Just break it down. You have four entry-level employees at 60 grand a year working through 5,000 contacts every other month or a month,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 184.256,
+      "speaker": "Lee Biby",
+      "start": 180.806,
+      "text": " 10 to 20% of those you might actually get through.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 193.806,
+      "speaker": "Lee Biby",
+      "start": 185.406,
+      "text": " And then you just make the calculation like why are you wasting three people's salaries when you could just have good data.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 199.36999999999998,
+      "speaker": "Lee Biby",
+      "start": 194.42,
+      "text": " I'd like to base maker payments off there and make your pricing comparable to that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 216.57,
+      "speaker": "Matt Schwartz",
+      "start": 210.72,
+      "text": " So a couple of things. One is how are we going to make it sticky,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 220.32,
+      "speaker": "Matt Schwartz",
+      "start": 216.67,
+      "text": " right? So that we keep them.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 220.884,
+      "speaker": "Thomas Gentry",
+      "start": 220.884,
+      "text": " people",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 222.684,
+      "speaker": "Matt Schwartz",
+      "start": 220.884,
+      "text": " keep them subscribed so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 225.83399999999997,
+      "speaker": "Thomas Gentry",
+      "start": 222.684,
+      "text": " I'm not in me not in me",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 248.634,
+      "speaker": "Matt Schwartz",
+      "start": 228.384,
+      "text": " one one idea is that we enrich contacts right so um right now we're already doing some like low-level cross-referencing and things like that so the baseline is already going to be pretty good but we can do some additional cross-referencing things like their socials",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 251.896,
+      "speaker": "Matt Schwartz",
+      "start": 249.396,
+      "text": " tax records kind of thing things like that",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 259.69599999999997,
+      "speaker": "Thomas Gentry",
+      "start": 253.34599999999998,
+      "text": " I love that right but we're getting too complicated in my opinion I love the enrichment of the data because it's important right",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 267.12600000000003,
+      "speaker": "Thomas Gentry",
+      "start": 260.276,
+      "text": " What I think is going to be a differentiator for us is ease of use, being able to go in there and into the search bar, right,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 269.476,
+      "speaker": "Thomas Gentry",
+      "start": 267.226,
+      "text": " for them to be able to go in and say,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 273.976,
+      "speaker": "Thomas Gentry",
+      "start": 269.576,
+      "text": " I want to talk to people that are 19 through 35 that do X,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 275.226,
+      "speaker": "Thomas Gentry",
+      "start": 274.026,
+      "text": " Y, and Z in this vertical.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 276.87600000000003,
+      "speaker": "Thomas Gentry",
+      "start": 275.576,
+      "text": " Bring me back that data.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 284.926,
+      "speaker": "Thomas Gentry",
+      "start": 277.026,
+      "text": " I like having the snippets and I think that like off of your point of view in the sandbox that we can sell it in a capacity of saying,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 285.326,
+      "speaker": "Thomas Gentry",
+      "start": 284.976,
+      "text": " hey, look,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 286.87600000000003,
+      "speaker": "Thomas Gentry",
+      "start": 285.37600000000003,
+      "text": " these are...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 299.858,
+      "speaker": "Thomas Gentry",
+      "start": 287.508,
+      "text": " just sandbox type of prompts if you will you know the problem is is if we make it too complicated where they have to come back to us for configuration all the time that makes it the ease of use not fun for them",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "Got because they it. might pull info from like you know linkedin or what have you and they try to aggregate four or five different data sources and then sometimes they know the email address right but a lot of the times it's assumption being made on that list from my understanding is not making assumptions It's cross-checking them pretty rigorously. So the number...\nof leads is going to be way less right but we're using we're scraping like live websites and things like that and then we're doing what we can to cross-reference that's the difference bro is the quality of data right basically if you think about it like this i employ somebody that's that i pay 60 grand a year to right and i say i want you to make 100 dials every day against this list\nDo I want my person that I'm spending that money on to spend 80% of their time going to bad phone numbers and, you know, having kickback emails? Absolutely not. I'd rather it be that I have 80 contacts that are the right people because then you can put it into your CRM and you can say didn't connect, you know what I mean? You can start building some business intelligence against it and eventually you'll get it, you know what I'm saying? But the other one is you're just like, oh.\nDial tone, dial tone, email return type of deal. Okay. Are we recording this thing? Yeah. So spending that kind of time on an energy on garbage leads is a compounding, you know, debt basically paying someone to waste your time and more resources.\nbut that's an industry standard bro every company that i've worked in for the last 10 years my sdrs have been like okay i want you to go and tap x y and z and they're like this is a 25 year old guy girl hops in to zoom info puts in whatever variables and calls against that list and the majority of the time that list is nonsense you know what i mean i have to pee i'm gonna go off camera and unmute for a minute i'll be back here This we go you guys sounds chat good.\nYou got a chat though. Don't just let me sit here in the quietness. and say we don't want to get you shot um well Yeah, the business intelligence surface is also really promising in terms of value, something to think about. you could see it i mean i guess you could make the case like\nJust break it down. You have four entry-level employees at 60 grand a year working through 5 ,000 contacts every other month or a month, 10 to 20% of those you might actually get through. And then you just make the calculation like why are you wasting three people's salaries when you could just have good data.\nI'd like to base maker payments off there and make your pricing comparable to that. So a couple of things. One is how are we going to make it sticky, right? So that we keep them.\npeople keep them subscribed so I'm not in me not in me one one idea is that we enrich contacts right so um right now we're already doing some like low -level cross-referencing and things like that so the baseline is already going to be pretty good but we can do some additional cross-referencing things like their socials\ntax records kind of thing things like that I love that right but we're getting too complicated in my opinion I love the enrichment of the data because it's important right\nWhat I think is going to be a differentiator for us is ease of use, being able to go in there and into the search bar, right, for them to be able to go in and say, I want to talk to people that are 19 through 35 that do X, Y, and Z in this vertical. Bring me back that data. I like having the snippets and I think that like off of your point of view in the sandbox that we can sell it in a capacity of saying, hey, look, these are...\njust sandbox type of prompts if you will you know the problem is is if we make it too complicated where they have to come back to us for configuration all the time that makes it the ease of use not fun for them",
+  "usage": {
+    "input_tokens": 6296,
+    "output_tokens": 8605,
+    "total_tokens": 14901,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 5828,
+      "text_tokens": 468
+    }
+  }
+}

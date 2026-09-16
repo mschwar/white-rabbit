@@ -1,0 +1,473 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 0.2500000000000002,
+      "speaker": "A",
+      "start": 0.0,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 3.5999999999999996,
+      "speaker": "A",
+      "start": 0.40000000000000013,
+      "text": " I don't know what message is on this thing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 11.950000000000001,
+      "speaker": "B",
+      "start": 4.8999999999999995,
+      "text": " it's like on the first one see it so just type that Claude CLI install",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 31.456,
+      "speaker": "B",
+      "start": 27.956,
+      "text": " And then you're going to go down to,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 32.756,
+      "speaker": "B",
+      "start": 31.555999999999997,
+      "text": " it's probably the Cloud,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 37.656,
+      "speaker": "B",
+      "start": 32.906,
+      "text": " like the Quick Start Cloud Code Docs, and just scroll down.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 53.406,
+      "speaker": "A",
+      "start": 51.156,
+      "text": " Make sure you have no JPEGs.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 56.556,
+      "speaker": "B",
+      "start": 54.355999999999995,
+      "text": " Yeah, we already installed that when you were over.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 56.855999999999995,
+      "speaker": "B",
+      "start": 56.605999999999995,
+      "text": " Remember,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 58.105999999999995,
+      "speaker": "B",
+      "start": 57.006,
+      "text": " it took forever to install.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 55.716,
+      "speaker": "A",
+      "start": 55.316,
+      "text": " Oh",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 62.966,
+      "speaker": "B",
+      "start": 56.616,
+      "text": " So try the first one, this curl fssl, just copy that and drop it into your CLI.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 85.612,
+      "speaker": "B",
+      "start": 81.812,
+      "text": " So if you go down, do you see the thing that says Mac OS Linux?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 96.612,
+      "speaker": "A",
+      "start": 94.362,
+      "text": " I don't know if I'm looking where you're looking,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 96.912,
+      "speaker": "A",
+      "start": 96.712,
+      "text": " when",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 99.462,
+      "speaker": "B",
+      "start": 96.912,
+      "text": " Are you on, so look at your URL,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 101.512,
+      "speaker": "B",
+      "start": 99.562,
+      "text": " is it code.claud.com?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 104.312,
+      "speaker": "A",
+      "start": 103.012,
+      "text": " I'm at cloudcodes.com,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 105.162,
+      "speaker": "A",
+      "start": 104.412,
+      "text": " box,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 108.712,
+      "speaker": "A",
+      "start": 105.362,
+      "text": " code.cloudcodes",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 113.36,
+      "speaker": "B",
+      "start": 108.66,
+      "text": " So if you scroll down, keep scrolling down until you get to step one, install Cloud Code.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 119.75999999999999,
+      "speaker": "A",
+      "start": 118.66,
+      "text": " Install Cloud Cook.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 122.36,
+      "speaker": "B",
+      "start": 120.16,
+      "text": " So you're just going to go to that first one,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 123.16,
+      "speaker": "B",
+      "start": 122.46,
+      "text": " the macOS,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 123.61,
+      "speaker": "B",
+      "start": 123.25999999999999,
+      "text": " Linux,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 124.96,
+      "speaker": "B",
+      "start": 123.81,
+      "text": " and WSL,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 125.96,
+      "speaker": "B",
+      "start": 125.06,
+      "text": " and",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 131.41,
+      "speaker": "B",
+      "start": 127.56,
+      "text": " then you're going to copy it and then paste it into your terminal.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 154.668,
+      "speaker": "B",
+      "start": 153.268,
+      "text": " Okay, so then do the next one.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 155.968,
+      "speaker": "B",
+      "start": 154.768,
+      "text": " Are you in Windows or Linux?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 160.868,
+      "speaker": "A",
+      "start": 159.518,
+      "text": " I guess I'm in Windows.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 164.118,
+      "speaker": "B",
+      "start": 160.868,
+      "text": " Okay, so then do the Windows PowerShell. Do the one below it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 165.768,
+      "speaker": "B",
+      "start": 164.718,
+      "text": " Copy and paste that one.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 172.918,
+      "speaker": "A",
+      "start": 171.368,
+      "text": " But do I want it to be in the Linux?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 174.568,
+      "speaker": "B",
+      "start": 173.818,
+      "text": " Don't worry about it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 176.21800000000002,
+      "speaker": "B",
+      "start": 175.168,
+      "text": " For now, just yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 177.068,
+      "speaker": "B",
+      "start": 176.318,
+      "text": " you just want to get it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 180.91,
+      "speaker": "B",
+      "start": 178.26,
+      "text": " and then it can help you nice",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 185.51,
+      "speaker": "A",
+      "start": 183.70999999999998,
+      "text": " setting up Cloud Code okay so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 185.60999999999999,
+      "speaker": "B",
+      "start": 185.51,
+      "text": " and",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 186.20999999999998,
+      "speaker": "A",
+      "start": 185.60999999999999,
+      "text": " on Cloud Code",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 202.66,
+      "speaker": "B",
+      "start": 187.91,
+      "text": " then that'll prompt you to authenticate and once you authenticate it'll link it to your cloud account and then you know instead of writing codecs you can write just cloud and it'll turn on the the cli like the",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 208.97,
+      "speaker": "B",
+      "start": 204.02,
+      "text": " It'll be the exact same thing that you're doing with codecs, but instead of doing it with ChatGPT, you'll be doing it with Claude.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 221.92000000000002,
+      "speaker": "A",
+      "start": 209.92000000000002,
+      "text": " Okay, but then and then but then all of the like renderings from Claude is going to be they're going to be in a file not to show up in the PowerShell and self-complete, okay",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 225.87,
+      "speaker": "B",
+      "start": 224.07000000000002,
+      "text": " Well, when you have a repository,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 230.07000000000002,
+      "speaker": "B",
+      "start": 225.97000000000003,
+      "text": " it's all going to the same place, right? Because it's all going into the repository on your computer.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 235.356,
+      "speaker": "B",
+      "start": 231.156,
+      "text": " So the agents you can just tell the agents to be point you point them to the same directory",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 241.856,
+      "speaker": "B",
+      "start": 240.106,
+      "text": " So they're kind of interchangeable",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 246.906,
+      "speaker": "A",
+      "start": 243.95600000000002,
+      "text": " Right now I'm just working out of users L5B.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 247.906,
+      "speaker": "A",
+      "start": 246.95600000000002,
+      "text": " Let's go down L8.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 251.45600000000002,
+      "speaker": "A",
+      "start": 248.756,
+      "text": " C drive users L5B.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 252.406,
+      "speaker": "B",
+      "start": 251.906,
+      "text": " Okay,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 258.656,
+      "speaker": "B",
+      "start": 252.45600000000002,
+      "text": " well once you start like making projects you just create like a directory and then you make you start it in that directory",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 264.15,
+      "speaker": "B",
+      "start": 259.7,
+      "text": " Or you could just tell it to go into the directory with normal words. Just say,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 265.25,
+      "speaker": "B",
+      "start": 264.2,
+      "text": " hey, go to this directory.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 271.55,
+      "speaker": "A",
+      "start": 270.15,
+      "text": " I don't know where Thomas is at.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 298.22999999999996,
+      "speaker": "A",
+      "start": 297.78,
+      "text": " Thomas has",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "Yeah, I don't know what message is on this thing. it's like on the first one see it so just type that Claude CLI install\nAnd then you're going to go down to, it's probably the Cloud, like the Quick Start Cloud Code Docs, and just scroll down. Make sure you have no JPEGs. Yeah, we already installed that when you were over. Remember, it took forever to install.\nOh So try the first one, this curl fssl, just copy that and drop it into your CLI.\nSo if you go down, do you see the thing that says Mac OS Linux? I don't know if I'm looking where you're looking, when Are you on, so look at your URL, is it code.claud.com? I'm at cloudcodes.com, box, code.cloudcodes\nSo if you scroll down, keep scrolling down until you get to step one, install Cloud Code. Install Cloud Cook. So you're just going to go to that first one, the macOS, Linux, and WSL, and then you're going to copy it and then paste it into your terminal.\nOkay, so then do the next one. Are you in Windows or Linux? I guess I'm in Windows. Okay, so then do the Windows PowerShell. Do the one below it. Copy and paste that one. But do I want it to be in the Linux? Don't worry about it. For now, just yeah, you just want to get it.\nand then it can help you nice setting up Cloud Code okay so and on Cloud Code then that'll prompt you to authenticate and once you authenticate it'll link it to your cloud account and then you know instead of writing codecs you can write just cloud and it'll turn on the the cli like the\nIt'll be the exact same thing that you're doing with codecs, but instead of doing it with ChatGPT, you'll be doing it with Claude. Okay, but then and then but then all of the like renderings from Claude is going to be they're going to be in a file not to show up in the PowerShell and self -complete, okay Well, when you have a repository, it's all going to the same place, right? Because it's all going into the repository on your computer.\nSo the agents you can just tell the agents to be point you point them to the same directory So they're kind of interchangeable Right now I'm just working out of users L5B. Let's go down L8. C drive users L5B. Okay, well once you start like making projects you just create like a directory and then you make you start it in that directory\nOr you could just tell it to go into the directory with normal words. Just say, hey, go to this directory. I don't know where Thomas is at.\nThomas has",
+  "usage": {
+    "input_tokens": 3515,
+    "output_tokens": 6417,
+    "total_tokens": 9932,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 3275,
+      "text_tokens": 240
+    }
+  }
+}

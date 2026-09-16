@@ -1,0 +1,433 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 9.8,
+      "speaker": "A",
+      "start": 0.0,
+      "text": " every little thing is a sign in and then get your A2P clearance and then do the that's the pain of life but we'll figure it out yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 11.7,
+      "speaker": "B",
+      "start": 10.25,
+      "text": " it's good thing you have ai help right",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 19.849999999999998,
+      "speaker": "A",
+      "start": 13.1,
+      "text": " and then it's like oh from your screenshot you're not in the right place I'm like oh okay it'll be good to tell me that",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 25.599999999999998,
+      "speaker": "B",
+      "start": 23.15,
+      "text": " oh man how's all the ai stuff going",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 39.524,
+      "speaker": "A",
+      "start": 27.924,
+      "text": " I'm just kind of using it right now, but I still haven't figured out what I'm doing with like adding the bubble wrap,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 41.824,
+      "speaker": "A",
+      "start": 39.724,
+      "text": " whatever the hell that is,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 54.123999999999995,
+      "speaker": "A",
+      "start": 41.873999999999995,
+      "text": " and then it's connected to my chat GPT, so it either does or does not allow adding that, and if you're in 5.5, I have to go back down to...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 58.75,
+      "speaker": "A",
+      "start": 54.9,
+      "text": " 4.5 or I don't know it's so I'm confused on that part still wait I don't know it's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 61.3,
+      "speaker": "B",
+      "start": 58.75,
+      "text": " for your bump what are you talking about bow wrap what's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 73.45,
+      "speaker": "A",
+      "start": 62.199999999999996,
+      "text": " like all the the phases that the other two phases that we didn't do before I left your house adding the Linux and all that shit that's kind of where I'm at right now it",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 75.55,
+      "speaker": "B",
+      "start": 73.45,
+      "text": " the project like what are you building",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 77.75,
+      "speaker": "A",
+      "start": 76.05,
+      "text": " wasn't it wasn't",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 80.36200000000001,
+      "speaker": "B",
+      "start": 80.212,
+      "text": " That's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 80.662,
+      "speaker": "A",
+      "start": 80.36200000000001,
+      "text": " so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 80.812,
+      "speaker": "B",
+      "start": 80.662,
+      "text": " not.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 95.762,
+      "speaker": "A",
+      "start": 80.812,
+      "text": " that's where i'm at i'm like okay i did all this shit and it's saying that like there's a there's an error because i've now connected it told me to connect it to my gpt account but",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 104.662,
+      "speaker": "A",
+      "start": 97.162,
+      "text": " yeah now i'm just confused about it and then i don't even know what to use when so i need to you know figure that out too",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 107.91199999999999,
+      "speaker": "A",
+      "start": 105.812,
+      "text": " like when am i using i",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 115.462,
+      "speaker": "A",
+      "start": 109.462,
+      "text": " don't know when am i going from codex to claw just depending on what i'm trying to accomplish and then why",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 121.062,
+      "speaker": "A",
+      "start": 117.062,
+      "text": " i have linux on there i don't really know it's supposed to be more powerful but no",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 122.96199999999999,
+      "speaker": "B",
+      "start": 121.062,
+      "text": " Do you are you using cloud as well?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 129.212,
+      "speaker": "A",
+      "start": 124.012,
+      "text": " not really not yet i signed up for actually cloud design because if i'm doing marketing stuff that's going to be better",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 133.912,
+      "speaker": "A",
+      "start": 130.062,
+      "text": " but i use it as a desktop not as the it's not in the coding",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 137.338,
+      "speaker": "A",
+      "start": 135.188,
+      "text": " PowerShell, because I don't know why I would do that or how.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 161.03799999999998,
+      "speaker": "B",
+      "start": 137.53799999999998,
+      "text": " same same way so you can we didn't talk about cloud because you already had the paid subscription for chat gpt um but it's the same exact thing so actually both you can install applications on your like windows or linux or mac and then both you can install in the cli so you can just tell uh hold on let me see",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 168.948,
+      "speaker": "B",
+      "start": 162.548,
+      "text": " cool so you can just google cli cloud install um",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 172.448,
+      "speaker": "B",
+      "start": 171.348,
+      "text": " and here",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 175.548,
+      "speaker": "A",
+      "start": 172.448,
+      "text": " See, I need to get a sticky note of the freaking acronyms.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 179.198,
+      "speaker": "A",
+      "start": 176.248,
+      "text": " I'm like, wait a second,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 179.998,
+      "speaker": "A",
+      "start": 179.298,
+      "text": " where does that go?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 185.098,
+      "speaker": "B",
+      "start": 180.448,
+      "text": " let me let me uh put a thing in the chat here so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 190.598,
+      "speaker": "B",
+      "start": 188.048,
+      "text": " you should be able to just put that into your powershell",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 197.484,
+      "speaker": "A",
+      "start": 196.084,
+      "text": " After I paid for it, how long?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 206.934,
+      "speaker": "B",
+      "start": 198.234,
+      "text": " uh so yeah so this just installs it in your cli so you know how you hit codex in your um powershell so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 213.234,
+      "speaker": "B",
+      "start": 208.334,
+      "text": " you're going to write clod instead but first you have to run this command so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 221.584,
+      "speaker": "B",
+      "start": 218.88400000000001,
+      "text": " one of the acronyms that you need to know is cli",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 224.766,
+      "speaker": "B",
+      "start": 222.516,
+      "text": " And that is command line interface.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 235.266,
+      "speaker": "B",
+      "start": 227.566,
+      "text": " So we are working like when you're talking about PowerShell, there's terminal PowerShell console bash.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 240.21599999999998,
+      "speaker": "B",
+      "start": 235.36599999999999,
+      "text": " All those things are just kind of different versions of a command line interface.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 246.01000000000002,
+      "speaker": "A",
+      "start": 245.46,
+      "text": " Got that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 249.41,
+      "speaker": "B",
+      "start": 246.26000000000002,
+      "text": " So did you see the thing in the messages?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 249.81,
+      "speaker": "A",
+      "start": 249.41,
+      "text": " Oh.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 250.36,
+      "speaker": "B",
+      "start": 249.81,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 255.26000000000002,
+      "speaker": "B",
+      "start": 250.41,
+      "text": " so just copy and paste that and then drop it into your CLI.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 261.66,
+      "speaker": "A",
+      "start": 259.11,
+      "text": " Oh, I'm on my phone because I didn't.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 268.56,
+      "speaker": "B",
+      "start": 265.26,
+      "text": " So then what you can do is you can just Google.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 274.338,
+      "speaker": "B",
+      "start": 271.988,
+      "text": " Claude CLI install.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 281.938,
+      "speaker": "A",
+      "start": 281.488,
+      "text": " What?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 283.938,
+      "speaker": "B",
+      "start": 283.588,
+      "text": " Here,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 284.438,
+      "speaker": "B",
+      "start": 283.988,
+      "text": " I'll write it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 290.588,
+      "speaker": "B",
+      "start": 288.788,
+      "text": " So you're going to be Googling.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 296.038,
+      "speaker": "B",
+      "start": 295.438,
+      "text": " Do you see it?",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "every little thing is a sign in and then get your A2P clearance and then do the that's the pain of life but we'll figure it out yeah it's good thing you have ai help right and then it's like oh from your screenshot you're not in the right place I'm like oh okay it'll be good to tell me that oh man how's all the ai stuff going\nI'm just kind of using it right now, but I still haven't figured out what I'm doing with like adding the bubble wrap, whatever the hell that is, and then it's connected to my chat GPT, so it either does or does not allow adding that, and if you're in 5.5, I have to go back down to...\n4.5 or I don't know it's so I'm confused on that part still wait I don't know it's for your bump what are you talking about bow wrap what's like all the the phases that the other two phases that we didn't do before I left your house adding the Linux and all that shit that's kind of where I'm at right now it the project like what are you building wasn't it wasn't\nThat's so not. that's where i'm at i'm like okay i did all this shit and it's saying that like there's a there's an error because i've now connected it told me to connect it to my gpt account but yeah now i'm just confused about it and then i don't even know what to use when so i need to you know figure that out too\nlike when am i using i don't know when am i going from codex to claw just depending on what i'm trying to accomplish and then why i have linux on there i don't really know it's supposed to be more powerful but no Do you are you using cloud as well? not really not yet i signed up for actually cloud design because if i'm doing marketing stuff that's going to be better but i use it as a desktop not as the it's not in the coding\nPowerShell, because I don't know why I would do that or how. same same way so you can we didn't talk about cloud because you already had the paid subscription for chat gpt um but it's the same exact thing so actually both you can install applications on your like windows or linux or mac and then both you can install in the cli so you can just tell uh hold on let me see\ncool so you can just google cli cloud install um and here See, I need to get a sticky note of the freaking acronyms. I'm like, wait a second, where does that go? let me let me uh put a thing in the chat here so you should be able to just put that into your powershell\nAfter I paid for it, how long? uh so yeah so this just installs it in your cli so you know how you hit codex in your um powershell so you're going to write clod instead but first you have to run this command so one of the acronyms that you need to know is cli\nAnd that is command line interface. So we are working like when you're talking about PowerShell, there's terminal PowerShell console bash. All those things are just kind of different versions of a command line interface.\nGot that. So did you see the thing in the messages? Oh. Yeah, so just copy and paste that and then drop it into your CLI. Oh, I'm on my phone because I didn't. So then what you can do is you can just Google.\nClaude CLI install. What? Here, I'll write it. So you're going to be Googling. Do you see it?",
+  "usage": {
+    "input_tokens": 4603,
+    "output_tokens": 7991,
+    "total_tokens": 12594,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 4373,
+      "text_tokens": 230
+    }
+  }
+}

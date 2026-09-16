@@ -1,0 +1,769 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 10.662,
+      "speaker": "Matt Schwartz",
+      "start": 1.012,
+      "text": " the county to the city to a university to uh you said public sector so not necessarily things like private security or uh",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 11.262,
+      "speaker": "Thomas Gentry",
+      "start": 10.662,
+      "text": " I would,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 11.512,
+      "speaker": "Matt Schwartz",
+      "start": 11.262,
+      "text": " that's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 12.162,
+      "speaker": "Thomas Gentry",
+      "start": 11.512,
+      "text": " yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 12.212000000000002,
+      "speaker": "Matt Schwartz",
+      "start": 12.162,
+      "text": "",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 21.862,
+      "speaker": "Thomas Gentry",
+      "start": 12.212000000000002,
+      "text": " what I think we should do rather than that is if you're doing work on the front end, it's actually neat and scotty, we'll show them the four ones that you pre-built, and they'll say, how can we expand on that, you know?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 22.612,
+      "speaker": "Matt Schwartz",
+      "start": 21.862,
+      "text": " a good idea yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 28.061999999999998,
+      "speaker": "Thomas Gentry",
+      "start": 24.162,
+      "text": " That way you're not wasting your time, and we're not doing a bunch of unnecessary work.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 32.186,
+      "speaker": "Thomas Gentry",
+      "start": 29.236,
+      "text": " right we can go in and show them what they're today and then we can switch the variables",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 33.236,
+      "speaker": "Matt Schwartz",
+      "start": 32.386,
+      "text": " Cool. Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 38.686,
+      "speaker": "Matt Schwartz",
+      "start": 33.586,
+      "text": " So any high level stuff that you're just like this does not work at all.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 55.135999999999996,
+      "speaker": "Thomas Gentry",
+      "start": 39.885999999999996,
+      "text": " what i want the ui to have our logo on it somewhere like actually like looking branded i think that would make it like i like what it looks like so far or like a white rabbit or you know what i'm saying something like that like you made it small in the corner just those like little minuscule things that make it look different",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 57.891999999999996,
+      "speaker": "Thomas Gentry",
+      "start": 57.492,
+      "text": " I'm not.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 63.742,
+      "speaker": "Matt Schwartz",
+      "start": 63.092,
+      "text": " Awesome.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 67.632,
+      "speaker": "Thomas Gentry",
+      "start": 66.932,
+      "text": " What do you guys think?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 69.482,
+      "speaker": "Thomas Gentry",
+      "start": 67.732,
+      "text": " I mean, that's the only thing. I think the font looks good.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 70.632,
+      "speaker": "Thomas Gentry",
+      "start": 69.532,
+      "text": " I think the platform looks good.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 73.132,
+      "speaker": "Thomas Gentry",
+      "start": 70.732,
+      "text": " The data that gets pulled back is high level.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 73.932,
+      "speaker": "Thomas Gentry",
+      "start": 73.282,
+      "text": " You know what I mean?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 75.03200000000001,
+      "speaker": "Thomas Gentry",
+      "start": 73.982,
+      "text": " It's a deep dive.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 83.382,
+      "speaker": "Thomas Gentry",
+      "start": 75.432,
+      "text": " And if we can speak to the fact that we can change the input and output and it is what it is, you know, we can show the value that way.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 89.132,
+      "speaker": "Thomas Gentry",
+      "start": 83.58200000000001,
+      "text": " I think what's going to happen is we'll show the demo and they're going to want a POC, which I'll have to bring in on that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 90.53200000000001,
+      "speaker": "Thomas Gentry",
+      "start": 89.28200000000001,
+      "text": " And you could basically say,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 90.882,
+      "speaker": "Thomas Gentry",
+      "start": 90.632,
+      "text": " OK,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 94.33200000000001,
+      "speaker": "Thomas Gentry",
+      "start": 90.982,
+      "text": " we'll give you two different buckets that you can go after.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 97.79400000000001,
+      "speaker": "Thomas Gentry",
+      "start": 94.644,
+      "text": " you know in a test you know some kind of conditions right",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 98.394,
+      "speaker": "Matt Schwartz",
+      "start": 97.79400000000001,
+      "text": " Awesome.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 99.79400000000001,
+      "speaker": "Matt Schwartz",
+      "start": 99.34400000000001,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 102.144,
+      "speaker": "Matt Schwartz",
+      "start": 99.84400000000001,
+      "text": " so we're basically going to be a niche.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 106.79400000000001,
+      "speaker": "Matt Schwartz",
+      "start": 102.694,
+      "text": " We're going to propose ourselves as a niche Zoom info,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 107.394,
+      "speaker": "Matt Schwartz",
+      "start": 106.944,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 115.944,
+      "speaker": "Matt Schwartz",
+      "start": 107.494,
+      "text": " So it's like we're totally bespoke to you and to your company instead of just running a bunch of queries on things that are probably crap.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 118.844,
+      "speaker": "Matt Schwartz",
+      "start": 116.094,
+      "text": " You have a company that's going to be vetting all this stuff for you.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 121.468,
+      "speaker": "Matt Schwartz",
+      "start": 119.668,
+      "text": " And tailoring the search to you.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 125.86800000000001,
+      "speaker": "Thomas Gentry",
+      "start": 122.418,
+      "text": " So today we're a boutique shop is how I was talking to Lee about earlier.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 128.21800000000002,
+      "speaker": "Thomas Gentry",
+      "start": 126.31800000000001,
+      "text": " I want us to get to the point where we're Target,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 129.168,
+      "speaker": "Thomas Gentry",
+      "start": 128.46800000000002,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 130.21800000000002,
+      "speaker": "Thomas Gentry",
+      "start": 129.518,
+      "text": " You know what I'm saying?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 130.318,
+      "speaker": "Matt Schwartz",
+      "start": 130.21800000000002,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 131.768,
+      "speaker": "Thomas Gentry",
+      "start": 130.318,
+      "text": " So for our first sale or two,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 134.618,
+      "speaker": "Thomas Gentry",
+      "start": 131.868,
+      "text": " we can sell it however it makes sense and I can speak to that cop track.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 139.168,
+      "speaker": "Thomas Gentry",
+      "start": 135.018,
+      "text": " And then eventually I'd like for us to have that query that we were talking about on that entry point.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 144.868,
+      "speaker": "Thomas Gentry",
+      "start": 139.268,
+      "text": " But I can sell your vision for now and it really limits the risk for us, I guess, as well.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 145.682,
+      "speaker": "Matt Schwartz",
+      "start": 145.332,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 148.182,
+      "speaker": "Matt Schwartz",
+      "start": 148.03199999999998,
+      "text": " Sweet.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 150.382,
+      "speaker": "Thomas Gentry",
+      "start": 148.182,
+      "text": " hi gents anything else no",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 151.28199999999998,
+      "speaker": "Matt Schwartz",
+      "start": 150.382,
+      "text": " That's awesome, man.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 152.132,
+      "speaker": "Matt Schwartz",
+      "start": 151.332,
+      "text": " Super helpful.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 163.78199999999998,
+      "speaker": "Thomas Gentry",
+      "start": 153.432,
+      "text": " you guys are amazing i'm gonna get the demo scheduled i text scotty earlier i was trying to give us some bandwidth to actually make sure we had something that gave us like a good foot going forward rather than want to show up and kind of you",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 164.332,
+      "speaker": "Matt Schwartz",
+      "start": 163.78199999999998,
+      "text": " Yeah, yeah, cool.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 172.432,
+      "speaker": "Thomas Gentry",
+      "start": 164.332,
+      "text": " know something terrible if you will and give you some bandwidth but i'll look to get something scheduled like later next week and then and then we'll go from there yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 172.882,
+      "speaker": "Matt Schwartz",
+      "start": 172.432,
+      "text": " It's great,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 173.082,
+      "speaker": "Matt Schwartz",
+      "start": 172.982,
+      "text": " man.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 175.876,
+      "speaker": "Lee Biby",
+      "start": 175.476,
+      "text": " Well,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 180.426,
+      "speaker": "Lee Biby",
+      "start": 175.926,
+      "text": " we're going to intercept",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 184.276,
+      "speaker": "Lee Biby",
+      "start": 183.076,
+      "text": " questions from them.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 188.926,
+      "speaker": "Lee Biby",
+      "start": 187.226,
+      "text": " Some of those questions are going to be,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 193.226,
+      "speaker": "Lee Biby",
+      "start": 189.026,
+      "text": " how many times can I ask it something?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 195.026,
+      "speaker": "Lee Biby",
+      "start": 193.526,
+      "text": " Like, is it like a monthly?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 198.126,
+      "speaker": "Lee Biby",
+      "start": 195.176,
+      "text": " Like, do I have to then tell you to then...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_60",
+      "end": 224.744,
+      "speaker": "Lee Biby",
+      "start": 199.444,
+      "text": " properly create the prompts for me like like you were saying we don't they don't want to have to come back to us to create the prompt more properly every time they want to be able to use it like a like a google or a chat gpt but you know their his questions are going to be do i just get to ask it anything all the time any day of the week how many times can i do it like those sorts of things there's no consumer questions",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_61",
+      "end": 230.46200000000002,
+      "speaker": "Thomas Gentry",
+      "start": 225.812,
+      "text": " I think what we should do is let's go into the demo and see what we get back from him as far as like paying points.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_62",
+      "end": 232.36200000000002,
+      "speaker": "Thomas Gentry",
+      "start": 230.512,
+      "text": " Do we need somebody that's a customer to pressure test",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_63",
+      "end": 232.512,
+      "speaker": "Matt Schwartz",
+      "start": 232.36200000000002,
+      "text": " Yep.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_64",
+      "end": 232.762,
+      "speaker": "Thomas Gentry",
+      "start": 232.512,
+      "text": " us?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_65",
+      "end": 234.46200000000002,
+      "speaker": "Thomas Gentry",
+      "start": 233.062,
+      "text": " Right now we're making a bunch of assumptions",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_66",
+      "end": 234.662,
+      "speaker": "Matt Schwartz",
+      "start": 234.46200000000002,
+      "text": " 100%.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_67",
+      "end": 236.71200000000002,
+      "speaker": "Thomas Gentry",
+      "start": 234.662,
+      "text": " and I agree with you because I've been doing the same thing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_68",
+      "end": 238.912,
+      "speaker": "Thomas Gentry",
+      "start": 237.11200000000002,
+      "text": " Now that we have something that's viable to show,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_69",
+      "end": 240.162,
+      "speaker": "Thomas Gentry",
+      "start": 239.062,
+      "text": " like let's schedule the demo.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_70",
+      "end": 240.86200000000002,
+      "speaker": "Thomas Gentry",
+      "start": 240.46200000000002,
+      "text": " Lee,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_71",
+      "end": 246.312,
+      "speaker": "Thomas Gentry",
+      "start": 240.912,
+      "text": " you and I can go in there and we'll let him poke holes in it and then we can come back together and figure out what makes sense.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_72",
+      "end": 248.11200000000002,
+      "speaker": "Matt Schwartz",
+      "start": 246.312,
+      "text": " And yeah, it'll be stronger product for it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_73",
+      "end": 249.71200000000002,
+      "speaker": "Lee Biby",
+      "start": 249.36200000000002,
+      "text": " Well,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_74",
+      "end": 250.76200000000003,
+      "speaker": "Lee Biby",
+      "start": 249.76200000000003,
+      "text": " if he's that flexible,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_75",
+      "end": 251.86200000000002,
+      "speaker": "Lee Biby",
+      "start": 250.86200000000002,
+      "text": " then yeah, then no worries.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_76",
+      "end": 261.13,
+      "speaker": "Lee Biby",
+      "start": 253.78,
+      "text": " yeah those kind of to me those are kind of math questions because i don't know how he's going to set up the guardrails on this so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_77",
+      "end": 261.18,
+      "speaker": "Thomas Gentry",
+      "start": 261.13,
+      "text": " No,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_78",
+      "end": 261.68,
+      "speaker": "Lee Biby",
+      "start": 261.18,
+      "text": " awesome",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_79",
+      "end": 262.33,
+      "speaker": "Thomas Gentry",
+      "start": 261.68,
+      "text": " for sure.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_80",
+      "end": 265.48,
+      "speaker": "Thomas Gentry",
+      "start": 263.78000000000003,
+      "text": " All right, I'm going to get it scheduled.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_81",
+      "end": 272.63,
+      "speaker": "Thomas Gentry",
+      "start": 265.58,
+      "text": " We'll keep it in that box and then I'll call you guys later because I'm getting in trouble right now. I'm in the poor, my boss has to get the fuck out of here.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_82",
+      "end": 277.13,
+      "speaker": "Matt Schwartz",
+      "start": 272.63,
+      "text": " man thank you thanks a lot man enjoy enjoy the rest of your trip all",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_83",
+      "end": 277.48,
+      "speaker": "Thomas Gentry",
+      "start": 277.13,
+      "text": " Thanks,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_84",
+      "end": 277.58,
+      "speaker": "Matt Schwartz",
+      "start": 277.48,
+      "text": "",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_85",
+      "end": 277.73,
+      "speaker": "Thomas Gentry",
+      "start": 277.58,
+      "text": " guys.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_86",
+      "end": 278.38,
+      "speaker": "Matt Schwartz",
+      "start": 277.73,
+      "text": " right later brother",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_87",
+      "end": 282.184,
+      "speaker": "Matt Schwartz",
+      "start": 281.684,
+      "text": " It's awesome.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_88",
+      "end": 282.98400000000004,
+      "speaker": "Matt Schwartz",
+      "start": 282.584,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_89",
+      "end": 283.184,
+      "speaker": "Matt Schwartz",
+      "start": 283.03400000000005,
+      "text": " no,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_90",
+      "end": 284.084,
+      "speaker": "Matt Schwartz",
+      "start": 283.28400000000005,
+      "text": " it's super helpful.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_91",
+      "end": 295.334,
+      "speaker": "Lee Biby",
+      "start": 285.684,
+      "text": " yeah well if as long as you know what you're doing on that portion then um great i just have it's still unclear to me but because",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_92",
+      "end": 297.28400000000005,
+      "speaker": "Matt Schwartz",
+      "start": 296.934,
+      "text": " I mean...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_93",
+      "end": 299.73400000000004,
+      "speaker": "Lee Biby",
+      "start": 297.28400000000005,
+      "text": " we're saying both things you're saying well we don't",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "the county to the city to a university to uh you said public sector so not necessarily things like private security or uh I would, that's yeah, what I think we should do rather than that is if you're doing work on the front end, it's actually neat and scotty, we'll show them the four ones that you pre -built, and they'll say, how can we expand on that, you know? a good idea yeah That way you're not wasting your time, and we're not doing a bunch of unnecessary work.\nright we can go in and show them what they're today and then we can switch the variables Cool. Yeah. So any high level stuff that you're just like this does not work at all. what i want the ui to have our logo on it somewhere like actually like looking branded i think that would make it like i like what it looks like so far or like a white rabbit or you know what i'm saying something like that like you made it small in the corner just those like little minuscule things that make it look different\nI'm not. Awesome.\nWhat do you guys think? I mean, that's the only thing. I think the font looks good. I think the platform looks good. The data that gets pulled back is high level. You know what I mean? It's a deep dive. And if we can speak to the fact that we can change the input and output and it is what it is, you know, we can show the value that way. I think what's going to happen is we'll show the demo and they're going to want a POC, which I'll have to bring in on that. And you could basically say, OK, we'll give you two different buckets that you can go after.\nyou know in a test you know some kind of conditions right Awesome. Yeah, so we're basically going to be a niche. We're going to propose ourselves as a niche Zoom info, right? So it's like we're totally bespoke to you and to your company instead of just running a bunch of queries on things that are probably crap. You have a company that's going to be vetting all this stuff for you.\nAnd tailoring the search to you. So today we're a boutique shop is how I was talking to Lee about earlier. I want us to get to the point where we're Target, right? You know what I'm saying? Yeah. So for our first sale or two, we can sell it however it makes sense and I can speak to that cop track. And then eventually I'd like for us to have that query that we were talking about on that entry point. But I can sell your vision for now and it really limits the risk for us, I guess, as well.\nYeah. Sweet. hi gents anything else no That's awesome, man. Super helpful. you guys are amazing i'm gonna get the demo scheduled i text scotty earlier i was trying to give us some bandwidth to actually make sure we had something that gave us like a good foot going forward rather than want to show up and kind of you Yeah, yeah, cool. know something terrible if you will and give you some bandwidth but i'll look to get something scheduled like later next week and then and then we'll go from there yeah It's great, man.\nWell, we're going to intercept questions from them. Some of those questions are going to be, how many times can I ask it something? Like, is it like a monthly? Like, do I have to then tell you to then...\nproperly create the prompts for me like like you were saying we don't they don't want to have to come back to us to create the prompt more properly every time they want to be able to use it like a like a google or a chat gpt but you know their his questions are going to be do i just get to ask it anything all the time any day of the week how many times can i do it like those sorts of things there's no consumer questions\nI think what we should do is let's go into the demo and see what we get back from him as far as like paying points. Do we need somebody that's a customer to pressure test Yep. us? Right now we're making a bunch of assumptions 100%. and I agree with you because I've been doing the same thing. Now that we have something that's viable to show, like let's schedule the demo. Lee, you and I can go in there and we'll let him poke holes in it and then we can come back together and figure out what makes sense. And yeah, it'll be stronger product for it. Well, if he's that flexible, then yeah, then no worries.\nyeah those kind of to me those are kind of math questions because i don't know how he's going to set up the guardrails on this so No, awesome for sure. All right, I'm going to get it scheduled. We'll keep it in that box and then I'll call you guys later because I'm getting in trouble right now. I'm in the poor, my boss has to get the fuck out of here. man thank you thanks a lot man enjoy enjoy the rest of your trip all Thanks, guys. right later brother\nIt's awesome. Yeah, no, it's super helpful. yeah well if as long as you know what you're doing on that portion then um great i just have it's still unclear to me but because I mean... we're saying both things you're saying well we don't",
+  "usage": {
+    "input_tokens": 6278,
+    "output_tokens": 9038,
+    "total_tokens": 15316,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 5810,
+      "text_tokens": 468
+    }
+  }
+}

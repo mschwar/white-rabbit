@@ -1,0 +1,481 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 12.016000000000002,
+      "speaker": "Matt Schwartz",
+      "start": 0.916,
+      "text": " hundred times what any of the other researchers that aren't using AI can do so we want to do that we want to supercharge a sales team of one but",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 17.566000000000003,
+      "speaker": "Matt Schwartz",
+      "start": 14.766000000000002,
+      "text": " in that that's not b2b that's be the that's like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 17.716,
+      "speaker": "Lee Biby",
+      "start": 17.566000000000003,
+      "text": " That's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 18.116,
+      "speaker": "Matt Schwartz",
+      "start": 17.716,
+      "text": " yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 18.416,
+      "speaker": "Lee Biby",
+      "start": 18.116,
+      "text": " our sales",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 22.416,
+      "speaker": "Matt Schwartz",
+      "start": 18.416,
+      "text": " the customer is the salesperson",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 41.150000000000006,
+      "speaker": "Lee Biby",
+      "start": 39.7,
+      "text": " Trying to figure out if we should go on a tangent.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 42.75,
+      "speaker": "Matt Schwartz",
+      "start": 41.85,
+      "text": " Yeah, do it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 44.550000000000004,
+      "speaker": "Matt Schwartz",
+      "start": 42.800000000000004,
+      "text": " I mean more so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 47.650000000000006,
+      "speaker": "Lee Biby",
+      "start": 44.550000000000004,
+      "text": " So this business aside,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 48.550000000000004,
+      "speaker": "Lee Biby",
+      "start": 47.85,
+      "text": " different tangent.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 54.0,
+      "speaker": "Lee Biby",
+      "start": 53.25,
+      "text": " The key,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 54.75,
+      "speaker": "Lee Biby",
+      "start": 54.150000000000006,
+      "text": " well,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 57.1,
+      "speaker": "Lee Biby",
+      "start": 54.900000000000006,
+      "text": " but that gets out of the realm of what you want to do.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 62.1,
+      "speaker": "Lee Biby",
+      "start": 60.400000000000006,
+      "text": " Because I'm still trying to make money out of it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 63.4,
+      "speaker": "Lee Biby",
+      "start": 63.0,
+      "text": " So.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 69.12,
+      "speaker": "Lee Biby",
+      "start": 67.22,
+      "text": " This is all centered around the use of AI,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 78.37,
+      "speaker": "Lee Biby",
+      "start": 69.22,
+      "text": " which is the exponential differentiator of what's happening now and what's pretty much on the verge of happening.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 81.02,
+      "speaker": "Lee Biby",
+      "start": 80.02,
+      "text": " What is it?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 82.42,
+      "speaker": "Lee Biby",
+      "start": 81.07,
+      "text": " But the",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 90.27000000000001,
+      "speaker": "Lee Biby",
+      "start": 89.72,
+      "text": " use of AI",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 96.574,
+      "speaker": "A",
+      "start": 92.724,
+      "text": " The best use of AI is doing high volume,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 103.82400000000001,
+      "speaker": "A",
+      "start": 99.37400000000001,
+      "text": " high volume work that does not, high",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 110.12400000000001,
+      "speaker": "A",
+      "start": 105.224,
+      "text": " volume detailed work that takes people time and",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 115.37400000000001,
+      "speaker": "A",
+      "start": 112.274,
+      "text": " is not necessarily productive and",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 118.82400000000001,
+      "speaker": "A",
+      "start": 117.974,
+      "text": " crunches that down.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 120.554,
+      "speaker": "A",
+      "start": 119.604,
+      "text": " into almost nothing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 131.454,
+      "speaker": "A",
+      "start": 124.054,
+      "text": " There are industries where if you took the time to do that work,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 136.554,
+      "speaker": "A",
+      "start": 131.604,
+      "text": " you can make lots of money and potentially residual money,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 142.454,
+      "speaker": "A",
+      "start": 136.604,
+      "text": " like arbitraging businesses that are",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 147.454,
+      "speaker": "A",
+      "start": 144.75400000000002,
+      "text": " for sale or for",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 157.572,
+      "speaker": "A",
+      "start": 157.172,
+      "text": " There.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 171.722,
+      "speaker": "A",
+      "start": 158.572,
+      "text": " How do you apply the ability of what AI can do to industries that are plagued with long-term information investment for a high payoff?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 175.622,
+      "speaker": "A",
+      "start": 174.822,
+      "text": " Like...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 183.772,
+      "speaker": "A",
+      "start": 182.472,
+      "text": " I mean, I'm not even sure I can do it, but I've...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 186.54399999999998,
+      "speaker": "A",
+      "start": 185.844,
+      "text": " Like if you",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 191.744,
+      "speaker": "A",
+      "start": 187.594,
+      "text": " maybe crunching numbers in some way that",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 199.094,
+      "speaker": "A",
+      "start": 194.994,
+      "text": " produces a I'm just gonna talk to my last line well",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 209.644,
+      "speaker": "A",
+      "start": 201.944,
+      "text": " Well like um I saw something the other day where they somebody wrote a code that would",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 213.144,
+      "speaker": "A",
+      "start": 211.594,
+      "text": " find discrepancies in",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 218.894,
+      "speaker": "A",
+      "start": 214.644,
+      "text": " uh different uh coins in like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 218.94400000000002,
+      "speaker": "Matt Schwartz",
+      "start": 218.894,
+      "text": " Coins?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 220.094,
+      "speaker": "A",
+      "start": 218.94400000000002,
+      "text": " around like um",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 222.144,
+      "speaker": "A",
+      "start": 221.794,
+      "text": " uh",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 227.044,
+      "speaker": "A",
+      "start": 223.794,
+      "text": " like bitcoin different um like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 227.19400000000002,
+      "speaker": "Matt Schwartz",
+      "start": 227.044,
+      "text": " Crypto?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 235.69400000000002,
+      "speaker": "A",
+      "start": 227.19400000000002,
+      "text": " um crypto right buy here sell here real fast make fractions of money and then do it all the time okay",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 236.244,
+      "speaker": "Matt Schwartz",
+      "start": 235.69400000000002,
+      "text": " Yep.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 239.244,
+      "speaker": "A",
+      "start": 236.244,
+      "text": " cool there are probably plenty of people doing that but",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 241.214,
+      "speaker": "A",
+      "start": 239.764,
+      "text": " That as an example. Or,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 247.764,
+      "speaker": "A",
+      "start": 245.31400000000002,
+      "text": " hard to understand information,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 254.264,
+      "speaker": "A",
+      "start": 248.014,
+      "text": " gather a lot of hard to understand information and get a clear picture faster",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 258.764,
+      "speaker": "A",
+      "start": 257.61400000000003,
+      "text": " than other people can do it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 265.264,
+      "speaker": "A",
+      "start": 259.414,
+      "text": " So like what are property values in certain areas?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 277.196,
+      "speaker": "A",
+      "start": 266.196,
+      "text": " that are under-valued and then use creative financing to get those properties and then sell them. I don't know. Just ideas. But",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 284.446,
+      "speaker": "A",
+      "start": 282.446,
+      "text": " selling tech I think is going to be a hard,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 295.096,
+      "speaker": "A",
+      "start": 284.54600000000005,
+      "text": " hard sell because there are people that are fucking amazing at what they do and competing against them is going to be ridiculous. But there are a lot of boomers that do jobs that",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 299.762,
+      "speaker": "A",
+      "start": 296.212,
+      "text": " Nobody wants to do anymore, or if you had an A.I. do",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "hundred times what any of the other researchers that aren't using AI can do so we want to do that we want to supercharge a sales team of one but in that that's not b2b that's be the that's like That's yeah our sales the customer is the salesperson\nTrying to figure out if we should go on a tangent. Yeah, do it. I mean more so So this business aside, different tangent. The key, well, but that gets out of the realm of what you want to do. Because I'm still trying to make money out of it. So.\nThis is all centered around the use of AI, which is the exponential differentiator of what's happening now and what's pretty much on the verge of happening. What is it? But the use of AI\nThe best use of AI is doing high volume, high volume work that does not, high volume detailed work that takes people time and is not necessarily productive and crunches that down.\ninto almost nothing. There are industries where if you took the time to do that work, you can make lots of money and potentially residual money, like arbitraging businesses that are for sale or for\nThere. How do you apply the ability of what AI can do to industries that are plagued with long-term information investment for a high payoff? Like... I mean, I'm not even sure I can do it, but I've...\nLike if you maybe crunching numbers in some way that produces a I'm just gonna talk to my last line well Well like um I saw something the other day where they somebody wrote a code that would find discrepancies in\nuh different uh coins in like Coins? around like um uh like bitcoin different um like Crypto? um crypto right buy here sell here real fast make fractions of money and then do it all the time okay Yep. cool there are probably plenty of people doing that but\nThat as an example. Or, hard to understand information, gather a lot of hard to understand information and get a clear picture faster than other people can do it. So like what are property values in certain areas?\nthat are under-valued and then use creative financing to get those properties and then sell them. I don't know. Just ideas. But selling tech I think is going to be a hard, hard sell because there are people that are fucking amazing at what they do and competing against them is going to be ridiculous. But there are a lot of boomers that do jobs that\nNobody wants to do anymore, or if you had an A.I. do",
+  "usage": {
+    "input_tokens": 5475,
+    "output_tokens": 7432,
+    "total_tokens": 12907,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 5109,
+      "text_tokens": 366
+    }
+  }
+}
