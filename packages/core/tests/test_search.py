@@ -227,6 +227,47 @@ def test_fetch_search_results_aggregates_broad_queries_under_vendor_cap(monkeypa
     assert all(len(str(payload["query"])) <= 400 for payload in captured_payloads)
 
 
+def test_fetch_search_results_orders_official_named_account_sources_before_generic_hits(monkeypatch):
+    created_clients: list[FakeAsyncClient] = []
+    prompt = "Mesa Public Schools Arizona K-12 Director of Technology"
+    expected_query_count = len(compile_query_plan(prompt, max_results=8).vendor_queries)
+    outcomes: list[object] = [
+        FakeResponse(
+            [
+                {
+                    "title": "GovTech Arizona K12 event speakers",
+                    "url": "https://www.govtech.com/events/arizona-k12-speakers",
+                    "content": "Mesa Public Schools event speaker page with a generic technology mention.",
+                    "score": 0.99,
+                },
+                {
+                    "title": "Technology Services Staff Directory",
+                    "url": "https://www.mpsaz.org/technology/staff",
+                    "content": "Mesa Public Schools Technology Services staff directory.",
+                    "score": 0.45,
+                },
+                {
+                    "title": "LinkedIn profile",
+                    "url": "https://www.linkedin.com/in/example",
+                    "content": "Mesa Public Schools technology profile.",
+                    "score": 0.95,
+                },
+            ]
+        )
+    ]
+    outcomes.extend(FakeResponse([]) for _ in range(expected_query_count - 1))
+
+    def fake_async_client(timeout: float | None = None) -> FakeAsyncClient:
+        return FakeAsyncClient(outcomes, created_clients, timeout=timeout)
+
+    monkeypatch.setattr(search.httpx, "AsyncClient", fake_async_client)
+
+    results = asyncio.run(search.fetch_search_results(prompt, api_key="fake", max_results=8))
+
+    assert results[0]["url"] == "https://www.mpsaz.org/technology/staff"
+    assert results[-1]["url"] == "https://www.linkedin.com/in/example"
+
+
 def test_fetch_search_results_dedupes_by_url_and_preserves_matched_queries(monkeypatch):
     created_clients: list[FakeAsyncClient] = []
     outcomes = [

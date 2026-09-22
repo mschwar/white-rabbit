@@ -1,0 +1,50 @@
+{
+  "api_base_url": "http://127.0.0.1:8000",
+  "attempts": [
+    {
+      "elapsed_seconds": 0.014,
+      "error": "ConnectError: All connection attempts failed",
+      "ok": false,
+      "status_code": 0
+    },
+    {
+      "elapsed_seconds": 0.002,
+      "error": "ConnectError: All connection attempts failed",
+      "ok": false,
+      "status_code": 0
+    },
+    {
+      "elapsed_seconds": 0.001,
+      "error": "ConnectError: All connection attempts failed",
+      "ok": false,
+      "status_code": 0
+    },
+    {
+      "elapsed_seconds": 0.001,
+      "error": "ConnectError: All connection attempts failed",
+      "ok": false,
+      "status_code": 0
+    },
+    {
+      "elapsed_seconds": 0.001,
+      "error": "ConnectError: All connection attempts failed",
+      "ok": false,
+      "status_code": 0
+    },
+    {
+      "elapsed_seconds": 0.002,
+      "error": "ConnectError: All connection attempts failed",
+      "ok": false,
+      "status_code": 0
+    }
+  ],
+  "elapsed_seconds": 5.009,
+  "failure_path": "../../audits/raw/reset-2026-05-10/rg6/source-quality-remediation-2026-05-25/startup/startup-failure.json",
+  "health_ok": false,
+  "health_path": "../../audits/raw/reset-2026-05-10/rg6/source-quality-remediation-2026-05-25/startup/health.json",
+  "health_status_path": "../../audits/raw/reset-2026-05-10/rg6/source-quality-remediation-2026-05-25/startup/health.http",
+  "readiness_error_code": null,
+  "readiness_path": null,
+  "readiness_status": null,
+  "readiness_status_path": null
+}
