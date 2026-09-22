@@ -2,7 +2,7 @@
 
 Local export of Gmail messages from Lee Biby related to lead generation, White Rabbit lead searches, district IT contact lists, and lead-targeting prompt artifacts.
 
-This directory is intentionally gitignored because it contains private email content, contact data, and attachments.
+This directory was originally gitignored because it contains private email content, contact data, and attachments. For the WR-v3 archive, the email markdown exports and small attachments were force-archived into git (the heavy media stays out of git — see `docs/archive/white-rabbit-media-2026-09-16.SHA256SUMS`).
 
 ## Search Notes
 
