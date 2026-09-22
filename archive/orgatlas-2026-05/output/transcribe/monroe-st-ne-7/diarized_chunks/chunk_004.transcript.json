@@ -1,0 +1,593 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 10.24,
+      "speaker": "A",
+      "start": 0.34,
+      "text": " Because they might pull info from like, you know, LinkedIn or what have you and they try to aggregate four or five different data sources and then sometimes they know the email address,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 10.49,
+      "speaker": "A",
+      "start": 10.34,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 16.64,
+      "speaker": "A",
+      "start": 10.59,
+      "text": " But a lot of the times it's assumption being made on that list from my understanding is not making assumptions.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 22.290000000000003,
+      "speaker": "B",
+      "start": 18.19,
+      "text": " There it's cross-checking them pretty rigorously so it the number",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 34.364000000000004,
+      "speaker": "B",
+      "start": 23.764,
+      "text": " of leads is going to be way less right but we're using we're scraping like live websites and things like that and then we're doing what we can to cross-reference",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 49.364000000000004,
+      "speaker": "A",
+      "start": 36.414,
+      "text": " that's the difference bro is the quality of data right they want basically if you think about it like this i employ somebody that's that i pay 60 grand a year to right and i say i want you to make 100 dials every day against this list",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 57.632,
+      "speaker": "A",
+      "start": 50.132,
+      "text": " Do I want my person that I'm spending that money on to spend 80% of their time going to bad phone numbers and having kickback emails?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 58.682,
+      "speaker": "A",
+      "start": 57.882,
+      "text": " Absolutely not.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 66.482,
+      "speaker": "A",
+      "start": 58.882,
+      "text": " I'd rather it be that I have 80 contacts than are the right people because then you can put it into your CRM and you can say didn't connect.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 72.232,
+      "speaker": "A",
+      "start": 66.782,
+      "text": " You know what I mean? You can start building some business intelligence against it and eventually you'll get it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 73.182,
+      "speaker": "A",
+      "start": 72.382,
+      "text": " You know what I'm saying?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 74.882,
+      "speaker": "A",
+      "start": 73.232,
+      "text": " But the other one is you're just like,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 75.082,
+      "speaker": "A",
+      "start": 75.032,
+      "text": " oh.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 76.19000000000001,
+      "speaker": "A",
+      "start": 75.54,
+      "text": " Dial tone,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 78.04,
+      "speaker": "A",
+      "start": 76.24000000000001,
+      "text": " dial tone, email return type of deal.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 79.89,
+      "speaker": "B",
+      "start": 79.34,
+      "text": " Okay.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 85.59,
+      "speaker": "A",
+      "start": 84.39000000000001,
+      "text": " Are you recording this back?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 86.09,
+      "speaker": "B",
+      "start": 85.59,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 101.69000000000001,
+      "speaker": "A",
+      "start": 89.34,
+      "text": " So spending that kind of time on an energy on garbage leads is a confounding thing, basically paying someone to waste your time and more resources.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 104.89,
+      "speaker": "A",
+      "start": 103.54,
+      "text": " But that's an industry standard,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 105.19000000000001,
+      "speaker": "A",
+      "start": 105.04,
+      "text": " bro.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 107.84,
+      "speaker": "A",
+      "start": 105.34,
+      "text": " Every company that I've worked in for the last 10 years,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 110.34,
+      "speaker": "A",
+      "start": 108.54,
+      "text": " my SVRs have been like,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 110.79,
+      "speaker": "A",
+      "start": 110.44000000000001,
+      "text": " okay,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 112.89000000000001,
+      "speaker": "A",
+      "start": 110.84,
+      "text": " I want you to go and catch X, Y, and Z.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 117.49000000000001,
+      "speaker": "A",
+      "start": 113.19000000000001,
+      "text": " And they're like, should a 125-year-old guy or girl hops in the Zoom info,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 121.04,
+      "speaker": "A",
+      "start": 117.64000000000001,
+      "text": " puts in whatever variables and calls against that list.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 123.24000000000001,
+      "speaker": "A",
+      "start": 121.14000000000001,
+      "text": " And the majority of the time that list is nonsense.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 124.44000000000001,
+      "speaker": "A",
+      "start": 123.69000000000001,
+      "text": " You know what I mean?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 126.89000000000001,
+      "speaker": "A",
+      "start": 126.04000000000002,
+      "text": " I have to pee?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 128.79000000000002,
+      "speaker": "A",
+      "start": 126.99000000000001,
+      "text": " I'm going to go off camera and unmute for a minute.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 129.24,
+      "speaker": "A",
+      "start": 128.84000000000003,
+      "text": " I'll be back.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 130.04000000000002,
+      "speaker": "B",
+      "start": 129.59000000000003,
+      "text": " All right.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 130.79000000000002,
+      "speaker": "A",
+      "start": 130.04000000000002,
+      "text": " Here we go. This You guys",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 130.94000000000003,
+      "speaker": "B",
+      "start": 130.79000000000002,
+      "text": " sounds",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 130.99,
+      "speaker": "A",
+      "start": 130.94000000000003,
+      "text": " chat.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 131.24,
+      "speaker": "B",
+      "start": 130.99,
+      "text": " good.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 139.216,
+      "speaker": "A",
+      "start": 136.916,
+      "text": " You got a chat though, don't just let me sit here in the quietness.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 140.216,
+      "speaker": "B",
+      "start": 140.166,
+      "text": " yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 144.016,
+      "speaker": "C",
+      "start": 140.216,
+      "text": " instant you we don't want to get you shot um well",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 147.766,
+      "speaker": "B",
+      "start": 144.416,
+      "text": " the business intelligence um surface",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 156.316,
+      "speaker": "B",
+      "start": 149.516,
+      "text": " is also really promising in terms of value um something to think about",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 166.066,
+      "speaker": "C",
+      "start": 162.666,
+      "text": " you could see i mean i guess you could make the case like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 180.656,
+      "speaker": "C",
+      "start": 167.156,
+      "text": " Just break it down. You have four entry-level employees at 60 grand a year working through 5,000 contacts every other month or a month,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 184.306,
+      "speaker": "C",
+      "start": 180.806,
+      "text": " 10 to 20% of those you might actually get through,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 193.756,
+      "speaker": "C",
+      "start": 184.506,
+      "text": " and then you just make the calculation like why wasting three people's salaries when you could just have good data.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 199.36999999999998,
+      "speaker": "C",
+      "start": 194.42,
+      "text": " And then you can base maker payments off of that and make your pricing comparable to that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 207.67,
+      "speaker": "A",
+      "start": 206.97,
+      "text": " I heard it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 211.97,
+      "speaker": "B",
+      "start": 210.67,
+      "text": " So a couple of things.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 216.57,
+      "speaker": "B",
+      "start": 212.07,
+      "text": " One is how are we going to make it sticky,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 217.17,
+      "speaker": "B",
+      "start": 216.62,
+      "text": " right,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 220.26999999999998,
+      "speaker": "B",
+      "start": 217.26999999999998,
+      "text": " so that we keep them.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 220.884,
+      "speaker": "A",
+      "start": 220.884,
+      "text": " People",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 221.884,
+      "speaker": "B",
+      "start": 220.884,
+      "text": " keep them subscribed so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 222.634,
+      "speaker": "A",
+      "start": 221.884,
+      "text": " tend to drive.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 222.784,
+      "speaker": "B",
+      "start": 222.634,
+      "text": "",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 223.784,
+      "speaker": "A",
+      "start": 222.784,
+      "text": " I'm Matt and Lee.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 225.784,
+      "speaker": "A",
+      "start": 224.98399999999998,
+      "text": " Matt and Lee.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 248.284,
+      "speaker": "B",
+      "start": 228.33399999999997,
+      "text": " one one idea is that we enrich contacts right so um right now we're already doing some like low level cross referencing and things like that so the baseline is already going to be pretty good but we can do some additional cross referencing things like their socials",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 251.896,
+      "speaker": "B",
+      "start": 249.396,
+      "text": " tax records kind of thing things like that",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_60",
+      "end": 254.646,
+      "speaker": "A",
+      "start": 253.49599999999998,
+      "text": " I love that,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_61",
+      "end": 254.946,
+      "speaker": "A",
+      "start": 254.796,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_62",
+      "end": 257.046,
+      "speaker": "A",
+      "start": 254.99599999999998,
+      "text": " But we're getting too complicated in my opinion.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_63",
+      "end": 259.346,
+      "speaker": "A",
+      "start": 257.19599999999997,
+      "text": " I love the enrichment of the data because it's important,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_64",
+      "end": 259.746,
+      "speaker": "A",
+      "start": 259.546,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_65",
+      "end": 266.62600000000003,
+      "speaker": "A",
+      "start": 260.276,
+      "text": " What I think is going to be a differentiator for us is ease of use being able to go in there and into the search bar,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_66",
+      "end": 267.176,
+      "speaker": "A",
+      "start": 266.776,
+      "text": " right,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_67",
+      "end": 274.226,
+      "speaker": "A",
+      "start": 267.276,
+      "text": " for them to be able to go in and say, I want to talk to people that are 19 to 35 that do X, Y,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_68",
+      "end": 275.276,
+      "speaker": "A",
+      "start": 274.276,
+      "text": " and Z in this vertical.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_69",
+      "end": 276.926,
+      "speaker": "A",
+      "start": 275.62600000000003,
+      "text": " Bring me back that data.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_70",
+      "end": 286.62600000000003,
+      "speaker": "A",
+      "start": 277.076,
+      "text": " I like having the snippets and I think that like off of your point of view in a sandbox that we can sell it in a capacity of saying, hey, look, these are",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_71",
+      "end": 299.90799999999996,
+      "speaker": "A",
+      "start": 287.508,
+      "text": " just sandbox type of prompts if you will you know the problem is is if we make it too complicated where they have to come back to us for configuration all the time that makes it the ease of use not fun for them",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "Because they might pull info from like, you know, LinkedIn or what have you and they try to aggregate four or five different data sources and then sometimes they know the email address, right? But a lot of the times it's assumption being made on that list from my understanding is not making assumptions. There it's cross-checking them pretty rigorously so it the number\nof leads is going to be way less right but we're using we're scraping like live websites and things like that and then we're doing what we can to cross-reference that's the difference bro is the quality of data right they want basically if you think about it like this i employ somebody that's that i pay 60 grand a year to right and i say i want you to make 100 dials every day against this list\nDo I want my person that I'm spending that money on to spend 80% of their time going to bad phone numbers and having kickback emails? Absolutely not. I'd rather it be that I have 80 contacts than are the right people because then you can put it into your CRM and you can say didn't connect. You know what I mean? You can start building some business intelligence against it and eventually you'll get it. You know what I'm saying? But the other one is you're just like, oh.\nDial tone, dial tone, email return type of deal. Okay. Are you recording this back? Yeah. So spending that kind of time on an energy on garbage leads is a confounding thing, basically paying someone to waste your time and more resources.\nBut that's an industry standard, bro. Every company that I've worked in for the last 10 years, my SVRs have been like, okay, I want you to go and catch X, Y, and Z. And they're like, should a 125-year -old guy or girl hops in the Zoom info, puts in whatever variables and calls against that list. And the majority of the time that list is nonsense. You know what I mean? I have to pee? I'm going to go off camera and unmute for a minute. I'll be back. All right. Here we go. This You guys sounds chat. good.\nYou got a chat though, don't just let me sit here in the quietness. yeah instant you we don't want to get you shot um well the business intelligence um surface is also really promising in terms of value um something to think about you could see i mean i guess you could make the case like\nJust break it down. You have four entry -level employees at 60 grand a year working through 5 ,000 contacts every other month or a month, 10 to 20% of those you might actually get through, and then you just make the calculation like why wasting three people's salaries when you could just have good data.\nAnd then you can base maker payments off of that and make your pricing comparable to that. I heard it. So a couple of things. One is how are we going to make it sticky, right, so that we keep them.\nPeople keep them subscribed so tend to drive. I'm Matt and Lee. Matt and Lee. one one idea is that we enrich contacts right so um right now we're already doing some like low level cross referencing and things like that so the baseline is already going to be pretty good but we can do some additional cross referencing things like their socials\ntax records kind of thing things like that I love that, right? But we're getting too complicated in my opinion. I love the enrichment of the data because it's important, right?\nWhat I think is going to be a differentiator for us is ease of use being able to go in there and into the search bar, right, for them to be able to go in and say, I want to talk to people that are 19 to 35 that do X, Y, and Z in this vertical. Bring me back that data. I like having the snippets and I think that like off of your point of view in a sandbox that we can sell it in a capacity of saying, hey, look, these are\njust sandbox type of prompts if you will you know the problem is is if we make it too complicated where they have to come back to us for configuration all the time that makes it the ease of use not fun for them",
+  "usage": {
+    "input_tokens": 5019,
+    "output_tokens": 8671,
+    "total_tokens": 13690,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 4672,
+      "text_tokens": 347
+    }
+  }
+}

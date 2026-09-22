@@ -1,0 +1,913 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 1.076,
+      "speaker": "A",
+      "start": 0.276,
+      "text": " morning chin-up art.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 5.776,
+      "speaker": "A",
+      "start": 3.3259999999999996,
+      "text": " Faster and many more times,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 9.325999999999999,
+      "speaker": "A",
+      "start": 8.126,
+      "text": " there's a lot of money to be made there.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 16.575999999999997,
+      "speaker": "Matt Schwartz",
+      "start": 12.025999999999998,
+      "text": " I think we're also, it's easy to forget how behind everyone",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 25.075999999999997,
+      "speaker": "Matt Schwartz",
+      "start": 24.725999999999996,
+      "text": " is.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 26.34,
+      "speaker": "Matt Schwartz",
+      "start": 25.94,
+      "text": " So,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 28.64,
+      "speaker": "Matt Schwartz",
+      "start": 26.39,
+      "text": " enterprise solutions,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 33.09,
+      "speaker": "Matt Schwartz",
+      "start": 28.89,
+      "text": " like true enterprise solutions, production grade stuff,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 36.54,
+      "speaker": "Matt Schwartz",
+      "start": 33.34,
+      "text": " is not going to be accessible to most people.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 39.74,
+      "speaker": "Matt Schwartz",
+      "start": 37.69,
+      "text": " It's accessible to the Fortune 500 companies.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 45.14,
+      "speaker": "Matt Schwartz",
+      "start": 39.94,
+      "text": " It's accessible to people who can pay for it. It's accessible to a certain section.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 45.989999999999995,
+      "speaker": "A",
+      "start": 45.59,
+      "text": " Okay",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 50.04,
+      "speaker": "Matt Schwartz",
+      "start": 46.19,
+      "text": " Mom and pop shops or even like medium businesses.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 53.72,
+      "speaker": "Matt Schwartz",
+      "start": 51.22,
+      "text": " Dude, their CEOs are on their death.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 54.32,
+      "speaker": "Matt Schwartz",
+      "start": 53.769999999999996,
+      "text": " They don't even,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 54.769999999999996,
+      "speaker": "A",
+      "start": 54.32,
+      "text": " Right.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 57.12,
+      "speaker": "Matt Schwartz",
+      "start": 54.769999999999996,
+      "text": " they probably don't even know how to use Excel or Word,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 58.72,
+      "speaker": "Matt Schwartz",
+      "start": 57.17,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 62.519999999999996,
+      "speaker": "Matt Schwartz",
+      "start": 59.92,
+      "text": " So there's this massive gap.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 63.07,
+      "speaker": "A",
+      "start": 62.519999999999996,
+      "text": " Gap.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 68.02,
+      "speaker": "Matt Schwartz",
+      "start": 63.87,
+      "text": " So closing that gap is worth its weight in gold and that's not going to go away for decades.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 71.62,
+      "speaker": "Matt Schwartz",
+      "start": 69.32,
+      "text": " Literally until everyone dies from that gap,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 77.07000000000001,
+      "speaker": "Matt Schwartz",
+      "start": 75.72,
+      "text": " that's where the money is.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 83.21600000000001,
+      "speaker": "Matt Schwartz",
+      "start": 78.516,
+      "text": " So don't like this. Yeah, we're not competing at the top level because that that's we're not",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 83.66600000000001,
+      "speaker": "A",
+      "start": 83.21600000000001,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 89.61600000000001,
+      "speaker": "Matt Schwartz",
+      "start": 84.566,
+      "text": " but we can build a clean solution to something that solves a pain point for people now.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 96.21600000000001,
+      "speaker": "Matt Schwartz",
+      "start": 89.86600000000001,
+      "text": " And the reality is there are massive tech solutions that solve those problems.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 100.066,
+      "speaker": "Matt Schwartz",
+      "start": 97.71600000000001,
+      "text": " It's really a communication thing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 101.46600000000001,
+      "speaker": "A",
+      "start": 100.71600000000001,
+      "text": " how do you get it",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 101.566,
+      "speaker": "Matt Schwartz",
+      "start": 101.46600000000001,
+      "text": " How",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 101.86600000000001,
+      "speaker": "A",
+      "start": 101.566,
+      "text": " in the hands",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 101.91600000000001,
+      "speaker": "Matt Schwartz",
+      "start": 101.86600000000001,
+      "text": " do",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 101.96600000000001,
+      "speaker": "A",
+      "start": 101.91600000000001,
+      "text": " of",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 102.11600000000001,
+      "speaker": "Matt Schwartz",
+      "start": 101.96600000000001,
+      "text": " you make",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 102.16600000000001,
+      "speaker": "A",
+      "start": 102.11600000000001,
+      "text": " people",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 102.61600000000001,
+      "speaker": "Matt Schwartz",
+      "start": 102.16600000000001,
+      "text": " it dumb proof?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 104.21600000000001,
+      "speaker": "Matt Schwartz",
+      "start": 102.766,
+      "text": " How do you make it sell itself?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 105.91600000000001,
+      "speaker": "Matt Schwartz",
+      "start": 104.36600000000001,
+      "text": " How do you make it easy to use?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 108.524,
+      "speaker": "A",
+      "start": 107.924,
+      "text": " So",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 113.87400000000001,
+      "speaker": "A",
+      "start": 110.174,
+      "text": " one thing that comes to mind is when I got into inspections,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 128.824,
+      "speaker": "A",
+      "start": 115.57400000000001,
+      "text": " the boomers were using they would bring a printer into the house and a laptop. They would take a digital camera, run to one end of the house, take a picture of something, run back, make a note. They took them hours, five hours to do an inspection.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 137.774,
+      "speaker": "A",
+      "start": 129.524,
+      "text": " And then they would go home, upload all their pictures into their computer and go like, that's the picture of that thing and place it and I'm like, are you fucking kidding me?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 139.374,
+      "speaker": "A",
+      "start": 138.124,
+      "text": " Phone, boom, boom, boom, boom, boom.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 144.674,
+      "speaker": "A",
+      "start": 139.574,
+      "text": " And the software that I was using, you know, it was an app.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 149.86800000000002,
+      "speaker": "A",
+      "start": 146.068,
+      "text": " And those guys blew up, like they've taken over the industry because it was like, well, no shit,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 150.518,
+      "speaker": "A",
+      "start": 149.918,
+      "text": " why wouldn't you do that?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 150.96800000000002,
+      "speaker": "Matt Schwartz",
+      "start": 150.518,
+      "text": " Yeah, it's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 152.768,
+      "speaker": "A",
+      "start": 150.96800000000002,
+      "text": " So if you were, and then,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 153.018,
+      "speaker": "Matt Schwartz",
+      "start": 152.768,
+      "text": " building that",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 153.268,
+      "speaker": "A",
+      "start": 153.018,
+      "text": " yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 157.61800000000002,
+      "speaker": "Matt Schwartz",
+      "start": 153.268,
+      "text": " but the gold there is you have to know what they're doing",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 157.668,
+      "speaker": "A",
+      "start": 157.61800000000002,
+      "text": " the",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 157.71800000000002,
+      "speaker": "Matt Schwartz",
+      "start": 157.668,
+      "text": " and",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 157.96800000000002,
+      "speaker": "A",
+      "start": 157.71800000000002,
+      "text": " industry,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 158.068,
+      "speaker": "Matt Schwartz",
+      "start": 157.96800000000002,
+      "text": "",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 158.168,
+      "speaker": "A",
+      "start": 158.068,
+      "text": " yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 164.21800000000002,
+      "speaker": "Matt Schwartz",
+      "start": 158.168,
+      "text": " not even the industry just an entity you just take one individual that's why like I was so excited about this was Thomas he",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 164.96800000000002,
+      "speaker": "A",
+      "start": 164.21800000000002,
+      "text": " Right, he was the guy.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 166.96800000000002,
+      "speaker": "Matt Schwartz",
+      "start": 164.96800000000002,
+      "text": " thought this was worth gold",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 167.018,
+      "speaker": "A",
+      "start": 166.96800000000002,
+      "text": " Right.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_60",
+      "end": 169.518,
+      "speaker": "Matt Schwartz",
+      "start": 167.018,
+      "text": " right and",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_61",
+      "end": 173.368,
+      "speaker": "Matt Schwartz",
+      "start": 170.918,
+      "text": " if it's if he thinks there's worth gold it is worth gold",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_62",
+      "end": 180.652,
+      "speaker": "Matt Schwartz",
+      "start": 174.452,
+      "text": " So it's really figuring out what that individual sales rep is doing because if you do something that that sales rep would want",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_63",
+      "end": 180.702,
+      "speaker": "A",
+      "start": 180.652,
+      "text": " True.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_64",
+      "end": 182.402,
+      "speaker": "Matt Schwartz",
+      "start": 180.702,
+      "text": " you're in business.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_65",
+      "end": 186.052,
+      "speaker": "A",
+      "start": 182.402,
+      "text": " But what he thought it was is that with one line question.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_66",
+      "end": 188.202,
+      "speaker": "Matt Schwartz",
+      "start": 186.402,
+      "text": " So he saw yeah like he saw",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_67",
+      "end": 188.552,
+      "speaker": "A",
+      "start": 188.202,
+      "text": " That's it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_68",
+      "end": 191.602,
+      "speaker": "A",
+      "start": 189.252,
+      "text": " That's why he got excited. He was like, what?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_69",
+      "end": 195.302,
+      "speaker": "A",
+      "start": 192.552,
+      "text": " And then he got a list of 60 people and was like, what?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_70",
+      "end": 196.302,
+      "speaker": "A",
+      "start": 195.402,
+      "text": " And it kind of is though.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_71",
+      "end": 198.952,
+      "speaker": "A",
+      "start": 196.552,
+      "text": " We just don't know what the end result of that list was.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_72",
+      "end": 202.89,
+      "speaker": "Matt Schwartz",
+      "start": 201.39,
+      "text": " I i mean but it's not zooming.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_73",
+      "end": 203.19,
+      "speaker": "A",
+      "start": 202.89,
+      "text": " No.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_74",
+      "end": 204.54,
+      "speaker": "Matt Schwartz",
+      "start": 203.19,
+      "text": " No no, it's different. It's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_75",
+      "end": 211.58999999999997,
+      "speaker": "A",
+      "start": 204.54,
+      "text": " But it well it was easier to use, that's the easy that's why he was excited. He was like what did you do? And I said I said give me I_D_ directors and a But MacIntosh",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_76",
+      "end": 215.83999999999997,
+      "speaker": "Matt Schwartz",
+      "start": 211.58999999999997,
+      "text": " again, at that level the sales rep easier to use doesn't matter.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_77",
+      "end": 216.89,
+      "speaker": "A",
+      "start": 216.39,
+      "text": " Yeah, no",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_78",
+      "end": 219.23999999999998,
+      "speaker": "Matt Schwartz",
+      "start": 216.89,
+      "text": " Are we s unless we're selling it directly to the sales rep.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_79",
+      "end": 223.94,
+      "speaker": "A",
+      "start": 219.69,
+      "text": " But what he's saying was people have zoom info,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_80",
+      "end": 227.64,
+      "speaker": "A",
+      "start": 224.23999999999998,
+      "text": " they don't get trained on it, and it's a waste of a really expensive thing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_81",
+      "end": 234.15599999999998,
+      "speaker": "A",
+      "start": 227.956,
+      "text": " Whereas the ease of use of what we're what I did on fucking PowerShell was a sentence and",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_82",
+      "end": 234.90599999999998,
+      "speaker": "Matt Schwartz",
+      "start": 234.15599999999998,
+      "text": " So that's the",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_83",
+      "end": 234.956,
+      "speaker": "A",
+      "start": 234.90599999999998,
+      "text": " then",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_84",
+      "end": 235.006,
+      "speaker": "Matt Schwartz",
+      "start": 234.956,
+      "text": " gap.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_85",
+      "end": 235.756,
+      "speaker": "A",
+      "start": 235.006,
+      "text": " they got to run with it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_86",
+      "end": 238.956,
+      "speaker": "Matt Schwartz",
+      "start": 235.756,
+      "text": " So that's the thing is that's the gap is selling,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_87",
+      "end": 246.456,
+      "speaker": "Matt Schwartz",
+      "start": 239.05599999999998,
+      "text": " you're basically saying you can get ZoomInfo great stuff for small businesses with our product.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_88",
+      "end": 251.756,
+      "speaker": "Matt Schwartz",
+      "start": 247.256,
+      "text": " That's the sell. But we can't, if we're selling it to ZoomInfo, all they need to do is ZoomInfo just trains",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_89",
+      "end": 251.80599999999998,
+      "speaker": "A",
+      "start": 251.756,
+      "text": " So",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_90",
+      "end": 252.006,
+      "speaker": "Matt Schwartz",
+      "start": 251.80599999999998,
+      "text": " it better",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_91",
+      "end": 255.606,
+      "speaker": "A",
+      "start": 252.006,
+      "text": " it's got to plug in AI. It's way better than your AI. It's way better than your AI.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_92",
+      "end": 256.956,
+      "speaker": "A",
+      "start": 255.656,
+      "text": " It's just not how to use it",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_93",
+      "end": 263.97,
+      "speaker": "A",
+      "start": 257.62,
+      "text": " Then they don't train the reps well enough to use it. So they probably train a sales manager because",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_94",
+      "end": 264.17,
+      "speaker": "Matt Schwartz",
+      "start": 263.97,
+      "text": " So they again,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_95",
+      "end": 265.07,
+      "speaker": "A",
+      "start": 264.17,
+      "text": " only want one license.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_96",
+      "end": 267.77,
+      "speaker": "Matt Schwartz",
+      "start": 265.07,
+      "text": " in that case, our end user,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_97",
+      "end": 273.07,
+      "speaker": "Matt Schwartz",
+      "start": 267.92,
+      "text": " the person paying us is a sales rep who's finding his own solutions.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_98",
+      "end": 274.57,
+      "speaker": "A",
+      "start": 273.07,
+      "text": " I mean, maybe that's the case, like,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_99",
+      "end": 275.37,
+      "speaker": "Matt Schwartz",
+      "start": 274.57,
+      "text": " That's what it is.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_100",
+      "end": 279.37,
+      "speaker": "Matt Schwartz",
+      "start": 275.57,
+      "text": " It's not the CEO that's already paying $45,000 a year for Zoom info.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_101",
+      "end": 280.42,
+      "speaker": "Matt Schwartz",
+      "start": 279.57,
+      "text": " He'll just be like,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_102",
+      "end": 280.52,
+      "speaker": "A",
+      "start": 280.42,
+      "text": " that",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_103",
+      "end": 280.77,
+      "speaker": "Matt Schwartz",
+      "start": 280.52,
+      "text": " fire",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_104",
+      "end": 281.02,
+      "speaker": "A",
+      "start": 280.77,
+      "text": " the kids aren't",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_105",
+      "end": 281.37,
+      "speaker": "Matt Schwartz",
+      "start": 281.02,
+      "text": " that rep,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_106",
+      "end": 281.57,
+      "speaker": "A",
+      "start": 281.37,
+      "text": " using.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_107",
+      "end": 284.32,
+      "speaker": "Matt Schwartz",
+      "start": 281.57,
+      "text": " fire that rep and hire somebody that knows how to use Zoom info.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_108",
+      "end": 290.80199999999996,
+      "speaker": "A",
+      "start": 289.652,
+      "text": " Well that's a I mean that's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_109",
+      "end": 296.852,
+      "speaker": "Matt Schwartz",
+      "start": 293.952,
+      "text": " So in that case we built something that Thomas wants to use for his everyday work.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_110",
+      "end": 297.30199999999996,
+      "speaker": "A",
+      "start": 297.102,
+      "text": " Right.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_111",
+      "end": 299.902,
+      "speaker": "Matt Schwartz",
+      "start": 297.652,
+      "text": " And then Thomas becomes the he low",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "morning chin-up art. Faster and many more times, there's a lot of money to be made there. I think we're also, it's easy to forget how behind everyone is.\nSo, enterprise solutions, like true enterprise solutions, production grade stuff, is not going to be accessible to most people. It's accessible to the Fortune 500 companies. It's accessible to people who can pay for it. It's accessible to a certain section. Okay Mom and pop shops or even like medium businesses.\nDude, their CEOs are on their death. They don't even, Right. they probably don't even know how to use Excel or Word, right? So there's this massive gap. Gap. So closing that gap is worth its weight in gold and that's not going to go away for decades. Literally until everyone dies from that gap, that's where the money is.\nSo don't like this. Yeah, we're not competing at the top level because that that's we're not Yeah, but we can build a clean solution to something that solves a pain point for people now. And the reality is there are massive tech solutions that solve those problems. It's really a communication thing. how do you get it How in the hands do of you make people it dumb proof? How do you make it sell itself? How do you make it easy to use?\nSo one thing that comes to mind is when I got into inspections, the boomers were using they would bring a printer into the house and a laptop. They would take a digital camera, run to one end of the house, take a picture of something, run back, make a note. They took them hours, five hours to do an inspection.\nAnd then they would go home, upload all their pictures into their computer and go like, that's the picture of that thing and place it and I'm like, are you fucking kidding me? Phone, boom, boom, boom, boom, boom. And the software that I was using, you know, it was an app.\nAnd those guys blew up, like they've taken over the industry because it was like, well, no shit, why wouldn't you do that? Yeah, it's So if you were, and then, building that yeah, but the gold there is you have to know what they're doing the and industry, yeah. not even the industry just an entity you just take one individual that's why like I was so excited about this was Thomas he Right, he was the guy. thought this was worth gold Right. right and if it's if he thinks there's worth gold it is worth gold\nSo it's really figuring out what that individual sales rep is doing because if you do something that that sales rep would want True. you're in business. But what he thought it was is that with one line question. So he saw yeah like he saw That's it. That's why he got excited. He was like, what? And then he got a list of 60 people and was like, what? And it kind of is though. We just don't know what the end result of that list was.\nI i mean but it's not zooming. No. No no, it's different. It's But it well it was easier to use, that's the easy that's why he was excited. He was like what did you do? And I said I said give me I_D_ directors and a But MacIntosh again, at that level the sales rep easier to use doesn't matter. Yeah, no Are we s unless we're selling it directly to the sales rep. But what he's saying was people have zoom info, they don't get trained on it, and it's a waste of a really expensive thing.\nWhereas the ease of use of what we're what I did on fucking PowerShell was a sentence and So that's the then gap. they got to run with it. So that's the thing is that's the gap is selling, you're basically saying you can get ZoomInfo great stuff for small businesses with our product. That's the sell. But we can't, if we're selling it to ZoomInfo, all they need to do is ZoomInfo just trains So it better it's got to plug in AI. It's way better than your AI. It's way better than your AI. It's just not how to use it\nThen they don't train the reps well enough to use it. So they probably train a sales manager because So they again, only want one license. in that case, our end user, the person paying us is a sales rep who's finding his own solutions. I mean, maybe that's the case, like, That's what it is. It's not the CEO that's already paying $45,000 a year for Zoom info. He'll just be like, that fire the kids aren't that rep, using. fire that rep and hire somebody that knows how to use Zoom info.\nWell that's a I mean that's So in that case we built something that Thomas wants to use for his everyday work. Right. And then Thomas becomes the he low",
+  "usage": {
+    "input_tokens": 6292,
+    "output_tokens": 9026,
+    "total_tokens": 15318,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 5849,
+      "text_tokens": 443
+    }
+  }
+}

@@ -1,0 +1,569 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 25.73,
+      "speaker": "Matt Schwartz",
+      "start": 0.18,
+      "text": " zoom info has 30 different queries that we need to to you know choose and that leads to like cognitive overload and kind of like you're just getting sick of it you're like dude i don't freaking know yes we're targeting men in new mexico in this segment whatever so the sales operator is going to be kind of half-assing it not really even understanding how to use it even if they do know how to use it it's a lot of time and then they're going to generate a list in which you know",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 29.494,
+      "speaker": "Matt Schwartz",
+      "start": 26.644,
+      "text": " 70% of the leads are not going to be good or actionable.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 32.794,
+      "speaker": "Matt Schwartz",
+      "start": 30.494,
+      "text": " So that's the pain point he wanted to solve.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 38.544,
+      "speaker": "Matt Schwartz",
+      "start": 36.194,
+      "text": " The issue is we",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 41.494,
+      "speaker": "Matt Schwartz",
+      "start": 39.944,
+      "text": " can sell that,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 42.644000000000005,
+      "speaker": "Matt Schwartz",
+      "start": 41.594,
+      "text": " we can make it and sell it,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 45.194,
+      "speaker": "Matt Schwartz",
+      "start": 43.194,
+      "text": " but we can't sell it at the same volume.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 50.444,
+      "speaker": "Matt Schwartz",
+      "start": 45.944,
+      "text": " So they're going to go right back to ZoomInfo once we tap out.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 54.144000000000005,
+      "speaker": "Matt Schwartz",
+      "start": 51.244,
+      "text": " So we can make money if we're doing it by...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 75.782,
+      "speaker": "Matt Schwartz",
+      "start": 55.732,
+      "text": " um list we sell it by list like hey we can give you a list of high and high whatever or we can take your zoom info list and we can sell that to you we can enrich it and give it back to you so that that can be a pricing thing but replacing zoom info is not going to happen",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 78.032,
+      "speaker": "A",
+      "start": 77.182,
+      "text": " What if?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 79.682,
+      "speaker": "A",
+      "start": 78.432,
+      "text": " What if it's...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 81.446,
+      "speaker": "A",
+      "start": 80.596,
+      "text": " It is routine.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 85.446,
+      "speaker": "A",
+      "start": 81.546,
+      "text": " What if those are the options? You fucking log in,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 88.796,
+      "speaker": "A",
+      "start": 85.74600000000001,
+      "text": " create a log in to the website.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 93.296,
+      "speaker": "A",
+      "start": 90.096,
+      "text": " Option one, upload your Zim Info list, we'll scrounge it up.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 94.646,
+      "speaker": "A",
+      "start": 93.99600000000001,
+      "text": " That's a fee.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 100.696,
+      "speaker": "A",
+      "start": 95.646,
+      "text": " Option two, use the tool and request a list that we can,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 102.296,
+      "speaker": "A",
+      "start": 100.74600000000001,
+      "text": " as a service,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 103.346,
+      "speaker": "A",
+      "start": 103.096,
+      "text": " refine.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 107.296,
+      "speaker": "A",
+      "start": 104.096,
+      "text": " We'll tell you how many leads there are, what the cost is,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 108.99600000000001,
+      "speaker": "A",
+      "start": 107.796,
+      "text": " pay the cost to get the list.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 112.202,
+      "speaker": "A",
+      "start": 110.452,
+      "text": " I'm not going to release the list unless you pay for it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 120.652,
+      "speaker": "A",
+      "start": 113.502,
+      "text": " It has a 92% confidence in 78 leads.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 125.80199999999999,
+      "speaker": "A",
+      "start": 121.952,
+      "text": " That'll be $200, $700, whatever the fucking dollars.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 127.752,
+      "speaker": "A",
+      "start": 126.252,
+      "text": " Pay it, here's your list.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 129.402,
+      "speaker": "Matt Schwartz",
+      "start": 128.502,
+      "text": " Okay, so...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 132.252,
+      "speaker": "A",
+      "start": 129.402,
+      "text": " That way you're not paying for Zoom in to flow because you can't afford it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 135.702,
+      "speaker": "A",
+      "start": 133.152,
+      "text": " And you're only going to pay for the list that you need.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 137.712,
+      "speaker": "A",
+      "start": 136.212,
+      "text": " So many times over the year",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 140.41199999999998,
+      "speaker": "Matt Schwartz",
+      "start": 137.862,
+      "text": " So here's the issue with that. That's a great idea.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 145.462,
+      "speaker": "Matt Schwartz",
+      "start": 141.362,
+      "text": " The issue I see is if that lead list isn't gold,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 147.362,
+      "speaker": "Matt Schwartz",
+      "start": 145.612,
+      "text": " we burn trust.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 150.56199999999998,
+      "speaker": "Matt Schwartz",
+      "start": 148.212,
+      "text": " So let's say they do their little query.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 152.56199999999998,
+      "speaker": "Matt Schwartz",
+      "start": 151.012,
+      "text": " On our back end,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 153.462,
+      "speaker": "Matt Schwartz",
+      "start": 152.66199999999998,
+      "text": " we've populated,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 154.91199999999998,
+      "speaker": "Matt Schwartz",
+      "start": 153.712,
+      "text": " we've scraped the list,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 156.112,
+      "speaker": "Matt Schwartz",
+      "start": 155.012,
+      "text": " enriched it,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 161.012,
+      "speaker": "Matt Schwartz",
+      "start": 156.212,
+      "text": " populated, we know we have 72 that are above 80.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 161.512,
+      "speaker": "Matt Schwartz",
+      "start": 161.06199999999998,
+      "text": " Cool.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 167.948,
+      "speaker": "Matt Schwartz",
+      "start": 162.548,
+      "text": " We know that they're above 80 and we know compared to a Zoom Info where the average is going to be like a three,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 169.698,
+      "speaker": "Matt Schwartz",
+      "start": 168.098,
+      "text": " 80 is excellent.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 177.748,
+      "speaker": "Matt Schwartz",
+      "start": 169.998,
+      "text": " But to a boutique shop that doesn't use Zoom Info and doesn't spend millions of dollars on sales gen or lead gen,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 180.148,
+      "speaker": "Matt Schwartz",
+      "start": 177.948,
+      "text": " they're going to get that list of 72,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 181.998,
+      "speaker": "Matt Schwartz",
+      "start": 180.248,
+      "text": " they're going to pay us and then they're going to be like, oh,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 183.998,
+      "speaker": "Matt Schwartz",
+      "start": 182.048,
+      "text": " we only got three sales out of this, this is shit.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 185.398,
+      "speaker": "Matt Schwartz",
+      "start": 184.448,
+      "text": " White Rabbit's trash.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 191.012,
+      "speaker": "Matt Schwartz",
+      "start": 189.812,
+      "text": " That might be the wrong customer.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 197.912,
+      "speaker": "Matt Schwartz",
+      "start": 191.162,
+      "text": " So it's again finding the right customer that we we give value to and they know that we're giving value to we know we're giving value to",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 208.662,
+      "speaker": "Matt Schwartz",
+      "start": 198.812,
+      "text": " But does that make sense so to a sales to me if you give me a list of 72 people and I can only sell three to me I'd be like this is trash But maybe to a sales rep you'd be like,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 209.062,
+      "speaker": "Matt Schwartz",
+      "start": 208.71200000000002,
+      "text": " oh my god,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 209.562,
+      "speaker": "Matt Schwartz",
+      "start": 209.11200000000002,
+      "text": " this is freaking",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 217.828,
+      "speaker": "B",
+      "start": 210.228,
+      "text": " This this list is gold because I talked to 60% of these people and I you know met with 30",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 220.578,
+      "speaker": "A",
+      "start": 218.478,
+      "text": " But that's that but you're right that is sales.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 224.52800000000002,
+      "speaker": "A",
+      "start": 220.62800000000001,
+      "text": " But otherwise what are you gonna do? You're gonna go from fuck around on LinkedIn,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 226.728,
+      "speaker": "A",
+      "start": 224.578,
+      "text": " make four calls in a day.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 234.176,
+      "speaker": "A",
+      "start": 227.476,
+      "text": " That's hours and hours and hours. So that is the difference. And and maybe and not everybody knows that 'cause not everyone's full time sales people.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 234.726,
+      "speaker": "B",
+      "start": 234.176,
+      "text": " Exactly. So",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 234.826,
+      "speaker": "A",
+      "start": 234.726,
+      "text": " But",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 238.626,
+      "speaker": "B",
+      "start": 234.826,
+      "text": " again, that's part of them the who are we selling to. We want to sell to people that",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_60",
+      "end": 238.676,
+      "speaker": "A",
+      "start": 238.626,
+      "text": " Right.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_61",
+      "end": 240.326,
+      "speaker": "B",
+      "start": 238.676,
+      "text": " would understand the value of",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_62",
+      "end": 241.776,
+      "speaker": "A",
+      "start": 240.776,
+      "text": " Sure. But",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_63",
+      "end": 250.626,
+      "speaker": "A",
+      "start": 245.776,
+      "text": " But I think that's a missed that must be a missed market. Like who if if",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_64",
+      "end": 281.152,
+      "speaker": "A",
+      "start": 252.052,
+      "text": " I don't have the capacity to pay for ZoomInfo to you know because I I do sales but I'm I've got me my my CFO or whatever and a sales guy and we're all trying to make this business work it's probably not going to kick off for another five years to where I could afford ZoomInfo but I need to make sales cool who am I calling well I don't have time to fucking do all the zoom or the LinkedIn research and all that stuff but I need a list of people to call",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_65",
+      "end": 283.902,
+      "speaker": "A",
+      "start": 282.452,
+      "text": " Okay, or I go on Google Maps.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_66",
+      "end": 286.002,
+      "speaker": "A",
+      "start": 284.002,
+      "text": " You are, we're not even,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_67",
+      "end": 290.452,
+      "speaker": "A",
+      "start": 286.102,
+      "text": " so a call list is huge.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_68",
+      "end": 299.952,
+      "speaker": "A",
+      "start": 291.702,
+      "text": " And we can define what a successful call list looks like. And we could say a typical, creating a typical list of under",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "zoom info has 30 different queries that we need to to you know choose and that leads to like cognitive overload and kind of like you're just getting sick of it you're like dude i don't freaking know yes we're targeting men in new mexico in this segment whatever so the sales operator is going to be kind of half-assing it not really even understanding how to use it even if they do know how to use it it's a lot of time and then they're going to generate a list in which you know\n70% of the leads are not going to be good or actionable. So that's the pain point he wanted to solve. The issue is we can sell that, we can make it and sell it, but we can't sell it at the same volume. So they're going to go right back to ZoomInfo once we tap out. So we can make money if we're doing it by...\num list we sell it by list like hey we can give you a list of high and high whatever or we can take your zoom info list and we can sell that to you we can enrich it and give it back to you so that that can be a pricing thing but replacing zoom info is not going to happen What if? What if it's...\nIt is routine. What if those are the options? You fucking log in, create a log in to the website. Option one, upload your Zim Info list, we'll scrounge it up. That's a fee. Option two, use the tool and request a list that we can, as a service, refine. We'll tell you how many leads there are, what the cost is, pay the cost to get the list.\nI'm not going to release the list unless you pay for it. It has a 92% confidence in 78 leads. That'll be $200, $700, whatever the fucking dollars. Pay it, here's your list. Okay, so... That way you're not paying for Zoom in to flow because you can't afford it. And you're only going to pay for the list that you need.\nSo many times over the year So here's the issue with that. That's a great idea. The issue I see is if that lead list isn't gold, we burn trust. So let's say they do their little query. On our back end, we've populated, we've scraped the list, enriched it, populated, we know we have 72 that are above 80. Cool.\nWe know that they're above 80 and we know compared to a Zoom Info where the average is going to be like a three, 80 is excellent. But to a boutique shop that doesn't use Zoom Info and doesn't spend millions of dollars on sales gen or lead gen, they're going to get that list of 72, they're going to pay us and then they're going to be like, oh, we only got three sales out of this, this is shit. White Rabbit's trash.\nThat might be the wrong customer. So it's again finding the right customer that we we give value to and they know that we're giving value to we know we're giving value to But does that make sense so to a sales to me if you give me a list of 72 people and I can only sell three to me I'd be like this is trash But maybe to a sales rep you'd be like, oh my god, this is freaking\nThis this list is gold because I talked to 60% of these people and I you know met with 30 But that's that but you're right that is sales. But otherwise what are you gonna do? You're gonna go from fuck around on LinkedIn, make four calls in a day.\nThat's hours and hours and hours. So that is the difference. And and maybe and not everybody knows that 'cause not everyone's full time sales people. Exactly. So But again, that's part of them the who are we selling to. We want to sell to people that Right. would understand the value of Sure. But But I think that's a missed that must be a missed market. Like who if if\nI don't have the capacity to pay for ZoomInfo to you know because I I do sales but I'm I've got me my my CFO or whatever and a sales guy and we're all trying to make this business work it's probably not going to kick off for another five years to where I could afford ZoomInfo but I need to make sales cool who am I calling well I don't have time to fucking do all the zoom or the LinkedIn research and all that stuff but I need a list of people to call\nOkay, or I go on Google Maps. You are, we're not even, so a call list is huge. And we can define what a successful call list looks like. And we could say a typical, creating a typical list of under",
+  "usage": {
+    "input_tokens": 5745,
+    "output_tokens": 8693,
+    "total_tokens": 14438,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 5316,
+      "text_tokens": 429
+    }
+  }
+}

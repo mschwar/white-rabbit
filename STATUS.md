@@ -18,6 +18,9 @@
 
 **Queue correction:** The 2026-05-12 R00 Prompt B runs were stale-target no-ops and have no queue effect. R00 is historical and already merged. The current valid target is Prompt A for R15. Any future stale-target run must stop in chat only and must not edit, commit, merge, or push.
 
+
+**Archive housekeeping (2026-09-16):** Folded standalone `WR-v3` and `orgatlas` Developer checkouts into [`archive/wr-v3-brainstorm-2026-06/`](./archive/wr-v3-brainstorm-2026-06/) and [`archive/orgatlas-2026-05/`](./archive/orgatlas-2026-05/) (text in git; HEIC/M4A/WAV on `/central/archive/white-rabbit-media-2026-09-16/`). Index: [`docs/archive/INDEX.md`](./docs/archive/INDEX.md). Does not change RG6 product-red status or the RG6R4 assignment lock.
+
 ---
 
 ## Current rebuild status (2026-05-10)

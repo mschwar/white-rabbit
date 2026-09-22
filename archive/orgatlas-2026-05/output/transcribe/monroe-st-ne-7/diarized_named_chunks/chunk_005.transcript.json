@@ -1,0 +1,545 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 0.35200000000000004,
+      "speaker": "Matt Schwartz",
+      "start": 0.052,
+      "text": " awesome",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 0.552,
+      "speaker": "Thomas Gentry",
+      "start": 0.35200000000000004,
+      "text": " Right.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 0.802,
+      "speaker": "Matt Schwartz",
+      "start": 0.552,
+      "text": " yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 3.2520000000000002,
+      "speaker": "Thomas Gentry",
+      "start": 0.802,
+      "text": " The last thing that I would want to do as a customer is to be like,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 3.552,
+      "speaker": "Thomas Gentry",
+      "start": 3.352,
+      "text": " all right,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 4.052,
+      "speaker": "Thomas Gentry",
+      "start": 3.602,
+      "text": " it's Saturday.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 6.601999999999999,
+      "speaker": "Thomas Gentry",
+      "start": 4.351999999999999,
+      "text": " I want to do this X, Y, and Z.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 10.302000000000001,
+      "speaker": "Thomas Gentry",
+      "start": 6.902,
+      "text": " Now I got to go back to Thomas and give him this list.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 11.052000000000001,
+      "speaker": "Thomas Gentry",
+      "start": 10.452000000000002,
+      "text": " You know what I'm saying?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 24.052,
+      "speaker": "Matt Schwartz",
+      "start": 11.502,
+      "text": " i love it this is perfect so okay so walk me through the things that you would normally type in a prompt so you said like 1935 19 to 35 so um by would you write the industry",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 27.012,
+      "speaker": "Thomas Gentry",
+      "start": 25.012,
+      "text": " So really you would look for job title,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 30.712,
+      "speaker": "Thomas Gentry",
+      "start": 27.112000000000002,
+      "text": " like revenue from the company in general,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 32.162,
+      "speaker": "Thomas Gentry",
+      "start": 30.812,
+      "text": " employee size,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 33.462,
+      "speaker": "Thomas Gentry",
+      "start": 32.562,
+      "text": " vertical.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 38.462,
+      "speaker": "Thomas Gentry",
+      "start": 33.962,
+      "text": " Those are the type of like variations that they're going to want to go in and put it in a job title.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 40.112,
+      "speaker": "Thomas Gentry",
+      "start": 38.862,
+      "text": " Sometimes you're going to go out,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 40.412000000000006,
+      "speaker": "Thomas Gentry",
+      "start": 40.162000000000006,
+      "text": " you're like,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 42.512,
+      "speaker": "Thomas Gentry",
+      "start": 41.612,
+      "text": " okay,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 44.062,
+      "speaker": "Thomas Gentry",
+      "start": 42.562,
+      "text": " I'm going to, those",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 49.512,
+      "speaker": "Thomas Gentry",
+      "start": 48.012,
+      "text": " would be the variations that I would put.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 52.368,
+      "speaker": "Matt Schwartz",
+      "start": 50.868,
+      "text": " All right, so vertical,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 53.318000000000005,
+      "speaker": "Matt Schwartz",
+      "start": 52.468,
+      "text": " job title,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 53.918,
+      "speaker": "Matt Schwartz",
+      "start": 53.418000000000006,
+      "text": " revenue,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 55.768,
+      "speaker": "Matt Schwartz",
+      "start": 54.118,
+      "text": " employee size,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 58.018,
+      "speaker": "Matt Schwartz",
+      "start": 56.068,
+      "text": " age.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 67.918,
+      "speaker": "Thomas Gentry",
+      "start": 58.018,
+      "text": " and age maybe not so much right like that's a little bit more like finite I guess than the detail my",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 80.118,
+      "speaker": "Thomas Gentry",
+      "start": 75.668,
+      "text": " my vision of it was kind of like how how when I was sitting with the information like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 101.682,
+      "speaker": "Thomas Gentry",
+      "start": 80.532,
+      "text": " put in this prompt I guess from in a process standpoint though if we're using an agent AI tool and we're getting a free way to just put whatever in the search bar they could type like how do I build a nuclear missile okay give them that fundamental value so from operating standpoint like how do we limit that",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 103.282,
+      "speaker": "Matt Schwartz",
+      "start": 101.982,
+      "text": " It's already limited,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 109.482,
+      "speaker": "Matt Schwartz",
+      "start": 103.532,
+      "text": " so it has to go through multiple steps of data cleaning for it to generate that list that you saw.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 115.768,
+      "speaker": "Matt Schwartz",
+      "start": 110.068,
+      "text": " um so the guardrails are on this is like it's purely legion it's nothing else okay",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 118.818,
+      "speaker": "Thomas Gentry",
+      "start": 115.768,
+      "text": " So then I think that we should remove the prompts altogether.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 124.418,
+      "speaker": "Thomas Gentry",
+      "start": 119.218,
+      "text": " If it's solely that they can go in and just put in whatever they want to in the search bar to pull back leads,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 131.218,
+      "speaker": "Thomas Gentry",
+      "start": 124.618,
+      "text": " then that gives them some creativity without it being something that the tool isn't.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 131.818,
+      "speaker": "Thomas Gentry",
+      "start": 131.268,
+      "text": " You know what I mean?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 138.66199999999998,
+      "speaker": "Thomas Gentry",
+      "start": 136.212,
+      "text": " Is that possible within the cards that you put for it?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 139.56199999999998,
+      "speaker": "Matt Schwartz",
+      "start": 138.66199999999998,
+      "text": " Yeah, yeah, yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 140.012,
+      "speaker": "Matt Schwartz",
+      "start": 139.66199999999998,
+      "text": " I mean,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 141.06199999999998,
+      "speaker": "Matt Schwartz",
+      "start": 140.06199999999998,
+      "text": " yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 146.212,
+      "speaker": "Thomas Gentry",
+      "start": 142.612,
+      "text": " It's then you're different than everything else in the marketplace is the difference,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 146.66199999999998,
+      "speaker": "Thomas Gentry",
+      "start": 146.512,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 156.41199999999998,
+      "speaker": "Thomas Gentry",
+      "start": 146.962,
+      "text": " If you think about the thing goes in, you have to go to their website and you have to build out all these different buckets of industry X, Y, and Z like I've been talking about.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 158.962,
+      "speaker": "Thomas Gentry",
+      "start": 156.462,
+      "text": " But if I could just type it and it's...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 160.09,
+      "speaker": "Thomas Gentry",
+      "start": 158.74,
+      "text": " Excuse me, it pulls back that information.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 165.59,
+      "speaker": "Thomas Gentry",
+      "start": 160.39000000000001,
+      "text": " That's the differentiator of ease of use and then the quality of data is the secondary piece in my mind,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 165.79000000000002,
+      "speaker": "Matt Schwartz",
+      "start": 165.59,
+      "text": " Awesome.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 165.99,
+      "speaker": "Thomas Gentry",
+      "start": 165.79000000000002,
+      "text": " you know.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 166.39000000000001,
+      "speaker": "Matt Schwartz",
+      "start": 165.99,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 168.54000000000002,
+      "speaker": "Matt Schwartz",
+      "start": 168.04000000000002,
+      "text": " Cool.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 178.69,
+      "speaker": "Matt Schwartz",
+      "start": 168.69,
+      "text": " I mean, so the thing I'd want to know is we'd want to know exactly like who's going to be using it, right? Is it going to be a sales team?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 201.216,
+      "speaker": "Matt Schwartz",
+      "start": 179.316,
+      "text": " and then we can kind of build the parameters around that we can say okay on this end this is the least amount of work that they'll do here or the most amount like we want to build those bands of like essentially build a container of all the different things that the normal salesperson can use and then we can use that to pre-populate stuff and create those",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 203.766,
+      "speaker": "Thomas Gentry",
+      "start": 203.166,
+      "text": " I'm listening.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 207.41,
+      "speaker": "Matt Schwartz",
+      "start": 205.46,
+      "text": " Oh yeah, and create the structures behind it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 230.01000000000002,
+      "speaker": "Thomas Gentry",
+      "start": 209.76000000000002,
+      "text": " so i would say that majority is going to be the same thing like every sunday night a bdr is going to go into whatever their folder is to pull their list and they're going to put it in because all of the secondary stuff once you have the data is all automated right i'm going to put it into my crm i'm going to set up the sequence and i'm going to hit send one time and i'm going to email a thousand people you",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 231.01000000000002,
+      "speaker": "@",
+      "start": 230.01000000000002,
+      "text": " know",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 242.448,
+      "speaker": "Thomas Gentry",
+      "start": 231.348,
+      "text": " like the actual word was them going in and being able to pull back that list of codes you know and so then it's just my vision is like a google search you know maybe",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 245.348,
+      "speaker": "Matt Schwartz",
+      "start": 244.698,
+      "text": " Okay.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 249.14800000000002,
+      "speaker": "Thomas Gentry",
+      "start": 246.048,
+      "text": " maybe maybe that's too simple i'm i'm just a salesperson you know",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 249.798,
+      "speaker": "Matt Schwartz",
+      "start": 249.298,
+      "text": " No,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 251.24800000000002,
+      "speaker": "Matt Schwartz",
+      "start": 249.89800000000002,
+      "text": " no, no. Like simple is beautiful.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_60",
+      "end": 255.548,
+      "speaker": "Matt Schwartz",
+      "start": 251.698,
+      "text": " But also sometimes simple is the hardest thing to do right.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_61",
+      "end": 289.856,
+      "speaker": "Thomas Gentry",
+      "start": 273.556,
+      "text": " and basically say hey dude this is what zoom is giving you right you're gonna your team's gonna spend an hour trying to get data back from the tool you know and it might be whatever percent accurate we're going to be able to say your team can do it in five seconds this",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_62",
+      "end": 290.70599999999996,
+      "speaker": "Matt Schwartz",
+      "start": 290.056,
+      "text": " Awesome.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_63",
+      "end": 292.056,
+      "speaker": "Matt Schwartz",
+      "start": 291.406,
+      "text": " Okay.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_64",
+      "end": 295.856,
+      "speaker": "Matt Schwartz",
+      "start": 293.156,
+      "text": " And this is for VoIP?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_65",
+      "end": 298.656,
+      "speaker": "Thomas Gentry",
+      "start": 297.806,
+      "text": " one will be for",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "awesome Right. yeah The last thing that I would want to do as a customer is to be like, all right, it's Saturday. I want to do this X, Y, and Z. Now I got to go back to Thomas and give him this list. You know what I'm saying? i love it this is perfect so okay so walk me through the things that you would normally type in a prompt so you said like 1935 19 to 35 so um by would you write the industry\nSo really you would look for job title, like revenue from the company in general, employee size, vertical. Those are the type of like variations that they're going to want to go in and put it in a job title. Sometimes you're going to go out, you're like, okay, I'm going to, those would be the variations that I would put.\nAll right, so vertical, job title, revenue, employee size, age. and age maybe not so much right like that's a little bit more like finite I guess than the detail my my vision of it was kind of like how how when I was sitting with the information like\nput in this prompt I guess from in a process standpoint though if we're using an agent AI tool and we're getting a free way to just put whatever in the search bar they could type like how do I build a nuclear missile okay give them that fundamental value so from operating standpoint like how do we limit that It's already limited, so it has to go through multiple steps of data cleaning for it to generate that list that you saw.\num so the guardrails are on this is like it's purely legion it's nothing else okay So then I think that we should remove the prompts altogether. If it's solely that they can go in and just put in whatever they want to in the search bar to pull back leads, then that gives them some creativity without it being something that the tool isn't. You know what I mean?\nIs that possible within the cards that you put for it? Yeah, yeah, yeah. I mean, yeah. It's then you're different than everything else in the marketplace is the difference, right? If you think about the thing goes in, you have to go to their website and you have to build out all these different buckets of industry X, Y, and Z like I've been talking about. But if I could just type it and it's...\nExcuse me, it pulls back that information. That's the differentiator of ease of use and then the quality of data is the secondary piece in my mind, Awesome. you know. Yeah. Cool. I mean, so the thing I'd want to know is we'd want to know exactly like who's going to be using it, right? Is it going to be a sales team?\nand then we can kind of build the parameters around that we can say okay on this end this is the least amount of work that they'll do here or the most amount like we want to build those bands of like essentially build a container of all the different things that the normal salesperson can use and then we can use that to pre -populate stuff and create those I'm listening.\nOh yeah, and create the structures behind it. so i would say that majority is going to be the same thing like every sunday night a bdr is going to go into whatever their folder is to pull their list and they're going to put it in because all of the secondary stuff once you have the data is all automated right i'm going to put it into my crm i'm going to set up the sequence and i'm going to hit send one time and i'm going to email a thousand people you know\nlike the actual word was them going in and being able to pull back that list of codes you know and so then it's just my vision is like a google search you know maybe Okay. maybe maybe that's too simple i'm i'm just a salesperson you know No, no, no. Like simple is beautiful. But also sometimes simple is the hardest thing to do right.\nand basically say hey dude this is what zoom is giving you right you're gonna your team's gonna spend an hour trying to get data back from the tool you know and it might be whatever percent accurate we're going to be able to say your team can do it in five seconds this Awesome. Okay. And this is for VoIP? one will be for",
+  "usage": {
+    "input_tokens": 5867,
+    "output_tokens": 8290,
+    "total_tokens": 14157,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 5449,
+      "text_tokens": 418
+    }
+  }
+}

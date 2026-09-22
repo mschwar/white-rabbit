@@ -1,0 +1,617 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 5.169999999999999,
+      "speaker": "Lee Biby",
+      "start": 0.02,
+      "text": " Leads usually takes 92 hours or whatever.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 10.896,
+      "speaker": "A",
+      "start": 6.996,
+      "text": " ninety two hours of minimum wage you'd save yourself blah blah like that's got it's got",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 10.946,
+      "speaker": "Matt Schwartz",
+      "start": 10.896,
+      "text": " So",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 11.046,
+      "speaker": "A",
+      "start": 10.946,
+      "text": " to be",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 11.196,
+      "speaker": "Matt Schwartz",
+      "start": 11.046,
+      "text": " that part",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 11.396,
+      "speaker": "A",
+      "start": 11.196,
+      "text": " all fake",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 13.146,
+      "speaker": "Matt Schwartz",
+      "start": 11.396,
+      "text": " of it is going to be an educational thing,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 13.396,
+      "speaker": "A",
+      "start": 13.146,
+      "text": " has to be",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 13.546,
+      "speaker": "Matt Schwartz",
+      "start": 13.396,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 13.896,
+      "speaker": "A",
+      "start": 13.546,
+      "text": " yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 14.646,
+      "speaker": "Matt Schwartz",
+      "start": 13.896,
+      "text": " But that,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 25.695999999999998,
+      "speaker": "Matt Schwartz",
+      "start": 14.745999999999999,
+      "text": " so if our target is boutique smaller businesses that don't have money for ZoomInfo and don't even know about ZoomInfo, part of it might be educating them on even lead generation in general.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 29.646,
+      "speaker": "Matt Schwartz",
+      "start": 26.195999999999998,
+      "text": " And that changes kind of what the product will look like at the end.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 33.446,
+      "speaker": "Matt Schwartz",
+      "start": 31.146,
+      "text": " So that's what I mean, we have lots of different products.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 34.738,
+      "speaker": "Matt Schwartz",
+      "start": 34.388,
+      "text": " Um,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 39.088,
+      "speaker": "Matt Schwartz",
+      "start": 34.937999999999995,
+      "text": " and that's where the North Star needs to be drilled in.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 40.937999999999995,
+      "speaker": "Matt Schwartz",
+      "start": 39.138,
+      "text": " Like what is our freaking problem?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 41.138,
+      "speaker": "A",
+      "start": 41.088,
+      "text": " Right.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 44.388,
+      "speaker": "Matt Schwartz",
+      "start": 41.138,
+      "text": " Because we have to choose one for now and do it well.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 49.388,
+      "speaker": "Matt Schwartz",
+      "start": 45.038,
+      "text": " And kind of the order does matter a little bit because if we use the right, if we do the right order,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 54.138,
+      "speaker": "Matt Schwartz",
+      "start": 49.438,
+      "text": " the success of this one then builds the success of the next one.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 63.124,
+      "speaker": "Matt Schwartz",
+      "start": 55.124,
+      "text": " Whereas if we do it the opposite, like I think ChatGPT was telling us that we over-engineer it, build out too many databases, and then don't sell it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 63.624,
+      "speaker": "A",
+      "start": 63.374,
+      "text": " Right.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 65.424,
+      "speaker": "Matt Schwartz",
+      "start": 63.624,
+      "text": " We spend a bunch of money and it doesn't do anything.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 68.474,
+      "speaker": "A",
+      "start": 66.474,
+      "text": " Well, I'm yeah, I think we're",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 80.57400000000001,
+      "speaker": "A",
+      "start": 70.32400000000001,
+      "text": " we're I don't even know if we're hungry enough, but we're we're certainly trying to figure out what could work because yeah, I agree being as an info isn't a thing which",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 97.408,
+      "speaker": "A",
+      "start": 81.108,
+      "text": " takes us down a notch as far as corporate level. The only thing you can do is sell a a service to that list or add a service to that list which they can use in a few different ways to increase their sales KPIs.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 98.158,
+      "speaker": "Matt Schwartz",
+      "start": 97.708,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 102.708,
+      "speaker": "A",
+      "start": 98.158,
+      "text": " That's that's a huge option which can amount to a shitload of money.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 105.908,
+      "speaker": "Matt Schwartz",
+      "start": 102.708,
+      "text": " Yeah. So we can enrich a zoom in full list.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 110.072,
+      "speaker": "Matt Schwartz",
+      "start": 107.572,
+      "text": " So they can triage those leads to high-value salespeople.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 110.922,
+      "speaker": "Matt Schwartz",
+      "start": 110.172,
+      "text": " So the person,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 114.72200000000001,
+      "speaker": "Matt Schwartz",
+      "start": 110.97200000000001,
+      "text": " in this case, would be the sales manager,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 115.822,
+      "speaker": "Matt Schwartz",
+      "start": 114.922,
+      "text": " that",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 122.322,
+      "speaker": "Matt Schwartz",
+      "start": 121.122,
+      "text": " that's the user,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 127.272,
+      "speaker": "Matt Schwartz",
+      "start": 122.522,
+      "text": " and then the output is an enriched list.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 133.322,
+      "speaker": "Matt Schwartz",
+      "start": 128.172,
+      "text": " And the end user is sales rep.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 137.74,
+      "speaker": "Matt Schwartz",
+      "start": 136.34,
+      "text": " Okay, the",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 143.04,
+      "speaker": "Matt Schwartz",
+      "start": 140.04,
+      "text": " other option is the",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 153.24,
+      "speaker": "Matt Schwartz",
+      "start": 150.34,
+      "text": " user is the CEO owner. Educate",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 161.39,
+      "speaker": "Matt Schwartz",
+      "start": 158.69,
+      "text": " about Legion.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 166.19199999999998,
+      "speaker": "Matt Schwartz",
+      "start": 165.492,
+      "text": " builds",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 177.742,
+      "speaker": "Matt Schwartz",
+      "start": 169.542,
+      "text": " show model about info legion so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 190.09199999999998,
+      "speaker": "Matt Schwartz",
+      "start": 186.19199999999998,
+      "text": " this one is the boutique legion",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 196.248,
+      "speaker": "Matt Schwartz",
+      "start": 194.548,
+      "text": " Yeah, it's an engine.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 202.548,
+      "speaker": "Matt Schwartz",
+      "start": 197.248,
+      "text": " This is a ZoomInfo alternative for smaller businesses.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 211.448,
+      "speaker": "Matt Schwartz",
+      "start": 204.948,
+      "text": " Okay, and in that case the user is the owner and that one has a lot of education attached to it because we have to educate the owners.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 217.048,
+      "speaker": "Matt Schwartz",
+      "start": 213.348,
+      "text": " So that would be people that don't even have necessarily a sales team.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 219.828,
+      "speaker": "A",
+      "start": 218.228,
+      "text": " But I don't see that yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 224.328,
+      "speaker": "A",
+      "start": 219.928,
+      "text": " maybe not but I still see that as being a good thing because you get I mean I get",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 226.578,
+      "speaker": "A",
+      "start": 225.178,
+      "text": " Social media shit all day.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 232.37800000000001,
+      "speaker": "A",
+      "start": 226.678,
+      "text": " Do you want to increase your sales revenue blah blah blah blah blah like that's directly out of CEO or a",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 232.428,
+      "speaker": "Matt Schwartz",
+      "start": 232.37800000000001,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 233.978,
+      "speaker": "A",
+      "start": 232.428,
+      "text": " small business owner at the time.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 235.37800000000001,
+      "speaker": "Matt Schwartz",
+      "start": 234.27800000000002,
+      "text": " So that's the small",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 235.62800000000001,
+      "speaker": "A",
+      "start": 235.37800000000001,
+      "text": " That's positive.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 236.178,
+      "speaker": "Matt Schwartz",
+      "start": 235.62800000000001,
+      "text": " business owner.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 236.428,
+      "speaker": "A",
+      "start": 236.178,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 238.428,
+      "speaker": "Matt Schwartz",
+      "start": 236.77800000000002,
+      "text": " One is a company.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 242.428,
+      "speaker": "Matt Schwartz",
+      "start": 239.578,
+      "text": " It becomes hard though because we're selling it to the company,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_60",
+      "end": 246.428,
+      "speaker": "Matt Schwartz",
+      "start": 242.478,
+      "text": " but the user is not the company, the user is a sales manager.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_61",
+      "end": 248.868,
+      "speaker": "Matt Schwartz",
+      "start": 248.468,
+      "text": " Right.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_62",
+      "end": 252.56799999999998,
+      "speaker": "A",
+      "start": 249.018,
+      "text": " Yeah, but they're gonna yeah, yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_63",
+      "end": 255.56799999999998,
+      "speaker": "Matt Schwartz",
+      "start": 253.41799999999998,
+      "text": " And then we're kind of this,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_64",
+      "end": 259.71799999999996,
+      "speaker": "Matt Schwartz",
+      "start": 255.66799999999998,
+      "text": " the sales manager would have to be reporting to the company and be like,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_65",
+      "end": 260.71799999999996,
+      "speaker": "Matt Schwartz",
+      "start": 259.818,
+      "text": " hey, this really works.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_66",
+      "end": 261.518,
+      "speaker": "A",
+      "start": 260.71799999999996,
+      "text": " which is anything",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_67",
+      "end": 262.068,
+      "speaker": "Matt Schwartz",
+      "start": 261.618,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_68",
+      "end": 265.318,
+      "speaker": "Matt Schwartz",
+      "start": 262.118,
+      "text": " which is we so we'd have to figure out a way to include those metrics.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_69",
+      "end": 271.568,
+      "speaker": "Matt Schwartz",
+      "start": 266.318,
+      "text": " So that we're communicating with the company at the company level,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_70",
+      "end": 274.318,
+      "speaker": "Matt Schwartz",
+      "start": 271.618,
+      "text": " but we're delivering at the sales manager level.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_71",
+      "end": 286.778,
+      "speaker": "Matt Schwartz",
+      "start": 275.028,
+      "text": " We're communicating with the company the company letter level we're educating at the sales manager level and then we're also making it extremely usable at the sales rep level that's that's a little bit more complicated",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_72",
+      "end": 288.778,
+      "speaker": "A",
+      "start": 286.778,
+      "text": " I'm not sure it's still just a list it's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_73",
+      "end": 289.32800000000003,
+      "speaker": "Matt Schwartz",
+      "start": 288.778,
+      "text": " Yeah, okay",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_74",
+      "end": 299.928,
+      "speaker": "A",
+      "start": 289.32800000000003,
+      "text": " still just a list that he feeds into their whatever they use for contacting these people so their sales rep is not that big a deal as long as they result their lead as like a sale or what",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "Leads usually takes 92 hours or whatever.\nninety two hours of minimum wage you'd save yourself blah blah like that's got it's got So to be that part all fake of it is going to be an educational thing, has to be right? yeah But that, so if our target is boutique smaller businesses that don't have money for ZoomInfo and don't even know about ZoomInfo, part of it might be educating them on even lead generation in general. And that changes kind of what the product will look like at the end. So that's what I mean, we have lots of different products.\nUm, and that's where the North Star needs to be drilled in. Like what is our freaking problem? Right. Because we have to choose one for now and do it well. And kind of the order does matter a little bit because if we use the right, if we do the right order, the success of this one then builds the success of the next one.\nWhereas if we do it the opposite, like I think ChatGPT was telling us that we over-engineer it, build out too many databases, and then don't sell it. Right. We spend a bunch of money and it doesn't do anything. Well, I'm yeah, I think we're we're I don't even know if we're hungry enough, but we're we're certainly trying to figure out what could work because yeah, I agree being as an info isn't a thing which\ntakes us down a notch as far as corporate level. The only thing you can do is sell a a service to that list or add a service to that list which they can use in a few different ways to increase their sales KPIs. Yeah. That's that's a huge option which can amount to a shitload of money. Yeah. So we can enrich a zoom in full list.\nSo they can triage those leads to high-value salespeople. So the person, in this case, would be the sales manager, that that's the user, and then the output is an enriched list. And the end user is sales rep.\nOkay, the other option is the user is the CEO owner. Educate about Legion.\nbuilds show model about info legion so this one is the boutique legion\nYeah, it's an engine. This is a ZoomInfo alternative for smaller businesses. Okay, and in that case the user is the owner and that one has a lot of education attached to it because we have to educate the owners. So that would be people that don't even have necessarily a sales team.\nBut I don't see that yeah, maybe not but I still see that as being a good thing because you get I mean I get Social media shit all day. Do you want to increase your sales revenue blah blah blah blah blah like that's directly out of CEO or a Yeah. small business owner at the time. So that's the small That's positive. business owner. Yeah. One is a company. It becomes hard though because we're selling it to the company, but the user is not the company, the user is a sales manager.\nRight. Yeah, but they're gonna yeah, yeah, And then we're kind of this, the sales manager would have to be reporting to the company and be like, hey, this really works. which is anything Yeah, which is we so we'd have to figure out a way to include those metrics. So that we're communicating with the company at the company level, but we're delivering at the sales manager level.\nWe're communicating with the company the company letter level we're educating at the sales manager level and then we're also making it extremely usable at the sales rep level that's that's a little bit more complicated I'm not sure it's still just a list it's Yeah, okay still just a list that he feeds into their whatever they use for contacting these people so their sales rep is not that big a deal as long as they result their lead as like a sale or what",
+  "usage": {
+    "input_tokens": 5625,
+    "output_tokens": 8368,
+    "total_tokens": 13993,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 5205,
+      "text_tokens": 420
+    }
+  }
+}

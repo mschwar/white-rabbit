@@ -1,0 +1,625 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 1.3499999999999999,
+      "speaker": "Matt Schwartz",
+      "start": 0.0,
+      "text": " to his lists but",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 3.8999999999999995,
+      "speaker": "Lee Biby",
+      "start": 1.3499999999999999,
+      "text": " And then he could even do that yeah, but",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 5.3,
+      "speaker": "Matt Schwartz",
+      "start": 4.3,
+      "text": " again that's a different and",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 12.55,
+      "speaker": "Lee Biby",
+      "start": 5.3,
+      "text": " yeah, and then but I guess the point is that at that point it's his responsibility to do whatever he has to do with his mother list",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 14.25,
+      "speaker": "Lee Biby",
+      "start": 13.3,
+      "text": " To not get fired.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 23.999999999999996,
+      "speaker": "Lee Biby",
+      "start": 14.35,
+      "text": " I don't give shit like either don't do the other half and get fired or do whatever you do I don't care but you're gonna make all your money in the first half of the month hitting the fresh part of the list okay,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 24.249999999999996,
+      "speaker": "Lee Biby",
+      "start": 24.049999999999997,
+      "text": " cool",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 25.699999999999996,
+      "speaker": "Matt Schwartz",
+      "start": 24.549999999999997,
+      "text": " you can automate the other half",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 28.802000000000003,
+      "speaker": "Lee Biby",
+      "start": 26.452,
+      "text": " Sure, so maybe that's that's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 32.052,
+      "speaker": "Matt Schwartz",
+      "start": 28.802000000000003,
+      "text": " But the big again the customer is very different so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 39.702000000000005,
+      "speaker": "Matt Schwartz",
+      "start": 35.202000000000005,
+      "text": " now what would make that customer happy what would make autonomous customer happy and how much would he pay",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 50.302,
+      "speaker": "Matt Schwartz",
+      "start": 41.152,
+      "text": " Do you know what I mean like so many things if we just build something we can't just rejigger it we have to build to one specific thing and make it awesome",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 55.08,
+      "speaker": "Matt Schwartz",
+      "start": 54.58,
+      "text": " So in this",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 55.23,
+      "speaker": "Lee Biby",
+      "start": 55.08,
+      "text": " case So",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 55.28,
+      "speaker": "Matt Schwartz",
+      "start": 55.23,
+      "text": " where...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 57.379999999999995,
+      "speaker": "Lee Biby",
+      "start": 55.28,
+      "text": " anyway, wait, let me finish my fruit like what I was going up there",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 64.73,
+      "speaker": "Lee Biby",
+      "start": 58.53,
+      "text": " So there's a better way to do shit right now the hardest then I worked for UPS for a minute",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 79.23,
+      "speaker": "Lee Biby",
+      "start": 65.73,
+      "text": " just for the holidays whatever and their systems are so old and like the only way they make sense is if you do it long enough to get used to it and it's like a brick phone",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 104.622,
+      "speaker": "Lee Biby",
+      "start": 80.372,
+      "text": " that's like just text and it says like I don't even remember what it says but it was like how do you know what you're doing like you just gotta you know that this package is on your truck and it but is it telling you that it's the next one you have to deliver and then it's not on maps you just have to go by knowing where you are I'm like there's got to be like a",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 109.24,
+      "speaker": "Lee Biby",
+      "start": 105.94,
+      "text": " Look in this package is going here next.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 112.28999999999999,
+      "speaker": "Lee Biby",
+      "start": 109.39,
+      "text": " How is it this unuser-friendly?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 118.14,
+      "speaker": "Lee Biby",
+      "start": 113.39,
+      "text": " If someone could take the ease of use of that inspection software,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 126.28999999999999,
+      "speaker": "Lee Biby",
+      "start": 118.39,
+      "text": " translate it into delivering these packages on a Google Maps in real time,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 128.34,
+      "speaker": "Lee Biby",
+      "start": 126.44,
+      "text": " that's it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 129.98999999999998,
+      "speaker": "Lee Biby",
+      "start": 128.48999999999998,
+      "text": " Like make it so much easier.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 133.33999999999997,
+      "speaker": "Lee Biby",
+      "start": 130.64,
+      "text": " That to me, that's an enterprise level deal.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 138.066,
+      "speaker": "A",
+      "start": 134.516,
+      "text": " I mean, it's they're never gonna buy it, but still, it's like that's what I'm",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 141.566,
+      "speaker": "A",
+      "start": 139.516,
+      "text": " you just but you gotta like know how",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 146.666,
+      "speaker": "A",
+      "start": 142.61599999999999,
+      "text": " the industry whatever industry you're talking about and have seen how shooting something is.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 147.166,
+      "speaker": "Matt Schwartz",
+      "start": 147.016,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 149.416,
+      "speaker": "A",
+      "start": 147.966,
+      "text": " But when you said industry level, that's what made",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 149.466,
+      "speaker": "Matt Schwartz",
+      "start": 149.416,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 153.066,
+      "speaker": "A",
+      "start": 149.466,
+      "text": " me think of it. I was like, this is ridiculous. This",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 153.166,
+      "speaker": "Matt Schwartz",
+      "start": 153.066,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 153.61599999999999,
+      "speaker": "A",
+      "start": 153.166,
+      "text": " is crazy.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 158.416,
+      "speaker": "Matt Schwartz",
+      "start": 153.61599999999999,
+      "text": " Well and that's at UPS level. So imagine at the bottom lower levels, right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 163.868,
+      "speaker": "Matt Schwartz",
+      "start": 159.668,
+      "text": " Like the opportunity to there are trillion dollar opportunities seriously,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 173.568,
+      "speaker": "Matt Schwartz",
+      "start": 163.96800000000002,
+      "text": " but the opportunity isn't solving some massive problem for a massive company It's really solving lots of small problems for smaller companies",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 182.768,
+      "speaker": "Matt Schwartz",
+      "start": 176.368,
+      "text": " And simple is really good so if we again if you're a business owner you just know how much do you spend you spend X okay?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 187.71800000000002,
+      "speaker": "Matt Schwartz",
+      "start": 183.068,
+      "text": " What does that look like it looks like this well we can give you something better than that for less",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 191.752,
+      "speaker": "Matt Schwartz",
+      "start": 188.852,
+      "text": " And that sells itself. But we have to know what it is.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 198.15200000000002,
+      "speaker": "Matt Schwartz",
+      "start": 192.952,
+      "text": " We have to know what their workflow is. We have to know what their success looks like. We have to know what they expect in income,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 199.352,
+      "speaker": "Matt Schwartz",
+      "start": 198.352,
+      "text": " what their return is.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 202.552,
+      "speaker": "Matt Schwartz",
+      "start": 200.302,
+      "text": " So that information is really valuable.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 206.752,
+      "speaker": "Matt Schwartz",
+      "start": 204.052,
+      "text": " It's knowing what to build and",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 208.602,
+      "speaker": "Matt Schwartz",
+      "start": 208.202,
+      "text": " for whom.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 216.752,
+      "speaker": "A",
+      "start": 215.252,
+      "text": " So if we refocus on...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 218.386,
+      "speaker": "A",
+      "start": 218.136,
+      "text": " Alright.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 226.236,
+      "speaker": "A",
+      "start": 221.436,
+      "text": " Who is begrudgingly doing his job because he knows half of his contacts are garbage.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 226.636,
+      "speaker": "Matt Schwartz",
+      "start": 226.236,
+      "text": " Yep.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 230.436,
+      "speaker": "A",
+      "start": 228.086,
+      "text": " Then, speaking of doing your job,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 231.186,
+      "speaker": "Matt Schwartz",
+      "start": 230.436,
+      "text": " And so we've",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 231.386,
+      "speaker": "A",
+      "start": 231.186,
+      "text": " oh,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 231.436,
+      "speaker": "Matt Schwartz",
+      "start": 231.386,
+      "text": " enriched",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 231.986,
+      "speaker": "A",
+      "start": 231.436,
+      "text": " wait, I gotta go.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 234.836,
+      "speaker": "Matt Schwartz",
+      "start": 231.986,
+      "text": " that rep's list and that rep.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 237.486,
+      "speaker": "A",
+      "start": 237.036,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 240.186,
+      "speaker": "A",
+      "start": 238.986,
+      "text": " I gotta go to Picco's right now.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 242.336,
+      "speaker": "A",
+      "start": 241.536,
+      "text": " On my 6pm.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 247.086,
+      "speaker": "Matt Schwartz",
+      "start": 242.336,
+      "text": " Yeah, so it's create that list for that rep or enrich that rep's list.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_60",
+      "end": 257.96,
+      "speaker": "Matt Schwartz",
+      "start": 254.26,
+      "text": " Because remember how you make money if you bring your own leads",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_61",
+      "end": 258.01,
+      "speaker": "A",
+      "start": 257.96,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_62",
+      "end": 258.46,
+      "speaker": "Matt Schwartz",
+      "start": 258.01,
+      "text": " maybe",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_63",
+      "end": 258.86,
+      "speaker": "A",
+      "start": 258.46,
+      "text": " I'm",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_64",
+      "end": 259.15999999999997,
+      "speaker": "Matt Schwartz",
+      "start": 258.86,
+      "text": " that's that's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_65",
+      "end": 259.65999999999997,
+      "speaker": "A",
+      "start": 259.15999999999997,
+      "text": " sure of it",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_66",
+      "end": 260.61,
+      "speaker": "Matt Schwartz",
+      "start": 259.65999999999997,
+      "text": " that's the target",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_67",
+      "end": 262.36,
+      "speaker": "Matt Schwartz",
+      "start": 261.31,
+      "text": " You are the target.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_68",
+      "end": 267.76,
+      "speaker": "Matt Schwartz",
+      "start": 262.61,
+      "text": " I'm going to generate leads for you to bring to your company and I'm also going to enrich your current leads",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_69",
+      "end": 280.908,
+      "speaker": "A",
+      "start": 280.308,
+      "text": " Sure seems like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_70",
+      "end": 284.70799999999997,
+      "speaker": "Matt Schwartz",
+      "start": 280.908,
+      "text": " I mean you would pay for it your mate if you're making 80k a year and you already know",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_71",
+      "end": 284.908,
+      "speaker": "A",
+      "start": 284.70799999999997,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_72",
+      "end": 285.20799999999997,
+      "speaker": "Matt Schwartz",
+      "start": 284.908,
+      "text": " yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_73",
+      "end": 288.058,
+      "speaker": "A",
+      "start": 285.20799999999997,
+      "text": " if I knew I didn't have to drive to freaking pickles right now because they're not gonna be home.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_74",
+      "end": 288.558,
+      "speaker": "A",
+      "start": 288.20799999999997,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_75",
+      "end": 289.408,
+      "speaker": "A",
+      "start": 288.608,
+      "text": " I'd buy it",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "to his lists but And then he could even do that yeah, but again that's a different and yeah, and then but I guess the point is that at that point it's his responsibility to do whatever he has to do with his mother list To not get fired. I don't give shit like either don't do the other half and get fired or do whatever you do I don't care but you're gonna make all your money in the first half of the month hitting the fresh part of the list okay, cool you can automate the other half\nSure, so maybe that's that's But the big again the customer is very different so now what would make that customer happy what would make autonomous customer happy and how much would he pay Do you know what I mean like so many things if we just build something we can't just rejigger it we have to build to one specific thing and make it awesome\nSo in this case So where... anyway, wait, let me finish my fruit like what I was going up there So there's a better way to do shit right now the hardest then I worked for UPS for a minute just for the holidays whatever and their systems are so old and like the only way they make sense is if you do it long enough to get used to it and it's like a brick phone\nthat's like just text and it says like I don't even remember what it says but it was like how do you know what you're doing like you just gotta you know that this package is on your truck and it but is it telling you that it's the next one you have to deliver and then it's not on maps you just have to go by knowing where you are I'm like there's got to be like a\nLook in this package is going here next. How is it this unuser -friendly? If someone could take the ease of use of that inspection software, translate it into delivering these packages on a Google Maps in real time, that's it. Like make it so much easier. That to me, that's an enterprise level deal.\nI mean, it's they're never gonna buy it, but still, it's like that's what I'm you just but you gotta like know how the industry whatever industry you're talking about and have seen how shooting something is. Yeah. But when you said industry level, that's what made Yeah. me think of it. I was like, this is ridiculous. This Yeah. is crazy. Well and that's at UPS level. So imagine at the bottom lower levels, right?\nLike the opportunity to there are trillion dollar opportunities seriously, but the opportunity isn't solving some massive problem for a massive company It's really solving lots of small problems for smaller companies And simple is really good so if we again if you're a business owner you just know how much do you spend you spend X okay? What does that look like it looks like this well we can give you something better than that for less\nAnd that sells itself. But we have to know what it is. We have to know what their workflow is. We have to know what their success looks like. We have to know what they expect in income, what their return is. So that information is really valuable. It's knowing what to build and for whom. So if we refocus on...\nAlright. Who is begrudgingly doing his job because he knows half of his contacts are garbage. Yep. Then, speaking of doing your job, And so we've oh, enriched wait, I gotta go. that rep's list and that rep. Yeah. I gotta go to Picco's right now. On my 6pm. Yeah, so it's create that list for that rep or enrich that rep's list.\nBecause remember how you make money if you bring your own leads Yeah, maybe I'm that's that's sure of it that's the target You are the target. I'm going to generate leads for you to bring to your company and I'm also going to enrich your current leads\nSure seems like I mean you would pay for it your mate if you're making 80k a year and you already know Yeah, yeah if I knew I didn't have to drive to freaking pickles right now because they're not gonna be home. Yeah, I'd buy it",
+  "usage": {
+    "input_tokens": 5116,
+    "output_tokens": 7872,
+    "total_tokens": 12988,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 4793,
+      "text_tokens": 323
+    }
+  }
+}

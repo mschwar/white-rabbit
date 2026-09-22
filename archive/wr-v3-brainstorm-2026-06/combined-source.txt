@@ -1,0 +1,2631 @@
+Below are **6 copy/paste markdown files**, one per photo.
+
+---
+
+````markdown
+---
+title: "Lead Generation Brainstorm - Photo 01 - Targeting Dimensions"
+doc_type: "handwritten_note_transcription"
+photo_index: 1
+source_image: "8DB249D8-0FE4-4252-91CB-08B8BBA622E5.jpeg"
+status: "raw_transcription_plus_expansion"
+purpose: "Define the three major targeting dimensions for automated lead generation: individuals, industries, and scope."
+core_model:
+  individuals: "The human/contact side of the lead request."
+  industries: "The business/organization/vertical side of the lead request."
+  scopes: "The geographic, market-size, revenue, employee-count, and pain-point constraints."
+primary_fields:
+  - individuals
+  - industries
+  - scopes
+  - example_roles
+  - example_industries
+  - example_scopes
+data_quality_notes:
+  - "Some handwriting is uncertain; unclear phrases are marked with [unclear]."
+  - "List seeds have been expanded with likely synonyms and related lead-generation terms."
+---
+
+# Lead Generation Brainstorm - Photo 01 - Targeting Dimensions
+
+## 1. Raw visible structure
+
+The page is organized into three top-level targeting categories:
+
+| Category | Meaning |
+|---|---|
+| Individuals | People, titles, decision-makers, authority holders |
+| Industries | Businesses, verticals, sectors |
+| Scopes | Geographic areas, market size, employee count, revenue, pain points |
+
+---
+
+# 2. Individuals
+
+## Raw notes
+
+- decision makers
+- professional positions
+- buying power
+- titles
+
+## Expanded seed list
+
+```yaml
+individuals:
+  definition: "The target human contacts who may have buying power, influence, operational responsibility, or decision authority."
+  raw_terms:
+    - decision makers
+    - professional positions
+    - buying power
+    - titles
+  expanded_terms:
+    - decision maker
+    - economic buyer
+    - technical buyer
+    - user buyer
+    - influencer
+    - recommender
+    - approver
+    - budget owner
+    - department head
+    - director
+    - manager
+    - owner
+    - founder
+    - executive
+    - C-suite
+    - procurement lead
+    - purchasing lead
+    - operations lead
+    - finance lead
+    - HR lead
+    - IT lead
+    - facilities lead
+    - supply chain lead
+````
+
+## Possible individual/title fields
+
+```yaml
+individual_fields:
+  - full_name
+  - first_name
+  - last_name
+  - title
+  - seniority
+  - department
+  - job_function
+  - decision_authority_level
+  - buying_power_estimate
+  - role_confidence_score
+  - email
+  - phone
+  - linkedin_url
+  - source_url
+```
+
+---
+
+# 3. Industries
+
+## Raw notes
+
+- businesses
+    
+- verticals
+    
+- government sectors
+    
+
+## Expanded seed list
+
+```yaml
+industries:
+  definition: "The target organization type, business category, sector, or vertical where leads should be found."
+  raw_terms:
+    - businesses
+    - verticals
+    - government sectors
+  expanded_terms:
+    - industry
+    - vertical
+    - sector
+    - market category
+    - business type
+    - organization type
+    - public sector
+    - private sector
+    - nonprofit sector
+    - government agency
+    - education
+    - healthcare
+    - SaaS
+    - retail
+    - construction
+    - real estate
+    - agriculture
+    - shipping
+    - logistics
+    - textiles
+    - waste management
+    - environmental services
+```
+
+## Possible industry fields
+
+```yaml
+industry_fields:
+  - company_name
+  - organization_type
+  - industry
+  - sub_industry
+  - vertical
+  - sector
+  - NAICS_code
+  - SIC_code
+  - business_model
+  - company_url
+  - company_description
+  - industry_confidence_score
+```
+
+---
+
+# 4. Scopes
+
+## Raw notes
+
+- geographic areas
+    
+- total addressable markets
+    
+- # employees
+    
+- annual revenue
+    
+- pain points
+    
+
+## Expanded seed list
+
+```yaml
+scopes:
+  definition: "The constraints that narrow the search universe by geography, size, revenue, market, operational conditions, or pain points."
+  raw_terms:
+    - geographic areas
+    - total addressable markets
+    - number of employees
+    - annual revenue
+    - pain points
+  expanded_terms:
+    - city
+    - county
+    - state
+    - region
+    - country
+    - nationwide
+    - international
+    - market size
+    - total addressable market
+    - serviceable available market
+    - number of locations
+    - number of employees
+    - annual revenue
+    - transaction volume
+    - customer volume
+    - operational pain point
+    - climate condition
+    - regulatory condition
+    - business maturity
+    - franchise status
+```
+
+## Possible scope fields
+
+```yaml
+scope_fields:
+  - city
+  - county
+  - state
+  - region
+  - country
+  - geography_label
+  - employee_count_min
+  - employee_count_max
+  - annual_revenue_min
+  - annual_revenue_max
+  - transaction_volume
+  - company_size
+  - market_scope
+  - pain_points
+  - scope_confidence_score
+```
+
+---
+
+# 5. Example role list
+
+## Raw notes
+
+- Purchaser
+    
+- Buyer
+    
+- Fulfillment
+    
+- Director
+    
+- Owner
+    
+- C suite
+    
+- CEO, CFO, COO
+    
+- accountant
+    
+- HR
+    
+
+## Expanded role/title seed list
+
+```yaml
+example_roles:
+  purchasing:
+    raw:
+      - Purchaser
+      - Buyer
+    expanded:
+      - Purchaser
+      - Buyer
+      - Purchasing Manager
+      - Procurement Manager
+      - Procurement Director
+      - Sourcing Manager
+      - Strategic Sourcing Manager
+      - Materials Buyer
+      - Category Manager
+      - Vendor Manager
+      - Supply Chain Buyer
+
+  fulfillment_operations:
+    raw:
+      - Fulfillment
+      - Director
+      - Owner
+    expanded:
+      - Fulfillment Manager
+      - Fulfillment Director
+      - Operations Manager
+      - Director of Operations
+      - Warehouse Manager
+      - Logistics Manager
+      - Distribution Manager
+      - General Manager
+      - Owner
+      - Founder
+      - President
+
+  executive:
+    raw:
+      - C suite
+      - CEO
+      - CFO
+      - COO
+    expanded:
+      - CEO
+      - Chief Executive Officer
+      - CFO
+      - Chief Financial Officer
+      - COO
+      - Chief Operating Officer
+      - President
+      - Founder
+      - Managing Partner
+      - General Manager
+      - VP Operations
+      - VP Finance
+      - VP Sales
+
+  finance_hr:
+    raw:
+      - accountant
+      - HR
+    expanded:
+      - Accountant
+      - Accounting Manager
+      - Controller
+      - Finance Director
+      - HR Manager
+      - Human Resources Manager
+      - People Operations Manager
+      - Talent Manager
+      - Benefits Manager
+```
+
+---
+
+# 6. Example industry list
+
+## Raw notes
+
+- IT
+    
+- Sales / SaaS
+    
+- Hospitals / Healthcare
+    
+- Univ. / Education
+    
+- Sports - golf / tennis
+    
+- Online Education
+    
+- Construction
+    
+- Real Estate
+    
+- Waste Management
+    
+- Environmental
+    
+- Gov't.
+    
+- Research
+    
+- Retail
+    
+
+## Expanded industry seed list
+
+```yaml
+example_industries:
+  technology:
+    raw:
+      - IT
+      - Sales / SaaS
+    expanded:
+      - Information Technology
+      - Managed IT Services
+      - SaaS
+      - B2B SaaS
+      - Sales Software
+      - Lead Generation Software
+      - CRM Software
+      - Marketing Automation
+      - Cybersecurity
+      - Cloud Services
+
+  healthcare:
+    raw:
+      - Hospitals / Healthcare
+    expanded:
+      - Hospitals
+      - Healthcare Systems
+      - Clinics
+      - Medical Practices
+      - Behavioral Health
+      - Senior Care
+      - Healthcare Administration
+      - Medical Device
+      - Health IT
+
+  education:
+    raw:
+      - Univ. / Education
+      - Online Education
+    expanded:
+      - Universities
+      - Colleges
+      - K-12 Schools
+      - School Districts
+      - Online Education
+      - EdTech
+      - Training Providers
+      - Continuing Education
+      - Workforce Development
+
+  sports_recreation:
+    raw:
+      - Sports - golf / tennis
+    expanded:
+      - Golf Clubs
+      - Tennis Clubs
+      - Country Clubs
+      - Athletic Facilities
+      - Sports Training Facilities
+      - Recreation Centers
+      - Fitness Clubs
+
+  built_environment:
+    raw:
+      - Construction
+      - Real Estate
+    expanded:
+      - Construction
+      - Commercial Real Estate
+      - Property Management
+      - Building Materials
+      - Contractors
+      - Developers
+      - Facilities Management
+      - Architecture
+      - Engineering
+
+  environmental_public_sector:
+    raw:
+      - Waste Management
+      - Environmental
+      - Gov't.
+    expanded:
+      - Waste Management
+      - Recycling
+      - Environmental Services
+      - Water Management
+      - Municipal Services
+      - Government Agencies
+      - Public Works
+      - Utilities
+      - Sustainability
+
+  knowledge_retail:
+    raw:
+      - Research
+      - Retail
+    expanded:
+      - Research Organizations
+      - Academic Research
+      - Market Research
+      - Retail Stores
+      - E-commerce
+      - Specialty Retail
+      - Consumer Goods
+      - Wholesale Distribution
+```
+
+---
+
+# 7. Example scope list
+
+## Raw notes
+
+- $500k+ yearly revenue
+    
+- 100 transactions/mo
+    
+- ave/lunch average? [unclear]
+    
+- in the Fortune 500
+    
+- in Texas
+    
+- has 300+ days of sun
+    
+- Nationwide
+    
+- New Jersey
+    
+- Sandoval County
+    
+
+## Expanded scope seed list
+
+```yaml
+example_scopes:
+  revenue_and_volume:
+    raw:
+      - "$500k+ yearly revenue"
+      - "100 transactions/mo"
+      - "ave/lunch average? [unclear]"
+    expanded:
+      - annual_revenue_minimum
+      - monthly_transaction_minimum
+      - average_ticket_size
+      - average_order_value
+      - customer_volume
+      - location_volume
+      - purchasing_volume
+
+  company_size:
+    raw:
+      - "in the Fortune 500"
+    expanded:
+      - Fortune 500
+      - enterprise
+      - mid-market
+      - small business
+      - franchise
+      - multi-location
+      - employee_count_threshold
+      - revenue_threshold
+
+  geography:
+    raw:
+      - Texas
+      - Nationwide
+      - New Jersey
+      - Sandoval County
+    expanded:
+      - city
+      - county
+      - state
+      - region
+      - national
+      - nationwide
+      - local market
+      - metro area
+      - rural area
+      - service territory
+
+  environmental_conditions:
+    raw:
+      - "has 300+ days of sun"
+    expanded:
+      - climate condition
+      - high sun exposure
+      - arid region
+      - high heat
+      - water scarcity
+      - seasonal demand
+      - weather-dependent market
+```
+
+---
+
+# 8. Structured interpretation
+
+This note defines the earliest version of a targeting taxonomy.
+
+The system should treat a lead-generation request as a combination of:
+
+```yaml
+lead_request_components:
+  A_individual:
+    description: "Who should be contacted?"
+    examples:
+      - buyer
+      - purchaser
+      - HR manager
+      - COO
+      - IT director
+
+  B_industry:
+    description: "What type of organization should they work for?"
+    examples:
+      - SaaS
+      - healthcare
+      - education
+      - construction
+      - retail
+
+  C_scope:
+    description: "Where and under what constraints should they be found?"
+    examples:
+      - Texas
+      - Sandoval County
+      - Fortune 500
+      - $500k+ annual revenue
+      - 100 transactions/month
+```
+
+---
+
+# 9. Useful next transformation
+
+This page should become the foundation for:
+
+```yaml
+recommended_next_docs:
+  - REQUEST_SCHEMA.md
+  - LEAD_TARGETING_TAXONOMY.md
+  - ROLE_EXPANSION_DICTIONARY.md
+  - INDUSTRY_EXPANSION_DICTIONARY.md
+  - SCOPE_FILTER_DICTIONARY.md
+```
+
+````
+
+---
+
+```markdown
+---
+title: "Lead Generation Brainstorm - Photo 02 - Coherent Segment Request"
+doc_type: "handwritten_note_transcription"
+photo_index: 2
+source_image: "B055C50D-4EFF-475A-B670-1618D590E996.jpeg"
+status: "raw_transcription_plus_expansion"
+purpose: "Describe what a coherent lead-generation request should produce: an effective segment of professionals within an industry who have decision authority."
+core_concept: "Create a coherent segment of professionals who have authority to make decisions, especially fast-buying-power contacts."
+primary_fields:
+  - segment_definition
+  - contact_count
+  - professional_position
+  - industry
+  - geography
+  - contact_information
+  - related_titles
+data_quality_notes:
+  - "Handwriting is partially difficult to read; uncertain words are marked with [unclear]."
+  - "The phrase 'especially fast buying power' appears to mean priority should be given to contacts with clear authority and short decision paths."
+---
+
+# Lead Generation Brainstorm - Photo 02 - Coherent Segment Request
+
+## 1. Raw transcription
+
+```text
+- Create a coherent segment to hone in on
+
+an effective segment of professionals within an
+
+industry who have the authority to make decisions
+
+(especially fast buying power)
+
+- number of desired contacts
+
+- in a certain professional position
+
+- within an industry
+
+- within a geographic area
+
+- looking for direct contact info currently in use
+
+- open to similarly related titles/positions who
+  likely have the same job function.
+````
+
+---
+
+# 2. Cleaned-up version
+
+Create a coherent lead-generation segment that narrows in on an effective group of professionals within a specific industry who have the authority to make decisions, especially people with clear and fast buying power.
+
+A complete request should specify:
+
+1. The number of desired contacts.
+    
+2. The target professional position or job function.
+    
+3. The target industry or business type.
+    
+4. The geographic area or market scope.
+    
+5. The desired type of direct contact information.
+    
+6. Whether related titles or equivalent job functions should be included.
+    
+
+---
+
+# 3. Embedded data fields
+
+```yaml
+coherent_segment_request:
+  objective: "Generate a focused list of professionals likely to have decision-making authority within a target industry and geography."
+  required_inputs:
+    contact_count:
+      description: "How many leads or contacts the user wants."
+      examples:
+        - 25
+        - 50
+        - 100
+        - 500
+
+    professional_position:
+      description: "The role, title, seniority, or job function to target."
+      examples:
+        - Purchaser
+        - IT Director
+        - Director of Marketing
+        - COO
+        - Social Media Manager
+        - Materials Buyer
+
+    industry:
+      description: "The business vertical, sector, or organization type."
+      examples:
+        - retail
+        - education
+        - SaaS
+        - healthcare
+        - construction
+        - agriculture
+        - landscaping supply
+
+    geographic_area:
+      description: "The location or market boundary."
+      examples:
+        - Utah
+        - Texas
+        - Northwest USA
+        - New Jersey
+        - Sandoval County
+        - nationwide
+
+    contact_info_requirement:
+      description: "The type of contact information requested."
+      examples:
+        - direct email
+        - phone number
+        - LinkedIn profile
+        - contact page
+        - company website
+        - public staff directory listing
+
+    related_titles_allowed:
+      description: "Whether the system can include similar titles with the same job function."
+      default: true
+```
+
+---
+
+# 4. Data dictionary
+
+|Field|Type|Required?|Description|Example|
+|---|--:|--:|---|---|
+|`contact_count`|integer|Yes|Desired number of contacts|`100`|
+|`professional_position`|string|Yes|Target job title, role, or function|`Purchasing Manager`|
+|`industry`|string|Yes|Target industry, sector, or vertical|`landscape supply`|
+|`geographic_area`|string/list|Yes|Target market or region|`Northwest USA`|
+|`contact_info_requirement`|list|No|Desired contact info fields|`email`, `phone`, `LinkedIn`|
+|`related_titles_allowed`|boolean|No|Whether to include adjacent titles|`true`|
+|`decision_authority_required`|boolean|No|Whether contact must plausibly influence buying|`true`|
+|`freshness_required`|boolean|No|Whether info must appear current|`true`|
+
+---
+
+# 5. Expanded concept: decision authority
+
+The note emphasizes people who have authority to make decisions. This should become an explicit lead-scoring dimension.
+
+```yaml
+decision_authority_levels:
+  high:
+    description: "Likely has direct buying or approval power."
+    examples:
+      - Owner
+      - Founder
+      - CEO
+      - COO
+      - CFO
+      - President
+      - General Manager
+      - Director of Operations
+      - Procurement Director
+
+  medium:
+    description: "Likely influences buying or can route the request internally."
+    examples:
+      - Purchasing Manager
+      - Buyer
+      - Department Manager
+      - Facilities Manager
+      - IT Manager
+      - Marketing Manager
+      - HR Manager
+
+  low:
+    description: "May be relevant but likely does not control budget."
+    examples:
+      - Coordinator
+      - Assistant
+      - Associate
+      - Specialist
+      - Analyst
+      - Intern
+```
+
+---
+
+# 6. Expanded concept: related titles
+
+The system should not search only for exact user-provided titles. It should expand by job function.
+
+```yaml
+related_title_expansion_rules:
+  purchaser:
+    include:
+      - Buyer
+      - Purchasing Manager
+      - Procurement Manager
+      - Materials Buyer
+      - Sourcing Specialist
+      - Vendor Manager
+      - Supply Chain Manager
+      - Inventory Manager
+      - Operations Manager
+    exclude_unless_needed:
+      - Sales Representative
+      - Customer Service
+      - Administrative Assistant
+
+  it_director:
+    include:
+      - IT Director
+      - Director of Information Technology
+      - Technology Director
+      - CIO
+      - Chief Information Officer
+      - IT Manager
+      - Systems Manager
+      - Network Administrator
+    exclude_unless_needed:
+      - Help Desk Technician
+      - Junior Developer
+      - Student Worker
+
+  marketing_director:
+    include:
+      - Director of Marketing
+      - Marketing Manager
+      - VP Marketing
+      - Head of Marketing
+      - Growth Marketing Manager
+      - Demand Generation Manager
+      - Brand Manager
+    exclude_unless_needed:
+      - Marketing Assistant
+      - Social Media Intern
+```
+
+---
+
+# 7. Proposed canonical request format
+
+```text
+Give me [CONTACT_COUNT] contacts for [PROFESSIONAL_POSITION / JOB_FUNCTION] in the [INDUSTRY] industry within [GEOGRAPHIC_AREA]. Include related titles with the same job function. Prefer people with decision-making authority and currently available public contact information.
+```
+
+## Example
+
+```text
+Give me 100 contacts for purchasers and procurement managers in the landscape supply industry within the Northwest USA. Include related titles with the same job function. Prefer people with decision-making authority and currently available public contact information.
+```
+
+---
+
+# 8. Suggested automation interpretation
+
+```yaml
+automation_interpretation:
+  input_type: "natural_language_request"
+  output_type: "structured_lead_segment"
+  pipeline_steps:
+    - parse_contact_count
+    - extract_role_or_job_function
+    - expand_related_titles
+    - extract_industry
+    - expand_industry_terms
+    - extract_geography
+    - expand_geography_terms
+    - define_contact_info_requirements
+    - set_decision_authority_filter
+    - generate_search_queries
+```
+
+---
+
+# 9. This document should become
+
+```yaml
+recommended_next_docs:
+  - COHERENT_REQUEST_PATTERN.md
+  - REQUEST_INTERPRETER_SPEC.md
+  - TITLE_EXPANSION_RULES.md
+  - DECISION_AUTHORITY_SCORING.md
+```
+
+````
+
+---
+
+```markdown
+---
+title: "Lead Generation Brainstorm - Photo 03 - Data Sources"
+doc_type: "handwritten_note_transcription"
+photo_index: 3
+source_image: "2CB3AADF-9B4B-4B13-8411-4C1CE205515E.jpeg"
+status: "raw_transcription_plus_expansion"
+purpose: "Map possible public data sources for lead generation by content type and format."
+core_concept: "Lead data can be discovered across websites, articles, social media, and multimedia sources, each with different file formats and extraction strategies."
+primary_fields:
+  - data_sources
+  - file_formats
+  - websites
+  - articles
+  - social_media
+  - multimedia
+data_quality_notes:
+  - "The page appears to be a source matrix."
+  - "Some entries are abbreviated; expansions are added below the raw transcription."
+---
+
+# Lead Generation Brainstorm - Photo 03 - Data Sources
+
+## 1. Raw table transcription
+
+| Data source category | Formats / notes | Examples |
+|---|---|---|
+| Websites | URL, HTML, CSV, TXT | org website, gov website, tax website, the org, conferences |
+| Articles | PDF, TXT, MD, HTML | news, newsletters, magazines, publications, journals |
+| Social media | URL | LinkedIn, FB/Insta, X |
+| Multimedia | audio, video | YouTube |
+
+---
+
+# 2. Cleaned-up source matrix
+
+```yaml
+data_sources:
+  websites:
+    formats:
+      - url
+      - html
+      - csv
+      - txt
+    examples:
+      - organization_website
+      - government_website
+      - tax_website
+      - company_website
+      - conference_website
+      - association_directory
+      - staff_directory
+      - chamber_of_commerce_directory
+      - procurement_directory
+
+  articles:
+    formats:
+      - pdf
+      - txt
+      - markdown
+      - html
+    examples:
+      - news
+      - newsletters
+      - magazines
+      - publications
+      - journals
+      - trade_publications
+      - press_releases
+      - case_studies
+      - industry_reports
+
+  social_media:
+    formats:
+      - url
+      - public_profile
+      - public_post
+    examples:
+      - LinkedIn
+      - Facebook
+      - Instagram
+      - X
+      - company_social_page
+      - executive_profile
+      - professional_announcement
+
+  multimedia:
+    formats:
+      - audio
+      - video
+      - transcript
+      - captions
+      - description_text
+    examples:
+      - YouTube
+      - webinars
+      - podcasts
+      - conference_recordings
+      - product_demos
+      - interviews
+````
+
+---
+
+# 3. Data dictionary
+
+|Field|Type|Description|Example|
+|---|--:|---|---|
+|`source_category`|string|Broad source class|`websites`|
+|`source_format`|string/list|Format to parse|`html`, `pdf`, `csv`|
+|`source_name`|string|Specific source or platform|`LinkedIn`|
+|`source_url`|URL|URL where data was found|`https://example.com/team`|
+|`source_reliability`|integer|Confidence in source, 1-5|`5`|
+|`extraction_method`|string|How the data is extracted|`html_parse`, `pdf_parse`, `manual_review`|
+|`lead_fields_available`|list|Fields likely available from source|`name`, `title`, `email`|
+|`requires_login`|boolean|Whether source requires authentication|`false`|
+|`allowed_for_mvp`|boolean|Whether to include in first version|`true`|
+
+---
+
+# 4. Expanded source hierarchy
+
+The system should prioritize sources by reliability and ease of extraction.
+
+```yaml
+source_priority:
+  tier_1_official_sources:
+    reliability: 5
+    description: "Official sources controlled by the target organization or public institution."
+    examples:
+      - company_team_page
+      - company_contact_page
+      - staff_directory
+      - leadership_page
+      - government_directory
+      - procurement_office_page
+      - university_department_directory
+
+  tier_2_structured_directories:
+    reliability: 4
+    description: "Directories or listings maintained by recognized organizations."
+    examples:
+      - association_member_directory
+      - chamber_of_commerce_directory
+      - conference_speaker_directory
+      - conference_sponsor_page
+      - trade_group_directory
+      - professional_license_directory
+
+  tier_3_publications:
+    reliability: 3
+    description: "Mentions in articles, newsletters, journals, press releases, or trade publications."
+    examples:
+      - trade_magazine_article
+      - local_news_article
+      - press_release
+      - journal_article
+      - industry_report
+      - company_case_study
+
+  tier_4_social_profiles:
+    reliability: 3
+    description: "Public social media or professional profiles."
+    examples:
+      - LinkedIn_profile
+      - LinkedIn_company_page
+      - X_profile
+      - Facebook_business_page
+      - Instagram_business_page
+
+  tier_5_multimedia:
+    reliability: 2
+    description: "Audio/video sources that may contain useful names, titles, or organizations but require transcription or manual review."
+    examples:
+      - YouTube_interview
+      - podcast_episode
+      - webinar
+      - conference_recording
+```
+
+---
+
+# 5. Source-specific extraction notes
+
+## Websites
+
+Best for:
+
+- company names
+    
+- locations
+    
+- staff names
+    
+- titles
+    
+- phone numbers
+    
+- contact forms
+    
+- official email addresses
+    
+
+Common pages to search:
+
+```yaml
+website_pages_to_check:
+  - /about
+  - /team
+  - /staff
+  - /leadership
+  - /contact
+  - /directory
+  - /procurement
+  - /vendors
+  - /locations
+  - /departments
+  - /management
+```
+
+Search patterns:
+
+```text
+site:example.com "Purchasing Manager"
+site:example.com "Procurement"
+site:example.com "Director of Operations"
+site:example.com "Contact"
+site:example.com "Staff"
+```
+
+---
+
+## Articles
+
+Best for:
+
+- executive names
+    
+- company events
+    
+- expansions
+    
+- funding announcements
+    
+- hiring announcements
+    
+- conference participation
+    
+- thought leadership
+    
+- market context
+    
+
+Possible extraction fields:
+
+```yaml
+article_extractable_fields:
+  - person_name
+  - person_title
+  - company_name
+  - company_location
+  - quote_context
+  - article_date
+  - source_publication
+  - source_url
+```
+
+---
+
+## Social media
+
+Best for:
+
+- title verification
+    
+- current employment
+    
+- role/function clues
+    
+- company activity
+    
+- contact routing
+    
+
+Caution:
+
+```yaml
+social_media_cautions:
+  - "Avoid private personal information."
+  - "Prefer business contact information."
+  - "Do not rely on social profiles alone when official company sources exist."
+  - "LinkedIn can help validate titles but may be difficult to scrape directly."
+```
+
+---
+
+## Multimedia
+
+Best for:
+
+- founder-led companies
+    
+- niche industries
+    
+- podcasts and webinars
+    
+- conference speakers
+    
+- expert interviews
+    
+
+Later-stage use cases:
+
+```yaml
+multimedia_later_stage:
+  - transcribe_youtube_video
+  - extract_speaker_names
+  - extract_company_names
+  - extract_titles_from_descriptions
+  - extract_emails_from_show_notes
+  - identify_buying_signals_from_interviews
+```
+
+---
+
+# 6. MVP source inclusion
+
+For the first version, prioritize these:
+
+```yaml
+mvp_sources:
+  include:
+    - company_websites
+    - staff_directories
+    - leadership_pages
+    - contact_pages
+    - association_directories
+    - conference_pages
+    - government_directories
+    - trade_publication_articles
+    - press_releases
+
+  defer:
+    - LinkedIn_deep_scraping
+    - Facebook_scraping
+    - Instagram_scraping
+    - X_scraping
+    - YouTube_transcription
+    - podcast_transcription
+```
+
+---
+
+# 7. Output implications
+
+Each lead should preserve source provenance.
+
+```yaml
+source_provenance_fields:
+  - source_category
+  - source_name
+  - source_url
+  - source_date
+  - extraction_date
+  - evidence_text
+  - reliability_score
+  - source_notes
+```
+
+---
+
+# 8. This document should become
+
+```yaml
+recommended_next_docs:
+  - SOURCE_STRATEGY.md
+  - SCRAPING_SOURCE_MATRIX.md
+  - SOURCE_RELIABILITY_SCORING.md
+  - PUBLIC_DATA_COMPLIANCE_NOTES.md
+```
+
+````
+
+---
+
+```markdown
+---
+title: "Lead Generation Brainstorm - Photo 04 - Request Formula"
+doc_type: "handwritten_note_transcription"
+photo_index: 4
+source_image: "41658215-C77B-474D-B2CC-A0C3E1EA8D66.jpeg"
+status: "raw_transcription_plus_expansion"
+purpose: "Define the lead-generation request as a structured formula: Request = A individual + B business + C scope."
+core_formula: "R = Request = A(individual) + B(business/industry) + C(scope)"
+primary_fields:
+  - request
+  - individual
+  - business
+  - scope
+  - output_formats
+  - parameters
+data_quality_notes:
+  - "This page is the clearest system architecture sketch."
+  - "Some text in the business column appears crossed out or faint; uncertain entries are marked [unclear]."
+---
+
+# Lead Generation Brainstorm - Photo 04 - Request Formula
+
+## 1. Raw transcription
+
+```text
+R =
+Request
+User input
+
+A (individual) + B (Business) + C (Scope)
+
+A:
+decision makers
+professional position
+buying power
+
+B:
+Industry / vert
+[unclear crossed-out notes]
+
+C:
+Geographic Area
+Market
+
+output:
+csv, txt,
+json
+
+parameters:
+min hits
+min a+b+c
+````
+
+Example items circled under A:
+
+```text
+IT directors
+Purchasers
+Materials Acq spclt
+media buyers
+trainers
+```
+
+Example items circled under B:
+
+```text
+Retail
+IT
+shipping
+textiles
+agriculture
+```
+
+---
+
+# 2. Cleaned-up interpretation
+
+A user gives a rough lead-generation request. The system should parse it into three components:
+
+```text
+Request = A + B + C
+```
+
+Where:
+
+- **A = Individual:** the person, title, role, function, or decision-maker type.
+    
+- **B = Business:** the industry, organization type, sector, or vertical.
+    
+- **C = Scope:** the geography, market, company size, revenue, or other constraint.
+    
+
+The output should be available as:
+
+- CSV
+    
+- TXT
+    
+- JSON
+    
+
+The request should include parameters such as:
+
+- minimum number of hits
+    
+- minimum acceptable fit across A+B+C
+    
+
+---
+
+# 3. Embedded request schema
+
+```yaml
+request_formula:
+  R:
+    label: "Request"
+    description: "The user's natural-language lead generation request."
+    source: "user_input"
+
+  A_individual:
+    label: "Individual"
+    description: "The person-level target: job title, role, function, seniority, and buying power."
+    raw_terms:
+      - decision makers
+      - professional position
+      - buying power
+    example_seed_roles:
+      - IT directors
+      - Purchasers
+      - Materials Acquisition Specialists
+      - Media Buyers
+      - Trainers
+
+  B_business:
+    label: "Business"
+    description: "The target industry, vertical, organization type, or business category."
+    raw_terms:
+      - industry
+      - vertical
+      - business
+    example_seed_industries:
+      - Retail
+      - IT
+      - Shipping
+      - Textiles
+      - Agriculture
+
+  C_scope:
+    label: "Scope"
+    description: "The geography, market, size, or constraint that narrows the search."
+    raw_terms:
+      - geographic area
+      - market
+    example_seed_scopes:
+      - city
+      - state
+      - region
+      - country
+      - nationwide
+      - employee count
+      - revenue threshold
+      - market segment
+
+  outputs:
+    - csv
+    - txt
+    - json
+
+  parameters:
+    - minimum_hits
+    - minimum_A_B_C_fit
+```
+
+---
+
+# 4. Data dictionary
+
+|Field|Type|Required?|Description|Example|
+|---|--:|--:|---|---|
+|`request_text`|string|Yes|Original user request|`Find IT directors in education in New Mexico`|
+|`A.individual`|object|Yes|Target person/function|`IT Director`|
+|`A.related_titles`|list|No|Expanded equivalent titles|`Technology Director`, `CIO`|
+|`A.buying_power`|enum|No|Estimated authority|`high`, `medium`, `low`|
+|`B.business`|object|Yes|Target industry/vertical|`Education`|
+|`B.related_industries`|list|No|Expanded industry terms|`Universities`, `K-12`, `EdTech`|
+|`C.scope`|object|Yes|Geography or market filter|`New Mexico`|
+|`C.constraints`|list|No|Other filters|`500+ employees`, `public institutions`|
+|`output_format`|enum/list|No|Desired output|`csv`|
+|`minimum_hits`|integer|No|Minimum target lead count|`100`|
+|`minimum_fit_score`|integer|No|Minimum score across A+B+C|`75`|
+
+---
+
+# 5. Expanded role/function seeds from A
+
+```yaml
+A_individual_seed_expansions:
+  IT_directors:
+    expanded_titles:
+      - IT Director
+      - Director of IT
+      - Director of Information Technology
+      - Technology Director
+      - Chief Information Officer
+      - CIO
+      - IT Manager
+      - Systems Director
+      - Network Director
+      - Director of Technology Services
+
+  purchasers:
+    expanded_titles:
+      - Purchaser
+      - Buyer
+      - Purchasing Manager
+      - Procurement Manager
+      - Procurement Director
+      - Sourcing Manager
+      - Strategic Sourcing Manager
+      - Vendor Manager
+      - Category Manager
+
+  materials_acquisition_specialists:
+    expanded_titles:
+      - Materials Acquisition Specialist
+      - Materials Buyer
+      - Materials Manager
+      - Procurement Specialist
+      - Supply Chain Specialist
+      - Inventory Manager
+      - Purchasing Specialist
+      - Sourcing Specialist
+
+  media_buyers:
+    expanded_titles:
+      - Media Buyer
+      - Paid Media Manager
+      - Advertising Buyer
+      - Performance Marketing Manager
+      - Digital Marketing Manager
+      - Demand Generation Manager
+      - Growth Marketing Manager
+      - Marketing Acquisition Manager
+
+  trainers:
+    expanded_titles:
+      - Trainer
+      - Training Manager
+      - Learning and Development Manager
+      - Corporate Trainer
+      - Instructional Designer
+      - Workforce Development Manager
+      - Education Coordinator
+      - Training Director
+```
+
+---
+
+# 6. Expanded industry seeds from B
+
+```yaml
+B_business_seed_expansions:
+  retail:
+    expanded_terms:
+      - retail
+      - specialty retail
+      - ecommerce
+      - consumer goods
+      - brick-and-mortar retail
+      - retail chains
+      - independent retailers
+      - wholesale retail
+
+  IT:
+    expanded_terms:
+      - information technology
+      - managed services
+      - software
+      - SaaS
+      - cybersecurity
+      - cloud services
+      - IT consulting
+      - data services
+
+  shipping:
+    expanded_terms:
+      - shipping
+      - logistics
+      - freight
+      - transportation
+      - distribution
+      - warehousing
+      - fulfillment
+      - supply chain
+
+  textiles:
+    expanded_terms:
+      - textiles
+      - apparel manufacturing
+      - fabric suppliers
+      - garment production
+      - industrial textiles
+      - upholstery
+      - textile distribution
+
+  agriculture:
+    expanded_terms:
+      - agriculture
+      - farming
+      - agribusiness
+      - crop production
+      - irrigation
+      - seed suppliers
+      - farm equipment
+      - agricultural supply
+```
+
+---
+
+# 7. Expanded scope seeds from C
+
+```yaml
+C_scope_seed_expansions:
+  geography:
+    examples:
+      - city
+      - metro_area
+      - county
+      - state
+      - region
+      - country
+      - nationwide
+      - multi_state_region
+
+  market:
+    examples:
+      - enterprise
+      - small_business
+      - mid_market
+      - Fortune_500
+      - public_sector
+      - private_sector
+      - nonprofit
+      - franchise
+      - multi_location
+
+  size_constraints:
+    examples:
+      - employee_count_min
+      - employee_count_max
+      - annual_revenue_min
+      - annual_revenue_max
+      - transaction_volume
+      - location_count
+      - customer_count
+
+  pain_point_constraints:
+    examples:
+      - high_growth
+      - hiring
+      - supply_chain_pressure
+      - regulatory_pressure
+      - climate_exposure
+      - procurement_complexity
+      - operational_inefficiency
+```
+
+---
+
+# 8. Minimum A+B+C fit scoring
+
+The note mentions:
+
+```text
+min a+b+c
+```
+
+This should become a fit score.
+
+```yaml
+minimum_fit_score:
+  description: "A combined score that determines whether a lead sufficiently matches the requested role, industry, and scope."
+  scoring:
+    A_individual_match:
+      max_points: 40
+      examples:
+        exact_title_match: 40
+        related_title_match: 30
+        same_department_lower_seniority: 20
+        weak_role_match: 10
+        no_match: 0
+
+    B_business_match:
+      max_points: 35
+      examples:
+        exact_industry_match: 35
+        close_vertical_match: 25
+        broad_sector_match: 15
+        weak_industry_match: 5
+        no_match: 0
+
+    C_scope_match:
+      max_points: 25
+      examples:
+        exact_geography_or_scope_match: 25
+        nearby_region_match: 18
+        broader_market_match: 10
+        weak_scope_match: 5
+        no_match: 0
+
+  recommended_thresholds:
+    excellent: 90
+    good: 75
+    review: 60
+    reject: 59
+```
+
+---
+
+# 9. Canonical request object
+
+```json
+{
+  "request_text": "Find IT directors in the education field in New Mexico.",
+  "A": {
+    "target_function": "Information Technology leadership",
+    "primary_titles": ["IT Director"],
+    "expanded_titles": [
+      "Director of IT",
+      "Director of Information Technology",
+      "Technology Director",
+      "CIO",
+      "IT Manager"
+    ],
+    "decision_authority": "medium_to_high"
+  },
+  "B": {
+    "target_industry": "Education",
+    "expanded_industries": [
+      "Universities",
+      "Colleges",
+      "K-12 Schools",
+      "School Districts",
+      "Online Education",
+      "EdTech"
+    ]
+  },
+  "C": {
+    "geography": ["New Mexico"],
+    "market_scope": null,
+    "constraints": []
+  },
+  "output": {
+    "formats": ["csv", "json"],
+    "minimum_hits": 100,
+    "minimum_fit_score": 75
+  }
+}
+```
+
+---
+
+# 10. This document should become
+
+```yaml
+recommended_next_docs:
+  - REQUEST_FORMULA.md
+  - REQUEST_OBJECT_SCHEMA.md
+  - A_B_C_FIT_SCORING.md
+  - QUERY_PLANNER_SPEC.md
+```
+
+````
+
+---
+
+```markdown
+---
+title: "Lead Generation Brainstorm - Photo 05 - Brain Dump Requests"
+doc_type: "handwritten_note_transcription"
+photo_index: 5
+source_image: "CED45E83-5FC3-489C-9A50-A66CBEA26BCB.jpeg"
+status: "raw_transcription_plus_expansion"
+purpose: "Capture raw example lead-generation requests and expand them into structured test cases."
+core_concept: "These are seed examples that should become eval prompts for the automated lead-generation system."
+primary_fields:
+  - raw_requests
+  - expanded_requests
+  - A_individual
+  - B_business
+  - C_scope
+  - ambiguity_notes
+data_quality_notes:
+  - "Some phrases are partially unclear; uncertain text is marked with [unclear]."
+  - "Each raw request has been expanded into a structured A+B+C lead request."
+---
+
+# Lead Generation Brainstorm - Photo 05 - Brain Dump Requests
+
+## 1. Raw transcription
+
+```text
+Brain dump requests:
+
+- Social media managers in Utah
+
+- Purchasers for irrigation and landscape materials
+  supply stores in NW USA
+
+- Directors of supply chain for pet food
+  franchises on the [unclear]
+
+- Construction materials fulfillment managers in
+  commercial real estate
+
+- accounting directors for [unclear]
+
+- COO of a lead generation software SaaS
+````
+
+---
+
+# 2. Cleaned-up request list
+
+1. Social media managers in Utah.
+    
+2. Purchasers for irrigation and landscape materials supply stores in the Northwest USA.
+    
+3. Directors of supply chain for pet food franchises. Scope unclear.
+    
+4. Construction materials fulfillment managers in commercial real estate.
+    
+5. Accounting directors for an unclear target industry or geography.
+    
+6. COOs of lead-generation software SaaS companies.
+    
+
+---
+
+# 3. Structured request seeds
+
+## Request 01: Social media managers in Utah
+
+```yaml
+request_01:
+  raw_request: "Social media managers in Utah"
+  A_individual:
+    primary_role: "Social Media Manager"
+    job_function: "social media marketing"
+    expanded_titles:
+      - Social Media Manager
+      - Social Media Director
+      - Social Media Coordinator
+      - Social Media Strategist
+      - Digital Marketing Manager
+      - Content Marketing Manager
+      - Community Manager
+      - Brand Manager
+      - Marketing Manager
+      - Communications Manager
+  B_business:
+    industry: "unspecified"
+    possible_default_industries:
+      - retail
+      - restaurants
+      - hospitality
+      - consumer brands
+      - agencies
+      - local businesses
+      - real estate
+      - healthcare
+      - fitness
+      - tourism
+  C_scope:
+    geography:
+      - Utah
+    market_scope: "statewide"
+  ambiguity_notes:
+    - "Industry is not specified."
+    - "Need to ask whether user wants all industries or a specific sector."
+    - "Could default to local businesses and agencies if no industry is provided."
+  canonical_request: "Give me a CSV of social media managers and related marketing contacts at businesses in Utah."
+```
+
+---
+
+## Request 02: Purchasers for irrigation and landscape materials supply stores in NW USA
+
+```yaml
+request_02:
+  raw_request: "Purchasers for irrigation and landscape materials supply stores in NW USA"
+  A_individual:
+    primary_role: "Purchaser"
+    job_function: "purchasing/procurement"
+    expanded_titles:
+      - Purchaser
+      - Buyer
+      - Purchasing Manager
+      - Procurement Manager
+      - Materials Buyer
+      - Inventory Manager
+      - Supply Chain Manager
+      - Operations Manager
+      - General Manager
+      - Owner
+  B_business:
+    industry: "irrigation and landscape materials supply"
+    organization_types:
+      - irrigation supply store
+      - landscape supply store
+      - hardscape supplier
+      - nursery supply distributor
+      - garden supply store
+      - landscape materials distributor
+      - outdoor materials supplier
+      - contractor supply store
+  C_scope:
+    geography:
+      - Northwest USA
+    expanded_geographies:
+      - Washington
+      - Oregon
+      - Idaho
+      - Montana
+      - Northern California
+      - Alaska
+    optional_geographies:
+      - Wyoming
+      - British Columbia
+  ambiguity_notes:
+    - "Northwest USA should be explicitly defined."
+    - "For small local suppliers, owner or general manager may be the practical purchasing decision-maker."
+  canonical_request: "Give me a CSV of purchasers, procurement managers, buyers, operations managers, and owners at irrigation and landscape materials supply stores in the Northwest USA."
+```
+
+---
+
+## Request 03: Directors of supply chain for pet food franchises
+
+```yaml
+request_03:
+  raw_request: "Directors of supply chain for pet food franchises on the [unclear]"
+  A_individual:
+    primary_role: "Director of Supply Chain"
+    job_function: "supply chain leadership"
+    expanded_titles:
+      - Director of Supply Chain
+      - Supply Chain Director
+      - VP Supply Chain
+      - Head of Supply Chain
+      - Logistics Director
+      - Procurement Director
+      - Operations Director
+      - Distribution Director
+      - Inventory Director
+      - Sourcing Director
+  B_business:
+    industry: "pet food franchises"
+    organization_types:
+      - pet food franchise
+      - pet supply franchise
+      - pet retail chain
+      - pet food manufacturer
+      - pet food distributor
+      - specialty pet retailer
+      - pet nutrition company
+  C_scope:
+    geography: "unclear"
+    possible_scopes:
+      - nationwide
+      - United States
+      - specific state or region needed
+      - franchise systems only
+      - companies with multiple locations
+  ambiguity_notes:
+    - "The phrase after 'on the' is unclear."
+    - "Need clarification: is this nationwide, on the West Coast, on LinkedIn, or on a specific platform/source?"
+    - "For small franchises, supply chain may be centralized at headquarters."
+  canonical_request: "Give me a CSV of supply chain directors and related operations/procurement leaders at pet food franchises and pet supply chains in [GEOGRAPHY]."
+```
+
+---
+
+## Request 04: Construction materials fulfillment managers in commercial real estate
+
+```yaml
+request_04:
+  raw_request: "Construction materials fulfillment managers in commercial real estate"
+  A_individual:
+    primary_role: "Construction Materials Fulfillment Manager"
+    job_function: "materials fulfillment, logistics, procurement, operations"
+    expanded_titles:
+      - Fulfillment Manager
+      - Materials Manager
+      - Construction Materials Manager
+      - Logistics Manager
+      - Procurement Manager
+      - Purchasing Manager
+      - Supply Chain Manager
+      - Warehouse Manager
+      - Operations Manager
+      - Project Manager
+      - Construction Operations Manager
+  B_business:
+    industry: "commercial real estate / construction materials"
+    organization_types:
+      - commercial real estate developer
+      - commercial construction company
+      - general contractor
+      - construction materials supplier
+      - building materials distributor
+      - property development firm
+      - facilities contractor
+  C_scope:
+    geography: "unspecified"
+    market_scope:
+      - commercial real estate
+      - construction projects
+      - materials logistics
+  ambiguity_notes:
+    - "The request mixes an industry with a supply-chain function."
+    - "Need to clarify whether target organizations are commercial real estate firms, construction firms, or materials suppliers serving commercial real estate."
+    - "Need geography."
+  canonical_request: "Give me a CSV of fulfillment, materials, procurement, logistics, and operations managers at companies supplying construction materials to commercial real estate projects in [GEOGRAPHY]."
+```
+
+---
+
+## Request 05: Accounting directors for [unclear]
+
+```yaml
+request_05:
+  raw_request: "Accounting directors for [unclear]"
+  A_individual:
+    primary_role: "Accounting Director"
+    job_function: "finance/accounting leadership"
+    expanded_titles:
+      - Accounting Director
+      - Director of Accounting
+      - Controller
+      - Corporate Controller
+      - Finance Director
+      - Director of Finance
+      - Accounting Manager
+      - VP Finance
+      - CFO
+  B_business:
+    industry: "unclear"
+    possible_industries:
+      - SaaS
+      - healthcare
+      - education
+      - retail
+      - real estate
+      - nonprofit
+      - construction
+      - government contractors
+  C_scope:
+    geography: "unclear"
+    possible_scopes:
+      - local
+      - statewide
+      - regional
+      - nationwide
+      - company_size_threshold
+  ambiguity_notes:
+    - "This request is incomplete."
+    - "Need target industry and geography."
+    - "Could be transformed into a template prompt."
+  canonical_request_template: "Give me a CSV of accounting directors, controllers, and finance directors in the [INDUSTRY] industry within [GEOGRAPHY]."
+```
+
+---
+
+## Request 06: COO of a lead generation software SaaS
+
+```yaml
+request_06:
+  raw_request: "COO of a lead generation software SaaS"
+  A_individual:
+    primary_role: "COO"
+    job_function: "executive operations leadership"
+    expanded_titles:
+      - COO
+      - Chief Operating Officer
+      - VP Operations
+      - Head of Operations
+      - General Manager
+      - Co-Founder
+      - Founder
+      - President
+      - Chief Revenue Officer
+      - CRO
+  B_business:
+    industry: "lead generation software SaaS"
+    organization_types:
+      - lead generation software company
+      - sales intelligence SaaS
+      - B2B data provider
+      - prospecting software
+      - outbound sales platform
+      - marketing automation SaaS
+      - CRM enrichment platform
+      - demand generation software
+  C_scope:
+    geography: "unspecified"
+    possible_scopes:
+      - United States
+      - North America
+      - global English-language companies
+      - venture-backed SaaS companies
+      - companies with 10-500 employees
+  ambiguity_notes:
+    - "Need geography or company-size scope."
+    - "COO may not exist in early-stage SaaS companies; include founders/heads of operations if allowed."
+  canonical_request: "Give me a CSV of COOs, heads of operations, and founders at lead-generation software SaaS companies in [GEOGRAPHY/SCOPE]."
+```
+
+---
+
+# 4. Combined eval prompt list
+
+These should become test cases for the request parser.
+
+```yaml
+eval_prompts:
+  - id: "eval_001"
+    prompt: "Find social media managers in Utah."
+    missing_fields:
+      - industry
+      - desired_contact_count
+      - required_contact_fields
+
+  - id: "eval_002"
+    prompt: "Find purchasers for irrigation and landscape materials supply stores in the Northwest USA."
+    missing_fields:
+      - desired_contact_count
+      - exact_definition_of_Northwest_USA
+      - required_contact_fields
+
+  - id: "eval_003"
+    prompt: "Find directors of supply chain for pet food franchises."
+    missing_fields:
+      - geography
+      - desired_contact_count
+      - whether_to_include_pet_supply_retailers
+
+  - id: "eval_004"
+    prompt: "Find construction materials fulfillment managers in commercial real estate."
+    missing_fields:
+      - geography
+      - whether_target_is_supplier_or_real_estate_firm
+      - desired_contact_count
+
+  - id: "eval_005"
+    prompt: "Find accounting directors in [industry] in [geography]."
+    missing_fields:
+      - industry
+      - geography
+      - desired_contact_count
+
+  - id: "eval_006"
+    prompt: "Find COOs of lead-generation software SaaS companies."
+    missing_fields:
+      - geography
+      - company_size
+      - whether_to_include_founders_or_operations_heads
+```
+
+---
+
+# 5. Clarification question templates
+
+```yaml
+clarification_questions:
+  missing_industry:
+    question: "What industry or organization type should I target?"
+    examples:
+      - retail
+      - healthcare
+      - SaaS
+      - education
+      - construction
+
+  missing_geography:
+    question: "What geography should I search?"
+    examples:
+      - Utah
+      - New Mexico
+      - Northwest USA
+      - United States
+      - nationwide
+
+  missing_contact_count:
+    question: "How many leads do you want?"
+    examples:
+      - 25
+      - 50
+      - 100
+      - 500
+
+  ambiguous_role:
+    question: "Should I search only for the exact title, or include related titles with the same job function?"
+
+  ambiguous_company_type:
+    question: "Should I target companies that buy this service, companies that sell this product, or both?"
+```
+
+---
+
+# 6. This document should become
+
+```yaml
+recommended_next_docs:
+  - EVAL_PROMPTS.md
+  - SAMPLE_REQUESTS.md
+  - REQUEST_CLARIFICATION_RULES.md
+  - TARGET_SEGMENT_TEST_CASES.md
+```
+
+````
+
+---
+
+```markdown
+---
+title: "Lead Generation Brainstorm - Photo 06 - Original Workflow"
+doc_type: "handwritten_note_transcription"
+photo_index: 6
+source_image: "F30095C9-7B2A-4735-B301-AB51F02AF832.jpeg"
+status: "raw_transcription_plus_expansion"
+purpose: "Capture the original natural-language workflow and convert it into a reusable request template."
+core_concept: "The system should transform a simple fill-in-the-blank request into a structured lead-generation search."
+primary_fields:
+  - coherent_request_template
+  - role_slot_A
+  - industry_slot_B
+  - scope_slot_C
+  - examples
+data_quality_notes:
+  - "This appears to be the original user-facing request format."
+  - "The page contains A/B/C placeholders corresponding to role, industry, and geographic area."
+---
+
+# Lead Generation Brainstorm - Photo 06 - Original Workflow
+
+## 1. Raw transcription
+
+```text
+Original workflow
+
+Coherent requests:
+
+Give me a CSV file / list of contact information for ______
+in the ______ industry in the ______ area.
+
+A:
+IT director
+Purchasers
+Materials acquisition specialists
+media buyers
+trainers
+
+B:
+Retail
+IT
+shipping
+textiles
+agriculture
+
+examples:
+
+- Materials purchaser in the logging industry
+- IT Directors in the education field
+- Directors of marketing in retail sales.
+````
+
+---
+
+# 2. Cleaned-up request template
+
+```text
+Give me a CSV file or list of contact information for [A: role/function/title] in the [B: industry] industry in the [C: geographic area].
+```
+
+Expanded version:
+
+```text
+Give me a CSV file of contact information for [A: role/function/title] and related titles with the same job function in the [B: industry/organization type] industry within [C: geography/scope]. Prefer contacts with decision-making authority and include source URLs for verification.
+```
+
+---
+
+# 3. Embedded data fields
+
+```yaml
+original_workflow:
+  request_template_short: "Give me a CSV file or list of contact information for [A] in the [B] industry in the [C] area."
+  request_template_expanded: "Give me a CSV file of contact information for [A] and related titles with the same job function in the [B] industry within [C]. Prefer contacts with decision-making authority and include source URLs for verification."
+
+  A_role_slot:
+    description: "The title, role, job function, or decision-maker persona."
+    raw_examples:
+      - IT director
+      - Purchasers
+      - Materials acquisition specialists
+      - media buyers
+      - trainers
+
+  B_industry_slot:
+    description: "The industry, vertical, sector, or organization type."
+    raw_examples:
+      - Retail
+      - IT
+      - shipping
+      - textiles
+      - agriculture
+
+  C_area_slot:
+    description: "The geography, territory, region, or market area."
+    raw_examples:
+      - "[blank in original template]"
+    expanded_examples:
+      - Utah
+      - New Mexico
+      - Northwest USA
+      - Texas
+      - New Jersey
+      - Sandoval County
+      - nationwide
+```
+
+---
+
+# 4. Data dictionary
+
+|Field|Type|Required?|Description|Example|
+|---|--:|--:|---|---|
+|`A_role_slot`|string|Yes|Target person or function|`IT Director`|
+|`A_related_titles`|list|No|Similar job titles to include|`Technology Director`, `CIO`|
+|`B_industry_slot`|string|Yes|Target industry or organization type|`education`|
+|`B_related_industries`|list|No|Adjacent industry labels|`universities`, `schools`, `EdTech`|
+|`C_area_slot`|string|Yes|Geographic or market area|`New Mexico`|
+|`output_format`|enum|No|Requested file/list format|`CSV`|
+|`contact_fields`|list|No|Information to collect|`name`, `title`, `email`, `phone`, `source_url`|
+|`include_source_urls`|boolean|Recommended|Preserve evidence for each lead|`true`|
+
+---
+
+# 5. Expanded A role seeds
+
+```yaml
+A_role_seed_expansions:
+  IT_director:
+    job_function: "technology leadership"
+    expanded_titles:
+      - IT Director
+      - Director of IT
+      - Director of Information Technology
+      - Technology Director
+      - CIO
+      - Chief Information Officer
+      - IT Manager
+      - Systems Director
+      - Network Director
+      - Director of Technology Services
+
+  purchasers:
+    job_function: "purchasing and procurement"
+    expanded_titles:
+      - Purchaser
+      - Buyer
+      - Purchasing Manager
+      - Procurement Manager
+      - Procurement Director
+      - Materials Buyer
+      - Sourcing Specialist
+      - Vendor Manager
+      - Supply Chain Manager
+      - Inventory Manager
+
+  materials_acquisition_specialists:
+    job_function: "materials sourcing and acquisition"
+    expanded_titles:
+      - Materials Acquisition Specialist
+      - Materials Buyer
+      - Materials Manager
+      - Procurement Specialist
+      - Purchasing Specialist
+      - Supply Chain Specialist
+      - Sourcing Specialist
+      - Inventory Specialist
+      - Category Manager
+
+  media_buyers:
+    job_function: "paid media and advertising acquisition"
+    expanded_titles:
+      - Media Buyer
+      - Paid Media Manager
+      - Advertising Manager
+      - Digital Advertising Manager
+      - Performance Marketing Manager
+      - Demand Generation Manager
+      - Growth Marketing Manager
+      - User Acquisition Manager
+      - Marketing Acquisition Manager
+
+  trainers:
+    job_function: "training, education, and enablement"
+    expanded_titles:
+      - Trainer
+      - Training Manager
+      - Training Director
+      - Corporate Trainer
+      - Learning and Development Manager
+      - L&D Manager
+      - Instructional Designer
+      - Education Coordinator
+      - Enablement Manager
+      - Sales Enablement Manager
+```
+
+---
+
+# 6. Expanded B industry seeds
+
+```yaml
+B_industry_seed_expansions:
+  retail:
+    expanded_terms:
+      - retail
+      - retail sales
+      - specialty retail
+      - ecommerce
+      - consumer goods
+      - retail chain
+      - independent retailer
+      - brick-and-mortar retail
+      - wholesale retail
+
+  IT:
+    expanded_terms:
+      - information technology
+      - managed IT services
+      - software
+      - SaaS
+      - cybersecurity
+      - cloud infrastructure
+      - IT consulting
+      - systems integration
+      - data services
+
+  shipping:
+    expanded_terms:
+      - shipping
+      - logistics
+      - freight
+      - transportation
+      - distribution
+      - warehousing
+      - fulfillment
+      - supply chain
+      - courier services
+
+  textiles:
+    expanded_terms:
+      - textiles
+      - fabric
+      - apparel manufacturing
+      - garment production
+      - textile distribution
+      - industrial textiles
+      - upholstery
+      - soft goods
+      - textile import/export
+
+  agriculture:
+    expanded_terms:
+      - agriculture
+      - agribusiness
+      - farming
+      - crop production
+      - farm supply
+      - irrigation
+      - agricultural equipment
+      - seed supplier
+      - fertilizer supplier
+      - livestock supply
+```
+
+---
+
+# 7. Example request expansions
+
+## Example 01: Materials purchaser in the logging industry
+
+```yaml
+example_01:
+  raw_example: "Materials purchaser in the logging industry"
+  canonical_request: "Give me a CSV of materials purchasers, buyers, procurement managers, and sourcing specialists in the logging industry within [GEOGRAPHY]."
+  A:
+    role: "materials purchaser"
+    expanded_titles:
+      - Materials Purchaser
+      - Materials Buyer
+      - Procurement Manager
+      - Purchasing Manager
+      - Sourcing Specialist
+      - Supply Chain Manager
+      - Inventory Manager
+  B:
+    industry: "logging"
+    expanded_industries:
+      - logging
+      - forestry
+      - timber
+      - lumber
+      - wood products
+      - forest products
+      - sawmills
+      - timber harvesting
+  C:
+    geography: "missing"
+    clarification_needed: true
+```
+
+---
+
+## Example 02: IT directors in the education field
+
+```yaml
+example_02:
+  raw_example: "IT Directors in the education field"
+  canonical_request: "Give me a CSV of IT directors, technology directors, CIOs, and IT managers in the education field within [GEOGRAPHY]."
+  A:
+    role: "IT Director"
+    expanded_titles:
+      - IT Director
+      - Director of IT
+      - Director of Information Technology
+      - Technology Director
+      - CIO
+      - IT Manager
+      - Systems Director
+  B:
+    industry: "education"
+    expanded_industries:
+      - education
+      - universities
+      - colleges
+      - K-12 schools
+      - school districts
+      - charter schools
+      - online education
+      - EdTech
+      - continuing education
+  C:
+    geography: "missing"
+    clarification_needed: true
+```
+
+---
+
+## Example 03: Directors of marketing in retail sales
+
+```yaml
+example_03:
+  raw_example: "Directors of marketing in retail sales"
+  canonical_request: "Give me a CSV of directors of marketing, marketing managers, heads of marketing, and growth marketing leaders in retail sales within [GEOGRAPHY]."
+  A:
+    role: "Director of Marketing"
+    expanded_titles:
+      - Director of Marketing
+      - Marketing Director
+      - VP Marketing
+      - Head of Marketing
+      - Marketing Manager
+      - Brand Manager
+      - Growth Marketing Manager
+      - Demand Generation Manager
+      - Digital Marketing Manager
+  B:
+    industry: "retail sales"
+    expanded_industries:
+      - retail
+      - retail sales
+      - specialty retail
+      - ecommerce
+      - consumer goods
+      - retail chains
+      - independent retailers
+      - brick-and-mortar stores
+  C:
+    geography: "missing"
+    clarification_needed: true
+```
+
+---
+
+# 8. Recommended final user-facing prompt format
+
+```text
+Give me a [CSV/list/JSON] of [NUMBER] contacts for [ROLE OR JOB FUNCTION] in the [INDUSTRY OR ORGANIZATION TYPE] industry within [GEOGRAPHY OR MARKET SCOPE]. Include related titles with the same job function. Prefer people with buying power or decision authority. Include source URLs and a confidence score for each lead.
+```
+
+## Example filled prompt
+
+```text
+Give me a CSV of 100 contacts for purchasing managers and related procurement roles in the irrigation and landscape supply industry within the Northwest USA. Include related titles with the same job function. Prefer people with buying power or decision authority. Include source URLs and a confidence score for each lead.
+```
+
+---
+
+# 9. This document should become
+
+```yaml
+recommended_next_docs:
+  - ORIGINAL_WORKFLOW.md
+  - USER_REQUEST_TEMPLATE.md
+  - EXAMPLE_REQUEST_EXPANSIONS.md
+  - CANONICAL_PROMPT_FORMAT.md
+```

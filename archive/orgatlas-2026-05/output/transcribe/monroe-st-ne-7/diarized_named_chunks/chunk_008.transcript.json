@@ -1,0 +1,425 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 1.8,
+      "speaker": "Lee Biby",
+      "start": 0.0,
+      "text": " We have to do the work, but we need to do the work and",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 6.3999999999999995,
+      "speaker": "Lee Biby",
+      "start": 2.4000000000000004,
+      "text": " We want them to be able to use it the way they want but then also have to come to us to make it work,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 6.7,
+      "speaker": "Lee Biby",
+      "start": 6.55,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 7.05,
+      "speaker": "Lee Biby",
+      "start": 6.75,
+      "text": " So",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 9.950000000000001,
+      "speaker": "Lee Biby",
+      "start": 8.100000000000001,
+      "text": " I'm a little confused on how it's going to go down",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 13.8,
+      "speaker": "Matt Schwartz",
+      "start": 10.100000000000001,
+      "text": " Yeah, I mean, the thing is, is like a lot of the stuff you're saying is pretty flexible,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 14.100000000000001,
+      "speaker": "Matt Schwartz",
+      "start": 13.950000000000001,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 25.05,
+      "speaker": "Matt Schwartz",
+      "start": 14.200000000000001,
+      "text": " So the wanting them to come to us, it's not necessarily so much wanting them to come to us. We just want them to be using our product and we want that product to not exhaust itself,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 25.5,
+      "speaker": "Matt Schwartz",
+      "start": 25.3,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 27.6,
+      "speaker": "Matt Schwartz",
+      "start": 26.85,
+      "text": " But again,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 28.200000000000003,
+      "speaker": "Matt Schwartz",
+      "start": 27.700000000000003,
+      "text": " that's later,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 28.900000000000002,
+      "speaker": "Matt Schwartz",
+      "start": 28.450000000000003,
+      "text": " I think.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 30.318,
+      "speaker": "Lee Biby",
+      "start": 30.068,
+      "text": " Okay.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 36.868,
+      "speaker": "Matt Schwartz",
+      "start": 30.318,
+      "text": " Yeah, the first thing is I'll make this better, make it prettier,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 38.668000000000006,
+      "speaker": "Matt Schwartz",
+      "start": 37.018,
+      "text": " make it a little bit more robust,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 42.118,
+      "speaker": "Matt Schwartz",
+      "start": 38.918000000000006,
+      "text": " do all the things that you guys said.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 48.668,
+      "speaker": "Matt Schwartz",
+      "start": 44.518,
+      "text": " And then, like what Thomas said, it's actually not a bad thing that they just go in there and be like,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 53.068,
+      "speaker": "Matt Schwartz",
+      "start": 48.718,
+      "text": " yeah, this is something we did for Voight.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 57.367999999999995,
+      "speaker": "Matt Schwartz",
+      "start": 53.718,
+      "text": " We can make this specific to your business if you hire us.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 82.0,
+      "speaker": "Matt Schwartz",
+      "start": 58.1,
+      "text": " so it's not actually like a problem as long as we can deliver which it's actually better to have a very specific thing to then frame against yeah exactly rather than we just kind of build something guessing what they need and then they're like what this is this is not what we need at all right",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 89.848,
+      "speaker": "Matt Schwartz",
+      "start": 83.348,
+      "text": " um yeah so we're that's great we're do cool cool let's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 91.69800000000001,
+      "speaker": "Lee Biby",
+      "start": 89.848,
+      "text": " All right, if you're into it, let's do it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 96.148,
+      "speaker": "Matt Schwartz",
+      "start": 92.148,
+      "text": " do it um dude yeah sweet",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 99.348,
+      "speaker": "Matt Schwartz",
+      "start": 98.398,
+      "text": " yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 102.098,
+      "speaker": "Lee Biby",
+      "start": 101.69800000000001,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 107.348,
+      "speaker": "Lee Biby",
+      "start": 102.148,
+      "text": " got to think of what some inquiries would be for what he's talking about for that public data.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 111.098,
+      "speaker": "Matt Schwartz",
+      "start": 108.49799999999999,
+      "text": " like but like you said i think right now i'm just gonna",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 120.838,
+      "speaker": "Matt Schwartz",
+      "start": 111.988,
+      "text": " Well, I'll just forget about the open source intelligence and just work on making the VoIP perfect.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 124.138,
+      "speaker": "Lee Biby",
+      "start": 121.988,
+      "text": " That's not okay.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 124.588,
+      "speaker": "Lee Biby",
+      "start": 124.238,
+      "text": " Yeah, okay",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 125.638,
+      "speaker": "Matt Schwartz",
+      "start": 124.588,
+      "text": " Does that make sense?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 130.638,
+      "speaker": "Matt Schwartz",
+      "start": 125.688,
+      "text": " Because we actually want it to not because it's like a different evaluation mindset,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 130.988,
+      "speaker": "Matt Schwartz",
+      "start": 130.788,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 133.138,
+      "speaker": "Matt Schwartz",
+      "start": 131.088,
+      "text": " So if he's evaluating it like,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 134.988,
+      "speaker": "Matt Schwartz",
+      "start": 133.238,
+      "text": " oh, wow, this looks high level.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 139.354,
+      "speaker": "Matt Schwartz",
+      "start": 135.604,
+      "text": " as opposed to if it's actually in his domain and it's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 139.604,
+      "speaker": "Lee Biby",
+      "start": 139.354,
+      "text": " it's like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 146.204,
+      "speaker": "Matt Schwartz",
+      "start": 139.604,
+      "text": " not he's gonna be like what this is not what we use so that makes sense so it's actually can become a liability",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 157.454,
+      "speaker": "Lee Biby",
+      "start": 146.204,
+      "text": " what we're saying is this is the these are the this is the request for this type of business that we accomplished we killed it for him",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 158.954,
+      "speaker": "Matt Schwartz",
+      "start": 157.454,
+      "text": " yeah it's a portfolio yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 161.876,
+      "speaker": "Matt Schwartz",
+      "start": 161.876,
+      "text": " and",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 162.126,
+      "speaker": "Lee Biby",
+      "start": 161.876,
+      "text": " Gotcha.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 189.376,
+      "speaker": "Matt Schwartz",
+      "start": 162.126,
+      "text": " then they're going to give us the specs to to execute which is going to make our jobs our job way easier and better so everyone wins but sweet man sweet sweet uh and if you ever feel stressed about like what you're doing don't don't don't worry about it if like there's gonna be times where you're not doing much and that's okay um like do not worry you're freaking killing it",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 191.908,
+      "speaker": "Matt Schwartz",
+      "start": 189.908,
+      "text": " And yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 192.908,
+      "speaker": "Matt Schwartz",
+      "start": 192.00799999999998,
+      "text": " it's awesome.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 194.158,
+      "speaker": "Matt Schwartz",
+      "start": 193.10799999999998,
+      "text": " It is awesome.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 196.25799999999998,
+      "speaker": "Lee Biby",
+      "start": 195.808,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 197.50799999999998,
+      "speaker": "Lee Biby",
+      "start": 196.308,
+      "text": " just do what I can do.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 198.50799999999998,
+      "speaker": "Matt Schwartz",
+      "start": 197.50799999999998,
+      "text": " Yeah, yeah, yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 199.75799999999998,
+      "speaker": "Matt Schwartz",
+      "start": 198.908,
+      "text": " Bye, brother.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 201.908,
+      "speaker": "Matt Schwartz",
+      "start": 201.058,
+      "text": " All right. Later.",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "We have to do the work, but we need to do the work and We want them to be able to use it the way they want but then also have to come to us to make it work, right? So I'm a little confused on how it's going to go down Yeah, I mean, the thing is, is like a lot of the stuff you're saying is pretty flexible, right? So the wanting them to come to us, it's not necessarily so much wanting them to come to us. We just want them to be using our product and we want that product to not exhaust itself, right? But again, that's later, I think.\nOkay. Yeah, the first thing is I'll make this better, make it prettier, make it a little bit more robust, do all the things that you guys said. And then, like what Thomas said, it's actually not a bad thing that they just go in there and be like, yeah, this is something we did for Voight. We can make this specific to your business if you hire us.\nso it's not actually like a problem as long as we can deliver which it's actually better to have a very specific thing to then frame against yeah exactly rather than we just kind of build something guessing what they need and then they're like what this is this is not what we need at all right\num yeah so we're that's great we're do cool cool let's All right, if you're into it, let's do it. do it um dude yeah sweet yeah Yeah, got to think of what some inquiries would be for what he's talking about for that public data. like but like you said i think right now i'm just gonna\nWell, I'll just forget about the open source intelligence and just work on making the VoIP perfect. That's not okay. Yeah, okay Does that make sense? Because we actually want it to not because it's like a different evaluation mindset, right? So if he's evaluating it like, oh, wow, this looks high level.\nas opposed to if it's actually in his domain and it's it's like not he's gonna be like what this is not what we use so that makes sense so it's actually can become a liability what we're saying is this is the these are the this is the request for this type of business that we accomplished we killed it for him yeah it's a portfolio yeah\nand Gotcha. then they're going to give us the specs to to execute which is going to make our jobs our job way easier and better so everyone wins but sweet man sweet sweet uh and if you ever feel stressed about like what you're doing don't don't don't worry about it if like there's gonna be times where you're not doing much and that's okay um like do not worry you're freaking killing it\nAnd yeah, it's awesome. It is awesome. Yeah, just do what I can do. Yeah, yeah, yeah. Bye, brother. All right. Later.",
+  "usage": {
+    "input_tokens": 4243,
+    "output_tokens": 5851,
+    "total_tokens": 10094,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 3963,
+      "text_tokens": 280
+    }
+  }
+}

@@ -152,10 +152,20 @@ white-rabbit/
 │   └── web/           Next.js App Router + TypeScript
 ├── packages/
 │   └── core/          Shared Python primitives
+├── archive/           Folded pre-product dumps (WR-v3, OrgAtlas); not product source
 ├── docs/              Current control docs plus historical records
 ├── audits/            Audit evidence and raw outputs
 └── .gstack/           QA and gate reports
 ```
+
+## Archive
+
+Pre-product brainstorm and OrgAtlas meeting material folded in on 2026-09-16 (text in git; heavy media on ai-server `/central`). See [`docs/archive/INDEX.md`](./docs/archive/INDEX.md).
+
+- [`archive/wr-v3-brainstorm-2026-06/`](./archive/wr-v3-brainstorm-2026-06/) — WR-v3 handwritten brainstorm transcripts
+- [`archive/orgatlas-2026-05/`](./archive/orgatlas-2026-05/) — OrgAtlas brand + Monroe St NE transcripts
+
+Standalone Developer checkouts `WR-v3` and `orgatlas` are retired as working surfaces; GitHub remotes remain as cold backup.
 
 ## License
 

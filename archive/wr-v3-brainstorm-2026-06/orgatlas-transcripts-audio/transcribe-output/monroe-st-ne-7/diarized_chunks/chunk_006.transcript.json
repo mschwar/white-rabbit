@@ -1,0 +1,441 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 19.368000000000002,
+      "speaker": "A",
+      "start": 0.468,
+      "text": " open source information like collecting so what they do is they work with like the FBI a lot of like three-letter agencies is their main thing but they're trying to pivot into like a public sector so HR and things along those lines so they want to be able to like pull a lead list of customers they're going against",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 28.168,
+      "speaker": "B",
+      "start": 20.268,
+      "text": " So customers for open source intelligence would be traditionally FBI would be a customer?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 29.864,
+      "speaker": "B",
+      "start": 29.364,
+      "text": " Or,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 58.364000000000004,
+      "speaker": "A",
+      "start": 29.864,
+      "text": " any any three-letter agency for them is currently a customer right but they're trying to pivot into public sector so like if you think like i'm gonna get a job at google right i do my application i put it in now google would go and like put my information into their platform and pull back anything that i put on the internet as to like who thomas is right and so for them as a lead gen source who is the person at google they need to get in contact with for them to talk about their platform",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 60.726000000000006,
+      "speaker": "B",
+      "start": 60.276,
+      "text": " Okay.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 63.776,
+      "speaker": "A",
+      "start": 61.526,
+      "text": " Does that make sense of like how their use case?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 69.626,
+      "speaker": "B",
+      "start": 63.776,
+      "text": " Yeah, and their platform is they're basically going to be asking Google for individual level data or.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 73.526,
+      "speaker": "A",
+      "start": 72.32600000000001,
+      "text": " When Google, okay,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 75.176,
+      "speaker": "A",
+      "start": 73.57600000000001,
+      "text": " for that particular use case,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 76.02600000000001,
+      "speaker": "A",
+      "start": 75.226,
+      "text": " like what they would be selling,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 76.27600000000001,
+      "speaker": "A",
+      "start": 76.126,
+      "text": " yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 76.676,
+      "speaker": "A",
+      "start": 76.376,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 78.57600000000001,
+      "speaker": "A",
+      "start": 76.726,
+      "text": " So they're looking for HVTs,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 85.976,
+      "speaker": "A",
+      "start": 78.726,
+      "text": " they're looking for being able to like query somebody that's currently in the system that they're like hiring or maybe somebody that's like on workers comp,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 86.77600000000001,
+      "speaker": "A",
+      "start": 86.126,
+      "text": " something like that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 115.032,
+      "speaker": "A",
+      "start": 87.732,
+      "text": " but this is just like one use case and that's why i'm trying to simplify the like usability of the platform because any customer we want to be able to say that like at oriatlas with the utilization of white rabbit whatever your use case is type it into the search bar and it'll pull you back a list of leads that are applicable to whatever your specific vertical industry like you know like if we were to use it as a lead gen tool versus me are you know uh",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 116.95,
+      "speaker": "A",
+      "start": 115.7,
+      "text": " Customer profile would be completely different.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 139.6,
+      "speaker": "B",
+      "start": 116.95,
+      "text": " yeah yeah yeah um so the reason i ask is just what you're describing is kind of like the more mature version of this this at least first i don't know first 10 or so we're going to be building our own business intelligence and we're going to be kind of scaffolding it up and so it's going to be tailored to the first few businesses that we're in um",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 141.836,
+      "speaker": "B",
+      "start": 140.436,
+      "text": " but later it'll",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 142.186,
+      "speaker": "A",
+      "start": 141.836,
+      "text": " later you",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 142.786,
+      "speaker": "B",
+      "start": 142.186,
+      "text": " be exactly yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 147.98600000000002,
+      "speaker": "A",
+      "start": 142.786,
+      "text": " can get there so how do you want me from your standpoint to position to sell the tour of them right",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 156.136,
+      "speaker": "B",
+      "start": 151.23600000000002,
+      "text": " so ideally you would kind of the narrative would be",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 186.308,
+      "speaker": "B",
+      "start": 160.308,
+      "text": " your friend sent you a list and that list was awesome and it you know all the names on the list were live and you showed it to your boss and your boss was like holy moly and then you're like where where'd you get that list and then the way you got that list was through this white rabbit tool um it's really just kind of like low level",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 212.174,
+      "speaker": "B",
+      "start": 187.924,
+      "text": " beginning startup stuff so they'd be getting in on the ground floor it would be tailored to their business but this is like kind of a once-in-a-lifetime opportunity because it's going to be something that's much larger it's going to be something that isn't specific to your your vertical it's going to be something that can do everything but right now because it's early it is going to be tailored to you",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 215.056,
+      "speaker": "A",
+      "start": 213.556,
+      "text": " So I guess, okay,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 216.406,
+      "speaker": "A",
+      "start": 215.156,
+      "text": " so I get your vision.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 218.256,
+      "speaker": "A",
+      "start": 216.756,
+      "text": " When I go into the demo,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 218.556,
+      "speaker": "A",
+      "start": 218.35600000000002,
+      "text": " right,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 224.156,
+      "speaker": "A",
+      "start": 218.656,
+      "text": " I guess the part that I'm getting hung up on is the four queries that we already have available.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 228.306,
+      "speaker": "A",
+      "start": 224.306,
+      "text": " Because I tried to run queries against it and I could select against those four as like an agnostic data",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 228.60600000000002,
+      "speaker": "B",
+      "start": 228.306,
+      "text": " Oh,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 228.806,
+      "speaker": "A",
+      "start": 228.60600000000002,
+      "text": " source,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 228.906,
+      "speaker": "B",
+      "start": 228.806,
+      "text": " oh,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 229.35600000000002,
+      "speaker": "A",
+      "start": 228.906,
+      "text": " if you yeah, will.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 232.60600000000002,
+      "speaker": "B",
+      "start": 229.35600000000002,
+      "text": " yeah, yeah. So what you're looking at, what I sent you guys is not live.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 233.95600000000002,
+      "speaker": "B",
+      "start": 232.756,
+      "text": " It's, it's a demo.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 238.056,
+      "speaker": "B",
+      "start": 234.95600000000002,
+      "text": " So the demos basically has the guardrails on it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 245.962,
+      "speaker": "B",
+      "start": 238.612,
+      "text": " so it's going to be specific to whatever whatever the demo is going to be um no",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 252.612,
+      "speaker": "A",
+      "start": 248.662,
+      "text": " I can tell it that way. My understanding is that was the totality of the tool.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 255.962,
+      "speaker": "B",
+      "start": 253.06199999999998,
+      "text": " no no god no no we're just tailoring",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 256.212,
+      "speaker": "A",
+      "start": 255.962,
+      "text": " There's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 256.412,
+      "speaker": "B",
+      "start": 256.212,
+      "text": " it",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 256.662,
+      "speaker": "A",
+      "start": 256.412,
+      "text": " no way.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 266.36199999999997,
+      "speaker": "B",
+      "start": 256.662,
+      "text": " no no no we're tailoring it to that specific demo and that's why i wanted to like understand who the person is what the business is so that we can make it you know kind of wow them",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 267.962,
+      "speaker": "B",
+      "start": 267.412,
+      "text": " But it's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 268.012,
+      "speaker": "A",
+      "start": 267.962,
+      "text": " So,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 268.61199999999997,
+      "speaker": "B",
+      "start": 268.012,
+      "text": " definitely okay, okay",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 279.81199999999995,
+      "speaker": "A",
+      "start": 268.61199999999997,
+      "text": " yeah, they're an open source technology, so they're looking for anybody in corporate America. I would say HR is probably the biggest customer touchpoint, if you will,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 280.31199999999995,
+      "speaker": "A",
+      "start": 279.86199999999997,
+      "text": " for outreach.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 286.11199999999997,
+      "speaker": "A",
+      "start": 280.912,
+      "text": " That's the best use case outside of looking for a high value target.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 296.374,
+      "speaker": "B",
+      "start": 293.524,
+      "text": " So HR at large organizations,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 298.124,
+      "speaker": "B",
+      "start": 296.424,
+      "text": " it can be anything from",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "open source information like collecting so what they do is they work with like the FBI a lot of like three-letter agencies is their main thing but they're trying to pivot into like a public sector so HR and things along those lines so they want to be able to like pull a lead list of customers they're going against So customers for open source intelligence would be traditionally FBI would be a customer?\nOr, any any three-letter agency for them is currently a customer right but they're trying to pivot into public sector so like if you think like i'm gonna get a job at google right i do my application i put it in now google would go and like put my information into their platform and pull back anything that i put on the internet as to like who thomas is right and so for them as a lead gen source who is the person at google they need to get in contact with for them to talk about their platform\nOkay. Does that make sense of like how their use case? Yeah, and their platform is they're basically going to be asking Google for individual level data or. When Google, okay, for that particular use case, like what they would be selling, yeah, right? So they're looking for HVTs, they're looking for being able to like query somebody that's currently in the system that they're like hiring or maybe somebody that's like on workers comp, something like that.\nbut this is just like one use case and that's why i'm trying to simplify the like usability of the platform because any customer we want to be able to say that like at oriatlas with the utilization of white rabbit whatever your use case is type it into the search bar and it'll pull you back a list of leads that are applicable to whatever your specific vertical industry like you know like if we were to use it as a lead gen tool versus me are you know uh\nCustomer profile would be completely different. yeah yeah yeah um so the reason i ask is just what you're describing is kind of like the more mature version of this this at least first i don't know first 10 or so we're going to be building our own business intelligence and we're going to be kind of scaffolding it up and so it's going to be tailored to the first few businesses that we're in um\nbut later it'll later you be exactly yeah can get there so how do you want me from your standpoint to position to sell the tour of them right so ideally you would kind of the narrative would be\nyour friend sent you a list and that list was awesome and it you know all the names on the list were live and you showed it to your boss and your boss was like holy moly and then you're like where where'd you get that list and then the way you got that list was through this white rabbit tool um it's really just kind of like low level\nbeginning startup stuff so they'd be getting in on the ground floor it would be tailored to their business but this is like kind of a once-in-a-lifetime opportunity because it's going to be something that's much larger it's going to be something that isn't specific to your your vertical it's going to be something that can do everything but right now because it's early it is going to be tailored to you\nSo I guess, okay, so I get your vision. When I go into the demo, right, I guess the part that I'm getting hung up on is the four queries that we already have available. Because I tried to run queries against it and I could select against those four as like an agnostic data Oh, source, oh, if you yeah, will. yeah, yeah. So what you're looking at, what I sent you guys is not live. It's, it's a demo. So the demos basically has the guardrails on it.\nso it's going to be specific to whatever whatever the demo is going to be um no I can tell it that way. My understanding is that was the totality of the tool. no no god no no we're just tailoring There's it no way. no no no we're tailoring it to that specific demo and that's why i wanted to like understand who the person is what the business is so that we can make it you know kind of wow them\nBut it's So, definitely okay, okay yeah, they're an open source technology, so they're looking for anybody in corporate America. I would say HR is probably the biggest customer touchpoint, if you will, for outreach. That's the best use case outside of looking for a high value target.\nSo HR at large organizations, it can be anything from",
+  "usage": {
+    "input_tokens": 5078,
+    "output_tokens": 8440,
+    "total_tokens": 13518,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 4814,
+      "text_tokens": 264
+    }
+  }
+}

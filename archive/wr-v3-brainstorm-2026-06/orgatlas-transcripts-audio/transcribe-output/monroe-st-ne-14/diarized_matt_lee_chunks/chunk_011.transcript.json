@@ -1,0 +1,505 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 8.276,
+      "speaker": "Matt Schwartz",
+      "start": 1.876,
+      "text": " Well for both like you can just go back to the very very very very very basics for B2C the very basics is human human",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 17.326,
+      "speaker": "Matt Schwartz",
+      "start": 8.975999999999999,
+      "text": " so finding out where where who are the people you want to sell to where are they and then talking to them right that's B2C",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 20.034,
+      "speaker": "Matt Schwartz",
+      "start": 19.284,
+      "text": " or D to C,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 20.983999999999998,
+      "speaker": "Matt Schwartz",
+      "start": 20.084,
+      "text": " direct to consumer,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 21.334,
+      "speaker": "Matt Schwartz",
+      "start": 21.134,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 22.983999999999998,
+      "speaker": "Matt Schwartz",
+      "start": 21.584,
+      "text": " So it's like, who is your consumer?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 29.433999999999997,
+      "speaker": "Matt Schwartz",
+      "start": 23.334,
+      "text": " It's old white people with, they're making more than 80K a year or worked at national labs or nothing like that. Okay,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 30.084,
+      "speaker": "Matt Schwartz",
+      "start": 29.484,
+      "text": " cool.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 31.284,
+      "speaker": "Matt Schwartz",
+      "start": 30.183999999999997,
+      "text": " Where do they hang out?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 35.934,
+      "speaker": "Matt Schwartz",
+      "start": 31.683999999999997,
+      "text": " Let's go to those places and just start talking to people and we'll start getting leads.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 40.184,
+      "speaker": "Lee Biby",
+      "start": 39.434,
+      "text": " Well, okay,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 42.884,
+      "speaker": "Lee Biby",
+      "start": 40.284000000000006,
+      "text": " but that's sale on our side.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 44.584,
+      "speaker": "Lee Biby",
+      "start": 43.384,
+      "text": " I was talking about the...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 47.105999999999995,
+      "speaker": "Lee Biby",
+      "start": 45.556,
+      "text": " capacity of the tool itself.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 53.656,
+      "speaker": "Matt Schwartz",
+      "start": 50.056,
+      "text": " Well, it always does help to go back to the very, very basics, like what",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 53.806,
+      "speaker": "Lee Biby",
+      "start": 53.656,
+      "text": " Sure.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 59.106,
+      "speaker": "Matt Schwartz",
+      "start": 53.806,
+      "text": " what is the very basics look like. So for B2B, what does the basics look like? It looks like um",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 63.706,
+      "speaker": "Matt Schwartz",
+      "start": 62.605999999999995,
+      "text": " defining a lead segment",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 69.306,
+      "speaker": "Lee Biby",
+      "start": 68.306,
+      "text": " Creating quality.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 70.706,
+      "speaker": "Matt Schwartz",
+      "start": 69.706,
+      "text": " and then creating quality leads.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 71.106,
+      "speaker": "Lee Biby",
+      "start": 70.706,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 82.04,
+      "speaker": "Matt Schwartz",
+      "start": 72.34,
+      "text": " But that requires us knowing what the lead segment is and kind of exhaustively knowing all the different ways that that lead segment could be squeezed.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 90.39,
+      "speaker": "Matt Schwartz",
+      "start": 83.29,
+      "text": " And then we're squeezing it every way and we're leveraging the highest level of tech to squeeze it to get value to our customers.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 110.19600000000001,
+      "speaker": "Matt Schwartz",
+      "start": 103.796,
+      "text": " But the other issue with this kind of stuff is like if we want to operate at the high level some or something like zoom info all it takes is",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 122.99600000000001,
+      "speaker": "Matt Schwartz",
+      "start": 111.046,
+      "text": " They they add a division to do what you know what's being done and then bam the market gets wiped out what happened with Danilo's company because he wanted to make an app that allowed all this like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 128.496,
+      "speaker": "Matt Schwartz",
+      "start": 123.596,
+      "text": " All I kind of the boring back-end subscription payment all this stuff on Shopify",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 132.02800000000002,
+      "speaker": "Matt Schwartz",
+      "start": 130.228,
+      "text": " And Shopify is the major platform,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 133.52800000000002,
+      "speaker": "Matt Schwartz",
+      "start": 132.27800000000002,
+      "text": " the e-commerce platform,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 139.928,
+      "speaker": "Matt Schwartz",
+      "start": 133.678,
+      "text": " and all Shopify had to do would be like, we're not going to let you put your app on our store and we're just going to make it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 142.078,
+      "speaker": "Matt Schwartz",
+      "start": 141.02800000000002,
+      "text": " And then bam, it's gone.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 150.02800000000002,
+      "speaker": "Matt Schwartz",
+      "start": 142.978,
+      "text": " So now to compete with him, you not only have to build that app, you have to build a platform to compete with actual Shopify and that's not going to happen.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 151.828,
+      "speaker": "Matt Schwartz",
+      "start": 151.078,
+      "text": " So again,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 154.67800000000003,
+      "speaker": "Matt Schwartz",
+      "start": 151.92800000000003,
+      "text": " that's defining our markets, like our market I don't think is,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 156.82800000000003,
+      "speaker": "Matt Schwartz",
+      "start": 154.77800000000002,
+      "text": " we're not a Zoom info competitor.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 159.968,
+      "speaker": "Matt Schwartz",
+      "start": 158.868,
+      "text": " We are a boutique",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 163.168,
+      "speaker": "Matt Schwartz",
+      "start": 162.518,
+      "text": " legion.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 172.968,
+      "speaker": "Matt Schwartz",
+      "start": 167.418,
+      "text": " And I think Thomas would actually do really well selling that here or even in California,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 174.56799999999998,
+      "speaker": "Matt Schwartz",
+      "start": 173.268,
+      "text": " but I",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 184.868,
+      "speaker": "Matt Schwartz",
+      "start": 178.468,
+      "text": " still haven't gotten a chance to really pick Thomas's brain about why him and his bosses got so excited about your list.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 186.876,
+      "speaker": "Matt Schwartz",
+      "start": 185.876,
+      "text": " I want to know that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 188.626,
+      "speaker": "Matt Schwartz",
+      "start": 187.17600000000002,
+      "text": " Like what about it?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 193.126,
+      "speaker": "Matt Schwartz",
+      "start": 192.226,
+      "text": " The value is there.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 199.476,
+      "speaker": "Lee Biby",
+      "start": 195.42600000000002,
+      "text": " The other thing was, I don't know if you ever went through the list.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 205.126,
+      "speaker": "Lee Biby",
+      "start": 201.226,
+      "text": " I asked a few times like, like did you get a percentage out of it? Like how'd it go?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 210.476,
+      "speaker": "Lee Biby",
+      "start": 207.626,
+      "text": " So like, that would have been...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 211.62199999999999,
+      "speaker": "Lee Biby",
+      "start": 210.772,
+      "text": " key valuable information",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 235.922,
+      "speaker": "Matt Schwartz",
+      "start": 211.62199999999999,
+      "text": " Yeah, and that's what I meant about out for us for the next steps is really building something that we're using internally and we're vetting it internally and if it becomes valuable then we know it's valuable the real question is would we pay for it if we would pay for it on our own like kind of like a chat GPT subscription right you pay for it because it it's worth it to you like as a sales rep is it worth it to you to buy a product",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 242.852,
+      "speaker": "Matt Schwartz",
+      "start": 238.452,
+      "text": " That's how we know hell yeah we're onto something because",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 248.302,
+      "speaker": "Matt Schwartz",
+      "start": 247.502,
+      "text": " in that case",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 253.552,
+      "speaker": "Matt Schwartz",
+      "start": 249.552,
+      "text": " So for example, let's say our market is small new Mexican companies",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 264.702,
+      "speaker": "Matt Schwartz",
+      "start": 254.252,
+      "text": " One customer is the CEO because the CEO is doing sales The other customer is the small new Mexican company that has some 18 year old doing sales and doesn't know is it ass from his elbow",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 266.95000000000005,
+      "speaker": "Matt Schwartz",
+      "start": 266.1,
+      "text": " He's our customer.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 273.95000000000005,
+      "speaker": "Matt Schwartz",
+      "start": 271.65000000000003,
+      "text": " So he could make a lot of money from his company,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 280.05,
+      "speaker": "Matt Schwartz",
+      "start": 274.1,
+      "text": " but he doesn't know how to make sales because he doesn't have good lists and his boss doesn't make a list for him because his boss doesn't know anything.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 283.65000000000003,
+      "speaker": "Matt Schwartz",
+      "start": 280.45000000000005,
+      "text": " And so it's like, I hired an 18 year old to do sales and go.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 286.45000000000005,
+      "speaker": "Matt Schwartz",
+      "start": 284.8,
+      "text": " We are the solution for that kid.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 290.45000000000005,
+      "speaker": "Matt Schwartz",
+      "start": 289.1,
+      "text": " We're his top secret.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 292.14000000000004,
+      "speaker": "Matt Schwartz",
+      "start": 291.54,
+      "text": " Sauce.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 296.19,
+      "speaker": "Matt Schwartz",
+      "start": 293.39000000000004,
+      "text": " Just like if I'm a researcher and I'm working at the Cancer Center,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 299.29,
+      "speaker": "Matt Schwartz",
+      "start": 296.34000000000003,
+      "text": " AI is my top secret sauce.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_60",
+      "end": 299.74,
+      "speaker": "Matt Schwartz",
+      "start": 299.44,
+      "text": " I can do.",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "Well for both like you can just go back to the very very very very very basics for B2C the very basics is human human so finding out where where who are the people you want to sell to where are they and then talking to them right that's B2C\nor D to C, direct to consumer, right? So it's like, who is your consumer? It's old white people with, they're making more than 80K a year or worked at national labs or nothing like that. Okay, cool. Where do they hang out? Let's go to those places and just start talking to people and we'll start getting leads. Well, okay, but that's sale on our side. I was talking about the...\ncapacity of the tool itself. Well, it always does help to go back to the very, very basics, like what Sure. what is the very basics look like. So for B2B, what does the basics look like? It looks like um defining a lead segment Creating quality. and then creating quality leads. Yeah.\nBut that requires us knowing what the lead segment is and kind of exhaustively knowing all the different ways that that lead segment could be squeezed. And then we're squeezing it every way and we're leveraging the highest level of tech to squeeze it to get value to our customers.\nBut the other issue with this kind of stuff is like if we want to operate at the high level some or something like zoom info all it takes is They they add a division to do what you know what's being done and then bam the market gets wiped out what happened with Danilo's company because he wanted to make an app that allowed all this like All I kind of the boring back-end subscription payment all this stuff on Shopify\nAnd Shopify is the major platform, the e-commerce platform, and all Shopify had to do would be like, we're not going to let you put your app on our store and we're just going to make it. And then bam, it's gone. So now to compete with him, you not only have to build that app, you have to build a platform to compete with actual Shopify and that's not going to happen. So again, that's defining our markets, like our market I don't think is, we're not a Zoom info competitor.\nWe are a boutique legion. And I think Thomas would actually do really well selling that here or even in California, but I still haven't gotten a chance to really pick Thomas's brain about why him and his bosses got so excited about your list.\nI want to know that. Like what about it? The value is there. The other thing was, I don't know if you ever went through the list. I asked a few times like, like did you get a percentage out of it? Like how'd it go? So like, that would have been...\nkey valuable information Yeah, and that's what I meant about out for us for the next steps is really building something that we're using internally and we're vetting it internally and if it becomes valuable then we know it's valuable the real question is would we pay for it if we would pay for it on our own like kind of like a chat GPT subscription right you pay for it because it it's worth it to you like as a sales rep is it worth it to you to buy a product\nThat's how we know hell yeah we're onto something because in that case So for example, let's say our market is small new Mexican companies One customer is the CEO because the CEO is doing sales The other customer is the small new Mexican company that has some 18 year old doing sales and doesn't know is it ass from his elbow\nHe's our customer. So he could make a lot of money from his company, but he doesn't know how to make sales because he doesn't have good lists and his boss doesn't make a list for him because his boss doesn't know anything. And so it's like, I hired an 18 year old to do sales and go. We are the solution for that kid. We're his top secret.\nSauce. Just like if I'm a researcher and I'm working at the Cancer Center, AI is my top secret sauce. I can do.",
+  "usage": {
+    "input_tokens": 4989,
+    "output_tokens": 8164,
+    "total_tokens": 13153,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 4713,
+      "text_tokens": 276
+    }
+  }
+}

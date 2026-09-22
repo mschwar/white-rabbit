@@ -1,0 +1,481 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 28.8,
+      "speaker": "A",
+      "start": 0.0,
+      "text": " ZoomInfo is automatically going to discover up to three contacts per company that visits my website within the sales team buying committee that I've set up and it's going to create them a contact and import them into HubSpot which is what I use as my sequencing platform so then I can begin targeting them automatically and I don't even have to build a list anymore it's just doing that all for me that's like half of a salesperson's job is trying to find good prospects worth reaching out to building lists isn't talking to people and if we're not talking to people we're generally not driving the results we want to",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 29.124,
+      "speaker": "A",
+      "start": 28.724,
+      "text": " to in sales.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 36.524,
+      "speaker": "A",
+      "start": 29.274,
+      "text": " I can now have a list ready to go or if I'm running a whole team I could have people's reps lists assigned to them based on geography,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 37.424,
+      "speaker": "A",
+      "start": 36.774,
+      "text": " territories,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 38.524,
+      "speaker": "A",
+      "start": 37.724000000000004,
+      "text": " intent data.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 51.674,
+      "speaker": "A",
+      "start": 38.774,
+      "text": " I've got one here if they add competitive technology so if they end up going and buying Salesforce or LinkedIn Sales Navigator then I can reach out to them and say hey so you recently invested in LinkedIn Sales Navigator I actually have some great training on that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 52.274,
+      "speaker": "A",
+      "start": 51.724000000000004,
+      "text": " Here's a video.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 55.624,
+      "speaker": "A",
+      "start": 52.374,
+      "text": " Would you be curious to know what else is possible with the platform? I've been working with teams",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 55.936,
+      "speaker": "A",
+      "start": 55.636,
+      "text": " means X,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 57.386,
+      "speaker": "A",
+      "start": 55.986000000000004,
+      "text": " Y, and Z to achieve this. Okay,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 58.886,
+      "speaker": "A",
+      "start": 57.486000000000004,
+      "text": " so that was a lot.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 63.136,
+      "speaker": "A",
+      "start": 59.086000000000006,
+      "text": " Let's talk about some pros and cons of ZoomInfo. Let's start with the pros over here.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 67.13600000000001,
+      "speaker": "A",
+      "start": 63.286,
+      "text": " That search functionality is probably one of the most in-depth ones I've seen on any platform,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 68.686,
+      "speaker": "A",
+      "start": 67.186,
+      "text": " including LinkedIn Sales Navigator.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 71.736,
+      "speaker": "A",
+      "start": 68.83600000000001,
+      "text": " Better, you can build your list with smart searches like those.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 77.936,
+      "speaker": "A",
+      "start": 71.83600000000001,
+      "text": " The less research you might actually have to do on each individual prospect in that list to reach out to them. Another pro,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 80.286,
+      "speaker": "A",
+      "start": 78.036,
+      "text": " the intent and the web visits,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 81.08600000000001,
+      "speaker": "A",
+      "start": 80.436,
+      "text": " insane.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 83.874,
+      "speaker": "A",
+      "start": 81.524,
+      "text": " If I can see what companies are spending time on my website,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 89.524,
+      "speaker": "A",
+      "start": 84.024,
+      "text": " they identify people who may be slightly interested or researching before they reach out to me or one of my competitors,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 95.624,
+      "speaker": "A",
+      "start": 89.724,
+      "text": " and therefore I can get to that company early before they get too deep into their evaluation or pass me out for another company.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 98.374,
+      "speaker": "A",
+      "start": 95.774,
+      "text": " I could keep going on forever, but the last big...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 99.80000000000001,
+      "speaker": "A",
+      "start": 98.9,
+      "text": " was the workflows.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 103.95,
+      "speaker": "A",
+      "start": 100.10000000000001,
+      "text": " So you're going to basically automate all of your list building using AI,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 109.45,
+      "speaker": "A",
+      "start": 104.15,
+      "text": " using intent signals and designate people into sequences without you ever having to build a list again.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 121.2,
+      "speaker": "A",
+      "start": 109.60000000000001,
+      "text": " Game-changing for me as a business owner because I'm time strapped and it's game-changing for sales teams because you no longer have to get your sales team spending their time building lists. Instead all they have to do is execute on the delivery of that list,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 122.0,
+      "speaker": "A",
+      "start": 121.30000000000001,
+      "text": " on the phone,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 124.75,
+      "speaker": "A",
+      "start": 122.10000000000001,
+      "text": " emailing people or on calls of prospects.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 126.336,
+      "speaker": "A",
+      "start": 125.236,
+      "text": " On to the cons.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 127.486,
+      "speaker": "A",
+      "start": 126.486,
+      "text": " This is the big one.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 128.936,
+      "speaker": "A",
+      "start": 127.586,
+      "text": " And I know I was going to have to talk about this.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 130.536,
+      "speaker": "A",
+      "start": 129.136,
+      "text": " Zoom info is expensive.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 138.336,
+      "speaker": "A",
+      "start": 130.936,
+      "text": " It is hella pricey. I believe it's running at like over a thousand dollars a month per user per license of Zoom info.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 139.536,
+      "speaker": "A",
+      "start": 138.436,
+      "text": " That's a lot of money.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 143.986,
+      "speaker": "A",
+      "start": 139.736,
+      "text": " You know how I mentioned before that my team bought two licenses just for sales ops on our team?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 147.386,
+      "speaker": "A",
+      "start": 144.036,
+      "text": " That's because as a startup they couldn't afford to buy every single rep on the team a license.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 154.136,
+      "speaker": "A",
+      "start": 147.48600000000002,
+      "text": " They can only afford to enable a couple of people on the sales ops to help improve the data we were getting from the other tool that we were using. And here's the thing when you look into",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 179.99,
+      "speaker": "A",
+      "start": 153.94,
+      "text": " look at zoom info alongside some of its competitors if you look at apples apples and say well that all of these are going to help me get contact information but they basically do the same thing let me look at lead iq yeah so lead iq is like 79 a month comes a lot harder to justify spending 10 times more for a tool that offers the same premise i think with any pricing conversation is a question of value so yeah that price point is going to put some people off and i guess if i had to try and justify that price point",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 186.042,
+      "speaker": "A",
+      "start": 179.892,
+      "text": " To myself, it would be a case of, okay, reaching out to people with wrong emails and wrong contact details,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 187.09199999999998,
+      "speaker": "A",
+      "start": 186.09199999999998,
+      "text": " I am wasting time.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 190.242,
+      "speaker": "A",
+      "start": 187.242,
+      "text": " And if I'm time strapped or my time is worth a lot of money to me,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 191.84199999999998,
+      "speaker": "A",
+      "start": 190.292,
+      "text": " then that compounds over time.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 195.142,
+      "speaker": "A",
+      "start": 191.942,
+      "text": " And it only compounds more the larger the team size is.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 196.892,
+      "speaker": "A",
+      "start": 195.242,
+      "text": " If you have a team of,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 200.792,
+      "speaker": "A",
+      "start": 197.142,
+      "text": " let's say, 50 reps and each of them are making 100 calls a day,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 202.192,
+      "speaker": "A",
+      "start": 200.942,
+      "text": " 5,000 calls a day,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 208.542,
+      "speaker": "A",
+      "start": 202.292,
+      "text": " 25,000 a week. And there's a 10% difference in the data quality of Zoom Info versus one of their alternatives.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 236.196,
+      "speaker": "A",
+      "start": 208.596,
+      "text": " difference cheaper that 10% difference means that you're doing 2,500 calls to numbers that are outdated don't work at that point when you start to calculate the backwards cost opportunity cost and potential damage that's doing to the team that's how I suppose you justify that price point but ultimately with anything value is in the eye of whoever's buying and zoom info has a lot of customers so clearly the value is there for some people but ultimately some people just don't have the money to be able to afford a tool like this",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 254.644,
+      "speaker": "A",
+      "start": 236.244,
+      "text": " so in those cases they're probably gonna go for a cheaper alternative like the tool that I've reviewed on this channel beforehand right here give that video a watch hit subscribe and let me know what's your experience with data intelligence solutions what's been best for you love to hear your thoughts in the comment sections below drop a like subscribe press my buttons baby",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 257.744,
+      "speaker": "Lee Biby",
+      "start": 257.244,
+      "text": " shit",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 267.29,
+      "speaker": "Matt Schwartz",
+      "start": 266.74,
+      "text": " Here's our homework.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 267.59000000000003,
+      "speaker": "A",
+      "start": 267.44,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 286.24,
+      "speaker": "Matt Schwartz",
+      "start": 268.74,
+      "text": " Yeah. So here here's the thing. Um remember how with the A_I_ thing where I'm saying we can sell to these tiny CEOs. The reason is we can solve a pain point that they have. Of course they're better solutions. There are",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 291.34000000000003,
+      "speaker": "Matt Schwartz",
+      "start": 287.29,
+      "text": " way better solutions than me doing it. But they don't have access to those. They have access to me.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 293.22799999999995,
+      "speaker": "Matt Schwartz",
+      "start": 291.828,
+      "text": " Right now they have access to zero.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 294.72799999999995,
+      "speaker": "Matt Schwartz",
+      "start": 293.928,
+      "text": " What's that worth?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 295.828,
+      "speaker": "Matt Schwartz",
+      "start": 294.878,
+      "text": " It's worth a lot of money.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 299.52799999999996,
+      "speaker": "Matt Schwartz",
+      "start": 297.52799999999996,
+      "text": " Thomas got excited with your list.",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "ZoomInfo is automatically going to discover up to three contacts per company that visits my website within the sales team buying committee that I've set up and it's going to create them a contact and import them into HubSpot which is what I use as my sequencing platform so then I can begin targeting them automatically and I don't even have to build a list anymore it's just doing that all for me that's like half of a salesperson's job is trying to find good prospects worth reaching out to building lists isn't talking to people and if we're not talking to people we're generally not driving the results we want to\nto in sales. I can now have a list ready to go or if I'm running a whole team I could have people's reps lists assigned to them based on geography, territories, intent data. I've got one here if they add competitive technology so if they end up going and buying Salesforce or LinkedIn Sales Navigator then I can reach out to them and say hey so you recently invested in LinkedIn Sales Navigator I actually have some great training on that. Here's a video. Would you be curious to know what else is possible with the platform? I've been working with teams\nmeans X, Y, and Z to achieve this. Okay, so that was a lot. Let's talk about some pros and cons of ZoomInfo. Let's start with the pros over here. That search functionality is probably one of the most in -depth ones I've seen on any platform, including LinkedIn Sales Navigator. Better, you can build your list with smart searches like those. The less research you might actually have to do on each individual prospect in that list to reach out to them. Another pro, the intent and the web visits, insane.\nIf I can see what companies are spending time on my website, they identify people who may be slightly interested or researching before they reach out to me or one of my competitors, and therefore I can get to that company early before they get too deep into their evaluation or pass me out for another company. I could keep going on forever, but the last big...\nwas the workflows. So you're going to basically automate all of your list building using AI, using intent signals and designate people into sequences without you ever having to build a list again. Game-changing for me as a business owner because I'm time strapped and it's game-changing for sales teams because you no longer have to get your sales team spending their time building lists. Instead all they have to do is execute on the delivery of that list, on the phone, emailing people or on calls of prospects.\nOn to the cons. This is the big one. And I know I was going to have to talk about this. Zoom info is expensive. It is hella pricey. I believe it's running at like over a thousand dollars a month per user per license of Zoom info. That's a lot of money. You know how I mentioned before that my team bought two licenses just for sales ops on our team? That's because as a startup they couldn't afford to buy every single rep on the team a license. They can only afford to enable a couple of people on the sales ops to help improve the data we were getting from the other tool that we were using. And here's the thing when you look into\nlook at zoom info alongside some of its competitors if you look at apples apples and say well that all of these are going to help me get contact information but they basically do the same thing let me look at lead iq yeah so lead iq is like 79 a month comes a lot harder to justify spending 10 times more for a tool that offers the same premise i think with any pricing conversation is a question of value so yeah that price point is going to put some people off and i guess if i had to try and justify that price point\nTo myself, it would be a case of, okay, reaching out to people with wrong emails and wrong contact details, I am wasting time. And if I'm time strapped or my time is worth a lot of money to me, then that compounds over time. And it only compounds more the larger the team size is. If you have a team of, let's say, 50 reps and each of them are making 100 calls a day, 5,000 calls a day, 25,000 a week. And there's a 10 % difference in the data quality of Zoom Info versus one of their alternatives.\ndifference cheaper that 10% difference means that you're doing 2,500 calls to numbers that are outdated don't work at that point when you start to calculate the backwards cost opportunity cost and potential damage that's doing to the team that's how I suppose you justify that price point but ultimately with anything value is in the eye of whoever's buying and zoom info has a lot of customers so clearly the value is there for some people but ultimately some people just don't have the money to be able to afford a tool like this\nso in those cases they're probably gonna go for a cheaper alternative like the tool that I've reviewed on this channel beforehand right here give that video a watch hit subscribe and let me know what's your experience with data intelligence solutions what's been best for you love to hear your thoughts in the comment sections below drop a like subscribe press my buttons baby shit\nHere's our homework. Yeah. Yeah. So here here's the thing. Um remember how with the A_I_ thing where I'm saying we can sell to these tiny CEOs. The reason is we can solve a pain point that they have. Of course they're better solutions. There are way better solutions than me doing it. But they don't have access to those. They have access to me.\nRight now they have access to zero. What's that worth? It's worth a lot of money. Thomas got excited with your list.",
+  "usage": {
+    "input_tokens": 6355,
+    "output_tokens": 9013,
+    "total_tokens": 15368,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 5913,
+      "text_tokens": 442
+    }
+  }
+}

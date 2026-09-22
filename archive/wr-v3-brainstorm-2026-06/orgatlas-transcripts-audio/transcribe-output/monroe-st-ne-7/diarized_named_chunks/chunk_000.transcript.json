@@ -1,0 +1,505 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 9.8,
+      "speaker": "Lee Biby",
+      "start": 0.0,
+      "text": " every little thing is a sign in and then get your ATP clearance and then do this that's with the paint but we'll figure out yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 11.5,
+      "speaker": "Matt Schwartz",
+      "start": 10.3,
+      "text": " It's good that you have AI help,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 11.75,
+      "speaker": "Matt Schwartz",
+      "start": 11.65,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 19.900000000000002,
+      "speaker": "Lee Biby",
+      "start": 13.15,
+      "text": " and then it's like oh from your screenshot you're not in the right place I'm like oh okay it'll be good to tell me that",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 24.050000000000004,
+      "speaker": "Matt Schwartz",
+      "start": 23.200000000000003,
+      "text": " Oh man,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 25.600000000000005,
+      "speaker": "Matt Schwartz",
+      "start": 24.150000000000006,
+      "text": " how's all the AI stuff going?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 36.624,
+      "speaker": "Lee Biby",
+      "start": 27.924,
+      "text": " I'm just kind of using it right now, but I still haven't figured out what I'm doing with like adding",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 39.474000000000004,
+      "speaker": "Lee Biby",
+      "start": 38.674,
+      "text": " the bubble wrap,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 41.774,
+      "speaker": "Lee Biby",
+      "start": 39.674,
+      "text": " whatever the hell that is,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 46.124,
+      "speaker": "Lee Biby",
+      "start": 41.824,
+      "text": " and then it's connected to my chat GPT,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 53.92400000000001,
+      "speaker": "Lee Biby",
+      "start": 46.17400000000001,
+      "text": " so it either does or does not allow adding that. And if I'm in 5.5, I have to go back down to.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 58.4,
+      "speaker": "Lee Biby",
+      "start": 54.9,
+      "text": " 4.5 or i don't know that's so i'm confused on that part still i",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 58.55,
+      "speaker": "Matt Schwartz",
+      "start": 58.4,
+      "text": " wait",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 58.75,
+      "speaker": "Lee Biby",
+      "start": 58.55,
+      "text": " don't know what",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 61.35,
+      "speaker": "Matt Schwartz",
+      "start": 58.75,
+      "text": " for your bump what are you talking about bow wrap what's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 73.5,
+      "speaker": "Lee Biby",
+      "start": 61.55,
+      "text": " i don't know it's like all the the phases that the other two phases that we didn't do before i left your house adding the linux and all that shit um that's kind of where i'm at right now it",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 75.55,
+      "speaker": "Matt Schwartz",
+      "start": 73.5,
+      "text": " the project like what are you building",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 79.6,
+      "speaker": "Lee Biby",
+      "start": 76.15,
+      "text": " wasn't it wasn't i don't know",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 95.912,
+      "speaker": "Lee Biby",
+      "start": 80.212,
+      "text": " but that's where I'm at I'm like okay I did all this shit and it's saying that like there's a there's an error because I've now connected it told me to connect it to my GPT account but",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 104.712,
+      "speaker": "Lee Biby",
+      "start": 97.262,
+      "text": " now I'm just confused about it and then I don't even know what to use when so I need to figure that out too",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 107.66199999999999,
+      "speaker": "Lee Biby",
+      "start": 105.812,
+      "text": " like when am i using i",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 115.41199999999999,
+      "speaker": "Lee Biby",
+      "start": 109.062,
+      "text": " don't know when am i going from codex to claw just depending on what i'm trying to accomplish and then why",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 121.112,
+      "speaker": "Lee Biby",
+      "start": 117.062,
+      "text": " i have linux on there i don't really know it's supposed to be more powerful but no",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 123.012,
+      "speaker": "Matt Schwartz",
+      "start": 121.112,
+      "text": " Are you using cloud as well?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 134.512,
+      "speaker": "Lee Biby",
+      "start": 124.012,
+      "text": " not really not yet i signed up for actually cloud design because if i'm gonna be doing marketing stuff that's gonna be better but i use it as a desktop not as the it's not in the codec and the",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 137.28799999999998,
+      "speaker": "Lee Biby",
+      "start": 135.188,
+      "text": " PowerShell, because I don't know why it would do that or how.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 137.988,
+      "speaker": "Matt Schwartz",
+      "start": 137.53799999999998,
+      "text": " Uh,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 144.688,
+      "speaker": "Matt Schwartz",
+      "start": 138.03799999999998,
+      "text": " same, same way. So you can, we didn't talk about Claude because you already had the paid subscription for ChatGPT.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 145.588,
+      "speaker": "Matt Schwartz",
+      "start": 145.088,
+      "text": " Um,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 147.03799999999998,
+      "speaker": "Matt Schwartz",
+      "start": 145.688,
+      "text": " but it's the same exact thing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 153.53799999999998,
+      "speaker": "Matt Schwartz",
+      "start": 147.088,
+      "text": " So actually both you can install applications on your like Windows or Linux or Mac,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 156.938,
+      "speaker": "Matt Schwartz",
+      "start": 153.738,
+      "text": " and then both you can install in the CLI.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 160.238,
+      "speaker": "Matt Schwartz",
+      "start": 157.78799999999998,
+      "text": " So you can just tell, uh,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 160.738,
+      "speaker": "Matt Schwartz",
+      "start": 160.28799999999998,
+      "text": " hold on.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 169.598,
+      "speaker": "Matt Schwartz",
+      "start": 162.548,
+      "text": " cool so you can just google cli cloud install um",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 171.298,
+      "speaker": "Lee Biby",
+      "start": 169.598,
+      "text": " Oh, see",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 172.898,
+      "speaker": "Matt Schwartz",
+      "start": 171.448,
+      "text": " and here",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 175.648,
+      "speaker": "Lee Biby",
+      "start": 172.898,
+      "text": " I need to get a sticky note of the freaking acronyms.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 180.098,
+      "speaker": "Lee Biby",
+      "start": 175.998,
+      "text": " So I know what... I'm like, wait a second, where does that go?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 185.198,
+      "speaker": "Matt Schwartz",
+      "start": 180.548,
+      "text": " let me let me uh put a thing in the chat here so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 190.798,
+      "speaker": "Matt Schwartz",
+      "start": 188.198,
+      "text": " you should be able to just put that into your powershell",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 197.584,
+      "speaker": "Lee Biby",
+      "start": 196.084,
+      "text": " After I paint for it all on",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 207.13400000000001,
+      "speaker": "Matt Schwartz",
+      "start": 198.284,
+      "text": " uh so yeah so this just installs it in your CLI so you know how you hit codecs in your PowerShell so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 213.184,
+      "speaker": "Matt Schwartz",
+      "start": 208.38400000000001,
+      "text": " you're going to write Claude instead but first you have to run this command so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 221.63400000000001,
+      "speaker": "Matt Schwartz",
+      "start": 218.784,
+      "text": " one of the acronyms that you need to know is CLI",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 224.666,
+      "speaker": "Matt Schwartz",
+      "start": 222.516,
+      "text": " And that is command line interface.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 233.066,
+      "speaker": "Matt Schwartz",
+      "start": 227.516,
+      "text": " So we are working, like when you're talking about PowerShell, there's terminal,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 234.666,
+      "speaker": "Matt Schwartz",
+      "start": 233.266,
+      "text": " PowerShell, console,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 235.36599999999999,
+      "speaker": "Matt Schwartz",
+      "start": 234.916,
+      "text": " bash,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 240.316,
+      "speaker": "Matt Schwartz",
+      "start": 235.766,
+      "text": " all those things are just kind of different versions of a command line interface.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 244.016,
+      "speaker": "Lee Biby",
+      "start": 243.566,
+      "text": " Okay.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 246.01000000000002,
+      "speaker": "Lee Biby",
+      "start": 245.46,
+      "text": " Got that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 256.26,
+      "speaker": "Matt Schwartz",
+      "start": 246.21,
+      "text": " um so did you see the thing in the messages yeah so just copy and paste that and then drop it into your cli so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 261.61,
+      "speaker": "Lee Biby",
+      "start": 259.16,
+      "text": " Oh, I'm on my phone because I didn't.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 269.81,
+      "speaker": "Matt Schwartz",
+      "start": 265.71000000000004,
+      "text": " then what you can do is you can just google um",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 274.388,
+      "speaker": "Matt Schwartz",
+      "start": 271.988,
+      "text": " Claude CLI install.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 281.888,
+      "speaker": "Lee Biby",
+      "start": 281.138,
+      "text": " What?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 283.838,
+      "speaker": "Matt Schwartz",
+      "start": 283.438,
+      "text": " Here,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 284.338,
+      "speaker": "Matt Schwartz",
+      "start": 283.938,
+      "text": " I'll write it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 290.438,
+      "speaker": "Matt Schwartz",
+      "start": 288.738,
+      "text": " So you're going to be Googling.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_60",
+      "end": 296.138,
+      "speaker": "Matt Schwartz",
+      "start": 295.338,
+      "text": " Do you see it?",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "every little thing is a sign in and then get your ATP clearance and then do this that's with the paint but we'll figure out yeah It's good that you have AI help, right? and then it's like oh from your screenshot you're not in the right place I'm like oh okay it'll be good to tell me that Oh man, how's all the AI stuff going?\nI'm just kind of using it right now, but I still haven't figured out what I'm doing with like adding the bubble wrap, whatever the hell that is, and then it's connected to my chat GPT, so it either does or does not allow adding that. And if I'm in 5.5, I have to go back down to.\n4.5 or i don't know that's so i'm confused on that part still i wait don't know what for your bump what are you talking about bow wrap what's i don't know it's like all the the phases that the other two phases that we didn't do before i left your house adding the linux and all that shit um that's kind of where i'm at right now it the project like what are you building wasn't it wasn't i don't know\nbut that's where I'm at I'm like okay I did all this shit and it's saying that like there's a there's an error because I've now connected it told me to connect it to my GPT account but now I'm just confused about it and then I don't even know what to use when so I need to figure that out too\nlike when am i using i don't know when am i going from codex to claw just depending on what i'm trying to accomplish and then why i have linux on there i don't really know it's supposed to be more powerful but no Are you using cloud as well? not really not yet i signed up for actually cloud design because if i'm gonna be doing marketing stuff that's gonna be better but i use it as a desktop not as the it's not in the codec and the\nPowerShell, because I don't know why it would do that or how. Uh, same, same way. So you can, we didn't talk about Claude because you already had the paid subscription for ChatGPT. Um, but it's the same exact thing. So actually both you can install applications on your like Windows or Linux or Mac, and then both you can install in the CLI. So you can just tell, uh, hold on.\ncool so you can just google cli cloud install um Oh, see and here I need to get a sticky note of the freaking acronyms. So I know what... I'm like, wait a second, where does that go? let me let me uh put a thing in the chat here so you should be able to just put that into your powershell\nAfter I paint for it all on uh so yeah so this just installs it in your CLI so you know how you hit codecs in your PowerShell so you're going to write Claude instead but first you have to run this command so one of the acronyms that you need to know is CLI\nAnd that is command line interface. So we are working, like when you're talking about PowerShell, there's terminal, PowerShell, console, bash, all those things are just kind of different versions of a command line interface. Okay.\nGot that. um so did you see the thing in the messages yeah so just copy and paste that and then drop it into your cli so Oh, I'm on my phone because I didn't. then what you can do is you can just google um\nClaude CLI install. What? Here, I'll write it. So you're going to be Googling. Do you see it?",
+  "usage": {
+    "input_tokens": 5936,
+    "output_tokens": 8261,
+    "total_tokens": 14197,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 5518,
+      "text_tokens": 418
+    }
+  }
+}

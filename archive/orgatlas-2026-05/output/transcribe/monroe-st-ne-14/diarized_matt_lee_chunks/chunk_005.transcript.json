@@ -1,0 +1,593 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 2.3,
+      "speaker": "Matt Schwartz",
+      "start": 0.0,
+      "text": " He would type what would he even type into the box?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 14.95,
+      "speaker": "A",
+      "start": 9.3,
+      "text": " He would have been looking for people who want the ability to do",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 19.35,
+      "speaker": "A",
+      "start": 18.05,
+      "text": " social media research",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 24.1,
+      "speaker": "A",
+      "start": 20.3,
+      "text": " on threats against a specific person.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 31.226,
+      "speaker": "A",
+      "start": 25.076,
+      "text": " So that would you would have been able to say what type of person wants the ability to do that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 37.176,
+      "speaker": "A",
+      "start": 32.876,
+      "text": " Security people, government agencies, um,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 50.776,
+      "speaker": "A",
+      "start": 39.976,
+      "text": " that that's all I can think of. So then we'd say okay we can find you all of the security agencies in the western United States who represent",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 57.126,
+      "speaker": "Matt Schwartz",
+      "start": 53.076,
+      "text": " Yeah, but I think but here's where the break the breakdown happens with the three layers",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 61.676,
+      "speaker": "Matt Schwartz",
+      "start": 58.976,
+      "text": " He's not doing calls and he doesn't really know",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 74.626,
+      "speaker": "Matt Schwartz",
+      "start": 62.275999999999996,
+      "text": " The sales rep is going to be working from a certain list or artifact that tells her let's say every day she gets a list of here's a hundred different hits that we got on social media from these high-value people",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 76.54,
+      "speaker": "A",
+      "start": 75.54,
+      "text": " That's working backwards though.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 79.24000000000001,
+      "speaker": "Matt Schwartz",
+      "start": 76.54,
+      "text": " But that's what she was doing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 81.69000000000001,
+      "speaker": "Matt Schwartz",
+      "start": 79.39,
+      "text": " That's what their sales rep was doing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 85.34,
+      "speaker": "Matt Schwartz",
+      "start": 81.84,
+      "text": " Their sales rep was making calls, basically building the list by hand.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 86.94000000000001,
+      "speaker": "Matt Schwartz",
+      "start": 85.54,
+      "text": " So she was working backwards.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 89.34,
+      "speaker": "Matt Schwartz",
+      "start": 87.04,
+      "text": " She had a list of high value information,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 91.99000000000001,
+      "speaker": "Matt Schwartz",
+      "start": 89.64000000000001,
+      "text": " and then she was trying to figure out who to call.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 94.34,
+      "speaker": "Matt Schwartz",
+      "start": 92.64000000000001,
+      "text": " Oh, who would be interested in this?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 94.49000000000001,
+      "speaker": "A",
+      "start": 94.34,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 94.84,
+      "speaker": "Matt Schwartz",
+      "start": 94.49000000000001,
+      "text": " The FBI,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 95.24000000000001,
+      "speaker": "A",
+      "start": 94.84,
+      "text": " but that's...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 96.54,
+      "speaker": "Matt Schwartz",
+      "start": 95.24000000000001,
+      "text": " the CIA,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 97.64000000000001,
+      "speaker": "Matt Schwartz",
+      "start": 96.84,
+      "text": " their private security,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 100.64000000000001,
+      "speaker": "Matt Schwartz",
+      "start": 97.84,
+      "text": " and then she would research that stuff and make those calls.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 102.27600000000001,
+      "speaker": "A",
+      "start": 101.876,
+      "text": " So,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 102.426,
+      "speaker": "A",
+      "start": 102.32600000000001,
+      "text": " but",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 104.676,
+      "speaker": "Matt Schwartz",
+      "start": 102.426,
+      "text": " That's what their sales rep was doing so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 106.726,
+      "speaker": "A",
+      "start": 104.676,
+      "text": " that's because they're, but yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 112.626,
+      "speaker": "A",
+      "start": 108.176,
+      "text": " but it's conflated because the sales rep is outside the business anyway.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 114.27600000000001,
+      "speaker": "A",
+      "start": 112.976,
+      "text": " She already had that information.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 117.77600000000001,
+      "speaker": "A",
+      "start": 115.77600000000001,
+      "text": " They're just, they're",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 120.52600000000001,
+      "speaker": "A",
+      "start": 119.376,
+      "text": " the company and the sales,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 121.876,
+      "speaker": "A",
+      "start": 120.676,
+      "text": " so that's not really the...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 129.726,
+      "speaker": "Matt Schwartz",
+      "start": 127.626,
+      "text": " for them the sale would be the sales rep",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 130.742,
+      "speaker": "Matt Schwartz",
+      "start": 130.292,
+      "text": " Got like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 130.892,
+      "speaker": "A",
+      "start": 130.742,
+      "text": " It's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 130.942,
+      "speaker": "Matt Schwartz",
+      "start": 130.892,
+      "text": " gets",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 131.692,
+      "speaker": "A",
+      "start": 130.942,
+      "text": " the same thing that",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 137.942,
+      "speaker": "Matt Schwartz",
+      "start": 131.692,
+      "text": " gets the FBI on the hook and the FBI is like, oh that sounds good The FBI pays their subscription and gets the actual information",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 142.492,
+      "speaker": "A",
+      "start": 138.742,
+      "text": " it's the same thing. They have a thing and they have a sales staff",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 147.142,
+      "speaker": "A",
+      "start": 143.292,
+      "text": " The sales staff wants to know who wants to buy the most likely to buy the product.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 147.542,
+      "speaker": "Matt Schwartz",
+      "start": 147.142,
+      "text": " Yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 148.792,
+      "speaker": "A",
+      "start": 148.24200000000002,
+      "text": " That's it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 149.192,
+      "speaker": "Matt Schwartz",
+      "start": 148.792,
+      "text": " Yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 155.592,
+      "speaker": "A",
+      "start": 149.292,
+      "text": " So what they wanted to know was can you find us all the people want to buy a product",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 166.52200000000002,
+      "speaker": "A",
+      "start": 157.972,
+      "text": " was who is more okay who's most likely to we don't have to do that part. We can whatever you're asking us to find, we can find it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 168.27200000000002,
+      "speaker": "A",
+      "start": 167.222,
+      "text": " So if you wanna find",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 182.92200000000003,
+      "speaker": "A",
+      "start": 169.872,
+      "text": " F_B_I_ team leaders or d detectives cool. So detectives and we're going that you're going to D_C_ next week? Cool. We wanna know all the detectives in D_C_",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 186.608,
+      "speaker": "A",
+      "start": 183.508,
+      "text": " so that we can sell our product.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 202.05800000000002,
+      "speaker": "A",
+      "start": 191.008,
+      "text": " Same thing as this. Like we sell I_T_ bullshit, okay, so who in your territory is an I_T_ person that could potentially buy your shit?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 208.30800000000002,
+      "speaker": "A",
+      "start": 202.90800000000002,
+      "text": " So that's all they want to know. It's like can you find me all the all the detectives in",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 217.468,
+      "speaker": "A",
+      "start": 210.118,
+      "text": " because that's who we're going to sell this to we're going to sell it to but their thing is they could their product could be anything",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 228.218,
+      "speaker": "Matt Schwartz",
+      "start": 217.468,
+      "text": " That's what I'm trying to say. Yeah, so their lead segment is very different because their lead segment could be anything It like that's why the list matters right what I'm sure what I'm trying to say is their sales rep is getting an actionable list",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 232.118,
+      "speaker": "Matt Schwartz",
+      "start": 229.568,
+      "text": " With different targets for each row",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 235.69799999999998,
+      "speaker": "Matt Schwartz",
+      "start": 233.748,
+      "text": " One row can be an NBA player,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 236.898,
+      "speaker": "Matt Schwartz",
+      "start": 235.798,
+      "text": " one row can be a CEO,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 239.19799999999998,
+      "speaker": "Matt Schwartz",
+      "start": 237.048,
+      "text": " one row can be a politician.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 244.498,
+      "speaker": "Matt Schwartz",
+      "start": 239.548,
+      "text": " The people that are going to be interested in the actual lead segment for each row is different,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 245.548,
+      "speaker": "Matt Schwartz",
+      "start": 244.59799999999998,
+      "text": " whereas",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 249.548,
+      "speaker": "Matt Schwartz",
+      "start": 248.548,
+      "text": " with this,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_60",
+      "end": 250.84799999999998,
+      "speaker": "Matt Schwartz",
+      "start": 249.648,
+      "text": " the lead segment is the same.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_61",
+      "end": 254.84799999999998,
+      "speaker": "Matt Schwartz",
+      "start": 252.148,
+      "text": " All 100 rows are the same lead segment.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_62",
+      "end": 259.698,
+      "speaker": "Matt Schwartz",
+      "start": 256.39799999999997,
+      "text": " We're selling bathroom remodeling in New Mexico.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_63",
+      "end": 261.718,
+      "speaker": "Matt Schwartz",
+      "start": 260.468,
+      "text": " Whereas with this one, no,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_64",
+      "end": 264.76800000000003,
+      "speaker": "Matt Schwartz",
+      "start": 261.76800000000003,
+      "text": " you're selling information to a politician,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_65",
+      "end": 267.918,
+      "speaker": "Matt Schwartz",
+      "start": 264.968,
+      "text": " you're selling information to a law enforcement agency,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_66",
+      "end": 271.418,
+      "speaker": "Matt Schwartz",
+      "start": 268.168,
+      "text": " you're selling access to a private security company.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_67",
+      "end": 273.06800000000004,
+      "speaker": "Matt Schwartz",
+      "start": 271.468,
+      "text": " Those are all for very different reasons.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_68",
+      "end": 286.81800000000004,
+      "speaker": "Matt Schwartz",
+      "start": 281.31800000000004,
+      "text": " And that's why the gold for us is knowing what the sales reps are doing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_69",
+      "end": 291.25800000000004,
+      "speaker": "Matt Schwartz",
+      "start": 286.708,
+      "text": " So you're right, it doesn't really matter 'cause the sales reps are whatever, but for building the product itself,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_70",
+      "end": 294.608,
+      "speaker": "Matt Schwartz",
+      "start": 292.55800000000005,
+      "text": " we need to know what the end-user's doing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_71",
+      "end": 299.858,
+      "speaker": "A",
+      "start": 297.50800000000004,
+      "text": " They're selling. Well, but",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "He would type what would he even type into the box? He would have been looking for people who want the ability to do social media research on threats against a specific person.\nSo that would you would have been able to say what type of person wants the ability to do that. Security people, government agencies, um, that that's all I can think of. So then we'd say okay we can find you all of the security agencies in the western United States who represent\nYeah, but I think but here's where the break the breakdown happens with the three layers He's not doing calls and he doesn't really know The sales rep is going to be working from a certain list or artifact that tells her let's say every day she gets a list of here's a hundred different hits that we got on social media from these high-value people\nThat's working backwards though. But that's what she was doing. That's what their sales rep was doing. Their sales rep was making calls, basically building the list by hand. So she was working backwards. She had a list of high value information, and then she was trying to figure out who to call. Oh, who would be interested in this? Yeah, The FBI, but that's... the CIA, their private security, and then she would research that stuff and make those calls.\nSo, but That's what their sales rep was doing so that's because they're, but yeah, but it's conflated because the sales rep is outside the business anyway. She already had that information. They're just, they're the company and the sales, so that's not really the... for them the sale would be the sales rep\nGot like It's gets the same thing that gets the FBI on the hook and the FBI is like, oh that sounds good The FBI pays their subscription and gets the actual information it's the same thing. They have a thing and they have a sales staff The sales staff wants to know who wants to buy the most likely to buy the product. Yeah That's it. Yeah So what they wanted to know was can you find us all the people want to buy a product\nwas who is more okay who's most likely to we don't have to do that part. We can whatever you're asking us to find, we can find it. So if you wanna find F_B_I_ team leaders or d detectives cool. So detectives and we're going that you're going to D_C_ next week? Cool. We wanna know all the detectives in D_C_\nso that we can sell our product. Same thing as this. Like we sell I_T_ bullshit, okay, so who in your territory is an I_T_ person that could potentially buy your shit? So that's all they want to know. It's like can you find me all the all the detectives in\nbecause that's who we're going to sell this to we're going to sell it to but their thing is they could their product could be anything That's what I'm trying to say. Yeah, so their lead segment is very different because their lead segment could be anything It like that's why the list matters right what I'm sure what I'm trying to say is their sales rep is getting an actionable list With different targets for each row\nOne row can be an NBA player, one row can be a CEO, one row can be a politician. The people that are going to be interested in the actual lead segment for each row is different, whereas with this, the lead segment is the same. All 100 rows are the same lead segment. We're selling bathroom remodeling in New Mexico.\nWhereas with this one, no, you're selling information to a politician, you're selling information to a law enforcement agency, you're selling access to a private security company. Those are all for very different reasons. And that's why the gold for us is knowing what the sales reps are doing.\nSo you're right, it doesn't really matter 'cause the sales reps are whatever, but for building the product itself, we need to know what the end-user's doing. They're selling. Well, but",
+  "usage": {
+    "input_tokens": 5919,
+    "output_tokens": 8477,
+    "total_tokens": 14396,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 5499,
+      "text_tokens": 420
+    }
+  }
+}

@@ -1,0 +1,26 @@
+Subject: Quick question about [district_name]'s technology priorities
+
+Hi [first_name],
+
+I work with K-12 technology teams on [specific problem you solve]. We help districts [clear outcome] without [common pain point].
+
+I reached out because [district-specific reason, recent initiative, or likely use case]. If this is relevant on your side, would you be open to a short 15-minute call next week to see whether it is worth a closer look?
+
+If easier, I can also send a one-page summary with:
+- what we do
+- pricing range
+- implementation timeline
+- security/compliance details
+- a few district references
+
+Best,
+[your_name]
+[title]
+[company]
+[phone]
+[website]
+
+Notes:
+- Keep this short. School district tech leaders usually ignore generic pitches.
+- Personalize the second paragraph for each district.
+- If you are selling into public schools, be ready to answer procurement, student-data, and security questions immediately.

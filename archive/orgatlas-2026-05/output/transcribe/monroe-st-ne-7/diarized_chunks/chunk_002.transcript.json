@@ -1,0 +1,521 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 0.8,
+      "speaker": "A",
+      "start": 0.0,
+      "text": " jobs out yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 3.5,
+      "speaker": "B",
+      "start": 0.8,
+      "text": " Good god what that's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 9.25,
+      "speaker": "A",
+      "start": 3.5,
+      "text": " one of them was paying them a half million dollars a year yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 10.5,
+      "speaker": "B",
+      "start": 9.7,
+      "text": " insane",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 26.2,
+      "speaker": "A",
+      "start": 12.35,
+      "text": " like it's helping launch sales for this company you know some somebody he used to know it's what he's used to know his dad he's like hey we're launching this company and I need you to make it famous so",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 36.292,
+      "speaker": "A",
+      "start": 28.692,
+      "text": " Because I can use a kind of get in front of all the celebrities you can to make it nice and make it public and it's like okay Well, what's it pays like half million?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 37.092,
+      "speaker": "A",
+      "start": 36.492,
+      "text": " It's like it",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 40.292,
+      "speaker": "B",
+      "start": 38.942,
+      "text": " Dude, that sounds so stressful.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 41.992000000000004,
+      "speaker": "A",
+      "start": 40.942,
+      "text": " Yeah, kind of crazy",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 61.908,
+      "speaker": "A",
+      "start": 56.308,
+      "text": " Let me go out Let me go out Let me go out I should probably figure that out",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 87.742,
+      "speaker": "A",
+      "start": 85.492,
+      "text": " So it was no deal.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 89.592,
+      "speaker": "B",
+      "start": 88.64200000000001,
+      "text": " No, I had nothing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 91.89200000000001,
+      "speaker": "B",
+      "start": 90.542,
+      "text": " Yeah, nothing, nothing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 98.992,
+      "speaker": "B",
+      "start": 94.19200000000001,
+      "text": " Did you have any information about the demo people?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 102.09200000000001,
+      "speaker": "B",
+      "start": 99.34200000000001,
+      "text": " Like, they're all going to be on Monday?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 103.84200000000001,
+      "speaker": "A",
+      "start": 103.34200000000001,
+      "text": " No,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 104.292,
+      "speaker": "A",
+      "start": 103.94200000000001,
+      "text": " he said",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 112.09200000000001,
+      "speaker": "A",
+      "start": 111.44200000000001,
+      "text": " he's gonna",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 118.00999999999999,
+      "speaker": "A",
+      "start": 112.66,
+      "text": " send out the invite to the guy just depending on when he's available it's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 118.56,
+      "speaker": "B",
+      "start": 118.00999999999999,
+      "text": " Okay.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 118.66,
+      "speaker": "A",
+      "start": 118.56,
+      "text": "",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 119.50999999999999,
+      "speaker": "B",
+      "start": 118.66,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 126.66,
+      "speaker": "A",
+      "start": 120.91,
+      "text": " not like a rush but he said he's the guy still wanting to get it get out he",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 139.81,
+      "speaker": "A",
+      "start": 137.81,
+      "text": " just said he's ready but I don't know where he's at",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 151.47,
+      "speaker": "B",
+      "start": 148.82,
+      "text": " You should be able to just click the link in the scene.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 187.054,
+      "speaker": "A",
+      "start": 186.804,
+      "text": " Maybe.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 196.004,
+      "speaker": "A",
+      "start": 195.404,
+      "text": " Great.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 198.454,
+      "speaker": "B",
+      "start": 196.504,
+      "text": " I think that's just come on.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 210.254,
+      "speaker": "A",
+      "start": 208.10399999999998,
+      "text": " I don't want to get out of here with that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 212.10399999999998,
+      "speaker": "B",
+      "start": 210.904,
+      "text": " Oh, that's awesome.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 214.626,
+      "speaker": "A",
+      "start": 213.076,
+      "text": " When I can fly, yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 216.076,
+      "speaker": "B",
+      "start": 214.626,
+      "text": " Are you in Vegas?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 217.876,
+      "speaker": "A",
+      "start": 217.326,
+      "text": " I'm in Vegas.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 218.476,
+      "speaker": "B",
+      "start": 217.876,
+      "text": " Dude,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 219.176,
+      "speaker": "B",
+      "start": 218.576,
+      "text": " how is it?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 221.27599999999998,
+      "speaker": "A",
+      "start": 219.726,
+      "text": " It's nice and it's not terrible.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 224.126,
+      "speaker": "B",
+      "start": 222.726,
+      "text": " What hotel is that?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 225.826,
+      "speaker": "A",
+      "start": 225.27599999999998,
+      "text": " Santa Ana?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 227.176,
+      "speaker": "B",
+      "start": 225.976,
+      "text": " Nice, man.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 228.426,
+      "speaker": "B",
+      "start": 227.626,
+      "text": " How's it going?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 230.62599999999998,
+      "speaker": "A",
+      "start": 229.37599999999998,
+      "text": " Just living, working,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 232.176,
+      "speaker": "A",
+      "start": 230.676,
+      "text": " man. I was in the tool today.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 232.87599999999998,
+      "speaker": "A",
+      "start": 232.226,
+      "text": " How are you, dude?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 233.976,
+      "speaker": "B",
+      "start": 232.87599999999998,
+      "text": " Good, good, good.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 237.976,
+      "speaker": "B",
+      "start": 234.02599999999998,
+      "text": " Yeah, dude, I'd much rather hear about freaking Vegas than...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 238.98000000000002,
+      "speaker": "B",
+      "start": 238.58,
+      "text": " anything else",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 241.78,
+      "speaker": "A",
+      "start": 238.98000000000002,
+      "text": " We're going we're going to Morgan Wally tomorrow night.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 242.38000000000002,
+      "speaker": "B",
+      "start": 241.78,
+      "text": " nice",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 246.03,
+      "speaker": "A",
+      "start": 242.38000000000002,
+      "text": " We hang out two days early to just kind of chill at the pool and work and do whatever",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 249.98000000000002,
+      "speaker": "B",
+      "start": 246.03,
+      "text": " so mainly mainly pleasure not so much work yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 252.23000000000002,
+      "speaker": "A",
+      "start": 249.98000000000002,
+      "text": " I don't know we worked until what like two",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 254.48000000000002,
+      "speaker": "@",
+      "start": 252.23000000000002,
+      "text": " minutes",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 257.18,
+      "speaker": "A",
+      "start": 254.48000000000002,
+      "text": " until about two and then we headed down the pool and leave",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 259.38,
+      "speaker": "B",
+      "start": 257.18,
+      "text": " that's awesome man that is awesome",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 261.98,
+      "speaker": "A",
+      "start": 260.58000000000004,
+      "text": " with the button up dude.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 264.28000000000003,
+      "speaker": "A",
+      "start": 262.33000000000004,
+      "text": " I show up shirtless with a goddamn hat",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 265.748,
+      "speaker": "B",
+      "start": 265.748,
+      "text": " yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 266.498,
+      "speaker": "A",
+      "start": 265.748,
+      "text": " yeah you",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 270.098,
+      "speaker": "B",
+      "start": 266.498,
+      "text": " he's a fancy boy that is a fancy boy yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 285.948,
+      "speaker": "A",
+      "start": 270.098,
+      "text": " know i'll i'll just kind of start off if that's cool if you don't yeah mind when i stop so the questions is the idea to give them those four specific queries right that they can pull data back against or are those just examples of queries that we can provide them with",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_60",
+      "end": 293.098,
+      "speaker": "B",
+      "start": 285.948,
+      "text": " correct for the second one so a few things right now just think of that as uh",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_61",
+      "end": 297.19,
+      "speaker": "B",
+      "start": 294.74,
+      "text": " Really rough draft for the UI,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_62",
+      "end": 298.94,
+      "speaker": "B",
+      "start": 297.44,
+      "text": " right? Just for the user interface.",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "jobs out yeah Good god what that's one of them was paying them a half million dollars a year yeah insane like it's helping launch sales for this company you know some somebody he used to know it's what he's used to know his dad he's like hey we're launching this company and I need you to make it famous so\nBecause I can use a kind of get in front of all the celebrities you can to make it nice and make it public and it's like okay Well, what's it pays like half million? It's like it Dude, that sounds so stressful. Yeah, kind of crazy\nLet me go out Let me go out Let me go out I should probably figure that out\nSo it was no deal. No, I had nothing. Yeah, nothing, nothing. Did you have any information about the demo people? Like, they're all going to be on Monday? No, he said he's gonna\nsend out the invite to the guy just depending on when he's available it's Okay. Yeah. not like a rush but he said he's the guy still wanting to get it get out he just said he's ready but I don't know where he's at\nYou should be able to just click the link in the scene.\nMaybe. Great. I think that's just come on. I don't want to get out of here with that. Oh, that's awesome.\nWhen I can fly, yeah, Are you in Vegas? I'm in Vegas. Dude, how is it? It's nice and it's not terrible. What hotel is that? Santa Ana? Nice, man. How's it going? Just living, working, man. I was in the tool today. How are you, dude? Good, good, good. Yeah, dude, I'd much rather hear about freaking Vegas than...\nanything else We're going we're going to Morgan Wally tomorrow night. nice We hang out two days early to just kind of chill at the pool and work and do whatever so mainly mainly pleasure not so much work yeah I don't know we worked until what like two minutes until about two and then we headed down the pool and leave that's awesome man that is awesome with the button up dude. I show up shirtless with a goddamn hat\nyeah yeah you he's a fancy boy that is a fancy boy yeah know i'll i'll just kind of start off if that's cool if you don't yeah mind when i stop so the questions is the idea to give them those four specific queries right that they can pull data back against or are those just examples of queries that we can provide them with correct for the second one so a few things right now just think of that as uh\nReally rough draft for the UI, right? Just for the user interface.",
+  "usage": {
+    "input_tokens": 3451,
+    "output_tokens": 6811,
+    "total_tokens": 10262,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 3191,
+      "text_tokens": 260
+    }
+  }
+}

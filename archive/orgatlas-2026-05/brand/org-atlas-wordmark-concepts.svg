@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2100" viewBox="0 0 1600 2100" role="img" aria-labelledby="title desc">
+  <title id="title">Org Atlas wordmark concept sheet</title>
+  <desc id="desc">Five minimal stylized wordmark directions for Org Atlas grounded in lead intelligence, validation, search, ranking, and guarded customer workflows.</desc>
+  <defs>
+    <style>
+      :root {
+        --ink: #15171a;
+        --muted: #6b7280;
+        --rule: #d7dce2;
+        --paper: #f8f8f6;
+        --panel: #ffffff;
+        --signal: #1e7a68;
+        --verify: #c47a20;
+        --route: #315f9d;
+        --guard: #4a4f59;
+      }
+
+      .sheet-title {
+        font: 700 42px/1.1 Inter, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        letter-spacing: 0;
+        fill: var(--ink);
+      }
+
+      .sheet-note {
+        font: 400 20px/1.5 Inter, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        letter-spacing: 0;
+        fill: var(--muted);
+      }
+
+      .panel-title {
+        font: 700 19px/1.1 Inter, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        fill: var(--muted);
+      }
+
+      .panel-note {
+        font: 400 18px/1.45 Inter, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        letter-spacing: 0;
+        fill: var(--muted);
+      }
+
+      .wordmark-heavy {
+        font: 800 104px/1 Inter, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        letter-spacing: 0.01em;
+        fill: var(--ink);
+      }
+
+      .wordmark-light {
+        font: 460 104px/1 Inter, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        letter-spacing: 0;
+        fill: var(--ink);
+      }
+
+      .wordmark-mono {
+        font: 650 96px/1 "SF Mono", "IBM Plex Mono", "Roboto Mono", monospace;
+        letter-spacing: -0.01em;
+        fill: var(--ink);
+      }
+
+      .wordmark-condensed {
+        font: 850 112px/1 "Avenir Next Condensed", "Arial Narrow", Inter, Arial, sans-serif;
+        letter-spacing: 0.02em;
+        fill: var(--ink);
+      }
+
+      .wordmark-editorial {
+        font: 520 108px/1 Georgia, "Times New Roman", serif;
+        letter-spacing: -0.01em;
+        fill: var(--ink);
+      }
+
+      .micro {
+        font: 700 18px/1 Inter, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        fill: var(--muted);
+      }
+    </style>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#1f2937" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="2100" fill="var(--paper)"/>
+
+  <g transform="translate(112 86)">
+    <text class="sheet-title" x="0" y="0">Org Atlas wordmark directions</text>
+    <text class="sheet-note" x="0" y="42">Minimal lettering systems built from the product behavior: broad search, evidence joins, explainable validation, ranked output, and guarded customer workflows.</text>
+  </g>
+
+  <g transform="translate(112 190)" filter="url(#softShadow)">
+    <rect width="1376" height="324" rx="10" fill="var(--panel)"/>
+    <line x1="0" y1="323.5" x2="1376" y2="323.5" stroke="var(--rule)"/>
+  </g>
+  <g transform="translate(178 252)">
+    <text class="panel-title" x="0" y="0">01 / Wide Net</text>
+    <text class="panel-note" x="0" y="36">The O becomes a search field: many raw points, connected into one usable surface.</text>
+    <g transform="translate(26 138)">
+      <circle cx="54" cy="52" r="48" fill="none" stroke="var(--ink)" stroke-width="11"/>
+      <circle cx="32" cy="43" r="6.5" fill="var(--signal)"/>
+      <circle cx="61" cy="23" r="6.5" fill="var(--signal)"/>
+      <circle cx="74" cy="67" r="6.5" fill="var(--signal)"/>
+      <path d="M32 43 L61 23 L74 67 L32 43" fill="none" stroke="var(--signal)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text class="wordmark-heavy" x="122" y="87">RG</text>
+      <text class="wordmark-light" x="323" y="87">Atlas</text>
+      <path d="M520 99 C642 119 760 119 894 99" fill="none" stroke="var(--signal)" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="520" cy="99" r="5" fill="var(--signal)"/>
+      <circle cx="894" cy="99" r="5" fill="var(--signal)"/>
+    </g>
+  </g>
+
+  <g transform="translate(112 548)" filter="url(#softShadow)">
+    <rect width="1376" height="324" rx="10" fill="var(--panel)"/>
+    <line x1="0" y1="323.5" x2="1376" y2="323.5" stroke="var(--rule)"/>
+  </g>
+  <g transform="translate(178 610)">
+    <text class="panel-title" x="0" y="0">02 / Evidence Joins</text>
+    <text class="panel-note" x="0" y="36">A restrained operator mark between words signals cross-checking, not decoration.</text>
+    <g transform="translate(20 146)">
+      <text class="wordmark-mono" x="0" y="76">Org</text>
+      <g transform="translate(244 3)">
+        <line x1="0" y1="4" x2="0" y2="82" stroke="var(--rule)" stroke-width="4"/>
+        <line x1="38" y1="4" x2="38" y2="82" stroke="var(--rule)" stroke-width="4"/>
+        <path d="M9 45 L24 60 L61 18" fill="none" stroke="var(--verify)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <text class="wordmark-mono" x="340" y="76">Atlas</text>
+      <g transform="translate(346 102)">
+        <rect x="0" y="0" width="74" height="8" rx="4" fill="var(--verify)"/>
+        <rect x="96" y="0" width="118" height="8" rx="4" fill="var(--rule)"/>
+        <rect x="236" y="0" width="52" height="8" rx="4" fill="var(--rule)"/>
+        <rect x="310" y="0" width="92" height="8" rx="4" fill="var(--rule)"/>
+      </g>
+    </g>
+  </g>
+
+  <g transform="translate(112 906)" filter="url(#softShadow)">
+    <rect width="1376" height="324" rx="10" fill="var(--panel)"/>
+    <line x1="0" y1="323.5" x2="1376" y2="323.5" stroke="var(--rule)"/>
+  </g>
+  <g transform="translate(178 968)">
+    <text class="panel-title" x="0" y="0">03 / Query Route</text>
+    <text class="panel-note" x="0" y="36">Lowercase and slash-like routing make the brand feel like an input that turns intent into output.</text>
+    <g transform="translate(24 140)">
+      <text class="wordmark-light" x="0" y="86">org</text>
+      <g transform="translate(202 0)">
+        <path d="M36 10 L5 91" fill="none" stroke="var(--route)" stroke-width="11" stroke-linecap="round"/>
+        <circle cx="45" cy="9" r="8" fill="var(--route)"/>
+        <circle cx="-4" cy="92" r="8" fill="var(--route)"/>
+      </g>
+      <text class="wordmark-heavy" x="280" y="86">atlas</text>
+      <path d="M6 112 H105 M138 112 H240 M310 112 H642" stroke="var(--rule)" stroke-width="4" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <g transform="translate(112 1264)" filter="url(#softShadow)">
+    <rect width="1376" height="324" rx="10" fill="var(--panel)"/>
+    <line x1="0" y1="323.5" x2="1376" y2="323.5" stroke="var(--rule)"/>
+  </g>
+  <g transform="translate(178 1326)">
+    <text class="panel-title" x="0" y="0">04 / Ranked Signal</text>
+    <text class="panel-note" x="0" y="36">A compact stacked prefix reads like sorted evidence feeding a confident answer.</text>
+    <g transform="translate(24 132)">
+      <g transform="translate(0 12)">
+        <text class="micro" x="0" y="0">01</text>
+        <text class="micro" x="0" y="34">02</text>
+        <text class="micro" x="0" y="68">03</text>
+        <rect x="42" y="-13" width="82" height="9" rx="4.5" fill="var(--signal)"/>
+        <rect x="42" y="21" width="56" height="9" rx="4.5" fill="var(--rule)"/>
+        <rect x="42" y="55" width="70" height="9" rx="4.5" fill="var(--rule)"/>
+      </g>
+      <text class="wordmark-condensed" x="168" y="85">ORG</text>
+      <text class="wordmark-condensed" x="410" y="85">ATLAS</text>
+      <path d="M371 20 V89" stroke="var(--rule)" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="371" cy="20" r="5" fill="var(--signal)"/>
+      <circle cx="371" cy="89" r="5" fill="var(--signal)"/>
+    </g>
+  </g>
+
+  <g transform="translate(112 1622)" filter="url(#softShadow)">
+    <rect width="1376" height="324" rx="10" fill="var(--panel)"/>
+    <line x1="0" y1="323.5" x2="1376" y2="323.5" stroke="var(--rule)"/>
+  </g>
+  <g transform="translate(178 1684)">
+    <text class="panel-title" x="0" y="0">05 / Guarded Atlas</text>
+    <text class="panel-note" x="0" y="36">Bracket corners make the system feel bounded: strong outputs, customer isolation, clear constraints.</text>
+    <g transform="translate(24 132)">
+      <path d="M0 0 H58 M0 0 V58" fill="none" stroke="var(--guard)" stroke-width="8" stroke-linecap="round"/>
+      <path d="M1000 0 H942 M1000 0 V58" fill="none" stroke="var(--guard)" stroke-width="8" stroke-linecap="round"/>
+      <path d="M0 122 H58 M0 122 V64" fill="none" stroke="var(--guard)" stroke-width="8" stroke-linecap="round"/>
+      <path d="M1000 122 H942 M1000 122 V64" fill="none" stroke="var(--guard)" stroke-width="8" stroke-linecap="round"/>
+      <text class="wordmark-editorial" x="94" y="91">Org</text>
+      <text class="wordmark-heavy" x="294" y="91">Atlas</text>
+      <circle cx="823" cy="72" r="7" fill="var(--verify)"/>
+      <circle cx="856" cy="72" r="7" fill="var(--verify)"/>
+      <circle cx="889" cy="72" r="7" fill="var(--verify)"/>
+    </g>
+  </g>
+
+  <g transform="translate(112 2008)">
+    <text class="sheet-note" x="0" y="0">Use these as wordmark structures, not final typography. The strongest candidates are 01 for product metaphor, 02 for B2B credibility, and 05 for controlled-demo confidence.</text>
+  </g>
+</svg>

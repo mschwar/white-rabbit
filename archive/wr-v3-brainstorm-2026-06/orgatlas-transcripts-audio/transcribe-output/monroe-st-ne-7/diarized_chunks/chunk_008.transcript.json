@@ -1,0 +1,417 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 4.749999999999999,
+      "speaker": "A",
+      "start": 0.0,
+      "text": " They have to do the work, but we need to do the work and we want them to be able to use it the way they want,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 6.699999999999998,
+      "speaker": "A",
+      "start": 4.849999999999999,
+      "text": " but then also have to come to us to make it work right.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 10.049999999999999,
+      "speaker": "A",
+      "start": 6.799999999999998,
+      "text": " So I'm a little confused on how it's going to go down.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 13.85,
+      "speaker": "B",
+      "start": 10.2,
+      "text": " Yeah, I mean, the thing is, is like a lot of the stuff you're saying is pretty flexible,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 14.149999999999999,
+      "speaker": "B",
+      "start": 13.95,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 19.499999999999996,
+      "speaker": "B",
+      "start": 14.249999999999998,
+      "text": " So the wanting them to come to us, it's not necessarily so much wanting them to come to us.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 25.099999999999994,
+      "speaker": "B",
+      "start": 19.699999999999996,
+      "text": " We just want them to be using our product and we want that product to not exhaust itself,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 25.599999999999994,
+      "speaker": "B",
+      "start": 25.249999999999993,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 27.649999999999995,
+      "speaker": "B",
+      "start": 26.949999999999996,
+      "text": " But again,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 28.299999999999997,
+      "speaker": "B",
+      "start": 27.749999999999996,
+      "text": " that's later,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 28.949999999999996,
+      "speaker": "B",
+      "start": 28.499999999999996,
+      "text": " I think.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 30.368000000000002,
+      "speaker": "A",
+      "start": 30.068,
+      "text": " Okay",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 36.168,
+      "speaker": "B",
+      "start": 30.368000000000002,
+      "text": " Yeah, the first thing is I'll make this better,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 36.868,
+      "speaker": "B",
+      "start": 36.218,
+      "text": " make it prettier,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 42.118,
+      "speaker": "B",
+      "start": 37.018,
+      "text": " make it a little bit more robust and do all the things that you guys said.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 46.018,
+      "speaker": "B",
+      "start": 44.618,
+      "text": " And then like what Thomas said,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 48.668000000000006,
+      "speaker": "B",
+      "start": 46.068,
+      "text": " it's actually not a bad thing that they just go in there and be like,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 53.068000000000005,
+      "speaker": "B",
+      "start": 48.768,
+      "text": " yeah, this is something we did for Voight.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 57.36800000000001,
+      "speaker": "B",
+      "start": 53.668000000000006,
+      "text": " We can make this specific to your business if you hire us.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 63.6,
+      "speaker": "B",
+      "start": 58.1,
+      "text": " So it's not actually like a problem as long as we can deliver,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 72.5,
+      "speaker": "B",
+      "start": 63.7,
+      "text": " which it's actually better to have a very specific thing to then frame against.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 73.30000000000001,
+      "speaker": "B",
+      "start": 72.75,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 73.65,
+      "speaker": "B",
+      "start": 73.35000000000001,
+      "text": " exactly.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 79.10000000000001,
+      "speaker": "B",
+      "start": 73.80000000000001,
+      "text": " Rather than we just kind of build something guessing what they need and then they're like, what,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 82.0,
+      "speaker": "B",
+      "start": 79.25,
+      "text": " this is not what we need at all, right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 89.898,
+      "speaker": "B",
+      "start": 83.348,
+      "text": " um yeah so we're that's great we're do cool cool let's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 91.69800000000001,
+      "speaker": "A",
+      "start": 89.898,
+      "text": " all right if you're into it let's do it",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 96.248,
+      "speaker": "B",
+      "start": 91.69800000000001,
+      "text": " do it um dude yeah sweet",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 107.348,
+      "speaker": "A",
+      "start": 101.798,
+      "text": " yeah gotta think of what some inquiries would be for what he's talking about for that public data",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 111.148,
+      "speaker": "B",
+      "start": 108.098,
+      "text": " yeah like but like you said i think right now i'm just gonna",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 122.038,
+      "speaker": "B",
+      "start": 111.988,
+      "text": " we'll we'll just i'll just forget about the open source intelligence and um just work on making the voip perfect does",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 124.188,
+      "speaker": "A",
+      "start": 122.038,
+      "text": " That's not okay.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 124.438,
+      "speaker": "A",
+      "start": 124.238,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 124.638,
+      "speaker": "A",
+      "start": 124.488,
+      "text": " okay",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 134.938,
+      "speaker": "B",
+      "start": 124.988,
+      "text": " does that make sense because we actually want it to not because it's like a different evaluation mindset right so if he's evaluating it like oh wow this looks high level",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 146.75400000000002,
+      "speaker": "B",
+      "start": 135.604,
+      "text": " as opposed to if it's actually in his domain and it's not he's going to be like what this is not what we use so that makes sense so it's actually can become a liability exactly",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 155.25400000000002,
+      "speaker": "A",
+      "start": 146.75400000000002,
+      "text": " What we're saying is these are the requests for this type of business that we accomplished.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 157.354,
+      "speaker": "A",
+      "start": 155.704,
+      "text": " We killed it for them.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 159.604,
+      "speaker": "B",
+      "start": 157.354,
+      "text": " it's a portfolio yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 189.42600000000002,
+      "speaker": "B",
+      "start": 161.876,
+      "text": " and then they're going to give us the specs to to execute which is going to make our jobs our job way easier and better so everyone wins but sweet man sweet sweet uh and if you ever feel stressed about like what you're doing don't don't don't worry about it if like there's going to be times where you're not doing much and that's okay um like do not worry you're freaking killing it",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 191.958,
+      "speaker": "B",
+      "start": 189.908,
+      "text": " And yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 192.85799999999998,
+      "speaker": "B",
+      "start": 192.00799999999998,
+      "text": " it's awesome.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 194.10799999999998,
+      "speaker": "B",
+      "start": 193.10799999999998,
+      "text": " It is awesome.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 197.50799999999998,
+      "speaker": "A",
+      "start": 195.808,
+      "text": " Yeah, just do what I do.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 198.558,
+      "speaker": "B",
+      "start": 197.50799999999998,
+      "text": " Yeah, yeah, yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 199.75799999999998,
+      "speaker": "B",
+      "start": 199.058,
+      "text": " All right, brother.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 201.158,
+      "speaker": "A",
+      "start": 200.60799999999998,
+      "text": " Oh, you",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 201.908,
+      "speaker": "B",
+      "start": 201.158,
+      "text": " All right, later.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 202.10799999999998,
+      "speaker": "A",
+      "start": 201.908,
+      "text": " know.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 203.60799999999998,
+      "speaker": "A",
+      "start": 203.158,
+      "text": " See ya.",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "They have to do the work, but we need to do the work and we want them to be able to use it the way they want, but then also have to come to us to make it work right. So I'm a little confused on how it's going to go down. Yeah, I mean, the thing is, is like a lot of the stuff you're saying is pretty flexible, right? So the wanting them to come to us, it's not necessarily so much wanting them to come to us. We just want them to be using our product and we want that product to not exhaust itself, right? But again, that's later, I think.\nOkay Yeah, the first thing is I'll make this better, make it prettier, make it a little bit more robust and do all the things that you guys said. And then like what Thomas said, it's actually not a bad thing that they just go in there and be like, yeah, this is something we did for Voight. We can make this specific to your business if you hire us.\nSo it's not actually like a problem as long as we can deliver, which it's actually better to have a very specific thing to then frame against. Yeah, exactly. Rather than we just kind of build something guessing what they need and then they're like, what, this is not what we need at all, right?\num yeah so we're that's great we're do cool cool let's all right if you're into it let's do it do it um dude yeah sweet yeah gotta think of what some inquiries would be for what he's talking about for that public data yeah like but like you said i think right now i'm just gonna\nwe'll we'll just i'll just forget about the open source intelligence and um just work on making the voip perfect does That's not okay. Yeah, okay does that make sense because we actually want it to not because it's like a different evaluation mindset right so if he's evaluating it like oh wow this looks high level\nas opposed to if it's actually in his domain and it's not he's going to be like what this is not what we use so that makes sense so it's actually can become a liability exactly What we're saying is these are the requests for this type of business that we accomplished. We killed it for them. it's a portfolio yeah\nand then they're going to give us the specs to to execute which is going to make our jobs our job way easier and better so everyone wins but sweet man sweet sweet uh and if you ever feel stressed about like what you're doing don't don't don't worry about it if like there's going to be times where you're not doing much and that's okay um like do not worry you're freaking killing it\nAnd yeah, it's awesome. It is awesome. Yeah, just do what I do. Yeah, yeah, yeah. All right, brother. Oh, you All right, later. know. See ya.",
+  "usage": {
+    "input_tokens": 3366,
+    "output_tokens": 6005,
+    "total_tokens": 9371,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 3184,
+      "text_tokens": 182
+    }
+  }
+}

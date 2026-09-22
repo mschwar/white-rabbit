@@ -1,0 +1,89 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 3.75,
+      "speaker": "Matt Schwartz",
+      "start": 3.25,
+      "text": " Cool.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 4.300000000000001,
+      "speaker": "Lee Biby",
+      "start": 3.9000000000000004,
+      "text": " Okay,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 4.4,
+      "speaker": "Matt Schwartz",
+      "start": 4.300000000000001,
+      "text": " Well,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 4.75,
+      "speaker": "Lee Biby",
+      "start": 4.4,
+      "text": " so I",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 5.2,
+      "speaker": "Matt Schwartz",
+      "start": 4.75,
+      "text": " we're getting somewhere,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 5.4,
+      "speaker": "Lee Biby",
+      "start": 5.2,
+      "text": " checked",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 5.5,
+      "speaker": "Matt Schwartz",
+      "start": 5.4,
+      "text": " but",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 5.7,
+      "speaker": "Lee Biby",
+      "start": 5.5,
+      "text": " out.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 7.3999999999999995,
+      "speaker": "Matt Schwartz",
+      "start": 5.7,
+      "text": " but we're this",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "Cool. Okay, Well, so I we're getting somewhere, checked but out. but we're this",
+  "usage": {
+    "input_tokens": 261,
+    "output_tokens": 302,
+    "total_tokens": 563,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 236,
+      "text_tokens": 25
+    }
+  }
+}

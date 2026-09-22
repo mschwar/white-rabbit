@@ -1,0 +1,537 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 7.95,
+      "speaker": "A",
+      "start": 0.0,
+      "text": " LinkedIn found every whatever, took a and it did that actually for as least for the job title and something else and it",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 8.100000000000001,
+      "speaker": "Matt Schwartz",
+      "start": 7.95,
+      "text": " Mm-hmm.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 9.8,
+      "speaker": "A",
+      "start": 8.100000000000001,
+      "text": " yeah, gives you that morsel",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 18.950000000000003,
+      "speaker": "A",
+      "start": 10.350000000000001,
+      "text": " of personal information about them, who they are, what they like, what you know, what school they went to, all that shit and you could cut do a custom yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 23.6,
+      "speaker": "A",
+      "start": 19.400000000000002,
+      "text": " custom contact icebreaker whatever, that was good, that was fantastic.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 27.35,
+      "speaker": "A",
+      "start": 23.8,
+      "text": " That is definitely because we were talking about making that an upgrade to the service.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 29.556,
+      "speaker": "Matt Schwartz",
+      "start": 29.056,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 33.156,
+      "speaker": "Matt Schwartz",
+      "start": 30.256,
+      "text": " So in that case, the output isn't a CSV.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 36.256,
+      "speaker": "Matt Schwartz",
+      "start": 33.256,
+      "text": " The output is like a hub spot input.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 43.106,
+      "speaker": "Matt Schwartz",
+      "start": 39.406,
+      "text": " So the input is like zoom info list.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 56.756,
+      "speaker": "Matt Schwartz",
+      "start": 43.556,
+      "text": " The output is basically a hub spot enriched list that already has everything pre-populated with email that's going to go out specific to the person.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 60.392,
+      "speaker": "Matt Schwartz",
+      "start": 58.292,
+      "text": " Do you know what I mean stuff like that like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 72.792,
+      "speaker": "Matt Schwartz",
+      "start": 62.292,
+      "text": " MailChimp or just like a CRM so it's already populated that would be valuable because instead of sending the same blitz emails the",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 73.492,
+      "speaker": "A",
+      "start": 72.792,
+      "text": " It could potentially,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 73.642,
+      "speaker": "Matt Schwartz",
+      "start": 73.492,
+      "text": "",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 74.19200000000001,
+      "speaker": "A",
+      "start": 73.642,
+      "text": " well, okay,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 75.292,
+      "speaker": "A",
+      "start": 74.242,
+      "text": " now we're just expanding on the...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 80.792,
+      "speaker": "Matt Schwartz",
+      "start": 75.742,
+      "text": " scope but but it's important to okay so let me let me start one more time we have two products",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 85.592,
+      "speaker": "Matt Schwartz",
+      "start": 82.69200000000001,
+      "text": " what we can't do is we cannot compete with zoom info",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 89.05199999999999,
+      "speaker": "Matt Schwartz",
+      "start": 86.452,
+      "text": " ZoomInfo can scrape, scrape, scrape, scrape,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 92.952,
+      "speaker": "Matt Schwartz",
+      "start": 89.152,
+      "text": " and they can do that at volume, and it's worth a lot of money.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 99.152,
+      "speaker": "Matt Schwartz",
+      "start": 93.852,
+      "text": " What we are is we're boutique, and we can find high-value actionable leads.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 107.402,
+      "speaker": "Matt Schwartz",
+      "start": 100.30199999999999,
+      "text": " The problem is there's going to be a finite number of high-value actionable leads. It's going to depend on the segment,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 108.152,
+      "speaker": "Matt Schwartz",
+      "start": 107.55199999999999,
+      "text": " the market segment.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 110.552,
+      "speaker": "Matt Schwartz",
+      "start": 108.702,
+      "text": " But even with a large market segment,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 111.802,
+      "speaker": "Matt Schwartz",
+      "start": 110.702,
+      "text": " it's going to be finite.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 115.088,
+      "speaker": "Matt Schwartz",
+      "start": 112.788,
+      "text": " if we're doing our job right let's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 132.238,
+      "speaker": "Matt Schwartz",
+      "start": 117.088,
+      "text": " say that there's a thousand high-value leads if we're doing our job right we want to give the customer as many of those as possible so with a subscription model it doesn't really make sense because with one month there they've already used it now",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 137.788,
+      "speaker": "A",
+      "start": 133.938,
+      "text": " That's why we're talking about throttling it with 100 at a time, but that doesn't make sense. That's irritating",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 141.788,
+      "speaker": "Matt Schwartz",
+      "start": 137.888,
+      "text": " yeah it's it's and it's also like we want to be high we want to give our customers value",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 143.668,
+      "speaker": "A",
+      "start": 143.668,
+      "text": " So,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 153.018,
+      "speaker": "Matt Schwartz",
+      "start": 143.668,
+      "text": " The other issue is with ZoomInfo, they're already paying money. So they already have X amount of money that they're spending and we're basically saying spend more.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 157.018,
+      "speaker": "Matt Schwartz",
+      "start": 154.46800000000002,
+      "text": " Spend as much as you're already spending plus more.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 159.768,
+      "speaker": "Matt Schwartz",
+      "start": 157.668,
+      "text": " And that's not going to go over super well.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 161.618,
+      "speaker": "A",
+      "start": 159.768,
+      "text": " especially if it doesn't waste,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 168.168,
+      "speaker": "A",
+      "start": 161.768,
+      "text": " the only thing they're spending at that point is if they're paying their sales reps a salary to work with it. But if not,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 168.368,
+      "speaker": "Matt Schwartz",
+      "start": 168.168,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 169.71800000000002,
+      "speaker": "A",
+      "start": 168.368,
+      "text": " then there's like waste your",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 169.818,
+      "speaker": "Matt Schwartz",
+      "start": 169.71800000000002,
+      "text": " Do",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 170.018,
+      "speaker": "A",
+      "start": 169.818,
+      "text": " time,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 170.068,
+      "speaker": "Matt Schwartz",
+      "start": 170.018,
+      "text": " they",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 170.268,
+      "speaker": "A",
+      "start": 170.068,
+      "text": " actually.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 170.868,
+      "speaker": "Matt Schwartz",
+      "start": 170.268,
+      "text": " pay their salary?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 172.532,
+      "speaker": "A",
+      "start": 171.732,
+      "text": " Depends on the company.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 173.432,
+      "speaker": "Matt Schwartz",
+      "start": 172.932,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 182.632,
+      "speaker": "Matt Schwartz",
+      "start": 173.482,
+      "text": " so then what the KPI for the source assisted one is really the operator minutes saved per row,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 183.382,
+      "speaker": "Matt Schwartz",
+      "start": 182.782,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 188.632,
+      "speaker": "A",
+      "start": 184.232,
+      "text": " But that's what I'm saying, they don't research that afterward, they just hammer through it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 192.232,
+      "speaker": "Matt Schwartz",
+      "start": 189.78199999999998,
+      "text": " We would also want to increase,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 196.232,
+      "speaker": "Matt Schwartz",
+      "start": 192.53199999999998,
+      "text": " you know, something like",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 222.796,
+      "speaker": "Matt Schwartz",
+      "start": 197.396,
+      "text": " Pre-white rabbit every list of a thousand every zoom info list of a thousand results in five percent sales post white rabbit Let's say we bump it like to 10 percent or 15 percent that would be another KPI that they can be like yeah white rabbit works or it can be like male responses like phone",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 248.892,
+      "speaker": "Matt Schwartz",
+      "start": 223.892,
+      "text": " talking to a human getting an email response that can be another KPI but we would have to we have to justify the cost and we can do that if we define things really well because then we can start measuring them but that's so that's issue number one is we're asking a company to pay more money in addition to what they're already paying that's that's already fighting an uphill battle",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 252.638,
+      "speaker": "Matt Schwartz",
+      "start": 250.388,
+      "text": " Whereas if the customer is the operator,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 253.738,
+      "speaker": "Matt Schwartz",
+      "start": 252.888,
+      "text": " the",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 256.038,
+      "speaker": "Matt Schwartz",
+      "start": 254.988,
+      "text": " operator's not paying anything,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 262.13800000000003,
+      "speaker": "Matt Schwartz",
+      "start": 256.188,
+      "text": " they're making money on their spending their time making calls and dials for dollars.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 266.588,
+      "speaker": "Matt Schwartz",
+      "start": 262.788,
+      "text": " If we can save the operator money and make them more money,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 268.238,
+      "speaker": "Matt Schwartz",
+      "start": 266.63800000000003,
+      "text": " then they'll pay a subscription.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 271.238,
+      "speaker": "Matt Schwartz",
+      "start": 268.938,
+      "text": " But in that case, it's direct,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 273.488,
+      "speaker": "Matt Schwartz",
+      "start": 271.338,
+      "text": " the consumer is the operator, not the company.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_60",
+      "end": 278.38800000000003,
+      "speaker": "Matt Schwartz",
+      "start": 274.738,
+      "text": " And so in that case, what we would be doing is we would be...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_61",
+      "end": 283.606,
+      "speaker": "Matt Schwartz",
+      "start": 279.156,
+      "text": " ingesting that operator zoom info list it's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_62",
+      "end": 285.456,
+      "speaker": "A",
+      "start": 283.606,
+      "text": " Yeah, but the other thing is the",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_63",
+      "end": 298.106,
+      "speaker": "A",
+      "start": 292.25600000000003,
+      "text": " other thing is that it's just a common policy that that information is private",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_64",
+      "end": 299.406,
+      "speaker": "Matt Schwartz",
+      "start": 299.056,
+      "text": " proprietary",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "LinkedIn found every whatever, took a and it did that actually for as least for the job title and something else and it Mm-hmm. yeah, gives you that morsel of personal information about them, who they are, what they like, what you know, what school they went to, all that shit and you could cut do a custom yeah, custom contact icebreaker whatever, that was good, that was fantastic. That is definitely because we were talking about making that an upgrade to the service.\nYeah. So in that case, the output isn't a CSV. The output is like a hub spot input. So the input is like zoom info list. The output is basically a hub spot enriched list that already has everything pre-populated with email that's going to go out specific to the person.\nDo you know what I mean stuff like that like MailChimp or just like a CRM so it's already populated that would be valuable because instead of sending the same blitz emails the It could potentially, well, okay, now we're just expanding on the... scope but but it's important to okay so let me let me start one more time we have two products what we can't do is we cannot compete with zoom info\nZoomInfo can scrape, scrape, scrape, scrape, and they can do that at volume, and it's worth a lot of money. What we are is we're boutique, and we can find high-value actionable leads. The problem is there's going to be a finite number of high-value actionable leads. It's going to depend on the segment, the market segment. But even with a large market segment, it's going to be finite.\nif we're doing our job right let's say that there's a thousand high-value leads if we're doing our job right we want to give the customer as many of those as possible so with a subscription model it doesn't really make sense because with one month there they've already used it now That's why we're talking about throttling it with 100 at a time, but that doesn't make sense. That's irritating yeah it's it's and it's also like we want to be high we want to give our customers value\nSo, The other issue is with ZoomInfo, they're already paying money. So they already have X amount of money that they're spending and we're basically saying spend more. Spend as much as you're already spending plus more. And that's not going to go over super well. especially if it doesn't waste, the only thing they're spending at that point is if they're paying their sales reps a salary to work with it. But if not, Yeah. then there's like waste your Do time, they actually. pay their salary?\nDepends on the company. Yeah, so then what the KPI for the source assisted one is really the operator minutes saved per row, right? But that's what I'm saying, they don't research that afterward, they just hammer through it. We would also want to increase, you know, something like\nPre-white rabbit every list of a thousand every zoom info list of a thousand results in five percent sales post white rabbit Let's say we bump it like to 10 percent or 15 percent that would be another KPI that they can be like yeah white rabbit works or it can be like male responses like phone\ntalking to a human getting an email response that can be another KPI but we would have to we have to justify the cost and we can do that if we define things really well because then we can start measuring them but that's so that's issue number one is we're asking a company to pay more money in addition to what they're already paying that's that's already fighting an uphill battle\nWhereas if the customer is the operator, the operator's not paying anything, they're making money on their spending their time making calls and dials for dollars. If we can save the operator money and make them more money, then they'll pay a subscription. But in that case, it's direct, the consumer is the operator, not the company. And so in that case, what we would be doing is we would be...\ningesting that operator zoom info list it's Yeah, but the other thing is the other thing is that it's just a common policy that that information is private proprietary",
+  "usage": {
+    "input_tokens": 5913,
+    "output_tokens": 8654,
+    "total_tokens": 14567,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 5519,
+      "text_tokens": 394
+    }
+  }
+}

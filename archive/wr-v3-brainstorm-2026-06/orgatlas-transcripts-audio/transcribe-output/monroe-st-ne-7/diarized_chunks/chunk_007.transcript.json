@@ -1,0 +1,825 @@
+{
+  "duration": null,
+  "segments": [
+    {
+      "id": "seg_0",
+      "end": 11.012000000000002,
+      "speaker": "A",
+      "start": 1.012,
+      "text": " the county to the city to a university to uh you said public sector so not necessarily things like private security or that's",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_1",
+      "end": 11.462000000000002,
+      "speaker": "B",
+      "start": 11.012000000000002,
+      "text": " I know it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_2",
+      "end": 11.762000000000002,
+      "speaker": "A",
+      "start": 11.462000000000002,
+      "text": "",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_3",
+      "end": 12.162000000000003,
+      "speaker": "B",
+      "start": 11.762000000000002,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_4",
+      "end": 12.262000000000002,
+      "speaker": "A",
+      "start": 12.162000000000003,
+      "text": "",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_5",
+      "end": 15.462000000000002,
+      "speaker": "B",
+      "start": 12.262000000000002,
+      "text": " what we should do, if you're doing work on the front end,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_6",
+      "end": 17.062,
+      "speaker": "B",
+      "start": 15.562000000000001,
+      "text": " and so it's actually neat and tidy,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_7",
+      "end": 21.862000000000002,
+      "speaker": "B",
+      "start": 17.162000000000003,
+      "text": " we'll show them the four ones that you pre-built and then say how can we expand on that, you know?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_8",
+      "end": 22.612000000000002,
+      "speaker": "A",
+      "start": 21.862000000000002,
+      "text": " a good idea yeah",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_9",
+      "end": 28.012,
+      "speaker": "B",
+      "start": 24.112000000000002,
+      "text": " That way you're not wasting your time and we're not doing a bunch of unnecessary work.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_10",
+      "end": 32.136,
+      "speaker": "B",
+      "start": 29.236,
+      "text": " right we can go in and show them what they're today and then we can switch the variables",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_11",
+      "end": 33.236,
+      "speaker": "A",
+      "start": 32.386,
+      "text": " Cool. Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_12",
+      "end": 38.636,
+      "speaker": "A",
+      "start": 33.586,
+      "text": " So any high level stuff that you're just like, this does not work at all.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_13",
+      "end": 55.136,
+      "speaker": "B",
+      "start": 39.886,
+      "text": " what i want the ui to have our logo on it somewhere like actually like looking branded i think that would make it like i like what it looks like so far or like a white rabbit or you know what i'm saying something like that like you may have a smile in the corner just those like little minuscule things that make it look different",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_14",
+      "end": 57.942,
+      "speaker": "B",
+      "start": 57.492,
+      "text": " And that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_15",
+      "end": 63.742,
+      "speaker": "A",
+      "start": 63.141999999999996,
+      "text": " Awesome.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_16",
+      "end": 68.58200000000001,
+      "speaker": "B",
+      "start": 66.932,
+      "text": " What do you guys think? I mean, that's the only thing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_17",
+      "end": 70.732,
+      "speaker": "B",
+      "start": 68.632,
+      "text": " I think the font looks good. I think the platform looks good.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_18",
+      "end": 73.232,
+      "speaker": "B",
+      "start": 70.83200000000001,
+      "text": " The data that gets pulled back is high level.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_19",
+      "end": 73.982,
+      "speaker": "B",
+      "start": 73.33200000000001,
+      "text": " You know what I mean?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_20",
+      "end": 75.08200000000001,
+      "speaker": "B",
+      "start": 74.032,
+      "text": " It's a deep dive.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_21",
+      "end": 79.482,
+      "speaker": "B",
+      "start": 75.432,
+      "text": " And if we can speak to the fact that we can change the input and output,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_22",
+      "end": 81.232,
+      "speaker": "B",
+      "start": 79.632,
+      "text": " then it is what it is.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_23",
+      "end": 83.482,
+      "speaker": "B",
+      "start": 81.432,
+      "text": " You know, we can show the value that way.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_24",
+      "end": 89.182,
+      "speaker": "B",
+      "start": 83.58200000000001,
+      "text": " I think what's going to happen is we'll show the demo and they're going to want a POC, which I'll have to bring you in on that.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_25",
+      "end": 90.58200000000001,
+      "speaker": "B",
+      "start": 89.33200000000001,
+      "text": " And you could basically say,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_26",
+      "end": 90.932,
+      "speaker": "B",
+      "start": 90.682,
+      "text": " okay,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_27",
+      "end": 94.382,
+      "speaker": "B",
+      "start": 91.03200000000001,
+      "text": " we'll give you two different buckets that you can go after.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_28",
+      "end": 97.29400000000001,
+      "speaker": "B",
+      "start": 94.644,
+      "text": " you know in a test you know some kind of conditions",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_29",
+      "end": 98.494,
+      "speaker": "A",
+      "start": 97.84400000000001,
+      "text": " Awesome.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_30",
+      "end": 99.84400000000001,
+      "speaker": "A",
+      "start": 99.34400000000001,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_31",
+      "end": 102.194,
+      "speaker": "A",
+      "start": 99.894,
+      "text": " so we're basically going to be a niche.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_32",
+      "end": 106.894,
+      "speaker": "A",
+      "start": 102.694,
+      "text": " We're going to propose ourselves as a niche Zoom info,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_33",
+      "end": 107.494,
+      "speaker": "A",
+      "start": 107.04400000000001,
+      "text": " right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_34",
+      "end": 116.04400000000001,
+      "speaker": "A",
+      "start": 107.54400000000001,
+      "text": " So it's like we're totally bespoke to you and to your company instead of just running a bunch of queries on things that are probably crap.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_35",
+      "end": 118.94400000000002,
+      "speaker": "A",
+      "start": 116.144,
+      "text": " You have a company that's going to be vetting all this stuff for you.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_36",
+      "end": 121.468,
+      "speaker": "A",
+      "start": 119.668,
+      "text": " and tailoring the search to you.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_37",
+      "end": 125.86800000000001,
+      "speaker": "B",
+      "start": 122.418,
+      "text": " So today we're a boutique shop is how I was talking to Lee about earlier.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_38",
+      "end": 128.168,
+      "speaker": "B",
+      "start": 126.31800000000001,
+      "text": " I want us to get to the point where we're Target.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_39",
+      "end": 128.768,
+      "speaker": "A",
+      "start": 128.168,
+      "text": " Yeah, yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_40",
+      "end": 129.168,
+      "speaker": "B",
+      "start": 128.768,
+      "text": " Right?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_41",
+      "end": 129.21800000000002,
+      "speaker": "A",
+      "start": 129.168,
+      "text": "",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_42",
+      "end": 130.268,
+      "speaker": "B",
+      "start": 129.46800000000002,
+      "text": " You know what I'm saying?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_43",
+      "end": 131.768,
+      "speaker": "B",
+      "start": 130.318,
+      "text": " So yeah. for our first sale or two,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_44",
+      "end": 134.668,
+      "speaker": "B",
+      "start": 131.868,
+      "text": " we can sell it however it makes sense and I can speak to that top track.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_45",
+      "end": 139.168,
+      "speaker": "B",
+      "start": 135.068,
+      "text": " And then eventually I'd like for us to have that query that we were talking about on that entry point.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_46",
+      "end": 144.86800000000002,
+      "speaker": "B",
+      "start": 139.268,
+      "text": " But I can sell your vision for now and it really limits the risk for us, I guess, as well.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_47",
+      "end": 145.682,
+      "speaker": "A",
+      "start": 145.332,
+      "text": " Yeah.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_48",
+      "end": 148.232,
+      "speaker": "A",
+      "start": 148.03199999999998,
+      "text": " Sweet.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_49",
+      "end": 150.232,
+      "speaker": "B",
+      "start": 148.232,
+      "text": " Hi gents anything else?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_50",
+      "end": 152.132,
+      "speaker": "A",
+      "start": 150.232,
+      "text": " That's awesome, man. Super helpful.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_51",
+      "end": 163.632,
+      "speaker": "B",
+      "start": 153.082,
+      "text": " Oh, you guys are amazing I'm gonna get the demo scheduled I text Scotty earlier I was trying to give us some bandwidth to actually make sure we had something that gave us like a good foot going forward Brett didn't want to show up and kind of you",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_52",
+      "end": 164.132,
+      "speaker": "A",
+      "start": 163.632,
+      "text": " Yeah,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_53",
+      "end": 164.182,
+      "speaker": "B",
+      "start": 164.132,
+      "text": "",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_54",
+      "end": 164.382,
+      "speaker": "A",
+      "start": 164.182,
+      "text": " of course.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_55",
+      "end": 173.982,
+      "speaker": "B",
+      "start": 164.382,
+      "text": " know something terrible and get you some bandwidth but I'll look to get something scheduled like later next week and then and then we'll go from there yeah what do you have bro",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_56",
+      "end": 175.826,
+      "speaker": "B",
+      "start": 175.476,
+      "text": " Well,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_57",
+      "end": 181.026,
+      "speaker": "B",
+      "start": 175.876,
+      "text": " I'm going to intercept",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_58",
+      "end": 184.276,
+      "speaker": "B",
+      "start": 183.276,
+      "text": " questions from him.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_59",
+      "end": 185.476,
+      "speaker": "A",
+      "start": 184.776,
+      "text": " Just stop it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_60",
+      "end": 193.176,
+      "speaker": "B",
+      "start": 187.076,
+      "text": " Some of those questions are going to be how many times can I ask it something?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_61",
+      "end": 195.076,
+      "speaker": "B",
+      "start": 193.476,
+      "text": " Like, is it like a monthly?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_62",
+      "end": 198.076,
+      "speaker": "B",
+      "start": 195.226,
+      "text": " Do I have to then tell you to then...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_63",
+      "end": 224.79399999999998,
+      "speaker": "C",
+      "start": 199.444,
+      "text": " properly create the prompt for me like like you were saying we don't they don't want to have to come back to us to create the prompt more properly every time they want to be able to use it like a like a google or chat gpt but you know their his questions are going to be do i just get to ask it anything all the time any day of the week how many times can i do it like those sorts of things there's no consumer questions",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_64",
+      "end": 230.412,
+      "speaker": "B",
+      "start": 225.812,
+      "text": " I think what we should do is let's go into the demo and see what we get back from him as far as like pain points.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_65",
+      "end": 232.762,
+      "speaker": "B",
+      "start": 230.512,
+      "text": " Do we need somebody that's a customer to pressure test us?",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_66",
+      "end": 233.012,
+      "speaker": "A",
+      "start": 232.762,
+      "text": " Yep.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_67",
+      "end": 234.762,
+      "speaker": "B",
+      "start": 233.012,
+      "text": " Right now we're making a bunch of assumptions and",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_68",
+      "end": 234.86200000000002,
+      "speaker": "A",
+      "start": 234.762,
+      "text": " 100%.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_69",
+      "end": 236.71200000000002,
+      "speaker": "B",
+      "start": 234.86200000000002,
+      "text": " I agree with you because I've been doing the same thing.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_70",
+      "end": 238.912,
+      "speaker": "B",
+      "start": 237.11200000000002,
+      "text": " Now that we assume it's viable to show,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_71",
+      "end": 240.21200000000002,
+      "speaker": "B",
+      "start": 239.062,
+      "text": " like let's schedule the demo.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_72",
+      "end": 240.86200000000002,
+      "speaker": "B",
+      "start": 240.512,
+      "text": " Lee,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_73",
+      "end": 246.262,
+      "speaker": "B",
+      "start": 240.912,
+      "text": " you and I can go in there and we'll let him poke holes in it and then we can come back together and figure out what makes sense.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_74",
+      "end": 248.162,
+      "speaker": "A",
+      "start": 246.262,
+      "text": " And yeah, it'll be stronger product for it.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_75",
+      "end": 250.762,
+      "speaker": "C",
+      "start": 249.412,
+      "text": " Well, if he's that flexible,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_76",
+      "end": 251.912,
+      "speaker": "C",
+      "start": 250.86200000000002,
+      "text": " then yeah, then no worries.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_77",
+      "end": 261.73,
+      "speaker": "C",
+      "start": 253.78,
+      "text": " yeah to me those are kind of math questions because i don't know how he's going to set up the guardrails on this so all",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_78",
+      "end": 272.53,
+      "speaker": "B",
+      "start": 261.73,
+      "text": " for sure all right i'm gonna get it scheduled we'll keep it in that box and then i'll call you guys later because i'm getting in trouble right now i'm in the pool with my five sons get the fuck out here",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_79",
+      "end": 272.63,
+      "speaker": "A",
+      "start": 272.53,
+      "text": " Awesome,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_80",
+      "end": 272.83,
+      "speaker": "B",
+      "start": 272.63,
+      "text": " all",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_81",
+      "end": 272.98,
+      "speaker": "A",
+      "start": 272.83,
+      "text": " man.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_82",
+      "end": 273.08,
+      "speaker": "B",
+      "start": 272.98,
+      "text": "",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_83",
+      "end": 274.33,
+      "speaker": "A",
+      "start": 273.08,
+      "text": " Thank you. Thanks a lot, man.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_84",
+      "end": 275.18,
+      "speaker": "A",
+      "start": 274.93,
+      "text": " Enjoy.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_85",
+      "end": 275.23,
+      "speaker": "B",
+      "start": 275.18,
+      "text": " right",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_86",
+      "end": 276.33,
+      "speaker": "A",
+      "start": 275.23,
+      "text": " Enjoy the rest of your trip.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_87",
+      "end": 277.58,
+      "speaker": "B",
+      "start": 277.18,
+      "text": " Thanks,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_88",
+      "end": 278.18,
+      "speaker": "A",
+      "start": 277.58,
+      "text": " guys. All right. Later,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_89",
+      "end": 278.28000000000003,
+      "speaker": "B",
+      "start": 278.18,
+      "text": " Later,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_90",
+      "end": 278.38,
+      "speaker": "A",
+      "start": 278.28000000000003,
+      "text": " brother.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_91",
+      "end": 278.53000000000003,
+      "speaker": "B",
+      "start": 278.38,
+      "text": "",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_92",
+      "end": 278.88,
+      "speaker": "B",
+      "start": 278.63,
+      "text": " bros.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_93",
+      "end": 282.134,
+      "speaker": "A",
+      "start": 281.684,
+      "text": " It's awesome.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_94",
+      "end": 283.134,
+      "speaker": "A",
+      "start": 282.53400000000005,
+      "text": " Yeah, no,",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_95",
+      "end": 284.03400000000005,
+      "speaker": "A",
+      "start": 283.23400000000004,
+      "text": " it's super helpful.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_96",
+      "end": 292.334,
+      "speaker": "C",
+      "start": 285.584,
+      "text": " Yeah, well as long as you know what you're doing on that portion then great.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_97",
+      "end": 295.334,
+      "speaker": "C",
+      "start": 292.634,
+      "text": " It's still unclear to me because",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_98",
+      "end": 297.23400000000004,
+      "speaker": "A",
+      "start": 296.73400000000004,
+      "text": " I mean...",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_99",
+      "end": 298.334,
+      "speaker": "C",
+      "start": 297.23400000000004,
+      "text": " we're saying both things.",
+      "type": "transcript.text.segment"
+    },
+    {
+      "id": "seg_100",
+      "end": 299.834,
+      "speaker": "C",
+      "start": 298.684,
+      "text": " You're saying well we don't want",
+      "type": "transcript.text.segment"
+    }
+  ],
+  "task": null,
+  "text": "the county to the city to a university to uh you said public sector so not necessarily things like private security or that's I know it. Yeah, what we should do, if you're doing work on the front end, and so it's actually neat and tidy, we'll show them the four ones that you pre-built and then say how can we expand on that, you know? a good idea yeah That way you're not wasting your time and we're not doing a bunch of unnecessary work.\nright we can go in and show them what they're today and then we can switch the variables Cool. Yeah. So any high level stuff that you're just like, this does not work at all. what i want the ui to have our logo on it somewhere like actually like looking branded i think that would make it like i like what it looks like so far or like a white rabbit or you know what i'm saying something like that like you may have a smile in the corner just those like little minuscule things that make it look different\nAnd that. Awesome.\nWhat do you guys think? I mean, that's the only thing. I think the font looks good. I think the platform looks good. The data that gets pulled back is high level. You know what I mean? It's a deep dive. And if we can speak to the fact that we can change the input and output, then it is what it is. You know, we can show the value that way. I think what's going to happen is we'll show the demo and they're going to want a POC, which I'll have to bring you in on that. And you could basically say, okay, we'll give you two different buckets that you can go after.\nyou know in a test you know some kind of conditions Awesome. Yeah, so we're basically going to be a niche. We're going to propose ourselves as a niche Zoom info, right? So it's like we're totally bespoke to you and to your company instead of just running a bunch of queries on things that are probably crap. You have a company that's going to be vetting all this stuff for you.\nand tailoring the search to you. So today we're a boutique shop is how I was talking to Lee about earlier. I want us to get to the point where we're Target. Yeah, yeah, Right? You know what I'm saying? So yeah. for our first sale or two, we can sell it however it makes sense and I can speak to that top track. And then eventually I'd like for us to have that query that we were talking about on that entry point. But I can sell your vision for now and it really limits the risk for us, I guess, as well.\nYeah. Sweet. Hi gents anything else? That's awesome, man. Super helpful. Oh, you guys are amazing I'm gonna get the demo scheduled I text Scotty earlier I was trying to give us some bandwidth to actually make sure we had something that gave us like a good foot going forward Brett didn't want to show up and kind of you Yeah, of course. know something terrible and get you some bandwidth but I'll look to get something scheduled like later next week and then and then we'll go from there yeah what do you have bro\nWell, I'm going to intercept questions from him. Just stop it. Some of those questions are going to be how many times can I ask it something? Like, is it like a monthly? Do I have to then tell you to then...\nproperly create the prompt for me like like you were saying we don't they don't want to have to come back to us to create the prompt more properly every time they want to be able to use it like a like a google or chat gpt but you know their his questions are going to be do i just get to ask it anything all the time any day of the week how many times can i do it like those sorts of things there's no consumer questions\nI think what we should do is let's go into the demo and see what we get back from him as far as like pain points. Do we need somebody that's a customer to pressure test us? Yep. Right now we're making a bunch of assumptions and 100%. I agree with you because I've been doing the same thing. Now that we assume it's viable to show, like let's schedule the demo. Lee, you and I can go in there and we'll let him poke holes in it and then we can come back together and figure out what makes sense. And yeah, it'll be stronger product for it. Well, if he's that flexible, then yeah, then no worries.\nyeah to me those are kind of math questions because i don't know how he's going to set up the guardrails on this so all for sure all right i'm gonna get it scheduled we'll keep it in that box and then i'll call you guys later because i'm getting in trouble right now i'm in the pool with my five sons get the fuck out here Awesome, all man. Thank you. Thanks a lot, man. Enjoy. right Enjoy the rest of your trip. Thanks, guys. All right. Later, Later, brother. bros.\nIt's awesome. Yeah, no, it's super helpful. Yeah, well as long as you know what you're doing on that portion then great. It's still unclear to me because I mean... we're saying both things. You're saying well we don't want",
+  "usage": {
+    "input_tokens": 5619,
+    "output_tokens": 8999,
+    "total_tokens": 14618,
+    "type": "tokens",
+    "input_token_details": {
+      "audio_tokens": 5305,
+      "text_tokens": 314
+    }
+  }
+}
