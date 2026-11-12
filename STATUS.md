@@ -605,7 +605,7 @@ A ground-up zero-trust audit landed on this branch. **The product is not deploya
 
 ## 🚨 Production deploy reality (2026-05-09 — /qa run)
 
-A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deployed app is **fully broken end-to-end**. Health score: **18 / 100**. Full report: [`.gstack/qa-reports/qa-report-white-rabbit-ten-vercel-app-2026-05-09.md`](.gstack/qa-reports/qa-report-white-rabbit-ten-vercel-app-2026-05-09.md).
+A browser QA run against `https://white-rabbit-ten.vercel.app/` found the deployed app is **fully broken end-to-end**. Health score: **18 / 100**. Full report: `.gstack/qa-reports/qa-report-white-rabbit-ten-vercel-app-2026-05-09.md`.
 
 **Three critical issues:**
 

@@ -4,11 +4,11 @@
 **Created:** 2026-05-25
 **Current gate:** RG6 - Dogfood / Kill Decision (held product-red)
 **Scope:** Strictly limited source-planning + claim-grounding improvements for the Arizona K-12 named-account benchmark.
-**Goal:** Move Arizona K-12 from "2 READY but not 6-of-8 proven" + sub-70% sampled precision toward the Yellow gate criteria in `docs/00-product-northstar.md` using only the existing reusable kernel.
+**Goal:** Move Arizona K-12 from "2 `READY` but not 6-of-8 proven" + sub-70% sampled precision toward the Yellow gate criteria in `docs/00-product-northstar.md` using only the existing reusable kernel.
 
 ## One-Sentence Mission
 
-Improve the source planner and extraction grounding so that the existing Arizona K-12 query (the 8 districts + tech/IT decision-maker titles) reliably produces source-backed person rows or explicit not-found/manual rows for at least 6 of 8 districts, while lifting sampled persona / organization / source precision on the required suite.
+Improve the source planner and extraction grounding so the Arizona K-12 query (the 8 districts + tech/IT decision-maker titles) produces source-backed person rows or explicit not-found/manual rows for at least 6 of 8 districts. Lift sampled persona, organization, and source precision across the required suite in the same pass.
 
 This is not a full pipeline rewrite. It is a targeted remediation on the parts that the 2026-05-24 post-remediation artifacts proved are the current bottleneck.
 

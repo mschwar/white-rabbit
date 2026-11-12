@@ -8,7 +8,7 @@ White Rabbit v2 is a greenfield, internal-first, self-serve B2B prospecting tool
 
 - **Matt** — product builder, fulfillment operator for paid customer briefings.
 - **Thomas** — full-time B2B sales rep employed elsewhere; uses White Rabbit in his own daily prospecting. **Primary product signal.**
-- **Lee** — full-time DTC sales rep employed elsewhere; uses White Rabbit to test generalization beyond B2B. Secondary signal. Also presents the Scotty demo.
+- **Lee** — full-time direct-to-consumer (DTC) sales rep employed elsewhere; uses White Rabbit to test generalization beyond B2B. Secondary signal. Also presents the Scotty demo.
 
 The customer offer is scoped concierge briefings fulfilled by Matt. **There is no external self-serve product yet.** Self-serve here means the three operators can use the tool without asking each other for help.
 
@@ -43,7 +43,8 @@ The customer offer is scoped concierge briefings fulfilled by Matt. **There is n
 7. **Frontend never holds API keys.** All Tavily / OpenAI / search-vendor calls happen in the Python service.
 8. **Recipes are internal while red.** Recipes remain strategically important, but recipe library / batch / Friday review surfaces stay out of the primary operator path until the launch gate allows them.
 9. **Three scores remain visible only when evidence-backed.** Fit / Evidence / Contact are useful only when driven by field-level validation, not LLM optimism.
-10. **Track operator minutes per usable lead.** This is the headline KPI. API cost is secondary, but do not add operator-minute ceremony before the validated query-to-export loop works.
+10. **Track operator minutes per usable lead.** This is the headline key performance indicator (KPI). API cost is secondary, but do not add operator-minute ceremony before the validated query-to-export loop works.
+11. **Keep human-facing documentation concrete and verified.** Lead human-facing guides (`README.md`, `DESIGN.md`, `TESTING.md`, `docs/*.md`) with concrete inputs, checks, and outputs (`## TL;DR` of `1..60` words in `README.md`), keep prose sentences at or under 45 words, avoid banned filler and unexpanded domain acronyms, never commit `file://` links, and run `python3 -m unittest tests/test_doc_hygiene.py -v` before committing.
 
 ## Mainline reset protocol
 

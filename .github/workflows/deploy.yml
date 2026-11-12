@@ -35,6 +35,9 @@ jobs:
         with:
           python-version: "3.13"
 
+      - name: Run documentation hygiene checks
+        run: python3 -m unittest tests/test_doc_hygiene.py -v
+
       - name: Install uv
         uses: astral-sh/setup-uv@v5
 

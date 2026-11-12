@@ -12,8 +12,8 @@ Three operators, two distinct workflows sharing one toolset.
 
 | Operator | Role | Workflow | Signal value |
 |---|---|---|---|
-| Matt | Builder + fulfillment operator | Runs the tool to produce paid customer briefings (e.g., Scotty POC). | Tells us whether the tool can fulfill paid work efficiently. |
-| Thomas | Embedded design partner (B2B) | Runs the tool inside his own daily B2B sales prospecting at his employer. | **Primary signal.** Real working salesperson + ICP-aligned use case. |
+| Matt | Builder + fulfillment operator | Runs the tool to produce paid customer briefings (e.g., Scotty proof of concept (POC)). | Tells us whether the tool can fulfill paid work efficiently. |
+| Thomas | Embedded design partner (B2B) | Runs the tool inside his own daily B2B sales prospecting at his employer. | **Primary signal.** Real working salesperson + ideal customer profile (ICP)-aligned use case. |
 | Lee | Embedded design partner (DTC) | Runs the tool inside his own DTC prospecting. Also presents the Scotty demo to customers. | Tests whether the tool generalizes outside obvious B2B sales motions. |
 
 Lee and Thomas are **not OrgAtlas employees**. Commercial arrangement is an open question (see `STATUS.md`). Build can ship without it; public content cannot.
@@ -40,7 +40,7 @@ Recipes are stored in Postgres starting Sprint 2. Sprint 1 ships Scout-only with
 
 **Why recipes matter strategically.**
 
-If recipes reuse across customers (e.g., a recipe Thomas built for K-12 IT directors works again for a customer in K-12 SLED), the boutique model has operating leverage and the kill/keep gate likely passes. If every customer needs a custom recipe build, the boutique model is bespoke labor and the gate likely fails. **Recipe reuse is the most important hypothesis the product tests.**
+If recipes reuse across customers (e.g., a recipe Thomas built for K-12 IT directors works again for a customer in K-12 state, local, and education (SLED)), the boutique model scales across accounts and the kill/keep gate likely passes. If every customer needs a custom recipe build, the boutique model is bespoke labor and the gate likely fails. **Recipe reuse is the most important hypothesis the product tests.**
 
 ## Score model
 
@@ -132,7 +132,7 @@ Five labels, mutually exclusive per lead:
 - `wrong persona` — Title or seniority doesn't match the target.
 - `bad source` — Source URL is broken / outdated / wrong organization.
 - `bad contact` — Email/phone is wrong, deduced incorrectly, or unverifiable.
-- `duplicate` — Already in the operator's CRM or pipeline.
+- `duplicate` — Already in the operator's customer relationship management (CRM) system or pipeline.
 
 Required to close out a Full run. Sprint 2 ships this.
 
@@ -140,7 +140,7 @@ Required to close out a Full run. Sprint 2 ships this.
 
 Friday 30-min ritual: Matt + Lee + Thomas walk through the week's recipes. Which produced usable leads, which failed, which got re-run. The in-app buttons feed this; they don't replace it. The conversation is the real product feedback loop.
 
-## Headline KPI
+## Headline Key Performance Indicator (KPI)
 
 > **Minutes of operator review per usable lead** (Thomas's runs).
 
@@ -149,7 +149,7 @@ Why this and not API cost: in a boutique fulfillment model, operator time domina
 ### Secondary KPIs
 
 - API cost per usable lead — informs future self-serve pricing.
-- Recipe-reuse rate — informs whether boutique has operating leverage.
+- Recipe-reuse rate — informs whether the boutique model scales without custom rebuilds.
 - Customer-confirmed "usable" rate per delivered briefing — Matt's fulfillment quality.
 
 ## Anti-patterns to avoid

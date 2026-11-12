@@ -21,7 +21,7 @@ Treat `audits/zero-trust-codebase-audit-2026-05-10.md` and `docs/12-reset-gated-
 - Do not daily-dogfood with Thomas or Lee.
 - The decisive loop failed: natural-language target -> high-quality validated leads -> export.
 - The Arizona K-12 VoIP benchmark failed.
-- Live sampled search returned 0 CRM-usable leads under the audit standard.
+- Live sampled search returned 0 customer relationship management (CRM)-usable leads under the audit standard.
 - Backend endpoints were directly callable outside the password-gated UI.
 - Recipe library, Friday review export, and bulk workspace are premature operator surfaces.
 - The UI exposes implementation details.
@@ -210,7 +210,7 @@ Acceptance criteria:
 - Product northstar doc exists and states bad data shown confidently is worse than no data.
 - Buildout plan includes branch workflow, two prompts, reflection checklist, feature table, and feature cards.
 - AGENTS has a rebuild branch protocol.
-- STATUS records integration branch, red gate, next pointer, and why main is untouched.
+- `STATUS.md` records integration branch, red gate, next pointer, and why main is untouched.
 - QA template exists.
 
 Verification:
@@ -363,7 +363,7 @@ Why this matters to the northstar:
 It prevents unsafe or out-of-scope searches while allowing Thomas's real sales language to enter the validated-leads loop.
 
 User story:
-As Thomas, I need to type normal phrases like "financial services CISOs in New York" and be guided only when the prompt is truly outside lead generation or privacy-safe B2B prospecting.
+As Thomas, I need to type normal phrases like "financial services chief information security officers (CISOs) in New York" and be guided only when the prompt is truly outside lead generation or privacy-safe B2B prospecting.
 
 Anti-goals:
 - Do not call an LLM for guardrails in this feature.
@@ -757,7 +757,7 @@ As Matt, I need a repeatable harness that proves White Rabbit handles Thomas's a
 
 Anti-goals:
 - Do not hardcode VoIP bias into production prompts.
-- Do not treat GPT workbook rows as ground truth.
+- Do not treat Generative Pre-trained Transformer (GPT) workbook rows as ground truth.
 - Do not require live API keys for default CI.
 
 Implementation boundaries:
@@ -1434,7 +1434,7 @@ Estimated model fit: GPT-5.3 Spark / GPT-5.4 Mini
 Max intended scope: 1 small feature, preferably <= 5 touched files unless justified.
 
 Goal:
-Keep operator minutes as a low-ceremony internal KPI capture rather than primary UI ceremony.
+Keep operator minutes as a low-ceremony internal key performance indicator (KPI) capture rather than primary UI ceremony.
 
 Why this matters to the northstar:
 Minutes per usable lead is the headline KPI, but it should not distract from search quality or export.

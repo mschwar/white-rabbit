@@ -51,7 +51,7 @@ Current reset work runs on `rebuild/validated-leads-loop`.
 - Do not merge reset feature work to `main`.
 - Use `docs/12-reset-gated-implementation-plan-2026-05-10.md` for feature status, branch names, Prompt A/B/C copy, and reset gate transitions.
 
-Legacy `main`-targeted BUILDOUT docs are historical records, not the current work queue.
+Legacy `main`-targeted `BUILDOUT` docs are historical records, not the current work queue.
 
 ## Web/API Boundary
 

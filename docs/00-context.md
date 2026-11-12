@@ -4,7 +4,7 @@
 **Current product truth:** See `docs/00-product-northstar.md`.
 **Current execution plan:** See `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
-This document preserves bootstrap strategy. It is still useful context, but any conflict with the product northstar or STATUS should be resolved in favor of the active docs.
+This document preserves bootstrap strategy. It is still useful context, but any conflict with the product northstar or `STATUS.md` should be resolved in favor of the active docs.
 
 ## Why this repo exists
 
@@ -19,8 +19,8 @@ This repo is that product.
 ## Three roles
 
 - **Matt** — builds the product, fulfills paid customer briefings.
-- **Thomas** — full-time B2B sales rep at his own company. Uses White Rabbit in his daily prospecting. **Primary product signal** because his use case matches OrgAtlas's likely paid customer ICP.
-- **Lee** — full-time DTC sales rep at his own company. Uses White Rabbit to test generalization beyond B2B. Also presents the Scotty demo.
+- **Thomas** — full-time B2B sales rep at his own company. Uses White Rabbit in his daily prospecting. **Primary product signal** because his use case matches OrgAtlas's likely paid customer ideal customer profile (ICP).
+- **Lee** — full-time direct-to-consumer (DTC) sales rep at his own company. Uses White Rabbit to test generalization beyond B2B. Also presents the Scotty demo.
 
 Lee and Thomas are not OrgAtlas employees. They're embedded design partners. The commercial arrangement (free seats, revenue share, equity, content rights) is an open question that has to be settled before they go public with usage. Build can proceed without it; public content cannot.
 
@@ -42,7 +42,7 @@ This is a forcing function. We don't accumulate operator-handholding debt that h
 
 ## What's at stake commercially
 
-- **Scotty POC** — first paid customer engagement, $10K, two custom briefings, 14-day delivery. Fulfilled by Matt using whatever combination of tools serves him best (today: the demo + manual work). The product here will eventually replace that workflow.
+- **Scotty proof of concept (POC)** — first paid customer engagement, $10K, two custom briefings, 14-day delivery. Fulfilled by Matt using whatever combination of tools serves him best (today: the demo + manual work). The product here will eventually replace that workflow.
 - **ZoomInfo replacement narrative** — Scotty pays ZoomInfo $45K/yr. The boutique briefing positioning explicitly punches at that.
 - **Future paid customers** — who and how is undecided. That's downstream of getting Thomas using the product reliably and producing public content about it.
 
@@ -56,7 +56,7 @@ A query is one-shot. A recipe is reusable IP. The differentiation versus commodi
 2. **Three explicit scores** — Fit, Evidence, Contact — composable by the operator instead of hidden in a black-box "intent score."
 3. **Reusable recipes** — the artifact that survives a single batch is the *recipe* (query + filters + source mix + ranking weights + outcomes). Recipes can be sold, shared, or reused for the next customer in the same vertical.
 
-If recipes don't reuse across customers, the boutique model has no operating leverage and the kill/keep gate fails. That's the most important hypothesis the product will test.
+If recipes don't reuse across customers, the boutique model has no repeatable operating advantage and the kill/keep gate fails. That's the most important hypothesis the product will test.
 
 ## Reading order from here
 

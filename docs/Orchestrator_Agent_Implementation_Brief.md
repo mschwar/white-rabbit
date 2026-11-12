@@ -61,7 +61,7 @@ Required changes:
 - Make `max_results` a parameter to `scout()` with a broad-query default closer to 30-50 raw search results per run.
 - Tavily caps individual calls at 20 results, so use multi-query planning, client-side aggregation, and deduplication to reach higher totals.
 - Add `aggressive_breadth: bool = False` for exploratory broad runs.
-- Expand role synonyms intelligently for broad intents, for example IT Director, Director of Technology, Head of IT, CIO, CTO.
+- Expand role synonyms intelligently for broad intents, for example IT Director, Director of Technology, Head of IT, Chief Information Officer (CIO), Chief Technology Officer (CTO).
 - Use geographic or vertical expansion only when the query is clearly broad.
 - Keep every generated vendor query under `SAFE_VENDOR_QUERY_LENGTH`.
 
@@ -73,7 +73,7 @@ The old flow filters too aggressively: LLM extraction -> validation -> hard evid
 
 New output tiers:
 
-- `high_trust_usable` - strict evidence gate passed; CRM-ready.
+- `high_trust_usable` - strict evidence gate passed; customer relationship management (CRM)-ready.
 - `review` - plausible person lead with partial evidence, medium scores, missing contact, or another explicit limitation.
 - `organization_only` - target account found but no usable person validated.
 - `not_found` - target searched, no acceptable contact/person found.

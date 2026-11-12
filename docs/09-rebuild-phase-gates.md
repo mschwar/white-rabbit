@@ -278,7 +278,7 @@ The audit failure was not lack of UI polish; it was absence of proof. Do not bui
 Gate criteria:
 
 - Arizona fixture includes Mesa, Chandler, Peoria, Gilbert, Deer Valley, Paradise Valley, Dysart, and Maricopa.
-- Arizona fixture preserves Thomas workbook annotations without treating GPT output as ground truth.
+- Arizona fixture preserves Thomas workbook annotations without treating Generative Pre-trained Transformer (GPT) output as ground truth.
 - Required suite covers simple B2B queries, vertical generalization, guardrails, and privacy rejection.
 - Per-run quality report computes precision, persona match, contact quality, source support, fake-email count, unsupported-email count, not-found count, and failed count.
 - Offline benchmark suite runs in CI without live API keys.
@@ -342,7 +342,7 @@ Gate criteria:
 - Field/contact/source validation badges are visible.
 - Evidence drawer shows which source supports which field.
 - Export includes all required validation columns from `docs/00-product-northstar.md`.
-- Default export does not flatten uncertain rows into clean CRM-ready rows.
+- Default export does not flatten uncertain rows into clean customer relationship management (CRM)-ready rows.
 - Browser QA confirms query-to-export path.
 - CSV inspection confirms headers, row counts, validation notes, statuses, and no placeholders.
 
@@ -405,7 +405,7 @@ Gate criteria:
 - Corrections can be exported or transformed into benchmark fixture updates or a review queue.
 - F18-F23 remain hidden/internal unless Matt explicitly moves one to ready after reviewing evidence.
 - Red/yellow/green launch gate in `docs/00-product-northstar.md` is evaluated with current benchmark and browser QA evidence.
-- STATUS records whether the product remains red, moves to yellow for Matt-only evaluation, or moves to green for Thomas/Lee dogfood.
+- `STATUS.md` records whether the product remains red, moves to yellow for Matt-only evaluation, or moves to green for Thomas/Lee dogfood.
 
 Required verification:
 

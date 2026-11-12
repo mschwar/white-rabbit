@@ -25,7 +25,7 @@ Everything in the product either improves this loop or stays out of the operator
 
 ## Non-Negotiable Value Proposition
 
-White Rabbit does not win by returning an unqualified pile of names like ZoomInfo, DiscoverOrg, Apollo, or generic GPT research. It wins by surfacing the full realistic picture the public web allows, then making the distribution explainable: real scraped and cross-validated contacts, clear source support, explicit missing/failure states, and exports that do not make SDRs or AEs waste time on bad dials, bouncebacks, guessed domains, fake emails, wrong personas, or unsupported claims.
+White Rabbit does not win by returning an unqualified pile of names like ZoomInfo, DiscoverOrg, Apollo, or generic Generative Pre-trained Transformer (GPT) research. It wins by surfacing the full realistic picture the public web allows and making that distribution explainable with real scraped, cross-validated contacts, clear source support, and explicit missing or failure states. Exports must never make sales development representatives (SDRs) or account executives waste time on bad dials, bouncebacks, guessed domains, fake emails, wrong personas, or unsupported claims.
 
 Volume is part of value when it is transparent. The old 10-25 broad-query target is now only the minimum escape velocity from the 3-4 row failure mode. For broad vertical + geography targets, the product should move toward 50-500+ categorized candidates where the market supports it, while preserving a strict high-trust usable tier. It is acceptable to surface hundreds of rows if it is instantly clear why most are not actionable and what evidence, or lack of evidence, supports that conclusion.
 
@@ -33,7 +33,7 @@ Noisy raw candidates are acceptable only when they are checked, visibly annotate
 
 The near-term launch wedge is source-assisted research, not fully autonomous broad search. The April 2026 New Mexico school-district IT package proved that a human plus basic chatbot/Codex workflow can produce a useful workbook when it starts from public rosters, district staff pages, source URLs, and explicit manual-lookup notes. White Rabbit's first job is to beat that manual workflow: gather or accept source evidence, extract structured rows, validate every field, preserve useful rows even when contact is missing, label blockers honestly, and export a sales-first workbook.
 
-Autonomous search remains useful only when it feeds this evidence compiler. A missing direct email is not automatically a useless row if the name, title, organization, source, and next action are clear; it is a `review` or `manual_lookup` row. It must still never be presented as CRM-ready.
+Autonomous search remains useful only when it feeds this evidence compiler. A missing direct email is not automatically a useless row if the name, title, organization, source, and next action are clear; it is a `review` or `manual_lookup` row. It must still never be presented as customer relationship management (CRM)-ready.
 
 ## Target User
 
@@ -230,7 +230,7 @@ Primary navigation while red:
 | Friday review export | Hide or remove | It adds review ceremony around untrusted data. |
 | Scoreboards | Hide from primary operator navigation | Metrics are useful only after validation quality exists. |
 | Sandbox reset UI | Hide from primary operator navigation | Reset controls are implementation machinery and weaken quota trust if exposed. |
-| Operator minutes UI | Keep internally, simplify later | Minutes per usable lead is the headline KPI, but it should not distract from query-to-export. |
+| Operator minutes UI | Keep internally, simplify later | Minutes per usable lead is the headline key performance indicator (KPI), but it should not distract from query-to-export. |
 
 Keep internally after yellow:
 

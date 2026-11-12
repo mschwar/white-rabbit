@@ -3,7 +3,7 @@
 **Status:** Superseded / completed historical buildout.
 **Superseded by:** `docs/00-product-northstar.md` and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
-This document records the completed main-line BUILDOUT remediation loop. It is not the current feature queue. Current reset work happens on `rebuild/validated-leads-loop` and follows `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
+This document records the completed main-line `BUILDOUT` remediation loop. It is not the current feature queue. Current reset work happens on `rebuild/validated-leads-loop` and follows `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
 **Source:** `audits/hard-audit-2026-05-07.md` and `docs/06-audit-action-plan.md`
 **Created:** 2026-05-07
@@ -69,7 +69,7 @@ Between each iteration the user runs `/new` so context resets. The agent in each
 
 ## How to recover from a stalled iteration
 
-If the agent finds an in-flight branch (HEAD ≠ main, with un-merged commits):
+If the agent finds an in-flight branch (`HEAD` ≠ `main`, with un-merged commits):
 
 - If it has a `BUILDOUT-NN:` commit and matches a `- [ ]` item: continue or QA it.
 - If it has a `BUILDOUT-NN:` commit but the matching item is already `- [x]`: this is a re-do. Confirm with the user before proceeding.
@@ -106,7 +106,7 @@ If a feature looks too big once you start: split it. Add a second `- [ ]` row to
 
 ### Phase E — Hardening (P1)
 - [x] BUILDOUT-10: Tavily + OpenAI retries with backoff (`feat/buildout-10-retries`) — implemented, tested, and browser-verified on localhost:3000
-- [x] BUILDOUT-11: Feedback label enum + DB CHECK (`feat/buildout-11-feedback-enum`) — browser-verified on 2026-05-08; canonical labels accept feedback and non-canonical labels are rejected
+- [x] BUILDOUT-11: Feedback label enum + DB `CHECK` (`feat/buildout-11-feedback-enum`) — browser-verified on 2026-05-08; canonical labels accept feedback and non-canonical labels are rejected
 - [x] BUILDOUT-12: Atomic sandbox cap counter (`feat/buildout-12-sandbox-atomicity`)
 - [x] (2026-05-09, 608f0eb) BUILDOUT-13: Specific API error codes for UI (`feat/buildout-13-error-codes`)
 
@@ -268,9 +268,9 @@ If forging the cookie in the browser is awkward, document this skip in the QA re
    - Remove "B2B telecom lead researcher" → replace with "B2B lead research assistant".
    - Remove "IT, Telecom, VoIP, and Networking" → replace with a query-driven persona: "Extract decision makers from the search results that match the user's query intent."
    - Replace "VoIP prospect" / "VoIP upgrade" with "the role/organization described in the query".
-   - Remove "(school district / government / SMB)" example specificity from the icebreaker instruction → keep "their organization type" generic.
+   - Remove "(school district / government / small and medium-sized business (SMB))" example specificity from the icebreaker instruction → keep "their organization type" generic.
    - **Add back from proxy-lead:** "Include the organization name for every lead. If you cannot find a clear organization, omit the lead entirely."
-   - **Add back from proxy-lead:** "Set source_url as the URL with the strongest direct evidence of the contact's name, title, and/or organization. Rank by relevance and recency."
+   - **Add back from proxy-lead:** "Set source_url as the URL with the strongest direct evidence of the contact's name, title, or organization (or all three). Rank by relevance and recency."
    - Replace "If emails are not fully visible, deduce them..." with "If you cannot find an email in the search results, set email='' and email_status='Missing'. Never invent or guess an email."
    - Add: "The 'name' field MUST be a real person's first and last name (e.g., 'Sarah Chen'). Never put a job title or role description in the name field."
 2. Edit `packages/core/src/core/models.py`:
@@ -370,7 +370,7 @@ If forging the cookie in the browser is awkward, document this skip in the QA re
        )
        lead.gate_passed = expected_gate
    ```
-3. Update SYSTEM_PROMPT — remove the "GATE LOGIC" section that asks the LLM to set `gate_passed` (the LLM doesn't need to do this anymore; the server does it). Keep the description of what the gate means but move the threshold definition to a server-only concern.
+3. Update SYSTEM_PROMPT — remove the `"GATE LOGIC"` section that asks the LLM to set `gate_passed` (the LLM doesn't need to do this anymore; the server does it). Keep the description of what the gate means but move the threshold definition to a server-only concern.
 4. Update `tests/test_orchestrator.py`: add a test where the mock returns a `Lead` with `(fit=0.2, evidence=0.1, contact=0.3, gate_passed=True)` and assert that after `scout()` returns, `gate_passed=False`.
 
 **Acceptance criteria:**
@@ -535,7 +535,7 @@ Backend-only. Run scout normally to confirm no regression. Screenshot a successf
 
 ---
 
-### BUILDOUT-11: Feedback label enum + DB CHECK constraint
+### BUILDOUT-11: Feedback label enum + DB `CHECK` constraint
 
 **Why:** `FeedbackRequest.label: str` with no enum means `"Usable"` (capitalized) silently breaks scoreboard counts. (Audit ref: D4-05)
 
@@ -550,7 +550,7 @@ Backend-only. Run scout normally to confirm no regression. Screenshot a successf
 
 **Implementation steps:**
 1. Replace `label: str` with `label: Literal["usable", "wrong_persona", "bad_source", "bad_contact", "duplicate"]` in `FeedbackRequest`.
-2. Generate a new alembic migration adding a CHECK constraint on `lead_feedback.label`:
+2. Generate a new alembic migration adding a `CHECK` constraint on `lead_feedback.label`:
    ```sql
    CHECK (label IN ('usable','wrong_persona','bad_source','bad_contact','duplicate'))
    ```
@@ -731,7 +731,7 @@ Run the walkthrough. After step 8, take a screenshot of the working scout page. 
 
 1. **Web hosting:** Vercel (default for Next.js, free tier fine for this scale) vs. self-hosted (Fly, Railway, Render).
 2. **API hosting:** Fly.io / Railway / Render / Vercel Functions. (Vercel Functions has cold-start cost for Python; Fly is the closest to a "real" server.)
-3. **Postgres:** Neon / Supabase Postgres / Railway Postgres / managed RDS.
+3. **Postgres:** Neon / Supabase Postgres / Railway Postgres / managed Amazon Relational Database Service (RDS).
 
 **Default recommendation if user is silent:** Vercel + Fly.io + Neon. All have free tiers, all have first-class git integration.
 
@@ -797,7 +797,7 @@ If the deployment requires user-only secrets to actually deploy, mark the QA rep
    - Verify the recipe shows up in `/recipes`.
    - Add feedback. Confirm scoreboard updates.
 5. Document the deploy URL in `STATUS.md` (or a new `DEPLOYMENT.md`).
-6. Close out: this is the last BUILDOUT feature. Update this doc's "Stop criteria" to confirm completion.
+6. Close out: this is the last `BUILDOUT` feature. Update this doc's "Stop criteria" to confirm completion.
 
 **Acceptance criteria:**
 - Production URL is reachable and serves the app.

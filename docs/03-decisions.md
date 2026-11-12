@@ -42,11 +42,11 @@ Format: ADR-NNN — Title. Date. Status: Locked / Superseded by ADR-XXX. Context
 **Date:** 2026-05-05
 **Status:** Locked
 
-**Context.** Three operators (Matt, Thomas, Lee) need access. Building real auth (per-user accounts, sessions, password reset, MFA) is weeks of work that doesn't validate any product hypothesis. The kill/keep gate at 90 days will tell us whether to invest.
+**Context.** Three operators (Matt, Thomas, Lee) need access. Building real auth (per-user accounts, sessions, password reset, multi-factor authentication (MFA)) is weeks of work that doesn't validate any product hypothesis. The kill/keep gate at 90 days will tell us whether to invest.
 
 **Decision.** Single shared password gates the entire app. Read from env var `WR_SHARED_PASSWORD` (or its bcrypt hash, `WR_SHARED_PASSWORD_HASH`). Next.js middleware checks a session cookie set by `POST /login`. Use `crypto.timingSafeEqual` for the comparison.
 
-**Consequences.** No per-user attribution at the data layer in Sprint 1 — recipes are owned by "the team" not individuals. If we need per-operator KPIs (e.g., minutes-per-usable-lead by operator), we'll either (a) infer from session metadata if available, or (b) ship a "who are you" picker after login that's not an auth boundary, just an analytics tag. Real auth waits for the kill/keep gate.
+**Consequences.** No per-user attribution at the data layer in Sprint 1 — recipes are owned by "the team" not individuals. If we need per-operator key performance indicators (KPIs) (e.g., minutes-per-usable-lead by operator), we'll either (a) infer from session metadata if available, or (b) ship a "who are you" picker after login that's not an auth boundary, just an analytics tag. Real auth waits for the kill/keep gate.
 
 ---
 
@@ -55,7 +55,7 @@ Format: ADR-NNN — Title. Date. Status: Locked / Superseded by ADR-XXX. Context
 **Date:** 2026-05-05
 **Status:** Locked
 
-**Context.** The demo at `/Users/mschwar/Documents/proxy-lead` works, has shipped collateral (FAQ PDF, POC offer template, presenter scripts), and serves the customer-facing job. Rewriting it as part of v2 risks breaking what's working without a forcing function.
+**Context.** The demo at `/Users/mschwar/Documents/proxy-lead` works, has shipped collateral (FAQ PDF, proof of concept (POC) offer template, presenter scripts), and serves the customer-facing job. Rewriting it as part of v2 risks breaking what's working without a forcing function.
 
 **Decision.** No code changes to the demo repo. It stays at its current state. Sunset only when the v2 product can demonstrably do the demo job *better* than the existing app — and that's a future decision, not a current one.
 
@@ -81,7 +81,7 @@ Format: ADR-NNN — Title. Date. Status: Locked / Superseded by ADR-XXX. Context
 **Date:** 2026-05-09
 **Status:** Locked
 
-**Context.** The repo accumulated bootstrap plans, sprint roadmaps, BUILDOUT remediation docs, QA reports, zero-trust audits, meeting notes, and rebuild control docs in a short period. Several older documents still looked like current instructions even after the validated-leads rebuild moved active work to `rebuild/validated-leads-loop`. Agents need a deterministic way to decide which document wins when docs conflict.
+**Context.** The repo accumulated bootstrap plans, sprint roadmaps, `BUILDOUT` remediation docs, QA reports, zero-trust audits, meeting notes, and rebuild control docs in a short period. Several older documents still looked like current instructions even after the validated-leads rebuild moved active work to `rebuild/validated-leads-loop`. Agents need a deterministic way to decide which document wins when docs conflict.
 
 **Decision.** Documentation authority is layered:
 
@@ -99,7 +99,7 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 - `Historical Record` — evidence/report/transcript; preserve content, but do not treat as current instructions.
 - `Archived Reference` — bootstrap/reference context; link to current active docs.
 
-**Consequences.** Future agents should not infer current work from old sprints, historical QA reports, or completed BUILDOUT plans. Historical reports stay intact as evidence, but they must link to the active control docs. Documentation-only remediation may edit historical docs to add status banners and current-doc pointers, but it must not rewrite quoted evidence, transcripts, or old findings as if they were newly created.
+**Consequences.** Future agents should not infer current work from old sprints, historical QA reports, or completed `BUILDOUT` plans. Historical reports stay intact as evidence, but they must link to the active control docs. Documentation-only remediation may edit historical docs to add status banners and current-doc pointers, but it must not rewrite quoted evidence, transcripts, or old findings as if they were newly created.
 
 ---
 
@@ -175,7 +175,7 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 **Context.** ADR-011 corrected the immediate failure mode where broad Scout/Full runs returned only 3-4 rows. Matt clarified afterward that 10-25 categorized results was the minimum escape velocity from that failure, not the ideal end state. The stronger product direction is to surface the full realistic picture the public web allows, then make it instantly clear why most rows are not actionable.
 
-**Decision.** For broad vertical + geography prompts, White Rabbit should move toward high-volume transparent tiering: 50-300+ categorized candidates where the market supports it, with a strict `high_trust_usable` tier preserving at least the benchmark precision bar and all other rows clearly separated as `review`, `organization_only`, `not_found`, or `failed`. Volume is useful only when every row carries grounded evidence or an explicit reason for non-actionability. The product must never create false confidence, invent fields, or let noisy candidates masquerade as CRM-ready leads.
+**Decision.** For broad vertical + geography prompts, White Rabbit should move toward high-volume transparent tiering: 50-300+ categorized candidates where the market supports it, with a strict `high_trust_usable` tier preserving at least the benchmark precision bar and all other rows clearly separated as `review`, `organization_only`, `not_found`, or `failed`. Volume is useful only when every row carries grounded evidence or an explicit reason for non-actionability. The product must never create false confidence, invent fields, or let noisy candidates masquerade as customer relationship management (CRM)-ready leads.
 
 **Consequences.** Search planning, Tavily aggregation, LLM extraction, validation, metrics, UI, export, and gate audits must measure both total surfaced coverage and high-trust precision. The LLM extraction stage should become inclusive, while server-side orchestration performs rigorous tiering and annotation. The old binary pass/fail gate remains the definition of `high_trust_usable`, but it no longer decides whether a candidate is returned at all. Broad-query gates should treat 10-25 as a floor, not a success target; narrow named-account prompts may remain tighter when the target universe is genuinely small.
 
@@ -227,7 +227,7 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 **Context.** RG3 Prompt C held after live benchmark evidence showed the product had safer validation semantics but still failed the operator-value bar: broad runs returned only 7-10 categorized rows, the suite produced 0 high-trust usable leads, and contact-quality passes were 0. Matt accepted the hold instead of advancing RG4 or treating the hold as an unresolved queue blocker.
 
-**Decision.** Keep RG3 active and insert one remediation feature before any design or UI work: `R09A - Live value recovery and benchmark funnel diagnosis`. R09A must diagnose and repair the source-to-candidate-to-tier funnel, fix benchmark floor semantics, preserve strict READY/high-trust precision, keep unsupported contacts non-CRM-ready, and normalize failed/not-found reasons. RG4, refreshed mockups, R10-R12, export work, dogfood, and `main` sync remain blocked until a future RG3 Prompt C records `advance`.
+**Decision.** Keep RG3 active and insert one remediation feature before any design or UI work: `R09A - Live value recovery and benchmark funnel diagnosis`. R09A must diagnose and repair the source-to-candidate-to-tier funnel, fix benchmark floor semantics, preserve strict `READY`/high-trust precision, keep unsupported contacts non-CRM-ready, and normalize failed/not-found reasons. RG4, refreshed mockups, R10-R12, export work, dogfood, and `main` sync remain blocked until a future RG3 Prompt C records `advance`.
 
 **Consequences.** Prompt A now has exactly one valid next feature, and the A/B loop can resume without reopening downstream scope. The remediation is allowed to touch search/extraction/tiering/quality-report code only where it directly improves live value or proves the exact choke point. Agents must not satisfy R09A by lowering validation strictness, inventing contacts, or making UI/export work compensate for weak data.
 
@@ -240,7 +240,7 @@ Every planning, audit, QA, meeting, or report document that is not active must c
 
 **Context.** The post-R09A RG3 re-audit held again. R09A recovered broad categorized volume for most broad prompts and added useful funnel observability, but the complete live benchmark suite still produced `0` high-trust usable rows and `0` contact-quality passes. A parallel RG4 mockup/design preflight also exists, but RG3 did not advance.
 
-**Decision.** Keep RG3 active and insert exactly one next remediation feature: `R09B - Contact and evidence acquisition pass`. R09B must target the contact/evidence choke point with source-backed public-web evidence acquisition, READY-blocker reporting, and live-runner partial-failure reliability. RG4, refreshed mockup merge, R10-R12, export polish, dogfood, paid contact-source integration, and `main` sync remain blocked until a future RG3 Prompt C records `advance`. The RG4 design preflight branch is an inspection artifact only until Matt approves it after data-quality advancement.
+**Decision.** Keep RG3 active and insert exactly one next remediation feature: `R09B - Contact and evidence acquisition pass`. R09B must target the contact/evidence choke point with source-backed public-web evidence acquisition, `READY`-blocker reporting, and live-runner partial-failure reliability. RG4, refreshed mockup merge, R10-R12, export polish, dogfood, paid contact-source integration, and `main` sync remain blocked until a future RG3 Prompt C records `advance`. The RG4 design preflight branch is an inspection artifact only until Matt approves it after data-quality advancement.
 
 **Consequences.** The reset avoids designing or exporting around a dataset that still has no CRM-ready contact value. Prompt A has exactly one valid next feature, and that feature cannot pass by lowering high-trust precision, inventing emails, treating inaccessible sources as support, or hiding missing contacts behind UI copy. If R09B still cannot produce contact-quality passes, the next decision should be product-positioning or vendor/source strategy, not another UI pass.
 
@@ -289,7 +289,7 @@ The product may still use autonomous search, Tavily, browser automation, expensi
 
 **Decision.** Keep RG3 in `gate_hold` and insert one narrow remediation feature before any further data-quality, UI, export, dogfood, or `main` work: `R09I - API startup and live proof harness`. R09I must make API startup and live verification deterministic enough for future Prompt C audits to trust the evidence. It must split basic process health from readiness/vendor checks, expose actionable readiness diagnostics, make live benchmark startup wait on health/readiness with clear timeouts, and capture startup failure artifacts instead of ambiguous `000` results.
 
-**Consequences.** Prompt A has exactly one valid next feature: R09I. RG4, refreshed mockups, R10-R12, export work, dogfood, and `main` promotion remain blocked. R09I cannot pass by changing lead-quality logic, relaxing READY/high-trust semantics, implementing UI/export, or hiding startup failures. Its job is to make the live loop observable and auditable so the next RG3 Prompt C can distinguish product-value failure from API/runtime failure.
+**Consequences.** Prompt A has exactly one valid next feature: R09I. RG4, refreshed mockups, R10-R12, export work, dogfood, and `main` promotion remain blocked. R09I cannot pass by changing lead-quality logic, relaxing `READY`/high-trust semantics, implementing UI/export, or hiding startup failures. Its job is to make the live loop observable and auditable so the next RG3 Prompt C can distinguish product-value failure from API/runtime failure.
 
 ---
 
@@ -308,7 +308,7 @@ The product may still use autonomous search, Tavily, browser automation, expensi
 
 Only R09J is ready at first. R09K remains blocked until R09J passes Prompt B and merges. R09L remains blocked until R09K passes Prompt B and merges. Prompt C for RG3 must not rerun until R09J-R09L are merged. These slices are runtime and live-proof remediation inside RG3, not a new gate.
 
-**Consequences.** The reset loop now attacks the remaining ambiguity in order: first make dependency readiness bounded and diagnostic, then make benchmark execution complete and artifact-preserving under timeouts, then prove the source-assisted workbook value path through the live API/service boundary. RG4, refreshed mockups, R10-R12, export polish, persistence, dogfood, and `main` promotion remain blocked. The new slices cannot pass by relaxing high-trust/READY semantics, inventing contacts, hiding runtime failures, or converting offline replay success into live product claims without current service-boundary evidence.
+**Consequences.** The reset loop now attacks the remaining ambiguity in order: first make dependency readiness bounded and diagnostic, then make benchmark execution complete and artifact-preserving under timeouts, then prove the source-assisted workbook value path through the live API/service boundary. RG4, refreshed mockups, R10-R12, export polish, persistence, dogfood, and `main` promotion remain blocked. The new slices cannot pass by relaxing high-trust/`READY` semantics, inventing contacts, hiding runtime failures, or converting offline replay success into live product claims without current service-boundary evidence.
 
 ---
 
@@ -317,7 +317,7 @@ Only R09J is ready at first. R09K remains blocked until R09J passes Prompt B and
 **Date:** 2026-05-12
 **Status:** Locked
 
-**Context.** RG3 advanced on the source-assisted operator loop, then the refreshed RG4 mockup/design preflight produced inspection artifacts under `docs/mockups/rg4-refreshed-preflight-2026-05-12/`. Matt reviewed and approved the design direction. The approved preflight reconciles `DESIGN.md` with the post-R09L source-assisted proof, including target/source context, categorized source-backed rows, READY/REVIEW separation, evidence dossier, low-signal guidance, and mobile triage.
+**Context.** RG3 advanced on the source-assisted operator loop, then the refreshed RG4 mockup/design preflight produced inspection artifacts under `docs/mockups/rg4-refreshed-preflight-2026-05-12/`. Matt reviewed and approved the design direction. The approved preflight reconciles `DESIGN.md` with the post-R09L source-assisted proof, including target/source context, categorized source-backed rows, `READY`/`REVIEW` separation, evidence dossier, low-signal guidance, and mobile triage.
 
 **Decision.** Treat the refreshed RG4 mockups as the approved production UI direction for the RG4 implementation sequence. Unlock `R10 - Primary search workspace simplification` as the single ready Prompt A feature. Keep `R11 - Compact CRM-first results table`, `R12 - Evidence dossier review mode`, RG5 export/persistence, RG6 dogfood, and `main` promotion blocked until their documented prerequisites pass.
 

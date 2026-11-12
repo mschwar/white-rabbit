@@ -136,20 +136,20 @@ The gate determines whether to invest in self-serve, multi-tenant, and external 
 
 1. **Thomas usage retention.** Thomas runs the tool ≥ 3× per week through week 12 (not just initial enthusiasm in weeks 1-2).
 2. **Recipe volume.** ≥ 30 distinct recipes saved across Lee + Thomas.
-3. **Headline KPI.** Median **minutes of operator review per usable lead < 10** (Thomas's runs specifically).
+3. **Headline key performance indicator (KPI).** Median **minutes of operator review per usable lead < 10** (Thomas's runs specifically).
 4. **Customer-facing proof.** ≥ 2 paid boutique briefings delivered by Matt with customer-confirmed "usable" rating ≥ 75%.
-5. **Recipe reuse.** At least one recipe pattern reused across two different ICPs without rebuild.
+5. **Recipe reuse.** At least one recipe pattern reused across two different ideal customer profiles (ICPs) without rebuild.
 6. **Public content.** Lee or Thomas has published ≥ 1 piece of public content about using the tool.
 
 If any miss at 90 days: rethink. Most likely failure modes:
 
 - Thomas stops using it after week 2 (friction-heavy vs. his current flow).
-- Recipes don't generalize across ICPs (every customer needs a custom build → no operating leverage).
+- Recipes don't generalize across ICPs (every customer needs a custom build → no repeatable margin).
 - Content motion never materializes (Lee/Thomas didn't post → no marketing flywheel).
 
 If the gate passes: open Sprint 5 work — multi-user accounts, real billing, public landing page, customer onboarding flow.
 
-If it fails: do **not** automatically scale down. Diagnose which criterion failed and decide per cause. Some failures (no content) might be solved with a commercial arrangement; some (no recipe reuse) might mean the boutique model itself doesn't have leverage.
+If it fails: do **not** automatically scale down. Diagnose which criterion failed and decide per cause. Some failures (no content) might be solved with a commercial arrangement; some (no recipe reuse) might mean the boutique model itself cannot scale across customers.
 
 ---
 
@@ -162,7 +162,7 @@ If it fails: do **not** automatically scale down. Diagnose which criterion faile
 - Mobile app
 - Browser extension
 - Slack/Teams integration
-- Email enrichment via paid providers (Apollo, Hunter, etc.)
-- LinkedIn scraping (legal + TOS minefield)
+- Email enrichment via paid providers (such as Apollo or Hunter)
+- LinkedIn scraping (legal + terms of service (TOS) minefield)
 
 Each of these can be discussed but only as a future sprint with an ADR justifying it.

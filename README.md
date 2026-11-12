@@ -1,6 +1,12 @@
 # White Rabbit v2
 
-Internal-first B2B lead research tool for Matt, Thomas, and Lee.
+## TL;DR
+
+**White Rabbit turns a business-to-business target query and public web pages into an audited lead spreadsheet.** Give it a target role, account list, or source URLs. It verifies every name, title, organization, and contact against public evidence, separates ready rows from review or missing-contact rows, and exports provenance-backed CSVs (currently in red-gate rebuild).
+
+## Current Status
+
+Internal-first business-to-business (B2B) lead research tool for Matt, Thomas, and Lee.
 
 > **Current state:** Red-gate validated-leads rebuild. Do not ship and do not use for Thomas/Lee daily dogfood until the benchmark gates say otherwise.
 
@@ -40,7 +46,7 @@ When docs conflict, use this order:
 5. [`docs/09-rebuild-phase-gates.md`](./docs/09-rebuild-phase-gates.md) for wave-gate rules.
 6. [`docs/qa-rubric.md`](./docs/qa-rubric.md) for QA tiers.
 
-Older roadmap, BUILDOUT, audit, QA, and meeting docs are historical unless their status banner says `Active`.
+Older roadmap, `BUILDOUT`, audit, QA, and meeting docs are historical unless their status banner says `Active`.
 
 ## Stack
 
@@ -130,6 +136,7 @@ See [`TESTING.md`](./TESTING.md) for the current command set.
 Common checks:
 
 ```bash
+python3 -m unittest tests/test_doc_hygiene.py -v
 cd apps/web && npm test -- --run
 cd apps/api && $env:DATABASE_URL='postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit'; uv run pytest tests/test_api.py -q
 cd packages/core && uv run pytest tests -q

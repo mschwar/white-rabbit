@@ -20,7 +20,7 @@ Not allowed while red:
 
 - Thomas or Lee daily prospecting.
 - Customer-facing usage.
-- Treating returned rows as CRM-ready leads.
+- Treating returned rows as customer relationship management (CRM)-ready leads.
 - Promoting recipes, batch, Friday review, scoreboards, or sandbox reset as operator features.
 
 ## Current Core Loop Being Rebuilt
@@ -67,7 +67,7 @@ If a card looks plausible but lacks field-level evidence, it is not product proo
 | Friday review export | Internal/deferred. |
 | Scoreboards | Internal/deferred until quality metrics are real. |
 | Sandbox reset | Internal/deferred; not an operator control. |
-| Operator minutes | Strategic KPI, but keep low-ceremony until usable outputs exist. |
+| Operator minutes | Strategic key performance indicator (KPI), but keep low-ceremony until usable outputs exist. |
 
 ## If A Result Looks Wrong
 
@@ -86,4 +86,4 @@ Prefer adding durable fixtures or QA evidence over ad hoc notes.
 
 Use `STATUS.md` for the latest handoff and `docs/12-reset-gated-implementation-plan-2026-05-10.md` for the active reset queue. As of the current reset state, Prompt A should resolve the single ready feature from those docs rather than from this guide.
 
-Do not use legacy Sprint/BUILDOUT docs as the next-task queue.
+Do not use legacy Sprint/`BUILDOUT` docs as the next-task queue.

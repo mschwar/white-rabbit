@@ -11,7 +11,7 @@
 The documentation set contained multiple live-looking instructions from different product eras:
 
 - Bootstrap sprint docs that still described Sprint 1 as current.
-- BUILDOUT remediation docs that were completed on `main` before the validated-leads rebuild.
+- `BUILDOUT` remediation docs that were completed on `main` before the validated-leads rebuild.
 - User-facing guides that described recipes, batch, Friday review, sandbox reset, and Scout/Full as primary operator flows even though the product is red and those surfaces are hidden or deferred.
 - QA and deployment reports that were useful historical evidence but easy to misread as current operational truth.
 
@@ -28,7 +28,7 @@ Use this hierarchy when docs conflict:
 5. `docs/08-agentic-buildout-plan.md` / `docs/09-rebuild-phase-gates.md` for historical F00-F23 and W0-W6 context only.
 6. `docs/qa-rubric.md` for QA tiers, unless a rebuild gate specifies stricter checks.
 
-Older roadmap, BUILDOUT, audit, QA, and meeting docs are historical evidence unless they explicitly say `Status: Active`.
+Older roadmap, `BUILDOUT`, audit, QA, and meeting docs are historical evidence unless they explicitly say `Status: Active`.
 
 ## Document Classes
 
@@ -45,7 +45,7 @@ Older roadmap, BUILDOUT, audit, QA, and meeting docs are historical evidence unl
 | Area | Problem | Remediation |
 | --- | --- | --- |
 | `docs/04-roadmap.md` | Said "Sprint 1 - Scaffold (current)" after rebuild work had replaced sprint execution. | Marked as superseded and removed the active-current wording. |
-| `docs/08-agentic-buildout-plan.md` | Header still pointed at F03 despite STATUS saying F04 was next. | Updated header to F04. |
+| `docs/08-agentic-buildout-plan.md` | Header still pointed at F03 despite `STATUS.md` saying F04 was next. | Updated header to F04. |
 | W1 gate | F04 was ready even though no W1 gate report existed. | Added W1 gate report using F01-F03 evidence and fresh verification commands. |
 | `docs/USER_GUIDE.md` | Told operators to use Scout/Full, recipes, batch, Friday review, and reset. | Replaced with red-gate Matt-only guide. |
 | README/testing/package READMEs | Mixed current setup with old product framing or scaffold defaults. | Rewritten to point at the rebuild authority model and current setup. |

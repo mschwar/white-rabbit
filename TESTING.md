@@ -12,6 +12,7 @@ For rebuild features:
 
 - UI-visible changes require browser QA and screenshots.
 - Non-UI changes require explicit command verification.
+- Documentation changes must pass `python3 -m unittest tests/test_doc_hygiene.py -v`.
 - Wave transitions require a gate report under `.gstack/qa-reports/`.
 
 ## Web

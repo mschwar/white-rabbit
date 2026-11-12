@@ -3,11 +3,11 @@
 **Status:** Superseded.
 **Superseded by:** `audits/zero-trust-product-audit-2026-05-09.md`, `docs/00-product-northstar.md`, and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
 
-This plan was the remediation roadmap for the 2026-05-07 hard audit and the BUILDOUT sequence. It is historical now. Do not execute from it unless an active control doc explicitly points back here.
+This plan was the remediation roadmap for the 2026-05-07 hard audit and the `BUILDOUT` sequence. It is historical now. Do not execute from it unless an active control doc explicitly points back here.
 
 **Source:** `audits/hard-audit-2026-05-07.md`
 **Created:** 2026-05-07
-**Original status:** Authoritative for what got fixed next during BUILDOUT. Superseded by the current reset plan for present work.
+**Original status:** Authoritative for what got fixed next during `BUILDOUT`. Superseded by the current reset plan for present work.
 
 ---
 
@@ -28,7 +28,7 @@ Goal: After this phase, a fresh-deploy install of white-rabbit with valid env va
 
 Edit `packages/core/src/core/orchestrator.py:20–41` to replace the role assertion with a query-driven persona. Edit `packages/core/src/core/models.py:21,23` Field descriptions to drop "VoIP sales" / "VoIP upgrade." Add the lost proxy-lead instructions ("Include the organization name for every lead", "Set source_url to the strongest URL").
 
-**Success criterion:** Re-run `audits/raw/run_scout_audit.py` against the same 4 queries; explanation-leak rate drops from 89% to <10%. Manufacturing CISO doesn't get pitched VoIP.
+**Success criterion:** Re-run `audits/raw/run_scout_audit.py` against the same 4 queries; explanation-leak rate drops from 89% to <10%. Manufacturing chief information security officer (CISO) doesn't get pitched VoIP.
 
 ### P1.2 — Remove `OPENAI_BASE_URL` Ollama trap
 **Severity:** P0 · **Findings:** F2-05 · **Effort:** 1h human / 10min AI · **Owner:** _____
@@ -107,7 +107,7 @@ Goal: After this phase, a pilot user can run their own queries with reasonable c
 ### P2.1 — QA rubric document and tier-1 multi-vertical check
 **Severity:** P0 · **Findings:** D3-02, D3-04 · **Effort:** 4h human / 1h AI
 
-Write `docs/qa-rubric.md` with the 6-tier rubric from Dim 3. Update STATUS "Definition of done" to require passing tiers 1–4. Make tier-1 multi-vertical checks part of the gstack QA skill (or the sprint sign-off process).
+Write `docs/qa-rubric.md` with the 6-tier rubric from Dim 3. Update `STATUS.md` "Definition of done" to require passing tiers 1–4. Make tier-1 multi-vertical checks part of the gstack QA skill (or the sprint sign-off process).
 
 ### P2.2 — Restore proxy-lead's `_verify_openai_model` and config plumbing
 **Severity:** P1 · **Findings:** F2-05, D5-01 · **Effort:** 4h human / 30min AI
@@ -122,7 +122,7 @@ Add `with_for_update()` to the SandboxState read in `_sandbox_reserve_query_or_4
 ### P2.4 — Feedback label enum + DB constraint
 **Severity:** P1 · **Findings:** D4-05 · **Effort:** 30min human / 10min AI
 
-Replace `label: str` with `Literal["usable", "wrong_persona", "bad_source", "bad_contact", "duplicate"]` in `apps/api/api/main.py:82–83`. Add a DB CHECK constraint via alembic.
+Replace `label: str` with `Literal["usable", "wrong_persona", "bad_source", "bad_contact", "duplicate"]` in `apps/api/api/main.py:82–83`. Add a DB `CHECK` constraint via alembic.
 
 ### P2.5 — Tavily/OpenAI retries
 **Severity:** P1 · **Findings:** D4-06, D2-04 · **Effort:** 2h human / 30min AI
@@ -160,7 +160,7 @@ Move the empty-password check from per-request to module load so misconfiguratio
 ### P3.3 — CSV first/last name split (D5-08): 20min. Restore proxy-lead's split_full_name logic.
 ### P3.4 — Lead.data vs scalar columns reconciliation (D4-10): 30min. Pick a source of truth.
 ### P3.5 — `confidence` field cleanup (D4-09, D5-03): 15min. Either default it or remove it.
-### P3.6 — DEPRECATED dead code: `email_patterns.py`, `OPENAI_WEB_SEARCH_PRICE` accumulation (D4-08, D4-11): 15min.
+### P3.6 — Deprecated dead code: `email_patterns.py`, `OPENAI_WEB_SEARCH_PRICE` accumulation (D4-08, D4-11): 15min.
 ### P3.7 — N+1 query in scoreboard (D4-13): 20min. Single join.
 ### P3.8 — Password compare length-leak fix (D4-14): 10min. Pad before timingSafeEqual.
 ### P3.9 — `/full` route DB section error handling (Dim 4 obs #4): 30min. Wrap create_recipe → save_leads in try/except, return structured error.
@@ -186,10 +186,10 @@ The audit re-evaluated each "completed" sprint against working software, not fea
 
 | Sprint | Original status | Audit verdict | Rework needed |
 |--------|----------------|---------------|---------------|
-| Sprint 1 (Scaffold + scout) | Done | **NEEDS REWORK** — VoIP bias was inherited as a feature, not flagged as a regression; tests don't verify any extraction quality | Phase 1.1, P1.6, P1.7 are essentially Sprint 1's missing definition-of-done. |
-| Sprint 2 (Persistence + recipes) | Done | **NEEDS REWORK** — `sandbox_state` table missing from migrations; `DATABASE_URL` ignored at runtime; Lead.data JSON duplicates scalar columns | P1.3, P1.4, P3.4 |
+| Sprint 1 (Scaffold + scout) | Done | **`NEEDS REWORK`** — VoIP bias was inherited as a feature, not flagged as a regression; tests don't verify any extraction quality | Phase 1.1, P1.6, P1.7 are essentially Sprint 1's missing definition-of-done. |
+| Sprint 2 (Persistence + recipes) | Done | **`NEEDS REWORK`** — `sandbox_state` table missing from migrations; `DATABASE_URL` ignored at runtime; Lead.data JSON duplicates scalar columns | P1.3, P1.4, P3.4 |
 | Sprint 3 (Scoreboard + sort + Friday export) | Done | Mostly clean — N+1 query (P3.7) and minor copy issues (P2.7); core functionality verified | Phase 3 only |
-| Sprint 4 (Batch + caps) | Done | **NEEDS REWORK** — sandbox query counter race (P2.3); spend cap is post-bill (P3-batch); feedback label not constrained (P2.4) | P2.3, P2.4 |
+| Sprint 4 (Batch + caps) | Done | **`NEEDS REWORK`** — sandbox query counter race (P2.3); spend cap is post-bill (P3-batch); feedback label not constrained (P2.4) | P2.3, P2.4 |
 
 **Recommendation:** Don't roll back. Don't redo. Treat Phase 1 of this plan as Sprint 1.5 — the actual definition-of-done that Sprint 1 should have had. Pause new feature work until Phase 1 completes.
 
@@ -210,6 +210,6 @@ A check that the work is actually done — not just claimed:
 - [ ] Phase 1 complete: re-run `audits/raw/run_scout_audit.py` shows leak rate <10%.
 - [ ] Phase 1 complete: fresh DB → `alembic upgrade head` → `/scout` works without create_all fallback.
 - [ ] Phase 1 complete: integration test passes; CI runs it.
-- [ ] Phase 2 complete: QA rubric document exists and is referenced from STATUS.
+- [ ] Phase 2 complete: QA rubric document exists and is referenced from `STATUS.md`.
 - [ ] Phase 2 complete: at least one full QA pass executed against ≥3 verticals.
 - [ ] Phase 3 items pulled into upcoming sprints with explicit owners.

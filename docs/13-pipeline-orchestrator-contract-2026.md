@@ -39,12 +39,12 @@ DISCOVER -> EXTRACT -> VERIFY -> SYNTHESIZE -> ORCHESTRATE & DELIVER
 - Treat human-in-loop as first-class for `REVIEW` only; `READY` must be automated with strong guarantees.
 - Make cost, latency, and quality routing explicit and logged.
 
-## Fresh Eyes Leverage
+## Fresh Eyes Capabilities
 
-The pipeline should bias toward 2026 agentic leverage where it directly improves evidence quality:
+The pipeline should use 2026 agentic capabilities where they directly improve evidence quality:
 
 - WebMCP or other structured site interfaces when available for hallucination-free pulls.
-- VLM + DOM cross-validation for pages where HTML alone misses layout context.
+- Vision-Language Model (VLM) + DOM cross-validation for pages where HTML alone misses layout context.
 - Cross-agent critique, including proposer/skeptic verification loops, before promoting a row to `READY`.
 - Source and agent reputation graphs across runs so high-performing source patterns are reused and weak patterns are downgraded.
 - Vertical source maps for public rosters, staff directories, district technology pages, board PDFs, and other source families that reliably beat generic search for a known market.

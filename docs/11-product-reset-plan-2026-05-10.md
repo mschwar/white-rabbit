@@ -36,7 +36,7 @@ No ADR should be appended until Matt explicitly accepts a product decision.
 | Batch | Keep internal only | Bulk bad data is worse than single-query bad data. |
 | Friday review | Keep deferred | Adds ceremony before usable output exists. |
 | Scoreboards | Keep internal only | Metrics are not meaningful until row quality exists. |
-| Operator minutes | Keep internal after export | Important KPI, but not part of first action. |
+| Operator minutes | Keep internal after export | Important key performance indicator (KPI), but not part of first action. |
 | Correction feedback buttons | Move to review mode | Current screen turns operators into QA testers. |
 | Score sort controls | Hide | Fit/Evidence/Contact scores are not trustworthy enough yet. |
 | QA fixture path in product component | Move out of operator component | Fixture support should not shape the runtime component. |
@@ -62,7 +62,7 @@ Required evidence:
 - May 10 live benchmark: 0 usable rows.
 - Missing W5 gate report before F17-F19 merge.
 - Query-to-export works mechanically but exported non-usable healthcare rows.
-- CSV columns are audit-first, not Lee's CRM-first order.
+- CSV columns are audit-first, not Lee's customer relationship management (CRM)-first order.
 
 Done when `STATUS.md` says W5 is held and W6 is blocked.
 
@@ -73,7 +73,7 @@ Create a replayable benchmark from:
 - Thomas exact Arizona K-12 prompt.
 - Lee commodity-buyer prompt.
 - Healthcare IT Phoenix.
-- Finance CISOs New York.
+- Finance chief information security officers (CISOs) New York.
 - Manufacturing ops Detroit.
 - B2C/private-person refusal.
 

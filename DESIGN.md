@@ -9,7 +9,7 @@ This document captures the approved design direction from the May 11 design revi
 
 ## Product Premise
 
-White Rabbit is not a generic lead-search SaaS, CRM, chatbot, dashboard, or marketing site.
+White Rabbit is not a generic lead-search SaaS, customer relationship management (CRM) system, chatbot, dashboard, or marketing site.
 
 White Rabbit is an evidence sorting instrument for operators.
 
@@ -82,8 +82,8 @@ Avoid:
 - Lead cards on desktop results.
 - Row layouts that become mini dashboards.
 - Score-first hierarchy.
-- Over-styled READY rows.
-- REVIEW rows that look almost as trustworthy as READY rows.
+- Over-styled `READY` rows.
+- `REVIEW` rows that look almost as trustworthy as `READY` rows.
 
 ### Status Language
 
@@ -95,15 +95,15 @@ Operator-facing buckets:
 - `NOT FOUND`
 - `FAILED` only where an explicit failure state is useful; otherwise fold into `REVIEW` or `NOT FOUND` per the product contract.
 
-READY must look complete, not celebratory.
+`READY` must look complete, not celebratory.
 
-REVIEW must look unresolved, not almost-ready.
+`REVIEW` must look unresolved, not almost-ready.
 
-ORG-ONLY must make the absence of a person/contact clear.
+`ORG-ONLY` must make the absence of a person/contact clear.
 
-NOT FOUND must explain absence, not look like an error.
+`NOT FOUND` must explain absence, not look like an error.
 
-FAILED must never look exportable.
+`FAILED` must never look exportable.
 
 ### Typography
 
