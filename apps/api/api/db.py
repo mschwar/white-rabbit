@@ -1,13 +1,16 @@
-from contextlib import contextmanager
-from datetime import datetime
-from typing import Any, Generator
-from uuid import UUID
-import os
+from __future__ import annotations
 
+import os
+from collections.abc import Generator
+from contextlib import contextmanager
+from datetime import UTC, datetime
+from typing import Any
+from uuid import UUID
+
+from sqlalchemy.engine import Engine
 from sqlalchemy.orm import Session
 
 from api.models import (
-    Base,
     BatchJob,
     BatchRun,
     CorrectionField,
@@ -23,23 +26,52 @@ from api.models import (
     get_session_maker,
 )
 
-_engine = None
+_engine: Engine | None = None
+_engine_url: str | None = None
 _session_maker = None
 
 
-def init_db(database_url: str | None = None):
-    global _engine, _session_maker
-    _engine = get_engine(database_url)
-    _session_maker = get_session_maker(_engine)
+def _utc_now_naive() -> datetime:
+    return datetime.now(UTC).replace(tzinfo=None)
+
+
+def _resolved_database_url(database_url: str | None = None) -> str:
+    return (
+        database_url
+        or os.environ.get("DATABASE_URL")
+        or "postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit"
+    )
+
+
+def init_db(database_url: str | None = None) -> Engine:
+    global _engine, _engine_url, _session_maker
+    resolved_url = _resolved_database_url(database_url)
+    if _engine is not None and _engine_url != resolved_url:
+        _engine.dispose()
+        _engine = None
+        _session_maker = None
+    if _engine is None:
+        _engine = get_engine(resolved_url)
+        _engine_url = resolved_url
+        _session_maker = get_session_maker(_engine)
     # Alembic is the single source of truth for schema creation.
     # Do NOT call Base.metadata.create_all() here.
-    pass
+    return _engine
+
+
+def get_shared_engine(database_url: str | None = None) -> Engine:
+    resolved_url = _resolved_database_url(database_url)
+    if _engine is None or _engine_url != resolved_url:
+        return init_db(resolved_url)
+    return _engine
 
 
 @contextmanager
 def get_db_session() -> Generator[Session, None, None]:
-    if _session_maker is None:
-        init_db()
+    resolved_url = _resolved_database_url()
+    if _session_maker is None or _engine_url != resolved_url:
+        init_db(resolved_url)
+    assert _session_maker is not None
     session = _session_maker()
     try:
         yield session
@@ -191,7 +223,7 @@ def close_recipe_run(
 ) -> RecipeRun | None:
     run = get_recipe_run(session, run_id)
     if run:
-        run.ended_at = datetime.utcnow()
+        run.ended_at = _utc_now_naive()
         run.operator_minutes = operator_minutes
     return run
 
@@ -274,12 +306,17 @@ def update_batch_run(
     lead_count: int | None = None,
     cost_usd: float | None = None,
     error_message: str | None = None,
+    ended_at: datetime | None = None,
 ) -> BatchRun | None:
     run = session.query(BatchRun).filter(BatchRun.id == run_id).first()
     if run is None:
         return None
     if status is not None:
         run.status = status
+        if status in {"completed", "failed"} and ended_at is None and run.ended_at is None:
+            run.ended_at = _utc_now_naive()
+    if ended_at is not None:
+        run.ended_at = ended_at
     if recipe_id is not None:
         run.recipe_id = recipe_id
     if lead_count is not None:
@@ -289,6 +326,23 @@ def update_batch_run(
     if error_message is not None:
         run.error_message = error_message
     return run
+
+
+def update_batch_job_progress(
+    session: Session,
+    job_id: UUID,
+    *,
+    total_cost_usd: float,
+    total_leads: int,
+) -> BatchJob | None:
+    if not hasattr(session, "query"):
+        return None
+    job = session.query(BatchJob).filter(BatchJob.id == job_id).first()
+    if job is None:
+        return None
+    job.total_cost_usd = total_cost_usd
+    job.total_leads = total_leads
+    return job
 
 
 def close_batch_job(
@@ -303,7 +357,7 @@ def close_batch_job(
     if job is None:
         return None
     job.status = status
-    job.ended_at = datetime.utcnow()
+    job.ended_at = _utc_now_naive()
     job.total_cost_usd = total_cost_usd
     job.total_leads = total_leads
     return job
@@ -334,6 +388,7 @@ def get_sandbox_state(session: Session) -> SandboxState:
 
 
 def get_sandbox_state_for_update(session: Session) -> SandboxState:
+    """Lock the singleton sandbox row within a short-lived transaction only."""
     state = (
         session.query(SandboxState)
         .filter(SandboxState.id == _SANDBOX_STATE_ID)
@@ -348,16 +403,17 @@ def get_sandbox_state_for_update(session: Session) -> SandboxState:
 
 
 def reset_sandbox_state(session: Session) -> SandboxState:
-    state = get_sandbox_state(session)
+    state = get_sandbox_state_for_update(session)
+    now = _utc_now_naive()
     state.total_queries = 0
     state.total_rows = 0
-    state.reset_at = datetime.utcnow()
-    state.updated_at = datetime.utcnow()
+    state.reset_at = now
+    state.updated_at = now
     return state
 
 
 def record_sandbox_rows(session: Session, rows: int) -> SandboxState:
-    state = get_sandbox_state(session)
+    state = get_sandbox_state_for_update(session)
     state.total_rows += rows
-    state.updated_at = datetime.utcnow()
+    state.updated_at = _utc_now_naive()
     return state

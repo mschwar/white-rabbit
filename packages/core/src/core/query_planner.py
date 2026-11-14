@@ -1,14 +1,19 @@
 from __future__ import annotations
 
+import re
 from collections.abc import Mapping
 from dataclasses import dataclass, field
 from functools import lru_cache
-from typing import Any
-import re
 from math import ceil
+from typing import Any
 from urllib.parse import urlparse
 
-from .k12_source_map import K12RosterSeed, collect_k12_roster_sources, load_az_k12_source_map
+from .k12_source_map import (
+    K12RosterSeed,
+    collect_k12_roster_sources,
+    load_az_k12_source_map,
+)
+from .query_guardrails import US_STATE_CODES, US_STATE_NAMES, extract_us_state_codes
 
 MAX_TAVILY_QUERY_LENGTH = 400
 SAFE_VENDOR_QUERY_LENGTH = 380
@@ -64,12 +69,20 @@ _ROLE_PHRASES = (
     "ciso",
     "cisos",
     "cio",
+    "cios",
     "cto",
+    "ctos",
+    "coo",
+    "cfo",
+    "chief",
     "director",
+    "directors",
     "manager",
+    "managers",
     "operations leader",
     "operations leaders",
     "operations manager",
+    "operations managers",
     "operations vp",
     "vp operations",
     "buyer",
@@ -78,17 +91,31 @@ _ROLE_PHRASES = (
     "commodity buyers",
     "procurement",
     "procurement manager",
+    "procurement managers",
     "purchasing manager",
     "sourcing manager",
+    "underwriter",
+    "underwriters",
+    "superintendent",
+    "superintendents",
+    "administrator",
+    "administrators",
     "sales leader",
+    "sales leaders",
     "general manager",
+    "general managers",
     "plant manager",
+    "plant managers",
     "vice president",
+    "vice presidents",
     "vp",
     "head of",
     "principal",
+    "principals",
     "owner",
+    "owners",
     "founder",
+    "founders",
     "decision maker",
     "decision makers",
 )
@@ -102,6 +129,7 @@ _VERTICAL_PHRASES = (
     "education",
     "financial services",
     "finance",
+    "insurance",
     "bank",
     "banks",
     "manufacturing",
@@ -109,16 +137,26 @@ _VERTICAL_PHRASES = (
     "healthcare",
     "health system",
     "health systems",
+    "family medicine",
+    "medical billing",
     "clinic",
     "clinics",
     "hospital",
     "hospitals",
     "university",
+    "universities",
     "college",
+    "colleges",
     "nonprofit",
+    "nonprofits",
+    "design-build",
+    "construction",
     "contractor",
     "contractors",
     "agency",
+    "agencies",
+    "firm",
+    "firms",
     "retail",
     "retail lumber",
     "lumber yard",
@@ -128,6 +166,7 @@ _VERTICAL_PHRASES = (
     "energy",
     "smb",
     "startup",
+    "startups",
 )
 
 _DOMAIN_PHRASES = (
@@ -140,25 +179,17 @@ _DOMAIN_PHRASES = (
     "communications",
 )
 
-_LOCATION_PHRASES = (
-    "arizona",
-    "new mexico",
-    "colorado",
-    "texas",
-    "new york",
-    "illinois",
+_CITY_LOCATION_PHRASES = (
     "phoenix",
     "albuquerque",
     "santa fe",
     "detroit",
-    "washington",
-    "california",
-    "florida",
-    "nevada",
-    "utah",
-    "kansas",
-    "oklahoma",
+    "hackensack",
 )
+
+# Multi-word US state/DC phrases ordered longest-first so e.g. "west virginia" precedes "virginia".
+_STATE_LOCATION_PHRASES = tuple(sorted(US_STATE_NAMES, key=len, reverse=True))
+_LOCATION_PHRASES = _STATE_LOCATION_PHRASES + _CITY_LOCATION_PHRASES
 
 
 @dataclass(slots=True)
@@ -178,12 +209,15 @@ def _collapse_whitespace(text: str) -> str:
     return " ".join(text.split()).strip()
 
 
+@lru_cache(maxsize=256)
+def _phrase_regex(phrase: str) -> re.Pattern[str]:
+    return re.compile(rf"\b{re.escape(phrase)}\b", re.IGNORECASE)
+
+
 def _contains_phrase(text: str, phrase: str) -> bool:
     if not phrase:
         return False
-    if len(phrase) <= 3 and phrase.isalpha():
-        return re.search(rf"(?<!\w){re.escape(phrase)}(?!\w)", text) is not None
-    return phrase in text
+    return _phrase_regex(phrase).search(text) is not None
 
 
 def _unique_preserve_order(items: list[str]) -> list[str]:
@@ -289,14 +323,12 @@ def _looks_like_arizona_k12_benchmark(query: str) -> bool:
     lower = query.lower()
     if "arizona" in lower and ("k-12" in lower or "k12" in lower):
         return True
-    if _has_school_context(query) and any(
+    return _has_school_context(query) and any(
         alias in lower
         for aliases in _ARIZONA_K12_ACCOUNT_ALIASES.values()
         for alias in aliases
         if " " in alias
-    ):
-        return True
-    return False
+    )
 
 
 def _extract_named_accounts(query: str) -> list[str]:
@@ -465,7 +497,20 @@ def _extract_vertical_expansions(query: str) -> list[str]:
 
 def _extract_locations(query: str, filters: Mapping[str, Any] | None) -> list[str]:
     lower = query.lower()
-    locations = _match_phrases(lower, _LOCATION_PHRASES)
+    raw_matches = _match_phrases(lower, _LOCATION_PHRASES)
+    locations: list[str] = []
+    for candidate in raw_matches:
+        if candidate == "virginia" and "west virginia" in locations:
+            continue
+        if candidate == "washington" and ("washington dc" in locations or "district of columbia" in locations):
+            continue
+        locations.append(candidate)
+
+    for code in extract_us_state_codes(query):
+        state_name = US_STATE_CODES[code].lower()
+        if state_name not in locations and code.lower() not in locations:
+            locations.append(US_STATE_CODES[code])
+
     if filters:
         for key, value in filters.items():
             if key.lower() in {"location", "city", "state", "region", "geography"} and value:

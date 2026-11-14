@@ -4,13 +4,12 @@ import asyncio
 import json
 import os
 import re
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Mapping
+from typing import Any
 
 import pytest
-
-from core.benchmark_suite import build_operator_evidence_fixture_pack
 from core.orchestrator import scout
 from core.query_planner import (
     ARIZONA_K12_TARGET_ACCOUNTS,
@@ -18,6 +17,7 @@ from core.query_planner import (
 )
 
 FIXTURE_PATH = Path(__file__).with_name("fixtures") / "arizona_k12_voip.json"
+OPERATOR_FIXTURE_PACK_PATH = Path(__file__).with_name("fixtures") / "operator_evidence_fixture_pack.json"
 LIVE_ENV_FLAG = "RUN_LIVE"
 CHECKED_AT = "2026-05-10T12:00:00Z"
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
@@ -274,14 +274,16 @@ def test_arizona_benchmark_fixture_lists_the_target_districts_and_annotations():
 
 def test_arizona_benchmark_fixture_aligns_with_operator_evidence_pack():
     fixture = _load_fixture()
-    operator_pack = build_operator_evidence_fixture_pack()
-    arizona_case = next(case for case in operator_pack.cases if case.benchmark_id == "thomas-arizona-k12")
+    operator_pack = json.loads(OPERATOR_FIXTURE_PACK_PATH.read_text(encoding="utf-8"))
+    arizona_case = next(
+        case for case in operator_pack["cases"] if case["benchmark_id"] == "thomas-arizona-k12"
+    )
 
-    assert arizona_case.expected_target_coverage == tuple(
+    assert tuple(arizona_case["expected_target_coverage"]) == tuple(
         case["organization"] for case in fixture["cases"]
     )
-    assert arizona_case.expected_min_categorized_rows == len(fixture["cases"])
-    assert {reference.source_id for reference in arizona_case.evidence_references} == {
+    assert arizona_case["expected_min_categorized_rows"] == len(fixture["cases"])
+    assert {reference["source_id"] for reference in arizona_case["evidence_references"]} == {
         "GMAIL-THOMAS-01",
         "GMAIL-THOMAS-02",
         "GMAIL-THOMAS-03",

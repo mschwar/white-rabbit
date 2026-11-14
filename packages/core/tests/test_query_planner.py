@@ -6,7 +6,6 @@ from core.query_planner import (
     official_domains_for_organization,
 )
 
-
 LONG_ARIZONA_PROMPT = (
     "Find the Arizona K-12 VoIP benchmark contacts. "
     "I need technology and telecom decision makers for Mesa, Chandler, Peoria, Gilbert, "
@@ -120,3 +119,25 @@ def test_compile_query_plan_aggressive_breadth_adds_more_bounded_queries():
     assert len(aggressive_plan.vendor_queries) > len(normal_plan.vendor_queries)
     assert len(aggressive_plan.vendor_queries) >= 12
     assert all(len(query) <= SAFE_VENDOR_QUERY_LENGTH for query in aggressive_plan.vendor_queries)
+
+
+def test_compile_query_plan_expands_us_state_postal_codes_and_dc():
+    nj_plan = compile_query_plan(
+        "IT directors at school districts in Hackensack NJ",
+        max_results=50,
+    )
+    dc_plan = compile_query_plan(
+        "IT directors at hospitals in Washington DC",
+        max_results=50,
+    )
+    wv_plan = compile_query_plan(
+        "IT directors at school districts in West Virginia",
+        max_results=50,
+    )
+
+    assert nj_plan.broad_query is True
+    assert any("new jersey" in q.lower() or "hackensack" in q.lower() for q in nj_plan.vendor_queries)
+    assert dc_plan.broad_query is True
+    assert any("washington dc" in q.lower() for q in dc_plan.vendor_queries)
+    assert wv_plan.broad_query is True
+    assert any("west virginia" in q.lower() for q in wv_plan.vendor_queries)

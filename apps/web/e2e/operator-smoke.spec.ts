@@ -176,7 +176,10 @@ test('production-like operator smoke covers login, readiness, and csv export', a
   const apiBaseUrl = process.env.WR_E2E_API_BASE_URL;
   if (apiBaseUrl) {
     const healthResponse = await request.get(`${apiBaseUrl}/health`);
-    const readinessResponse = await request.get(`${apiBaseUrl}/readiness`);
+    const internalToken = process.env.WR_API_INTERNAL_TOKEN;
+    const readinessResponse = await request.get(`${apiBaseUrl}/readiness`, {
+      headers: internalToken ? { 'x-white-rabbit-internal-token': internalToken } : undefined,
+    });
     const readinessJson = await readinessResponse.json();
     smokeSummary.apiChecks = {
       apiBaseUrl,

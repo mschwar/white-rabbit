@@ -1,25 +1,31 @@
+import asyncio
 import os
 from contextlib import contextmanager
 from datetime import datetime
-import asyncio
 from types import SimpleNamespace
 
 import httpx
 import pytest
-from fastapi.testclient import TestClient
-from sqlalchemy import CheckConstraint
-
 from core.cost import RunMetrics
 from core.models import Lead, NotFoundCandidate, OrganizationOnlyCandidate
+from fastapi.testclient import TestClient
+from sqlalchemy import CheckConstraint
 
 INTERNAL_API_TOKEN_HEADER = "x-white-rabbit-internal-token"
 INTERNAL_API_TOKEN = "test-internal-token"
 
 os.environ["WR_API_INTERNAL_TOKEN"] = INTERNAL_API_TOKEN
 
-from api.main import app
-from api.models import CorrectionField, CorrectionLabel, FeedbackLabel, LeadCorrection, LeadFeedback, get_engine
 from api.db import get_db_session, get_recipe_scoreboard, get_sandbox_state
+from api.main import app
+from api.models import (
+    CorrectionField,
+    CorrectionLabel,
+    FeedbackLabel,
+    LeadCorrection,
+    LeadFeedback,
+    get_engine,
+)
 
 client = TestClient(app)
 client.headers.update({INTERNAL_API_TOKEN_HEADER: INTERNAL_API_TOKEN})
@@ -63,56 +69,11 @@ def test_database_engine_pre_pings_stale_connections():
     assert engine.pool._recycle == 300
 
 
-def test_source_assisted_proof_endpoint_returns_live_boundary_payload():
-    response = client.post("/source-assisted-proof", json={"query": "NM IT for school districts"})
-
-    assert response.status_code == 200
-    body = response.json()
-    assert body["feature_id"] == "R09L - Live source-assisted product proof"
-    assert body["request_summary"]["target"] == "April 2026 New Mexico school-district IT"
-    assert body["request_summary"]["query"] == "NM IT for school districts"
-    assert body["source_map_replay"]["source_map_reproduced"] is True
-    assert body["source_assisted_replay"]["candidate_count"] == 17
-    assert body["source_assisted_replay"]["tier_distribution"]["high_trust_usable"] == 10
-    assert body["source_assisted_replay"]["tier_distribution"]["manual_lookup"] == 7
-    assert body["workbook_replay"]["row_count"] == 17
-    assert body["workbook_replay"]["tier_distribution"]["READY_WITH_CONTACT"] == 10
-    assert body["workbook_replay"]["tier_distribution"]["MANUAL_LOOKUP"] == 7
-    assert body["workbook_replay"]["export_headers"][:7] == [
-        "query",
-        "run_id",
-        "rank",
-        "workbook_tier",
-        "operator_label",
-        "candidate_category",
-        "crm_ready",
-    ]
-
-    ready_row = next(row for row in body["workbook_replay"]["rows"] if row["workbook_tier"] == "READY_WITH_CONTACT")
-    manual_row = next(row for row in body["workbook_replay"]["rows"] if row["workbook_tier"] == "MANUAL_LOOKUP")
-    assert ready_row["crm_ready"] is True
-    assert ready_row["source_name_url"]
-    assert ready_row["source_email_url"]
-    assert manual_row["crm_ready"] is False
-    assert manual_row["source_org_url"]
-    assert manual_row["blocker_notes"]
-    assert manual_row["next_action"]
-    assert body["safety_checks"]["unsupported_crm_ready_rows"] == []
-    assert body["safety_checks"]["manual_lookup_crm_ready_rows"] == []
-    assert body["safety_checks"]["private_contact_values_redacted"] is True
-    assert body["service_boundary"]["protected_route_ok"] is True
-    assert body["service_boundary"]["internal_token_required"] is True
-    assert body["service_boundary"]["response_status"] == 200
-    assert body["prompt_b_handoff"]["keep_downstream_blocked"] is True
-    assert body["passes"] is True
-
-
 @pytest.mark.parametrize(
     ("method", "path", "payload"),
     [
         ("post", "/scout", {"query": "K-12 IT directors in Albuquerque"}),
         ("post", "/full", {"query": "K-12 IT directors in Albuquerque"}),
-        ("post", "/source-assisted-proof", {"query": "NM IT for school districts"}),
         ("post", "/batch", {"name": "Test batch", "queries": [{"query": "K-12 IT directors in Albuquerque"}]}),
         ("post", "/sandbox/reset", {}),
         ("get", "/recipes", None),
@@ -135,6 +96,7 @@ def test_source_assisted_proof_endpoint_returns_live_boundary_payload():
         ("post", "/runs/11111111-1111-1111-1111-111111111111/close", {"operator_minutes": 10}),
         ("get", "/batch", None),
         ("get", "/batch/11111111-1111-1111-1111-111111111111", None),
+        ("get", "/readiness", None),
     ],
 )
 def test_protected_api_endpoints_require_internal_token(method, path, payload):
@@ -529,7 +491,6 @@ def test_feedback_endpoint_rejects_noncanonical_labels(monkeypatch):
 
 def test_feedback_endpoint_updates_existing_feedback(monkeypatch):
     existing_feedback = SimpleNamespace(lead_id=None, label=None)
-    captured = {}
 
     class FakeQuery:
         def __init__(self, result):
@@ -900,44 +861,6 @@ def test_get_recipe_scoreboard_seeds_canonical_feedback_counts(monkeypatch):
     assert scoreboard["minutes_per_usable_lead"] == 18.5
     assert scoreboard["api_cost_per_usable_lead"] == 0.42
 
-
-def test_scout_endpoint_forwards_filters(monkeypatch):
-    captured = {}
-    state = SimpleNamespace(
-        total_queries=0,
-        total_rows=0,
-        max_queries=10,
-        max_rows=1000,
-        reset_at=datetime(2026, 1, 1, 12, 0, 0),
-    )
-
-    @contextmanager
-    def fake_db_session():
-        yield object()
-
-    async def fake_scout(query: str, **kwargs):
-        captured["query"] = query
-        captured["filters"] = kwargs.get("filters")
-        return [], RunMetrics()
-
-    monkeypatch.setattr("api.main.get_db_session", fake_db_session)
-    monkeypatch.setattr("api.main.get_sandbox_state", lambda session: state)
-    monkeypatch.setattr("api.main.get_sandbox_state_for_update", lambda session: state)
-    monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
-    monkeypatch.setattr("api.main.scout", fake_scout)
-    monkeypatch.setattr(
-        "api.main._persist_run_and_build_readback",
-        lambda session, **kwargs: fake_persistence_readback(kwargs["leads"]),
-    )
-
-    response = client.post(
-        "/scout",
-        json={"query": "K-12 IT directors in Albuquerque", "filters": {"location": "Albuquerque"}},
-    )
-
-    assert response.status_code == 200
-    assert captured["query"] == "K-12 IT directors in Albuquerque"
-    assert captured["filters"] == {"location": "Albuquerque"}
 
 def test_sandbox_usage_endpoint_returns_usage(monkeypatch):
     state = SimpleNamespace(
@@ -1364,6 +1287,7 @@ def test_batch_endpoint_creates_job_and_runs(monkeypatch):
     monkeypatch.setattr("api.main.create_batch_job", fake_create_batch_job)
     monkeypatch.setattr("api.main.create_batch_run", fake_create_batch_run)
     monkeypatch.setattr("api.main.update_batch_run", fake_update_batch_run)
+    monkeypatch.setattr("api.main.update_batch_job_progress", lambda session, job_id, **kwargs: FakeJob())
     monkeypatch.setattr("api.main.close_batch_job", fake_close_batch_job)
     monkeypatch.setattr("api.main.get_batch_runs", fake_get_batch_runs)
     monkeypatch.setattr("api.main.scout", fake_scout)
@@ -1515,9 +1439,31 @@ def test_batch_endpoint_respects_caps(monkeypatch):
     monkeypatch.setattr("api.main.create_batch_job", fake_create_batch_job)
     monkeypatch.setattr("api.main.create_batch_run", fake_create_batch_run)
     monkeypatch.setattr("api.main.update_batch_run", fake_update_batch_run)
+    monkeypatch.setattr("api.main.update_batch_job_progress", lambda session, job_id, **kwargs: FakeJob())
     monkeypatch.setattr("api.main.close_batch_job", fake_close_batch_job)
     monkeypatch.setattr("api.main.get_batch_runs", fake_get_batch_runs)
     monkeypatch.setattr("api.main.scout", fake_scout)
+    monkeypatch.setattr(
+        "api.main.get_sandbox_state",
+        lambda session: SimpleNamespace(
+            total_queries=0,
+            total_rows=0,
+            max_queries=10,
+            max_rows=1000,
+            reset_at=datetime(2026, 1, 1, 12, 0, 0),
+        ),
+    )
+    monkeypatch.setattr(
+        "api.main.get_sandbox_state_for_update",
+        lambda session: SimpleNamespace(
+            total_queries=0,
+            total_rows=0,
+            max_queries=10,
+            max_rows=1000,
+            reset_at=datetime(2026, 1, 1, 12, 0, 0),
+        ),
+    )
+    monkeypatch.setattr("api.main.record_sandbox_rows", lambda session, rows: None)
     monkeypatch.setattr("api.main.create_recipe", lambda session, **kwargs: type("FakeRecipe", (), {"id": UUID("44444444-4444-4444-4444-444444444444")})())
     monkeypatch.setattr("api.main.create_recipe_run", lambda session, **kwargs: type("FakeRecipeRun", (), {"id": UUID("55555555-5555-5555-5555-555555555555")})())
     monkeypatch.setattr("api.main.save_leads", lambda session, run_id, leads: [type("FakeLead", (), {"id": UUID("66666666-6666-6666-6666-666666666666")})()])
@@ -1526,7 +1472,7 @@ def test_batch_endpoint_respects_caps(monkeypatch):
         "/batch",
         json={
             "name": "Cap test",
-            "queries": [{"query": "Query 1"}],
+            "queries": [{"query": "IT directors at school districts in Albuquerque NM"}],
             "cap_max_spend_usd": 0.01,
         },
     )
@@ -1537,6 +1483,127 @@ def test_batch_endpoint_respects_caps(monkeypatch):
     assert any(r["status"] == "failed" for r in body["runs"])
     assert body["total_leads"] == 0
     assert body["total_cost_usd"] == 0.0
+
+
+def test_batch_releases_db_locks_commits_per_run_and_enforces_prelaunch_spend_cap(monkeypatch, tmp_path):
+    from api.db import get_db_session as real_get_db_session
+    from api.db import get_shared_engine
+    from api.models import Base, BatchJob, BatchRun
+    from api.models import Lead as DbLead
+
+    db_path = tmp_path / "batch_isolation.sqlite"
+    monkeypatch.setenv("DATABASE_URL", f"sqlite:///{db_path}")
+    engine = get_shared_engine()
+    Base.metadata.create_all(engine)
+
+    open_sessions = {"count": 0}
+
+    @contextmanager
+    def tracked_db_session():
+        open_sessions["count"] += 1
+        try:
+            with real_get_db_session() as session:
+                yield session
+        finally:
+            open_sessions["count"] -= 1
+
+    monkeypatch.setattr("api.main.get_db_session", tracked_db_session)
+
+    scout_calls: list[str] = []
+
+    async def fake_scout_cap(query: str, **kwargs):
+        assert open_sessions["count"] == 0
+        sandbox_resp = client.get("/sandbox")
+        assert sandbox_resp.status_code == 200
+        scout_calls.append(query)
+        return (
+            [
+                Lead(
+                    name="Jane Smith",
+                    title="Director of Technology",
+                    organization="Albuquerque Public Schools",
+                    email="jane.smith@aps.edu",
+                    email_status="Found",
+                    source_url="https://aps.edu/tech",
+                    confidence=0.88,
+                    why_target="Owns district telecom decisions",
+                    icebreaker="APS connectivity",
+                    fit_score=0.91,
+                    evidence_score=0.84,
+                    contact_score=0.79,
+                    gate_passed=True,
+                    explanation="Verified district IT leader.",
+                )
+            ],
+            RunMetrics(
+                input_tokens=100,
+                output_tokens=40,
+                tavily_searches=1,
+                elapsed_seconds=0.2,
+                estimated_cost_usd=0.05,
+            ),
+        )
+
+    monkeypatch.setattr("api.main.scout", fake_scout_cap)
+
+    resp_cap = client.post(
+        "/batch",
+        json={
+            "name": "Pre-launch cap batch",
+            "queries": [
+                {"query": "IT directors at school districts in Albuquerque NM"},
+                {"query": "IT directors at school districts in Santa Fe NM"},
+            ],
+            "cap_max_spend_usd": 0.05,
+        },
+    )
+    assert resp_cap.status_code == 200
+    cap_body = resp_cap.json()
+    assert scout_calls == ["IT directors at school districts in Albuquerque NM"]
+    assert cap_body["status"] == "completed_with_errors"
+    assert cap_body["total_leads"] == 1
+    assert cap_body["total_cost_usd"] == pytest.approx(0.05)
+    assert [r["status"] for r in cap_body["runs"]] == ["completed", "failed"]
+    assert cap_body["runs"][1]["error_message"] == "Spend cap exceeded"
+
+    committed_before_second_failure = {"leads_in_db": 0, "completed_runs_in_db": 0}
+
+    async def fake_scout_partial_failure(query: str, **kwargs):
+        assert open_sessions["count"] == 0
+        if "Santa Fe" in query:
+            with real_get_db_session() as verify_session:
+                committed_before_second_failure["leads_in_db"] = verify_session.query(DbLead).count()
+                committed_before_second_failure["completed_runs_in_db"] = (
+                    verify_session.query(BatchRun).filter(BatchRun.status == "completed").count()
+                )
+            raise RuntimeError("Simulated upstream timeout on query 2")
+        return await fake_scout_cap(query, **kwargs)
+
+    monkeypatch.setattr("api.main.scout", fake_scout_partial_failure)
+
+    resp_partial = client.post(
+        "/batch",
+        json={
+            "name": "Commit per run batch",
+            "queries": [
+                {"query": "IT directors at school districts in Las Cruces NM"},
+                {"query": "IT directors at school districts in Santa Fe NM"},
+            ],
+            "cap_max_spend_usd": 1.0,
+        },
+    )
+    assert resp_partial.status_code == 200
+    assert committed_before_second_failure["leads_in_db"] == 2
+    assert committed_before_second_failure["completed_runs_in_db"] == 2
+    partial_body = resp_partial.json()
+    assert partial_body["status"] == "completed_with_errors"
+    assert partial_body["total_leads"] == 1
+    assert [r["status"] for r in partial_body["runs"]] == ["completed", "failed"]
+
+    with real_get_db_session() as verify_session:
+        persisted_job = verify_session.query(BatchJob).filter(BatchJob.name == "Commit per run batch").one()
+        assert persisted_job.total_leads == 1
+        assert persisted_job.status == "completed_with_errors"
 
 
 def test_full_endpoint_returns_persisted_lead_ids(monkeypatch):
@@ -1582,7 +1649,7 @@ def test_full_endpoint_returns_persisted_lead_ids(monkeypatch):
             total_rows=0,
             max_queries=10,
             max_rows=1000,
-            reset_at=datetime.utcnow(),
+            reset_at=datetime(2026, 1, 1, 12, 0, 0),
         )
 
     def fake_record_sandbox_rows(session, rows):

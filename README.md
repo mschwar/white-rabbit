@@ -1,75 +1,40 @@
-# White Rabbit v2
+# White Rabbit
 
-## TL;DR
+Internal-first B2B lead research tool for Matt, Thomas, and Lee.
 
-**White Rabbit turns a business-to-business target query and public web pages into an audited lead spreadsheet.** Give it a target role, account list, or source URLs. It verifies every name, title, organization, and contact against public evidence, separates ready rows from review or missing-contact rows, and exports provenance-backed CSVs (currently in red-gate rebuild).
+> **Current state:** Internal operator evaluation (`main`). Not a public SaaS — no self-serve signup, orgs, or billing.
 
-## Current Status
-
-Internal-first business-to-business (B2B) lead research tool for Matt, Thomas, and Lee.
-
-> **Current state:** Red-gate validated-leads rebuild. Do not ship and do not use for Thomas/Lee daily dogfood until the benchmark gates say otherwise.
-
-AI agents must read [`AGENTS.md`](./AGENTS.md), [`STATUS.md`](./STATUS.md), [`docs/00-product-northstar.md`](./docs/00-product-northstar.md), [`docs/08-agentic-buildout-plan.md`](./docs/08-agentic-buildout-plan.md), and [`docs/09-rebuild-phase-gates.md`](./docs/09-rebuild-phase-gates.md) before working.
-
-Humans should start with [`docs/00-product-northstar.md`](./docs/00-product-northstar.md) for current product truth and [`STATUS.md`](./STATUS.md) for current branch/state.
-
-## What This Is
-
-White Rabbit is being rebuilt around one core loop:
+## Core Loop
 
 ```text
 natural-language B2B target
-  -> checked candidates
-  -> field-level evidence
-  -> ranked validated rows
-  -> export with validation context
+  -> query guardrails & source planning
+  -> candidate discovery & source validation
+  -> field-level evidence & quality scoring
+  -> ranked leads + CSV export
 ```
 
-It does not win by returning the most leads. It wins only if it returns better, more trustworthy lead data than ZoomInfo/DiscoverOrg-style lists: real people, right persona, source-backed title/org/contact data, and explicit missing/failed states.
+White Rabbit prioritizes verified people, persona fit, source-backed organization/contact evidence, and explicit missing/blocker states over raw unverified lead volume.
 
-## What This Is Not
+## Authority Docs
 
-- Not the frozen Scotty demo. That reference app lives outside this repo (`C:\Users\Matty\Documents\proxy-lead` in this workspace; older docs may mention `/Users/mschwar/Documents/proxy-lead`) and must not be edited.
-- Not a public SaaS. No signup, orgs, billing, or customer self-serve access.
-- Not green for Thomas/Lee daily use. The product remains red until benchmark and browser gate evidence says otherwise.
-- Not currently a recipe/batch-first workbench. Recipes, batch, scoreboards, Friday review, and sandbox reset are internal/deferred while the product is red.
-
-## Current Authority Docs
-
-When docs conflict, use this order:
-
-1. [`docs/03-decisions.md`](./docs/03-decisions.md) for locked ADR history.
-2. [`docs/00-product-northstar.md`](./docs/00-product-northstar.md) for current product truth and launch gates.
-3. [`STATUS.md`](./STATUS.md) for current repo state and next pointer.
-4. [`docs/08-agentic-buildout-plan.md`](./docs/08-agentic-buildout-plan.md) for rebuild feature sequencing.
-5. [`docs/09-rebuild-phase-gates.md`](./docs/09-rebuild-phase-gates.md) for wave-gate rules.
-6. [`docs/qa-rubric.md`](./docs/qa-rubric.md) for QA tiers.
-
-Older roadmap, `BUILDOUT`, audit, QA, and meeting docs are historical unless their status banner says `Active`.
+1. [`AGENTS.md`](./AGENTS.md) — operating rules and verification policy.
+2. [`docs/03-decisions.md`](./docs/03-decisions.md) — architectural decision records (ADRs).
+3. [`docs/00-product-northstar.md`](./docs/00-product-northstar.md) — product scope and quality bar.
+4. [`STATUS.md`](./STATUS.md) — concise current repository status.
+5. [`TESTING.md`](./TESTING.md) — local verification commands.
 
 ## Stack
 
-- Web: Next.js 16.2.4 App Router, React 19.2.4, TypeScript, Tailwind 4.
-- API: FastAPI 0.136+, Python 3.12+, SQLAlchemy 2.0+, Alembic 1.18+.
-- Core: shared Python package for search, guardrails, scoring, and extraction primitives.
-- DB: Postgres.
-- Boundary: shared password for the app plus `WR_API_INTERNAL_TOKEN` for web-to-API calls.
-
-Frontend code never holds OpenAI/Tavily keys. Third-party search/extraction calls happen in the Python service.
+- **Web (`apps/web`):** Next.js 16 App Router, React 19, TypeScript, Tailwind 4 (deployed on Vercel).
+- **API (`apps/api`):** FastAPI, Python 3.12+, SQLAlchemy 2.0, Alembic (deployed on Fly.io).
+- **Core (`packages/core`):** Shared Python search, query planning/guardrails, source validation, contact evidence, and scoring primitives.
+- **Database:** PostgreSQL.
+- **Auth boundary:** Shared operator password + signed session cookie on Web; `x-white-rabbit-internal-token` (`WR_API_INTERNAL_TOKEN`) on all server-to-server Web -> API proxy calls. Frontend code never holds OpenAI or Tavily keys.
 
 ## Local Setup
 
-### Prerequisites
-
-- Node.js 22+ and `npm`
-- Python 3.12+ and `uv`
-- Docker Desktop or compatible Docker CLI
-- OpenAI and Tavily API keys if running live search paths
-
-### 1. Configure Environment
-
-Copy env examples:
+### 1. Environment
 
 ```bash
 cp .env.example .env
@@ -77,49 +42,30 @@ cp apps/api/.env.example apps/api/.env
 cp apps/web/.env.example apps/web/.env.local
 ```
 
-Set these values:
+Required variables:
 
 | Variable | Files | Purpose |
 | --- | --- | --- |
 | `OPENAI_API_KEY` | `.env`, `apps/api/.env` | OpenAI extraction |
 | `TAVILY_API_KEY` | `.env`, `apps/api/.env` | Web search |
-| `DATABASE_URL` | `.env`, `apps/api/.env` | Postgres connection |
-| `WR_SHARED_PASSWORD` | `.env`, `apps/api/.env`, `apps/web/.env.local` | Shared app password |
-| `WR_SESSION_SECRET` | `.env`, `apps/api/.env`, `apps/web/.env.local` | Cookie signing secret, 32+ chars |
-| `WR_API_INTERNAL_TOKEN` | `.env`, `apps/api/.env`, `apps/web/.env.local` | Server-to-server API boundary token |
+| `DATABASE_URL` | `.env`, `apps/api/.env` | PostgreSQL connection |
+| `WR_SHARED_PASSWORD` | `.env`, `apps/api/.env`, `apps/web/.env.local` | Shared operator password |
+| `WR_SESSION_SECRET` | `.env`, `apps/api/.env`, `apps/web/.env.local` | Cookie signing secret (32+ chars) |
+| `WR_API_INTERNAL_TOKEN` | `.env`, `apps/api/.env`, `apps/web/.env.local` | Internal Web -> API token |
 
-For Docker compose Postgres, use:
-
-```text
-DATABASE_URL=postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit
-```
-
-`OPENAI_BASE_URL` is optional. Leave it unset unless deliberately using a local OpenAI-compatible endpoint.
-
-### 2. Start Postgres
+### 2. Start Postgres & Migrate
 
 ```bash
 docker compose up -d
-```
-
-### 3. Install API Dependencies And Migrate
-
-```bash
 cd apps/api
-uv sync
+uv sync --dev
 uv run alembic upgrade head
-```
-
-### 4. Start API
-
-```bash
-cd apps/api
 uv run uvicorn api.main:app --reload --port 8000
 ```
 
-`GET /health` remains public. Lead/search/sandbox endpoints require `x-white-rabbit-internal-token`.
+`GET /health` is public for container healthchecks. `GET /readiness` and all lead/search/batch/recipe/sandbox endpoints require `x-white-rabbit-internal-token`.
 
-### 5. Start Web
+### 3. Start Web
 
 ```bash
 cd apps/web
@@ -127,52 +73,28 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:3000` and log in with `WR_SHARED_PASSWORD`.
+## Verification & Merge Policy
 
-## Running Tests
-
-See [`TESTING.md`](./TESTING.md) for the current command set.
-
-Common checks:
+Hosted cloud-VM PR runners are retired (`workflow_dispatch` only in [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml)); merge policy lives in [`ops/merge-policy.json`](./ops/merge-policy.json) (`GitGuardian Security Checks` required, local verification before merge).
 
 ```bash
-python3 -m unittest tests/test_doc_hygiene.py -v
-cd apps/web && npm test -- --run
-cd apps/api && $env:DATABASE_URL='postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit'; uv run pytest tests/test_api.py -q
 cd packages/core && uv run pytest tests -q
+cd apps/api && DATABASE_URL=postgresql://white_rabbit:white_rabbit_dev@localhost:5432/white_rabbit uv run pytest tests -q
+cd apps/web && npm test -- --run && npm run build
 ```
-
-On macOS/Linux, use `DATABASE_URL=... uv run pytest ...` instead of the PowerShell env assignment.
-
-## Deployment
-
-Deployment config exists for Vercel (web), Fly.io (API), and Neon/Postgres. The rebuild branch is not a launch signal. Production or preview deploys must still respect the red/yellow/green launch gate in `docs/00-product-northstar.md`.
-
-Web production deploys are intended to run from GitHub Actions using `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID` repo secrets, not by relying on Vercel Git auto-deploy author matching. This keeps deploy authority tied to repository automation instead of the individual commit author. If the Actions-based Vercel deploy is enabled, disable the Vercel project's Git auto-deploy so Hermes/automation pushes do not trigger "commit author is not a team member" failures.
 
 ## Project Layout
 
 ```text
 white-rabbit/
 ├── apps/
-│   ├── api/           FastAPI + SQLAlchemy + Alembic
-│   └── web/           Next.js App Router + TypeScript
+│   ├── api/           FastAPI + SQLAlchemy + Alembic service
+│   └── web/           Next.js App Router frontend & authenticated API proxy routes
 ├── packages/
-│   └── core/          Shared Python primitives
-├── archive/           Folded pre-product dumps (WR-v3, OrgAtlas); not product source
-├── docs/              Current control docs plus historical records
-├── audits/            Audit evidence and raw outputs
-└── .gstack/           QA and gate reports
+│   └── core/          Shared Python search, guardrails, validation, and scoring
+├── docs/              Product, architecture, and historical design docs
+└── ops/               Fleet merge policy (`ops/merge-policy.json`)
 ```
-
-## Archive
-
-Pre-product brainstorm and OrgAtlas meeting material folded in on 2026-09-16 (text in git; heavy media on ai-server `/central`). See [`docs/archive/INDEX.md`](./docs/archive/INDEX.md).
-
-- [`archive/wr-v3-brainstorm-2026-06/`](./archive/wr-v3-brainstorm-2026-06/) — WR-v3 handwritten brainstorm transcripts
-- [`archive/orgatlas-2026-05/`](./archive/orgatlas-2026-05/) — OrgAtlas brand + Monroe St NE transcripts
-
-Standalone Developer checkouts `WR-v3` and `orgatlas` are retired as working surfaces; GitHub remotes remain as cold backup.
 
 ## License
 
