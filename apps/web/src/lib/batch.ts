@@ -74,6 +74,15 @@ export async function fetchBatchJobs(): Promise<BatchJobItem[]> {
   return response.json();
 }
 
+export async function fetchBatchJob(jobId: string): Promise<BatchJobItem> {
+  const response = await fetch(`/api/batch/${encodeURIComponent(jobId)}`);
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({} as Record<string, unknown>));
+    throw new Error(String(body.error ?? body.detail ?? 'Failed to fetch batch job.'));
+  }
+  return response.json();
+}
+
 export function parseBatchCsv(text: string): BatchQueryItem[] {
   const lines = text.trim().split(/\r?\n/);
   if (lines.length === 0) return [];

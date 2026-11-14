@@ -1,90 +1,28 @@
-# AGENTS.md — White Rabbit v2
+# AGENTS.md — White Rabbit
 
-**You are an AI agent. Read this entire file before doing anything else. It is short on purpose.**
+Canonical operating guide for agents working in `mschwar/white-rabbit`.
 
-## What this repo is
+## What This Repo Is
 
-White Rabbit v2 is a greenfield, internal-first, self-serve B2B prospecting tool for three operators:
+White Rabbit is an internal-first B2B lead prospecting application for Matt, Thomas, and Lee:
 
-- **Matt** — product builder, fulfillment operator for paid customer briefings.
-- **Thomas** — full-time B2B sales rep employed elsewhere; uses White Rabbit in his own daily prospecting. **Primary product signal.**
-- **Lee** — full-time direct-to-consumer (DTC) sales rep employed elsewhere; uses White Rabbit to test generalization beyond B2B. Secondary signal. Also presents the Scotty demo.
+- **Web (`apps/web`):** Next.js App Router UI and authenticated `/api/*` server-side proxy routes.
+- **API (`apps/api`):** FastAPI + SQLAlchemy + PostgreSQL service enforcing `WR_API_INTERNAL_TOKEN` (`x-white-rabbit-internal-token`).
+- **Core (`packages/core`):** Shared Python search, query planner/guardrails, SSRF-safe source validation, contact evidence, and lead scoring (`scout()`).
 
-The customer offer is scoped concierge briefings fulfilled by Matt. **There is no external self-serve product yet.** Self-serve here means the three operators can use the tool without asking each other for help.
+## Hard Guardrails
 
-## What this repo is NOT
+1. **Internal-only scope:** No public self-serve signup, multi-tenant orgs, or billing unless explicitly authorized by Matt.
+2. **Secrets stay server-side:** Browser/client bundles never hold `OPENAI_API_KEY`, `TAVILY_API_KEY`, `DATABASE_URL`, or `WR_API_INTERNAL_TOKEN`. Never log raw credential-bearing URLs or tokens.
+3. **All Web -> API traffic goes through authenticated Next.js route handlers:** Never add unauthenticated `vercel.json` rewrites to the FastAPI backend. Keep `GET /health` lightweight and non-leaking; keep `GET /readiness` and operational routes behind `ProtectedApiAccess`.
+4. **Database & external I/O safety:** Never hold open DB transactions or row locks across external network/LLM calls (`scout()`, Tavily, OpenAI, HTTP fetches). Validate external URLs against SSRF and cap response body sizes.
+5. **Runtime data belongs in package source:** Runtime data files live under `packages/core/src/core/data/`, never under `tests/fixtures/`.
+6. **Worktree & merge hygiene:** Work on feature branches from `origin/main`, commit per logical step, lint touched Python files with `uvx ruff check`, verify locally, and merge only with human authorization per `ops/merge-policy.json` (`GitGuardian Security Checks` required; hosted cloud-VM PR runners retired).
 
-- Not the Scotty demo. The demo lives outside this repo and is **frozen indefinitely**. Do not edit it.
-- Not a multi-tenant SaaS. No accounts, no orgs, no billing. One shared password gates the app.
-- Not a ZoomInfo competitor by data scale. Differentiation is recipes + visible provenance + ranked output, not list size.
+## Key References
 
-## Read order before working
-
-1. `STATUS.md` — what's done, what's next, what's in flight. **Always read this second.**
-2. `docs/reset-current-assignment.json` — machine-readable current Prompt A/B/C assignment lock. If your assigned prompt or branch disagrees with this file, stop without editing, committing, merging, or pushing.
-3. `docs/03-decisions.md` — locked decisions. Do not re-litigate. New entries append; old entries do not change.
-4. `docs/00-product-northstar.md` — current product truth, launch gate, usable-lead definition, anti-drift rules.
-5. `docs/12-reset-gated-implementation-plan-2026-05-10.md` — active reset queue, reusable Prompt A/B/C loop, gate statuses, and next feature pointer.
-6. `docs/08-agentic-buildout-plan.md` — historical F00-F23 feature queue overlaid by the reset plan. Do not execute from it unless `docs/12` explicitly sends you back.
-7. `docs/09-rebuild-phase-gates.md` — historical W0-W6 wave plan overlaid by the reset plan. Do not execute W5/W6 from it.
-8. `docs/qa-rubric.md` — QA ship-gate tiers. Any change touching extraction/scoring must pass Tiers 1–4 unless a reset gate is stricter.
-9. `docs/02-stack.md` — current Next.js + Python + Postgres layout, conventions, env vars.
-10. `docs/00-context.md`, `docs/01-model.md`, `docs/05-reuse.md` — strategic and bootstrap reference. Check their status banners before treating them as active instructions.
-11. `docs/04-roadmap.md`, `docs/06-audit-action-plan.md`, `docs/07-buildout-plan.md` — historical/superseded plans. Do not execute from these unless the current active docs explicitly say to.
-
-## Project rules (do not break these)
-
-1. **STATUS.md is the source of truth for "where we are."** Read it at session start. Update it at session end.
-2. **Locked decisions in `docs/03-decisions.md` are locked.** If you disagree, surface it to Matt — do not silently change them.
-3. **Demo is frozen.** Never edit anything in the external `proxy-lead` repo.
-4. **Reuse before rewriting.** Before writing new search/extract/score code, check `docs/05-reuse.md`.
-5. **No scope creep.** The active reset feature or gate in `docs/12-reset-gated-implementation-plan-2026-05-10.md` is the work. New ideas → propose, don't ship.
-6. **No external self-serve features.** No signup, no per-user accounts, no billing, no public landing pages until the kill/keep gate passes.
-7. **Frontend never holds API keys.** All Tavily / OpenAI / search-vendor calls happen in the Python service.
-8. **Recipes are internal while red.** Recipes remain strategically important, but recipe library / batch / Friday review surfaces stay out of the primary operator path until the launch gate allows them.
-9. **Three scores remain visible only when evidence-backed.** Fit / Evidence / Contact are useful only when driven by field-level validation, not LLM optimism.
-10. **Track operator minutes per usable lead.** This is the headline key performance indicator (KPI). API cost is secondary, but do not add operator-minute ceremony before the validated query-to-export loop works.
-11. **Keep human-facing documentation concrete and verified.** Lead human-facing guides (`README.md`, `DESIGN.md`, `TESTING.md`, `docs/*.md`) with concrete inputs, checks, and outputs (`## TL;DR` of `1..60` words in `README.md`), keep prose sentences at or under 45 words, avoid banned filler and unexpanded domain acronyms, never commit `file://` links, and run `python3 -m unittest tests/test_doc_hygiene.py -v` before committing.
-
-## Mainline reset protocol
-
-For the validated-leads reset, feature/audit work now starts from `main`.
-
-- ADR-024 supersedes the old `rebuild/validated-leads-loop` integration policy. Treat `main` as both the active integration branch and the operator-use deployment line.
-- Feature branches branch from `main` and merge back to `main` after Prompt B QA passes.
-- Do not use `rebuild/validated-leads-loop` as the control-plane source of truth for new reset work. It is historical unless Matt explicitly revives it.
-- Before rebuild work, read `docs/00-product-northstar.md` and `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
-- Pick the next `ready` reset feature from `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
-- For reset work, first verify `docs/reset-current-assignment.json`. This file is a stop-lock: if it names a different prompt/feature/branch than the one you were asked to run, report the mismatch and do not change files.
-- All feature branches branch from `main` and all PRs target `main`.
-- Update `docs/12-reset-gated-implementation-plan-2026-05-10.md` and `STATUS.md` before ending. Update `docs/08-agentic-buildout-plan.md` only if the reset plan explicitly calls for it.
-- If a feature touches UI, browser QA and screenshots are required.
-- If a feature does not touch UI, explicit non-UI verification is required.
-
-## Anti-drift
-
-- If `docs/03-decisions.md` and your instinct disagree, the doc wins. Surface the disagreement; don't act on it.
-- If STATUS.md is stale or contradicts code, fix STATUS.md to match reality and note it in your update.
-- If a scope question is ambiguous, default to the smaller scope. The reset queue is small on purpose.
-- If you're tempted to "just also add X," resist. Add X as an explicit future candidate or open question in `STATUS.md`; do not revive the legacy roadmap.
-
-## Session protocol
-
-1. Read AGENTS.md, STATUS.md, and the most recent decision in `docs/03-decisions.md`.
-2. Read `docs/reset-current-assignment.json`, `docs/00-product-northstar.md`, `docs/12-reset-gated-implementation-plan-2026-05-10.md`, and `docs/13-pipeline-orchestrator-contract-2026.md` before selecting reset work.
-3. Pick up the next task in STATUS.md (or one explicitly assigned by Matt). For reset work, the next task must match the next `ready` feature or current gate in `docs/12-reset-gated-implementation-plan-2026-05-10.md`.
-4. Do the work. Reuse before writing new code.
-5. Before ending the session, update STATUS.md: what you did, what's next, any open questions.
-6. If the session touched `docs/07-buildout-plan.md` work, update that checklist in the same session so the next agent can pick up from the true state. For current reset work, prefer `docs/12-reset-gated-implementation-plan-2026-05-10.md` and gate reports instead.
-7. If you made any architectural / scope / dependency / documentation-authority decision that wasn't already in `docs/03-decisions.md`, append a new ADR entry there.
-8. Commit your changes with a clear message. Conventional commits style preferred (`feat:`, `fix:`, `docs:`, `chore:`).
-
-## Useful paths
-
-- This repo in the current Codex workspace: `C:\Users\Matty\Documents\white-rabbit`
-- Frozen demo (read-only reference): `C:\Users\Matty\Documents\proxy-lead` in this workspace; older docs may mention `/Users/mschwar/Documents/proxy-lead`
-- Strategic plan archived from bootstrap: `/Users/mschwar/.claude/plans/the-demo-is-good-encapsulated-wigderson.md`
-
-## When you finish
-
-Mark your work done. Update STATUS.md. Commit. That's it.
+- [`README.md`](./README.md) — architecture, environment setup, and commands.
+- [`STATUS.md`](./STATUS.md) — concise current repository status.
+- [`TESTING.md`](./TESTING.md) — local test commands for `packages/core`, `apps/api`, and `apps/web`.
+- [`docs/00-product-northstar.md`](./docs/00-product-northstar.md) — product scope and lead quality bar.
+- [`docs/03-decisions.md`](./docs/03-decisions.md) — architectural decision records.

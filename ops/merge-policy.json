@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "default_branch": "main",
+  "human_merge_required": true,
+  "required_checks": [
+    "GitGuardian Security Checks"
+  ],
+  "retired_checks": [
+    "test",
+    "Test",
+    "ci/full-suite"
+  ],
+  "local_verification_required": true,
+  "hosted_pr_runners_retired": true
+}

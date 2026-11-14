@@ -1,15 +1,32 @@
 from __future__ import annotations
 
+import asyncio
+import ipaddress
 import re
-from datetime import datetime, timezone
+import socket
+from datetime import UTC, datetime
 from html import unescape
 from typing import Any
+from urllib.parse import urljoin, urlsplit
 
 import httpx
 
-from .models import Candidate, CandidateValidation, ContactValidationRecord, FieldValidationRecord
+from .models import (
+    Candidate,
+    CandidateValidation,
+    ContactValidationRecord,
+    FieldValidationRecord,
+)
 
 SOURCE_VALIDATION_TIMEOUT_SECONDS = 10.0
+MAX_SOURCE_RESPONSE_BYTES = 2 * 1024 * 1024
+MAX_SOURCE_REDIRECT_HOPS = 5
+_REDIRECT_STATUS_CODES = frozenset({301, 302, 303, 307, 308})
+_ALLOWED_SCHEMES = frozenset({"http", "https"})
+_FORBIDDEN_HOST_SUFFIXES = (".localhost", ".local", ".internal")
+_CGNAT_NETWORK = ipaddress.ip_network("100.64.0.0/10")
+_IPV6_ULA_NETWORK = ipaddress.ip_network("fc00::/7")
+_FLY_INTERNAL_NETWORK = ipaddress.ip_network("fdaa::/16")
 _SUPPORTED_SOURCE_FIELD_STATUSES = {"supported", "verified_found"}
 
 _HTML_TAG_RE = re.compile(r"<[^>]+>")
@@ -43,7 +60,7 @@ def _has_text(value: Any) -> bool:
 
 
 def _utc_now_iso() -> str:
-    return datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+    return datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
 
 
 def _normalize_source_text(text: str) -> str:
@@ -431,6 +448,193 @@ def _build_source_text_validation(
     )
 
 
+class UnsafeSourceUrlError(ValueError):
+    """Raised when a candidate source URL fails scheme, hostname, or SSRF IP checks."""
+
+
+class SourceResponseTooLargeError(ValueError):
+    """Raised when an upstream source response exceeds MAX_SOURCE_RESPONSE_BYTES."""
+
+
+def _is_forbidden_ip(addr: ipaddress.IPv4Address | ipaddress.IPv6Address) -> bool:
+    if isinstance(addr, ipaddress.IPv6Address):
+        if addr.ipv4_mapped is not None and _is_forbidden_ip(addr.ipv4_mapped):
+            return True
+        if addr in _IPV6_ULA_NETWORK or addr in _FLY_INTERNAL_NETWORK:
+            return True
+    elif addr in _CGNAT_NETWORK:
+        return True
+
+    return (
+        addr.is_loopback
+        or addr.is_private
+        or addr.is_link_local
+        or addr.is_multicast
+        or addr.is_unspecified
+        or addr.is_reserved
+        or not addr.is_global
+    )
+
+
+def resolve_host_ips(hostname: str, port: int) -> list[str]:
+    infos = socket.getaddrinfo(hostname, port, type=socket.SOCK_STREAM)
+    ips: list[str] = []
+    for info in infos:
+        sockaddr = info[4]
+        if not sockaddr:
+            continue
+        raw_ip = str(sockaddr[0]).split("%", 1)[0]
+        if raw_ip and raw_ip not in ips:
+            ips.append(raw_ip)
+    return ips
+
+
+async def _assert_safe_http_url(url: str) -> None:
+    parsed = urlsplit(url.strip())
+    scheme = parsed.scheme.lower()
+    if scheme not in _ALLOWED_SCHEMES:
+        raise UnsafeSourceUrlError(f"disallowed_scheme:{scheme or 'missing'}")
+    if parsed.username is not None or parsed.password is not None:
+        raise UnsafeSourceUrlError("credentials_in_url_disallowed")
+
+    raw_host = parsed.hostname
+    if not raw_host:
+        raise UnsafeSourceUrlError("missing_hostname")
+
+    hostname = raw_host.rstrip(".").lower().split("%", 1)[0]
+    if not hostname:
+        raise UnsafeSourceUrlError("missing_hostname")
+    if (
+        hostname in {"localhost", "metadata.google.internal"}
+        or hostname.endswith(_FORBIDDEN_HOST_SUFFIXES)
+    ):
+        raise UnsafeSourceUrlError(f"forbidden_hostname:{hostname}")
+
+    try:
+        literal_ip = ipaddress.ip_address(hostname)
+    except ValueError:
+        literal_ip = None
+
+    if literal_ip is not None:
+        if _is_forbidden_ip(literal_ip):
+            raise UnsafeSourceUrlError(f"forbidden_ip:{literal_ip}")
+        return
+
+    try:
+        port = parsed.port or (443 if scheme == "https" else 80)
+    except ValueError as exc:
+        raise UnsafeSourceUrlError("invalid_port") from exc
+
+    try:
+        resolved_ips = await asyncio.to_thread(resolve_host_ips, hostname, port)
+    except OSError as exc:
+        raise UnsafeSourceUrlError(f"dns_resolution_failed:{exc.__class__.__name__}") from exc
+
+    if not resolved_ips:
+        raise UnsafeSourceUrlError("dns_resolution_empty")
+
+    for raw_ip in resolved_ips:
+        try:
+            addr = ipaddress.ip_address(raw_ip)
+        except ValueError as exc:
+            raise UnsafeSourceUrlError(f"invalid_resolved_ip:{raw_ip}") from exc
+        if _is_forbidden_ip(addr):
+            raise UnsafeSourceUrlError(f"forbidden_resolved_ip:{addr}")
+
+
+def _check_content_length_header(headers: Any, *, max_bytes: int) -> None:
+    if headers is None or not hasattr(headers, "get"):
+        return
+    raw_len = headers.get("content-length")
+    if not raw_len:
+        return
+    try:
+        parsed_len = int(str(raw_len).strip())
+    except ValueError:
+        return
+    if parsed_len > max_bytes:
+        raise SourceResponseTooLargeError(f"content_length={parsed_len} exceeds max_bytes={max_bytes}")
+
+
+async def _fetch_safe_source_response(
+    client: Any,
+    source_url: str,
+    *,
+    max_bytes: int = MAX_SOURCE_RESPONSE_BYTES,
+    max_redirects: int = MAX_SOURCE_REDIRECT_HOPS,
+) -> tuple[int | Any, str, str]:
+    current_url = source_url.strip()
+
+    for hop in range(max_redirects + 1):
+        await _assert_safe_http_url(current_url)
+
+        if hasattr(client, "stream"):
+            async with client.stream("GET", current_url, follow_redirects=False) as response:
+                status_code = getattr(response, "status_code", None)
+                resolved_url = str(getattr(response, "url", current_url) or current_url)
+                headers = getattr(response, "headers", None)
+
+                if status_code in _REDIRECT_STATUS_CODES:
+                    location = headers.get("location") if headers is not None and hasattr(headers, "get") else None
+                    if not location:
+                        raise UnsafeSourceUrlError("redirect_missing_location")
+                    if hop >= max_redirects:
+                        raise UnsafeSourceUrlError(f"max_redirects_exceeded:{max_redirects}")
+                    current_url = urljoin(resolved_url, str(location).strip())
+                    continue
+
+                if resolved_url != current_url:
+                    await _assert_safe_http_url(resolved_url)
+
+                if not isinstance(status_code, int) or status_code < 200 or status_code >= 300:
+                    return status_code, resolved_url, ""
+
+                _check_content_length_header(headers, max_bytes=max_bytes)
+                buf = bytearray()
+                async for chunk in response.aiter_bytes():
+                    buf.extend(chunk)
+                    if len(buf) > max_bytes:
+                        raise SourceResponseTooLargeError(f"response_body_exceeded:{max_bytes}")
+
+                encoding = getattr(response, "encoding", None) or "utf-8"
+                try:
+                    text_body = buf.decode(encoding, errors="replace")
+                except LookupError:
+                    text_body = buf.decode("utf-8", errors="replace")
+                return status_code, resolved_url, text_body
+
+        response = await client.get(current_url, follow_redirects=False)
+        status_code = getattr(response, "status_code", None)
+        resolved_url = str(getattr(response, "url", current_url) or current_url)
+        headers = getattr(response, "headers", None)
+
+        if status_code in _REDIRECT_STATUS_CODES:
+            location = headers.get("location") if headers is not None and hasattr(headers, "get") else None
+            if not location:
+                raise UnsafeSourceUrlError("redirect_missing_location")
+            if hop >= max_redirects:
+                raise UnsafeSourceUrlError(f"max_redirects_exceeded:{max_redirects}")
+            current_url = urljoin(resolved_url, str(location).strip())
+            continue
+
+        if resolved_url != current_url:
+            await _assert_safe_http_url(resolved_url)
+
+        if not isinstance(status_code, int) or status_code < 200 or status_code >= 300:
+            return status_code, resolved_url, ""
+
+        _check_content_length_header(headers, max_bytes=max_bytes)
+        raw_content = getattr(response, "content", None)
+        if isinstance(raw_content, (bytes, bytearray)) and len(raw_content) > max_bytes:
+            raise SourceResponseTooLargeError(f"response_body_exceeded:{max_bytes}")
+        text_body = str(getattr(response, "text", "") or "")
+        if len(text_body.encode("utf-8", errors="replace")) > max_bytes:
+            raise SourceResponseTooLargeError(f"response_body_exceeded:{max_bytes}")
+        return status_code, resolved_url, text_body
+
+    raise UnsafeSourceUrlError(f"max_redirects_exceeded:{max_redirects}")
+
+
 async def _validate_candidate_source_with_client(
     candidate: Candidate,
     *,
@@ -439,17 +643,31 @@ async def _validate_candidate_source_with_client(
     checked_at: str,
 ) -> CandidateValidation:
     try:
-        response = await client.get(source_url, follow_redirects=True)
-    except Exception as exc:
+        status_code, resolved_url, raw_source_text = await _fetch_safe_source_response(
+            client,
+            source_url,
+        )
+    except UnsafeSourceUrlError as exc:
+        return _build_access_failure_validation(
+            candidate,
+            source_url=source_url,
+            checked_at=checked_at,
+            note=f"ssrf_blocked={exc}",
+        )
+    except SourceResponseTooLargeError as exc:
+        return _build_access_failure_validation(
+            candidate,
+            source_url=source_url,
+            checked_at=checked_at,
+            note=f"response_too_large={exc}",
+        )
+    except Exception as exc:  # noqa: BLE001
         return _build_access_failure_validation(
             candidate,
             source_url=source_url,
             checked_at=checked_at,
             note=f"fetch_error={exc.__class__.__name__}: {exc}",
         )
-
-    status_code = getattr(response, "status_code", None)
-    resolved_url = str(getattr(response, "url", source_url))
 
     if not isinstance(status_code, int):
         return _build_access_failure_validation(
@@ -467,7 +685,7 @@ async def _validate_candidate_source_with_client(
             note=f"http_status={status_code} resolved_url={resolved_url}",
         )
 
-    source_text = _normalize_source_text(getattr(response, "text", ""))
+    source_text = _normalize_source_text(raw_source_text)
     return _build_source_text_validation(
         candidate,
         resolved_url=resolved_url,
@@ -486,7 +704,10 @@ async def validate_candidate_source(candidate: Candidate, *, client: Any | None 
 
     try:
         if client is None:
-            async with httpx.AsyncClient(timeout=SOURCE_VALIDATION_TIMEOUT_SECONDS, follow_redirects=True) as async_client:
+            async with httpx.AsyncClient(
+                timeout=SOURCE_VALIDATION_TIMEOUT_SECONDS,
+                follow_redirects=False,
+            ) as async_client:
                 return await _validate_candidate_source_with_client(
                     candidate,
                     client=async_client,
@@ -499,7 +720,7 @@ async def validate_candidate_source(candidate: Candidate, *, client: Any | None 
             source_url=source_url,
             checked_at=checked_at,
         )
-    except Exception as exc:  # pragma: no cover - defensive guard for unexpected validator bugs
+    except Exception as exc:  # noqa: BLE001  # pragma: no cover - defensive guard for unexpected validator bugs
         return _build_access_failure_validation(
             candidate,
             source_url=source_url,

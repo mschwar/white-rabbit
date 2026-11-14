@@ -10,20 +10,12 @@ from openai import AsyncOpenAI
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 
 from .contact_evidence import ContactEvidenceStats, acquire_contact_evidence
+from .cost import RunMetrics, calculate_cost
 from .coverage import (
     query_plan_from_search_results,
     source_collection_from_search_results,
     write_broad_source_gap_rows,
     write_nonperson_coverage,
-)
-from .cost import RunMetrics, calculate_cost
-from .models import (
-    Candidate,
-    FailedCandidate,
-    Lead,
-    LeadList,
-    NotFoundCandidate,
-    OrganizationOnlyCandidate,
 )
 from .lead_quality_policy import (
     READY_CONTACT_STATUSES,
@@ -35,8 +27,19 @@ from .lead_quality_policy import (
     validation_note,
     validation_status,
 )
+from .models import (
+    Candidate,
+    FailedCandidate,
+    Lead,
+    LeadList,
+    NotFoundCandidate,
+    OrganizationOnlyCandidate,
+)
 from .search import fetch_search_results
-from .source_validation import SOURCE_VALIDATION_TIMEOUT_SECONDS, validate_candidate_source
+from .source_validation import (
+    SOURCE_VALIDATION_TIMEOUT_SECONDS,
+    validate_candidate_source,
+)
 
 DEFAULT_MODEL = "gpt-4o-mini"
 DEFAULT_TAVILY_RESULTS = 50
@@ -733,7 +736,7 @@ async def scout(
 
     async with httpx.AsyncClient(
         timeout=SOURCE_VALIDATION_TIMEOUT_SECONDS,
-        follow_redirects=True,
+        follow_redirects=False,
     ) as validation_client:
         validations = await asyncio.gather(
             *(validate_candidate_source(candidate, client=validation_client) for candidate in leads)

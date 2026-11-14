@@ -2,14 +2,14 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Iterable, Mapping
+from typing import Any
 
-
-_REPO_ROOT = Path(__file__).resolve().parents[4]
-DEFAULT_K12_SOURCE_MAP_PATH = _REPO_ROOT / "packages/core/tests/fixtures/nm_k12_source_map.json"
-DEFAULT_AZ_K12_SOURCE_MAP_PATH = _REPO_ROOT / "packages/core/tests/fixtures/az_k12_source_map.json"
+_DATA_DIR = Path(__file__).resolve().parent / "data"
+DEFAULT_K12_SOURCE_MAP_PATH = _DATA_DIR / "nm_k12_source_map.json"
+DEFAULT_AZ_K12_SOURCE_MAP_PATH = _DATA_DIR / "az_k12_source_map.json"
 
 ROSTER_FIRST_FAMILIES = {
     "state_education_agency_roster",
